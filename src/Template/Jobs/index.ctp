@@ -8,6 +8,15 @@
                 </div>
             </div>    
             <div class="portlet-body">
+             <div class="col-md-6 col-sm-12 nopad">
+                    <div id="sample_1_filter" class="dataTables_filter mar">
+                        <form>
+                            <label>                        
+                            <input class="form-control input-inline" type="search" placeholder=" Search for Job" aria-controls="sample_1"> <button type="submit" class="btn btn-primary">Search</button>
+                            </label>
+                        </form>
+                    </div>
+                </div>
                 <div class="table-scrollable">
                     <table class="table table-hover">
                     	<thead>
@@ -24,7 +33,7 @@
                     	<tbody>
                     	<?php foreach ($job as $jobs): ?>
                     		<tr>
-                    			<td><?= $this->Number->format($user->id) ?></td>
+                    			<td><?= $this->Number->format($jobs->id) ?></td>
                     			<td><?= h($jobs->title) ?></td>
                     			<td><?= h($jobs->description) ?></td>
                     			<td><?= h($jobs->date_start) ?></td>

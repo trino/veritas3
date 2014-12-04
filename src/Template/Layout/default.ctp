@@ -477,7 +477,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					</form>
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 				</li>
-				<li class="start active open">
+				<li class="start <?php echo($this->request['controller']=='Pages')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
@@ -518,6 +518,31 @@ License: You must have a valid license purchased only from themeforest(the above
 							<a href="<?php echo WEB_ROOT;?>users/add">
 							<i class="icon-basket"></i>
 							Create User Profile</a>
+						</li>
+						
+					</ul>
+				</li>
+                	<li>
+					<a href="javascript:;">
+					<i class="icon-rocket"></i>
+					<span class="title">Jobs</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="<?php echo WEB_ROOT;?>jobs">
+							<i class="icon-home"></i>
+							List jobs</a>
+						</li>
+						<li>
+							<a href="<?php echo WEB_ROOT;?>jobs/add">
+							<i class="icon-basket"></i>
+							Add job</a>
+						</li>
+                        <li>
+							<a href="<?php echo WEB_ROOT;?>jobs/add">
+							<i class="icon-basket"></i>
+							Assign Job to user</a>
 						</li>
 						
 					</ul>

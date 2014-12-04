@@ -147,7 +147,7 @@
 								</div>
                                 <div class="clearfix"></div>
                                 <hr />
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
 									<label for="phone" class="col-md-5 control-label nopad">Name</label>
 									<div class="col-md-5 nopad">
 										<div class="input-icon">
@@ -157,7 +157,7 @@
 									</div>
 								</div>
                                 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
 									<label for="phone" class="col-md-5 control-label nopad">Title</label>
 									<div class="col-md-5 nopad">
 										<div class="input-icon">
@@ -166,8 +166,8 @@
 										</div>
 									</div>
 								</div>
-                               
-                                <div class="form-group col-md-4">
+                               <p>&nbsp;</p>
+                                <div class="form-group col-md-6">
 									<label for="phone" class="col-md-5 control-label nopad">Cell number</label>
 									<div class="col-md-5 nopad">
 										<div class="input-icon">
@@ -176,8 +176,8 @@
 										</div>
 									</div>
 								</div>
-                               <p>&nbsp;</p>
-                                <div class="form-group col-md-4">
+                               
+                                <div class="form-group col-md-6">
 									<label for="phone" class="col-md-5 control-label nopad">Cellular Carrier</label>
 									<div class="col-md-5 nopad">
 										<select name="key_cellular[]" class="form-control" >
@@ -196,8 +196,8 @@
                                         </select>
 									</div>
 								</div>
-                                
-                                <div class="form-group col-md-4">
+                                <p>&nbsp;</p>
+                                <div class="form-group col-md-6">
 									<label for="phone" class="col-md-5 control-label nopad">Phone number</label>
 									<div class="col-md-5 nopad">
 										<div class="input-icon">
@@ -207,7 +207,7 @@
 									</div>
 								</div>
                                 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
 									<label for="phone" class="col-md-5 control-label nopad">Email</label>
 									<div class="col-md-5 nopad">
 										<div class="input-icon">
@@ -217,7 +217,7 @@
 									</div>
 								</div>
                                 <p>&nbsp;</p>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
 									<label for="phone" class="col-md-5 control-label nopad">Company</label>
 									<div class="col-md-5 nopad">
 										<div class="input-icon">

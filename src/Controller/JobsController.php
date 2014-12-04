@@ -9,6 +9,10 @@ use Cake\Controller\Controller;
 class JobsController extends AppController {
 
 
+    public $paginate = [
+            'limit' => 10,
+            
+        ];
      public function initialize() {
         parent::initialize();
         if(!$this->request->session()->read('User.id'))
@@ -20,7 +24,7 @@ class JobsController extends AppController {
     
 	public function index() {
 	   
-		$this->set('jobs', $this->paginate($this->Jobs));
+		$this->set('job', $this->paginate($this->Jobs));
 	}
 
 

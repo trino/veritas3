@@ -483,7 +483,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<li class="start <?php echo($this->request['controller']=='Pages')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-home"></i>
-					<span class="title">Dashboard</span>
+					<span class="title">Dashboard </span>
 					<span class="selected"></span>
 					<span class="arrow open"></span>
 					</a>
@@ -505,10 +505,12 @@ License: You must have a valid license purchased only from themeforest(the above
 						</li>
 					</ul>
 				</li>
-				<li>
+				<li class="<?php echo($this->request['controller']=='Users')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-basket"></i>
 					<span class="title">Users</span>
+                    <?php echo($this->request['controller']=='Users')?'<span class="selected"></span>':'';?>
+                    
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
@@ -525,10 +527,11 @@ License: You must have a valid license purchased only from themeforest(the above
 						
 					</ul>
 				</li>
-                	<li>
+                	<li class="<?php echo($this->request['controller']=='Jobs')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-rocket"></i>
 					<span class="title">Jobs</span>
+                    <?php echo($this->request['controller']=='Jobs')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">

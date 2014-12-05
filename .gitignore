@@ -1,6 +1,5 @@
 bin/*
 [Cc]onfig/*
-src/*
 logs/*
 plugins/*
 tests/*

@@ -8,7 +8,16 @@
                 </div>
             </div>    
             <div class="portlet-body">
+                <div class="col-md-6 col-sm-12 nopad">
+                    <div id="sample_1_filter" class="dataTables_filter mar">
+                        <label>
+                        
+                        <input class="form-control input-inline" type="search" placeholder=" Search for users" aria-controls="sample_1"> <button type="submit" class="btn btn-primary">Search</button>
+                        </label>
+                    </div>
+                </div>
                 <div class="table-scrollable">
+                
                     <table class="table table-hover">
                     	<thead>
                     		<tr>

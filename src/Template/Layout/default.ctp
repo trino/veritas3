@@ -35,6 +35,9 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="<?php echo WEB_ROOT;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo WEB_ROOT;?>assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo WEB_ROOT;?>assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo WEB_ROOT;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo WEB_ROOT;?>assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
+
 <!-- END PAGE LEVEL PLUGIN STYLES -->
 <!-- BEGIN PAGE STYLES -->
 <link href="<?php echo WEB_ROOT;?>assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
@@ -1874,6 +1877,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="<?php echo WEB_ROOT;?>assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
 <script src="<?php echo WEB_ROOT;?>assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
 <script src="<?php echo WEB_ROOT;?>assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<script src="<?php echo WEB_ROOT;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="<?php echo WEB_ROOT;?>assets/global/scripts/metronic.js" type="text/javascript"></script>
@@ -1882,6 +1887,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="<?php echo WEB_ROOT;?>assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
 <script src="<?php echo WEB_ROOT;?>assets/admin/pages/scripts/index.js" type="text/javascript"></script>
 <script src="<?php echo WEB_ROOT;?>assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+<script src="<?php echo WEB_ROOT;?>assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {    
@@ -1890,6 +1896,7 @@ jQuery(document).ready(function() {
    QuickSidebar.init(); // init quick sidebar
    Demo.init(); // init demo features 
    Index.init();   
+   Profile.init(); // init page demo
    Index.initDashboardDaterange();
    Index.initJQVMAP(); // init index page's custom scripts
    Index.initCalendar(); // init index page's custom scripts

@@ -70,6 +70,7 @@ Tasks Widget
   clear: both;
 }
 .nopad{padding: 0!important;}
+.paginator{text-align:center;margin-top:30px;background:#428BCA;}
 @media only screen and (max-width: 480px) {
   .tasks-widget .task-config-btn {
     float: inherit;

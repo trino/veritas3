@@ -8,7 +8,10 @@ use Cake\Controller\Controller;
 
 class UsersController extends AppController {
 
-
+    public $paginate = [
+            'limit' => 10,
+            
+        ];
      public function initialize() {
         parent::initialize();
         if(!$this->request->session()->read('User.id'))

@@ -6,7 +6,7 @@ use Cake\Event\Event;
 use Cake\Controller\Controller;
 
 
-class JobsController extends AppController {
+class DocumentsController extends AppController {
 
 
     public $paginate = [
@@ -24,14 +24,14 @@ class JobsController extends AppController {
     
 	public function index() {
 	   
-		$this->set('job', $this->paginate($this->Jobs));
+		//$this->set('job', $this->paginate($this->Jobs));
 	}
 
 
 
 	public function view($id = null) {
-		$user = $this->Jobs->get($id);
-		$this->set('user', $user);
+		/*$user = $this->Jobs->get($id);
+		$this->set('user', $user);*/
 	}
 
 /**
@@ -40,7 +40,7 @@ class JobsController extends AppController {
  * @return void
  */
 	public function add() {
-		$user = $this->Jobs->newEntity($this->request->data);
+		/*$user = $this->Jobs->newEntity($this->request->data);
 		if ($this->request->is('post')) {
 			if ($this->Jobs->save($user)) {
 				$this->Flash->success('The user has been saved.');
@@ -49,7 +49,7 @@ class JobsController extends AppController {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('user'));
+		$this->set(compact('user'));*/
 	}
 
 /**
@@ -60,7 +60,7 @@ class JobsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
-		$user = $this->Jobs->get($id, [
+		/*$user = $this->Jobs->get($id, [
 			'contain' => []
 		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
@@ -72,7 +72,7 @@ class JobsController extends AppController {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('user'));
+		$this->set(compact('user'));*/
 	}
 
 /**
@@ -83,14 +83,13 @@ class JobsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
-		$user = $this->Jobs->get($id);
+		/*$user = $this->Jobs->get($id);
 		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Jobs->delete($user)) {
 			$this->Flash->success('The user has been deleted.');
 		} else {
 			$this->Flash->error('The user could not be deleted. Please, try again.');
 		}
-		return $this->redirect(['action' => 'index']);
-	}
-    
+		return $this->redirect(['action' => 'index']);*/
+	} 
 }

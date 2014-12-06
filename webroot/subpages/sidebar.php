@@ -89,16 +89,22 @@
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
+                        <li>
+							<a href="<?php echo WEB_ROOT;?>documents/index">
+                            <i class="icon-basket"></i>
+							List documents</a>
+						</li>
+                        <li>
+							<a href="<?php echo WEB_ROOT;?>documents/add">
+                            <i class="icon-basket"></i>
+							New upload</a>
+						</li>
 						<li>
 							<a href="<?php echo WEB_ROOT;?>documents/index/orders">
                             <i class="icon-basket"></i>
 							Orders</a>
 						</li>
-						<li>
-							<a href="<?php echo WEB_ROOT;?>documents/add">
-                            <i class="icon-basket"></i>
-							New upload</a>
-						</li>						
+												
 					</ul>
 				</li>
 				<li>

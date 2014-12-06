@@ -1,6 +1,4 @@
 var FormWizard = function () {
-
-
     return {
         //main function to initiate the module
         init: function () {
@@ -110,23 +108,19 @@ var FormWizard = function () {
                         error.insertAfter(element); // for other inputs, just perform default behavior
                     }
                 },
-
                 invalidHandler: function (event, validator) { //display error alert on form submit   
                     success.hide();
                     error.show();
                     Metronic.scrollTo(error, -200);
                 },
-
                 highlight: function (element) { // hightlight error inputs
                     $(element)
                         .closest('.form-group').removeClass('has-success').addClass('has-error'); // set error class to the control group
                 },
-
                 unhighlight: function (element) { // revert the change done by hightlight
                     $(element)
                         .closest('.form-group').removeClass('has-error'); // set error class to the control group
                 },
-
                 success: function (label) {
                     if (label.attr("for") == "gender" || label.attr("for") == "payment[]") { // for checkboxes and radio buttons, no need to show OK icon
                         label
@@ -138,15 +132,12 @@ var FormWizard = function () {
                         .closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
                     }
                 },
-
                 submitHandler: function (form) {
                     success.show();
                     error.hide();
                     //add here some ajax code to submit your form or just call form.submit() if you want to submit the form without ajax
                 }
-
             });
-
             var displayConfirm = function() {
                 $('#tab4 .form-control-static', form).each(function(){
                     var input = $('[name="'+$(this).attr("data-display")+'"]', form);
@@ -168,7 +159,6 @@ var FormWizard = function () {
                     }
                 });
             }
-
             var handleTitle = function(tab, navigation, index) {
                 var total = navigation.find('li').length;
                 var current = index + 1;
@@ -246,5 +236,4 @@ var FormWizard = function () {
         }
 
     };
-
 }();

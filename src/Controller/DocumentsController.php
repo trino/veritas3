@@ -97,6 +97,7 @@ class DocumentsController extends AppController {
     
     public function subpages($filename)
     {
+        $this->layout="blank";
         $this->set("filename",$filename);
     }
 }

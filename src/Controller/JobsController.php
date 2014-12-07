@@ -50,6 +50,7 @@ class JobsController extends AppController {
 			}
 		}
 		$this->set(compact('user'));
+        $this->render('edit');
 	}
 
 /**

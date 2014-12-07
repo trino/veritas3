@@ -50,6 +50,7 @@ class DocumentsController extends AppController {
 			}
 		}
 		$this->set(compact('user'));*/
+        
 	}
 
 /**
@@ -73,6 +74,7 @@ class DocumentsController extends AppController {
 			}
 		}
 		$this->set(compact('user'));*/
+        $this->render('add');
 	}
 
 /**

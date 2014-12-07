@@ -49,6 +49,7 @@ class UsersController extends AppController {
 			}
 		}
 		$this->set(compact('user'));
+        $this->render("edit");
 	}
 
 /**

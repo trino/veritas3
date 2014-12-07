@@ -162,18 +162,16 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<select class="form-control" onchange="$('.subform').show();">
-                                                            <option>Pre-Screening Form</option>
+														<select class="form-control" onchange="subform($(this).val());">
+                                                        
+                                                            <option value="Company pre-screen question">Company pre-screen questions</option>
 
-                                                            <option>Interview Form</option>
+                                                            <option value="Driver application">Driver application</option>
 
-                                                            <option>MEE Inputs</option>
+                                                            <option value="Driver evaluation form">Driver evaluation form</option>
 
-                                                            <option>Road Test Form</option>
-
-                                                            <option>Re-qualify Driver</option>
+                                                            <option value="Employment verification form">Employment verification form</option>
                                                             
-                                                            <option>Driver evaluation form</option>
                                                         </select>
 													</div>
 												</div>
@@ -447,6 +445,12 @@
 				</div>
 			</div>
 <script>
+function subform(form_type)
+{
+    var filename = form_type.replace(/\W/g, '_');
+    var filename = filename.toLowerCase();
+    $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+filename);
+}
 jQuery(document).ready(function() { 
    $('#addfiles').click(function(){
             //alert("ssss");

@@ -34,7 +34,7 @@
 					</a>
 					
 				</li>
-				<li class="<?php echo($this->request['controller']=='Users')?'active open':'';?>">
+				<li class="<?php echo($this->request['controller']=='Users' && $this->request['action']!='logo')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-basket"></i>
 					<span class="title">Users</span>
@@ -81,6 +81,15 @@
 						</li>
 						
 					</ul>
+				</li>
+                <li class="start <?php echo($this->request['controller']=='Logos')?'active open':'';?>">
+					<a href="<?php echo $this->request->webroot;?>Logos">
+					<i class="icon-home"></i>
+					<span class="title">Logo Manager </span>
+					<span class="selected"></span>
+					
+					</a>
+					
 				</li>
 				<li>
 					<a href="javascript:;">

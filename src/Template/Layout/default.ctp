@@ -105,7 +105,8 @@
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="<?php echo WEB_ROOT;?>">
-			<img src="<?php echo WEB_ROOT;?>assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
+            <?php $logo = $this->requestAction('Logos/getlogo',['return']);?>
+			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="logo-default" width="86px" />
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -483,6 +484,7 @@
      
 	<div class="page-content-wrapper">
 		<div class="page-content">
+        <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
         
 		</div>

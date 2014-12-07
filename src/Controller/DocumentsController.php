@@ -92,4 +92,9 @@ class DocumentsController extends AppController {
 		}
 		return $this->redirect(['action' => 'index']);*/
 	} 
+    
+    public function subpages($filename)
+    {
+        $this->set("filename",$filename);
+    }
 }

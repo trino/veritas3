@@ -1,5 +1,4 @@
-<?php
-echo '<div id="toremove"><div class="table-scrollable">
+<div id="toremove"><div class="table-scrollable">
     <table class="table table-striped">
                 <tr><th>Past Employer</th></tr>
                 <tr><td colspan="2">Company Name<input type="text" class="form-control" /></td></tr>
@@ -16,5 +15,5 @@ echo '<div id="toremove"><div class="table-scrollable">
     <a href="javascript:void(0);" class="btn red" id="delete">Delete</a>
 </div>
   </div>  
-';
-?> 
+
+ 

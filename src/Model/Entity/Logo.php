@@ -16,6 +16,7 @@ class Logo extends Entity {
 	protected $_accessible = [
 		'logo' => true,
 		'active' => true,
+        'secondary' => true,
 	];
 
 }

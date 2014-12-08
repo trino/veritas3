@@ -1,5 +1,5 @@
 <h3 class="page-title">
-			Primary logo manager
+			Secondary logo manager
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -10,10 +10,10 @@
 					</li>
 					<li>
 						<a href="#">Logo Manger</a>
-					    <i class="fa fa-angle-right"></i>
+                        <i class="fa fa-angle-right"></i>
 					</li>
                     	<li>
-						<a href="#">Primary Logo</a>
+						<a href="#">Secondary Logo</a>
                         
 					</li>
 				</ul>
@@ -26,7 +26,7 @@
 		<div class="portlet box blue">
 			<div class="portlet-title">
 				<div class="caption">
-					<i class="fa fa-user"></i>Choose A Primary Logo Manager
+					<i class="fa fa-user"></i>Choose A Secondary Logo Manager
 				</div>
 				
 			</div>

@@ -15,8 +15,37 @@ class LogosController extends AppController {
  * @return void
  */
 	public function index() {
-		$lg = $this->paginate($this->Logos);
-        $this->set('logos', $this->paginate($this->Logos));
+		$lg = $this->paginate($this->Logos->find()->where(['secondary'=>'0']));
+        $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
+         if ($this->request->is(['post', 'put'])){
+            //var_dump($lg);die();
+            foreach($lg as  $l)
+            {
+
+                $log = TableRegistry::get('Logos');
+                $query = $log->query();
+                $query->update()
+                ->set(['active' => 0])
+                ->where(['id' => $l->id])
+                ->execute();
+                
+                
+            }
+            $id = $_POST['logo'];
+            $logo = TableRegistry::get('Logos');
+                $query1 = $logo->query();
+                if($query1->update()->set(['active' => 1])->where(['id' => $id])->execute())
+            {
+                $this->Flash->success(__('Your Logo has been updated.'));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('Unable to update your Logo.'));
+         }
+        
+	}
+    public function secondary() {
+		$lg = $this->paginate($this->Logos->find()->where(['secondary'=>'1']));
+        $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
          if ($this->request->is(['post', 'put'])){
             //var_dump($lg);die();
             foreach($lg as  $l)
@@ -117,16 +146,19 @@ class LogosController extends AppController {
 		return $this->redirect(['action' => 'index']);
 	}
     
-    function getlogo()
+    function getlogo($type)
     {
         
         $logo = TableRegistry::get('Logos');
         $query = $logo->find();
-        $query->select(['logo'])->where(['active' => 1]);
-        foreach($query as $q)
+        $query->select(['logo'])->where(['active' => 1, 'secondary'=>$type]);
+        $lg = $query->first();
+        //var_dump($lg);die();
+        $log = $lg['logo']; 
+        /*foreach($query as $q)
         {
            $log = $q->logo; 
-        }
+        }*/
         //if (!$this->request->is('requested')) {
             $this->response->body(($log));
             return $this->response;
@@ -135,6 +167,31 @@ class LogosController extends AppController {
         //return $log;
         die();
         
+    }
+    
+    function change_layout()
+    {
+         $layout = $_POST['layout'];
+         $setting = TableRegistry::get('Settings');
+         $query = $setting->query();
+                $query->update()
+                ->set(['layout' => $layout])
+                ->where(['id' => 1])
+                ->execute();
+         
+         die();
+    }
+    function get_layout()
+    {
+         
+         $setting = TableRegistry::get('Settings');
+         $query = $setting->find();
+                 $query->select(['layout']);
+         $l = $query->first();
+         $layout = $l->layout;        
+         $this->response->body(($layout));
+            return $this->response;
+         die();
     }
 
 }

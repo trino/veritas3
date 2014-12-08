@@ -186,9 +186,9 @@ var Demo = function() {
             var color_ = (Metronic.isRTL() ? color + '-rtl' : color);
             $('#style_color').attr("href", Layout.getLayoutCssPath() + 'themes/' + color_ + ".css");
             if (color == 'light2') {
-                $('.page-logo img').attr('src', Layout.getLayoutImgPath() + 'logo-invert.png');
+                //$('.page-logo img').attr('src', Layout.getLayoutImgPath() + 'logo-invert.png');
             } else {
-                $('.page-logo img').attr('src', Layout.getLayoutImgPath() + 'logo.png');
+                //$('.page-logo img').attr('src', Layout.getLayoutImgPath() + 'logo.png');
             }
         };
 

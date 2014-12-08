@@ -26,6 +26,7 @@
 </div>
 <div id="more"></div>
 <div id="add_more">
+    <p>&nbsp;</p>
     <a href="javascript:void(0);" class="btn green add_more">Add More</a>
 </div>
 

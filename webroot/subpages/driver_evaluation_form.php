@@ -125,19 +125,111 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="portlet box blue center">
+                                                        <div class="portlet box blue">
                                                             <div class="portlet-title">
                                                                 <div class="caption"><strong>Driving:</strong></div>
                                                             </div>
                                                             
                                                             <div class="portlet-body">
-                                                                <div class="col-md-6">
-        															Follows too closely 
+                                                                <div>
+                                                                    <div class="col-md-8">
+            															Follows too closely 
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
+                                                                </div> 
+                                                                
+                                                                <div>
+                                                                    <div class="col-md-8">
+            															Improper choice of Lane 
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
                                                                 </div>
-                                                                <div class="col-md-6">
-                                                                    <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                
+                                                                <div>
+                                                                    <div class="col-md-8">
+            															Fails to use mirrors properly 
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
+                                                                </div>  
+                                                                
+                                                                <div>
+                                                                    <div class="col-md-8">
+            															Signal: wrong / late / not used / not cancelled
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
+                                                                </div>  
+                                                                
+                                                                <div>
+                                                                    <div class="col-md-8">
+            															Fails to use caution at R.R. Xing	
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
                                                                 </div>
-							                                    <div class="clearfix"></div> 
+                                                                
+                                                                 <div>
+                                                                    <div class="col-md-8">
+            															Speed: too fast / too slow  	
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
+                                                                </div> 
+                                                                
+                                                                <div>
+                                                                    <div class="col-md-8">
+            															Incorrect use of: clutch / brakes		
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
+                                                                </div>
+                                                                
+                                                                <div>
+                                                                    <div class="col-md-8">
+            															Accelerator / gears / steering		
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
+                                                                </div>
+                                                                
+                                                                <div>
+                                                                    <div class="col-md-8">
+            															Incorrect observation skills	
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
+                                                                </div>
+                                                                
+                                                                <div>
+                                                                    <div class="col-md-8">
+            															Doesn't respond to instruction	
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                    </div>
+    							                                    <div class="clearfix"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

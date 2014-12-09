@@ -1,4 +1,21 @@
+<h3 class="page-title">
+			Jobs 
+			</h3>
+    <div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="<?php echo $this->request->webroot;?>">Dashboard</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="">Jobs</a>
+					</li>
+				</ul>
+				
+			</div>
 <div class="row">
+    
     <div class="col-md-12">
         <div class="portlet box blue">
             <div class="portlet-title">
@@ -40,7 +57,7 @@
                     			<td><?= h($jobs->date_end) ?></td>
                     			<td><?= h($jobs->site) ?></td>                    			
                     			<td class="actions">
-                    				
+                    				<?= $this->Html->link(__('View'), ['action' => 'view', $jobs->id], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit', $jobs->id], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $jobs->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $jobs->id)]) ?>
                     			</td>

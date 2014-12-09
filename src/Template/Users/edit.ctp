@@ -137,7 +137,7 @@ $is_disabled = '';
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
-						<a href="<?php echo $this->request->webroot;?>">Home</a>
+						<a href="<?php echo $this->request->webroot;?>">Dashboard</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>

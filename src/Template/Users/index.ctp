@@ -1,4 +1,17 @@
 <div class="row">
+    <div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="<?php echo $this->request->webroot;?>">Dashboard</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="">Users</a>
+					</li>
+				</ul>
+				
+			</div>
     <div class="col-md-12">
         <div class="portlet box blue">
             <div class="portlet-title">

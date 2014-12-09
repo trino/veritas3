@@ -31,6 +31,8 @@ class UsersController extends AppController {
 	public function view($id = null) {
 		$user = $this->Users->get($id, [ 'contain' => []]);
 		$this->set('user', $user);
+        $this->set('disabled', 1);
+        $this->render("edit");
 	}
 
 /**

@@ -371,7 +371,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="clearfix"></div>
-                                                <div class="com-md-12">
+                                                <div class="col-md-12">
                                                     <div class="col-md-6">
                                                         <div class="portlet box blue">
                                                             <div class="portlet-title">

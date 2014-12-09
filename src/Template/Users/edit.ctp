@@ -1,6 +1,12 @@
 
-			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<?php
+if(isset($disabled))
+$is_disabled = 'disabled="disabled"';
+else
+$is_disabled = '';
+?>
+<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -131,15 +137,11 @@
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
-						<a href="index.html">Home</a>
+						<a href="<?php echo $this->request->webroot;?>">Home</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="#">Pages</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						<a href="#">Profile</a>
+						<a href="">Profile</a>
 					</li>
 				</ul>
 				
@@ -154,7 +156,7 @@
 						<div class="portlet light profile-sidebar-portlet">
 							<!-- SIDEBAR USERPIC -->
 							<div class="profile-userpic">
-								<img src="../../assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+								<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-responsive" alt="">
 							</div>
 							<!-- END SIDEBAR USERPIC -->
 							<!-- SIDEBAR USER TITLE -->
@@ -175,14 +177,14 @@
                                 <div class="caption">Job assigned</div>
                             </div>
                             <div class="portlet-body">
-								<div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
+								<div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
 								<div class="clearfix"></div>
 							</div>
                         </div>
@@ -192,14 +194,14 @@
                                 <div class="caption">Orders Associated</div>
                             </div>
                             <div class="portlet-body">
-								<div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
-                                <div class="profile-desc-text col-sm-6 nopad"> Sample job 1 </div>
+								<div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
 								<div class="clearfix"></div>
 							</div>
                         </div>
@@ -220,12 +222,20 @@
 											<li class="active">
 												<a href="#tab_1_1" data-toggle="tab">Personal Info</a>
 											</li>
+                                            <?php
+                                            if(!isset($disabled))
+                                            {
+                                                ?>
+                                                
 											<li>
 												<a href="#tab_1_2" data-toggle="tab">Change Avatar</a>
 											</li>
 											<li>
 												<a href="#tab_1_3" data-toggle="tab">Change Password</a>
 											</li>
+                                            <?php
+                                            }
+                                            ?>
 											<li>
 												<a href="#tab_1_4" data-toggle="tab">Permissions</a>
 											</li>
@@ -241,35 +251,39 @@
 												<form role="form" action="#">
                                                     <div class="form-group">
 														<label class="control-label">Title</label>
-														<input type="text" placeholder="eg. Mr" class="form-control"/>
+														<input <?php echo $is_disabled?> type="text" placeholder="eg. Mr" class="form-control"/>
 													</div>
 													<div class="form-group">
 														<label class="control-label">First Name</label>
-														<input type="text" placeholder="eg. John" class="form-control"/>
+														<input <?php echo $is_disabled?> type="text" placeholder="eg. John" class="form-control"/>
 													</div>
 													<div class="form-group">
 														<label class="control-label">Last Name</label>
-														<input type="text" placeholder="eg. Doe" class="form-control"/>
+														<input <?php echo $is_disabled?> type="text" placeholder="eg. Doe" class="form-control"/>
 													</div>
                                                     <div class="form-group">
 														<label class="control-label">Email</label>
-														<input type="text" placeholder="eg. test@domain.com" class="form-control"/>
+														<input <?php echo $is_disabled?> type="text" placeholder="eg. test@domain.com" class="form-control"/>
 													</div>
 													<div class="form-group">
 														<label class="control-label">Phone Number</label>
-														<input type="text" placeholder="eg. +1 646 580 6284" class="form-control"/>
+														<input <?php echo $is_disabled?> type="text" placeholder="eg. +1 646 580 6284" class="form-control"/>
 													</div>
 													<div class="form-group">
 														<label class="control-label">Address</label>
-														<input type="text" placeholder="eg. Street, City, Province, Country" class="form-control"/>
+														<input <?php echo $is_disabled?> type="text" placeholder="eg. Street, City, Province, Country" class="form-control"/>
 													</div>
-													
+													<?php
+                                                    if(!isset($disabled))
+                                                    {
+                                                        ?>
 													<div class="margiv-top-10">
 														<a href="#" class="btn green-haze">
 														Save Changes </a>
 														<a href="#" class="btn default">
 														Cancel </a>
 													</div>
+                                                    <?php }?>
 												</form>
 											</div>
 											<!-- END PERSONAL INFO TAB -->
@@ -343,10 +357,10 @@
 														</td>
 														<td>
 															<label class="uniform-inline">
-															<input type="radio" name="optionsRadios1" value="option1"/>
+															<input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
 															Yes </label>
 															<label class="uniform-inline">
-															<input type="radio" name="optionsRadios1" value="option2" checked/>
+															<input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
 															No </label>
 														</td>
 													</tr>
@@ -356,7 +370,7 @@
 														</td>
 														<td>
 															<label class="uniform-inline">
-															<input type="checkbox" value=""/> Yes </label>
+															<input <?php echo $is_disabled?> type="checkbox" value=""/> Yes </label>
 														</td>
 													</tr>
 													<tr>
@@ -365,7 +379,7 @@
 														</td>
 														<td>
 															<label class="uniform-inline">
-															<input type="checkbox" value=""/> Yes </label>
+															<input <?php echo $is_disabled?> type="checkbox" value=""/> Yes </label>
 														</td>
 													</tr>
 													<tr>
@@ -374,17 +388,24 @@
 														</td>
 														<td>
 															<label class="uniform-inline">
-															<input type="checkbox" value=""/> Yes </label>
+															<input <?php echo $is_disabled?> type="checkbox" value=""/> Yes </label>
 														</td>
 													</tr>
 													</table>
 													<!--end profile-settings-->
+                                                    <?php
+                                                    if(!isset($disabled))
+                                                    {
+                                                        ?>
+                                                        
 													<div class="margin-top-10">
 														<a href="#" class="btn green-haze">
 														Save Changes </a>
-														<a href="#" class="btn default">
-														Cancel </a>
+														
 													</div>
+                                                    <?php
+                                                    }
+                                                    ?>
 												</form>
 											</div>
                                             <div class="tab-pane" id="tab_1_5">

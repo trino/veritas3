@@ -7,7 +7,7 @@
 					</div>-->
 					<!-- END SIDEBAR TOGGLER BUTTON -->
                     <?php $logo1 = $this->requestAction('Logos/getlogo/1');?>
-                    <img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  />
+                    <center><img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  /></center>
 				</li>
 				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
 				<li class="sidebar-search-wrapper">
@@ -106,10 +106,11 @@
 					</ul>
 					
 				</li>-->
-				<li class="start <?php echo($this->request['controller']=='Documents')?'active open':'';?>">
+				<li class="<?php echo($this->request['controller']=='Documents')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-rocket"></i>
 					<span class="title">Documents</span>
+					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
@@ -135,7 +136,8 @@
                     <a href="javascript:;">
 					<i class="icon-rocket"></i>
 					<span class="title">Quick Contacts</span>
-					<span class="selected"></span>
+					<?php echo($this->request['controller']=='Quickcontacts')?'<span class="selected"></span>':'';?>
+					<span class="arrow "></span>
 					</a>
                     <ul class="sub-menu">
 						<li <?php echo($this->request['controller']=='Quickcontacts' && $this->request['action']=='index')?'class="active"':'';?>>

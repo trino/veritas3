@@ -23,15 +23,15 @@ class QuickcontactsController extends AppController {
     }
     
 	public function index() {
-	   $this->loadModel('Jobs');
-		$this->set('job', $this->paginate($this->Jobs));
+	   
 	}
 
 
 
 	public function view($id = null) {
-		$user = $this->Jobs->get($id);
-		$this->set('user', $user);
+		
+		$this->set('disabled', 1);
+        $this->render('add');
 	}
 
 /**
@@ -40,18 +40,8 @@ class QuickcontactsController extends AppController {
  * @return void
  */
 	public function add() {
-	   $this->loadModel('Jobs');
-		$user = $this->Jobs->newEntity($this->request->data);
-		if ($this->request->is('post')) {
-			if ($this->Jobs->save($user)) {
-				$this->Flash->success('The user has been saved.');
-				return $this->redirect(['action' => 'index']);
-			} else {
-				$this->Flash->error('The user could not be saved. Please, try again.');
-			}
-		}
-		$this->set(compact('user'));
-        $this->render('quickcontact');
+	   
+        
 	}
 
 /**
@@ -62,19 +52,7 @@ class QuickcontactsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
-		$user = $this->Jobs->get($id, [
-			'contain' => []
-		]);
-		if ($this->request->is(['patch', 'post', 'put'])) {
-			$user = $this->Jobs->patchEntity($user, $this->request->data);
-			if ($this->Jobs->save($user)) {
-				$this->Flash->success('The user has been saved.');
-				return $this->redirect(['action' => 'index']);
-			} else {
-				$this->Flash->error('The user could not be saved. Please, try again.');
-			}
-		}
-		$this->set(compact('user'));
+		$this->render('add');
 	}
 
 /**
@@ -85,14 +63,7 @@ class QuickcontactsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
-		$user = $this->Jobs->get($id);
-		$this->request->allowMethod(['post', 'delete']);
-		if ($this->Jobs->delete($user)) {
-			$this->Flash->success('The user has been deleted.');
-		} else {
-			$this->Flash->error('The user could not be deleted. Please, try again.');
-		}
-		return $this->redirect(['action' => 'index']);
+	
 	}
     
     function quickcontact()

@@ -1,3 +1,9 @@
+<?php
+if(isset($disabled))
+$is_disabled = 'disabled="disabled"';
+else
+$is_disabled = '';
+?>
 <h3 class="page-title">
 			Add/Edit Doccument
 			</h3>
@@ -9,7 +15,8 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Add/Edit Documents</a>
+						<a href="">Add/Edit Documents
+                        </a>
 					</li>
 				</ul>
 				<div class="page-toolbar">
@@ -97,7 +104,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<select id="document_type" class="form-control" name="document_type">
+														<select <?php echo $is_disabled;?> id="document_type" class="form-control" name="document_type">
                                                         <option value="">Choose Document Type</option>
                                                         <option value="contract">Contracts</option>
                                                         <option value="evidence">Evidence</option>
@@ -117,7 +124,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" class="form-control" name="" id="" value="Admin" disabled="" />
+														<input <?php echo $is_disabled;?> type="text" class="form-control" name="" id="" value="Admin" disabled="" />
 														<span class="help-block">
 														Provide your password. </span>
 													</div>
@@ -127,7 +134,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" class="form-control" name="" value="<?php echo date('Y-m-d H:i:s')?>" disabled=""/>
+														<input <?php echo $is_disabled;?> type="text" class="form-control" name="" value="<?php echo date('Y-m-d H:i:s')?>" disabled=""/>
 														<span class="help-block">
 														Confirm your password </span>
 													</div>
@@ -137,7 +144,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<textarea class="form-control" name="description"></textarea>
+														<textarea <?php echo $is_disabled;?> class="form-control" name="description"></textarea>
 														
 													</div>
 												</div>
@@ -149,7 +156,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<a href="#" class="btn btn-success">Browse</a> <a id="addfiles" class="btn btn-primary" href="javascript:void(0)">Add More +</a>                                                        
+														<a <?php echo $is_disabled;?> href="#" class="btn btn-success">Browse</a> <a id="addfiles" class="btn btn-primary" href="javascript:void(0)">Add More +</a>                                                        
                                                         <div id="doc"></div>
 													</div>
 												</div>
@@ -162,7 +169,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<select class="form-control" onchange="subform($(this).val());">
+														<select <?php echo $is_disabled;?> class="form-control" onchange="subform($(this).val());">
                                                         
                                                             <option value="">Choose sub-document</option>
                                                         

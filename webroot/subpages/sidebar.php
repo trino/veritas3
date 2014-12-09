@@ -84,7 +84,7 @@
 						
 					</ul>
 				</li>
-                <li class="start <?php echo($this->request['controller']=='Logos')?'active open':'';?>">
+                <!--<li class="start <?php echo($this->request['controller']=='Logos')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-home"></i>
 					<span class="title">Logo Manager </span>
@@ -105,7 +105,7 @@
 						
 					</ul>
 					
-				</li>
+				</li>-->
 				<li class="start <?php echo($this->request['controller']=='Documents')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-rocket"></i>

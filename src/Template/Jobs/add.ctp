@@ -152,25 +152,25 @@
                             <hr />
                             <h4>Add Qucik key contacts</h4>
                             <div class="form-group">
-                            <span>     Contracts </span>
+                            <span>     John </span>
                             <input type="checkbox" checked="checked" name="Email_contracts">
-                            <span>     Evidence </span>
+                            <span>     Trish </span>
                             <input type="checkbox" checked="checked" name="Email_evidence">
-                            <span>     Templates </span>
+                            <span>     Andy </span>
                             <input type="checkbox" checked="checked" name="Email_templates">
-                            <span>     Report </span>
+                            <span>     Loyala </span>
                             <input type="checkbox" checked="checked" name="Email_client_memo">
-                            <span>      Site Orders </span>
+                            <span>      Lorde </span>
                             <input type="checkbox" checked="checked" name="Email_siteOrder">
-                            <span>      Training </span>
+                            <span>      Herrison </span>
                             <input type="checkbox" checked="checked" name="Email_training">
-                            <span>      Employee </span>
+                            <span>      Simpsons </span>
                             <input type="checkbox" checked="checked" name="Email_employee">
-                            <span>      KPI Audits </span>
+                            <span>      Eric </span>
                             <input type="checkbox" name="Email_KPIAudits">
-                            <span>      Orders </span>
+                            <span>      Kyle </span>
                             <input type="checkbox" name="Email_orders">
-                            <span>      Deployment </span>
+                            <span>      Stan </span>
                             <input type="checkbox" name="Email_deployment">
                             </div>
                             <hr/>

@@ -429,8 +429,8 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
-							<a href="extra_profile.html">
-							<i class="icon-user"></i> My Profile </a>
+							<a href="<?php echo $this->request->webroot;?>settings">
+							<i class="icon-user"></i> My Settings </a>
 						</li>
 						<li>
 							<a href="page_calendar.html">

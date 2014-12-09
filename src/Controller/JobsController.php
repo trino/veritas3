@@ -94,4 +94,9 @@ class JobsController extends AppController {
 		return $this->redirect(['action' => 'index']);
 	}
     
+    function quickcontact()
+    {
+        
+    }
+    
 }

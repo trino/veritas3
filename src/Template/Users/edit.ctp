@@ -1,4 +1,6 @@
-<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -20,7 +22,7 @@
 			<!-- /.modal -->
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 			<!-- BEGIN STYLE CUSTOMIZER -->
-			<div class="theme-panel hidden-xs hidden-sm hide">
+			<div class="theme-panel hidden-xs hidden-sm">
 				<div class="toggler">
 				</div>
 				<div class="toggler-close">
@@ -30,19 +32,27 @@
 						<span>
 						THEME COLOR </span>
 						<ul>
-							<li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default">
+							<li class="color-default current tooltips" data-style="default" onclick="change_layout('default');" data-container="body" data-original-title="Default">
 							</li>
-							<li class="color-darkblue tooltips" data-style="darkblue" data-container="body" data-original-title="Dark Blue">
+							<li class="color-darkblue tooltips" data-style="darkblue" onclick="change_layout('darkblue');" data-container="body" data-original-title="Dark Blue">
 							</li>
-							<li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue">
+							<li class="color-blue tooltips" data-style="blue" onclick="change_layout('blue');" data-container="body" data-original-title="Blue">
 							</li>
-							<li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey">
+							<li class="color-grey tooltips" data-style="grey" onclick="change_layout('grey');" data-container="body" data-original-title="Grey">
 							</li>
-							<li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light">
+							<li class="color-light tooltips" data-style="light" onclick="change_layout('light');" data-container="body" data-original-title="Light">
 							</li>
-							<li class="color-light2 tooltips" data-style="light2" data-container="body" data-html="true" data-original-title="Light 2">
+							<li class="color-light2 tooltips" data-style="light2" onclick="change_layout('light2');" data-container="body" data-html="true" data-original-title="Light 2">
 							</li>
 						</ul>
+					</div>
+					<div class="theme-option">
+						<span>
+						Theme Style </span>
+						<select class="layout-style-option form-control input-sm">
+							<option value="square" selected="selected">Square corners</option>
+							<option value="rounded">Rounded corners</option>
+						</select>
 					</div>
 					<div class="theme-option">
 						<span>
@@ -110,8 +120,13 @@
 					</div>
 				</div>
 			</div>
+            <div class="clearfix"></div>
+            
 			<!-- END STYLE CUSTOMIZER -->
-			<!-- BEGIN PAGE HEADER-->			
+			<!-- BEGIN PAGE HEADER-->
+            <h3 class="page-title">
+			User Manager 
+			</h3>			
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
@@ -213,6 +228,9 @@
 											</li>
 											<li>
 												<a href="#tab_1_4" data-toggle="tab">Permissions</a>
+											</li>
+                                            <li>
+												<a href="#tab_1_5" data-toggle="tab">Logos</a>
 											</li>
 										</ul>
 									</div>
@@ -369,6 +387,84 @@
 													</div>
 												</form>
 											</div>
+                                            <div class="tab-pane" id="tab_1_5">
+                                                <div>
+                                                <ul class="nav nav-tabs">
+        											<li class="active">
+        												<a href="#subtab_1_1" data-toggle="tab">Primary Logo</a>
+        											</li>
+        											<li>
+        												<a href="#subtab_1_2" data-toggle="tab">Secondary Logo</a>
+        											</li>
+        											
+        										</ul>
+                                                </div>
+                                                <div class="tab-content">
+                                                <div class="tab-pane active" id="subtab_1_1">
+                                                    <div class="portlet box blue">
+                                                			<div class="portlet-title">
+                                                				<div class="caption">
+                                                					<i class="fa fa-user"></i>Choose A Primary Logo Manager
+                                                				</div>
+                                                				
+                                                			</div>
+                                                			<div class="portlet-body">
+                                                            
+                                                            <form action="<?php echo $this->request->webroot;?>logos" method="post" class="form-inline" role="form" >
+                                                            <?php foreach ($logos as $logo){ ?>
+                                                                <div class="form-group col-md-12">
+                                                                    <div class="col-md-1">
+                                                                        <input type="radio" value="<?php echo $logo->id;?>" name="logo" <?php echo ($logo->active == '1')?"checked='checked'":"" ;?>/>
+                                                                    </div>
+                                                                    <div class="col-md-10">
+                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>" width="86px" height="14px" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <hr />
+                                                                
+                                                            <?php }?>
+                                                            <input type="submit" class="btn btn-success" value="submit" name="submit" />
+                                                            </form>
+                                                     
+                                                        </div>
+                                                    </div>
+                                                
+                                                </div>
+                                                <div class="tab-pane" id="subtab_1_2">
+                                                    <div class="portlet box blue">
+                                                			<div class="portlet-title">
+                                                				<div class="caption">
+                                                					<i class="fa fa-user"></i>Choose A Secondary Logo
+                                                				</div>
+                                                				
+                                                			</div>
+                                                			<div class="portlet-body">
+                                                            
+                                                            <form action="<?php echo $this->request->webroot;?>logos/secondary" method="post" class="form-inline" role="form" >
+                                                            <?php foreach ($logos1 as $logo){ ?>
+                                                                <div class="form-group col-md-12">
+                                                                    <div class="col-md-1">
+                                                                        <input type="radio" value="<?php echo $logo->id;?>" name="logo" <?php echo ($logo->active == '1')?"checked='checked'":"" ;?>/>
+                                                                    </div>
+                                                                    <div class="col-md-10">
+                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>" width="86px" height="14px" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <hr />
+                                                                
+                                                            <?php }?>
+                                                            <input type="submit" class="btn btn-success" value="submit" name="submit" />
+                                                            </form>
+                                                     
+                                                
+                                                </div>
+                                                </div>
+                                                </div>
+												
+											</div>
+                                            </div>
 											<!-- END PRIVACY SETTINGS TAB -->
 										</div>
 									</div>

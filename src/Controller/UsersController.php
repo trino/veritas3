@@ -39,6 +39,10 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add() {
+	    $this->loadModel('Logos');
+	    
+        $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
+        $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
 		$user = $this->Users->newEntity($this->request->data);
 		if ($this->request->is('post')) {
 			if ($this->Users->save($user)) {

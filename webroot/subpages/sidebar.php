@@ -58,7 +58,7 @@
 						
 					</ul>
 				</li>
-                	<li class="<?php echo($this->request['controller']=='Jobs')?'active open':'';?>">
+                	<li class="<?php echo($this->request['controller']=='Jobs' && $this->request['action']!='quickcontact')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-rocket"></i>
 					<span class="title">Jobs</span>
@@ -131,6 +131,13 @@
 												
 					</ul>
 				</li>
+                <li class="<?php echo($this->request['action']=='quickcontact')?'active open':'';?>">
+                    <a href="<?php echo $this->request->webroot;?>jobs/quickcontact">
+					<i class="icon-rocket"></i>
+					<span class="title">Quick Contacts</span>
+					<span class="selected"></span>
+					</a>
+                </li>
 				<li>
 					<a href="javascript:;">
 					<i class="icon-diamond"></i>

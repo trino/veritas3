@@ -37,7 +37,7 @@ class LogosController extends AppController {
                 if($query1->update()->set(['active' => 1])->where(['id' => $id])->execute())
             {
                 $this->Flash->success(__('Your Logo has been updated.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'users','action' => 'add']);
             }
             $this->Flash->error(__('Unable to update your Logo.'));
          }
@@ -66,7 +66,7 @@ class LogosController extends AppController {
                 if($query1->update()->set(['active' => 1])->where(['id' => $id])->execute())
             {
                 $this->Flash->success(__('Your Logo has been updated.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'users','action' => 'add']);
             }
             $this->Flash->error(__('Unable to update your Logo.'));
          }

@@ -44,7 +44,7 @@
 $(function(){
   $(".add_more").click(function(){
     $.ajax({
-       url:"<?php echo WEB_ROOT;?>subpages/past_employer.php",
+       url:"<?php echo $this->request->webroot;?>subpages/past_employer.php",
        success:function(res){
         $("#more").append(res);
        }

@@ -216,14 +216,14 @@
                 <label class="control-label col-md-6">Can you provide proof of age?  </label>
                 <div class="col-md-6">
 					<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" />&nbsp;&nbsp;No
-                    Required for Truck Drivers
+                    <input type="radio" />&nbsp;&nbsp;No&nbsp;&nbsp;
+                    (Required for Truck Drivers)
 				</div>
             </div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-9">Have you ever been convicted of a criminal offence for which a pardon has not been granted?  </label>
-                <div class="col-md-3">
+                <label class="control-label col-md-6">Have you ever been convicted of a criminal offence for which a pardon has not been granted?  </label>
+                <div class="col-md-6">
 					<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
                     <input type="radio" />&nbsp;&nbsp;No
 				</div>
@@ -257,14 +257,14 @@
                 <label class="control-label col-md-6">Had a breath alcohol test greater than 0.04? </label>
                 <div class="col-md-6">
 					<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" />&nbsp;&nbsp;No
-                    for a company to which you applied but did not work for
+                    <input type="radio" />&nbsp;&nbsp;No&nbsp;&nbsp;
+                    (For a company to which you applied but did not work for)
 				</div>
             </div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-2">Do you have a FAST card? </label>
-                <div class="col-md-2">
+                <label class="control-label col-md-3">Do you have a FAST card? </label>
+                <div class="col-md-1">
 					<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
                     <input type="radio" />&nbsp;&nbsp;No
 				</div>
@@ -281,8 +281,44 @@
             <div class="clearfix"></div>
             <hr />
             
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-9">Are there any reasons you may not be able to perform the functions of the position for which you have applied? : </label>
+				<div class="col-md-3">
+					<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
+                    <input type="radio" />&nbsp;&nbsp;No
+				</div>
+            </div>
             
- 
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">If yes please provide details </label>
+                <div class="col-md-9">
+					<input type="text" class="form-control"/>
+                </div>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <input type="text" class="form-control"/>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">Are you physically capable of heavy manual work? : </label>
+				<div class="col-md-3">
+					<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
+                    <input type="radio" />&nbsp;&nbsp;No
+				</div>
+                <label class="control-label col-md-3">Ever injured on the job? : </label>
+				<div class="col-md-3">
+					<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
+                    <input type="radio" />&nbsp;&nbsp;No
+				</div>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-3">Give nature and degree of such injuries </label>
+                <div class="col-md-9">
+					<input type="text" class="form-control"/>
+                </div>
+            </div>
             
    </div>
  </div>

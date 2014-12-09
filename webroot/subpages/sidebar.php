@@ -45,12 +45,12 @@
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-						<li>
+						<li <?php echo($this->request['controller']=='Users' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>users">
 							<i class="icon-home"></i>
 							List Users</a>
 						</li>
-						<li>
+						<li <?php echo($this->request['controller']=='Users' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>users/add">
 							<i class="icon-basket"></i>
 							Create User Profile</a>
@@ -66,12 +66,12 @@
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-						<li>
+						<li <?php echo($this->request['controller']=='Jobs' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>jobs">
 							<i class="icon-home"></i>
 							List jobs</a>
 						</li>
-						<li>
+						<li <?php echo($this->request['controller']=='Jobs' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>jobs/add">
 							<i class="icon-basket"></i>
 							Add job</a>
@@ -91,12 +91,12 @@
 					<span class="selected"></span>
 					</a>
                     <ul class="sub-menu">
-						<li>
+						<li <?php echo($this->request['controller']=='Logos' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo $this->request->webroot;?>Logos">
 							<i class="icon-home"></i>
 							Primary logo</a>
 						</li>
-						<li>
+						<li <?php echo($this->request['controller']=='Users' && $this->request['action']=='secondary')?'class="active"':'';?>>
 							<a href="<?php echo $this->request->webroot;?>Logos/secondary">
 							<i class="icon-basket"></i>
 							Secondary logo</a>
@@ -106,24 +106,24 @@
 					</ul>
 					
 				</li>
-				<li>
+				<li class="start <?php echo($this->request['controller']=='Documents')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-rocket"></i>
 					<span class="title">Documents</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-                        <li>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/index">
                             <i class="icon-basket"></i>
 							List documents</a>
 						</li>
-                        <li>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/add">
                             <i class="icon-basket"></i>
 							New upload</a>
 						</li>
-						<li>
+						<li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index' && isset($orders))?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/index/orders">
                             <i class="icon-basket"></i>
 							Orders</a>

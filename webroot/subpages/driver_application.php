@@ -554,3 +554,114 @@
 </div>
  <div class="clearfix"></div>
  
+ <div class="portlet box blue ">
+	<div class="portlet-title">
+		<div class="caption">
+			Accident Record For Past 5 Years or More
+		</div>
+	</div>
+	<div class="portlet-body form">
+        <div class="form-body">
+            
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-6">Date : </label>
+                <div class="col-md-6">
+					<input type="text" class="form-control"/>
+				</div>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-6">Nature of Accident(Head-On, Rear-End, Upset, etc.) : </label>
+                <div class="col-md-6">
+					<textarea class="form-control"></textarea>
+				</div>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-6">Fatalities : </label>
+                <div class="col-md-6">
+					<textarea class="form-control"></textarea>
+				</div>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-6">Injuries : </label>
+                <div class="col-md-6">
+					<textarea class="form-control"></textarea>
+				</div>
+            </div>
+            
+            <div class="clearfix"></div>
+            <hr />
+            
+            <h4>Last Accident</h4>
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-6">Date : </label>
+                <div class="col-md-6">
+					<input type="text" class="form-control"/>
+				</div>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-6">Nature of Accident(Head-On, Rear-End, Upset, etc.) : </label>
+                <div class="col-md-6">
+					<textarea class="form-control"></textarea>
+				</div>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-6">Fatalities : </label>
+                <div class="col-md-6">
+					<textarea class="form-control"></textarea>
+				</div>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-6">Injuries : </label>
+                <div class="col-md-6">
+					<textarea class="form-control"></textarea>
+				</div>
+            </div>
+            
+            <div class="clearfix"></div>
+            <hr />
+            <div class="more_acc_record"></div>
+            
+            <a href="javascript:void(0);" class="add_more_acc_record btn green">Add More</a>
+            
+            <div class="clearfix"></div>
+            <hr />
+            
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+ <script>
+ jQuery(function(){
+    $('#add_more_form').click(function(){
+      $.ajax({
+        url:" <?php echo $this->request->webroot;?>subpages/period_of_unemployment.php",
+        success:function(res){
+           $('.more_form').append(res);
+        }
+      });     
+    });
+    
+    $('.delete_form').live('click',function(){
+        $(this).parent().remove();
+       }); 
+ });
+ 
+ $('.add_more_acc_record').click(function(){
+    $.ajax({
+       url:"<?php echo $this->request->webroot; ?>subpages/accident_record.php",
+       success:function(res){
+        $('.more_acc_record').append(res);
+       } 
+    });
+    
+    $('.delete_acc_record').live('click',function(){
+       $(this).parent().remove(); 
+    });
+ });
+ </script>

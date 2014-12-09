@@ -1,3 +1,4 @@
+<div>
 <div class="form-group col-md-12">
                 <label class="control-label col-md-5">Period Of Unemployment(if any) From:</label>
                 <div class="col-md-3">
@@ -92,6 +93,7 @@
                 </div>
             </div>
             
-            <div class="delete btn red">Delete</div>
+            <a href="javascript:void(0);" class="delete_form btn red">Delete</a>
             <div class="clearfix"></div>
             <hr/>
+          </div>

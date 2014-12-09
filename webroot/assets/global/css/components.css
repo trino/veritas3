@@ -12211,3 +12211,14 @@ Transparent Button
   background: transparent;
   color: #888;
 }
+
+.secondary_logo{
+    
+    display: block;
+    float: right;
+    height: 27px;
+    margin-right: 19px;
+    margin-top: 15px;
+   
+    width: 30px;
+}

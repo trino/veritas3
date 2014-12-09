@@ -38,7 +38,8 @@
 <link href="<?php echo WEB_ROOT;?>assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="<?php echo WEB_ROOT;?>assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo WEB_ROOT;?>assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo WEB_ROOT;?>assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+<?php $layout = $this->requestAction('logos/get_layout');?>
+<link href="<?php echo WEB_ROOT;?>assets/admin/layout/css/themes/<?php echo $layout;?>.css" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="<?php echo WEB_ROOT;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="<?php echo WEB_ROOT?>favicon.ico"/>
@@ -105,7 +106,7 @@
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="<?php echo WEB_ROOT;?>">
-            <?php $logo = $this->requestAction('Logos/getlogo',['return']);?>
+            <?php $logo = $this->requestAction('Logos/getlogo/0',['return']);?>
 			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="logo-default" width="86px" />
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
@@ -1169,7 +1170,24 @@ jQuery(document).ready(function() {
    Index.initChat();
    Index.initMiniCharts();
    Tasks.initDashboardWidget();
+   
+   
+   
+   
 });
+//change layout
+function change_layout(msg)
+{
+    $.ajax({
+       url: "<?php echo $this->request->webroot;?>logos/change_layout",
+       type: "post",
+       data: "layout="+msg,
+       success: function(m){
+        //alert(m);
+       }
+        
+    });
+}
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

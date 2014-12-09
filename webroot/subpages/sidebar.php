@@ -3,9 +3,11 @@
 			<ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 				<li class="sidebar-toggler-wrapper">
 					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-					<div class="sidebar-toggler">
-					</div>
+					<!--<div class="sidebar-toggler">
+					</div>-->
 					<!-- END SIDEBAR TOGGLER BUTTON -->
+                    <?php $logo1 = $this->requestAction('Logos/getlogo/1');?>
+                    <img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  />
 				</li>
 				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
 				<li class="sidebar-search-wrapper">
@@ -74,21 +76,34 @@
 							<i class="icon-basket"></i>
 							Add job</a>
 						</li>
-                        <li>
+                        <!--<li>
 							<a href="<?php echo WEB_ROOT;?>jobs/add">
 							<i class="icon-basket"></i>
 							Assign Job to user</a>
-						</li>
+						</li>-->
 						
 					</ul>
 				</li>
                 <li class="start <?php echo($this->request['controller']=='Logos')?'active open':'';?>">
-					<a href="<?php echo $this->request->webroot;?>Logos">
+					<a href="javascript:;">
 					<i class="icon-home"></i>
 					<span class="title">Logo Manager </span>
 					<span class="selected"></span>
-					
 					</a>
+                    <ul class="sub-menu">
+						<li>
+							<a href="<?php echo $this->request->webroot;?>Logos">
+							<i class="icon-home"></i>
+							Primary logo</a>
+						</li>
+						<li>
+							<a href="<?php echo $this->request->webroot;?>Logos/secondary">
+							<i class="icon-basket"></i>
+							Secondary logo</a>
+						</li>
+                        
+						
+					</ul>
 					
 				</li>
 				<li>

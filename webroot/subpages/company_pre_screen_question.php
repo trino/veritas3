@@ -1,4 +1,4 @@
-<div class="portlet box purple ">
+<div class="portlet box blue ">
 						<div class="portlet-title">
 							<div class="caption">
 								Driver Pre-Screen Questions
@@ -108,12 +108,12 @@
                                     <tr>
                                         <td>Tell me about the work you are doing?</td>
                                         <td>
-                                            <ul>
-                                                <li style="list-style: disc;">Miles</li><input type="text" class="form-control" />
-                                                <li style="list-style: disc;">Time out/home</li><input type="text" class="form-control" />
-                                                <li style="list-style: disc;">Locations</li><input type="text" class="form-control" />
-                                                <li style="list-style: disc;">Border Cross</li><input type="text" class="form-control" />
-                                                <li style="list-style: disc;">Type of equipment</li><input type="text" class="form-control" />
+                                            <ul class="no-bullet">
+                                                <li >Miles</li><input type="text" class="form-control" />
+                                                <li >Time out/home</li><input type="text" class="form-control" />
+                                                <li >Locations</li><input type="text" class="form-control" />
+                                                <li >Border Cross</li><input type="text" class="form-control" />
+                                                <li >Type of equipment</li><input type="text" class="form-control" />
                                             </ul>
                                         </td>
                                     </tr> 
@@ -216,7 +216,7 @@
                                     <tr>
                                         <td>Explain the next steps:</td>
                                             <td>
-                                            <ul style="list-style: disc;">
+                                            <ul class="no-bullet">
                                                 <li>Request the completed application </li><textarea class="form-control"></textarea>
                                                 <li>Schedule for a road test</li><textarea class="form-control"></textarea>
                                                 <li>Criminal Search</li><textarea class="form-control"></textarea>
@@ -240,7 +240,7 @@
                                     <tr>
                                         <td>What did you learn in class?
                                         <br/>Answers you are looking for<br />
-                                        <ul style="list-style: diamond;">
+                                        <ul class="no-bullet">
                                             <li>Hours of service</li>
                                             <li>Transportation of dangerous goods</li>
                                             <li>Trip planning</li>
@@ -263,12 +263,12 @@
                                     <tr>
                                         <td>Have you driven since getting your AZ?  If so, please provide details: </td>
                                         <td>
-                                            <ul>
-                                                <li style="list-style: disc;">Miles</li><input type="text" class="form-control" />
-                                                <li style="list-style: disc;">Time out/home</li><input type="text" class="form-control" />
-                                                <li style="list-style: disc;">Locations</li><input type="text" class="form-control" />
-                                                <li style="list-style: disc;">Border Cross</li><input type="text" class="form-control" />
-                                                <li style="list-style: disc;">Type of equipment</li><input type="text" class="form-control" />
+                                            <ul class="no-bullet">
+                                                <li >Miles</li><input type="text" class="form-control" />
+                                                <li >Time out/home</li><input type="text" class="form-control" />
+                                                <li >Locations</li><input type="text" class="form-control" />
+                                                <li >Border Cross</li><input type="text" class="form-control" />
+                                                <li >Type of equipment</li><input type="text" class="form-control" />
                                             </ul>
                                         </td>
                                     </tr>   

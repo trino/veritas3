@@ -1,4 +1,11 @@
-<h4><strong>Employment History</strong></h4>
+<div class="portlet box blue ">
+						<div class="portlet-title">
+							<div class="caption">
+								Employment History
+							</div>
+						</div>
+                        <div class="portlet-body form">
+								<div class="form-body">
 <h4><strong>Employer Information for Last 3 Years</strong></h4>
 
 <div class="table-scrollable">
@@ -28,6 +35,9 @@
 <div id="add_more">
     <p>&nbsp;</p>
     <a href="javascript:void(0);" class="btn green add_more">Add More</a>
+</div>
+</div>
+</div>
 </div>
 
 <script>

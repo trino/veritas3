@@ -422,10 +422,10 @@ $is_disabled = '';
                                                 </div>
                                                 <div class="tab-content">
                                                 <div class="tab-pane active" id="subtab_1_1">
-                                                    <div class="portlet box blue">
+                                                    <div class="portlet ">
                                                 			<div class="portlet-title">
                                                 				<div class="caption">
-                                                					<i class="fa fa-user"></i>Choose A Primary Logo Manager
+                                                					<i class="fa fa-user"></i>Choose A Primary Logo
                                                 				</div>
                                                 				
                                                 			</div>
@@ -453,7 +453,7 @@ $is_disabled = '';
                                                 
                                                 </div>
                                                 <div class="tab-pane" id="subtab_1_2">
-                                                    <div class="portlet box blue">
+                                                    <div class="portlet ">
                                                 			<div class="portlet-title">
                                                 				<div class="caption">
                                                 					<i class="fa fa-user"></i>Choose A Secondary Logo

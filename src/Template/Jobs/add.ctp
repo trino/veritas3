@@ -103,49 +103,49 @@
                             
                             <div class="form-group">
                                 
-                                <span>     Contracts </span>
+                                <span>     John </span>
                                 <input type="checkbox" name="canView_contracts">
-                                <span>      Evidence </span>
+                                <span>      Falcon </span>
                                 <input type="checkbox" onclick="loadmore('evidence',$(this));" name="canView_evidence">
-                                <span>      Templates </span>
+                                <span>      Maroni </span>
                                 <input type="checkbox" name="canView_templates">
-                                <span>      Report </span>
+                                <span>      Oswalt </span>
                                 <input type="checkbox" name="canView_client_memo" onclick="loadmore('report',$(this));">
-                                <span>      Site Orders </span>
+                                <span>      Sasha </span>
                                 <input type="checkbox" name="canView_siteOrder" onclick="loadmore('siteorder',$(this));">
-                                <span>      Training </span>
+                                <span>      Bruce </span>
                                 <input type="checkbox" name="canView_training">
-                                <span>      Employee </span>
+                                <span>      Heather </span>
                                 <input type="checkbox" name="canView_employee" onclick="loadmore('employee',$(this));">
-                                <span>      KPI Audits </span>
+                                <span>      Ronny </span>
                                 <input type="checkbox" name="canView_KPIAudits">
-                                <span>      Orders </span>
+                                <span>      Mooney </span>
                                 <input type="checkbox" name="canView_orders">
-                                <span>      Deployment </span>
+                                <span>      Alferd </span>
                                 <input type="checkbox" name="canView_deployment_rate" onchange="if($(this).is(':checked')){$('.deploy_more').show();}else{$('.deploy_more').hide();if($('.is_client').is(':checked')){$('.is_client').click();}}">
                             </div>
                             <hr />
                             <h4>Add Contacts</h4>                            
                             <div class="form-group">
-                            <span>     Contracts </span>
+                            <span>     Tyrion </span>
                             <input type="checkbox" checked="checked" name="Email_contracts">
-                            <span>     Evidence </span>
+                            <span>     Sansha </span>
                             <input type="checkbox" checked="checked" name="Email_evidence">
-                            <span>     Templates </span>
+                            <span>     Jon </span>
                             <input type="checkbox" checked="checked" name="Email_templates">
-                            <span>     Report </span>
+                            <span>     Araya </span>
                             <input type="checkbox" checked="checked" name="Email_client_memo">
-                            <span>      Site Orders </span>
+                            <span>      Joffery </span>
                             <input type="checkbox" checked="checked" name="Email_siteOrder">
-                            <span>      Training </span>
+                            <span>      Jimmy </span>
                             <input type="checkbox" checked="checked" name="Email_training">
-                            <span>      Employee </span>
+                            <span>      Cersei </span>
                             <input type="checkbox" checked="checked" name="Email_employee">
-                            <span>      KPI Audits </span>
+                            <span>      Robb </span>
                             <input type="checkbox" name="Email_KPIAudits">
-                            <span>      Orders </span>
+                            <span>      Catelyin </span>
                             <input type="checkbox" name="Email_orders">
-                            <span>      Deployment </span>
+                            <span>      Daenerys </span>
                             <input type="checkbox" name="Email_deployment">
                             </div>
                             

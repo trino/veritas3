@@ -16,7 +16,7 @@ class LoginController extends AppController{
     function index()
     {
         
-        $this->layout = 'blank';
+        $this->layout = 'login';
         if(isset($_POST['username'])){
         $this->loadModel('Users');
         unset($_POST['submit']);

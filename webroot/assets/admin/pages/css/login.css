@@ -3,7 +3,7 @@ Login page
 ***/
 /* bg color */
 .login {
-  background-color: #e5e5e5 !important;
+  background-color: #FFF !important;
 }
 
 .login .logo {
@@ -21,7 +21,7 @@ Login page
   -o-border-radius: 7px;
   border-radius: 7px;
   width: 400px;
-  margin: 40px auto 10px auto;
+  /*margin: 40px auto 10px auto;*/
   padding: 30px;
   padding-top: 10px;
   overflow: hidden;

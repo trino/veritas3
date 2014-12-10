@@ -5,11 +5,11 @@
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
-						<a href="<?php echo WEB_ROOT;?>">Home</a>
+						<a href="<?php echo $this->request->webroot;?>">Dashboard</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="#">Documents</a>
+						<a href="">Documents</a>
 					</li>
 				</ul>
 				<div class="page-toolbar">
@@ -106,7 +106,7 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			                  			
                     			<td class="actions">
-                    				
+                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
@@ -119,8 +119,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			                  			
                     			<td class="actions">
-                    				
-                    				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
+                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
                     		</tr>
@@ -132,8 +132,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			                  			
                     			<td class="actions">
-                    				
-                    				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
+                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
                     		</tr>
@@ -145,8 +145,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			                  			
                     			<td class="actions">
-                    				
-                    				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
+                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
                     		</tr><tr>
@@ -157,8 +157,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			                  			
                     			<td class="actions">
-                    				
-                    				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
+                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
                     		</tr>
@@ -170,8 +170,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			                  			
                     			<td class="actions">
-                    				
-                    				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
+                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
                     		</tr>
@@ -183,8 +183,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			                  			
                     			<td class="actions">
-                    				
-                    				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
+                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
                     		</tr>
@@ -196,8 +196,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			                  			
                     			<td class="actions">
-                    				
-                    				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
+                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
                     		</tr>
@@ -209,8 +209,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			                  			
                     			<td class="actions">
-                    				
-                    				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
+                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
                     		</tr>
@@ -224,13 +224,13 @@
                     <a href="">< previous</a>
                     </li>
                     <li class="active">
-                    <a href="">1</a>
+                    <a href="#">1</a>
                     </li>
                     <li>
-                    <a href="/veritas3/users?page=2">2</a>
+                    <a href="#">2</a>
                     </li>
                     <li class="next">
-                    <a href="/veritas3/users?page=2" rel="next">next ></a>
+                    <a href="#" rel="next">next ></a>
                     </li>
                     </ul>
                 </div>

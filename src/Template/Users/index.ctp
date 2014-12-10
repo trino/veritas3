@@ -1,4 +1,7 @@
-<div class="row">
+
+<h3 class="page-title">
+			Users
+			</h3>
     <div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
@@ -11,7 +14,8 @@
 					</li>
 				</ul>
 				
-			</div>
+			</div><div class="row">
+
     <div class="col-md-12">
         <div class="portlet box blue">
             <div class="portlet-title">

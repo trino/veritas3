@@ -30,8 +30,8 @@ class JobsController extends AppController {
 
 
 	public function view($id = null) {
-		$user = $this->Jobs->get($id);
-		$this->set('user', $user);
+		$this->set('disabled',1);
+        $this->render('add');
 	}
 
 /**
@@ -74,6 +74,7 @@ class JobsController extends AppController {
 			}
 		}
 		$this->set(compact('user'));
+        $this->render('add');
 	}
 
 /**

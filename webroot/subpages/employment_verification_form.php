@@ -19,7 +19,7 @@
 
 <div class="table-scrollable">
     <table class="table table-striped">
-                <tr><th>Past Employer</th></tr>
+                <tr><th colspan="2">Past Employer</th></tr>
                 <tr><td colspan="2">Company Name<input type="text" class="form-control" /></td></tr>
                 <tr><td colspan="2">Address<input type="text" class="form-control" /></td></tr>
                 <tr><td>Supervisor's Name:<input type="text" class="form-control"/></td><td>Phone #:<input type="text" class="form-control"/></td></tr>

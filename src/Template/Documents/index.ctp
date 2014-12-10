@@ -68,7 +68,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    Jobs
+                    Documents
                 </div>
             </div>    
             <div class="portlet-body">

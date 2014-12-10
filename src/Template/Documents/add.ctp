@@ -19,13 +19,13 @@ $is_disabled = '';
                         </a>
 					</li>
 				</ul>
-				<div class="page-toolbar">
+				<!--<div class="page-toolbar">
 					<div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>&nbsp;
 						<span class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
 						<i class="fa fa-angle-down"></i>
 					</div>
-				</div>
+				</div>-->
 			</div>
 <div class="row">
 				<div class="col-md-12">
@@ -35,7 +35,7 @@ $is_disabled = '';
 								<i class="fa fa-gift"></i> Add/Edit Document - <span class="step-title">
 								Step 1 of 4 </span>
 							</div>
-							<div class="tools hidden-xs">
+							<!--<div class="tools hidden-xs">
 								<a href="javascript:;" class="collapse">
 								</a>
 								<a href="#portlet-config" data-toggle="modal" class="config">
@@ -44,7 +44,7 @@ $is_disabled = '';
 								</a>
 								<a href="javascript:;" class="remove">
 								</a>
-							</div>
+							</div>-->
 						</div>
 						<div class="portlet-body form">
 							<form action="#" class="form-horizontal" id="submit_form" method="POST">

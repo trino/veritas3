@@ -8,7 +8,7 @@ use Cake\Utility\Inflector;
 use Cake\View\Exception\MissingTemplateException;
 
 
-class PagesController extends AppController {
+class DashboardController extends AppController {
 
      public function initialize() {
         parent::initialize();

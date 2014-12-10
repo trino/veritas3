@@ -18,7 +18,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Metronic | Login Options - Login Form 1</title>
+<title>MEE | User Login</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -75,11 +75,11 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- BEGIN LOGIN FORM -->
     
 	<form class="login-form" action="" method="post">
-		<h3 class="form-title">Sign In</h3>
+		<h3 class="form-title blue-title">Sign In</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
 			<span>
-			Enter any username and password. </span>
+			Invalid username or password </span>
 		</div>
 		<div class="form-group">
 			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
 		</div>
 		<div class="form-actions">
-			<button type="submit" class="btn btn-success uppercase">Login</button>
+			<button type="submit" class="btn btn-primary uppercase">Login</button>
 			
 			<a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
 		</div>
@@ -111,7 +111,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 		<div class="form-actions">
 			<button type="button" id="back-btn" class="btn btn-default">Back</button>
-			<button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
+			<button type="submit" class="btn btn-primary uppercase pull-right">Submit</button>
 		</div>
 	</form>
 	<!-- END FORGOT PASSWORD FORM -->

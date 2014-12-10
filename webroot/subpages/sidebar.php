@@ -154,10 +154,49 @@
 						
 					</ul>
                 </li>
+
 				
-				<li class="last">
+				
+                <li class="<?php echo($this->request['controller']=='Pages' && $this->request['action']=='cms' )?'active open':'';?>">
+                    <a href="javascript:;">
+					<i class="icon-rocket"></i>
+					<span class="title">Pages</span>
+					<span class="arrow "></span>
+					</a>
+                    <ul class="sub-menu">
+						<li>
+							<a href="<?php echo $this->request->webroot;?>pages/cms/help">
+							<i class="icon-home"></i>
+							Help</a>
+						</li>
+						<li>
+							<a href="<?php echo $this->request->webroot;?>pages/cms/privacy-code">
+							<i class="icon-home"></i>
+							Privacy code</a>
+						</li>
+                        <li>
+							<a href="<?php echo $this->request->webroot;?>pages/cms/product-example">
+							<i class="icon-home"></i>
+							Product example</a>
+						</li>
+                        <li>
+							<a href="<?php echo $this->request->webroot;?>pages/cms/terms">
+							<i class="icon-home"></i>
+							Terms</a>
+						</li>
+                        <li>
+							<a href="<?php echo $this->request->webroot;?>pages/cms/faq">
+							<i class="icon-home"></i>
+							FAQ</a>
+						</li>
+						
+					</ul>
+                </li>
+                <li class="last">
 					<img src="<?php echo $this->request->webroot;?>img/logos/ISBWhite.png" />
-				</li>
+               </li>
+
+				
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>

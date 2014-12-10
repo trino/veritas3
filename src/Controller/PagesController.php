@@ -21,4 +21,13 @@ class PagesController extends AppController {
 	public function index() {
 		
 	}
+    
+    function test()
+    {
+        $this->layout = 'blank';
+    }
+    function cms($slug)
+    {
+        
+    }
 }

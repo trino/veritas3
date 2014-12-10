@@ -81,7 +81,7 @@
 <script src="<?php echo WEB_ROOT;?>assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
 <script src="<?php echo WEB_ROOT;?>assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
 <script src="<?php echo WEB_ROOT;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-
+<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/ckeditor/ckeditor.js"></script>
 
 <script type="text/javascript" src="<?php echo WEB_ROOT;?>assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="<?php echo WEB_ROOT;?>assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>

@@ -273,12 +273,16 @@ $is_disabled = '';
 														<label class="control-label">Address</label>
 														<input <?php echo $is_disabled?> type="text" placeholder="eg. Street, City, Province, Country" class="form-control"/>
 													</div>
+                                                    <div class="form-group">
+														<label class="control-label">Make quick contact</label>
+														<input <?php echo $is_disabled?> type="checkbox" onchange="if($(this).is(':checked'))$('#tab_1_3 input').attr('disabled','disabled');else{$('#tab_1_3 input').removeAttr('disabled');}" class="form-control"/>
+													</div>
 													<?php
                                                     if(!isset($disabled))
                                                     {
                                                         ?>
 													<div class="margiv-top-10">
-														<a href="#" class="btn green-haze">
+														<a href="#" class="btn btn-primary">
 														Save Changes </a>
 														<a href="#" class="btn default">
 														Cancel </a>
@@ -315,7 +319,7 @@ $is_disabled = '';
 														
 													</div>
 													<div class="margin-top-10">
-														<a href="#" class="btn green-haze">
+														<a href="#" class="btn btn-primary">
 														Submit </a>
 														<a href="#" class="btn default">
 														Cancel </a>
@@ -339,7 +343,7 @@ $is_disabled = '';
 														<input type="password" class="form-control"/>
 													</div>
 													<div class="margin-top-10">
-														<a href="#" class="btn green-haze">
+														<a href="#" class="btn btn-primary">
 														Change Password </a>
 														<a href="#" class="btn default">
 														Cancel </a>
@@ -399,7 +403,7 @@ $is_disabled = '';
                                                         ?>
                                                         
 													<div class="margin-top-10">
-														<a href="#" class="btn green-haze">
+														<a href="#" class="btn btn-primary">
 														Save Changes </a>
 														
 													</div>

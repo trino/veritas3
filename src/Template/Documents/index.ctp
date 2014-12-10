@@ -24,52 +24,41 @@
     <div class="col-md-4 col-sm-12">
                     <select class="form-control">
                         <option value="">Uploaded by</option>
-                        <option value="0">Admin</option>
-                        <option value="3">anwar</option>
-                        <option value="4">bikash</option>
-                        <option value="5">teken</option>
-                        <option value="6">bhupal</option>
-                        <option value="7">aaa</option>
-                        <option value="8">aaaa</option>
-                        <option value="9">asdf</option>
-                        <option value="10">z</option>
-                        <option value="11">y</option>
-                        <option value="12">x</option>
-                        <option value="13">abc</option>
+                        <option value="0">Super Admin</option>
+                        <option value="3">Admin</option>
+                        <option value="4">Nick Smith</option>
+                        <option value="5">James Blont</option>
+                        <option value="6">Mark Henry</option>
+                        <option value="7">John Lenon</option>
+                        <option value="8">Elvis Moore</option>
+                        <option value="9">Peter Brown</option>
+                        <option value="10">Jimmy Green</option>
+                        <option value="11">Robert Black</option>
+                        
                     </select>
              </div>
              <div class="col-md-4 col-sm-12">
                     <select class="form-control">
                         <option value="">Document type</option>
-                        <option value="0">Admin</option>
-                        <option value="3">anwar</option>
-                        <option value="4">bikash</option>
-                        <option value="5">teken</option>
-                        <option value="6">bhupal</option>
-                        <option value="7">aaa</option>
-                        <option value="8">aaaa</option>
-                        <option value="9">asdf</option>
-                        <option value="10">z</option>
-                        <option value="11">y</option>
-                        <option value="12">x</option>
-                        <option value="13">abc</option>
+                        <option value="0">Contract</option>
+                        <option value="3">Evidence</option>
+                        <option value="4">Report</option>
+                        <option value="5">Site Order</option>
+                        <option value="6">Orders</option>
+                        <option value="7">Template</option>
+                        <option value="8">KPI Audit</option>
+                        <option value="9">Others</option>
+                        
                     </select>
              </div>
              <div class="col-md-4 col-sm-12">
                     <select class="form-control">
                         <option value="">Jobs</option>
-                        <option value="0">Admin</option>
-                        <option value="3">anwar</option>
-                        <option value="4">bikash</option>
-                        <option value="5">teken</option>
-                        <option value="6">bhupal</option>
-                        <option value="7">aaa</option>
-                        <option value="8">aaaa</option>
-                        <option value="9">asdf</option>
-                        <option value="10">z</option>
-                        <option value="11">y</option>
-                        <option value="12">x</option>
-                        <option value="13">abc</option>
+                        <option value="0">Job 1</option>
+                        <option value="3">Job 2</option>
+                        <option value="4">Job 3</option>
+                        <option value="5">Job4</option>
+                        
                     </select>
              </div>
              <div class="clearfix"></div>

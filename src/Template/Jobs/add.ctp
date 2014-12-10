@@ -155,30 +155,7 @@ $is_disabled = '';
 
                             </div>
                             
-                            <hr />
-                            <h4>Add Qucik key contacts</h4>
-                            <div class="form-group">
-                            <span>     John </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" checked="checked" name="Email_contracts">
-                            <span>     Trish </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" checked="checked" name="Email_evidence">
-                            <span>     Andy </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" checked="checked" name="Email_templates">
-                            <span>     Loyala </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" checked="checked" name="Email_client_memo">
-                            <span>      Lorde </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" checked="checked" name="Email_siteOrder">
-                            <span>      Herrison </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" checked="checked" name="Email_training">
-                            <span>      Simpsons </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" checked="checked" name="Email_employee">
-                            <span>      Eric </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" name="Email_KPIAudits">
-                            <span>      Kyle </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" name="Email_orders">
-                            <span>      Stan </span>
-                            <input <?php echo $is_disabled;?> type="checkbox" name="Email_deployment">
-                            </div>
+                            
                             <hr/>
                             <div class="form-group">
 									

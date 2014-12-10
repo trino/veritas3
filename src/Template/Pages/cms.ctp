@@ -22,7 +22,7 @@
 <div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN EXTRAS PORTLET-->
-					<div class="portlet box green">
+					<div class="portlet box blue">
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-gift"></i>Page Manager
@@ -62,7 +62,7 @@
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button type="submit" class="btn green"><i class="fa fa-check"></i> Submit</button>
+											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
 											<button type="button" class="btn default">Cancel</button>
 										</div>
 									</div>

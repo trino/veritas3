@@ -290,16 +290,11 @@
             </div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">If yes please provide details </label>
+                <label class="control-label col-md-3">If yes, please provide details </label>
                 <div class="col-md-9">
                 <textarea class="form-control"></textarea>
                 </div>
             </div>
-            
-            <div class="form-group col-md-12">
-                <input type="text" class="form-control"/>
-            </div>
-            
             <div class="form-group col-md-12">
                 <label class="control-label col-md-5">Are you physically capable of heavy manual work? : </label>
 				<div class="col-md-2">
@@ -774,7 +769,17 @@
             <p>
             On March 30, 1999, Transport Canada and U.S. Federal Highway Administration (FHWA) entered into a reciprocal agreement regarding the physical requirements for a Canadian driver of a commercial vehicle in the U.S., as currently contained in the Federal Motor Carrier Safety Regulations, Part 391.41 et seq, and vice-versa. The reciprocal agreement removes the requirement for a Canadian driver to carry a copy of a medical examiner's certificate indicating that the driver is physically qualified. (In effect, the existence of valid driver's license issued by a province in Canada is deemed to be proof that a driver is physically qualified to drive in the U.S.) However, FHWA will not recognize a Provincial license if the driver has certain medical conditions and those conditions would prohibit him from driving in the U.S.
             </p>
-            <p>I, <div class="col-md-4 "><input type="text" class="form-control" /></div>certify that I am qualified to operate a commercial motor vehicle in the United States. </p>
+            <div class="col-md-12">
+            <div class="col-md-1">
+                I, 
+            </div>
+                <div class="col-md-4 ">
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="col-md-7">
+                certify that I am qualified to operate a commercial motor vehicle in the United States.
+                 </div>
+                 </div>
             <p>I further certify that:</p>
             <ol>
                 <li>I have no clinical diagnosis of diabetes currently requiring insulin for control.</li>
@@ -955,7 +960,9 @@
                     <div class="col-md-12">
                     <p>I hereby authorize you or your agents, as my previous employer or company, to release all information concerning dates of employment, oral or written assessments of my job performance, over all work performance including safety records, reason for leaving and eligibility for rehire to Challenger Motor Freight Inc. for the purpose of investigations as required by Section 391.23 of the Federal Motor Carrier Safety Regulations.</p>
                     <p>I also hereby authorize you or your agents, as my previous employer or company to release the information concerning my Alcohol and Controlled Substances Testing during the past three years; (1) alcohol tests with a result of 0.04 or higher alcohol concentration; (2) verified positive controlled substances test results; (3) refusals to be tested (including verified adulterated or substituted drug test results; (4) other violations of the DOT agency drug and alcohol testing regulations; (5) with respect to any employee who violated a DOT drug and alcohol regulation, documentation of the employees successful or failure to completion of DOT return to duty requirements (including follow up tests) and the name and phone number of any substance abuse professional who evaluated me over the past three years</p>
-                    <p>You are released from any liability, which may result from giving such information; I understand that the information in this form will be used and that prior employers will be contacted for purposes of investigation as required by 391.23 of the Motor Carrier Safety Regulation. For the purpose of facilitating this verification request I consent to providing my Social Insurance Number <div class="col-md-3"><input type="text" class="form-control" /></div>.</p>
+                    <p>You are released from any liability, which may result from giving such information; I understand that the information in this form will be used and that prior employers will be contacted for purposes of investigation as required by 391.23 of the Motor Carrier Safety Regulation. For the purpose of facilitating this verification request I consent to providing my Social Insurance Number <div class="col-md-3 form-group"><input type="text" class="form-control" /></div>.</p>
+                    </div>
+                    <div class="col-md-12">
                     <p>I understand that I have the right to review information provided by previous employers, have errors corrected by previous employer and resubmitted to Challenger Motor Freight Inc and /or have a rebuttal statement attached to erroneous information if my previous employer and I cannot agree on the accuracy of the information. I understand that I must request past employer information obtained by Challenger Motor Freight Inc in writing within 30-days of employment or denial or employment.</p>
                     <p>This request is in compliance with 49 CFR Part 40, 49 CFR 391.23, 382.413 and 382.405</p>
                     </div>

@@ -131,7 +131,7 @@
                 
 
 				
-				
+				<!--
                 <li class="<?php echo($this->request['controller']=='Pages' && $this->request['action']=='cms' )?'active open':'';?> last">
                     <a href="javascript:;">
 					<i class="icon-rocket"></i>
@@ -167,7 +167,7 @@
 						</li>
 						
 					</ul>
-                </li>
+                </li>-->
                 <!--<li class="last">
 					<img src="<?php echo $this->request->webroot;?>img/logos/ISBWhite.png" />
                </li>-->

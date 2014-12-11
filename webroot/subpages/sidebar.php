@@ -27,7 +27,7 @@
 					</form>
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 				</li>
-				<li class="start <?php echo($this->request['controller']=='Pages')?'active open':'';?>">
+				<li class="start <?php echo($this->request['controller']=='Dashboard')?'active open':'';?>">
 					<a href="<?php echo WEB_ROOT;?>">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard </span>
@@ -157,10 +157,11 @@
 
 				
 				
-                <li class="<?php echo($this->request['controller']=='Pages' && $this->request['action']=='cms' )?'active open':'';?>">
+                <li class="<?php echo($this->request['controller']=='Pages' && $this->request['action']=='cms' )?'active open':'';?> last">
                     <a href="javascript:;">
 					<i class="icon-rocket"></i>
 					<span class="title">Pages</span>
+                    <span class="selected"></span>
 					<span class="arrow "></span>
 					</a>
                     <ul class="sub-menu">
@@ -192,9 +193,9 @@
 						
 					</ul>
                 </li>
-                <li class="last">
+                <!--<li class="last">
 					<img src="<?php echo $this->request->webroot;?>img/logos/ISBWhite.png" />
-               </li>
+               </li>-->
 
 				
 			</ul>

@@ -14,7 +14,7 @@ var Metronic = function() {
     var assetsPath = '../assets/';
 
     var globalImgPath = 'global/img/';
-
+ 
     var globalPluginsPath = 'global/plugins/';
 
     var globalCssPath = 'global/css/';

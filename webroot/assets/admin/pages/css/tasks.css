@@ -79,6 +79,35 @@ Tasks Widget
 .c_green{color:#008000;}
 .c_orange{color:#FF6600;}
 .alignleft{text-align:left!important;}
+
+.forview .content {
+  background-color: #eceef1;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  
+  /*margin: 40px auto 10px auto;*/
+  padding: 30px;
+  padding-top: 10px;
+  margin: 0 5px;
+  overflow: hidden;
+  position: relative;
+  min-height: 390px;
+}
+
+.forview .content h3 {
+  color: #4db3a5;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 400 !important;
+}
+
+.forview .content h4 {
+  color: #555;
+}
+.clean{clear:both;}
 .page-logo img {
     margin-top: 4px !important;
     max-height: 100%!important;

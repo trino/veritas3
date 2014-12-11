@@ -181,6 +181,8 @@ $is_disabled = '';
 
                                                             <option value="Employment verification form">Employment verification form</option>
                                                             
+                                                            <option value="Consent form">Consent form</option>
+                                                            
                                                         </select>
 													</div>
 												</div>

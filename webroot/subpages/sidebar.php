@@ -128,32 +128,7 @@
 												
 					</ul>
 				</li>
-                <li class="<?php echo($this->request['controller']=='Quickcontacts')?'active open':'';?>">
-                    <a href="javascript:;">
-					<i class="icon-user-follow"></i>
-					<span class="title">Quick Contacts</span>
-					<?php echo($this->request['controller']=='Quickcontacts')?'<span class="selected"></span>':'';?>
-					<span class="arrow "></span>
-					</a>
-                    <ul class="sub-menu">
-						<li <?php echo($this->request['controller']=='Quickcontacts' && $this->request['action']=='index')?'class="active"':'';?>>
-							<a href="<?php echo $this->request->webroot;?>quickcontacts">
-							<i class="icon-list"></i>
-							List quick contacts</a>
-						</li>
-						<li <?php echo($this->request['controller']=='Quickcontacts' && $this->request['action']=='add')?'class="active"':'';?>>
-							<a href="<?php echo $this->request->webroot;?>quickcontacts/add">
-							<i class="icon-plus"></i>
-							Add quick contact</a>
-						</li>
-                        <!--<li>
-							<a href="<?php echo WEB_ROOT;?>jobs/add">
-							<i class="icon-basket"></i>
-							Assign Job to user</a>
-						</li>-->
-						
-					</ul>
-                </li>
+                
 
 				
 				

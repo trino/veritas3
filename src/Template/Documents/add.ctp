@@ -19,37 +19,33 @@ $is_disabled = '';
                         </a>
 					</li>
 				</ul>
-				<!--<div class="page-toolbar">
-					<div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
-						<i class="icon-calendar"></i>&nbsp;
-						<span class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
-						<i class="fa fa-angle-down"></i>
-					</div>
-				</div>-->
+				
 			</div>
-<div class="row">
+            <div class="row">
 				<div class="col-md-12">
 					<div class="portlet box blue" id="form_wizard_1">
 						<div class="portlet-title">
+                        <?php
+                                        $param = $this->request->params['action'];
+                                        $tab = 'nodisplay';
+                                        ?>
 							<div class="caption">
-								<i class="fa fa-gift"></i> Add/Edit Document - <span class="step-title">
-								Step 1 of 4 </span>
+								<i class="fa fa-gift"></i> <?php if($param == 'view')?>Document - <span class="step-title">
+								View </span>
 							</div>
-							<!--<div class="tools hidden-xs">
-								<a href="javascript:;" class="collapse">
-								</a>
-								<a href="#portlet-config" data-toggle="modal" class="config">
-								</a>
-								<a href="javascript:;" class="reload">
-								</a>
-								<a href="javascript:;" class="remove">
-								</a>
-							</div>-->
+							
 						</div>
 						<div class="portlet-body form">
 							<form action="#" class="form-horizontal" id="submit_form" method="POST">
 								<div class="form-wizard">
 									<div class="form-body">
+                                        <?php
+                                        
+                                        if($param !='view')
+                                        {
+                                            $tab = 'tab-pane';
+                                            ?>
+                                            
 										<ul class="nav nav-pills nav-justified steps">
 											<li>
 												<a href="#tab1" data-toggle="tab" class="step">
@@ -88,6 +84,9 @@ $is_disabled = '';
 											<div class="progress-bar progress-bar-info">
 											</div>
 										</div>
+                                        <?php
+                                        }
+                                        ?>
 										<div class="tab-content">
 											<div class="alert alert-danger display-none">
 												<button class="close" data-dismiss="alert"></button>
@@ -97,7 +96,7 @@ $is_disabled = '';
 												<button class="close" data-dismiss="alert"></button>
 												Your form validation is successful!
 											</div>
-											<div class="tab-pane active" id="tab1">
+											<div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab1">
 												<h3 class="block">Provide the document information</h3>
 												<div class="form-group">
 													<label class="control-label col-md-3">Document type <span class="required">
@@ -149,7 +148,7 @@ $is_disabled = '';
 													</div>
 												</div>
 											</div>
-											<div class="tab-pane" id="tab2">
+											<div class="<?php echo $tab;?>" id="tab2">
 												<h3 class="block">Atttach Image/Video/Documents</h3>
 												<div class="form-group">
 													<label class="control-label col-md-3">Attach file <span class="required">
@@ -162,7 +161,7 @@ $is_disabled = '';
 												</div>
 												
 											</div>
-											<div class="tab-pane" id="tab3">
+											<div class="<?php echo $tab;?>" id="tab3">
 												<h3 class="block">Choose sub-document</h3>
 												<div class="form-group">
 													<label class="control-label col-md-3">Sub-document <span class="required">
@@ -189,7 +188,7 @@ $is_disabled = '';
                                                 <div style="display: none;" class="subform">
                                                 </div>
 											</div>
-											<div class="tab-pane" id="tab4">
+											<div class="<?php echo $tab;?>" id="tab4">
 												<h3 class="block">Finalize</h3>
 												<div class="table-scrollable">
                                                     <table class="table table-striped">
@@ -205,9 +204,24 @@ $is_disabled = '';
                                                 </div>
 												
 											</div>
+                                            <?php
+                                            
+                                            // For view action only
+                                            
+                                            if($tab=='nodisplay')
+                                            {
+                                                ?>
+                                                
+                                            <div class="forview <?php if($tab=='tab-pane')echo 'nodisplay';?>">
+                                                <?php include('subpages/forview.php');?>
+                                            </div>
+                                            
+                                            <?php
+                                            }
+                                            ?>
 										</div>
 									</div>
-									<div class="form-actions">
+									<div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>">
 										<div class="row">
 											<div class="col-md-offset-3 col-md-9">
 												<a href="javascript:;" class="btn default button-previous">

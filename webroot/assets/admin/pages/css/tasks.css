@@ -75,6 +75,12 @@ Tasks Widget
 .paginator{text-align:center;margin-top:30px;background:#428BCA;}
 .center{text-align:center;}
 .no-bullet{list-style:none;}
+.page-logo img {
+    margin-top: 4px !important;
+    max-height: 100%!important;
+    max-width: 100%!important;
+    width: 140px!important;
+}
 @media only screen and (max-width: 480px) {
   .tasks-widget .task-config-btn {
     float: inherit;

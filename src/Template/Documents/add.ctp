@@ -85,7 +85,7 @@ $is_disabled = '';
 											</li>
 										</ul>
 										<div id="bar" class="progress progress-striped" role="progressbar">
-											<div class="progress-bar progress-bar-success">
+											<div class="progress-bar progress-bar-info">
 											</div>
 										</div>
 										<div class="tab-content">
@@ -190,108 +190,20 @@ $is_disabled = '';
                                                 </div>
 											</div>
 											<div class="tab-pane" id="tab4">
-												<h3 class="block">Confirm your account</h3>
-												<h4 class="form-section">Account</h4>
-												<div class="form-group">
-													<label class="control-label col-md-3">Username:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="username">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Email:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="email">
-														</p>
-													</div>
-												</div>
-												<h4 class="form-section">Profile</h4>
-												<div class="form-group">
-													<label class="control-label col-md-3">Fullname:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="fullname">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Gender:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="gender">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Phone:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="phone">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Address:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="address">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">City/Town:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="city">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Country:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="country">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Remarks:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="remarks">
-														</p>
-													</div>
-												</div>
-												<h4 class="form-section">Billing</h4>
-												<div class="form-group">
-													<label class="control-label col-md-3">Card Holder Name:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="card_name">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Card Number:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="card_number">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">CVC:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="card_cvc">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Expiration:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="card_expiry_date">
-														</p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Payment Options:</label>
-													<div class="col-md-4">
-														<p class="form-control-static" data-display="payment[]">
-														</p>
-													</div>
-												</div>
+												<h3 class="block">Finalize</h3>
+												<div class="table-scrollable">
+                                                    <table class="table table-striped">
+                                                        <tr><td>Original CVOR abstract (30 days old or less) for Ontario applicants.</td><td><a class="btn blue">Browse</a></td></tr>
+                                                        <tr><td>Original Drivers Abstract (30 days old or less)</td><td><a class="btn blue">Browse</a></td></tr>
+                                                        <tr><td>Copy of Drivers License</td><td><a class="btn blue">Browse</a></td></tr>
+                                                        <tr><td>Copy of your FAST card</td><td><a class="btn blue">Browse</a></td></tr>
+                                                        <tr><td>Original Criminal Record Search (within 90 days)</td><td><a class="btn blue">Browse</a></td></tr>
+                                                        <tr><td>Proof of Citizenship (birth certificate, passport or Canadian citizenship/US Visa)</td><td><a class="btn blue">Browse</a></td></tr>
+                                                        <tr><td>Completion of an on road evaluation</td><td><a class="btn blue">Browse</a></td></tr>
+                                                    </table>
+                                                    
+                                                </div>
+												
 											</div>
 										</div>
 									</div>
@@ -300,11 +212,17 @@ $is_disabled = '';
 											<div class="col-md-offset-3 col-md-9">
 												<a href="javascript:;" class="btn default button-previous">
 												<i class="m-icon-swapleft"></i> Back </a>
+                                                
+                                                <a href="javascript:;" class="btn green button-next">
+												Save <i class="m-icon-swapdown m-icon-white"></i>
+												</a>
+                                                
 												<a href="javascript:;" class="btn blue button-next">
 												Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
-												<a href="javascript:;" class="btn green button-submit">
-												Submit <i class="m-icon-swapright m-icon-white"></i>
+                                                
+												<a href="javascript:;" class="btn blue button-submit">
+												Finalize <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 											</div>
 										</div>

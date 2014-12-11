@@ -75,12 +75,16 @@ Tasks Widget
 .paginator{text-align:center;margin-top:30px;background:#428BCA;}
 .center{text-align:center;}
 .no-bullet{list-style:none;}
+.c_blue{color:#333399;}
+.c_green{color:#008000;}
+.c_orange{color:#FF6600;}
 .page-logo img {
     margin-top: 4px !important;
     max-height: 100%!important;
     max-width: 100%!important;
     width: 140px!important;
 }
+.nodisplay{display:none;}
 @media only screen and (max-width: 480px) {
   .tasks-widget .task-config-btn {
     float: inherit;

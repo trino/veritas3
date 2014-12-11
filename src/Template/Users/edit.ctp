@@ -250,6 +250,14 @@ $is_disabled = '';
 											<div class="tab-pane active" id="tab_1_1">
 												<form role="form" action="#">
                                                     <div class="form-group">
+														<label class="control-label">User type</label>
+														<select <?php echo $is_disabled?> class="form-control member_type">
+                                                            <option value="Admin">Admin</option>
+                                                            <option value="Member">Member</option>
+                                                            <option value="Contact">Contact</option>
+                                                        </select>
+													</div>
+                                                    <div class="form-group">
 														<label class="control-label">Title</label>
 														<input <?php echo $is_disabled?> type="text" placeholder="eg. Mr" class="form-control"/>
 													</div>
@@ -516,7 +524,23 @@ $is_disabled = '';
 
 
 
-
+<script>
+$(function(){
+    $('.member_type').change(function(){
+       if($(this).val()=='Contact')
+       {
+         $('.nav-tabs li:not(.active)').each(function(){
+            $(this).hide();
+         });
+       }
+       else{
+        $('.nav-tabs li:not(.active)').each(function(){
+            $(this).show();
+         });
+       } 
+    });
+})
+</script>
 <?php /*
 
 

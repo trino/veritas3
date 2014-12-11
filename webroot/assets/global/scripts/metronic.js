@@ -1,6 +1,11 @@
 /**
 Core script to handle the entire theme and core functions
 **/
+var path = window.location.pathname;
+if(path.replace('veritas3','')!=path)
+var base_url = 'http://localhost/veritas3/';
+else
+var base_url = '/';
 var Metronic = function() {
 
     // IE mode
@@ -11,10 +16,10 @@ var Metronic = function() {
 
     var resizeHandlers = [];
 
-    var assetsPath = '../assets/';
+    var assetsPath = base_url+'assets/';
 
     var globalImgPath = 'global/img/';
-
+ 
     var globalPluginsPath = 'global/plugins/';
 
     var globalCssPath = 'global/css/';

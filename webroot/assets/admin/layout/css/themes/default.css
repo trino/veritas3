@@ -916,8 +916,9 @@ body {
 .loginPara{padding:5px;}
 .nopad{padding:0;}
 .blue-title{color:#1876B0!important;}
-.borderbot{border-bottom:7px solid #14679B;}
-.lightblue{background:#e5ffff;border-bottom:5px solid #428BCA;margin-bottom:15px;}
+.borderbot{border-bottom:2px solid #14679B;border-right:2px solid #14679B;margin-bottom:15px!important;}
+.bordertop{border-top:7px solid #14679B;border-left:2px solid #14679B;}
+.lightblue{background:#14679B;margin-bottom:15px;}
 .nomartop{margin-top:-20px!important;}
 .page-logo img{margin-top: 4px!important;
     max-height: 100%;

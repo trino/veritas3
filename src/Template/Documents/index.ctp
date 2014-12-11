@@ -78,10 +78,12 @@
                     	<thead>
                     		<tr>
                     			<th>Document type</th>
+                                <th>Prepared for</th>
                     			<th>Job</th>
                     			<th>Uploaded by</th>
                     			<th>Uploaded on</th>
-                    			<th>Files</th>                   			
+                    			<th>Files</th>
+                                <th>Status</th>                    			
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
@@ -89,11 +91,12 @@
                     	
                     		<tr>
                     			<td>Orders</td>
+                                <td>Rob Anthony</td>
                     			<td>Job name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			                  			
+                    			<td class="c_blue">Draft</td>                  			
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
@@ -102,11 +105,12 @@
                     		</tr>
                             <tr>
                     			<td>Orders</td>
+                                <td>Jimmy Hendrix</td>
                     			<td>Job name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			                  			
+                   			    <td class="c_green">Approved</td>                 			
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -115,11 +119,12 @@
                     		</tr>
                             <tr>
                     			<td>Orders</td>
+                                <td>Angela Stuart</td>
                     			<td>Job name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			                  			
+                    			<td class="c_orange">Pending</td>                 			
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -128,11 +133,12 @@
                     		</tr>
                             <tr>
                     			<td>Orders</td>
+                                <td>Jim Morrison</td>
                     			<td>Job name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			                  			
+                    			<td class="c_blue">Draft</td>                 			
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -140,11 +146,12 @@
                     			</td>
                     		</tr><tr>
                     			<td>Orders</td>
+                                <td>Jacob Brown</td>
                     			<td>Job name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			                  			
+                    			<td class="c_blue">Draft</td>                 			
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -153,11 +160,12 @@
                     		</tr>
                             <tr>
                     			<td>Orders</td>
+                                <td>Peter Smith</td>
                     			<td>Job name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			                  			
+                    			<td class="c_green">Approved</td>                  			
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -166,11 +174,12 @@
                     		</tr>
                             <tr>
                     			<td>Orders</td>
+                                <td>Jude Brown</td>
                     			<td>Job name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			                  			
+                    			<td class="c_blue">Draft</td>                 			
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -179,24 +188,12 @@
                     		</tr>
                             <tr>
                     			<td>Orders</td>
+                                <td>Luke Smith</td>
                     			<td>Job name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			                  			
-                    			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
-                    			</td>
-                    		</tr>
-                            <tr>
-                    			<td>Orders</td>
-                    			<td>Job name 1</td>
-                    			<td>Admin</td>
-                    			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">DummyFile.docx</a></td>
-                    			                  			
+                    			<td class="c_green">Approved</td>                  			
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>

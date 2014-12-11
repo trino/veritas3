@@ -55,7 +55,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <div class="center nomar">
 	<a href="index.html">
-	<img src="<?php echo WEB_ROOT;?>img/loginLogo.png" width="180px" alt=""/>
+	<img src="<?php echo WEB_ROOT;?>img/loginLogo.png" alt=""/>
 	</a>
 </div>
 <!-- END LOGO -->
@@ -65,13 +65,13 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="col-md-4 paras justify">
 
 <!-- BEGIN LOGIN -->
-<div class="loginPara">
+<div class="loginPara content borderbot bordertop">
 <h1 class="blue-title nomar">Welcome to MEE</h1>
 <p>MEE is designed to help the transportation industry in qualifying drivers and getting them on the road efficiently, safely and cost effectively by providing all the required documents and services through a single website.</p>
 <p>With MEE's easy to use platform, you can quickly and efficiently obtain all the required documents necessary to ensure the quality of your workforce. Please contact us for any further information.</p>
 </div>
 
-<div class="content nomar borderbot">
+<div class="content nomar borderbot bordertop">
 	<!-- BEGIN LOGIN FORM -->
     
 	<form class="login-form" action="" method="post">
@@ -413,14 +413,14 @@ License: You must have a valid license purchased only from themeforest(the above
 </div>
 </div>
 <div class="col-md-8 paras">
-<div class="col-md-12">
+<div class="col-md-12 content borderbot bordertop">
 <h3 class="blue-title">Register</h3>
 <p>
 	By registering with MEE, you will have access to our online store where you may place your orders and begin qualifying candidates with a few simple clicks. We will just need a few bits of information. You will receive a confirmation email once we have activated your account. Thank you for choosing MEE.
 </p>
 </div>
 <div class="clearfix"></div>
-<form class="register-form" method="post" action="index.html" novalidate="novalidate" style="display: block;">
+<form class="register-form content borderbot bordertop" method="post" action="index.html" novalidate="novalidate" style="display: block;">
     <div class="col-md-12">
         <h3 class="blue-title">Sign Up</h3>
         

@@ -1150,7 +1150,7 @@
 		 2014 &copy; MEE.
 	</div>
     <div class="page-footer-inner">
-		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $this->request->webroot;?>pages/view/help">Help</a> | <a href="<?php echo $this->request->webroot;?>pages/view/privacy-code">Privacy code</a> | <a href="<?php echo $this->request->webroot;?>pages/view/product-example">Product example</a> | <a href="<?php echo $this->request->webroot;?>pages/view/term">Term</a> | <a href="<?php echo $this->request->webroot;?>pages/view/faq">FAQ</a> 
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $this->request->webroot;?>pages/view/help">Help</a> | <a href="<?php echo $this->request->webroot;?>pages/view/privacy-code">Privacy code</a> | <a href="<?php echo $this->request->webroot;?>pages/view/product-example">Product example</a> | <a href="<?php echo $this->request->webroot;?>pages/view/term">Term</a> | <a href="<?php echo $this->request->webroot;?>pages/view/faq">FAQ</a>
 	</div>
 	<div class="scroll-to-top">
 		<i class="icon-arrow-up"></i>

@@ -58,28 +58,28 @@
 						
 					</ul>
 				</li>
-                	<li class="<?php echo($this->request['controller']=='Jobs' && $this->request['action']!='quickcontact')?'active open':'';?>">
+                	<li class="<?php echo($this->request['controller']=='Clients' && $this->request['action']!='quickcontact')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-globe"></i>
 					<span class="title">Clients</span>
-                    <?php echo($this->request['controller']=='Jobs')?'<span class="selected"></span>':'';?>
+                    <?php echo($this->request['controller']=='Clients')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-						<li <?php echo($this->request['controller']=='Jobs' && $this->request['action']=='index')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>jobs">
+						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='index')?'class="active"':'';?>>
+							<a href="<?php echo WEB_ROOT;?>clients">
 							<i class="icon-list"></i>
 							List Clients</a>
 						</li>
-						<li <?php echo($this->request['controller']=='Jobs' && $this->request['action']=='add')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>jobs/add">
+						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
+							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-plus"></i>
 							Add new Client</a>
 						</li>
                         <!--<li>
-							<a href="<?php echo WEB_ROOT;?>jobs/add">
+							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-basket"></i>
-							Assign Job to user</a>
+							Assign Client to user</a>
 						</li>-->
 						
 					</ul>
@@ -128,9 +128,8 @@
 												
 					</ul>
 				</li>
-                
 
-				
+               
 				<!--
                 <li class="<?php echo($this->request['controller']=='Pages' && $this->request['action']=='cms' )?'active open':'';?> last">
                     <a href="javascript:;">

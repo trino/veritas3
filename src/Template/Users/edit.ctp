@@ -174,17 +174,17 @@ $is_disabled = '';
 						<!-- PORTLET MAIN -->
 						<div class="portlet box blue">
                             <div class="portlet-title">
-                                <div class="caption">Jobs</div>
+                                <div class="caption">Client</div>
                             </div>
                             <div class="portlet-body">
-								<div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
+								<div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
+                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
 								<div class="clearfix"></div>
 							</div>
                         </div>

@@ -55,7 +55,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Theme Style </span>
-						<select class="layout-style-option form-control input-sm" >
+						<select class="layout-style-option form-control input-sm">
 							<option value="square" selected="selected">Square corners</option>
 							<option value="rounded">Rounded corners</option>
 						</select>
@@ -63,7 +63,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Layout </span>
-						<select class="layout-option form-control input-sm" onchange="change_body();">
+						<select class="layout-option form-control input-sm">
 							<option value="fluid" selected="selected">Fluid</option>
 							<option value="boxed">Boxed</option>
 						</select>
@@ -71,7 +71,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Header </span>
-						<select class="page-header-option form-control input-sm" onchange="change_body();">
+						<select class="page-header-option form-control input-sm">
 							<option value="fixed" selected="selected">Fixed</option>
 							<option value="default">Default</option>
 						</select>
@@ -79,7 +79,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Top Menu Dropdown</span>
-						<select class="page-header-top-dropdown-style-option form-control input-sm" onchange="change_body();">
+						<select class="page-header-top-dropdown-style-option form-control input-sm">
 							<option value="light" selected="selected">Light</option>
 							<option value="dark">Dark</option>
 						</select>
@@ -87,7 +87,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Sidebar Mode</span>
-						<select class="sidebar-option form-control input-sm" onchange="change_body();">
+						<select class="sidebar-option form-control input-sm">
 							<option value="fixed">Fixed</option>
 							<option value="default" selected="selected">Default</option>
 						</select>
@@ -95,7 +95,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Sidebar Menu </span>
-						<select class="sidebar-menu-option form-control input-sm" onchange="change_body();">
+						<select class="sidebar-menu-option form-control input-sm">
 							<option value="accordion" selected="selected">Accordion</option>
 							<option value="hover">Hover</option>
 						</select>
@@ -103,7 +103,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Sidebar Style </span>
-						<select class="sidebar-style-option form-control input-sm" onchange="change_body();">
+						<select class="sidebar-style-option form-control input-sm">
 							<option value="default" selected="selected">Default</option>
 							<option value="light">Light</option>
 						</select>
@@ -111,7 +111,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Sidebar Position </span>
-						<select class="sidebar-pos-option form-control input-sm" onchange="change_body();">
+						<select class="sidebar-pos-option form-control input-sm">
 							<option value="left" selected="selected">Left</option>
 							<option value="right">Right</option>
 						</select>
@@ -119,7 +119,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Footer </span>
-						<select class="page-footer-option form-control input-sm" onchange="change_body();">
+						<select class="page-footer-option form-control input-sm">
 							<option value="fixed">Fixed</option>
 							<option value="default" selected="selected">Default</option>
 						</select>
@@ -127,12 +127,12 @@ $is_disabled = '';
 				</div>
 			</div>
             <div class="clearfix"></div>
-            
+
 			<!-- END STYLE CUSTOMIZER -->
 			<!-- BEGIN PAGE HEADER-->
             <h3 class="page-title">
-			User Manager 
-			</h3>			
+			Profile Manager
+			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
@@ -144,7 +144,7 @@ $is_disabled = '';
 						<a href="">Profile</a>
 					</li>
 				</ul>
-				
+
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
@@ -168,13 +168,13 @@ $is_disabled = '';
 									 Reference Number: 1
 								</div>
 							</div>
-							
+
 						</div>
 						<!-- END PORTLET MAIN -->
 						<!-- PORTLET MAIN -->
 						<div class="portlet box blue">
                             <div class="portlet-title">
-                                <div class="caption">Client</div>
+                                <div class="caption">Associated Clients</div>
                             </div>
                             <div class="portlet-body">
 								<div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
@@ -230,7 +230,7 @@ $is_disabled = '';
                                             if(!isset($disabled))
                                             {
                                                 ?>
-                                                
+
 											<li>
 												<a href="#tab_1_2" data-toggle="tab">Avatar</a>
 											</li>
@@ -246,10 +246,19 @@ $is_disabled = '';
                                             <li>
 												<a href="#tab_1_5" data-toggle="tab">Logos</a>
 											</li>
-                                            
+
                                             <li>
 												<a href="#tab_1_6" data-toggle="tab">Pages</a>
 											</li>
+
+                                            <li>
+                                                <a href="#tab_1_7" data-toggle="tab">Documents</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#tab_1_8" data-toggle="tab">Blocks</a>
+                                            </li>
+
 										</ul>
 									</div>
 									<div class="portlet-body">
@@ -332,7 +341,7 @@ $is_disabled = '';
 																Remove </a>
 															</div>
 														</div>
-														
+
 													</div>
 													<div class="margin-top-10">
 														<a href="#" class="btn btn-primary">
@@ -417,11 +426,11 @@ $is_disabled = '';
                                                     if(!isset($disabled))
                                                     {
                                                         ?>
-                                                        
+
 													<div class="margin-top-10">
 														<a href="#" class="btn btn-primary">
 														Save Changes </a>
-														
+
 													</div>
                                                     <?php
                                                     }
@@ -437,7 +446,7 @@ $is_disabled = '';
         											<li>
         												<a href="#subtab_1_2" data-toggle="tab">Secondary Logo</a>
         											</li>
-        											
+
         										</ul>
                                                 </div>
                                                 <div class="tab-content">
@@ -447,10 +456,10 @@ $is_disabled = '';
                                                 				<div class="caption">
                                                 					<i class="fa fa-user"></i>Choose A Primary Logo
                                                 				</div>
-                                                				
+
                                                 			</div>
                                                 			<div class="portlet-body">
-                                                            
+
                                                             <form action="<?php echo $this->request->webroot;?>logos" method="post" class="form-inline" role="form" >
                                                             <?php foreach ($logos as $logo){ ?>
                                                                 <div class="form-group col-md-12">
@@ -463,14 +472,14 @@ $is_disabled = '';
                                                                 </div>
                                                                 <div class="clearfix"></div>
                                                                 <hr />
-                                                                
+
                                                             <?php }?>
                                                             <input type="submit" class="btn btn-success" value="submit" name="submit" />
                                                             </form>
-                                                     
+
                                                         </div>
                                                     </div>
-                                                
+
                                                 </div>
                                                 <div class="tab-pane" id="subtab_1_2">
                                                     <div class="portlet ">
@@ -478,10 +487,10 @@ $is_disabled = '';
                                                 				<div class="caption">
                                                 					<i class="fa fa-user"></i>Choose A Secondary Logo
                                                 				</div>
-                                                				
+
                                                 			</div>
                                                 			<div class="portlet-body">
-                                                            
+
                                                             <form action="<?php echo $this->request->webroot;?>logos/secondary" method="post" class="form-inline" role="form" >
                                                             <?php foreach ($logos1 as $logo){ ?>
                                                                 <div class="form-group col-md-12">
@@ -494,20 +503,26 @@ $is_disabled = '';
                                                                 </div>
                                                                 <div class="clearfix"></div>
                                                                 <hr />
-                                                                
+
                                                             <?php }?>
                                                             <input type="submit" class="btn btn-success" value="submit" name="submit" />
                                                             </form>
-                                                     
-                                                
+
+
                                                 </div>
                                                 </div>
                                                 </div>
-												
+
 											</div>
                                             </div>
-                                            
-                                            
+
+
+
+
+
+
+
+
                                             <div class="tab-pane" id="tab_1_6">
                                                 <div>
                                                 <ul class="nav nav-tabs">
@@ -528,8 +543,8 @@ $is_disabled = '';
                                                     <li class="">
         												<a href="#subtab_1_7" data-toggle="tab">FAQ</a>
         											</li>
-        											
-        											
+
+
         										</ul>
                                                 </div>
                                                 <div class="tab-content">
@@ -539,9 +554,9 @@ $is_disabled = '';
                                 							<div class="caption">
                                 								<i class="fa fa-gift"></i>Page Manager - Help
                                 							</div>
-                                                            
+
                                 						</div>
-                                                        
+
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
                                 							<form action="#" class="form-horizontal form-bordered">
@@ -573,7 +588,7 @@ $is_disabled = '';
                                 							<!-- END FORM-->
                                 						</div>
                                 					</div>
-                                                
+
                                                 </div>
                                                 <div class="tab-pane" id="subtab_1_4">
                                                     <div class="portlet box blue">
@@ -581,9 +596,9 @@ $is_disabled = '';
                                 							<div class="caption">
                                 								<i class="fa fa-gift"></i>Page Manager - Privacy Code
                                 							</div>
-                                                            
+
                                 						</div>
-                                                        
+
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
                                 							<form action="#" class="form-horizontal form-bordered">
@@ -615,18 +630,18 @@ $is_disabled = '';
                                 							<!-- END FORM-->
                                 						</div>
                                 					</div>
-                                                
+
                                                 </div>
-                                                
+
                                                 <div class="tab-pane" id="subtab_1_5">
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
                                 								<i class="fa fa-gift"></i>Page Manager - Product Example
                                 							</div>
-                                                            
+
                                 						</div>
-                                                        
+
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
                                 							<form action="#" class="form-horizontal form-bordered">
@@ -658,18 +673,18 @@ $is_disabled = '';
                                 							<!-- END FORM-->
                                 						</div>
                                 					</div>
-                                                
+
                                                 </div>
-                                                
+
                                                 <div class="tab-pane" id="subtab_1_6">
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
                                 								<i class="fa fa-gift"></i>Page Manager - Terms
                                 							</div>
-                                                            
+
                                 						</div>
-                                                        
+
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
                                 							<form action="#" class="form-horizontal form-bordered">
@@ -701,18 +716,18 @@ $is_disabled = '';
                                 							<!-- END FORM-->
                                 						</div>
                                 					</div>
-                                                
+
                                                 </div>
-                                                
+
                                                 <div class="tab-pane" id="subtab_1_7">
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
                                 								<i class="fa fa-gift"></i>Page Manager - FAQ
                                 							</div>
-                                                            
+
                                 						</div>
-                                                        
+
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
                                 							<form action="#" class="form-horizontal form-bordered">
@@ -744,12 +759,17 @@ $is_disabled = '';
                                 							<!-- END FORM-->
                                 						</div>
                                 					</div>
-                                                
+
                                                 </div>
-												
+
 											</div>
                                             </div>
 											<!-- END PRIVACY SETTINGS TAB -->
+
+
+
+
+
 
 
 
@@ -1074,7 +1094,6 @@ $is_disabled = '';
 
 
                                         </div>
-
 									</div>
 								</div>
 							</div>
@@ -1112,7 +1131,7 @@ $(function(){
         $('.nav-tabs li:not(.active)').each(function(){
             $(this).show();
          });
-       } 
+       }
     });
 })
 </script>
@@ -1144,17 +1163,17 @@ $(function(){
 	<ul class="side-nav">
 		<li><?= $this->Form->postLink(
 				__('Delete'),
-				['action' => 'delete', $user->id],
-				['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
+				['action' => 'delete', $profile->id],
+				['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]
 			)
 		?></li>
-		<li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('List Profiles'), ['action' => 'index']) ?></li>
 	</ul>
 </div>
-<div class="users form large-10 medium-9 columns">
-	<?= $this->Form->create($user); ?>
+<div class="profiles form large-10 medium-9 columns">
+	<?= $this->Form->create($profile); ?>
 	<fieldset>
-		<legend><?= __('Edit User') ?></legend>
+		<legend><?= __('Edit Profile') ?></legend>
 		<?php
 			echo $this->Form->input('title');
 			echo $this->Form->input('fname');

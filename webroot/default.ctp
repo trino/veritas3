@@ -453,7 +453,7 @@
 							<i class="icon-lock"></i> Lock Screen </a>
 						</li>
 						<li>
-							<a href="<?php echo WEB_ROOT;?>users/logout">
+							<a href="<?php echo WEB_ROOT;?>profiles/logout">
 							<i class="icon-key"></i> Log Out </a>
 						</li>
 					</ul>

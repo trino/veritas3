@@ -2443,7 +2443,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<ul class="nav nav-tabs nav-justified">
 					<li class="active">
 						<a href="#quick_sidebar_tab_1" data-toggle="tab">
-						Users <span class="badge badge-danger">2</span>
+						Profiles <span class="badge badge-danger">2</span>
 						</a>
 					</li>
 					<li>

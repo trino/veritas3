@@ -17,10 +17,7 @@
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Users\view.ctp" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\tmp.zip" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot.zip" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Jobs/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Jobs/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/assets/global/css/components.css" afterPath="$PROJECT_DIR$/webroot/assets/global/css/components.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/forview.php" afterPath="$PROJECT_DIR$/webroot/subpages/forview.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" afterPath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
     </list>
     <ignored path="veritas3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,13 +42,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="forview.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webroot/subpages/forview.php">
+      <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49871793" vertical-offset="19535" max-vertical-offset="20417">
-              <caret line="1172" column="0" selection-start-line="1172" selection-start-column="0" selection-end-line="1172" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.23342176" vertical-offset="17827" max-vertical-offset="20740">
+              <caret line="1059" column="68" selection-start-line="1059" selection-start-column="68" selection-end-line="1059" selection-end-column="68" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#7;n#!!top" expanded="true" />
+                <element signature="e#14508#14544#0#HTML" expanded="true" />
+                <element signature="e#14741#14785#0#HTML" expanded="true" />
+                <element signature="e#64587#65662#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,8 +110,8 @@
         <option value="$PROJECT_DIR$/webroot/subpages/home_blocks.php" />
         <option value="$PROJECT_DIR$/webroot/subpages/recent_activities.php" />
         <option value="$PROJECT_DIR$/webroot/subpages/sidebar.php" />
-        <option value="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
         <option value="$PROJECT_DIR$/webroot/subpages/forview.php" />
+        <option value="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
       </list>
     </option>
   </component>
@@ -373,7 +372,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1688" height="1030" extended-state="6" />
+    <frame x="-4" y="-4" width="1688" height="1030" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -439,7 +438,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="31892">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#7;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#7;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -770,7 +769,7 @@
         <state vertical-scroll-proportion="-42.123455" vertical-offset="1008" max-vertical-offset="5763">
           <caret line="260" column="77" selection-start-line="260" selection-start-column="77" selection-end-line="260" selection-end-column="77" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -780,18 +779,6 @@
         <state vertical-scroll-proportion="-4.1153846" vertical-offset="607" max-vertical-offset="3111">
           <caret line="42" column="61" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8594164" vertical-offset="2599" max-vertical-offset="14569">
-          <caret line="191" column="54" selection-start-line="191" selection-start-column="54" selection-end-line="191" selection-end-column="54" />
-          <folding>
-            <element signature="e#14231#14267#0#HTML" expanded="true" />
-            <element signature="e#14464#14508#0#HTML" expanded="true" />
-            <element signature="e#41167#42242#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -828,7 +815,19 @@
         <state vertical-scroll-proportion="0.49871793" vertical-offset="19535" max-vertical-offset="20417">
           <caret line="1172" column="0" selection-start-line="1172" selection-start-column="0" selection-end-line="1172" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#7;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#7;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23342176" vertical-offset="17827" max-vertical-offset="20740">
+          <caret line="1059" column="68" selection-start-line="1059" selection-start-column="68" selection-end-line="1059" selection-end-column="68" />
+          <folding>
+            <element signature="e#14508#14544#0#HTML" expanded="true" />
+            <element signature="e#14741#14785#0#HTML" expanded="true" />
+            <element signature="e#64587#65662#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

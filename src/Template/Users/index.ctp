@@ -25,15 +25,30 @@
                 </div>
             </div>    
             <div class="portlet-body">
-                <div class="col-md-6 col-sm-12 nopad">
+            <form>
+                
+                <div class="col-md-10 col-sm-12 nopad">
+                
+                    
                     <div id="sample_1_filter" class="dataTables_filter mar">
-                        <form>
+                        <div class="col-md-3 nopad">
+                    <select class="form-control">
+                        <option value="">User Type</option>
+                        <option value="">Admin</option>
+                        <option value="">Contacts</option>
+                        <option value="">Members</option>
+                        <option value="">Quick Contacts</option>
+                    </select>
+                    </div>  
+                      <div class="col-md-6 nopad">  
                             <label>                        
-                            <input class="form-control input-inline" type="search" placeholder=" Search for users" aria-controls="sample_1"> <button type="submit" class="btn btn-primary">Search</button>
+                            <input class="form-control input-inline" type="search" placeholder=" Search for users" aria-controls="sample_1" /> <button type="submit" class="btn btn-primary">Search</button>
                             </label>
-                        </form>
+                      </div>  
                     </div>
+                
                 </div>
+                </form>
                 <div class="table-scrollable">
                 
                     <table class="table table-hover">

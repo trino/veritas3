@@ -128,9 +128,8 @@
 												
 					</ul>
 				</li>
-                
 
-				
+               
 				<!--
                 <li class="<?php echo($this->request['controller']=='Pages' && $this->request['action']=='cms' )?'active open':'';?> last">
                     <a href="javascript:;">

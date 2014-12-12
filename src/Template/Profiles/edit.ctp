@@ -939,7 +939,7 @@ $is_disabled = '';
                                                     <table class="table table-light table-hover">
                                                         <tr>
                                                             <td>
-                                                                Reports
+                                                                Profiles
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
@@ -953,7 +953,7 @@ $is_disabled = '';
 
                                                         <tr>
                                                             <td>
-                                                                Other Document Type
+                                                                Clients
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
@@ -966,7 +966,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Other Document Type
+                                                                Documents
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
@@ -983,7 +983,88 @@ $is_disabled = '';
 
 
 
-                                                    <?php
+                                                    <h4> Homepage Top Block</h4>
+                                                    <form action="#">
+                                                        <table class="table table-light table-hover">
+                                                            <tr>
+                                                                <td>
+                                                                    Meetings
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    GPS
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Reports
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Feeedback
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    Settings
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!--end profile-settings-->
+
+
+
+
+
+
+
+
+
+                                                            <?php
                                                     if(!isset($disabled))
                                                     {
                                                         ?>
@@ -1001,107 +1082,6 @@ $is_disabled = '';
 
 
 
-
-
-
-
-
-                                            <h4> Homepage Top Block</h4>
-                                            <form action="#">
-                                                <table class="table table-light table-hover">
-                                                    <tr>
-                                                        <td>
-                                                            Reports
-                                                        </td>
-                                                        <td>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
-                                                                Yes </label>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
-                                                                No </label>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            Other Document Type
-                                                        </td>
-                                                        <td>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
-                                                                Yes </label>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
-                                                                No </label>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Other Document Type
-                                                        </td>
-                                                        <td>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
-                                                                Yes </label>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
-                                                                No </label>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!--end profile-settings-->
-
-
-
-
-
-
-                                                <h4> Homepage Second Block</h4>
-                                                <form action="#">
-                                                    <table class="table table-light table-hover">
-                                                        <tr>
-                                                            <td>
-                                                                Reports
-                                                            </td>
-                                                            <td>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
-                                                                    No </label>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                Other Document Type
-                                                            </td>
-                                                            <td>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
-                                                                    No </label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Other Document Type
-                                                            </td>
-                                                            <td>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
-                                                                    No </label>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                    <!--end profile-settings-->
 
 
 

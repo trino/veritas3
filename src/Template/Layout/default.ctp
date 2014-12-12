@@ -38,8 +38,8 @@
 <link href="<?php echo WEB_ROOT;?>assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="<?php echo WEB_ROOT;?>assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo WEB_ROOT;?>assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-<?php $layout = $this->requestAction('logos/get_layout');?>
-<link href="<?php echo WEB_ROOT;?>assets/admin/layout/css/themes/<?php echo $layout;?>.css" rel="stylesheet" type="text/css" id="style_color"/>
+<?php $settings = $this->requestAction('settings/get_settings');?>
+<link href="<?php echo WEB_ROOT;?>assets/admin/layout/css/themes/<?php echo $settings->layout;?>.css" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="<?php echo WEB_ROOT;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="<?php echo WEB_ROOT?>favicon.ico"/>
@@ -98,7 +98,7 @@
 <script src="<?php echo WEB_ROOT;?>assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
 <script src="<?php echo WEB_ROOT;?>assets/admin/pages/scripts/form-wizard.js"></script>
 </head>
-<body class="page-header-fixed page-quick-sidebar-over-content page-style-square"> 
+<body class="<?php echo $settings->body;?>"> 
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
@@ -975,6 +975,43 @@ function change_layout(msg)
         
     });
 }
+
+function change_body()
+{
+    var cls = "";
+    
+    $('body').on('change',function(){
+        
+     cls = $('body').attr('class');
+    
+    
+       
+    
+  
+    $.ajax({
+       url: "<?php echo $this->request->webroot;?>settings/changebody",
+       type: "post",
+       data: "class="+cls,
+       success: function(m){
+        
+       }
+        
+    });
+    
+     });
+      
+   
+}
+
+function sider_bar()
+{
+    alert($('#mainbar').attr('class'));
+    $('#mainbar').on('focus',function(){
+         var sidebar = $(this).attr('class');
+         alert(sidebar);
+         });
+}
+
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

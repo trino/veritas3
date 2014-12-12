@@ -29,8 +29,8 @@ $is_disabled = '';
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 			<!-- BEGIN STYLE CUSTOMIZER -->
 			<div class="theme-panel hidden-xs hidden-sm">
-				<!--div class="toggler">
-				</div-->
+				<div class="toggler">
+				</div>
 				<div class="toggler-close">
 				</div>
 				<div class="theme-options">
@@ -55,7 +55,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Theme Style </span>
-						<select class="layout-style-option form-control input-sm">
+						<select class="layout-style-option form-control input-sm" >
 							<option value="square" selected="selected">Square corners</option>
 							<option value="rounded">Rounded corners</option>
 						</select>
@@ -63,7 +63,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Layout </span>
-						<select class="layout-option form-control input-sm">
+						<select class="layout-option form-control input-sm" onchange="change_body();">
 							<option value="fluid" selected="selected">Fluid</option>
 							<option value="boxed">Boxed</option>
 						</select>
@@ -71,7 +71,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Header </span>
-						<select class="page-header-option form-control input-sm">
+						<select class="page-header-option form-control input-sm" onchange="change_body();">
 							<option value="fixed" selected="selected">Fixed</option>
 							<option value="default">Default</option>
 						</select>
@@ -79,7 +79,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Top Menu Dropdown</span>
-						<select class="page-header-top-dropdown-style-option form-control input-sm">
+						<select class="page-header-top-dropdown-style-option form-control input-sm" onchange="change_body();">
 							<option value="light" selected="selected">Light</option>
 							<option value="dark">Dark</option>
 						</select>
@@ -87,7 +87,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Sidebar Mode</span>
-						<select class="sidebar-option form-control input-sm">
+						<select class="sidebar-option form-control input-sm" onchange="change_body();">
 							<option value="fixed">Fixed</option>
 							<option value="default" selected="selected">Default</option>
 						</select>
@@ -95,7 +95,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Sidebar Menu </span>
-						<select class="sidebar-menu-option form-control input-sm">
+						<select class="sidebar-menu-option form-control input-sm" onchange="change_body();">
 							<option value="accordion" selected="selected">Accordion</option>
 							<option value="hover">Hover</option>
 						</select>
@@ -103,7 +103,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Sidebar Style </span>
-						<select class="sidebar-style-option form-control input-sm">
+						<select class="sidebar-style-option form-control input-sm" onchange="change_body();">
 							<option value="default" selected="selected">Default</option>
 							<option value="light">Light</option>
 						</select>
@@ -111,7 +111,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Sidebar Position </span>
-						<select class="sidebar-pos-option form-control input-sm">
+						<select class="sidebar-pos-option form-control input-sm" onchange="change_body();">
 							<option value="left" selected="selected">Left</option>
 							<option value="right">Right</option>
 						</select>
@@ -119,7 +119,7 @@ $is_disabled = '';
 					<div class="theme-option">
 						<span>
 						Footer </span>
-						<select class="page-footer-option form-control input-sm">
+						<select class="page-footer-option form-control input-sm" onchange="change_body();">
 							<option value="fixed">Fixed</option>
 							<option value="default" selected="selected">Default</option>
 						</select>

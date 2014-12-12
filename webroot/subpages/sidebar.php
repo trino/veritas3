@@ -128,7 +128,7 @@
 												
 					</ul>
 				</li>
-                <li class="<?php echo($this->request['controller']=='Quickcontacts')?'active open':'';?>">
+                <!--<li class="<?php echo($this->request['controller']=='Quickcontacts')?'active open':'';?>">
                     <a href="javascript:;">
 					<i class="icon-user-follow"></i>
 					<span class="title">Quick Contacts</span>
@@ -146,14 +146,10 @@
 							<i class="icon-plus"></i>
 							Add quick contact</a>
 						</li>
-                        <!--<li>
-							<a href="<?php echo WEB_ROOT;?>jobs/add">
-							<i class="icon-basket"></i>
-							Assign Job to user</a>
-						</li>-->
+                        
 						
 					</ul>
-                </li>
+                </li>-->
 
 				
 				

@@ -53,11 +53,11 @@
              </div>
              <div class="col-md-4 col-sm-12">
                     <select class="form-control">
-                        <option value="">Jobs</option>
-                        <option value="0">Job 1</option>
-                        <option value="3">Job 2</option>
-                        <option value="4">Job 3</option>
-                        <option value="5">Job4</option>
+                        <option value="">Clients</option>
+                        <option value="0">Client 1</option>
+                        <option value="3">Client 2</option>
+                        <option value="4">Client 3</option>
+                        <option value="5">Client</option>
                         
                     </select>
              </div>
@@ -79,7 +79,7 @@
                     		<tr>
                     			<th>Document type</th>
                                 <th>Prepared for</th>
-                    			<th>Job</th>
+                    			<th>Client</th>
                     			<th>Uploaded by</th>
                     			<th>Uploaded on</th>
                     			<th>Files</th>
@@ -92,7 +92,7 @@
                     		<tr>
                     			<td>Orders</td>
                                 <td>Rob Anthony</td>
-                    			<td>Job name 1</td>
+                    			<td>Client name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
@@ -106,7 +106,7 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Jimmy Hendrix</td>
-                    			<td>Job name 1</td>
+                    			<td>Client name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
@@ -120,7 +120,7 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Angela Stuart</td>
-                    			<td>Job name 1</td>
+                    			<td>Client name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
@@ -134,7 +134,7 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Jim Morrison</td>
-                    			<td>Job name 1</td>
+                    			<td>Client name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
@@ -147,7 +147,7 @@
                     		</tr><tr>
                     			<td>Orders</td>
                                 <td>Jacob Brown</td>
-                    			<td>Job name 1</td>
+                    			<td>Client name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
@@ -161,7 +161,7 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Peter Smith</td>
-                    			<td>Job name 1</td>
+                    			<td>Client name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
@@ -175,7 +175,7 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Jude Brown</td>
-                    			<td>Job name 1</td>
+                    			<td>Client name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
@@ -189,7 +189,7 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Luke Smith</td>
-                    			<td>Job name 1</td>
+                    			<td>Client name 1</td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>

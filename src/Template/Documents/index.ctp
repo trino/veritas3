@@ -1,5 +1,5 @@
 <h3 class="page-title">
-			Documents <small>All document listing</small>
+			Documents <small>View/Edit/Delete Documents</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -220,4 +220,6 @@
                     </li>
                     </ul>
                 </div>
+                </div>
             </div>
+        </div>

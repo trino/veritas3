@@ -107,7 +107,7 @@
 		<div class="page-logo">
 			<a href="<?php echo WEB_ROOT;?>">
             <?php $logo = $this->requestAction('Logos/getlogo/0',['return']);?>
-			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="logo-default" width="86px" />
+			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="logo-default" />
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -140,7 +140,7 @@
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="<?php echo WEB_ROOT;?>assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="<?php echo WEB_ROOT;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -154,7 +154,7 @@
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="<?php echo WEB_ROOT;?>assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="<?php echo WEB_ROOT;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -168,7 +168,7 @@
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="<?php echo WEB_ROOT;?>assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+									<img src="<?php echo WEB_ROOT;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -182,7 +182,7 @@
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="<?php echo WEB_ROOT;?>assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+									<img src="<?php echo WEB_ROOT;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -196,7 +196,7 @@
 								<li>
 									<a href="inbox.html?a=view">
 									<span class="photo">
-									<img src="<?php echo WEB_ROOT;?>assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+									<img src="<?php echo WEB_ROOT;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
 									<span class="subject">
 									<span class="from">
@@ -214,14 +214,14 @@
 				
 				<li class="dropdown dropdown-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="<?php echo WEB_ROOT;?>assets/admin/layout/img/avatar3_small.jpg"/>
+					<img alt="" class="img-circle" src="http://localhost/veritas3/img/uploads/male.png"/>
 					<span class="username username-hide-on-mobile">
 					Nick </span>
 					<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
-							<a href="<?php echo $this->request->webroot;?>settings">
+							<a href="<?php echo $this->request->webroot;?>users/view/1">
 							<i class="icon-user"></i> My Settings </a>
 						</li>
 						
@@ -920,12 +920,23 @@
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
 	<div class="page-footer-inner">
-		 2014 &copy; MEE.
+		 &copy; MEE 2014. All Rights Reserved.
 	</div>
-    <div class="page-footer-inner">
-		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $this->request->webroot;?>pages/view/help">Help</a> | <a href="<?php echo $this->request->webroot;?>pages/view/privacy-code">Privacy code</a> | <a href="<?php echo $this->request->webroot;?>pages/view/product-example">Product example</a> | <a href="<?php echo $this->request->webroot;?>pages/view/term">Term</a> | <a href="<?php echo $this->request->webroot;?>pages/view/faq">FAQ</a>
-	</div>
-	<div class="scroll-to-top">
+
+
+    <div class="page-footer-inner" style="float:right;">
+
+    <a style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/help">Help</a> /
+        <a style="color:white;"  href="<?php echo $this->request->webroot;?>pages/view/privacy-code">Privacy Code</a> /
+    <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product-example">Product Example</a> /
+        <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/term">Terms</a> /
+        <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/faq">FAQ</a>
+
+    </div>
+
+
+
+    <div class="scroll-to-top">
 		<i class="icon-arrow-up"></i>
 	</div>
 </div>

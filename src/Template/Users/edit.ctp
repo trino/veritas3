@@ -29,8 +29,8 @@ $is_disabled = '';
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 			<!-- BEGIN STYLE CUSTOMIZER -->
 			<div class="theme-panel hidden-xs hidden-sm">
-				<div class="toggler">
-				</div>
+				<!--div class="toggler">
+				</div-->
 				<div class="toggler-close">
 				</div>
 				<div class="theme-options">
@@ -165,7 +165,7 @@ $is_disabled = '';
 									 Marcus Doe
 								</div>
 								<div class="profile-usertitle-job">
-									 Refrence #: 1
+									 Reference Number: 1
 								</div>
 							</div>
 							
@@ -174,7 +174,7 @@ $is_disabled = '';
 						<!-- PORTLET MAIN -->
 						<div class="portlet box blue">
                             <div class="portlet-title">
-                                <div class="caption">Job assigned</div>
+                                <div class="caption">Jobs</div>
                             </div>
                             <div class="portlet-body">
 								<div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample job 1</a></div>
@@ -191,7 +191,7 @@ $is_disabled = '';
                             <hr />
                         <div class="portlet box blue">
                             <div class="portlet-title">
-                                <div class="caption">Orders Associated</div>
+                                <div class="caption">Orders</div>
                             </div>
                             <div class="portlet-body">
 								<div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
@@ -202,8 +202,12 @@ $is_disabled = '';
                                 <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
                                 <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
                                 <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
-								<div class="clearfix"></div>
-							</div>
+
+                                <a href="<?php echo WEB_ROOT;?>documents/add" class="btn btn-warning margin-top-10">
+                                    Submit Order </a>
+                                <div class="clearfix"></div>
+
+                            </div>
                         </div>
 						<!-- END PORTLET MAIN -->
 					</div>
@@ -216,7 +220,7 @@ $is_disabled = '';
 									<div class="portlet-title tabbable-line">
 										<div class="caption caption-md">
 											<i class="icon-globe theme-font hide"></i>
-											<span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+											<span class="caption-subject font-blue-madison bold">Profile</span>
 										</div>
 										<ul class="nav nav-tabs">
 											<li class="active">
@@ -254,7 +258,7 @@ $is_disabled = '';
 											<div class="tab-pane active" id="tab_1_1">
 												<form role="form" action="#">
                                                     <div class="form-group">
-														<label class="control-label">User type</label>
+														<label class="control-label">Profile Type</label>
 														<select <?php echo $is_disabled?> class="form-control member_type">
                                                             <option value="Admin">Admin</option>
                                                             <option value="Member">Member</option>
@@ -507,15 +511,17 @@ $is_disabled = '';
                                             <div class="tab-pane" id="tab_1_6">
                                                 <div>
                                                 <ul class="nav nav-tabs">
-        											<li class="active">
-        												<a href="#subtab_1_3" data-toggle="tab">Help</a>
-        											</li>
-        											<li>
-        												<a href="#subtab_1_4" data-toggle="tab">Privacy code</a>
+
+
+                                                    <li class="active">
+        												<a href="#subtab_1_5" data-toggle="tab">Product Example</a>
         											</li>
                                                     <li class="">
-        												<a href="#subtab_1_5" data-toggle="tab">Product example</a>
-        											</li>
+                                                        <a href="#subtab_1_6" data-toggle="tab">Help</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#subtab_1_4" data-toggle="tab">Privacy Code</a>
+                                                    </li>
         											<li>
         												<a href="#subtab_1_6" data-toggle="tab">Terms</a>
         											</li>
@@ -573,7 +579,7 @@ $is_disabled = '';
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Privacy code
+                                								<i class="fa fa-gift"></i>Page Manager - Privacy Code
                                 							</div>
                                                             
                                 						</div>
@@ -616,7 +622,7 @@ $is_disabled = '';
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Product example
+                                								<i class="fa fa-gift"></i>Page Manager - Product Example
                                 							</div>
                                                             
                                 						</div>

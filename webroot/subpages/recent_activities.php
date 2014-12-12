@@ -19,7 +19,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 You have 4 pending tasks. <span class="label label-sm label-warning ">
+														 Lorem ipsum dolor sit amet <span class="label label-sm label-warning ">
 														Take action <i class="fa fa-share"></i>
 														</span>
 													</div>
@@ -43,7 +43,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 Finance Report for year 2013 has been released.
+                                                        Lorem ipsum dolorLorem ipsum dolor
 													</div>
 												</div>
 											</div>
@@ -65,7 +65,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 You have 5 pending membership that requires a quick review.
+                                                        Lorem ipsum dolorLorem ipsum dolorLorem ipsum dolor
 													</div>
 												</div>
 											</div>
@@ -86,7 +86,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 New order received with <span class="label label-sm label-success">
+                                                        Lorem ipsum dolor <span class="label label-sm label-success">
 														Reference Number: DR23923 </span>
 													</div>
 												</div>
@@ -108,7 +108,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 You have 5 pending membership that requires a quick review.
+                                                        Lorem ipsum dolorLorem ipsum dolorLorem ipsum dolorLorem ipsum dolorLorem ipsum dolor
 													</div>
 												</div>
 											</div>
@@ -129,7 +129,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 Web server hardware needs to be upgraded. <span class="label label-sm label-default ">
+                                                        Lorem ipsum dolorLorem ipsum dolorLorem ipsum dolor <span class="label label-sm label-default ">
 														Overdue </span>
 													</div>
 												</div>
@@ -152,7 +152,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 IPO Report for year 2013 has been released.
+                                                        Lorem ipsum dolorLorem ipsum dolor
 													</div>
 												</div>
 											</div>
@@ -174,7 +174,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 You have 4 pending tasks. <span class="label label-sm label-warning ">
+                                                        Lorem ipsum dolorLorem ipsum dolor <span class="label label-sm label-warning ">
 														Take action <i class="fa fa-share"></i>
 														</span>
 													</div>
@@ -198,7 +198,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 Finance Report for year 2013 has been released.
+                                                        Lorem ipsum dolor
 													</div>
 												</div>
 											</div>
@@ -220,7 +220,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 You have 5 pending membership that requires a quick review.
+                                                        Lorem ipsum dolorLorem ipsum dolorLorem ipsum dolor
 													</div>
 												</div>
 											</div>
@@ -241,7 +241,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 New order received with <span class="label label-sm label-success">
+                                                        Lorem ipsum dolor <span class="label label-sm label-success">
 														Reference Number: DR23923 </span>
 													</div>
 												</div>
@@ -263,7 +263,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 You have 5 pending membership that requires a quick review.
+                                                        Lorem ipsum dolorLorem ipsum dolorLorem ipsum dolor
 													</div>
 												</div>
 											</div>
@@ -284,7 +284,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 Web server hardware needs to be upgraded. <span class="label label-sm label-default ">
+                                                        Lorem ipsum dolorLorem ipsum dolor <span class="label label-sm label-default ">
 														Overdue </span>
 													</div>
 												</div>
@@ -307,7 +307,7 @@
 												</div>
 												<div class="cont-col2">
 													<div class="desc">
-														 IPO Report for year 2013 has been released.
+                                                        Lorem ipsum dolor
 													</div>
 												</div>
 											</div>

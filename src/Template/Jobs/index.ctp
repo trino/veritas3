@@ -1,5 +1,5 @@
 <h3 class="page-title">
-			Jobs 
+			Clients 
 			</h3>
     <div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -9,7 +9,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Jobs</a>
+						<a href="">Clients</a>
 					</li>
 				</ul>
 				
@@ -21,7 +21,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    Jobs
+                    Clients
                 </div>
             </div>    
             <div class="portlet-body">
@@ -29,7 +29,7 @@
                     <div id="sample_1_filter" class="dataTables_filter mar">
                         <form>
                             <label>                        
-                            <input class="form-control input-inline" type="search" placeholder=" Search for Job" aria-controls="sample_1"> <button type="submit" class="btn btn-primary">Search</button>
+                            <input class="form-control input-inline" type="search" placeholder=" Search Clients" aria-controls="sample_1"> <button type="submit" class="btn btn-primary">Search</button>
                             </label>
                         </form>
                     </div>

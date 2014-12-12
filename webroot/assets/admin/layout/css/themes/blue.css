@@ -1,4 +1,4 @@
-/*********** 
+/***********
 Page Header
 ***********/
 /* Header search bar, toggler button & top menu */
@@ -21,7 +21,7 @@ Page Header
   color: #6ba1d1;
 }
 .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle .badge.badge-default {
-  background-color: #d64635;
+  background-color: #45b6af;
   color: white;
 }
 .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle:hover {
@@ -69,11 +69,11 @@ Page Header
   background: #e4e4e4;
 }
 .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-toggle > .circle {
-  background-color: #d64635;
+  background-color: #45b6af;
   color: white;
 }
 .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-toggle > .corner {
-  border-color: transparent transparent transparent #d64635;
+  border-color: transparent transparent transparent #45b6af;
 }
 .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu .dropdown-menu-list .subject .from {
   color: #5b9bd1;
@@ -197,7 +197,7 @@ Page Header
 .page-header.navbar .hor-menu .navbar-nav > li.active > a, .page-header.navbar .hor-menu .navbar-nav > li.current > a,
 .page-header.navbar .hor-menu .navbar-nav > li.current > a {
   color: white;
-  background: #d64635 !important;
+  background: #45b6af !important;
 }
 .page-header.navbar .hor-menu .navbar-nav > li.active > a > i,
 .page-header.navbar .hor-menu .navbar-nav > li.active > a > i, .page-header.navbar .hor-menu .navbar-nav > li.current > a > i,
@@ -205,7 +205,7 @@ Page Header
   color: #90b8db;
 }
 .page-header.navbar .hor-menu .navbar-nav > li.active .selected, .page-header.navbar .hor-menu .navbar-nav > li.current .selected {
-  border-top: 6px solid #d64635;
+  border-top: 6px solid #45b6af;
 }
 .page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu {
   box-shadow: 5px 5px rgba(57, 121, 178, 0.2);
@@ -275,7 +275,7 @@ Page Header
 .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a:hover, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.current > a,
 .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.current > a:hover {
   color: white;
-  background: #d64635;
+  background: #45b6af;
 }
 .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a > i,
 .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a:hover > i, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.current > a > i,
@@ -378,14 +378,14 @@ Page Header
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a,
 .page-sidebar .page-sidebar-menu > li.active > a,
 .page-sidebar .page-sidebar-menu > li.active.open > a {
-  background: #d64635;
+  background: #45b6af;
   border-top-color: transparent;
   color: white;
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a:hover,
 .page-sidebar .page-sidebar-menu > li.active > a:hover,
 .page-sidebar .page-sidebar-menu > li.active.open > a:hover {
-  background: #d64635;
+  background: #45b6af;
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a > i,
 .page-sidebar .page-sidebar-menu > li.active > a > i,
@@ -484,13 +484,13 @@ Page Header
 .page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li.active > a,
 .page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li.active.open > a {
   background: #38648b;
-  border-left: 4px solid #d64635;
+  border-left: 4px solid #45b6af;
   color: #f1f1f1;
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li.active > a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li.active.open > a:hover,
 .page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li.active > a:hover,
 .page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li.active.open > a:hover {
-  border-left: 4px solid #d64635;
+  border-left: 4px solid #45b6af;
   background: #3c6c95;
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li.active > a > i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li.active.open > a > i,
@@ -585,11 +585,11 @@ Page Header
 }
 .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-light > li.active > a, .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-light > li.active.open > a {
   border-left: 0;
-  border-right: 4px solid #d64635;
+  border-right: 4px solid #45b6af;
 }
 .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-light > li.active > a:hover, .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-light > li.active.open > a:hover {
   border-left: 0;
-  border-right: 4px solid #d64635;
+  border-right: 4px solid #45b6af;
 }
 
 /*************
@@ -605,8 +605,8 @@ Quick Sidebar Layout
   background: #3c7fb9;
 }
 
-/*** 
-Quick Sidebar Toggler 
+/***
+Quick Sidebar Toggler
 ***/
 .page-quick-sidebar-toggler {
   background: #5d98cb;
@@ -733,7 +733,7 @@ Quick Sidebar Content
 }
 
 /******
-Page Footer 
+Page Footer
 ******/
 .page-footer .page-footer-inner {
   color: #c9dae9;

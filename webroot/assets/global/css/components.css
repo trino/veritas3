@@ -1,5 +1,5 @@
 /*********************************
- METRONIC SQUARE STYLE COMPONENTS 
+ METRONIC SQUARE STYLE COMPONENTS
 *********************************/
 /***
 Rounded corners reset
@@ -50,8 +50,8 @@ body {
 }
 
 /*
- Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't 
- properly apply the media queries in Bootstrap's CSS. To address this, 
+ Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't
+ properly apply the media queries in Bootstrap's CSS. To address this,
  you can optionally include the following CSS and JavaScript to work around this problem until Microsoft issues a fix.
 */
 @-webkit-viewport {
@@ -70,8 +70,8 @@ body {
   width: device-width;
 }
 /*
- Internet Explorer 10 doesn't differentiate device width from viewport width, 
- and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, following CSS code applied 
+ Internet Explorer 10 doesn't differentiate device width from viewport width,
+ and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, following CSS code applied
 */
 @-ms-viewport {
   width: auto !important;
@@ -167,9 +167,9 @@ h6.block {
 
 /* Links */
 a {
-  text-shadow: none;
-  color: #5b9bd1;
-}
+     text-shadow: none;
+ }
+
 a:hover {
   color: #3175af;
 }
@@ -465,7 +465,7 @@ Users
 }
 
 /***
-Top News Blocks(new in v1.2.2) 
+Top News Blocks(new in v1.2.2)
 ***/
 .top-news {
   color: #fff;
@@ -916,7 +916,7 @@ Simple Line Icons Demo
     width: 33.333%;
   }
 }
-/*** 
+/***
 Glyphicons Demo
 ***/
 .glyphicons-demo ul {
@@ -1064,7 +1064,7 @@ Custom Bootstrap Badges
 }
 
 .badge-primary {
-  background-color: #428bca;
+  background-color: #578ebe;
   background-image: none;
 }
 
@@ -1201,7 +1201,7 @@ Customized Bootstrap Buttons
 
 .btn-primary {
   color: white;
-  background-color: #428bca;
+  background-color: #578ebe;
   border-color: #357ebd;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
@@ -1225,11 +1225,11 @@ Customized Bootstrap Buttons
   background-image: none;
 }
 .btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active {
-  background-color: #428bca;
+  background-color: #578ebe;
   border-color: #357ebd;
 }
 .btn-primary .badge {
-  color: #428bca;
+  color: #578ebe;
   background-color: white;
 }
 
@@ -1742,7 +1742,7 @@ Chats
 }
 
 /***
-Customized Bootstrap Close Icon 
+Customized Bootstrap Close Icon
 ***/
 .close {
   display: inline-block;
@@ -2804,7 +2804,7 @@ h1 .label, h2 .label, h3 .label, h4 .label, h5 .label, h6 .label {
 }
 
 .label-primary {
-  background-color: #428bca;
+  background-color: #578ebe;
 }
 .label-primary[href]:hover, .label-primary[href]:focus {
   background-color: #3071a9;
@@ -2862,7 +2862,7 @@ Text states
 }
 
 .text-primary {
-  color: #428bca;
+  color: #578ebe;
 }
 
 .text-success {
@@ -3178,7 +3178,7 @@ Metro icons
 }
 
 /***
-Customized Bootstrap Modal 
+Customized Bootstrap Modal
 ***/
 .modal {
   z-index: 10050 !important;
@@ -3405,7 +3405,7 @@ Customized Bootstrap Panels
 }
 .panel-primary > .panel-heading {
   color: #d8e3f2;
-  background-color: #428bca;
+  background-color: #578ebe;
   border-color: #3595bd;
 }
 .panel-primary > .panel-heading + .panel-collapse .panel-body {
@@ -3508,7 +3508,7 @@ name .popover .popover-content,
 .popover.name .popover-title,
 name .popover .popover-content,
 .popover.name .popover-content {
-  color: #428bca;
+  color: #578ebe;
 }
 
 .popover.name .popover-title,
@@ -4821,7 +4821,7 @@ Custom tables
 }
 
 .table-advance td.highlight div.primary {
-  border-left: 2px solid #428bca;
+  border-left: 2px solid #578ebe;
 }
 
 .table-advance td.highlight div.success {
@@ -4895,7 +4895,7 @@ Light Table
 }
 
 /***
-Customized Bootstrap Tabs 
+Customized Bootstrap Tabs
 ***/
 /* Tabs and pills */
 .nav-tabs,
@@ -5270,7 +5270,7 @@ Tiles(new in v1.1.1)
   line-height: 20px;
   overflow: hidden;
   border: 4px solid transparent;
-  margin: 0 10px 10px 0;
+  margin: 0 10px 30px 0;
 }
 .tiles .tile:after, .tiles .tile:before {
   content: "";
@@ -5571,7 +5571,7 @@ Blue Default
 /* Button */
 .blue.btn {
   color: white;
-  background-color: #4b8df8;
+  background-color: #578ebe;
   border-color: "";
 }
 .blue.btn:hover, .blue.btn:focus, .blue.btn:active, .blue.btn.active {
@@ -5593,22 +5593,22 @@ Blue Default
   background-image: none;
 }
 .blue.btn.disabled, .blue.btn.disabled:hover, .blue.btn.disabled:focus, .blue.btn.disabled:active, .blue.btn.disabled.active, .blue.btn[disabled], .blue.btn[disabled]:hover, .blue.btn[disabled]:focus, .blue.btn[disabled]:active, .blue.btn[disabled].active, fieldset[disabled] .blue.btn, fieldset[disabled] .blue.btn:hover, fieldset[disabled] .blue.btn:focus, fieldset[disabled] .blue.btn:active, fieldset[disabled] .blue.btn.active {
-  background-color: #4b8df8;
+  background-color: #578ebe;
 }
 .blue.btn .badge {
-  color: #4b8df8;
+  color: #578ebe;
   background-color: white;
 }
 
 /* Button Strip */
 .btn.blue-stripe {
-  border-left: 3px solid #4b8df8;
+  border-left: 3px solid #578ebe;
 }
 
 /* Portlet */
 .portlet > .portlet-body.blue,
 .portlet.blue {
-  background-color: #4b8df8;
+  background-color: #578ebe;
 }
 
 .portlet.solid.blue > .portlet-title,
@@ -5643,7 +5643,7 @@ Blue Default
   border-top: 0;
 }
 .portlet.box.blue > .portlet-title {
-  background-color: #4b8df8;
+  background-color: #578ebe;
 }
 .portlet.box.blue > .portlet-title > .caption {
   color: white;
@@ -5667,7 +5667,7 @@ Blue Default
 
 /* Statistic Block */
 .dashboard-stat.blue {
-  background-color: #4b8df8;
+  background-color: #578ebe;
 }
 .dashboard-stat.blue.dashboard-stat-light:hover {
   background-color: #3781f7;
@@ -5692,15 +5692,15 @@ Blue Default
 
 /* General Element */
 .bg-blue {
-  border-color: #4b8df8 !important;
+  border-color: #578ebe !important;
   background-image: none !important;
-  background-color: #4b8df8 !important;
+  background-color: #578ebe !important;
   color: white !important;
 }
 
 /* General Text & Icon Font Colors */
 .font-blue {
-  color: #4b8df8 !important;
+  color: #578ebe !important;
 }
 
 /***
@@ -6261,7 +6261,7 @@ Blue Stell
 /* Button */
 .blue-steel.btn {
   color: white;
-  background-color: #4b77be;
+  background-color: #578ebe;
   border-color: "";
 }
 .blue-steel.btn:hover, .blue-steel.btn:focus, .blue-steel.btn:active, .blue-steel.btn.active {
@@ -6283,22 +6283,22 @@ Blue Stell
   background-image: none;
 }
 .blue-steel.btn.disabled, .blue-steel.btn.disabled:hover, .blue-steel.btn.disabled:focus, .blue-steel.btn.disabled:active, .blue-steel.btn.disabled.active, .blue-steel.btn[disabled], .blue-steel.btn[disabled]:hover, .blue-steel.btn[disabled]:focus, .blue-steel.btn[disabled]:active, .blue-steel.btn[disabled].active, fieldset[disabled] .blue-steel.btn, fieldset[disabled] .blue-steel.btn:hover, fieldset[disabled] .blue-steel.btn:focus, fieldset[disabled] .blue-steel.btn:active, fieldset[disabled] .blue-steel.btn.active {
-  background-color: #4b77be;
+  background-color: #578ebe;
 }
 .blue-steel.btn .badge {
-  color: #4b77be;
+  color: #578ebe;
   background-color: white;
 }
 
 /* Button Strip */
 .btn.blue-steel-stripe {
-  border-left: 3px solid #4b77be;
+  border-left: 3px solid #578ebe;
 }
 
 /* Portlet */
 .portlet > .portlet-body.blue-steel,
 .portlet.blue-steel {
-  background-color: #4b77be;
+  background-color: #578ebe;
 }
 
 .portlet.solid.blue-steel > .portlet-title,
@@ -6333,7 +6333,7 @@ Blue Stell
   border-top: 0;
 }
 .portlet.box.blue-steel > .portlet-title {
-  background-color: #4b77be;
+  background-color: #578ebe;
 }
 .portlet.box.blue-steel > .portlet-title > .caption {
   color: white;
@@ -6357,7 +6357,7 @@ Blue Stell
 
 /* Statistic Block */
 .dashboard-stat.blue-steel {
-  background-color: #4b77be;
+  background-color: #578ebe;
 }
 .dashboard-stat.blue-steel.dashboard-stat-light:hover {
   background-color: #416db4;
@@ -6382,15 +6382,15 @@ Blue Stell
 
 /* General Element */
 .bg-blue-steel {
-  border-color: #4b77be !important;
+  border-color: #578ebe !important;
   background-image: none !important;
-  background-color: #4b77be !important;
+  background-color: #578ebe !important;
   color: white !important;
 }
 
 /* General Text & Icon Font Colors */
 .font-blue-steel {
-  color: #4b77be !important;
+  color: #578ebe !important;
 }
 
 /***
@@ -12212,13 +12212,36 @@ Transparent Button
   color: #888;
 }
 
+
+
 .secondary_logo{
-
     display: block;
-
-
     margin-right: 19px;
-    margin-top: 15px;
-
+    padding: 20px;
     max-width:100%;
+}
+
+
+.whiteCorner {
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    background-image: url("../img/WhiteCorner.png") !important;
+float: right;
+}
+
+.dusk {
+    z-index: 2;
+    width: 90%;
+    height: 7%;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100% 8px;
+    position: absolute;
+    margin:-25px 0 0 0;
+    opacity: 0.75;
+    background-image: url("../img/dusk.png") !important;
+    background-repeat: no-repeat !important;
+
+
 }

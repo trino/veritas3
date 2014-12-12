@@ -20,7 +20,7 @@ Login page
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
   border-radius: 7px;
-  width: 400px;
+  
   /*margin: 40px auto 10px auto;*/
   padding: 30px;
   padding-top: 10px;
@@ -84,7 +84,7 @@ Login page
 .login .content .register-form {
   display: none;
 }
-
+.register-form{border-radius:0!important;}
 .login .content .form-title {
   font-weight: 300;
   margin-bottom: 25px;

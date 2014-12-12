@@ -1,8 +1,7 @@
 
-			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Dashboard <small>reports & statistics</small>
+			MEE Dashboard <small>Driver Qualification System</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -21,8 +20,15 @@
 					</div>
 				</div>-->
 			</div>
-			
-			<?php include('subpages/home_blocks.php');?>			
+
+
+
+            <?php include('subpages/home_topblocks.php');?>
+            <div class="clearfix"></div>
+
+
+
+            <?php include('subpages/home_blocks.php');?>
 			<div class="clearfix"></div>
 			
 			

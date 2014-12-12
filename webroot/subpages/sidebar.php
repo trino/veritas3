@@ -39,7 +39,7 @@
 				<li class="<?php echo($this->request['controller']=='Users' && $this->request['action']!='logo')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-user"></i>
-					<span class="title">Users</span>
+					<span class="title">Profiles</span>
                     <?php echo($this->request['controller']=='Users')?'<span class="selected"></span>':'';?>
                     
 					<span class="arrow "></span>
@@ -48,7 +48,7 @@
 						<li <?php echo($this->request['controller']=='Users' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>users">
 							<i class="icon-list"></i>
-							List Users</a>
+							List Profiles</a>
 						</li>
 						<li <?php echo($this->request['controller']=='Users' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>users/add">
@@ -60,8 +60,8 @@
 				</li>
                 	<li class="<?php echo($this->request['controller']=='Jobs' && $this->request['action']!='quickcontact')?'active open':'';?>">
 					<a href="javascript:;">
-					<i class="icon-briefcase"></i>
-					<span class="title">Jobs</span>
+					<i class="icon-globe"></i>
+					<span class="title">Clients</span>
                     <?php echo($this->request['controller']=='Jobs')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
@@ -69,12 +69,12 @@
 						<li <?php echo($this->request['controller']=='Jobs' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>jobs">
 							<i class="icon-list"></i>
-							List jobs</a>
+							List Clients</a>
 						</li>
 						<li <?php echo($this->request['controller']=='Jobs' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>jobs/add">
 							<i class="icon-plus"></i>
-							Add job</a>
+							Add new Client</a>
 						</li>
                         <!--<li>
 							<a href="<?php echo WEB_ROOT;?>jobs/add">
@@ -117,42 +117,20 @@
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/index">
                             <i class="icon-list"></i>
-							List documents</a>
+							List Documents</a>
 						</li>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/add">
                             <i class="icon-plus"></i>
-							New upload</a>
+							Submit Document</a>
 						</li>
 						
 												
 					</ul>
 				</li>
-                <!--<li class="<?php echo($this->request['controller']=='Quickcontacts')?'active open':'';?>">
-                    <a href="javascript:;">
-					<i class="icon-user-follow"></i>
-					<span class="title">Quick Contacts</span>
-					<?php echo($this->request['controller']=='Quickcontacts')?'<span class="selected"></span>':'';?>
-					<span class="arrow "></span>
-					</a>
-                    <ul class="sub-menu">
-						<li <?php echo($this->request['controller']=='Quickcontacts' && $this->request['action']=='index')?'class="active"':'';?>>
-							<a href="<?php echo $this->request->webroot;?>quickcontacts">
-							<i class="icon-list"></i>
-							List quick contacts</a>
-						</li>
-						<li <?php echo($this->request['controller']=='Quickcontacts' && $this->request['action']=='add')?'class="active"':'';?>>
-							<a href="<?php echo $this->request->webroot;?>quickcontacts/add">
-							<i class="icon-plus"></i>
-							Add quick contact</a>
-						</li>
-                        
-						
-					</ul>
-                </li>-->
 
-				
-				
+               
+				<!--
                 <li class="<?php echo($this->request['controller']=='Pages' && $this->request['action']=='cms' )?'active open':'';?> last">
                     <a href="javascript:;">
 					<i class="icon-rocket"></i>
@@ -188,7 +166,7 @@
 						</li>
 						
 					</ul>
-                </li>
+                </li>-->
                 <!--<li class="last">
 					<img src="<?php echo $this->request->webroot;?>img/logos/ISBWhite.png" />
                </li>-->

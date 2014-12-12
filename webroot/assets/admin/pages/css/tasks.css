@@ -72,9 +72,49 @@ Tasks Widget
 .fontRed{color:red;font-weight: bold;}
 .nopad{padding: 0!important;}
 .mar{margin:15px 0;}
-.paginator{text-align:center;margin-top:30px;background:#428BCA;}
+.paginator{text-align:center;margin-top:30px;background:#578ebe;}
 .center{text-align:center;}
 .no-bullet{list-style:none;}
+.c_blue{color:#333399;}
+.c_green{color:#008000;}
+.c_orange{color:#FF6600;}
+.alignleft{text-align:left!important;}
+
+.forview .content {
+  background-color: #eceef1;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  
+  /*margin: 40px auto 10px auto;*/
+  padding: 30px;
+  padding-top: 10px;
+  margin: 0 5px;
+  overflow: hidden;
+  position: relative;
+  min-height: 390px;
+}
+
+.forview .content h3 {
+  color: #4db3a5;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 400 !important;
+}
+
+.forview .content h4 {
+  color: #555;
+}
+.clean{clear:both;}
+.page-logo img {
+    margin-top: 4px !important;
+    max-height: 100%!important;
+    max-width: 100%!important;
+    width: 140px!important;
+}
+.nodisplay{display:none;}
 @media only screen and (max-width: 480px) {
   .tasks-widget .task-config-btn {
     float: inherit;

@@ -98,25 +98,44 @@
                                             <th class="center" colspan="2">Discovery</th>
                                         </tr>
                                     <tr>
-                                        <td>When did you get your AZ License and have you been commercially driving consistently since you got your license?</td><td><input type="text" class="form-control" placeholder="Month" /><input type="text" class="form-control" placeholder="Year" /></td>
+                                        <td>When did you get your AZ License and have you been commercially driving consistently since you got your license?</td><td><input type="text" class="form-control" placeholder="MM/YYYY" /></td>
                                     </tr>
                                     
                                     <tr>
                                         <td>Are you currently driving for another carrier?If yes, who and for how long?</td><td><textarea class="form-control"></textarea></td>
                                     </tr>
                                     
+                                        <tr><td colspan="2"><strong>Tell me about the work you are doing?</strong></td></tr>
                                     <tr>
-                                        <td>Tell me about the work you are doing?</td>
-                                        <td>
-                                            <ul class="no-bullet">
-                                                <li >Miles</li><input type="text" class="form-control" />
-                                                <li >Time out/home</li><input type="text" class="form-control" />
-                                                <li >Locations</li><input type="text" class="form-control" />
-                                                <li >Border Cross</li><input type="text" class="form-control" />
-                                                <li >Type of equipment</li><input type="text" class="form-control" />
-                                            </ul>
-                                        </td>
-                                    </tr> 
+                                        <td colspan="2">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-3"> Miles </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-3"> Time out/home </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-3"> Locations </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-3"> Border Cross </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-3"> Type of equipment </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    </tr>
                                     
                                     <tr>
                                         <td>What did you like most about the job?</td><td><textarea class="form-control"></textarea></td>
@@ -170,7 +189,7 @@
                                             <th class="center" colspan="2">Expectations</th>
                                         </tr>
                                     <tr>
-                                        <td>As we are a long haul company, driving to the USA is a requirement for most runs. Are you willing cross the border? Have you ever crossed the border with a load?</td><td><input type="text" class="form-control" placeholder="Month" /><input type="text" class="form-control" placeholder="Year" /></td>
+                                        <td>As we are a long haul company, driving to the USA is a requirement for most runs. Are you willing cross the border? Have you ever crossed the border with a load?</td><td><input type="text" class="form-control" placeholder="MM/YYYY" /></td>
                                     </tr> 
                                     
                                     <tr>
@@ -213,17 +232,39 @@
                                         <td>Are you interviewing with other companies?</td><td><textarea class="form-control"></textarea></td>
                                     </tr> 
                                     
+                                     <tr><td colspan="2"><strong>Explain the next steps:</strong></td></tr>
                                     <tr>
-                                        <td>Explain the next steps:</td>
-                                            <td>
-                                            <ul class="no-bullet">
-                                                <li>Request the completed application </li><textarea class="form-control"></textarea>
-                                                <li>Schedule for a road test</li><textarea class="form-control"></textarea>
-                                                <li>Criminal Search</li><textarea class="form-control"></textarea>
-                                                <li>Med/Drug screen</li><textarea class="form-control"></textarea>
-                                            </ul>
-                                        </td>
-                                    </tr> 
+                                        <td colspan="2">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-6"> Request the completed application </label>
+                                            <div class="col-md-6">
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-6">Schedule for a road test</label>
+                                            <div class="col-md-6">
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-6">Criminal Search</label>
+                                            <div class="col-md-6">
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-6">Med/Drug screen</label>
+                                            <div class="col-md-6">
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    </tr>
+                                    
                                     
                                     <tr>
                                             <th class="center" colspan="2">Questions for Trainees</th>
@@ -260,17 +301,36 @@
                                         <td>Did you get your license on the 1st try:If no, how many attempts?</td><td><textarea class="form-control"></textarea></td>
                                     </tr>
                                     
+                                    <tr><td colspan="2"><strong>Have you driven since getting your AZ?  If so, please provide details:</strong></td></tr>
                                     <tr>
-                                        <td>Have you driven since getting your AZ?  If so, please provide details: </td>
-                                        <td>
-                                            <ul class="no-bullet">
-                                                <li >Miles</li><input type="text" class="form-control" />
-                                                <li >Time out/home</li><input type="text" class="form-control" />
-                                                <li >Locations</li><input type="text" class="form-control" />
-                                                <li >Border Cross</li><input type="text" class="form-control" />
-                                                <li >Type of equipment</li><input type="text" class="form-control" />
-                                            </ul>
-                                        </td>
+                                        <td colspan="2">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-3"> Miles </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-3"> Time out/home </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-3"> Locations </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-3"> Border Cross </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-3"> Type of equipment </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
                                     </tr>   
                                     
                                     <tr>

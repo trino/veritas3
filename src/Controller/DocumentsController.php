@@ -15,7 +15,7 @@ class DocumentsController extends AppController {
         ];
      public function initialize() {
         parent::initialize();
-        if(!$this->request->session()->read('User.id'))
+        if(!$this->request->session()->read('Profile.id'))
         {
             $this->redirect('/login');
         }
@@ -30,8 +30,8 @@ class DocumentsController extends AppController {
 
 
 	public function view($id = null) {
-		/*$user = $this->Clients->get($id);
-		$this->set('user', $user);*/
+		/*$profile = $this->Clients->get($id);
+		$this->set('profile', $profile);*/
         $this->set('disabled', 1);
         $this->render('add');
 	}
@@ -42,16 +42,16 @@ class DocumentsController extends AppController {
  * @return void
  */
 	public function add() {
-		/*$user = $this->Clients->newEntity($this->request->data);
+		/*$profile = $this->Clients->newEntity($this->request->data);
 		if ($this->request->is('post')) {
-			if ($this->Clients->save($user)) {
+			if ($this->Clients->save($profile)) {
 				$this->Flash->success('The user has been saved.');
 				return $this->redirect(['action' => 'index']);
 			} else {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('user'));*/
+		$this->set(compact('profile'));*/
         
 	}
 
@@ -63,19 +63,19 @@ class DocumentsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
-		/*$user = $this->Clients->get($id, [
+		/*$profile = $this->Clients->get($id, [
 			'contain' => []
 		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
-			$user = $this->Clients->patchEntity($user, $this->request->data);
-			if ($this->Clients->save($user)) {
+			$profile = $this->Clients->patchEntity($profile, $this->request->data);
+			if ($this->Clients->save($profile)) {
 				$this->Flash->success('The user has been saved.');
 				return $this->redirect(['action' => 'index']);
 			} else {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('user'));*/
+		$this->set(compact('profile'));*/
         $this->render('add');
 	}
 
@@ -87,9 +87,9 @@ class DocumentsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
-		/*$user = $this->Clients->get($id);
+		/*$profile = $this->Clients->get($id);
 		$this->request->allowMethod(['post', 'delete']);
-		if ($this->Clients->delete($user)) {
+		if ($this->Clients->delete($profile)) {
 			$this->Flash->success('The user has been deleted.');
 		} else {
 			$this->Flash->error('The user could not be deleted. Please, try again.');

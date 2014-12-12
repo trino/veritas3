@@ -12,7 +12,7 @@ class PagesController extends AppController {
 
      public function initialize() {
         parent::initialize();
-        if(!$this->request->session()->read('User.id'))
+        if(!$this->request->session()->read('Profile.id'))
         {
             $this->redirect('/login');
         }

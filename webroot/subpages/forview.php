@@ -723,7 +723,7 @@
         </li>
         <li>
             <a href="#tab_1_3" data-toggle="tab">
-                Recent Users </a>
+                Recent Profiles </a>
         </li>
     </ul>
 </div>

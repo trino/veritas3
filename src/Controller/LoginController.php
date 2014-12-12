@@ -7,7 +7,7 @@ use Cake\Event\Event;
 class LoginController extends AppController{
     public function initialize() {
         parent::initialize();
-        if($this->request->session()->read('User.id'))
+        if($this->request->session()->read('Profile.id'))
         {
             $this->redirect('/pages');
         }
@@ -18,14 +18,14 @@ class LoginController extends AppController{
         
         $this->layout = 'login';
         if(isset($_POST['username'])){
-        $this->loadModel('Users');
+        $this->loadModel('Profiles');
         unset($_POST['submit']);
-        $q = $this->Users->find()->where($_POST)->first();
+        $q = $this->Profiles->find()->where($_POST)->first();
         
         if($q)
         {
             //die('here');
-            $this->request->session()->write('User.id',$q->id);
+            $this->request->session()->write('Profile.id',$q->id);
             
         }
         $this->redirect('/pages');

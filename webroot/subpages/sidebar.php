@@ -36,22 +36,22 @@
 					</a>
 					
 				</li>
-				<li class="<?php echo($this->request['controller']=='Users' && $this->request['action']!='logo')?'active open':'';?>">
+				<li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-user"></i>
 					<span class="title">Profiles</span>
-                    <?php echo($this->request['controller']=='Users')?'<span class="selected"></span>':'';?>
+                    <?php echo($this->request['controller']=='Profiles')?'<span class="selected"></span>':'';?>
                     
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-						<li <?php echo($this->request['controller']=='Users' && $this->request['action']=='index')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>users">
+						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='index')?'class="active"':'';?>>
+							<a href="<?php echo WEB_ROOT;?>profiles">
 							<i class="icon-list"></i>
 							List Profiles</a>
 						</li>
-						<li <?php echo($this->request['controller']=='Users' && $this->request['action']=='add')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>users/add">
+						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='add')?'class="active"':'';?>>
+							<a href="<?php echo WEB_ROOT;?>profiles/add">
 							<i class="icon-plus"></i>
 							Create User Profile</a>
 						</li>
@@ -96,7 +96,7 @@
 							<i class="icon-home"></i>
 							Primary logo</a>
 						</li>
-						<li <?php echo($this->request['controller']=='Users' && $this->request['action']=='secondary')?'class="active"':'';?>>
+						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='secondary')?'class="active"':'';?>>
 							<a href="<?php echo $this->request->webroot;?>Logos/secondary">
 							<i class="icon-basket"></i>
 							Secondary logo</a>

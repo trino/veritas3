@@ -221,7 +221,7 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
-							<a href="<?php echo $this->request->webroot;?>users/view/1">
+							<a href="<?php echo $this->request->webroot;?>profiles/view/1">
 							<i class="icon-user"></i> My Settings </a>
 						</li>
 						
@@ -236,7 +236,7 @@
 						</li>
 						
 						<li>
-							<a href="<?php echo WEB_ROOT;?>users/logout">
+							<a href="<?php echo WEB_ROOT;?>profiles/logout">
 							<i class="icon-key"></i> Log Out </a>
 						</li>
 					</ul>
@@ -272,7 +272,7 @@
 				<ul class="nav nav-tabs nav-justified">
 					<li class="active">
 						<a href="#quick_sidebar_tab_1" data-toggle="tab">
-						Users <span class="badge badge-danger">2</span>
+						Profiles <span class="badge badge-danger">2</span>
 						</a>
 					</li>
 					<li>

@@ -985,13 +985,13 @@ function change_body()
      cls = $('body').attr('class');
     
     
-       
-    
+       var sidebar = $('#mainbar').attr('class');
+    alert(sidebar);
   
     $.ajax({
        url: "<?php echo $this->request->webroot;?>settings/changebody",
        type: "post",
-       data: "class="+cls,
+       data: "class="+cls+'&side='+sidebar,
        success: function(m){
         
        }
@@ -1005,7 +1005,7 @@ function change_body()
 
 function sider_bar()
 {
-    alert($('#mainbar').attr('class'));
+    
     $('#mainbar').on('focus',function(){
          var sidebar = $(this).attr('class');
          alert(sidebar);

@@ -23,7 +23,7 @@ class SettingsController extends AppController {
    {
         $setting = TableRegistry::get('Settings');
          $query = $setting->find();
-                 $query->select(['layout','body']);
+                 $query->select(['layout','body','sidebar']);
          $l = $query->first();
          
          $this->response->body(($l));
@@ -36,7 +36,7 @@ class SettingsController extends AppController {
          $setting = TableRegistry::get('Settings');
          $query = $setting->query();
                 $query->update()
-                ->set(['body' => $class])
+                ->set(['body' => $class,'sidebar'=>$_POST['side']])
                 ->where(['id' => 1])
                 ->execute();
          

@@ -986,7 +986,7 @@ function change_body()
     
     
        var sidebar = $('#mainbar').attr('class');
-    alert(sidebar);
+    //alert(sidebar);
   
     $.ajax({
        url: "<?php echo $this->request->webroot;?>settings/changebody",

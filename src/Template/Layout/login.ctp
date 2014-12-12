@@ -78,24 +78,20 @@
 <p>With MEE's easy to use platform, you can quickly and efficiently obtain all the required documents necessary to ensure the quality of your workforce. Please contact us for any further information.</p>
     <h3 class="form-title">Login to your account</h3>
 
-    <div class="alert alert-danger display-hide">
-        <button class="close" data-close="alert"></button>
-			<span>
-			Invalid username or password </span>
-    </div>
+    
     <div class="form-group">
         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
         <label class="control-label visible-ie8 visible-ie9">Username</label>
         <div class="input-icon">
             <i class="fa fa-user"></i>
-            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" required="required" />
         </div>
     </div>
     <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">Password</label>
         <div class="input-icon">
             <i class="fa fa-lock"></i>
-            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" required="required"/>
         </div>
     </div>
     <div class="form-actions">
@@ -158,28 +154,28 @@
     <label class="control-label visible-ie8 visible-ie9">Name of your Company</label>
     <div class="input-icon">
         <i class="fa fa-font"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Name of your Company" name="companyname"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="Name of your Company" name="companyname"  required="required" />
     </div>
 </div>
 <div class="form-group">
     <label class="control-label visible-ie8 visible-ie9">Signatory’s First Name</label>
     <div class="input-icon">
         <i class="fa fa-font"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Signatory's First Name" name="s_firstname"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="Signatory's First Name" name="s_firstname"  required="required"/>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label visible-ie8 visible-ie9">Signatory's Last Name</label>
     <div class="input-icon">
         <i class="fa fa-font"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Signatory's Last Name" name="s_lastname"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="Signatory's Last Name" name="s_lastname" required="required"/>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label visible-ie8 visible-ie9">Signatory's Phone Number</label>
     <div class="input-icon">
         <i class="fa fa-check"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Signatory's Phone Number" name="s_phone"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="Signatory's Phone Number" name="s_phone" required="required"/>
     </div>
 </div>
 <div class="form-group">
@@ -187,7 +183,7 @@
     <label class="control-label visible-ie8 visible-ie9">Signatory's Email Address</label>
     <div class="input-icon">
         <i class="fa fa-envelope"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Signatory's Email Address" name="s_email"/>
+        <input class="form-control placeholder-no-fix" type="email" placeholder="Signatory's Email Address" name="s_email" required="required"/>
     </div>
 </div>
 
@@ -195,7 +191,7 @@
     <label class="control-label visible-ie8 visible-ie9">Billing Address Street Name and Number</label>
     <div class="input-icon">
         <i class="fa fa-map-marker"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Billing Address Street Name & No." name="billingadd"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="Billing Address Street Name & No." name="billingadd" required="required"/>
     </div>
 </div>
 
@@ -203,7 +199,7 @@
     <label class="control-label visible-ie8 visible-ie9">City</label>
     <div class="input-icon">
         <i class="fa fa-location-arrow"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="City" name="city"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="City" name="city" required="required"/>
     </div>
 </div>
 
@@ -211,7 +207,7 @@
     <label class="control-label visible-ie8 visible-ie9">Postal Code</label>
     <div class="input-icon">
         <i class="fa fa-location-arrow"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Postal Code" name="postalcode"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="Postal Code" name="postalcode" required="required"/>
     </div>
 </div>
 
@@ -219,7 +215,7 @@
     <label class="control-label visible-ie8 visible-ie9">Country</label>
     <div class="input-icon">
         <i class="fa fa-map-marker"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Country" name="country"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="Country" name="country" required="required"/>
     </div>
 </div>
 
@@ -227,7 +223,7 @@
     <label class="control-label visible-ie8 visible-ie9">Province/State</label>
     <div class="input-icon">
         <i class="fa fa-map-marker"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="Province/State" name="province"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="Province/State" name="province" required="required"/>
     </div>
 </div>
 
@@ -235,21 +231,21 @@
     <label class="control-label visible-ie8 visible-ie9">Signatory’s First Name</label>
     <div class="input-icon">
         <i class="fa fa-font"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="User's First Name" name="u_firstname"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="User's First Name" name="u_firstname" required="required"/>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label visible-ie8 visible-ie9">Signatory's Last Name</label>
     <div class="input-icon">
         <i class="fa fa-font"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="User's Last Name" name="u_lastname"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="User's Last Name" name="u_lastname" required="required"/>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label visible-ie8 visible-ie9">Signatory's Phone Number</label>
     <div class="input-icon">
         <i class="fa fa-check"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="User's Phone Number" name="u_phone"/>
+        <input class="form-control placeholder-no-fix" type="text" placeholder="User's Phone Number" name="u_phone" required="required"/>
     </div>
 </div>
 <div class="form-group">
@@ -257,7 +253,7 @@
     <label class="control-label visible-ie8 visible-ie9">User's Email Address</label>
     <div class="input-icon">
         <i class="fa fa-envelope"></i>
-        <input class="form-control placeholder-no-fix" type="text" placeholder="User's Email Address" name="u_email"/>
+        <input class="form-control placeholder-no-fix" type="email" placeholder="User's Email Address" name="u_email" required="required"/>
     </div>
 </div>
 <!--

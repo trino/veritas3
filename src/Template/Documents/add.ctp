@@ -285,30 +285,4 @@ jQuery(document).ready(function() {
            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
         });
 });
-</script>:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-<script>
-function subform(form_type)
-{
-    var filename = form_type.replace(/\W/g, '_');
-    var filename = filename.toLowerCase();
-    $('.subform').show();   1
-    $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+filename);
-}
-jQuery(document).ready(function() {
-   $('#addfiles').click(function(){
-            //alert("ssss");
-           $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
-        });
-});
 </script>

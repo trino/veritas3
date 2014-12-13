@@ -162,7 +162,9 @@ Login page
 }
 
 .login .content .forget-password {
-  font-size: 14px;
+    border-top: 1px dotted #eee;
+
+    font-size: 14px;
   float: right;
   display: inline-block;
   margin-top: 10px;
@@ -227,6 +229,7 @@ Login page
   }
 
   .forget-password {
+
     display: inline-block;
     margin-top: 20px;
   }

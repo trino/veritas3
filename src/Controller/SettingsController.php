@@ -15,8 +15,33 @@ class SettingsController extends AppController {
  * @return void
  */
 	public function index() {
-    
+        
     
     }
+    
+   function get_settings()
+   {
+        $setting = TableRegistry::get('Settings');
+         $query = $setting->find();
+                 $query->select(['layout','body','sidebar']);
+         $l = $query->first();
+         
+         $this->response->body(($l));
+            return $this->response;
+         die();
+   }
+    function changebody()
+    {
+         $class = $_POST['class'];
+         $setting = TableRegistry::get('Settings');
+         $query = $setting->query();
+                $query->update()
+                ->set(['body' => $class,'sidebar'=>$_POST['side']])
+                ->where(['id' => 1])
+                ->execute();
+         
+         die();
+    }
+    
     
  }

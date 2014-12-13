@@ -146,8 +146,8 @@
     
 </div>
 <div class="portlet-body">
-<<<<<<< HEAD
-<div class="task-content">
+
+    <div class="task-content">
 <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 305px;"><div class="scroller" style="height: 305px; overflow: hidden; width: auto;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
 <!-- START TASK LIST -->
 

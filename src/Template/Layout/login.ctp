@@ -52,7 +52,7 @@
 
 <div class="content">
 
-        <img src="http://isbmee.com/wp-content/uploads/2014/10/MEELogo1.png" alt=""/>
+        <img src="http://isbmee.com/wp-content/uploads/2014/10/MEELogo1.png" alt="" style="max-width: 100%;"/>
 
 
 
@@ -73,9 +73,6 @@
 
 
         <form class="login-form" action="" method="post">
-<p><strong>Welcome to MEE</strong></p>
-<p>MEE is designed to help the transportation industry in qualifying drivers and getting them on the road efficiently, safely and cost effectively by providing all the required documents and services through a single website.</p>
-<p>With MEE's easy to use platform, you can quickly and efficiently obtain all the required documents necessary to ensure the quality of your workforce. Please contact us for any further information.</p>
     <h3 class="form-title">Login to your account</h3>
 
     
@@ -100,17 +97,25 @@
         <button type="submit" class="btn green-haze pull-right">
             Login <i class="m-icon-swapright m-icon-white"></i>
         </button>
+
+        <div class="forget-password">
+            <p>
+                Forgot your password? Click <a href="javascript:;" id="forget-password">
+                    here </a>
+                to reset.
+            </p>
+        </div>
     </div>
 
-    <div class="forget-password">
-        <h4>Forgot your password?</h4>
-        <p>
-            Click <a href="javascript:;" id="forget-password">
-                here </a>
-            to reset your password.
-        </p>
-    </div>
+
     <div class="create-account">
+
+
+        <p><strong>Welcome to MEE</strong></p>
+        <p>MEE is designed to help the transportation industry in qualifying drivers and getting them on the road efficiently, safely and cost effectively by providing all the required documents and services through a single website.</p>
+        <p>With MEE's easy to use platform, you can quickly and efficiently obtain all the required documents necessary to ensure the quality of your workforce. Please contact us for any further information.</p>
+
+
         <p>
             Interested in this product?&nbsp; <a href="javascript:;" id="register-btn">
                 Create an account </a>
@@ -144,12 +149,9 @@
 <!-- BEGIN REGISTRATION FORM -->
 
 <form class="register-form" action="index.html" method="post">
-<p><strong>Register</strong></p>
-<p>By registering with MEE, you will have access to our online store where you may place your orders and begin qualifying candidates with a few simple clicks. We will just need a few bits of information. You will receive a confirmation email once we have activated your account. Thank you for choosing MEE.</p>
 <h3>Sign Up</h3>
-<p>
-    Enter your business details below:
-</p>
+    <p>By registering with MEE, you will have access to our online store where you may place your orders and begin qualifying candidates with a few simple clicks. We will just need a few bits of information. You will receive a confirmation email once we have activated your account. Thank you for choosing MEE.</p>
+
 <div class="form-group">
     <label class="control-label visible-ie8 visible-ie9">Name of your Company</label>
     <div class="input-icon">
@@ -158,7 +160,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label visible-ie8 visible-ie9">Signatory’s First Name</label>
+    <label class="control-label visible-ie8 visible-ie9">Signatoryï¿½s First Name</label>
     <div class="input-icon">
         <i class="fa fa-font"></i>
         <input class="form-control placeholder-no-fix" type="text" placeholder="Signatory's First Name" name="s_firstname"  required="required"/>
@@ -228,7 +230,7 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label visible-ie8 visible-ie9">Signatory’s First Name</label>
+    <label class="control-label visible-ie8 visible-ie9">Signatoryï¿½s First Name</label>
     <div class="input-icon">
         <i class="fa fa-font"></i>
         <input class="form-control placeholder-no-fix" type="text" placeholder="User's First Name" name="u_firstname" required="required"/>

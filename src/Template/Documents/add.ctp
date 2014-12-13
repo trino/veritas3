@@ -116,28 +116,18 @@ $is_disabled = '';
                                                 ?>
 											</div>
 											<div class="<?php echo $tab;?>" id="tab3">
-												
+												<?php include('subpages/document_tab_3.php');?>
 											</div>
 											<div class="<?php echo $tab;?>" id="tab4">
+                                                <?php
+                                                    include('subpages/driver_evaluation_form.php');
+                                                ?>
+												
+											</div>
+                                            <div class="<?php echo $tab;?>" id="tab5">
 												<?php
                                                     include('subpages/forview.php');
                                                 ?>
-											</div>
-                                            <div class="<?php echo $tab;?>" id="tab5">
-												<h3 class="block">Finalize</h3>
-												<div class="table-scrollable">
-                                                    <table class="table table-striped">
-                                                        <tr><td>Original CVOR abstract (30 days old or less) for Ontario applicants.</td><td><a class="btn blue">Browse</a></td></tr>
-                                                        <tr><td>Original Drivers Abstract (30 days old or less)</td><td><a class="btn blue">Browse</a></td></tr>
-                                                        <tr><td>Copy of Drivers License</td><td><a class="btn blue">Browse</a></td></tr>
-                                                        <tr><td>Copy of your FAST card</td><td><a class="btn blue">Browse</a></td></tr>
-                                                        <tr><td>Original Criminal Record Search (within 90 days)</td><td><a class="btn blue">Browse</a></td></tr>
-                                                        <tr><td>Proof of Citizenship (birth certificate, passport or Canadian citizenship/US Visa)</td><td><a class="btn blue">Browse</a></td></tr>
-                                                        <tr><td>Completion of an on road evaluation</td><td><a class="btn blue">Browse</a></td></tr>
-                                                    </table>
-
-                                                </div>
-
 											</div>
                                             <?php
 

@@ -50,35 +50,44 @@ $is_disabled = '';
 											<li>
 												<a href="#tab1" data-toggle="tab" class="step">
 												<span class="number">
-												1 </span>
+												1 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Document info </span>
+												<i class="fa fa-check"></i> Pre-screening </span>
 												</a>
 											</li>
 											<li>
 												<a href="#tab2" data-toggle="tab" class="step">
 												<span class="number">
-												2 </span>
+												2 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Attachments </span>
+												<i class="fa fa-check"></i> Interview Driver Application </span>
 												</a>
 											</li>
 											<li>
 												<a href="#tab3" data-toggle="tab" class="step active">
 												<span class="number">
-												3 </span>
+												3 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Sub-document </span>
+												<i class="fa fa-check"></i> Place MEE Order </span>
 												</a>
 											</li>
 											<li>
 												<a href="#tab4" data-toggle="tab" class="step">
 												<span class="number">
-												4 </span>
+												4 </span><br />
+												<span class="desc">
+												<i class="fa fa-check"></i> Road Test </span>
+												</a>
+											</li>
+                                            <li>
+												<a href="#tab5" data-toggle="tab" class="step">
+												<span class="number">
+												5 </span><br />
 												<span class="desc">
 												<i class="fa fa-check"></i> Finalize </span>
 												</a>
 											</li>
+                                            
 										</ul>
 										<div id="bar" class="progress progress-striped" role="progressbar">
 											<div class="progress-bar progress-bar-info">
@@ -97,122 +106,24 @@ $is_disabled = '';
 												Your form validation is successful!
 											</div>
 											<div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab1">
-												<h3 class="block">Please provide order info</h3>
-
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3">Profile <span class="required">
-													* </span>
-                                                    </label>
-                                                    <div class="col-md-4">
-                                                        <select <?php echo $is_disabled;?> id="document_type" class="form-control" name="document_type">
-                                                            <option value="">Select Profile</option>
-                                                            <option value="contract">John Q Sample</option>
-                                                            <option value="contract">John Q Sample</option>
-                                                            <option value="contract">John Q Sample</option>
-                                                            <option value="contract">John Q Sample</option>
-                                                            <option value="contract">John Q Sample</option>
-                                                            <option value="contract">John Q Sample</option>
-                                                            <option value="contract">John Q Sample</option>
-                                                            <option value="contract">John Q Sample</option>
-                                                            <option value="contract">John Q Sample</option>
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-
-												<div class="form-group">
-													<label class="control-label col-md-3">Document type <span class="required">
-													* </span>
-													</label>
-													<div class="col-md-4">
-														<select <?php echo $is_disabled;?> id="document_type" class="form-control" name="document_type">
-                                                        <option value="">Choose Document Type</option>
-                                                        <option value="contract">Contracts</option>
-                                                        <option value="evidence">Evidence</option>
-                                                        <option value="template">Templates</option>
-                                                        <option value="report">Report</option>
-                                                        <option value="siteOrder">Site Orders</option>
-                                                        <option value="training">Training</option>
-                                                        <option value="employee">Employee</option>
-                                                        <option value="KPIAudits">KPI Audits</option>
-                                                        <option value="deployment_rate">Deployment</option>
-                                                        <option value="orders">Orders</option>
-                                                        </select>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Uploaded by <span class="required">
-													* </span>
-													</label>
-													<div class="col-md-4">
-														<input <?php echo $is_disabled;?> type="text" class="form-control" name="" id="" value="Admin" disabled="" />
-														<span class="help-block">
-														Provide your password. </span>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Uploaded on <span class="required">
-													* </span>
-													</label>
-													<div class="col-md-4">
-														<input <?php echo $is_disabled;?> type="text" class="form-control" name="" value="<?php echo date('Y-m-d H:i:s')?>" disabled=""/>
-														<span class="help-block">
-														Confirm your password </span>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">Description <span class="required">
-													* </span>
-													</label>
-													<div class="col-md-4">
-														<textarea <?php echo $is_disabled;?> class="form-control" name="description"></textarea>
-
-													</div>
-												</div>
+												<?php
+                                                    include('subpages/company_pre_screen_question.php');
+                                                ?>
 											</div>
 											<div class="<?php echo $tab;?>" id="tab2">
-												<h3 class="block">Atttach Image/Video/Documents</h3>
-												<div class="form-group">
-													<label class="control-label col-md-3">Attach file <span class="required">
-													* </span>
-													</label>
-													<div class="col-md-4">
-														<a <?php echo $is_disabled;?> href="#" class="btn btn-success">Browse</a> <a id="addfiles" class="btn btn-primary" href="javascript:void(0)">Add More +</a>
-                                                        <div id="doc"></div>
-													</div>
-												</div>
-
+												<?php
+                                                    include('subpages/driver_application.php');
+                                                ?>
 											</div>
 											<div class="<?php echo $tab;?>" id="tab3">
-												<h3 class="block">Choose sub-document</h3>
-												<div class="form-group">
-													<label class="control-label col-md-3">Sub-document <span class="required">
-													* </span>
-													</label>
-													<div class="col-md-4">
-														<select <?php echo $is_disabled;?> class="form-control" onchange="subform($(this).val());">
-
-                                                            <option value="">Choose sub-document</option>
-
-                                                            <option value="Company pre-screen question">Company pre-screen questions</option>
-
-                                                            <option value="Driver application">Driver application</option>
-
-                                                            <option value="Driver evaluation form">Driver evaluation form</option>
-
-                                                            <option value="Employment verification form">Employment verification form</option>
-
-                                                            <option value="Consent form">Consent form</option>
-
-                                                        </select>
-													</div>
-												</div>
-                                                <div style="display: none;" class="subform">
-                                                </div>
+												
 											</div>
 											<div class="<?php echo $tab;?>" id="tab4">
+												<?php
+                                                    include('subpages/forview.php');
+                                                ?>
+											</div>
+                                            <div class="<?php echo $tab;?>" id="tab5">
 												<h3 class="block">Finalize</h3>
 												<div class="table-scrollable">
                                                     <table class="table table-striped">

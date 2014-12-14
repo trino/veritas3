@@ -29,6 +29,10 @@ class ProfilesController extends AppController {
 
 
 	public function view($id = null) {
+	    $this->loadModel('Logos');
+	    
+        $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
+        $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
 		$profile = $this->Profiles->get($id, [ 'contain' => []]);
 		$this->set('profile', $profile);
         $this->set('disabled', 1);
@@ -66,6 +70,10 @@ class ProfilesController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
+        $this->loadModel('Logos');
+	    
+        $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
+        $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
 		$profile = $this->Profiles->get($id, [
 			'contain' => []
 		]);
@@ -105,6 +113,13 @@ class ProfilesController extends AppController {
         $this->redirect('/login');
     }
     
+    function todo()
+    {
+        
+    }
+    function todos(){
+        $this->layout= 'blank';
+    }
    
     
     

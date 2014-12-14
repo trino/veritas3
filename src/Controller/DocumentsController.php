@@ -102,4 +102,9 @@ class DocumentsController extends AppController {
         $this->layout="blank";
         $this->set("filename",$filename);
     }
+    
+    public function stats()
+    {
+        
+    }
 }

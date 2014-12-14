@@ -107,7 +107,7 @@
 					</ul>
 					
 				</li>-->
-				<li class="<?php echo($this->request['controller']=='Documents')?'active open':'';?>">
+				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']!="stats")?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-notebook"></i>
 					<span class="title">Documents</span>
@@ -129,6 +129,13 @@
 												
 					</ul>
 				</li>
+                <li class="<?php echo($this->request['action']=='stats')?'active open':'';?>">
+                <a href="<?php echo $this->request->webroot;?>documents/stats">
+                <i class="icon-list"></i>
+				<span class="title">Stats By Recruiter</span>
+                <span class="selected"></span>
+                </a>
+                </li>
 
                
 				<!--

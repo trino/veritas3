@@ -544,3 +544,39 @@
 														
 													</div>
 												</div>
+                                                <div class="clearfix"></div>
+                                                
+                                                <div class="form-group col-md-12">
+                                                    <label class="control-label col-md-6">Attach Document : </label>
+                                                    <div class="col-md-6">
+                                                    <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
+                                                    </div>
+                                                   </div>
+                                                   
+                                                  <div class="form-group col-md-12">
+                                                    <div id="more_driver_doc">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                    </div>
+                                                  </div>
+                                                  
+                                                  <div class="form-group col-md-12">
+                                                    <div class="col-md-6">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <a href="javascript:void(0);" class="btn btn-success" id="add_more_driver_doc">Add More</a>
+                                                    </div>
+                                                  </div>
+                                                  
+                                                  <div class="clearfix"></div>
+ <script>
+    $(function(){
+       $('#add_more_driver_doc').click(function(){
+        $('#more_driver_doc').append('<div class="del_append_driver"><label class="control-label col-md-6">Attach Document : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a></div></div>')
+       }); 
+       
+       $('#delete_driver_doc').live('click',function(){
+            $(this).closest('.del_append_driver').remove();
+       });
+    });
+</script>                                               

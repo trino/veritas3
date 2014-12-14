@@ -21,16 +21,19 @@
 				</div>-->
 			</div>
 
-
+            
 
             <?php include('subpages/home_topblocks.php');?>
             <div class="clearfix"></div>
-
-
-
+            <hr />
+            
+            <?php include('subpages/job_block.php');?>
+            <div class="clearfix"></div>
+            <hr />
+            
             <?php include('subpages/home_blocks.php');?>
 			<div class="clearfix"></div>
-			
+			<hr />
 			
 			<?php include('subpages/recent_activities.php');?>
 			<div class="clearfix"></div>

@@ -335,7 +335,29 @@
                                     
                                     <tr>
                                         <td>Recruiters comments and recommendations (note what day they are booked to come in for a road test and interview):</td><td><textarea class="form-control"></textarea></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="2">
+                                            Attach Document &nbsp; <a  href="javascript:void(0);" class="btn btn-primary">Browse</a>
+                                            <div class="attach_more"></div>
+                                            <p></p>
+                                            <a href="javascript:void(0);" class="add_attach btn btn-success">Add More</a>
+                                        </td>
                                     </tr>                        
+                                    
                             </table>
                             <div class="clearfix"></div>
                         </div>
+                        
+<script>
+    $(function(){
+        $('.add_attach').click(function(){
+           $(this).parent().find('.attach_more').append('<div class="pad_bot">Attach Document &nbsp; <a  href="javascript:void(0);" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a></div>') 
+        });
+        
+        $('.delete_attach').live('click',function(){
+            $(this).parent().remove();
+        });
+    });
+</script>

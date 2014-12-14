@@ -31,22 +31,45 @@
                 
     </table>
 </div>
-<div id="more"></div>
-<div id="add_more">
+<div id="more_div"></div>
+<div id="add_more_div">
     <p>&nbsp;</p>
-    <a href="javascript:void(0);" class="btn green add_more">Add More</a>
+    <a href="javascript:void(0);" class="btn green" id="add_more">Add More</a>
 </div>
+
+<div class="form-group col-md-12">
+    <label class="control-label col-md-6">Attach Document : </label>
+    <div class="col-md-6">
+    <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
+    </div>
+   </div>
+   
+  <div class="form-group col-md-12">
+    <div id="more_employ_doc">
+    </div>
+    <div class="col-md-6">
+    </div>
+  </div>
+  
+  <div class="form-group col-md-12">
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6">
+        <a href="javascript:void(0);" class="btn btn-success" id="add_more_employ_doc">Add More</a>
+    </div>
+  </div>
+  <div class="clearfix"></div>
 </div>
 </div>
 </div>
 
 <script>
 $(function(){
-  $(".add_more").click(function(){
+  $("#add_more").click(function(){
     $.ajax({
        url:"<?php echo $this->request->webroot;?>subpages/past_employer.php",
        success:function(res){
-        $("#more").append(res);
+        $("#more_div").append(res);
        }
     });
   });
@@ -54,5 +77,13 @@ $(function(){
     $(this).parent().parent().remove(); 
   }); 
   
+  
+  $('#add_more_employ_doc').click(function(){
+        $('#more_employ_doc').append('<div class="del_append_employ"><label class="control-label col-md-6">Attach Document : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a></div></div>')
+       }); 
+       
+       $('#delete_employ_doc').live('click',function(){
+            $(this).closest('.del_append_employ').remove();
+       });
  }); 
 </script>

@@ -1,5 +1,6 @@
+<?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			Documents <small>View/Edit/Delete Documents</small>
+			<?php echo ucfirst($settings->document);?> <small>View/Edit/Delete <?php echo ucfirst($settings->document);?></small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -9,7 +10,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Documents</a>
+						<a href=""><?php echo ucfirst($settings->document);?></a>
 					</li>
 				</ul>
 				<div class="page-toolbar">
@@ -39,7 +40,7 @@
              </div>
              <div class="col-md-4 col-sm-12">
                     <select class="form-control">
-                        <option value="">Document type</option>
+                        <option value=""><?php echo ucfirst($settings->document);?> type</option>
                         <option value="0">Contract</option>
                         <option value="3">Evidence</option>
                         <option value="4">Report</option>
@@ -53,7 +54,7 @@
              </div>
              <div class="col-md-4 col-sm-12">
                     <select class="form-control">
-                        <option value="">Clients</option>
+                        <option value=""><?php echo ucfirst($settings->client);?></option>
                         <option value="0">Client 1</option>
                         <option value="3">Client 2</option>
                         <option value="4">Client 3</option>
@@ -68,7 +69,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    Documents
+                    <?php echo ucfirst($settings->document);?>
                 </div>
             </div>    
             <div class="portlet-body">
@@ -77,9 +78,9 @@
                     <table class="table table-hover">
                     	<thead>
                     		<tr>
-                    			<th>Document type</th>
+                    			<th><?php echo ucfirst($settings->document);?> type</th>
                                 <th>Prepared for</th>
-                    			<th>Client</th>
+                    			<th><?php echo ucfirst($settings->client);?></th>
                     			<th>Uploaded by</th>
                     			<th>Uploaded on</th>
                     			<th>Files</th>

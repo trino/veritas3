@@ -4,8 +4,9 @@ $is_disabled = 'disabled="disabled"';
 else
 $is_disabled = '';
 ?>
+<?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			Clients <small>Add/Edit Client</small>
+			<?php echo ucfirst($settings->client);?> <small>Add/Edit <?php echo ucfirst($settings->client);?></small>
 			</h3>
 
 			<div class="page-bar">
@@ -16,7 +17,7 @@ $is_disabled = '';
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Add/Edit Clients</a>
+						<a href="">Add/Edit <?php echo ucfirst($settings->client);?></a>
 					</li>
 				</ul>
                 <?php
@@ -31,7 +32,7 @@ $is_disabled = '';
 					<div class="portlet box blue">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-user"></i> Add/Edit Clients
+								<i class="fa fa-user"></i> Add/Edit <?php echo ucfirst($settings->client);?>
 							</div>
 							
 						</div>
@@ -201,7 +202,7 @@ $is_disabled = '';
 									<div class="col-md-9">
 										<div class="tab-content">
 											<div id="tab_1-1" class="tab-pane active">
-                                                <h4>Client Details</h4>
+                                                <h4><?php echo ucfirst($settings->client);?> Details</h4>
 												<form role="form" action="#">
 													<div class="form-group">
 														<label class="control-label">Title</label>
@@ -289,7 +290,12 @@ $is_disabled = '';
                     </div>
 					<!-- END SAMPLE FORM PORTLET-->
 			
-
+                </div>
+            </div>
+        </div>
+   </div>
+</div>
+</div>
 
 
 

@@ -1,6 +1,6 @@
-
+<?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			Profiles
+			<?php echo ucfirst($settings->profile);?>
 			</h3>
     <div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -10,7 +10,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Profiles</a>
+						<a href=""><?php echo ucfirst($settings->profile);?></a>
 					</li>
 				</ul>
 				
@@ -21,7 +21,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    Profiles
+                    <?php echo ucfirst($settings->profile);?>
                 </div>
             </div>    
             <div class="portlet-body">
@@ -33,7 +33,7 @@
                     <div id="sample_1_filter" class="dataTables_filter mar">
                         <div class="col-md-3 nopad">
                     <select class="form-control">
-                        <option value="">Profile Type</option>
+                        <option value=""><?php echo ucfirst($settings->profile);?> Type</option>
                         <option value="">Admin</option>
                         <option value="">Recruiter</option>
                         <option value="">Contacts</option>
@@ -43,7 +43,7 @@
                     </div>  
                       <div class="col-md-6 nopad">  
                             <label>                        
-                            <input class="form-control input-inline" type="search" placeholder=" Search for profiles" aria-controls="sample_1" /> <button type="submit" class="btn btn-primary">Search</button>
+                            <input class="form-control input-inline" type="search" placeholder=" Search for <?php echo ucfirst($settings->profile);?>" aria-controls="sample_1" /> <button type="submit" class="btn btn-primary">Search</button>
                             </label>
                       </div>  
                     </div>

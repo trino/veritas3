@@ -4,8 +4,9 @@ $is_disabled = 'disabled="disabled"';
 else
 $is_disabled = '';
 ?>
+<?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			Add/Edit Document
+			Add/Edit <?php echo ucfirst($settings->document);?>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -15,7 +16,7 @@ $is_disabled = '';
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Add/Edit Document
+						<a href="">Add/Edit <?php echo ucfirst($settings->document);?>
                         </a>
 					</li>
 				</ul>
@@ -35,7 +36,7 @@ $is_disabled = '';
                                         $tab = 'nodisplay';
                                         ?>
 							<div class="caption">
-								<i class="fa fa-gift"></i> <?php if($param == 'view')?>Document - <span class="step-title">
+								<i class="fa fa-gift"></i> <?php if($param == 'view')?><?php echo ucfirst($settings->document);?> - <span class="step-title">
 								View </span>
 							</div>
 

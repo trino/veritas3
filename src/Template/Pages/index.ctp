@@ -1,4 +1,4 @@
-
+<?php $settings = $this->requestAction('settings/get_settings');?>
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
 			MEE Dashboard <small>Driver Qualification System</small>
@@ -8,7 +8,7 @@
 					<li>
 						<i class="fa fa-home"></i>
 						<a href="<?php echo $this->request->webroot;?>">Dashboard</a>
-						<i class="fa fa-angle-right"></i>
+						
 					</li>
 					
 				</ul>

@@ -40,7 +40,7 @@
 				<li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo'&& $this->request['action']!='todo')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-user"></i>
-					<span class="title">Profiles</span>
+					<span class="title"><?php echo ucfirst($settings->profile);?></span>
                     <?php echo($this->request['controller']=='Profiles' )?'<span class="selected"></span>':'';?>
                     
 					<span class="arrow "></span>
@@ -49,12 +49,12 @@
 						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>profiles">
 							<i class="icon-list"></i>
-							List Profiles</a>
+							List <?php echo ucfirst($settings->profile);?></a>
 						</li>
 						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>profiles/add">
 							<i class="icon-plus"></i>
-							Create User</a>
+							Create <?php echo ucfirst($settings->profile);?></a>
 						</li>
 						
 					</ul>
@@ -62,7 +62,7 @@
                 	<li class="<?php echo($this->request['controller']=='Clients' && $this->request['action']!='quickcontact')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-globe"></i>
-					<span class="title">Clients</span>
+					<span class="title"><?php echo ucfirst($settings->client);?></span>
                     <?php echo($this->request['controller']=='Clients')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
@@ -70,12 +70,12 @@
 						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients">
 							<i class="icon-list"></i>
-							List Clients</a>
+							List <?php echo ucfirst($settings->client);?></a>
 						</li>
 						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-plus"></i>
-							Add new Client</a>
+							Add new <?php echo ucfirst($settings->client);?></a>
 						</li>
                         <!--<li>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
@@ -110,7 +110,7 @@
 				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']!="stats")?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-notebook"></i>
-					<span class="title">Documents</span>
+					<span class="title"><?php echo ucfirst($settings->document);?></span>
 					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
@@ -118,12 +118,12 @@
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/index">
                             <i class="icon-list"></i>
-							List Documents</a>
+							List <?php echo ucfirst($settings->document);?></a>
 						</li>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/add">
                             <i class="icon-plus"></i>
-							Submit Document</a>
+							Submit <?php echo ucfirst($settings->document);?></a>
 						</li>
 						
 												

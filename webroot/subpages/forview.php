@@ -55,7 +55,7 @@
 
 
 
-         <span class="profile-desc-text">   <p>  Document type <strong>Orders</strong></p>
+         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document);?> type <strong>Orders</strong></p>
             <p>  Uploaded by <strong>Admin</strong></p>
             <p>Uploaded on <strong>2014-12-12 18:48:19</strong></p>
             <p>Company <strong>Lorem Ipsum</strong></p>
@@ -243,7 +243,7 @@
 <div class="portlet-title tabbable-line">
     <div class="caption caption-md">
         <i class="icon-globe theme-font hide"></i>
-        <span class="caption-subject font-blue-madison bold uppercase">Approved Documents</span>
+        <span class="caption-subject font-blue-madison bold uppercase">Approved <?php echo ucfirst($settings->document);?></span>
     </div>
     <ul class="nav nav-tabs">
 
@@ -788,7 +788,7 @@
 <div class="portlet-title">
     <div class="caption caption-md">
         <i class="icon-bar-chart theme-font hide"></i>
-        <span class="caption-subject font-blue-madison bold uppercase">Documents Check-list</span>
+        <span class="caption-subject font-blue-madison bold uppercase"><?php echo ucfirst($settings->document);?> Check-list</span>
         <span class="caption-helper">16 pending</span>
     </div>
     <div class="inputs">

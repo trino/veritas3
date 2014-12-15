@@ -54,7 +54,7 @@
 								 80
 							</div>
 							<div class="desc">
-								Clients
+								<?php echo ucfirst($settings->client);?>
 							</div>
 						</div>
 						<a class="more" href="#">
@@ -74,7 +74,7 @@
 								 340
 							</div>
 							<div class="desc">
-								Profiles
+								<?php echo ucfirst($settings->profile);?>
 							</div>
 						</div>
 						<a class="more" href="#">

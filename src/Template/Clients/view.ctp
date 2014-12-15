@@ -4,8 +4,10 @@ $is_disabled = 'disabled="disabled"';
 else
 $is_disabled = '';
 ?>
+<?php $settings = $this->requestAction('settings/get_settings');?>
+
 <h3 class="page-title">
-			Clients <small>Add/Edit Client</small>
+			<?php echo ucfirst($settings->client);?> <small>Add/Edit <?php echo ucfirst($settings->client);?></small>
 			</h3>
 
 			<div class="page-bar">
@@ -16,7 +18,7 @@ $is_disabled = '';
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Add/Edit Clients</a>
+						<a href="">Add/Edit <?php echo ucfirst($settings->client);?></a>
 					</li>
 				</ul>
 				
@@ -95,7 +97,7 @@ $is_disabled = '';
 												<div class="portlet sale-summary">
 													<div class="portlet-title">
 														<div class="caption">
-															 Job Summary
+															 <?php echo ucfirst($settings->profile);?> Summary
 														</div>
 														<div class="tools">
 															<a class="reload" href="javascript:;">
@@ -113,7 +115,7 @@ $is_disabled = '';
 															</li>
 															<li>
 																<span class="sale-info">
-																Assigned users <i class="fa fa-img-down"></i>
+																Assigned <?php echo ucfirst($settings->client);?> <i class="fa fa-img-down"></i>
 																</span>
 																<span class="sale-num">
 																87 </span>
@@ -153,9 +155,9 @@ $is_disabled = '';
                                             <tr><td>Postal code</td><td>44600</td></tr>
                                             <tr><td>Province</td><td>CDEFG</td></tr>
                                             <tr><td>Country</td><td>Canada</td></tr>
-                                            <tr><td>User's Name</td><td>John Baptist</td></tr>
-                                            <tr><td>User's phone number</td><td>+1 - 2345678</td></tr>
-                                            <tr><td>User's email</td><td>info@test.com</td></tr>
+                                            <tr><td><?php echo ucfirst($settings->client);?>'s Name</td><td>John Baptist</td></tr>
+                                            <tr><td><?php echo ucfirst($settings->client);?>'s phone number</td><td>+1 - 2345678</td></tr>
+                                            <tr><td><?php echo ucfirst($settings->client);?>'s email</td><td>info@test.com</td></tr>
                                         </table>
 										
 									</div>

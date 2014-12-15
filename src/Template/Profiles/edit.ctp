@@ -144,6 +144,11 @@ $is_disabled = '';
 						<a href="">Profile</a>
 					</li>
 				</ul>
+                <?php
+                if(isset($disabled))
+                { ?>
+                <a href="javascript:window.print();" class="btn btn-info">Print</a>
+                <?php } ?>
 
 			</div>
 			<!-- END PAGE HEADER-->
@@ -347,7 +352,7 @@ $is_disabled = '';
                                                     
                                                     <div class="form-group" id="notli">
                                                         
-                                                            <label>Choose to display</label>
+                                                            <label>Choose what to display</label>
                                                         
                                                             <select class="form-control" onchange="change_text(this.value)">
                                                                 <option value="">Select User/Profile</option>

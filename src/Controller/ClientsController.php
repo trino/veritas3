@@ -30,8 +30,8 @@ class ClientsController extends AppController {
 
 
 	public function view($id = null) {
-		$this->set('disabled',1);
-        $this->render('add');
+		//$this->set('disabled',1);
+        //$this->render('add');
 	}
 
 /**

@@ -19,6 +19,11 @@ $is_disabled = '';
                         </a>
 					</li>
 				</ul>
+                <?php
+                if(isset($disabled))
+                { ?>
+                <a href="javascript:window.print();" class="btn btn-info">Print</a>
+                <?php } ?>
 
 			</div>
             <div class="row">
@@ -113,6 +118,7 @@ $is_disabled = '';
 												<a href="javascript:;" class="btn blue button-submit">
 												Finalize <i class="m-icon-swapright m-icon-white"></i>
 												</a>
+                                                <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>
 									</div>
@@ -183,6 +189,7 @@ $is_disabled = '';
 												<a href="javascript:;" class="btn blue button-submit">
 												Finalize <i class="m-icon-swapright m-icon-white"></i>
 												</a>
+                                                <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>
 									</div>

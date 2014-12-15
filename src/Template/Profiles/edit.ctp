@@ -341,8 +341,21 @@ $is_disabled = '';
 																Remove </a>
 															</div>
 														</div>
+                                                        
 
 													</div>
+                                                    
+                                                    <div class="form-group" id="notli">
+                                                        
+                                                            <label>Choose to display</label>
+                                                        
+                                                            <select class="form-control" onchange="change_text(this.value)">
+                                                                <option value="">Select User/Profile</option>
+                                                                <option value="1">Profile/Client</option>
+                                                                <option value="2">User/Job</option>
+                                                            </select>
+                                                        
+                                                    </div>
 													<div class="margin-top-10">
 														<a href="#" class="btn btn-primary">
 														Submit </a>

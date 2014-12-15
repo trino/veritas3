@@ -942,7 +942,8 @@
 </div>
 
 <script>
-jQuery(document).ready(function() {    
+jQuery(document).ready(function() {  
+    change_text(<?php echo $settings->display;?>);
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
    QuickSidebar.init(); // init quick sidebar
@@ -1011,6 +1012,53 @@ function sider_bar()
          alert(sidebar);
          });
 }
+
+function change_text(v){
+    
+    var n = $('#notli').html();
+    $.ajax({
+       type: "post",
+       url: "<?php echo $this->request->webroot;?>settings/display",
+       data: "display="+v,
+       success: function(){
+            
+       } 
+    });
+    var bdy = $('.page-container').not('#notli').html();
+    if(v=='2')
+    {
+        
+        
+        n = n.split('<option value="2">User/Job</option>').join('<option value="2" selected="selected">User/Job</option>');
+        n = n.split('<option value="1" selected="selected">Profile/Client</option>').join('<option value="1" >Profile/Client</option>');
+       bdy = bdy.split('Profile').join('User');
+       bdy = bdy.split('Client').join('Job');
+       
+       $('.page-container').not('#notli').html(bdy);
+       
+       $('#notli').html(n); 
+        
+    
+       
+    }
+    if(v=='1')
+    {
+        
+       
+        n = n.split('<option value="1">Profile/Client</option>').join('<option value="1" selected="selected">Profile/Client</option>');
+        n = n.split('<option value="2" selected="selected">User/Job</option>').join('<option value="2" >User/Job</option>');
+       bdy = bdy.split('User').join('Profile');
+       bdy = bdy.split('Job').join('Client');
+       
+       $('.page-container').not('#notli').html(bdy);
+       
+       $('#notli').html(n); 
+        
+    
+       
+    }
+}
+
 
 </script>
 <!-- END JAVASCRIPTS -->

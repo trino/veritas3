@@ -37,11 +37,11 @@
 					</a>
 					
 				</li>
-				<li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo')?'active open':'';?>">
+				<li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo'&& $this->request['action']!='todo')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-user"></i>
 					<span class="title">Profiles</span>
-                    <?php echo($this->request['controller']=='Profiles')?'<span class="selected"></span>':'';?>
+                    <?php echo($this->request['controller']=='Profiles' )?'<span class="selected"></span>':'';?>
                     
 					<span class="arrow "></span>
 					</a>
@@ -54,7 +54,7 @@
 						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>profiles/add">
 							<i class="icon-plus"></i>
-							Create User Profile</a>
+							Create User</a>
 						</li>
 						
 					</ul>
@@ -133,6 +133,14 @@
                 <a href="<?php echo $this->request->webroot;?>documents/stats">
                 <i class="icon-list"></i>
 				<span class="title">Stats By Recruiter</span>
+                <span class="selected"></span>
+                </a>
+                </li>
+                
+                <li class="<?php echo($this->request['action']=='todo')?'active open':'';?>">
+                <a href="<?php echo $this->request->webroot;?>profiles/todo">
+                <i class="icon-calendar"></i>
+				<span class="title">Todo (Reminders)</span>
                 <span class="selected"></span>
                 </a>
                 </li>

@@ -1,5 +1,6 @@
+<?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			Documents <small>Stats By Recruiter</small>
+			<?php echo ucfirst($settings->document);?> <small>Stats By Recruiter</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -67,7 +68,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    Documents
+                    <?php echo ucfirst($settings->document);?>
                 </div>
             </div>    
             <div class="portlet-body">
@@ -76,9 +77,9 @@
                     <table class="table table-hover">
                     	<thead>
                     		<tr>
-                    			<th>Document type</th>
+                    			<th><?php echo ucfirst($settings->document);?> type</th>
                                 <th>Prepared for</th>
-                    			<th>Client</th>
+                    			<th><?php echo ucfirst($settings->client);?></th>
                     			<th>Uploaded by</th>
                     			<th>Uploaded on</th>
                     			<th>Files</th>

@@ -1,4 +1,4 @@
-<div class="col-md-6"><h3>Clients assigned</h3></div>
+<div class="col-md-6"><h3><?php echo ucfirst($settings->client);?> assigned</h3></div>
 <div class="clearfix"></div>
 <div class="col-md-4 ">
     <div class="portlet box blue-hoki">

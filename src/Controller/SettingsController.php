@@ -23,7 +23,7 @@ class SettingsController extends AppController {
    {
         $setting = TableRegistry::get('Settings');
          $query = $setting->find();
-                 $query->select(['layout','body','sidebar','display']);
+                 
          $l = $query->first();
          
          $this->response->body(($l));
@@ -55,6 +55,20 @@ class SettingsController extends AppController {
          
          die();
     }
+    
+    function change_text()
+    {
+        
+        $setting = TableRegistry::get('Settings');
+         $query = $setting->query();
+                $query->update()
+                ->set(['client'=>$_POST['client'],'document'=>$_POST['document'],'profile'=>$_POST['profile']])
+                ->where(['id' => 1])
+                ->execute();
+        $this->redirect(['controller'=>'profiles','action'=>'add']);
+    }
+    
+    
     
     
  }

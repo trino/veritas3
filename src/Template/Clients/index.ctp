@@ -1,5 +1,6 @@
+<?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			Clients 
+			<?php echo ucfirst($settings->client);?> 
 			</h3>
     <div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -9,7 +10,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Clients</a>
+						<a href=""><?php echo ucfirst($settings->client);?></a>
 					</li>
 				</ul>
 				
@@ -21,7 +22,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    Clients
+                    <?php echo ucfirst($settings->client);?>
                 </div>
             </div>    
             <div class="portlet-body">
@@ -29,7 +30,7 @@
                     <div id="sample_1_filter" class="dataTables_filter mar">
                         <form>
                             <label>                        
-                            <input class="form-control input-inline" type="search" placeholder=" Search Clients" aria-controls="sample_1"> <button type="submit" class="btn btn-primary">Search</button>
+                            <input class="form-control input-inline" type="search" placeholder=" Search <?php echo ucfirst($settings->client);?>" aria-controls="sample_1"> <button type="submit" class="btn btn-primary">Search</button>
                             </label>
                         </form>
                     </div>

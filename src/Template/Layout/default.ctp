@@ -948,7 +948,7 @@
 
 <script>
 jQuery(document).ready(function() {  
-    change_text(<?php echo $settings->display;?>);
+    
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
    QuickSidebar.init(); // init quick sidebar
@@ -963,7 +963,7 @@ jQuery(document).ready(function() {
    Index.initChat();
    Index.initMiniCharts();
    Tasks.initDashboardWidget();
-   
+   //change_text(<?php echo $settings->display;?>);
    
    
    
@@ -1032,8 +1032,8 @@ function change_text(v){
     var bdy = $('.page-container').not('#notli').html();
     if(v=='2')
     {
-        
-        if(n){
+        $('.page-container').html($('.page-container').html().replace(/Client/g, 'Job'));
+        /*if(n){
         n = n.split('<option value="2">User/Job</option>').join('<option value="2" selected="selected">User/Job</option>');
         n = n.split('<option value="1" selected="selected">Profile/Client</option>').join('<option value="1" >Profile/Client</option>');}
        bdy = bdy.split('Profile').join('User');
@@ -1041,15 +1041,16 @@ function change_text(v){
        
        $('.page-container').not('#notli').html(bdy);
        
-       $('#notli').html(n); 
+       $('#notli').html(n); */
         
     
        
     }
     if(v=='1')
     {
-        
-       if(n){
+        $('.page-container').html($('.page-container').html().replace(/Job/g, 'Client'));
+       
+       /*if(n){
         n = n.split('<option value="1">Profile/Client</option>').join('<option value="1" selected="selected">Profile/Client</option>');
         n = n.split('<option value="2" selected="selected">User/Job</option>').join('<option value="2" >User/Job</option>');}
        bdy = bdy.split('User').join('Profile');
@@ -1058,7 +1059,7 @@ function change_text(v){
        $('.page-container').not('#notli').html(bdy);
        
        $('#notli').html(n); 
-        
+        */
     
        
     }

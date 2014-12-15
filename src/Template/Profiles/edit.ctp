@@ -5,6 +5,7 @@ $is_disabled = 'disabled="disabled"';
 else
 $is_disabled = '';
 ?>
+<?php $settings = $this->requestAction('settings/get_settings');?>
 <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
 				<div class="modal-dialog">
@@ -131,7 +132,7 @@ $is_disabled = '';
 			<!-- END STYLE CUSTOMIZER -->
 			<!-- BEGIN PAGE HEADER-->
             <h3 class="page-title">
-			Profile Manager
+			<?php echo ucfirst($settings->profile);?> Manager
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -141,7 +142,7 @@ $is_disabled = '';
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Profile</a>
+						<a href=""><?php echo ucfirst($settings->profile);?></a>
 					</li>
 				</ul>
                 <?php
@@ -225,7 +226,7 @@ $is_disabled = '';
 									<div class="portlet-title tabbable-line">
 										<div class="caption caption-md">
 											<i class="icon-globe theme-font hide"></i>
-											<span class="caption-subject font-blue-madison bold">Profile</span>
+											<span class="caption-subject font-blue-madison bold"><?php echo ucfirst($settings->profile);?></span>
 										</div>
 										<ul class="nav nav-tabs">
 											<li class="active">
@@ -257,7 +258,7 @@ $is_disabled = '';
 											</li>
 
                                             <li>
-                                                <a href="#tab_1_7" data-toggle="tab">Documents</a>
+                                                <a href="#tab_1_7" data-toggle="tab"><?php echo ucfirst($settings->document);?></a>
                                             </li>
 
                                             <li>
@@ -272,7 +273,7 @@ $is_disabled = '';
 											<div class="tab-pane active" id="tab_1_1">
 												<form role="form" action="#">
                                                     <div class="form-group">
-														<label class="control-label">Profile Type</label>
+														<label class="control-label"><?php echo ucfirst($settings->profile);?> Type</label>
 														<select <?php echo $is_disabled?> class="form-control member_type">
                                                             <option value="Admin">Admin</option>
                                                             <option value="Member">Member</option>
@@ -326,7 +327,7 @@ $is_disabled = '';
 												<p>
 													 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
 												</p>
-												<form action="#" role="form">
+												<form action="<?php echo $this->request->webroot;?>settings/change_text" role="form" method="post">
 													<div class="form-group">
 														<div class="fileinput fileinput-new" data-provides="fileinput">
 															<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
@@ -351,19 +352,30 @@ $is_disabled = '';
 													</div>
                                                     
                                                     <div class="form-group" id="notli">
-                                                        
-                                                            <label>Choose what to display</label>
-                                                        
-                                                            <select class="form-control" onchange="change_text(this.value)">
+                                                    
+                                                            <label class="control-label">Choose what to display</label>
+                                                            <div class="clearfix"></div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Client</label>
+                                                                <input type="text" name="client" class="form-control" value="<?php echo $settings->client;?>"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Document</label>
+                                                                <input type="text" name="document" class="form-control" value="<?php echo $settings->document;?>" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Profile</label>
+                                                                <input type="text" name="profile" class="form-control" value="<?php echo $settings->profile;?>"  />
+                                                            </div>
+                                                            <!--<select class="form-control" onchange="change_text(this.value)">
                                                                 <option value="">Select User/Profile</option>
                                                                 <option value="1">Profile/Client</option>
                                                                 <option value="2">User/Job</option>
-                                                            </select>
+                                                            </select>-->
                                                         
                                                     </div>
 													<div class="margin-top-10">
-														<a href="#" class="btn btn-primary">
-														Submit </a>
+														<input type="submit" class="btn btn-primary" value="Submit"/>
 														<a href="#" class="btn default">
 														Cancel </a>
 													</div>
@@ -795,7 +807,7 @@ $is_disabled = '';
 
                                             <!-- PRIVACY SETTINGS TAB -->
                                             <div class="tab-pane" id="tab_1_7">
-                                               <h4> Enable Documents?</h4>
+                                               <h4> Enable <?php echo ucfirst($settings->document);?>?</h4>
                                                 <form action="#">
                                                     <table class="table table-light table-hover">
                                                         <tr>
@@ -836,7 +848,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Documents
+                                                                <?php echo ucfirst($settings->document);?>
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
@@ -1052,7 +1064,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Other Document Type
+                                                                Other <?php echo ucfirst($settings->document);?> Type
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
@@ -1088,7 +1100,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Other Document Type
+                                                                Other <?php echo ucfirst($settings->document);?> Type
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
@@ -1124,7 +1136,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Other Document Type
+                                                                Other <?php echo ucfirst($settings->document);?> Type
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
@@ -1187,7 +1199,7 @@ $is_disabled = '';
                                                     <table class="table table-light table-hover">
                                                         <tr>
                                                             <td>
-                                                                Profiles
+                                                                <?php echo ucfirst($settings->profile);?>
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
@@ -1201,7 +1213,7 @@ $is_disabled = '';
 
                                                         <tr>
                                                             <td>
-                                                                Clients
+                                                                <?php echo ucfirst($settings->client);?>
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
@@ -1214,7 +1226,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Documents
+                                                                <?php echo ucfirst($settings->document);?>
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">

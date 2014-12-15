@@ -1,3 +1,22 @@
+<?php $settings = $this->requestAction('settings/get_settings');?>
+<h3 class="page-title">
+			To Do <small>(Reminders)</small>
+			</h3>
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="<?php echo $this->request->webroot;?>">Dashboard</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="">Todo
+                        </a>
+					</li>
+				</ul>
+                
+
+			</div>
 <div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN TODO SIDEBAR -->
@@ -298,9 +317,9 @@
 														
                                                         <div class="form-group">
 															<div class="col-md-12">
-																<label >Follow up wih user</label>
+																<label >Follow up wih <?php echo ($settings->client);?></label>
                                                                 <select class="form-control">
-                                                                    <option value="">Select User</option>
+                                                                    <option value="">Select <?php echo ucfirst($settings->client);?></option>
                                                                     <option value="4">Nick Smith</option>
                                                                     <option value="5">James Blont</option>
                                                                     <option value="6">Mark Henry</option>

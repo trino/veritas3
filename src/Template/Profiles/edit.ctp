@@ -144,6 +144,11 @@ $is_disabled = '';
 						<a href="">Profile</a>
 					</li>
 				</ul>
+                <?php
+                if(isset($disabled))
+                { ?>
+                <a href="javascript:window.print();" class="btn btn-info">Print</a>
+                <?php } ?>
 
 			</div>
 			<!-- END PAGE HEADER-->

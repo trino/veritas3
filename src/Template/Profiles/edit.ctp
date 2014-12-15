@@ -1,4 +1,12 @@
-
+<style>
+@media print {
+    .page-header{display:none;}
+    .page-footer,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper{display:none!important;}
+    .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
+    .tabbable-line{border:none!important;}
+    
+    }
+</style>
 <?php
 if(isset($disabled))
 $is_disabled = 'disabled="disabled"';

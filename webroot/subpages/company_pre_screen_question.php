@@ -338,7 +338,7 @@
                                     </tr>                      
                                     
                             </table>
-                             <div class="form-group col-md-12">
+                                        <div class="form-group col-md-12">
                                         <label class="control-label col-md-6">Attach Document : </label>
                                         <div class="col-md-6">
                                         <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
@@ -360,6 +360,11 @@
                                         </div>
                                       </div>
                             <div class="clearfix"></div>
+                            <?php include('canvas/example.php');?>
+                            <?php include('canvas/example2.php');?>
+                            <div class="clearfix"></div>
+            
+
                         </div>
                         
 <script>
@@ -370,6 +375,32 @@
         
         $('.delete_attach').live('click',function(){
             $(this).closest('#del_pre').remove();
+            
         });
+        $("#test1").jqScribble();
+        $("#test2").jqScribble();
     });
-</script>
+
+       
+		function save(numb)
+		{
+		  alert('rest');return;
+			$("#test"+numb).data("jqScribble").save(function(imageData)
+			{
+				$.post('image_save.php', {imagedata: imageData}, function(response)
+					{
+						
+                        $.ajax({
+                            url:'<?php echo $this->request->webroot;?>document/image_sess/'+numb+'/'+response
+                        });
+					});	
+				
+			});
+		}
+		function addImage()
+		{
+			var img = prompt("Enter the URL of the image.");
+			if(img !== '')$("#test").data("jqScribble").update({backgroundImage: img});
+		}
+		
+		</script>

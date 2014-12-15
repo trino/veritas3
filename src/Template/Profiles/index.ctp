@@ -43,7 +43,7 @@
                     </div>  
                       <div class="col-md-6 nopad">  
                             <label>                        
-                            <input class="form-control input-inline" type="search" placeholder=" Search for profiles" aria-controls="sample_1" /> <button type="submit" class="btn btn-primary">Search</button>
+                            <input class="form-control input-inline" type="search" placeholder=" Search for <?php echo ucfirst($settings->profile);?>" aria-controls="sample_1" /> <button type="submit" class="btn btn-primary">Search</button>
                             </label>
                       </div>  
                     </div>

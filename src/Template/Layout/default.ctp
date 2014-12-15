@@ -948,7 +948,7 @@
 
 <script>
 jQuery(document).ready(function() {  
-    change_text(<?php echo $settings->display;?>);
+    //change_text(<?php echo $settings->display;?>);
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
    QuickSidebar.init(); // init quick sidebar

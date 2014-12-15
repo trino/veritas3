@@ -1033,9 +1033,9 @@ function change_text(v){
     if(v=='2')
     {
         
-        
+        if(n){
         n = n.split('<option value="2">User/Job</option>').join('<option value="2" selected="selected">User/Job</option>');
-        n = n.split('<option value="1" selected="selected">Profile/Client</option>').join('<option value="1" >Profile/Client</option>');
+        n = n.split('<option value="1" selected="selected">Profile/Client</option>').join('<option value="1" >Profile/Client</option>');}
        bdy = bdy.split('Profile').join('User');
        bdy = bdy.split('Client').join('Job');
        
@@ -1049,9 +1049,9 @@ function change_text(v){
     if(v=='1')
     {
         
-       
+       if(n){
         n = n.split('<option value="1">Profile/Client</option>').join('<option value="1" selected="selected">Profile/Client</option>');
-        n = n.split('<option value="2" selected="selected">User/Job</option>').join('<option value="2" >User/Job</option>');
+        n = n.split('<option value="2" selected="selected">User/Job</option>').join('<option value="2" >User/Job</option>');}
        bdy = bdy.split('User').join('Profile');
        bdy = bdy.split('Job').join('Client');
        

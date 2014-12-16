@@ -143,7 +143,7 @@
 				<span class="title">Stats By Recruiter</span>
                 <span class="selected"></span>
                 </a>
-                </li>-->
+                </li>
                 
                 <li class="<?php echo($this->request['controller']=='Todo')?'active open':'';?>">
                 <a href="javascript:;">
@@ -172,7 +172,7 @@
                         </a>
                     </li>
                 </ul>
-                </li>
+                </li>-->
 
                
 				<!--

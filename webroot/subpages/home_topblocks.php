@@ -1,10 +1,10 @@
 
-
+<?php $block =$this->requestAction("settings/get_blocks");?>
 
 
 
 <div class="tiles">
-
+     <?php if($block->meeting==1){?>
     <div class="tile bg-red-sunglo">
 
         <div class="tile-body">
@@ -21,7 +21,8 @@
 
 
     </div>
-
+    <?php }?>
+    <?php if($block->gps==1){?>
     <div class="tile selected bg-yellow-saffron">
         <div class="corner">
         </div>
@@ -37,7 +38,8 @@
             </div>
         </div>
     </div>
-
+     <?php }?>
+    <?php if($block->orders==1){?>
     <div class="tile bg-purple-studio">
         <div class="tile-body">
             <i class="fa fa-shopping-cart"></i>
@@ -51,7 +53,8 @@
             </div>
         </div>
     </div>
-
+     <?php }?>
+    <?php if($block->feedback==1){?>
     <div class="tile bg-green-meadow">
         <div class="tile-body">
             <i class="fa fa-comments"></i>
@@ -66,7 +69,8 @@
         </div>
     </div>
 
-
+     <?php }?>
+    <?php if($block->report==1){?>
     <div class="tile bg-green">
         <div class="tile-body">
             <i class="fa fa-bar-chart-o"></i>
@@ -79,6 +83,8 @@
             </div>
         </div>
     </div>
+     <?php }?>
+    <?php if($block->doc==1){?>
     <div class="tile bg-blue-steel">
         <div class="tile-body">
             <i class="fa fa-briefcase"></i>
@@ -93,6 +99,8 @@
         </div>
     </div>
 
+ <?php }?>
+    <?php if($block->setting==1){?>
     <div class="tile bg-yellow-lemon selected">
         <div class="corner">
         </div>
@@ -107,6 +115,8 @@
             </div>
         </div>
     </div>
+     <?php }?>
+    <?php if($block->conference==1){?>
     <div class="tile bg-red-sunglo">
         <div class="tile-body">
             <i class="fa fa-plane"></i>
@@ -120,4 +130,40 @@
             </div>
         </div>
     </div>
+     <?php }?>
+    <?php if($block->stat==1){?>
+      <a href="<?php echo $this->request->webroot;?>documents/stats">
+      <div class="tile bg-green">
+        <div class="tile-body">
+            <i class="fa fa-user"></i>
+        </div>
+        <div class="tile-object">
+            <div class="name">
+                Stats by recruiter
+            </div>
+            <div class="number">
+                34
+            </div>
+        </div>
+    </div>
+    </a>
+     <?php }?>
+    <?php if($block->todo==1){?>
+    <a href="<?php echo $this->request->webroot;?>todo">
+      <div class="tile bg-blue">
+        <div class="tile-body">
+            <i class="fa fa-calendar"></i>
+        </div>
+        <div class="tile-object">
+            <div class="name">
+                Todo
+            </div>
+            <div class="number">
+                34
+            </div>
+        </div>
+    </div>
+    </a>
+     <?php }?>
+    
 </div>

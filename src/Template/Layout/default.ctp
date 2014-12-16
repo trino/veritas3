@@ -226,7 +226,7 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
-							<a href="<?php echo $this->request->webroot;?>profiles/view/1">
+							<a href="<?php echo $this->request->webroot;?>profiles/add">
 							<i class="icon-user"></i> My Settings </a>
 						</li>
 						

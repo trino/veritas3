@@ -4,15 +4,11 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Controller\Controller;
-use Cake\ORM\TableRegistry;
 
 
-class ProfilesController extends AppController {
+class TodoController extends AppController {
 
-    public $paginate = [
-            'limit' => 10,
-            
-        ];
+    
      public function initialize() {
         parent::initialize();
         if(!$this->request->session()->read('Profile.id'))
@@ -24,20 +20,13 @@ class ProfilesController extends AppController {
     
 	public function index() {
 	   
-		$this->set('profiles', $this->paginate($this->Profiles));
+		
 	}
 
 
 
 	public function view($id = null) {
-	    $this->loadModel('Logos');
 	    
-        $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
-        $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
-		$profile = $this->Profiles->get($id, [ 'contain' => []]);
-		$this->set('profile', $profile);
-        $this->set('disabled', 1);
-        $this->render("edit");
 	}
 
 /**
@@ -121,35 +110,6 @@ class ProfilesController extends AppController {
     function todos(){
         $this->layout= 'blank';
     }
-    
-    function blocks()
-    {
-        if(isset($_POST['submit'])){
-            foreach($_POST['block'] as $k=>$v)
-            {
-                $block[$k] = $v;
-            }
-            foreach($_POST['side'] as $k=>$v)
-            {
-                $side[$k] = $v;
-            }
-            
-            $blocks = TableRegistry::get('blocks');
-             $query = $blocks->query();
-                    $query->update()
-                    ->set($block)
-                    ->where(['id' => 1])
-                    ->execute();
-            $sidebar = TableRegistry::get('sidebar');
-             $query1 = $sidebar->query();
-                    $query1->update()
-                    ->set($side)
-                    ->where(['id' => 1])
-                    ->execute();
-             $this->redirect(['controller'=>'profiles','action'=>'add']);
-        }
-    }
-    
    
     
     

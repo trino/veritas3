@@ -12,7 +12,7 @@
 								 1349
 							</div>
 							<div class="desc">
-								 Orders
+								 Pre-Screening
 							</div>
 						</div>
 						<a class="more" href="#">
@@ -34,7 +34,7 @@
 								 120
 							</div>
 							<div class="desc">
-								Pending Orders
+								Interview Driver Application
 							</div>
 						</div>
 						<a class="more" href="#">
@@ -47,14 +47,15 @@
 
                     <div class="dashboard-stat red">  <div class="whiteCorner"></div>
 						<div class="visual">
-							<i class="fa fa-globe"></i>
+							<i class="fa fa-copy"></i>
 						</div>
 						<div class="details">
 							<div class="number">
 								 80
 							</div>
 							<div class="desc">
-								<?php echo ucfirst($settings->client);?>
+								<?php //echo ucfirst($settings->client);?>
+                                MEE Order
 							</div>
 						</div>
 						<a class="more" href="#">
@@ -67,14 +68,15 @@
 
                     <div class="dashboard-stat green">     <div class="whiteCorner"></div>
 						<div class="visual">
-							<i class="fa fa-user"></i>
+							<i class="fa fa-copy"></i>
 						</div>
 						<div class="details">
 							<div class="number">
 								 340
 							</div>
 							<div class="desc">
-								<?php echo ucfirst($settings->profile);?>
+								<?php //echo ucfirst($settings->profile);?>
+                                Road Test
 							</div>
 						</div>
 						<a class="more" href="#">

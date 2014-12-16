@@ -1,3 +1,5 @@
+<?php $sidebar =$this->requestAction("settings/get_side");?>
+
 <div class="page-sidebar-wrapper">
 
 		<div class="page-sidebar navbar-collapse collapse">
@@ -37,6 +39,7 @@
 					</a>
 					
 				</li>
+                <?php if($sidebar->profile==1){?>
 				<li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo'&& $this->request['action']!='todo')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-user"></i>
@@ -59,6 +62,8 @@
 						
 					</ul>
 				</li>
+                <?php } ?>
+                 <?php if($sidebar->client==1){?>
                 	<li class="<?php echo($this->request['controller']=='Clients' && $this->request['action']!='quickcontact')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-globe"></i>
@@ -85,6 +90,7 @@
 						
 					</ul>
 				</li>
+                <?php }?>
                 <!--<li class="start <?php echo($this->request['controller']=='Logos')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-home"></i>
@@ -107,6 +113,7 @@
 					</ul>
 					
 				</li>-->
+                 <?php if($sidebar->document==1){?>
 				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']!="stats")?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-notebook"></i>
@@ -129,20 +136,42 @@
 												
 					</ul>
 				</li>
-                <li class="<?php echo($this->request['action']=='stats')?'active open':'';?>">
+                <?php }?>
+                <!--<li class="<?php echo($this->request['action']=='stats')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>documents/stats">
                 <i class="icon-list"></i>
 				<span class="title">Stats By Recruiter</span>
                 <span class="selected"></span>
                 </a>
-                </li>
+                </li>-->
                 
-                <li class="<?php echo($this->request['action']=='todo')?'active open':'';?>">
-                <a href="<?php echo $this->request->webroot;?>profiles/todo">
+                <li class="<?php echo($this->request['controller']=='Todo')?'active open':'';?>">
+                <a href="javascript:;">
                 <i class="icon-calendar"></i>
 				<span class="title">Todo (Reminders)</span>
                 <span class="selected"></span>
+                <span class="arrow "></span>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="<?php echo $this->request->webroot;?>todo/view/1">
+                        <i class="icon-clock"></i>
+                        Slider Redesign
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->request->webroot;?>todo/view/1">
+                        <i class="icon-clock"></i>
+                        Slider Redesign
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->request->webroot;?>todo/view/1">
+                        <i class="icon-clock"></i>
+                        Slider Redesign
+                        </a>
+                    </li>
+                </ul>
                 </li>
                 
                 <li class="<?php echo($this->request['controller']=='Messages')?'active open':'';?>">

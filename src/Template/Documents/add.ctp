@@ -66,7 +66,7 @@ $is_disabled = '';
 												<span class="number">
 												2 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Interview Driver Application </span>
+												<i class="fa fa-check"></i>Driver Application </span>
 												</a>
 											</li>
 											<li>
@@ -74,7 +74,7 @@ $is_disabled = '';
 												<span class="number">
 												3 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Place MEE Order </span>
+												<i class="fa fa-check"></i> MEE Consent </span>
 												</a>
 											</li>
 											<li>
@@ -82,7 +82,7 @@ $is_disabled = '';
 												<span class="number">
 												4 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Road Test </span>
+												<i class="fa fa-check"></i> Driver Evaluation </span>
 												</a>
 											</li>
                                             <li>

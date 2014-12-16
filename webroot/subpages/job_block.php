@@ -7,7 +7,7 @@
         <div class="portlet box green-meadow">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-globe"></i><?php echo ucfirst($settings->client);?>
+                    <i class="icon-globe"></i><?php echo ucfirst($settings->client);?> / Challenger
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse" data-original-title="" title="">

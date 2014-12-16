@@ -23,7 +23,7 @@ $is_disabled = '';
                 <?php
                 if(isset($disabled))
                 { ?>
-                <a href="javascript:window.print();" class="btn btn-info">Print</a>
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
                 <?php } ?>
 
 			</div>
@@ -215,3 +215,13 @@ jQuery(document).ready(function() {
         });
 });
 </script>
+
+<style>
+@media print {
+    .page-header{display:none;}
+    .page-footer,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.form-actions,.steps,.caption{display:none!important;}
+    .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
+    .tabbable-line{border:none!important;}
+    
+    }
+</style>

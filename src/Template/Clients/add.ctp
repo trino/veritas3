@@ -23,7 +23,7 @@ $is_disabled = '';
                 <?php
 				if(isset($disabled))
                 { ?>
-                <a href="javascript:window.print();" class="btn btn-info">Print</a>
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
                 <?php } ?>
 			</div>
 <div class="row ">

@@ -12,7 +12,7 @@
 								 1349
 							</div>
 							<div class="desc">
-								 Orders
+								 Pre-Screening
 							</div>
 						</div>
 						<a class="more" href="#">
@@ -34,7 +34,7 @@
 								 120
 							</div>
 							<div class="desc">
-								Pending Orders
+								Interview Driver Application
 							</div>
 						</div>
 						<a class="more" href="#">
@@ -54,7 +54,8 @@
 								 80
 							</div>
 							<div class="desc">
-								<?php echo ucfirst($settings->client);?>
+								<?php //echo ucfirst($settings->client);?>
+                                Place MEE Order
 							</div>
 						</div>
 						<a class="more" href="#">
@@ -74,7 +75,8 @@
 								 340
 							</div>
 							<div class="desc">
-								<?php echo ucfirst($settings->profile);?>
+								<?php //echo ucfirst($settings->profile);?>
+                                Road Test
 							</div>
 						</div>
 						<a class="more" href="#">

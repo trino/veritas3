@@ -21,6 +21,11 @@ $is_disabled = '';
 						<a href="">Add/Edit <?php echo ucfirst($settings->client);?></a>
 					</li>
 				</ul>
+                <?php
+                //if(isset($disabled))
+//                { ?>
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+                <?php //} ?>
 				
 			</div>
 <div class="row profile">
@@ -40,38 +45,38 @@ $is_disabled = '';
                                                 <h3>Assigned to:</h3>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Robert Brown </a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												John Lenon
 												</a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Jacob Regal </a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Matt Johnson </a>
 											</li>
                                             <li><h3>Contacts:</h3></li>
                                             <li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Robert Brown </a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												John Lenon
 												</a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Jacob Regal </a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Matt Johnson </a>
 											</li>
 										</ul>
@@ -141,8 +146,9 @@ $is_disabled = '';
 										</div>
 										<!--end row-->
                                         <hr />
-            
+                                        <div class="home_blocks">
                                         <?php include('subpages/home_blocks.php');?>
+                                        </div>
                             			<div class="clearfix"></div>
                             			<hr />
                                         
@@ -171,3 +177,13 @@ $is_disabled = '';
 						
 				</div>
 			</div>
+            
+<style>
+@media print {
+    .page-header{display:none;}
+    .page-footer,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.more{display:none!important;}
+    .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
+    .tabbable-line{border:none!important;}
+    
+    }
+</style>

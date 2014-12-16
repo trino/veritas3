@@ -156,7 +156,7 @@ $is_disabled = '';
                 <?php
                 if(isset($disabled))
                 { ?>
-                <a href="javascript:window.print();" class="btn btn-info">Print</a>
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
                 <?php } ?>
 
 			</div>
@@ -191,14 +191,12 @@ $is_disabled = '';
                                 <div class="caption">Associated Clients</div>
                             </div>
                             <div class="portlet-body">
-								<div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample client 1</a></div>
+                                <table class="table">
+                                    <tr><td><a href="#">Sample client 1</a></td><td><a href="#">Sample client 1</a></td></tr>
+                                    <tr><td><a href="#">Sample client 1</a></td><td><a href="#">Sample client 1</a></td></tr>
+                                    <tr><td><a href="#">Sample client 1</a></td><td><a href="#">Sample client 1</a></td></tr>
+                                    <tr><td><a href="#">Sample client 1</a></td><td><a href="#">Sample client 1</a></td></tr>
+                                </table>
 								<div class="clearfix"></div>
 							</div>
                         </div>
@@ -208,15 +206,13 @@ $is_disabled = '';
                                 <div class="caption">Orders</div>
                             </div>
                             <div class="portlet-body">
-								<div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
-                                <div class="profile-desc-text col-sm-6 nopad"><a href="#">Sample Order 1</a></div>
-
+                                <table class="table">
+                                    <tr><td><a href="#">Sample Order 1</a></td><td><a href="#">Sample Order 1</a></td></tr>
+                                    <tr><td><a href="#">Sample Order 1</a></td><td><a href="#">Sample Order 1</a></td></tr>
+                                    <tr><td><a href="#">Sample Order 1</a></td><td><a href="#">Sample Order 1</a></td></tr>
+                                    <tr><td><a href="#">Sample Order 1</a></td><td><a href="#">Sample Order 1</a></td></tr>
+                                </table>
+								
                                 <a href="<?php echo WEB_ROOT;?>documents/add" class="btn btn-warning margin-top-10">
                                     Submit Order </a>
                                 <div class="clearfix"></div>

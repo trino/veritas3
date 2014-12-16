@@ -74,14 +74,14 @@
 
         <form class="login-form" action="" method="post">
     <h3 class="form-title">Login to your account</h3>
-
     
+    <?= $this->Flash->render() ?>
     <div class="form-group">
         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
         <label class="control-label visible-ie8 visible-ie9">Username</label>
         <div class="input-icon">
             <i class="fa fa-user"></i>
-            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" required="required" />
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="name" required="required" />
         </div>
     </div>
     <div class="form-group">

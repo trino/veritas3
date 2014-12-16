@@ -8,7 +8,7 @@
 						</div>
 						<div class="portlet-body">
 							<div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
-								<ul class="feeds">
+								<ul class="feeds" id="feeds">
 									<li>
 										<div class="col1">
 											<div class="cont">
@@ -323,7 +323,7 @@
 							</div>
 							<div class="scroller-footer">
 								<div class="btn-arrow-link pull-right">
-									<a href="#">See All Records</a>
+									<a href="javascript:void(0);" id="recent_more">See All Records</a>
 									<i class="icon-arrow-right"></i>
 								</div>
 							</div>
@@ -332,3 +332,17 @@
 				</div>
 				
 			</div>
+            <script>
+            $(function(){
+                $('#recent_more').click(function(){
+                    $(this).text('Loading..');
+                    $.ajax({
+                       url:'<?php echo $this->request->webroot;?>pages/recent_more',
+                       success:function(r){
+                        $('#feeds').append(r);
+                        $('#recent_more').text('See All Records');
+                       } 
+                    });
+                });
+            })
+            </script>

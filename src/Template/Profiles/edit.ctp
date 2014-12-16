@@ -251,7 +251,7 @@ $is_disabled = '';
                                             }
                                             ?>
 											<li>
-												<a href="#tab_1_4" data-toggle="tab">Permissions</a>
+												<a href="#tab_1_4" data-toggle="tab">Display</a>
 											</li>
                                             <li>
 												<a href="#tab_1_5" data-toggle="tab">Logos</a>
@@ -276,7 +276,7 @@ $is_disabled = '';
 											<!-- PERSONAL INFO TAB -->
 											<div class="tab-pane active" id="tab_1_1">
 												<form role="form" action="#">
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-6">
 														<label class="control-label"><?php echo ucfirst($settings->profile);?> Type</label>
 														<select <?php echo $is_disabled?> class="form-control member_type">
                                                             <option value="Admin">Admin</option>
@@ -284,34 +284,31 @@ $is_disabled = '';
                                                             <option value="Contact">Contact</option>
                                                         </select>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-6">
 														<label class="control-label">Title</label>
 														<input <?php echo $is_disabled?> type="text" placeholder="eg. Mr" class="form-control"/>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-6">
 														<label class="control-label">First Name</label>
 														<input <?php echo $is_disabled?> type="text" placeholder="eg. John" class="form-control"/>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-6">
 														<label class="control-label">Last Name</label>
 														<input <?php echo $is_disabled?> type="text" placeholder="eg. Doe" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-6">
 														<label class="control-label">Email</label>
 														<input <?php echo $is_disabled?> type="text" placeholder="eg. test@domain.com" class="form-control"/>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-6">
 														<label class="control-label">Phone Number</label>
 														<input <?php echo $is_disabled?> type="text" placeholder="eg. +1 646 580 6284" class="form-control"/>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-12">
 														<label class="control-label">Address</label>
 														<input <?php echo $is_disabled?> type="text" placeholder="eg. Street, City, Province, Country" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
-														<label class="control-label">Make quick contact</label>
-														<input <?php echo $is_disabled?> type="checkbox" onchange="if($(this).is(':checked'))$('#tab_1_3 input').attr('disabled','disabled');else{$('#tab_1_3 input').removeAttr('disabled');}" class="form-control"/>
-													</div>
+                                                    
 													<?php
                                                     if(!isset($disabled))
                                                     {
@@ -331,7 +328,7 @@ $is_disabled = '';
 												<p>
 													 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
 												</p>
-												<form action="<?php echo $this->request->webroot;?>settings/change_text" role="form" method="post">
+												
 													<div class="form-group">
 														<div class="fileinput fileinput-new" data-provides="fileinput">
 															<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
@@ -354,36 +351,7 @@ $is_disabled = '';
                                                         
 
 													</div>
-                                                    
-                                                    <div class="form-group" id="notli">
-                                                    
-                                                            <label class="control-label">Choose what to display</label>
-                                                            <div class="clearfix"></div>
-                                                            <div class="form-group">
-                                                                <label class="control-label">Client</label>
-                                                                <input type="text" name="client" class="form-control" value="<?php echo $settings->client;?>"  />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="control-label">Document</label>
-                                                                <input type="text" name="document" class="form-control" value="<?php echo $settings->document;?>" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="control-label">Profile</label>
-                                                                <input type="text" name="profile" class="form-control" value="<?php echo $settings->profile;?>"  />
-                                                            </div>
-                                                            <!--<select class="form-control" onchange="change_text(this.value)">
-                                                                <option value="">Select User/Profile</option>
-                                                                <option value="1">Profile/Client</option>
-                                                                <option value="2">User/Job</option>
-                                                            </select>-->
-                                                        
-                                                    </div>
-													<div class="margin-top-10">
-														<input type="submit" class="btn btn-primary" value="Submit"/>
-														<a href="#" class="btn default">
-														Cancel </a>
-													</div>
-												</form>
+                                              
 											</div>
 											<!-- END CHANGE AVATAR TAB -->
 											<!-- CHANGE PASSWORD TAB -->
@@ -412,63 +380,35 @@ $is_disabled = '';
 											<!-- END CHANGE PASSWORD TAB -->
 											<!-- PRIVACY SETTINGS TAB -->
 											<div class="tab-pane" id="tab_1_4">
-												<form action="#">
-													<table class="table table-light table-hover">
-													<tr>
-														<td>
-															 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus..
-														</td>
-														<td>
-															<label class="uniform-inline">
-															<input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
-															Yes </label>
-															<label class="uniform-inline">
-															<input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
-															No </label>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															 Enim eiusmod high life accusamus terry richardson ad squid wolf moon
-														</td>
-														<td>
-															<label class="uniform-inline">
-															<input <?php echo $is_disabled?> type="checkbox" value=""/> Yes </label>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															 Enim eiusmod high life accusamus terry richardson ad squid wolf moon
-														</td>
-														<td>
-															<label class="uniform-inline">
-															<input <?php echo $is_disabled?> type="checkbox" value=""/> Yes </label>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															 Enim eiusmod high life accusamus terry richardson ad squid wolf moon
-														</td>
-														<td>
-															<label class="uniform-inline">
-															<input <?php echo $is_disabled?> type="checkbox" value=""/> Yes </label>
-														</td>
-													</tr>
-													</table>
-													<!--end profile-settings-->
-                                                    <?php
-                                                    if(!isset($disabled))
-                                                    {
-                                                        ?>
-
+												<form action="<?php echo $this->request->webroot;?>settings/change_text" role="form" method="post">      
+                                                    <div class="form-group" id="notli">
+                                                    
+                                                            <label class="control-label">Choose what to display</label>
+                                                            <div class="clearfix"></div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Client</label>
+                                                                <input type="text" name="client" class="form-control" value="<?php echo $settings->client;?>"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Document</label>
+                                                                <input type="text" name="document" class="form-control" value="<?php echo $settings->document;?>" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Profile</label>
+                                                                <input type="text" name="profile" class="form-control" value="<?php echo $settings->profile;?>"  />
+                                                            </div>
+                                                            <!--<select class="form-control" onchange="change_text(this.value)">
+                                                                <option value="">Select User/Profile</option>
+                                                                <option value="1">Profile/Client</option>
+                                                                <option value="2">User/Job</option>
+                                                            </select>-->
+                                                        
+                                                    </div>
 													<div class="margin-top-10">
-														<a href="#" class="btn btn-primary">
-														Save Changes </a>
-
+														<input type="submit" class="btn btn-primary" value="Submit"/>
+														<a href="#" class="btn default">
+														Cancel </a>
 													</div>
-                                                    <?php
-                                                    }
-                                                    ?>
 												</form>
 											</div>
                                             <div class="tab-pane" id="tab_1_5">
@@ -814,11 +754,12 @@ $is_disabled = '';
                                                <h4> Enable <?php echo ucfirst($settings->document);?>?</h4>
                                                 <form action="#">
                                                     <table class="table table-light table-hover">
+                                                        <tr><th></th><th class="center">System</th><th class="center">User</th></tr>
                                                         <tr>
                                                             <td>
                                                                Reports
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios" value="option1"/>
                                                                     Yes </label>
@@ -826,7 +767,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -838,7 +779,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
-                                                            <td colspan="2">
+                                                            <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr" value="option1"/>
                                                                     View Only </label>
@@ -854,7 +795,7 @@ $is_disabled = '';
                                                             <td>
                                                                 <?php echo ucfirst($settings->document);?>
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
                                                                     Yes </label>
@@ -862,7 +803,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                        <td>
+                                                        <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions9" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -874,7 +815,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
-                                                            <td colspan="2">
+                                                            <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr9" value="option1"/>
                                                                     View Only </label>
@@ -890,7 +831,7 @@ $is_disabled = '';
                                                             <td>
                                                                 templates
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios2" value="option1"/>
                                                                     Yes </label>
@@ -898,7 +839,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios2" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                        <td>
+                                                        <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions1" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -910,7 +851,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
-                                                            <td colspan="2">
+                                                            <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr1" value="option1"/>
                                                                     View Only </label>
@@ -926,7 +867,7 @@ $is_disabled = '';
                                                             <td>
                                                                 KPI Report
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios3" value="option1"/>
                                                                     Yes </label>
@@ -934,7 +875,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios3" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                        <td>
+                                                        <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions2" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -946,7 +887,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
-                                                            <td colspan="2">
+                                                            <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr2" value="option1"/>
                                                                     View Only </label>
@@ -962,7 +903,7 @@ $is_disabled = '';
                                                             <td>
                                                                 Strike
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios4" value="option1"/>
                                                                     Yes </label>
@@ -970,7 +911,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios4" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                        <td>
+                                                        <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions3" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -998,7 +939,7 @@ $is_disabled = '';
                                                             <td>
                                                                 Orders
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios5" value="option1"/>
                                                                     Yes </label>
@@ -1006,7 +947,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios5" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                        <td>
+                                                        <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions4" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -1018,7 +959,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
-                                                            <td colspan="2">
+                                                            <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr4" value="option1"/>
                                                                     View Only </label>
@@ -1034,7 +975,7 @@ $is_disabled = '';
                                                             <td>
                                                                 Other Document Type
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios6" value="option1"/>
                                                                     Yes </label>
@@ -1042,7 +983,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios6" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                        <td>
+                                                        <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions5" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -1054,7 +995,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
-                                                            <td colspan="2">
+                                                            <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr5" value="option1"/>
                                                                     View Only </label>
@@ -1070,7 +1011,7 @@ $is_disabled = '';
                                                             <td>
                                                                 Other <?php echo ucfirst($settings->document);?> Type
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios7" value="option1"/>
                                                                     Yes </label>
@@ -1078,7 +1019,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios7" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                        <td>
+                                                        <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions6" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -1090,7 +1031,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
-                                                            <td colspan="2">
+                                                            <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr6" value="option1"/>
                                                                     View Only </label>
@@ -1106,7 +1047,7 @@ $is_disabled = '';
                                                             <td>
                                                                 Other <?php echo ucfirst($settings->document);?> Type
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios8" value="option1"/>
                                                                     Yes </label>
@@ -1114,7 +1055,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios8" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                        <td>
+                                                        <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions7" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -1126,7 +1067,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
-                                                            <td colspan="2">
+                                                            <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr7" value="option1"/>
                                                                     View Only </label>
@@ -1142,7 +1083,7 @@ $is_disabled = '';
                                                             <td>
                                                                 Other <?php echo ucfirst($settings->document);?> Type
                                                             </td>
-                                                            <td>
+                                                            <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios9" value="option1"/>
                                                                     Yes </label>
@@ -1150,7 +1091,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="optionsRadios9" value="option2" checked/>
                                                                     No </label>
                                                             </td>
-                                                        <td>
+                                                        <td class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions8" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
                                                                     Yes </label>
@@ -1162,7 +1103,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
-                                                            <td colspan="2">
+                                                            <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr8" value="option1"/>
                                                                     View Only </label>

@@ -173,6 +173,14 @@
                     </li>
                 </ul>
                 </li>
+                
+                <li class="<?php echo($this->request['controller']=='Messages')?'active open':'';?>">
+                <a href="<?php echo $this->request->webroot;?>Messages">
+                <i class="icon-envelope"></i>
+				<span class="title">Messages</span>
+                <span class="selected"></span>
+                </a>
+                </li>
 
                
 				<!--

@@ -358,8 +358,8 @@
                                         </div>
                                       </div>
                             <div class="clearfix"></div>
-                            <?php include('canvas/example.php');?>
-                            <?php include('canvas/example2.php');?>
+                            <?php //include('canvas/example.php');?>
+                            <?php //include('canvas/example2.php');?>
                             <div class="clearfix"></div>
             
 
@@ -375,8 +375,8 @@
             $(this).closest('#del_pre').remove();
             
         });
-        $("#test1").jqScribble();
-        $("#test2").jqScribble();
+        //$("#test1").jqScribble();
+        //$("#test2").jqScribble();
     });
 
        

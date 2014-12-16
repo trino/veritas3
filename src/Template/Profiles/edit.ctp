@@ -1198,8 +1198,10 @@ $is_disabled = '';
 
                                             <!-- PRIVACY SETTINGS TAB -->
                                             <div class="tab-pane" id="tab_1_8">
+                                             <?php $sidebar =$this->requestAction("settings/get_side");?>
+                                             <?php $block =$this->requestAction("settings/get_blocks");?>
                                                 <h4> Sidebar Module </h4>
-                                                <form action="#">
+                                                <form action="<?php echo $this->request->webroot;?>profiles/blocks" method="post">
                                                     <table class="table table-light table-hover">
                                                         <tr>
                                                             <td>
@@ -1207,10 +1209,10 @@ $is_disabled = '';
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="side[profile]" value="1" <?php if($sidebar->profile==1)echo "checked";?> />
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="side[profile]" value="0" <?php if($sidebar->profile==0)echo "checked";?>/>
                                                                     No </label>
                                                             </td>
                                                         </tr>
@@ -1221,10 +1223,10 @@ $is_disabled = '';
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="side[client]" value="1" <?php if($sidebar->client==1)echo "checked";?>/>
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="side[client]" value="0" <?php if($sidebar->client==0)echo "checked";?>/>
                                                                     No </label>
                                                             </td>
                                                         </tr>
@@ -1234,10 +1236,10 @@ $is_disabled = '';
                                                             </td>
                                                             <td>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="side[document]" value="1" <?php if($sidebar->document==1)echo "checked";?>/>
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="side[document]" value="0" <?php if($sidebar->document==0)echo "checked";?>/>
                                                                     No </label>
                                                             </td>
                                                         </tr>
@@ -1248,7 +1250,8 @@ $is_disabled = '';
 
 
                                                     <h4> Homepage Top Block</h4>
-                                                    <form action="#">
+                                                    
+                                                  
                                                         <table class="table table-light table-hover">
                                                             <tr>
                                                                 <td>
@@ -1256,10 +1259,10 @@ $is_disabled = '';
                                                                 </td>
                                                                 <td>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[meeting]" value="1" <?php if($block->meeting==1)echo "checked";?>/>
                                                                         Yes </label>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[meeting]" value="0" <?php if($block->meeting==0)echo "checked";?>/>
                                                                         No </label>
                                                                 </td>
                                                             </tr>
@@ -1270,10 +1273,10 @@ $is_disabled = '';
                                                                 </td>
                                                                 <td>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[gps]" value="1" <?php if($block->gps==1)echo "checked";?>/>
                                                                         Yes </label>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[gps]" value="0" <?php if($block->gps==0)echo "checked";?>/>
                                                                         No </label>
                                                                 </td>
                                                             </tr>
@@ -1283,10 +1286,10 @@ $is_disabled = '';
                                                                 </td>
                                                                 <td>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[report]" value="1" <?php if($block->report==1)echo "checked";?>/>
                                                                         Yes </label>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[report]" value="0" <?php if($block->report==0)echo "checked";?>/>
                                                                         No </label>
                                                                 </td>
                                                             </tr>
@@ -1296,10 +1299,10 @@ $is_disabled = '';
                                                                 </td>
                                                                 <td>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[feedback]" value="1" <?php if($block->feedback==1)echo "checked";?>/>
                                                                         Yes </label>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[feedback]" value="0" <?php if($block->feedback==0)echo "checked";?>/>
                                                                         No </label>
                                                                 </td>
                                                             </tr>
@@ -1310,10 +1313,75 @@ $is_disabled = '';
                                                                 </td>
                                                                 <td>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[setting]" value="1" <?php if($block->setting==1)echo "checked";?>/>
                                                                         Yes </label>
                                                                     <label class="uniform-inline">
-                                                                        <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[setting]" value="0" <?php if($block->setting==0)echo "checked";?>/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Orders
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[orders]" value="1" <?php if($block->orders==1)echo "checked";?>/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[orders]" value="0" <?php if($block->orders==0)echo "checked";?>/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Doc
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[doc]" value="1" <?php if($block->doc==1)echo "checked";?>/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[doc]" value="0" <?php if($block->doc==0)echo "checked";?>/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Conference
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[conference]" value="1" <?php if($block->conference==1)echo "checked";?>/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[conference]" value="0" <?php if($block->conference==0)echo "checked";?>/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>                                                                      
+                                                            <tr>
+                                                                <td>
+                                                                    Stats by recruiter
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[stat]" value="1" <?php if($block->stat==1)echo "checked";?>/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[stat]" value="0" <?php if($block->stat==0)echo "checked";?>/>
+                                                                        No </label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Todo (reminders)
+                                                                </td>
+                                                                <td>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[todo]" value="1" <?php if($block->todo==1)echo "checked";?>/>
+                                                                        Yes </label>
+                                                                    <label class="uniform-inline">
+                                                                        <input <?php echo $is_disabled?> type="radio" name="block[todo]" value="0" <?php if($block->todo==0)echo "checked";?>/>
                                                                         No </label>
                                                                 </td>
                                                             </tr>
@@ -1334,8 +1402,7 @@ $is_disabled = '';
                                                         ?>
 
                                                         <div class="margin-top-10">
-                                                            <a href="#" class="btn btn-primary">
-                                                                Save Changes </a>
+                                                            <input type="submit" name="submit" class="btn btn-primary" value="Save Changes" />
 
                                                         </div>
                                                     <?php

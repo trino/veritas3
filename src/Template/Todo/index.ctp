@@ -200,9 +200,9 @@
 														
                                                         <div class="form-group">
 															<div class="col-md-12">
-																<label >Follow up wih <?php echo ($settings->client);?></label>
+																<label >Follow up wih <?php echo ($settings->profile);?></label>
                                                                 <select class="form-control">
-                                                                    <option value="">Select <?php echo ucfirst($settings->client);?></option>
+                                                                    <option value="">Select <?php echo ucfirst($settings->profile);?></option>
                                                                     <option value="4">Nick Smith</option>
                                                                     <option value="5">James Blont</option>
                                                                     <option value="6">Mark Henry</option>

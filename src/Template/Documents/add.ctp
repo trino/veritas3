@@ -112,7 +112,7 @@ $is_disabled = '';
 												Save <i class="m-icon-swapdown m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-next">
+												<a href="javascript:;" class="btn blue button-next cont">
 												Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
@@ -183,7 +183,7 @@ $is_disabled = '';
 												Save <i class="m-icon-swapdown m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-next">
+												<a href="javascript:;" class="btn blue button-next cont">
 												Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 

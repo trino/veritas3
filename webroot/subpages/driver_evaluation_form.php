@@ -569,6 +569,9 @@
                                                   </div>
                                                   
                                                   <div class="clearfix"></div>
+                                                  <?php include('canvas/example.php');?>
+                                                    
+                                                    <div class="clearfix"></div>
  <script>
     $(function(){
        $('#add_more_driver_doc').click(function(){
@@ -578,5 +581,27 @@
        $('#delete_driver_doc').live('click',function(){
             $(this).closest('.del_append_driver').remove();
        });
+       $("#test1").jqScribble();
+        //$("#test2").jqScribble();
     });
+    	function save(numb)
+		{
+		  alert('rest');return;
+			$("#test"+numb).data("jqScribble").save(function(imageData)
+			{
+				$.post('image_save.php', {imagedata: imageData}, function(response)
+					{
+						
+                        $.ajax({
+                            url:'<?php echo $this->request->webroot;?>document/image_sess/'+numb+'/'+response
+                        });
+					});	
+				
+			});
+		}
+		function addImage()
+		{
+			var img = prompt("Enter the URL of the image.");
+			if(img !== '')$("#test").data("jqScribble").update({backgroundImage: img});
+		}
 </script>                                               

@@ -30,6 +30,29 @@ class SettingsController extends AppController {
             return $this->response;
          die();
    }
+   
+   function get_blocks()
+   {
+        $setting = TableRegistry::get('blocks');
+         $query = $setting->find();
+                 
+         $l = $query->first();
+         
+         $this->response->body(($l));
+            return $this->response;
+         die();
+   }
+    function get_side()
+   {
+        $setting = TableRegistry::get('sidebar');
+         $query = $setting->find();
+                 
+         $l = $query->first();
+         
+         $this->response->body(($l));
+            return $this->response;
+         die();
+   }
     function changebody()
     {
          $class = $_POST['class'];

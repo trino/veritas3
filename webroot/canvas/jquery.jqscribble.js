@@ -135,8 +135,9 @@ function BasicCanvasSave(imageData){window.open(imageData,'jqScribble Image');}
 
         self.blank = true;
         self.canvas = canvas;
-        self.canvas.width = width;
-        self.canvas.height = height;
+        
+        self.canvas.width = 450;
+        self.canvas.height = 250;
         self.clear();
 
         if(settings.backgroundImage)

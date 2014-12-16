@@ -176,7 +176,13 @@ var FormWizard = function () {
                 } else {
                     $('#form_wizard_1').find('.button-previous').show();
                 }
-
+                
+                if(current == 4)
+                {
+                    $('.cont').html('Submit')
+                }
+                else
+                $('.cont').html('Continue <i class="m-icon-swapright m-icon-white"></i>')
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();

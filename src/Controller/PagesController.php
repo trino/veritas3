@@ -34,4 +34,8 @@ class PagesController extends AppController {
     {
         
     }
+    function recent_more()
+    {
+        $this->layout = 'blank';
+    }
 }

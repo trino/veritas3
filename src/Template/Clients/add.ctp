@@ -204,75 +204,75 @@ $is_disabled = '';
 											<div id="tab_1-1" class="tab-pane active">
                                                 <h4><?php echo ucfirst($settings->client);?> Details</h4>
 												<form role="form" action="#">
-													<div class="form-group">
+													<div class="form-group col-md-6">
 														<label class="control-label">Title</label>
 														<input type="text" class="form-control"/>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-6">
 														<label class="control-label">Description</label>
 														<textarea class="form-control"></textarea>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-12">
 														<label class="control-label">Enter name of your company</label>
 														<input type="text" class="form-control"/>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's First Name</label>
 														<input type="text" class="form-control"/>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's Last Name</label>
 														<input type="text" class="form-control"/>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's Phone Number</label>
 														<input type="text" class="form-control"/>
 													</div>
-													<div class="form-group">
+													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's Email Address</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-12">
 														<label class="control-label">Billing Address Street Name and Number</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-4">
 														<label class="control-label">City</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-4">
 														<label class="control-label">Postal Code</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-4">
 														<label class="control-label">Province/State</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-6">
 														<label class="control-label">User's First Name</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-6">
 														<label class="control-label">User's Last Name</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-6">
 														<label class="control-label">User's Email Address</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-6">
 														<label class="control-label">User's Phone Number</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-12">
 														<label class="control-label">Site</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-6">
 														<label class="control-label">Start Date</label>
 														<input type="text" class="form-control"/>
 													</div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-md-6">
 														<label class="control-label">End Date</label>
 														<input type="text" class="form-control"/>
 													</div>

@@ -5,7 +5,7 @@ var Inbox = function () {
     var listListing = '';
 
     var loadInbox = function (el, name) {
-        var url = 'inbox_inbox.html';
+        var url = 'subpages/inbox_inbox.php';
         var title = $('.inbox-nav > li.' + name + ' a').attr('data-title');
         listListing = name;
 
@@ -15,11 +15,12 @@ var Inbox = function () {
 
         $.ajax({
             type: "GET",
-            cache: false,
+            //cache: false,
             url: url,
-            dataType: "html",
+            //dataType: "html",
             success: function(res) 
             {
+                alert(res);
                 toggleButton(el);
 
                 $('.inbox-nav > li.active').removeClass('active');
@@ -27,7 +28,7 @@ var Inbox = function () {
                 $('.inbox-header > h1').text(title);
 
                 loading.hide();
-                content.html(res);
+                $('.inbox-content').html(res);
                 if (Layout.fixContentHeight) {
                     Layout.fixContentHeight();
                 }
@@ -52,7 +53,7 @@ var Inbox = function () {
     }
 
     var loadMessage = function (el, name, resetMenu) {
-        var url = 'inbox_view.html';
+        var url = 'subpages/inbox_view.php';
 
         loading.show();
         content.html('');
@@ -76,7 +77,7 @@ var Inbox = function () {
                 $('.inbox-header > h1').text('View Message');
 
                 loading.hide();
-                content.html(res);
+                $('.inbox-content').html(res);
                 Layout.fixContentHeight();
                 Metronic.initUniform();
             },
@@ -118,10 +119,10 @@ var Inbox = function () {
     }
 
     var loadCompose = function (el) {
-        var url = 'inbox_compose.html';
+        var url = 'subpages/inbox_compose.php';
 
         loading.show();
-        content.html('');
+        $('.inbox-content').html('');
         toggleButton(el);
 
         // load the form via ajax
@@ -138,7 +139,7 @@ var Inbox = function () {
                 $('.inbox-header > h1').text('Compose');
 
                 loading.hide();
-                content.html(res);
+                $('.inbox-content').html(res);
 
                 initFileupload();
                 initWysihtml5();
@@ -157,10 +158,10 @@ var Inbox = function () {
 
     var loadReply = function (el) {
         var messageid = $(el).attr("data-messageid");
-        var url = 'inbox_reply.html?messageid=' + messageid;
+        var url = 'subpages/inbox_reply.php?messageid=' + messageid;
         
         loading.show();
-        content.html('');
+        $('.inbox-content').html('');
         toggleButton(el);
 
         // load the form via ajax
@@ -177,7 +178,7 @@ var Inbox = function () {
                 $('.inbox-header > h1').text('Reply');
 
                 loading.hide();
-                content.html(res);
+                $('.inbox-content').html(res);
                 $('[name="message"]').val($('#reply_email_content_body').html());
 
                 handleCCInput(); // init "CC" input field
@@ -199,7 +200,7 @@ var Inbox = function () {
         var url = 'inbox_search_result.html';
 
         loading.show();
-        content.html('');
+        $('.inbox-content').html('');
         toggleButton(el);
 
         $.ajax({
@@ -215,7 +216,7 @@ var Inbox = function () {
                 $('.inbox-header > h1').text('Search');
 
                 loading.hide();
-                content.html(res);
+                $('.inbox-content').html(res);
                 Layout.fixContentHeight();
                 Metronic.initUniform();
             },

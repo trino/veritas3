@@ -90,6 +90,14 @@ $is_disabled = '';
 												<span class="number">
 												5 </span><br />
 												<span class="desc">
+												<i class="fa fa-check"></i> Confirmation </span>
+												</a>
+											</li>
+                                            <li>
+												<a href="#tab6" data-toggle="tab" class="step">
+												<span class="number">
+												6 </span><br />
+												<span class="desc">
 												<i class="fa fa-check"></i> Finalize </span>
 												</a>
 											</li>
@@ -152,6 +160,11 @@ $is_disabled = '';
 												
 											</div>
                                             <div class="<?php echo $tab;?>" id="tab5">
+												<?php
+                                                    include('subpages/confirmation.php');
+                                                ?>
+											</div>
+                                            <div class="<?php echo $tab;?>" id="tab6">
 												<?php
                                                     include('subpages/forview.php');
                                                 ?>

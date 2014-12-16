@@ -38,7 +38,7 @@ $is_disabled = '';
                                         
 										<ul class="list-unstyled profile-nav">
 											<li>
-												<img src="<?php echo $this->request->webroot;?>img/jobs/1.png" class="img-responsive" alt=""/>
+												<img src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png" class="img-responsive" alt=""/>
 												<a href="#" class="profile-edit">
 												Edit </a>
                                                 <br />
@@ -84,7 +84,7 @@ $is_disabled = '';
 									<div class="col-md-9">
 										<div class="row">
 											<div class="col-md-8 profile-info">
-												<h1>Job name 1</h1>
+												<h1>Challenger</h1>
 												<p>
 													 Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. 
 												</p>
@@ -111,6 +111,16 @@ $is_disabled = '';
 													</div>
 													<div class="portlet-body">
 														<ul class="list-unstyled">
+
+															<li>
+																<span class="sale-info">
+																<?php echo ucfirst($settings->profile);?> <i class="fa fa-img-down"></i>
+																</span>
+																<span class="sale-num">
+																87 </span>
+															</li>
+
+
 															<li>
 																<span class="sale-info">
 																Total Uploads <i class="fa fa-img-up"></i>
@@ -118,13 +128,7 @@ $is_disabled = '';
 																<span class="sale-num">
 																23 </span>
 															</li>
-															<li>
-																<span class="sale-info">
-																Assigned <?php echo ucfirst($settings->client);?> <i class="fa fa-img-down"></i>
-																</span>
-																<span class="sale-num">
-																87 </span>
-															</li>
+
 															<li>
 																<span class="sale-info">
 																Created on </span>
@@ -150,8 +154,7 @@ $is_disabled = '';
                                         <?php include('subpages/home_blocks.php');?>
                                         </div>
                             			<div class="clearfix"></div>
-                            			<hr />
-                                        
+
                                         <table class="table table-striped">
                                             <tr><td>Signatory's name</td><td>Joe Doe</td></tr>
                                             <tr><td>Signatory's phone number</td><td>+1 - 2345678</td></tr>

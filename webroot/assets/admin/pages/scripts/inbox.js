@@ -20,7 +20,7 @@ var Inbox = function () {
             //dataType: "html",
             success: function(res) 
             {
-                alert(res);
+                
                 toggleButton(el);
 
                 $('.inbox-nav > li.active').removeClass('active');

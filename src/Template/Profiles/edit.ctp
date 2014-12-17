@@ -560,26 +560,31 @@ $is_disabled = '';
 
 
 
-
+                                            <?php $faq = $this->requestAction('pages/get_content/faq');?>
+                                            <?php $help = $this->requestAction('pages/get_content/help');?>
+                                            <?php $pc = $this->requestAction('pages/get_content/privacy-code');?>
+                                            <?php $pe = $this->requestAction('pages/get_content/product-example');?>
+                                            <?php $terms = $this->requestAction('pages/get_content/terms');?>
                                             <div class="tab-pane" id="tab_1_6">
                                                 <div>
                                                 <ul class="nav nav-tabs">
-
-
                                                     <li class="active">
-        												<a href="#subtab_1_5" data-toggle="tab">Product Example</a>
-        											</li>
-                                                    <li class="">
-                                                        <a href="#subtab_1_6" data-toggle="tab">Help</a>
+                                                        <a href="#subtab_1_3" data-toggle="tab"><?php echo ucwords($help->title);?></a>
                                                     </li>
+
+
+                                                    <li class="">
+        												<a href="#subtab_1_5" data-toggle="tab"><?php echo ucwords($pe->title);?></a>
+        											</li>
+                                                    
                                                     <li>
-                                                        <a href="#subtab_1_4" data-toggle="tab">Privacy Code</a>
+                                                        <a href="#subtab_1_4" data-toggle="tab"><?php echo ucwords($pc->title);?></a>
                                                     </li>
         											<li>
-        												<a href="#subtab_1_6" data-toggle="tab">Terms</a>
+        												<a href="#subtab_1_6" data-toggle="tab"><?php echo ucwords($terms->title);?></a>
         											</li>
                                                     <li class="">
-        												<a href="#subtab_1_7" data-toggle="tab">FAQ</a>
+        												<a href="#subtab_1_7" data-toggle="tab"><?php echo ucwords($faq->title);?></a>
         											</li>
 
 
@@ -590,19 +595,20 @@ $is_disabled = '';
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Help
+                                								<i class="fa fa-gift"></i>Page Manager - <?php echo ucwords($help->title);?>
                                 							</div>
 
                                 						</div>
 
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
+                                                            
+                                							<form action="<?php echo $this->request->webroot;?>pages/edit/help" method="post" class="form-horizontal form-bordered">
                                                                 <div class="form-body">
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Page Title</label>
                                 										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="Help" />
+                                											<input class="form-control" name="title" value="<?php echo $help->title;?>" />
                                 										</div>
                                 									</div>
                                 								</div>
@@ -610,7 +616,7 @@ $is_disabled = '';
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Description</label>
                                 										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"><?php echo $help->desc;?></textarea>
                                 										</div>
                                 									</div>
                                 								</div>
@@ -632,19 +638,20 @@ $is_disabled = '';
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Privacy Code
+                                								<i class="fa fa-gift"></i>Page Manager - <?php echo ucwords($pc->title);?>
                                 							</div>
 
                                 						</div>
 
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
+                                                            
+                                							<form action="<?php echo $this->request->webroot;?>pages/edit/privacy-code" method="post" class="form-horizontal form-bordered">
                                                                 <div class="form-body">
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Page Title</label>
                                 										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="Privacy code" />
+                                											<input class="form-control" name="title" value="<?php echo $pc->title;?>" />
                                 										</div>
                                 									</div>
                                 								</div>
@@ -652,7 +659,7 @@ $is_disabled = '';
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Description</label>
                                 										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"><?php echo $pc->desc;?></textarea>
                                 										</div>
                                 									</div>
                                 								</div>
@@ -675,19 +682,20 @@ $is_disabled = '';
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Product Example
+                                								<i class="fa fa-gift"></i>Page Manager - <?php echo ucwords($pe->title);?>
                                 							</div>
 
                                 						</div>
 
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
+                                                            
+                                							<form action="<?php echo $this->request->webroot;?>pages/edit/product-example" method="post" class="form-horizontal form-bordered">
                                                                 <div class="form-body">
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Page Title</label>
                                 										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="Product example" />
+                                											<input class="form-control" name="title" value="<?php echo $pe->title;?>" />
                                 										</div>
                                 									</div>
                                 								</div>
@@ -695,7 +703,7 @@ $is_disabled = '';
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Description</label>
                                 										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"><?php echo $pe->desc;?></textarea>
                                 										</div>
                                 									</div>
                                 								</div>
@@ -718,19 +726,20 @@ $is_disabled = '';
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Terms
+                                								<i class="fa fa-gift"></i>Page Manager - <?php echo ucwords($terms->title);?>
                                 							</div>
 
                                 						</div>
 
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
+                                                            
+                                							<form action="<?php echo $this->request->webroot;?>pages/edit/terms" method="post" class="form-horizontal form-bordered">
                                                                 <div class="form-body">
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Page Title</label>
                                 										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="Terms" />
+                                											<input class="form-control" name="title" value="<?php echo $terms->title;?>" />
                                 										</div>
                                 									</div>
                                 								</div>
@@ -738,7 +747,7 @@ $is_disabled = '';
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Description</label>
                                 										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"><?php echo $terms->desc;?></textarea>
                                 										</div>
                                 									</div>
                                 								</div>
@@ -761,19 +770,20 @@ $is_disabled = '';
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - FAQ
+                                								<i class="fa fa-gift"></i>Page Manager - <?php echo ucwords($faq->title);?>
                                 							</div>
 
                                 						</div>
 
                                 						<div class="portlet-body form">
                                 							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
+                                                            
+                                							<form action="<?php echo $this->request->webroot;?>pages/edit/faq"method="post" class="form-horizontal form-bordered">
                                                                 <div class="form-body">
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Page Title</label>
                                 										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="FAQ" />
+                                											<input class="form-control" name="title" value="<?php echo $faq->title;?>" />
                                 										</div>
                                 									</div>
                                 								</div>
@@ -781,7 +791,7 @@ $is_disabled = '';
                                 									<div class="form-group last">
                                 										<label class="control-label col-md-3">Description</label>
                                 										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"><?php echo $faq->desc;?></textarea>
                                 										</div>
                                 									</div>
                                 								</div>

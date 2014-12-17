@@ -53,7 +53,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <input class="form-control input-inline" type="search"     placeholder=" Search for <?php echo ucfirst($settings->); ?>"      aria-controls="sample_1"/>
+                                    <input class="form-control input-inline" type="search"     placeholder=" Search for <?php echo ucfirst($settings->profile); ?>"      aria-controls="sample_1"/>
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </form>

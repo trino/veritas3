@@ -1,5 +1,7 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
+            
 			<!-- BEGIN PAGE HEADER-->
+            <div class="col-md-9">
 			<h3 class="page-title">
 			MEE Dashboard <small>Driver Qualification System</small>
 			</h3>
@@ -20,15 +22,15 @@
 					</div>
 				</div>-->
 			</div>
-
-            
+            </div>
+            <div class="col-md-3">
+                <img src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png" class="responsive" />
+            </div>
+            <div class="clearfix"></div>
 
             <?php include('subpages/home_topblocks.php');?>
             <div class="clearfix"></div>
 
-            
-            <?php include('subpages/job_block.php');?>
-            <div class="clearfix"></div>
 
             <?php include('subpages/home_blocks.php');?>
 			<div class="clearfix"></div>

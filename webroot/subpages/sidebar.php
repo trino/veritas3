@@ -60,7 +60,7 @@
 							Create <?php echo ucfirst($settings->profile);?></a>
 						</li>
 						
-					</ul>
+					</ul> 
 				</li>
                 <?php } ?>
                  <?php if($sidebar->client==1){?>
@@ -172,9 +172,9 @@
                         </a>
                     </li>
                 </ul>
-<<<<<<< HEAD
+
                 </li>-->
-=======
+
                 </li>
                 
                 <li class="<?php echo($this->request['controller']=='Messages')?'active open':'';?>">
@@ -184,7 +184,7 @@
                 <span class="selected"></span>
                 </a>
                 </li>
->>>>>>> feba82dbd113ef349e293b670dbaed09518278f5
+
 
                
 				<!--

@@ -11,4 +11,13 @@ class MessagesController extends AppController {
 	   
 		
 	}
+    public function inbox()
+    {
+        $this->layout = 'blank';
+    }
+    public function view()
+    {
+        $this->layout = 'blank';
+    }
+    
     }

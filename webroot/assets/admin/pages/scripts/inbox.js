@@ -5,7 +5,7 @@ var Inbox = function () {
     var listListing = '';
 
     var loadInbox = function (el, name) {
-        var url = 'subpages/inbox_inbox.php';
+        var url = 'Messages/inbox';
         var title = $('.inbox-nav > li.' + name + ' a').attr('data-title');
         listListing = name;
 
@@ -53,7 +53,7 @@ var Inbox = function () {
     }
 
     var loadMessage = function (el, name, resetMenu) {
-        var url = 'subpages/inbox_view.php';
+        var url = 'Messages/view';
 
         loading.show();
         content.html('');
@@ -91,7 +91,7 @@ var Inbox = function () {
 
     var initWysihtml5 = function () {
         $('.inbox-wysihtml5').wysihtml5({
-            "stylesheets": ["../../assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
+            "stylesheets": ["assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
         });
     }
 
@@ -100,14 +100,14 @@ var Inbox = function () {
         $('#fileupload').fileupload({
             // Uncomment the following to send cross-domain cookies:
             //xhrFields: {withCredentials: true},
-            url: '../../assets/global/plugins/jquery-file-upload/server/php/',
+            url: 'assets/global/plugins/jquery-file-upload/server/php/index.php',
             autoUpload: true
         });
 
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
             $.ajax({
-                url: '../../assets/global/plugins/jquery-file-upload/server/php/',
+                url: 'assets/global/plugins/jquery-file-upload/server/php/index.php',
                 type: 'HEAD'
             }).fail(function () {
                 $('<span class="alert alert-error"/>')

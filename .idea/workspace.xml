@@ -30,24 +30,8 @@
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmbossOval.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\afimaclogo2.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\logoVeritas01.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/img/logos/MEEGrille1.png" afterPath="$PROJECT_DIR$/webroot/img/logos/MEEGrille1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/img/logos/MEEHalf.png" afterPath="$PROJECT_DIR$/webroot/img/logos/MEEHalf.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ProfilesController.php" afterPath="$PROJECT_DIR$/src/Controller/ProfilesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/default.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" afterPath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/forview.php" afterPath="$PROJECT_DIR$/webroot/subpages/forview.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/home_blocks.php" afterPath="$PROJECT_DIR$/webroot/subpages/home_blocks.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/company_pre_screen_question.php" afterPath="$PROJECT_DIR$/webroot/subpages/company_pre_screen_question.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" afterPath="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Messages/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Messages/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Profiles/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Profiles/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/job_block.php" afterPath="$PROJECT_DIR$/webroot/subpages/job_block.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/sidebar.php" afterPath="$PROJECT_DIR$/webroot/subpages/sidebar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/stats.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/stats.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/assets/admin/pages/css/tasks.css" afterPath="$PROJECT_DIR$/webroot/assets/admin/pages/css/tasks.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/view.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/view.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="veritas3.iws" />
@@ -105,26 +89,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Clients/add.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.037736" vertical-offset="211" max-vertical-offset="5729">
-              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Clients/view.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.3584905" vertical-offset="228" max-vertical-offset="3400">
-              <caret line="27" column="94" selection-start-line="0" selection-start-column="0" selection-end-line="192" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/index.ctp">
           <provider selected="true" editor-type-id="text-editor">
@@ -145,14 +109,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/add.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3437014" vertical-offset="85" max-vertical-offset="4250">
-              <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+            <state vertical-scroll-proportion="-3.2075472" vertical-offset="765" max-vertical-offset="4250">
+              <caret line="55" column="46" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
               <folding>
                 <marker date="1418791710467" expanded="true" signature="9047:9064" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="job_block.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/job_block.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.769231" vertical-offset="212" max-vertical-offset="935">
+              <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="40" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home_topblocks.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/home_topblocks.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0566037" vertical-offset="894" max-vertical-offset="3553">
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="company_pre_screen_question.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/company_pre_screen_question.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.22835821" vertical-offset="0" max-vertical-offset="7565">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -205,11 +199,12 @@
         <option value="$PROJECT_DIR$/webroot/subpages/home_blocks.php" />
         <option value="$PROJECT_DIR$/src/Template/Documents/stats.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
-        <option value="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" />
         <option value="$PROJECT_DIR$/src/Template/Clients/add.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Clients/view.ctp" />
         <option value="$PROJECT_DIR$/webroot/subpages/forview.php" />
         <option value="$PROJECT_DIR$/src/Template/Documents/add.ctp" />
+        <option value="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" />
+        <option value="$PROJECT_DIR$/webroot/subpages/company_pre_screen_question.php" />
       </list>
     </option>
   </component>
@@ -531,13 +526,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3090909" vertical-offset="11769" max-vertical-offset="13532">
-          <caret line="703" column="21" selection-start-line="703" selection-start-column="21" selection-end-line="703" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2333" max-vertical-offset="3604">
@@ -793,7 +781,7 @@
         <state vertical-scroll-proportion="-1.7169812" vertical-offset="317" max-vertical-offset="2941">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -806,26 +794,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/subpages/job_block.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.769231" vertical-offset="212" max-vertical-offset="935">
-          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/home_blocks.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.3207545" vertical-offset="602" max-vertical-offset="1649">
           <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/subpages/home_topblocks.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70149255" vertical-offset="2267" max-vertical-offset="2958">
-          <caret line="161" column="2" selection-start-line="161" selection-start-column="2" selection-end-line="161" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -835,19 +807,19 @@
         <state vertical-scroll-proportion="0.33333334" vertical-offset="25545" max-vertical-offset="28679">
           <caret line="1461" column="83" selection-start-line="1461" selection-start-column="83" selection-end-line="1461" selection-end-column="83" />
           <folding>
-            <element signature="e#16356#16392#0#HTML" expanded="true" />
-            <element signature="e#16589#16633#0#HTML" expanded="true" />
-            <element signature="e#43075#43096#0#HTML" expanded="true" />
-            <element signature="e#46572#46593#0#HTML" expanded="true" />
-            <element signature="e#50039#50060#0#HTML" expanded="true" />
-            <element signature="e#53507#53528#0#HTML" expanded="true" />
-            <element signature="e#56971#56992#0#HTML" expanded="true" />
-            <element signature="e#60420#60441#0#HTML" expanded="true" />
-            <element signature="e#63897#63918#0#HTML" expanded="true" />
-            <element signature="e#67408#67429#0#HTML" expanded="true" />
-            <element signature="e#70919#70940#0#HTML" expanded="true" />
-            <element signature="e#74430#74451#0#HTML" expanded="true" />
-            <element signature="e#95579#96654#0#PHP" expanded="true" />
+            <element signature="e#16361#16397#0#HTML" expanded="false" />
+            <element signature="e#16594#16638#0#HTML" expanded="false" />
+            <element signature="e#44807#44828#0#HTML" expanded="false" />
+            <element signature="e#48304#48325#0#HTML" expanded="false" />
+            <element signature="e#51771#51792#0#HTML" expanded="false" />
+            <element signature="e#55239#55260#0#HTML" expanded="false" />
+            <element signature="e#58703#58724#0#HTML" expanded="false" />
+            <element signature="e#62152#62173#0#HTML" expanded="false" />
+            <element signature="e#65629#65650#0#HTML" expanded="false" />
+            <element signature="e#69140#69161#0#HTML" expanded="false" />
+            <element signature="e#72651#72672#0#HTML" expanded="false" />
+            <element signature="e#76162#76183#0#HTML" expanded="false" />
+            <element signature="e#97311#98386#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -943,11 +915,35 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3437014" vertical-offset="85" max-vertical-offset="4250">
-          <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+        <state vertical-scroll-proportion="-3.2075472" vertical-offset="765" max-vertical-offset="4250">
+          <caret line="55" column="46" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
           <folding>
             <marker date="1418791710467" expanded="true" signature="9047:9064" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/job_block.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.769231" vertical-offset="212" max-vertical-offset="935">
+          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/home_topblocks.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0566037" vertical-offset="894" max-vertical-offset="3553">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/company_pre_screen_question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22835821" vertical-offset="0" max-vertical-offset="7565">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

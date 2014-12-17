@@ -162,7 +162,7 @@
 														<div class="form-group">
 															<div class="col-md-8 col-sm-8">
 																<div class="todo-taskbody-user">
-																	<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar6.jpg" width="50px" height="50px">
+																	<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="50px" height="50px">
 																	<span class="todo-username pull-left">Vanessa Bond</span>
 																	<button type="button" class="todo-username-btn btn btn-circle btn-default btn-xs">&nbsp;edit&nbsp;</button>
 																</div>
@@ -192,7 +192,7 @@
 															<div class="col-md-12">
 																<div class="input-icon">
 																	<i class="fa fa-calendar"></i>
-																	<input type="text" class="form-control todo-taskbody-due" placeholder="Due Date...">
+																	<input type="text" class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date...">
 																</div>
 															</div>
 														</div>

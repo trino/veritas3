@@ -92,6 +92,15 @@
 <script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>
 <script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 <script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/select2/select2.min.js"></script>
+
+<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/clockface/js/clockface.js"></script>
+<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="<?php echo $this->request->webroot;?>assets/global/scripts/metronic.js" type="text/javascript"></script>
@@ -102,6 +111,7 @@
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/form-wizard.js"></script>
+<script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/components-pickers.js"></script>
 </head>
 <body class="<?php echo $settings->body;?>"> 
 <!-- BEGIN HEADER -->
@@ -963,6 +973,7 @@ jQuery(document).ready(function() {
    Index.initChat();
    Index.initMiniCharts();
    Tasks.initDashboardWidget();
+   ComponentsPickers.init();
    //change_text(<?php echo $settings->display;?>);
    
    

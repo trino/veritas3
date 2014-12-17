@@ -21,8 +21,7 @@
                                     <div class="col-md-12">
 											<div class="scroller" style="max-height: 600px;" data-always-visible="0" data-rail-visible="0" data-handle-color="#dae3e7">
 												<div class="todo-tasklist">
-													<a href="<?php echo $this->request->webroot;?>todo/view/1">
-                                                    <div class="todo-tasklist-item todo-tasklist-item-border-green">
+													<div class="todo-tasklist-item todo-tasklist-item-border-green">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar4.jpg" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 Slider Redesign
@@ -34,8 +33,7 @@
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> 21 Sep 2014 </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
 														</div>
-													</div></a>
-                                                    <a href="<?php echo $this->request->webroot;?>todo/view/1">
+													</div>
 													<div class="todo-tasklist-item todo-tasklist-item-border-red">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar5.jpg" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
@@ -48,8 +46,7 @@
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> 14 Sep 2014 </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Important</span>
 														</div>
-													</div></a>
-                                                    <a href="<?php echo $this->request->webroot;?>todo/view/1">
+													</div>
 													<div class="todo-tasklist-item todo-tasklist-item-border-green">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar9.jpg" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
@@ -59,8 +56,7 @@
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> 10 Feb 2015 </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
 														</div>
-													</div></a>
-                                                    <a href="<?php echo $this->request->webroot;?>todo/view/1">
+													</div>
 													<div class="todo-tasklist-item todo-tasklist-item-border-blue">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar6.jpg" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
@@ -73,8 +69,7 @@
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> 04 Oct 2014 </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp; <span class="todo-tasklist-badge badge badge-roundless">Test</span>
 														</div>
-													</div></a>
-                                                    <a href="<?php echo $this->request->webroot;?>todo/view/1">
+													</div>
 													<div class="todo-tasklist-item todo-tasklist-item-border-purple">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar7.jpg" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
@@ -86,8 +81,7 @@
 														<div class="todo-tasklist-controls pull-left">
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> 19 Dec 2014 </span>
 														</div>
-													</div></a>
-                                                    <a href="<?php echo $this->request->webroot;?>todo/view/1">
+													</div>
 													<div class="todo-tasklist-item todo-tasklist-item-border-yellow">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar8.jpg" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
@@ -100,8 +94,7 @@
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> 02 Feb 2015 </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
 														</div>
-													</div></a>
-                                                    <a href="<?php echo $this->request->webroot;?>todo/view/1">
+													</div>
 													<div class="todo-tasklist-item todo-tasklist-item-border-green">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar9.jpg" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
@@ -111,8 +104,7 @@
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> 10 Feb 2015 </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
 														</div>
-													</div></a>
-                                                    <a href="<?php echo $this->request->webroot;?>todo/view/1">
+													</div>
 													<div class="todo-tasklist-item todo-tasklist-item-border-red">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar5.jpg" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
@@ -125,8 +117,7 @@
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> 14 Sep 2014 </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Important</span>
 														</div>
-													</div></a>
-                                                    <a href="<?php echo $this->request->webroot;?>todo/view/1">
+													</div>
 													<div class="todo-tasklist-item todo-tasklist-item-border-blue">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>assets/admin/layout/img/avatar6.jpg" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
@@ -139,8 +130,7 @@
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> 21 Feb 2015 </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp; <span class="todo-tasklist-badge badge badge-roundless">Primary</span>
 														</div>
-													</div></a>
-                                                    
+													</div>
 												</div>
 											</div>
 										</div>

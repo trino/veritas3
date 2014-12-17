@@ -43,7 +43,7 @@
 				<li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo'&& $this->request['action']!='todo')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-user"></i>
-					<span class="title"><?php echo ucfirst($settings->profile);?></span>
+					<span class="title"><?php echo ucfirst($settings->profile);?>s</span>
                     <?php echo($this->request['controller']=='Profiles' )?'<span class="selected"></span>':'';?>
                     
 					<span class="arrow "></span>
@@ -52,7 +52,7 @@
 						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>profiles">
 							<i class="icon-list"></i>
-							List <?php echo ucfirst($settings->profile);?></a>
+							List <?php echo ucfirst($settings->profile);?>s</a>
 						</li>
 						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>profiles/add">
@@ -60,14 +60,14 @@
 							Create <?php echo ucfirst($settings->profile);?></a>
 						</li>
 						
-					</ul>
+					</ul> 
 				</li>
                 <?php } ?>
                  <?php if($sidebar->client==1){?>
                 	<li class="<?php echo($this->request['controller']=='Clients' && $this->request['action']!='quickcontact')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-globe"></i>
-					<span class="title"><?php echo ucfirst($settings->client);?></span>
+					<span class="title"><?php echo ucfirst($settings->client);?>s</span>
                     <?php echo($this->request['controller']=='Clients')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
@@ -75,7 +75,7 @@
 						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients">
 							<i class="icon-list"></i>
-							List <?php echo ucfirst($settings->client);?></a>
+							List <?php echo ucfirst($settings->client);?>s</a>
 						</li>
 						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
@@ -117,7 +117,7 @@
 				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']!="stats")?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-notebook"></i>
-					<span class="title"><?php echo ucfirst($settings->document);?></span>
+					<span class="title"><?php echo ucfirst($settings->document);?>s</span>
 					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
@@ -125,7 +125,7 @@
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/index">
                             <i class="icon-list"></i>
-							List <?php echo ucfirst($settings->document);?></a>
+							List <?php echo ucfirst($settings->document);?>s</a>
 						</li>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/add">
@@ -143,7 +143,7 @@
 				<span class="title">Stats By Recruiter</span>
                 <span class="selected"></span>
                 </a>
-                </li>-->
+                </li>
                 
                 <li class="<?php echo($this->request['controller']=='Todo')?'active open':'';?>">
                 <a href="javascript:;">
@@ -172,6 +172,9 @@
                         </a>
                     </li>
                 </ul>
+
+                </li>-->
+
                 </li>
                 
                 <li class="<?php echo($this->request['controller']=='Messages')?'active open':'';?>">
@@ -181,6 +184,7 @@
                 <span class="selected"></span>
                 </a>
                 </li>
+
 
                
 				<!--

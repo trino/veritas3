@@ -40,18 +40,43 @@ $is_disabled = '';
                         <div class="tab-pane" id="tab_1_3">
 								<div class="row profile-account">
 									<div class="col-md-3">
-										<img class="img-responsive" alt="" src="<?php echo $this->request->webroot;?>img/jobs/1.png">
-                                        <h4>Add Image</h4>
+										<img class="img-responsive" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png">
+
+
+
+
+
                                             <div class="form-group">
-                                            <label class="sr-only" for="exampleInputEmail22">Add Image</label>
+                                            <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
                                             <div class="input-icon">
                                             <a class="btn btn-success" href="javascript:void(0)">
-                                            <i class="fa fa-envelope"></i>
-                                              Add Profile image
+                                            <i class="fa fa-image"></i>
+                                              Add/Edit Image
                                             </a>
                                             </div>
                                             </div>
-                                            <table class="table table-striped table-bordered table-advance table-hover">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <table class="table table-striped table-bordered table-advance table-hover">
                                                 <thead><tr><th colspan="2">Add Members</th></tr></thead>
                                                 <tr>
                                                     <td>

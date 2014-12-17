@@ -6,7 +6,7 @@ $is_disabled = '';
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			Add/Edit <?php echo ucfirst($settings->document);?>
+	<?php echo ucfirst($settings->document);?>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -16,14 +16,17 @@ $is_disabled = '';
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Add/Edit <?php echo ucfirst($settings->document);?>
+						<a href=""><?php echo ucfirst($settings->document);?>
                         </a>
 					</li>
 				</ul>
                 <?php
                 if(isset($disabled))
                 { ?>
-                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+					<a href="javascript:window.print();" class="floatright btn btn-primary">Print Report</a>
+
+					<a href="" class="floatright btn btn-success">Re-Qualify</a>
+                <a href="" class="floatright btn btn-info">Add to Task List</a>
                 <?php } ?>
 
 			</div>
@@ -66,7 +69,7 @@ $is_disabled = '';
 												<span class="number">
 												2 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Interview Driver Application </span>
+												<i class="fa fa-check"></i>Driver Application </span>
 												</a>
 											</li>
 											<li>
@@ -74,7 +77,7 @@ $is_disabled = '';
 												<span class="number">
 												3 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Place MEE Order </span>
+												<i class="fa fa-check"></i> MEE Consent </span>
 												</a>
 											</li>
 											<li>
@@ -82,7 +85,7 @@ $is_disabled = '';
 												<span class="number">
 												4 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Road Test </span>
+												<i class="fa fa-check"></i> Driver Evaluation </span>
 												</a>
 											</li>
                                             <li>
@@ -98,7 +101,7 @@ $is_disabled = '';
 												<span class="number">
 												6 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Finalize </span>
+												<i class="fa fa-check"></i> Report Card </span>
 												</a>
 											</li>
                                             

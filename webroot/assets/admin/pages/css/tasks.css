@@ -112,7 +112,6 @@ Tasks Widget
     margin-top: 4px !important;
     max-height: 100%!important;
     max-width: 100%!important;
-    width: 140px!important;
 }
 .nodisplay{display:none;}
 
@@ -126,4 +125,5 @@ Tasks Widget
     margin-bottom: 5px;
   }
 }
+
 

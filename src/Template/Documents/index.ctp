@@ -97,7 +97,11 @@
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			<td class="c_blue">Draft</td>                  			
+                    			<td class="">
+											<span class="label label-sm label-success">
+										Passed </span>
+
+								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
@@ -111,7 +115,11 @@
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                   			    <td class="c_green">Approved</td>                 			
+                   			    <td class="">
+<span class="label label-sm label-info">
+										Pending </span>
+
+								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -125,7 +133,13 @@
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			<td class="c_orange">Pending</td>                 			
+                    			<td class="">
+
+											<span class="label label-sm label-success">
+										Passed </span>
+
+
+								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -139,7 +153,12 @@
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			<td class="c_blue">Draft</td>                 			
+                    			<td class="">
+
+								<span class="label label-sm label-danger">
+										Failed </span>
+
+								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -152,7 +171,10 @@
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			<td class="c_blue">Draft</td>                 			
+                    			<td class="">
+										<span class="label label-sm label-warning">
+										Submitted </span>
+								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -166,7 +188,12 @@
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			<td class="c_green">Approved</td>                  			
+                    			<td class="">
+
+														<span class="label label-sm label-warning">
+										Submitted </span>
+
+								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -180,7 +207,12 @@
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			<td class="c_blue">Draft</td>                 			
+                    			<td class="">
+
+											<span class="label label-sm label-success">
+										Approved </span>
+
+								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
@@ -194,7 +226,13 @@
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
-                    			<td class="c_green">Approved</td>                  			
+                    			<td class="">
+
+									<span class="label label-sm label-danger">
+										Failed </span>
+
+
+								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
                     				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>

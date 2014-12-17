@@ -25,17 +25,18 @@ $is_disabled = '';
                 //if(isset($disabled))
 //                { ?>
                 <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
                 <?php //} ?>
-				
+
 			</div>
 <div class="row profile">
 				<div class="col-md-12">
 					<!--BEGIN TABS-->
-					
+
 							<div class="tab-pane active" id="tab_1_1">
 								<div class="row">
 									<div class="col-md-3">
-                                        
+
 										<ul class="list-unstyled profile-nav">
 											<li>
 												<img src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png" class="img-responsive" alt=""/>
@@ -86,15 +87,15 @@ $is_disabled = '';
 											<div class="col-md-8 profile-info">
 												<h1>Challenger</h1>
 												<p>
-													 Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. 
+													 Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here.
 												</p>
-												
+
 												<ul class="list-inline">
-													
+
 													<li>
 														<i class="fa fa-calendar"></i> 18 Jan 1982
 													</li>
-													
+
 												</ul>
 											</div>
 											<!--end col-md-8-->
@@ -141,7 +142,7 @@ $is_disabled = '';
 																<span class="sale-num">
 																<i class="fa fa-calendar"></i> 18 Jan 2015 </span>
 															</li>
-															
+
 														</ul>
 													</div>
 												</div>
@@ -168,25 +169,25 @@ $is_disabled = '';
                                             <tr><td><?php echo ucfirst($settings->client);?>'s phone number</td><td>+1 - 2345678</td></tr>
                                             <tr><td><?php echo ucfirst($settings->client);?>'s email</td><td>info@test.com</td></tr>
                                         </table>
-										
+
 									</div>
 								</div>
 							</div>
 							<!--tab_1_2-->
-							
-							
-							
+
+
+
 							<!--end tab-pane-->
-						
+
 				</div>
 			</div>
-            
+
 <style>
 @media print {
     .page-header{display:none;}
     .page-footer,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.more{display:none!important;}
     .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
     .tabbable-line{border:none!important;}
-    
+
     }
 </style>

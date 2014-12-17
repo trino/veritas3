@@ -8,6 +8,7 @@ use Cake\Utility\Inflector;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\TableRegistry;
 
+
 class PagesController extends AppController {
 
      public function initialize() {
@@ -59,5 +60,9 @@ class PagesController extends AppController {
         //$query = $content->query();
           $l =  $content->find()->where(['slug'=>$slug])->first();
           $this->set('content',$l);
+    }
+    function recent_more()
+    {
+        $this->layout = 'blank';
     }
 }

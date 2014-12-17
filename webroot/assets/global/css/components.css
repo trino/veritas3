@@ -12217,7 +12217,7 @@ Transparent Button
 .secondary_logo{
     display: block;
     margin-right: 19px;
-    padding: 20px;
+    padding: 45px 20px 0 20px;
     width:100%;
    
 }
@@ -12247,3 +12247,4 @@ float: right;
 
 }
 .jobimg{max-width:100%;}
+.floatright{float:right;}

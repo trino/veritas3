@@ -21,57 +21,63 @@ $is_disabled = '';
 						<a href="">Add/Edit <?php echo ucfirst($settings->client);?></a>
 					</li>
 				</ul>
-				
+                <?php
+                //if(isset($disabled))
+//                { ?>
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+                <?php //} ?>
+
 			</div>
 <div class="row profile">
 				<div class="col-md-12">
 					<!--BEGIN TABS-->
-					
+
 							<div class="tab-pane active" id="tab_1_1">
 								<div class="row">
 									<div class="col-md-3">
-                                        
+
 										<ul class="list-unstyled profile-nav">
 											<li>
-												<img src="<?php echo $this->request->webroot;?>img/jobs/1.png" class="img-responsive" alt=""/>
+												<img src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png" class="img-responsive" alt=""/>
 												<a href="#" class="profile-edit">
 												Edit </a>
                                                 <br />
                                                 <h3>Assigned to:</h3>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Robert Brown </a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												John Lenon
 												</a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Jacob Regal </a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Matt Johnson </a>
 											</li>
                                             <li><h3>Contacts:</h3></li>
                                             <li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Robert Brown </a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												John Lenon
 												</a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Jacob Regal </a>
 											</li>
 											<li>
-												<a href="<?php $this->request->webroot;?>profiles/view">
+												<a href="<?php echo $this->request->webroot;?>profiles/view">
 												Matt Johnson </a>
 											</li>
 										</ul>
@@ -79,17 +85,17 @@ $is_disabled = '';
 									<div class="col-md-9">
 										<div class="row">
 											<div class="col-md-8 profile-info">
-												<h1>Job name 1</h1>
+												<h1>Challenger</h1>
 												<p>
-													 Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. 
+													 Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here.
 												</p>
-												
+
 												<ul class="list-inline">
-													
+
 													<li>
 														<i class="fa fa-calendar"></i> 18 Jan 1982
 													</li>
-													
+
 												</ul>
 											</div>
 											<!--end col-md-8-->
@@ -106,6 +112,16 @@ $is_disabled = '';
 													</div>
 													<div class="portlet-body">
 														<ul class="list-unstyled">
+
+															<li>
+																<span class="sale-info">
+																<?php echo ucfirst($settings->profile);?> <i class="fa fa-img-down"></i>
+																</span>
+																<span class="sale-num">
+																87 </span>
+															</li>
+
+
 															<li>
 																<span class="sale-info">
 																Total Uploads <i class="fa fa-img-up"></i>
@@ -113,13 +129,7 @@ $is_disabled = '';
 																<span class="sale-num">
 																23 </span>
 															</li>
-															<li>
-																<span class="sale-info">
-																Assigned <?php echo ucfirst($settings->client);?> <i class="fa fa-img-down"></i>
-																</span>
-																<span class="sale-num">
-																87 </span>
-															</li>
+
 															<li>
 																<span class="sale-info">
 																Created on </span>
@@ -132,7 +142,7 @@ $is_disabled = '';
 																<span class="sale-num">
 																<i class="fa fa-calendar"></i> 18 Jan 2015 </span>
 															</li>
-															
+
 														</ul>
 													</div>
 												</div>
@@ -141,11 +151,11 @@ $is_disabled = '';
 										</div>
 										<!--end row-->
                                         <hr />
-            
+                                        <div class="home_blocks">
                                         <?php include('subpages/home_blocks.php');?>
+                                        </div>
                             			<div class="clearfix"></div>
-                            			<hr />
-                                        
+
                                         <table class="table table-striped">
                                             <tr><td>Signatory's name</td><td>Joe Doe</td></tr>
                                             <tr><td>Signatory's phone number</td><td>+1 - 2345678</td></tr>
@@ -159,15 +169,25 @@ $is_disabled = '';
                                             <tr><td><?php echo ucfirst($settings->client);?>'s phone number</td><td>+1 - 2345678</td></tr>
                                             <tr><td><?php echo ucfirst($settings->client);?>'s email</td><td>info@test.com</td></tr>
                                         </table>
-										
+
 									</div>
 								</div>
 							</div>
 							<!--tab_1_2-->
-							
-							
-							
+
+
+
 							<!--end tab-pane-->
-						
+
 				</div>
 			</div>
+
+<style>
+@media print {
+    .page-header{display:none;}
+    .page-footer,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.more{display:none!important;}
+    .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
+    .tabbable-line{border:none!important;}
+
+    }
+</style>

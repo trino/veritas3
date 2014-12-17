@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\View\Helper\FlashHelper;
+use Cake\Controller\Component\FlashComponent;
 class LoginController extends AppController{
     public function initialize() {
         parent::initialize();
@@ -17,9 +19,11 @@ class LoginController extends AppController{
     {
         
         $this->layout = 'login';
-        if(isset($_POST['username'])){
+        if(isset($_POST['name'])){
         $this->loadModel('Profiles');
         unset($_POST['submit']);
+        $_POST['username'] = $_POST['name'];
+        unset($_POST['name']);
         $q = $this->Profiles->find()->where($_POST)->first();
         
         if($q)
@@ -28,7 +32,13 @@ class LoginController extends AppController{
             $this->request->session()->write('Profile.id',$q->id);
             
         }
+        else{
+            $this->Flash->error('Invalid username or password');
+        }
         $this->redirect('/pages');
+        }else
+        {
+           // die();
         }
     }
 } 

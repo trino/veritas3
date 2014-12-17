@@ -15,7 +15,7 @@
                 Meetings
             </div>
             <div class="number">
-                12
+
             </div>
         </div>
 
@@ -34,7 +34,7 @@
                 GPS
             </div>
             <div class="number">
-                452
+
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
                 Orders
             </div>
             <div class="number">
-                121
+                1214
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
                 Feedback
             </div>
             <div class="number">
-                12
+                34
             </div>
         </div>
     </div>
@@ -126,7 +126,7 @@
                 Conference
             </div>
             <div class="number">
-                34
+
             </div>
         </div>
     </div>
@@ -139,10 +139,10 @@
         </div>
         <div class="tile-object">
             <div class="name">
-                Stats by recruiter
+                Recruiter Stats
             </div>
             <div class="number">
-                34
+
             </div>
         </div>
     </div>
@@ -159,7 +159,7 @@
                 Todo
             </div>
             <div class="number">
-                34
+34
             </div>
         </div>
     </div>

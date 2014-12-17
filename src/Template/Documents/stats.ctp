@@ -1,6 +1,6 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->document);?> <small>Stats By Recruiter</small>
+			<?php echo ucfirst($settings->document);?> <small>Recruiter Stats</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -11,7 +11,7 @@
 					</li>
 					
                     <li>
-						<a href="">Stats By Recruiter</a>
+						<a href="">Recruiter Stats</a>
 					</li>
 				</ul>
 				<!--<div class="page-toolbar">

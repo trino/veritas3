@@ -112,7 +112,7 @@
 		<div class="page-logo">
 			<a href="<?php echo $this->request->webroot;?>">
             <?php $logo = $this->requestAction('Logos/getlogo/0',['return']);?>
-			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="logo-default" />
+			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="" />
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -226,7 +226,7 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
-							<a href="<?php echo $this->request->webroot;?>profiles/view/1">
+							<a href="<?php echo $this->request->webroot;?>profiles/add">
 							<i class="icon-user"></i> My Settings </a>
 						</li>
 						
@@ -241,7 +241,7 @@
 						</li>
 						
 						<li>
-							<a href="<?php echo $this->request->webroot;?>profiles/logout">
+							<a href="http://isbmee.com/">
 							<i class="icon-key"></i> Log Out </a>
 						</li>
 					</ul>

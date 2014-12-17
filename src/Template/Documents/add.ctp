@@ -6,7 +6,7 @@ $is_disabled = '';
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			Add/Edit <?php echo ucfirst($settings->document);?>
+	<?php echo ucfirst($settings->document);?>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -16,14 +16,17 @@ $is_disabled = '';
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Add/Edit <?php echo ucfirst($settings->document);?>
+						<a href=""><?php echo ucfirst($settings->document);?>
                         </a>
 					</li>
 				</ul>
                 <?php
                 if(isset($disabled))
                 { ?>
-                <a href="javascript:window.print();" class="btn btn-info">Print</a>
+					<a href="javascript:window.print();" class="floatright btn btn-primary">Print Report</a>
+
+					<a href="" class="floatright btn btn-success">Re-Qualify</a>
+                <a href="" class="floatright btn btn-info">Add to Task List</a>
                 <?php } ?>
 
 			</div>
@@ -66,7 +69,7 @@ $is_disabled = '';
 												<span class="number">
 												2 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Interview Driver Application </span>
+												<i class="fa fa-check"></i>Driver Application </span>
 												</a>
 											</li>
 											<li>
@@ -74,7 +77,7 @@ $is_disabled = '';
 												<span class="number">
 												3 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Place MEE Order </span>
+												<i class="fa fa-check"></i> MEE Consent </span>
 												</a>
 											</li>
 											<li>
@@ -82,7 +85,7 @@ $is_disabled = '';
 												<span class="number">
 												4 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Road Test </span>
+												<i class="fa fa-check"></i> Driver Evaluation </span>
 												</a>
 											</li>
                                             <li>
@@ -90,7 +93,15 @@ $is_disabled = '';
 												<span class="number">
 												5 </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Finalize </span>
+												<i class="fa fa-check"></i> Confirmation </span>
+												</a>
+											</li>
+                                            <li>
+												<a href="#tab6" data-toggle="tab" class="step">
+												<span class="number">
+												6 </span><br />
+												<span class="desc">
+												<i class="fa fa-check"></i> Report Card </span>
 												</a>
 											</li>
                                             
@@ -152,6 +163,11 @@ $is_disabled = '';
 												
 											</div>
                                             <div class="<?php echo $tab;?>" id="tab5">
+												<?php
+                                                    include('subpages/confirmation.php');
+                                                ?>
+											</div>
+                                            <div class="<?php echo $tab;?>" id="tab6">
 												<?php
                                                     include('subpages/forview.php');
                                                 ?>
@@ -215,3 +231,13 @@ jQuery(document).ready(function() {
         });
 });
 </script>
+
+<style>
+@media print {
+    .page-header{display:none;}
+    .page-footer,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.form-actions,.steps,.caption{display:none!important;}
+    .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
+    .tabbable-line{border:none!important;}
+    
+    }
+</style>

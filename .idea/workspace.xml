@@ -31,8 +31,9 @@
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\afimaclogo2.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\logoVeritas01.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" afterPath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" afterPath="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/sidebar.php" afterPath="$PROJECT_DIR$/webroot/subpages/sidebar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/index.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/index.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Pages/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Pages/index.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="veritas3.iws" />
@@ -61,22 +62,44 @@
       <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.6415095" vertical-offset="27917" max-vertical-offset="30464">
-              <caret line="1666" column="110" selection-start-line="1666" selection-start-column="110" selection-end-line="1666" selection-end-column="110" />
+            <state vertical-scroll-proportion="-7.5660377" vertical-offset="551" max-vertical-offset="30464">
+              <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
               <folding>
-                <element signature="e#23303#23339#0#HTML" expanded="true" />
-                <element signature="e#23779#23823#0#HTML" expanded="true" />
-                <element signature="e#32282#32303#0#HTML" expanded="true" />
-                <element signature="e#36567#36588#0#HTML" expanded="true" />
-                <element signature="e#40821#40842#0#HTML" expanded="true" />
-                <element signature="e#45076#45097#0#HTML" expanded="true" />
-                <element signature="e#49327#49348#0#HTML" expanded="true" />
-                <element signature="e#53563#53584#0#HTML" expanded="true" />
-                <element signature="e#57827#57848#0#HTML" expanded="true" />
-                <element signature="e#62126#62147#0#HTML" expanded="true" />
-                <element signature="e#66425#66446#0#HTML" expanded="true" />
-                <element signature="e#70724#70745#0#HTML" expanded="true" />
-                <element signature="e#118118#119193#0#PHP" expanded="true" />
+                <element signature="e#23308#23344#0#HTML" expanded="true" />
+                <element signature="e#23784#23828#0#HTML" expanded="true" />
+                <element signature="e#32287#32308#0#HTML" expanded="true" />
+                <element signature="e#36572#36593#0#HTML" expanded="true" />
+                <element signature="e#40826#40847#0#HTML" expanded="true" />
+                <element signature="e#45081#45102#0#HTML" expanded="true" />
+                <element signature="e#49332#49353#0#HTML" expanded="true" />
+                <element signature="e#53568#53589#0#HTML" expanded="true" />
+                <element signature="e#57832#57853#0#HTML" expanded="true" />
+                <element signature="e#62131#62152#0#HTML" expanded="true" />
+                <element signature="e#66430#66451#0#HTML" expanded="true" />
+                <element signature="e#70729#70750#0#HTML" expanded="true" />
+                <element signature="e#118123#119198#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Clients/index.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.0384616" vertical-offset="316" max-vertical-offset="1955">
+              <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Template/Documents/index.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8477612" vertical-offset="4702" max-vertical-offset="5389">
+              <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,8 +118,8 @@
       <file leaf-file-name="home_topblocks.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/home_topblocks.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.566038" vertical-offset="2349" max-vertical-offset="2992">
-              <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.6792455" vertical-offset="1635" max-vertical-offset="2992">
+              <caret line="117" column="41" selection-start-line="117" selection-start-column="41" selection-end-line="117" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -112,12 +135,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/sidebar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7356143" vertical-offset="2757" max-vertical-offset="4216">
-              <caret line="190" column="35" selection-start-line="190" selection-start-column="35" selection-end-line="190" selection-end-column="35" />
+            <state vertical-scroll-proportion="-2.1886792" vertical-offset="2757" max-vertical-offset="4216">
+              <caret line="169" column="50" selection-start-line="169" selection-start-column="50" selection-end-line="169" selection-end-column="50" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Pages/index.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="816">
+              <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#h3#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,7 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Template/Pages/index.ctp" />
         <option value="$PROJECT_DIR$/webroot/assets/global/css/components.css" />
         <option value="$PROJECT_DIR$/src/Controller/ProfilesController.php" />
         <option value="$PROJECT_DIR$/webroot/assets/admin/pages/css/tasks.css" />
@@ -154,7 +188,6 @@
         <option value="$PROJECT_DIR$/webroot/subpages/job_block.php" />
         <option value="$PROJECT_DIR$/src/Template/Profiles/index.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Messages/index.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Documents/index.ctp" />
         <option value="$PROJECT_DIR$/webroot/subpages/home_blocks.php" />
         <option value="$PROJECT_DIR$/src/Template/Documents/stats.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Clients/add.ctp" />
@@ -164,9 +197,12 @@
         <option value="$PROJECT_DIR$/webroot/subpages/company_pre_screen_question.php" />
         <option value="$PROJECT_DIR$/src/Template/Todo/view.ctp" />
         <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
         <option value="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" />
         <option value="$PROJECT_DIR$/webroot/subpages/sidebar.php" />
+        <option value="$PROJECT_DIR$/src/Template/Pages/index.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Clients/index.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Documents/index.ctp" />
       </list>
     </option>
   </component>
@@ -350,6 +386,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Template" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Messages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -395,6 +453,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Documents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Template" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Clients" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -577,13 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Clients/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.50617284" vertical-offset="333" max-vertical-offset="1411">
-          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Clients/quickcontact.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.8076923" vertical-offset="301" max-vertical-offset="2363">
@@ -703,14 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Pages/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.301887" vertical-offset="0" max-vertical-offset="731">
-          <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/cakephp/cakephp/src/Datasource/ConnectionManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30769232" vertical-offset="1470" max-vertical-offset="3128">
@@ -797,14 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="3638">
           <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Documents/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.576923" vertical-offset="1188" max-vertical-offset="4726">
-          <caret line="83" column="38" selection-start-line="83" selection-start-column="38" selection-end-line="83" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -898,44 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProfilesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.76923" vertical-offset="1846" max-vertical-offset="2720">
-          <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6415095" vertical-offset="27917" max-vertical-offset="30464">
-          <caret line="1666" column="110" selection-start-line="1666" selection-start-column="110" selection-end-line="1666" selection-end-column="110" />
-          <folding>
-            <element signature="e#23303#23339#0#HTML" expanded="true" />
-            <element signature="e#23779#23823#0#HTML" expanded="true" />
-            <element signature="e#32282#32303#0#HTML" expanded="true" />
-            <element signature="e#36567#36588#0#HTML" expanded="true" />
-            <element signature="e#40821#40842#0#HTML" expanded="true" />
-            <element signature="e#45076#45097#0#HTML" expanded="true" />
-            <element signature="e#49327#49348#0#HTML" expanded="true" />
-            <element signature="e#53563#53584#0#HTML" expanded="true" />
-            <element signature="e#57827#57848#0#HTML" expanded="true" />
-            <element signature="e#62126#62147#0#HTML" expanded="true" />
-            <element signature="e#66425#66446#0#HTML" expanded="true" />
-            <element signature="e#70724#70745#0#HTML" expanded="true" />
-            <element signature="e#118118#119193#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/subpages/home_topblocks.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.566038" vertical-offset="2349" max-vertical-offset="2992">
-          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.3846154" vertical-offset="772" max-vertical-offset="18649">
@@ -946,9 +965,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7356143" vertical-offset="2757" max-vertical-offset="4216">
-          <caret line="190" column="35" selection-start-line="190" selection-start-column="35" selection-end-line="190" selection-end-column="35" />
+        <state vertical-scroll-proportion="-2.1886792" vertical-offset="2757" max-vertical-offset="4216">
+          <caret line="169" column="50" selection-start-line="169" selection-start-column="50" selection-end-line="169" selection-end-column="50" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/home_topblocks.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6792455" vertical-offset="1635" max-vertical-offset="2992">
+          <caret line="117" column="41" selection-start-line="117" selection-start-column="41" selection-end-line="117" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ProfilesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.76923" vertical-offset="1846" max-vertical-offset="2720">
+          <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Pages/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="816">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#h3#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5660377" vertical-offset="551" max-vertical-offset="30464">
+          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+          <folding>
+            <element signature="e#23308#23344#0#HTML" expanded="true" />
+            <element signature="e#23784#23828#0#HTML" expanded="true" />
+            <element signature="e#32287#32308#0#HTML" expanded="true" />
+            <element signature="e#36572#36593#0#HTML" expanded="true" />
+            <element signature="e#40826#40847#0#HTML" expanded="true" />
+            <element signature="e#45081#45102#0#HTML" expanded="true" />
+            <element signature="e#49332#49353#0#HTML" expanded="true" />
+            <element signature="e#53568#53589#0#HTML" expanded="true" />
+            <element signature="e#57832#57853#0#HTML" expanded="true" />
+            <element signature="e#62131#62152#0#HTML" expanded="true" />
+            <element signature="e#66430#66451#0#HTML" expanded="true" />
+            <element signature="e#70729#70750#0#HTML" expanded="true" />
+            <element signature="e#118123#119198#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Clients/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0384616" vertical-offset="316" max-vertical-offset="1955">
+          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Documents/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8477612" vertical-offset="4702" max-vertical-offset="5389">
+          <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

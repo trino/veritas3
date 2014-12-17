@@ -114,7 +114,7 @@
 					
 				</li>-->
                  <?php if($sidebar->document==1){?>
-				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']!="stats")?'active open':'';?>">
+				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']!="stats" && $this->request['action']!='drafts')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-notebook"></i>
 					<span class="title"><?php echo ucfirst($settings->document);?>s</span>
@@ -184,7 +184,15 @@
                 <span class="selected"></span>
                 </a>
                 </li>
-
+                </li>
+                
+                <li class="<?php echo($this->request['action']=='drafts')?'active open':'';?>">
+                <a href="<?php echo $this->request->webroot;?>documents/drafts">
+                <i class="icon-envelope"></i>
+				<span class="title">Draft</span>
+                <span class="selected"></span>
+                </a>
+                </li>
 
                
 				<!--

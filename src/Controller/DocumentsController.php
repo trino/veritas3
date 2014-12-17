@@ -107,4 +107,8 @@ class DocumentsController extends AppController {
     {
         
     }
+     public function drafts()
+    {
+        
+    }
 }

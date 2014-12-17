@@ -48,17 +48,17 @@ $is_disabled = '';
 						<span>
 						THEME COLOR </span>
 						<ul>
-							<li class="color-default current tooltips" data-style="default" onclick="change_layout('default');" data-container="body" data-original-title="Default">
+							<li class="color-default <?php if($settings->layout=='default') echo "current";?> tooltips" data-style="default" onclick="change_layout('default');" data-container="body" data-original-title="Default">
 							</li>
-							<li class="color-darkblue tooltips" data-style="darkblue" onclick="change_layout('darkblue');" data-container="body" data-original-title="Dark Blue">
+							<li class="color-darkblue tooltips <?php if($settings->layout=='darkblue') echo "current";?>" data-style="darkblue" onclick="change_layout('darkblue');" data-container="body" data-original-title="Dark Blue">
 							</li>
-							<li class="color-blue tooltips" data-style="blue" onclick="change_layout('blue');" data-container="body" data-original-title="Blue">
+							<li class="color-blue tooltips <?php if($settings->layout=='blue') echo "current";?>" data-style="blue" onclick="change_layout('blue');" data-container="body" data-original-title="Blue">
 							</li>
-							<li class="color-grey tooltips" data-style="grey" onclick="change_layout('grey');" data-container="body" data-original-title="Grey">
+							<li class="color-grey tooltips <?php if($settings->layout=='grey') echo "current";?>" data-style="grey" onclick="change_layout('grey');" data-container="body" data-original-title="Grey">
 							</li>
-							<li class="color-light tooltips" data-style="light" onclick="change_layout('light');" data-container="body" data-original-title="Light">
+							<li class="color-light tooltips <?php if($settings->layout=='light') echo "current";?>" data-style="light" onclick="change_layout('light');" data-container="body" data-original-title="Light">
 							</li>
-							<li class="color-light2 tooltips" data-style="light2" onclick="change_layout('light2');" data-container="body" data-html="true" data-original-title="Light 2">
+							<li class="color-light2 tooltips <?php if($settings->layout=='light2') echo "current";?>" data-style="light2" onclick="change_layout('light2');" data-container="body" data-html="true" data-original-title="Light 2">
 							</li>
 						</ul>
 					</div>

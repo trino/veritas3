@@ -186,7 +186,7 @@ $is_disabled = '';
 						</div>
 						<!-- END PORTLET MAIN -->
 						<!-- PORTLET MAIN -->
-						<div class="portlet box blue">
+						<!--div class="portlet box blue">
                             <div class="portlet-title">
                                 <div class="caption">Associated Clients</div>
                             </div>
@@ -200,7 +200,7 @@ $is_disabled = '';
 								<div class="clearfix"></div>
 							</div>
                         </div>
-                            <hr />
+                            <hr /-->
                         <div class="portlet box blue">
                             <div class="portlet-title">
                                 <div class="caption">Orders</div>
@@ -271,56 +271,221 @@ $is_disabled = '';
 
 										</ul>
 									</div>
-									<div class="portlet-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+												<div class="portlet-body">
 										<div class="tab-content">
 											<!-- PERSONAL INFO TAB -->
 											<div class="tab-pane active" id="tab_1_1">
-												<form role="form" action="#">
-                                                    <div class="form-group col-md-6">
-														<label class="control-label"><?php echo ucfirst($settings->profile);?> Type</label>
-														<select <?php echo $is_disabled?> class="form-control member_type">
-                                                            <option value="Admin">Admin</option>
-                                                            <option value="Member">Member</option>
-                                                            <option value="Contact">Contact</option>
-                                                        </select>
-													</div>
-                                                    <div class="form-group col-md-6">
-														<label class="control-label">Title</label>
-														<input <?php echo $is_disabled?> type="text" placeholder="eg. Mr" class="form-control"/>
-													</div>
-													<div class="form-group col-md-6">
-														<label class="control-label">First Name</label>
-														<input <?php echo $is_disabled?> type="text" placeholder="eg. John" class="form-control"/>
-													</div>
-													<div class="form-group col-md-6">
-														<label class="control-label">Last Name</label>
-														<input <?php echo $is_disabled?> type="text" placeholder="eg. Doe" class="form-control"/>
-													</div>
-                                                    <div class="form-group col-md-6">
-														<label class="control-label">Email</label>
-														<input <?php echo $is_disabled?> type="text" placeholder="eg. test@domain.com" class="form-control"/>
-													</div>
-													<div class="form-group col-md-6">
-														<label class="control-label">Phone Number</label>
-														<input <?php echo $is_disabled?> type="text" placeholder="eg. +1 646 580 6284" class="form-control"/>
-													</div>
-													<div class="form-group col-md-12">
-														<label class="control-label">Address</label>
-														<input <?php echo $is_disabled?> type="text" placeholder="eg. Street, City, Province, Country" class="form-control"/>
-													</div>
-                                                    
-													<?php
-                                                    if(!isset($disabled))
-                                                    {
-                                                        ?>
-													<div class="margiv-top-10">
-														<a href="#" class="btn btn-primary">
-														Save Changes </a>
-														<a href="#" class="btn default">
-														Cancel </a>
-													</div>
-                                                    <?php }?>
-												</form>
+
+
+
+
+
+												<div class="row">
+
+
+													<div class="col-md-12">
+
+
+														<div class="portlet box green-haze">
+															<div class="portlet-title">
+																<div class="caption">
+																	<i class="fa fa-user"></i>
+																	<?php echo ucfirst($settings->profile); ?>
+																</div>
+															</div>
+
+
+
+
+
+
+
+
+															<div class="portlet-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+																<form role="form" action="#">
+																	<div class="form-group col-md-6">
+																		<label class="control-label"><?php echo ucfirst($settings->profile);?> Type</label>
+																		<select <?php echo $is_disabled?> class="form-control member_type">
+																			<option value="Admin">Admin</option>
+																			<option value="Member">Member</option>
+																			<option value="Contact">Contact</option>
+																		</select>
+																	</div>
+																	<div class="form-group col-md-6">
+																		<label class="control-label">Title</label>
+																		<input <?php echo $is_disabled?> type="text" placeholder="eg. Mr" class="form-control"/>
+																	</div>
+																	<div class="form-group col-md-6">
+																		<label class="control-label">First Name</label>
+																		<input <?php echo $is_disabled?> type="text" placeholder="eg. John" class="form-control"/>
+																	</div>
+																	<div class="form-group col-md-6">
+																		<label class="control-label">Last Name</label>
+																		<input <?php echo $is_disabled?> type="text" placeholder="eg. Doe" class="form-control"/>
+																	</div>
+																	<div class="form-group col-md-6">
+																		<label class="control-label">Email</label>
+																		<input <?php echo $is_disabled?> type="text" placeholder="eg. test@domain.com" class="form-control"/>
+																	</div>
+																	<div class="form-group col-md-6">
+																		<label class="control-label">Phone Number</label>
+																		<input <?php echo $is_disabled?> type="text" placeholder="eg. +1 646 580 6284" class="form-control"/>
+																	</div>
+																	<div class="form-group col-md-12">
+																		<label class="control-label">Address</label>
+																		<input <?php echo $is_disabled?> type="text" placeholder="eg. Street, City, Province, Country" class="form-control"/>
+																	</div>
+
+																	<?php
+																	if(!isset($disabled))
+																	{
+																		?>
+																		<div class="margiv-top-10">
+																			<a href="#" class="btn btn-primary">
+																				Save Changes </a>
+																			<a href="#" class="btn default">
+																				Cancel </a>
+																		</div>
+																	<?php }?>
+																</form>
+
+																<div class="clearfix"></div>
+
+
+
+
+
+
+
+
+
+															</div></div></div>
+
+
+
+
+
+													<div class="col-md-12">
+
+
+														<div class="portlet box blue">
+															<div class="portlet-title">
+																<div class="caption">
+																	<i class="fa fa-user"></i>
+																	<?php echo ucfirst($settings->profile); ?> Notes
+																</div>
+															</div>
+
+
+
+
+
+
+
+
+															<div class="portlet-body">
+
+
+
+
+
+
+
+
+																Lorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tolla
+																<div class="clearfix"></div>
+
+
+
+
+
+
+
+
+
+															</div></div></div>
+
+
+
+
+
+												</div>
+
+
+
+
+
+
+
+
+
+
+
+
 											</div>
 											<!-- END PERSONAL INFO TAB -->
 											<!-- CHANGE AVATAR TAB -->
@@ -426,22 +591,20 @@ $is_disabled = '';
                                                 <div class="tab-content">
                                                 <div class="tab-pane active" id="subtab_1_1">
                                                     <div class="portlet ">
-                                                			<div class="portlet-title">
-                                                				<div class="caption">
-                                                					<i class="fa fa-user"></i>Choose A Primary Logo
-                                                				</div>
 
-                                                			</div>
                                                 			<div class="portlet-body">
 
                                                             <form action="<?php echo $this->request->webroot;?>logos" method="post" class="form-inline" role="form" >
-                                                            <?php foreach ($logos as $logo){ ?>
+                                                            <?php
+
+															//debug($logos1);
+															foreach ($logos as $logo){ ?>
                                                                 <div class="form-group col-md-12">
                                                                     <div class="col-md-1">
                                                                         <input type="radio" value="<?php echo $logo->id;?>" name="logo" <?php echo ($logo->active == '1')?"checked='checked'":"" ;?>/>
                                                                     </div>
                                                                     <div class="col-md-10">
-                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>" width="86px" height="14px" />
+                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -457,12 +620,7 @@ $is_disabled = '';
                                                 </div>
                                                 <div class="tab-pane" id="subtab_1_2">
                                                     <div class="portlet ">
-                                                			<div class="portlet-title">
-                                                				<div class="caption">
-                                                					<i class="fa fa-user"></i>Choose A Secondary Logo
-                                                				</div>
 
-                                                			</div>
                                                 			<div class="portlet-body">
 
                                                             <form action="<?php echo $this->request->webroot;?>logos/secondary" method="post" class="form-inline" role="form" >
@@ -472,7 +630,7 @@ $is_disabled = '';
                                                                         <input type="radio" value="<?php echo $logo->id;?>" name="logo" <?php echo ($logo->active == '1')?"checked='checked'":"" ;?>/>
                                                                     </div>
                                                                     <div class="col-md-10">
-                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>" width="86px" height="14px" />
+                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -751,7 +909,6 @@ $is_disabled = '';
 
                                             <!-- PRIVACY SETTINGS TAB -->
                                             <div class="tab-pane" id="tab_1_7">
-                                               <h4> Enable <?php echo ucfirst($settings->document);?>?</h4>
                                                 <form action="#">
                                                     <table class="table table-light table-hover">
                                                         <tr><th></th><th class="center">System</th><th class="center">User</th></tr>
@@ -1302,7 +1459,7 @@ $is_disabled = '';
                                                             </tr>                                                                      
                                                             <tr>
                                                                 <td>
-                                                                    Stats by recruiter
+                                                                    Recruiter Stats
                                                                 </td>
                                                                 <td>
                                                                     <label class="uniform-inline">

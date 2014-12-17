@@ -24,7 +24,8 @@
                 </div>
 
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="dashboard-stat yellow">                        <div class="whiteCorner"></div>
+					<div class="dashboard-stat yellow">
+						<div class="whiteCorner"></div>
 
                         <div class="visual">
 							<i class="fa fa-copy"></i>

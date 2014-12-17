@@ -36,6 +36,9 @@ class LoginController extends AppController{
             $this->Flash->error('Invalid username or password');
         }
         $this->redirect('/pages');
+        }else
+        {
+           // die();
         }
     }
 } 

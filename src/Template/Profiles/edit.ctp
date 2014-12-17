@@ -261,12 +261,12 @@ $is_disabled = '';
 												<a href="#tab_1_6" data-toggle="tab">Pages</a>
 											</li>
 
-                                            <li>
+                                            <!--<li>
                                                 <a href="#tab_1_7" data-toggle="tab"><?php echo ucfirst($settings->document);?></a>
-                                            </li>
+                                            </li>-->
 
                                             <li>
-                                                <a href="#tab_1_8" data-toggle="tab">Blocks</a>
+                                                <a href="#tab_1_7" data-toggle="tab">Blocks</a>
                                             </li>
 
 										</ul>
@@ -410,348 +410,8 @@ $is_disabled = '';
 														Cancel </a>
 													</div>
 												</form>
-											</div>
-                                            <div class="tab-pane" id="tab_1_5">
-                                                <div>
-                                                <ul class="nav nav-tabs">
-        											<li class="active">
-        												<a href="#subtab_1_1" data-toggle="tab">Primary Logo</a>
-        											</li>
-        											<li>
-        												<a href="#subtab_1_2" data-toggle="tab">Secondary Logo</a>
-        											</li>
-
-        										</ul>
-                                                </div>
-                                                <div class="tab-content">
-                                                <div class="tab-pane active" id="subtab_1_1">
-                                                    <div class="portlet ">
-                                                			<div class="portlet-title">
-                                                				<div class="caption">
-                                                					<i class="fa fa-user"></i>Choose A Primary Logo
-                                                				</div>
-
-                                                			</div>
-                                                			<div class="portlet-body">
-
-                                                            <form action="<?php echo $this->request->webroot;?>logos" method="post" class="form-inline" role="form" >
-                                                            <?php foreach ($logos as $logo){ ?>
-                                                                <div class="form-group col-md-12">
-                                                                    <div class="col-md-1">
-                                                                        <input type="radio" value="<?php echo $logo->id;?>" name="logo" <?php echo ($logo->active == '1')?"checked='checked'":"" ;?>/>
-                                                                    </div>
-                                                                    <div class="col-md-10">
-                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>" width="86px" height="14px" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <hr />
-
-                                                            <?php }?>
-                                                            <input type="submit" class="btn btn-success" value="submit" name="submit" />
-                                                            </form>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="tab-pane" id="subtab_1_2">
-                                                    <div class="portlet ">
-                                                			<div class="portlet-title">
-                                                				<div class="caption">
-                                                					<i class="fa fa-user"></i>Choose A Secondary Logo
-                                                				</div>
-
-                                                			</div>
-                                                			<div class="portlet-body">
-
-                                                            <form action="<?php echo $this->request->webroot;?>logos/secondary" method="post" class="form-inline" role="form" >
-                                                            <?php foreach ($logos1 as $logo){ ?>
-                                                                <div class="form-group col-md-12">
-                                                                    <div class="col-md-1">
-                                                                        <input type="radio" value="<?php echo $logo->id;?>" name="logo" <?php echo ($logo->active == '1')?"checked='checked'":"" ;?>/>
-                                                                    </div>
-                                                                    <div class="col-md-10">
-                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>" width="86px" height="14px" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <hr />
-
-                                                            <?php }?>
-                                                            <input type="submit" class="btn btn-success" value="submit" name="submit" />
-                                                            </form>
-
-
-                                                </div>
-                                                </div>
-                                                </div>
-
-											</div>
-                                            </div>
-
-
-
-
-
-
-
-
-                                            <div class="tab-pane" id="tab_1_6">
-                                                <div>
-                                                <ul class="nav nav-tabs">
-
-
-                                                    <li class="active">
-        												<a href="#subtab_1_5" data-toggle="tab">Product Example</a>
-        											</li>
-                                                    <li class="">
-                                                        <a href="#subtab_1_6" data-toggle="tab">Help</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#subtab_1_4" data-toggle="tab">Privacy Code</a>
-                                                    </li>
-        											<li>
-        												<a href="#subtab_1_6" data-toggle="tab">Terms</a>
-        											</li>
-                                                    <li class="">
-        												<a href="#subtab_1_7" data-toggle="tab">FAQ</a>
-        											</li>
-
-
-        										</ul>
-                                                </div>
-                                                <div class="tab-content">
-                                                <div class="tab-pane active" id="subtab_1_3">
-                                                    <div class="portlet box blue">
-                                						<div class="portlet-title">
-                                							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Help
-                                							</div>
-
-                                						</div>
-
-                                						<div class="portlet-body form">
-                                							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
-                                                                <div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Page Title</label>
-                                										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="Help" />
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Description</label>
-                                										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-actions">
-                                									<div class="row">
-                                										<div class="col-md-offset-3 col-md-9">
-                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
-                                											<button type="button" class="btn default">Cancel</button>
-                                										</div>
-                                									</div>
-                                								</div>
-                                							</form>
-                                							<!-- END FORM-->
-                                						</div>
-                                					</div>
-
-                                                </div>
-                                                <div class="tab-pane" id="subtab_1_4">
-                                                    <div class="portlet box blue">
-                                						<div class="portlet-title">
-                                							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Privacy Code
-                                							</div>
-
-                                						</div>
-
-                                						<div class="portlet-body form">
-                                							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
-                                                                <div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Page Title</label>
-                                										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="Privacy code" />
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Description</label>
-                                										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-actions">
-                                									<div class="row">
-                                										<div class="col-md-offset-3 col-md-9">
-                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
-                                											<button type="button" class="btn default">Cancel</button>
-                                										</div>
-                                									</div>
-                                								</div>
-                                							</form>
-                                							<!-- END FORM-->
-                                						</div>
-                                					</div>
-
-                                                </div>
-
-                                                <div class="tab-pane" id="subtab_1_5">
-                                                    <div class="portlet box blue">
-                                						<div class="portlet-title">
-                                							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Product Example
-                                							</div>
-
-                                						</div>
-
-                                						<div class="portlet-body form">
-                                							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
-                                                                <div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Page Title</label>
-                                										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="Product example" />
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Description</label>
-                                										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-actions">
-                                									<div class="row">
-                                										<div class="col-md-offset-3 col-md-9">
-                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
-                                											<button type="button" class="btn default">Cancel</button>
-                                										</div>
-                                									</div>
-                                								</div>
-                                							</form>
-                                							<!-- END FORM-->
-                                						</div>
-                                					</div>
-
-                                                </div>
-
-                                                <div class="tab-pane" id="subtab_1_6">
-                                                    <div class="portlet box blue">
-                                						<div class="portlet-title">
-                                							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Terms
-                                							</div>
-
-                                						</div>
-
-                                						<div class="portlet-body form">
-                                							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
-                                                                <div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Page Title</label>
-                                										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="Terms" />
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Description</label>
-                                										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-actions">
-                                									<div class="row">
-                                										<div class="col-md-offset-3 col-md-9">
-                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
-                                											<button type="button" class="btn default">Cancel</button>
-                                										</div>
-                                									</div>
-                                								</div>
-                                							</form>
-                                							<!-- END FORM-->
-                                						</div>
-                                					</div>
-
-                                                </div>
-
-                                                <div class="tab-pane" id="subtab_1_7">
-                                                    <div class="portlet box blue">
-                                						<div class="portlet-title">
-                                							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - FAQ
-                                							</div>
-
-                                						</div>
-
-                                						<div class="portlet-body form">
-                                							<!-- BEGIN FORM-->
-                                							<form action="#" class="form-horizontal form-bordered">
-                                                                <div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Page Title</label>
-                                										<div class="col-md-4">
-                                											<input class="form-control" name="title" value="FAQ" />
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-body">
-                                									<div class="form-group last">
-                                										<label class="control-label col-md-3">Description</label>
-                                										<div class="col-md-9">
-                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
-                                										</div>
-                                									</div>
-                                								</div>
-                                								<div class="form-actions">
-                                									<div class="row">
-                                										<div class="col-md-offset-3 col-md-9">
-                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
-                                											<button type="button" class="btn default">Cancel</button>
-                                										</div>
-                                									</div>
-                                								</div>
-                                							</form>
-                                							<!-- END FORM-->
-                                						</div>
-                                					</div>
-
-                                                </div>
-
-											</div>
-                                            </div>
-											<!-- END PRIVACY SETTINGS TAB -->
-
-
-
-
-
-
-
-
-
-
-                                            <!-- PRIVACY SETTINGS TAB -->
-                                            <div class="tab-pane" id="tab_1_7">
-                                               <h4> Enable <?php echo ucfirst($settings->document);?>?</h4>
+                                                <p>&nbsp;</p>
+                                                <h4> Enable <?php echo ucfirst($settings->document);?>?</h4>
                                                 <form action="#">
                                                     <table class="table table-light table-hover">
                                                         <tr><th></th><th class="center">System</th><th class="center">User</th></tr>
@@ -1131,15 +791,348 @@ $is_disabled = '';
                                                     }
                                                     ?>
                                                 </form>
+											</div>
+                                            <div class="tab-pane" id="tab_1_5">
+                                                <div>
+                                                <ul class="nav nav-tabs">
+        											<li class="active">
+        												<a href="#subtab_1_1" data-toggle="tab">Primary Logo</a>
+        											</li>
+        											<li>
+        												<a href="#subtab_1_2" data-toggle="tab">Secondary Logo</a>
+        											</li>
+
+        										</ul>
+                                                </div>
+                                                <div class="tab-content">
+                                                <div class="tab-pane active" id="subtab_1_1">
+                                                    <div class="portlet ">
+                                                			<div class="portlet-title">
+                                                				<div class="caption">
+                                                					<i class="fa fa-user"></i>Choose A Primary Logo
+                                                				</div>
+
+                                                			</div>
+                                                			<div class="portlet-body">
+
+                                                            <form action="<?php echo $this->request->webroot;?>logos" method="post" class="form-inline" role="form" >
+                                                            <?php foreach ($logos as $logo){ ?>
+                                                                <div class="form-group col-md-12">
+                                                                    <div class="col-md-1">
+                                                                        <input type="radio" value="<?php echo $logo->id;?>" name="logo" <?php echo ($logo->active == '1')?"checked='checked'":"" ;?>/>
+                                                                    </div>
+                                                                    <div class="col-md-10">
+                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>" width="86px" height="14px" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <hr />
+
+                                                            <?php }?>
+                                                            <input type="submit" class="btn btn-success" value="submit" name="submit" />
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="tab-pane" id="subtab_1_2">
+                                                    <div class="portlet ">
+                                                			<div class="portlet-title">
+                                                				<div class="caption">
+                                                					<i class="fa fa-user"></i>Choose A Secondary Logo
+                                                				</div>
+
+                                                			</div>
+                                                			<div class="portlet-body">
+
+                                                            <form action="<?php echo $this->request->webroot;?>logos/secondary" method="post" class="form-inline" role="form" >
+                                                            <?php foreach ($logos1 as $logo){ ?>
+                                                                <div class="form-group col-md-12">
+                                                                    <div class="col-md-1">
+                                                                        <input type="radio" value="<?php echo $logo->id;?>" name="logo" <?php echo ($logo->active == '1')?"checked='checked'":"" ;?>/>
+                                                                    </div>
+                                                                    <div class="col-md-10">
+                                                                        <img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo->logo;?>" width="86px" height="14px" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <hr />
+
+                                                            <?php }?>
+                                                            <input type="submit" class="btn btn-success" value="submit" name="submit" />
+                                                            </form>
+
+
+                                                </div>
+                                                </div>
+                                                </div>
+
+											</div>
                                             </div>
 
 
 
 
 
+
+
+
+                                            <div class="tab-pane" id="tab_1_6">
+                                                <div>
+                                                <ul class="nav nav-tabs">
+
+
+                                                    <li class="active">
+        												<a href="#subtab_1_5" data-toggle="tab">Product Example</a>
+        											</li>
+                                                    <li class="">
+                                                        <a href="#subtab_1_6" data-toggle="tab">Help</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#subtab_1_4" data-toggle="tab">Privacy Code</a>
+                                                    </li>
+        											<li>
+        												<a href="#subtab_1_6" data-toggle="tab">Terms</a>
+        											</li>
+                                                    <li class="">
+        												<a href="#subtab_1_7" data-toggle="tab">FAQ</a>
+        											</li>
+
+
+        										</ul>
+                                                </div>
+                                                <div class="tab-content">
+                                                <div class="tab-pane active" id="subtab_1_3">
+                                                    <div class="portlet box blue">
+                                						<div class="portlet-title">
+                                							<div class="caption">
+                                								<i class="fa fa-gift"></i>Page Manager - Help
+                                							</div>
+
+                                						</div>
+
+                                						<div class="portlet-body form">
+                                							<!-- BEGIN FORM-->
+                                							<form action="#" class="form-horizontal form-bordered">
+                                                                <div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Page Title</label>
+                                										<div class="col-md-4">
+                                											<input class="form-control" name="title" value="Help" />
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Description</label>
+                                										<div class="col-md-9">
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-actions">
+                                									<div class="row">
+                                										<div class="col-md-offset-3 col-md-9">
+                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
+                                											<button type="button" class="btn default">Cancel</button>
+                                										</div>
+                                									</div>
+                                								</div>
+                                							</form>
+                                							<!-- END FORM-->
+                                						</div>
+                                					</div>
+
+                                                </div>
+                                                <div class="tab-pane" id="subtab_1_4">
+                                                    <div class="portlet box blue">
+                                						<div class="portlet-title">
+                                							<div class="caption">
+                                								<i class="fa fa-gift"></i>Page Manager - Privacy Code
+                                							</div>
+
+                                						</div>
+
+                                						<div class="portlet-body form">
+                                							<!-- BEGIN FORM-->
+                                							<form action="#" class="form-horizontal form-bordered">
+                                                                <div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Page Title</label>
+                                										<div class="col-md-4">
+                                											<input class="form-control" name="title" value="Privacy code" />
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Description</label>
+                                										<div class="col-md-9">
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-actions">
+                                									<div class="row">
+                                										<div class="col-md-offset-3 col-md-9">
+                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
+                                											<button type="button" class="btn default">Cancel</button>
+                                										</div>
+                                									</div>
+                                								</div>
+                                							</form>
+                                							<!-- END FORM-->
+                                						</div>
+                                					</div>
+
+                                                </div>
+
+                                                <div class="tab-pane" id="subtab_1_5">
+                                                    <div class="portlet box blue">
+                                						<div class="portlet-title">
+                                							<div class="caption">
+                                								<i class="fa fa-gift"></i>Page Manager - Product Example
+                                							</div>
+
+                                						</div>
+
+                                						<div class="portlet-body form">
+                                							<!-- BEGIN FORM-->
+                                							<form action="#" class="form-horizontal form-bordered">
+                                                                <div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Page Title</label>
+                                										<div class="col-md-4">
+                                											<input class="form-control" name="title" value="Product example" />
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Description</label>
+                                										<div class="col-md-9">
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-actions">
+                                									<div class="row">
+                                										<div class="col-md-offset-3 col-md-9">
+                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
+                                											<button type="button" class="btn default">Cancel</button>
+                                										</div>
+                                									</div>
+                                								</div>
+                                							</form>
+                                							<!-- END FORM-->
+                                						</div>
+                                					</div>
+
+                                                </div>
+
+                                                <div class="tab-pane" id="subtab_1_6">
+                                                    <div class="portlet box blue">
+                                						<div class="portlet-title">
+                                							<div class="caption">
+                                								<i class="fa fa-gift"></i>Page Manager - Terms
+                                							</div>
+
+                                						</div>
+
+                                						<div class="portlet-body form">
+                                							<!-- BEGIN FORM-->
+                                							<form action="#" class="form-horizontal form-bordered">
+                                                                <div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Page Title</label>
+                                										<div class="col-md-4">
+                                											<input class="form-control" name="title" value="Terms" />
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Description</label>
+                                										<div class="col-md-9">
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-actions">
+                                									<div class="row">
+                                										<div class="col-md-offset-3 col-md-9">
+                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
+                                											<button type="button" class="btn default">Cancel</button>
+                                										</div>
+                                									</div>
+                                								</div>
+                                							</form>
+                                							<!-- END FORM-->
+                                						</div>
+                                					</div>
+
+                                                </div>
+
+                                                <div class="tab-pane" id="subtab_1_7">
+                                                    <div class="portlet box blue">
+                                						<div class="portlet-title">
+                                							<div class="caption">
+                                								<i class="fa fa-gift"></i>Page Manager - FAQ
+                                							</div>
+
+                                						</div>
+
+                                						<div class="portlet-body form">
+                                							<!-- BEGIN FORM-->
+                                							<form action="#" class="form-horizontal form-bordered">
+                                                                <div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Page Title</label>
+                                										<div class="col-md-4">
+                                											<input class="form-control" name="title" value="FAQ" />
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-body">
+                                									<div class="form-group last">
+                                										<label class="control-label col-md-3">Description</label>
+                                										<div class="col-md-9">
+                                											<textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="form-actions">
+                                									<div class="row">
+                                										<div class="col-md-offset-3 col-md-9">
+                                											<button type="submit" class="btn blue"><i class="fa fa-check"></i> Submit</button>
+                                											<button type="button" class="btn default">Cancel</button>
+                                										</div>
+                                									</div>
+                                								</div>
+                                							</form>
+                                							<!-- END FORM-->
+                                						</div>
+                                					</div>
+
+                                                </div>
+
+											</div>
+                                            </div>
+											<!-- END PRIVACY SETTINGS TAB -->
+
+
+
+
+
+
+
+
+
+
                                             <!-- PRIVACY SETTINGS TAB -->
-                                            <div class="tab-pane" id="tab_1_8">
-                                             <?php $sidebar =$this->requestAction("settings/get_side");?>
+                                            <div class="tab-pane" id="tab_1_7">
+                                               <?php $sidebar =$this->requestAction("settings/get_side");?>
                                              <?php $block =$this->requestAction("settings/get_blocks");?>
                                                 <h4> Sidebar Module </h4>
                                                 <form action="<?php echo $this->request->webroot;?>profiles/blocks" method="post">
@@ -1351,6 +1344,13 @@ $is_disabled = '';
                                                     ?>
                                                 </form>
                                             </div>
+
+
+
+
+
+                                            <!-- PRIVACY SETTINGS TAB -->
+                                            
 
 
 

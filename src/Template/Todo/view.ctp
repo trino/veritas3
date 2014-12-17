@@ -25,7 +25,7 @@
 							<div class="portlet light">
 								<div class="portlet-title">
 									<div class="caption" data-toggle="collapse" data-target=".todo-project-list-content">
-										<span class="caption-subject font-green-sharp bold uppercase">PROJECTS </span>
+										<span class="caption-subject font-green-sharp bold uppercase">Jobs </span>
 										<span class="caption-helper visible-sm-inline-block visible-xs-inline-block">click to view project list</span>
 									</div>
 									<div class="actions">
@@ -62,7 +62,7 @@
 												</li>
 												<li>
 													<a href="#">
-													<i class="i"></i> Archived Projects </a>
+													<i class="i"></i> Archived Jobs </a>
 												</li>
 											</ul>
 										</div>
@@ -73,27 +73,27 @@
 										<ul class="nav nav-pills nav-stacked">
 											<li>
 												<a href="#">
-												<span class="badge badge-success"> 6 </span> AirAsia Ads </a>
+												<span class="badge badge-success"> 6 </span> Lorem Ipsum </a>
 											</li>
 											<li>
 												<a href="#">
-												<span class="badge badge-success"> 2 </span> HSBC Promo </a>
+												<span class="badge badge-success"> 2 </span>  Lorem Ipsum</a>
 											</li>
 											<li class="active">
 												<a href="#">
-												<span class="badge badge-success badge-active"> 3 </span> GlobalEx System </a>
+												<span class="badge badge-success badge-active"> 3 </span>  Lorem Ipsum </a>
 											</li>
 											<li>
 												<a href="#">
-												<span class="badge badge-default"> 14 </span> Empire City </a>
+												<span class="badge badge-default"> 14 </span> Lorem Ipsum </a>
 											</li>
 											<li>
 												<a href="#">
-												<span class="badge badge-success"> 6 </span> AirAsia Ads </a>
+												<span class="badge badge-success"> 6 </span>  Lorem Ipsum</a>
 											</li>
 											<li>
 												<a href="#">
-												<span class="badge badge-success"> 2 </span> Loop Inc Promo </a>
+												<span class="badge badge-success"> 2 </span> Lorem Ipsum </a>
 											</li>
 										</ul>
 									</div>
@@ -108,7 +108,7 @@
 								<div class="portlet-title">
 									<div class="caption">
 										<i class="icon-bar-chart font-green-sharp hide"></i>
-										<span class="caption-helper">PROJECT:</span> &nbsp; <span class="caption-subject font-green-sharp bold uppercase">Tune Website</span>
+										<span class="caption-helper">Job:</span> &nbsp; <span class="caption-subject font-green-sharp bold uppercase"> Lorem Ipsum</span>
 									</div>
 									<div class="actions">
 										<div class="btn-group">
@@ -144,7 +144,7 @@
 												</li>
 												<li>
 													<a href="#">
-													<i class="i"></i> Delete Project </a>
+													<i class="i"></i> Delete Job </a>
 												</li>
 											</ul>
 										</div>

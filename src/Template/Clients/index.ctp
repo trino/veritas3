@@ -26,17 +26,26 @@
                 </div>
             </div>    
             <div class="portlet-body">
-             <div class="col-md-6 col-sm-12 nopad">
-                    <div id="sample_1_filter" class="dataTables_filter mar">
-                        <form>
-                            <label>                        
-                            <input class="form-control input-inline" type="search" placeholder=" Search <?php echo ucfirst($settings->client);?>" aria-controls="sample_1"> <button type="submit" class="btn btn-primary">Search</button>
-                            </label>
-                        </form>
+             <div class="chat-form">
+                            <form>
+                                <div class="col-md-2" style="padding-left:0;">
+                                    <select class="form-control" style="">
+                                        <option value=""><?php echo ucfirst($settings->client); ?> Type</option>
+                                        <option value="">Admin</option>
+                                        <option value="">Recruiter</option>
+                                        <option value="">Contacts</option>
+                                        <option value="">Members</option>
+                                        <option value="">Quick Contacts</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <input class="form-control input-inline" type="search"     placeholder=" Search for <?php echo ucfirst($settings->client); ?>"      aria-controls="sample_1"/>
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
                     </div>
-                </div>
                 <div class="table-scrollable">
-                    <table class="table table-hover">
+                    <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
                     		<tr>
                     			<th><?= $this->Paginator->sort('id') ?></th>
@@ -67,12 +76,26 @@
                     	<?php endforeach; ?>
                     	</tbody>
             	</table>
-            	<div class="paginator">
+            	<div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
             		<ul class="pagination">
-            			<?= $this->Paginator->prev('< ' . __('previous')); ?>
-            			<?= $this->Paginator->numbers(); ?>
-            			<?=	$this->Paginator->next(__('next') . ' >'); ?>
+            			<li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
+                                class="paginate_button previous disabled"><a href="#"><i
+                                        class="fa fa-angle-left"></i></a></li>
+                            <li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a>
+                            </li>
+                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
+                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
+                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>
+                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">5</a></li>
+                            <li id="sample_2_next" tabindex="0" aria-controls="sample_2" class="paginate_button next"><a
+                                    href="#"><i class="fa fa-angle-right"></i></a></li>
             		</ul>
+                    
+                    <ul class="pagination">
+                            <?= $this->Paginator->prev('< ' . __('previous')); ?>
+                            <?= $this->Paginator->numbers(); ?>
+                            <?=	$this->Paginator->next(__('next') . ' >'); ?>
+                        </ul>
             		
             	</div>
             </div>

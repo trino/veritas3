@@ -102,16 +102,6 @@ jQuery(document).ready(function() {
 							Sent </a>
 							<b></b>
 						</li>
-						<li class="draft">
-							<a class="btn" href="javascript:;" data-title="Draft">
-							Draft </a>
-							<b></b>
-						</li>
-						<li class="trash">
-							<a class="btn" href="javascript:;" data-title="Trash">
-							Trash </a>
-							<b></b>
-						</li>
 					</ul>
 				</div>
 				<div class="col-md-10">

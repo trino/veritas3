@@ -40,19 +40,8 @@
 
 
             <div class="portlet-body">
-
-
-
-
                     <div class="chat-form">
-
-
-
-
                             <form>
-
-
-
                                 <div class="col-md-2" style="padding-left:0;">
                                     <select class="form-control" style="">
                                         <option value=""><?php echo ucfirst($settings->profile); ?> Type</option>
@@ -64,28 +53,11 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <input class="form-control input-inline" type="search"     placeholder=" Search for <?php echo ucfirst($settings->profile); ?>"      aria-controls="sample_1"/>
+                                    <input class="form-control input-inline" type="search"     placeholder=" Search for <?php echo ucfirst($settings->); ?>"      aria-controls="sample_1"/>
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
-
-
                             </form>
-
-
-
-
                     </div>
-
-
-
-
-
-
-
-
-
-
-
 
                 <div class="table-scrollable">
 

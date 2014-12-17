@@ -4,4 +4,33 @@
     <p>
         This is the confirmation page.<br/>Please click below to confirm your submission
     </p>
+    <div class="clearfix"></div>
+    <?php include('canvas/example.php');?>
+    <div class="clearfix"></div>
 </div>
+
+<script>
+$(function(){
+   $("#test1").jqScribble(); 
+});
+function save(numb)
+		{
+		  alert('rest');return;
+			$("#test"+numb).data("jqScribble").save(function(imageData)
+			{
+				$.post('image_save.php', {imagedata: imageData}, function(response)
+					{
+						
+                        $.ajax({
+                            url:'<?php echo $this->request->webroot;?>document/image_sess/'+numb+'/'+response
+                        });
+					});	
+				
+			});
+		}
+		function addImage()
+		{
+			var img = prompt("Enter the URL of the image.");
+			if(img !== '')$("#test").data("jqScribble").update({backgroundImage: img});
+		}
+</script>

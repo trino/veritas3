@@ -107,7 +107,7 @@ class TodoController extends AppController {
     {
         
     }
-    function todos(){
+    function picker(){
         $this->layout= 'blank';
     }
    

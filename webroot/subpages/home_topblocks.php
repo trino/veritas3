@@ -54,6 +54,31 @@
         </div>
     </div>
      <?php }?>
+
+
+
+
+
+
+
+    <a href="<?php echo $this->request->webroot;?>documents/add">
+
+    <div class="tile bg-red-sunglo">
+        <div class="tile-body">
+            <i class="fa fa-copy"></i>
+        </div>
+        <div class="tile-object">
+            <div class="name">
+                Submit Order
+            </div>
+            <div class="number">
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
     <?php if($block->feedback==1){?>
     <div class="tile bg-green-meadow">
         <div class="tile-body">
@@ -116,6 +141,16 @@
         </div>
     </div>
      <?php }?>
+
+
+
+
+
+
+
+
+
+
     <?php if($block->conference==1){?>
     <div class="tile bg-red-sunglo">
         <div class="tile-body">

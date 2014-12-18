@@ -71,8 +71,17 @@
                     			<td><?= h($clients->site) ?></td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view', $clients->id], ['class' => 'btn btn-primary']) ?>
-                    			<!--	<?= $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]) ?> -->
+                    			<?php
+                                if($this->request->session()->read('Profile.admin'))
+                                {
+                                    ?>
+                                    
+                                    
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]) ?>
+                                    <?php
+                                }
+                                ?>	 
                     			</td>
                     		</tr>
                     

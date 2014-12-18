@@ -273,7 +273,7 @@ else
                                     <a href="#tab_1_1" data-toggle="tab">Info</a>
                                 </li>
                                 <?php
-                                if (!isset($disabled)) {
+                                if (!isset($disabled) || !($this->request->session()->read('Profile.admin'))) {
                                     ?>
 
                                     <li>
@@ -288,6 +288,10 @@ else
                                 <li>
                                     <a href="#tab_1_4" data-toggle="tab">Display</a>
                                 </li>
+                                <?php
+                                if($this->request->session()->read('Profile.admin'))
+                                {
+                                    ?>
                                 <li>
                                     <a href="#tab_1_5" data-toggle="tab">Logos</a>
                                 </li>
@@ -303,7 +307,10 @@ else
                                 <li>
                                     <a href="#tab_1_7" data-toggle="tab">Blocks</a>
                                 </li>
-
+                                
+                                    <?php
+                                } 
+                                ?>
                             </ul>
                         </div>
                         <div class="portlet-body">

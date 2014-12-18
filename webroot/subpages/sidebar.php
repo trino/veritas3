@@ -77,11 +77,19 @@
 							<i class="icon-list"></i>
 							List <?php echo ucfirst($settings->client);?>s</a>
 						</li>
-						<!--li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
+                        <?php
+                        if($this->request->session()->read('Profile.admin'))
+                        {
+                            ?>
+						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-plus"></i>
 							Add new <?php echo ucfirst($settings->client);?></a>
-						</li-->
+						</li>
+                        
+                            <?php
+                        }
+                        ?>
                         <!--<li>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-basket"></i>

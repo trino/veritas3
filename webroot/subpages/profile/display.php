@@ -38,27 +38,37 @@
                                     <p>&nbsp;</p>
                                                 <h4> Enable <?php echo ucfirst($settings->document);?>?</h4>
 
-                                                <form action="#">
+                                                <form action="#" method="post" id="displayform">
                                                     <table class="table table-light table-hover">
                                                         <tr><th></th><th class="center">System</th><th class="center"><?php echo ucfirst($settings->profile);?></th></tr>
-                                                        <tr>
+                                                        <?php
+                                                        $subdoc = $this->requestAction('/profiles/getSub');
+                                                        
+                                                        ?>
+                                                       
+                                                        <?php
+                                                        foreach($subdoc as $sub)
+                                                        {
+                                                            ?>
+                                                            <tr>
                                                             <td>
-                                                               Pre-Screening
+                                                                
+                                                               <?php echo ucfirst($sub['title']);?>
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios" value="option1"/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="<?php echo $sub->id;?>" value="1" checked=""/>
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios" value="option2" checked/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="<?php echo $sub->id;?>" value="0"/>
                                                                     No </label>
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="usroptions" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" checked=""  />
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="usroptions" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="0" onclick="$(this).closest('tr').next('tr').hide();" />
                                                                     No </label>
                                                             </td>
                                                             
@@ -67,124 +77,22 @@
                                                             <td></td>
                                                             <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr" value="option1"/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="1"/>
                                                                     View Only </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr" value="option2" />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="2" />
                                                                     Upload Only </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr" value="option3" checked/>
+                                                                    <input <?php echo $is_disabled?> type="radio"  name="profile[<?php echo $sub->id;?>]" value="3" checked/>
                                                                     Both </label>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Driver Application
-                                                            </td>
-                                                            <td class="center">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option1"/>
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios1" value="option2" checked/>
-                                                                    No </label>
-                                                            </td>
-                                                        <td class="center">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="usroptions9" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="usroptions9" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
-                                                                    No </label>
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                        <tr style="display:none;">
-                                                            <td></td>
-                                                            <td colspan="2" class="center">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr9" value="option1"/>
-                                                                    View Only </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr9" value="option2" />
-                                                                    Upload Only </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr9" value="option3" checked/>
-                                                                    Both </label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                MEE consent
-                                                            </td>
-                                                            <td class="center">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios2" value="option1"/>
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios2" value="option2" checked/>
-                                                                    No </label>
-                                                            </td>
-                                                        <td class="center">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="usroptions1" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="usroptions1" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
-                                                                    No </label>
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                        <tr style="display:none;">
-                                                            <td></td>
-                                                            <td colspan="2" class="center">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr1" value="option1"/>
-                                                                    View Only </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr1" value="option2" />
-                                                                    Upload Only </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr1" value="option3" checked/>
-                                                                    Both </label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Driver Evaluation
-                                                            </td>
-                                                            <td class="center">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios3" value="option1"/>
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="optionsRadios3" value="option2" checked/>
-                                                                    No </label>
-                                                            </td>
-                                                        <td class="center">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="usroptions2" value="option1" onclick="$(this).closest('tr').next('tr').show();"  />
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="usroptions2" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
-                                                                    No </label>
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                        <tr style="display:none;">
-                                                            <td></td>
-                                                            <td colspan="2" class="center">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr2" value="option1"/>
-                                                                    View Only </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr2" value="option2" />
-                                                                    Upload Only </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="Usr2" value="option3" checked/>
-                                                                    Both </label>
-                                                            </td>
-                                                        </tr>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                        
+                                                        
+                                                        
                                                         <!--
                                                         <tr>
                                                             <td>
@@ -409,8 +317,12 @@
                                                     {
                                                         ?>
 
+                                                        <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Data saved successfully
+                                                        </div>
                                                         <div class="margin-top-10">
-                                                            <a href="#" class="btn btn-primary">
+                                                            <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
                                                                 Save Changes </a>
 
 
@@ -420,3 +332,22 @@
                                         }
                                         ?>
                                     </form>
+                                    
+                                    <script>
+                                    $(function(){
+                                       $('#save_display').click(function(){
+                                        $('#save_display').text('Saving..');
+                                            var str = $('#displayform input').serialize();
+                                            $.ajax({
+                                               url:'<?php echo $this->request->webroot;?>profiles/displaySubdocs/<?php echo $id;?>',
+                                               data:str,
+                                               type:'post',
+                                               success:function(res)
+                                               {
+                                                $('.flash').show();
+                                                $('#save_display').text(' Save Changes ');
+                                               } 
+                                            })
+                                       }); 
+                                    });
+                                    </script>

@@ -58,7 +58,9 @@
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/secondary"
                                                           method="post" class="form-inline" role="form">
-                                                        <?php foreach ($logos1 as $logo) { ?>
+                                                        <?php foreach ($logos1 as $logo) { 
+                                                            
+                                                                                                                        ?>
                                                             <div class="form-group col-md-12">
                                                                 <div class="col-md-1">
                                                                     <input type="radio" value="<?php echo $logo->id; ?>"

@@ -1,6 +1,6 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->client);?> 
+			<?php echo ucfirst($settings->client);?>s
 			</h3>
     <div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -28,17 +28,17 @@
             <div class="portlet-body">
              <div class="chat-form">
                             <form>
-                                <div class="col-md-2" style="padding-left:0;">
+                                <!--div class="col-md-2" style="padding-left:0;">
                                     <select class="form-control" style="">
                                         <option value=""><?php echo ucfirst($settings->client); ?> Type</option>
-                                        <option value="">Admin</option>
-                                        <option value="">Recruiter</option>
-                                        <option value="">Contacts</option>
-                                        <option value="">Members</option>
+                                        <option value="">London</option>
+                                        <option value="">Quebec</option>
+                                        <option value="">BC</option>
+                                        <option value="">Ontario</option>
                                         <option value="">Quick Contacts</option>
                                     </select>
-                                </div>
-                                <div class="col-md-6 ">
+                                </div-->
+                                <div class="col-md-6"  style="padding-left:0;">
                                     <input class="form-control input-inline" type="search"     placeholder=" Search for <?php echo ucfirst($settings->client); ?>"      aria-controls="sample_1"/>
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
@@ -49,6 +49,7 @@
                     	<thead>
                     		<tr>
                     			<th><?= $this->Paginator->sort('id') ?></th>
+                    			<th><?= $this->Paginator->sort('image') ?></th>
                     			<th><?= $this->Paginator->sort('title') ?></th>
                     			<th><?= $this->Paginator->sort('description') ?></th>
                     			<th><?= $this->Paginator->sort('date_start') ?></th>
@@ -61,6 +62,8 @@
                     	<?php foreach ($client as $clients): ?>
                     		<tr>
                     			<td><?= $this->Number->format($clients->id) ?></td>
+                    			<td>     <img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logo.png" style="float:right;height:45px;"/>
+                                 </td>
                     			<td><?= h($clients->title) ?></td>
                     			<td><?= h($clients->description) ?></td>
                     			<td><?= h($clients->date_start) ?></td>
@@ -68,37 +71,40 @@
                     			<td><?= h($clients->site) ?></td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view', $clients->id], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]) ?>
+                    			<!--	<?= $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']) ?>
+                    				<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]) ?> -->
                     			</td>
                     		</tr>
                     
                     	<?php endforeach; ?>
                     	</tbody>
             	</table>
-            	<div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-            		<ul class="pagination">
-            			<li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
-                                class="paginate_button previous disabled"><a href="#"><i
-                                        class="fa fa-angle-left"></i></a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a>
-                            </li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">5</a></li>
-                            <li id="sample_2_next" tabindex="0" aria-controls="sample_2" class="paginate_button next"><a
-                                    href="#"><i class="fa fa-angle-right"></i></a></li>
-            		</ul>
-                    
-                    <ul class="pagination">
-                            <?= $this->Paginator->prev('< ' . __('previous')); ?>
-                            <?= $this->Paginator->numbers(); ?>
-                            <?=	$this->Paginator->next(__('next') . ' >'); ?>
-                        </ul>
-            		
-            	</div>
+
             </div>
+
+
+                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
+                    <ul class="pagination">
+                        <li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
+                            class="paginate_button previous disabled"><a href="#"><i
+                                    class="fa fa-angle-left"></i></a></li>
+                        <li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a>
+                        </li>
+                        <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
+                        <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
+                        <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>
+                        <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">5</a></li>
+                        <li id="sample_2_next" tabindex="0" aria-controls="sample_2" class="paginate_button next"><a
+                                href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+
+                    <ul class="pagination">
+                        <?= $this->Paginator->prev('< ' . __('previous')); ?>
+                        <?= $this->Paginator->numbers(); ?>
+                        <?=	$this->Paginator->next(__('next') . ' >'); ?>
+                    </ul>
+
+                </div>
         </div>
     </div>
 </div>

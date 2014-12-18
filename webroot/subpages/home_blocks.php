@@ -1,4 +1,21 @@
 <div class="row">
+
+
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+	<div class="portlet">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class="fa fa-copy"></i>Documents
+			</div>
+
+		</div>
+
+	</div>
+	</div>
+
+
+
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
 					<div class="dashboard-stat blue-madison">

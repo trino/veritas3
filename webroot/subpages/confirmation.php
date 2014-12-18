@@ -1,8 +1,7 @@
-<p>&nbsp;</p>
 <div class="note note-success">
     <h4 class="block">Confirmation</h4>
     <p>
-        This is the confirmation page.<br/>Please click below to confirm your submission
+        Please sign below to confirm your submission.
     </p>
     <div class="clearfix"></div>
     <?php include('canvas/example.php');?>

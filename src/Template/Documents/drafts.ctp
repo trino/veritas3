@@ -98,8 +98,7 @@
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
-											<span class="label label-sm label-success">
-										Passed </span>
+									<span class="label label-sm label-info">Draft</span>
 
 								</td>
                     			<td class="actions">
@@ -116,8 +115,7 @@
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                    			    <td class="">
-<span class="label label-sm label-info">
-										Pending </span>
+<span class="label label-sm label-info">Draft</span>
 
 								</td>
                     			<td class="actions">
@@ -135,8 +133,7 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
 
-											<span class="label label-sm label-success">
-										Passed </span>
+									<span class="label label-sm label-info">Draft</span>
 
 
 								</td>
@@ -155,8 +152,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
 
-								<span class="label label-sm label-danger">
-										Failed </span>
+									<span class="label label-sm label-info">Draft</span>
+
 
 								</td>
                     			<td class="actions">
@@ -172,8 +169,8 @@
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
-										<span class="label label-sm label-warning">
-										Submitted </span>
+									<span class="label label-sm label-info">Draft</span>
+
 								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
@@ -190,8 +187,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
 
-														<span class="label label-sm label-warning">
-										Submitted </span>
+									<span class="label label-sm label-info">Draft</span>
+
 
 								</td>
                     			<td class="actions">
@@ -209,8 +206,8 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
 
-											<span class="label label-sm label-success">
-										Approved </span>
+									<span class="label label-sm label-info">Draft</span>
+
 
 								</td>
                     			<td class="actions">
@@ -228,9 +225,7 @@
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
 
-									<span class="label label-sm label-danger">
-										Failed </span>
-
+									<span class="label label-sm label-info">Draft</span>
 
 								</td>
                     			<td class="actions">

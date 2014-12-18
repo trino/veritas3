@@ -143,9 +143,16 @@
             <div class="clearfix"></div>
             </div>
     </div>
+
+
+
+
+
+
 </div>
 
-<!----------------------------------------------------------------------------------!>
+
+
 
 <div class="portlet box blue ">
 	<div class="portlet-title">
@@ -249,7 +256,6 @@
             </div>
     </div>
 </div>
-<!---------------------------------------------------------!>
 
 <div class="portlet box blue ">
 	<div class="portlet-title">
@@ -317,9 +323,22 @@
                       </div>
                 
             <div class="clearfix"></div>
+
+
+
+
+
             </div>
+
     </div>
 </div>
+
+
+
+
+
+
+
 
 <script>
     $(function(){

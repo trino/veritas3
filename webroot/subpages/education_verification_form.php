@@ -27,6 +27,55 @@
                 <tr><td>Education Start Date:<input type="text" class="form-control"/></td><td>Education End Date:<input type="text" class="form-control"/></td></tr>
                 <tr><td>Claims with this Tutor:&nbsp;&nbsp;<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td><td>Date Claims Occured:<input type="text" class="form-control"/></td></tr>
                 <tr><td colspan="2">Education history confirmed by (Verifier Use Only):<input type="text" class="form-control"/></td></tr>
+                <tr><td colspan="2">
+
+
+                        <div class="form-group col-md-12">
+
+                            <label class="col-md-6 control-label">Highest grade completed : </label>
+                            <div class="col-md-6">
+                                <input type="radio"/>&nbsp;&nbsp;1&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;2&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;3&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;4&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;5&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;6&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;7&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;8&nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="col-md-6 control-label">High School : </label>
+                            <div class="col-md-6">
+                                <input type="radio"/>&nbsp;&nbsp;1&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;2&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;3&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;4&nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="col-md-6 control-label">College : </label>
+                            <div class="col-md-6">
+                                <input type="radio"/>&nbsp;&nbsp;1&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;2&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;3&nbsp;&nbsp;
+                                <input type="radio"/>&nbsp;&nbsp;4&nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="col-md-6 control-label">Last School attended : </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+
+
+
+
+                    </td></tr>
                 <tr><td>Signature:<input type="text" class="form-control"/></td><td>Date/Time:<input type="text" class="form-control" /></td></tr>
                 
     </table>

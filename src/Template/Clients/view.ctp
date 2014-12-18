@@ -25,7 +25,6 @@ $is_disabled = '';
                 //if(isset($disabled))
 //                { ?>
                 <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
-                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
                 <?php //} ?>
 
 			</div>
@@ -89,21 +88,24 @@ $is_disabled = '';
 												<p>
 													 Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here.
 												</p>
+												<p>
+													Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here.
+												</p>
 
-												<ul class="list-inline">
 
-													<li>
-														<i class="fa fa-calendar"></i> 18 Jan 1982
-													</li>
 
-												</ul>
+												<a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg default yellow-stripe">
+													304 <?=$settings->document?>s submitted for this <?=$settings->client?> </a><a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg yellow">
+													View All <i class="fa fa-search"></i>
+												</a>
+
 											</div>
 											<!--end col-md-8-->
 											<div class="col-md-4">
 												<div class="portlet sale-summary">
 													<div class="portlet-title">
 														<div class="caption">
-															 <?php echo ucfirst($settings->profile);?> Summary
+															 <?php echo ucfirst($settings->client);?> Summary
 														</div>
 														<div class="tools">
 															<a class="reload" href="javascript:;">
@@ -115,7 +117,7 @@ $is_disabled = '';
 
 															<li>
 																<span class="sale-info">
-																<?php echo ucfirst($settings->profile);?> <i class="fa fa-img-down"></i>
+																<?php echo ucfirst($settings->profile);?>s <i class="fa fa-img-down"></i>
 																</span>
 																<span class="sale-num">
 																87 </span>
@@ -150,7 +152,7 @@ $is_disabled = '';
 											<!--end col-md-4-->
 										</div>
 										<!--end row-->
-                                        <hr />
+
                                         <div class="home_blocks">
                                         <?php include('subpages/home_blocks.php');?>
                                         </div>

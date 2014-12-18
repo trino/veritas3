@@ -2,7 +2,7 @@
 <hr />
 <p>Welcome Prospective Drivers of Challenger. </p>
 <p>Thank you for your interest in Challenger Motor Freight. In order to process your application in a timely manner, please complete all information requested including dates and contact information for your employment history. Please provide the following additional information.</p>
-<p>We also require:</p>
+<!--p>We also require:</p>
 <div class="table-scrollable">
     <table class="table table-striped">
         <tr><td>Original CVOR abstract (30 days old or less) for Ontario applicants.</td><td><a class="btn blue">Browse</a></td></tr>
@@ -14,7 +14,7 @@
         <tr><td>Completion of an on road evaluation</td><td><a class="btn blue">Browse</a></td></tr>
         </table>
         </div>
-<p>Please return you application and above information to the Challenger Recruiting Department.</p>
+<p>Please return you application and above information to the Challenger Recruiting Department.</p-->
 
 <div class="portlet box blue ">
 	<div class="portlet-title">
@@ -24,7 +24,7 @@
 	</div>
 	<div class="portlet-body form">
 			<div class="form-body">
-            <p>(Answer all questions - please print)</p>
+            <p>(Answer all questions)</p>
             <p>In compliance with Federal and Provincial equal employment opportunity laws, qualified applicants are considered for all positions without regard to race, colour, religion, sex, national origin, age, marital status, or the presence of a non-job related medical condition or handicap.</p>
             <div class="form-group col-md-12">
 				<label class="control-label col-md-3">Name : </label>
@@ -336,7 +336,7 @@
  </div>
    <div class="clearfix"></div>
    
-<div class="portlet box blue ">
+<!--div class="portlet box blue ">
 	<div class="portlet-title">
 		<div class="caption">
 			Employment History
@@ -547,7 +547,7 @@
     </div>
    
 </div>
- <div class="clearfix"></div>
+ <div class="clearfix"></div-->
  
  <div class="portlet box blue ">
 	<div class="portlet-title">
@@ -632,70 +632,7 @@
 </div>
 <div class="clearfix"></div>
 
-<div class="portlet box blue ">
-	<div class="portlet-title">
-		<div class="caption">
-			List all traffic tickets, convictions and forfeitures for the past 3 years that occures in either your personal vehicle or a company vehicle (other than parking violations)
-		</div>
-	</div>
-	<div class="portlet-body form">
-        <div class="form-body">
-            <div class="table-scrollable">
-            <table class="table table-striped">
-                <thead>
-                    <tr><th class="center"  style="width: 25%;">Location</th><th class="center"  style="width: 25%;">Date</th><th class="center"  style="width: 25%;">Charge</th><th class="center"  style="width: 25%;">Penalty</th></tr>
-                </thead>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-            </table>
-            </div>
-            <h4>Select:</h4>
-            <div class="form-group col-md-12">
-										<label class="col-md-6 control-label">Highest grade completed : </label>
-										<div class="col-md-6">
-											<input type="radio"/>&nbsp;&nbsp;1&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;2&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;3&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;4&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;5&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;6&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;7&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;8&nbsp;&nbsp;
-										</div>
-                                        </div>
-                                        
-                                        <div class="form-group col-md-12">
-                                        <label class="col-md-6 control-label">High School : </label>
-										<div class="col-md-6">
-											<input type="radio"/>&nbsp;&nbsp;1&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;2&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;3&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;4&nbsp;&nbsp;
-										</div>
-                                        </div>
-                                        
-                                        <div class="form-group col-md-12">
-                                        <label class="col-md-6 control-label">College : </label>
-										<div class="col-md-6">
-											<input type="radio"/>&nbsp;&nbsp;1&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;2&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;3&nbsp;&nbsp;
-                                            <input type="radio"/>&nbsp;&nbsp;4&nbsp;&nbsp;
-										</div>
-		                              	</div>
-            
-            <div class="form-group col-md-12">
-										<label class="col-md-6 control-label">Last School attended : </label>
-										<div class="col-md-6">
-                                            <input type="text" class="form-control" />
-                                        </div>
-            </div>
-            <div class="clearfix"></div>
-            <hr />
-            </div>
-            </div>
-            </div>
+
             <div class="clearfix"></div>
             <div class="table-scrollable">
             <table class="table table-striped">
@@ -806,8 +743,8 @@
                 
             </div>
             
-            <!---------   ------!>
-            
+
+
             <div class="portlet box blue ">
             	<div class="portlet-title">
             		<div class="caption">
@@ -829,7 +766,7 @@
                     </div>
                 </div>
              </div>
-             <!---------   --------!>
+
              <div class="portlet box blue ">
             	<div class="portlet-title">
             		<div class="caption">
@@ -887,8 +824,8 @@
                     </div>
                 </div>
                 </div>
-                <!------------    -----------------!>
-                <div class="portlet box blue ">
+
+                <!--div class="portlet box blue ">
             	<div class="portlet-title">
             		<div class="caption">
             			Request and consent for information from previous employer
@@ -979,8 +916,7 @@
                     </div>
                 </div>
                 </div>
-                <!---------------------       --------------!>
-                
+
                 <div class="portlet box blue ">
             	<div class="portlet-title">
             		<div class="caption">
@@ -1021,8 +957,8 @@
                     <div class="clearfix"></div>
                     </div>
                 </div>
-                </div>
-                <!---------------     -------------!>
+                </div-->
+
                 
                 <div class="portlet box blue ">
             	<div class="portlet-title">

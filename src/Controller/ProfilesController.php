@@ -133,6 +133,13 @@ class ProfilesController extends AppController {
             {
                 $side[$k] = $v;
             }
+            //var_dump($_POST)
+            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create');
+            foreach($sides as $s)
+            {
+                if(!isset($_POST['side'][$s]))
+                $side[$s] = 0;
+            }
             
             $blocks = TableRegistry::get('blocks');
              $query = $blocks->query();

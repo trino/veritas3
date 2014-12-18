@@ -42,7 +42,7 @@
 				<a href="#" onclick='$("#test").data("jqScribble").update({brushColor: "rgb(0,0,255)"});'>Blue</a>
 			</div>
 		</div>
-        <div class="col-sm-6" style="width: 400px;">
+        <div class="col-sm-6" style="width: 400px;padding-left:0px;">
     		<canvas id="test<?php echo $_GET['num'];?>" style="border: 1px solid silver;border-radius: 5px;"></canvas>
     		<div class="links" style="margin-top: 5px;">
     			<strong style="display: none;">OPTIONS:</strong>

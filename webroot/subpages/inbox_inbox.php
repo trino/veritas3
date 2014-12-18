@@ -46,10 +46,11 @@
 		<i class="fa fa-star"></i>
 	</td>
 	<td class="view-message hidden-xs">
-		 Petronas IT
+		 Lorem IT
 	</td>
 	<td class="view-message ">
-		 New server for datacenter needed
+		Lorem ipsum dolor 		 Lorem ipsum dolor sit amet
+		sit amet
 	</td>
 	<td class="view-message inbox-small-cells">
 		<i class="fa fa-paperclip"></i>
@@ -69,7 +70,8 @@
 		 Daniel Wong
 	</td>
 	<td class="view-message">
-		 Please help us on customization of new secure server
+		Lorem ipsum dol	 dolor sit amet
+		or sit amet
 	</td>
 	<td class="view-message inbox-small-cells">
 	</td>

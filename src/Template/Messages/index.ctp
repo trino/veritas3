@@ -94,7 +94,7 @@ jQuery(document).ready(function() {
 						</li>
 						<li class="inbox active">
 							<a href="javascript:;" class="btn" data-title="Inbox">
-							Inbox(3) </a>
+							Inbox (13) </a>
 							<b></b>
 						</li>
 						<li class="sent">
@@ -109,7 +109,7 @@ jQuery(document).ready(function() {
 						<h1 class="pull-left">Inbox</h1>
 						<form class="form-inline pull-right" action="index.html">
 							<div class="input-group input-medium">
-								<input type="text" class="form-control" placeholder="Password">
+								<input type="text" class="form-control" placeholder="Search">
 								<span class="input-group-btn">
 								<button type="submit" class="btn green"><i class="fa fa-search"></i></button>
 								</span>

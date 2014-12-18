@@ -27,8 +27,48 @@
                 <tr><td>Employment Start Date:<input type="text" class="form-control"/></td><td>Employment End Date:<input type="text" class="form-control"/></td></tr>
                 <tr><td>Claims with this Employer:&nbsp;&nbsp;<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td><td>Date Claims Occured:<input type="text" class="form-control"/></td></tr>
                 <tr><td colspan="2">Employment history confirmed by (Verifier Use Only):<input type="text" class="form-control"/></td></tr>
-                <tr><td>Signature:<input type="text" class="form-control"/></td><td>Date/Time:<input type="text" class="form-control" /></td></tr>
-                
+                <tr><td>
+                        Signature:<input type="text" class="form-control"/>
+
+                    </td><td>
+
+                        Date/Time:<input type="text" class="form-control" />
+
+
+                    </td></tr>
+                <tr><td colspan="2" >
+
+                            <label class="control-label col-md-3">Equipment Operated : </label>
+                                <input type="checkbox"/>&nbsp;Vans&nbsp;
+                                <input type="checkbox"/>&nbsp;Reefers&nbsp;
+                                <input type="checkbox"/>&nbsp;Decks&nbsp;
+                                <input type="checkbox"/>&nbsp;Super B's&nbsp;
+                                <input type="checkbox"/>&nbsp;Straight Truck&nbsp;
+                                <input type="checkbox"/>&nbsp;Others:
+
+
+
+
+
+                    </td></tr>
+
+
+
+        <tr><td colspan="2">
+
+
+
+
+                <label class="control-label col-md-3">Driving Experience : </label>
+                    <input type="checkbox"/>&nbsp;Local&nbsp;
+                    <input type="checkbox"/>&nbsp;Canada&nbsp;
+                    <input type="checkbox"/>&nbsp;Canada : Rocky Mountains&nbsp;
+                    <input type="checkbox"/>&nbsp;USA&nbsp;
+
+            </td></tr>
+
+
+
     </table>
 </div>
 <div id="more_div"></div>

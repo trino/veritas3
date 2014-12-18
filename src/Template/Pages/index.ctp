@@ -6,7 +6,7 @@
 <h3 class="page-title">
     MEE Dashboard <small>Driver Qualification System</small>
 
-    <img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logo.png" style="float:right;height:45px;"/>
+    <img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logoright.jpg" style="float:right;height:40px;"/>
 
 </h3>
 <div class="page-bar">

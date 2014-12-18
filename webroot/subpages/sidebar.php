@@ -77,11 +77,11 @@
 							<i class="icon-list"></i>
 							List <?php echo ucfirst($settings->client);?>s</a>
 						</li>
-						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
+						<!--li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-plus"></i>
 							Add new <?php echo ucfirst($settings->client);?></a>
-						</li>
+						</li-->
                         <!--<li>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-basket"></i>
@@ -189,7 +189,7 @@
                 <li class="<?php echo($this->request['action']=='drafts')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>documents/drafts">
                 <i class="icon-note"></i>
-				<span class="title">Draft</span>
+				<span class="title">Drafts</span>
                 <span class="selected"></span>
                 </a>
                 </li>

@@ -34,7 +34,7 @@ $is_disabled = '';
 							<div class="caption">
 								<i class="fa fa-user"></i> Add/Edit <?php echo ucfirst($settings->client);?>
 							</div>
-							
+
 						</div>
 						<div class="portlet-body">
                         <div class="tab-pane" id="tab_1_3">
@@ -56,7 +56,7 @@ $is_disabled = '';
                                             </div>
                                             </div>
                                             <table class="table table-striped table-bordered table-advance table-hover">
-                                                <thead><tr><th colspan="2">Add Members</th></tr></thead>
+                                                <thead><tr><th colspan="2">Add Recruiters</th></tr></thead>
                                                 <tr>
                                                     <td>
                                                         <div class="checker">
@@ -128,7 +128,7 @@ $is_disabled = '';
                                                     </td>
                                                 </tr>
                                             </table>
-                                            
+
                                             <table class="table table-striped table-bordered table-advance table-hover">
                                                 <thead><tr><th colspan="2">Add Contacts</th></tr></thead>
                                                 <tr>
@@ -208,16 +208,16 @@ $is_disabled = '';
 										<li class="active">
 											<a href="#tab_1_1" data-toggle="tab">Info</a>
 										</li>
-                                        
-										<li>
+
+										<!--li>
 											<a href="#tab_1_2" data-toggle="tab">Display</a>
-										</li>
+										</li-->
                                     </ul>
                                     	<div class="portlet-body">
 										<div class="tab-content">
 										<div class="tab-pane active" id="tab_1_1">
 											<div id="tab_1-1" class="tab-pane active">
-                                                <h4><?php echo ucfirst($settings->client);?> Details</h4>
+
 												<form role="form" action="#">
 													<div class="form-group col-md-6">
 														<label class="control-label">Title</label>
@@ -302,10 +302,10 @@ $is_disabled = '';
 												</form>
 											</div>
                         </div>
-                        		<div class="tab-pane" id="tab_1_2">
-												
+                        		<!--div class="tab-pane" id="tab_1_2">
 
-                                               
+
+
                                                 <h4> Enable <?php echo ucfirst($settings->document);?>?</h4>
 
                                                 <form action="#">
@@ -331,7 +331,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -367,7 +367,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions9" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -403,7 +403,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions1" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -439,7 +439,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions2" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -475,7 +475,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions3" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -511,7 +511,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions4" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -547,7 +547,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions5" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -583,7 +583,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions6" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -619,7 +619,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions7" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -655,7 +655,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions8" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -673,26 +673,14 @@ $is_disabled = '';
                                                         </tr>
                                                     </table>
                                                     <!--end profile-settings-->
-                                                    <?php
-                                                    if(!isset($disabled))
-                                                    {
-                                                        ?>
 
-                                                        <div class="margin-top-10">
-                                                            <a href="#" class="btn btn-primary">
-                                                                Save Changes </a>
-
-                                                        </div>
-                                                    <?php
-                                                    }
-                                                    ?>
                                                 </form>
-											</div>
+											</div-->
                                     </div>
                                 </div>
                     </div>
 					<!-- END SAMPLE FORM PORTLET-->
-			
+
                 </div>
             </div>
         </div>

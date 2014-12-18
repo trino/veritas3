@@ -209,9 +209,9 @@ $is_disabled = '';
 											<a href="#tab_1_1" data-toggle="tab">Info</a>
 										</li>
 
-										<!--li>
+										<li>
 											<a href="#tab_1_2" data-toggle="tab">Display</a>
-										</li-->
+										</li>
                                     </ul>
                                     	<div class="portlet-body">
 										<div class="tab-content">
@@ -302,18 +302,19 @@ $is_disabled = '';
 												</form>
 											</div>
                         </div>
-                        		<!--div class="tab-pane" id="tab_1_2">
+                        		<div class="tab-pane" id="tab_1_2">
 
 
 
+                                                <p>&nbsp;</p>
                                                 <h4> Enable <?php echo ucfirst($settings->document);?>?</h4>
 
                                                 <form action="#">
                                                     <table class="table table-light table-hover">
-                                                        <tr><th></th><th class="center">System</th><th class="center">Job</th></tr>
+                                                        <tr><th></th><th class="center">System</th><th class="center"><?php echo ucfirst($settings->client);?> </th></tr>
                                                         <tr>
                                                             <td>
-                                                               Reports
+                                                               Pre-Screening
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
@@ -331,7 +332,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -349,7 +350,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <?php echo ucfirst($settings->document);?>
+                                                                Driver Application
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
@@ -367,7 +368,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions9" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -385,7 +386,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                templates
+                                                                MEE consent
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
@@ -403,7 +404,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions1" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -421,7 +422,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                KPI Report
+                                                                Driver Evaluation
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
@@ -439,7 +440,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions2" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -455,6 +456,7 @@ $is_disabled = '';
                                                                     Both </label>
                                                             </td>
                                                         </tr>
+                                                        <!--
                                                         <tr>
                                                             <td>
                                                                 Strike
@@ -475,7 +477,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions3" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -511,7 +513,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions4" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -547,7 +549,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions5" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -583,7 +585,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions6" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -619,7 +621,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions7" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -655,7 +657,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="usroptions8" value="option2" onclick="$(this).closest('tr').next('tr').hide();" checked />
                                                                     No </label>
                                                             </td>
-
+                                                            
                                                         </tr>
                                                         <tr style="display:none;">
                                                             <td></td>
@@ -670,12 +672,13 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr8" value="option3" checked/>
                                                                     Both </label>
                                                             </td>
-                                                        </tr>
+                                                        </tr>-->
                                                     </table>
+                                                    
                                                     <!--end profile-settings-->
 
                                                 </form>
-											</div-->
+											</div>
                                     </div>
                                 </div>
                     </div>

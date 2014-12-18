@@ -110,7 +110,8 @@ class ProfilesController extends AppController {
     
     function logout()
     {
-        $this->request->session()->delete('Profile.id');
+        //$this->request->session()->delete('Profile.id');
+       $this->request->session()->destroy();
         $this->redirect('/login');
     }
     

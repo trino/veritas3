@@ -284,14 +284,12 @@ else
                                     </li>
                                 <?php
                                 }
+                                if($this->request->session()->read('Profile.admin'))
+                                {
                                 ?>
                                 <li>
                                     <a href="#tab_1_4" data-toggle="tab">Display</a>
                                 </li>
-                                <?php
-                                if($this->request->session()->read('Profile.admin'))
-                                {
-                                    ?>
                                 <li>
                                     <a href="#tab_1_5" data-toggle="tab">Logos</a>
                                 </li>

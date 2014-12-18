@@ -63,6 +63,8 @@
                                                                                           name="side[client_create]"
                                                                                           value="1" <?php if ($sidebar->client_create == 1) echo "checked"; ?> /> Create
                                                             </label>
+                                                            
+                                                           
                                                         </div>
                                                         <div class="clearfix"></div>
                                                 </td>
@@ -94,8 +96,41 @@
                                                                                           name="side[document_create]"
                                                                                           value="1" <?php if ($sidebar->document_create == 1) echo "checked"; ?> /> Create
                                                             </label>
+                                                            
+                                                            
                                                         </div>
                                                         <div class="clearfix"></div>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="vtop">Messages</td>
+                                                <td>
+                                                     <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[messages]"
+                                                                                          value="1" <?php if ($sidebar->messages == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[messages]"
+                                                                                          value="0" <?php if ($sidebar->messages == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                    </td>
+                                                    </tr>    
+                                                        <tr>
+                                                <td class="vtop">Drafts</td>
+                                                <td>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[drafts]"
+                                                                                          value="1" <?php if ($sidebar->drafts == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[drafts]"
+                                                                                          value="0" <?php if ($sidebar->drafts == 0) echo "checked"; ?>/>
+                                                        No </label>
                                                 </td>
                                             </tr>
                                         </table>

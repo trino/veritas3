@@ -2,23 +2,29 @@
 
 <div class="tiles">
     <?php if ($block->addadriver == 1) { ?>
+    <a href="<?php echo $this->request->webroot; ?>profiles/add">
         <div class="tile bg-red-sunglo">
 
             <div class="tile-body">
                 <i class="fa fa-user"></i>
             </div>
+            
+            
             <div class="tile-object">
-                <div class="name">
-                    Add a <?=$settings->profile;?>
-                </div>
+                
+                   <div class="name"> Add a <?=$settings->profile;?></div>
+                
                 <div class="number">
 
                 </div>
             </div>
+            
 
         </div>
+        </a>
     <?php } ?>
     <?php if ($block->searchdriver == 1) { ?>
+    <a href="<?php echo $this->request->webroot; ?>profiles">
         <div class="tile selected bg-yellow-saffron">
             <div class="corner">
             </div>
@@ -34,9 +40,11 @@
                 </div>
             </div>
         </div>
+        </a>
     <?php } ?>
 
     <?php if ($block->submitorder == 1) { ?>
+    <a href="<?php echo $this->request->webroot; ?>documents/add">
         <div class="tile bg-purple-studio">
             <div class="tile-body">
                 <i class="fa fa-clipboard"></i>
@@ -50,6 +58,7 @@
                 </div>
             </div>
         </div>
+        </a>
     <?php } ?>
 
 

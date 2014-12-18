@@ -145,31 +145,31 @@ $is_disabled = '';
 											</div>
 											<div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab1">
 												<?php
-                                                    include('subpages/company_pre_screen_question.php');
+                                                    include('subpages/documents/company_pre_screen_question.php');
                                                 ?>
 											</div>
 											<div class="<?php echo $tab;?>" id="tab2">
 												<?php
-                                                    include('subpages/driver_application.php');
+                                                    include('subpages/documents/driver_application.php');
                                                 ?>
 											</div>
 											<div class="<?php echo $tab;?>" id="tab3">
-												<?php include('subpages/document_tab_3.php');?>
+												<?php include('subpages/documents/document_tab_3.php');?>
 											</div>
 											<div class="<?php echo $tab;?>" id="tab4">
                                                 <?php
-                                                    include('subpages/driver_evaluation_form.php');
+                                                    include('subpages/documents/driver_evaluation_form.php');
                                                 ?>
 												
 											</div>
                                             <div class="<?php echo $tab;?>" id="tab5">
 												<?php
-                                                    include('subpages/confirmation.php');
+                                                    include('subpages/documents/confirmation.php');
                                                 ?>
 											</div>
                                             <div class="<?php echo $tab;?>" id="tab6">
 												<?php
-                                                    include('subpages/forview.php');
+                                                    include('subpages/documents/forview.php');
                                                 ?>
 											</div>
                                             <?php
@@ -181,7 +181,7 @@ $is_disabled = '';
                                                 ?>
 
                                             <div class="forview <?php if($tab=='tab-pane')echo 'nodisplay';?>">
-                                                <?php include('subpages/forview.php');?>
+                                                <?php include('subpages/documents/forview.php');?>
                                             </div>
 
                                             <?php

@@ -198,7 +198,7 @@
                 </li>-->
 
                 </li>
-                
+                <?php if($sidebar->messages==1){?>
                 <li class="<?php echo($this->request['controller']=='Messages')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>Messages">
                 <i class="icon-envelope"></i>
@@ -206,7 +206,11 @@
                 <span class="selected"></span>
                 </a>
                 </li>
-                </li>
+                <?php
+                }
+                
+                if($sidebar->drafts==1){
+                ?>
                 
                 <li class="<?php echo($this->request['action']=='drafts')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>documents/drafts">
@@ -215,7 +219,9 @@
                 <span class="selected"></span>
                 </a>
                 </li>
-
+                <?php
+                }
+                ?>
                
 				<!--
                 <li class="<?php echo($this->request['controller']=='Pages' && $this->request['action']=='cms' )?'active open':'';?> last">

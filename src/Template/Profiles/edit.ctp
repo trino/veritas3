@@ -537,7 +537,7 @@ $is_disabled = '';
                                                         <tr><th></th><th class="center">System</th><th class="center">User</th></tr>
                                                         <tr>
                                                             <td>
-                                                               Reports
+                                                               Pre-Screening
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
@@ -573,7 +573,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <?php echo ucfirst($settings->document);?>
+                                                                Driver Application
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
@@ -609,7 +609,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                templates
+                                                                MEE consent
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
@@ -645,7 +645,7 @@ $is_disabled = '';
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                KPI Report
+                                                                Driver Evaluation
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
@@ -679,6 +679,7 @@ $is_disabled = '';
                                                                     Both </label>
                                                             </td>
                                                         </tr>
+                                                        <!--
                                                         <tr>
                                                             <td>
                                                                 Strike
@@ -894,7 +895,7 @@ $is_disabled = '';
                                                                     <input <?php echo $is_disabled?> type="radio" name="Usr8" value="option3" checked/>
                                                                     Both </label>
                                                             </td>
-                                                        </tr>
+                                                        </tr>-->
                                                     </table>
                                                     <!--end profile-settings-->
                                                     <?php

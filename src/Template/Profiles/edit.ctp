@@ -315,6 +315,7 @@ else
                             <div class="tab-content">
                                 <!-- PERSONAL INFO TAB -->
                                 <div class="tab-pane active" id="tab_1_1">
+                                    <input type="hidden" name="user_id" value="<?php echo "";?>" />
                                     <?php include('subpages/profile/info.php');?>
                                 </div>
                                 <!-- END PERSONAL INFO TAB -->

@@ -31,10 +31,10 @@ class SettingsController extends AppController {
          die();
    }
    
-   function get_blocks()
+   function get_blocks($uid)
    {
         $setting = TableRegistry::get('blocks');
-         $query = $setting->find();
+         $query = $setting->find()->where(['user_id'=>$uid]);
                  
          $l = $query->first();
          
@@ -42,10 +42,10 @@ class SettingsController extends AppController {
             return $this->response;
          die();
    }
-    function get_side()
+    function get_side($uid)
    {
         $setting = TableRegistry::get('sidebar');
-         $query = $setting->find();
+         $query = $setting->find()->where(['user_id'=>$uid]);
                  
          $l = $query->first();
          

@@ -1,4 +1,4 @@
-<?php $sidebar =$this->requestAction("settings/get_side");?>
+<?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 
 <div class="page-sidebar-wrapper">
 

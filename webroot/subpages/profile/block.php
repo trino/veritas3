@@ -1,8 +1,13 @@
-<?php $sidebar = $this->requestAction("settings/get_side"); ?>
-                                    <?php $block = $this->requestAction("settings/get_blocks"); ?>
+<?php 
+
+    $uid = ($this->request['action']=='add')? "0" : $this->request['pass'][0];
+$sidebar = $this->requestAction("settings/get_side/".$uid); ?>
+                                    <?php $block = $this->requestAction("settings/get_blocks/".$uid); ?>
                                     <h4> Sidebar Module </h4>
 
-                                    <form action="<?php echo $this->request->webroot; ?>profiles/blocks" method="post">
+                                    <form action="#" method="post" id="blockform">
+                                        <input type="hidden" name="form" value="<?php echo $uid;?>" />
+                                        <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
                                         <table class="table table-light table-hover">
                                             <tr>
                                                 <td class="vtop">
@@ -44,11 +49,13 @@
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[client]"
+                                                                                          onclick="$(this).closest('td').find('.yesno').show();"
                                                                                           value="1" <?php if ($sidebar->client == 1) echo "checked"; ?>/>
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[client]"
+                                                                                          onclick="$(this).closest('td').find('.yesno').hide();"
                                                                                           value="0" <?php if ($sidebar->client == 0) echo "checked"; ?>/>
                                                         No </label>
                                                         <div class="clearfix"></div>
@@ -77,11 +84,13 @@
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[document]"
+                                                                                          onclick="$(this).closest('td').find('.yesno').show();"
                                                                                           value="1" <?php if ($sidebar->document == 1) echo "checked"; ?>/>
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[document]"
+                                                                                          onclick="$(this).closest('td').find('.yesno').hide();"
                                                                                           value="0" <?php if ($sidebar->document == 0) echo "checked"; ?>/>
                                                         No </label>
                                                         <div class="clearfix"></div>
@@ -147,7 +156,7 @@
 
                                         <h4> Homepage Top Block</h4>
 
-
+                                        <input type="hidden" name="block[user_id]" value="<?php echo $uid;?>" />
                                         <table class="table table-light table-hover">
                                             <tr>
                                                 <td>
@@ -315,9 +324,13 @@
                                         <?php
                                         if (!isset($disabled)) {
                                             ?>
-
+                                            <div class="res"></div>
+                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Data saved successfully
+                                                        </div>
                                             <div class="margin-top-10">
-                                                <input type="submit" name="submit" class="btn btn-primary"
+                                                <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
                                                        value="Save Changes"/>
 
                                             </div>
@@ -327,3 +340,23 @@
 
 
                                     </form>
+                                    
+                                    <script>
+                                    $(function(){
+                                       $('#save_blocks').click(function(){
+                                        $('#save_blocks').text('Saving..');
+                                            var str = $('#blockform input').serialize();
+                                            $.ajax({
+                                               url:'<?php echo $this->request->webroot; ?>profiles/blocks',
+                                               data:str,
+                                               type:'post',
+                                               success:function(res)
+                                               {
+                                                $('.res').text(res);
+                                                $('.flash').show();
+                                                $('#save_display').text(' Save Changes ');
+                                               } 
+                                            })
+                                       }); 
+                                    });
+                                    </script>

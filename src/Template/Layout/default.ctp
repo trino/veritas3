@@ -251,7 +251,7 @@
 						</li>
 						
 						<li>
-							<a href="http://isbmee.com/">
+							<a href="<?php echo $this->request->webroot;?>profiles/logout">
 							<i class="icon-key"></i> Log Out </a>
 						</li>
 					</ul>

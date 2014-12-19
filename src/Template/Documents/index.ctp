@@ -1,6 +1,6 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->document);?> <small>View/Edit/Delete <?php echo ucfirst($settings->document);?></small>
+			<?php echo ucfirst($settings->document);?>s <small>View/Edit/Delete <?php echo ucfirst($settings->document);?>s</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -10,7 +10,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href=""><?php echo ucfirst($settings->document);?></a>
+						<a href=""><?php echo ucfirst($settings->document);?>s</a>
 					</li>
 				</ul>
 				<div class="page-toolbar">
@@ -21,56 +21,16 @@
 					</div>
 				</div>
 			</div>
-            
-            <div class="chat-form">
-                            <form>
-                                <div class="col-md-4 col-sm-12" style="padding-left:0;">
-                                    <select class="form-control" style="">
-                                        <option value="">Uploaded by</option>
-                                        <option value="0">Super Admin</option>
-                                        <option value="3">Admin</option>
-                                        <option value="4">Nick Smith</option>
-                                        <option value="5">James Blont</option>
-                                        <option value="6">Mark Henry</option>
-                                        <option value="7">John Lenon</option>
-                                        <option value="8">Elvis Moore</option>
-                                        <option value="9">Peter Brown</option>
-                                        <option value="10">Jimmy Green</option>
-                                        <option value="11">Robert Black</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <select class="form-control">
-                                        <option value=""><?php echo ucfirst($settings->document);?> type</option>
-                                        <option value="0">Contract</option>
-                                        <option value="3">Evidence</option>
-                                        <option value="4">Report</option>
-                                        <option value="5">Site Order</option>
-                                        <option value="6">Orders</option>
-                                        <option value="7">Template</option>
-                                        <option value="8">KPI Audit</option>
-                                        <option value="9">Others</option>
-                                        
-                                    </select>
-                             </div>
-                             <div class="col-md-4 col-sm-12">
-                                    <select class="form-control">
-                                        <option value=""><?php echo ucfirst($settings->client);?></option>
-                                        <option value="0">Client 1</option>
-                                        <option value="3">Client 2</option>
-                                        <option value="4">Client 3</option>
-                                        <option value="5">Client</option>
-                                        
-                                    </select>
-                             </div>
-                                                
-                            </form>
-                    </div>
 
-    
-             <div class="clearfix"></div>
-             <hr />
+
+
+<div class="row">
     <div class="col-md-12">
+
+
+
+
+
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
@@ -79,7 +39,74 @@
                 </div>
             </div>    
             <div class="portlet-body">
-             
+
+
+
+
+
+
+
+
+				<div class="chat-form">
+					<form>
+
+
+						<div class="col-md-3 col-sm-12" style="padding-left:0;">
+
+							<input class="form-control input-inline" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" aria-controls="sample_1"/>
+							<button type="submit" class="btn btn-primary">Search</button>
+
+						</div>
+
+
+						<div class="col-md-3 col-sm-12">
+							<select class="form-control" style="">
+								<option value="">Submitted by</option>
+								<option value="3">Jack Black</option>
+								<option value="4">Nick Smith</option>
+								<option value="5">James Blont</option>
+								<option value="6">Mark Henry</option>
+								<option value="7">John Lenon</option>
+								<option value="8">Elvis Moore</option>
+								<option value="9">Peter Brown</option>
+								<option value="10">Jimmy Green</option>
+								<option value="11">Robert Black</option>
+							</select>
+						</div>
+						<div class="col-md-3 col-sm-12">
+							<select class="form-control">
+								<option value=""><?php echo ucfirst($settings->document);?> type</option>
+								<option value="0">Contract</option>
+								<option value="3">Evidence</option>
+								<option value="4">Report</option>
+								<option value="5">Site Order</option>
+								<option value="6">Orders</option>
+								<option value="7">Template</option>
+								<option value="8">KPI Audit</option>
+								<option value="9">Others</option>
+
+							</select>
+						</div>
+						<div class="col-md-3 col-sm-12">
+							<select class="form-control">
+								<option value=""><?php echo ucfirst($settings->client);?></option>
+								<option value="0">Challenger - Ontario</option>
+								<option value="3">
+									Challenger - Quebec</option>
+								<option value="4">Challenger - BC</option>
+								<option value="5">Challenger - London</option>
+
+							</select>
+						</div>
+
+					</form>
+				</div>
+
+
+				<div class="clearfix"></div>
+
+
+
                 <div class="table-scrollable">
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
@@ -99,7 +126,7 @@
                     		<tr>
                     			<td>Orders</td>
                                 <td>Rob Anthony</td>
-                    			<td>Client name 1</td>
+                    			<td>Challenger - Ontario </td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
@@ -114,17 +141,19 @@
                     				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
                     			</td>
                     		</tr>
+
+
+
                             <tr>
                     			<td>Orders</td>
                                 <td>Jimmy Hendrix</td>
-                    			<td>Client name 1</td>
-                    			<td>Admin</td>
+                    			<td>Challenger - London</td>
+                    			<td>John Q Sample</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                    			    <td class="">
-<span class="label label-sm label-info">
-										Pending </span>
-
+	<span class="label label-sm label-danger">
+										Failed </span>
 								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
@@ -135,8 +164,8 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Angela Stuart</td>
-                    			<td>Client name 1</td>
-                    			<td>Admin</td>
+                    			<td>Challenger - London</td>
+                    			<td>John Q Sample</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
@@ -155,8 +184,8 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Jim Morrison</td>
-                    			<td>Client name 1</td>
-                    			<td>Admin</td>
+                    			<td>Challenger - Quebec</td>
+                    			<td>John Q Sample</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
@@ -173,13 +202,13 @@
                     		</tr><tr>
                     			<td>Orders</td>
                                 <td>Jacob Brown</td>
-                    			<td>Client name 1</td>
-                    			<td>Admin</td>
+                    			<td>Challenger - BC</td>
+                    			<td>Bob Smith</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
 										<span class="label label-sm label-warning">
-										Submitted </span>
+										Pending </span>
 								</td>
                     			<td class="actions">
                     				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
@@ -190,14 +219,14 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Peter Smith</td>
-                    			<td>Client name 1</td>
-                    			<td>Admin</td>
+                    			<td>Challenger - BC</td>
+                    			<td>Bob Smith</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
 
 														<span class="label label-sm label-warning">
-										Submitted </span>
+										Pending </span>
 
 								</td>
                     			<td class="actions">
@@ -209,8 +238,8 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Jude Brown</td>
-                    			<td>Client name 1</td>
-                    			<td>Admin</td>
+                    			<td>Challenger - London</td>
+                    			<td>Bob Smith</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
@@ -228,8 +257,8 @@
                             <tr>
                     			<td>Orders</td>
                                 <td>Luke Smith</td>
-                    			<td>Client name 1</td>
-                    			<td>Admin</td>
+                    			<td>Challenger - London</td>
+                    			<td>Jack Black</td>
                     			<td>12-05-2014 03:20:00</td>
                     			<td><a href="#">DummyFile.docx</a></td>
                     			<td class="">
@@ -249,32 +278,38 @@
                     	
                     	</tbody>
             	</table>
-            	<div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-                        <ul class="pagination">
-                            <li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
-                                class="paginate_button previous disabled"><a href="#"><i
-                                        class="fa fa-angle-left"></i></a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a>
-                            </li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">5</a></li>
-                            <li id="sample_2_next" tabindex="0" aria-controls="sample_2" class="paginate_button next"><a
-                                    href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                    <ul class="pagination">
-                    <li class="prev disabled">
-                    <a href="">< previous</a>
-                    </li>
-                    <li class="next">
-                    <a href="#" rel="next">next ></a>
-                    </li>
-                    </ul>
+
                 </div>
-                </div>
+
+
+
+				<div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
+					<ul class="pagination">
+						<li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
+							class="paginate_button previous disabled"><a href="#"><i
+									class="fa fa-angle-left"></i></a></li>
+						<li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a>
+						</li>
+						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
+						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
+						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>
+						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">5</a></li>
+						<li id="sample_2_next" tabindex="0" aria-controls="sample_2" class="paginate_button next"><a
+								href="#"><i class="fa fa-angle-right"></i></a></li>
+					</ul>
+					<ul class="pagination">
+						<li class="prev disabled">
+							<a href="">< previous</a>
+						</li>
+						<li class="next">
+							<a href="#" rel="next">next ></a>
+						</li>
+					</ul>
+				</div>
+
+
+
             </div>
         </div>
         </div>
-        
-            <div class="clearfix"></div>
+        </div>

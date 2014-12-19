@@ -97,6 +97,7 @@
                                     <?= $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']) ?>
                                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']) ?>
                                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]) ?>
+                                    <a href="<?php echo $this->request->webroot; ?>/documents/add" class="btn btn-warning" >Submit Order</a>
                                 </td>
                             </tr>
 

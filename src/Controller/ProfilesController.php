@@ -88,6 +88,7 @@ class ProfilesController extends AppController {
 			}
 		}
 		$this->set(compact('profile'));
+        $this->set('id',$id);
 	}
 
 /**
@@ -110,7 +111,8 @@ class ProfilesController extends AppController {
     
     function logout()
     {
-        $this->request->session()->delete('Profile.id');
+        //$this->request->session()->delete('Profile.id');
+       $this->request->session()->destroy();
         $this->redirect('/login');
     }
     
@@ -133,6 +135,13 @@ class ProfilesController extends AppController {
             {
                 $side[$k] = $v;
             }
+            //var_dump($_POST)
+            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create');
+            foreach($sides as $s)
+            {
+                if(!isset($_POST['side'][$s]))
+                $side[$s] = 0;
+            }
             
             $blocks = TableRegistry::get('blocks');
              $query = $blocks->query();
@@ -148,6 +157,97 @@ class ProfilesController extends AppController {
                     ->execute();
              $this->redirect(['controller'=>'profiles','action'=>'add']);
         }
+    }
+    
+    function getSub()
+    {
+        $sub = TableRegistry::get('Subdocuments');
+        $query = $sub->find();
+        $q = $query->select();
+        
+        
+            $this->response->body($q);
+            return $this->response;
+        
+        die();
+    }
+    function displaySubdocs($id)
+    {
+        //var_dump($_POST);die();
+        $user['profile_id'] = $id;
+        $display = $_POST; //defining new variable for system base below upcoming foreach
+        
+        //for user base
+        foreach($_POST as $k=>$v)
+        {
+            if($k=='profileP')
+            {
+                foreach($_POST[$k] as $k2=>$v2)
+                {
+                    $subp = TableRegistry::get('Profilessubdocument');
+                    $query = $subp->find();
+                    $query->select()
+                    ->where(['profile_id' => $id,'subdoc_id' => $k2]);
+                    $check=$query->first();
+                    
+                    if($v2 == ''){
+
+                    if($check)
+                    {
+                        $query2 = $subp->query();
+                        $query2->update()
+                        ->set(['display'=>$_POST['profile'][$k2]])
+                        ->where(['profile_id' => $id,'subdoc_id' => $k2])
+                        ->execute();
+                    }
+                    else
+                    {
+                        
+                       $query2 = $subp->query();
+                        $query2->insert(['profile_id','subdoc_id', 'display'])
+                        ->values(['profile_id' => $id,'subdoc_id' => $k2,'display'=>$_POST['profile'][$k2]])
+                        ->execute(); 
+                    }
+                    }
+                    else
+                    {
+                      if($check)
+                        {
+                            $query2 = $subp->query();
+                            $query2->update()
+                            ->set(['display'=>0])
+                            ->where(['subdoc_id' => $k2,'profile_id' => $id])
+                            ->execute();
+                        }
+                        else
+                        {
+                           $query2 = $subp->query();
+                            $query2->insert(['profile_id','subdoc_id', 'display'])
+                            ->values(['profile_id'=>$id,'subdoc_id' => $k2,'display'=>0])
+                            ->execute(); 
+                        }  
+                    }
+                    
+                }
+            }
+        }
+        unset($display['profileP']);
+        unset($display['profile']);
+        
+        //For System base
+        foreach($display as $k=>$v)
+        {
+            $subd = TableRegistry::get('Subdocuments'); 
+            $query3 = $subd->query(); 
+            $query3->update()
+                        ->set(['display'=>$v])
+                        ->where(['id' => $k])
+                        ->execute();      
+        }
+        
+        
+        //var_dump($str);
+        die('here');
     }
     
    

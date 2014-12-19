@@ -48,19 +48,25 @@
                     
 					<span class="arrow "></span>
 					</a>
+                    <?php if($sidebar->profile_list==1 || $sidebar->profile_create==1){?>
 					<ul class="sub-menu">
+                        <?php if($sidebar->profile_list==1){?>
 						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>profiles">
 							<i class="icon-list"></i>
 							List <?php echo ucfirst($settings->profile);?>s</a>
 						</li>
+                        <?php }?>
+                        <?php if($sidebar->profile_create==1){?>
 						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>profiles/add">
 							<i class="icon-plus"></i>
 							Create <?php echo ucfirst($settings->profile);?></a>
 						</li>
+                        <?php }?>
 						
 					</ul> 
+                    <?php }?>
 				</li>
                 <?php } ?>
                  <?php if($sidebar->client==1){?>
@@ -71,17 +77,27 @@
                     <?php echo($this->request['controller']=='Clients')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
+                    <?php if($sidebar->client_list==1 || $sidebar->client_create==1){?>
 					<ul class="sub-menu">
+                        <?php if($sidebar->client_list==1){?>
 						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients">
 							<i class="icon-list"></i>
 							List <?php echo ucfirst($settings->client);?>s</a>
 						</li>
+                        <?php
+                        }
+                        if($this->request->session()->read('Profile.admin') && $sidebar->client_create==1){?>
+                        
 						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-plus"></i>
 							Add new <?php echo ucfirst($settings->client);?></a>
 						</li>
+                        
+                            <?php
+                        }
+                        ?>
                         <!--<li>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-basket"></i>
@@ -89,6 +105,7 @@
 						</li>-->
 						
 					</ul>
+                    <?php }?>
 				</li>
                 <?php }?>
                 <!--<li class="start <?php echo($this->request['controller']=='Logos')?'active open':'';?>">
@@ -121,20 +138,25 @@
 					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
+                    <?php if($sidebar->document_list==1 || $sidebar->document_create==1){?>
 					<ul class="sub-menu">
+                        <?php if($sidebar->document_list==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/index">
                             <i class="icon-list"></i>
 							List <?php echo ucfirst($settings->document);?>s</a>
 						</li>
+                        <?php }?>
+                        <?php if($sidebar->document_create==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/add">
                             <i class="icon-plus"></i>
 							Submit <?php echo ucfirst($settings->document);?></a>
 						</li>
-						
+						<?php }?>
 												
 					</ul>
+                    <?php }?>
 				</li>
                 <?php }?>
                 <!--<li class="<?php echo($this->request['action']=='stats')?'active open':'';?>">
@@ -176,7 +198,7 @@
                 </li>-->
 
                 </li>
-                
+                <?php if($sidebar->messages==1){?>
                 <li class="<?php echo($this->request['controller']=='Messages')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>Messages">
                 <i class="icon-envelope"></i>
@@ -184,16 +206,23 @@
                 <span class="selected"></span>
                 </a>
                 </li>
-                </li>
+                <?php
+                }
+                
+                if($sidebar->drafts==1){
+                ?>
                 
                 <li class="<?php echo($this->request['action']=='drafts')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>documents/drafts">
-                <i class="icon-envelope"></i>
+                <i class="icon-note"></i>
 				<span class="title">Draft</span>
+
                 <span class="selected"></span>
                 </a>
                 </li>
-
+                <?php
+                }
+                ?>
                
 				<!--
                 <li class="<?php echo($this->request['controller']=='Pages' && $this->request['action']=='cms' )?'active open':'';?> last">

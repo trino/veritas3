@@ -24,7 +24,7 @@ class ProfilesController extends AppController {
     
 	public function index() {
 	   
-		$this->set('profiles', $this->paginate($this->Profiles));
+		$this->set('profiles', $this->paginate($this->Profiles)); 
 	}
 
 

@@ -1,7 +1,7 @@
 <?php 
 
     $uid = ($this->request['action']=='add')? "0" : $this->request['pass'][0];
-$sidebar = $this->requestAction("settings/get_side/".$uid); ?>
+    $sidebar = $this->requestAction("settings/get_side/".$uid); ?>
                                     <?php $block = $this->requestAction("settings/get_blocks/".$uid); ?>
                                     <h4> Sidebar Module </h4>
 
@@ -46,6 +46,7 @@ $sidebar = $this->requestAction("settings/get_side/".$uid); ?>
                                                     <?php echo ucfirst($settings->client); ?>
                                                 </td>
                                                 <td>
+                                                
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[client]"

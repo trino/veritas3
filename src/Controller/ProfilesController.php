@@ -24,7 +24,7 @@ class ProfilesController extends AppController {
     
 	public function index() {
 	   
-		$this->set('profiles', $this->paginate($this->Profiles));
+		$this->set('profiles', $this->paginate($this->Profiles)); 
 	}
 
 
@@ -126,7 +126,14 @@ class ProfilesController extends AppController {
     
     function blocks()
     {
-        if(isset($_POST['submit'])){
+        
+        
+            $user_id = $_POST['form'];
+            if($user_id!= 0)
+            {
+                $block['user_id'] = $_POST['block']['user_id'];
+                $side['user_id'] = $_POST['side']['user_id'];
+            }
             foreach($_POST['block'] as $k=>$v)
             {
                 $block[$k] = $v;
@@ -144,19 +151,39 @@ class ProfilesController extends AppController {
             }
             
             $blocks = TableRegistry::get('blocks');
+            $s = $blocks->find()->where(['user_id'=>$user_id])->count();
+            //echo $s;die();
+            if($user_id != 0  && $s!=0)
+            {
+                
              $query = $blocks->query();
                     $query->update()
                     ->set($block)
-                    ->where(['id' => 1])
+                    ->where(['user_id' => $user_id])
                     ->execute();
+             }
+             else
+             {
+                $article = $blocks->newEntity($_POST['block']);
+                $blocks->save($article);
+             }
             $sidebar = TableRegistry::get('sidebar');
+            if($user_id != 0)
+            {
              $query1 = $sidebar->query();
                     $query1->update()
                     ->set($side)
-                    ->where(['id' => 1])
-                    ->execute();
-             $this->redirect(['controller'=>'profiles','action'=>'add']);
-        }
+                    ->where(['user_id' => $user_id])
+                   ->execute();
+             }
+              else
+             {
+                $article = $sidebar->newEntity($_POST['side']);
+                $sidebar->save($article);
+             }       
+             die();
+             //$this->redirect(['controller'=>'profiles','action'=>'add']);
+        
     }
     
     function getSub()

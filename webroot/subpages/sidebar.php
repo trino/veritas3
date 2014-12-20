@@ -1,4 +1,4 @@
-<?php $sidebar =$this->requestAction("settings/get_side");?>
+<?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 
 <div class="page-sidebar-wrapper">
 
@@ -133,7 +133,7 @@
                  <?php if($sidebar->document==1){?>
 				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']!="stats" && $this->request['action']!='drafts')?'active open':'';?>">
 					<a href="javascript:;">
-					<i class="icon-docs"></i>
+					<i class="icon-notebook"></i>
 					<span class="title"><?php echo ucfirst($settings->document);?>s</span>
 					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
@@ -215,7 +215,8 @@
                 <li class="<?php echo($this->request['action']=='drafts')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>documents/drafts">
                 <i class="icon-note"></i>
-				<span class="title">Drafts</span>
+				<span class="title">Draft</span>
+
                 <span class="selected"></span>
                 </a>
                 </li>

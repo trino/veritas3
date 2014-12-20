@@ -1,4 +1,4 @@
-<?php $block = $this->requestAction("settings/get_blocks"); ?>
+<?php $block = $this->requestAction("settings/get_blocks/".$this->Session->read('Profile.id')); ?>
 
 <div class="tiles">
     <?php if ($block->addadriver == 1) { ?>

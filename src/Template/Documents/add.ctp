@@ -55,51 +55,41 @@ $is_disabled = '';
                                             $tab = 'tab-pane';
                                             ?>
 
-										<ul class="nav nav-pills nav-justified steps">
-											<li>
-												<a href="#tab1" data-toggle="tab" class="step">
+										<ul class="nav nav-pills nav-justified steps">    
+                                            <?php
+                                                $doc = $this->requestAction('/documents/getDocument');
+                                                $doc2 = $doc;
+                                                $i = 1;
+                                                foreach($doc as $d)
+                                                {
+                                                    $j = $d->id;
+                                                ?>
+                                                <li>
+												<a href="#tab<?php echo $j;?>" data-toggle="tab" class="step">
 												<span class="number">
-												1 </span><br />
+												<?php echo $i; ?> </span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Pre-screening </span>
+												<i class="fa fa-check"></i> <?php echo ucfirst($d->title); ?> </span>
 												</a>
 											</li>
-											<li>
-												<a href="#tab2" data-toggle="tab" class="step">
-												<span class="number">
-												2 </span><br />
-												<span class="desc">
-												<i class="fa fa-check"></i>Driver Application </span>
-												</a>
-											</li>
-											<li>
-												<a href="#tab3" data-toggle="tab" class="step active">
-												<span class="number">
-												3 </span><br />
-												<span class="desc">
-												<i class="fa fa-check"></i> MEE Consent </span>
-												</a>
-											</li>
-											<li>
-												<a href="#tab4" data-toggle="tab" class="step">
-												<span class="number">
-												4 </span><br />
-												<span class="desc">
-												<i class="fa fa-check"></i> Road Test </span>
-												</a>
-											</li>
+                                                <?php
+                                                
+                                                $i++;
+                                                }
+                                            ?>
+											
                                             <li>
-												<a href="#tab5" data-toggle="tab" class="step">
+												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
 												<span class="number">
-												5 </span><br />
+												<?php echo $i++;?></span><br />
 												<span class="desc">
 												<i class="fa fa-check"></i> Confirmation </span>
 												</a>
 											</li>
                                             <li>
-												<a href="#tab6" data-toggle="tab" class="step">
+												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
 												<span class="number">
-												6 </span><br />
+												<?php echo $i++;?></span><br />
 												<span class="desc">
 												<i class="fa fa-check"></i> Report Card </span>
 												</a>
@@ -143,31 +133,23 @@ $is_disabled = '';
 												<button class="close" data-dismiss="alert"></button>
 												Your form validation is successful!
 											</div>
-											<div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab1">
+                                            <?php foreach($doc2 as $d){
+                                                $j = $d->id;
+                                                ?>
+											<div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab<?php echo $d->id; ?>">
 												<?php
-                                                    include('subpages/documents/company_pre_screen_question.php');
+                                                
+                                                    include('subpages/documents/'.$d->form);
                                                 ?>
 											</div>
-											<div class="<?php echo $tab;?>" id="tab2">
-												<?php
-                                                    include('subpages/documents/driver_application.php');
-                                                ?>
-											</div>
-											<div class="<?php echo $tab;?>" id="tab3">
-												<?php include('subpages/documents/document_tab_3.php');?>
-											</div>
-											<div class="<?php echo $tab;?>" id="tab4">
-                                                <?php
-                                                    include('subpages/documents/driver_evaluation_form.php');
-                                                ?>
-												
-											</div>
-                                            <div class="<?php echo $tab;?>" id="tab5">
+                                            <?php } ?>
+											
+                                            <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
 												<?php
                                                     include('subpages/documents/confirmation.php');
                                                 ?>
 											</div>
-                                            <div class="<?php echo $tab;?>" id="tab6">
+                                            <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
 												<?php
                                                     include('subpages/documents/forview.php');
                                                 ?>

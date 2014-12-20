@@ -171,6 +171,17 @@ class ProfilesController extends AppController {
         
         die();
     }
+    
+    function getProSubDoc($pro_id,$doc_id)
+    {
+        $sub = TableRegistry::get('Profilessubdocument');
+        $query = $sub->find();
+        $query->select()->where(['profile_id'=>$pro_id, 'subdoc_id'=>$doc_id]);
+        $q = $query->first();
+        $this->response->body($q);
+        return $this->response;
+    }
+    
     function displaySubdocs($id)
     {
         //var_dump($_POST);die();

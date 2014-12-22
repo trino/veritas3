@@ -110,6 +110,11 @@ class TodoController extends AppController {
     function picker(){
         $this->layout= 'blank';
     }
+    
+    function date($date)
+    {
+        
+    }
    
     
     

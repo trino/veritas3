@@ -82,6 +82,8 @@
                         else
                         $end_date = '';
                           ?>
+
+                    
                     		<tr>
                     			<td><?= $this->Number->format($clients->id) ?></td>
                     			<td>     <img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logo.png" style="float:right;height:45px;"/>
@@ -92,7 +94,7 @@
                     			<td><?= h($end_date) ?></td>
                     			<td><?= h($clients->site) ?></td>
                     			<td class="actions">
-                    				<?php  if($sidebar->client_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $clients->id], ['class' => 'btn btn-primary']);}
+                    				<?php  if($sidebar->client_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $clients->id], ['class' => 'btn btn-info']);}
                                 if($this->request->session()->read('Profile.admin'))
                                 {
                                     if($sidebar->client_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);} ?>

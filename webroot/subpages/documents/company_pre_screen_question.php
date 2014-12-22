@@ -355,7 +355,30 @@
                                     
                                     <tr>
                                         <td>Recruiters comments and recommendations (note what day they are booked to come in for a road test and interview):</td><td><textarea class="form-control"></textarea></td>
-                                    </tr>                      
+                                    </tr>  
+                                    
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4">How did you hear about us?</label>
+                                            <div class="col-md-4">
+                                            <select name="" class="form-control select_media">
+                                                <option value="">Select</option>
+                                                <option value="internet">Internet</option>
+                                                <option value="jobfair">Job Fair / Trade Show</option>
+                                                <option value="magazine">Magazine</option>
+                                                <option value="newspaper">Newspaper</option>
+                                                <option value="poster">Poster</option>
+                                                <option value="radio">Radio</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <textarea class="form-control other_div" style="display: none;"></textarea>
+                                            </div>
+                                            </div>
+                                        </td>
+                                    </tr>                    
                                     
                             </table>
                                         <div class="form-group col-md-12">
@@ -397,6 +420,14 @@
         });
         //$("#test1").jqScribble();
         //$("#test2").jqScribble();
+        
+        $('.select_media').change(function(){
+           if ($(this).attr("value") == 'other')
+            {
+                 $('.other_div').show();
+            }
+            else $('.other_div').hide(); 
+        });
     });
 
        

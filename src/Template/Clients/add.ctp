@@ -3,6 +3,9 @@ if(isset($disabled))
 $is_disabled = 'disabled="disabled"';
 else
 $is_disabled = '';
+
+if(isset($client))
+$c = $client;
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
@@ -208,94 +211,96 @@ $is_disabled = '';
 										<li class="active">
 											<a href="#tab_1_1" data-toggle="tab">Info</a>
 										</li>
-
+                                    <?php if($this->request['action']!="add"){
+                                        ?>
+                                    
 										<li>
 											<a href="#tab_1_2" data-toggle="tab">Display</a>
 										</li>
+                                        <?php 
+                                        }?>
                                     </ul>
                                     	<div class="portlet-body">
 										<div class="tab-content">
 										<div class="tab-pane active" id="tab_1_1">
 											<div id="tab_1-1" class="tab-pane active">
-
-												<form role="form" action="#">
+												<form role="form" action="" method="post">
 													<div class="form-group col-md-6">
 														<label class="control-label">Title</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="title" <?php if(isset($c->title)) { ?> value="<?php echo $c->title; ?>" <?php } ?> />
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Description</label>
-														<textarea class="form-control"></textarea>
+														<textarea class="form-control" name="description"><?php if(isset($c->description)) { echo $c->description;} ?></textarea>
 													</div>
 													<div class="form-group col-md-12">
 														<label class="control-label">Enter name of your company</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="company_name" <?php if(isset($c->company_name)){?> value="<?php echo $c->company_name; ?>" <?php } ?> />
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's First Name</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="sig_fname" <?php if(isset($c->sig_fname)){?> value="<?php echo $c->sig_fname; ?>" <?php } ?>/>
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's Last Name</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="sig_lname" <?php if(isset($c->sig_lname)){?> value="<?php echo $c->sig_lname; ?>" <?php } ?>/>
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's Phone Number</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="sig_phone" <?php if(isset($c->sig_phone)){?> value="<?php echo $c->sig_phone; ?>" <?php } ?>/>
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's Email Address</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="sig_email" <?php if(isset($c->sig_email)){?> value="<?php echo $c->sig_email; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Billing Address Street Name and Number</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="billing_address" <?php if(isset($c->billing_address)){?> value="<?php echo $c->billing_address; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-4">
 														<label class="control-label">City</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="city" <?php if(isset($c->city)){?> value="<?php echo $c->city; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-4">
 														<label class="control-label">Postal Code</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="postal" <?php if(isset($c->postal)){?> value="<?php echo $c->postal; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-4">
 														<label class="control-label">Province/State</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="province" <?php if(isset($c->province)){?> value="<?php echo $c->province; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">User's First Name</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="u_fname" <?php if(isset($c->u_fname)){?> value="<?php echo $c->u_fname; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">User's Last Name</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="u_lname" <?php if(isset($c->u_lname)){?> value="<?php echo $c->u_lname; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">User's Email Address</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="u_email" <?php if(isset($c->u_email)){?> value="<?php echo $c->u_email; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">User's Phone Number</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="u_phone" <?php if(isset($c->u_phone)){?> value="<?php echo $c->u_phone; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Site</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="site" <?php if(isset($c->site)){?> value="<?php echo $c->site; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Start Date</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="date_start" <?php if(isset($c->date_start)){?> value="<?php echo $c->date_start; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">End Date</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="date_end" <?php if(isset($c->date_end)){?> value="<?php echo $c->date_end; ?>" <?php } ?>/>
 													</div>
                                                     <div class="clearfix"></div>
                                                     <hr />
 													<div class="margiv-top-10">
-														<a href="#" class="btn btn-primary">
-														Save Changes </a>
+                                                    <button type="submit" class="btn btn-primary" >Save</button>
 														<a href="#" class="btn default">
 														Cancel </a>
 													</div>
@@ -309,7 +314,7 @@ $is_disabled = '';
                                                 <p>&nbsp;</p>
                                                 <h4> Enable <?php echo ucfirst($settings->document);?>?</h4>
 
-                                                <form action="#" id="displayform1">
+                                                <form action="" id="displayform1" method="post">
                                                     <table class="table table-light table-hover">
                                                         <tr><th></th><th class="center">System</th><th class="center"><?php echo ucfirst($settings->client);?> </th></tr>
                                                         <?php

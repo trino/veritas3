@@ -44,9 +44,6 @@
                                                         <?php
                                                         $subdoc = $this->requestAction('/profiles/getSub');
                                                         
-                                                        ?>
-                                                       
-                                                        <?php
                                                         foreach($subdoc as $sub)
                                                         {
                                                             ?>
@@ -57,33 +54,36 @@
                                                             </td>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="<?php echo $sub->id;?>" value="1" checked=""/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="<?php echo $sub->id;?>" value="1" <?php if($sub['display']==1) {?>checked="checked" <?php }?> />
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="<?php echo $sub->id;?>" value="0"/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="<?php echo $sub->id;?>" value="0" <?php if($sub['display']==0) {?>checked="checked" <?php }?> />
                                                                     No </label>
                                                             </td>
+                                                            <?php
+                                                                 $prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$id.'/'.$sub->id);
+                                                            ?>
                                                             <td class="center">
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" checked=""  />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if($prosubdoc['display'] != 0) {?> checked="checked" <?php } ?> />
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="0" onclick="$(this).closest('tr').next('tr').hide();" />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="0" onclick="$(this).closest('tr').next('tr').hide();" <?php if($prosubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
                                                                     No </label>
                                                             </td>
                                                             
                                                         </tr>
-                                                        <tr style="display:none;">
+                                                        <tr <?php if($prosubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
                                                             <td></td>
                                                             <td colspan="2" class="center">
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="1"/>
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="1" <?php if($prosubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
                                                                     View Only </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="2" />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="2" <?php if($prosubdoc['display'] == 2) {?> checked="checked" <?php } ?> />
                                                                     Upload Only </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio"  name="profile[<?php echo $sub->id;?>]" value="3" checked/>
+                                                                    <input <?php echo $is_disabled?> type="radio"  name="profile[<?php echo $sub->id;?>]" value="3" <?php if($prosubdoc['display'] == 3) {?> checked="checked" <?php } ?>/>
                                                                     Both </label>
                                                             </td>
                                                         </tr>

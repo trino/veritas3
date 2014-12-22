@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Controller\Controller;
+use Cake\ORM\TableRegistry;
 
 
 class ClientsController extends AppController {
@@ -40,17 +41,19 @@ class ClientsController extends AppController {
  * @return void
  */
 	public function add() {
-		$profile = $this->Clients->newEntity($this->request->data);
+	   $clients = TableRegistry::get('Clients');
+        $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
-			if ($this->Clients->save($profile)) {
+		  
+			if ($clients->save($client)) {
 				$this->Flash->success('The user has been saved.');
-				return $this->redirect(['action' => 'index']);
+                	return $this->redirect(['action' => 'edit',$client->id]);
 			} else {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('profile'));
-        //$this->render('edit');
+		$this->set(compact('client'));
+        $this->render('add');
 	}
 
 /**
@@ -61,7 +64,7 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
-		$profile = $this->Clients->get($id, [
+		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
@@ -73,7 +76,8 @@ class ClientsController extends AppController {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('profile'));
+		$this->set(compact('client'));
+        $this->set('id',$id);
         $this->render('add');
 	}
 
@@ -98,6 +102,108 @@ class ClientsController extends AppController {
     function quickcontact()
     {
         
+    }
+    
+    function getSub()
+    {
+        $sub = TableRegistry::get('Subdocuments');
+        $query = $sub->find();
+        $q = $query->select();
+        
+        
+            $this->response->body($q);
+            return $this->response;
+        
+        die();
+    }
+    
+    function getCSubDoc($c_id,$doc_id)
+    {
+        $sub = TableRegistry::get('clientssubdocument');
+        $query = $sub->find();
+        $query->select()->where(['client_id'=>$c_id, 'subdoc_id'=>$doc_id]);
+        $q = $query->first();
+        $this->response->body($q);
+        return $this->response;
+    }
+    
+    function displaySubdocs($id)
+    {
+        //var_dump($_POST);die();
+        $user['client_id'] = $id;
+        $display = $_POST; //defining new variable for system base below upcoming foreach
+        
+        //for user base
+        foreach($_POST as $k=>$v)
+        {
+            if($k=='clientC')
+            {
+                foreach($_POST[$k] as $k2=>$v2)
+                {
+                    $subp = TableRegistry::get('clientssubdocument');
+                    $query = $subp->find();
+                    $query->select()
+                    ->where(['client_id' => $id,'subdoc_id' => $k2]);
+                    $check=$query->first();
+                    
+                    if($v2 == ''){
+
+                    if($check)
+                    {
+                        $query2 = $subp->query();
+                        $query2->update()
+                        ->set(['display'=>$_POST['client'][$k2]])
+                        ->where(['client_id' => $id,'subdoc_id' => $k2])
+                        ->execute();
+                    }
+                    else
+                    {
+                        
+                       $query2 = $subp->query();
+                        $query2->insert(['client_id','subdoc_id', 'display'])
+                        ->values(['client_id' => $id,'subdoc_id' => $k2,'display'=>$_POST['client'][$k2]])
+                        ->execute(); 
+                    }
+                    }
+                    else
+                    {
+                      if($check)
+                        {
+                            $query2 = $subp->query();
+                            $query2->update()
+                            ->set(['display'=>0])
+                            ->where(['subdoc_id' => $k2,'client_id' => $id])
+                            ->execute();
+                        }
+                        else
+                        {
+                           $query2 = $subp->query();
+                            $query2->insert(['client_id','subdoc_id', 'display'])
+                            ->values(['client_id'=>$id,'subdoc_id' => $k2,'display'=>0])
+                            ->execute(); 
+                        }  
+                    }
+                    
+                }
+            }
+        }
+        unset($display['clientC']);
+        unset($display['client']);
+        
+        //For System base
+        foreach($display as $k=>$v)
+        {
+            $subd = TableRegistry::get('Subdocuments'); 
+            $query3 = $subd->query(); 
+            $query3->update()
+                        ->set(['display'=>$v])
+                        ->where(['id' => $k])
+                        ->execute();      
+        }
+        
+        
+        //var_dump($str);
+        die('here');
     }
     
 }

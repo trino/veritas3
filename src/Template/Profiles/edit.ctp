@@ -24,6 +24,8 @@ if (isset($disabled))
     $is_disabled = 'disabled="disabled"';
 else
     $is_disabled = '';
+if(isset($profile))
+    $p = $profile;
 ?>
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -273,6 +275,7 @@ else
                                     <a href="#tab_1_1" data-toggle="tab">Info</a>
                                 </li>
                                 <?php
+                                if($this->request['action'] != 'add'){
                                 if (!isset($disabled) || !($this->request->session()->read('Profile.admin'))) {
                                     ?>
 
@@ -307,7 +310,7 @@ else
                                 </li>
                                 
                                     <?php
-                                } 
+                                } }
                                 ?>
                             </ul>
                         </div>
@@ -320,6 +323,9 @@ else
                                 </div>
                                 <!-- END PERSONAL INFO TAB -->
                                 <!-- CHANGE AVATAR TAB -->
+                                <?php
+                                if($this->request['action'] != 'add'){ 
+                                ?>
                                 <div class="tab-pane" id="tab_1_2">
                                     
                                     <?php include('subpages/profile/avatar.php');?>
@@ -349,7 +355,7 @@ else
                                 <div class="tab-pane" id="tab_1_7">
                                     <?php include('subpages/profile/block.php');?>
                                 </div>
-
+                                <?php } ?>
 
                                 <!-- PRIVACY SETTINGS TAB -->
 
@@ -368,18 +374,21 @@ else
 <script>
     $(function () {
         $('.member_type').change(function () {
-            if ($(this).val() == 'Contact') {
+            if ($(this).val() == '5') {
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).hide();
                 });
+                $('#driver_div').show();
             }
             else {
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).show();
                 });
+                $('#driver_div').hide();
             }
+             
         });
-    })
+    });
 </script>
 <?php /*
 

@@ -15,8 +15,46 @@
 	</div>
 
 
+                <?php 
+                $class = array('blue-madison','red','yellow','bg-purple-studio','bg-green-meadow','blue','bg-yellow-saffron','bg-grey-cascade','bg-blue-steel','bg-green','bg-red-intense');
+                
+                $doc = $this->requestAction('/documents/getDocument');
+                $i=0;
+                if($doc){
+                    foreach($doc as $d)
+                    {
+                        if($i==11)
+                        $i=0;
+                        ?>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    					<div class="dashboard-stat <?php echo $class[$i]; ?>">
+                            <div class="whiteCorner"></div>
+    
+                            <div class="visual">
+    							<i class="fa fa-copy"></i>
+    						</div>
+    						<div class="details">
+    							<div class="number">
+    								 1349
+    							</div>
+    							<div class="desc">
+    								 <?php echo ucfirst($d->title); ?>
+    							</div>
+    						</div>
+    						<a class="more" href="#">
+    						View more <i class="m-icon-swapright m-icon-white"></i>
+    						</a>
+    					</div>
+                        <div class="dusk"></div>
+    
+                    </div>
+                        <?php
+                        $i++;
+                    }
+                }
+                 ?>
+			<!--	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
 					<div class="dashboard-stat blue-madison">
                         <div class="whiteCorner"></div>
@@ -58,7 +96,8 @@
 						<a class="more" href="#">
 						View more <i class="m-icon-swapright m-icon-white"></i>
 						</a>
-					</div>                    <div class="dusk"></div>
+					</div>                    
+                    <div class="dusk"></div>
 
     </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -105,5 +144,5 @@
 
                 </div>
 				
-				
+			-->	
 			</div>

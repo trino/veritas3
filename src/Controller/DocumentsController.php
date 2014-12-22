@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Controller\Controller;
+use Cake\ORM\TableRegistry;
 
 
 class DocumentsController extends AppController {
@@ -111,4 +112,15 @@ class DocumentsController extends AppController {
     {
         
     }
+    
+    public function getDocument()
+    {
+        $doc = TableRegistry::get('Subdocuments');
+        $query = $doc->find();
+        $query->select()->where(['display' => 1])->order('id');
+        $this->response->body($query);
+        return $this->response;
+    }
+    
+    
 }

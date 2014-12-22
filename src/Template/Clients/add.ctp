@@ -235,8 +235,6 @@ $c = $client;
 													<div class="form-group col-md-6">
 														<label class="control-label">Description</label>
 														<textarea class="form-control" name="description"><?php if(isset($c->description)) { echo $c->description;} ?></textarea>
-
-														<input type="text" class="form-control" name="title"/>
 													</div>
 												
 													<div class="form-group col-md-12">

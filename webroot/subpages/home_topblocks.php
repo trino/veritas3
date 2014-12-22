@@ -88,9 +88,9 @@
 
     <?php if ($block->schedule == 1) { ?>
     <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
-        <a href="javascript:;" class=" input-group input-medium date date-picker1 tile" data-date-format="dd-mm-yyyy" >
-        <div class="tile  bg-grey-cascade "  >
         
+        <div class="tile  bg-grey-cascade "  >
+          <a href="javascript:;" class=" input-group input-medium date date-picker1 tile"  >  
             <div class="tile-body">
                 <i class="fa fa-calendar"></i>
             </div>
@@ -103,9 +103,9 @@
                     14
                 </div>
             </div>
-            
+         </a>   
         </div>
-        </a>
+        
     <?php } ?>
 
 
@@ -189,7 +189,7 @@
 $(function(){
     
     $('.date-picker1').datepicker({
-        format: "yyyy-mm-dd",
+        
     })
     //Listen for the change even on the input
     .change(dateChanged)
@@ -197,13 +197,9 @@ $(function(){
 });
 
 function dateChanged(ev) {
-    alert(ev);
+    datez = (ev.date.valueOf())/1000;
+    //alert(ev.date.valueOf());
     $(this).datepicker('hide');
-    alert($(this).datepicker('value'));
-    if ($('#startdate').val() != '' && $('#enddate').val() != '') {
-        $('#period').text(diffInDays() + ' d.');
-    } else {
-        $('#period').text("-");
-    }
+    window.location.href="<?php echo $this->request->webroot;?>todo/date/"+datez;
 }
 </script>

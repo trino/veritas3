@@ -60,7 +60,9 @@
                     		</tr>
                     	</thead>
                     	<tbody>
-                    	<?php foreach ($client as $clients): ?>
+                    	<?php 
+                            
+                        foreach ($client as $clients):?>
                     		<tr>
                     			<td><?= $this->Number->format($clients->id) ?></td>
                     			<td>     <img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logo.png" style="float:right;height:45px;"/>

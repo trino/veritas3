@@ -143,7 +143,7 @@ class ProfilesController extends AppController {
                 $side[$k] = $v;
             }
             //var_dump($_POST)
-            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create');
+            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete');
             foreach($sides as $s)
             {
                 if(!isset($_POST['side'][$s]))

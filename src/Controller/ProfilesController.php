@@ -50,12 +50,24 @@ class ProfilesController extends AppController {
 	    
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
         $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
-		$profile = $this->Profiles->newEntity($this->request->data);
+		$profiles = TableRegistry::get('Profiles');
+        $profile = $profiles->newEntity($_POST);
 		if ($this->request->is('post')) {
-			if ($this->Profiles->save($profile)) {
+			if ($profiles->save($profile)) {
+			     $blocks = TableRegistry::get('Blocks');
+			     $query2 = $blocks->query();
+                        $query2->insert(['user_id'])
+                        ->values(['user_id'=>$profile->id])
+                        ->execute(); 
+                $side = TableRegistry::get('Sidebar');
+			     $query2 = $side->query();
+                        $query2->insert(['user_id'])
+                        ->values(['user_id'=>$profile->id])
+                        ->execute(); 
 				$this->Flash->success('The user has been saved.');
-				return $this->redirect(['action' => 'index']);
+				return $this->redirect(['action' => 'edit',$profile->id]);
 			} else {
+			     //var_dump($profile);die();
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
@@ -143,7 +155,7 @@ class ProfilesController extends AppController {
                 $side[$k] = $v;
             }
             //var_dump($_POST)
-            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create');
+            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete');
             foreach($sides as $s)
             {
                 if(!isset($_POST['side'][$s]))

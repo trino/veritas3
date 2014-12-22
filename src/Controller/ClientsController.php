@@ -41,17 +41,19 @@ class ClientsController extends AppController {
  * @return void
  */
 	public function add() {
-		$profile = $this->Clients->newEntity($this->request->data);
+	   $clients = TableRegistry::get('Clients');
+        $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
-			if ($this->Clients->save($profile)) {
+		  
+			if ($clients->save($client)) {
 				$this->Flash->success('The user has been saved.');
-				return $this->redirect(['action' => 'index']);
+                	return $this->redirect(['action' => 'edit',$client->id]);
 			} else {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('profile'));
-        //$this->render('edit');
+		$this->set(compact('client'));
+        $this->render('add');
 	}
 
 /**
@@ -62,7 +64,7 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
-		$profile = $this->Clients->get($id, [
+		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
@@ -74,7 +76,7 @@ class ClientsController extends AppController {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('profile'));
+		$this->set(compact('client'));
         $this->set('id',$id);
         $this->render('add');
 	}

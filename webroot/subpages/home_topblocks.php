@@ -88,10 +88,14 @@
 
 
     <?php if ($block->schedule == 1) { ?>
-        <div class="tile  bg-grey-cascade">
+    <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
+        <a href="javascript:;" class=" input-group input-medium date date-picker1 tile" data-date-format="dd-mm-yyyy" >
+        <div class="tile  bg-grey-cascade "  >
+        
             <div class="tile-body">
                 <i class="fa fa-calendar"></i>
             </div>
+        
             <div class="tile-object">
                 <div class="name">
                     Schedule
@@ -100,13 +104,15 @@
                     14
                 </div>
             </div>
+            
         </div>
-
+        </a>
     <?php } ?>
 
 
 
     <?php if ($block->tasks == 1) { ?>
+        <a href="<?php echo $this->request->webroot;?>todo">
         <div class="tile bg-blue-steel">
             <div class="tile-body">
                 <i class="fa fa-tasks"></i>
@@ -120,6 +126,7 @@
                 </div>
             </div>
         </div>
+        </a>
 
     <?php } ?>
 
@@ -179,3 +186,25 @@
 
 
 </div>
+<script>
+$(function(){
+    
+    $('.date-picker1').datepicker({
+        format: "yyyy-mm-dd",
+    })
+    //Listen for the change even on the input
+    .change(dateChanged)
+    .on('changeDate', dateChanged);
+});
+
+function dateChanged(ev) {
+    alert(ev);
+    $(this).datepicker('hide');
+    alert($(this).datepicker('value'));
+    if ($('#startdate').val() != '' && $('#enddate').val() != '') {
+        $('#period').text(diffInDays() + ' d.');
+    } else {
+        $('#period').text("-");
+    }
+}
+</script>

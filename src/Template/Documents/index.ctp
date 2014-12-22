@@ -1,4 +1,5 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
+<?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 <h3 class="page-title">
 			<?php echo ucfirst($settings->document);?>s <small>View/Edit/Delete <?php echo ucfirst($settings->document);?>s</small>
 			</h3>
@@ -136,9 +137,9 @@
 
 								</td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => '#'], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
+                    			<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
+                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
                     			</td>
                     		</tr>
 
@@ -156,9 +157,9 @@
 										Failed </span>
 								</td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
+                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
+                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
                     			</td>
                     		</tr>
                             <tr>
@@ -176,9 +177,9 @@
 
 								</td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
+                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
+                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
                     			</td>
                     		</tr>
                             <tr>
@@ -195,9 +196,9 @@
 
 								</td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
+                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
+                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
                     			</td>
                     		</tr><tr>
                     			<td>Orders</td>
@@ -211,9 +212,9 @@
 										Pending </span>
 								</td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
+                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
+                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
                     			</td>
                     		</tr>
                             <tr>
@@ -230,9 +231,9 @@
 
 								</td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
+                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
+                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
                     			</td>
                     		</tr>
                             <tr>
@@ -249,10 +250,10 @@
 
 								</td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
-                    			</td>
+                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
+                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
+                                </td>
                     		</tr>
                             <tr>
                     			<td>Orders</td>
@@ -269,9 +270,9 @@
 
 								</td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']) ?>
-                    				<?= $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]) ?>
+                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
+                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
                     			</td>
                     		</tr>
                     

@@ -218,7 +218,9 @@ $c = $client;
 											<a href="#tab_1_2" data-toggle="tab">Display</a>
 										</li>
                                         <?php 
+
                                         }?>
+
                                     </ul>
                                     	<div class="portlet-body">
 										<div class="tab-content">
@@ -227,12 +229,16 @@ $c = $client;
 												<form role="form" action="" method="post">
 													<div class="form-group col-md-6">
 														<label class="control-label">Title</label>
+
 														<input type="text" class="form-control" name="title" <?php if(isset($c->title)) { ?> value="<?php echo $c->title; ?>" <?php } ?> />
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Description</label>
 														<textarea class="form-control" name="description"><?php if(isset($c->description)) { echo $c->description;} ?></textarea>
+
+														<input type="text" class="form-control" name="title"/>
 													</div>
+												
 													<div class="form-group col-md-12">
 														<label class="control-label">Enter name of your company</label>
 														<input type="text" class="form-control" name="company_name" <?php if(isset($c->company_name)){?> value="<?php echo $c->company_name; ?>" <?php } ?> />

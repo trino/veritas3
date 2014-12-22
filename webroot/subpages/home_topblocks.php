@@ -132,6 +132,7 @@
 
 
     <?php if ($block->feedback == 1) { ?>
+    <a href="<?php echo $this->request->webroot; ?>feedbacks/add">
         <div class="tile bg-green-meadow">
             <div class="tile-body">
                 <i class="fa fa-comments"></i>
@@ -145,7 +146,7 @@
                 </div>
             </div>
         </div>
-
+    </a>
     <?php } ?>
 
     <?php if ($block->analytics == 1) { ?>

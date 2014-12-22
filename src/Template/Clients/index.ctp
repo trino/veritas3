@@ -1,4 +1,5 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
+<?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 <h3 class="page-title">
 			<?php echo ucfirst($settings->client);?>s
 			</h3>
@@ -70,15 +71,15 @@
                     			<td><?= h($clients->date_end) ?></td>
                     			<td><?= h($clients->site) ?></td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view', $clients->id], ['class' => 'btn btn-primary']) ?>
+                    				<?php  if($sidebar->client_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $clients->id], ['class' => 'btn btn-primary']);} ?>
                     			<?php
                                 if($this->request->session()->read('Profile.admin'))
                                 {
                                     ?>
                                     
                                     
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]) ?>
+                                <?php  if($sidebar->client_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->client_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]);} ?>
                                     <?php
                                 }
                                 ?>	 

@@ -3,7 +3,7 @@
 </style>
 
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
-
+<?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?>
 </h3>
@@ -94,9 +94,9 @@
                                 <td><?= h($profile->username) ?></td>
                                 <td><?= h($profile->email) ?></td>
                                 <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']) ?>
-                                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]) ?>
+                                    <?php  if($sidebar->profile_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);} ?>
+                                    <?php  if($sidebar->profile_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);} ?>
+                                    <?php  if($sidebar->profile_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]);} ?>
                                     <a href="<?php echo $this->request->webroot; ?>/documents/add" class="btn btn-warning" >Submit Order</a>
                                 </td>
                             </tr>

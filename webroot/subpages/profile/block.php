@@ -3,7 +3,7 @@
     $uid = ($this->request['action']=='add')? "0" : $this->request['pass'][0];
     $sidebar = $this->requestAction("settings/get_side/".$uid); ?>
                                     <?php $block = $this->requestAction("settings/get_blocks/".$uid); ?>
-                                    <h4> Sidebar Module </h4>
+                                    <h4> Modules </h4>
 
                                     <form action="#" method="post" id="blockform">
                                         <input type="hidden" name="form" value="<?php echo $uid;?>" />
@@ -35,6 +35,16 @@
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[profile_create]"
                                                                                           value="1" <?php if (isset($sidebar) && $sidebar->profile_create == 1) echo "checked"; ?> /> Create
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[profile_edit]"
+                                                                                          value="1" <?php if ($sidebar->profile_edit == 1) echo "checked"; ?> /> Edit
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[profile_delete]"
+                                                                                          value="1" <?php if ($sidebar->profile_delete == 1) echo "checked"; ?> /> Delete
                                                             </label>
                                                         </div>
                                                         <div class="clearfix"></div>
@@ -71,7 +81,16 @@
                                                                                           name="side[client_create]"
                                                                                           value="1" <?php if (isset($sidebar) && $sidebar->client_create == 1) echo "checked"; ?> /> Create
                                                             </label>
-                                                            
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[client_edit]"
+                                                                                          value="1" <?php if ($sidebar->client_edit == 1) echo "checked"; ?> /> Edit
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[client_delete]"
+                                                                                          value="1" <?php if ($sidebar->client_delete == 1) echo "checked"; ?> /> Delete
+                                                            </label>
                                                            
                                                         </div>
                                                         <div class="clearfix"></div>
@@ -105,6 +124,16 @@
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[document_create]"
                                                                                           value="1" <?php if (isset($sidebar) && $sidebar->document_create == 1) echo "checked"; ?> /> Create
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_edit]"
+                                                                                          value="1" <?php if ($sidebar->document_edit == 1) echo "checked"; ?> /> Edit
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_delete]"
+                                                                                          value="1" <?php if ($sidebar->document_delete == 1) echo "checked"; ?> /> Delete
                                                             </label>
                                                             
                                                             

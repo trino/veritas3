@@ -1,7 +1,8 @@
 <?php $block = $this->requestAction("settings/get_blocks/".$this->Session->read('Profile.id')); ?>
 
 <div class="tiles">
-    <?php if ($block->addadriver == 1) { ?>
+    <?php
+	if ($block->addadriver == 1) { ?>
     <a href="<?php echo $this->request->webroot; ?>profiles/add">
         <div class="tile bg-red-sunglo">
 

@@ -208,10 +208,14 @@ $is_disabled = '';
 										<li class="active">
 											<a href="#tab_1_1" data-toggle="tab">Info</a>
 										</li>
-
+                                    <?php if($this->request['action']!="add"){
+                                        ?>
+                                    
 										<li>
 											<a href="#tab_1_2" data-toggle="tab">Display</a>
 										</li>
+                                        <?php 
+                                        } ?>
                                     </ul>
                                     	<div class="portlet-body">
 										<div class="tab-content">
@@ -221,11 +225,11 @@ $is_disabled = '';
 												<form role="form" action="#">
 													<div class="form-group col-md-6">
 														<label class="control-label">Title</label>
-														<input type="text" class="form-control"/>
+														<input type="text" class="form-control" name="title"/>
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Description</label>
-														<textarea class="form-control"></textarea>
+														<textarea class="form-control" name="description"></textarea>
 													</div>
 													<div class="form-group col-md-12">
 														<label class="control-label">Enter name of your company</label>

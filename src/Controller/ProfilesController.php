@@ -24,12 +24,30 @@ class ProfilesController extends AppController {
     
 	public function index() {
 	   
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		$this->set('profiles', $this->paginate($this->Profiles)); 
 	}
 
 
 
 	public function view($id = null) {
+	   
+       
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 	    $this->loadModel('Logos');
 	    
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
@@ -46,6 +64,15 @@ class ProfilesController extends AppController {
  * @return void
  */
 	public function add() {
+	   
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_create==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 	    $this->loadModel('Logos');
 	    
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
@@ -83,6 +110,15 @@ class ProfilesController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
+	   
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_edit==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
         $this->loadModel('Logos');
 	    
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
@@ -111,6 +147,15 @@ class ProfilesController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
+	   
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_delete==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		$profile = $this->Profiles->get($id);
 		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Profiles->delete($profile)) {
@@ -300,7 +345,17 @@ class ProfilesController extends AppController {
         die('here');
     }
     
-   
+    function get_permission($uid)
+   {
+        $setting = TableRegistry::get('sidebar');
+         $query = $setting->find()->where(['user_id'=>$uid]);
+                 
+         $l = $query->first();
+         return $l;
+         //$this->response->body(($l));
+           // return $this->response;
+         die();
+   }
     
     
 

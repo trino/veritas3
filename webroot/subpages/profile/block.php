@@ -22,7 +22,7 @@
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[profile]"
-                                                                                          value="0" onclick="$(this).closest('td').find('.yesno').hide();" <?php if (isset($sidebar) && $sidebar->profile == 0) echo "checked"; ?>/>
+                                                                                          value="0" onclick="$(this).closest('td').find('.yesno').hide(); $(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});" <?php if (isset($sidebar) && $sidebar->profile == 0) echo "checked"; ?>/>
                                                         No </label>
                                                         <div class="clearfix"></div>
                                                         <div class="col-md-12 nopad martop yesno" <?php if(isset($sidebar) && $sidebar->profile == 0){?>style="display:none;"<?php }?>>

@@ -3,12 +3,18 @@
                                         richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
                                         brunch. Food truck quinoa nesciunt laborum eiusmod.
                                     </p>
-
+                                <form role="form" action="" method="post">
                                     <div class="form-group">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
                                                 <img
+                                                    <?php if(isset($p->image)){?>
+                                                    src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image; ?>"
+                                                    <?php
+                                                     } 
+                                                     else {?>
                                                     src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
+                                                    <?php } ?>
                                                     alt=""/>
                                             </div>
                                             <div class="fileinput-preview fileinput-exists thumbnail"
@@ -30,3 +36,4 @@
 
 
                                     </div>
+                                </form>

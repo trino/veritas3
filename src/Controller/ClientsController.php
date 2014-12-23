@@ -24,13 +24,28 @@ class ClientsController extends AppController {
     }
     
 	public function index() {
-	   
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		$this->set('client', $this->paginate($this->Clients));
 	}
 
 
 
 	public function view($id = null) {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		//$this->set('disabled',1);
         //$this->render('add');
 	}
@@ -41,6 +56,14 @@ class ClientsController extends AppController {
  * @return void
  */
 	public function add() {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_create==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 	   $clients = TableRegistry::get('Clients');
         $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
@@ -64,6 +87,14 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_edit==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);
@@ -89,6 +120,14 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_delete==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		$profile = $this->Clients->get($id);
 		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Clients->delete($profile)) {
@@ -205,5 +244,17 @@ class ClientsController extends AppController {
         //var_dump($str);
         die('here');
     }
+    function get_permission($uid)
+   {
+        $setting = TableRegistry::get('sidebar');
+         $query = $setting->find()->where(['user_id'=>$uid]);
+                 
+         $l = $query->first();
+         return $l;
+         //$this->response->body(($l));
+           // return $this->response;
+         die();
+   }
     
 }
+?>

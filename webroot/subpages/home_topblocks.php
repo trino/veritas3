@@ -1,7 +1,10 @@
-<?php $block = $this->requestAction("settings/get_blocks/".$this->Session->read('Profile.id')); ?>
+<?php $block = $this->requestAction("settings/get_blocks/".$this->Session->read('Profile.id'));
+        $sidebar = $this->requestAction("settings/get_side/".$this->Session->read('Profile.id')); ?>
 
 <div class="tiles">
-    <?php if ($block->addadriver == 1) { ?>
+
+    <?php if ($block->addadriver == 1 && $sidebar->profile_create ==1) { ?>
+
     <a href="<?php echo $this->request->webroot; ?>profiles/add">
         <div class="tile bg-red-sunglo">
 
@@ -23,7 +26,7 @@
         </div>
         </a>
     <?php } ?>
-    <?php if ($block->searchdriver == 1) { ?>
+    <?php if ($block->searchdriver == 1 && $sidebar->profile_list ==1) { ?>
     <a href="<?php echo $this->request->webroot; ?>profiles">
         <div class="tile selected bg-yellow-saffron">
             <div class="corner">
@@ -43,7 +46,7 @@
         </a>
     <?php } ?>
 
-    <?php if ($block->submitorder == 1) { ?>
+    <?php if ($block->submitorder == 1 && $sidebar->document_create ==1) { ?>
     <a href="<?php echo $this->request->webroot; ?>documents/add">
         <div class="tile bg-purple-studio">
             <div class="tile-body">
@@ -67,7 +70,7 @@
 
 
 
-    <?php if ($block->orderhistory == 1) { ?>
+    <?php if ($block->orderhistory == 1 && $sidebar->document_list ==1) { ?>
         <div class="tile bg-green-meadow">
             <div class="tile-body">
                 <i class="fa fa-history"></i>
@@ -131,7 +134,7 @@
 
 
 
-    <?php if ($block->feedback == 1) { ?>
+    <?php if ($block->feedback == 1 && $sidebar->document_create ==1) { ?>
     <a href="<?php echo $this->request->webroot; ?>feedbacks/add">
         <div class="tile bg-green-meadow">
             <div class="tile-body">

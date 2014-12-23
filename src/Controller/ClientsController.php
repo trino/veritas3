@@ -128,6 +128,8 @@ class ClientsController extends AppController {
 		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);
+        $arr[] = explode(',',$client->recruiter_id);
+
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$clients = $this->Clients->patchEntity($client, $this->request->data);
 			if ($this->Clients->save($clients)) {
@@ -139,6 +141,7 @@ class ClientsController extends AppController {
 		}
 		$this->set(compact('client'));
         $this->set('id',$id);
+        $this->set('recruiter[]',$arr[]);
         $this->render('add');
 	}
 

@@ -2,36 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6dad504-3953-4fd9-b83a-ec5ff94f1064" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src.zip" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Controller\JobsController.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Controller\UsersController.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Model\Table\UsersTable.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Jobs\edit.ctp" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Jobs\index.ctp" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Jobs\quickcontact.ctp" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Quickcontacts\quickcontact.ctp" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Users\add.ctp" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Users\index.ctp" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Users\logo.ctp" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Users\view.ctp" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\tmp.zip" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot.zip" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss5.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss6.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmbossBlock2.jpg" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmbossOval.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\afimaclogo2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot.zip" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmbossBlock2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Model\Table\UsersTable.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Users\add.ctp" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Quickcontacts\quickcontact.ctp" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Users\view.ctp" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\4.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\logoVeritas01.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\tmp.zip" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Controller\JobsController.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss4.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Jobs\quickcontact.ctp" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Controller\UsersController.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src.zip" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Jobs\index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Jobs\edit.ctp" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\afimaclogo2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss6.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Users\logo.ctp" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss5.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\src\Template\Users\index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\1.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
     </list>
     <ignored path="veritas3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,7 +71,7 @@
       <file leaf-file-name="driver_application.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/driver_application.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="15657" max-vertical-offset="18360">
+            <state vertical-scroll-proportion="0.0" vertical-offset="15657" max-vertical-offset="18428">
               <caret line="921" column="41" selection-start-line="921" selection-start-column="41" selection-end-line="921" selection-end-column="41" />
               <folding />
             </state>
@@ -81,7 +81,7 @@
       <file leaf-file-name="consent_form.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/consent_form.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="6018">
+            <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="6086">
               <caret line="37" column="79" selection-start-line="37" selection-start-column="79" selection-end-line="37" selection-end-column="79" />
               <folding />
             </state>
@@ -91,7 +91,7 @@
       <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="5474">
+            <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="5542">
               <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
               <folding />
             </state>
@@ -101,7 +101,7 @@
       <file leaf-file-name="LoginController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/LoginController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="765">
+            <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="833">
               <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding />
             </state>
@@ -111,7 +111,7 @@
       <file leaf-file-name="ClientsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/ClientsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1751">
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1819">
               <caret line="19" column="33" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="33" />
               <folding />
             </state>
@@ -121,7 +121,7 @@
       <file leaf-file-name="ProfilesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/ProfilesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30769232" vertical-offset="3544" max-vertical-offset="4420">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3544" max-vertical-offset="4420">
               <caret line="211" column="8" selection-start-line="211" selection-start-column="8" selection-end-line="211" selection-end-column="8" />
               <folding />
             </state>
@@ -131,7 +131,7 @@
       <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Clients/edit.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30769232" vertical-offset="8" max-vertical-offset="34">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -141,7 +141,7 @@
       <file leaf-file-name="default.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3207547" vertical-offset="578" max-vertical-offset="18530">
+            <state vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="18530">
               <caret line="33" column="61" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="61" />
               <folding />
             </state>
@@ -151,7 +151,7 @@
       <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/sidebar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44211823" vertical-offset="1358" max-vertical-offset="4709">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1358" max-vertical-offset="4709">
               <caret line="101" column="72" selection-start-line="101" selection-start-column="72" selection-end-line="101" selection-end-column="72" />
               <folding />
             </state>
@@ -210,10 +210,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="1" />
-    <option name="width" value="1678" />
-    <option name="height" value="1021" />
+    <option name="x" value="-4" />
+    <option name="y" value="-4" />
+    <option name="width" value="1688" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -577,15 +577,15 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -604,15 +604,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1678" height="1021" extended-state="0" />
-    <editor active="true" />
+    <frame x="-4" y="-4" width="1688" height="1030" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17936118" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -624,6 +623,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22780749" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -907,7 +907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.056604" vertical-offset="15674" max-vertical-offset="29002">
           <caret line="944" column="49" selection-start-line="944" selection-start-column="49" selection-end-line="944" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -922,7 +921,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="2244">
           <caret line="40" column="86" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="86" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,7 +928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1768">
           <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -938,7 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="2397">
           <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,9 +947,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Documents/add.ctp">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="4233">
           <caret line="94" column="54" selection-start-line="94" selection-start-column="54" selection-end-line="94" selection-end-column="54" />
@@ -961,6 +954,9 @@
             <marker date="1418926021087" expanded="true" signature="9109:9126" placeholder="..." />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/consent_form.php">
@@ -997,7 +993,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ProfilesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30769232" vertical-offset="3544" max-vertical-offset="4420">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3544" max-vertical-offset="4420">
           <caret line="211" column="8" selection-start-line="211" selection-start-column="8" selection-end-line="211" selection-end-column="8" />
           <folding />
         </state>
@@ -1005,7 +1001,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Clients/edit.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30769232" vertical-offset="8" max-vertical-offset="34">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1013,7 +1009,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3207547" vertical-offset="578" max-vertical-offset="18462">
+        <state vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="18530">
           <caret line="33" column="61" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="61" />
           <folding />
         </state>
@@ -1021,7 +1017,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44211823" vertical-offset="1358" max-vertical-offset="4709">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1358" max-vertical-offset="4709">
           <caret line="101" column="72" selection-start-line="101" selection-start-column="72" selection-end-line="101" selection-end-column="72" />
           <folding />
         </state>

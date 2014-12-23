@@ -287,7 +287,7 @@ if(isset($profile))
                                     </li>
                                 <?php
                                 }
-                                if($this->request->session()->read('Profile.admin') && !isset($myuser))
+                                if($this->request->session()->read('Profile.admin') || !isset($myuser))
                                 {
                                 ?>
                                 <li>

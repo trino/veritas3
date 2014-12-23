@@ -234,8 +234,8 @@ class ProfilesController extends AppController {
                 $blocks->save($article);
              }
             $sidebar = TableRegistry::get('sidebar');
-             $s = $sidebar->find()->where(['user_id'=>$user_id])->count();
-            if($user_id != 0 && $s!=0)
+             $s1 = $sidebar->find()->where(['user_id'=>$user_id])->count();
+            if($user_id != 0 && $s1!=0)
             {
              $query1 = $sidebar->query();
                     $query1->update()

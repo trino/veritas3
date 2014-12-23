@@ -170,7 +170,12 @@ class ProfilesController extends AppController {
     {
         //$this->request->session()->delete('Profile.id');
        $this->request->session()->destroy();
+	   if($_SERVER['SERVER_NAME'] == 'localhost'){
         $this->redirect('/login');
+		}else{
+		        $this->redirect('http://isbmee.com');
+
+		}
     }
     
     function todo()

@@ -2,7 +2,7 @@
 
     $uid = ($this->request['action']=='add')? "0" : $this->request['pass'][0];
     $sidebar = $this->requestAction("settings/get_side/".$uid); ?>
-                                    <?php $block = $this->requestAction("settings/get_blocks/".$uid); ?>
+    <?php $block = $this->requestAction("settings/get_blocks/".$uid); ?>
                                     <h4> Modules </h4>
 
                                     <form action="#" method="post" id="blockform">

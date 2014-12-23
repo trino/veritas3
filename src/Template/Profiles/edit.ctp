@@ -293,6 +293,11 @@ if(isset($profile))
                                 <li>
                                     <a href="#tab_1_4" data-toggle="tab">Display</a>
                                 </li>
+                                <?php
+                                if($this->request->session()->read('Profile.id')==$id && $this->request->session()->read('Profile.admin'))
+                                {
+                                    ?>
+                                    
                                 <li>
                                     <a href="#tab_1_5" data-toggle="tab">Logos</a>
                                 </li>
@@ -300,7 +305,9 @@ if(isset($profile))
                                 <li>
                                     <a href="#tab_1_6" data-toggle="tab">Pages</a>
                                 </li>
-
+                                <?php
+                                }
+                                ?>
                                 <!--<li>
                                                 <a href="#tab_1_7" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
                                             </li>-->

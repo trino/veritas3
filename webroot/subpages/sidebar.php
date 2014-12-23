@@ -87,7 +87,7 @@
 						</li>
                         <?php
                         }
-                        if($this->request->session()->read('Profile.admin') && $sidebar->client_create==1){?>
+                        if($sidebar->client_create==1){?>
                         
 						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients/add">

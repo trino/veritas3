@@ -86,7 +86,7 @@
                     
                     		<tr>
                     			<td><?= $this->Number->format($clients->id) ?></td>
-                    			<td>     <img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logo.png" style="float:right;height:45px;"/>
+                    			<td>     <img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logo.png" style="height:45px;"/>
                                  </td>
                     			<td><?= h($clients->title) ?></td>
                     			<td><?= h($clients->description) ?></td>

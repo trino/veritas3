@@ -2,32 +2,43 @@
 $recruiter = $this->requestAction('Profiles/getRecruiter');
 $contact =  $this->requestAction('Profiles/getContact');
 ?>
+
 <table class="table table-striped table-bordered table-advance table-hover">
                                                 <thead><tr><th colspan="2">Add Recruiters</th></tr></thead> 
-                                                <tr>             
+                                                             
                                                 <?php
                                                 $i=0;
                                                 foreach($recruiter as $r)
                                                 {
+                                                    if($i%2==0)
+                                                    {
+                                                        ?>
+                                                        <tr>
+                                                        <?php
+                                                    }
                                                     ?>
                                                    
                                                     <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="<?php //echo $recruiter_id[];?>"/></span>
-                                                        </div>
+                                                        <span><input type="checkbox" name="recruiter_id[]" value="<?php echo $r->id; ?>"/></span>
                                                         <span> <?php echo $r->username; ?> </span>
-                                                    
+                                                    </td>
                                                 <?php
+                                                
                                                  if(($i+1)%2==0)
                                                 {
-                                                   echo '</td><td>';
+                                                 ?>
+                                                 </tr>
+                                                 <?php
                                                 }
-                                                else 
-                                                echo '</td></tr><tr>';
+                                                
                                                 $i++;
                                                 }
+                                                if(($i+1)%2!=0)
+                                                {
+                                                    echo "</td></tr>";
+                                                }
                                                 ?>
-                                                </tr>
+                                                
                                             </table>
 
 <table class="table table-striped table-bordered table-advance table-hover">
@@ -36,30 +47,32 @@ $contact =  $this->requestAction('Profiles/getContact');
                                                 $i=0;
                                                 foreach($contact as $r)
                                                 {
+                                                    if($i%2==0)
+                                                    {
+                                                        ?>
+                                                        <tr>
+                                                        <?php
+                                                    }
                                                     ?>
-                                                    
-                                                <tr>
                                                     <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
+                                                        <span><input type="checkbox" name="contact_id[]" value="<?php echo $r->id; ?>"/></span>
                                                         <span> <?php echo $r->username; ?> </span>
                                                     </td>
                                                     
                                                 <?php
+                                                
                                                  if(($i+1)%2==0)
                                                 {
-                                                   ?>
-                                                   <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> <?php echo $r->username; ?> </span>
-                                                    </td>
-                                                   <?php
+                                                 ?>
+                                                 </tr>
+                                                 <?php
                                                 }
+                                                
                                                 $i++;
                                                 }
+                                                if(($i+1)%2!=0)
+                                                {
+                                                    echo "</td></tr>";
+                                                }
                                                 ?>
-                                                </tr>
                                             </table>

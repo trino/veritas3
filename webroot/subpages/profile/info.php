@@ -17,16 +17,49 @@
 
 
                                                     <form role="form" action="" method="post">
-                                                    <div class="form-group col-md-12">
-                                                            <label class="control-label col-md-12">Username</label>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="control-label">Usernamme</label>
+                                                            <input class="form-control" type="text" placeholder="Usename" name="username">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label class="control-label">Driver License Number</label>
+                                                            <input class="form-control" type="text" placeholder="Drive license number" name="">
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group col-md-12">
-                                                            <input <?php echo $is_disabled ?> name="username" type="text" class="form-control" <?php if(isset($p->username)){?> value="<?php echo $p->username; ?>" <?php } ?> />
+                                                    <div class="col-md-12">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="control-label">Province (Driver license was issued)</label>
+                                                            <input class="form-control" type="text" placeholder="Usename" name="">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label class="control-label">US DOT MC/MX#</label>
+                                                            <input class="form-control" type="text" placeholder="Drive license number" name="">
+                                                        </div>
                                                     </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="control-label">Applicants Email</label>
+                                                            <input class="form-control" type="text" placeholder="Usename" name="">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label class="control-label">Two Pieces of ID</label>
+                                                            <input class="form-control" type="text" placeholder="Drive license number" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="control-label">TransClick submission</label>
+                                                            <input class="form-control" type="text" placeholder="Usename" name="">
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    
                                                     <div class="form-group col-md-12">
+                                                            
                                                             <label class="control-label col-md-12">Profile Type</label>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
+                                                    
+                                                            
                                                             <div class="col-md-6">
                                                             <select name="profile_type" <?php echo $is_disabled ?>
                                                                 class="form-control member_type">

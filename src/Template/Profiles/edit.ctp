@@ -53,10 +53,10 @@ if(isset($profile))
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="theme-panel hidden-xs hidden-sm">
-    <div class="toggler">
+    <!--div class="toggler">
     </div>
     <div class="toggler-close">
-    </div>
+    </div-->
     <div class="theme-options">
         <div class="theme-option theme-colors clearfix">
 						<span>

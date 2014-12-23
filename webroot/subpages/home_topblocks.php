@@ -52,7 +52,7 @@
             </div>
             <div class="tile-object">
                 <div class="name">
-                    Submit <?=$settings->document;?>
+                    Submit Orders
                 </div>
                 <div class="number">
 
@@ -69,7 +69,9 @@
 
 
     <?php if ($block->orderhistory == 1) { ?>
-        <div class="tile bg-green-meadow">
+    <a href="<?php echo $this->request->webroot; ?>documents/index">
+
+    <div class="tile bg-green-meadow">
             <div class="tile-body">
                 <i class="fa fa-history"></i>
             </div>
@@ -82,7 +84,7 @@
                 </div>
             </div>
         </div>
-
+</a>
     <?php } ?>
 
 

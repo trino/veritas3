@@ -2,7 +2,9 @@
         $sidebar = $this->requestAction("settings/get_side/".$this->Session->read('Profile.id')); ?>
 
 <div class="tiles">
+
     <?php if ($block->addadriver == 1 && $sidebar->profile_create ==1) { ?>
+
     <a href="<?php echo $this->request->webroot; ?>profiles/add">
         <div class="tile bg-red-sunglo">
 

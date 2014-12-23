@@ -94,7 +94,7 @@
                     			<td><?= h($end_date) ?></td>
                     			<td><?= h($clients->site) ?></td>
                     			<td class="actions">
-                    				<?php  if($sidebar->client_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $clients->id], ['class' => 'btn btn-info']);}
+                    				<?php  if($sidebar->client_list=='1'){ echo $this->Html->link(__('View Reports'), ['action' => 'view', $clients->id], ['class' => 'btn btn-info']);}
                                 if($this->request->session()->read('Profile.admin'))
                                 {
                                     if($sidebar->client_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);} ?>

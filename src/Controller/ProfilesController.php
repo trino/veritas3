@@ -357,6 +357,25 @@ class ProfilesController extends AppController {
          die();
    }
     
+    function getRecruiter()
+    {
+        $rec = TableRegistry::get('Profiles');
+        $query = $rec->find()->where(['profile_type'=>2]);
+        //$q = $query->select();
+        
+        $this->response->body($query);
+        return $this->response;
+        
+        die();   
+    }
     
-
+    function getContact()
+    {
+        $con = TableRegistry::get('Profiles');
+        $query = $con->find()->where(['profile_type'=>6]);
+        $this->response->body($query);
+        return $this->response;
+        die();
+    }
+   
 }

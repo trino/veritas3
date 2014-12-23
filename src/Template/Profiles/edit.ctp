@@ -306,7 +306,7 @@ if(isset($profile))
                                             </li>-->
 
                                 <li>
-                                    <a href="#tab_1_7" data-toggle="tab">Blocks</a>
+                                    <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                 </li>
                                 
                                     <?php
@@ -388,6 +388,23 @@ if(isset($profile))
             }
              
         });
+        
+        $("#pass_form").validate({
+        rules: { 
+            password: {
+                required: true
+            },
+            retype_password: {
+                required: true,
+                equalTo: "#password"
+            }
+        },
+        messages: {
+            password: "Please enter password",
+            retype_password: "Password do not match"
+        },      
+        submitHandler: function() { $('#pass_form').submit(); }
+    });
     });
 </script>
 <?php /*

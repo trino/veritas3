@@ -137,7 +137,7 @@
 
 								</td>
                     			<td class="actions">
-                    			<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
+                    			<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View Reports'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
                     				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
                     				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
                     			</td>

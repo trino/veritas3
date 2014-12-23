@@ -1,7 +1,8 @@
 <?php $block = $this->requestAction("settings/get_blocks/".$this->Session->read('Profile.id')); ?>
 
 <div class="tiles">
-    <?php if ($block->addadriver == 1) { ?>
+    <?php
+	if ($block->addadriver == 1) { ?>
     <a href="<?php echo $this->request->webroot; ?>profiles/add">
         <div class="tile bg-red-sunglo">
 
@@ -87,10 +88,14 @@
 
 
     <?php if ($block->schedule == 1) { ?>
-        <div class="tile  bg-grey-cascade">
+    <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
+        
+        <div class="tile  bg-grey-cascade "  >
+          <a href="javascript:;" class=" input-group input-medium date date-picker1 tile"  >  
             <div class="tile-body">
                 <i class="fa fa-calendar"></i>
             </div>
+        
             <div class="tile-object">
                 <div class="name">
                     Schedule
@@ -99,13 +104,15 @@
                     14
                 </div>
             </div>
+         </a>   
         </div>
-
+        
     <?php } ?>
 
 
 
     <?php if ($block->tasks == 1) { ?>
+        <a href="<?php echo $this->request->webroot;?>todo">
         <div class="tile bg-blue-steel">
             <div class="tile-body">
                 <i class="fa fa-tasks"></i>
@@ -119,12 +126,14 @@
                 </div>
             </div>
         </div>
+        </a>
 
     <?php } ?>
 
 
 
     <?php if ($block->feedback == 1) { ?>
+    <a href="<?php echo $this->request->webroot; ?>feedbacks/add">
         <div class="tile bg-green-meadow">
             <div class="tile-body">
                 <i class="fa fa-comments"></i>
@@ -138,7 +147,7 @@
                 </div>
             </div>
         </div>
-
+    </a>
     <?php } ?>
 
     <?php if ($block->analytics == 1) { ?>
@@ -178,3 +187,21 @@
 
 
 </div>
+<script>
+$(function(){
+    
+    $('.date-picker1').datepicker({
+        
+    })
+    //Listen for the change even on the input
+    .change(dateChanged)
+    .on('changeDate', dateChanged);
+});
+
+function dateChanged(ev) {
+    datez = (ev.date.valueOf())/1000;
+    //alert(ev.date.valueOf());
+    $(this).datepicker('hide');
+    window.location.href="<?php echo $this->request->webroot;?>todo/date/"+datez;
+}
+</script>

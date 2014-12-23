@@ -24,13 +24,28 @@ class ClientsController extends AppController {
     }
     
 	public function index() {
-	   
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		$this->set('client', $this->paginate($this->Clients));
 	}
 
 
 
 	public function view($id = null) {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		//$this->set('disabled',1);
         //$this->render('add');
 	}
@@ -41,17 +56,27 @@ class ClientsController extends AppController {
  * @return void
  */
 	public function add() {
-		$profile = $this->Clients->newEntity($this->request->data);
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_create==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+	   $clients = TableRegistry::get('Clients');
+        $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
-			if ($this->Clients->save($profile)) {
+		  
+			if ($clients->save($client)) {
 				$this->Flash->success('The user has been saved.');
-				return $this->redirect(['action' => 'index']);
+                	return $this->redirect(['action' => 'edit',$client->id]);
 			} else {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('profile'));
-        //$this->render('edit');
+		$this->set(compact('client'));
+        $this->render('add');
 	}
 
 /**
@@ -62,7 +87,15 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
-		$profile = $this->Clients->get($id, [
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_edit==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
@@ -74,7 +107,7 @@ class ClientsController extends AppController {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-		$this->set(compact('profile'));
+		$this->set(compact('client'));
         $this->set('id',$id);
         $this->render('add');
 	}
@@ -87,6 +120,14 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_delete==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		$profile = $this->Clients->get($id);
 		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Clients->delete($profile)) {
@@ -203,5 +244,17 @@ class ClientsController extends AppController {
         //var_dump($str);
         die('here');
     }
+    function get_permission($uid)
+   {
+        $setting = TableRegistry::get('sidebar');
+         $query = $setting->find()->where(['user_id'=>$uid]);
+                 
+         $l = $query->first();
+         return $l;
+         //$this->response->body(($l));
+           // return $this->response;
+         die();
+   }
     
 }
+?>

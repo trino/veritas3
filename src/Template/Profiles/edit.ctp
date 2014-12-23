@@ -287,7 +287,7 @@ if(isset($profile))
                                     </li>
                                 <?php
                                 }
-                                if($this->request->session()->read('Profile.admin'))
+                                if($this->request->session()->read('Profile.admin') && !isset($myuser))
                                 {
                                 ?>
                                 <li>
@@ -306,7 +306,7 @@ if(isset($profile))
                                             </li>-->
 
                                 <li>
-                                    <a href="#tab_1_7" data-toggle="tab">Blocks</a>
+                                    <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                 </li>
                                 
                                     <?php
@@ -323,6 +323,9 @@ if(isset($profile))
                                 </div>
                                 <!-- END PERSONAL INFO TAB -->
                                 <!-- CHANGE AVATAR TAB -->
+                                <?php
+                                if($this->request['action'] != 'add'){ 
+                                ?>
                                 <div class="tab-pane" id="tab_1_2">
                                     
                                     <?php include('subpages/profile/avatar.php');?>
@@ -352,7 +355,7 @@ if(isset($profile))
                                 <div class="tab-pane" id="tab_1_7">
                                     <?php include('subpages/profile/block.php');?>
                                 </div>
-
+                                <?php } ?>
 
                                 <!-- PRIVACY SETTINGS TAB -->
 
@@ -375,14 +378,34 @@ if(isset($profile))
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).hide();
                 });
+                $('#driver_div').show();
             }
             else {
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).show();
                 });
+                $('#driver_div').hide();
             }
+             
         });
-    })
+        
+        $("#pass_form").validate({
+        rules: { 
+            password: {
+                required: true
+            },
+            retype_password: {
+                required: true,
+                equalTo: "#password"
+            }
+        },
+        messages: {
+            password: "Please enter password",
+            retype_password: "Password do not match"
+        },      
+        submitHandler: function() { $('#pass_form').submit(); }
+    });
+    });
 </script>
 <?php /*
 

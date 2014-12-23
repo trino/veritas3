@@ -25,12 +25,28 @@ class DocumentsController extends AppController {
     
 	public function index() {
 	   
+       $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->document_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		//$this->set('client', $this->paginate($this->Jobs));
 	}
 
 
 
 	public function view($id = null) {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->document_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		/*$profile = $this->Clients->get($id);
 		$this->set('profile', $profile);*/
         $this->set('disabled', 1);
@@ -43,6 +59,14 @@ class DocumentsController extends AppController {
  * @return void
  */
 	public function add() {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->document_create==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		/*$profile = $this->Clients->newEntity($this->request->data);
 		if ($this->request->is('post')) {
 			if ($this->Clients->save($profile)) {
@@ -64,6 +88,14 @@ class DocumentsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->document_edit==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		/*$profile = $this->Clients->get($id, [
 			'contain' => []
 		]);
@@ -88,6 +120,14 @@ class DocumentsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
+	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->document_delete==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		/*$profile = $this->Clients->get($id);
 		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Clients->delete($profile)) {
@@ -120,6 +160,17 @@ class DocumentsController extends AppController {
         $query->select()->where(['display' => 1])->order('id');
         $this->response->body($query);
         return $this->response;
+    }
+    function get_permission($uid)
+    {
+        $setting = TableRegistry::get('sidebar');
+         $query = $setting->find()->where(['user_id'=>$uid]);
+                 
+         $l = $query->first();
+         return $l;
+         //$this->response->body(($l));
+           // return $this->response;
+         die();
     }
     
     

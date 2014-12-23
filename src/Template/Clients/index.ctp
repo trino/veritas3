@@ -1,4 +1,5 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
+<?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 <h3 class="page-title">
 			<?php echo ucfirst($settings->client);?>s
 			</h3>
@@ -59,26 +60,45 @@
                     		</tr>
                     	</thead>
                     	<tbody>
-                    	<?php foreach ($client as $clients): ?>
+                    	<?php foreach ($client as $clients):
+                        //print_r($clients);
+                        if($clients->date_start){
+                        foreach($clients->date_start as $k=>$d)
+                        {
+                            if($k == 'date')
+                            $start_date = $d;
+                        }
+                        }
+                        else
+                        $start_date = '';
+                        
+                        if($clients->date_end){
+                        foreach($clients->date_end as $k=>$d)
+                        {
+                            if($k == 'date')
+                            $end_date = $d;
+                        }
+                        }
+                        else
+                        $end_date = '';
+                          ?>
+
+                    
                     		<tr>
                     			<td><?= $this->Number->format($clients->id) ?></td>
                     			<td>     <img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logo.png" style="float:right;height:45px;"/>
                                  </td>
                     			<td><?= h($clients->title) ?></td>
                     			<td><?= h($clients->description) ?></td>
-                    			<td><?= h($clients->date_start) ?></td>
-                    			<td><?= h($clients->date_end) ?></td>
+                    			<td><?= h($start_date) ?></td>
+                    			<td><?= h($end_date) ?></td>
                     			<td><?= h($clients->site) ?></td>
                     			<td class="actions">
-                    				<?= $this->Html->link(__('View'), ['action' => 'view', $clients->id], ['class' => 'btn btn-primary']) ?>
-                    			<?php
+                    				<?php  if($sidebar->client_list=='1'){ echo $this->Html->link(__('View Reports'), ['action' => 'view', $clients->id], ['class' => 'btn btn-info']);}
                                 if($this->request->session()->read('Profile.admin'))
                                 {
-                                    ?>
-                                    
-                                    
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']) ?>
-                    				<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]) ?>
+                                    if($sidebar->client_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);} ?>
+                    				<?php  if($sidebar->client_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]);} ?>
                                     <?php
                                 }
                                 ?>	 

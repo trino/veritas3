@@ -24,12 +24,30 @@ class ProfilesController extends AppController {
     
 	public function index() {
 	   
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		$this->set('profiles', $this->paginate($this->Profiles)); 
 	}
 
 
 
 	public function view($id = null) {
+	   
+       
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 	    $this->loadModel('Logos');
 	    
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
@@ -46,6 +64,15 @@ class ProfilesController extends AppController {
  * @return void
  */
 	public function add() {
+	   
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_create==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 	    $this->loadModel('Logos');
 	    
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
@@ -83,6 +110,19 @@ class ProfilesController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
+	   
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_edit==0 && $id != $this->request->session()->read('Profile.id'))
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	//return $this->redirect("/");
+            
+        }
+        else
+        {
+            $this->set('myuser','1');
+        }
         $this->loadModel('Logos');
 	    
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
@@ -111,6 +151,15 @@ class ProfilesController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
+	   
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_delete==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
 		$profile = $this->Profiles->get($id);
 		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Profiles->delete($profile)) {
@@ -125,7 +174,12 @@ class ProfilesController extends AppController {
     {
         //$this->request->session()->delete('Profile.id');
        $this->request->session()->destroy();
+	   if($_SERVER['SERVER_NAME'] == 'localhost'){
         $this->redirect('/login');
+		}else{
+		        $this->redirect('http://isbmee.com');
+
+		}
     }
     
     function todo()
@@ -155,7 +209,7 @@ class ProfilesController extends AppController {
                 $side[$k] = $v;
             }
             //var_dump($_POST)
-            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create');
+            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete');
             foreach($sides as $s)
             {
                 if(!isset($_POST['side'][$s]))
@@ -168,7 +222,7 @@ class ProfilesController extends AppController {
             if($user_id != 0  && $s!=0)
             {
                 
-             $query = $blocks->query();
+                $query = $blocks->query();
                     $query->update()
                     ->set($block)
                     ->where(['user_id' => $user_id])
@@ -180,7 +234,8 @@ class ProfilesController extends AppController {
                 $blocks->save($article);
              }
             $sidebar = TableRegistry::get('sidebar');
-            if($user_id != 0)
+             $s = $sidebar->find()->where(['user_id'=>$user_id])->count();
+            if($user_id != 0 && $s!=0)
             {
              $query1 = $sidebar->query();
                     $query1->update()
@@ -300,8 +355,37 @@ class ProfilesController extends AppController {
         die('here');
     }
     
+    function get_permission($uid)
+   {
+        $setting = TableRegistry::get('sidebar');
+         $query = $setting->find()->where(['user_id'=>$uid]);
+                 
+         $l = $query->first();
+         return $l;
+         //$this->response->body(($l));
+           // return $this->response;
+         die();
+   }
+    
+    function getRecruiter()
+    {
+        $rec = TableRegistry::get('Profiles');
+        $query = $rec->find()->where(['profile_type'=>2]);
+        //$q = $query->select();
+        
+        $this->response->body($query);
+        return $this->response;
+        
+        die();   
+    }
+    
+    function getContact()
+    {
+        $con = TableRegistry::get('Profiles');
+        $query = $con->find()->where(['profile_type'=>6]);
+        $this->response->body($query);
+        return $this->response;
+        die();
+    }
    
-    
-    
-
 }

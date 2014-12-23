@@ -42,6 +42,7 @@ $c = $client;
 						<div class="portlet-body">
                         <div class="tab-pane" id="tab_1_3">
 								<div class="row profile-account">
+                                <form method="post" action="">
 									<div class="col-md-3">
 										<img class="img-responsive" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png">
 
@@ -58,7 +59,7 @@ $c = $client;
                                             </a>
                                             </div>
                                             </div>
-                                            <?php //include('subpages/recruiter_contact_table.php');?>
+                                            <?php include('subpages/recruiter_contact_table.php');?>
 									</div>
 									<div class="col-md-9">
                                     <ul class="nav nav-tabs">
@@ -80,7 +81,7 @@ $c = $client;
 										<div class="tab-content">
 										<div class="tab-pane active" id="tab_1_1">
 											<div id="tab_1-1" class="tab-pane active">
-												<form role="form" action="" method="post">
+												
 													<div class="form-group col-md-6">
 														<label class="control-label">Title</label>
 
@@ -162,7 +163,7 @@ $c = $client;
 														<a href="#" class="btn default">
 														Cancel </a>
 													</div>
-												</form>
+												
 											</div>
                         </div>
                         		<div class="tab-pane" id="tab_1_2">
@@ -471,6 +472,7 @@ $c = $client;
                                     </div>
                                 </div>
                     </div>
+                    </form>
 					<!-- END SAMPLE FORM PORTLET-->
 
                 </div>

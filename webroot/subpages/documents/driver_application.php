@@ -1029,6 +1029,11 @@
                             <a href="javascript:void(0);" class="btn btn-success" id="add_more_doc">Add More</a>
                         </div>
                       </div>
+                      <div class="form-group col-md-12">
+                            <label class="control-label col-md-3">Signature : </label>
+                            <?php include('canvas/example2.php');?>
+                            <div class="clearfix"></div>                                        
+                      </div>
                        
                       
                        
@@ -1041,6 +1046,9 @@
             <!-------     --------!>
         <div class="clearfix"></div>
  <script>
+ $(function(){
+   $("#test2").jqScribble(); 
+});
  jQuery(function(){
     $('#add_more_form').click(function(){
       $.ajax({

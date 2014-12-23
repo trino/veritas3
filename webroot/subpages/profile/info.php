@@ -20,8 +20,10 @@
                                                     <div class="form-group col-md-12">
                                                             <label class="control-label col-md-12">Username</label>
                                                     </div>
-                                                    <div class="form-group col-md-12">
-                                                            <input <?php echo $is_disabled ?> name="username" type="text" class="form-control" <?php if(isset($p->username)){?> value="<?php echo $p->username; ?>" <?php } ?> />
+                                                    <div class="form-group col-md-12">                                                            <div class="col-md-6">
+
+                                                        <input <?php echo $is_disabled ?> name="username" type="text" class="form-control" <?php if(isset($p->username)){?> value="<?php echo $p->username; ?>" <?php } ?> />
+                                                    </div>
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                             <label class="control-label col-md-12">Profile Type</label>

@@ -113,11 +113,15 @@ class ProfilesController extends AppController {
 	   
         $setting = $this->get_permission($this->request->session()->read('Profile.id'));
         
-        if($setting->profile_edit==0)
+        if($setting->profile_edit==0 && $id != $this->request->session()->read('Profile.id'))
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
-            	return $this->redirect("/");
+            	//return $this->redirect("/");
             
+        }
+        else
+        {
+            $this->set('myuser','1');
         }
         $this->loadModel('Logos');
 	    
@@ -218,7 +222,7 @@ class ProfilesController extends AppController {
             if($user_id != 0  && $s!=0)
             {
                 
-             $query = $blocks->query();
+                $query = $blocks->query();
                     $query->update()
                     ->set($block)
                     ->where(['user_id' => $user_id])
@@ -230,7 +234,8 @@ class ProfilesController extends AppController {
                 $blocks->save($article);
              }
             $sidebar = TableRegistry::get('sidebar');
-            if($user_id != 0)
+             $s = $sidebar->find()->where(['user_id'=>$user_id])->count();
+            if($user_id != 0 && $s!=0)
             {
              $query1 = $sidebar->query();
                     $query1->update()

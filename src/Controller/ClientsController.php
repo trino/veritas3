@@ -106,7 +106,55 @@ class ClientsController extends AppController {
 			}
 		}
 		$this->set(compact('client'));
+        $this->set('recruiters',array());
+        $this->set('contacts',array());
         $this->render('add');
+	}
+    
+    public function saveClients() {
+	   
+        $rec='';
+        $con='';
+        $count=1;
+        if(isset($_POST['recruiter_id'])){
+        foreach($_POST['recruiter_id'] as $ri)
+        {
+        	if($count==1)	
+        	$rec = $ri;
+        	else
+        	$rec = $rec.','.$ri;
+            $count++;
+        
+        }
+        }
+        unset($_POST['recruiter_id']);
+        $_POST['recruiter_id'] = $rec;
+        
+        if(isset($_POST['contact_id'])){
+        foreach($_POST['contact_id'] as $ri)
+        {
+        	if($count==1)	
+        	$rec = $ri;
+        	else
+        	$rec = $rec.','.$ri;
+            $count++;
+        
+        }
+        }
+        unset($_POST['contact_id']);
+        $_POST['contact_id'] = $rec;
+	   $clients = TableRegistry::get('Clients');
+        $client = $clients->newEntity($_POST);
+		if ($this->request->is('post')) {
+		  
+			if ($clients->save($client)) {
+				//$this->Flash->success('The user has been saved.');
+                	echo $client->id;
+			} else {
+				echo "e";
+			}
+		}
+		die();
 	}
 
 /**
@@ -128,7 +176,8 @@ class ClientsController extends AppController {
 		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);
-        $arr[] = explode(',',$client->recruiter_id);
+        $arr = explode(',',$client->recruiter_id);
+        $arr2 = explode(',',$client->contact_id);
 
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$clients = $this->Clients->patchEntity($client, $this->request->data);
@@ -141,7 +190,8 @@ class ClientsController extends AppController {
 		}
 		$this->set(compact('client'));
         $this->set('id',$id);
-        $this->set('recruiter[]',$arr[]);
+        $this->set('recruiters',$arr);
+        $this->set('contacts',$arr2);
         $this->render('add');
 	}
 

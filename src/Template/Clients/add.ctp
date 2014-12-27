@@ -42,7 +42,6 @@ $c = $client;
 						<div class="portlet-body">
                         <div class="tab-pane" id="tab_1_3">
 								<div class="row profile-account">
-                                <form method="post" action="">
 									<div class="col-md-3">
 										<img class="img-responsive" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png">
 
@@ -59,7 +58,153 @@ $c = $client;
                                             </a>
                                             </div>
                                             </div>
-                                            <?php include('subpages/recruiter_contact_table.php');?>
+                                            <table class="table table-striped table-bordered table-advance table-hover">
+                                                <thead><tr><th colspan="2">Add Recruiters</th></tr></thead>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> John </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Falcon </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> Maroni </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Oswalt </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> Sasha </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Bruce </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> Heather </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Ronney </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> Mooney </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Alfred </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table class="table table-striped table-bordered table-advance table-hover">
+                                                <thead><tr><th colspan="2">Add Contacts</th></tr></thead>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> John </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Falcon </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> Maroni </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Oswalt </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> Sasha </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Bruce </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> Heather </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Ronney </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checker">
+                                                        <span><input type="checkbox" name="canView_contracts"/></span>
+                                                        </div>
+                                                        <span> Mooney </span>
+                                                    </td>
+                                                    <td>
+                                                    <div class="checker">
+                                                    <span><input type="checkbox" name="canView_contracts"/></span>
+                                                    </div>
+                                                        <span> Alfred </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
 									</div>
 									<div class="col-md-9">
                                     <ul class="nav nav-tabs">
@@ -81,7 +226,7 @@ $c = $client;
 										<div class="tab-content">
 										<div class="tab-pane active" id="tab_1_1">
 											<div id="tab_1-1" class="tab-pane active">
-												
+												<form role="form" action="" method="post">
 													<div class="form-group col-md-6">
 														<label class="control-label">Title</label>
 
@@ -163,7 +308,7 @@ $c = $client;
 														<a href="#" class="btn default">
 														Cancel </a>
 													</div>
-												
+												</form>
 											</div>
                         </div>
                         		<div class="tab-pane" id="tab_1_2">
@@ -472,7 +617,6 @@ $c = $client;
                                     </div>
                                 </div>
                     </div>
-                    </form>
 					<!-- END SAMPLE FORM PORTLET-->
 
                 </div>

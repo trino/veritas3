@@ -81,6 +81,9 @@ class ClientsController extends AppController {
         unset($_POST['recruiter_id']);
         $_POST['recruiter_id'] = $rec;
         
+        $rec='';
+        $con='';
+        $count=1;
         if(isset($_POST['contact_id'])){
         foreach($_POST['contact_id'] as $ri)
         {
@@ -125,11 +128,43 @@ class ClientsController extends AppController {
             	return $this->redirect("/");
             
         }
-		$client = $this->Clients->get($id, [
+		$rec='';
+        $con='';
+        $count=1;
+        if(isset($_POST['recruiter_id'])){
+        foreach($_POST['recruiter_id'] as $ri)
+        {
+        	if($count==1)	
+        	$rec = $ri;
+        	else
+        	$rec = $rec.','.$ri;
+            $count++;
+        
+        }
+        }
+        unset($_POST['recruiter_id']);
+        $_POST['recruiter_id'] = $rec;
+        
+        $rec='';
+        $con='';
+        $count=1;
+        if(isset($_POST['contact_id'])){
+        foreach($_POST['contact_id'] as $ri)
+        {
+        	if($count==1)	
+        	$rec = $ri;
+        	else
+        	$rec = $rec.','.$ri;
+            $count++;
+        
+        }
+        }
+        unset($_POST['contact_id']);
+        $_POST['contact_id'] = $rec;
+        $client = $this->Clients->get($id, [
 			'contain' => []
 		]);
-        $arr[] = explode(',',$client->recruiter_id);
-
+        
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$clients = $this->Clients->patchEntity($client, $this->request->data);
 			if ($this->Clients->save($clients)) {
@@ -139,9 +174,16 @@ class ClientsController extends AppController {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
+        $client2 = $this->Clients->get($id, [
+			'contain' => []
+		]);
+        $arr = explode(',',$client2->recruiter_id);
+        $arr_cont = explode(',',$client2->contact_id);
+        
 		$this->set(compact('client'));
         $this->set('id',$id);
-        $this->set('recruiter[]',$arr[]);
+        $this->set('recruit_id',$arr);
+        $this->set('cont_id',$arr_cont);
         $this->render('add');
 	}
 

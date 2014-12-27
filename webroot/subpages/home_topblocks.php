@@ -171,7 +171,7 @@
 
 
 
-    <?php if ($block->masterjob == 1) { ?>
+    <?php /* if ($block->masterjob == 1) { ?>
         <div class="tile bg-red-intense">
             <div class="tile-body">
                 <i class="fa fa-globe"></i>
@@ -186,7 +186,7 @@
             </div>
         </div>
 
-    <?php } ?>
+    <?php }*/ ?>
 
 
 

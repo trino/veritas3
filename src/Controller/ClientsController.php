@@ -81,9 +81,6 @@ class ClientsController extends AppController {
         unset($_POST['recruiter_id']);
         $_POST['recruiter_id'] = $rec;
         
-        $rec='';
-        $con='';
-        $count=1;
         if(isset($_POST['contact_id'])){
         foreach($_POST['contact_id'] as $ri)
         {
@@ -109,7 +106,55 @@ class ClientsController extends AppController {
 			}
 		}
 		$this->set(compact('client'));
+        $this->set('recruiters',array());
+        $this->set('contacts',array());
         $this->render('add');
+	}
+    
+    public function saveClients() {
+	   
+        $rec='';
+        $con='';
+        $count=1;
+        if(isset($_POST['recruiter_id'])){
+        foreach($_POST['recruiter_id'] as $ri)
+        {
+        	if($count==1)	
+        	$rec = $ri;
+        	else
+        	$rec = $rec.','.$ri;
+            $count++;
+        
+        }
+        }
+        unset($_POST['recruiter_id']);
+        $_POST['recruiter_id'] = $rec;
+        
+        if(isset($_POST['contact_id'])){
+        foreach($_POST['contact_id'] as $ri)
+        {
+        	if($count==1)	
+        	$rec = $ri;
+        	else
+        	$rec = $rec.','.$ri;
+            $count++;
+        
+        }
+        }
+        unset($_POST['contact_id']);
+        $_POST['contact_id'] = $rec;
+	   $clients = TableRegistry::get('Clients');
+        $client = $clients->newEntity($_POST);
+		if ($this->request->is('post')) {
+		  
+			if ($clients->save($client)) {
+				//$this->Flash->success('The user has been saved.');
+                	echo $client->id;
+			} else {
+				echo "e";
+			}
+		}
+		die();
 	}
 
 /**
@@ -128,43 +173,12 @@ class ClientsController extends AppController {
             	return $this->redirect("/");
             
         }
-		$rec='';
-        $con='';
-        $count=1;
-        if(isset($_POST['recruiter_id'])){
-        foreach($_POST['recruiter_id'] as $ri)
-        {
-        	if($count==1)	
-        	$rec = $ri;
-        	else
-        	$rec = $rec.','.$ri;
-            $count++;
-        
-        }
-        }
-        unset($_POST['recruiter_id']);
-        $_POST['recruiter_id'] = $rec;
-        
-        $rec='';
-        $con='';
-        $count=1;
-        if(isset($_POST['contact_id'])){
-        foreach($_POST['contact_id'] as $ri)
-        {
-        	if($count==1)	
-        	$rec = $ri;
-        	else
-        	$rec = $rec.','.$ri;
-            $count++;
-        
-        }
-        }
-        unset($_POST['contact_id']);
-        $_POST['contact_id'] = $rec;
-        $client = $this->Clients->get($id, [
+		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);
-        
+        $arr = explode(',',$client->recruiter_id);
+        $arr2 = explode(',',$client->contact_id);
+
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$clients = $this->Clients->patchEntity($client, $this->request->data);
 			if ($this->Clients->save($clients)) {
@@ -174,16 +188,10 @@ class ClientsController extends AppController {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
-        $client2 = $this->Clients->get($id, [
-			'contain' => []
-		]);
-        $arr = explode(',',$client2->recruiter_id);
-        $arr_cont = explode(',',$client2->contact_id);
-        
 		$this->set(compact('client'));
         $this->set('id',$id);
-        $this->set('recruit_id',$arr);
-        $this->set('cont_id',$arr_cont);
+        $this->set('recruiters',$arr);
+        $this->set('contacts',$arr2);
         $this->render('add');
 	}
 

@@ -3,7 +3,7 @@ $recruiter = $this->requestAction('Profiles/getRecruiter');
 $contact =  $this->requestAction('Profiles/getContact');
 ?>
 
-<table class="table table-striped table-bordered table-advance table-hover">
+<table class="table table-striped table-bordered table-advance table-hover recruiters">
                                                 <thead><tr><th colspan="2">Add Recruiters</th></tr></thead> 
                                                              
                                                 <?php
@@ -20,7 +20,11 @@ $contact =  $this->requestAction('Profiles/getContact');
                                                     ?>
                                                    
                                                     <td>
+<<<<<<< HEAD
                                                         <span><input type="checkbox" name="recruiter_id[]" value="<?php echo $r->id; ?>" <?php if(in_array($r->id,$recruit_id)){?>checked="checked"<?php } ?> /></span>
+=======
+                                                        <span><input type="checkbox" name="recruiter_id[]" <?php if(in_array($r->id,$recruiters)){?>checked="checked"<?php }?> value="<?php echo $r->id; ?>"/></span>
+>>>>>>> d16a4816d49c08c8a1fd99ca401308c410dd8dc6
                                                         <span> <?php echo $r->username; ?> </span>
                                                     </td>
                                                 <?php
@@ -44,7 +48,7 @@ $contact =  $this->requestAction('Profiles/getContact');
                                                 
                                             </table>
 
-<table class="table table-striped table-bordered table-advance table-hover">
+<table class="table table-striped table-bordered table-advance table-hover contacts">
                                                 <thead><tr><th colspan="2">Add Contacts</th></tr></thead>             
                                                 <?php
                                                 $i=0;
@@ -58,7 +62,11 @@ $contact =  $this->requestAction('Profiles/getContact');
                                                     }
                                                     ?>
                                                     <td>
+<<<<<<< HEAD
                                                         <span><input type="checkbox" name="contact_id[]" value="<?php echo $r->id; ?>" <?php if(in_array($r->id,$cont_id)){?>checked="checked"<?php } ?> /></span>
+=======
+                                                        <span><input type="checkbox" name="contact_id[]" <?php if(in_array($r->id,$contacts)){?>checked="checked"<?php }?> value="<?php echo $r->id; ?>"/></span>
+>>>>>>> d16a4816d49c08c8a1fd99ca401308c410dd8dc6
                                                         <span> <?php echo $r->username; ?> </span>
                                                     </td>
                                                     

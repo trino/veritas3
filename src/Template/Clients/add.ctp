@@ -255,7 +255,7 @@ $c = $client;
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's Email Address</label>
-														<input type="text" class="form-control" name="sig_email" <?php if(isset($c->sig_email)){?> value="<?php echo $c->sig_email; ?>" <?php } ?>/>
+														<input type="email" id="sig_email" class="form-control" name="sig_email" <?php if(isset($c->sig_email)){?> value="<?php echo $c->sig_email; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Billing Address Street Name and Number</label>
@@ -283,7 +283,7 @@ $c = $client;
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">User's Email Address</label>
-														<input type="text" class="form-control" name="u_email" <?php if(isset($c->u_email)){?> value="<?php echo $c->u_email; ?>" <?php } ?>/>
+														<input type="email" id="u_email" class="form-control" name="u_email" <?php if(isset($c->u_email)){?> value="<?php echo $c->u_email; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">User's Phone Number</label>
@@ -293,19 +293,46 @@ $c = $client;
 														<label class="control-label">Site</label>
 														<input type="text" class="form-control" name="site" <?php if(isset($c->site)){?> value="<?php echo $c->site; ?>" <?php } ?>/>
 													</div>
+                                                    
+                                                    <?php
+                                                    if($c->date_start){
+                                                    foreach($c->date_start as $k=>$d)
+                                                    {
+                                                        if($k == 'date')
+                                                        $start_date = $d;
+                                                    }
+                                                    }
+                                                    else
+                                                    $start_date = '';
+                                                    
+                                                    if($c->date_end){
+                                                    foreach($c->date_end as $k=>$d)
+                                                    {
+                                                        if($k == 'date')
+                                                        $end_date = $d;
+                                                    }
+                                                    }
+                                                    else
+                                                    $end_date = '';
+                                                    ?>
+                                                    
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Start Date</label>
-														<input type="text" class="form-control" name="date_start" <?php if(isset($c->date_start)){?> value="<?php echo $c->date_start; ?>" <?php } ?>/>
+														<input type="text" class="form-control" name="date_start" <?php if(isset($start_date)){?> value="<?php echo $start_date; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">End Date</label>
-														<input type="text" class="form-control" name="date_end" <?php if(isset($c->date_end)){?> value="<?php echo $c->date_end; ?>" <?php } ?>/>
+														<input type="text" class="form-control" name="date_end" <?php if(isset($end_date)){?> value="<?php echo $end_date; ?>" <?php } ?>/>
 													</div>
                                                     <div class="clearfix"></div>
                                                     <hr />
+                                                    <div class="margin-top-10 alert alert-success display-hide flash1" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Data saved successfully
+                                                        </div>
 													<div class="margiv-top-10">
-                                                    <button type="submit" class="btn btn-primary" >Save</button>
-														<a href="#" class="btn default">
+                                                    <a href="javascript:void(0)" class="btn btn-primary" id="save_client_p1" >Save</a>
+														<a href="" class="btn default">
 														Cancel </a>
 													</div>
 												</form>
@@ -602,8 +629,7 @@ $c = $client;
                                                             Data saved successfully
                                                         </div>
                                                         <div class="margin-top-10">
-                                                            <a href="javascript:void(0)" id="save_display1" class="btn btn-primary">
-                                                                Save Changes </a>
+                                                            <a href="javascript:void(0)" id="save_display1" class="btn btn-primary"> Save Changes </a>
 
 
 
@@ -629,6 +655,11 @@ $c = $client;
 
 <script>
                                     $(function(){
+                                        <?php
+                                        if(isset($id))
+                                        {
+                                            ?>
+                                            
                                        $('#save_display1').click(function(){
                                         $('#save_display1').text('Saving..');
                                             var str = $('#displayform1 input').serialize();
@@ -640,6 +671,58 @@ $c = $client;
                                                {
                                                 $('.flash').show();
                                                 $('#save_display1').text(' Save Changes ');
+                                               } 
+                                            })
+                                       });
+                                       <?php
+                                        } 
+                                        ?>
+                                       $('#save_client_p1').click(function(){
+                                        $('#save_client_p1').text('Saving..');
+                                        var str = '';
+                                        $('.recruiters input').each(function(){
+                                           if($(this).is(':checked'))
+                                           {
+                                            if(str=='')
+                                            str = 'recruiter_id[]='+$(this).val();
+                                            else
+                                            str = str+'&recruiter_id[]='+$(this).val();
+                                           } 
+                                        });
+                                        $('.contacts input').each(function(){
+                                           if($(this).is(':checked'))
+                                           {
+                                            if(str=='')
+                                            str = 'contact_id[]='+$(this).val();
+                                            else
+                                            str = str+'&contact_id[]='+$(this).val();
+                                           } 
+                                        });
+                                            if(str=='')
+                                            {
+                                                str = $('#tab_1_1 input').serialize();
+                                            }
+                                            else
+                                            {
+                                                str = str+'&'+$('#tab_1_1 input').serialize();
+                                            }
+                                            str = str+'&description='+$('#tab_1_1 textarea').val();
+                                            
+                                            
+                                            $.ajax({
+                                               url:'<?php echo $this->request->webroot;?>clients/saveClients',
+                                               data:str,
+                                               type:'post',
+                                               success:function(res)
+                                               {
+                                                if(res!='e'){
+                                                window.location = '<?php echo $this->request->webroot;?>clients/edit/'+res;
+                                                }
+                                                else
+                                                {
+                                                    alert('Couldn\'t save your data');
+                                                }
+                                                $('#save_client_p1').text(' Save ');
                                                } 
                                             })
                                        }); 

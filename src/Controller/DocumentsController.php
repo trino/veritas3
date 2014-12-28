@@ -164,13 +164,23 @@ class DocumentsController extends AppController {
     function get_permission($uid)
     {
         $setting = TableRegistry::get('sidebar');
-         $query = $setting->find()->where(['user_id'=>$uid]);
+         $query = $setting->find()->where(['user_id'=>$uid]); 
                  
          $l = $query->first();
          return $l;
          //$this->response->body(($l));
            // return $this->response;
          die();
+    }
+    
+    function analytics1()
+    {
+        $this->layout = "blank";
+    }
+    
+    function analytics()
+    {
+        
     }
     
     

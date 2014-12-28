@@ -79,7 +79,10 @@ class ProfilesController extends AppController {
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
         $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
 		$profiles = TableRegistry::get('Profiles');
-        $profile = $profiles->newEntity($_POST);
+        if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
+        $_POST['admin']=1;
+        $profile = $profiles->newEntity( $_POST);
+        
 		if ($this->request->is('post')) {
 			if ($profiles->save($profile)) {
 			     $blocks = TableRegistry::get('Blocks');
@@ -132,6 +135,8 @@ class ProfilesController extends AppController {
 			'contain' => []
 		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
+		  if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
+            $_POST['admin']=1;
 			$profile = $this->Profiles->patchEntity($profile, $this->request->data);
 			if ($this->Profiles->save($profile)) {
 				$this->Flash->success('The user has been saved.');

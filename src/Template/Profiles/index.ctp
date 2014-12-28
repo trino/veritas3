@@ -44,12 +44,14 @@
                             <form>
                                 <div class="col-md-2" style="padding-left:0;">
                                     <select class="form-control" style="">
-                                        <option value=""><?php echo ucfirst($settings->profile); ?> Type</option>
-                                        <option value="">Admin</option>
-                                        <option value="">Recruiter</option>
-                                        <option value="">Contacts</option>
-                                        <option value="">Members</option>
-                                        <option value="">Quick Contacts</option>
+                                        <option value="">Filter By</option>
+                                        <!--<option value=""><?php //echo ucfirst($settings->profile); ?> Type</option>-->
+                                        <option value="1">Admin</option>
+                                        <option value="2">Recruiter</option>
+                                        <option value="3">External</option>
+                                        <option value="4">Safety</option>
+                                        <option value="5">Driver</option>
+                                        <option value="6">Contact</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 ">

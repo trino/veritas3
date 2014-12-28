@@ -98,11 +98,30 @@
                                                                                               placeholder="eg. +1 646 580 6284"
                                                                                               class="form-control" <?php if(isset($p->phone)){?> value="<?php echo $p->phone; ?>" <?php } ?>/>
                                                         </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label class="control-label">Address</label>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-6">Address</label>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <div class="col-md-3">
                                                             <input <?php echo $is_disabled ?> name="address" type="text"
-                                                                                              placeholder="eg. Street, City, Province, Country"
+                                                                                              placeholder="Street"
                                                                                               class="form-control" <?php if(isset($p->address)){?> value="<?php echo $p->address; ?>" <?php } ?>/>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                            <input <?php echo $is_disabled ?>  type="text"
+                                                                                              placeholder="City"
+                                                                                              class="form-control" <?php if(isset($p->address)){?> value="<?php echo $p->address; ?>" <?php } ?>/>
+                                                             </div>
+                                                            <div class="col-md-3">
+                                                             <input <?php echo $is_disabled ?>  type="text"
+                                                                                              placeholder="Province"
+                                                                                              class="form-control" <?php if(isset($p->address)){?> value="<?php echo $p->address; ?>" <?php } ?>/>
+                                                             </div>
+                                                            <div class="col-md-3">
+                                                             <input <?php echo $is_disabled ?>  type="text"
+                                                                                              placeholder="Country"
+                                                                                              class="form-control" <?php if(isset($p->address)){?> value="<?php echo $p->address; ?>" <?php } ?>/>                                
                                                         </div>
                                                         </div>
                                                         

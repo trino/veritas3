@@ -15,12 +15,13 @@
 					</li>
 				</ul>
 				<div class="page-toolbar">
-					<div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
+					<div id="dashboard-report-range" style="padding-bottom: 6px;" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>&nbsp;
 						<span class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
 						<i class="fa fa-angle-down"></i>
 					</div>
 				</div>
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 			</div>
 
 
@@ -112,7 +113,7 @@
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
                     		<tr>
-                    			<th><?php echo ucfirst($settings->document);?> type</th>
+                    			<th><?php echo ucfirst($settings->document);?></th>
                                 <th>Prepared for</th>
                     			<th><?php echo ucfirst($settings->client);?></th>
                     			<th>Uploaded by</th>
@@ -130,7 +131,7 @@
                     			<td>Challenger - Ontario </td>
                     			<td>Admin</td>
                     			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">DummyFile.docx</a></td>
+                    			<td><a href="#">Dummy.pdf</a></td>
                     			<td class="">
 											<span class="label label-sm label-success">
 										Passed </span>
@@ -151,7 +152,7 @@
                     			<td>Challenger - London</td>
                     			<td>John Q Sample</td>
                     			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">DummyFile.docx</a></td>
+                    			<td><a href="#">Dummy.pdf</a></td>
                    			    <td class="">
 	<span class="label label-sm label-danger">
 										Failed </span>
@@ -168,7 +169,7 @@
                     			<td>Challenger - London</td>
                     			<td>John Q Sample</td>
                     			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">DummyFile.docx</a></td>
+                    			<td><a href="#">Dummy.pdf</a></td>
                     			<td class="">
 
 											<span class="label label-sm label-success">
@@ -188,7 +189,7 @@
                     			<td>Challenger - Quebec</td>
                     			<td>John Q Sample</td>
                     			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">DummyFile.docx</a></td>
+                    			<td><a href="#">Dummy.pdf</a></td>
                     			<td class="">
 
 								<span class="label label-sm label-danger">
@@ -206,7 +207,7 @@
                     			<td>Challenger - BC</td>
                     			<td>Bob Smith</td>
                     			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">DummyFile.docx</a></td>
+                    			<td><a href="#">Dummy.pdf</a></td>
                     			<td class="">
 										<span class="label label-sm label-warning">
 										Pending </span>
@@ -223,7 +224,7 @@
                     			<td>Challenger - BC</td>
                     			<td>Bob Smith</td>
                     			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">DummyFile.docx</a></td>
+                    			<td><a href="#">Dummy.pdf</a></td>
                     			<td class="">
 
 														<span class="label label-sm label-warning">
@@ -242,7 +243,7 @@
                     			<td>Challenger - London</td>
                     			<td>Bob Smith</td>
                     			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">DummyFile.docx</a></td>
+                    			<td><a href="#">Dummy.pdf</a></td>
                     			<td class="">
 
 											<span class="label label-sm label-success">
@@ -261,7 +262,7 @@
                     			<td>Challenger - London</td>
                     			<td>Jack Black</td>
                     			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">DummyFile.docx</a></td>
+                    			<td><a href="#">Dummy.pdf</a></td>
                     			<td class="">
 
 									<span class="label label-sm label-danger">
@@ -314,3 +315,18 @@
         </div>
         </div>
         </div>
+<style>
+@media print {
+    .page-header{display:none;}
+    .page-footer,.chat-form,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.more{display:none!important;}
+    .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
+    .tabbable-line{border:none!important;}
+    a:link:after,
+    a:visited:after {
+        content: "" !important;
+    }
+    .actions{display:none}
+    .paging_simple_numbers{display:none;}
+    }
+    
+</style>

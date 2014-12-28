@@ -40,7 +40,7 @@
 
                                                 <form action="#" method="post" id="displayform">
                                                     <table class="table table-light table-hover">
-                                                        <tr><th></th><th class="center">System</th><th class="center"><?php echo ucfirst($settings->profile);?></th></tr>
+                                                        <tr><th></th><th class="">System</th><th class="" width="40%"><?php echo ucfirst($settings->profile);?></th></tr>
                                                         <?php
                                                         $subdoc = $this->requestAction('/profiles/getSub');
                                                         
@@ -52,7 +52,7 @@
                                                                 
                                                                <?php echo ucfirst($sub['title']);?>
                                                             </td>
-                                                            <td class="center">
+                                                            <td class="">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="<?php echo $sub->id;?>" value="1" <?php if($sub['display']==1) {?>checked="checked" <?php }?> />
                                                                     Yes </label>
@@ -63,7 +63,7 @@
                                                             <?php
                                                                  $prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$id.'/'.$sub->id);
                                                             ?>
-                                                            <td class="center">
+                                                            <td class="">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if($prosubdoc['display'] != 0) {?> checked="checked" <?php } ?> />
                                                                     Yes </label>
@@ -74,8 +74,8 @@
                                                             
                                                         </tr>
                                                         <tr <?php if($prosubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
-                                                            <td></td>
-                                                            <td colspan="2" class="center">
+                                                            <td colspan="2"></td>
+                                                            <td  class="">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="1" <?php if($prosubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
                                                                     View Only </label>

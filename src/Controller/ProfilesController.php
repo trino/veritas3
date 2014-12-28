@@ -55,6 +55,7 @@ class ProfilesController extends AppController {
 		$profile = $this->Profiles->get($id, [ 'contain' => []]);
 		$this->set('profile', $profile);
         $this->set('disabled', 1);
+        $this->set('id',$id);
         $this->render("edit");
 	}
 

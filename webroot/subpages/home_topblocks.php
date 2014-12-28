@@ -5,8 +5,8 @@
 
     <?php if ($block->addadriver == 1 && $sidebar->profile_create ==1) { ?>
 
-    <a href="<?php echo $this->request->webroot; ?>profiles/add">
-        <div class="tile bg-red-sunglo">
+    
+        <a class="tile bg-red-sunglo" href="<?php echo $this->request->webroot; ?>profiles/add" style="display: block;">
 
             <div class="tile-body">
                 <i class="fa fa-user"></i>
@@ -23,12 +23,12 @@
             </div>
             
 
-        </div>
         </a>
+        
     <?php } ?>
     <?php if ($block->searchdriver == 1 && $sidebar->profile_list ==1) { ?>
-    <a href="<?php echo $this->request->webroot; ?>profiles">
-        <div class="tile selected bg-yellow-saffron">
+    
+        <a href="<?php echo $this->request->webroot; ?>profiles" class="tile selected bg-yellow-saffron" style="display: block;">
             <div class="corner">
             </div>
             <div class="tile-body">
@@ -42,13 +42,13 @@
 
                 </div>
             </div>
-        </div>
+        
         </a>
     <?php } ?>
 
     <?php if ($block->submitorder == 1 && $sidebar->document_create ==1) { ?>
-    <a href="<?php echo $this->request->webroot; ?>documents/add">
-        <div class="tile bg-purple-studio">
+    
+        <a href="<?php echo $this->request->webroot; ?>documents/add" class="tile bg-purple-studio" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-clipboard"></i>
             </div>
@@ -60,7 +60,7 @@
 
                 </div>
             </div>
-        </div>
+        
         </a>
     <?php } ?>
 
@@ -70,9 +70,9 @@
 
 
     <?php if ($block->orderhistory == 1 && $sidebar->document_list ==1) { ?>
-        <a href="<?php echo $this->request->webroot; ?>documents/index">
+        
 
-        <div class="tile bg-green-meadow">
+        <a href="<?php echo $this->request->webroot; ?>documents/index" style="display: block;" class="tile bg-green-meadow">
 
             <div class="tile-body">
                 <i class="fa fa-history"></i>
@@ -85,7 +85,7 @@
                     93
                 </div>
             </div>
-        </div>
+        
 </a>
     <?php } ?>
 
@@ -94,8 +94,8 @@
     <?php if ($block->schedule == 1) { ?>
     <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
         
-        <div class="tile  bg-grey-cascade "  >
-          <a href="javascript:;" class=" input-group input-medium date date-picker1 tile"  >  
+        <a  href="<?php echo $this->request->webroot;?>todo/calender" class="tile bg-grey-cascade" style="display: block;">
+          
             <div class="tile-body">
                 <i class="fa fa-calendar"></i>
             </div>
@@ -109,15 +109,15 @@
                 </div>
             </div>
          </a>   
-        </div>
+        
         
     <?php } ?>
 
 
 
     <?php if ($block->tasks == 1) { ?>
-        <a href="<?php echo $this->request->webroot;?>todo">
-        <div class="tile bg-blue-steel">
+        
+        <a class="tile bg-blue-steel" href="<?php echo $this->request->webroot;?>todo" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-tasks"></i>
             </div>
@@ -129,7 +129,7 @@
                     34
                 </div>
             </div>
-        </div>
+        
         </a>
 
     <?php } ?>
@@ -137,8 +137,8 @@
 
 
     <?php if ($block->feedback == 1 && $sidebar->document_create ==1) { ?>
-    <a href="<?php echo $this->request->webroot; ?>feedbacks/add">
-        <div class="tile bg-green-meadow">
+    
+        <a href="<?php echo $this->request->webroot; ?>feedbacks/add" class="tile bg-green-meadow">
             <div class="tile-body">
                 <i class="fa fa-comments"></i>
             </div>
@@ -150,12 +150,12 @@
                     34
                 </div>
             </div>
-        </div>
+        
     </a>
     <?php } ?>
 
     <?php if ($block->analytics == 1) { ?>
-        <div class="tile bg-green">
+        <a href="<?php echo $this->request->webroot;?>documents/analytics" class="tile bg-green" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-bar-chart-o"></i>
             </div>
@@ -166,7 +166,7 @@
                 <div class="number">
                 </div>
             </div>
-        </div>
+        </a>
     <?php } ?>
 
 

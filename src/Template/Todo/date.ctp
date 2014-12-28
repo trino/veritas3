@@ -14,7 +14,7 @@
                         <i class="fa fa-angle-right"></i>
 					</li>
                     <li>
-                        <a href="">Schedule( <?php echo date('Y-m-d',$this->request['pass'][0]);?> )</a>
+                        <a href="">Schedule( <?php echo $this->request['pass'][0];?> )</a>
                     </li>
 				</ul>
                 
@@ -34,7 +34,7 @@
 															 Lorem dolor sit amet ipsum dolor sit consectetuer dolore.
 														</div>
 														<div class="todo-tasklist-controls pull-left">
-															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',$this->request['pass'][0]);?> </span>
+															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',strtotime($this->request['pass'][0]));?> </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
 														</div>
 													</div></a>
@@ -48,7 +48,7 @@
 															 Lorem ipsum dolor sit amet, consectetuer dolore dolor sit amet.
 														</div>
 														<div class="todo-tasklist-controls pull-left">
-															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',$this->request['pass'][0]);?> </span>
+															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',strtotime($this->request['pass'][0]));?> </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Important</span>
 														</div>
 													</div></a>
@@ -59,7 +59,7 @@
 															 Slider Redesign
 														</div>
 														<div class="todo-tasklist-controls pull-left">
-															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',$this->request['pass'][0]);?> </span>
+															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',strtotime($this->request['pass'][0]));?> </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
 														</div>
 													</div></a>
@@ -73,7 +73,7 @@
 															 Lorem ipsum amet, consectetuer dolore dolor sit amet.
 														</div>
 														<div class="todo-tasklist-controls pull-left">
-															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',$this->request['pass'][0]);?> </span>
+															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',strtotime($this->request['pass'][0]));?> </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp; <span class="todo-tasklist-badge badge badge-roundless">Test</span>
 														</div>
 													</div></a>
@@ -87,7 +87,7 @@
 															 Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit.
 														</div>
 														<div class="todo-tasklist-controls pull-left">
-															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',$this->request['pass'][0]);?> </span>
+															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',strtotime($this->request['pass'][0]));?> </span>
 														</div>
 													</div></a>
                                                     <a href="<?php echo $this->request->webroot;?>todo/view/1">
@@ -100,7 +100,7 @@
 															 Lorem ipsum dolor sit amet, consectetuer sit amet ipsum dolor, consectetuer ipsum consectetuer sit amet dolore.
 														</div>
 														<div class="todo-tasklist-controls pull-left">
-															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',$this->request['pass'][0]);?> </span>
+															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',strtotime($this->request['pass'][0]));?> </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
 														</div>
 													</div></a>

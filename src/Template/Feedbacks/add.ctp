@@ -44,16 +44,48 @@ $is_disabled = '';
                                                     <input type="hidden" name="document_type" value="feedbacks" />
                                                     <input type="hidden" name="user_id" value="<?php echo $this->request->session()->read('Profile.id');?>" />
                                                     <div class="form-group">
-                                                            <label class="control-label col-md-3">Title</label>
-                                                            <div class="col-md-7">
+                                                            <label class="control-label col-md-6">Title</label>
+                                                            <div class="col-md-6">
                                                                 <input type="text" class="form-control" name="title" />
                                                             </div>
                                                             <div class="clearfix"></div>
                                                     </div>
                                                     <div class="form-group">
-                                                            <label class="control-label col-md-3">Description</label>
-                                                            <div class="col-md-7">
+                                                            <label class="control-label col-md-6">Description</label>
+                                                            <div class="col-md-6">
                                                                 <textarea class="form-control" name="description" ></textarea>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                    <div class=" col-md-12">
+                                                            <label class="control-label">If you had a colleague who required our services, would you recommend ISB Canada ?(Scale 1-10) </label>
+                                                    </div>
+                                                            <div class="col-md-12">
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;1&nbsp;&nbsp;
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;2&nbsp;&nbsp;
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;3&nbsp;&nbsp;
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;4&nbsp;&nbsp;
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;5&nbsp;&nbsp;
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;6&nbsp;&nbsp;
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;7&nbsp;&nbsp;
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;8&nbsp;&nbsp;
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;9&nbsp;&nbsp;
+                                                                <input type="radio" class="form-control" name="scale" />&nbsp;&nbsp;10&nbsp;&nbsp;
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="control-label col-md-6">What is the reason for your score in question #1?</label>
+                                                            <div class="col-md-6">
+                                                                <textarea class="form-control" name="reason" ></textarea>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="control-label col-md-6">What could we do to improve the score you gave in question #1? </label>
+                                                            <div class="col-md-6">
+                                                                <textarea class="form-control" name="suggestion" ></textarea>
                                                             </div>
                                                             <div class="clearfix"></div>
                                                     </div>

@@ -25,6 +25,7 @@
             <i class="fa fa-angle-down"></i>
         </div>
     </div>-->
+    <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 </div>
 
 
@@ -41,3 +42,12 @@
 
 <?php include('subpages/recent_activities.php'); ?>
 <div class="clearfix"></div>
+
+<style>
+@media print {
+    .page-header{display:none;}
+    .page-footer,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.more{display:none!important;}
+    .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
+    .tabbable-line{border:none!important;}
+    }
+</style>

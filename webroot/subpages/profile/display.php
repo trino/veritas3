@@ -40,7 +40,7 @@
 
                                                 <form action="#" method="post" id="displayform">
                                                     <table class="table table-light table-hover">
-                                                        <tr><th></th><th class="center">System</th><th class="center"><?php echo ucfirst($settings->profile);?></th></tr>
+                                                        <tr><th></th><th class="center">System</th><th class="center" width="40%"><?php echo ucfirst($settings->profile);?></th></tr>
                                                         <?php
                                                         $subdoc = $this->requestAction('/profiles/getSub');
                                                         
@@ -74,8 +74,8 @@
                                                             
                                                         </tr>
                                                         <tr <?php if($prosubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
-                                                            <td></td>
-                                                            <td colspan="2" class="center">
+                                                            <td colspan="2"></td>
+                                                            <td  class="center">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="1" <?php if($prosubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
                                                                     View Only </label>

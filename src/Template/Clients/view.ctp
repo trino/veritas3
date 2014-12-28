@@ -39,8 +39,7 @@ $is_disabled = '';
 										<ul class="list-unstyled profile-nav">
 											<li>
 												<img src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png" class="img-responsive" alt=""/>
-												<a href="#" class="profile-edit">
-												Edit </a>
+												<a href="#" class="profile-edit">Edit </a>
                                                 <br />
                                                 <h3>Assigned to:</h3>
 											</li>

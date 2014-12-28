@@ -43,12 +43,7 @@ $c = $client;
                         <div class="tab-pane" id="tab_1_3">
 								<div class="row profile-account">
 									<div class="col-md-3">
-										<img class="img-responsive" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png">
-
-
-
-
-
+										<li><img class="img-responsive" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png"/>
                                             <div class="form-group">
                                             <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
                                             <div class="input-icon">
@@ -318,11 +313,11 @@ $c = $client;
                                                     
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Contract Start Date</label>
-														<input type="text" class="form-control" name="date_start" <?php if(isset($start_date)){?> value="<?php echo $start_date; ?>" <?php } ?>/>
+														<input type="text" class="form-control date-picker" name="date_start" <?php if(isset($start_date)){?> value="<?php echo $start_date; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Contract End Date</label>
-														<input type="text" class="form-control" name="date_end" <?php if(isset($end_date)){?> value="<?php echo $end_date; ?>" <?php } ?>/>
+														<input type="text" class="form-control date-picker" name="date_end" <?php if(isset($end_date)){?> value="<?php echo $end_date; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Referred By</label>
@@ -350,10 +345,12 @@ $c = $client;
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Add document</label>
+                                                        <div>
                                                         <a href="#" class="btn btn-primary">Browse</a>
                                                          <?php if(isset($c->document)){?>
                                                          <img src="" />
                                                          <?php } ?>
+                                                         </div>
 													</div><div class="form-group col-md-6">
 														<label class="control-label">Billing Contact</label>
 														<input type="text" class="form-control" name="billing_contact" <?php if(isset($c->billing_contact)){?> value="<?php echo $c->billing_contact; ?>" <?php } ?>/>

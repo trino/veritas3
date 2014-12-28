@@ -142,6 +142,22 @@ class ProfilesController extends AppController {
 		$this->set(compact('profile'));
         $this->set('id',$id);
 	}
+    function changePass($id)
+    {
+            $profile = $this->Profiles->get($id, [
+			'contain' => []
+		]);
+        	if ($this->request->is(['patch', 'post', 'put'])) {
+			$profiles = $this->Profiles->patchEntity($profile, $this->request->data);
+			if ($this->Profiles->save($profiles)) {
+				
+				echo "1";
+			} else {
+				echo "0";
+			}
+		}
+        die();
+    }
 
 /**
  * Delete method

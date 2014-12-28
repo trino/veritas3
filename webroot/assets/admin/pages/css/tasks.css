@@ -117,6 +117,7 @@ Tasks Widget
 .martop{margin-top:10px;}
 .pad_bot{padding-top: 5px;}
 .vtop{vertical-align: top!important;}
+.error{color:red;}
 @media only screen and (max-width: 480px) {
   .tasks-widget .task-config-btn {
     float: inherit;

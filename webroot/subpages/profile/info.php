@@ -17,16 +17,18 @@
 
 
                                                     <form role="form" action="" method="post">
-                                                    <div class="form-group col-md-12">
-                                                            <label class="control-label col-md-12">Username</label>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
+                                                    <div class="col-md-12">
+                                                        
+                                                        <div class="form-group col-md-6">
+                                                            <label class="control-label">Username</label>
                                                             <input <?php echo $is_disabled ?> name="username" type="text" class="form-control" <?php if(isset($p->username)){?> value="<?php echo $p->username; ?>" <?php } ?> />
+                                                        </div>
                                                     </div>
+                                                    
+                                                    
+                                                    
                                                     <div class="form-group col-md-12">
                                                             <label class="control-label col-md-12">Profile Type</label>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
                                                             <div class="col-md-6">
                                                             <select name="profile_type" <?php echo $is_disabled ?>
                                                                 class="form-control member_type">
@@ -102,6 +104,42 @@
                                                                                               placeholder="eg. Street, City, Province, Country"
                                                                                               class="form-control" <?php if(isset($p->address)){?> value="<?php echo $p->address; ?>" <?php } ?>/>
                                                         </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-12">
+                                                        
+                                                            <div class="form-group col-md-6">
+                                                                <label class="control-label">Driver License #</label>
+                                                                <input <?php echo $is_disabled ?> name="driver_license_no" type="text" class="form-control" <?php if(isset($p->driver_license_no)){?> value="<?php echo $p->driver_license_no; ?>" <?php } ?> />
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label class="control-label">Province (Driver's License was issued)</label>
+                                                                <input <?php echo $is_disabled ?> name="driver_province" type="text" class="form-control" <?php if(isset($p->driver_province)){?> value="<?php echo $p->driver_province; ?>" <?php } ?> />
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-12">
+                                                        
+                                                            <div class="form-group col-md-6">
+                                                                <label class="control-label">US DOT MC/MX#</label>
+                                                                <input <?php echo $is_disabled ?> name="us_dot" type="text" class="form-control" <?php if(isset($p->us_dot)){?> value="<?php echo $p->us_dot; ?>" <?php } ?> />
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label class="control-label">Applicants Email</label>
+                                                                <input <?php echo $is_disabled ?> name="applicants_email" type="email" class="form-control" <?php if(isset($p->applicants_email)){?> value="<?php echo $p->applicants_email; ?>" <?php } ?> />
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-12">
+                                                        
+                                                            <div class="form-group col-md-6">
+                                                                <label class="control-label">Two Pieces of ID</label>
+                                                                <input <?php echo $is_disabled ?> name="" type="text" class="form-control" />
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label class="control-label">TransClick submission</label>
+                                                                <input <?php echo $is_disabled ?> name="transclick" type="text" class="form-control" <?php if(isset($p->transclick)){?> value="<?php echo $p->transclick; ?>" <?php } ?> />
+                                                            </div>
                                                         </div>
 
                                                         <?php

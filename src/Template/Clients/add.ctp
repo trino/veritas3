@@ -228,16 +228,16 @@ $c = $client;
 											<div id="tab_1-1" class="tab-pane active">
 												<form role="form" action="" method="post">
 													<div class="form-group col-md-6">
-														<label class="control-label">Title</label>
-
-														<input type="text" class="form-control" name="title" <?php if(isset($c->title)) { ?> value="<?php echo $c->title; ?>" <?php } ?> />
-													</div>
-													<div class="form-group col-md-6">
-														<label class="control-label">Description</label>
-														<textarea class="form-control" name="description"><?php if(isset($c->description)) { echo $c->description;} ?></textarea>
+														<label class="control-label">Customer Type</label>
+                                                        <select class="form-control" name="customer_type">
+                                                            <option value="">Select</option>
+                                                            <option value="1"<?php if(isset($c->customer_type)&& $c->customer_type==1) {?>selected="selected"<?php } ?>>Insurance</option>
+                                                            <option value="2"<?php if(isset($c->customer_type)&& $c->customer_type==2) {?>selected="selected"<?php } ?>>Fleet</option>
+                                                            <option value="3"<?php if(isset($c->customer_type)&& $c->customer_type==3) {?>selected="selected"<?php } ?>>Non Fleet</option>
+                                                        </select>
 													</div>
 												
-													<div class="form-group col-md-12">
+													<div class="form-group col-md-6">
 														<label class="control-label">Enter name of your company</label>
 														<input type="text" class="form-control" name="company_name" <?php if(isset($c->company_name)){?> value="<?php echo $c->company_name; ?>" <?php } ?> />
 													</div>
@@ -250,16 +250,16 @@ $c = $client;
 														<input type="text" class="form-control" name="sig_lname" <?php if(isset($c->sig_lname)){?> value="<?php echo $c->sig_lname; ?>" <?php } ?>/>
 													</div>
 													<div class="form-group col-md-6">
-														<label class="control-label">Signatory's Phone Number</label>
-														<input type="text" class="form-control" name="sig_phone" <?php if(isset($c->sig_phone)){?> value="<?php echo $c->sig_phone; ?>" <?php } ?>/>
+														<label class="control-label">Company's Phone Number</label>
+														<input type="text" class="form-control" name="company_phone" <?php if(isset($c->sig_phone)){?> value="<?php echo $c->sig_phone; ?>" <?php } ?>/>
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's Email Address</label>
 														<input type="email" id="sig_email" class="form-control" name="sig_email" <?php if(isset($c->sig_email)){?> value="<?php echo $c->sig_email; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-12">
-														<label class="control-label">Billing Address Street Name and Number</label>
-														<input type="text" class="form-control" name="billing_address" <?php if(isset($c->billing_address)){?> value="<?php echo $c->billing_address; ?>" <?php } ?>/>
+														<label class="control-label">Company Address Street Name and Number</label>
+														<input type="text" class="form-control" name="company_address" <?php if(isset($c->billing_address)){?> value="<?php echo $c->billing_address; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-4">
 														<label class="control-label">City</label>
@@ -274,20 +274,20 @@ $c = $client;
 														<input type="text" class="form-control" name="province" <?php if(isset($c->province)){?> value="<?php echo $c->province; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
-														<label class="control-label">User's First Name</label>
+														<label class="control-label">Administrator's First Name</label>
 														<input type="text" class="form-control" name="u_fname" <?php if(isset($c->u_fname)){?> value="<?php echo $c->u_fname; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
-														<label class="control-label">User's Last Name</label>
-														<input type="text" class="form-control" name="u_lname" <?php if(isset($c->u_lname)){?> value="<?php echo $c->u_lname; ?>" <?php } ?>/>
+														<label class="control-label">Administrator's Last Name</label>
+														<input type="text" class="form-control" name="admin_lname" <?php if(isset($c->u_lname)){?> value="<?php echo $c->u_lname; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
-														<label class="control-label">User's Email Address</label>
-														<input type="email" id="u_email" class="form-control" name="u_email" <?php if(isset($c->u_email)){?> value="<?php echo $c->u_email; ?>" <?php } ?>/>
+														<label class="control-label">Administrator's Email Address</label>
+														<input type="email" id="u_email" class="form-control" name="admin_email" <?php if(isset($c->u_email)){?> value="<?php echo $c->u_email; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
-														<label class="control-label">User's Phone Number</label>
-														<input type="text" class="form-control" name="u_phone" <?php if(isset($c->u_phone)){?> value="<?php echo $c->u_phone; ?>" <?php } ?>/>
+														<label class="control-label">Administrator's Phone Number</label>
+														<input type="text" class="form-control" name="admin_phone" <?php if(isset($c->u_phone)){?> value="<?php echo $c->u_phone; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Site</label>
@@ -317,13 +317,67 @@ $c = $client;
                                                     ?>
                                                     
                                                     <div class="form-group col-md-6">
-														<label class="control-label">Start Date</label>
+														<label class="control-label">Contract Start Date</label>
 														<input type="text" class="form-control" name="date_start" <?php if(isset($start_date)){?> value="<?php echo $start_date; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
-														<label class="control-label">End Date</label>
+														<label class="control-label">Contract End Date</label>
 														<input type="text" class="form-control" name="date_end" <?php if(isset($end_date)){?> value="<?php echo $end_date; ?>" <?php } ?>/>
 													</div>
+                                                    <div class="form-group col-md-12">
+														<label class="control-label">Referred By</label>
+                                                        <select class="form-control" name="referred_by">
+                                                            <option value="">Select</option>
+                                                            <option value="Transrep" <?php if(isset($c->referred_by)&& $c->referred_by=='Transrep'){?> selected="selected" <?php } ?> >Transrep</option>
+                                                            <option value="ISB" <?php if(isset($c->referred_by)&& $c->referred_by=='ISB'){?> selected="selected" <?php } ?> >ISB</option>
+                                                            <option value="AFIMAC" <?php if(isset($c->referred_by)&& $c->referred_by=='AFIMAC'){?> selected="selected" <?php } ?>>AFIMAC</option>
+                                                            <option value="Broker" <?php if(isset($c->referred_by)&& $c->referred_by=='Broker'){?> selected="selected" <?php } ?>>Broker</option>
+                                                            <option value="Online" <?php if(isset($c->referred_by)&& $c->referred_by=='Online'){?> selected="selected" <?php } ?>>Online</option>
+                                                            <option value="Tradeshow" <?php if(isset($c->referred_by)&& $c->referred_by=='Tradeshow'){?> selected="selected" <?php } ?>>Tradeshow</option>
+                                                        </select>
+													</div>
+                                                    <div class="form-group col-md-6">
+														<label class="control-label">ARIS Agreement #</label>
+														<input type="text" class="form-control" name="agreement_number" <?php if(isset($c->agreement_number)){?> value="<?php echo $c->agreement_number; ?>" <?php } ?>/>
+													</div>
+                                                    <div class="form-group col-md-6">
+														<label class="control-label">ARIS Re-verification</label>
+														<input type="text" class="form-control form-control-inline date-picker" name="reverification" <?php if(isset($end_date)){?> value="<?php echo $end_date; ?>" <?php } ?>/>
+													</div>
+                                                    <div class="form-group col-md-12">
+														<label class="control-label">SACC Number</label>
+														<input type="text" class="form-control" name="sacc_number" <?php if(isset($c->sacc_number)){?> value="<?php echo $c->sacc_number; ?>" <?php } ?>/>
+													</div>
+                                                    <div class="form-group col-md-12">
+														<label class="control-label">Add document</label>
+                                                        <a href="#" class="btn btn-primary">Browse</a>
+                                                         <?php if(isset($c->document)){?>
+                                                         <img src="" />
+                                                         <?php } ?>
+													</div><div class="form-group col-md-6">
+														<label class="control-label">Billing Contact</label>
+														<input type="text" class="form-control" name="billing_contact" <?php if(isset($c->billing_contact)){?> value="<?php echo $c->billing_contact; ?>" <?php } ?>/>
+													</div>
+                                                    <div class="form-group col-md-6">
+														<label class="control-label">Billing Address</label>
+														<input type="text" class="form-control" name="billing_address" <?php if(isset($c->billing_address)){?> value="<?php echo $c->billing_address; ?>" <?php } ?>/>
+													</div>
+                                                    <div class="form-group col-md-12">
+														<label class="control-label">Billing Instructions</label>
+														<input type="radio" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=='individual' ){?> selected="selected" <?php } ?> value="individual"/>&nbsp;&nbsp;Individual&nbsp;&nbsp;
+                                                        <input type="radio" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=='centralized' ){?> selected="selected" <?php } ?> value="centralized"/>&nbsp;&nbsp;Centralized&nbsp;&nbsp;
+													</div>
+                                                    <div class="form-group col-md-6">
+														<label class="control-label">Invoice Terms</label>
+														<select class="form-control" name="invoice_terms">
+                                                        <option value="">Select</option>
+                                                            <option value="weekly" <?php if(isset($c->invoice_terms) && $c->invoice_terms=='weekly' ){?> selected="selected" <?php } ?>>Weekly</option>
+                                                            <option value="biweekly" <?php if(isset($c->invoice_terms) && $c->invoice_terms=='biweekly' ){?> selected="selected" <?php } ?>>Bi-weekly</option>
+                                                            <option value="monthly" <?php if(isset($c->invoice_terms) && $c->invoice_terms=='monthly' ){?> selected="selected" <?php } ?>>Monthly</option>
+                                                        </select>
+													</div>
+                                                    
+                                                    
                                                     <div class="clearfix"></div>
                                                     <hr />
                                                     <div class="margin-top-10 alert alert-success display-hide flash1" style="display: none;">

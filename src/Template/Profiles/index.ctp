@@ -144,6 +144,12 @@
     .page-footer,.chat-form,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.more{display:none!important;}
     .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
     .tabbable-line{border:none!important;}
-
+    a:link:after,
+    a:visited:after {
+        content: "" !important;
     }
+    .actions{display:none}
+    .paging_simple_numbers{display:none;}
+    }
+    
 </style>

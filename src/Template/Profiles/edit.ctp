@@ -15,7 +15,9 @@
         .tabbable-line {
             border: none !important;
         }
-
+        #tab_1_4,#tab_1_7{display:block!important;}
+        #tab_1_4,#tab_1_7{visibility:visible!important;}
+        #tab_1_4 *,#tab_1_7 *{visibility:visible!important;}
     }
 
 </style>

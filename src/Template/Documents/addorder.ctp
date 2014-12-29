@@ -133,6 +133,27 @@ $is_disabled = '';
 												<button class="close" data-dismiss="alert"></button>
 												Your form validation is successful!
 											</div>
+                                            <div class="form-group mar-top-10 col-md-12">
+                                        <?php
+                                                    $users = $this->requestAction("documents/getAllUser");
+                                         ?>
+                                         
+                                            <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->profile);?></label>
+                                            <div class="col-md-6">
+                                        <select class="form-control" name="uploaded_for">
+								        <option value="">Select <?php echo ucfirst($settings->profile);?></option>
+                                            <?php 
+                                                foreach($users as $u)
+                                                {
+                                                    ?>
+                                                    <option value="<?php echo $u->id;?>" <?php if(isset($return_user_id) && $return_user_id==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                                    <?php
+                                                }
+                                             ?>
+            							 </select>
+                                         </div>
+                                         </div>
+                                         <div class="clearfix"></div>
                                             <?php foreach($doc2 as $d){
                                                 $j = $d->id;
                                                 ?>

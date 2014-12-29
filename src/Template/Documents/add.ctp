@@ -20,6 +20,7 @@ $is_disabled = '';
                         </a>
 					</li>
 				</ul>
+                
                 <?php
                 if(isset($disabled))
                 { ?>
@@ -64,16 +65,37 @@ $is_disabled = '';
                                         
                                     
                                         <div class="form-group mar-top-10">
-                                            <div class="col-md-3">Select Document Type</div>
+                                            <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->document);?> Type</label>
                                             <div class="col-md-6">
                                             <select name="doc_type" class="form-control" onchange="showforms(this.value);">
-                                                <option value="">Select Document type</option>
+                                                <option value="">Select <?php echo ucfirst($settings->document);?> type</option>
                                                 <?php foreach($doc as $d){?>
                                                     <option value="<?php echo $d->form;?>" id="<?php echo $d->Form;?>"><?php echo ucfirst($d->title);?></option>
                                                 <?php }?>
                                             </select>
                                             </div>
                                         </div>
+                                        <div class="form-group mar-top-10">
+                                        <?php
+                                                    $users = $this->requestAction("documents/getAllUser");
+                                         ?>
+                                         
+                                            <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->profile);?>
+                                            </label>
+                                            <div class="col-md-6">
+                                        <select class="form-control" name="uploaded_for">
+								        <option value="">Select <?php echo ucfirst($settings->profile);?></option>
+                                            <?php 
+                                                foreach($users as $u)
+                                                {
+                                                    ?>
+                                                    <option value="<?php echo $u->id;?>" <?php if(isset($return_user_id) && $return_user_id==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                                    <?php
+                                                }
+                                             ?>
+            							 </select>
+                                         </div>
+                                         </div>
 										<div class="subform">
 								            
 										</div>

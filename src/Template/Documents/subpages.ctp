@@ -1,3 +1,3 @@
 <?php
-include("subpages/".$filename.".php");
+include("subpages/documents/".$filename);
 ?>

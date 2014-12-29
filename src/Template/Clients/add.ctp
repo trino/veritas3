@@ -43,14 +43,31 @@ $c = $client;
                         <div class="tab-pane" id="tab_1_3">
 								<div class="row profile-account">
 									<div class="col-md-3">
-										<li><img class="img-responsive" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png"/>
+										<?php
+                                        if(isset($c->image) && $c->image)
+                                        {
+                                            ?>
+                                            
+                                        <img class="img-responsive" id="clientpic" alt="" src="<?php echo $this->request->webroot;?>img/jobs/<?php echo $c->image;?>"/>
+                                        <?php
+                                        
+                                        }
+                                        else
+                                        {
+                                            ?>
+                                            <img class="img-responsive" id="clientpic" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png"/>
+                                            <?php
+                                        }
+                                        ?>
+                                        
                                             <div class="form-group">
                                             <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
                                             <div class="input-icon">
-                                            <a class="btn btn-success" href="javascript:void(0)">
+                                            <a class="btn btn-success" href="javascript:void(0)" id="clientimg">
                                             <i class="fa fa-image"></i>
                                               Add/Edit Image
                                             </a>
+                                            
                                             </div>
                                             </div>
                                             <?php include('subpages/recruiter_contact_table.php');?>
@@ -76,6 +93,7 @@ $c = $client;
 										<div class="tab-pane active" id="tab_1_1">
 											<div id="tab_1-1" class="tab-pane active">
 												<form role="form" action="" method="post">
+                                                    <input type="hidden" name="image" id="client_img" />
 													<div class="form-group col-md-6">
 														<label class="control-label">Customer Type</label>
                                                         <select class="form-control" name="customer_type">
@@ -252,7 +270,7 @@ $c = $client;
 
                                                 <form action="" id="displayform1" method="post">
                                                     <table class="table table-light table-hover">
-                                                        <tr><th></th><th class="center">System</th><th class="center"><?php echo ucfirst($settings->client);?> </th></tr>
+                                                        <tr><th></th><th class="">System</th><th class=""><?php echo ucfirst($settings->client);?> </th></tr>
                                                         <?php
                                                         $subdoc = $this->requestAction('/clients/getSub');
                                                         
@@ -264,7 +282,7 @@ $c = $client;
                                                                 
                                                                <?php echo ucfirst($sub['title']);?>
                                                             </td>
-                                                            <td class="center">
+                                                            <td class="">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="<?php echo $sub->id;?>" value="1" <?php if($sub['display']==1) {?>checked="checked" <?php }?> disabled="disabled" />
                                                                     Yes </label>
@@ -275,7 +293,7 @@ $c = $client;
                                                             <?php
                                                                  $csubdoc = $this->requestAction('/clients/getCSubDoc/'.$id.'/'.$sub->id);
                                                             ?>
-                                                            <td class="center">
+                                                            <td class="">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="clientC[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if($csubdoc['display'] != 0) {?> checked="checked" <?php } ?> />
                                                                     Yes </label>
@@ -286,8 +304,8 @@ $c = $client;
                                                             
                                                         </tr>
                                                         <tr <?php if($csubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
-                                                            <td></td>
-                                                            <td colspan="2" class="center">
+                                                            <td  colspan="2"></td>
+                                                            <td class="">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="client[<?php echo $sub->id;?>]" value="1" <?php if($csubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
                                                                     View Only </label>
@@ -557,9 +575,39 @@ $c = $client;
 </div>
 </div>
 
-
+<script>
+                
+                function initiate_ajax_upload(button_id){
+                var button = $('#'+button_id), interval;
+                new AjaxUpload(button,{
+                    action: base_url+"clients/upload_img/",                      
+                    name: 'myfile',
+                    onSubmit : function(file, ext){
+                        button.text('Uploading');
+                        this.disable();
+                        interval = window.setInterval(function(){
+                            var text = button.text();
+                            if (text.length < 13){
+                                button.text(text + '.');					
+                            } else {
+                                button.text('Uploading');				
+                            }
+                        }, 200);
+                    },
+                    onComplete: function(file, response){
+                        button.text('<i class="fa fa-image"></i> Add/Edit Image');
+                            window.clearInterval(interval);
+                            this.enable();
+                            $("#clientpic").attr("src",'<?php echo $this->request->webroot;?>img/jobs/'+response);
+                            $('#client_img').val(response);
+                            //$('.flashimg').show();
+                            }                        		
+                    });                
+            }
+           </script>
 <script>
                                     $(function(){
+                                        initiate_ajax_upload('clientimg');
                                         <?php
                                         if(isset($id))
                                         {

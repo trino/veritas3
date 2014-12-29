@@ -3,9 +3,25 @@
     $uid = ($this->request['action']=='add')? "0" : $this->request['pass'][0];
     $sidebar = $this->requestAction("settings/get_side/".$uid); ?>
     <?php $block = $this->requestAction("settings/get_blocks/".$uid); ?>
-                                    <h4> Modules </h4>
-
-                                    <form action="#" method="post" id="blockform">
+                                <ul class="nav nav-tabs">
+                                
+                                
+                                    <li class="active">
+                                		<a href="#subtab_2_1" data-toggle="tab">Modules</a>
+                                	</li>
+                                    <li class="">
+                                        <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
+                                    </li>
+                                    
+                                	
+                                
+                                
+                                </ul>
+                                    <div class="tab-content">
+                                                <div class="tab-pane active" id="subtab_2_1">
+                                                    <div class="">
+                                					   <h1>Modules</h1>
+                                					   <form action="#" method="post" id="blockform">
                                         <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                         <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
                                         <table class="table table-light table-hover">
@@ -134,6 +150,11 @@
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[document_delete]"
                                                                                           value="1" <?php if ($sidebar->document_delete == 1) echo "checked"; ?> /> Delete
+                                                            </label>
+                                                             <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_others]"
+                                                                                          value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> /> View Others <?php echo ucfirst($settings->document); ?>
                                                             </label>
                                                             
                                                             
@@ -370,6 +391,92 @@
 
 
                                     </form>
+                                						
+                                    </div>
+                                    </div>
+                                    <div class="tab-pane" id="subtab_2_2">
+                                                    
+                                                    <div class="">
+                                						<h1> Enable <?php echo ucfirst($settings->document);?>?</h1>
+                                                        <form action="#" method="post" id="displayform">
+                                                    <table class="table table-light table-hover">
+                                                        <tr><th></th><th class="">System</th><th class="" width="40%"><?php echo ucfirst($settings->profile);?></th></tr>
+                                                        <?php
+                                                        $subdoc = $this->requestAction('/profiles/getSub');
+                                                        
+                                                        foreach($subdoc as $sub)
+                                                        {
+                                                            ?>
+                                                            <tr>
+                                                            <td>
+                                                                
+                                                               <?php echo ucfirst($sub['title']);?>
+                                                            </td>
+                                                            <td class="">
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="1" <?php if($sub['display']==1) {?>checked="checked" <?php }?> />
+                                                                    Yes </label>
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="0" <?php if($sub['display']==0) {?>checked="checked" <?php }?> />
+                                                                    No </label>
+                                                            </td>
+                                                            <?php
+                                                                 $prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$id.'/'.$sub->id);
+                                                            ?>
+                                                            <td class="">
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if($prosubdoc['display'] != 0) {?> checked="checked" <?php } ?> />
+                                                                    Yes </label>
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="0" onclick="$(this).closest('tr').next('tr').hide();" <?php if($prosubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
+                                                                    No </label>
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                        <tr <?php if($prosubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
+                                                            <td colspan="2"></td>
+                                                            <td  class="">
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="1" <?php if($prosubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
+                                                                    View Only </label>
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="2" <?php if($prosubdoc['display'] == 2) {?> checked="checked" <?php } ?> />
+                                                                    Upload Only </label>
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio"  name="profile[<?php echo $sub->id;?>]" value="3" <?php if($prosubdoc['display'] == 3) {?> checked="checked" <?php } ?>/>
+                                                                    Both </label>
+                                                            </td>
+                                                        </tr>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </table>
+                                                    
+                                                    <?php
+                                                    if(!isset($disabled))
+                                                    {
+                                                        ?>
+
+                                                        <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Data saved successfully
+                                                        </div>
+                                                        <div class="margin-top-10">
+                                                            <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
+                                                                Save Changes </a>
+
+
+
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </form>
+                                					</div>
+                                                                
+                                						
+                                    </div>
+                            </div>
                                     
                                     <script>
                                     $(function(){
@@ -387,6 +494,21 @@
                                                 $('#save_display').text(' Save Changes ');
                                                } 
                                             })
+                                       });
+                                       $('#save_display').click(function(){
+                                        $('#save_display').text('Saving..');
+                                            var str = $('#displayform input').serialize();
+                                            $.ajax({
+                                               url:'<?php echo $this->request->webroot;?>profiles/displaySubdocs/<?php echo $id;?>',
+                                               data:str,
+                                               type:'post',
+                                               success:function(res)
+                                               {
+                                                $('.flash').show();
+                                                $('#save_display').text(' Save Changes ');
+                                               } 
+                                            })
                                        }); 
+                                    
                                     });
                                     </script>

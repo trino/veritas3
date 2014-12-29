@@ -41,21 +41,23 @@
 
             <div class="portlet-body">
                     <div class="chat-form">
-                            <form>
+                            <form action="<?php echo $this->request->webroot; ?>profiles/filterBy" method="get">
                                 <div class="col-md-2" style="padding-left:0;">
-                                    <select class="form-control" style="">
+                                    <select class="form-control" style="" name="filter_profile_type" onchange="this.form.submit();">
                                         <option value="">Filter By</option>
                                         <!--<option value=""><?php //echo ucfirst($settings->profile); ?> Type</option>-->
-                                        <option value="1">Admin</option>
-                                        <option value="2">Recruiter</option>
-                                        <option value="3">External</option>
-                                        <option value="4">Safety</option>
-                                        <option value="5">Driver</option>
-                                        <option value="6">Contact</option>
+                                        <option value="1" <?php if(isset($return_profile_type) && $return_profile_type==1){?> selected="selected"<?php } ?> >Admin</option>
+                                        <option value="2" <?php if(isset($return_profile_type) && $return_profile_type==2){?> selected="selected"<?php } ?>>Recruiter</option>
+                                        <option value="3" <?php if(isset($return_profile_type) && $return_profile_type==3){?> selected="selected"<?php } ?>>External</option>
+                                        <option value="4" <?php if(isset($return_profile_type) && $return_profile_type==4){?> selected="selected"<?php } ?>>Safety</option>
+                                        <option value="5" <?php if(isset($return_profile_type) && $return_profile_type==5){?> selected="selected"<?php } ?>>Driver</option>
+                                        <option value="6" <?php if(isset($return_profile_type) && $return_profile_type==6){?> selected="selected"<?php } ?>>Contact</option>
                                     </select>
                                 </div>
+                                </form>
+                                <form action="<?php echo $this->request->webroot; ?>profiles/search" method="get">
                                 <div class="col-md-6 ">
-                                    <input class="form-control input-inline" type="search"     placeholder=" Search for <?php echo ucfirst($settings->profile); ?>"      aria-controls="sample_1"/>
+                                    <input class="form-control input-inline" type="search" name="search"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1"/>
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </form>

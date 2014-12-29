@@ -409,6 +409,49 @@ class ProfilesController extends AppController {
         return $this->response;
         die();
     }
+    
+    function filterBy()
+    {
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		
+        
+        $profile_type = $_GET['filter_profile_type'];
+        $querys = TableRegistry::get('Profiles');
+        $query = $querys->find()->where(['profile_type'=>$profile_type]);
+        $this->set('profiles', $this->paginate($this->Profiles)); 
+        $this->set('profiles',$query);
+        $this->set('return_profile_type',$profile_type);
+        $this->render('index');
+    }
+    
+    function search()
+    {
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		
+        
+        $search = $_GET['search'];
+        $searchs = strtolower($search);
+        $querys = TableRegistry::get('Profiles');
+        $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
+        $this->set('profiles', $this->paginate($this->Profiles)); 
+        $this->set('profiles',$query);
+        $this->set('search_text',$search);
+        $this->render('index');
+    }
    
 }
 ?>

@@ -20,7 +20,10 @@ class FeedbacksController extends AppController{
     
     public function index()
     {
-        
+        $docs = TableRegistry::get('Documents');
+        $doc = $docs->find();
+        $doc=$doc->select();
+        $this->set('feedbacks', $doc);
     }
     
     public function add()
@@ -33,7 +36,7 @@ class FeedbacksController extends AppController{
 		  
 			if ($docs->save($doc)) {
 				$this->Flash->success('The feedback has been sent.');
-                	return $this->redirect('/');
+                	return $this->redirect('/feedbacks');
 			} else {
 				$this->Flash->error('The feedback could not be sent. Please, try again.');
                 return $this->redirect('/feedbacks/add');

@@ -28,8 +28,8 @@
             </div>    
             <div class="portlet-body">
              <div class="chat-form">
-                            <form>
-                                <!--div class="col-md-2" style="padding-left:0;">
+                            <!--<form>
+                                div class="col-md-2" style="padding-left:0;">
                                     <select class="form-control" style="">
                                         <option value=""><?php echo ucfirst($settings->client); ?> Type</option>
                                         <option value="">London</option>
@@ -39,8 +39,9 @@
                                         <option value="">Quick Contacts</option>
                                     </select>
                                 </div-->
+                                <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
                                 <div class="col-md-6"  style="padding-left:0;">
-                                    <input class="form-control input-inline" type="search"     placeholder=" Search for <?php echo ucfirst($settings->client); ?>"      aria-controls="sample_1"/>
+                                    <input class="form-control input-inline" name="search" type="search"     placeholder=" Search for <?php echo ucfirst($settings->client); ?>"   value="<?php if(isset($search_text)) echo $search_text; ?>"    aria-controls="sample_1"/>
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </form>

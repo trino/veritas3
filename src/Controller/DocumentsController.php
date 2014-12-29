@@ -147,7 +147,7 @@ class DocumentsController extends AppController {
 	public function addorder() {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
         
-        if($setting->order_create==0)
+        if($setting->document_create==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");

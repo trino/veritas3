@@ -151,6 +151,11 @@
                                                                                           name="side[document_delete]"
                                                                                           value="1" <?php if ($sidebar->document_delete == 1) echo "checked"; ?> /> Delete
                                                             </label>
+                                                             <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_others]"
+                                                                                          value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> /> View Others <?php echo ucfirst($settings->document); ?>
+                                                            </label>
                                                             
                                                             
                                                         </div>
@@ -490,7 +495,7 @@
                                                } 
                                             })
                                        });
-                                       ('#save_display').click(function(){
+                                       $('#save_display').click(function(){
                                         $('#save_display').text('Saving..');
                                             var str = $('#displayform input').serialize();
                                             $.ajax({
@@ -504,6 +509,6 @@
                                                } 
                                             })
                                        }); 
-                                    }); 
+                                    
                                     });
                                     </script>

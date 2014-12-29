@@ -147,10 +147,10 @@
 							List <?php echo ucfirst($settings->document);?>s</a>
 						</li>
                         <?php }?>
-                        <?php if($sidebar->order_create==1){?>
+                        <?php if($sidebar->document_create==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='order')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>documents/order">
-                            <i class="icon-plus"></i>
+							<a href="<?php echo WEB_ROOT;?>documents/addorder">
+                            <i class="icon-plus"></i> 
 							Submit Orders</a>
 						</li>
 						<?php }?>

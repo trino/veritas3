@@ -20,10 +20,7 @@ class FeedbacksController extends AppController{
     
     public function index()
     {
-        $docs = TableRegistry::get('Documents');
-        $doc = $docs->find();
-        $doc=$doc->select();
-        $this->set('feedbacks', $doc);
+        
     }
     
     public function add()

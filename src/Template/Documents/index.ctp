@@ -50,53 +50,67 @@
 
 
 				<div class="chat-form">
-					<form>
-
-
+					<form action="<?php echo $this->request->webroot; ?>documents/search" method="get">
 						<div class="col-md-3 col-sm-12" style="padding-left:0;">
 
-							<input class="form-control input-inline" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" aria-controls="sample_1"/>
+							<input class="form-control input-inline" name="search" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
 							<button type="submit" class="btn btn-primary">Search</button>
 
 						</div>
-
-
+                        </form>
+                        <?php
+                            $users = $this->requestAction("documents/getAllUser");
+                        ?>
+                        <form action="<?php echo $this->request->webroot; ?>documents/submittedBy" method="get">
 						<div class="col-md-3 col-sm-12">
-							<select class="form-control" style="">
+							<select class="form-control" name="submitted_by_id" style="" onchange="this.form.submit();">
 								<option value="">Submitted by</option>
-								<option value="3">Jack Black</option>
-								<option value="4">Nick Smith</option>
-								<option value="5">James Blont</option>
-								<option value="6">Mark Henry</option>
-								<option value="7">John Lenon</option>
-								<option value="8">Elvis Moore</option>
-								<option value="9">Peter Brown</option>
-								<option value="10">Jimmy Green</option>
-								<option value="11">Robert Black</option>
+                                <?php 
+                                    foreach($users as $u)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $u->id;?>" <?php if(isset($return_user_id) && $return_user_id==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                        <?php
+                                    }
+                                 ?>
 							</select>
 						</div>
+                        </form>
+                        <?php
+                            $type = $this->requestAction("documents/getDocType");
+                        ?>
+                        <form action="<?php echo $this->request->webroot; ?>documents/filterByType" method="get">
 						<div class="col-md-3 col-sm-12">
-							<select class="form-control">
+							<select class="form-control" name="type" onchange="this.form.submit();">
 								<option value=""><?php echo ucfirst($settings->document);?> type</option>
-								<option value="0">Contract</option>
-								<option value="3">Evidence</option>
-								<option value="4">Report</option>
-								<option value="5">Site Order</option>
-								<option value="6">Orders</option>
-								<option value="7">Template</option>
-								<option value="8">KPI Audit</option>
-								<option value="9">Others</option>
-
+								<?php 
+                                    foreach($type as $t)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $t->title;?>" <?php if(isset($return_type) && $return_type==$t->title){?> selected="selected"<?php } ?> ><?php echo ucfirst($t->title); ?></option>
+                                        <?php
+                                    }
+                                 ?>
+                                 <option value="orders">Orders</option>
+                                 <option value="feedbacks">Feedbacks</option>
 							</select>
 						</div>
+                        </form>
+                        <?php
+                            $clients = $this->requestAction("documents/getAllClient");
+                        ?>
+                        <form action="<?php echo $this->request->webroot; ?>documents/filterByClient" method="get">
 						<div class="col-md-3 col-sm-12">
-							<select class="form-control">
+							<select class="form-control" name="client_id" onchange="this.form.submit();">
 								<option value=""><?php echo ucfirst($settings->client);?></option>
-								<option value="0">Challenger - Ontario</option>
-								<option value="3">
-									Challenger - Quebec</option>
-								<option value="4">Challenger - BC</option>
-								<option value="5">Challenger - London</option>
+								<?php 
+                                    foreach($clients as $c)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $c->id;?>" <?php if(isset($return_client_id) && $return_client_id==$c->id){?> selected="selected"<?php } ?> ><?php echo $c->title; ?></option>
+                                        <?php
+                                    }
+                                 ?>
 
 							</select>
 						</div>
@@ -113,171 +127,41 @@
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
                     		<tr>
+                                <th>ID</th>
                     			<th><?php echo ucfirst($settings->document);?></th>
-                                <th>Prepared for</th>
-                    			<th><?php echo ucfirst($settings->client);?></th>
                     			<th>Uploaded by</th>
-                    			<th>Uploaded on</th>
-                    			<th>Files</th>
-                                <th>Status</th>                    			
+                    			<!--<th>Uploaded on</th>-->                    			
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
                     	<tbody>
-                    	
-                    		<tr>
-                    			<td>Orders</td>
-                                <td>Rob Anthony</td>
-                    			<td>Challenger - Ontario </td>
-                    			<td>Admin</td>
-                    			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">Dummy.pdf</a></td>
-                    			<td class="">
-											<span class="label label-sm label-success">
-										Passed </span>
+                        <?php
+                        $row_color_class = "odd";
+                        foreach ($documents as $docs):
 
-								</td>
-                    			<td class="actions">
-                    			<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
-                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
-                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
-                    			</td>
-                    		</tr>
+                            if($row_color_class=="even")
+                            {
+                                $row_color_class ="odd";
+                            }else{
+                                $row_color_class ="even";
+                            }
+                            $uploaded_by = $this->requestAction("documents/getUser/".$docs->user_id);
+                          ?>
+                          <tr class="<?=$row_color_class;?>" role="row">
+                                <td><?= $this->Number->format($docs->id) ?></td>
+                                <td><?= h($docs->document_type) ?></td>
+                                <td><?= h($uploaded_by->username) ?></td>
+                                
+                                <td class="actions">
 
+                                    <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $docs->id], ['class' => 'btn btn-info']);} ?>
+                                    <?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);} ?>
+                                    <?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $docs->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $docs->id)]);} ?>
 
-
-                            <tr>
-                    			<td>Orders</td>
-                                <td>Jimmy Hendrix</td>
-                    			<td>Challenger - London</td>
-                    			<td>John Q Sample</td>
-                    			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">Dummy.pdf</a></td>
-                   			    <td class="">
-	<span class="label label-sm label-danger">
-										Failed </span>
-								</td>
-                    			<td class="actions">
-                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
-                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
-                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
-                    			</td>
-                    		</tr>
-                            <tr>
-                    			<td>Orders</td>
-                                <td>Angela Stuart</td>
-                    			<td>Challenger - London</td>
-                    			<td>John Q Sample</td>
-                    			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">Dummy.pdf</a></td>
-                    			<td class="">
-
-											<span class="label label-sm label-success">
-										Passed </span>
-
-
-								</td>
-                    			<td class="actions">
-                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
-                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
-                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
-                    			</td>
-                    		</tr>
-                            <tr>
-                    			<td>Orders</td>
-                                <td>Jim Morrison</td>
-                    			<td>Challenger - Quebec</td>
-                    			<td>John Q Sample</td>
-                    			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">Dummy.pdf</a></td>
-                    			<td class="">
-
-								<span class="label label-sm label-danger">
-										Failed </span>
-
-								</td>
-                    			<td class="actions">
-                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
-                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
-                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
-                    			</td>
-                    		</tr><tr>
-                    			<td>Orders</td>
-                                <td>Jacob Brown</td>
-                    			<td>Challenger - BC</td>
-                    			<td>Bob Smith</td>
-                    			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">Dummy.pdf</a></td>
-                    			<td class="">
-										<span class="label label-sm label-warning">
-										Pending </span>
-								</td>
-                    			<td class="actions">
-                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
-                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
-                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
-                    			</td>
-                    		</tr>
-                            <tr>
-                    			<td>Orders</td>
-                                <td>Peter Smith</td>
-                    			<td>Challenger - BC</td>
-                    			<td>Bob Smith</td>
-                    			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">Dummy.pdf</a></td>
-                    			<td class="">
-
-														<span class="label label-sm label-warning">
-										Pending </span>
-
-								</td>
-                    			<td class="actions">
-                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
-                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
-                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
-                    			</td>
-                    		</tr>
-                            <tr>
-                    			<td>Orders</td>
-                                <td>Jude Brown</td>
-                    			<td>Challenger - London</td>
-                    			<td>Bob Smith</td>
-                    			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">Dummy.pdf</a></td>
-                    			<td class="">
-
-											<span class="label label-sm label-success">
-										Approved </span>
-
-								</td>
-                    			<td class="actions">
-                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
-                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
-                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
                                 </td>
-                    		</tr>
-                            <tr>
-                    			<td>Orders</td>
-                                <td>Luke Smith</td>
-                    			<td>Challenger - London</td>
-                    			<td>Jack Black</td>
-                    			<td>12-05-2014 03:20:00</td>
-                    			<td><a href="#">Dummy.pdf</a></td>
-                    			<td class="">
+                            </tr>
 
-									<span class="label label-sm label-danger">
-										Failed </span>
-
-
-								</td>
-                    			<td class="actions">
-                    				<?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view'], ['class' => 'btn btn-info']);} ?>
-                    				<?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit'], ['class' => 'btn btn-primary']);} ?>
-                    				<?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => '#'], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?')]);} ?>
-                    			</td>
-                    		</tr>
-                    
-                    	
+                        <?php endforeach; ?>
                     	</tbody>
             	</table>
 

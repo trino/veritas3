@@ -57,6 +57,28 @@ class ClientsController extends AppController {
         }
 		$this->set('client', $this->paginate($this->Clients));
 	}
+    
+    function search()
+    {
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		
+        
+        $search = $_GET['search'];
+        $searchs = strtolower($search);
+        $querys = TableRegistry::get('Clients');
+        $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
+        $this->set('client', $this->paginate($this->Clients)); 
+        $this->set('client',$query);
+        $this->set('search_text',$search);
+        $this->render('index');
+    }
 
 
 

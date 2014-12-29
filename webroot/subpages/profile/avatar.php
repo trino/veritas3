@@ -60,6 +60,7 @@
                             window.clearInterval(interval);
                             this.enable();
                             $("#profilepic").attr("src",'<?php echo $this->request->webroot;?>img/profile/'+response);
+                            $("#ppicture").attr("src",'<?php echo $this->request->webroot;?>img/profile/'+response);
                             $('.flashimg').show();
                             }                        		
                     });                

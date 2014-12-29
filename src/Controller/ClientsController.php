@@ -22,7 +22,30 @@ class ClientsController extends AppController {
         }
         
     }
-    
+    function upload_img()
+    {
+        if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
+        {
+            $arr = explode('.',$_FILES['myfile']['name']);
+            $ext = end($arr);
+            $rand = rand(100000,999999).'_'.rand(100000,999999).'.'.$ext;
+            $allowed = array('jpg','jpeg','png','bmp','gif');
+            $check = strtolower($ext);
+            if(in_array($check,$allowed)){
+                move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/jobs/'.$rand);
+                
+                
+                
+                        echo $rand;
+                 
+            }
+            else
+            {
+                echo "error";
+            }
+        }
+        die();
+    }
 	public function index() {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
         

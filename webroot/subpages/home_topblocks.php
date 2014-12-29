@@ -117,7 +117,7 @@
 
     <?php if ($block->tasks == 1) { ?>
         
-        <a class="tile bg-blue-steel" href="<?php echo $this->request->webroot;?>todo" style="display: block;">
+        <a class="tile bg-blue-steel" href="<?php echo $this->request->webroot;?>todo/date/<?php echo date('Y-m-d');?>" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-tasks"></i>
             </div>

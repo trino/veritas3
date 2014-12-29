@@ -58,7 +58,7 @@ class DocumentsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function addorder() {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->document_create==0)
@@ -87,7 +87,7 @@ class DocumentsController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function edit($id = null) {
+	public function editorder($id = null) {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->document_edit==0)
@@ -109,8 +109,18 @@ class DocumentsController extends AppController {
 			}
 		}
 		$this->set(compact('profile'));*/
-        $this->render('add');
+        $this->render('addorder');
 	}
+    
+    function add()
+    {
+        
+    }
+    
+    function edit()
+    {
+        $this->render('add');
+    }
 
 /**
  * Delete method

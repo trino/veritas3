@@ -16,7 +16,7 @@ $is_disabled = '';
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href=""><?php echo ucfirst($settings->document);?>
+						<a href=""><?php echo "Orders";?>
                         </a>
 					</li>
 				</ul>
@@ -53,122 +53,29 @@ $is_disabled = '';
                                         if($param !='view')
                                         {
                                             $tab = 'tab-pane';
+                                            $doc = $this->requestAction('/documents/getDocument');
                                             ?>
 
-										<ul class="nav nav-pills nav-justified steps">    
-                                            <?php
-                                                $doc = $this->requestAction('/documents/getDocument');
-                                                $doc2 = $doc;
-                                                $i = 1;
-                                                foreach($doc as $d)
-                                                {
-                                                    $j = $d->id;
-                                                ?>
-                                                <li>
-												<a href="#tab<?php echo $j;?>" data-toggle="tab" class="step">
-												<span class="number">
-												<?php echo $i; ?> </span><br />
-												<span class="desc">
-												<i class="fa fa-check"></i> <?php echo ucfirst($d->title); ?> </span>
-												</a>
-											</li>
-                                                <?php
-                                                
-                                                $i++;
-                                                }
-                                            ?>
-											
-                                            <li>
-												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
-												<span class="number">
-												<?php echo $i++;?></span><br />
-												<span class="desc">
-												<i class="fa fa-check"></i> Confirmation </span>
-												</a>
-											</li>
-                                            <li>
-												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
-												<span class="number">
-												<?php echo $i++;?></span><br />
-												<span class="desc">
-												<i class="fa fa-check"></i> Report Card </span>
-												</a>
-											</li>
-                                            
-										</ul>
-										<div id="bar" class="progress progress-striped" role="progressbar">
-											<div class="progress-bar progress-bar-info">
-											</div>
-										</div>
+										
                                         <?php
                                         }
                                         ?>
-                                        <div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>">
-										<div class="row">
-											<div class="col-md-offset-3 col-md-9">
-												<a href="javascript:;" class="btn default button-previous">
-												<i class="m-icon-swapleft"></i> Back </a>
-
-                                                <a href="javascript:;" class="btn green button-next">
-												Save <i class="m-icon-swapdown m-icon-white"></i>
-												</a>
-
-												<a href="javascript:;" class="btn blue button-next cont">
-												Continue <i class="m-icon-swapright m-icon-white"></i>
-												</a>
-
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
-                                                <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
-											</div>
-										</div>
-									</div>
-										<div class="tab-content">
-											<div class="alert alert-danger display-none">
-												<button class="close" data-dismiss="alert"></button>
-												You have some form errors. Please check below.
-											</div>
-											<div class="alert alert-success display-none">
-												<button class="close" data-dismiss="alert"></button>
-												Your form validation is successful!
-											</div>
-                                            <?php foreach($doc2 as $d){
-                                                $j = $d->id;
-                                                ?>
-											<div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab<?php echo $d->id; ?>">
-												<?php
-                                                
-                                                    include('subpages/documents/'.$d->form);
-                                                ?>
-											</div>
-                                            <?php } ?>
-											
-                                            <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
-												<?php
-                                                    include('subpages/documents/confirmation.php');
-                                                ?>
-											</div>
-                                            <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
-												<?php
-                                                    include('subpages/documents/forview.php');
-                                                ?>
-											</div>
-                                            <?php
-
-                                            // For view action only
-
-                                            if($tab=='nodisplay')
-                                            {
-                                                ?>
-
-                                            <div class="forview <?php if($tab=='tab-pane')echo 'nodisplay';?>">
-                                                <?php include('subpages/documents/forview.php');?>
+                                        
+                                        
+                                    
+                                        <div class="form-group mar-top-10">
+                                            <div class="col-md-3">Select Document Type</div>
+                                            <div class="col-md-6">
+                                            <select name="doc_type" class="form-control" onchange="showforms(this.value);">
+                                                <option value="">Select Document type</option>
+                                                <?php foreach($doc as $d){?>
+                                                    <option value="<?php echo $d->form;?>" id="<?php echo $d->Form;?>"><?php echo ucfirst($d->title);?></option>
+                                                <?php }?>
+                                            </select>
                                             </div>
-
-                                            <?php
-                                            }
-                                            ?>
+                                        </div>
+										<div class="subform">
+								            
 										</div>
 									</div>
 									<div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>">
@@ -182,13 +89,11 @@ $is_disabled = '';
 												</a>
 
 												<a href="javascript:;" class="btn blue button-next cont">
-												Continue <i class="m-icon-swapright m-icon-white"></i>
+												Save As Draft <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
-                                                <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
+												
+                                                
 											</div>
 										</div>
 									</div>
@@ -199,14 +104,20 @@ $is_disabled = '';
 				</div>
 			</div>
 <script>
-function subform(form_type)
+function showforms(form_type)
 {
-    var filename = form_type.replace(/\W/g, '_');
-    var filename = filename.toLowerCase();
-    $('.subform').show();   1
-    $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+filename);
+    //var form_type = $(this).val();
+    //alert(form_type);
+    //var filename = form_type.replace(/\W/g, '_');
+    //var filename = filename.toLowerCase();
+    //$('.subform').show();   1
+    if(form_type!= "")
+        $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+form_type);
+    else
+        $('.subform').html("");
 }
 jQuery(document).ready(function() {
+    
    $('#addfiles').click(function(){
             //alert("ssss");
            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');

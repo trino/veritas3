@@ -43,12 +43,7 @@ $c = $client;
                         <div class="tab-pane" id="tab_1_3">
 								<div class="row profile-account">
 									<div class="col-md-3">
-										<img class="img-responsive" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png">
-
-
-
-
-
+										<li><img class="img-responsive" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png"/>
                                             <div class="form-group">
                                             <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
                                             <div class="input-icon">
@@ -58,153 +53,7 @@ $c = $client;
                                             </a>
                                             </div>
                                             </div>
-                                            <table class="table table-striped table-bordered table-advance table-hover">
-                                                <thead><tr><th colspan="2">Add Recruiters</th></tr></thead>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> John </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Falcon </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> Maroni </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Oswalt </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> Sasha </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Bruce </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> Heather </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Ronney </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> Mooney </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Alfred </span>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-                                            <table class="table table-striped table-bordered table-advance table-hover">
-                                                <thead><tr><th colspan="2">Add Contacts</th></tr></thead>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> John </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Falcon </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> Maroni </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Oswalt </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> Sasha </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Bruce </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> Heather </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Ronney </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="checker">
-                                                        <span><input type="checkbox" name="canView_contracts"/></span>
-                                                        </div>
-                                                        <span> Mooney </span>
-                                                    </td>
-                                                    <td>
-                                                    <div class="checker">
-                                                    <span><input type="checkbox" name="canView_contracts"/></span>
-                                                    </div>
-                                                        <span> Alfred </span>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                            <?php include('subpages/recruiter_contact_table.php');?>
 									</div>
 									<div class="col-md-9">
                                     <ul class="nav nav-tabs">
@@ -318,11 +167,11 @@ $c = $client;
                                                     
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Contract Start Date</label>
-														<input type="text" class="form-control" name="date_start" <?php if(isset($start_date)){?> value="<?php echo $start_date; ?>" <?php } ?>/>
+														<input type="text" class="form-control date-picker" name="date_start" <?php if(isset($start_date)){?> value="<?php echo $start_date; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Contract End Date</label>
-														<input type="text" class="form-control" name="date_end" <?php if(isset($end_date)){?> value="<?php echo $end_date; ?>" <?php } ?>/>
+														<input type="text" class="form-control date-picker" name="date_end" <?php if(isset($end_date)){?> value="<?php echo $end_date; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Referred By</label>
@@ -350,10 +199,12 @@ $c = $client;
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Add document</label>
+                                                        <div>
                                                         <a href="#" class="btn btn-primary">Browse</a>
                                                          <?php if(isset($c->document)){?>
                                                          <img src="" />
                                                          <?php } ?>
+                                                         </div>
 													</div><div class="form-group col-md-6">
 														<label class="control-label">Billing Contact</label>
 														<input type="text" class="form-control" name="billing_contact" <?php if(isset($c->billing_contact)){?> value="<?php echo $c->billing_contact; ?>" <?php } ?>/>

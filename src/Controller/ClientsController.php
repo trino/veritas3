@@ -148,9 +148,10 @@ class ClientsController extends AppController {
 		if ($this->request->is('post')) {
 		  
 			if ($clients->save($client)) {
-				//$this->Flash->success('The user has been saved.');
+				$this->Flash->success('The client has been saved.');
                 	echo $client->id;
 			} else {
+			     $this->Flash->error('The client could not be saved. Please, try again.');
 				echo "e";
 			}
 		}

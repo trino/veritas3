@@ -55,6 +55,7 @@ class ProfilesController extends AppController {
 		$profile = $this->Profiles->get($id, [ 'contain' => []]);
 		$this->set('profile', $profile);
         $this->set('disabled', 1);
+        $this->set('id',$id);
         $this->render("edit");
 	}
 
@@ -78,7 +79,10 @@ class ProfilesController extends AppController {
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
         $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
 		$profiles = TableRegistry::get('Profiles');
-        $profile = $profiles->newEntity($_POST);
+        if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
+        $_POST['admin']=1;
+        $profile = $profiles->newEntity( $_POST);
+        
 		if ($this->request->is('post')) {
 			if ($profiles->save($profile)) {
 			     $blocks = TableRegistry::get('Blocks');
@@ -131,6 +135,8 @@ class ProfilesController extends AppController {
 			'contain' => []
 		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
+		  if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
+            $_POST['admin']=1;
 			$profile = $this->Profiles->patchEntity($profile, $this->request->data);
 			if ($this->Profiles->save($profile)) {
 				$this->Flash->success('The user has been saved.');
@@ -402,6 +408,49 @@ class ProfilesController extends AppController {
         $this->response->body($query);
         return $this->response;
         die();
+    }
+    
+    function filterBy()
+    {
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		
+        
+        $profile_type = $_GET['filter_profile_type'];
+        $querys = TableRegistry::get('Profiles');
+        $query = $querys->find()->where(['profile_type'=>$profile_type]);
+        $this->set('profiles', $this->paginate($this->Profiles)); 
+        $this->set('profiles',$query);
+        $this->set('return_profile_type',$profile_type);
+        $this->render('index');
+    }
+    
+    function search()
+    {
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		
+        
+        $search = $_GET['search'];
+        $searchs = strtolower($search);
+        $querys = TableRegistry::get('Profiles');
+        $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
+        $this->set('profiles', $this->paginate($this->Profiles)); 
+        $this->set('profiles',$query);
+        $this->set('search_text',$search);
+        $this->render('index');
     }
    
 }

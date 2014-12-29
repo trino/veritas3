@@ -21,7 +21,38 @@ class ProfilesController extends AppController {
         }
         
     }
-    
+    function upload_img($id)
+    {
+        if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
+        {
+            $arr = explode('.',$_FILES['myfile']['name']);
+            $ext = end($arr);
+            $rand = rand(100000,999999).'_'.rand(100000,999999).'.'.$ext;
+            $allowed = array('jpg','jpeg','png','bmp','gif');
+            $check = strtolower($ext);
+            if(in_array($check,$allowed)){
+                move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/profile/'.$rand);
+                
+                unset($_POST);
+                $_POST['image'] = $rand;
+                $img = TableRegistry::get('profiles');
+                
+                //echo $s;die();
+                $query = $img->query();
+                        $query->update()
+                        ->set($_POST)
+                        ->where(['id' => $id])
+                        ->execute();
+                        echo $rand;
+                 
+            }
+            else
+            {
+                echo "error";
+            }
+        }
+        die();
+    }
 	public function index() {
 	   
         $setting = $this->get_permission($this->request->session()->read('Profile.id'));

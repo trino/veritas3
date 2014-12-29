@@ -33,10 +33,96 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $docs = TableRegistry::get('Documents');
+        $doc = $docs->find();
+        $doc=$doc->select();
+        $this->set('documents', $doc);
 		//$this->set('client', $this->paginate($this->Jobs));
 	}
-
-
+    
+    function search()
+    {
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->document_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		
+        
+        $search = $_GET['search'];
+        $searchs = strtolower($search);
+        $querys = TableRegistry::get('Documents');
+        $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
+        $this->set('documents', $this->paginate($this->Documents)); 
+        $this->set('documents',$query);
+        $this->set('search_text',$search);
+        $this->render('index');
+    }
+    
+    function submittedBy()
+    {
+       $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		
+        $id = $_GET['submitted_by_id'];
+        $querys = TableRegistry::get('Documents');
+        $query = $querys->find()->where(['user_id'=>$id]);
+        $this->set('documents', $this->paginate($this->Documents)); 
+        $this->set('documents',$query);
+        $this->set('return_user_id',$id);
+        $this->render('index'); 
+    }
+    
+    function filterByClient()
+    {
+       $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		
+        $id = $_GET['client_id'];
+        $querys = TableRegistry::get('Documents');
+        $query = $querys->find()->where(['client_id'=>$id]);
+        $this->set('documents', $this->paginate($this->Documents)); 
+        $this->set('documents',$query);
+        $this->set('return_client_id',$id);
+        $this->render('index'); 
+    }
+    
+    function filterByType()
+    {
+         $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+		
+        $type = $_GET['type'];
+        $querys = TableRegistry::get('Documents');
+        $query = $querys->find()->where(['document_type'=>$type]);
+        $this->set('documents', $this->paginate($this->Documents)); 
+        $this->set('documents',$query);
+        $this->set('return_type',$type);
+        $this->render('index'); 
+    }
+    
+    
 
 	public function view($id = null) {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
@@ -193,5 +279,44 @@ class DocumentsController extends AppController {
         
     }
     
+    function getUser($user_id)
+    {
+        $query = TableRegistry::get('Profiles');
+        $query = $query->find()->where(['id'=>$user_id]);
+        $q = $query->first();
+        $this->response->body($q);
+        return $this->response;
+        die();
+    }   
+    
+    function getAllUser()
+    {
+        $query = TableRegistry::get('Profiles');
+        $query = $query->find();
+        $q = $query->select();
+        $this->response->body($q);
+        return $this->response;
+        die();
+    } 
+    
+    function getAllClient()
+    {
+        $query = TableRegistry::get('Clients');
+        $query = $query->find();
+        $q = $query->select();
+        $this->response->body($q);
+        return $this->response;
+        die();
+    }
+    
+    function getDocType()
+    {
+        $query = TableRegistry::get('Subdocuments');
+        $query = $query->find();
+        $q = $query->select();
+        $this->response->body($q);
+        return $this->response;
+        die();
+    }
     
 }

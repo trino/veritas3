@@ -150,16 +150,27 @@
                                                         </div>
                                                         
                                                         <div class="col-md-12">
-                                                        
-                                                            <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-12">
                                                                 <label class="control-label">Two Pieces of ID</label>
-                                                                <input <?php echo $is_disabled ?> name="" type="text" class="form-control" />
+                                                                <div id="more_id_div">
+                                                                    <a href="" id="browse_id" class="btn btn-primary">Browse</a>
+                                                                </div>
+                                                                      <br /><a href="javascript:void(0);" id="addmore_id" class="btn btn-success">Add More</a>
                                                             </div>
-                                                            <div class="form-group col-md-6">
-                                                                <label class="control-label">TransClick submission</label>
-                                                                <input <?php echo $is_disabled ?> name="transclick" type="text" class="form-control" <?php if(isset($p->transclick)){?> value="<?php echo $p->transclick; ?>" <?php } ?> />
-                                                            </div>
+                                                            
                                                         </div>
+                                                        
+                                                        <div class="col-md-12">
+                                                            
+                                                            <div class="form-group col-md-12">
+                                                                <label class="control-label">TransClick submission</label>
+                                                            
+                                                                <div id="more_trans_div">
+                                                                    <a href="" id="browse_trans" class="btn btn-primary">Browse</a>
+                                                                </div>
+                                                                    <br /><a href="javascript:void(0);" id="addmore_trans" class="btn btn-success">Add More</a>
+                                                            </div>
+                                                            </div>
 
                                                         <?php
                                                         if (!isset($disabled)) {
@@ -221,3 +232,24 @@
 
 
                                     </div>
+
+<script>
+$(function(){
+   
+   $('#addmore_id').click(function(){
+   $('#more_id_div').append('<div id="append_id"><div class="pad_bot"><a href="" class="btn btn-primary">Browse</a> <a href="javascript:void(0);" id="delete_id_div" class="btn btn-danger">Delete</a></div></div>') 
+   }); 
+   
+   $('#delete_id_div').live('click',function(){
+    $(this).closest('#append_id').remove();
+   })
+   
+   $('#addmore_trans').click(function(){
+   $('#more_trans_div').append('<div id="append_trans"><div class="pad_bot"><a href="" class="btn btn-primary">Browse</a> <a href="javascript:void(0);" id="delete_trans_div" class="btn btn-danger">Delete</a></div></div>') 
+   }); 
+   
+   $('#delete_trans_div').live('click',function(){
+    $(this).closest('#append_trans').remove();
+   })
+});
+</script>

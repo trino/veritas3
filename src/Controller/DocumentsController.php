@@ -240,7 +240,7 @@ class DocumentsController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function editorder($id = null) {
+	public function editorder($cid=0,$did=0) {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
         if($setting->document_edit==0 || count($doc)==0)
@@ -249,6 +249,8 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $this->set('cid',$cid);
+        $this->set('did',$did);
 		/*$profile = $this->Clients->get($id, [
 			'contain' => []
 		]);
@@ -269,12 +271,24 @@ class DocumentsController extends AppController {
     {
          $setting = $this->get_permission($this->request->session()->read('Profile.id'));
          $doc = $this->getDocumentcount();
-         
-        if($setting->document_create==0 || count($doc)==0)
+        if($did!=0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
-            	return $this->redirect("/");
+            if($setting->document_edit==0 || count($doc)==0)
+            {
+                $this->Flash->error('Sorry, You dont have the permissions.');
+                	return $this->redirect("/");
+                
+            }
             
+        }
+        else
+        { 
+            if($setting->document_create==0 || count($doc)==0)
+            {
+                $this->Flash->error('Sorry, You dont have the permissions.');
+                	return $this->redirect("/");
+                
+            }
         }
         if(isset($_POST['uploaded_for'])){
         $docs = TableRegistry::get('Documents');

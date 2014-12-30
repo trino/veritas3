@@ -186,8 +186,10 @@ var FormWizard = function () {
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();
+                    $('.uploaded_for').hide();
                     displayConfirm();
                 } else {
+                    $('.uploaded_for').show();
                     $('#form_wizard_1').find('.button-next').show();
                     $('#form_wizard_1').find('.button-submit').hide();
                 }

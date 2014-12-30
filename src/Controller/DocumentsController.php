@@ -273,6 +273,10 @@ class DocumentsController extends AppController {
          $doc = $this->getDocumentcount();
         if($did!=0)
         {
+            $doc = TableRegistry::get('Documents');
+            $query = $doc->find();
+            $query->select()->where(['id' => $did])->first();
+            $this->set('document',$query);
             if($setting->document_edit==0 || count($doc)==0)
             {
                 $this->Flash->error('Sorry, You dont have the permissions.');

@@ -23,11 +23,12 @@
                 if($doc){
                     foreach($doc as $d)
                     {
-                        $prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$this->Session->read('Profile.id').'/'.$d->id);
+                        $csubdoc = $this->requestAction('/clients/getCSubDoc/'.$id.'/'.$d->id);
+                        //var_dump($csubdoc);
                         if($i==11)
                         $i=0;
                         ?>
-                        <?php if($prosubdoc['display'] != 0 && $d->display==1){?>
+                        <?php if($csubdoc['display'] == 1 && $d->display==1) {?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
     					<div class="dashboard-stat <?php echo $class[$i]; ?>">
@@ -44,15 +45,16 @@
     								 <?php echo ucfirst($d->title); ?>
     							</div>
     						</div>
-    						<a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
+    						<a class="more" href="#">
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a>
     					</div>
                         <div class="dusk"></div>
     
                     </div>
+                    
                         <?php
-                    }
+                        }
                         $i++;
                     }
                 }

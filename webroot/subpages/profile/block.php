@@ -193,6 +193,21 @@
                                                         No </label>
                                                 </td>
                                             </tr>
+                                              <tr>
+                                                <td class="vtop">Recent Activity</td>
+                                                <td>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[recent]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->recent == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[recent]"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->recent == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
                                         </table>
                                         <!--end profile-settings-->
 

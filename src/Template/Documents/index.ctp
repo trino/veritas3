@@ -144,7 +144,15 @@
                                 <td class="actions">
 
                                     <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $docs->id], ['class' => 'btn btn-info']);} ?>
-                                    <?php  if($sidebar->document_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);} ?>
+                                    <?php  
+                                    if($sidebar->document_edit=='1')
+                                    {
+                                        if($docs->document_type=='feedbacks' || $docs->document_type=='orders' )
+                                        echo $this->Html->link(__('Edit'), ['controller'=>'feedbacks','action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);
+                                        else
+                                        echo $this->Html->link(__('Edit'), ['action' => 'edit',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
+                                    }
+                                     ?>
                                     <?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $docs->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $docs->id)]);} ?>
 
                                 </td>

@@ -15,6 +15,16 @@
             <div class="profile-usertitle-job">
                 Reference Number 1
             </div>
+
+
+            <div class="">
+                <label class="uniform-inline">
+                    <input  type="checkbox" name="stat"  value="1" />
+                    Hired </label>
+
+            </div>
+
+
         </div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
@@ -69,15 +79,7 @@
 <!-- BEGIN PROFILE CONTENT -->
 <div class="profile-content">
     <div class="row">
-        <div class="col-md-6"></div>
-        <div class="col-md-6">
-            <label class="uniform-inline">
-            <input  type="radio" name="stat"  value="1" />
-            Hired </label>
-            <label class="uniform-inline">
-            <input type="radio" name="stat" value="0" checked />
-            Failed </label>
-        </div>
+
         <div class="clearfix"></div>
         <div class="col-md-6">
             <!-- BEGIN PORTLET -->

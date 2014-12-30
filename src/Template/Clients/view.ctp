@@ -153,7 +153,7 @@ $is_disabled = '';
 										<!--end row-->
 
                                         <div class="home_blocks">
-                                        <?php include('subpages/home_blocks.php');?>
+                                        <?php include('subpages/home_blocks_client.php');?>
                                         </div>
                             			<div class="clearfix"></div>
 

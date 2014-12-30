@@ -295,15 +295,15 @@ $c = $client;
                                                             ?>
                                                             <td class="">
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="clientC[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if($csubdoc['display'] != 0) {?> checked="checked" <?php } ?> />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="clientC[<?php echo $sub->id;?>]" value="1"  <?php if($csubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="clientC[<?php echo $sub->id;?>]" value="0" onclick="$(this).closest('tr').next('tr').hide();" <?php if($csubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="clientC[<?php echo $sub->id;?>]" value="0"  <?php if($csubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
                                                                     No </label>
                                                             </td>
                                                             
                                                         </tr>
-                                                        <tr <?php if($csubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
+                                                        <!--<tr <?php if($csubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
                                                             <td  colspan="2"></td>
                                                             <td class="">
                                                                 <label class="uniform-inline">
@@ -316,7 +316,7 @@ $c = $client;
                                                                     <input <?php echo $is_disabled?> type="radio"  name="client[<?php echo $sub->id;?>]" value="3" <?php if($csubdoc['display'] == 3) {?> checked="checked" <?php } ?>/>
                                                                     Both </label>
                                                             </td>
-                                                        </tr>
+                                                        </tr>-->
                                                             <?php
                                                         }
                                                         ?>

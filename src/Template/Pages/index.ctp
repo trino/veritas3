@@ -1,5 +1,5 @@
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
-
+<?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 
 
 
@@ -39,10 +39,10 @@
 
 <?php include('subpages/home_blocks.php'); ?>
 <div class="clearfix"></div>
-
+<?php if($sidebar->recent ==1){?>
 <?php include('subpages/recent_activities.php'); ?>
 <div class="clearfix"></div>
-
+<?php }?>
 <style>
 @media print {
     .page-header{display:none;}

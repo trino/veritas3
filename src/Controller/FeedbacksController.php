@@ -42,6 +42,32 @@ class FeedbacksController extends AppController{
 		//$this->set(compact('client'));
         $this->render('add');
     }
+    
+    public function edit($id = NULL)
+    {
+        
+        $docs = TableRegistry::get('Documents');
+        $query = $docs->find()->where(['id'=>$id]);
+        $feeds = $query->first();
+        
+        $doc = $docs->newEntity($_POST);
+		if ($this->request->is('post')) {
+		      $updates = $docs->query();
+               $update = $updates->update()
+                ->set($_POST)
+                ->where(['id' => $id])
+                ->execute();
+			if ($update) {
+				$this->Flash->success('The feedback has been sent.');
+                	return $this->redirect('/documents/index');
+			} else {
+				$this->Flash->error('The feedback could not be sent. Please, try again.');
+                return $this->redirect('/feedbacks/add');
+			}
+		}
+        $this->set(compact('feeds'));
+        $this->render('add');
+    }
 }
 
 ?>

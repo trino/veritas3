@@ -157,7 +157,7 @@ class ClientsController extends AppController {
         $this->render('add');
 	}
     
-    public function saveClients() {
+    public function saveClients($id) {
 	   
         $rec='';
         $con='';
@@ -189,7 +189,9 @@ class ClientsController extends AppController {
         }
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
-	   $clients = TableRegistry::get('Clients');
+        $clients = TableRegistry::get('Clients');
+        if(!$id){
+	   
         $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
 		  
@@ -201,6 +203,17 @@ class ClientsController extends AppController {
 				echo "e";
 			}
 		}
+        }
+        else
+        {
+            $query2 = $clients->query();
+                        $query2->update()
+                        ->set($_POST)
+                        ->where(['id' => $id])
+                        ->execute();
+                        $this->Flash->success('The client has been saved.');
+                	echo $id;
+        }
 		die();
 	}
 

@@ -96,7 +96,7 @@ $c = $client;
                                                     <input type="hidden" name="image" id="client_img" />
 													<div class="form-group col-md-6">
 														<label class="control-label">Customer Type</label>
-                                                        <select class="form-control" name="customer_type">
+                                                        <select class="form-control" name="customer_type" id="customer_type">
                                                             <option value="">Select</option>
                                                             <option value="1"<?php if(isset($c->customer_type)&& $c->customer_type==1) {?>selected="selected"<?php } ?>>Insurance</option>
                                                             <option value="2"<?php if(isset($c->customer_type)&& $c->customer_type==2) {?>selected="selected"<?php } ?>>Fleet</option>
@@ -660,6 +660,7 @@ $c = $client;
                                                 str = str+'&'+$('#tab_1_1 input').serialize();
                                             }
                                             str = str+'&description='+$('#tab_1_1 textarea').val();
+                                            str = str+'&customer_type='+$('#customer_type').val();
                                             
                                             
                                             $.ajax({

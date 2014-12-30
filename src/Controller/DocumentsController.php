@@ -249,6 +249,9 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $docs = TableRegistry::get('documents');
+            $document = $docs->find()->where(['id' => $did])->first();
+            $this->set('document',$document);
         $this->set('cid',$cid);
         $this->set('did',$did);
 		/*$profile = $this->Clients->get($id, [

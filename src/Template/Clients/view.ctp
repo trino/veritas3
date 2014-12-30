@@ -3,7 +3,8 @@ if(isset($disabled))
 $is_disabled = 'disabled="disabled"';
 else
 $is_disabled = '';
-
+$profile = $this->requestAction('clients/getProfile/'.$id);
+       
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 
@@ -44,41 +45,20 @@ $is_disabled = '';
                                                 <br />
                                                 <h3>Assigned to:</h3>
 											</li>
-											<li>
-												<a href="<?php echo $this->request->webroot;?>profiles/view">
-												Robert Brown </a>
+                                            <?php
+                                            $types = array('Driver','Admin','Recruiter','External','Safety','Driver','Contact');
+                                             foreach($profile as $p)
+                                                {
+                                                    ?>
+                                                    <li>
+												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $p->id; ?>">
+												    <?php echo $p->username; ?> (<?php echo $types[$p->profile_type]; ?>)
+                                                </a>
 											</li>
-											<li>
-												<a href="<?php echo $this->request->webroot;?>profiles/view">
-												John Lenon
-												</a>
-											</li>
-											<li>
-												<a href="<?php echo $this->request->webroot;?>profiles/view">
-												Jacob Regal </a>
-											</li>
-											<li>
-												<a href="<?php echo $this->request->webroot;?>profiles/view">
-												Matt Johnson </a>
-											</li>
-                                            <li><h3>Contacts:</h3></li>
-                                            <li>
-												<a href="<?php echo $this->request->webroot;?>profiles/view">
-												Robert Brown </a>
-											</li>
-											<li>
-												<a href="<?php echo $this->request->webroot;?>profiles/view">
-												John Lenon
-												</a>
-											</li>
-											<li>
-												<a href="<?php echo $this->request->webroot;?>profiles/view">
-												Jacob Regal </a>
-											</li>
-											<li>
-												<a href="<?php echo $this->request->webroot;?>profiles/view">
-												Matt Johnson </a>
-											</li>
+                                                    <?php
+                                                }    
+                                             ?>
+											
 										</ul>
 									</div>
 									<div class="col-md-9">

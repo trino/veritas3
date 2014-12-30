@@ -98,6 +98,7 @@ class ClientsController extends AppController {
 		//$this->set('disabled',1);
         //$this->render('add');
 	}
+    
 
 /**
  * Add method
@@ -405,7 +406,23 @@ class ClientsController extends AppController {
          die();
    }
    
-   
+   function getProfile($id=null)
+   {
+    $profile = TableRegistry::get('Clients');
+    $query = $profile->find()->where(['id'=>$id]);
+    $q = $query->first();
+    //$profile_id= explode(',',$q->profile_id);
+//    if(($profile_id))
+//    {
+        $pro = TableRegistry::get('Profiles');
+        if($q->profile_id)
+            $querys = $pro->find()->where(['id IN ('.$q->profile_id.')']);
+            else
+            $querys=array();  
+            $this->response->body(($querys));
+            return $this->response;
+        
+   }
    
     
 }

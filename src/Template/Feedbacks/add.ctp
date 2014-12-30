@@ -22,7 +22,7 @@ $feed = $feeds;
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Add Feedbacks</a>
+						<a href="">Add/Edit Feedbacks</a>
 					</li>
 				</ul>
                 <?php

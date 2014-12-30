@@ -23,8 +23,7 @@
                 if($doc){
                     foreach($doc as $d)
                     {
-                        if(isset($documet) && strtolower($d->title) == strtolower($document->document_type))
-                            $form_type = $d->form;
+                        
                         $csubdoc = $this->requestAction('/clients/getCSubDoc/'.$id.'/'.$d->id);
                         //var_dump($csubdoc);
                         if($i==11)
@@ -60,7 +59,7 @@
                         $i++;
                     }
                 }
-                echo $form_type;
+                
                  ?>
 			<!--	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 

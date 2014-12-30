@@ -21,8 +21,13 @@
                 $doc = $this->requestAction('/documents/getDocument');
                 $i=0;
                 if($doc){
+                    //echo strtolower($document->document_type);
+                    $form_type = "";
                     foreach($doc as $d)
                     {
+                        //echo strtolower($d->title);
+                        if(isset($document) && strtolower($d->title) == strtolower($document->document_type))
+                             $form_type = $d->form;
                         $prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$this->Session->read('Profile.id').'/'.$d->id);
                         if($i==11)
                         $i=0;
@@ -63,6 +68,7 @@
                     }
                         $i++;
                     }
+                    
                 }
                  ?>
 			<!--	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

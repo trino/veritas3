@@ -84,11 +84,12 @@ class DocumentsController extends AppController {
             $this->set('return_type',$_GET['type']);
         }
         $this->set('documents', $doc);
-		//$this->set('client', $this->paginate($this->Jobs));
 	}
     
-    
     /*
+    
+    
+    
     function submittedBy()
     {
        $setting = $this->get_permission($this->request->session()->read('Profile.id'));

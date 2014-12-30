@@ -151,7 +151,7 @@ class ClientsController extends AppController {
 			}
 		}
 		$this->set(compact('client'));
-        $this->set('recruiters',array());
+        $this->set('profile',array());
         $this->set('contacts',array());
         $this->render('add');
 	}
@@ -161,8 +161,8 @@ class ClientsController extends AppController {
         $rec='';
         $con='';
         $count=1;
-        if(isset($_POST['recruiter_id'])){
-        foreach($_POST['recruiter_id'] as $ri)
+        if(isset($_POST['profile_id'])){
+        foreach($_POST['profile_id'] as $ri)
         {
         	if($count==1)	
         	$rec = $ri;
@@ -172,8 +172,8 @@ class ClientsController extends AppController {
         
         }
         }
-        unset($_POST['recruiter_id']);
-        $_POST['recruiter_id'] = $rec;
+        unset($_POST['profile_id']);
+        $_POST['profile_id'] = $rec;
         
         if(isset($_POST['contact_id'])){
         foreach($_POST['contact_id'] as $ri)
@@ -222,7 +222,7 @@ class ClientsController extends AppController {
 		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);
-        $arr = explode(',',$client->recruiter_id);
+        $arr = explode(',',$client->profile_id);
         $arr2 = explode(',',$client->contact_id);
 
 		if ($this->request->is(['patch', 'post', 'put'])) {
@@ -234,9 +234,11 @@ class ClientsController extends AppController {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
+        //$client_details = $query->select()->where(['id'=>$id]);
 		$this->set(compact('client'));
+        //$this->set('client_details',$client_details);
         $this->set('id',$id);
-        $this->set('recruiters',$arr);
+        $this->set('profile',$arr);
         $this->set('contacts',$arr2);
         $this->render('add');
 	}

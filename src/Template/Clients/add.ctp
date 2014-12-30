@@ -637,9 +637,9 @@ $c = $client;
                                            if($(this).is(':checked'))
                                            {
                                             if(str=='')
-                                            str = 'recruiter_id[]='+$(this).val();
+                                            str = 'profile_id[]='+$(this).val();
                                             else
-                                            str = str+'&recruiter_id[]='+$(this).val();
+                                            str = str+'&profile_id[]='+$(this).val();
                                            } 
                                         });
                                         $('.contacts input').each(function(){

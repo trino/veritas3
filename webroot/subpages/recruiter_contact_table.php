@@ -1,14 +1,14 @@
 <?php 
-$recruiter = $this->requestAction('Profiles/getRecruiter');
+$profiles = $this->requestAction('Profiles/getProfile'); 
 $contact =  $this->requestAction('Profiles/getContact');
 ?>
 
 <table class="table table-striped table-bordered table-advance table-hover recruiters">
-                                                <thead><tr><th colspan="2">Add Recruiters</th></tr></thead> 
+                                                <thead><tr><th colspan="2">Add Profiles</th></tr></thead> 
                                                              
                                                 <?php
                                                 $i=0;
-                                                foreach($recruiter as $r)
+                                                foreach($profiles as $r)
                                                 {
                                                     if($i%2==0)
                                                     {
@@ -19,7 +19,7 @@ $contact =  $this->requestAction('Profiles/getContact');
                                                     ?>
                                                    
                                                     <td>
-                                                        <span><input type="checkbox" name="recruiter_id[]" <?php if(in_array($r->id,$recruiters)){?>checked="checked"<?php }?> value="<?php echo $r->id; ?>"/></span>
+                                                        <span><input type="checkbox" name="profile_id[]" <?php if(in_array($r->id,$profile)){?>checked="checked"<?php }?> value="<?php echo $r->id; ?>"/></span>
                                                         <span> <?php echo $r->username; ?> </span>
                                                     </td>
                                                 <?php

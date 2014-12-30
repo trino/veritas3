@@ -118,9 +118,7 @@ $is_disabled = '';
 												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
+												
                                                 <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>
@@ -219,9 +217,7 @@ $is_disabled = '';
 												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
+												
                                                 <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>
@@ -241,6 +237,9 @@ function subform(form_type)
     $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
+    $('.cont').click(function(){
+        
+    
     $.ajax({
        data:'uploaded_for='+$('#uploaded_for').val(),
        type:'post', 
@@ -249,6 +248,7 @@ jQuery(document).ready(function() {
        {
         $('#did').val(res);
        }
+    });
     });
    $('#addfiles').click(function(){
             //alert("ssss");

@@ -79,14 +79,14 @@ $is_disabled = '';
                                                 }
                                             ?>
 											
-                                            <li>
+                                           <!-- <li>
 												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
 												<span class="number">
 												<?php echo $i++;?></span><br />
 												<span class="desc">
 												<i class="fa fa-check"></i> Confirmation </span>
 												</a>
-											</li>
+											</li>-->
                                             <li>
 												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
 												<span class="number">

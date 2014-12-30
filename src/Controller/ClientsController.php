@@ -157,10 +157,11 @@ class ClientsController extends AppController {
 		$this->set(compact('client'));
         $this->set('profile',array());
         $this->set('contacts',array());
+        $this->set('id','');
         $this->render('add');
 	}
     
-    public function saveClients($id) {
+    public function saveClients($id=0) {
 	   
         $rec='';
         $con='';

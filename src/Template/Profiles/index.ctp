@@ -41,9 +41,9 @@
 
             <div class="portlet-body">
                     <div class="chat-form">
-                            <form action="<?php echo $this->request->webroot; ?>profiles/filterBy" method="get">
+                            <form action="<?php echo $this->request->webroot; ?>profiles/search" method="get">
                                 <div class="col-md-2" style="padding-left:0;">
-                                    <select class="form-control" style="" name="filter_profile_type" onchange="this.form.submit();">
+                                    <select class="form-control" style="" name="filter_profile_type">
                                         <option value="">Filter By</option>
                                         <!--<option value=""><?php //echo ucfirst($settings->profile); ?> Type</option>-->
                                         <option value="1" <?php if(isset($return_profile_type) && $return_profile_type==1){?> selected="selected"<?php } ?> >Admin</option>
@@ -54,10 +54,10 @@
                                         <option value="6" <?php if(isset($return_profile_type) && $return_profile_type==6){?> selected="selected"<?php } ?>>Contact</option>
                                     </select>
                                 </div>
-                                </form>
-                                <form action="<?php echo $this->request->webroot; ?>profiles/search" method="get">
+                                 <!--</form>
+                                <form action="<?php //echo $this->request->webroot; ?>profiles/search" method="get">-->
                                 <div class="col-md-6 ">
-                                    <input class="form-control input-inline" type="search" name="search"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1"/>
+                                    <input class="form-control input-inline" type="search" name="searchprofile"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1"/>
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </form>

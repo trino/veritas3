@@ -28,11 +28,6 @@
 
 <div class="row">
     <div class="col-md-12">
-
-
-
-
-
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
@@ -41,29 +36,20 @@
                 </div>
             </div>    
             <div class="portlet-body">
-
-
-
-
-
-
-
-
 				<div class="chat-form">
-					<form action="<?php echo $this->request->webroot; ?>documents/search" method="get">
-						<div class="col-md-3 col-sm-12" style="padding-left:0;">
+					<form action="<?php echo $this->request->webroot; ?>documents/index" method="get">
+						<div class="col-md-2 col-sm-12" style="padding-left:0;">
 
-							<input class="form-control input-inline" name="search" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
-							<button type="submit" class="btn btn-primary">Search</button>
+							<input class="form-control" name="searchdoc" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
 
 						</div>
-                        </form>
+                       <!-- </form>-->
                         <?php
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
-                        <form action="<?php echo $this->request->webroot; ?>documents/submittedBy" method="get">
+                        <!--<form action="<?php// echo $this->request->webroot; ?>documents/submittedBy" method="get">-->
 						<div class="col-md-3 col-sm-12">
-							<select class="form-control" name="submitted_by_id" style="" onchange="this.form.submit();">
+							<select class="form-control" name="submitted_by_id" style="">
 								<option value="">Submitted by</option>
                                 <?php 
                                     foreach($users as $u)
@@ -75,13 +61,13 @@
                                  ?>
 							</select>
 						</div>
-                        </form>
+                       <!-- </form>-->
                         <?php
                             $type = $this->requestAction("documents/getDocType");
                         ?>
-                        <form action="<?php echo $this->request->webroot; ?>documents/filterByType" method="get">
+                        <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByType" method="get">-->
 						<div class="col-md-3 col-sm-12">
-							<select class="form-control" name="type" onchange="this.form.submit();">
+							<select class="form-control" name="type">
 								<option value=""><?php echo ucfirst($settings->document);?> type</option>
 								<?php 
                                     foreach($type as $t)
@@ -91,17 +77,17 @@
                                         <?php
                                     }
                                  ?>
-                                 <option value="orders">Orders</option>
-                                 <option value="feedbacks">Feedbacks</option>
+                                 <option value="orders" <?php if(isset($return_type) && $return_type=='orders'){?> selected="selected"<?php } ?>>Orders</option>
+                                 <option value="feedbacks" <?php if(isset($return_type) && $return_type=='feedbacks'){?> selected="selected"<?php } ?>>Feedbacks</option>
 							</select>
 						</div>
-                        </form>
+                        <!--</form>-->
                         <?php
                             $clients = $this->requestAction("documents/getAllClient");
                         ?>
-                        <form action="<?php echo $this->request->webroot; ?>documents/filterByClient" method="get">
+                        <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByClient" method="get">-->
 						<div class="col-md-3 col-sm-12">
-							<select class="form-control" name="client_id" onchange="this.form.submit();">
+							<select class="form-control" name="client_id">
 								<option value=""><?php echo ucfirst($settings->client);?></option>
 								<?php 
                                     foreach($clients as $c)
@@ -114,6 +100,9 @@
 
 							</select>
 						</div>
+                        <div class="col-md-1 col-sm-12">
+							<button type="submit" class="btn btn-primary">Search</button>
+                        </div>
 
 					</form>
 				</div>

@@ -196,16 +196,27 @@ if(isset($profile))
             <div class="portlet light profile-sidebar-portlet">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
-                    <img src="<?php echo $this->request->webroot; ?>img/uploads/male.png" class="img-responsive" alt="">
+                    <?php if(isset($p->image) && $p->image){?>
+                    <img id="ppicture" src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image?>" class="img-responsive" alt="">
+                    
+                    <?php }
+                    else
+                    {
+                        ?>
+                        <img src="<?php echo $this->request->webroot; ?>img/uploads/male.png" class="img-responsive" alt="">
+                        <?php
+                    }
+                    ?>
+                    
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
-                        Marcus Doe
+                        <?php if(isset($p->fname))echo ucwords($p->fname.' '.$p->lname);?>
                     </div>
                     <div class="profile-usertitle-job">
-                        Reference Number: 1
+                        <?php if(isset($p->id)){?>Reference Number: <?php echo $p->id;?><?php }?>
                     </div>
                 </div>
 

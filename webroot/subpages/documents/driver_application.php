@@ -1,3 +1,4 @@
+<input type="hidden" name="document_type" value="Driver Application" />
 <div class="clearfix"></div>
 <hr />
 <p>Welcome Prospective Drivers of Challenger. </p>

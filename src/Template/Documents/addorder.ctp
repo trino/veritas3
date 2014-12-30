@@ -241,6 +241,9 @@ function subform(form_type)
     $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
+    $('.cont').click(function(){
+        
+    
     $.ajax({
        data:'uploaded_for='+$('#uploaded_for').val(),
        type:'post', 
@@ -249,6 +252,7 @@ jQuery(document).ready(function() {
        {
         $('#did').val(res);
        }
+    });
     });
    $('#addfiles').click(function(){
             //alert("ssss");

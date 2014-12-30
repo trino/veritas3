@@ -147,10 +147,12 @@
                                     <?php  
                                     if($sidebar->document_edit=='1')
                                     {
-                                        if($docs->document_type=='feedbacks' || $docs->document_type=='orders' )
+                                        if($docs->document_type=='feedbacks' )
                                         echo $this->Html->link(__('Edit'), ['controller'=>'feedbacks','action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);
+                                        elseif($docs->document_type=='order')
+                                        echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'editorder',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
                                         else
-                                        echo $this->Html->link(__('Edit'), ['action' => 'edit',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
+                                        echo $this->Html->link(__('Edit'), ['action' => 'add',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
                                     }
                                      ?>
                                     <?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $docs->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $docs->id)]);} ?>

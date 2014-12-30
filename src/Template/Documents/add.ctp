@@ -46,7 +46,7 @@ $is_disabled = '';
 
 						</div>
 						<div class="portlet-body form">
-							<form action="" class="form-horizontal" id="submit_form" method="POST">
+							<form action="" class="form-horizontal" id="" method="POST">
 								<div class="">
 									<div class="form-body">
                                         <?php

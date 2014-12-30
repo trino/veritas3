@@ -291,7 +291,7 @@ class DocumentsController extends AppController {
 		  
 			if ($docs->save($doc)) {
 				$this->Flash->success('The document has been saved.');
-                	$this->redirect('index');
+                	$this->redirect('/documents');
 			} else {
 			     //$this->Flash->error('The client could not be saved. Please, try again.');
 				//echo "e";
@@ -306,7 +306,7 @@ class DocumentsController extends AppController {
                         ->where(['id' => $did])
                         ->execute();
                         $this->Flash->success('The document has been saved.');
-                	$this->redirect('index');
+                	$this->redirect('/documents');
         }
 		}
     }

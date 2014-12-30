@@ -132,7 +132,7 @@ $is_disabled = '';
 												<button class="close" data-dismiss="alert"></button>
 												Your form validation is successful!
 											</div>
-                                            <div class="form-group mar-top-10 col-md-12">
+                                            <div class="form-group mar-top-10 col-md-12 uploaded_for">
                                         <?php
                                                     $users = $this->requestAction("documents/getAllUser");
                                          ?>

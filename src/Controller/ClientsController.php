@@ -91,6 +91,7 @@ class ClientsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $this->set('id',$id);
 		//$this->set('disabled',1);
         //$this->render('add');
 	}
@@ -316,13 +317,13 @@ class ClientsController extends AppController {
                     ->where(['client_id' => $id,'subdoc_id' => $k2]);
                     $check=$query->first();
                     
-                    if($v2 == ''){
+                    if($v2 == '1'){
 
                     if($check)
                     {
                         $query2 = $subp->query();
                         $query2->update()
-                        ->set(['display'=>$_POST['client'][$k2]])
+                        ->set(['display'=>$v2])
                         ->where(['client_id' => $id,'subdoc_id' => $k2])
                         ->execute();
                     }
@@ -331,7 +332,7 @@ class ClientsController extends AppController {
                         
                        $query2 = $subp->query();
                         $query2->insert(['client_id','subdoc_id', 'display'])
-                        ->values(['client_id' => $id,'subdoc_id' => $k2,'display'=>$_POST['client'][$k2]])
+                        ->values(['client_id' => $id,'subdoc_id' => $k2,'display'=>$v2])
                         ->execute(); 
                     }
                     }

@@ -201,12 +201,13 @@ class DocumentsController extends AppController {
     public function savedoc($cid=0,$did=0)
     {
         $docs = TableRegistry::get('Documents');
-        if(!$did){
-	    $arr['user_id'] = $this->request->session()->read('Profile.id');
+         
         $arr['uploaded_for'] = $_POST['uploaded_for'];
         $arr['client_id'] = $cid;
         $arr['document_type'] = 'order';
         $arr['created'] = date('Y-m-d H:i:s');
+        if(!$did || $did=='0'){
+	   $arr['user_id'] = $this->request->session()->read('Profile.id');
         $doc = $docs->newEntity($arr);
 		
 		  

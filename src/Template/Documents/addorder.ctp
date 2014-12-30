@@ -79,14 +79,14 @@ $is_disabled = '';
                                                 }
                                             ?>
 											
-                                            <li>
+                                           <!-- <li>
 												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
 												<span class="number">
 												<?php echo $i++;?></span><br />
 												<span class="desc">
 												<i class="fa fa-check"></i> Confirmation </span>
 												</a>
-											</li>
+											</li>-->
                                             <li>
 												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
 												<span class="number">
@@ -118,9 +118,7 @@ $is_disabled = '';
 												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
+												
                                                 <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>
@@ -134,7 +132,7 @@ $is_disabled = '';
 												<button class="close" data-dismiss="alert"></button>
 												Your form validation is successful!
 											</div>
-                                            <div class="form-group mar-top-10 col-md-12">
+                                            <div class="form-group mar-top-10 col-md-12 uploaded_for">
                                         <?php
                                                     $users = $this->requestAction("documents/getAllUser");
                                          ?>
@@ -219,9 +217,7 @@ $is_disabled = '';
 												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
+												
                                                 <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>
@@ -241,6 +237,9 @@ function subform(form_type)
     $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
+    $('.cont').click(function(){
+        
+    
     $.ajax({
        data:'uploaded_for='+$('#uploaded_for').val(),
        type:'post', 
@@ -249,6 +248,7 @@ jQuery(document).ready(function() {
        {
         $('#did').val(res);
        }
+    });
     });
    $('#addfiles').click(function(){
             //alert("ssss");

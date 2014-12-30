@@ -46,7 +46,7 @@ $is_disabled = '';
 
 						</div>
 						<div class="portlet-body form">
-							<form action="#" class="form-horizontal" id="submit_form" method="POST">
+							<form action="" class="form-horizontal" id="submit_form" method="POST">
 								<div class="form-wizard">
 									<div class="form-body">
                                         <?php
@@ -64,8 +64,8 @@ $is_disabled = '';
                                         
                                         
                                     
-                                        <div class="form-group mar-top-10">
-                                            <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->document);?> Type</label>
+                                        <!--<div class="form-group mar-top-10">
+                                            label class="col-md-3 control-label">Select <?php echo ucfirst($settings->document);?> Type</label>
                                             <div class="col-md-6">
                                             <select name="doc_type" class="form-control" onchange="showforms(this.value);">
                                                 <option value="">Select <?php echo ucfirst($settings->document);?> type</option>
@@ -73,7 +73,9 @@ $is_disabled = '';
                                                     <option value="<?php echo $d->form;?>" id="<?php echo $d->Form;?>"><?php echo ucfirst($d->title);?></option>
                                                 <?php }?>
                                             </select>
-                                            </div>
+                                            
+                                            </div>-->
+                                            <?php  include('subpages/home_blocks.php');?>
                                         </div>
                                         <div class="form-group mar-top-10">
                                         <?php
@@ -100,17 +102,17 @@ $is_disabled = '';
 								            
 										</div>
 									</div>
-									<div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>">
+									<div class="form-actions">
 										<div class="row">
 											<div class="col-md-offset-3 col-md-9">
-												<a href="javascript:;" class="btn default button-previous">
-												<i class="m-icon-swapleft"></i> Back </a>
+												<a href="javascript:;" class="btn default">
+												<i class="m-icon-swapleft"></i> Back s</a>
 
-                                                <a href="javascript:;" class="btn green button-next">
-												Save <i class="m-icon-swapdown m-icon-white"></i>
-												</a>
+                                                <button type="submit" class="btn green">
+												Saves <i class="m-icon-swapdown m-icon-white"></i>
+												</button>
 
-												<a href="javascript:;" class="btn blue button-next cont">
+												<a href="javascript:;" class="btn blue">
 												Save As Draft <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 

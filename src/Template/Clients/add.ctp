@@ -595,7 +595,7 @@ $c = $client;
                         }, 200);
                     },
                     onComplete: function(file, response){
-                        button.text('<i class="fa fa-image"></i> Add/Edit Image');
+                        button.html('<i class="fa fa-image"></i> Add/Edit Image');
                             window.clearInterval(interval);
                             this.enable();
                             $("#clientpic").attr("src",'<?php echo $this->request->webroot;?>img/jobs/'+response);

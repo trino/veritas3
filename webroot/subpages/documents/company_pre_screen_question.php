@@ -1,3 +1,4 @@
+<input type="hidden" name="document_type" value="Pre-Screening" />
 <div class="portlet box blue ">
 						<div class="portlet-title">
 							<div class="caption">

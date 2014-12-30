@@ -85,11 +85,12 @@ class DocumentsController extends AppController {
             $this->set('return_type',$_GET['type']);
         }
         $this->set('documents', $doc);
-		//$this->set('client', $this->paginate($this->Jobs));
 	}
     
-    
     /*
+    
+    
+    
     function submittedBy()
     {
        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
@@ -172,7 +173,7 @@ class DocumentsController extends AppController {
  *
  * @return void
  */
-	public function addorder() {
+	public function addorder($cid=0,$did=0) {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
          $doc = $this->getDocumentcount();
          
@@ -182,6 +183,8 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $this->set('cid',$cid);
+        $this->set('did',$did);
 		/*$profile = $this->Clients->newEntity($this->request->data);
 		if ($this->request->is('post')) {
 			if ($this->Clients->save($profile)) {
@@ -194,6 +197,40 @@ class DocumentsController extends AppController {
 		$this->set(compact('profile'));*/
         
 	}
+    
+    public function savedoc($cid=0,$did=0)
+    {
+        $docs = TableRegistry::get('Documents');
+        if(!$did){
+	    $arr['user_id'] = $this->request->session()->read('Profile.id');
+        $arr['uploaded_for'] = $_POST['uploaded_for'];
+        $arr['client_id'] = $cid;
+        $arr['document_type'] = 'order';
+        $arr['created'] = date('Y-m-d H:i:s');
+        $doc = $docs->newEntity($arr);
+		
+		  
+			if ($docs->save($doc)) {
+				//$this->Flash->success('The client has been saved.');
+                	echo $doc->id;
+			} else {
+			     //$this->Flash->error('The client could not be saved. Please, try again.');
+				//echo "e";
+			}
+		
+        }
+        else
+        {
+            $query2 = $docs->query();
+                        $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $did])
+                        ->execute();
+                        //$this->Flash->success('The client has been saved.');
+                	echo $sid;
+        }
+		die();
+    }
 
 /**
  * Edit method

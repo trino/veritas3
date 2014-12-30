@@ -31,7 +31,7 @@
                             <!--<form>
                                 div class="col-md-2" style="padding-left:0;">
                                     <select class="form-control" style="">
-                                        <option value=""><?php echo ucfirst($settings->client); ?> Type</option>
+                                        <option value=""><?php //echo ucfirst($settings->client); ?> Type</option>
                                         <option value="">London</option>
                                         <option value="">Quebec</option>
                                         <option value="">BC</option>

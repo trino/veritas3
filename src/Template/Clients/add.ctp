@@ -142,19 +142,19 @@ $c = $client;
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Administrator's First Name</label>
-														<input type="text" class="form-control" name="u_fname" <?php if(isset($c->u_fname)){?> value="<?php echo $c->u_fname; ?>" <?php } ?>/>
+														<input type="text" class="form-control" name="admin_fname" <?php if(isset($c->admin_fname)){?> value="<?php echo $c->admin_fname; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Administrator's Last Name</label>
-														<input type="text" class="form-control" name="admin_lname" <?php if(isset($c->u_lname)){?> value="<?php echo $c->u_lname; ?>" <?php } ?>/>
+														<input type="text" class="form-control" name="admin_lname" <?php if(isset($c->admin_lname)){?> value="<?php echo $c->admin_lname; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Administrator's Email Address</label>
-														<input type="email" id="u_email" class="form-control" name="admin_email" <?php if(isset($c->u_email)){?> value="<?php echo $c->u_email; ?>" <?php } ?>/>
+														<input type="email" id="u_email" class="form-control" name="admin_email" <?php if(isset($c->admin_email)){?> value="<?php echo $c->admin_email; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Administrator's Phone Number</label>
-														<input type="text" class="form-control" name="admin_phone" <?php if(isset($c->u_phone)){?> value="<?php echo $c->u_phone; ?>" <?php } ?>/>
+														<input type="text" class="form-control" name="admin_phone" <?php if(isset($c->admin_phone)){?> value="<?php echo $c->admin_phone; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Site</label>
@@ -637,9 +637,9 @@ $c = $client;
                                            if($(this).is(':checked'))
                                            {
                                             if(str=='')
-                                            str = 'recruiter_id[]='+$(this).val();
+                                            str = 'profile_id[]='+$(this).val();
                                             else
-                                            str = str+'&recruiter_id[]='+$(this).val();
+                                            str = str+'&profile_id[]='+$(this).val();
                                            } 
                                         });
                                         $('.contacts input').each(function(){
@@ -663,7 +663,7 @@ $c = $client;
                                             
                                             
                                             $.ajax({
-                                               url:'<?php echo $this->request->webroot;?>clients/saveClients',
+                                               url:'<?php echo $this->request->webroot;?>clients/saveClients/<?php echo $id?>',
                                                data:str,
                                                type:'post',
                                                success:function(res)

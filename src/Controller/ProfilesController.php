@@ -432,6 +432,18 @@ class ProfilesController extends AppController {
         die();   
     }
     
+    function getProfile()
+    {
+        $rec = TableRegistry::get('Profiles');
+        $query = $rec->find();
+        $query = $query->select()->where(['super'=>0]);
+        
+        $this->response->body($query);
+        return $this->response;
+        
+        die();   
+    }
+    
     function getContact()
     {
         $con = TableRegistry::get('Profiles');

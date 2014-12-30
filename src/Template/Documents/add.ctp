@@ -126,7 +126,11 @@ $is_disabled = '';
 					</div>
 				</div>
 			</div>
+            
+            
 <script>
+    var doc_type = '<?php echo $document->document_type;?>';
+    
 function showforms(form_type)
 {
     //var form_type = $(this).val();

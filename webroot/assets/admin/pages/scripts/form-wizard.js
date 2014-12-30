@@ -182,7 +182,7 @@ var FormWizard = function () {
                     $('.cont').html('Submit')
                 }
                 else
-                $('.cont').html('Continue <i class="m-icon-swapright m-icon-white"></i>')
+                $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>')
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();

@@ -118,9 +118,7 @@ $is_disabled = '';
 												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
+												
                                                 <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>
@@ -219,9 +217,7 @@ $is_disabled = '';
 												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
+												
                                                 <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>

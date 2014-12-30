@@ -91,7 +91,7 @@ $is_disabled = '';
                                                 foreach($users as $u)
                                                 {
                                                     ?>
-                                                    <option value="<?php echo $u->id;?>" <?php if(isset($return_user_id) && $return_user_id==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                                    <option value="<?php echo $u->id;?>" <?php if(isset($document) && $document->uploaded_for==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
                                                     <?php
                                                 }
                                              ?>
@@ -126,7 +126,12 @@ $is_disabled = '';
 					</div>
 				</div>
 			</div>
+            
+            
 <script>
+    var doc_type = '<?php echo $form_type;?>';
+    if(doc_type!= "")
+        showforms(doc_type);
 function showforms(form_type)
 {
     //var form_type = $(this).val();

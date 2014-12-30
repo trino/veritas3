@@ -249,6 +249,9 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $docs = TableRegistry::get('documents');
+            $document = $docs->find()->where(['id' => $did])->first();
+            $this->set('document',$document);
         $this->set('cid',$cid);
         $this->set('did',$did);
 		/*$profile = $this->Clients->get($id, [
@@ -274,8 +277,7 @@ class DocumentsController extends AppController {
         if($did!=0)
         {
             $doc = TableRegistry::get('Documents');
-            $query = $doc->find();
-            $query->select()->where(['id' => $did])->first();
+            $query = $doc->find()->where(['id' => $did])->first();
             $this->set('document',$query);
             if($setting->document_edit==0 || count($doc)==0)
             {

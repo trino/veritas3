@@ -139,13 +139,14 @@ $is_disabled = '';
                                          
                                             <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->profile);?></label>
                                             <div class="col-md-6">
+                                            
                                         <select class="form-control" name="uploaded_for" id="uploaded_for">
 								        <option value="">Select <?php echo ucfirst($settings->profile);?></option>
                                             <?php 
                                                 foreach($users as $u)
                                                 {
                                                     ?>
-                                                    <option value="<?php echo $u->id;?>" <?php if(isset($return_user_id) && $return_user_id==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                                    <option value="<?php echo $u->id;?>" <?php if(isset($document) && $document->uploaded_for==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
                                                     <?php
                                                 }
                                              ?>

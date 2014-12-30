@@ -69,8 +69,16 @@
 <!-- BEGIN PROFILE CONTENT -->
 <div class="profile-content">
     <div class="row">
-
-
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <label class="uniform-inline">
+            <input  type="radio" name="stat"  value="1" />
+            Hired </label>
+            <label class="uniform-inline">
+            <input type="radio" name="stat" value="0" checked />
+            Failed </label>
+        </div>
+        <div class="clearfix"></div>
         <div class="col-md-6">
             <!-- BEGIN PORTLET -->
             <div class="portlet light">

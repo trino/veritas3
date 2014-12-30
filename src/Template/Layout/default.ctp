@@ -227,12 +227,14 @@
 						</li>
 					</ul>
 				</li>
-				
+				<?php $c = $this->requestAction('profiles/getuser');
+                    
+                ?>
 				<li class="dropdown dropdown-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="http://localhost/veritas3/img/uploads/male.png"/>
+					<img alt="" class="img-circle" src="http://localhost/veritas3/img/profile/<?php echo $c->image;?>"/>
 					<span class="username username-hide-on-mobile">
-					Nick </span>
+					<?php echo ucfirst($c->username);?> </span>
 					<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">

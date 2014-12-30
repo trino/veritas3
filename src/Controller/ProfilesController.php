@@ -525,6 +525,22 @@ class ProfilesController extends AppController {
         }
         $this->render('index');
     }
+    
+    function getuser()
+   {
+        $id = $this->request->session()->read('Profile.id');
+        $profile = TableRegistry::get('profiles');
+        $query = $profile->find()->where(['id'=>$id]);
+                 
+        $l = $query->first();
+        $this->response->body($l);
+        return $this->response;
+        //return $l;
+        
+         die();
+        
+        
+   }
    
 }
 ?>

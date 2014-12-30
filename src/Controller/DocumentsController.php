@@ -171,7 +171,7 @@ class DocumentsController extends AppController {
  *
  * @return void
  */
-	public function addorder() {
+	public function addorder($cid=0,$id=0) {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->document_create==0)
@@ -180,6 +180,8 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $this->set('cid',$cid);
+        $this->set('did',$did);
 		/*$profile = $this->Clients->newEntity($this->request->data);
 		if ($this->request->is('post')) {
 			if ($this->Clients->save($profile)) {

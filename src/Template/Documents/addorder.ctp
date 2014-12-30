@@ -109,12 +109,12 @@ $is_disabled = '';
 												<a href="javascript:;" class="btn default button-previous">
 												<i class="m-icon-swapleft"></i> Back </a>
 
-                                                <a href="javascript:;" class="btn green button-next">
-												Save <i class="m-icon-swapdown m-icon-white"></i>
+                                                <a href="javascript:;" class="btn red button-next">
+												Skip <i class="m-icon-swapdown m-icon-white"></i>
 												</a>
 
 												<a href="javascript:;" class="btn blue button-next cont">
-												Continue <i class="m-icon-swapright m-icon-white"></i>
+												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
 												<a href="javascript:;" class="btn blue button-submit">
@@ -151,6 +151,17 @@ $is_disabled = '';
                                                 }
                                              ?>
             							 </select>
+                                         <input type="hidden" name="client_id" value="<?php echo $cid;?>" id="client_id" />
+                                         <?php
+                                         if(!$did)
+                                         {
+                                            ?>
+                                            
+                                         <input type="hidden" name="user_id" value="<?php $this->request->session()->read('Profile.id');?>" id="user_id" />
+                                         
+                                         <?php
+                                         }
+                                         ?>
                                          </div>
                                          </div>
                                          <div class="clearfix"></div>
@@ -198,12 +209,12 @@ $is_disabled = '';
 												<a href="javascript:;" class="btn default button-previous">
 												<i class="m-icon-swapleft"></i> Back </a>
 
-                                                <a href="javascript:;" class="btn green button-next">
-												Save <i class="m-icon-swapdown m-icon-white"></i>
+                                                <a href="javascript:;" class="btn red button-next">
+												Skip <i class="m-icon-swapdown m-icon-white"></i>
 												</a>
 
 												<a href="javascript:;" class="btn blue button-next cont">
-												Continue <i class="m-icon-swapright m-icon-white"></i>
+												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
 												<a href="javascript:;" class="btn blue button-submit">
@@ -228,6 +239,9 @@ function subform(form_type)
     $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
+    $.ajax({
+       url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/<?php echo $did;?>' 
+    });
    $('#addfiles').click(function(){
             //alert("ssss");
            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');

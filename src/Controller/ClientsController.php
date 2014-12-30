@@ -91,6 +91,9 @@ class ClientsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $querys = TableRegistry::get('Clients');
+        $query = $querys->find()->where(['id' => $id]);
+        $this->set('client', $query->first()); 
         $this->set('id',$id);
 		//$this->set('disabled',1);
         //$this->render('add');
@@ -385,6 +388,9 @@ class ClientsController extends AppController {
            // return $this->response;
          die();
    }
+   
+   
+   
     
 }
 ?>

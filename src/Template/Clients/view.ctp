@@ -3,6 +3,7 @@ if(isset($disabled))
 $is_disabled = 'disabled="disabled"';
 else
 $is_disabled = '';
+
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 

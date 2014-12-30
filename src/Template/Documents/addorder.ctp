@@ -58,6 +58,7 @@ $is_disabled = '';
 										<ul class="nav nav-pills nav-justified steps">    
                                             <?php
                                                 $doc = $this->requestAction('/documents/getDocument');
+                                                
                                                 $doc2 = $doc;
                                                 $i = 1;
                                                 foreach($doc as $d)

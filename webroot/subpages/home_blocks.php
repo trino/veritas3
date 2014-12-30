@@ -44,9 +44,17 @@
     								 <?php echo ucfirst($d->title); ?>
     							</div>
     						</div>
+                            <?php if($this->request['controller']!="Documents"){?>
     						<a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a>
+                            <?php }
+                            else{?>
+                            <a class="more" href="javascript:;" onclick="showforms('<?php echo $d->form;?>')">
+    						Load Document<i class="m-icon-swapright m-icon-white"></i>
+    						</a>  
+                            <?php
+                            }?>
     					</div>
                         <div class="dusk"></div>
     

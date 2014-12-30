@@ -64,8 +64,8 @@ $is_disabled = '';
                                         
                                         
                                     
-                                        <div class="form-group mar-top-10">
-                                            <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->document);?> Type</label>
+                                        <!--<div class="form-group mar-top-10">
+                                            label class="col-md-3 control-label">Select <?php echo ucfirst($settings->document);?> Type</label>
                                             <div class="col-md-6">
                                             <select name="doc_type" class="form-control" onchange="showforms(this.value);">
                                                 <option value="">Select <?php echo ucfirst($settings->document);?> type</option>
@@ -73,7 +73,9 @@ $is_disabled = '';
                                                     <option value="<?php echo $d->form;?>" id="<?php echo $d->Form;?>"><?php echo ucfirst($d->title);?></option>
                                                 <?php }?>
                                             </select>
-                                            </div>
+                                            
+                                            </div>-->
+                                            <?php  include('subpages/home_blocks.php');?>
                                         </div>
                                         <div class="form-group mar-top-10">
                                         <?php

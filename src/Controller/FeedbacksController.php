@@ -33,7 +33,7 @@ class FeedbacksController extends AppController{
 		  
 			if ($docs->save($doc)) {
 				$this->Flash->success('The feedback has been sent.');
-                	return $this->redirect('/feedbacks');
+                	return $this->redirect('/documents/index');
 			} else {
 				$this->Flash->error('The feedback could not be sent. Please, try again.');
                 return $this->redirect('/feedbacks/add');

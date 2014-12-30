@@ -36,32 +36,59 @@ class DocumentsController extends AppController {
         $docs = TableRegistry::get('Documents');
         $doc = $docs->find();
         $doc=$doc->select();
+        
+        $cond='';
+        if(isset($_GET['searchdoc']) && $_GET['searchdoc'])
+        {
+            $cond = $cond.' (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
+        }
+        if(isset($_GET['submitted_by_id']) && $_GET['submitted_by_id'])
+        {
+            if($cond == '')
+            $cond = $cond.' user_id = '.$_GET['submitted_by_id'];
+            else
+            $cond = $cond.' AND user_id = '.$_GET['submitted_by_id'];
+        }
+        if(isset($_GET['client_id']) && $_GET['client_id'])
+        {
+            if($cond == '')
+            $cond = $cond.' client_id = '.$_GET['client_id'];
+            else
+            $cond = $cond.' AND client_id = '.$_GET['client_id'];
+        }
+        if(isset($_GET['type']) && $_GET['type'])
+        {
+            if($cond == '')
+            $cond = $cond.' document_type = "'.$_GET['type'].'"';
+            else
+            $cond = $cond.' AND document_type = "'.$_GET['type'].'"';
+        }
+        if($cond)
+        {
+            $doc = $doc->where([$cond]);
+        }
+        if(isset($_GET['searchdoc']))
+        {
+            $this->set('search_text',$_GET['searchdoc']);
+        }
+        if(isset($_GET['submitted_by_id']))
+        {
+            $this->set('return_user_id',$_GET['submitted_by_id']);
+        }
+        if(isset($_GET['client_id']))
+        {
+            $this->set('return_client_id',$_GET['client_id']);
+        }
+        if(isset($_GET['type']))
+        {
+            $this->set('return_type',$_GET['type']);
+        }
         $this->set('documents', $doc);
 		//$this->set('client', $this->paginate($this->Jobs));
 	}
     
-    function search()
-    {
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
-        
-        if($setting->document_list==0)
-        {
-            $this->Flash->error('Sorry, You dont have the permissions.');
-            	return $this->redirect("/");
-            
-        }
-		
-        
-        $search = $_GET['search'];
-        $searchs = strtolower($search);
-        $querys = TableRegistry::get('Documents');
-        $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
-        $this->set('documents', $this->paginate($this->Documents)); 
-        $this->set('documents',$query);
-        $this->set('search_text',$search);
-        $this->render('index');
-    }
     
+    /*
     function submittedBy()
     {
        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
@@ -120,7 +147,7 @@ class DocumentsController extends AppController {
         $this->set('documents',$query);
         $this->set('return_type',$type);
         $this->render('index'); 
-    }
+    }*/
     
     
 

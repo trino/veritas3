@@ -424,6 +424,24 @@ class ClientsController extends AppController {
         
    }
    
+   function getContact($id=null)
+   {
+    $contact = TableRegistry::get('Clients');
+    $query = $contact->find()->where(['id'=>$id]);
+    $q = $query->first();
+    //$profile_id= explode(',',$q->profile_id);
+//    if(($profile_id))
+//    {
+        $pro = TableRegistry::get('Profiles');
+        if($q->contact_id)
+            $querys = $pro->find()->where(['id IN ('.$q->contact_id.')']);
+            else
+            $querys=array();  
+            $this->response->body(($querys));
+            return $this->response;
+        
+   }
+   
     
 }
 ?>

@@ -4,7 +4,7 @@ $is_disabled = 'disabled="disabled"';
 else
 $is_disabled = '';
 $profile = $this->requestAction('clients/getProfile/'.$id);
-       
+$contact = $this->requestAction('clients/getContact/'.$id);
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 
@@ -58,6 +58,24 @@ $profile = $this->requestAction('clients/getProfile/'.$id);
                                                     <?php
                                                 }    
                                              ?>
+                                             <li>
+                                             <h3>Contacts:</h3>
+                                             </li>
+                                             <li>
+                                             <?php
+                                             foreach($contact as $c)
+                                                {
+                                                    ?>
+                                             <li>
+												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $c->id; ?>">
+												    <?php echo $c->username; ?> <?php //echo $types[$p->profile_type]; ?>
+                                                </a>
+											</li>
+                                                    <?php
+                                                }    
+                                             ?>
+                                             <li>
+                                             </li>
 											
 										</ul>
 									</div>

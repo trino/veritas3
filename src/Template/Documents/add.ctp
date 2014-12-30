@@ -33,7 +33,7 @@ $is_disabled = '';
 			</div>
             <div class="row">
 				<div class="col-md-12">
-					<div class="portlet box blue" id="form_wizard_1">
+					<div class="portlet box blue" id="">
 						<div class="portlet-title">
                         <?php
                                         $param = $this->request->params['action'];
@@ -46,8 +46,8 @@ $is_disabled = '';
 
 						</div>
 						<div class="portlet-body form">
-							<form action="" class="form-horizontal" id="submit_form" method="POST">
-								<div class="form-wizard">
+							<form action="" class="form-horizontal" id="" method="POST">
+								<div class="">
 									<div class="form-body">
                                         <?php
 
@@ -105,12 +105,10 @@ $is_disabled = '';
 									<div class="form-actions">
 										<div class="row">
 											<div class="col-md-offset-3 col-md-9">
-												<a href="javascript:;" class="btn default">
-												<i class="m-icon-swapleft"></i> Back s</a>
+												
 
-                                                <button type="submit" class="btn green">
-												Saves <i class="m-icon-swapdown m-icon-white"></i>
-												</button>
+                                                <input type="submit" class="btn green" value="Save"/>
+												
 
 												<a href="javascript:;" class="btn blue">
 												Save As Draft <i class="m-icon-swapright m-icon-white"></i>
@@ -121,8 +119,9 @@ $is_disabled = '';
 											</div>
 										</div>
 									</div>
+                                    </form>
 								</div>
-							</form>
+							
 						</div>
 					</div>
 				</div>

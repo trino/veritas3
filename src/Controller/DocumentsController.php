@@ -240,7 +240,7 @@ class DocumentsController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function editorder($id = null) {
+	public function editorder($cid=0,$did=0) {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
         if($setting->document_edit==0 || count($doc)==0)
@@ -249,6 +249,8 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $this->set('cid',$cid);
+        $this->set('did',$did);
 		/*$profile = $this->Clients->get($id, [
 			'contain' => []
 		]);
@@ -265,17 +267,66 @@ class DocumentsController extends AppController {
         $this->render('addorder');
 	}
     
-    function add()
+    function add($cid=0,$did=0)
     {
          $setting = $this->get_permission($this->request->session()->read('Profile.id'));
          $doc = $this->getDocumentcount();
-         
-        if($setting->document_create==0 || count($doc)==0)
+        if($did!=0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
-            	return $this->redirect("/");
+            $doc = TableRegistry::get('Documents');
+            $query = $doc->find();
+            $query->select()->where(['id' => $did])->first();
+            $this->set('document',$query);
+            if($setting->document_edit==0 || count($doc)==0)
+            {
+                $this->Flash->error('Sorry, You dont have the permissions.');
+                	return $this->redirect("/");
+                
+            }
             
         }
+        else
+        { 
+            if($setting->document_create==0 || count($doc)==0)
+            {
+                $this->Flash->error('Sorry, You dont have the permissions.');
+                	return $this->redirect("/");
+                
+            }
+        }
+        if(isset($_POST['uploaded_for'])){
+        $docs = TableRegistry::get('Documents');
+         
+        $arr['uploaded_for'] = $_POST['uploaded_for'];
+        $arr['client_id'] = $cid;
+        if(isset($_POST['document_type']))
+        $arr['document_type'] = $_POST['document_type'];
+        $arr['created'] = date('Y-m-d H:i:s');
+        if(!$did || $did=='0'){
+	   $arr['user_id'] = $this->request->session()->read('Profile.id');
+        $doc = $docs->newEntity($arr);
+		
+		  
+			if ($docs->save($doc)) {
+				$this->Flash->success('The document has been saved.');
+                	$this->redirect('/documents');
+			} else {
+			     //$this->Flash->error('The client could not be saved. Please, try again.');
+				//echo "e";
+			}
+		
+        }
+        else
+        {
+            $query2 = $docs->query();
+                        $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $did])
+                        ->execute();
+                        $this->Flash->success('The document has been saved.');
+                	$this->redirect('/documents');
+        }
+		}
     }
     
     function edit()

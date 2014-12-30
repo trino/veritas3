@@ -265,7 +265,7 @@ class DocumentsController extends AppController {
         $this->render('addorder');
 	}
     
-    function add()
+    function add($cid=0,$did=0)
     {
          $setting = $this->get_permission($this->request->session()->read('Profile.id'));
          $doc = $this->getDocumentcount();
@@ -276,6 +276,39 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        if(isset($_POST['uploaded_for'])){
+        $docs = TableRegistry::get('Documents');
+         
+        $arr['uploaded_for'] = $_POST['uploaded_for'];
+        $arr['client_id'] = $cid;
+        if(isset($_POST['document_type']))
+        $arr['document_type'] = $_POST['document_type'];
+        $arr['created'] = date('Y-m-d H:i:s');
+        if(!$did || $did=='0'){
+	   $arr['user_id'] = $this->request->session()->read('Profile.id');
+        $doc = $docs->newEntity($arr);
+		
+		  
+			if ($docs->save($doc)) {
+				$this->Flash->success('The document has been saved.');
+                	$this->redirect('index');
+			} else {
+			     //$this->Flash->error('The client could not be saved. Please, try again.');
+				//echo "e";
+			}
+		
+        }
+        else
+        {
+            $query2 = $docs->query();
+                        $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $did])
+                        ->execute();
+                        $this->Flash->success('The document has been saved.');
+                	$this->redirect('index');
+        }
+		}
     }
     
     function edit()

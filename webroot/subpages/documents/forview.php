@@ -17,12 +17,12 @@
             </div>
 
 
-            <div class="">
+            <!--<div class="">
                 <label class="uniform-inline">
                     <input  type="checkbox" name="stat"  value="1" />
                     Hired </label>
 
-            </div>
+            </div>-->
 
 
         </div>
@@ -237,8 +237,13 @@
 
 
         <div class="col-md-6">
+        <div class="">
+            <label class="uniform-inline">
+                <input  type="checkbox" name="stat"  value="1" />
+                Was this driver hired? </label>
 
-            <div class="portlet-body">
+        </div>
+           <?php /* <div class="portlet-body">
                 <div class="portlet light ">
                     <div class="portlet-title">
                         <div class="caption">
@@ -490,7 +495,7 @@
                     </div>
                 </div>
             </div>
-
+                */ ?>
 
         </div>
         <!-- END PORTLET -->

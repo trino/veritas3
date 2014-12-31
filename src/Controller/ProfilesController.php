@@ -498,19 +498,30 @@ class ProfilesController extends AppController {
 		$querys = TableRegistry::get('Profiles');
         if($_GET['filter_profile_type']=='' && isset($_GET['searchprofile']))
         {
-            $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
+            $query = $querys->find()
+            ->where(['LOWER(title) LIKE' => '%'.$searchs.'%'])
+             ->orWhere(['LOWER(fname) LIKE' => '%'.$searchs.'%'])
+             ->orWhere(['LOWER(lname) LIKE' => '%'.$searchs.'%'])
+             ->orWhere(['LOWER(username) LIKE' => '%'.$searchs.'%'])
+             ->orWhere(['LOWER(address) LIKE' => '%'.$searchs.'%']);
         }
         
         else if(isset($_GET['filter_profile_type'])&& !isset($_GET['searchprofile']))
         {
-            $query = $querys->find()->where(['profile_type'=>$profile_type]);
+            $query = $querys->find()->where(['profile_type'=>$profile_type])
+            ->orWhere(['admin'=>$profile_type]);
         }
         
         else if(isset($_GET['filter_profile_type'])&& isset($_GET['searchprofile']))
         {
             $query = $querys->find()
             ->where(['LOWER(title) LIKE' => '%'.$searchs.'%'])
-            ->andWhere(['profile_type'=>$profile_type]);
+             ->orWhere(['LOWER(fname) LIKE' => '%'.$searchs.'%'])
+             ->orWhere(['LOWER(lname) LIKE' => '%'.$searchs.'%'])
+             ->orWhere(['LOWER(username) LIKE' => '%'.$searchs.'%'])
+             ->orWhere(['LOWER(address) LIKE' => '%'.$searchs.'%'])
+            ->andWhere(['profile_type'=>$profile_type])
+            ->orWhere(['admin'=>$profile_type]);
         }
         
         $this->set('profiles', $this->paginate($this->Profiles)); 

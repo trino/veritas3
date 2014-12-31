@@ -14,10 +14,10 @@
 						<a href=""><?php echo ucfirst($settings->client);?></a>
 					</li>
 				</ul>
-			<a href="javascript:window.print();" class="floatright btn btn-info">Print</a>	
+			<a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 			</div>
 <div class="row">
-    
+
     <div class="col-md-12">
         <div class="portlet box blue">
             <div class="portlet-title">
@@ -25,7 +25,7 @@
                     <i class="fa fa-user"></i>
                     <?php echo ucfirst($settings->client);?>
                 </div>
-            </div>    
+            </div>
             <div class="portlet-body">
              <div class="chat-form">
                             <!--<form>
@@ -56,7 +56,7 @@
                     			<th><?= $this->Paginator->sort('description') ?></th>
                     			<th><?= $this->Paginator->sort('date_start') ?></th>
                     			<th><?= $this->Paginator->sort('date_end') ?></th>
-                    			<th><?= $this->Paginator->sort('site') ?></th>                    			
+                    			<th><?= $this->Paginator->sort('site') ?></th>
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
@@ -72,7 +72,7 @@
                         }
                         else
                         $start_date = '';
-                        
+
                         if($clients->date_end){
                         foreach($clients->date_end as $k=>$d)
                         {
@@ -84,7 +84,7 @@
                         $end_date = '';
                           ?>
 
-                    
+
                     		<tr>
                     			<td><?= $this->Number->format($clients->id) ?></td>
                     			<td>     <img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logo.png" style="height:45px;"/>
@@ -96,14 +96,14 @@
                     			<td><?= h($clients->site) ?></td>
                     			<td class="actions">
                     				<?php  if($sidebar->client_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $clients->id], ['class' => 'btn btn-info']);}
-                                
+
                                     if($sidebar->client_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);} ?>
                     				<?php  if($sidebar->client_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]);} ?>
                                     <?php  if($sidebar->document_create == '1'){?><a href="<?php echo $this->request->webroot; ?>documents/addorder/<?php echo $clients->id;?>" class="btn btn-warning" >Submit Order</a><?php }?>
                                     <?php  if($sidebar->document_create == '1'){?><a href="<?php echo $this->request->webroot; ?>documents/add/<?php echo $clients->id;?>" class="btn btn-success" >Submit <?php echo ucfirst($settings->document);?></a><?php }?>
                     			</td>
                     		</tr>
-                    
+
                     	<?php endforeach; ?>
                     	</tbody>
             	</table>
@@ -149,5 +149,5 @@
     .actions{display:none}
     .paging_simple_numbers{display:none;}
     }
-    
+
 </style>

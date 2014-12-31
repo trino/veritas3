@@ -143,10 +143,7 @@
                                                                 <label class="control-label">US DOT MC/MX#</label>
                                                                 <input <?php echo $is_disabled ?> name="us_dot" type="text" class="form-control" <?php if(isset($p->us_dot)){?> value="<?php echo $p->us_dot; ?>" <?php } ?> />
                                                             </div>
-                                                            <div class="form-group col-md-6">
-                                                                <label class="control-label">Applicants Email</label>
-                                                                <input <?php echo $is_disabled ?> name="applicants_email" type="email" class="form-control" <?php if(isset($p->applicants_email)){?> value="<?php echo $p->applicants_email; ?>" <?php } ?> />
-                                                            </div>
+                                                            
                                                         </div>
                                                         
                                                         <div class="col-md-12">

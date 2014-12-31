@@ -25,9 +25,10 @@ class DocumentsController extends AppController {
     
 	public function index() {
 	   
+       
        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
-        
-        if($setting->document_list==0)
+        $doc = $this->getDocumentcount();
+        if($setting->document_list==0 || count($doc)==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
@@ -36,31 +37,59 @@ class DocumentsController extends AppController {
         $docs = TableRegistry::get('Documents');
         $doc = $docs->find();
         $doc=$doc->select();
+        
+        $cond='';
+        if(isset($_GET['searchdoc']) && $_GET['searchdoc'])
+        {
+            $cond = $cond.' (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
+        }
+        if(isset($_GET['submitted_by_id']) && $_GET['submitted_by_id'])
+        {
+            if($cond == '')
+            $cond = $cond.' user_id = '.$_GET['submitted_by_id'];
+            else
+            $cond = $cond.' AND user_id = '.$_GET['submitted_by_id'];
+        }
+        if(isset($_GET['client_id']) && $_GET['client_id'])
+        {
+            if($cond == '')
+            $cond = $cond.' client_id = '.$_GET['client_id'];
+            else
+            $cond = $cond.' AND client_id = '.$_GET['client_id'];
+        }
+        if(isset($_GET['type']) && $_GET['type'])
+        {
+            if($cond == '')
+            $cond = $cond.' document_type = "'.$_GET['type'].'"';
+            else
+            $cond = $cond.' AND document_type = "'.$_GET['type'].'"';
+        }
+        if($cond)
+        {
+            $doc = $doc->where([$cond]);
+        }
+        if(isset($_GET['searchdoc']))
+        {
+            $this->set('search_text',$_GET['searchdoc']);
+        }
+        if(isset($_GET['submitted_by_id']))
+        {
+            $this->set('return_user_id',$_GET['submitted_by_id']);
+        }
+        if(isset($_GET['client_id']))
+        {
+            $this->set('return_client_id',$_GET['client_id']);
+        }
+        if(isset($_GET['type']))
+        {
+            $this->set('return_type',$_GET['type']);
+        }
         $this->set('documents', $doc);
-		//$this->set('client', $this->paginate($this->Jobs));
 	}
     
-    function search()
-    {
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
-        
-        if($setting->document_list==0)
-        {
-            $this->Flash->error('Sorry, You dont have the permissions.');
-            	return $this->redirect("/");
-            
-        }
-		
-        
-        $search = $_GET['search'];
-        $searchs = strtolower($search);
-        $querys = TableRegistry::get('Documents');
-        $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
-        $this->set('documents', $this->paginate($this->Documents)); 
-        $this->set('documents',$query);
-        $this->set('search_text',$search);
-        $this->render('index');
-    }
+    /*
+    
+    
     
     function submittedBy()
     {
@@ -120,14 +149,14 @@ class DocumentsController extends AppController {
         $this->set('documents',$query);
         $this->set('return_type',$type);
         $this->render('index'); 
-    }
+    }*/
     
     
 
 	public function view($id = null) {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
-        
-        if($setting->document_list==0)
+        $doc = $this->getDocumentcount();
+        if($setting->document_list==0 || count($doc)==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
@@ -144,15 +173,18 @@ class DocumentsController extends AppController {
  *
  * @return void
  */
-	public function addorder() {
+	public function addorder($cid=0,$did=0) {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
-        
-        if($setting->document_create==0)
+         $doc = $this->getDocumentcount();
+         
+        if($setting->document_create==0 || count($doc)==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
             
         }
+        $this->set('cid',$cid);
+        $this->set('did',$did);
 		/*$profile = $this->Clients->newEntity($this->request->data);
 		if ($this->request->is('post')) {
 			if ($this->Clients->save($profile)) {
@@ -165,6 +197,41 @@ class DocumentsController extends AppController {
 		$this->set(compact('profile'));*/
         
 	}
+    
+    public function savedoc($cid=0,$did=0)
+    {
+        $docs = TableRegistry::get('Documents');
+         
+        $arr['uploaded_for'] = $_POST['uploaded_for'];
+        $arr['client_id'] = $cid;
+        $arr['document_type'] = 'order';
+        $arr['created'] = date('Y-m-d H:i:s');
+        if(!$did || $did=='0'){
+	   $arr['user_id'] = $this->request->session()->read('Profile.id');
+        $doc = $docs->newEntity($arr);
+		
+		  
+			if ($docs->save($doc)) {
+				//$this->Flash->success('The client has been saved.');
+                	echo $doc->id;
+			} else {
+			     //$this->Flash->error('The client could not be saved. Please, try again.');
+				//echo "e";
+			}
+		
+        }
+        else
+        {
+            $query2 = $docs->query();
+                        $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $did])
+                        ->execute();
+                        //$this->Flash->success('The client has been saved.');
+                	echo $sid;
+        }
+		die();
+    }
 
 /**
  * Edit method
@@ -173,15 +240,20 @@ class DocumentsController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function editorder($id = null) {
+	public function editorder($cid=0,$did=0) {
 	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
-        
-        if($setting->document_edit==0)
+        $doc = $this->getDocumentcount();
+        if($setting->document_edit==0 || count($doc)==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
             
         }
+        $docs = TableRegistry::get('documents');
+            $document = $docs->find()->where(['id' => $did])->first();
+            $this->set('document',$document);
+        $this->set('cid',$cid);
+        $this->set('did',$did);
 		/*$profile = $this->Clients->get($id, [
 			'contain' => []
 		]);
@@ -198,13 +270,77 @@ class DocumentsController extends AppController {
         $this->render('addorder');
 	}
     
-    function add()
+    function add($cid=0,$did=0)
     {
-        
+         $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+         $doc = $this->getDocumentcount();
+        if($did!=0)
+        {
+            $doc = TableRegistry::get('Documents');
+            $query = $doc->find()->where(['id' => $did])->first();
+            $this->set('document',$query);
+            if($setting->document_edit==0 || count($doc)==0)
+            {
+                $this->Flash->error('Sorry, You dont have the permissions.');
+                	return $this->redirect("/");
+                
+            }
+            
+        }
+        else
+        { 
+            if($setting->document_create==0 || count($doc)==0)
+            {
+                $this->Flash->error('Sorry, You dont have the permissions.');
+                	return $this->redirect("/");
+                
+            }
+        }
+        if(isset($_POST['uploaded_for'])){
+        $docs = TableRegistry::get('Documents');
+         
+        $arr['uploaded_for'] = $_POST['uploaded_for'];
+        $arr['client_id'] = $cid;
+        if(isset($_POST['document_type']))
+        $arr['document_type'] = $_POST['document_type'];
+        $arr['created'] = date('Y-m-d H:i:s');
+        if(!$did || $did=='0'){
+	   $arr['user_id'] = $this->request->session()->read('Profile.id');
+        $doc = $docs->newEntity($arr);
+		
+		  
+			if ($docs->save($doc)) {
+				$this->Flash->success('The document has been saved.');
+                	$this->redirect('/documents');
+			} else {
+			     //$this->Flash->error('The client could not be saved. Please, try again.');
+				//echo "e";
+			}
+		
+        }
+        else
+        {
+            $query2 = $docs->query();
+                        $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $did])
+                        ->execute();
+                        $this->Flash->success('The document has been saved.');
+                	$this->redirect('/documents');
+        }
+		}
     }
     
     function edit()
     {
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $doc = $this->getDocumentcount();
+        if($setting->document_edit==0 || count($doc)==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
         $this->render('add');
     }
 
@@ -256,6 +392,14 @@ class DocumentsController extends AppController {
         $query->select()->where(['display' => 1])->order('id');
         $this->response->body($query);
         return $this->response;
+    }
+    
+    function getDocumentcount()
+    {
+        $doc = TableRegistry::get('Subdocuments');
+        $query = $doc->find();
+        $query->select()->where(['display' => 1]);
+        return $query->all();
     }
     function get_permission($uid)
     {
@@ -313,7 +457,7 @@ class DocumentsController extends AppController {
     {
         $query = TableRegistry::get('Subdocuments');
         $query = $query->find();
-        $q = $query->select();
+        $q = $query->select()->where(['display'=>'1']);
         $this->response->body($q);
         return $this->response;
         die();

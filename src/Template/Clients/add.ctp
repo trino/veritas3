@@ -96,7 +96,7 @@ $c = $client;
                                                     <input type="hidden" name="image" id="client_img" />
 													<div class="form-group col-md-6">
 														<label class="control-label">Customer Type</label>
-                                                        <select class="form-control" name="customer_type">
+                                                        <select class="form-control" name="customer_type" id="customer_type">
                                                             <option value="">Select</option>
                                                             <option value="1"<?php if(isset($c->customer_type)&& $c->customer_type==1) {?>selected="selected"<?php } ?>>Insurance</option>
                                                             <option value="2"<?php if(isset($c->customer_type)&& $c->customer_type==2) {?>selected="selected"<?php } ?>>Fleet</option>
@@ -142,19 +142,19 @@ $c = $client;
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Administrator's First Name</label>
-														<input type="text" class="form-control" name="u_fname" <?php if(isset($c->u_fname)){?> value="<?php echo $c->u_fname; ?>" <?php } ?>/>
+														<input type="text" class="form-control" name="admin_fname" <?php if(isset($c->admin_fname)){?> value="<?php echo $c->admin_fname; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Administrator's Last Name</label>
-														<input type="text" class="form-control" name="admin_lname" <?php if(isset($c->u_lname)){?> value="<?php echo $c->u_lname; ?>" <?php } ?>/>
+														<input type="text" class="form-control" name="admin_lname" <?php if(isset($c->admin_lname)){?> value="<?php echo $c->admin_lname; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Administrator's Email Address</label>
-														<input type="email" id="u_email" class="form-control" name="admin_email" <?php if(isset($c->u_email)){?> value="<?php echo $c->u_email; ?>" <?php } ?>/>
+														<input type="email" id="u_email" class="form-control" name="admin_email" <?php if(isset($c->admin_email)){?> value="<?php echo $c->admin_email; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Administrator's Phone Number</label>
-														<input type="text" class="form-control" name="admin_phone" <?php if(isset($c->u_phone)){?> value="<?php echo $c->u_phone; ?>" <?php } ?>/>
+														<input type="text" class="form-control" name="admin_phone" <?php if(isset($c->admin_phone)){?> value="<?php echo $c->admin_phone; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Site</label>
@@ -295,15 +295,15 @@ $c = $client;
                                                             ?>
                                                             <td class="">
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="clientC[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if($csubdoc['display'] != 0) {?> checked="checked" <?php } ?> />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="clientC[<?php echo $sub->id;?>]" value="1"  <?php if($csubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="clientC[<?php echo $sub->id;?>]" value="0" onclick="$(this).closest('tr').next('tr').hide();" <?php if($csubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
+                                                                    <input <?php echo $is_disabled?> type="radio" name="clientC[<?php echo $sub->id;?>]" value="0"  <?php if($csubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
                                                                     No </label>
                                                             </td>
                                                             
                                                         </tr>
-                                                        <tr <?php if($csubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
+                                                        <!--<tr <?php if($csubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
                                                             <td  colspan="2"></td>
                                                             <td class="">
                                                                 <label class="uniform-inline">
@@ -316,7 +316,7 @@ $c = $client;
                                                                     <input <?php echo $is_disabled?> type="radio"  name="client[<?php echo $sub->id;?>]" value="3" <?php if($csubdoc['display'] == 3) {?> checked="checked" <?php } ?>/>
                                                                     Both </label>
                                                             </td>
-                                                        </tr>
+                                                        </tr>-->
                                                             <?php
                                                         }
                                                         ?>
@@ -595,7 +595,7 @@ $c = $client;
                         }, 200);
                     },
                     onComplete: function(file, response){
-                        button.text('<i class="fa fa-image"></i> Add/Edit Image');
+                        button.html('<i class="fa fa-image"></i> Add/Edit Image');
                             window.clearInterval(interval);
                             this.enable();
                             $("#clientpic").attr("src",'<?php echo $this->request->webroot;?>img/jobs/'+response);
@@ -637,9 +637,9 @@ $c = $client;
                                            if($(this).is(':checked'))
                                            {
                                             if(str=='')
-                                            str = 'recruiter_id[]='+$(this).val();
+                                            str = 'profile_id[]='+$(this).val();
                                             else
-                                            str = str+'&recruiter_id[]='+$(this).val();
+                                            str = str+'&profile_id[]='+$(this).val();
                                            } 
                                         });
                                         $('.contacts input').each(function(){
@@ -660,10 +660,11 @@ $c = $client;
                                                 str = str+'&'+$('#tab_1_1 input').serialize();
                                             }
                                             str = str+'&description='+$('#tab_1_1 textarea').val();
+                                            str = str+'&customer_type='+$('#customer_type').val();
                                             
                                             
                                             $.ajax({
-                                               url:'<?php echo $this->request->webroot;?>clients/saveClients',
+                                               url:'<?php echo $this->request->webroot;?>clients/saveClients/<?php echo $id?>',
                                                data:str,
                                                type:'post',
                                                success:function(res)

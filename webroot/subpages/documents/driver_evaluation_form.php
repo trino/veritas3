@@ -1,3 +1,4 @@
+<input type="hidden" name="document_type" value="Road test" />
                                                 <div class="form-group">
 													<label class="control-label col-md-3">Driver name <span class="required">
 													* </span>

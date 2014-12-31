@@ -58,6 +58,7 @@ $is_disabled = '';
 										<ul class="nav nav-pills nav-justified steps">    
                                             <?php
                                                 $doc = $this->requestAction('/documents/getDocument');
+                                                
                                                 $doc2 = $doc;
                                                 $i = 1;
                                                 foreach($doc as $d)
@@ -78,14 +79,14 @@ $is_disabled = '';
                                                 }
                                             ?>
 											
-                                            <li>
+                                           <!-- <li>
 												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
 												<span class="number">
-												<?php echo $i++;?></span><br />
+												<?php //echo $i++;?></span><br />
 												<span class="desc">
 												<i class="fa fa-check"></i> Confirmation </span>
 												</a>
-											</li>
+											</li>-->
                                             <li>
 												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
 												<span class="number">
@@ -109,17 +110,15 @@ $is_disabled = '';
 												<a href="javascript:;" class="btn default button-previous">
 												<i class="m-icon-swapleft"></i> Back </a>
 
-                                                <a href="javascript:;" class="btn green button-next">
-												Save <i class="m-icon-swapdown m-icon-white"></i>
+                                                <a href="javascript:;" class="btn red button-next">
+												Skip <i class="m-icon-swapdown m-icon-white"></i>
 												</a>
 
 												<a href="javascript:;" class="btn blue button-next cont">
-												Continue <i class="m-icon-swapright m-icon-white"></i>
+												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
+												
                                                 <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>
@@ -133,24 +132,37 @@ $is_disabled = '';
 												<button class="close" data-dismiss="alert"></button>
 												Your form validation is successful!
 											</div>
-                                            <div class="form-group mar-top-10 col-md-12">
+                                            <div class="form-group mar-top-10 col-md-12 uploaded_for">
                                         <?php
                                                     $users = $this->requestAction("documents/getAllUser");
                                          ?>
                                          
                                             <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->profile);?></label>
                                             <div class="col-md-6">
-                                        <select class="form-control" name="uploaded_for">
+                                            
+                                        <select class="form-control" name="uploaded_for" id="uploaded_for">
 								        <option value="">Select <?php echo ucfirst($settings->profile);?></option>
                                             <?php 
                                                 foreach($users as $u)
                                                 {
                                                     ?>
-                                                    <option value="<?php echo $u->id;?>" <?php if(isset($return_user_id) && $return_user_id==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                                    <option value="<?php echo $u->id;?>" <?php if(isset($document) && $document->uploaded_for==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
                                                     <?php
                                                 }
                                              ?>
             							 </select>
+                                         <input type="hidden" name="client_id" value="<?php echo $cid;?>" id="client_id" />
+                                         <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
+                                         <?php
+                                         if(!$did)
+                                         {
+                                            ?>
+                                            
+                                         <input type="hidden" name="user_id" value="<?php $this->request->session()->read('Profile.id');?>" id="user_id" />
+                                         
+                                         <?php
+                                         }
+                                         ?>
                                          </div>
                                          </div>
                                          <div class="clearfix"></div>
@@ -198,17 +210,15 @@ $is_disabled = '';
 												<a href="javascript:;" class="btn default button-previous">
 												<i class="m-icon-swapleft"></i> Back </a>
 
-                                                <a href="javascript:;" class="btn green button-next">
-												Save <i class="m-icon-swapdown m-icon-white"></i>
+                                                <a href="javascript:;" class="btn red button-next">
+												Skip <i class="m-icon-swapdown m-icon-white"></i>
 												</a>
 
 												<a href="javascript:;" class="btn blue button-next cont">
-												Continue <i class="m-icon-swapright m-icon-white"></i>
+												Save & Continue <i class="m-icon-swapright m-icon-white"></i>
 												</a>
 
-												<a href="javascript:;" class="btn blue button-submit">
-												Finalize <i class="m-icon-swapright m-icon-white"></i>
-												</a>
+												
                                                 <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
 											</div>
 										</div>
@@ -228,6 +238,19 @@ function subform(form_type)
     $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
+    $('.cont').click(function(){
+        
+    
+    $.ajax({
+       data:'uploaded_for='+$('#uploaded_for').val(),
+       type:'post', 
+       url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val(), 
+       success:function(res)
+       {
+        $('#did').val(res);
+       }
+    });
+    });
    $('#addfiles').click(function(){
             //alert("ssss");
            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');

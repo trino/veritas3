@@ -91,9 +91,14 @@ class ClientsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $querys = TableRegistry::get('Clients');
+        $query = $querys->find()->where(['id' => $id]);
+        $this->set('client', $query->first()); 
+        $this->set('id',$id);
 		//$this->set('disabled',1);
         //$this->render('add');
 	}
+    
 
 /**
  * Add method
@@ -151,18 +156,19 @@ class ClientsController extends AppController {
 			}
 		}
 		$this->set(compact('client'));
-        $this->set('recruiters',array());
+        $this->set('profile',array());
         $this->set('contacts',array());
+        $this->set('id','');
         $this->render('add');
 	}
     
-    public function saveClients() {
+    public function saveClients($id=0) {
 	   
         $rec='';
         $con='';
         $count=1;
-        if(isset($_POST['recruiter_id'])){
-        foreach($_POST['recruiter_id'] as $ri)
+        if(isset($_POST['profile_id'])){
+        foreach($_POST['profile_id'] as $ri)
         {
         	if($count==1)	
         	$rec = $ri;
@@ -172,8 +178,8 @@ class ClientsController extends AppController {
         
         }
         }
-        unset($_POST['recruiter_id']);
-        $_POST['recruiter_id'] = $rec;
+        unset($_POST['profile_id']);
+        $_POST['profile_id'] = $rec;
         
         if(isset($_POST['contact_id'])){
         foreach($_POST['contact_id'] as $ri)
@@ -188,7 +194,9 @@ class ClientsController extends AppController {
         }
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
-	   $clients = TableRegistry::get('Clients');
+        $clients = TableRegistry::get('Clients');
+        if(!$id){
+	   
         $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
 		  
@@ -200,6 +208,17 @@ class ClientsController extends AppController {
 				echo "e";
 			}
 		}
+        }
+        else
+        {
+            $query2 = $clients->query();
+                        $query2->update()
+                        ->set($_POST)
+                        ->where(['id' => $id])
+                        ->execute();
+                        $this->Flash->success('The client has been saved.');
+                	echo $id;
+        }
 		die();
 	}
 
@@ -222,7 +241,7 @@ class ClientsController extends AppController {
 		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);
-        $arr = explode(',',$client->recruiter_id);
+        $arr = explode(',',$client->profile_id);
         $arr2 = explode(',',$client->contact_id);
 
 		if ($this->request->is(['patch', 'post', 'put'])) {
@@ -234,9 +253,11 @@ class ClientsController extends AppController {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
 		}
+        //$client_details = $query->select()->where(['id'=>$id]);
 		$this->set(compact('client'));
+        //$this->set('client_details',$client_details);
         $this->set('id',$id);
-        $this->set('recruiters',$arr);
+        $this->set('profile',$arr);
         $this->set('contacts',$arr2);
         $this->render('add');
 	}
@@ -314,13 +335,13 @@ class ClientsController extends AppController {
                     ->where(['client_id' => $id,'subdoc_id' => $k2]);
                     $check=$query->first();
                     
-                    if($v2 == ''){
+                    if($v2 == '1'){
 
                     if($check)
                     {
                         $query2 = $subp->query();
                         $query2->update()
-                        ->set(['display'=>$_POST['client'][$k2]])
+                        ->set(['display'=>$v2])
                         ->where(['client_id' => $id,'subdoc_id' => $k2])
                         ->execute();
                     }
@@ -329,7 +350,7 @@ class ClientsController extends AppController {
                         
                        $query2 = $subp->query();
                         $query2->insert(['client_id','subdoc_id', 'display'])
-                        ->values(['client_id' => $id,'subdoc_id' => $k2,'display'=>$_POST['client'][$k2]])
+                        ->values(['client_id' => $id,'subdoc_id' => $k2,'display'=>$v2])
                         ->execute(); 
                     }
                     }
@@ -384,6 +405,43 @@ class ClientsController extends AppController {
            // return $this->response;
          die();
    }
+   
+   function getProfile($id=null)
+   {
+    $profile = TableRegistry::get('Clients');
+    $query = $profile->find()->where(['id'=>$id]);
+    $q = $query->first();
+    //$profile_id= explode(',',$q->profile_id);
+//    if(($profile_id))
+//    {
+        $pro = TableRegistry::get('Profiles');
+        if($q->profile_id)
+            $querys = $pro->find()->where(['id IN ('.$q->profile_id.')']);
+            else
+            $querys=array();  
+            $this->response->body(($querys));
+            return $this->response;
+        
+   }
+   
+   function getContact($id=null)
+   {
+    $contact = TableRegistry::get('Clients');
+    $query = $contact->find()->where(['id'=>$id]);
+    $q = $query->first();
+    //$profile_id= explode(',',$q->profile_id);
+//    if(($profile_id))
+//    {
+        $pro = TableRegistry::get('Profiles');
+        if($q->contact_id)
+            $querys = $pro->find()->where(['id IN ('.$q->contact_id.')']);
+            else
+            $querys=array();  
+            $this->response->body(($querys));
+            return $this->response;
+        
+   }
+   
     
 }
 ?>

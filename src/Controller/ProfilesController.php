@@ -432,6 +432,18 @@ class ProfilesController extends AppController {
         die();   
     }
     
+    function getProfile()
+    {
+        $rec = TableRegistry::get('Profiles');
+        $query = $rec->find();
+        $query = $query->select()->where(['super'=>0]);
+        
+        $this->response->body($query);
+        return $this->response;
+        
+        die();   
+    }
+    
     function getContact()
     {
         $con = TableRegistry::get('Profiles');
@@ -472,17 +484,63 @@ class ProfilesController extends AppController {
             	return $this->redirect("/");
             
         }
-		
         
-        $search = $_GET['search'];
-        $searchs = strtolower($search);
-        $querys = TableRegistry::get('Profiles');
-        $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
+        if(isset($_GET['searchprofile']))
+        {
+            $search = $_GET['searchprofile'];
+            $searchs = strtolower($search);
+        }
+        
+        if(isset($_GET['filter_profile_type']))
+        {
+           $profile_type = $_GET['filter_profile_type']; 
+        }
+		$querys = TableRegistry::get('Profiles');
+        if($_GET['filter_profile_type']=='' && isset($_GET['searchprofile']))
+        {
+            $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
+        }
+        
+        else if(isset($_GET['filter_profile_type'])&& !isset($_GET['searchprofile']))
+        {
+            $query = $querys->find()->where(['profile_type'=>$profile_type]);
+        }
+        
+        else if(isset($_GET['filter_profile_type'])&& isset($_GET['searchprofile']))
+        {
+            $query = $querys->find()
+            ->where(['LOWER(title) LIKE' => '%'.$searchs.'%'])
+            ->andWhere(['profile_type'=>$profile_type]);
+        }
+        
         $this->set('profiles', $this->paginate($this->Profiles)); 
         $this->set('profiles',$query);
-        $this->set('search_text',$search);
+        if(isset($search))
+        {
+            $this->set('search_text',$search);
+        }
+        if(isset($profile_type))
+        {
+            $this->set('return_profile_type',$profile_type);
+        }
         $this->render('index');
     }
+    
+    function getuser()
+   {
+        $id = $this->request->session()->read('Profile.id');
+        $profile = TableRegistry::get('profiles');
+        $query = $profile->find()->where(['id'=>$id]);
+                 
+        $l = $query->first();
+        $this->response->body($l);
+        return $this->response;
+        //return $l;
+        
+         die();
+        
+        
+   }
    
 }
 ?>

@@ -149,12 +149,12 @@
 					<ul class="dropdown-menu">
 						<li class="external">
 							<h3>You have <span class="bold">7 New</span> Messages</h3>
-							<a href="page_inbox.html">view all</a>
+							<a href="#">view all</a>
 						</li>
 						<li>
 							<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
 								<li>
-									<a href="inbox.html?a=view">
+									<a href="#">
 									<span class="photo">
 									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
@@ -168,7 +168,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="inbox.html?a=view">
+									<a href="#">
 									<span class="photo">
 									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
@@ -182,7 +182,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="inbox.html?a=view">
+									<a href="#">
 									<span class="photo">
 									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
@@ -196,7 +196,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="inbox.html?a=view">
+									<a href="#">
 									<span class="photo">
 									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
@@ -210,7 +210,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="inbox.html?a=view">
+									<a href="#">
 									<span class="photo">
 									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
 									</span>
@@ -227,12 +227,14 @@
 						</li>
 					</ul>
 				</li>
-				
+				<?php $c = $this->requestAction('profiles/getuser');
+                    
+                ?>
 				<li class="dropdown dropdown-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="http://localhost/veritas3/img/uploads/male.png"/>
+					<img alt="" class="img-circle" src="http://localhost/veritas3/img/profile/<?php echo $c->image;?>"/>
 					<span class="username username-hide-on-mobile">
-					Nick </span>
+					<?php echo ucfirst($c->username);?> </span>
 					<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
@@ -242,7 +244,7 @@
 						</li>
 						
 						<li>
-							<a href="inbox.html">
+							<a href="#">
 							<i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
 							3 </span>
 							</a>

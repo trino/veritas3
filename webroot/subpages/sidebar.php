@@ -149,14 +149,14 @@
                         <?php }?>
                         <?php if($sidebar->document_create==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='order')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>documents/addorder">
+							<a href="<?php echo WEB_ROOT;?>documents/addorder/1">
                             <i class="icon-plus"></i> 
 							Submit Orders</a>
 						</li>
 						<?php }?>
                         <?php if($sidebar->document_create==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>documents/add">
+							<a href="<?php echo WEB_ROOT;?>documents/add/1">
                             <i class="icon-plus"></i>
 							Submit <?php echo ucfirst($settings->document);?></a>
 						</li>

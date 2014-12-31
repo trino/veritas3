@@ -21,18 +21,15 @@
                 $doc = $this->requestAction('/documents/getDocument');
                 $i=0;
                 if($doc){
-                    //echo strtolower($document->document_type);
-                    $form_type = "";
                     foreach($doc as $d)
                     {
-                        //echo strtolower($d->title);
-                        if(isset($document) && strtolower($d->title) == strtolower($document->document_type))
-                             $form_type = $d->form;
-                        $prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$this->Session->read('Profile.id').'/'.$d->id);
+                        
+                        $csubdoc = $this->requestAction('/clients/getCSubDoc/'.$id.'/'.$d->id);
+                        //var_dump($csubdoc);
                         if($i==11)
                         $i=0;
                         ?>
-                        <?php if($prosubdoc['display'] != 0 && $d->display==1){?>
+                        <?php if($csubdoc['display'] == 1 && $d->display==1) {?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
     					<div class="dashboard-stat <?php echo $class[$i]; ?>">
@@ -49,27 +46,20 @@
     								 <?php echo ucfirst($d->title); ?>
     							</div>
     						</div>
-                            <?php if($this->request['controller']!="Documents"){?>
     						<a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a>
-                            <?php }
-                            else{?>
-                            <a class="more" href="javascript:;" onclick="showforms('<?php echo $d->form;?>')">
-    						Load Document<i class="m-icon-swapright m-icon-white"></i>
-    						</a>  
-                            <?php
-                            }?>
     					</div>
                         <div class="dusk"></div>
     
                     </div>
+                    
                         <?php
-                    }
+                        }
                         $i++;
                     }
-                    
                 }
+                
                  ?>
 			<!--	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 

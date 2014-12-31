@@ -73,7 +73,11 @@ class ClientsController extends AppController {
         $search = $_GET['search'];
         $searchs = strtolower($search);
         $querys = TableRegistry::get('Clients');
-        $query = $querys->find()->where(['LOWER(title) LIKE' => '%'.$searchs.'%']);
+        $query = $querys->find()
+        ->where(['LOWER(title) LIKE' => '%'.$searchs.'%'])
+        ->orWhere(['LOWER(description) LIKE' => '%'.$searchs.'%'])
+        ->orWhere(['LOWER(company_name) LIKE' => '%'.$searchs.'%'])
+        ->orWhere(['LOWER(company_address) LIKE' => '%'.$searchs.'%']);
         $this->set('client', $this->paginate($this->Clients)); 
         $this->set('client',$query);
         $this->set('search_text',$search);

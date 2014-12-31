@@ -541,6 +541,27 @@ class ProfilesController extends AppController {
         
         
    }
+   function getusers()
+   {
+        $title = $_POST['v'];
+        
+        $profile = TableRegistry::get('profiles');
+        $query = $profile->find()->where(['username LIKE'=>'%'.$title."%"]);
+                 
+        $l = $query->all();
+        echo "<select onchange='$(\".madmin\").val(this.value); $(\".loadusers\").hide()'>";
+        echo "<option> Select User</option>";
+        foreach($l as $user)
+        {
+            echo "<option value='".$user->username."'>".$user->username."</option>";
+        }
+        echo "<select/>";
+        //return $l;
+        
+         die();
+        
+        
+   }
    
 }
 ?>

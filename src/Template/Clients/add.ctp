@@ -157,6 +157,7 @@ $c = $client;
 														<input type="text" class="form-control" name="admin_phone" <?php if(isset($c->admin_phone)){?> value="<?php echo $c->admin_phone; ?>" <?php } ?>/>
 													</div>
 													*/ ?>
+                                                    <?php include('subpages/adminlisting.php');?>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Website</label>
 														<input type="text" class="form-control" name="site" <?php if(isset($c->site)){?> value="<?php echo $c->site; ?>" <?php } ?>/>

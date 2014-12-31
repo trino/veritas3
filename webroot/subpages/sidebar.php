@@ -39,36 +39,7 @@
 					</a>
 					
 				</li>
-                <?php if($sidebar->profile==1){?>
-				<li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo'&& $this->request['action']!='todo')?'active open':'';?>">
-					<a href="javascript:;">
-					<i class="icon-user"></i>
-					<span class="title"><?php echo ucfirst($settings->profile);?>s</span>
-                    <?php echo($this->request['controller']=='Profiles' )?'<span class="selected"></span>':'';?>
-                    
-					<span class="arrow "></span>
-					</a>
-                    <?php if($sidebar->profile_list==1 || $sidebar->profile_create==1){?>
-					<ul class="sub-menu">
-                        <?php if($sidebar->profile_list==1){?>
-						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='index')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>profiles">
-							<i class="icon-list"></i>
-							List <?php echo ucfirst($settings->profile);?>s</a>
-						</li>
-                        <?php }?>
-                        <?php if($sidebar->profile_create==1){?>
-						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='add')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>profiles/add">
-							<i class="icon-plus"></i>
-							Create <?php echo ucfirst($settings->profile);?></a>
-						</li>
-                        <?php }?>
-						
-					</ul> 
-                    <?php }?>
-				</li>
-                <?php } ?>
+                
                  <?php if($sidebar->client==1){?>
                 	<li class="<?php echo($this->request['controller']=='Clients' && $this->request['action']!='quickcontact')?'active open':'';?>">
 					<a href="javascript:;">
@@ -108,6 +79,36 @@
                     <?php }?>
 				</li>
                 <?php }?>
+                <?php if($sidebar->profile==1){?>
+				<li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo'&& $this->request['action']!='todo')?'active open':'';?>">
+					<a href="javascript:;">
+					<i class="icon-user"></i>
+					<span class="title"><?php echo ucfirst($settings->profile);?>s</span>
+                    <?php echo($this->request['controller']=='Profiles' )?'<span class="selected"></span>':'';?>
+                    
+					<span class="arrow "></span>
+					</a>
+                    <?php if($sidebar->profile_list==1 || $sidebar->profile_create==1){?>
+					<ul class="sub-menu">
+                        <?php if($sidebar->profile_list==1){?>
+						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='index')?'class="active"':'';?>>
+							<a href="<?php echo WEB_ROOT;?>profiles">
+							<i class="icon-list"></i>
+							List <?php echo ucfirst($settings->profile);?>s</a>
+						</li>
+                        <?php }?>
+                        <?php if($sidebar->profile_create==1){?>
+						<li <?php echo($this->request['controller']=='Profiles' && $this->request['action']=='add')?'class="active"':'';?>>
+							<a href="<?php echo WEB_ROOT;?>profiles/add">
+							<i class="icon-plus"></i>
+							Create <?php echo ucfirst($settings->profile);?></a>
+						</li>
+                        <?php }?>
+						
+					</ul> 
+                    <?php }?>
+				</li>
+                <?php } ?>
                 <!--<li class="start <?php echo($this->request['controller']=='Logos')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-home"></i>

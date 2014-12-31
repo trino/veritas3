@@ -88,7 +88,29 @@
     					<input type="text" class="form-control" placeholder="Postal Code"/>
     				</div>
                 </div>
-                
+
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-3">Aliases : </label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="aliases"/>
+                    </div>
+                    <label class="control-label col-md-3">Drivers License Number : </label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="driver_license_number"/>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-3">Province (Driver’s License was issued) : </label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="driver_license_issued"/>
+                    </div>
+                    <label class="control-label col-md-3">Applicants Email : </label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="applicants_email"/>
+                    </div>
+                </div>
+
+
                 <div class="col-md-12">
                     <p>I hereby consent to the search of the following:</p>
                     <ul>
@@ -303,24 +325,30 @@
                 </div>
                 
                 <div class="form-group col-md-12">
-                                        <label class="control-label col-md-3">Attach Document : </label>
-                                        <div class="col-md-9">
-                                        <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
-                                        </div>
-                       </div>
+                    <label class="control-label col-md-3">Attach Document 1: </label>
+                    <div class="col-md-9">
+                    <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
+                    </div>
+               </div>
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-3">Attach Document 2: </label>
+                    <div class="col-md-9">
+                        <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
+                    </div>
+                </div>
                        
-                      <div class="form-group col-md-12">
+                      <!--<div class="form-group col-md-12">
                         <div id="more_consent_doc">
                         </div>
                       </div>
-                      
+
                       <div class="form-group col-md-12">
                         <div class="col-md-3">
                         </div>
                         <div class="col-md-9">
                             <a href="javascript:void(0);" class="btn btn-success" id="add_more_consent_doc">Add More</a>
                         </div>
-                      </div>
+                      </div>-->
                 
             <div class="clearfix"></div>
 

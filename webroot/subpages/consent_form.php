@@ -303,11 +303,11 @@
                 </div>
                 
                 <div class="form-group col-md-12">
-                                        <label class="control-label col-md-3">Attach Document : </label>
-                                        <div class="col-md-9">
-                                        <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
-                                        </div>
-                       </div>
+                    <label class="control-label col-md-3">Attach Document : </label>
+                    <div class="col-md-9">
+                    <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
+                    </div>
+               </div>
                        
                       <div class="form-group col-md-12">
                         <div id="more_consent_doc">

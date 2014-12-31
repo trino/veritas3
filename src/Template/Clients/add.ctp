@@ -140,7 +140,7 @@ $c = $client;
 														<label class="control-label">Province/State</label>
 														<input type="text" class="form-control" name="province" <?php if(isset($c->province)){?> value="<?php echo $c->province; ?>" <?php } ?>/>
 													</div>
-                                                    <div class="form-group col-md-6">
+                                                  <?php /*  <div class="form-group col-md-6">
 														<label class="control-label">Administrator's First Name</label>
 														<input type="text" class="form-control" name="admin_fname" <?php if(isset($c->admin_fname)){?> value="<?php echo $c->admin_fname; ?>" <?php } ?>/>
 													</div>
@@ -156,8 +156,9 @@ $c = $client;
 														<label class="control-label">Administrator's Phone Number</label>
 														<input type="text" class="form-control" name="admin_phone" <?php if(isset($c->admin_phone)){?> value="<?php echo $c->admin_phone; ?>" <?php } ?>/>
 													</div>
+													*/ ?>
                                                     <div class="form-group col-md-12">
-														<label class="control-label">Site</label>
+														<label class="control-label">Website</label>
 														<input type="text" class="form-control" name="site" <?php if(isset($c->site)){?> value="<?php echo $c->site; ?>" <?php } ?>/>
 													</div>
                                                     
@@ -218,12 +219,24 @@ $c = $client;
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Add document</label>
                                                         <div>
-                                                        <a href="#" class="btn btn-primary">Browse</a>
+                                                       <!-- <a href="#" class="btn btn-primary">Browse</a> -->
+                                                      <div class="docMore" data-count="1">
+                                                         <div  style="display:block;margin:5px;">
+                                                         <a href="#" class="btn btn-primary">Browse</a>
+                                                          <input type="hidden" name="file_1"/>
+                                                           </div>
+                                                       </div>
+
+                                                        <a href="#" id="addMore" class="btn btn-info" onclick="addMore(event,this)">Add More Document</a>
+
+
                                                          <?php if(isset($c->document)){?>
                                                          <img src="" />
                                                          <?php } ?>
                                                          </div>
-													</div><div class="form-group col-md-6">
+													</div>
+
+													<div class="form-group col-md-6">
 														<label class="control-label">Billing Contact</label>
 														<input type="text" class="form-control" name="billing_contact" <?php if(isset($c->billing_contact)){?> value="<?php echo $c->billing_contact; ?>" <?php } ?>/>
 													</div>
@@ -231,6 +244,21 @@ $c = $client;
 														<label class="control-label">Billing Address</label>
 														<input type="text" class="form-control" name="billing_address" <?php if(isset($c->billing_address)){?> value="<?php echo $c->billing_address; ?>" <?php } ?>/>
 													</div>
+
+													<div class="form-grop col-md-6">
+													    <label class="control-label">Billing City</label>
+													    <input type="text" class="form-control" name="billing_city" value="<?php echo isset($c->billing_city)?$c->billing_city:''?>" />
+													</div>
+
+													<div class="form-grop col-md-6">
+                                                        <label class="control-label">Billing State/Province</label>
+                                                        <input type="text" class="form-control" name="billing_province"  value="<?php echo isset($c->billing_province)?$c->billing_province:''?>" />
+                                                    </div>
+                                                    <div class="form-grop col-md-6">
+                                                        <label class="control-label">Billing Postal Code</label>
+                                                        <input type="text" class="form-control" name="billing_postal_code" value="<?php echo isset($c->billing_postal_code)?$c->billing_postal_code:''?>" />
+                                                    </div>
+
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Billing Instructions</label>
 														<input type="radio" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=='individual' ){?> selected="selected" <?php } ?> value="individual"/>&nbsp;&nbsp;Individual&nbsp;&nbsp;
@@ -681,6 +709,36 @@ $c = $client;
                                             })
                                        }); 
                                     });
+
+
+var removeLink = 0;// this variable is for showing and removing links in a add document
+                                  function addMore(e,obj){
+                                    e.preventDefault();
+
+                                        var total_count = $('.docMore').data('count');
+                                        $('.docMore').data('count',parseInt(total_count)+1);
+                                        total_count = $('.docMore').data('count');
+                                        var input_field = '<div style="display:block;margin:5px;"><a href="#" class="btn btn-primary">Browse</a><input type="hidden" name="file_' + total_count + '"/></div>';
+                                        $('.docMore').append(input_field);
+                                        if( parseInt(total_count) > 1 && removeLink == 0 ){
+                                        removeLink = 1;
+                                         $('#addMore').after('<a href="#" id="removeMore" class="btn btn-danger" onclick="removeMore(event,this)">Remove last</a>');
+
+                                        }
+                                  }
+
+                                  function removeMore(e,obj) {
+                                    e.preventDefault();
+                                    var total_count = $('.docMore').data('count');
+                                     //$('.docMore input[type="file"]:last').remove();
+                                     $('.docMore div:last-child').remove();
+                                     $('.docMore').data('count',parseInt(total_count)-1);
+                                     total_count = $('.docMore').data('count');
+                                      if( parseInt(total_count) == 1 ){
+                                           $('#removeMore').remove();
+                                           removeLink = 0;
+                                     }
+                                  }
                                     </script>
 
 

@@ -137,7 +137,7 @@
                                                             </div>
                                                         </div>
                                                         
-                                                        <div class="col-md-12">
+                                                      <?php /*  <div class="col-md-12">
                                                         
                                                             <div class="form-group col-md-6">
                                                                 <label class="control-label">US DOT MC/MX#</label>
@@ -168,7 +168,7 @@
                                                                     <br /><a href="javascript:void(0);" id="addmore_trans" class="btn btn-success">Add More</a>
                                                             </div>
                                                             </div>
-
+                                                */ ?>
                                                         <?php
                                                         if (!isset($disabled)) {
                                                             ?>

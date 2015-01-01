@@ -39,6 +39,14 @@
 
 <?php include('subpages/home_blocks.php'); ?>
 <div class="clearfix"></div>
+<?php
+if(!$hideclient){
+    $settings = $this->requestAction('settings/get_settings');
+$sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));
+include('subpages/clients/listing.php');
+}
+echo '<div class="clearfix"></div>';
+?>
 <?php if($sidebar->recent ==1){?>
 <?php include('subpages/recent_activities.php'); ?>
 <div class="clearfix"></div>

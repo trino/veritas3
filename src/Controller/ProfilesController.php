@@ -552,6 +552,14 @@ class ProfilesController extends AppController {
         
         
    }
+   function getOrder($id)
+   {
+        $con = TableRegistry::get('Documents');
+        $query = $con->find()->where(['uploaded_for'=>$id,'document_type'=>'order']);
+        $this->response->body($query);
+        return $this->response;
+        die();
+   }
    
 }
 ?>

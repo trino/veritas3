@@ -1,16 +1,25 @@
 <?php
 
 namespace App\Controller;
+
+use App\Controller\AppController;
+use Cake\Event\Event;
+
+
+
 use Cake\Controller\Controller;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\Utility\Inflector;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\TableRegistry;
-
+use Cake\Network\Email\Email;
 
 class PagesController extends AppController {
-
+    public $paginate = [
+            'limit' => 3,
+            
+        ];
      public function initialize() {
         parent::initialize();
         if(!$this->request->session()->read('Profile.id'))
@@ -20,8 +29,29 @@ class PagesController extends AppController {
         
     }
 	public function index() {
-		
+	   $this->loadModel('Clients');
+		$setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->client_list==0)
+        {
+            $this->set('hideclient',1);
+            
+        }
+        else
+        $this->set('hideclient',0);
+		$this->set('client', $this->paginate($this->Clients));
 	}
+    function get_permission($uid)
+   {
+        $setting = TableRegistry::get('sidebar');
+         $query = $setting->find()->where(['user_id'=>$uid]);
+                 
+         $l = $query->first();
+         return $l;
+         //$this->response->body(($l));
+           // return $this->response;
+         die();
+   }
     
     function test()
     {
@@ -64,5 +94,22 @@ class PagesController extends AppController {
     function recent_more()
     {
         $this->layout = 'blank';
+    }
+    
+    function sendEmail($from,$to,$subject,$message)
+    {
+        //from can be array with this structure array('email_address'=>'Sender name'));
+        $email = new Email('default');
+        
+        $email->from($from)
+        ->emailFormat('html')
+    ->to($to)
+    ->subject($subject)
+    ->send($message);
+    }
+    function test_email()
+    {
+        $this->sendEmail(array('justdoit2045@gmail.com'=>'Email tester'),array('reshma.alee@gmail.com','justdoit_2045@hotmail.com'),'Test email','<b>This is test emaikl</b>');
+        die('here');
     }
 }

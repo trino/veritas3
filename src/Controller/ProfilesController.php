@@ -436,11 +436,10 @@ class ProfilesController extends AppController {
     {
         $rec = TableRegistry::get('Profiles');
         $query = $rec->find();
-        $query = $query->select()->where(['super'=>0]);
-        
+        //$query = $query->select()->where(['super'=>0]);
+        $query = $query->select()->where(['profile_type NOT IN ' => '(1)','admin'=>0,'super'=>0]);
         $this->response->body($query);
         return $this->response;
-        
         die();   
     }
     

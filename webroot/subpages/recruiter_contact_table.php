@@ -1,6 +1,9 @@
 <?php 
-$profiles = $this->requestAction('Profiles/getProfile'); 
+$profiles = $this->requestAction('Profiles/getProfile');
+
 $contact =  $this->requestAction('Profiles/getContact');
+
+
 ?>
 
 <table class="table table-striped table-bordered table-advance table-hover recruiters">

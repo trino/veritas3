@@ -235,7 +235,7 @@ function subform(form_type)
     var filename = form_type.replace(/\W/g, '_');
     var filename = filename.toLowerCase();
     $('.subform').show();   1
-    $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+filename);
+    $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
     $('.cont').click(function(){

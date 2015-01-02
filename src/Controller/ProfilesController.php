@@ -113,7 +113,7 @@ class ProfilesController extends AppController {
         if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
         $_POST['admin']=1;
         $profile = $profiles->newEntity( $_POST);
-        
+        //var_dump($profile);die();
 		if ($this->request->is('post')) {
 			if ($profiles->save($profile)) {
 			     $blocks = TableRegistry::get('Blocks');

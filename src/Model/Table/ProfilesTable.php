@@ -1,4 +1,4 @@
-<?php
+<!--<?php
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -63,4 +63,4 @@ class ProfilesTable extends Table {
 		return $validator;
 	}
 
-}
+}?>-->

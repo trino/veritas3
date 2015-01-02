@@ -15,6 +15,12 @@
             success:function(msg)
             {
                 $('.loadusers').show();
+                if(msg =='1')
+                {
+                    $('.loadusers').html("<b style='color:red'>Sorry no results found.</b>");
+                    $('.loadusers').fadeOut(3000);   
+                }
+                else
                $('.loadusers').html(msg); 
             }
         })

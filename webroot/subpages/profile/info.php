@@ -1,4 +1,22 @@
-<div class="row">
+<ul class="nav nav-tabs">
+
+
+                                            <li class="active">
+                                                <a href="#subtab_4_1" data-toggle="tab">Info</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#subtab_4_2" data-toggle="tab">Picture</a>
+                                            </li>
+                                            <li>
+                                                <a href="#subtab_4_3" data-toggle="tab">Password</a>
+                                            </li>
+                                            
+
+
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="subtab_4_1">
+        <div class="row">
 
 
                                         <div class="col-md-12">
@@ -103,22 +121,29 @@
                                                             <label class="control-label col-md-6">Address</label>
                                                         </div>
                                                         <div class="form-group col-md-12">
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                             <input <?php echo $is_disabled ?> name="address" type="text"
                                                                                               placeholder="Street"
                                                                                               class="form-control" <?php if(isset($p->address)){?> value="<?php echo $p->address; ?>" <?php } ?>/>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                             <input <?php echo $is_disabled ?>  type="text"
                                                                                               placeholder="City"
                                                                                               class="form-control" <?php if(isset($p->address)){?> value="<?php echo $p->address; ?>" <?php } ?>/>
                                                              </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                              <input <?php echo $is_disabled ?>  type="text"
                                                                                               placeholder="Province"
                                                                                               class="form-control" <?php if(isset($p->address)){?> value="<?php echo $p->address; ?>" <?php } ?>/>
                                                              </div>
-                                                            <div class="col-md-3">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                             <div class="col-md-6">
+                                                             <input <?php echo $is_disabled ?>  type="text"
+                                                                                              placeholder="Postal/Zip"
+                                                                                              class="form-control" <?php if(isset($p->postal)){?> value="<?php echo $p->postal; ?>" <?php } ?>/>                                
+                                                        </div>
+                                                            <div class="col-md-6">
                                                              <input <?php echo $is_disabled ?>  type="text"
                                                                                               placeholder="Country"
                                                                                               class="form-control" <?php if(isset($p->address)){?> value="<?php echo $p->address; ?>" <?php } ?>/>                                
@@ -189,47 +214,46 @@
                                         </div>
 
 
-                                        <div class="col-md-12">
-
-
-                                            <div class="portlet box blue">
-                                                <div class="portlet-title">
-                                                    <div class="caption">
-                                                        <i class="fa fa-user"></i>
-                                                        <?php echo ucfirst($settings->profile); ?> Notes
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="portlet-body">
-
-
-                                                    Lorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem
-                                                    ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum
-                                                    set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLsum set tollaLorem ipsum set tollaLorem
-                                                    ipsum set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum
-                                                    set tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set
-                                                    tollaLorem ipsum set tollaLorem ipsum set tollaLorem ipsum set tolla
-                                                    <div class="clearfix"></div>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
 
 
                                     </div>
+    </div>
 
+<?php
+if($this->request->params['action']=='edit')
+{
+    ?>
+    
+
+    <div class="tab-pane" id="subtab_4_2">
+    <?php include('avatar.php');?>
+    </div>
+
+
+
+    <div class="tab-pane" id="subtab_4_3">
+    <?php include('password.php');?>
+    </div>
+
+ <?php
+}
+else
+{
+    ?>
+
+    <div class="tab-pane" id="subtab_4_2">
+    <p>Please save info first.</p>
+    </div>
+
+    <div class="tab-pane" id="subtab_4_3">
+    <p>Please save info first.</p>
+    </div>
+
+    <?php
+}
+?>   
+</div>
 <script>
 $(function(){
    

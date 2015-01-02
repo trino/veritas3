@@ -224,7 +224,7 @@ $c = $client;
                                                       <div class="docMore" data-count="1">
                                                          <div  style="display:block;margin:5px;">
                                                          <a href="#" class="btn btn-primary">Browse</a>
-                                                          <input type="hidden" name="file_1"/>
+                                                          <input type="hidden" name=""/>
                                                            </div>
                                                        </div>
 
@@ -719,7 +719,7 @@ var removeLink = 0;// this variable is for showing and removing links in a add d
                                         var total_count = $('.docMore').data('count');
                                         $('.docMore').data('count',parseInt(total_count)+1);
                                         total_count = $('.docMore').data('count');
-                                        var input_field = '<div style="display:block;margin:5px;"><a href="#" class="btn btn-primary">Browse</a><input type="hidden" name="file_' + total_count + '"/></div>';
+                                        var input_field = '<div style="display:block;margin:5px;"><a href="#" class="btn btn-primary">Browse</a><input type="hidden" <?php /*?>name="file_' + total_count + '"<?php */?>/></div>';
                                         $('.docMore').append(input_field);
                                         if( parseInt(total_count) > 1 && removeLink == 0 ){
                                         removeLink = 1;

@@ -221,45 +221,42 @@ if(isset($profile))
                 </div>
 
             </div>
-            <!-- END PORTLET MAIN -->
-            <!-- PORTLET MAIN -->
-            <!--div class="portlet box blue">
-                <div class="portlet-title">
-                    <div class="caption">Associated Clients</div>
-                </div>
-                <div class="portlet-body">
-                    <table class="table">
-                        <tr><td><a href="#">Sample client 1</a></td><td><a href="#">Sample client 1</a></td></tr>
-                        <tr><td><a href="#">Sample client 1</a></td><td><a href="#">Sample client 1</a></td></tr>
-                        <tr><td><a href="#">Sample client 1</a></td><td><a href="#">Sample client 1</a></td></tr>
-                        <tr><td><a href="#">Sample client 1</a></td><td><a href="#">Sample client 1</a></td></tr>
-                    </table>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-                <hr /-->
+            
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">Orders</div>
                 </div>
                 <div class="portlet-body">
                     <table class="table">
+                    <?php
+                    if($this->request->params['action']=='add')
+                    {
+                        ?>
                         <tr>
-                            <td><a href="#">Sample Order 1</a></td>
-                            <td><a href="#">Sample Order 1</a></td>
+                            <td colspan="2">No orders associated</td>
                         </tr>
-                        <tr>
-                            <td><a href="#">Sample Order 1</a></td>
-                            <td><a href="#">Sample Order 1</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Sample Order 1</a></td>
-                            <td><a href="#">Sample Order 1</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Sample Order 1</a></td>
-                            <td><a href="#">Sample Order 1</a></td>
-                        </tr>
+                        <?php
+                    }
+                    else
+                    {
+                        $orders = $this->requestAction('/profiles/getOrder/'.$id);
+                        $count=0;
+                        foreach($orders as $o)
+                        {
+                            
+                            ?>
+                            
+                                <tr><td><a href="<?php echo $this->request->webroot;?>orders/view/<?php echo $o->id;?>"><?php echo "Order - ".$o->created;?></a></td></tr>
+                                
+                            
+                            <?php
+                            
+                        }
+                        
+                       
+                    }
+                    ?>
+                        
                     </table>
 
                     <a href="<?php echo WEB_ROOT; ?>documents/add" class="btn btn-warning margin-top-10">
@@ -285,21 +282,11 @@ if(isset($profile))
                             </div>
                             <ul class="nav nav-tabs">
                                 <li class="active">
-                                    <a href="#tab_1_1" data-toggle="tab">Info</a>
+                                    <a href="#tab_1_1" data-toggle="tab">Settings</a>
                                 </li>
                                 <?php
                                 if($this->request['action'] != 'add'){
-                                if (!isset($disabled) || !($this->request->session()->read('Profile.admin'))) {
-                                    ?>
-
-                                    <li>
-                                        <a href="#tab_1_2" data-toggle="tab">Picture</a>
-                                    </li>
-                                    <li>
-                                        <a href="#tab_1_3" data-toggle="tab">Password</a>
-                                    </li>
-                                <?php
-                                }
+                                
                                 if($this->request->session()->read('Profile.admin') || !isset($myuser))
                                 {
                                 ?>
@@ -348,15 +335,7 @@ if(isset($profile))
                                 <?php
                                 if($this->request['action'] != 'add'){ 
                                 ?>
-                                <div class="tab-pane" id="tab_1_2">
-                                    
-                                    <?php include('subpages/profile/avatar.php');?>
-                                </div>
-                                <!-- END CHANGE AVATAR TAB -->
-                                <!-- CHANGE PASSWORD TAB -->
-                                <div class="tab-pane" id="tab_1_3">
-                                    <?php include('subpages/profile/password.php');?>
-                                </div>
+                                
                                 <!-- END CHANGE PASSWORD TAB -->
                                 <!-- PRIVACY SETTINGS TAB -->
                                 <div class="tab-pane" id="tab_1_4">

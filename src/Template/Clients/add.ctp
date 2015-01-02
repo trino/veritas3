@@ -13,7 +13,7 @@ $c = $client;
 			</h3>
 
 			<div class="page-bar">
-				<ul class="page-breadcrumb">
+				<ul class="page-breadcrumb"> 
 					<li>
 						<i class="fa fa-home"></i>
 						<a href="<?php echo $this->request->webroot;?>">Dashboard</a>

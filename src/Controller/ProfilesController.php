@@ -179,6 +179,7 @@ class ProfilesController extends AppController {
 		$this->set(compact('profile'));
         $this->set('id',$id);
 	}
+    
     function changePass($id)
     {
             $profile = $this->Profiles->get($id, [
@@ -538,7 +539,7 @@ class ProfilesController extends AppController {
     }
     
     function getuser()
-   {
+    {
         $id = $this->request->session()->read('Profile.id');
         $profile = TableRegistry::get('profiles');
         $query = $profile->find()->where(['id'=>$id]);
@@ -546,6 +547,35 @@ class ProfilesController extends AppController {
         $l = $query->first();
         $this->response->body($l);
         return $this->response;
+        //return $l;
+        
+         die();
+        
+        
+    }
+   
+   function getusers()
+   {
+        $title = $_POST['v'];
+        
+        $profile = TableRegistry::get('profiles');
+        $query = $profile->find()->where(['username LIKE'=>'%'.$title."%"]);
+                 
+        $l = $query->all();
+        if(count($l)>0)
+        {
+            echo "<select onchange='$(\".madmin\").val(this.value); $(\".loadusers\").hide()' class='form-control'>";
+            echo "<option> Select User</option>";
+            foreach($l as $user)
+            {
+                echo "<option value='".$user->username."'>".$user->username."</option>";
+            }
+            echo "<select/>";
+        }
+        else
+        {
+            echo "1";
+        }
         //return $l;
         
          die();

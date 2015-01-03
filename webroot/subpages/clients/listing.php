@@ -55,7 +55,6 @@
                     	<tbody>
                     	<?php
                         $profile_id= $this->request->session()->read('Profile.id');
-
                         foreach ($client as $clients):
                             //print_r($clients);
                             $profiles = explode(",",$clients->profile_id);

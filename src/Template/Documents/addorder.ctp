@@ -123,7 +123,7 @@ $is_disabled = '';
 											</div>
 										</div>
 									</div>
-										<div class="tab-content">
+										<div class="tab-content tab-pane">
 											<div class="alert alert-danger display-none">
 												<button class="close" data-dismiss="alert"></button>
 												You have some form errors. Please check below.
@@ -165,6 +165,7 @@ $is_disabled = '';
                                          ?>
                                          </div>
                                          </div>
+
                                          <div class="clearfix"></div>
                                             <?php foreach($doc2 as $d){
                                                 $j = $d->id;
@@ -238,11 +239,14 @@ function subform(form_type)
     $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
-    $('.cont').click(function(){
-        
-    
+    $(document.body).on('click','.cont',function(){
+    //$('.cont').click(function(){
+    debugger;
+    var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
+    var data = {uploaded_for:$('#uploaded_for').val(),type:type};
     $.ajax({
-       data:'uploaded_for='+$('#uploaded_for').val(),
+       //data:'uploaded_for='+$('#uploaded_for').val(),
+       data : data,
        type:'post', 
        url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val(), 
        success:function(res)

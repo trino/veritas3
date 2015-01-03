@@ -1,8 +1,6 @@
 <?php 
 $profiles = $this->requestAction('Profiles/getProfile');
-
 $contact =  $this->requestAction('Profiles/getContact');
-
 
 ?>
 
@@ -13,6 +11,7 @@ $contact =  $this->requestAction('Profiles/getContact');
                                                 $i=0;
                                                 foreach($profiles as $r)
                                                 {
+                                                    //echo $r->username;continue;
                                                     if($i%2==0)
                                                     {
                                                         ?>

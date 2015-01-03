@@ -200,35 +200,57 @@ class DocumentsController extends AppController {
     
     public function savedoc($cid=0,$did=0)
     {
-        $docs = TableRegistry::get('Documents');
-         
-        $arr['uploaded_for'] = $_POST['uploaded_for'];
-        $arr['client_id'] = $cid;
-        $arr['document_type'] = 'order';
-        $arr['created'] = date('Y-m-d H:i:s');
-        if(!$did || $did=='0'){
-	   $arr['user_id'] = $this->request->session()->read('Profile.id');
-        $doc = $docs->newEntity($arr);
-		
-		  
-			if ($docs->save($doc)) {
-				//$this->Flash->success('The client has been saved.');
-                	echo $doc->id;
-			} else {
-			     //$this->Flash->error('The client could not be saved. Please, try again.');
-				//echo "e";
-			}
-		
-        }
-        else
-        {
-            $query2 = $docs->query();
-                        $query2->update()
-                        ->set($arr)
-                        ->where(['id' => $did])
-                        ->execute();
+//         echo "<pre>";print_r($_POST);
+        if( isset($_POST['type'])) {
+            // saving in order table
+            $orders = TableRegistry::get('orders');
+            $arr['uploaded_for'] = $_POST['uploaded_for'];
+            $arr['client_id'] = $cid;
+            $arr['order_type'] = $_POST['type'];
+            $arr['created'] = date('Y-m-d H:i:s');
+            $arr['user_id'] = $this->request->session()->read('Profile.id');
+            $order = $orders->newEntity($arr);
+
+                if ($orders->save($order)) {
+                    //$this->Flash->success('The client has been saved.');
+                    echo $order->id;
+                } else {
+                    //$this->Flash->error('The client could not be saved. Please, try again.');
+                    //echo "e";
+                }
+
+
+        } else {
+            $docs = TableRegistry::get('Documents');
+
+            $arr['uploaded_for'] = $_POST['uploaded_for'];
+            $arr['client_id'] = $cid;
+            $arr['document_type'] = 'order';
+            $arr['created'] = date('Y-m-d H:i:s');
+            if(!$did || $did=='0'){
+                $arr['user_id'] = $this->request->session()->read('Profile.id');
+                $doc = $docs->newEntity($arr);
+
+
+                    if ($docs->save($doc)) {
                         //$this->Flash->success('The client has been saved.');
-                	echo $sid;
+                            echo $doc->id;
+                    } else {
+                         //$this->Flash->error('The client could not be saved. Please, try again.');
+                        //echo "e";
+                    }
+
+            }
+            else
+            {
+                    $query2 = $docs->query();
+                                $query2->update()
+                                ->set($arr)
+                                ->where(['id' => $did])
+                                ->execute();
+                                //$this->Flash->success('The client has been saved.');
+                            echo $sid;
+            }
         }
 		die();
     }
@@ -461,6 +483,72 @@ class DocumentsController extends AppController {
         $this->response->body($q);
         return $this->response;
         die();
+    }
+
+    public function orderslist(){
+        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $doc = $this->getDocumentcount();
+
+        if($setting->document_list==0 || count($doc)==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            return $this->redirect("/");
+
+        }
+        $orders = TableRegistry::get('orders');
+        $order = $orders->find();
+        $order=$order->select();
+
+        $cond='';
+
+        if(isset($_GET['searchdoc']) && $_GET['searchdoc'])
+        {
+            $cond = $cond.' (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
+        }
+        if(isset($_GET['submitted_by_id']) && $_GET['submitted_by_id'])
+        {
+            if($cond == '')
+                $cond = $cond.' user_id = '.$_GET['submitted_by_id'];
+            else
+                $cond = $cond.' AND user_id = '.$_GET['submitted_by_id'];
+        }
+        if(isset($_GET['client_id']) && $_GET['client_id'])
+        {
+            if($cond == '')
+                $cond = $cond.' client_id = '.$_GET['client_id'];
+            else
+                $cond = $cond.' AND client_id = '.$_GET['client_id'];
+        }
+        if(isset($_GET['type']) && $_GET['type'])
+        {
+            if($cond == '')
+                $cond = $cond.' order_type = "'.$_GET['type'].'"';
+            else
+                $cond = $cond.' AND order_type = "'.$_GET['type'].'"';
+        }
+        if($cond)
+        {
+            $order = $order->where([$cond]);
+        }
+        if(isset($_GET['searchdoc']))
+        {
+            $this->set('search_text',$_GET['searchdoc']);
+        }
+        if(isset($_GET['submitted_by_id']))
+        {
+            $this->set('return_user_id',$_GET['submitted_by_id']);
+        }
+        if(isset($_GET['client_id']))
+        {
+            $this->set('return_client_id',$_GET['client_id']);
+        }
+        if(isset($_GET['type']))
+        {
+            $this->set('return_type',$_GET['type']);
+        }
+        $this->set('orders', $order);
+
+
     }
     
 }

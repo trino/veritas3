@@ -199,20 +199,31 @@ class DocumentsController extends AppController {
             $arr['client_id'] = $cid;
             $arr['order_type'] = $_POST['type'];
             $arr['created'] = date('Y-m-d H:i:s');
-            $arr['user_id'] = $this->request->session()->read('Profile.id');
-            $order = $orders->newEntity($arr);
+            if(!$did || $did=='0'){
+                $arr['user_id'] = $this->request->session()->read('Profile.id');
+                $order = $orders->newEntity($arr);
 
-                if ($orders->save($order)) {
-                    //$this->Flash->success('The client has been saved.');
-                    echo $order->id;
+                    if ($orders->save($order)) {
+                        //$this->Flash->success('The client has been saved.');
+                        echo $order->id;
 
-                    // saving
-                    if($_POST['type']==""){}
-                } else {
-                    //$this->Flash->error('The client could not be saved. Please, try again.');
-                    //echo "e";
-                }
 
+
+                    } else {
+                        //$this->Flash->error('The client could not be saved. Please, try again.');
+                        //echo "e";
+                    }
+            }
+            else
+            {
+                $query2 = $orders->query();
+                $query2->update()
+                    ->set($arr)
+                    ->where(['id' => $did])
+                    ->execute();
+                //$this->Flash->success('The client has been saved.');
+                echo $sid;
+            }
 
         } else {
             $docs = TableRegistry::get('Documents');
@@ -344,6 +355,7 @@ class DocumentsController extends AppController {
      * saving driver application data
      */
     public function savedMeeOrder(){
+        die;
         $consentForm = TableRegistry::get('consent_form');
         $arr['order_id'] = $_POST['order_id'];
         $arr['client_id'] = $_POST['cid'];

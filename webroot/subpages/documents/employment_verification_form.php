@@ -1,3 +1,4 @@
+<form id="form_employment">
 <div class="portlet box blue ">
 						<div class="portlet-title">
 							<div class="caption">
@@ -45,19 +46,19 @@
 
                     </td><td>
 
-                        Date/Time:<input type="text" class="form-control" />
+                        Date/Time:<input type="text" class="form-control" name="signature_datetime"/>
 
 
                     </td></tr>
                 <tr><td colspan="2" >
 
                             <label class="control-label col-md-3">Equipment Operated : </label>
-                                <input type="checkbox"/>&nbsp;Vans&nbsp;
-                                <input type="checkbox"/>&nbsp;Reefers&nbsp;
-                                <input type="checkbox"/>&nbsp;Decks&nbsp;
-                                <input type="checkbox"/>&nbsp;Super B's&nbsp;
-                                <input type="checkbox"/>&nbsp;Straight Truck&nbsp;
-                                <input type="checkbox"/>&nbsp;Others:
+                                <input type="checkbox" name="equipment_vans"/>&nbsp;Vans&nbsp;
+                                <input type="checkbox" name="equipment_reefer"/>&nbsp;Reefers&nbsp;
+                                <input type="checkbox" name="equipment_decks"/>&nbsp;Decks&nbsp;
+                                <input type="checkbox" name="equipment_super"/>&nbsp;Super B's&nbsp;
+                                <input type="checkbox" name="equipment_straight_truck"/>&nbsp;Straight Truck&nbsp;
+                                <input type="checkbox" name="equipment_others"/>&nbsp;Others:
 
 
 
@@ -73,10 +74,10 @@
 
 
                 <label class="control-label col-md-3">Driving Experience : </label>
-                    <input type="checkbox"/>&nbsp;Local&nbsp;
-                    <input type="checkbox"/>&nbsp;Canada&nbsp;
-                    <input type="checkbox"/>&nbsp;Canada : Rocky Mountains&nbsp;
-                    <input type="checkbox"/>&nbsp;USA&nbsp;
+                    <input type="checkbox" name="driving_experince_local"/>&nbsp;Local&nbsp;
+                    <input type="checkbox" name="driving_experince_canada"/>&nbsp;Canada&nbsp;
+                    <input type="checkbox" name="driving_experince_canada_rocky_mountains"/>&nbsp;Canada : Rocky Mountains&nbsp;
+                    <input type="checkbox" name="driving_experince_usa"/>&nbsp;USA&nbsp;
 
             </td></tr>
 
@@ -113,7 +114,7 @@
 </div>
 </div>
 </div>
-
+</form>
 <script>
 $(function(){
   $("#add_more").click(function(){

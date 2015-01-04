@@ -308,7 +308,7 @@ function savedDriverApp(url,order_id,cid,formInputs){
         cid: cid,
         inputs:$('#form_tab2').serialize()
     };
-    debugger;
+
     $.ajax({
     url:url,
     data: param,
@@ -324,7 +324,7 @@ function savedDriverEvaluation(url,order_id,cid,formInputs){
         cid: cid,
         inputs:$('#form_tab3').serialize()
     };
-    debugger;
+
     $.ajax({
     url:url,
     data: param,
@@ -341,7 +341,7 @@ function savedDriverEvaluation(url,order_id,cid,formInputs){
             cid: cid,
             inputs:$('#form_tab4').serialize()
         };
-        debugger;
+
         $.ajax({
         url:url,
         data: param,

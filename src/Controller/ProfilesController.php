@@ -552,28 +552,31 @@ class ProfilesController extends AppController {
    function getusers()
    {
         $title = $_POST['v'];
-        
-        $profile = TableRegistry::get('profiles');
-        $query = $profile->find()->where(['username LIKE'=>'%'.$title."%"]);
-                 
-        $l = $query->all();
-        if(count($l)>0)
-        {
-            /*echo "<select onchange='$(\".madmin\").val(this.value); $(\".loadusers\").hide()' class='form-control'>";
-            echo "<option> Select User</option>";*/
-            //echo "<ul>";
-            foreach($l as $user)
+        if($title !=""){
+            $profile = TableRegistry::get('profiles');
+            $query = $profile->find()->where(['username LIKE'=>'%'.$title."%"]);
+                     
+            $l = $query->all();
+            if(count($l)>0)
             {
-                //echo "<option value='".$user->username."'>".$user->username."</option>";
-                echo "<a style='display:block; padding:5px 0; ' onclick='$(\".madmin\").val(\"$user->username\"); $(\".loadusers\").hide()'>".$user->username."</a>";
+                /*echo "<select onchange='$(\".madmin\").val(this.value); $(\".loadusers\").hide()' class='form-control'>";
+                echo "<option> Select User</option>";*/
+                //echo "<ul>";
+                foreach($l as $user)
+                {
+                    //echo "<option value='".$user->username."'>".$user->username."</option>";
+                    echo "<a style='display:block; padding:5px 0; text-decoration:none;' onclick='$(\".madmin\").val(\"$user->username\"); $(\".loadusers\").hide()'>".$user->username."</a>";
+                }
+                //"</ul>";
+                //echo "<select/>";
             }
-            //"</ul>";
-            //echo "<select/>";
+            else
+            {
+                echo "1";
+            }
         }
         else
-        {
-            echo "1";
-        }
+            echo "0";
         //return $l;
         
          die();

@@ -11,6 +11,7 @@
             </div>
             <div class="portlet-body">
             <?php
+
             if($this->request->params['controller']=='clients')
             {
                 ?>
@@ -52,9 +53,14 @@
                     		</tr>
                     	</thead>
                     	<tbody>
-                    	<?php foreach ($client as $clients):
-                        //print_r($clients);
-                        if($clients->date_start){
+                    	<?php
+                        $profile_id= $this->request->session()->read('Profile.id');
+                        foreach ($client as $clients):
+                            //print_r($clients);
+                            $profiles = explode(",",$clients->profile_id);
+
+                            if(in_array($profile_id,$profiles) || $this->request->session()->read('Profile.admin') ){
+                            if($clients->date_start){
                         foreach($clients->date_start as $k=>$d)
                         {
                             if($k == 'date')
@@ -96,7 +102,11 @@
                     			</td>
                     		</tr>
 
-                    	<?php endforeach; ?>
+                    	<?php
+} // endif
+                        endforeach;
+
+                        ?>
                     	</tbody>
             	</table>
 

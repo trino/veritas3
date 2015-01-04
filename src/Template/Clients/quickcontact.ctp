@@ -5,7 +5,7 @@
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
-						<a href="<?php echo WEB_ROOT;?>">Home</a>
+						<a href="<?php echo $this->request->webroot;?>">Home</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>

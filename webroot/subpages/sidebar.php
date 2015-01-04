@@ -1,7 +1,4 @@
-<?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");
-       
-?>
-
+<?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar"); ?>
 <div class="page-sidebar-wrapper">
 
 		<div class="page-sidebar navbar-collapse collapse">
@@ -43,6 +40,7 @@
 				</li>
                 
                  <?php if($sidebar->client==1){?>
+
                 	<li class="<?php echo($this->request['controller']=='Clients' && $this->request['action']!='quickcontact')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-globe"></i>
@@ -82,7 +80,7 @@
 				</li>
                 <?php }?>
                 <?php if($sidebar->profile==1){?>
-				<li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo'&& $this->request['action']!='todo')?'active open':'';?>">
+                    <li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo'&& $this->request['action']!='todo')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-user"></i>
 					<span class="title"><?php echo ucfirst($settings->profile);?>s</span>
@@ -133,7 +131,9 @@
 					</ul>
 					
 				</li>-->
-                 <?php if($sidebar->document==1){?>
+                 <?php if($sidebar->document==1){
+
+                     ?>
 				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']!="stats" && $this->request['action']!='drafts')?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-notebook"></i>
@@ -150,7 +150,16 @@
 							List <?php echo ucfirst($settings->document);?>s</a>
 						</li>
                         <?php }?>
-                        <?php if($sidebar->document_create==1){?>
+
+                        <?php if($sidebar->document_list==1){?>
+                            <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
+                                <a href="<?php echo WEB_ROOT;?>documents/orderslist/">
+                                    <i class="icon-list"></i>List Orders</a>
+                            </li>
+                        <?php }?>
+
+                        <?php /*
+                        if($sidebar->document_create==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='order')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>documents/addorder/1">
                             <i class="icon-plus"></i> 
@@ -163,12 +172,13 @@
                             <i class="icon-plus"></i>
 							Submit <?php echo ucfirst($settings->document);?></a>
 						</li>
-						<?php }?>
+						<?php } */
+                     ?>
 												
 					</ul>
-                    <?php }?>
+                    <?php }  ?>
 				</li>
-                <?php }?>
+                <?php  } ?>
                 <!--<li class="<?php echo($this->request['action']=='stats')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>documents/stats">
                 <i class="icon-list"></i>

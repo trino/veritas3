@@ -49,7 +49,6 @@ class ClientsController extends AppController {
     }
 	public function index() {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-        
         if($setting->client_list==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
@@ -96,6 +95,7 @@ class ClientsController extends AppController {
             	return $this->redirect("/");
             
         }
+
         $querys = TableRegistry::get('Clients');
         $query = $querys->find()->where(['id' => $id]);
         $this->set('client', $query->first()); 

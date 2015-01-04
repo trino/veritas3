@@ -115,9 +115,10 @@ class ProfilesController extends AppController {
         if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
         $_POST['admin']=1;
         $profile = $profiles->newEntity( $_POST);
-        
+        //var_dump($profile);die();
 		if ($this->request->is('post')) {
-			if ($profiles->save($profile)) {
+
+            if ($profiles->save($profile)) {
 			     $blocks = TableRegistry::get('Blocks');
 			     $query2 = $blocks->query();
                         $query2->insert(['user_id'])
@@ -131,6 +132,7 @@ class ProfilesController extends AppController {
 				$this->Flash->success('The user has been saved.');
 				return $this->redirect(['action' => 'edit',$profile->id]);
 			} else {
+                //var_dump($profiles->errors()); die();
 			     //var_dump($profile);die();
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
@@ -429,11 +431,12 @@ class ProfilesController extends AppController {
     {
         $rec = TableRegistry::get('Profiles');
         $query = $rec->find();
-        $query = $query->select()->where(['super'=>0]);
-        
+        //$query = $query->select()->where(['super'=>0]);
+        $query = $query->select()->where(['profile_type NOT IN'=>'(1,6)',
+            'AND'=>[ ['admin'=>0],['super'=>0] ]
+            ]);
         $this->response->body($query);
         return $this->response;
-        
         die();   
     }
     

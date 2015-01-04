@@ -140,7 +140,7 @@ function showforms(form_type)
     //var filename = filename.toLowerCase();
     //$('.subform').show();   1
     if(form_type!= "")
-        $('.subform').load('<?php echo WEB_ROOT;?>documents/subpages/'+form_type);
+        $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+form_type);
     else
         $('.subform').html("");
 }

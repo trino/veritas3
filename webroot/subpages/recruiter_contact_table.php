@@ -1,6 +1,7 @@
 <?php 
-$profiles = $this->requestAction('Profiles/getProfile'); 
+$profiles = $this->requestAction('Profiles/getProfile');
 $contact =  $this->requestAction('Profiles/getContact');
+
 ?>
 
 <table class="table table-striped table-bordered table-advance table-hover recruiters">
@@ -10,6 +11,7 @@ $contact =  $this->requestAction('Profiles/getContact');
                                                 $i=0;
                                                 foreach($profiles as $r)
                                                 {
+                                                    //echo $r->username;continue;
                                                     if($i%2==0)
                                                     {
                                                         ?>

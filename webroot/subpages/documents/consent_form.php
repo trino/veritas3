@@ -1,4 +1,5 @@
 Place MEE Order
+<form id="form_consent">
 <div class="portlet box blue ">
 	<div class="portlet-title">
 		<div class="caption">
@@ -397,7 +398,7 @@ Place MEE Order
 
     </div>
 </div>
-
+</form>
 
 
 

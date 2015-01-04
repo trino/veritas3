@@ -35,9 +35,9 @@ $is_disabled = '';
 					<div class="portlet box blue" id="form_wizard_1">
 						<div class="portlet-title">
                         <?php
-                                        $param = $this->request->params['action'];
-                                        $tab = 'nodisplay';
-                                        ?>
+                            $param = $this->request->params['action'];
+                            $tab = 'nodisplay';
+                        ?>
 							<div class="caption">
 								<i class="fa fa-gift"></i> <?php if($param == 'view')?><?php echo ucfirst($settings->document);?> - <span class="step-title">
 								View </span>
@@ -178,12 +178,12 @@ $is_disabled = '';
     											</div>
                                             <?php } ?>
 											
-                                                <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
+                                                <div class="<?php echo $tab;?>" id="tab<?php echo ++$j; ?>">
     												<?php
                                                         include('subpages/documents/confirmation.php');
                                                     ?>
     											</div>
-                                                <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
+                                                <div class="<?php echo $tab;?>" id="tab<?php echo ++$j; ?>">
     												<?php
                                                         include('subpages/documents/forview.php');
                                                     ?>
@@ -238,7 +238,6 @@ function subform(form_type)
 }
 jQuery(document).ready(function() {
     $(document.body).on('click','.cont',function(){
-    // debugger;
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
     var data = {uploaded_for:$('#uploaded_for').val(),type:type};
     $.ajax({
@@ -258,24 +257,21 @@ jQuery(document).ready(function() {
             savePrescreen(url,order_id,cid,forms);
 
          } else if(type=="Driver Application") {
-                var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
-                      url = '<?php echo $this->request->webroot;?>documents/savedDriverApp',
+                var url = '<?php echo $this->request->webroot;?>documents/savedDriverApp',
                       order_id =$('#did').val(),
                       cid = '<?php echo $cid;?>';
-                     savedDriverApp(url,order_id,cid,forms);
+                     savedDriverApp(url,order_id,cid);
          }else if(type=="Road test") {
-                          var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
-                                url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation',
-                                order_id =$('#did').val(),
-                                cid = '<?php echo $cid;?>';
-                               savedDriverEvaluation(url,order_id,cid,forms);
+              var url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation',
+                    order_id =$('#did').val(),
+                    cid = '<?php echo $cid;?>';
+                   savedDriverEvaluation(url,order_id,cid);
         } else if(type=="Place MEE Order") {
-                                     var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
-                                           url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder',
-                                           order_id =$('#did').val(),
-                                           cid = '<?php echo $cid;?>';
-                                          savedMeeOrder(url,order_id,cid,forms);
-                              }
+             var url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder',
+                order_id =$('#did').val(),
+                cid = '<?php echo $cid;?>';
+              savedMeeOrder(url,order_id,cid);
+      }
 
        }
     });
@@ -286,7 +282,7 @@ jQuery(document).ready(function() {
         });
 });
 
-function savePrescreen(url,order_id,cid,formInputs){
+function savePrescreen(url,order_id,cid){
     var param = {
         order_id: order_id,
         cid: cid,
@@ -302,13 +298,12 @@ function savePrescreen(url,order_id,cid,formInputs){
     });
 }
 
-function savedDriverApp(url,order_id,cid,formInputs){
+function savedDriverApp(url,order_id,cid){
     var param = {
         order_id: order_id,
         cid: cid,
-        inputs:$('#form_tab2').serialize()
-    };
-
+        inputs:$('#form_tab2').serializeArray()
+    };    
     $.ajax({
     url:url,
     data: param,
@@ -318,7 +313,7 @@ function savedDriverApp(url,order_id,cid,formInputs){
     }
     });
 }
-function savedDriverEvaluation(url,order_id,cid,formInputs){
+function savedDriverEvaluation(url,order_id,cid){
     var param = {
         order_id: order_id,
         cid: cid,
@@ -335,13 +330,14 @@ function savedDriverEvaluation(url,order_id,cid,formInputs){
     });
     }
 
-    function savedMeeOrder(url,order_id,cid,formInputs){
+    function savedMeeOrder(url,order_id,cid){
         var param = {
             order_id: order_id,
             cid: cid,
-            inputs:$('#form_tab4').serialize()
+            consent:$('#form_consent').serialize(),
+            employment:$('#form_employment').serialize(),
+            education:$('#form_education').serialize(),
         };
-
         $.ajax({
         url:url,
         data: param,

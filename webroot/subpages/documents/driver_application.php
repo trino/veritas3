@@ -623,7 +623,7 @@
             <div class="clearfix"></div>
             <hr />
             <div class="more_acc_record"></div>
-            
+            <input type="hidden" id="count_acc_record" name="count_acc_record" value="1">
             <a href="javascript:void(0);" class="add_more_acc_record btn green">Add More</a>
             
             <div class="clearfix"></div>
@@ -1117,11 +1117,15 @@
        url:"<?php echo $this->request->webroot; ?>subpages/accident_record.php",
        success:function(res){
         $('.more_acc_record').append(res);
+        var c = $('#count_acc_record').val();
+        $('#count_acc_record').val(parseInt(c)+1);
        } 
     });
     
     $('.delete_acc_record').live('click',function(){
        $(this).parent().remove(); 
+        var c = $('#count_acc_record').val();
+        $('#count_acc_record').val(parseInt(c)-1);
     });
  });
  </script>

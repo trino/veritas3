@@ -91,6 +91,7 @@
 <div id="more_edu"></div>
 <div id="add_more_edu">
     <p>&nbsp;</p>
+    <input type="hidden" name="count_more_edu" id="count_more_edu" value="1" >    
     <a href="javascript:void(0);" class="btn green add_more_edu">Add More</a>
 </div>
 <div class="form-group col-md-12">
@@ -109,6 +110,7 @@
     <div class="col-md-3">
     </div>
     <div class="col-md-9">
+    <input type="hidden" name="count_more_edu_doc" id="count_more_edu_doc" value="1" >
         <a href="javascript:void(0);" class="btn btn-success" id="add_more_edu_doc">Add More</a>
     </div>
     </div>
@@ -125,11 +127,15 @@ $(function(){
        url:"<?php echo $this->request->webroot;?>subpages/past_education.php",
        success:function(res){
         $("#more_edu").append(res);
+        var current = $('#count_more_edu').val();
+        $('#count_more_edu').val(parseInt(current)+1);
        }
     });
   });
   $("#delete").live("click",function(){
     $(this).parent().parent().remove(); 
+     var current = $('#count_more_edu').val();
+        $('#count_more_edu').val(parseInt(current)-1);
   }); 
   
   $('#add_more_edu_doc').click(function(){

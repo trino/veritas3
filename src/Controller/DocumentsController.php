@@ -209,9 +209,6 @@ class DocumentsController extends AppController {
                     if ($orders->save($order)) {
                         //$this->Flash->success('The client has been saved.');
                         echo $order->id;
-
-
-
                     } else {
                         //$this->Flash->error('The client could not be saved. Please, try again.');
                         //echo "e";
@@ -225,7 +222,7 @@ class DocumentsController extends AppController {
                     ->where(['id' => $did])
                     ->execute();
                 //$this->Flash->success('The client has been saved.');
-                echo $sid;
+                echo $did;
             }
 
         } else {
@@ -257,7 +254,7 @@ class DocumentsController extends AppController {
                                 ->where(['id' => $did])
                                 ->execute();
                                 //$this->Flash->success('The client has been saved.');
-                            echo $sid;
+                            echo $did;
             }
         }
 		die();
@@ -295,24 +292,41 @@ class DocumentsController extends AppController {
      * saving driver application data
      */
     public function savedDriverApp(){
+       
         $driverApps = TableRegistry::get('driver_application');
         $arr['order_id'] = $_POST['order_id'];
         $arr['client_id'] = $_POST['cid'];
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
-        $input_var = rtrim($_POST['inputs'],',');
-
-        foreach(explode("&",$_POST['inputs']) as $data){
-            $input = explode("=",$data);
-            if($input[0]=="document_type" || $input[0]=="date_of_accident" || $input[0]=="nature_of_accident" || $input[0]=="fatalities" || $input[0]=="injuries" ){
+        //$input_var = rtrim($_POST['inputs'],',');
+        
+        $driverAcc = array('date_of_accident[]','nature_of_accident[]','fatalities[]','injuries[]');
+        $total_acc_record=0;
+        $accident = array();
+        foreach($_POST['inputs'] as $data){
+            
+            if($data['name']=="document_type"){
+                
                 continue;
-            }
-            if($input[1]!='' ) {
-
-                $arr[$input[0]]=$input[1];
+            } else if($data['name']=="count_acc_record"){
+                $total_acc_record = $data['value'];
+            }else if( in_array($data['name'], $driverAcc) ) {
+               
+                continue;
+            } else {
+                if($data['value']!='' ) {
+                    $arr[$data['name']]=$data['value'];
+                }
             }
             //echo $data."<br/>";
         }
+       
+        /*for($i=1;$i<=$total_acc_record; $i++){
+            foreach($_POST['inputs'] as $data){
+                // if($data['name']== 'date_of_accident[]')
+                // $accident[] = 
+            }
+        }*/
 
 
         $save = $driverApps->newEntity($arr);
@@ -358,17 +372,19 @@ class DocumentsController extends AppController {
      * saving driver application data
      */
     public function savedMeeOrder(){
-        die;
+
         $consentForm = TableRegistry::get('consent_form');
-        $arr['order_id'] = $_POST['order_id'];
-        $arr['client_id'] = $_POST['cid'];
-        $arr['user_id'] = $this->request->session()->read('Profile.id');
+        $arr['order_id'] = $arr2['order_id'] = $arr3['order_id'] = $_POST['order_id'];
+        $arr['client_id'] = $arr2['client_id'] = $arr3['client_id'] =$_POST['cid'];
+        $arr['user_id'] = $arr2['user_id'] = $arr3['user_id'] =$this->request->session()->read('Profile.id');
 
-        $input_var = rtrim($_POST['inputs'],',');
-
-        foreach(explode("&",$_POST['inputs']) as $data){
+        //$input_var = rtrim($_POST['consent'],',');
+        //consent
+        foreach(explode("&",$_POST['consent']) as $data){
             $input = explode("=",$data);
             if($input[0]=="document_type" ){
+                continue;
+            } else if( $input[0]=="offence" ||  $input[0]=="date_of_sentence"  ||  $input[0]=="location") {
                 continue;
             }
             if($input[1]!='' ) {
@@ -378,12 +394,72 @@ class DocumentsController extends AppController {
             //echo $data."<br/>";
         }
 
-
         $save = $consentForm->newEntity($arr);
-        if($roadTest->save($save))
+        if($consentForm->save($save))
         {
             //echo $save->id;
         }
+
+        //employement
+        $employment = TableRegistry::get('employment_verification');
+        foreach(explode("&",$_POST['employment']) as $data){
+            $input = explode("=",$data);
+            if($input[0]=="document_type" ){
+                continue;
+            }
+            if($input[1]!='' ) {
+
+                $arr2[$input[0]]=$input[1];
+            }
+            //echo $data."<br/>";
+        }
+        $save2 = $employment->newEntity($arr2);
+        if($employment->save($save2))
+        {
+            //echo $save->id;
+        }
+
+
+        //education
+        $education = TableRegistry::get('education_verification');
+        $edu = array();
+        $edu['order_id'] =  $_POST['order_id'];
+        $edu['client_id'] = $_POST['cid'];
+        $edu['user_id'] = $this->request->session()->read('Profile.id');
+        $onlyEducation = array(
+            'edu_name',
+            'edu_id',
+            'edu_date_of_birth',
+            'edu_total_claim_past3',
+            'edu_current'
+        );
+        // print_r($_POST);die;
+        foreach(explode("&",$_POST['education']) as $data){
+            $input = explode("=",$data);
+
+            if($input[0]=="document_type" || $input[0] == "count_more_edu" ){
+                continue;
+            } else if ( in_array($input[0],$onlyEducation) ){
+                $edu[$input[0]]=$$input[1];
+            } else{
+                if($input[1]!='' ) {
+                    $arr3[$input[0]]=$input[1];
+                }
+            }
+            //echo $data."<br/>";
+        }
+        $save3 = $education->newEntity($edu);
+        if($education->save($save3))
+        {
+            $edu_id = $save->id;
+            $education_pass = TableRegistry::get('education_verification_pass_education');
+            // foreach()
+
+            $edu_pass3 = $education_pass->newEntity($arr3);
+            $education_pass->save($edu_pas3);
+        }
+
+
         die;
     }
 

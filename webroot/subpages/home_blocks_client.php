@@ -24,7 +24,8 @@
                     foreach($doc as $d)
                     {
                         
-                        $csubdoc = $this->requestAction('/clients/getCSubDoc/'.$id.'/'.$d->id);
+                        //$csubdoc = $this->requestAction('/clients/getCSubDoc/'.$id.'/'.$d->id);
+                        $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/'.$id.'/'.$d->id);
                         //var_dump($csubdoc);
                         if($i==11)
                         $i=0;

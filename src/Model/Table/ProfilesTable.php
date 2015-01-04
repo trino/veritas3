@@ -1,4 +1,4 @@
-<!--<?php
+<?php
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -16,11 +16,12 @@ class ProfilesTable extends Table {
  * @param array $config The configuration for the Table.
  * @return void
  */
+ /*
 	public function initialize(array $config) {
 		$this->table('profiles');
 		$this->displayField('title');
 		$this->primaryKey('id');
-	}
+	}*/
 
 /**
  * Default validation rules.
@@ -28,6 +29,7 @@ class ProfilesTable extends Table {
  * @param \Cake\Validation\Validator $validator
  * @return \Cake\Validation\Validator
  */
+ /*
 	public function validationDefault(Validator $validator) {
 		$validator
 			->add('id', 'valid', ['rule' => 'numeric'])
@@ -62,5 +64,5 @@ class ProfilesTable extends Table {
 
 		return $validator;
 	}
-
-}?>-->
+*/
+}

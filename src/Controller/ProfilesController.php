@@ -14,7 +14,9 @@ class ProfilesController extends AppController {
             
         ];
      public function initialize() {
+        
         parent::initialize();
+        $this->loadComponent('Settings');
         if(!$this->request->session()->read('Profile.id'))
         {
             $this->redirect('/login');
@@ -55,7 +57,7 @@ class ProfilesController extends AppController {
     }
 	public function index() {
 	   
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->profile_list==0)
         {
@@ -71,7 +73,7 @@ class ProfilesController extends AppController {
 	public function view($id = null) {
 	   
        
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->profile_list==0)
         {
@@ -97,7 +99,7 @@ class ProfilesController extends AppController {
  */
 	public function add() {
 	   
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->profile_create==0)
         {
@@ -146,7 +148,7 @@ class ProfilesController extends AppController {
  */
 	public function edit($id = null) {
 	   
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->profile_edit==0 && $id != $this->request->session()->read('Profile.id'))
         {
@@ -206,7 +208,7 @@ class ProfilesController extends AppController {
  */
 	public function delete($id = null) {
 	   
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->profile_delete==0)
         {
@@ -409,17 +411,7 @@ class ProfilesController extends AppController {
         die('here');
     }
     
-    function get_permission($uid)
-   {
-        $setting = TableRegistry::get('sidebar');
-         $query = $setting->find()->where(['user_id'=>$uid]);
-                 
-         $l = $query->first();
-         return $l;
-         //$this->response->body(($l));
-           // return $this->response;
-         die();
-   }
+    
     
     function getRecruiter()
     {
@@ -456,7 +448,7 @@ class ProfilesController extends AppController {
     
     function filterBy()
     {
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->profile_list==0)
         {
@@ -477,7 +469,7 @@ class ProfilesController extends AppController {
     
     function search()
     {
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->profile_list==0)
         {
@@ -564,13 +556,16 @@ class ProfilesController extends AppController {
         $l = $query->all();
         if(count($l)>0)
         {
-            echo "<select onchange='$(\".madmin\").val(this.value); $(\".loadusers\").hide()' class='form-control'>";
-            echo "<option> Select User</option>";
+            /*echo "<select onchange='$(\".madmin\").val(this.value); $(\".loadusers\").hide()' class='form-control'>";
+            echo "<option> Select User</option>";*/
+            //echo "<ul>";
             foreach($l as $user)
             {
-                echo "<option value='".$user->username."'>".$user->username."</option>";
+                //echo "<option value='".$user->username."'>".$user->username."</option>";
+                echo "<a style='display:block; padding:5px 0; ' onclick='$(\".madmin\").val(\"$user->username\"); $(\".loadusers\").hide()'>".$user->username."</a>";
             }
-            echo "<select/>";
+            //"</ul>";
+            //echo "<select/>";
         }
         else
         {

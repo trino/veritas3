@@ -22,6 +22,7 @@ class PagesController extends AppController {
         ];
      public function initialize() {
         parent::initialize();
+        $this->loadComponent('Settings');
         if(!$this->request->session()->read('Profile.id'))
         {
             $this->redirect('/login');
@@ -30,7 +31,7 @@ class PagesController extends AppController {
     }
 	public function index() {
 	   $this->loadModel('Clients');
-		$setting = $this->get_permission($this->request->session()->read('Profile.id'));
+		$setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->client_list==0)
         {
@@ -41,17 +42,7 @@ class PagesController extends AppController {
         $this->set('hideclient',0);
 		$this->set('client', $this->paginate($this->Clients));
 	}
-    function get_permission($uid)
-   {
-        $setting = TableRegistry::get('sidebar');
-         $query = $setting->find()->where(['user_id'=>$uid]);
-                 
-         $l = $query->first();
-         return $l;
-         //$this->response->body(($l));
-           // return $this->response;
-         die();
-   }
+   
     
     function test()
     {

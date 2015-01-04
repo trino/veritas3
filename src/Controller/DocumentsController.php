@@ -16,6 +16,7 @@ class DocumentsController extends AppController {
         ];
      public function initialize() {
         parent::initialize();
+        $this->loadComponent('Settings');
         if(!$this->request->session()->read('Profile.id'))
         {
             $this->redirect('/login');
@@ -26,7 +27,7 @@ class DocumentsController extends AppController {
 	public function index() {
 	   
        
-       $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+       $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
         if($setting->document_list==0 || count($doc)==0)
         {
@@ -154,7 +155,7 @@ class DocumentsController extends AppController {
     
 
 	public function view($id = null) {
-	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
         if($setting->document_list==0 || count($doc)==0)
         {
@@ -174,7 +175,7 @@ class DocumentsController extends AppController {
  * @return void
  */
 	public function addorder($cid=0,$did=0) {
-	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
          $doc = $this->getDocumentcount();
          
         if($setting->document_create==0 || count($doc)==0)
@@ -241,7 +242,7 @@ class DocumentsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function editorder($cid=0,$did=0) {
-	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
         if($setting->document_edit==0 || count($doc)==0)
         {
@@ -272,7 +273,7 @@ class DocumentsController extends AppController {
     
     function add($cid=0,$did=0)
     {
-         $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
          $doc = $this->getDocumentcount();
         if($did!=0)
         {
@@ -333,7 +334,7 @@ class DocumentsController extends AppController {
     
     function edit()
     {
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
         if($setting->document_edit==0 || count($doc)==0)
         {
@@ -352,7 +353,7 @@ class DocumentsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
-	   $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->document_delete==0)
         {
@@ -401,17 +402,7 @@ class DocumentsController extends AppController {
         $query->select()->where(['display' => 1]);
         return $query->all();
     }
-    function get_permission($uid)
-    {
-        $setting = TableRegistry::get('sidebar');
-         $query = $setting->find()->where(['user_id'=>$uid]); 
-                 
-         $l = $query->first();
-         return $l;
-         //$this->response->body(($l));
-           // return $this->response;
-         die();
-    }
+    
     
     function analytics1()
     {

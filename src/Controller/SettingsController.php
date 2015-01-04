@@ -90,6 +90,45 @@ class SettingsController extends AppController {
                 ->execute();
         $this->redirect(['controller'=>'profiles','action'=>'add']);
     }
+    function getProSubDoc($pro_id,$doc_id)
+    {
+        $sub = TableRegistry::get('Profilessubdocument');
+        $query = $sub->find();
+        $query->select()->where(['profile_id'=>$pro_id, 'subdoc_id'=>$doc_id]);
+        $q = $query->first();
+        $this->response->body($q);
+        return $this->response;
+    }
+    function getCSubDoc($c_id,$doc_id)
+    {
+        $sub = TableRegistry::get('clientssubdocument');
+        $query = $sub->find();
+        $query->select()->where(['client_id'=>$c_id, 'subdoc_id'=>$doc_id]);
+        $q = $query->first();
+        $this->response->body($q);
+        return $this->response;
+    }
+    
+    function all_settings($uid="", $type="", $scope="", $scope_id="", $doc_id="")
+    {
+        
+        if($type != "" || $type !="0")
+        {
+            if($type =='sidebar')
+                return $this->get_side($uid);
+            elseif($type =='blocks')
+                return $this->get_blocks($uid);
+        }
+        if($scope != "")
+        {
+            if($scope == 'profile')
+                return $this->getProSubDoc($scope_id,$doc_id);
+            elseif($scope == 'client')
+                return $this->getCSubDoc($scope_id,$doc_id);
+            
+        }
+            
+    }
     
     
     

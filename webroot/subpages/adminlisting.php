@@ -1,10 +1,10 @@
-<div class="form-group col-md-12">
+<div class="form-group col-md-12" style="position: relative;">
 	<label class="control-label">Main Admin</label>
 	<input type="text" class="form-control madmin" name="site" <?php if(isset($c->site)){?> value="<?php echo $c->site; ?>" <?php } ?> onkeyup="loadusers(this.value);"/>
-</div>
-<div class="loadusers form-group col-md-12">
-</div>
 
+<div class="loadusers form-group " style="position: absolute; top: 60px; z-index:999; padding: 5px 0 5px 5px; width:100%; background: #fff; border:1px solid #000;">
+</div>
+</div>
 <script>
     function loadusers(v)
     {

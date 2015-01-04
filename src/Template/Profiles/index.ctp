@@ -3,7 +3,7 @@
 </style>
 
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
-<?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
+<?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?>
 </h3>

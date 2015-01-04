@@ -185,18 +185,9 @@ class DocumentsController extends AppController {
         }
         $this->set('cid',$cid);
         $this->set('did',$did);
-		/*$profile = $this->Clients->newEntity($this->request->data);
-		if ($this->request->is('post')) {
-			if ($this->Clients->save($profile)) {
-				$this->Flash->success('The user has been saved.');
-				return $this->redirect(['action' => 'index']);
-			} else {
-				$this->Flash->error('The user could not be saved. Please, try again.');
-			}
-		}
-		$this->set(compact('profile'));*/
-        
 	}
+
+
     
     public function savedoc($cid=0,$did=0)
     {
@@ -214,6 +205,9 @@ class DocumentsController extends AppController {
                 if ($orders->save($order)) {
                     //$this->Flash->success('The client has been saved.');
                     echo $order->id;
+
+                    // saving
+                    if($_POST['type']==""){}
                 } else {
                     //$this->Flash->error('The client could not be saved. Please, try again.');
                     //echo "e";
@@ -253,6 +247,129 @@ class DocumentsController extends AppController {
             }
         }
 		die();
+    }
+/**
+ * saving pre-screening data
+ */
+    public function savePrescreening(){
+        $prescreen = TableRegistry::get('pre_screening');
+        $arr['order_id'] = $_POST['order_id'];
+        $arr['client_id'] = $_POST['cid'];
+        $arr['user_id'] = $this->request->session()->read('Profile.id');
+
+        $input_var = rtrim($_POST['inputs'],',');
+
+        foreach(explode("&",$_POST['inputs']) as $data){
+            $input = explode("=",$data);
+            if($input[0]=="document_type"){
+                continue;
+            }
+          if($input[1]!='' ) {
+
+              $arr[$input[0]]=$input[1];
+          }
+            //echo $data."<br/>";
+        }
+
+
+        $save = $prescreen->newEntity($arr);
+        $prescreen->save($save);
+        die;
+    }
+
+    /**
+     * saving driver application data
+     */
+    public function savedDriverApp(){
+        $driverApps = TableRegistry::get('driver_application');
+        $arr['order_id'] = $_POST['order_id'];
+        $arr['client_id'] = $_POST['cid'];
+        $arr['user_id'] = $this->request->session()->read('Profile.id');
+
+        $input_var = rtrim($_POST['inputs'],',');
+
+        foreach(explode("&",$_POST['inputs']) as $data){
+            $input = explode("=",$data);
+            if($input[0]=="document_type" || $input[0]=="date_of_accident" || $input[0]=="nature_of_accident" || $input[0]=="fatalities" || $input[0]=="injuries" ){
+                continue;
+            }
+            if($input[1]!='' ) {
+
+                $arr[$input[0]]=$input[1];
+            }
+            //echo $data."<br/>";
+        }
+
+
+        $save = $driverApps->newEntity($arr);
+        if($driverApps->save($save))
+        {
+            //echo $save->id;
+        }
+        die;
+    }
+    /**
+     * saving driver application data
+     */
+    public function savedDriverEvaluation(){
+        $roadTest = TableRegistry::get('road_test');
+        $arr['order_id'] = $_POST['order_id'];
+        $arr['client_id'] = $_POST['cid'];
+        $arr['user_id'] = $this->request->session()->read('Profile.id');
+
+        $input_var = rtrim($_POST['inputs'],',');
+
+        foreach(explode("&",$_POST['inputs']) as $data){
+            $input = explode("=",$data);
+            if($input[0]=="document_type" ){
+                continue;
+            }
+            if($input[1]!='' ) {
+
+                $arr[$input[0]]=$input[1];
+            }
+            //echo $data."<br/>";
+        }
+
+
+        $save = $roadTest->newEntity($arr);
+        if($roadTest->save($save))
+        {
+            //echo $save->id;
+        }
+        die;
+    }
+
+    /**
+     * saving driver application data
+     */
+    public function savedMeeOrder(){
+        $consentForm = TableRegistry::get('consent_form');
+        $arr['order_id'] = $_POST['order_id'];
+        $arr['client_id'] = $_POST['cid'];
+        $arr['user_id'] = $this->request->session()->read('Profile.id');
+
+        $input_var = rtrim($_POST['inputs'],',');
+
+        foreach(explode("&",$_POST['inputs']) as $data){
+            $input = explode("=",$data);
+            if($input[0]=="document_type" ){
+                continue;
+            }
+            if($input[1]!='' ) {
+
+                $arr[$input[0]]=$input[1];
+            }
+            //echo $data."<br/>";
+        }
+
+
+        $save = $consentForm->newEntity($arr);
+        if($roadTest->save($save))
+        {
+            //echo $save->id;
+        }
+        die;
     }
 
 /**

@@ -20,21 +20,28 @@
 <div class="table-scrollable">
     <table class="table table-striped">
                 <tr><th colspan="2">Past Employer</th></tr>
-                <tr><td colspan="2">Company Name<input type="text" class="form-control" /></td></tr>
+                <tr><td colspan="2">Company Name<input type="text" class="form-control" name="company_name" /></td></tr>
 
-                <tr><td>Address<input type="text" class="form-control" /></td><td>City<input type="text" class="form-control" /></td></tr>
-                <tr><td>State/Province<input type="text" class="form-control" /></td><td>Country<input type="text" class="form-control" /></td></tr>
+                <tr><td>Address<input type="text" class="form-control" name="address" /></td>
+                    <td>City<input type="text" class="form-control" name="city" /></td></tr>
+                <tr><td>State/Province<input type="text" class="form-control" name="state_province" /></td>
+                    <td>Country<input type="text" class="form-control" name="country" /></td></tr>
 
-                <tr><td>Supervisor's Name:<input type="text" class="form-control"/></td><td>Phone #:<input type="text" class="form-control"/></td></tr>
-                <tr><td>Supervisor's Email:<input type="text" class="form-control"/></td><td>Secondary Email:<input type="text" class="form-control"/></td></tr>
-                <tr><td>Employment Start Date:<input type="text" class="form-control"/></td><td>Employment End Date:<input type="text" class="form-control"/></td></tr>
-                <tr><td>Claims with this Employer:&nbsp;&nbsp;<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td><td>Date Claims Occured:<input type="text" class="form-control"/></td></tr>
-                <tr><td colspan="2">Employment history confirmed by (Verifier Use Only):<input type="text" class="form-control"/></td></tr>
-                <tr><td colspan="2">US DOT MC/MX#:<input name="us_dot" type="text" class="form-control" /></td></tr>
+                <tr><td>Supervisor's Name:<input type="text" class="form-control" name="supervisor_name"/></td>
+                    <td>Phone #:<input type="text" class="form-control" name="supervisor_phone"/></td></tr>
+                <tr><td>Supervisor's Email:<input type="text" class="form-control" name="supervisor_email"/></td>
+                    <td>Secondary Email:<input type="text" class="form-control" name="supervisor_secondary_email"/></td></tr>
+                <tr><td>Employment Start Date:<input type="text" class="form-control" name="employment_start_date"/></td>
+                    <td>Employment End Date:<input type="text" class="form-control" name="employment_end_date"/></td></tr>
+                <tr><td>Claims with this Employer:&nbsp;&nbsp;<input type="radio" name="claims_with_employer" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="claims_with_employer" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
+                    <td>Date Claims Occured:<input type="text" class="form-control" name="claims_recovery_date"/></td></tr>
+                <tr><td colspan="2">Employment history confirmed by (Verifier Use Only):<input type="text" class="form-control" name="emploment_history_confirm_verify_use"/></td></tr>
+                <tr><td colspan="2">US DOT MC/MX#:<input name="us_dot" type="text" class="form-control" name="us_dot" /></td></tr>
 
 
         <tr><td>
-                        Signature:<input type="text" class="form-control"/>
+                        Signature:<input type="text" class="form-control" name="signature"/>
 
                     </td><td>
 

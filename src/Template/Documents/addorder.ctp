@@ -45,7 +45,7 @@ $is_disabled = '';
 
 						</div>
 						<div class="portlet-body form">
-							<form action="#" class="form-horizontal" id="submit_form" method="POST">
+							<!--<form action="#" class="form-horizontal" id="submit_form" method="POST"> -->
 								<div class="form-wizard">
 									<div class="form-body">
                                         <?php
@@ -123,7 +123,7 @@ $is_disabled = '';
 											</div>
 										</div>
 									</div>
-										<div class="tab-content tab-pane">
+										<div class="tab-content">
 											<div class="alert alert-danger display-none">
 												<button class="close" data-dismiss="alert"></button>
 												You have some form errors. Please check below.
@@ -133,76 +133,74 @@ $is_disabled = '';
 												Your form validation is successful!
 											</div>
                                             <div class="form-group mar-top-10 col-md-12 uploaded_for">
-                                        <?php
-                                                    $users = $this->requestAction("documents/getAllUser");
-                                         ?>
+                                                <?php
+                                                        $users = $this->requestAction("documents/getAllUser");
+                                                ?>
                                          
-                                            <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->profile);?></label>
-                                            <div class="col-md-6">
+                                                <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->profile);?></label>
+                                                <div class="col-md-6">
                                             
-                                        <select class="form-control" name="uploaded_for" id="uploaded_for">
-								        <option value="">Select <?php echo ucfirst($settings->profile);?></option>
-                                            <?php 
-                                                foreach($users as $u)
-                                                {
-                                                    ?>
-                                                    <option value="<?php echo $u->id;?>" <?php if(isset($document) && $document->uploaded_for==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
-                                                    <?php
-                                                }
-                                             ?>
-            							 </select>
-                                         <input type="hidden" name="client_id" value="<?php echo $cid;?>" id="client_id" />
-                                         <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
-                                         <?php
-                                         if(!$did)
-                                         {
-                                            ?>
-                                            
-                                         <input type="hidden" name="user_id" value="<?php $this->request->session()->read('Profile.id');?>" id="user_id" />
-                                         
-                                         <?php
-                                         }
-                                         ?>
-                                         </div>
-                                         </div>
+                                                    <select class="form-control" name="uploaded_for" id="uploaded_for">
+            								            <option value="">Select <?php echo ucfirst($settings->profile);?></option>
+                                                        <?php 
+                                                            foreach($users as $u)
+                                                            {
+                                                                ?>
+                                                                <option value="<?php echo $u->id;?>" <?php if(isset($document) && $document->uploaded_for==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                                                <?php
+                                                            }
+                                                         ?>
+                        							 </select>
+                                                     <input type="hidden" name="client_id" value="<?php echo $cid;?>" id="client_id" />
+                                                     <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
+                                                     <?php
+                                                     if(!$did)
+                                                     {
+                                                        ?>
+                                                        
+                                                     <input type="hidden" name="user_id" value="<?php $this->request->session()->read('Profile.id');?>" id="user_id" />
+                                                     
+                                                     <?php
+                                                     }
+                                                     ?>
+                                                    </div>
+                                            </div>
 
-                                         <div class="clearfix"></div>
+                                            <div class="clearfix"></div>
                                             <?php foreach($doc2 as $d){
                                                 $j = $d->id;
                                                 ?>
-											<div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab<?php echo $d->id; ?>">
-												<?php
-                                                
-                                                    include('subpages/documents/'.$d->form);
-                                                ?>
-											</div>
+    											<div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab<?php echo $d->id; ?>">
+    												<?php
+                                                    
+                                                        include('subpages/documents/'.$d->form);
+                                                    ?>
+    											</div>
                                             <?php } ?>
 											
-                                            <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
-												<?php
-                                                    include('subpages/documents/confirmation.php');
+                                                <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
+    												<?php
+                                                        include('subpages/documents/confirmation.php');
+                                                    ?>
+    											</div>
+                                                <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
+    												<?php
+                                                        include('subpages/documents/forview.php');
+                                                    ?>
+    											</div>
+                                                <?php
+                                                // For view action only 
+                                                if($tab=='nodisplay')
+                                                {
+                                                    ?>
+
+                                                <div class="forview <?php if($tab=='tab-pane')echo 'nodisplay';?>">
+                                                    <?php include('subpages/documents/forview.php');?>
+                                                </div>
+
+                                                <?php
+                                                }
                                                 ?>
-											</div>
-                                            <div class="<?php echo $tab;?>" id="tab<?php echo $j++; ?>">
-												<?php
-                                                    include('subpages/documents/forview.php');
-                                                ?>
-											</div>
-                                            <?php
-
-                                            // For view action only
-
-                                            if($tab=='nodisplay')
-                                            {
-                                                ?>
-
-                                            <div class="forview <?php if($tab=='tab-pane')echo 'nodisplay';?>">
-                                                <?php include('subpages/documents/forview.php');?>
-                                            </div>
-
-                                            <?php
-                                            }
-                                            ?>
 										</div>
 									</div>
 									<div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>">
@@ -225,7 +223,7 @@ $is_disabled = '';
 										</div>
 									</div>
 								</div>
-							</form>
+							<!--</form> -->
 						</div>
 					</div>
 				</div>
@@ -240,18 +238,45 @@ function subform(form_type)
 }
 jQuery(document).ready(function() {
     $(document.body).on('click','.cont',function(){
-    //$('.cont').click(function(){
-    debugger;
+    // debugger;
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
     var data = {uploaded_for:$('#uploaded_for').val(),type:type};
     $.ajax({
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,
-       type:'post', 
+       type:'post',
        url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val(), 
-       success:function(res)
-       {
+       success:function(res) {
         $('#did').val(res);
+         // saving data
+
+         if(type == "Pre-Screening"){
+         var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
+             url = '<?php echo $this->request->webroot;?>documents/savePrescreening',
+             order_id =$('#did').val(),
+             cid = '<?php echo $cid;?>';
+            savePrescreen(url,order_id,cid,forms);
+
+         } else if(type=="Driver Application") {
+                var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
+                      url = '<?php echo $this->request->webroot;?>documents/savedDriverApp',
+                      order_id =$('#did').val(),
+                      cid = '<?php echo $cid;?>';
+                     savedDriverApp(url,order_id,cid,forms);
+         }else if(type=="Road test") {
+                          var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
+                                url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation',
+                                order_id =$('#did').val(),
+                                cid = '<?php echo $cid;?>';
+                               savedDriverEvaluation(url,order_id,cid,forms);
+        } else if(type=="Place MEE Order") {
+                                     var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
+                                           url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder',
+                                           order_id =$('#did').val(),
+                                           cid = '<?php echo $cid;?>';
+                                          savedMeeOrder(url,order_id,cid,forms);
+                              }
+
        }
     });
     });
@@ -260,6 +285,75 @@ jQuery(document).ready(function() {
            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
         });
 });
+
+function savePrescreen(url,order_id,cid,formInputs){
+    var param = {
+        order_id: order_id,
+        cid: cid,
+        inputs:$('#form_tab1').serialize()
+    };
+    $.ajax({
+    url:url,
+    data: param,
+    type:'POST',
+    success: function(res){
+
+    }
+    });
+}
+
+function savedDriverApp(url,order_id,cid,formInputs){
+    var param = {
+        order_id: order_id,
+        cid: cid,
+        inputs:$('#form_tab2').serialize()
+    };
+    debugger;
+    $.ajax({
+    url:url,
+    data: param,
+    type:'POST',
+    success: function(res){
+
+    }
+    });
+}
+function savedDriverEvaluation(url,order_id,cid,formInputs){
+    var param = {
+        order_id: order_id,
+        cid: cid,
+        inputs:$('#form_tab3').serialize()
+    };
+    debugger;
+    $.ajax({
+    url:url,
+    data: param,
+    type:'POST',
+    success: function(res){
+
+    }
+    });
+    }
+
+    function savedMeeOrder(url,order_id,cid,formInputs){
+        var param = {
+            order_id: order_id,
+            cid: cid,
+            inputs:$('#form_tab4').serialize()
+        };
+        debugger;
+        $.ajax({
+        url:url,
+        data: param,
+        type:'POST',
+        success: function(res){
+
+        }
+        });
+        }
+
+
+
 </script>
 
 <style>

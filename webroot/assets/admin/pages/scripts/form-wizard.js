@@ -215,9 +215,9 @@ var FormWizard = function () {
                     success.hide();
                     error.hide();
 
-                    if (form.valid() == false) {
+                    /*if (form.valid() == false) {
                         return false;
-                    }
+                    }*/
 
                     handleTitle(tab, navigation, index);
                 },

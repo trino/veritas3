@@ -31,7 +31,7 @@ class PagesController extends AppController {
 	public function index() {
 	   $this->loadModel('Clients');
 		$setting = $this->get_permission($this->request->session()->read('Profile.id'));
-        
+        //var_dump($setting);die();
         if($setting->client_list==0)
         {
             $this->set('hideclient',1);

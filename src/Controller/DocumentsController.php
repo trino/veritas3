@@ -195,7 +195,10 @@ class DocumentsController extends AppController {
         if( isset($_POST['type'])) {
             // saving in order table
             $orders = TableRegistry::get('orders');
+            $arr['title'] = 'order_'.$_POST['uploaded_for'].'_'.date('Y-m-d H:i:s');
             $arr['uploaded_for'] = $_POST['uploaded_for'];
+
+
             $arr['client_id'] = $cid;
             $arr['order_type'] = $_POST['type'];
             $arr['created'] = date('Y-m-d H:i:s');

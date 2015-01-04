@@ -8,11 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a163c84f-7931-4688-a0c4-59462597eb2d" name="Default" comment="[edit] listing clients as per profile(user)">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/DocumentsController.php" afterPath="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/document_tab_3.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/document_tab_3.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/education_verification_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/education_verification_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/employment_verification_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/employment_verification_form.php" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
     <ignored path="veritas3.iws" />
@@ -39,7 +34,7 @@
       <file leaf-file-name="DocumentsController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="349" column="9" selection-start="10727" selection-end="10727" vertical-scroll-proportion="3.0585938" vertical-offset="4367" max-vertical-offset="11713">
+            <state line="197" column="84" selection-start="5965" selection-end="5965" vertical-scroll-proportion="0.5019531" vertical-offset="3092" max-vertical-offset="11764">
               <folding>
                 <element signature="e#34#67#0" expanded="true" />
               </folding>
@@ -658,7 +653,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2198,7 +2193,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="349" column="9" selection-start="10727" selection-end="10727" vertical-scroll-proportion="3.0585938" vertical-offset="4367" max-vertical-offset="11713">
+        <state line="197" column="84" selection-start="5965" selection-end="5965" vertical-scroll-proportion="0.5019531" vertical-offset="3092" max-vertical-offset="11764">
           <folding>
             <element signature="e#34#67#0" expanded="true" />
           </folding>

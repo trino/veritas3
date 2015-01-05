@@ -23,13 +23,13 @@
                                     </div>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="subtab_1_3">
-                                            <div class="portlet box blue">
-                                                <div class="portlet-title">
+                                            <div class="portlet box">
+                                                <!--div class="portlet-title">
                                                     <div class="caption">
                                                         <i class="fa fa-gift"></i>Page Manager - Help
                                                     </div>
 
-                                                </div>
+                                                </div-->
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
@@ -74,13 +74,13 @@
 
                                         </div>
                                         <div class="tab-pane" id="subtab_1_4">
-                                            <div class="portlet box blue">
-                                                <div class="portlet-title">
+                                            <div class="portlet box">
+                                                <!--div class="portlet-title">
                                                     <div class="caption">
                                                         <i class="fa fa-gift"></i>Page Manager - Privacy Code
                                                     </div>
 
-                                                </div>
+                                                </div-->
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
@@ -125,13 +125,13 @@
                                         </div>
 
                                         <div class="tab-pane" id="subtab_1_5">
-                                            <div class="portlet box blue">
-                                                <div class="portlet-title">
+                                            <div class="portlet box">
+                                                <!--div class="portlet-title">
                                                     <div class="caption">
                                                         <i class="fa fa-gift"></i>Page Manager - Product Example
                                                     </div>
 
-                                                </div>
+                                                </div-->
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
@@ -176,13 +176,13 @@
                                         </div>
 
                                         <div class="tab-pane" id="subtab_1_6">
-                                            <div class="portlet box blue">
-                                                <div class="portlet-title">
+                                            <div class="portlet box">
+                                                <!--div class="portlet-title">
                                                     <div class="caption">
                                                         <i class="fa fa-gift"></i>Page Manager - Terms
                                                     </div>
 
-                                                </div>
+                                                </div-->
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
@@ -227,13 +227,13 @@
                                         </div>
 
                                         <div class="tab-pane" id="subtab_1_7">
-                                            <div class="portlet box blue">
-                                                <div class="portlet-title">
+                                            <div class="portlet box">
+                                                <!--div class="portlet-title">
                                                     <div class="caption">
                                                         <i class="fa fa-gift"></i>Page Manager - FAQ
                                                     </div>
 
-                                                </div>
+                                                </div-->
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->

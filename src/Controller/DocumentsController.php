@@ -258,8 +258,13 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $orders = TableRegistry::get('orders');
+        $order_id = $orders->find()->where(['client_id'=>$cid])->first();
+        $did= $order_id->id;
+
         $this->set('cid',$cid);
         $this->set('did',$did);
+        
 	}
 
 
@@ -343,7 +348,12 @@ class DocumentsController extends AppController {
         $arr['client_id'] = $_POST['cid'];
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
-        $input_var = rtrim($_POST['inputs'],',');
+        // checking db if order id exits in this table
+        // first delete
+        // $del_prescreen = $prescreen->get(['order_id'=>$_POST['order_id']]);        
+        $del = $prescreen->query();
+        $del->delete()->where(['order_id'=>$_POST['order_id']])->execute();        
+
 
         foreach(explode("&",$_POST['inputs']) as $data){
             $input = explode("=",$data);
@@ -375,7 +385,14 @@ class DocumentsController extends AppController {
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
         //$input_var = rtrim($_POST['inputs'],',');
-         $driverApps = TableRegistry::get('driver_application');
+        $driverApps = TableRegistry::get('driver_application');
+        
+       /* $delete_id=$driverApps->find()->where(['order_id'=>$_POST['order_id']]);
+        $del_id = $delete_id->id;*/
+
+        $del = $driverApps->query();
+        $del->delete()->where(['order_id'=>$order_id])->execute();
+
         $driverAcc = array('date_of_accident',
                              'nature_of_accident',
                              'fatalities',
@@ -407,6 +424,8 @@ class DocumentsController extends AppController {
         {
             $id = $save->id;
             $driverAppAcc = TableRegistry::get('driver_application_accident');
+            // $del = $driverAppAcc->query();
+            // $del->delete()->where(['driver_application_id'=>$id])->execute();
             for($i=0;$i < $total_acc_record; $i++){
                 $acc['driver_application_id'] = $id;
                 $acc['date_of_accident'] = $_POST['date_of_accident'][$i];
@@ -418,6 +437,8 @@ class DocumentsController extends AppController {
             }
 
                $driverAppLic = TableRegistry::get('driver_application_licenses');
+               // $del = $driverAppLic->query();
+                 // $del->delete()->where(['driver_application_id'=>$id])->execute();
               for($i=0;$i < 2; $i++){
                 $lic['driver_application_id'] = $id;
                 $lic['driver_license'] = $_POST['driver_license'][$i];
@@ -446,7 +467,8 @@ class DocumentsController extends AppController {
         $arr['order_id'] = $order_id;
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
-
+        $del = $roadTest->query();
+        $del->delete()->where(['order_id'=>$order_id])->execute();
 
         foreach($_POST as $data=>$val){
           
@@ -480,6 +502,8 @@ class DocumentsController extends AppController {
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
+        $del = $consentForm->query();
+        $del->delete()->where(['order_id'=>$order_id])->execute();
         
         foreach($_POST as $data => $val){
 
@@ -495,7 +519,11 @@ class DocumentsController extends AppController {
         $save = $consentForm->newEntity($arr);
         if($consentForm->save($save)) {
             $id  = $save->id;
-             $consentFormCri = TableRegistry::get('consent_form_criminal');
+            $consentFormCri = TableRegistry::get('consent_form_criminal');
+              
+            // $del = $consentFormCri->query();
+            // $del->delete()->where(['consent_form_id'=>$id])->execute();
+
             for($i=0;$i<8;$i++){
                 $crm['consent_form_id'] = $id;
                 $crm['offence'] = $_POST['offence'][$i];
@@ -514,6 +542,9 @@ class DocumentsController extends AppController {
         //employement 
         $employment = TableRegistry::get('employment_verification');
         
+        $del = $employment->query();
+        $del->delete()->where(['order_id'=>$order_id])->execute();
+
         for($i=0;$i < $_POST['count_past_emp'];$i++){
             $arr2['order_id'] = $order_id;
             $arr2['client_id'] = $cid;
@@ -611,9 +642,6 @@ class DocumentsController extends AppController {
             if( isset($_POST['driving_experince_usa'][$i]) ){
                 $arr2['driving_experince_usa'] = $_POST['driving_experince_usa'][$i];
             }
-
-            
-
             
 
             if( isset($_POST['claims_with_employer'][$i]) ){
@@ -632,6 +660,10 @@ class DocumentsController extends AppController {
         // echo $_POST['college_school_name'][0]
         //education
         $education = TableRegistry::get('education_verification');
+        
+        $del = $education->query();
+        $del->delete()->where(['order_id'=>$order_id])->execute();
+        
         $edu = array();
         $edu['order_id'] = $order_id;
         $edu['client_id'] = $cid;
@@ -660,6 +692,7 @@ class DocumentsController extends AppController {
             $edu_id = $save3->id;
 
             $education_pass = TableRegistry::get('education_verification_pass_education');
+
            for($i=1;$i<=$_POST['count_more_edu'];$i++){
                 $eduPass=array();
                 $eduPass['education_verification_id'] = $edu_id;
@@ -729,67 +762,122 @@ class DocumentsController extends AppController {
         $this->render('addorder');
 	}
     
-    function add($cid=0,$did=0)
+    function add($cid=0,$did=0,$type=NULL)
     {
+         $this->set('client_id',$cid);
+         $this->set('doc_id',$did);
+
          $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-         $doc = $this->getDocumentcount();
-        if($did!=0)
-        {
-            $doc = TableRegistry::get('Documents');
-            $query = $doc->find()->where(['id' => $did])->first();
-            $this->set('document',$query);
-            if($setting->document_edit==0 || count($doc)==0)
-            {
-                $this->Flash->error('Sorry, You dont have the permissions.');
-                	return $this->redirect("/");
-                
-            }
-            
+        if(is_null($type)) {
+            // docu
+                $doc = $this->getDocumentcount();
+
+                if($did!=0)
+                {
+
+                    $doc = TableRegistry::get('Documents');
+                    $query = $doc->find()->where(['id' => $did])->first();
+                    $this->set('document',$query);
+                    if($setting->document_edit==0 || count($doc)==0) {
+                        $this->Flash->error('Sorry, You dont have the permissions.');
+                        	return $this->redirect("/");
+                        
+                    }
+                    
+                } else {
+                    if($setting->document_create==0 || count($doc)==0) {
+                        $this->Flash->error('Sorry, You dont have the permissions.');
+                        	return $this->redirect("/");
+                        
+                    }
+                }
+                if(isset($_POST['uploaded_for'])){
+                    $docs = TableRegistry::get('Documents');
+                     
+                    $arr['uploaded_for'] = $_POST['uploaded_for'];
+                    $arr['client_id'] = $cid;
+                    if(isset($_POST['document_type']))
+                        $arr['document_type'] = $_POST['document_type'];
+                        $arr['created'] = date('Y-m-d H:i:s');
+                    
+                    if(!$did || $did=='0'){
+                	   $arr['user_id'] = $this->request->session()->read('Profile.id');
+                       $doc = $docs->newEntity($arr);
+            			if ($docs->save($doc)) {
+            				$this->Flash->success('The document has been saved.');
+                            	$this->redirect('/documents');
+            			} else {
+            			     //$this->Flash->error('The client could not be saved. Please, try again.');
+            				//echo "e";
+            			}
+        		
+                    } else {
+                            $query2 = $docs->query();
+                                $query2->update()
+                                ->set($arr)
+                                ->where(['id' => $did])
+                                ->execute();
+                                $this->Flash->success('The document has been saved.');
+                        	$this->redirect('/documents');
+                    }
+        		}
+        } else {
+                    $doc = $this->getDocumentcount();
+
+                    if($did!=0)
+                    {
+
+                        $doc = TableRegistry::get('orders');
+                        $query = $doc->find()->where(['id' => $did])->first();
+                        $this->set('document',$query);
+                        if($setting->document_edit==0 || count($doc)==0) {
+                            $this->Flash->error('Sorry, You dont have the permissions.');
+                                return $this->redirect("/");
+                            
+                        }
+                        
+                    } else {
+                        if($setting->document_create==0 || count($doc)==0) {
+                            $this->Flash->error('Sorry, You dont have the permissions.');
+                                return $this->redirect("/");
+                            
+                        }
+                    }
+                    if(isset($_POST['uploaded_for'])){
+                        $docs = TableRegistry::get('orders');
+                         
+                        $arr['uploaded_for'] = $_POST['uploaded_for'];
+                        $arr['client_id'] = $cid;
+                        if(isset($_POST['order_type']))
+                            $arr['order_type'] = $_POST['order_type'];
+                            $arr['created'] = date('Y-m-d H:i:s');
+                        
+                        if(!$did || $did=='0'){
+                           $arr['user_id'] = $this->request->session()->read('Profile.id');
+                           $doc = $docs->newEntity($arr);
+                            if ($docs->save($doc)) {
+                                $this->Flash->success('The document has been saved.');
+                                    $this->redirect('/orderslist');
+                            } else {
+                                 //$this->Flash->error('The client could not be saved. Please, try again.');
+                                //echo "e";
+                            }
+                    
+                        } else {
+                                $query2 = $docs->query();
+                                    $query2->update()
+                                    ->set($arr)
+                                    ->where(['id' => $did])
+                                    ->execute();
+                                    $this->Flash->success('The document has been saved.');
+                                $this->redirect('/documents');
+                        }
+                    }
         }
-        else
-        { 
-            if($setting->document_create==0 || count($doc)==0)
-            {
-                $this->Flash->error('Sorry, You dont have the permissions.');
-                	return $this->redirect("/");
-                
-            }
-        }
-        if(isset($_POST['uploaded_for'])){
-        $docs = TableRegistry::get('Documents');
-         
-        $arr['uploaded_for'] = $_POST['uploaded_for'];
-        $arr['client_id'] = $cid;
-        if(isset($_POST['document_type']))
-        $arr['document_type'] = $_POST['document_type'];
-        $arr['created'] = date('Y-m-d H:i:s');
-        if(!$did || $did=='0'){
-	   $arr['user_id'] = $this->request->session()->read('Profile.id');
-        $doc = $docs->newEntity($arr);
-		
-		  
-			if ($docs->save($doc)) {
-				$this->Flash->success('The document has been saved.');
-                	$this->redirect('/documents');
-			} else {
-			     //$this->Flash->error('The client could not be saved. Please, try again.');
-				//echo "e";
-			}
-		
-        }
-        else
-        {
-            $query2 = $docs->query();
-                        $query2->update()
-                        ->set($arr)
-                        ->where(['id' => $did])
-                        ->execute();
-                        $this->Flash->success('The document has been saved.');
-                	$this->redirect('/documents');
-        }
-		}
+
     }
-    
+
+
     function edit()
     {
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -913,7 +1001,7 @@ class DocumentsController extends AppController {
     }
 
     public function orderslist(){
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
 
         if($setting->document_list==0 || count($doc)==0)
@@ -977,5 +1065,76 @@ class DocumentsController extends AppController {
 
 
     }
+
+    public function getOrderData($cid = NULL,$order_id = NULL){
+        // print_r($_GET);die;
+        if($_GET['form_type']=="company_pre_screen_question.php"){    
+            $preScreen = TableRegistry::get('pre_screening');
+            $prescreenDetail = $preScreen->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+        // die('asd');
+        unset($prescreenDetail->id);
+        unset($prescreenDetail->document_id);
+        unset($prescreenDetail->order_id);
+        unset($prescreenDetail->client_id);
+        unset($prescreenDetail->user_id);
+        echo json_encode($prescreenDetail);
+
+        } else if($_GET['form_type']=="driver_application.php"){
+            
+            // $this->getDriverAppData($cid,$order_id);
+            $driveApp = TableRegistry::get('driver_application');
+            $driveAppDetail = $driveApp->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            //$driveAppID = $driveAppDetail->id;
+            unset($driveAppDetail->id);
+            unset($driveAppDetail->document_id);
+            unset($driveAppDetail->order_id);
+            unset($driveAppDetail->client_id);
+            unset($driveAppDetail->user_id);
+            echo json_encode($driveAppDetail);
+
+            // $driveAppAcc = TableRegistry::get('driver_application_accident');
+            // $driveAppDetail = $driveAppAcc->find()->where(['id'=>$driveAppID,'client_id'=>$cid,'order_id'=>$order_id]);
+
+
+        } else if($_GET['form_type']=="driver_evaluation_form.php"){
+            
+            // $this->getRoadTestData($cid,$order_id);
+            $roadTest = TableRegistry::get('road_test');
+            $roadTestDetail = $roadTest->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            // $prescreenID = $prescreenDetail->id;
+            echo json_encode($roadTestDetail);
+
+
+        } else if($_GET['form_type']=="document_tab_3.php"){
+            
+            $consentForm = TableRegistry::get('consent_form');
+            $consentFormDetail = $consentForm->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            $consentFormID = $consentFormDetail->id;
+
+            $consentFormCriminal = TableRegistry::get('consent_form_criminal');
+            $consentFormCrmDetail = $consentFormCriminal->find()->where(['id'=>$consentFormID,'client_id'=>$cid,'order_id'=>$order_id])->first();
+            echo json_encode($consentFormDetail);
+
+
+            $employment = TableRegistry::get('employment_verification');
+            $employmentDetail = $employment->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            // echo json_encode($employmentDetail);
+
+            $education = TableRegistry::get('education_verification');
+            $educationDetail = $education->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            $edu_id = $educationDetail->id;            
+            // echo json_encode($educationDetail);
+
+            $educationPass = TableRegistry::get('education_verification_pass_education');
+            $educationPassDetail = $educationPass->find()->where(['id'=>$id,'client_id'=>$cid,'order_id'=>$order_id])->first();
+            $edu_id = $educationPassDetail->id;            
+            // echo json_encode($educationPassDetail);          
+
+        }
+        die;
+
+    }
+
+   
     
 }

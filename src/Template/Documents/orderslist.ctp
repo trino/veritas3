@@ -146,7 +146,7 @@
                                         elseif($order->order_type=='order')
                                         echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'editorder',$order->client_id, $order->id], ['class' => 'btn btn-primary']);
                                         else
-                                        echo $this->Html->link(__('Edit'), ['action' => 'add',$order->client_id, $order->id], ['class' => 'btn btn-primary']);
+                                        echo $this->Html->link(__('Edit'), ['action' => 'add',$order->client_id, $order->id,'order'], ['class' => 'btn btn-primary']);
                                     }
                                      ?>
                                     <?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]);} ?>

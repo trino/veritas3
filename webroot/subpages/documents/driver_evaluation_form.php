@@ -1,5 +1,6 @@
 <form id="form_tab3">
 <input type="hidden" name="document_type" value="Road test" />
+<input type="hidden" name="sub_doc_id" value="<?php if(isset($_GET['doc_id']))echo $_GET['doc_id']; else echo $d->id ?>" id="af" />
                                                 <div class="form-group">
 													<label class="control-label col-md-3">Driver name <span class="required">
 													* </span>

@@ -128,8 +128,18 @@
                     	<tbody>
                         <?php
                         $row_color_class = "odd";
+                        $subdoc = $this->requestAction('/profiles/getSub');
+                        $docz = [''];
+                        foreach($subdoc as $d)
+                        {
+                            array_push($docz,$d->title);
+                        }
+                        //var_dump($docz);
                         foreach ($documents as $docs):
-
+                            
+                            
+                            //$prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.array_search($docs->document_type, $docz));
+                            //var_dump($prosubdoc);
                             if($row_color_class=="even")
                             {
                                 $row_color_class ="odd";
@@ -151,11 +161,11 @@
                                     if($sidebar->document_edit=='1')
                                     {
                                         if($docs->document_type=='feedbacks' )
-                                        echo $this->Html->link(__('Edit'), ['controller'=>'feedbacks','action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);
+                                            echo $this->Html->link(__('Edit'), ['controller'=>'feedbacks','action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);
                                         elseif($docs->document_type=='order')
-                                        echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'editorder',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
+                                            echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'editorder',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
                                         else
-                                        echo $this->Html->link(__('Edit'), ['action' => 'add',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
+                                            echo $this->Html->link(__('Edit'), ['action' => 'add',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
                                     }
                                      ?>
                                     <?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $docs->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $docs->id)]);} ?>
@@ -176,8 +186,7 @@
 						<li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
 							class="paginate_button previous disabled"><a href="#"><i
 									class="fa fa-angle-left"></i></a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a>
-						</li>
+						<li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a></li>
 						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
 						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
 						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>

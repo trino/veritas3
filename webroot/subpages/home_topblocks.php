@@ -1,5 +1,5 @@
-<?php $block = $this->requestAction("settings/get_blocks/".$this->Session->read('Profile.id'));
-        $sidebar = $this->requestAction("settings/get_side/".$this->Session->read('Profile.id')); ?>
+<?php $block = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/blocks");
+        $sidebar = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar"); ?>
 
 <div class="tiles">
 
@@ -136,7 +136,7 @@
 
 
 
-    <?php if ($block->feedback == 1 && $sidebar->document_create ==1) { ?>
+    <?php if ($block->feedback == 1 && $sidebar->feedback == 1) { ?>
     
         <a href="<?php echo $this->request->webroot; ?>feedbacks/add" class="tile bg-green-meadow">
             <div class="tile-body">

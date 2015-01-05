@@ -1,10 +1,11 @@
+<form id="form_tab3">
 <input type="hidden" name="document_type" value="Road test" />
                                                 <div class="form-group">
 													<label class="control-label col-md-3">Driver name <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" class="form-control" name=""/>
+														<input type="text" class="form-control" name="driver_name"/>
 														
 													</div>
 												</div>
@@ -13,7 +14,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" placeholder="" class="form-control" name=""/>
+														<input type="text" placeholder="" class="form-control" name="d_l"/>
 														
 													</div>
 												</div>
@@ -22,7 +23,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" placeholder="" class="form-control" name=""/>
+														<input type="text" placeholder="" class="form-control" name="issued_date"/>
 														
 													</div>
 												</div>
@@ -33,9 +34,9 @@
 													<div class="col-md-4">
 														<div class="checkbox-list">
 															<label>
-															<input type="checkbox" name="" value="1"/> Manual Shift </label>
+															<input type="checkbox" name="transmission_manual_shift" value="1"/> Manual Shift </label>
 															<label>
-															<input type="checkbox" name="" value="2"/> Auto Shift </label>
+															<input type="checkbox" name="transmission_auto_shift" value="2"/> Auto Shift </label>
 														</div>
 														<div id="form_payment_error">
 														</div>
@@ -46,7 +47,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" placeholder="" class="form-control" name=""/>														
+														<input type="text" placeholder="" class="form-control" name="name_evaluator"/>
 													</div>
 												</div>
                                                 
@@ -57,21 +58,21 @@
 													<div class="col-md-9">
 														<div class="checkbox-list col-md-4 nopad">
 															<label>
-															<input type="checkbox" name="" value="1"/> Pre Hire </label>
+															<input type="checkbox" name="pre_hire" value="1"/> Pre Hire </label>
 															<label>
-															<input type="checkbox" name="" value="2"/> Post Accident </label>
+															<input type="checkbox" name="post_accident" value="2"/> Post Accident </label>
 														</div>
 														<div class="checkbox-list col-md-4 nopad">
 															<label>
-															<input type="checkbox" name="" value="1"/> Post Injury </label>
+															<input type="checkbox" name="post_injury" value="1"/> Post Injury </label>
 															<label>
-															<input type="checkbox" name="" value="2"/> Post Training </label>
+															<input type="checkbox" name="post_training" value="2"/> Post Training </label>
 														</div>
                                                         <div class="checkbox-list col-md-4 nopad">
 															<label>
-															<input type="checkbox" name="" value="1"/> Annual </label>
+															<input type="checkbox" name="annual" value="1"/> Annual </label>
 															<label>
-															<input type="checkbox" name="" value="2"/> Skill Verification </label>
+															<input type="checkbox" name="skill_verification" value="2"/> Skill Verification </label>
 														</div>
 													</div>
 												</div>
@@ -87,39 +88,39 @@
                                                             <div class="portlet-body">
                                                                 <div class="col-md-6 checkbox-list">
                                                                     <label>
-        															<input type="checkbox" name=""/> Fuel tank </label>
+        															<input type="checkbox" name="fuel_tank" value="1" /> Fuel tank </label>
         															<label>
-        															<input type="checkbox" name=""/> All Gauges </label>
+        															<input type="checkbox" name="all_gauges" value="1" /> All Gauges </label>
                                                                     <label>
-        															<input type="checkbox" name=""/> Audible Air Leaks </label>
+        															<input type="checkbox" name="audible_air" value="1" /> Audible Air Leaks </label>
         															<label>
-        															<input type="checkbox" name=""/> Wheels Tires </label>
+        															<input type="checkbox" name="wheels_tires" value="1" /> Wheels Tires </label>
                                                                     <label>
-        															<input type="checkbox" name=""/> Trailer Brakes </label>
+        															<input type="checkbox" name="trailer_brakes" value="1" /> Trailer Brakes </label>
                                                                     <label>
-        															<input type="checkbox" name=""/> Trailer Airlines </label>
+        															<input type="checkbox" name="trailer_airlines" value="1" /> Trailer Airlines </label>
                                                                     <label>
-        															<input type="checkbox" name=""/> Inspect 5th Wheel </label>
+        															<input type="checkbox" name="inspect_5th_wheel" value="1" /> Inspect 5th Wheel </label>
                                                                     <label>
-        															<input type="checkbox" name=""/> Cold Check </label>
+        															<input type="checkbox" name="cold_check" value="1" /> Cold Check </label>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label>
-        															<input type="checkbox" name=""/> Seat and Mirror set up </label>
+        															<input type="checkbox" name="seat_mirror" value="1" /> Seat and Mirror set up </label>
         															<label>
-        															<input type="checkbox" name=""/> Coupling&nbsp; &nbsp; &nbsp; &nbsp;</label>
+        															<input type="checkbox" name="coupling" value="1" /> Coupling&nbsp; &nbsp; &nbsp; &nbsp;</label>
                                                                     <label>
-        															<input type="checkbox" name=""/> Paperwork </label>
+        															<input type="checkbox" name="paperwork" value="1" /> Paperwork </label>
         															<label>
-        															<input type="checkbox" name=""/> Lights/ABS Lamps </label>
+        															<input type="checkbox" name="lights_abs_lamps" value="1" /> Lights/ABS Lamps </label>
                                                                     <label>
-        															<input type="checkbox" name=""/> Annual Inspection Stickers </label>
+        															<input type="checkbox" name="annual_inspection_strickers" value="1" /> Annual Inspection Stickers </label>
                                                                     <label>
-        															<input type="checkbox" name=""/> In cab air brake checks </label>
+        															<input type="checkbox" name="cab_air_brake_checked" value="1" /> In cab air brake checks </label>
                                                                     <label>
-        															<input type="checkbox" name=""/> Landing Gear </label>
+        															<input type="checkbox" name="landing_gear" value="1" /> Landing Gear </label>
                                                                     <label>
-        															<input type="checkbox" name=""/> Emergency exit </label>
+        															<input type="checkbox" name="emergency_exit" value="1" /> Emergency exit </label>
                                                                 </div>
                                                                 <div class="clearfix"></div>
                                                             </div>
@@ -137,7 +138,10 @@
             															Follows too closely 
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_follows_too_closely" value="1"/>
+                                                                        <input type="radio" name="driving_follows_too_closely" value="2"/>
+                                                                        <input type="radio" name="driving_follows_too_closely" value="3"/>
+                                                                        <input type="radio" name="driving_follows_too_closely" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div> 
@@ -147,7 +151,10 @@
             															Improper choice of Lane 
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_improper_choice_lane" value="1"/>
+                                                                        <input type="radio" name="driving_improper_choice_lane" value="2"/>
+                                                                        <input type="radio" name="driving_improper_choice_lane" value="3"/>
+                                                                        <input type="radio" name="driving_improper_choice_lane" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -157,7 +164,10 @@
             															Fails to use mirrors properly 
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_fails_use_mirror_properly" value="1"/>
+                                                                        <input type="radio" name="driving_fails_use_mirror_properly" value="2"/>
+                                                                        <input type="radio" name="driving_fails_use_mirror_properly" value="3"/>
+                                                                        <input type="radio" name="driving_fails_use_mirror_properly" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>  
@@ -167,7 +177,10 @@
             															Signal: wrong / late / not used / not cancelled
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_signal" value="1"/>
+                                                                        <input type="radio" name="driving_signal" value="2"/>
+                                                                        <input type="radio" name="driving_signal" value="3"/>
+                                                                        <input type="radio" name="driving_signal" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>  
@@ -177,7 +190,10 @@
             															Fails to use caution at R.R. Xing	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_fail_use_caution_rr" value="1"/>
+                                                                        <input type="radio" name="driving_fail_use_caution_rr" value="2"/>
+                                                                        <input type="radio" name="driving_fail_use_caution_rr" value="3"/>
+                                                                        <input type="radio" name="driving_fail_use_caution_rr" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -187,7 +203,10 @@
             															Speed: too fast / too slow  	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_speed" value="1"/>
+                                                                        <input type="radio" name="driving_speed" value="2"/>
+                                                                        <input type="radio" name="driving_speed" value="3"/>
+                                                                        <input type="radio" name="driving_speed" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div> 
@@ -197,7 +216,10 @@
             															Incorrect use of: clutch / brakes		
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_incorrect_use_clutch_brake" value="1"/>
+                                                                        <input type="radio" name="driving_incorrect_use_clutch_brake" value="2"/>
+                                                                        <input type="radio" name="driving_incorrect_use_clutch_brake" value="3"/>
+                                                                        <input type="radio" name="driving_incorrect_use_clutch_brake" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -207,7 +229,10 @@
             															Accelerator / gears / steering		
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_accelerator_gear_steer" value="1"/>
+                                                                        <input type="radio" name="driving_accelerator_gear_steer" value="2"/>
+                                                                        <input type="radio" name="driving_accelerator_gear_steer" value="3"/>
+                                                                        <input type="radio" name="driving_accelerator_gear_steer" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -217,7 +242,10 @@
             															Incorrect observation skills	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_incorrect_observation_skills" value="1"/>
+                                                                        <input type="radio" name="driving_incorrect_observation_skills" value="2"/>
+                                                                        <input type="radio" name="driving_incorrect_observation_skills" value="3"/>
+                                                                        <input type="radio" name="driving_incorrect_observation_skills" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -227,7 +255,10 @@
             															Doesn't respond to instruction	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="driving_respond_instruction" value="1"/>
+                                                                        <input type="radio" name="driving_respond_instruction" value="2"/>
+                                                                        <input type="radio" name="driving_respond_instruction" value="3"/>
+                                                                        <input type="radio" name="driving_respond_instruction" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -250,7 +281,10 @@
             															Signaling: not used / late / not cancelled             
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="cornering_signaling" value="1"/>
+                                                                        <input type="radio" name="cornering_signaling" value="2"/>
+                                                                        <input type="radio" name="cornering_signaling" value="3"/>
+                                                                        <input type="radio" name="cornering_signaling" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div> 
@@ -260,7 +294,10 @@
             															  Speed:  too fast / too slow/momentum 
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="cornering_speed" value="1"/>
+                                                                        <input type="radio" name="cornering_speed" value="2"/>
+                                                                        <input type="radio" name="cornering_speed" value="3"/>
+                                                                        <input type="radio" name="cornering_speed" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -270,7 +307,10 @@
             															Fails to get into proper:   lane / late / position
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="cornering_fails" value="1"/>
+                                                                        <input type="radio" name="cornering_fails" value="2"/>
+                                                                        <input type="radio" name="cornering_fails" value="3"/>
+                                                                        <input type="radio" name="cornering_fails" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>  
@@ -280,7 +320,10 @@
             															Proper set up for turn  
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="cornering_proper_set_up_turn" value="1"/>
+                                                                        <input type="radio" name="cornering_proper_set_up_turn" value="2"/>
+                                                                        <input type="radio" name="cornering_proper_set_up_turn" value="3"/>
+                                                                        <input type="radio" name="cornering_proper_set_up_turn" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>  
@@ -290,7 +333,10 @@
             															Turns too: wide / cuts corner / jumps curb          	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="cornering_turns" value="1"/>
+                                                                        <input type="radio" name="cornering_turns" value="2"/>
+                                                                        <input type="radio" name="cornering_turns" value="3"/>
+                                                                        <input type="radio" name="cornering_turns" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -300,7 +346,10 @@
             															Use of wrong lane / impede traffic 	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="cornering_wrong_lane_impede" value="1"/>
+                                                                        <input type="radio" name="cornering_wrong_lane_impede" value="2"/>
+                                                                        <input type="radio" name="cornering_wrong_lane_impede" value="3"/>
+                                                                        <input type="radio" name="cornering_wrong_lane_impede" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div> 
@@ -321,7 +370,10 @@
             															Smooth take off's           
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="shifting_smooth_take_off" value="1"/>
+                                                                        <input type="radio" name="shifting_smooth_take_off" value="2"/>
+                                                                        <input type="radio" name="shifting_smooth_take_off" value="3"/>
+                                                                        <input type="radio" name="shifting_smooth_take_off" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div> 
@@ -331,7 +383,10 @@
             															  Proper gear selection
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="shifting_proper_gear_selection" value="1"/>
+                                                                        <input type="radio" name="shifting_proper_gear_selection" value="2"/>
+                                                                        <input type="radio" name="shifting_proper_gear_selection" value="3"/>
+                                                                        <input type="radio" name="shifting_proper_gear_selection" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -341,7 +396,10 @@
             															Proper clutching
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="shifting_proper_clutching" value="1"/>
+                                                                        <input type="radio" name="shifting_proper_clutching" value="2"/>
+                                                                        <input type="radio" name="shifting_proper_clutching" value="3"/>
+                                                                        <input type="radio" name="shifting_proper_clutching" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>  
@@ -351,7 +409,10 @@
             															Gear recovery
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="shifting_gear_recovery" value="1"/>
+                                                                        <input type="radio" name="shifting_gear_recovery" value="2"/>
+                                                                        <input type="radio" name="shifting_gear_recovery" value="3"/>
+                                                                        <input type="radio" name="shifting_gear_recovery" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>  
@@ -361,7 +422,10 @@
             															Up/down shifting         	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="shifting_up_down" value="1"/>
+                                                                        <input type="radio" name="shifting_up_down" value="2"/>
+                                                                        <input type="radio" name="shifting_up_down" value="3"/>
+                                                                        <input type="radio" name="shifting_up_down" value="4"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -385,7 +449,7 @@
             															Uses proper set up          
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/>
+                                                                        <input type="radio" name="backing_uses_proper_set_up" value="1"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div> 
@@ -395,7 +459,8 @@
             															  Check vehicle path before / while backing           
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="backing_path_before_while_driving" value="1"/>
+                                                                        <input type="radio" name="backing_path_before_while_driving" value="2"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -405,7 +470,8 @@
             															Use of 4 way flashers / city horn
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="backing_use_4way_flashers_city_horn" value="1"/>
+                                                                        <input type="radio" name="backing_use_4way_flashers_city_horn" value="2"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>  
@@ -415,7 +481,8 @@
             															Shows certainty while steering
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="backing_show_certainty_while_steering" value="1"/>
+                                                                        <input type="radio" name="backing_show_certainty_while_steering" value="2"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>  
@@ -425,7 +492,8 @@
             															Continually uses mirrors        	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/> <input type="radio" name=""/>
+                                                                        <input type="radio" name="backing_continually_uses_mirror" value="1"/>
+                                                                        <input type="radio" name="backing_continually_uses_mirror" value="2"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -434,7 +502,7 @@
             															Maintain proper speed	       	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/>
+                                                                        <input type="radio" name="backing_maintain_proper_seed" value="1"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -443,7 +511,7 @@
             															Complete in a reasonable time and fashion	       	
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input type="radio" name=""/>
+                                                                        <input type="radio" name="backing_complete_reasonable_time_fashion" value="1"/>
                                                                     </div>
     							                                    <div class="clearfix"></div>
                                                                 </div>
@@ -460,7 +528,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" class="form-control" name="" disabled="" value="24"/>
+														<input type="text" class="form-control" name="total_score" disabled="" value="24"/>
 														
 													</div>
 												</div>
@@ -469,7 +537,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" class="form-control" name=""/>
+														<input type="text" class="form-control" name="auto_shift"/>
 														
 													</div>
 												</div>
@@ -478,7 +546,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" class="form-control" name=""/>
+														<input type="text" class="form-control" name="manual"/>
 														
 													</div>
 												</div>
@@ -497,9 +565,9 @@
 													<div class="col-md-4">
 														<div class="checkbox-list">
 															<label>
-															<input type="radio" name="" value="1"/> Yes </label>
+															<input type="radio" name="recommended_for_hire" value="1"/> Yes </label>
 															<label>
-															<input type="radio" name="" value="0"/> No </label>
+															<input type="radio" name="recommended_for_hire" value="0"/> No </label>
 														</div>
 														<div id="form_payment_error">
 														</div>
@@ -512,9 +580,9 @@
 													<div class="col-md-4">
 														<div class="checkbox-list">
 															<label>
-															<input type="radio" name="" value="1"/> Yes </label>
+															<input type="radio" name="recommended_full_trainee" value="1"/> Yes </label>
 															<label>
-															<input type="radio" name="" value="0"/> No </label>
+															<input type="radio" name="recommended_full_trainee" value="0"/> No </label>
 														</div>
 														<div id="form_payment_error">
 														</div>
@@ -527,9 +595,9 @@
 													<div class="col-md-4">
 														<div class="checkbox-list">
 															<label>
-															<input type="radio" name="" value="1"/> Yes </label>
+															<input type="radio" name="recommended_fire_hire_trainee" value="1"/> Yes </label>
 															<label>
-															<input type="radio" name="" value="0"/> No </label>
+															<input type="radio" name="recommended_fire_hire_trainee" value="0"/> No </label>
 														</div>
 														<div id="form_payment_error">
 														</div>
@@ -541,7 +609,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<textarea  placeholder="" class="form-control" name=""></textarea>
+														<textarea  placeholder="" class="form-control" name="comments"></textarea>
 														
 													</div>
 												</div>
@@ -568,8 +636,8 @@
                                                         <a href="javascript:void(0);" class="btn btn-success" id="add_more_driver_doc">Add More</a>
                                                     </div>
                                                   </div>
-                                                  
-                                                  
+
+</form>
                                                     
                                                     <div class="clearfix"></div>
  <script>

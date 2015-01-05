@@ -28,7 +28,8 @@
                         //echo strtolower($d->title);
                         if(isset($document) && strtolower($d->title) == strtolower($document->document_type))
                              $form_type = $d->form;
-                        $prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$this->Session->read('Profile.id').'/'.$d->id);
+                        //$prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$this->Session->read('Profile.id').'/'.$d->id);
+                        $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.$d->id);
                         if($i==11)
                         $i=0;
                         ?>

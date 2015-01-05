@@ -1,8 +1,8 @@
 <?php 
 
     $uid = ($this->request['action']=='add')? "0" : $this->request['pass'][0];
-    $sidebar = $this->requestAction("settings/get_side/".$uid); ?>
-    <?php $block = $this->requestAction("settings/get_blocks/".$uid); ?>
+    $sidebar = $this->requestAction("settings/all_settings/".$uid."/sidebar"); ?>
+    <?php $block = $this->requestAction("settings/all_settings/".$uid."/blocks"); ?>
                                 <ul class="nav nav-tabs">
                                 
                                 
@@ -162,7 +162,21 @@
                                                         <div class="clearfix"></div>
                                                 </td>
                                             </tr>
-                                            
+                                            <tr>
+                                                <td class="vtop">Feedbacks</td>
+                                                <td>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[feedback]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->feedback == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[feedback]"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->feedback == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td class="vtop">Messages</td>
                                                 <td>
@@ -480,12 +494,10 @@
                                                             <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
                                                                 Save Changes </a>
 
-
-
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
+                                                        </div>
+                                                    <?php
+                                                    }
+                                                    ?>
                                     </form>
                                 					</div>
                                                                 

@@ -1,3 +1,5 @@
+Place MEE Order
+<form id="form_consent">
 <div class="portlet box blue ">
 	<div class="portlet-title">
 		<div class="caption">
@@ -9,41 +11,41 @@
                 <div class="form-group col-md-12">
     				<label class="control-label col-md-2">Surname : </label>
     				<div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="last_name"/>
     				</div>
                     <label class="control-label col-md-2">First Name : </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="first_name"/>
     				</div>
                     <label class="control-label col-md-2">Middle Name : </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="mid_name"/>
     				</div>
                 </div>
                 
                 <div class="form-group col-md-12">
     				<label class="control-label col-md-4">Previous Surname(s) or Maiden Name(s) : </label>
     				<div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="previous_last_name"/>
     				</div>
                     <label class="control-label col-md-3">Place of Birth(Country) : </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="place_birth_country"/>
     				</div>
                 </div>
                 
                  <div class="form-group col-md-12">
     				<label class="control-label col-md-2">Date of Birth : </label>
     				<div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="YY-MM-DD"/>
+    					<input type="text" class="form-control" placeholder="YY-MM-DD" name="birth_date" />
     				</div>
                     <label class="control-label col-md-2">Sex : </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="sex"/>
     				</div>
                     <label class="control-label col-md-2">Phone Number : </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="phone"/>
     				</div>
                 </div>
                 
@@ -52,19 +54,19 @@
                 </div>
                 <div class="form-group col-md-12">
     				<div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="Street and Number"/>
+    					<input type="text" class="form-control" placeholder="Street and Number" name="current_street_address" />
     				</div>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="Apt/Unit"/>
+    					<input type="text" class="form-control" placeholder="Apt/Unit" name="current_apt_unit"/>
     				</div>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="City"/>
+    					<input type="text" class="form-control" placeholder="City" name="current_city"/>
     				</div>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="Province"/>
+    					<input type="text" class="form-control" placeholder="Province" name="current_province"/>
     				</div>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="Postal Code"/>
+    					<input type="text" class="form-control" placeholder="Postal Code" name="current_postal_code"/>
     				</div>
                 </div>
                 
@@ -73,19 +75,19 @@
                 </div>
                 <div class="form-group col-md-12">
     				<div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="Street and Number"/>
+    					<input type="text" class="form-control" placeholder="Street and Number" name="previous_street_address"/>
     				</div>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="Apt/Unit"/>
+    					<input type="text" class="form-control" placeholder="Apt/Unit" name="previous_apt_unit"/>
     				</div>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="City"/>
+    					<input type="text" class="form-control" placeholder="City" name="previous_city"/>
     				</div>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="Province"/>
+    					<input type="text" class="form-control" placeholder="Province" name="previous_province"/>
     				</div>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="Postal Code"/>
+    					<input type="text" class="form-control" placeholder="Postal Code" name="previous_postal_code"/>
     				</div>
                 </div>
 
@@ -137,28 +139,28 @@
                 <div class="form-group col-md-12">
     				<label class="control-label col-md-11">Applicant's Signature- by signing this form you agree and consent to the terms and release of information listed on this form : </label>
     				<div class="col-md-1">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="applicant_signature_agree"/>
     				</div>
                 </div>
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-4">Company Name Requesting Search : </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="company_name_requesting"/>
     				</div>
                     <label class="control-label col-md-4">Printed Name of Company Witness : </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="printed_name_company_witness"/>
     				</div>
                 </div>
                 
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-4">Company Location (Country): </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="company_location"/>
     				</div>
                     <label class="control-label col-md-4">Signature of Company Witness: </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="signature_company_witness"/>
     				</div>
                 </div>
                 
@@ -190,46 +192,46 @@
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Surname: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="criminal_surname"/>
     				</div>
                     <label class="control-label col-md-3">Given Name: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="criminal_given_name"/>
     				</div>
                 </div>
                 
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Sex: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="criminal_sex"/>
     				</div>
                     <label class="control-label col-md-3">Date of Birth : </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="YYYY/MM/DD"/>
+    					<input type="text" class="form-control" placeholder="YYYY/MM/DD" name="criminal_date_birth"/>
     				</div>
                 </div>
                 
                  <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Current Address: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="City"/>
+    					<input type="text" class="form-control" placeholder="Address" name="criminal_current_address"/>
     				</div>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="Province"/>
+    					<input type="text" class="form-control" placeholder="Province" name="criminal_current_province"/>
     				</div>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="Postal Code"/>
+    					<input type="text" class="form-control" placeholder="Postal Code" name="criminal_current_postal_code"/>
     				</div>
                 </div>
                 
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Signature of Applicant: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="criminal_signature_applicant"/>
     				</div>
                     <label class="control-label col-md-3">Date: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="YYYY/MM/DD"/>
+    					<input type="text" class="form-control" placeholder="YYYY/MM/DD" name="criminal_date"/>
     				</div>
                 </div>
                 
@@ -261,16 +263,52 @@
                 <div class="table-scrollable">
                     <table class="table">
                     <thead>
-                        <tr><th>Offence</th><th>Date of Sentence</th><th>Location</th></tr>
+                        <tr>
+                            <th>Offence</th>
+                            <th>Date of Sentence</th>
+                            <th>Location</th>
+                        </tr>
                     </thead>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
-                    <tr><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td><td><input type="text" class="form-control" /></td></tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="offence[]" /></td>
+                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
+                        <td><input type="text" class="form-control" name="location[]"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="offence[]" /></td>
+                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
+                        <td><input type="text" class="form-control" name="location[]"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="offence[]" /></td>
+                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
+                        <td><input type="text" class="form-control" name="location[]"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="offence[]" /></td>
+                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
+                        <td><input type="text" class="form-control" name="location[]"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="offence[]" /></td>
+                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
+                        <td><input type="text" class="form-control" name="location[]"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="offence[]" /></td>
+                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
+                        <td><input type="text" class="form-control" name="location[]"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="offence[]" /></td>
+                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
+                        <td><input type="text" class="form-control" name="location[]"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="offence[]" /></td>
+                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
+                        <td><input type="text" class="form-control" name="location[]"/></td>
+                    </tr>
                     </table>
                 </div>
                 
@@ -289,14 +327,14 @@
 			<div class="form-body">
             <h4>Important Notice Regarding Background Reports From The PSP Online Service</h4>
             <div class="col-md-12">
-                <p><div class="col-md-5">1.&nbsp;&nbsp;In connection with your application for employment with</div> <div class="col-md-3"><input type="text" class="form-control" /></div><div class="col-md-4">("Prospective Employer"), Prospective Employer,</div><br /><br /> its employees, agents or contractors may obtain one or more reports regarding your driving, and safety inspection history from the Federal Motor Carrier Safety Administration (FMCSA).</p>
+                <p><div class="col-md-5">1.&nbsp;&nbsp;In connection with your application for employment with</div> <div class="col-md-3"><input type="text" class="form-control" name="psp_employer" /></div><div class="col-md-4">("Prospective Employer"), Prospective Employer,</div><br /><br /> its employees, agents or contractors may obtain one or more reports regarding your driving, and safety inspection history from the Federal Motor Carrier Safety Administration (FMCSA).</p>
                 <p>When the application for employment is submitted in person, if the Prospective Employer uses any information it obtains from FMCSA in a decision to not hire you or to make any other adverse employment decision regarding you, the Prospective Employer will provide you with a copy of the report upon which its decision was based and a written summary of your rights under the Fair Credit Reporting Act before taking any final adverse action. If any final adverse action is taken against you based upon your driving history or safety report, the Prospective Employer will notify you that the action has been taken and that the action was based in part or in whole on this report.</p>
                 <p>When the application for employment is submitted by mail, telephone, computer, or other similar means, if the Prospective Employer uses any information it obtains from FMCSA in a decision to not hire you or to make any other adverse employment decision regarding you, the Prospective Employer must provide you within three business days of taking adverse action oral, written or electronic notification: that adverse action has been taken based in whole or in part on information obtained  from FMCSA; the name, address, and the toll free telephone number of FMCSA; that the FMCSA did not make the decision to take the adverse action and is unable to provide you the specific reasons why the adverse action was taken; and that you may, upon providing proper identification, request a free copy of the report and may dispute with the FMCSA the accuracy or completeness of any information or report. If you request a copy of a driver record from the Prospective Employer who procured the report, then, within 3 business days of receiving your request, together with proper identification, the Prospective Employer must send or provide to you a copy of your report and a summary of your rights under the Fair Credit Reporting Act.</p>
                 <p>The Prospective Employer cannot obtain background reports from FMCSA unless you consent in writing.</p>
                 <p>If you agree that the Prospective Employer may obtain such background reports, please read the following and sign below:</p>
             </div>
             <div class="col-md-12">
-                <p><div class="col-md-2">2.&nbsp;&nbsp;I authorize</div><div class="col-md-3"><input type="text" class="form-control" /></div><div class="col-md-7">("Prospective Employer") to access the FMCSA Pre-Employment Screening Program PSP</div></p><br /><br />
+                <p><div class="col-md-2">2.&nbsp;&nbsp;I authorize</div><div class="col-md-3"><input type="text" class="form-control" name="authorize_name_hereby" /></div><div class="col-md-7">("Prospective Employer") to access the FMCSA Pre-Employment Screening Program PSP</div></p><br /><br />
                 <p>system to seek information regarding my commercial driving safety record and information regarding my safety inspection history. I understand that I am consenting to the release of safety performance information including crash data from the previous five (5) years and inspection history from the previous three (3) years. I understand and acknowledge that this release of information may assist the Prospective Employer to make a determination regarding my suitability as an employee.</p>
                 <p>3.&nbsp;&nbsp;I further understand that neither the Prospective Employer nor the FMCSA contractor supplying the crash and safety information has the capability to correct any safety data that appears to be incorrect. I understand I may challenge the accuracy of the data by submitting a request to https://dataqs.fmcsa.dot.gov. If I am challenging crash or inspection information reported by a State, FMCSA cannot change or correct this data. I understand my request will be forwarded by the DataQs system to the appropriate State for adjudication.</p>
                 <p>4.&nbsp;&nbsp;Please note: Any crash or inspection in which you were involved will display on your PSP report. Since the PSP report does not report, or assign, or imply fault, it will include all Commercial Motor Vehicle (CMV) crashes where you were a driver or co-driver and where those crashes were reported to FMCSA, regardless of fault. Similarly, all inspections, with or without violations, appear on the PSP report. State citations associated with FMCSR violations that have been adjudicated by a court of law will also appear, and remain, on a PSP report.</p>
@@ -306,17 +344,17 @@
             <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Date: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="authorize_date"/>
     				</div>
                     <label class="control-label col-md-3">Signature: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="authorize_signature"/>
     				</div>
                 </div>
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Name(Please Print): </label>
                     <div class="col-md-9">
-    					<input type="text" class="form-control"/>
+    					<input type="text" class="form-control" name="authorize_name"/>
     				</div>
                 </div>
                 <div class="col-md-12">
@@ -360,7 +398,7 @@
 
     </div>
 </div>
-
+</form>
 
 
 

@@ -5,4 +5,5 @@ plugins/*
 tests/*
 tmp/*
 vendor/*
+src/Model/*
 !empty

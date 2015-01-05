@@ -320,7 +320,7 @@ $c = $client;
                                                                     No </label>
                                                             </td>
                                                             <?php
-                                                                 $csubdoc = $this->requestAction('/clients/getCSubDoc/'.$id.'/'.$sub->id);
+                                                                 $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/'.$id.'/'.$sub->id);
                                                             ?>
                                                             <td class="">
                                                                 <label class="uniform-inline">

@@ -13,6 +13,7 @@ class FeedbacksController extends AppController{
     public function intialize()
     {
         parent::intialize();
+        $this->loadComponent('Settings');
         if(!$this->request->session()->read('Profile.id'))
         {
             redirect('/login');

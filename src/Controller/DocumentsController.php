@@ -292,72 +292,98 @@ class DocumentsController extends AppController {
     /**
      * saving driver application data
      */
-    public function savedDriverApp(){
+    public function savedDriverApp($order_id = NULL , $cid = NULL){
+        // echo "<pre>";print_r($_POST);die;
        
-        $driverApps = TableRegistry::get('driver_application');
-        $arr['order_id'] = $_POST['order_id'];
-        $arr['client_id'] = $_POST['cid'];
+        
+        $arr['order_id'] = $order_id;
+        $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
         //$input_var = rtrim($_POST['inputs'],',');
-        
-        $driverAcc = array('date_of_accident[]','nature_of_accident[]','fatalities[]','injuries[]');
+         $driverApps = TableRegistry::get('driver_application');
+        $driverAcc = array('date_of_accident',
+                             'nature_of_accident',
+                             'fatalities',
+                             'injuries',
+                             'driver_license',
+                             'province',
+                             'license_number',
+                             'class',
+                             'expiration_date'
+                        );
         $total_acc_record=0;
         $accident = array();
-        foreach($_POST['inputs'] as $data){
+        foreach($_POST as $data =>$val){
             
-            if($data['name']=="document_type"){
-                
+            if($data=="document_type"){
                 continue;
-            } else if($data['name']=="count_acc_record"){
-                $total_acc_record = $data['value'];
-            }else if( in_array($data['name'], $driverAcc) ) {
-               
+            } else if($data =="count_acc_record"){
+                $total_acc_record = $val;
+            } else if( in_array($data, $driverAcc) ) {
                 continue;
             } else {
-                if($data['value']!='' ) {
-                    $arr[$data['name']]=$data['value'];
-                }
+                // if(isset($_POST[$data]) ) {
+                    $arr[$data] = $val;
+                // }
             }
-            //echo $data."<br/>";
         }
-       
-        /*for($i=1;$i<=$total_acc_record; $i++){
-            foreach($_POST['inputs'] as $data){
-                // if($data['name']== 'date_of_accident[]')
-                // $accident[] = 
-            }
-        }*/
-
-
         $save = $driverApps->newEntity($arr);
         if($driverApps->save($save))
         {
-            //echo $save->id;
+            $id = $save->id;
+            $driverAppAcc = TableRegistry::get('driver_application_accident');
+            for($i=0;$i < $total_acc_record; $i++){
+                $acc['driver_application_id'] = $id;
+                $acc['date_of_accident'] = $_POST['date_of_accident'][$i];
+                $acc['nature_of_accident'] = $_POST['nature_of_accident'][$i];
+                $acc['fatalities'] = $_POST['fatalities'][$i];
+                $acc['injuries'] = $_POST['injuries'][$i];
+                $saveAcc = $driverAppAcc->newEntity($acc);
+                $driverAppAcc->save($saveAcc);
+            }
+
+               $driverAppLic = TableRegistry::get('driver_application_licenses');
+              for($i=0;$i < 2; $i++){
+                $lic['driver_application_id'] = $id;
+                $lic['driver_license'] = $_POST['driver_license'][$i];
+                $lic['province'] = $_POST['province'][$i];
+                $lic['license_number'] = $_POST['license_number'][$i];
+                $lic['class'] = $_POST['class'][$i];
+                $lic['expiration_date'] = $_POST['expiration_date'][$i];
+                $saveLic = $driverAppLic->newEntity($lic);
+                $driverAppLic->save($saveLic);
+                }
+
         }
+       
+       
+
         die;
     }
     /**
      * saving driver application data
      */
-    public function savedDriverEvaluation(){
+    public function savedDriverEvaluation($order_id = NULL , $cid = NULL){
+        // echo "<pre>";print_r($_POST);die; 
+        
+
         $roadTest = TableRegistry::get('road_test');
-        $arr['order_id'] = $_POST['order_id'];
-        $arr['client_id'] = $_POST['cid'];
+        $arr['order_id'] = $order_id;
+        $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
-        $input_var = rtrim($_POST['inputs'],',');
 
-        foreach(explode("&",$_POST['inputs']) as $data){
-            $input = explode("=",$data);
-            if($input[0]=="document_type" ){
+        foreach($_POST as $data=>$val){
+          
+            if( $data=="document_type" ){
                 continue;
+            } else {
+                if(isset($_POST[$data])){
+                    $arr[$data]=$val;
+                }
             }
-            if($input[1]!='' ) {
 
-                $arr[$input[0]]=$input[1];
-            }
-            //echo $data."<br/>";
         }
 
 
@@ -372,97 +398,225 @@ class DocumentsController extends AppController {
     /**
      * saving driver application data
      */
-    public function savedMeeOrder(){
-
+    public function savedMeeOrder($order_id = NULL , $cid = NULL){
+       //consent form
+       // echo "<pre>";print_r($_POST);die;
         $consentForm = TableRegistry::get('consent_form');
-        $arr['order_id'] = $arr2['order_id'] = $arr3['order_id'] = $_POST['order_id'];
-        $arr['client_id'] = $arr2['client_id'] = $arr3['client_id'] =$_POST['cid'];
-        $arr['user_id'] = $arr2['user_id'] = $arr3['user_id'] =$this->request->session()->read('Profile.id');
+        $arr['order_id'] =  $order_id;
+        $arr['client_id'] = $cid;
+        $arr['user_id'] = $this->request->session()->read('Profile.id');
 
-        //$input_var = rtrim($_POST['consent'],',');
-        //consent
-        foreach(explode("&",$_POST['consent']) as $data){
-            $input = explode("=",$data);
-            if($input[0]=="document_type" ){
-                continue;
-            } else if( $input[0]=="offence" ||  $input[0]=="date_of_sentence"  ||  $input[0]=="location") {
+        
+        foreach($_POST as $data => $val){
+
+            if( $data =='offence' || $data =='date_of_sentence' || $data =='location' ){
                 continue;
             }
-            if($input[1]!='' ) {
-
-                $arr[$input[0]]=$input[1];
-            }
-            //echo $data."<br/>";
+            //echo $data." ".$val."<br />";
+            $arr[$data] = $val;
+            
         }
 
+// echo "<pre>";print_r($arr);die;
         $save = $consentForm->newEntity($arr);
-        if($consentForm->save($save))
-        {
-            //echo $save->id;
+        if($consentForm->save($save)) {
+            $id  = $save->id;
+             $consentFormCri = TableRegistry::get('consent_form_criminal');
+            for($i=0;$i<8;$i++){
+                $crm['consent_form_id'] = $id;
+                $crm['offence'] = $_POST['offence'][$i];
+                $crm['date_of_sentence'] = $_POST['date_of_sentence'][$i];
+                $crm['location'] = $_POST['location'][$i];
+                $saveCrm = $consentForm->newEntity($crm);
+                $consentFormCri->save($saveCrm);
+            }
         }
+        
+        die;
+    }
 
-        //employement
+    function saveEmployment($order_id = NULL , $cid = NULL){
+        // echo "<pre>";print_r($_POST);die;
+        //employement 
         $employment = TableRegistry::get('employment_verification');
-        foreach(explode("&",$_POST['employment']) as $data){
-            $input = explode("=",$data);
-            if($input[0]=="document_type" ){
-                continue;
+        
+        for($i=0;$i < $_POST['count_past_emp'];$i++){
+            $arr2['order_id'] = $order_id;
+            $arr2['client_id'] = $cid;
+            $arr2['user_id'] = $this->request->session()->read('Profile.id');
+
+            if( isset($_POST['company_name'][$i]) ){
+                $arr2['company_name'] = $_POST['company_name'][$i];
             }
-            if($input[1]!='' ) {
 
-                $arr2[$input[0]]=$input[1];
+            if( isset($_POST['address'][$i]) ){
+                $arr2['address'] = $_POST['address'][$i];
             }
-            //echo $data."<br/>";
+
+            if( isset($_POST['city'][$i]) ){
+                $arr2['city'] = $_POST['city'][$i];
+            }
+
+            if( isset($_POST['state_province'][$i]) ){
+                $arr2['state_province'] = $_POST['state_province'][$i];
+            }
+
+            if( isset($_POST['country'][$i]) ){
+                $arr2['country'] = $_POST['country'][$i];
+            }
+
+            if( isset($_POST['supervisor_name'][$i]) ){
+                $arr2['supervisor_name'] = $_POST['supervisor_name'][$i];
+            }
+
+            if( isset($_POST['supervisor_phone'][$i]) ){
+                $arr2['supervisor_phone'] = $_POST['supervisor_phone'][$i];
+            }
+
+            if( isset($_POST['supervisor_email'][$i]) ){
+                $arr2['supervisor_email'] = $_POST['supervisor_email'][$i];
+            }
+
+            if( isset($_POST['supervisor_secondary_email'][$i]) ){
+                $arr2['supervisor_secondary_email'] = $_POST['supervisor_secondary_email'][$i];
+            }
+
+            if( isset($_POST['employment_start_date'][$i]) ){
+                $arr2['employment_start_date'] = $_POST['employment_start_date'][$i];
+            }
+
+            if( isset($_POST['employment_end_date'][$i]) ){
+                $arr2['employment_end_date'] = $_POST['employment_end_date'][$i];
+            }
+            if( isset($_POST['claims_recovery_date'][$i]) ){
+                $arr2['claims_recovery_date'] = $_POST['claims_recovery_date'][$i];
+            }
+            if( isset($_POST['emploment_history_confirm_verify_use'][$i]) ){
+                $arr2['emploment_history_confirm_verify_use'] = $_POST['emploment_history_confirm_verify_use'][$i];
+            }
+            if( isset($_POST['us_dotsignature'][$i]) ){
+                $arr2['us_dotsignature'] = $_POST['us_dotsignature'][$i];
+            }
+            if( isset($_POST['signature'][$i]) ){
+                $arr2['signature'] = $_POST['signature'][$i];
+            }
+            if( isset($_POST['signature_datetime'][$i]) ){
+                $arr2['signature_datetime'] = $_POST['signature_datetime'][$i];
+            }
+
+            if( isset($_POST['equipment_vans'][$i]) ){
+                $arr2['equipment_vans'] = $_POST['equipment_vans'][$i];
+            }
+            if( isset($_POST['equipment_reefer'][$i]) ){
+                $arr2['equipment_reefer'] = $_POST['equipment_reefer'][$i];
+            }
+            if( isset($_POST['equipment_decks'][$i]) ){
+                $arr2['equipment_decks'] = $_POST['equipment_decks'][$i];
+            }
+            if( isset($_POST['equipment_super'][$i]) ){
+                $arr2['equipment_super'] = $_POST['equipment_super'][$i];
+            }
+            if( isset($_POST['equipment_straight_truck'][$i]) ){
+                $arr2['equipment_straight_truck'] = $_POST['equipment_straight_truck'][$i];
+            }
+            if( isset($_POST['equipment_others'][$i]) ){
+                $arr2['equipment_others'] = $_POST['equipment_others'][$i];
+            }
+            
+
+            //driving
+            if( isset($_POST['driving_experince_local'][$i]) ){
+                $arr2['driving_experince_local'] = $_POST['driving_experince_local'][$i];
+            }
+            if( isset($_POST['driving_experince_canada'][$i]) ){
+                $arr2['driving_experince_canada'] = $_POST['driving_experince_canada'][$i];
+            }
+            if( isset($_POST['driving_experince_canada_rocky_mountains'][$i]) ){
+                $arr2['driving_experince_canada_rocky_mountains'] = $_POST['driving_experince_canada_rocky_mountains'][$i];
+            }
+            if( isset($_POST['driving_experince_usa'][$i]) ){
+                $arr2['driving_experince_usa'] = $_POST['driving_experince_usa'][$i];
+            }
+
+            
+
+            
+
+            if( isset($_POST['claims_with_employer'][$i]) ){
+                $arr2['claims_with_employer'] = $_POST['claims_with_employer'][$i];
+            }
+
+            $save2 = $employment->newEntity($arr2);
+            $employment->save($save2);
         }
-        $save2 = $employment->newEntity($arr2);
-        if($employment->save($save2))
-        {
-            //echo $save->id;
-        }
+       
+        die;
+    }
 
 
+    function saveEducation($order_id = NULL,$cid = NULL){        
+        // echo $_POST['college_school_name'][0]
         //education
         $education = TableRegistry::get('education_verification');
         $edu = array();
-        $edu['order_id'] =  $_POST['order_id'];
-        $edu['client_id'] = $_POST['cid'];
+        $edu['order_id'] = $order_id;
+        $edu['client_id'] = $cid;
         $edu['user_id'] = $this->request->session()->read('Profile.id');
         $onlyEducation = array(
             'edu_name',
             'edu_id',
             'edu_date_of_birth',
             'edu_total_claim_past3',
-            'edu_current'
+            'edu_current',
+            'highest_grade_completed',
+            'high_school',
+            'college',
+            'last_school_attended'
         );
-        // print_r($_POST);die;
-        foreach(explode("&",$_POST['education']) as $data){
-            $input = explode("=",$data);
-
-            if($input[0]=="document_type" || $input[0] == "count_more_edu" ){
+        foreach($_POST as $data=>$val){
+            if($data=="document_type" || $data == "count_more_edu" || $data == "count_more_edu_doc"){
                 continue;
-            } else if ( in_array($input[0],$onlyEducation) ){
-                $edu[$input[0]]=$$input[1];
-            } else{
-                if($input[1]!='' ) {
-                    $arr3[$input[0]]=$input[1];
-                }
-            }
-            //echo $data."<br/>";
+            } else if ( in_array($data,$onlyEducation) ){
+                $edu[$data] = $val;
+            } 
         }
         $save3 = $education->newEntity($edu);
         if($education->save($save3))
         {
-            $edu_id = $save->id;
+            $edu_id = $save3->id;
+
             $education_pass = TableRegistry::get('education_verification_pass_education');
-            // foreach()
+           for($i=1;$i<=$_POST['count_more_edu'];$i++){
+                $eduPass=array();
+                $eduPass['education_verification_id'] = $edu_id;
+                $eduPass['college_school_name'] = $_POST['college_school_name'][$i-1];
+                $eduPass['supervisior_name'] = $_POST['supervisior_name'][$i-1];
+                $eduPass['supervisior_phone'] = $_POST['supervisior_phone'][$i-1];
+                $eduPass['supervisior_email'] = $_POST['supervisior_email'][$i-1];
+                $eduPass['supervisior_secondary_email'] = $_POST['supervisior_secondary_email'][$i-1];
+                $eduPass['education_start_date'] = $_POST['education_start_date'][$i-1];
+                $eduPass['education_end_date'] = $_POST['education_end_date'][$i-1];
+                if(isset( $_POST['claim_tutor'][$i-1])){
+                    $eduPass['claim_tutor'] = $_POST['claim_tutor'][$i-1];
+                }
 
-            $edu_pass3 = $education_pass->newEntity($arr3);
-            $education_pass->save($edu_pas3);
+                $eduPass['date_claims_occur'] = $_POST['date_claims_occur'][$i-1];
+                $eduPass['education_history_confirmed_by'] = $_POST['education_history_confirmed_by'][$i-1];
+                $eduPass['signature'] = $_POST['signature'][$i-1];
+                $eduPass['date_time'] = $_POST['date_time'][$i-1];
+                // echo "<pre>";print_r($eduPass);continue;
+                $save_edu_pass3 = $education_pass->newEntity($eduPass);
+                $education_pass->save($save_edu_pass3);
+           }
+
         }
-
 
         die;
     }
+
+        
+
+
 
 /**
  * Edit method

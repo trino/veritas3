@@ -153,7 +153,7 @@ $is_disabled = '';
                                                             foreach($users as $u)
                                                             {
                                                                 ?>
-                                                                <option value="<?php echo $u->id;?>" <?php if(isset($document) && $document->uploaded_for==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                                                <option value="<?php echo $u->id;?>" <?php if(isset($modal) && $modal->uploaded_for==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
                                                                 <?php
                                                             }
                                                          ?>
@@ -168,6 +168,12 @@ $is_disabled = '';
                                                      <input type="hidden" name="user_id" value="<?php $this->request->session()->read('Profile.id');?>" id="user_id" />
                                                      
                                                      <?php
+                                                     }
+                                                     else
+                                                     {
+                                                        ?>
+                                                        <input type="hidden" name="user_id" value="<?php echo $modal->user_id;?>" id="user_id" />
+                                                        <?php
                                                      }
                                                      ?>
                                                     </div>
@@ -237,6 +243,77 @@ $is_disabled = '';
 			</div>
 <script>
 
+    
+    client_id = '<?=$cid?>',
+    doc_id = '<?=$did?>';
+    <?php
+    if($did)
+    {
+        ?>
+        showforms('company_pre_screen_question.php');
+        showforms('driver_application.php');
+        showforms('driver_evaluation_form.php');
+        showforms('document_tab_3.php');
+        <?php
+    }
+    ?>
+        //showforms(doc_type);
+function showforms(form_type)
+{
+    //var form_type = $(this).val();
+    //alert(form_type);
+    //var filename = form_type.replace(/\W/g, '_');
+    //var filename = filename.toLowerCase();
+    //$('.subform').show();   1
+    if(form_type!= ""){
+        $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+form_type);
+        // loading data from db
+        // debugger;
+        var url = '<?php echo $this->request->webroot;?>documents/getOrderData/'+client_id+'/'+doc_id,
+            param={form_type:form_type};
+        $.getJSON(url,param,function(res){
+            if(form_type == "company_pre_screen_question.php"){
+                
+                assignValue('form_tab1',res);
+
+            } else if(form_type == "driver_application.php"){
+                
+                assignValue('form_tab2',res);
+
+            }else if(form_type == "driver_evaluation_form.php"){
+                
+                assignValue('form_tab3',res);
+
+            }else if(form_type == "document_tab_3.php"){
+               
+                assignValue('form_tab4',res);
+
+            }
+        });
+    }
+    else
+        $('.subform').html("");
+}
+
+
+function assignValue(formID,obj){
+    // debugger;
+   $('#'+formID).find(':input').each(function(){
+        var $name = $(this).attr('name');
+        $(this).val(obj[$name]);
+
+   });
+   /*
+$.each(obj,function(index,value){
+// debugger;
+    $('#'+formID).find('input[name="'+index+'"]').val(value);
+});*/
+}
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+
 function subform(form_type)
 {
     var filename = form_type.replace(/\W/g, '_');
@@ -245,7 +322,19 @@ function subform(form_type)
     $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
-
+    <?php
+    if($this->request['action']=='vieworder')
+    {
+        ?>
+        $('.tab-content input').attr('disabled','disabled');
+        $('.tab-content select').attr('disabled','disabled');
+        $('.tab-content textarea').attr('disabled','disabled');
+        $('.cont').html('Next <i class="m-icon-swapright m-icon-white"></i>');
+        $('.cont').parent().find('.red').remove();
+        $('.cont').removeClass('cont');
+        <?php
+    }
+    ?>
     $(document.body).on('click','.cont',function(){
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
     var data = {uploaded_for:$('#uploaded_for').val(),type:type};
@@ -276,7 +365,7 @@ jQuery(document).ready(function() {
                     url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid;
                    savedDriverEvaluation(url,order_id,cid);
         } else if(type=="Place MEE Order") {
-             alert(type);
+             
              var order_id =$('#did').val(),
                 cid = '<?php echo $cid;?>',
                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid;

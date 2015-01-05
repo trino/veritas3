@@ -257,7 +257,7 @@ $is_disabled = '';
         <?php
     }
     ?>
-        showforms(doc_type);
+        //showforms(doc_type);
 function showforms(form_type)
 {
     //var form_type = $(this).val();
@@ -353,7 +353,7 @@ jQuery(document).ready(function() {
                     url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid;
                    savedDriverEvaluation(url,order_id,cid);
         } else if(type=="Place MEE Order") {
-             alert(type);
+             
              var order_id =$('#did').val(),
                 cid = '<?php echo $cid;?>',
                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid;

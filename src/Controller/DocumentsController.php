@@ -106,7 +106,7 @@ class DocumentsController extends AppController {
            /* $dfv_end = strtotime($dfv_end);
             $dfv_end = date('Y-m-d',$dfv_end);*/
             //$this->set('end',$dfv_end);
-            $cond = $cond.' (created >='.$dfv_start.' OR created <='.$dfv_end.')';
+            $cond = $cond.' (created >="'.$dfv_start.'" AND created <= "'.$dfv_end.'")';
             $this->set('start',$cond);
             
         }

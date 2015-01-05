@@ -437,7 +437,33 @@ class ClientsController extends AppController {
         return $this->response;
         
    }
-   
+  
+  function getDocCount($id=null)
+  {
+    $doc = TableRegistry::get('Documents');
+    $query = $doc->find();
+    $count = $query->select()->where(['client_id'=>$id]);
+    $this->response->body(($count));
+            return $this->response;
+  } 
+  
+  function getOrderCount($id=null)
+  {
+    $doc = TableRegistry::get('Orders');
+    $query = $doc->find();
+    $count = $query->select()->where(['client_id'=>$id]);
+    $this->response->body(($count));
+            return $this->response;
+  } 
+  
+  function countClientDoc($id=null,$doc_type=null)
+  {
+    $query = TableRegistry::get('Documents');
+    $q = $query->find();
+    $q =$q->select()->where(['document_type'=>$doc_type])->andWhere(['client_id'=>$id]);
+    $this->response->body($q);
+    return $this->response;
+  }
     
 }
 ?>

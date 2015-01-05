@@ -40,76 +40,7 @@ class DocumentsController extends AppController {
         $doc=$doc->select();
         
         $cond='';
-        if(isset($_GET['date_filter_val']))
-        {
-            $dfv = $_GET['date_filter_val'];
-            $dfv_arr = explode('/',$dfv);
-            for($i=0;$i<6;$i++)
-            {
-                if($dfv_arr[$i]=='January')
-                {
-                    $dfv_arr[$i]=1;
-                }
-                else if($dfv_arr[$i]=='February')
-                {
-                    $dfv_arr[$i]=2;
-                }
-                else if($dfv_arr[$i]=='March')
-                {
-                    $dfv_arr[$i]=3;
-                }
-                else if($dfv_arr[$i]=='April')
-                {
-                    $dfv_arr[$i]=4;
-                }
-                else if($dfv_arr[$i]=='May')
-                {
-                    $dfv_arr[$i]=5;
-                }
-                else if($dfv_arr[$i]=='June')
-                {
-                    $dfv_arr[$i]=6;
-                }
-                else if($dfv_arr[$i]=='July')
-                {
-                    $dfv_arr[$i]=7;
-                }
-                else if($dfv_arr[$i]=='August')
-                {
-                    $dfv_arr[$i]=8;
-                }
-                else if($dfv_arr[$i]=='September')
-                {
-                    $dfv_arr[$i]=9;
-                }
-                else if($dfv_arr[$i]=='October')
-                {
-                    $dfv_arr[$i]=10;
-                }
-                else if($dfv_arr[$i]=='November')
-                {
-                    $dfv_arr[$i]=11;
-                }
-                else if($dfv_arr[$i]=='December')
-                {
-                    $dfv_arr[$i]=12;
-                }
-                if($dfv_arr[$i]<10)
-                {
-                    $dfv_arr[$i]= '0'.$dfv_arr[$i];
-                }
-            }
-            $dfv_start = $dfv_arr[2].'-'.$dfv_arr[0].'-'.$dfv_arr[1];
-           /* $dfv_start = strtotime($dfv_start);
-            $dfv_start = date('Y-m-d',$dfv_start);*/
-            $dfv_end = $dfv_arr[5].'-'.$dfv_arr[3].'-'.$dfv_arr[4];
-           /* $dfv_end = strtotime($dfv_end);
-            $dfv_end = date('Y-m-d',$dfv_end);*/
-            //$this->set('end',$dfv_end);
-            $cond = $cond.' (created >="'.$dfv_start.'" AND created <= "'.$dfv_end.'")';
-            $this->set('start',$cond);
-            
-        }
+        
         if(isset($_GET['searchdoc']) && $_GET['searchdoc'])
         {
             if($cond == '')

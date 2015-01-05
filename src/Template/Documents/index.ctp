@@ -16,7 +16,7 @@
 				</ul>
                 <form action="<?php echo $this->request->webroot; ?>documents/index" method="get">
 				<div class="page-toolbar">
-					<div id="dashboard-report-range" style="padding-bottom: 6px;" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
+					<div id="dashboard-report-range" style="padding-bottom: 6px;" class="pull-right tooltips btn btn-fit-height grey-salt docum_date_filter" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>&nbsp;
 						<span class="thin uppercase visible-lg-inline-block" id="doc_date_filter">&nbsp;</span>&nbsp;
 						<i class="fa fa-angle-down"></i>
@@ -226,14 +226,3 @@
     
 </style>
 
-<script>
-    $('#search').click(function(){
-        var a = $('#doc_date_filter').text();
-        var a = a.replace(', ','/');
-        var a = a.replace(' - ','/');
-        var a = a.replace(' ','/');
-        var a = a.replace(', ','/');
-        var a = a.replace(' ','/');
-        $(this).append('<input type="hidden" name="date_filter_val" value="'+a+'">');
-    });
-</script>

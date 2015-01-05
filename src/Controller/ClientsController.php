@@ -475,6 +475,22 @@ class ClientsController extends AppController {
     //return $q;
         
    }
+   function getAllClient()
+   {
+    $query = TableRegistry::get('Clients');
+    $q = $query->find();
+    $u = $this->request->session()->read('Profile.id');
+    if($this->request->session()->read('Profile.super'))
+    $q =$q->select();
+    else
+    {
+        $q =$q->select()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" ']);
+            
+    }    
+            
+    $this->response->body($q);
+    return $this->response;
+   }
    
     
 }

@@ -400,6 +400,7 @@ class DocumentsController extends AppController {
      */
     public function savedMeeOrder($order_id = NULL , $cid = NULL){
        //consent form
+       // echo "<pre>";print_r($_POST);die;
         $consentForm = TableRegistry::get('consent_form');
         $arr['order_id'] =  $order_id;
         $arr['client_id'] = $cid;
@@ -407,15 +408,16 @@ class DocumentsController extends AppController {
 
         
         foreach($_POST as $data => $val){
-            if($_POST['offence'] || $_POST['date_of_sentence'] || $_POST['location'] ){
+
+            if( $data =='offence' || $data =='date_of_sentence' || $data =='location' ){
                 continue;
             }
-            if( isset($data) ){
-                $arr[$data] = $val;
-            }
+            //echo $data." ".$val."<br />";
+            $arr[$data] = $val;
+            
         }
 
-
+// echo "<pre>";print_r($arr);die;
         $save = $consentForm->newEntity($arr);
         if($consentForm->save($save)) {
             $id  = $save->id;

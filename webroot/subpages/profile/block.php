@@ -163,6 +163,56 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td class="vtop">
+                                                    Orders
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[orders]"
+                                                                                          onclick="$(this).closest('td').find('.yesno').show();"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->orders == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[orders]"
+                                                                                          onclick="$(this).closest('td').find('.yesno').hide();"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->orders == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-md-12 nopad martop yesno" <?php if(isset($sidebar) && $sidebar->orders == 0){?>style="display:none;"<?php }?>>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[orders_list]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->orders_list == 1) echo "checked"; ?> /> List
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[orders_create]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->orders_create == 1) echo "checked"; ?> /> Create
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[orders_edit]"
+                                                                                          value="1" <?php if ($sidebar->orders_edit == 1) echo "checked"; ?> /> Edit
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[orders_delete]"
+                                                                                          value="1" <?php if ($sidebar->orders_delete == 1) echo "checked"; ?> /> Delete
+                                                            </label>
+                                                             <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[orders_others]"
+                                                                                          value="1" <?php if ($sidebar->orders_others == 1) echo "checked"; ?> /> View Others Orders
+                                                            </label>
+                                                            
+                                                            
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td class="vtop">Feedbacks</td>
                                                 <td>
                                                         <label class="uniform-inline">

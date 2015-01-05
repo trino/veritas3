@@ -1,15 +1,15 @@
 <ul class="nav nav-tabs">
 
 
-                                            <li class="active">
-                                                <a href="#subtab_4_1" data-toggle="tab">Info</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="#subtab_4_2" data-toggle="tab">Picture</a>
-                                            </li>
-                                            <li>
-                                                <a href="#subtab_4_3" data-toggle="tab">Password</a>
-                                            </li>
+    <li class="active">
+        <a href="#subtab_4_1" data-toggle="tab">Info</a>
+    </li>
+    <li class="">
+        <a href="#subtab_4_2" data-toggle="tab">Picture</a>
+    </li>
+    <li>
+        <a href="#subtab_4_3" data-toggle="tab">Password</a>
+    </li>
                                             
 
 
@@ -48,8 +48,7 @@
                                                     <div class="form-group col-md-12">
                                                             <label class="control-label col-md-12">Profile Type</label>
                                                             <div class="col-md-6">
-                                                            <select name="profile_type" <?php echo $is_disabled ?>
-                                                                class="form-control member_type">
+                                                            <select name="profile_type" <?php if($this->request->session()->read('Profile.id')==$id) echo "disabled='disabled'"; ?> class="form-control member_type">
                                                                 <option value="">Select</option>
                                                                 <option value="1" <?php if($p->profile_type==1){?> selected="selected" <?php } ?>>Admin</option>
                                                                 <option value="2" <?php if($p->profile_type==2){?> selected="selected" <?php } ?>>Recruiter</option>

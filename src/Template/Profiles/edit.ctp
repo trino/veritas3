@@ -284,7 +284,7 @@ if(isset($profile))
                                 <li class="active">
                                     <a href="#tab_1_1" data-toggle="tab">Settings</a>
                                 </li>
-                                <?php
+                                <?php 
                                 if($this->request['action'] != 'add'){
                                 
                                 if($this->request->session()->read('Profile.admin') || !isset($myuser))
@@ -296,6 +296,7 @@ if(isset($profile))
                                 </li>
                                 <?php
                                 }
+                                
                                 if($this->request->session()->read('Profile.id')==$id && $this->request->session()->read('Profile.admin'))
                                 {
                                     ?>

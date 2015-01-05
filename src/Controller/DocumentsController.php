@@ -188,7 +188,7 @@ class DocumentsController extends AppController {
         if($did)
         $order_id = $orders->find()->where(['id'=>$did])->first();
         //$did= $order_id->id;
-
+        $this->set('modal',$order_id);
         $this->set('cid',$cid);
         $this->set('did',$did);
         

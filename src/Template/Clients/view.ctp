@@ -40,13 +40,14 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 
 										<ul class="list-unstyled profile-nav">
 											<li>
-												<img src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png" class="img-responsive" alt=""/>
+												<img src="<?php if(isset($client->image)) { echo $this->request->webroot;?>img/logos/<?php echo $client->image; ?>" <?php } else { echo $this->request->webroot;?>img/logos/challenger_logo.png" <?php } ?> class="img-responsive" alt=""/>
 												<a href="#" class="profile-edit">Edit </a>
                                                 <br />
                                                 <h3>Assigned to:</h3>
 											</li>
                                             <?php
                                             $types = array('Driver','Admin','Recruiter','External','Safety','Driver','Contact');
+                                            $counter = 0;
                                              foreach($profile as $p)
                                                 {
                                                     ?>
@@ -56,7 +57,9 @@ $contact = $this->requestAction('clients/getContact/'.$id);
                                                 </a>
 											</li>
                                                     <?php
-                                                }    
+                                                    $counter++;
+                                                }
+                                                $c = $counter;   
                                              ?>
                                              <li>
                                              <h3>Contacts:</h3>
@@ -82,18 +85,23 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 									<div class="col-md-9">
 										<div class="row">
 											<div class="col-md-8 profile-info">
-												<h1>Challenger</h1>
+												<h1><?php echo $client->title; ?></h1>
 												<p>
-													 Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here.
+												<?php echo $client->description;
+                                                $doc_count = $this->requestAction("clients/getDocCount/".$id);
+                                                                $dc = '';
+                                                                foreach($doc_count as $d)
+                                                                {
+                                                                    $dc++;
+                                                                }
+                                                 ?>	 
 												</p>
-												<p>
-													Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here. Job description goes here.
-												</p>
+												
 
 
 
 												<a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg default yellow-stripe">
-													304 <?=$settings->document?>s submitted for this <?=$settings->client?> </a><a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg yellow">
+													<?php echo $dc; ?> <?=$settings->document?>s submitted for this <?=$settings->client?> </a><a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg yellow">
 													View All <i class="fa fa-search"></i>
 												</a>
 
@@ -118,16 +126,25 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 																<?php echo ucfirst($settings->profile);?>s <i class="fa fa-img-down"></i>
 																</span>
 																<span class="sale-num">
-																87 </span>
+																<?php echo $counter; ?> </span>
 															</li>
 
-
+                                                            <?php 
+                                                                
+                                                                $order_count = $this->requestAction("clients/getOrderCount/".$id);
+                                                                $oc = 0;
+                                                                foreach($order_count as $d)
+                                                                {
+                                                                    $oc++;
+                                                                }
+                                                                $upload = $dc+$oc;
+                                                             ?>
 															<li>
 																<span class="sale-info">
 																Total Uploads <i class="fa fa-img-up"></i>
 																</span>
 																<span class="sale-num">
-																23 </span>
+																<?php echo $upload; ?> </span>
 															</li>
 
 															<li>
@@ -157,17 +174,17 @@ $contact = $this->requestAction('clients/getContact/'.$id);
                             			<div class="clearfix"></div>
 
                                         <table class="table table-striped">
-                                            <tr><td>Signatory's name</td><td>Joe Doe</td></tr>
-                                            <tr><td>Signatory's phone number</td><td>+1 - 2345678</td></tr>
-                                            <tr><td>Signatory's email</td><td>info@test.com</td></tr>
-                                            <tr><td>Billing Address Street Name and Number</td><td>Apartment 10, Sample street</td></tr>
-                                            <tr><td>City</td><td>ABC</td></tr>
-                                            <tr><td>Postal code</td><td>44600</td></tr>
-                                            <tr><td>Province</td><td>CDEFG</td></tr>
-                                            <tr><td>Country</td><td>Canada</td></tr>
-                                            <tr><td><?php echo ucfirst($settings->client);?>'s Name</td><td>John Baptist</td></tr>
-                                            <tr><td><?php echo ucfirst($settings->client);?>'s phone number</td><td>+1 - 2345678</td></tr>
-                                            <tr><td><?php echo ucfirst($settings->client);?>'s email</td><td>info@test.com</td></tr>
+                                            <tr><td>Signatory's name</td><td><?php if($client->sig_fname) echo $client->sig_fname."&nbsp"; else echo "Not Available";  if($client->sig_lname) echo $client->sig_lname; ?></td></tr>
+                                            <tr><td>Signatory's phone number</td><td><?php if($client->company_phone) echo $client->company_phone; else echo "Not Available"; ?></td></tr>
+                                            <tr><td>Signatory's email</td><td><?php if($client->sig_email) echo $client->sig_email; else echo "Not Available"; ?></td></tr>
+                                            <tr><td>Billing Address Street Name and Number</td><td><?php if($client->billing_address) echo $client->billing_address; else echo "Not Available"; ?></td></tr>
+                                            <tr><td>City</td><td><?php if($client->city) echo $client->city; else echo "Not Available"; ?></td></tr>
+                                            <tr><td>Postal code</td><td><?php if($client->postal) echo $client->postal; else echo "Not Available"; ?></td></tr>
+                                            <tr><td>Province</td><td><?php if($client->province) echo $client->province; else echo "Not Available"; ?></td></tr>
+                                            <tr><td>Country</td><td><?php if($client->country) echo $client->country; else echo "Not Available"; ?></td></tr>
+                                            <tr><td><?php // echo ucfirst($settings->client);?>Admin's Name</td><td><?php if($client->admin_fname) echo $client->sig_email; else echo "Not Available"; ?></td></tr>
+                                            <tr><td><?php // echo ucfirst($settings->client);?>Admin's phone number</td><td><?php if($client->admin_phone) echo $client->sig_email; else echo "Not Available"; ?></td></tr>
+                                            <tr><td><?php //echo ucfirst($settings->client);?>Admin's email</td><td><?php if($client->sig_email) echo $client->admin_email; else echo "Not Available"; ?></td></tr>
                                         </table>
 
 									</div>

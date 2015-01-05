@@ -41,9 +41,13 @@ class DocumentsController extends AppController {
         $doc=$doc->select();
         
         $cond='';
+        
         if(isset($_GET['searchdoc']) && $_GET['searchdoc'])
         {
+            if($cond == '')
             $cond = $cond.' (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
+            else
+            $cond = $cond.' AND (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
         }
         if(!$this->request->session()->read('Profile.admin') && $setting->document_others == 0)
         {
@@ -77,6 +81,7 @@ class DocumentsController extends AppController {
         {
             $doc = $doc->where([$cond]);
         }
+        
         if(isset($_GET['searchdoc']))
         {
             $this->set('search_text',$_GET['searchdoc']);

@@ -27,10 +27,20 @@
                         //$csubdoc = $this->requestAction('/clients/getCSubDoc/'.$id.'/'.$d->id);
                         $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/'.$id.'/'.$d->id);
                         //var_dump($csubdoc);
+                        
                         if($i==11)
                         $i=0;
                         ?>
-                        <?php if($csubdoc['display'] == 1 && $d->display==1) {?>
+                        <?php
+                        /*
+                            $countClientDoc = $this->requestAction('clients/countClientDoc/'.$id.'/'.$d->document_type);
+                            $ccd = 0;
+                            foreach($countClientDoc as $c)
+                            {
+                                $ccd++;
+                            } */
+                            if($csubdoc['display'] == 1 && $d->display==1) {
+                        ?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
     					<div class="dashboard-stat <?php echo $class[$i]; ?>">
@@ -40,8 +50,8 @@
     							<i class="fa fa-copy"></i>
     						</div>
     						<div class="details">
-    							<div class="number">
-    								 1349
+    							<div class="number">1349
+    								 <?php //echo $ccd; ?>
     							</div>
     							<div class="desc">
     								 <?php echo ucfirst($d->title); ?>

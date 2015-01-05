@@ -450,7 +450,7 @@
                                                                     No </label>
                                                             </td>
                                                             <?php
-                                                                 $prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$id.'/'.$sub->id);
+                                                                 $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$id.'/'.$sub->id);
                                                             ?>
                                                             <td class="">
                                                                 <label class="uniform-inline">

@@ -1,6 +1,6 @@
 <form id="form_tab1">
 <input type="hidden" name="document_type" value="Pre-Screening" id="af" />
-
+<input type="hidden" name="sub_doc_id" value="<?php if(isset($_GET['doc_id']))echo $_GET['doc_id']; else echo $d->id ?>" id="af" />
 <div class="portlet box blue ">
 
     <div class="portlet-title">

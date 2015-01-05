@@ -737,7 +737,7 @@ class DocumentsController extends AppController {
         $this->loadModel('Orders');
         $this->Orders->deleteAll(array('id'=>$id));
         $this->Flash->success('The order has been deleted.');        
-        $this->redirect('/documents/orderlist');
+        $this->redirect('/documents/orderslist');
     }
     function add($cid=0,$did=0,$type=NULL)
     {

@@ -257,19 +257,19 @@ jQuery(document).ready(function() {
             savePrescreen(url,order_id,cid,forms);
 
          } else if(type=="Driver Application") {
-                var url = '<?php echo $this->request->webroot;?>documents/savedDriverApp',
-                      order_id =$('#did').val(),
-                      cid = '<?php echo $cid;?>';
+                var  order_id =$('#did').val(),
+                    cid = '<?php echo $cid;?>',
+                    url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid;                      
                      savedDriverApp(url,order_id,cid);
          }else if(type=="Road test") {
-              var url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation',
-                    order_id =$('#did').val(),
-                    cid = '<?php echo $cid;?>';
+              var order_id =$('#did').val(),
+                    cid = '<?php echo $cid;?>',
+                    url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid;
                    savedDriverEvaluation(url,order_id,cid);
         } else if(type=="Place MEE Order") {
-             var url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder',
-                order_id =$('#did').val(),
-                cid = '<?php echo $cid;?>';
+             var order_id =$('#did').val(),
+                cid = '<?php echo $cid;?>',
+                url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid;
               savedMeeOrder(url,order_id,cid);
       }
 
@@ -299,11 +299,7 @@ function savePrescreen(url,order_id,cid){
 }
 
 function savedDriverApp(url,order_id,cid){
-    var param = {
-        order_id: order_id,
-        cid: cid,
-        inputs:$('#form_tab2').serializeArray()
-    };    
+    var param = $('#form_tab2').serialize()
     $.ajax({
     url:url,
     data: param,
@@ -314,11 +310,7 @@ function savedDriverApp(url,order_id,cid){
     });
 }
 function savedDriverEvaluation(url,order_id,cid){
-    var param = {
-        order_id: order_id,
-        cid: cid,
-        inputs:$('#form_tab3').serialize()
-    };
+    var param = $('#form_tab3').serialize();
 
     $.ajax({
     url:url,
@@ -331,22 +323,46 @@ function savedDriverEvaluation(url,order_id,cid){
     }
 
     function savedMeeOrder(url,order_id,cid){
-        var param = {
-            order_id: order_id,
-            cid: cid,
-            consent:$('#form_consent').serialize(),
-            employment:$('#form_employment').serialize(),
-            education:$('#form_education').serialize(),
-        };
+        var param = $('#form_consent').serialize();
         $.ajax({
         url:url,
         data: param,
         type:'POST',
         success: function(res){
+            //employment
+            var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/'+order_id+'/'+cid,
+                employment=$('#form_employment').serialize();
+                saveEmployment(url,employment);
 
+            //education
+            url = '<?php echo $this->request->webroot;?>documents/saveEducation/'+order_id+'/'+cid,
+                education=$('#form_education').serialize();
+                saveEducation(url,education);
         }
         });
-        }
+    }
+
+    function saveEmployment(url,param){
+        $.ajax({
+            url:url,
+            data:param,
+            type:'POST',
+            success:function(rea){
+
+            }
+        });
+    }
+
+    function saveEducation(url,param){
+        $.ajax({
+            url:url,
+            data:param,
+            type:'POST',
+            success:function(res){
+                
+            }
+        });
+    }
 
 
 

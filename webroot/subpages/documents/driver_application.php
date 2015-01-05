@@ -313,7 +313,7 @@
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Give nature and degree of such injuries </label>
                 <div class="col-md-6">
-					<textarea class="form-control" name=give_nature_degree_of injury"></textarea>
+					<textarea class="form-control" name="give_nature_degree_of_injury"></textarea>
                 </div>
             </div>
             
@@ -623,7 +623,7 @@
             <div class="clearfix"></div>
             <hr />
             <div class="more_acc_record"></div>
-            <input type="hidden" id="count_acc_record" name="count_acc_record" value="1">
+            <input type="hidden" id="count_acc_record" name="count_acc_record" value="2">
             <a href="javascript:void(0);" class="add_more_acc_record btn green">Add More</a>
             
             <div class="clearfix"></div>
@@ -1083,7 +1083,7 @@
                 </div>
                 </div>
 </form>
-            <!-------     --------!>
+            
         <div class="clearfix"></div>
  <script>
  $(function(){

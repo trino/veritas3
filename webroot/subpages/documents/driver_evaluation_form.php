@@ -88,39 +88,39 @@
                                                             <div class="portlet-body">
                                                                 <div class="col-md-6 checkbox-list">
                                                                     <label>
-        															<input type="checkbox" name="fuel_tank"/> Fuel tank </label>
+        															<input type="checkbox" name="fuel_tank" value="1" /> Fuel tank </label>
         															<label>
-        															<input type="checkbox" name="all_gauges"/> All Gauges </label>
+        															<input type="checkbox" name="all_gauges" value="1" /> All Gauges </label>
                                                                     <label>
-        															<input type="checkbox" name="audible_air"/> Audible Air Leaks </label>
+        															<input type="checkbox" name="audible_air" value="1" /> Audible Air Leaks </label>
         															<label>
-        															<input type="checkbox" name="wheels_tires"/> Wheels Tires </label>
+        															<input type="checkbox" name="wheels_tires" value="1" /> Wheels Tires </label>
                                                                     <label>
-        															<input type="checkbox" name="trailer_brakes"/> Trailer Brakes </label>
+        															<input type="checkbox" name="trailer_brakes" value="1" /> Trailer Brakes </label>
                                                                     <label>
-        															<input type="checkbox" name="trailer_airlines"/> Trailer Airlines </label>
+        															<input type="checkbox" name="trailer_airlines" value="1" /> Trailer Airlines </label>
                                                                     <label>
-        															<input type="checkbox" name="inspect_5th_wheel"/> Inspect 5th Wheel </label>
+        															<input type="checkbox" name="inspect_5th_wheel" value="1" /> Inspect 5th Wheel </label>
                                                                     <label>
-        															<input type="checkbox" name="cold_check"/> Cold Check </label>
+        															<input type="checkbox" name="cold_check" value="1" /> Cold Check </label>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label>
-        															<input type="checkbox" name="seat_mirror"/> Seat and Mirror set up </label>
+        															<input type="checkbox" name="seat_mirror" value="1" /> Seat and Mirror set up </label>
         															<label>
-        															<input type="checkbox" name="coupling"/> Coupling&nbsp; &nbsp; &nbsp; &nbsp;</label>
+        															<input type="checkbox" name="coupling" value="1" /> Coupling&nbsp; &nbsp; &nbsp; &nbsp;</label>
                                                                     <label>
-        															<input type="checkbox" name="paperwork"/> Paperwork </label>
+        															<input type="checkbox" name="paperwork" value="1" /> Paperwork </label>
         															<label>
-        															<input type="checkbox" name="lights_abs_lamps"/> Lights/ABS Lamps </label>
+        															<input type="checkbox" name="lights_abs_lamps" value="1" /> Lights/ABS Lamps </label>
                                                                     <label>
-        															<input type="checkbox" name="annual_inspection_strickers"/> Annual Inspection Stickers </label>
+        															<input type="checkbox" name="annual_inspection_strickers" value="1" /> Annual Inspection Stickers </label>
                                                                     <label>
-        															<input type="checkbox" name="cab_air_brake_checked"/> In cab air brake checks </label>
+        															<input type="checkbox" name="cab_air_brake_checked" value="1" /> In cab air brake checks </label>
                                                                     <label>
-        															<input type="checkbox" name="landing_gear"/> Landing Gear </label>
+        															<input type="checkbox" name="landing_gear" value="1" /> Landing Gear </label>
                                                                     <label>
-        															<input type="checkbox" name="emergency_exit"/> Emergency exit </label>
+        															<input type="checkbox" name="emergency_exit" value="1" /> Emergency exit </label>
                                                                 </div>
                                                                 <div class="clearfix"></div>
                                                             </div>
@@ -595,7 +595,7 @@
 													<div class="col-md-4">
 														<div class="checkbox-list">
 															<label>
-															<input type="radio" name=recommended_fire_hire_trainee" value="1"/> Yes </label>
+															<input type="radio" name="recommended_fire_hire_trainee" value="1"/> Yes </label>
 															<label>
 															<input type="radio" name="recommended_fire_hire_trainee" value="0"/> No </label>
 														</div>

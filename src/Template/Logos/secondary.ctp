@@ -26,7 +26,7 @@
 		<div class="portlet box blue">
 			<div class="portlet-title">
 				<div class="caption">
-					<i class="fa fa-user"></i>Choose A Secondary Logo Manager
+					<i class="fa fa-user"></i>Choose A Secondary Logo Manager2
 				</div>
 				
 			</div>

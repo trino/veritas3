@@ -20,7 +20,7 @@
                                     <div class="tab-content">
                                                 <div class="tab-pane active" id="subtab_2_1">
                                                     <div class="">
-                                					   <h1>Modules</h1>
+                                					   <!--h1>Modules</h1-->
                                 					   <form action="#" method="post" id="blockform">
                                         <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                         <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
@@ -424,7 +424,7 @@
                                             </tr>
 
 
-                                            <tr>
+                                            <!--tr>
                                                 <td>
                                                     Master <?=$settings->client; ?>
                                                 </td>
@@ -440,7 +440,7 @@
                                                                                           value="0" <?php if (isset($block) && $block->analytics == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr-->
 
 
 
@@ -476,7 +476,7 @@
                                     <div class="tab-pane" id="subtab_2_2">
                                                     
                                                     <div class="">
-                                						<h1> Enable <?php echo ucfirst($settings->document);?>?</h1>
+                                						<!--h1> Enable <?php echo ucfirst($settings->document);?>?</h1-->
                                                         <form action="#" method="post" id="displayform">
                                                     <table class="table table-light table-hover">
                                                         <tr><th></th><th class="">System</th><th class="" width="40%"><?php echo ucfirst($settings->profile);?></th></tr>

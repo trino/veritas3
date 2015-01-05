@@ -14,7 +14,7 @@
                                             <div class="portlet ">
                                                 <div class="portlet-title">
                                                     <div class="caption">
-                                                        <i class="fa fa-user"></i>Choose A Primary Logo
+                                                        Choose Primary Logo
                                                     </div>
 
                                                 </div>
@@ -50,7 +50,7 @@
                                             <div class="portlet ">
                                                 <div class="portlet-title">
                                                     <div class="caption">
-                                                        <i class="fa fa-user"></i>Choose A Secondary Logo
+                                                       Choose Secondary Logo
                                                     </div>
 
                                                 </div>

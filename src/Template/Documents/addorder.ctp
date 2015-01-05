@@ -130,7 +130,7 @@ $is_disabled = '';
 											</div>
 										</div>
 									</div>
-										<div class="tab-content">
+										<div class="tab-content mar">
 											<div class="alert alert-danger display-none">
 												<button class="close" data-dismiss="alert"></button>
 												You have some form errors. Please check below.
@@ -257,7 +257,7 @@ jQuery(document).ready(function() {
        success:function(res) {
         $('#did').val(res);
          // saving data
-
+       
          if(type == "Pre-Screening"){
          var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
              url = '<?php echo $this->request->webroot;?>documents/savePrescreening',
@@ -276,6 +276,7 @@ jQuery(document).ready(function() {
                     url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid;
                    savedDriverEvaluation(url,order_id,cid);
         } else if(type=="Place MEE Order") {
+             alert(type);
              var order_id =$('#did').val(),
                 cid = '<?php echo $cid;?>',
                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid;

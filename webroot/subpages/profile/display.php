@@ -11,8 +11,6 @@ else
                                           role="form" method="post">
                                         <div class="form-group" id="notli">
 
-                                            <label class="control-label">Choose what to display</label>
-
                                             <div class="clearfix"></div>
                                             <div class="form-group">
                                                 <label class="control-label">Client</label>

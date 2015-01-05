@@ -13,7 +13,7 @@
 						<div class="portlet-body form">
 								<div class="form-body">
 
-                                    <div class="form-group col-md-6">
+                                    <!--<div class="form-group col-md-6">
                                         <label class="col-md-6 control-label">Driver</label>
                                         <div class="col-md-6">
 
@@ -26,7 +26,7 @@
                                             <option value="Contact">Jack Smith</option>
                                         </select>
                                     </div>
-                                    </div>
+                                    </div>-->
 
 
 									<div class="form-group col-md-6">

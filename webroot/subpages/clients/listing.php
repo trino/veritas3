@@ -126,6 +126,7 @@
         </div>
     </div>
 </div>
+</div>
 <style>
 @media print {
     .page-header{display:none;}

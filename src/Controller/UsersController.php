@@ -25,7 +25,17 @@ class UsersController extends AppController {
 	   
 		$this->set('users', $this->paginate($this->Users));
 	}
-
+    public function check_client_count(){
+        //$this->loadModel('Clients');
+        $setting = TableRegistry::get('clients');
+        $u = $this->request->session()->read('Profile.id');
+        $query = $setting->find()->where(['profile_id LIKE "'.$u.'%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'"']);
+                 
+         var_dump($query);die();
+         
+         $this->response->body(($l));
+            return $this->response;
+    }
 
 
 	public function view($id = null) {

@@ -154,7 +154,7 @@
                         <?php if($sidebar->document_list==1){?>
                             <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
                                 <a href="<?php echo WEB_ROOT;?>documents/orderslist/">
-                                    <i class="icon-list"></i>List Orders</a>
+                                    <i class="icon-list"></i> List Orders</a>
                             </li>
                         <?php }?>
 

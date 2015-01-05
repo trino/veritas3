@@ -190,8 +190,9 @@ class DocumentsController extends AppController {
             
         }
         $orders = TableRegistry::get('orders');
-        $order_id = $orders->find()->where(['client_id'=>$cid])->first();
-        $did= $order_id->id;
+        if($did)
+        $order_id = $orders->find()->where(['id'=>$did])->first();
+        //$did= $order_id->id;
 
         $this->set('cid',$cid);
         $this->set('did',$did);

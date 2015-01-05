@@ -839,7 +839,7 @@ class DocumentsController extends AppController {
     }
 
     public function orderslist(){
-        $setting = $this->get_permission($this->request->session()->read('Profile.id'));
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
 
         if($setting->document_list==0 || count($doc)==0)

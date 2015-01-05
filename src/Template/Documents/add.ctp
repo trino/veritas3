@@ -129,7 +129,9 @@ $is_disabled = '';
             
             
 <script>
-    var doc_type = '<?php echo $form_type;?>';
+    var doc_type = '<?php echo $form_type;?>',
+    client_id = '<?=$client_id?>',
+    doc_id = '<?=$doc_id?>';
     if(doc_type!= "")
         showforms(doc_type);
 function showforms(form_type)
@@ -139,10 +141,49 @@ function showforms(form_type)
     //var filename = form_type.replace(/\W/g, '_');
     //var filename = filename.toLowerCase();
     //$('.subform').show();   1
-    if(form_type!= "")
+    if(form_type!= ""){
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+form_type);
+        // loading data from db
+        // debugger;
+        var url = '<?php echo $this->request->webroot;?>documents/getOrderData/'+client_id+'/'+doc_id,
+            param={form_type:form_type};
+        $.getJSON(url,param,function(res){
+            if(form_type == "company_pre_screen_question.php"){
+                
+                assignValue('form_tab1',res);
+
+            } else if(form_type == "driver_application.php"){
+                
+                assignValue('form_tab2',res);
+
+            }else if(form_type == "driver_evaluation_form.php"){
+                
+                assignValue('form_tab3',res);
+
+            }else if(form_type == "document_tab_3.php"){
+               
+                assignValue('form_tab4',res);
+
+            }
+        });
+    }
     else
         $('.subform').html("");
+}
+
+
+function assignValue(formID,obj){
+    // debugger;
+   $('#'+formID).find(':input').each(function(){
+        var $name = $(this).attr('name');
+        $(this).val(obj[$name]);
+
+   });
+   /*
+$.each(obj,function(index,value){
+// debugger;
+    $('#'+formID).find('input[name="'+index+'"]').val(value);
+});*/
 }
 jQuery(document).ready(function() {
     

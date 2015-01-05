@@ -1,5 +1,5 @@
 <form id="form_tab1">
-<input type="hidden" name="document_type" value="Pre-Screening" id="af" />
+<input type="hidden" name="document_type" value="Pre-Screening"/>
 
 <div class="portlet box blue ">
 

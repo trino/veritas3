@@ -229,6 +229,7 @@ $is_disabled = '';
 				</div>
 			</div>
 <script>
+
 function subform(form_type)
 {
     var filename = form_type.replace(/\W/g, '_');
@@ -237,6 +238,7 @@ function subform(form_type)
     $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
+
     $(document.body).on('click','.cont',function(){
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
     var data = {uploaded_for:$('#uploaded_for').val(),type:type};

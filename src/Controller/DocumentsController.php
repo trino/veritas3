@@ -311,6 +311,7 @@ class DocumentsController extends AppController {
 /**
  * saving pre-screening data
  */
+    
     public function savePrescreening(){
         $prescreen = TableRegistry::get('pre_screening');
         $arr['order_id'] = $_POST['order_id'];
@@ -731,7 +732,13 @@ class DocumentsController extends AppController {
 		$this->set(compact('profile'));*/
         $this->render('addorder');
 	}
-    
+    public function deleteOrder($id)
+    {
+        $this->loadModel('Orders');
+        $this->Orders->deleteAll(array('id'=>$id));
+        $this->Flash->success('The order has been deleted.');        
+        $this->redirect('/documents/orderlist');
+    }
     function add($cid=0,$did=0,$type=NULL)
     {
          $this->set('client_id',$cid);

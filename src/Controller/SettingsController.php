@@ -130,6 +130,46 @@ class SettingsController extends AppController {
             
     }
     
+    public function check_client_count(){
+        //$this->loadModel('Clients');
+        
+    }
+    function getclienturl($uid)
+    {
+        $setting = TableRegistry::get('clients');
+        $u = $uid;
+        if(!$this->request->session()->read('Profile.admin')){
+           
+            $query = $setting->find()->where(['profile_id LIKE "'.$u.'%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'"'])->count();
+            
+            if($query>1)
+             {
+                $l = $this->request->webroot."clients";
+             }
+             else
+             {
+                $query2 = $setting->find()->where(['profile_id LIKE "'.$u.'%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'"'])->first();
+                $l = $this->request->webroot."documents/addorder/".$query2->id;
+             }
+        }
+        else
+        {
+             $q = $setting->find()->all();
+             if(count($q)>1)
+             {
+                $l = $this->request->webroot."clients";
+             }
+             else
+             {
+                $query3 = $setting->find()->first();
+                $l = $this->request->webroot."documents/addorder/".$query3->id;
+             }
+        }
+         
+         $this->response->body(($l));
+            return $this->response;
+    }
+    
     
     
     

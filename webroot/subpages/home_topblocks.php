@@ -1,5 +1,8 @@
 <?php $block = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/blocks");
-        $sidebar = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar"); ?>
+      $sidebar = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");
+      $order_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id'));
+        
+?>
 
 <div class="tiles">
 
@@ -45,9 +48,9 @@
         </a>
     <?php } ?>
 
-    <?php if ($block->submitorder == 1 && $sidebar->document_create ==1) { ?>
+    <?php if ($block->submitorder == 1 && $sidebar->orders_create ==1) { ?>
     
-        <a href="<?php echo $this->request->webroot; ?>documents/add" class="tile bg-purple-studio" style="display: block;">
+        <a href="<?php echo $order_url;?>" class="tile bg-purple-studio" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-clipboard"></i>
             </div>
@@ -68,7 +71,7 @@
 
 
 
-    <?php if ($block->orderhistory == 1 && $sidebar->document_list ==1) { ?>
+    <?php if ($block->orderhistory == 1 && $sidebar->orders_list ==1) { ?>
         
 
         <a href="<?php echo $this->request->webroot; ?>documents/index" style="display: block;" class="tile bg-green-meadow">

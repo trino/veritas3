@@ -29,7 +29,8 @@ class DocumentsController extends AppController {
        
        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
-        if($setting->document_list==0 || count($doc)==0)
+        $cn = $this->getUserDocumentcount();
+        if($setting->document_list==0 || count($doc)==0 || $cn==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
@@ -40,35 +41,47 @@ class DocumentsController extends AppController {
         $doc=$doc->select();
         
         $cond='';
+        
         if(isset($_GET['searchdoc']) && $_GET['searchdoc'])
         {
+            if($cond == '')
             $cond = $cond.' (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
+            else
+            $cond = $cond.' AND (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
+        }
+        if(!$this->request->session()->read('Profile.admin') && $setting->document_others == 0)
+        {
+           if($cond == '')
+                $cond = $cond.' user_id = '.$this->request->session()->read('Profile.id');
+            else
+                $cond = $cond.' AND user_id = '.$this->request->session()->read('Profile.id');
         }
         if(isset($_GET['submitted_by_id']) && $_GET['submitted_by_id'])
         {
             if($cond == '')
-            $cond = $cond.' user_id = '.$_GET['submitted_by_id'];
+                $cond = $cond.' user_id = '.$_GET['submitted_by_id'];
             else
-            $cond = $cond.' AND user_id = '.$_GET['submitted_by_id'];
+                $cond = $cond.' AND user_id = '.$_GET['submitted_by_id'];
         }
         if(isset($_GET['client_id']) && $_GET['client_id'])
         {
             if($cond == '')
-            $cond = $cond.' client_id = '.$_GET['client_id'];
+                $cond = $cond.' client_id = '.$_GET['client_id'];
             else
-            $cond = $cond.' AND client_id = '.$_GET['client_id'];
+                $cond = $cond.' AND client_id = '.$_GET['client_id'];
         }
         if(isset($_GET['type']) && $_GET['type'])
         {
             if($cond == '')
-            $cond = $cond.' document_type = "'.$_GET['type'].'"';
+                $cond = $cond.' document_type = "'.$_GET['type'].'"';
             else
-            $cond = $cond.' AND document_type = "'.$_GET['type'].'"';
+                $cond = $cond.' AND document_type = "'.$_GET['type'].'"';
         }
         if($cond)
         {
             $doc = $doc->where([$cond]);
         }
+        
         if(isset($_GET['searchdoc']))
         {
             $this->set('search_text',$_GET['searchdoc']);
@@ -157,7 +170,8 @@ class DocumentsController extends AppController {
 	public function view($id = null) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
-        if($setting->document_list==0 || count($doc)==0)
+        $cn = $this->getUserDocumentcount();
+        if($setting->document_list==0 || count($doc)==0 || $cn ==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
@@ -177,8 +191,10 @@ class DocumentsController extends AppController {
 	public function addorder($cid=0,$did=0) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
          $doc = $this->getDocumentcount();
+         $cn = $this->getUserDocumentcount();
          
-        if($setting->document_create==0 || count($doc)==0)
+        //die(count($doc));
+        if($setting->orders_create==0 || count($doc)==0 || $cn==0 )
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
@@ -662,7 +678,8 @@ class DocumentsController extends AppController {
 	public function editorder($cid=0,$did=0) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
-        if($setting->document_edit==0 || count($doc)==0)
+        $cn = $this->getUserDocumentcount();
+        if($setting->orders_edit==0 || count($doc)==0 || $cn ==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
@@ -693,26 +710,26 @@ class DocumentsController extends AppController {
     {
          $this->set('client_id',$cid);
          $this->set('doc_id',$did);
-
+         $doc = $this->getDocumentcount();
+         $cn = $this->getUserDocumentcount();
          $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         if(is_null($type)) {
             // docu
-                $doc = $this->getDocumentcount();
-
+                
                 if($did!=0)
                 {
 
                     $doc = TableRegistry::get('Documents');
                     $query = $doc->find()->where(['id' => $did])->first();
                     $this->set('document',$query);
-                    if($setting->document_edit==0 || count($doc)==0) {
+                    if($setting->document_edit==0 || count($doc)==0 || $cn ==0) {
                         $this->Flash->error('Sorry, You dont have the permissions.');
                         	return $this->redirect("/");
                         
                     }
                     
                 } else {
-                    if($setting->document_create==0 || count($doc)==0) {
+                    if($setting->document_create==0 || count($doc)==0 || $cn == 0) {
                         $this->Flash->error('Sorry, You dont have the permissions.');
                         	return $this->redirect("/");
                         
@@ -749,7 +766,7 @@ class DocumentsController extends AppController {
                     }
         		}
         } else {
-                    $doc = $this->getDocumentcount();
+                   
 
                     if($did!=0)
                     {
@@ -757,14 +774,14 @@ class DocumentsController extends AppController {
                         $doc = TableRegistry::get('orders');
                         $query = $doc->find()->where(['id' => $did])->first();
                         $this->set('document',$query);
-                        if($setting->document_edit==0 || count($doc)==0) {
+                        if($setting->document_edit==0 || count($doc)==0 || $cn ==0) {
                             $this->Flash->error('Sorry, You dont have the permissions.');
                                 return $this->redirect("/");
                             
                         }
                         
                     } else {
-                        if($setting->document_create==0 || count($doc)==0) {
+                        if($setting->document_create==0 || count($doc)==0 || $cn ==0) {
                             $this->Flash->error('Sorry, You dont have the permissions.');
                                 return $this->redirect("/");
                             
@@ -809,7 +826,8 @@ class DocumentsController extends AppController {
     {
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
-        if($setting->document_edit==0 || count($doc)==0)
+        $cn = $this->getUserDocumentcount();
+        if($setting->document_edit==0 || count($doc)==0 | $cn ==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
@@ -872,8 +890,23 @@ class DocumentsController extends AppController {
     {
         $doc = TableRegistry::get('Subdocuments');
         $query = $doc->find();
-        $query->select()->where(['display' => 1]);
+        $query->where(['display' => 1]);
         return $query->all();
+    }
+    
+    function getUserDocumentcount()
+    {
+        $doc = TableRegistry::get('Subdocuments');
+        $query = $doc->find();
+        $query->where(['display' => 1])->all();
+        $cnt=0;
+        foreach($query as $q)
+        {
+            $subdoc = TableRegistry::get('profilessubdocument');
+            if($query1 = $subdoc->find()->where(['profile_id'=>$this->request->session()->read('Profile.id'),'subdoc_id'=>$q->id,'display <>'=>0])->first())
+                $cnt ++;
+        }
+        return $cnt;
     }
     
     
@@ -930,8 +963,9 @@ class DocumentsController extends AppController {
     public function orderslist(){
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
+        $cn = $this->getUserDocumentcount();
 
-        if($setting->document_list==0 || count($doc)==0)
+        if($setting->orders_list==0 || count($doc)==0 || $cn ==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             return $this->redirect("/");

@@ -113,7 +113,7 @@ class ProfilesController extends AppController {
         $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
 		$profiles = TableRegistry::get('Profiles');
         if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
-        $_POST['admin']=1;
+            $_POST['admin']=1;
         $profile = $profiles->newEntity( $_POST);
         //var_dump($profile);die();
 		if ($this->request->is('post')) {
@@ -155,7 +155,7 @@ class ProfilesController extends AppController {
         if($setting->profile_edit==0 && $id != $this->request->session()->read('Profile.id'))
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
-            	//return $this->redirect("/");
+            	return $this->redirect("/");
             
         }
         else
@@ -171,7 +171,11 @@ class ProfilesController extends AppController {
 		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
 		  if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
-            $_POST['admin']=1;
+           $this->request->data['admin']=1;
+         else
+           $this->request->data['admin']=0;
+            
+            //var_dump($this->request->data); die();//echo $_POST['admin'];die();
 			$profile = $this->Profiles->patchEntity($profile, $this->request->data);
 			if ($this->Profiles->save($profile)) {
 				$this->Flash->success('The user has been saved.');
@@ -267,7 +271,7 @@ class ProfilesController extends AppController {
                 $side[$k] = $v;
             }
             //var_dump($_POST)
-            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete');
+            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete','document_others','orders_list','orders_create','orders_delete','orders_edit','orders_others');
             foreach($sides as $s)
             {
                 if(!isset($_POST['side'][$s]))

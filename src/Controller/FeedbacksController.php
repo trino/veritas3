@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
+use Cake\Network\Email\Email;
 
 
 class FeedbacksController extends AppController{
@@ -69,6 +70,8 @@ class FeedbacksController extends AppController{
         $this->set(compact('feeds'));
         $this->render('add');
     }
+    
+  
 }
 
 ?>

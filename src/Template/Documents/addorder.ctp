@@ -59,36 +59,43 @@ $is_disabled = '';
                                             <?php
                                                 $doc = $this->requestAction('/documents/getDocument');
                                                 
+                                                
                                                 $doc2 = $doc;
                                                 $i = 1;
                                                 foreach($doc as $d)
                                                 {
-                                                    $j = $d->id;
+                                                    
+                                                    $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.$d->id);
+                                                    
                                                 ?>
-                                                <li>
-												<a href="#tab<?php echo $j;?>" data-toggle="tab" class="step">
-												<span class="number">
-												<?php echo $i; ?> </span><br />
-												<span class="desc">
-												<i class="fa fa-check"></i> <?php echo ucfirst($d->title); ?> </span>
-												</a>
-											</li>
+                                                <?php if($prosubdoc['display'] != 0 && $d->display==1){
+                                                    $j = $d->id;
+                                                    ?>
+                                                    <li>
+    												<a href="#tab<?php echo $j;?>" data-toggle="tab" class="step">
+    												<span class="number">
+    												<?php echo $i; ?> </span><br />
+    												<span class="desc">
+    												<i class="fa fa-check"></i> <?php echo ucfirst($d->title); ?> </span>
+    												</a>
+    							                     </li>
                                                 <?php
                                                 
-                                                $i++;
+                                                    $i++;
+                                                    }
                                                 }
                                             ?>
 											
-                                           <!-- <li>
-												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
+                                           <li>
+												<a href="#tab<?php echo ++$j; ?>" data-toggle="tab" class="step">
 												<span class="number">
-												<?php //echo $i++;?></span><br />
+												<?php echo $i++;?></span><br />
 												<span class="desc">
 												<i class="fa fa-check"></i> Confirmation </span>
 												</a>
-											</li>-->
+											</li>
                                             <li>
-												<a href="#tab<?php echo $j++; ?>" data-toggle="tab" class="step">
+												<a href="#tab<?php echo ++$j; ?>" data-toggle="tab" class="step">
 												<span class="number">
 												<?php echo $i++;?></span><br />
 												<span class="desc">

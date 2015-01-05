@@ -111,9 +111,11 @@
                     	<thead>
                     		<tr>
                                 <th>ID</th>
-                    			<th><?php echo ucfirst($settings->orders);?></th>
+             			        <th>Title</th>
                     			<th>Uploaded by</th>
-                    			<!--<th>Uploaded on</th>-->                    			
+                    			<th>Uploaded for</th>   
+                                <th>Client</th>
+                                <th>Created</th>               			
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
@@ -129,12 +131,16 @@
                                 $row_color_class ="even";
                             }
                             $uploaded_by = $this->requestAction("documents/getUser/".$order->user_id);
+                            $uploaded_for = $this->requestAction("documents/getUser/".$order->uploaded_for);
+                            $client = $this->requestAction("clients/getClient/".$order->client_id);
                           ?>
                           <tr class="<?=$row_color_class;?>" role="row">
                                 <td><?= $this->Number->format($order->id) ?></td>
-                                <td><?= h($order->order_type) ?></td>
+                                <td><?= h($order->title) ?></td>
                                 <td><?= h($uploaded_by->username) ?></td>
-                                
+                                <td><?= h($uploaded_for->username) ?></td>
+                                <td><?= h($client->title) ?></td>
+                                <td><?= h($order->created) ?></td>
                                 <td class="actions">
 
                                     <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $order->id], ['class' => 'btn btn-info']);} ?>

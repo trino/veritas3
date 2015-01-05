@@ -437,6 +437,16 @@ class ClientsController extends AppController {
         return $this->response;
         
    }
+   function getClient($id=null)
+   {
+    $contact = TableRegistry::get('Clients');
+    $query = $contact->find()->where(['id'=>$id]);
+    $q = $query->first();
+    $this->response->body(($q));
+        return $this->response;
+    //return $q;
+        
+   }
    
     
 }

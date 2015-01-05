@@ -14,13 +14,15 @@
 						<a href=""><?php echo ucfirst($settings->document);?>s</a>
 					</li>
 				</ul>
+                <form action="<?php echo $this->request->webroot; ?>documents/index" method="get">
 				<div class="page-toolbar">
 					<div id="dashboard-report-range" style="padding-bottom: 6px;" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>&nbsp;
-						<span class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
+						<span class="thin uppercase visible-lg-inline-block" id="doc_date_filter">&nbsp;</span>&nbsp;
 						<i class="fa fa-angle-down"></i>
 					</div>
 				</div>
+                </form>
                 <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 			</div>
 
@@ -101,7 +103,7 @@
 							</select>
 						</div>
                         <div class="col-md-1 col-sm-12">
-							<button type="submit" class="btn btn-primary">Search</button>
+							<button type="submit" class="btn btn-primary" id="search">Search</button>
                         </div>
 
 					</form>
@@ -118,8 +120,8 @@
                     		<tr>
                                 <th>ID</th>
                     			<th><?php echo ucfirst($settings->document);?></th>
-                    			<th>Uploaded by</th>
-                    			<!--<th>Uploaded on</th>-->                    			
+                    			<th>Uploaded by<?php if(isset($end)) echo $end; if(isset($start)) echo "//".$start; ?></th>
+                    			<th>Uploaded on</th>           			
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
@@ -140,6 +142,7 @@
                                 <td><?= $this->Number->format($docs->id) ?></td>
                                 <td><?= h($docs->document_type) ?></td>
                                 <td><?= h($uploaded_by->username) ?></td>
+                                <td><?= h($docs->created) ?></td>
                                 
                                 <td class="actions">
 
@@ -213,3 +216,15 @@
     }
     
 </style>
+
+<script>
+    $('#search').click(function(){
+        var a = $('#doc_date_filter').text();
+        var a = a.replace(', ','/');
+        var a = a.replace(' - ','/');
+        var a = a.replace(' ','/');
+        var a = a.replace(', ','/');
+        var a = a.replace(' ','/');
+        $(this).append('<input type="hidden" name="date_filter_val" value="'+a+'">');
+    });
+</script>

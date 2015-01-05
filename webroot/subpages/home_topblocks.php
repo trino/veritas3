@@ -28,9 +28,8 @@
     <?php } ?>
     <?php if ($block->searchdriver == 1 && $sidebar->profile_list ==1) { ?>
     
-        <a href="<?php echo $this->request->webroot; ?>profiles" class="tile selected bg-yellow-saffron" style="display: block;">
-            <div class="corner">
-            </div>
+        <a href="<?php echo $this->request->webroot; ?>profiles" class="tile  bg-yellow-saffron" style="display: block;">
+
             <div class="tile-body">
                 <i class="fa fa-search"></i>
             </div>

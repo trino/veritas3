@@ -322,7 +322,19 @@ function subform(form_type)
     $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
-
+    <?php
+    if($this->request['action']=='vieworder')
+    {
+        ?>
+        $('.tab-content input').attr('disabled','disabled');
+        $('.tab-content select').attr('disabled','disabled');
+        $('.tab-content textarea').attr('disabled','disabled');
+        $('.cont').html('Next <i class="m-icon-swapright m-icon-white"></i>');
+        $('.cont').parent().find('.red').remove();
+        $('.cont').removeClass('cont');
+        <?php
+    }
+    ?>
     $(document.body).on('click','.cont',function(){
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
     var data = {uploaded_for:$('#uploaded_for').val(),type:type};

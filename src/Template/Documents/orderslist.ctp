@@ -143,7 +143,7 @@
                                 <td><?= h($order->created) ?></td>
                                 <td class="actions">
 
-                                    <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $order->id], ['class' => 'btn btn-info']);} ?>
+                                    <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);} ?>
                                     <?php  
                                     if($sidebar->orders_edit=='1')
                                     {

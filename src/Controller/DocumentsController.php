@@ -182,6 +182,31 @@ class DocumentsController extends AppController {
         $this->set('disabled', 1);
         $this->render('add');
 	}
+    
+    public function vieworder($cid = null,$did = null) {
+	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+        $doc = $this->getDocumentcount();
+        $cn = $this->getUserDocumentcount();
+        if($setting->orders_list==0 || count($doc)==0 || $cn ==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+        $orders = TableRegistry::get('orders');
+        if($did)
+        $order_id = $orders->find()->where(['id'=>$did])->first();
+        //$did= $order_id->id;
+        if(isset($order_id))
+        $this->set('modal',$order_id);
+        $this->set('cid',$cid);
+        $this->set('did',$did);
+		/*$profile = $this->Clients->get($id);
+		$this->set('profile', $profile);*/
+        $this->set('disabled', 1);
+        $this->render('addorder');
+	}
+
 
 /**
  * Add method

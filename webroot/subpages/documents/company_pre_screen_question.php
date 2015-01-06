@@ -16,20 +16,7 @@
 						<div class="portlet-body form">
 								<div class="form-body">
 
-                                    <div class="form-group col-md-6">
-                                        <label class="col-md-6 control-label">Driver</label>
-                                        <div class="col-md-6">
-
-                                        <select class="form-control member_type" name="member_type">
-                                            <option value="John">John Smith</option>
-                                            <option value="Member">Sam Jones</option>
-                                            <option value="Contact">Bob Rob</option>
-                                            <option value="Contact">Jack Smith</option>
-                                            <option value="Contact">Jack Smith</option>
-                                            <option value="Contact">Jack Smith</option>
-                                        </select>
-                                    </div>
-                                    </div>
+                                    
 
 
 									<div class="form-group col-md-6">

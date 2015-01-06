@@ -178,7 +178,25 @@ $is_disabled = '';
                                                      ?>
                                                     </div>
                                             </div>
-
+                                            <div class="form-group mar-top-10 col-md-12">
+                                            <?php
+                                                        $division = $this->requestAction("clients/getdivision/".$cid);
+                                                ?>
+                                                <label class="col-md-3 control-label">Select Division</label>
+                                                <div class="col-md-6">
+                                                <select class="form-control" name="division" id="divison">
+            								            <option value="">Select Division</option>
+                                                        <?php 
+                                                            foreach($division as $u)
+                                                            {
+                                                                ?>
+                                                                <option value="<?php echo $u->id;?>" <?php if(isset($modal) && $modal->division==$u->title){?> selected="selected"<?php } ?> ><?php echo $u->title; ?></option>
+                                                                <?php
+                                                            }
+                                                         ?>
+                        							 </select>
+                                                </div>
+                                            </div>
                                             <div class="clearfix"></div>
                                             <?php foreach($doc2 as $d){
                                                 $j = $d->id;

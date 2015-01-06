@@ -157,6 +157,10 @@ $c = $client;
 														<input type="text" class="form-control" name="admin_phone" <?php if(isset($c->admin_phone)){?> value="<?php echo $c->admin_phone; ?>" <?php } ?>/>
 													</div>
 													*/ ?>
+                                                    <div class="form-group col-md-12">
+														<label class="control-label">Division</label>
+														<textarea name="division" id="division" class="form-control"><?php if(isset($c->division)) echo $c->division; ?></textarea>
+													</div>
                                                     <?php include('subpages/adminlisting.php');?>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Website</label>
@@ -690,6 +694,7 @@ $c = $client;
                                             }
                                             str = str+'&description='+$('#tab_1_1 textarea').val();
                                             str = str+'&customer_type='+$('#customer_type').val();
+                                            str = str+'&division='+$('#division').val();
                                             
                                             
                                             $.ajax({
@@ -698,8 +703,9 @@ $c = $client;
                                                type:'post',
                                                success:function(res)
                                                {
+                                                //alert(res);
                                                 if(res!='e'){
-                                                window.location = '<?php echo $this->request->webroot;?>clients/edit/'+res;
+                                                    window.location = '<?php echo $this->request->webroot;?>clients/edit/'+res;
                                                 }
                                                 else
                                                 {

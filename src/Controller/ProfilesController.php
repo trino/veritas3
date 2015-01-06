@@ -444,8 +444,8 @@ class ProfilesController extends AppController {
         $super = $this->request->session()->read('Profile.super');
         $cond = $this->Settings->getprofilebyclient($u,$super);
         //$query = $query->select()->where(['super'=>0]);
-        $query = $query->select()->where(['profile_type NOT IN'=>'(1,6)','OR'=>$cond])
-            ->andWhere(['admin'=>0,'super'=>0]);
+        $query = $query->select()->where(['profile_type NOT IN'=>'(6)','OR'=>$cond])
+            ->andWhere(['super'=>0]);
         $this->response->body($query);
         return $this->response;
         die();   

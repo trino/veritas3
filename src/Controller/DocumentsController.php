@@ -1014,6 +1014,14 @@ class DocumentsController extends AppController {
         {
             $cond = $cond.' (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
         }
+        
+        if(!$this->request->session()->read('Profile.admin') && $setting->orders_others == 0)
+        {
+           if($cond == '')
+                $cond = $cond.' user_id = '.$this->request->session()->read('Profile.id');
+            else
+                $cond = $cond.' AND user_id = '.$this->request->session()->read('Profile.id');
+        }
         if(isset($_GET['submitted_by_id']) && $_GET['submitted_by_id'])
         {
             if($cond == '')

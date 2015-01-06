@@ -247,9 +247,9 @@ class DocumentsController extends AppController {
             $arr['title'] = 'order_'.$_POST['uploaded_for'].'_'.date('Y-m-d H:i:s');
             $arr['uploaded_for'] = $_POST['uploaded_for'];
 
-
+            
             $arr['client_id'] = $cid;
-            $arr['order_type'] = $_POST['type'];
+            $arr['order_type'] = $_POST['sub_doc_id'];
             $arr['created'] = date('Y-m-d H:i:s');
             if(!$did || $did=='0'){
                 $arr['user_id'] = $this->request->session()->read('Profile.id');
@@ -276,7 +276,7 @@ class DocumentsController extends AppController {
 
         } else {
             $docs = TableRegistry::get('Documents');
-
+            $arr['sub_doc_id'] = $_POST['sub_doc_id'];
             $arr['uploaded_for'] = $_POST['uploaded_for'];
             $arr['client_id'] = $cid;
             $arr['document_type'] = $_GET['document'];
@@ -314,10 +314,14 @@ class DocumentsController extends AppController {
     
     public function savePrescreening(){
         $prescreen = TableRegistry::get('pre_screening');
-        if(!isset($_GET['document']))
+        if(!isset($_GET['document'])){
         $arr['order_id'] = $_POST['order_id'];
-        else
-        $arr['document_id'] = $_POST['order_id'];        
+        $arr['document_id'] = 0; 
+        }
+        else{
+        $arr['document_id'] = $_POST['order_id'];   
+        $arr['order_id'] = 0;
+        }     
         $arr['client_id'] = $_POST['cid'];
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
@@ -352,14 +356,18 @@ class DocumentsController extends AppController {
     /**
      * saving driver application data
      */
-    public function savedDriverApp($order_id = NULL , $cid = NULL){
+    public function savedDriverApp($order_id = 0 , $cid = 0){
         // echo "<pre>";print_r($_POST);die;
        
         
-        if(!isset($_GET['document']))
-        $arr['order_id'] = $_POST['order_id'];
-        else
-        $arr['document_id'] = $_POST['order_id'];  
+        if(!isset($_GET['document'])){
+        $arr['order_id'] = $order_id;
+        $arr['document_id'] = $order_id;  
+        }
+        else{
+        $arr['document_id'] = $order_id;  
+        $arr['order_id'] = $order_id;
+        }
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
@@ -442,15 +450,19 @@ class DocumentsController extends AppController {
     /**
      * saving driver application data
      */
-    public function savedDriverEvaluation($order_id = NULL , $cid = NULL){
+    public function savedDriverEvaluation($order_id = 0 , $cid = 0){
         // echo "<pre>";print_r($_POST);die; 
         
 
         $roadTest = TableRegistry::get('road_test');
-        if(!isset($_GET['document']))
-        $arr['order_id'] = $_POST['order_id'];
-        else
-        $arr['document_id'] = $_POST['order_id'];  
+        if(!isset($_GET['document'])){
+        $arr['order_id'] = $order_id;
+        $arr['document_id'] = 0;
+        }
+        else{
+        $arr['document_id'] = $order_id; 
+        $arr['order_id'] = 0;
+        } 
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
         $del = $roadTest->query();
@@ -484,14 +496,18 @@ class DocumentsController extends AppController {
     /**
      * saving driver application data
      */
-    public function savedMeeOrder($order_id = NULL , $cid = NULL){
+    public function savedMeeOrder($order_id = 0 , $cid = 0){
        //consent form
        // echo "<pre>";print_r($_POST);die;
         $consentForm = TableRegistry::get('consent_form');
-        if(!isset($_GET['document']))
-        $arr['order_id'] = $_POST['order_id'];
-        else
-        $arr['document_id'] = $_POST['order_id'];
+        if(!isset($_GET['document'])){
+        $arr['order_id'] = $order_id;
+        $arr['document_id'] = 0;
+        }
+        else{
+        $arr['document_id'] = $order_id;
+        $arr['order_id'] = 0;
+        }
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
@@ -547,11 +563,14 @@ class DocumentsController extends AppController {
         
 
         for($i=0;$i < $_POST['count_past_emp'];$i++){
-            if(!isset($_GET['document']))
+            if(!isset($_GET['document'])){
             $arr2['order_id'] = $order_id;
-            else
+            $arr2['document_id'] = 0;
+            }
+            else{
             $arr2['document_id'] = $order_id;
-            
+            $arr2['order_id'] = 0;
+            }
             $arr2['client_id'] = $cid;
             $arr2['user_id'] = $this->request->session()->read('Profile.id');
 
@@ -670,10 +689,14 @@ class DocumentsController extends AppController {
         $del->delete()->where(['order_id'=>$order_id])->execute();
         
         $edu = array();
-        if(!isset($_GET['document']))
+        if(!isset($_GET['document'])){
             $edu['order_id'] = $order_id;
-            else
+            $edu['document_id'] = 0;
+            }
+            else{
             $edu['document_id'] = $order_id;
+            $edu['order_id'] = 0;
+            }
         
         $edu['client_id'] = $cid;
         $edu['user_id'] = $this->request->session()->read('Profile.id');
@@ -782,6 +805,12 @@ class DocumentsController extends AppController {
     {
          $this->set('cid',$cid);
          $this->set('did',$did);
+         $this->set('sid','');
+         if($did){
+         $docs = TableRegistry::get('documents');
+            $document = $docs->find()->where(['id' => $did])->first();
+            $this->set('mod',$document);
+            }
          $doc = $this->getDocumentcount();
          $cn = $this->getUserDocumentcount();
          $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -1112,26 +1141,37 @@ class DocumentsController extends AppController {
         // print_r($_GET);die;
         if($_GET['form_type']=="company_pre_screen_question.php"){    
             $preScreen = TableRegistry::get('pre_screening');
-            $prescreenDetail = $preScreen->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            if(!isset($_GET['document']))
+            $prescreenDetail = $preScreen->find()->where(['client_id'=>$cid,'order_id'=>$order_id,'document_id'=>0])->first();
+            else
+            $prescreenDetail = $preScreen->find()->where(['client_id'=>$cid,'document_id'=>$order_id,'order_id'=>0])->first();
         // die('asd');
         unset($prescreenDetail->id);
         unset($prescreenDetail->document_id);
         unset($prescreenDetail->order_id);
         unset($prescreenDetail->client_id);
         unset($prescreenDetail->user_id);
+        $prescreenDetail->sub_doc_id = 1;
+        $prescreenDetail->document_type = 'Pre-Screening';
         echo json_encode($prescreenDetail);
 
         } else if($_GET['form_type']=="driver_application.php"){
             
             // $this->getDriverAppData($cid,$order_id);
             $driveApp = TableRegistry::get('driver_application');
-            $driveAppDetail = $driveApp->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            if(!isset($_GET['document']))
+            $driveAppDetail = $driveApp->find()->where(['client_id'=>$cid,'order_id'=>$order_id,'document_id'=>0])->first();
+            else
+            $driveAppDetail = $driveApp->find()->where(['client_id'=>$cid,'document_id'=>$order_id,'order_id'=>0])->first();
+            
             //$driveAppID = $driveAppDetail->id;
             unset($driveAppDetail->id);
             unset($driveAppDetail->document_id);
             unset($driveAppDetail->order_id);
             unset($driveAppDetail->client_id);
             unset($driveAppDetail->user_id);
+            $driveAppDetail->sub_doc_id = 2;
+        $driveAppDetail->document_type = 'Driver Application';
             echo json_encode($driveAppDetail);
 
             // $driveAppAcc = TableRegistry::get('driver_application_accident');
@@ -1142,33 +1182,60 @@ class DocumentsController extends AppController {
             
             // $this->getRoadTestData($cid,$order_id);
             $roadTest = TableRegistry::get('road_test');
-            $roadTestDetail = $roadTest->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            if(!isset($_GET['document']))
+            $roadTestDetail = $roadTest->find()->where(['client_id'=>$cid,'order_id'=>$order_id,'document_id'=>0])->first();
+            else
+            $roadTestDetail = $roadTest->find()->where(['client_id'=>$cid,'document_id'=>$order_id,'order_id'=>0])->first();
+            
             // $prescreenID = $prescreenDetail->id;
+            if($roadTestDetail){
+            $roadTestDetail->sub_doc_id = 3;
+        $roadTestDetail->document_type = 'Road test';}
             echo json_encode($roadTestDetail);
 
 
         } else if($_GET['form_type']=="document_tab_3.php"){
             
             $consentForm = TableRegistry::get('consent_form');
-            $consentFormDetail = $consentForm->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+             if(!isset($_GET['document']))
+            $consentFormDetail = $consentForm->find()->where(['client_id'=>$cid,'order_id'=>$order_id,'document_id'=>0])->first();
+            else
+            $consentFormDetail = $consentForm->find()->where(['client_id'=>$cid,'document_id'=>$order_id,'order_id'=>0])->first();
+            
             $consentFormID = $consentFormDetail->id;
 
             $consentFormCriminal = TableRegistry::get('consent_form_criminal');
-            $consentFormCrmDetail = $consentFormCriminal->find()->where(['id'=>$consentFormID,'client_id'=>$cid,'order_id'=>$order_id])->first();
+            if(!isset($_GET['document']))
+            $consentFormCrmDetail = $consentFormCriminal->find()->where(['consent_form_id'=>$consentFormID])->first();
+            else
+            $consentFormCrmDetail = $consentFormCriminal->find()->where(['consent_form_id'=>$consentFormID])->first();
+            
             echo json_encode($consentFormDetail);
 
 
             $employment = TableRegistry::get('employment_verification');
-            $employmentDetail = $employment->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            if(!isset($_GET['document']))
+            $employmentDetail = $employment->find()->where(['client_id'=>$cid,'order_id'=>$order_id,'document_id'=>0])->first();
+            else
+            $employmentDetail = $employment->find()->where(['client_id'=>$cid,'document_id'=>$order_id,'order_id'=>0])->first();
+            
             // echo json_encode($employmentDetail);
 
             $education = TableRegistry::get('education_verification');
-            $educationDetail = $education->find()->where(['client_id'=>$cid,'order_id'=>$order_id])->first();
+            if(!isset($_GET['document']))
+            $educationDetail = $education->find()->where(['client_id'=>$cid,'order_id'=>$order_id,'document_id'=>0])->first();
+            else
+            $educationDetail = $education->find()->where(['client_id'=>$cid,'document_id'=>$order_id,'order_id'=>0])->first();
+            
             $edu_id = $educationDetail->id;            
             // echo json_encode($educationDetail);
 
             $educationPass = TableRegistry::get('education_verification_pass_education');
-            $educationPassDetail = $educationPass->find()->where(['id'=>$id,'client_id'=>$cid,'order_id'=>$order_id])->first();
+            if(!isset($_GET['document']))
+            $educationPassDetail = $educationPass->find()->where(['education_verification_id'=>$edu_id])->first();
+            else
+            $educationPassDetail = $educationPass->find()->where(['education_verification_id'=>$edu_id])->first();
+            
             $edu_id = $educationPassDetail->id;            
             // echo json_encode($educationPassDetail);          
 

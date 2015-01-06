@@ -1,6 +1,6 @@
   
 <form id="form_tab1">
-
+<?php echo $_GET['doc_id'];?>
 <input type="hidden" class="document_type" name="document_type" value="Pre-Screening" id="af" />
 <input type="hidden" id="sub_doc_id" name="sub_doc_id" value="<?php if(isset($_GET['doc_id']))echo $_GET['doc_id']; else echo $d->id ?>" />
 

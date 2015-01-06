@@ -86,6 +86,7 @@ $is_disabled = '';
                                             </label>
                                             <div class="col-md-6">
                                             <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
+                                            <input type="hidden" name="sub_doc_id" value="<?php echo $sid;?>" id="sub_id" />
                                         <select class="form-control" name="uploaded_for" id="uploaded_for">
 								        <option value="">Select <?php echo ucfirst($settings->profile);?></option>
                                             <?php 
@@ -114,14 +115,14 @@ $is_disabled = '';
 												<a href="javascript:;" class="btn blue">
 												Save As Draft <i class="m-icon-swapright m-icon-white"></i>
 												</a>
-
+                                                <div class="margin-top-10 alert alert-success display-hide flashDoc" style="display: none;">
+                                                <button class="close" data-close="alert"></button>
+                                                Document uploaded successfully
+                                                </div>
 												
                                                 
 											</div>
-                                            <div class="margin-top-10 alert alert-success display-hide flashDoc" style="display: none;">
-                                                <button class="close" data-close="alert"></button>
-                                                Document uploaded successfully
-                                            </div>
+                                            
 										</div>
 									</div>
                                     </form>
@@ -153,35 +154,54 @@ $is_disabled = '';
         //showforms(doc_type);
 function showforms(form_type)
 {
+    //alert(form_type);
+    var arr_formtype = form_type.split('?');
+    var sub_doc_id = arr_formtype[1];
+    var s_arr = sub_doc_id.split('=');
+    var ftype = arr_formtype[0]; 
+    $('#sub_id').val(s_arr[1]);
     //var form_type = $(this).val();
     //alert(form_type);
     //var filename = form_type.replace(/\W/g, '_');
     //var filename = filename.toLowerCase();
     //$('.subform').show();   1
-    if(form_type!= ""){
-        $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+form_type);
+    if(ftype!= ""){
+        //alert(form_type);
+        $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+form_type,function(){
+            //alert(ftype);
         // loading data from db
         // debugger;
-        var url = '<?php echo $this->request->webroot;?>documents/getOrderData/'+client_id+'/'+doc_id,
-            param={form_type:form_type};
+        var url = '<?php echo $this->request->webroot;?>documents/getOrderData/'+client_id+'/'+doc_id+'/?document=1',
+            param={form_type:ftype};
+            //alert(url);
         $.getJSON(url,param,function(res){
-            if(form_type == "company_pre_screen_question.php"){
-                
+            
+            if(ftype == "company_pre_screen_question.php"){
+                //alert(res);
                 assignValue('form_tab1',res);
 
-            } else if(form_type == "driver_application.php"){
-                
+            } else if(ftype == "driver_application.php"){
+                //alert(ftype);
                 assignValue('form_tab2',res);
 
-            }else if(form_type == "driver_evaluation_form.php"){
+            }else if(ftype == "driver_evaluation_form.php"){
                 
                 assignValue('form_tab3',res);
 
-            }else if(form_type == "document_tab_3.php"){
-               
-                assignValue('form_tab4',res);
+            }else if(ftype == "document_tab_3.php"){
+                //alert('test');
+              $('#form_consent input').each(function(){
+               //alert('test2');
+                    var $name = $(this).attr('name');
+                    //alert($name);
+                   $(this).val(res[$name]);
+                   /* if(obj[$name])
+                    alert(ob[$name]);*/
+            
+               });
 
             }
+        });
         });
     }
     else
@@ -191,9 +211,12 @@ function showforms(form_type)
 
 function assignValue(formID,obj){
     // debugger;
+    //alert(formId);
    $('#'+formID).find(':input').each(function(){
         var $name = $(this).attr('name');
         $(this).val(obj[$name]);
+        if(obj[$name])
+        alert(ob[$name]);
 
    });
    /*
@@ -215,10 +238,20 @@ function subform(form_type)
     $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
-    
+    <?php
+    if(isset($did) && $did)
+    {
+        ?>
+        $('#sub_doc_click<?php echo $mod->sub_doc_id?>').click();
+        <?php
+    }
+    ?>
     $(document.body).on('click','.cont',function(){
+     
     var type=$(".document_type").val();
-    var data = {uploaded_for:$('#uploaded_for').val(),type:type};
+    alert(type);
+    //alert($('#sub_id').val());return;
+    var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val()};
     $.ajax({
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,
@@ -250,11 +283,11 @@ jQuery(document).ready(function() {
              var order_id =$('#did').val(),
                 cid = '<?php echo $cid;?>',
                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid+'/?document='+type;
-              savedMeeOrder(url,order_id,cid);
+              savedMeeOrder(url,order_id,cid,type);
       }
         $('.flashDoc').show();
         $('.flashDoc').hide(5000);
-        window.location = '<?php echo $this->request->webroot?>documents/index';
+        //window.location = '<?php echo $this->request->webroot?>documents/index';
        }
     });
     });
@@ -304,7 +337,7 @@ function savedDriverEvaluation(url,order_id,cid){
     });
     }
 
-    function savedMeeOrder(url,order_id,cid){
+    function savedMeeOrder(url,order_id,cid,type){
         var param = $('#form_consent').serialize();
         $.ajax({
         url:url,

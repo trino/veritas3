@@ -58,14 +58,19 @@ class ProfilesController extends AppController {
 	public function index() {
 	   
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-        
+        $u = $this->request->session()->read('Profile.id');
+        $super = $this->request->session()->read('Profile.super');
+        $cond = $this->Settings->getprofilebyclient($u,$super);
         if($setting->profile_list==0)
         {
             $this->Flash->error('Sorry, You dont have the permissions.');
             	return $this->redirect("/");
             
         }
-		$this->set('profiles', $this->paginate($this->Profiles)); 
+        //var_dump($cond);
+        $query = $this->Profiles->find()->where(['OR'=>$cond]);
+        //debug($query);
+		$this->set('profiles', $this->paginate($query)); 
 	}
 
 
@@ -435,10 +440,12 @@ class ProfilesController extends AppController {
     {
         $rec = TableRegistry::get('Profiles');
         $query = $rec->find();
+        $u = $this->request->session()->read('Profile.id');
+        $super = $this->request->session()->read('Profile.super');
+        $cond = $this->Settings->getprofilebyclient($u,$super);
         //$query = $query->select()->where(['super'=>0]);
-        $query = $query->select()->where(['profile_type NOT IN'=>'(1,6)',
-            'AND'=>[ ['admin'=>0],['super'=>0] ]
-            ]);
+        $query = $query->select()->where(['profile_type NOT IN'=>'(1,6)','OR'=>$cond])
+            ->andWhere(['admin'=>0,'super'=>0]);
         $this->response->body($query);
         return $this->response;
         die();   
@@ -556,11 +563,18 @@ class ProfilesController extends AppController {
    function getusers()
    {
         $title = $_POST['v'];
+        
         if($title !=""){
+            $u = $this->request->session()->read('Profile.id');
+            $super = $this->request->session()->read('Profile.super');
+            $cond = $this->Settings->getprofilebyclient($u,$super);
+          
+            //var_dump($cond);
             $profile = TableRegistry::get('profiles');
-            $query = $profile->find()->where(['username LIKE'=>'%'.$title."%"]);
+            $query = $profile->find()->where(['username LIKE'=>'%'.$title."%",'OR'=>$cond]);
                      
             $l = $query->all();
+            //debug($l);
             if(count($l)>0)
             {
                 /*echo "<select onchange='$(\".madmin\").val(this.value); $(\".loadusers\").hide()' class='form-control'>";

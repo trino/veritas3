@@ -44,13 +44,15 @@
                                 <label class="control-label col-md-12">Profile Type</label>
 
                                 <div class="col-md-6">
-                                    <select name="profile_type" <?php echo $is_disabled ?>
+                                    <select name="profile_type" <?php if($this->request->session()->read('Profile.id')==$id) echo "disabled='disabled'"; ?>
                                             class="form-control member_type">
                                         <option value="">Select</option>
+                                        <?php if ($this->request->session()->read('Profile.admin')){?>
                                         <option
                                             value="1" <?php if ($p->profile_type == 1) { ?> selected="selected" <?php } ?>>
                                             Admin
                                         </option>
+                                        <?php }?>
                                         <option
                                             value="2" <?php if ($p->profile_type == 2) { ?> selected="selected" <?php } ?>>
                                             Recruiter

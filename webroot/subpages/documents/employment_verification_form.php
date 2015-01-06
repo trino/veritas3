@@ -19,6 +19,7 @@
 </div> */ ?>
 
 <div class="table-scrollable">
+
     <table class="table table-striped">
                 <tr><th colspan="2">Past Employer</th></tr>
                 <tr><td colspan="2">Company Name<input type="text" class="form-control" name="company_name[]" /></td></tr>
@@ -32,8 +33,8 @@
                     <td>Phone #:<input type="text" class="form-control" name="supervisor_phone[]"/></td></tr>
                 <tr><td>Supervisor's Email:<input type="text" class="form-control" name="supervisor_email[]"/></td>
                     <td>Secondary Email:<input type="text" class="form-control" name="supervisor_secondary_email[]"/></td></tr>
-                <tr><td>Employment Start Date:<input type="text" class="form-control" name="employment_start_date[]"/></td>
-                    <td>Employment End Date:<input type="text" class="form-control" name="employment_end_date[]"/></td></tr>
+                <tr><td>Employment Start Date:<input type="text" class="form-control date-picker" name="employment_start_date[]"/></td>
+                    <td>Employment End Date:<input type="text" class="form-control date-picker" name="employment_end_date[]"/></td></tr>
                 <tr><td>Claims with this Employer:&nbsp;&nbsp;<input type="radio" name="claims_with_employer[]" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="radio" name="claims_with_employer[]" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
                     <td>Date Claims Occured:<input type="text" class="form-control" name="claims_recovery_date[]"/></td></tr>

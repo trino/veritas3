@@ -33,6 +33,8 @@ class LoginController extends AppController{
             if(($q->admin ==1) || ($q->super==1))
             {
                 $this->request->session()->write('Profile.admin',1);
+                if($q->super == 1)
+                $this->request->session()->write('Profile.super',1);
             }
             
         }

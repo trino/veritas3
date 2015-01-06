@@ -258,6 +258,31 @@ class DocumentsController extends AppController {
         $this->set('disabled', 1);
         $this->render('add');
 	}
+    
+    public function vieworder($cid = null,$did = null) {
+	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+        $doc = $this->getDocumentcount();
+        $cn = $this->getUserDocumentcount();
+        if($setting->orders_list==0 || count($doc)==0 || $cn ==0)
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+        $orders = TableRegistry::get('orders');
+        if($did)
+        $order_id = $orders->find()->where(['id'=>$did])->first();
+        //$did= $order_id->id;
+        if(isset($order_id))
+        $this->set('modal',$order_id);
+        $this->set('cid',$cid);
+        $this->set('did',$did);
+		/*$profile = $this->Clients->get($id);
+		$this->set('profile', $profile);*/
+        $this->set('disabled', 1);
+        $this->render('addorder');
+	}
+
 
 /**
  * Add method
@@ -280,7 +305,8 @@ class DocumentsController extends AppController {
         if($did)
         $order_id = $orders->find()->where(['id'=>$did])->first();
         //$did= $order_id->id;
-
+        if(isset($order_id))
+        $this->set('modal',$order_id);
         $this->set('cid',$cid);
         $this->set('did',$did);
         
@@ -361,6 +387,7 @@ class DocumentsController extends AppController {
 /**
  * saving pre-screening data
  */
+    
     public function savePrescreening(){
         $prescreen = TableRegistry::get('pre_screening');
         $arr['order_id'] = $_POST['order_id'];
@@ -781,7 +808,13 @@ class DocumentsController extends AppController {
 		$this->set(compact('profile'));*/
         $this->render('addorder');
 	}
-    
+    public function deleteOrder($id)
+    {
+        $this->loadModel('Orders');
+        $this->Orders->deleteAll(array('id'=>$id));
+        $this->Flash->success('The order has been deleted.');        
+        $this->redirect('/documents/orderslist');
+    }
     function add($cid=0,$did=0,$type=NULL)
     {
          $this->set('client_id',$cid);
@@ -1056,6 +1089,14 @@ class DocumentsController extends AppController {
         if(isset($_GET['searchdoc']) && $_GET['searchdoc'])
         {
             $cond = $cond.' (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
+        }
+        
+        if(!$this->request->session()->read('Profile.admin') && $setting->orders_others == 0)
+        {
+           if($cond == '')
+                $cond = $cond.' user_id = '.$this->request->session()->read('Profile.id');
+            else
+                $cond = $cond.' AND user_id = '.$this->request->session()->read('Profile.id');
         }
         if(isset($_GET['submitted_by_id']) && $_GET['submitted_by_id'])
         {

@@ -1,7 +1,7 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->orders);?>s <small>View/Edit/Delete <?php echo ucfirst($settings->orders);?>s</small>
+			Orders <small>View/Edit/Delete Orders</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -11,7 +11,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href=""><?php echo ucfirst($settings->orders);?>s</a>
+						<a href="">Orders</a>
 					</li>
 				</ul>
 				<div class="page-toolbar">
@@ -143,19 +143,17 @@
                                 <td><?= h($order->created) ?></td>
                                 <td class="actions">
 
-                                    <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $order->id], ['class' => 'btn btn-info']);} ?>
+                                    <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);} ?>
                                     <?php  
-                                    if($sidebar->document_edit=='1')
+                                    if($sidebar->orders_edit=='1')
                                     {
-                                        if($order->order_type =='feedbacks' )
-                                        echo $this->Html->link(__('Edit'), ['controller'=>'feedbacks','action' => 'edit', $order->id], ['class' => 'btn btn-primary']);
-                                        elseif($order->order_type=='order')
-                                        echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'editorder',$order->client_id, $order->id], ['class' => 'btn btn-primary']);
-                                        else
-                                        echo $this->Html->link(__('Edit'), ['action' => 'add',$order->client_id, $order->id,'order'], ['class' => 'btn btn-primary']);
+                                        
+                                        echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'addorder',$order->client_id, $order->id], ['class' => 'btn btn-primary']);
+                                        
                                     }
                                      ?>
-                                    <?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]);} ?>
+                                     <?php  if($sidebar->orders_delete=='1'){ ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a><?php }?>
+                                    
 
                                 </td>
                             </tr>
@@ -169,27 +167,7 @@
 
 
 				<div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-					<ul class="pagination">
-						<li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
-							class="paginate_button previous disabled"><a href="#"><i
-									class="fa fa-angle-left"></i></a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a>
-						</li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">5</a></li>
-						<li id="sample_2_next" tabindex="0" aria-controls="sample_2" class="paginate_button next"><a
-								href="#"><i class="fa fa-angle-right"></i></a></li>
-					</ul>
-					<ul class="pagination">
-						<li class="prev disabled">
-							<a href="">< previous</a>
-						</li>
-						<li class="next">
-							<a href="#" rel="next">next ></a>
-						</li>
-					</ul>
+					
 				</div>
 
 

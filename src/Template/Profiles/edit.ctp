@@ -221,32 +221,24 @@ if(isset($profile))
                 </div>
 
             </div>
-            
+            <?php if($this->request->params['action'] == 'edit'){?>
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption">Orders</div>
+                    <div class="caption">Assign to client</div>
                 </div>
                 <div class="portlet-body">
                     <table class="table">
                     <?php
-                    if($this->request->params['action']=='add')
-                    {
-                        ?>
-                        <tr>
-                            <td colspan="2">No orders associated</td>
-                        </tr>
-                        <?php
-                    }
-                    else
-                    {
-                        $orders = $this->requestAction('/profiles/getOrder/'.$id);
+                    
+                        $clients = $this->requestAction('/clients/getAllClient/');
                         $count=0;
-                        foreach($orders as $o)
+                        if($clients)
+                        foreach($clients as $o)
                         {
                             
                             ?>
                             
-                                <tr><td><a href="<?php echo $this->request->webroot;?>orders/view/<?php echo $o->id;?>"><?php echo "Order - ".$o->created;?></a></td></tr>
+                                <tr><td><input type="checkbox" value="<?php echo $o->id;?>" /> <?php echo $o->title;?></a></td></tr>
                                 
                             
                             <?php
@@ -254,18 +246,17 @@ if(isset($profile))
                         }
                         
                        
-                    }
+                    
                     ?>
                         
                     </table>
 
-                    <a href="<?php echo WEB_ROOT; ?>documents/add" class="btn btn-warning margin-top-10">
-                        Submit Order </a>
-
+                    
                     <div class="clearfix"></div>
 
                 </div>
             </div>
+            <?php }?>
             <!-- END PORTLET MAIN -->
         </div>
         <!-- END BEGIN PROFILE SIDEBAR -->

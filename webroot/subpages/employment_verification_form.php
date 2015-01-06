@@ -24,7 +24,7 @@
                 <tr><td colspan="2">Address<input type="text" class="form-control" /></td></tr>
                 <tr><td>Supervisor's Name:<input type="text" class="form-control"/></td><td>Phone #:<input type="text" class="form-control"/></td></tr>
                 <tr><td>Supervisor's Email:<input type="text" class="form-control"/></td><td>Secondary Email:<input type="text" class="form-control"/></td></tr>
-                <tr><td>Employment Start Date:<input type="text" class="form-control"/></td><td>Employment End Date:<input type="text" class="form-control"/></td></tr>
+                <tr><td>Employment Start Date:<i class="fa fa-calendar"></i><input type="text" class="form-control todo-taskbody-due date form_datetime"/></td><td>Employment End Date:<input type="text" class="form-control"/></td></tr>
                 <tr><td>Claims with this Employer:&nbsp;&nbsp;<input type="radio"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td><td>Date Claims Occured:<input type="text" class="form-control"/></td></tr>
                 <tr><td colspan="2">Employment history confirmed by (Verifier Use Only):<input type="text" class="form-control"/></td></tr>
                 <tr><td>

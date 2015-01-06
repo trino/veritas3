@@ -1,5 +1,5 @@
 <form id="form_tab2">
-<input type="hidden" name="document_type" value="Driver Application" />
+<input type="hidden" class="document_type" name="document_type" value="Driver Application" id="af" />
 <input type="hidden" name="sub_doc_id" value="<?php if(isset($_GET['doc_id']))echo $_GET['doc_id']; else echo $d->id ?>" id="af" />
 <div class="clearfix"></div>
 <hr />

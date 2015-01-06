@@ -241,7 +241,7 @@ class DocumentsController extends AppController {
     public function savedoc($cid=0,$did=0)
     {
 //         echo "<pre>";print_r($_POST);
-        if( isset($_POST['type'])) {
+        if(!isset($_GET['document'])) {
             // saving in order table
             $orders = TableRegistry::get('orders');
             $arr['title'] = 'order_'.$_POST['uploaded_for'].'_'.date('Y-m-d H:i:s');
@@ -279,7 +279,7 @@ class DocumentsController extends AppController {
 
             $arr['uploaded_for'] = $_POST['uploaded_for'];
             $arr['client_id'] = $cid;
-            $arr['document_type'] = 'order';
+            $arr['document_type'] = $_GET['document'];
             $arr['created'] = date('Y-m-d H:i:s');
             if(!$did || $did=='0'){
                 $arr['user_id'] = $this->request->session()->read('Profile.id');
@@ -314,7 +314,10 @@ class DocumentsController extends AppController {
     
     public function savePrescreening(){
         $prescreen = TableRegistry::get('pre_screening');
+        if(!isset($_GET['document']))
         $arr['order_id'] = $_POST['order_id'];
+        else
+        $arr['document_id'] = $_POST['order_id'];        
         $arr['client_id'] = $_POST['cid'];
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
@@ -322,7 +325,10 @@ class DocumentsController extends AppController {
         // first delete
         // $del_prescreen = $prescreen->get(['order_id'=>$_POST['order_id']]);        
         $del = $prescreen->query();
-        $del->delete()->where(['order_id'=>$_POST['order_id']])->execute();        
+        if(!isset($_GET['document']))
+        $del->delete()->where(['order_id'=>$_POST['order_id']])->execute();
+        else
+        $del->delete()->where(['document_id'=>$_POST['order_id']])->execute();                
 
 
         foreach(explode("&",$_POST['inputs']) as $data){
@@ -350,7 +356,10 @@ class DocumentsController extends AppController {
         // echo "<pre>";print_r($_POST);die;
        
         
-        $arr['order_id'] = $order_id;
+        if(!isset($_GET['document']))
+        $arr['order_id'] = $_POST['order_id'];
+        else
+        $arr['document_id'] = $_POST['order_id'];  
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
@@ -361,7 +370,11 @@ class DocumentsController extends AppController {
         $del_id = $delete_id->id;*/
 
         $del = $driverApps->query();
+        if(!isset($_GET['document']))
         $del->delete()->where(['order_id'=>$order_id])->execute();
+        else
+        $del->delete()->where(['document_id'=>$order_id])->execute();
+        
 
         $driverAcc = array('date_of_accident',
                              'nature_of_accident',
@@ -434,11 +447,18 @@ class DocumentsController extends AppController {
         
 
         $roadTest = TableRegistry::get('road_test');
-        $arr['order_id'] = $order_id;
+        if(!isset($_GET['document']))
+        $arr['order_id'] = $_POST['order_id'];
+        else
+        $arr['document_id'] = $_POST['order_id'];  
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
         $del = $roadTest->query();
+        if(!isset($_GET['document']))
         $del->delete()->where(['order_id'=>$order_id])->execute();
+        else
+        $del->delete()->where(['document_id'=>$order_id])->execute(); 
+        
 
         foreach($_POST as $data=>$val){
           
@@ -468,12 +488,19 @@ class DocumentsController extends AppController {
        //consent form
        // echo "<pre>";print_r($_POST);die;
         $consentForm = TableRegistry::get('consent_form');
-        $arr['order_id'] =  $order_id;
+        if(!isset($_GET['document']))
+        $arr['order_id'] = $_POST['order_id'];
+        else
+        $arr['document_id'] = $_POST['order_id'];
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
 
         $del = $consentForm->query();
+        if(!isset($_GET['document']))
         $del->delete()->where(['order_id'=>$order_id])->execute();
+        else
+        $del->delete()->where(['document_id'=>$order_id])->execute();
+        
         
         foreach($_POST as $data => $val){
 
@@ -513,10 +540,18 @@ class DocumentsController extends AppController {
         $employment = TableRegistry::get('employment_verification');
         
         $del = $employment->query();
+         if(!isset($_GET['document']))
         $del->delete()->where(['order_id'=>$order_id])->execute();
+        else
+        $del->delete()->where(['document_id'=>$order_id])->execute();
+        
 
         for($i=0;$i < $_POST['count_past_emp'];$i++){
+            if(!isset($_GET['document']))
             $arr2['order_id'] = $order_id;
+            else
+            $arr2['document_id'] = $order_id;
+            
             $arr2['client_id'] = $cid;
             $arr2['user_id'] = $this->request->session()->read('Profile.id');
 
@@ -635,7 +670,11 @@ class DocumentsController extends AppController {
         $del->delete()->where(['order_id'=>$order_id])->execute();
         
         $edu = array();
-        $edu['order_id'] = $order_id;
+        if(!isset($_GET['document']))
+            $edu['order_id'] = $order_id;
+            else
+            $edu['document_id'] = $order_id;
+        
         $edu['client_id'] = $cid;
         $edu['user_id'] = $this->request->session()->read('Profile.id');
         $onlyEducation = array(
@@ -741,11 +780,12 @@ class DocumentsController extends AppController {
     }
     function add($cid=0,$did=0,$type=NULL)
     {
-         $this->set('client_id',$cid);
-         $this->set('doc_id',$did);
+         $this->set('cid',$cid);
+         $this->set('did',$did);
          $doc = $this->getDocumentcount();
          $cn = $this->getUserDocumentcount();
          $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+         //var_dump($_POST);die();
         if(is_null($type)) {
             // docu
                 

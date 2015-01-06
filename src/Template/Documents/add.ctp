@@ -85,7 +85,8 @@ $is_disabled = '';
                                             <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->profile);?>
                                             </label>
                                             <div class="col-md-6">
-                                        <select class="form-control" name="uploaded_for">
+                                            <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
+                                        <select class="form-control" name="uploaded_for" id="uploaded_for">
 								        <option value="">Select <?php echo ucfirst($settings->profile);?></option>
                                             <?php 
                                                 foreach($users as $u)
@@ -107,7 +108,7 @@ $is_disabled = '';
 											<div class="col-md-offset-3 col-md-9">
 												
 
-                                                <input type="submit" class="btn green" value="Save"/>
+                                                <a href="javascript:void(0)" class="btn green cont">Save</a>
 												
 
 												<a href="javascript:;" class="btn blue">
@@ -117,6 +118,10 @@ $is_disabled = '';
 												
                                                 
 											</div>
+                                            <div class="margin-top-10 alert alert-success display-hide flashDoc" style="display: none;">
+                                                <button class="close" data-close="alert"></button>
+                                                Document uploaded successfully
+                                            </div>
 										</div>
 									</div>
                                     </form>
@@ -129,11 +134,23 @@ $is_disabled = '';
             
             
 <script>
-    var doc_type = '<?php echo $form_type;?>',
-    client_id = '<?=$client_id?>',
-    doc_id = '<?=$doc_id?>';
-    if(doc_type!= "")
-        showforms(doc_type);
+
+    
+    client_id = '<?=$cid?>',
+    doc_id = '<?=$did?>';
+    <?php
+    /*
+    if($did)
+    {
+        ?>
+        showforms('company_pre_screen_question.php');
+        showforms('driver_application.php');
+        showforms('driver_evaluation_form.php');
+        showforms('document_tab_3.php');
+        <?php
+    }*/
+    ?>
+        //showforms(doc_type);
 function showforms(form_type)
 {
     //var form_type = $(this).val();
@@ -185,6 +202,153 @@ $.each(obj,function(index,value){
     $('#'+formID).find('input[name="'+index+'"]').val(value);
 });*/
 }
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+
+function subform(form_type)
+{
+    var filename = form_type.replace(/\W/g, '_');
+    var filename = filename.toLowerCase();
+    $('.subform').show();   1
+    $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
+}
+jQuery(document).ready(function() {
+    
+    $(document.body).on('click','.cont',function(){
+    var type=$(".document_type").val();
+    var data = {uploaded_for:$('#uploaded_for').val(),type:type};
+    $.ajax({
+       //data:'uploaded_for='+$('#uploaded_for').val(),
+       data : data,
+       type:'post',
+       url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+doc_id+'/?document='+type, 
+       success:function(res) {
+        $('#did').val(res);
+         // saving data
+       
+         if(type == "Pre-Screening"){
+         var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
+             url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document='+type,
+             order_id =$('#did').val(),
+             cid = '<?php echo $cid;?>';
+            savePrescreen(url,order_id,cid,forms);
+
+         } else if(type=="Driver Application") {
+                var  order_id =$('#did').val(),
+                    cid = '<?php echo $cid;?>',
+                    url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid+'/?document='+type;                      
+                     savedDriverApp(url,order_id,cid);
+         }else if(type=="Road test") {
+              var order_id =$('#did').val(),
+                    cid = '<?php echo $cid;?>',
+                    url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid+'/?document='+type;
+                   savedDriverEvaluation(url,order_id,cid);
+        } else if(type=="Place MEE Order") {
+             
+             var order_id =$('#did').val(),
+                cid = '<?php echo $cid;?>',
+                url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid+'/?document='+type;
+              savedMeeOrder(url,order_id,cid);
+      }
+        $('.flashDoc').show();
+        $('.flashDoc').hide(5000);
+        window.location = '<?php echo $this->request->webroot?>documents/index';
+       }
+    });
+    });
+   $('#addfiles').click(function(){
+            //alert("ssss");
+           $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
+        });
+});
+
+function savePrescreen(url,order_id,cid){
+    var param = {
+        order_id: order_id,
+        cid: cid,
+        inputs:$('#form_tab1').serialize()
+    };
+    $.ajax({
+    url:url,
+    data: param,
+    type:'POST',
+    success: function(res){
+
+    }
+    });
+}
+
+function savedDriverApp(url,order_id,cid){
+    var param = $('#form_tab2').serialize()
+    $.ajax({
+    url:url,
+    data: param,
+    type:'POST',
+    success: function(res){
+
+    }
+    });
+}
+function savedDriverEvaluation(url,order_id,cid){
+    var param = $('#form_tab3').serialize();
+
+    $.ajax({
+    url:url,
+    data: param,
+    type:'POST',
+    success: function(res){
+
+    }
+    });
+    }
+
+    function savedMeeOrder(url,order_id,cid){
+        var param = $('#form_consent').serialize();
+        $.ajax({
+        url:url,
+        data: param,
+        type:'POST',
+        success: function(res){
+            //employment
+            var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/'+order_id+'/'+cid+'/?document='+type,
+                employment=$('#form_employment').serialize();
+                saveEmployment(url,employment);
+
+            //education
+            url = '<?php echo $this->request->webroot;?>documents/saveEducation/'+order_id+'/'+cid+'/?document='+type,
+                education=$('#form_education').serialize();
+                saveEducation(url,education);
+        }
+        });
+    }
+
+    function saveEmployment(url,param){
+        $.ajax({
+            url:url,
+            data:param,
+            type:'POST',
+            success:function(rea){
+
+            }
+        });
+    }
+
+    function saveEducation(url,param){
+        $.ajax({
+            url:url,
+            data:param,
+            type:'POST',
+            success:function(res){
+                
+            }
+        });
+    }
+
+
+
+
 jQuery(document).ready(function() {
     
    $('#addfiles').click(function(){

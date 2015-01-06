@@ -1,8 +1,10 @@
-  
 <form id="form_tab1">
-<?php echo $_GET['doc_id'];?>
-<input type="hidden" class="document_type" name="document_type" value="Pre-Screening" id="af" />
-<input type="hidden" id="sub_doc_id" name="sub_doc_id" value="<?php if(isset($_GET['doc_id']))echo $_GET['doc_id']; else echo $d->id ?>" />
+
+<input type="hidden" name="document_type" value="Pre-Screening"/>
+
+
+
+<input type="hidden" name="sub_doc_id" value="<?php if(isset($_GET['doc_id']))echo $_GET['doc_id']; else echo $d->id ?>" id="af" />
 
 <div class="portlet box blue ">
 
@@ -14,20 +16,7 @@
 						<div class="portlet-body form">
 								<div class="form-body">
 
-                                    <!--<div class="form-group col-md-6">
-                                        <label class="col-md-6 control-label">Driver</label>
-                                        <div class="col-md-6">
-
-                                        <select class="form-control member_type" name="member_type">
-                                            <option value="John">John Smith</option>
-                                            <option value="Member">Sam Jones</option>
-                                            <option value="Contact">Bob Rob</option>
-                                            <option value="Contact">Jack Smith</option>
-                                            <option value="Contact">Jack Smith</option>
-                                            <option value="Contact">Jack Smith</option>
-                                        </select>
-                                    </div>
-                                    </div>-->
+                                    
 
 
 									<div class="form-group col-md-6">
@@ -95,24 +84,24 @@
                                             <th class="center" colspan="2">Basic Requirements</th>
                                         </tr>
                                     <tr>
-                                        <td>Are you legally eligible to work in Canada?</td><td><input type="radio" name="legal_eligible_work_cananda" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="legal_eligible_work_cananda" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
+                                        <td>Are you legally eligible to work in Canada?</td><td><input type="radio" id="legal_eligible_work_cananda_1" name="legal_eligible_work_cananda" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="legal_eligible_work_cananda_0" name="legal_eligible_work_cananda" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>Do you currently hold a valid Canadian passport?</td><td><input type="radio" name="hold_current_canadian_pp" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="hold_current_canadian_pp" value="0"/>&nbsp;&nbsp;No</td>
+                                        <td>Do you currently hold a valid Canadian passport?</td><td><input type="radio" id="hold_current_canadian_pp_1" name="hold_current_canadian_pp" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="hold_current_canadian_pp_0" name="hold_current_canadian_pp" value="0"/>&nbsp;&nbsp;No</td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>(If they do not have a valid Canadian passport)Do you have a Permanent Residency card and US Visa?</td><td><input type="radio" name="have_pr_us_visa" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="have_pr_us_visa" value="0"/>&nbsp;&nbsp;No</td>
+                                        <td>(If they do not have a valid Canadian passport)Do you have a Permanent Residency card and US Visa?</td><td><input type="radio" name="have_pr_us_visa" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="have_pr_us_visa_0" name="have_pr_us_visa" value="0"/>&nbsp;&nbsp;No</td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>Do you have a FAST card?</td><td><input type="radio" name="fast_card" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="fast_card" value="0"/>&nbsp;&nbsp;No </td>
+                                        <td>Do you have a FAST card?</td><td><input type="radio" id="fast_card_1" name="fast_card" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="fast_card_0" name="fast_card" value="0"/>&nbsp;&nbsp;No </td>
                                     </tr>
                                     
                                     <tr>
                                         <td>Have you ever been convicted of a criminal offence for which a pardon has not been granted or, which could cause you to not cross the border?</td>
-                                        <td><input type="radio" name="criminal_offence_pardon_not_granted" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="criminal_offence_pardon_not_granted" value="0"/>&nbsp;&nbsp;No</td>
+                                        <td><input type="radio" id="criminal_offence_pardon_not_granted_1" name="criminal_offence_pardon_not_granted" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="criminal_offence_pardon_not_granted_0" name="criminal_offence_pardon_not_granted" value="0"/>&nbsp;&nbsp;No</td>
                                     </tr>
                                     
                                     <tr><td>Where do you live?</td><td><textarea class="form-control" name="where_live"></textarea></tr>
@@ -189,7 +178,7 @@
                                     
                                     <tr>
                                         <td>Reefer:  Y or N   How many loads</td>
-                                        <td><input type="radio" name="reefer_load" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="reefer_load" value="0"/>&nbsp;&nbsp;No </td>
+                                        <td><input type="radio" id="reefer_load_1" name="reefer_load" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="reefer_load_0" name="reefer_load" value="0"/>&nbsp;&nbsp;No </td>
                                     </tr> 
                                     
                                     <tr>
@@ -441,7 +430,6 @@
                         </div>
 
 </form>
-
 <script>
     $(function(){
         $('.add_attach').click(function(){

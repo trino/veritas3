@@ -44,7 +44,7 @@
                                 <label class="control-label col-md-12">Profile Type</label>
 
                                 <div class="col-md-6">
-                                    <select name="profile_type" <?php if($this->request->session()->read('Profile.id')==$id) echo "disabled='disabled'"; ?>
+                                    <select name="profile_type" <?php if(isset($id) && $this->request->session()->read('Profile.id')==$id) echo "disabled='disabled'"; ?>
                                             class="form-control member_type">
                                         <option value="">Select</option>
                                         <?php if ($this->request->session()->read('Profile.admin')){?>

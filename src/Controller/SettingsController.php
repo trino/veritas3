@@ -138,9 +138,10 @@ class SettingsController extends AppController {
     {
         $setting = TableRegistry::get('clients');
         $u = $uid;
-        if(!$this->request->session()->read('Profile.admin')){
+        $l ="";
+        if(!$this->request->session()->read('Profile.super')){
            
-            $query = $setting->find()->where(['profile_id LIKE "'.$u.'%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'"'])->count();
+            $query = $setting->find()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id ="'.$u.'"'])->count();
             
             if($query>1)
              {
@@ -148,8 +149,8 @@ class SettingsController extends AppController {
              }
              else
              {
-                $query2 = $setting->find()->where(['profile_id LIKE "'.$u.'%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'"'])->first();
-                $l = $this->request->webroot."documents/addorder/".$query2->id;
+                if($query2 = $setting->find()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id ="'.$u.'"'])->first())
+                    $l = $this->request->webroot."documents/addorder/".$query2->id;
              }
         }
         else

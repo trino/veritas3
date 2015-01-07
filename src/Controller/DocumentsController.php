@@ -196,43 +196,15 @@ class DocumentsController extends AppController {
         $orders = TableRegistry::get('orders');
         if($did)
         $order_id = $orders->find()->where(['id'=>$did])->first();
-        //$did= $order_id->id;
-        if(isset($order_id))
-        $this->set('modal',$order_id);
+        //$did= $document_id->id;
+        if(isset($document_id))
+        $this->set('modal',$document_id);
         $this->set('cid',$cid);
         $this->set('did',$did);
 		/*$profile = $this->Clients->get($id);
 		$this->set('profile', $profile);*/
         $this->set('disabled', 1);
         $this->render('addorder');
-	}
-
-
-/**
- * Add method
- *
- * @return void
- */
-	public function addorder($cid=0,$did=0) {
-	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-         $doc = $this->getDocumentcount();
-         $cn = $this->getUserDocumentcount();
-         
-        //die(count($doc));
-        if($setting->orders_create==0 || count($doc)==0 || $cn==0 )
-        {
-            $this->Flash->error('Sorry, You dont have the permissions.');
-            	return $this->redirect("/");
-            
-        }
-        $orders = TableRegistry::get('orders');
-        if($did)
-        $order_id = $orders->find()->where(['id'=>$did])->first();
-        //$did= $order_id->id;
-        if(isset($order_id))
-        $this->set('modal',$order_id);
-        $this->set('cid',$cid);
-        $this->set('did',$did);
         if($did)
         {
             $da = TableRegistry::get('driver_application');
@@ -262,6 +234,76 @@ class DocumentsController extends AppController {
             //echo $con_detail->id;die();
             $emp_att = TableRegistry::get('employment_verification_attachments');
             $sub3['att'] = $emp_att->find()->where(['order_id'=>$did])->all();
+            $this->set('sub3',$sub3);
+            
+            
+            $edu = TableRegistry::get('education_verification');
+            $sub4['edu'] = $edu->find()->where(['order_id'=>$did])->all(); 
+            //echo $con_detail->id;die();
+            $edu_att = TableRegistry::get('education_verification_attachments');
+            $sub4['att'] = $edu_att->find()->where(['order_id'=>$did])->all();
+            $this->set('sub4',$sub4);
+        }
+	}
+
+
+/**
+ * Add method
+ *
+ * @return void
+ */
+	public function addorder($cid=0,$did=0) {
+	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+         $doc = $this->getDocumentcount();
+         $cn = $this->getUserDocumentcount();
+         
+        //die(count($doc));
+        if($setting->orders_create==0 || count($doc)==0 || $cn==0 )
+        {
+            $this->Flash->error('Sorry, You dont have the permissions.');
+            	return $this->redirect("/");
+            
+        }
+        $orders = TableRegistry::get('orders');
+        if($did)
+        $order_id = $orders->find()->where(['id'=>$did])->first();
+        //$did= $document_id->id;
+        if(isset($order_id))
+        $this->set('modal',$order_id);
+        $this->set('cid',$cid);
+        $this->set('did',$did);
+        if($did)
+        {
+            $da = TableRegistry::get('driver_application');
+            $da_detail = $da->find()->where(['order_id'=>$did])->first();
+            if($da_detail){
+            $da_ac = TableRegistry::get('driver_application_accident');
+            $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $da_li = TableRegistry::get('driver_application_licenses');
+            $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $da_at = TableRegistry::get('driver_application_attachments');
+            $sub['da_at_detail'] = $da_at->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $this->set('sub',$sub);
+            }
+            $con = TableRegistry::get('consent_form');
+            $con_detail = $con->find()->where(['order_id'=>$did])->first();
+            if($con_detail){ 
+            //echo $con_detail->id;die();
+            $con_cri = TableRegistry::get('consent_form_criminal');
+            $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id'=>$con_detail->id])->all();
+            $this->set('sub2',$sub2);
+            
+            }
+            $emp = TableRegistry::get('employment_verification');
+            $sub3['emp'] = $emp->find()->where(['order_id'=>$did])->all();
+             
+            //echo $con_detail->id;die();
+            $emp_att = TableRegistry::get('employment_verification_attachments');
+            $sub3['att'] = $emp_att->find()->where(['order_id'=>$did])->all();
+            
             $this->set('sub3',$sub3);
             
             
@@ -366,7 +408,7 @@ class DocumentsController extends AppController {
 
         // checking db if order id exits in this table
         // first delete
-        // $del_prescreen = $prescreen->get(['order_id'=>$_POST['order_id']]);        
+        // $del_prescreen = $prescreen->get(['document_id'=>$_POST['document_id']]);        
         $del = $prescreen->query();
         if(!isset($_GET['document']))
         $del->delete()->where(['order_id'=>$_POST['order_id']])->execute();
@@ -395,16 +437,16 @@ class DocumentsController extends AppController {
     /**
      * saving driver application data
      */
-    public function savedDriverApp($order_id = 0 , $cid = 0){
+    public function savedDriverApp($document_id = 0 , $cid = 0){
         // echo "<pre>";print_r($_POST);die;
        
         
         if(!isset($_GET['document'])){
-        $arr['order_id'] = $order_id;
+        $arr['order_id'] = $document_id;
         $arr['document_id'] = 0;  
         }
         else{
-        $arr['document_id'] = $order_id;  
+        $arr['document_id'] = $document_id;  
         $arr['order_id'] = 0;
         }
         $arr['client_id'] = $cid;
@@ -413,14 +455,14 @@ class DocumentsController extends AppController {
         //$input_var = rtrim($_POST['inputs'],',');
         $driverApps = TableRegistry::get('driver_application');
         
-       /* $delete_id=$driverApps->find()->where(['order_id'=>$_POST['order_id']]);
+       /* $delete_id=$driverApps->find()->where(['document_id'=>$_POST['document_id']]);
         $del_id = $delete_id->id;*/
 
         $del = $driverApps->query();
         if(!isset($_GET['document']))
-        $del->delete()->where(['order_id'=>$order_id])->execute();
+        $del->delete()->where(['order_id'=>$document_id])->execute();
         else
-        $del->delete()->where(['document_id'=>$order_id])->execute();
+        $del->delete()->where(['document_id'=>$document_id])->execute();
         
 
         $driverAcc = array('date_of_accident',
@@ -489,26 +531,26 @@ class DocumentsController extends AppController {
     /**
      * saving driver application data
      */
-    public function savedDriverEvaluation($order_id = 0 , $cid = 0){
+    public function savedDriverEvaluation($document_id = 0 , $cid = 0){
         // echo "<pre>";print_r($_POST);die; 
         
 
         $roadTest = TableRegistry::get('road_test');
         if(!isset($_GET['document'])){
-        $arr['order_id'] = $order_id;
+        $arr['order_id'] = $document_id;
         $arr['document_id'] = 0;
         }
         else{
-        $arr['document_id'] = $order_id; 
+        $arr['document_id'] = $document_id; 
         $arr['order_id'] = 0;
         } 
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
         $del = $roadTest->query();
         if(!isset($_GET['document']))
-        $del->delete()->where(['order_id'=>$order_id])->execute();
+        $del->delete()->where(['order_id'=>$document_id])->execute();
         else
-        $del->delete()->where(['document_id'=>$order_id])->execute(); 
+        $del->delete()->where(['document_id'=>$document_id])->execute(); 
         
 
         foreach($_POST as $data=>$val){
@@ -535,16 +577,16 @@ class DocumentsController extends AppController {
     /**
      * saving driver application data
      */
-    public function savedMeeOrder($order_id = 0 , $cid = 0){
+    public function savedMeeOrder($document_id = 0 , $cid = 0){
        //consent form
        // echo "<pre>";print_r($_POST);die;
         $consentForm = TableRegistry::get('consent_form');
         if(!isset($_GET['document'])){
-        $arr['order_id'] = $order_id;
+        $arr['order_id'] = $document_id;
         $arr['document_id'] = 0;
         }
         else{
-        $arr['document_id'] = $order_id;
+        $arr['document_id'] = $document_id;
         $arr['order_id'] = 0;
         }
         $arr['client_id'] = $cid;
@@ -552,9 +594,9 @@ class DocumentsController extends AppController {
 
         $del = $consentForm->query();
         if(!isset($_GET['document']))
-        $del->delete()->where(['order_id'=>$order_id])->execute();
+        $del->delete()->where(['order_id'=>$document_id])->execute();
         else
-        $del->delete()->where(['document_id'=>$order_id])->execute();
+        $del->delete()->where(['document_id'=>$document_id])->execute();
         
         $post = $_POST;
         foreach($_POST as $data => $val){
@@ -589,25 +631,25 @@ class DocumentsController extends AppController {
         die;
     }
 
-    function saveEmployment($order_id = 0 , $cid = 0){
+    function saveEmployment($document_id = 0 , $cid = 0){
         // echo "<pre>";print_r($_POST);die;
         //employement 
         $employment = TableRegistry::get('employment_verification');
         
         $del = $employment->query();
          if(!isset($_GET['document']))
-        $del->delete()->where(['order_id'=>$order_id])->execute();
+        $del->delete()->where(['order_id'=>$document_id])->execute();
         else
-        $del->delete()->where(['document_id'=>$order_id])->execute();
+        $del->delete()->where(['document_id'=>$document_id])->execute();
         
         
         for($i=0;$i < $_POST['count_past_emp'];$i++){
             if(!isset($_GET['document'])){
-            $arr2['order_id'] = $order_id;
+            $arr2['order_id'] = $document_id;
             $arr2['document_id'] = 0;
             }
             else{
-            $arr2['document_id'] = $order_id;
+            $arr2['document_id'] = $document_id;
             $arr2['order_id'] = 0;
             }
             $arr2['client_id'] = $cid;
@@ -719,21 +761,24 @@ class DocumentsController extends AppController {
     }
 
 
-    function saveEducation($order_id = NULL,$cid = NULL){        
+    function saveEducation($document_id = NULL,$cid = NULL){        
         // echo $_POST['college_school_name'][0]
         //education
         $education = TableRegistry::get('education_verification');
         
         $del = $education->query();
-        $del->delete()->where(['order_id'=>$order_id])->execute();
+        if(!isset($_GET['document']))
+        $del->delete()->where(['order'=>$document_id])->execute();
+        else
+        $del->delete()->where(['document_id'=>$document_id])->execute();
         
         for($i=0;$i < $_POST['count_more_edu'];$i++){
             if(!isset($_GET['document'])){
-            $arr2['order_id'] = $order_id;
+            $arr2['order_id'] = $document_id;
             $arr2['document_id'] = 0;
             }
             else{
-            $arr2['document_id'] = $order_id;
+            $arr2['document_id'] = $document_id;
             $arr2['order_id'] = 0;
             }
             $arr2['client_id'] = $cid;
@@ -977,6 +1022,52 @@ class DocumentsController extends AppController {
                                 $this->redirect('/documents');
                         }
                     }
+        }
+        
+        if($did)
+        {
+            $da = TableRegistry::get('driver_application');
+            $da_detail = $da->find()->where(['document_id'=>$did])->first();
+            if($da_detail){
+            $da_ac = TableRegistry::get('driver_application_accident');
+            $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $da_li = TableRegistry::get('driver_application_licenses');
+            $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $da_at = TableRegistry::get('driver_application_attachments');
+            $sub['da_at_detail'] = $da_at->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $this->set('sub',$sub);
+            }
+            
+            $con = TableRegistry::get('consent_form');
+            $con_detail = $con->find()->where(['document_id'=>$did])->first(); 
+            //echo $con_detail->id;die();
+            if($con_detail){
+            $con_cri = TableRegistry::get('consent_form_criminal');
+            $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id'=>$con_detail->id])->all();
+            $this->set('sub2',$sub2);
+            }
+            
+            
+            $emp = TableRegistry::get('employment_verification');
+            $sub3['emp'] = $emp->find()->where(['document_id'=>$did])->all(); 
+            //echo $con_detail->id;die();
+            if($sub3['emp']){
+            $emp_att = TableRegistry::get('employment_verification_attachments');
+            $sub3['att'] = $emp_att->find()->where(['document_id'=>$did])->all();
+            $this->set('sub3',$sub3);
+            }
+            
+            $edu = TableRegistry::get('education_verification');
+            $sub4['edu'] = $edu->find()->where(['document_id'=>$did])->all(); 
+            //echo $con_detail->id;die();
+            if($sub4['edu']){
+            $edu_att = TableRegistry::get('education_verification_attachments');
+            $sub4['att'] = $edu_att->find()->where(['document_id'=>$did])->all();
+            $this->set('sub4',$sub4);
+            }
         }
 
     }

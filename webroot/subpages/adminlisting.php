@@ -5,7 +5,7 @@
 		<select class="form-control input-xlarge select2me" data-placeholder="Select..." name="admin">
 			<option value=""></option>
 			<?php foreach($users as $u){?>
-            <option value="<?php echo $u->username;?>"><?php echo $u->username;?></option>
+            <option value="<?php echo $u->id;?>" <?php if(isset($modal) && $modal->uploaded_for==$u->id){?> selected="selected"<?php } ?>><?php echo $u->username;?></option>
 			<?php
             }?>
 		</select>

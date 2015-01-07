@@ -1,9 +1,9 @@
 <script src="<?php echo $this->request->webroot;?>js/jquery.easyui.min.js" type="text/javascript"></script>
 <?php
 if(isset($disabled))
-$is_disabled = 'disabled="disabled"';
+    $is_disabled = 'disabled="disabled"';
 else
-$is_disabled = '';
+    $is_disabled = '';
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
@@ -140,25 +140,9 @@ $is_disabled = '';
 												<button class="close" data-dismiss="alert"></button>
 												Your form validation is successful!
 											</div>
+                                                                                        
                                             <div class="form-group mar-top-10 col-md-12 uploaded_for">
-                                                <?php
-                                                        $users = $this->requestAction("documents/getAllUser");
-                                                ?>
-                                         
-                                                <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->profile);?></label>
-                                                <div class="col-md-6">
-                                            
-                                                    <select class="form-control" name="uploaded_for" id="uploaded_for">
-            								            <option value="">Select <?php echo ucfirst($settings->profile);?></option>
-                                                        <?php 
-                                                            foreach($users as $u)
-                                                            {
-                                                                ?>
-                                                                <option value="<?php echo $u->id;?>" <?php if(isset($modal) && $modal->uploaded_for==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
-                                                                <?php
-                                                            }
-                                                         ?>
-                        							 </select>
+                                                    <?php include('subpages/adminlisting.php');?>
                                                      <input type="hidden" name="client_id" value="<?php echo $cid;?>" id="client_id" />
                                                      <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
                                                      <?php
@@ -177,12 +161,12 @@ $is_disabled = '';
                                                         <?php
                                                      }
                                                      ?>
-                                                    </div>
+                                                    
                                             </div>
+                                            <?php $division = $this->requestAction("clients/getdivision/".$cid);
+                                            if(count($division)>0){?>                                            
                                             <div class="form-group mar-top-10 col-md-12">
-                                            <?php
-                                                        $division = $this->requestAction("clients/getdivision/".$cid);
-                                                ?>
+                                          
                                                 <label class="col-md-3 control-label">Select Division</label>
                                                 <div class="col-md-6">
                                                 <select class="form-control" name="division" id="divison">
@@ -198,6 +182,7 @@ $is_disabled = '';
                         							 </select>
                                                 </div>
                                             </div>
+                                            <?php }?>                                            
                                             <div class="clearfix"></div>
                                             <?php foreach($doc2 as $d){
                                                 $tab_count = $d->id;

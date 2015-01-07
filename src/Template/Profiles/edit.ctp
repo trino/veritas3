@@ -379,7 +379,7 @@
                 data: "client_id="+client_id+"&add="+addclient,
                 url: "<?php echo $this->request->webroot;?>clients/addprofile",
                 success: function(msg){
-                    
+                    alert(msg);
                 }
             })
         });

@@ -555,8 +555,12 @@ class ClientsController extends AppController {
    
    function addprofile()
    {
-        var_dump($_POST);
-        die();
+        if($_POST['add']=='1')
+        {
+            $query = TableRegistry::get('client');
+            $query->find()->where(['id'=>$_POST['client_id']])->first();
+            echo $query->profile_id;
+        }
    }
    
     

@@ -88,17 +88,7 @@ $is_disabled = '';
                                             <div class="col-md-6">
                                             <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
                                             <input type="hidden" name="sub_doc_id" value="<?php echo $sid;?>" id="sub_id" />
-                                        <select class="form-control" name="uploaded_for" id="uploaded_for">
-								        <option value="">Select <?php echo ucfirst($settings->profile);?></option>
-                                            <?php 
-                                                foreach($users as $u)
-                                                {
-                                                    ?>
-                                                    <option value="<?php echo $u->id;?>" <?php if(isset($document) && $document->uploaded_for==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
-                                                    <?php
-                                                }
-                                             ?>
-            							 </select>
+                                        <?php include('subpages/adminlisting.php');?>
                                          </div>
                                          </div>
 										<div class="subform1" style="display: none;">

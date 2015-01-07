@@ -69,7 +69,7 @@
                 </div>
                 
                 <div class="form-group col-md-12">
-    				<label class="control-label col-md-7">Previous Address (if you have not lived at Current Address for more than 5 years): </label>
+    				<label class="control-label col-md-7">Previous Address (if you have not lived at Current Address for more than 3 years): </label>
                 </div>
                 <div class="form-group col-md-12">
     				<div class="col-md-3">

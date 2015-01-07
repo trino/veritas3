@@ -7,3 +7,5 @@ tmp/*
 vendor/*
 src/Model/*
 !empty
+*.tar.gz
+*.tar

@@ -9,7 +9,9 @@
 					</div>-->
 					<!-- END SIDEBAR TOGGLER BUTTON -->
                     <?php $logo1 = $this->requestAction('Logos/getlogo/1');?>
-                    <center><img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  /></center>
+					<div class="whitecenterdiv">A service division of</div>
+
+                    <img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  />
 				</li>
 				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
 				<li class="sidebar-search-wrapper">
@@ -134,14 +136,14 @@
                  <?php if($sidebar->document==1){
 
                      ?>
-				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']!="stats" && $this->request['action']!='drafts')?'active open':'';?>">
-					<a href="javascript:;">
+				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']=="index")?'active open':'';?>">
+					<a href="<?php echo $this->request->webrrot;?>documents/index">
 					<i class="icon-notebook"></i>
 					<span class="title"><?php echo ucfirst($settings->document);?>s</span>
 					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
-                    <?php if($sidebar->document_list==1 || $sidebar->document_create==1){?>
+                    <!--<?php if($sidebar->document_list==1 || $sidebar->document_create==1){?>
 					<ul class="sub-menu">
                         <?php if($sidebar->document_list==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
@@ -176,7 +178,7 @@
                      ?>
 												
 					</ul>
-                    <?php }  ?>
+                    <?php }  ?>-->
 				</li>
                 <?php  } ?>
                 <!--<li class="<?php echo($this->request['action']=='stats')?'active open':'';?>">
@@ -218,6 +220,15 @@
                 </li>-->
 
                 </li>
+                <?php if($sidebar->orders==1){?>
+                <li class="<?php echo($this->request['action']=='orderslist')?'active open':'';?>">
+                <a href="<?php echo $this->request->webroot;?>documents/orderslist">
+                <i class="icon-notebook"></i>
+				<span class="title">Orders</span>
+                <span class="selected"></span>
+                </a>
+                </li>
+                <?php }?>
                 <?php if($sidebar->messages==1){?>
                 <li class="<?php echo($this->request['controller']=='Messages')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>Messages">
@@ -233,12 +244,44 @@
                 ?>
                 
                 <li class="<?php echo($this->request['action']=='drafts')?'active open':'';?>">
-                <a href="<?php echo $this->request->webroot;?>documents/drafts">
+                <a href="javascript:;">
                 <i class="icon-note"></i>
 				<span class="title">Draft</span>
-
                 <span class="selected"></span>
                 </a>
+                
+					<ul class="sub-menu">
+                        
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
+							<a href="<?php echo $this->request->webroot;?>documents/drafts">
+                            <i class="icon-list"></i>
+							 <?php echo ucfirst($settings->document);?>s</a>
+						</li>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
+                            <a href="<?php echo $this->request->webroot;?>documents/drafts">
+                                <i class="icon-list"></i> Orders</a>
+                        </li>
+                       
+
+                        <?php /*
+                        if($sidebar->document_create==1){?>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='order')?'class="active"':'';?>>
+							<a href="<?php echo WEB_ROOT;?>documents/addorder/1">
+                            <i class="icon-plus"></i> 
+							Submit Orders</a>
+						</li>
+						<?php }?>
+                        <?php if($sidebar->document_create==1){?>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
+							<a href="<?php echo WEB_ROOT;?>documents/add/1">
+                            <i class="icon-plus"></i>
+							Submit <?php echo ucfirst($settings->document);?></a>
+						</li>
+						<?php } */
+                     ?>
+												
+					</ul>
+                   
                 </li>
                 <?php
                 }

@@ -269,46 +269,41 @@ Place MEE Order
                             <th>Location</th>
                         </tr>
                     </thead>
-                    <tr>
-                        <td><input type="text" class="form-control" name="offence[]" /></td>
-                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
-                        <td><input type="text" class="form-control" name="location[]"/></td>
+                    <?php
+                    $i=0;
+                    if(isset($sub2) && $sub2){
+                    foreach($sub2['con_cri'] as $con_cri){
+                        $co[$i] = $con_cri->offence;
+                        $cd[$i] = $con_cri->date_of_sentence;
+                        $cl[$i] = $con_cri->location;
+                        
+                        $i++;
+                    }
+                    }
+                    if($i<=7)
+                    {
+                        for($j=$i;$j<=7;$j++)
+                        {
+                            $co[$i] = '';
+                        $cd[$i] = '';
+                        $cl[$i] = '';
+                        }
+                    }
+                    
+                    ?>
+                    <?php
+                    for($k=0;$k<8;$k++)
+                    {
+                        ?>
+                        <tr>
+                        <td><input type="text" class="form-control" name="offence[]" value="<?php echo $co[$k];?>" /></td>
+                        <td><input type="text" class="form-control" name="date_of_sentence[]" value="<?php echo $cd[$k];?>" /></td>
+                        <td><input type="text" class="form-control" name="location[]" value="<?php echo $cl[$k];?>"/></td>
                     </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" name="offence[]" /></td>
-                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
-                        <td><input type="text" class="form-control" name="location[]"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" name="offence[]" /></td>
-                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
-                        <td><input type="text" class="form-control" name="location[]"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" name="offence[]" /></td>
-                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
-                        <td><input type="text" class="form-control" name="location[]"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" name="offence[]" /></td>
-                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
-                        <td><input type="text" class="form-control" name="location[]"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" name="offence[]" /></td>
-                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
-                        <td><input type="text" class="form-control" name="location[]"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" name="offence[]" /></td>
-                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
-                        <td><input type="text" class="form-control" name="location[]"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" name="offence[]" /></td>
-                        <td><input type="text" class="form-control" name="date_of_sentence[]" /></td>
-                        <td><input type="text" class="form-control" name="location[]"/></td>
-                    </tr>
+                        <?php
+                    }
+                    ?>
+                    
                     </table>
                 </div>
                 

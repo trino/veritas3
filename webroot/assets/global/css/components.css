@@ -12217,11 +12217,16 @@ Transparent Button
 .secondary_logo{
     display: block;
     margin-right: 19px;
-    padding: 45px 20px 0 20px;
+    padding: 10px 20px 0 20px;
     width:100%;
    
 }
 
+
+.whitecenterdiv {
+  padding-top: 30px;
+  color:white; width:100%; text-align: center;
+}
 
 .whiteCorner {
     z-index: 2;

@@ -149,13 +149,20 @@ class ClientsController extends AppController {
         }
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
+        
 	   $clients = TableRegistry::get('Clients');
         $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
-		  
+		 
 			if ($clients->save($client)) {
+			 
+             if(isset($_POST['division']))
+             {
+                
+             }
 				$this->Flash->success('The user has been saved.');
                 	return $this->redirect(['action' => 'edit',$client->id]);
+                    
 			} else {
 				$this->Flash->error('The user could not be saved. Please, try again.');
 			}
@@ -173,6 +180,7 @@ class ClientsController extends AppController {
         $con='';
         $count=1;
         if(isset($_POST['profile_id'])){
+            
         foreach($_POST['profile_id'] as $ri)
         {
         	if($count==1)	
@@ -204,8 +212,25 @@ class ClientsController extends AppController {
 	   
         $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
-		  
-			if ($clients->save($client)) {
+		 if ($clients->save($client)) {
+                if($_POST['division']!="")
+                { 
+                    $division = nl2br($_POST['division']);
+                    $dd = explode("<br />",$division);
+                    $divisions['client_id']= $client->id;
+                     
+                    foreach($dd as $d)
+                    {
+                        $divisions['title']=trim($d);
+                        $divs = TableRegistry::get('client_divison');
+                         $div = $divs->newEntity($divisions);
+                         $divs->save($div);
+                        unset($div);
+                    }
+                   
+                    //die();
+                
+                }
 				$this->Flash->success('The client has been saved.');
                 	echo $client->id;
 			} else {
@@ -222,6 +247,25 @@ class ClientsController extends AppController {
                         ->where(['id' => $id])
                         ->execute();
                         $this->Flash->success('The client has been saved.');
+            if($_POST['division']!="")
+                { 
+                    $division = nl2br($_POST['division']);
+                    $dd = explode("<br />",$division);
+                    $divisions['client_id']= $id;
+                    $client_division = TableRegistry::get('client_divison');
+                    $client_division->deleteAll(array('client_id'=>$id)); 
+                    foreach($dd as $d)
+                    {
+                        $divisions['title']=trim($d);
+                        $divs = TableRegistry::get('client_divison');
+                         $div = $divs->newEntity($divisions);
+                         $divs->save($div);
+                        unset($div);
+                    }
+                   
+                    //die();
+                
+                }
                 	echo $id;
         }
 		die();
@@ -250,8 +294,10 @@ class ClientsController extends AppController {
         $arr2 = explode(',',$client->contact_id);
 
 		if ($this->request->is(['patch', 'post', 'put'])) {
+		   
 			$clients = $this->Clients->patchEntity($client, $this->request->data);
 			if ($this->Clients->save($clients)) {
+			      
 				$this->Flash->success('The user has been saved.');
 				return $this->redirect(['action' => 'index']);
 			} else {
@@ -490,6 +536,15 @@ class ClientsController extends AppController {
             
     $this->response->body($q);
     return $this->response;
+   }
+   
+   function getdivision($cid)
+   {
+        $query = TableRegistry::get('client_divison');
+        $q = $query->find()->where(['client_id'=>$cid])->all();
+         $this->response->body($q);
+        return $this->response;
+        
    }
    
     

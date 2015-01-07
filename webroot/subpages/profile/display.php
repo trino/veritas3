@@ -10,23 +10,40 @@ else
 <form action="<?php echo $this->request->webroot; ?>settings/change_text"
                                           role="form" method="post">
                                         <div class="form-group" id="notli">
+<div class="row">
 
-                                            <div class="clearfix"></div>
+                                            <div class="col-md-4">
+
                                             <div class="form-group">
                                                 <label class="control-label">Client</label>
                                                 <input type="text" name="client" class="form-control"
                                                        value="<?php echo $settings->client; ?>"/>
                                             </div>
+                                            </div>
+                                            </div><div class="row">
+
+                                            <div class="col-md-4">
+
                                             <div class="form-group">
                                                 <label class="control-label">Document</label>
                                                 <input type="text" name="document" class="form-control"
                                                        value="<?php echo $settings->document; ?>"/>
                                             </div>
+                                            </div>
+                                            </div><div class="row">
+
+                                            <div class="col-md-4">
+
                                             <div class="form-group">
                                                 <label class="control-label">Profile</label>
                                                 <input type="text" name="profile" class="form-control"
                                                        value="<?php echo $settings->profile; ?>"/>
                                             </div>
+                                            </div>
+                                            </div>
+
+
+
                                             <!--<select class="form-control" onchange="change_text(this.value)">
                                                 <option value="">Select User/Profile</option>
                                                 <option value="1">Profile/Client</option>

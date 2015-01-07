@@ -12,10 +12,10 @@
                                     <li class="">
                                         <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
                                     </li>
-                                    
-                                	
-                                
-                                
+
+
+
+
                                 </ul>
                                     <div class="tab-content">
                                                 <div class="tab-pane active" id="subtab_2_1">
@@ -24,7 +24,17 @@
                                 					   <form action="#" method="post" id="blockform">
                                         <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                         <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
-                                        <table class="table table-light table-hover">
+
+                                                           <div class="row">
+
+
+                                                               <div class="col-md-6">
+                                                                   <div class="form-group">
+                                                                       <h3 class="block">Sidebar</h3>                            </div>
+                                                               </div>
+                                                           </div>
+
+                                                           <table class="table table-light ">
                                             <tr>
                                                 <td class="vtop">
                                                     <?php echo ucfirst($settings->profile); ?>
@@ -281,10 +291,15 @@
 
 
 
+                                                           <div class="row">
 
 
+                                                               <div class="col-md-6">
+                                                                   <div class="form-group">
+                                                                       <h3 class="block">Homepage Top Block</h3>                            </div>
+                                                               </div>
+                                                           </div>
 
-                                        <h4> Homepage Top Block</h4>
 
                                         <input type="hidden" name="block[user_id]" value="<?php echo $uid;?>" />
                                         <table class="table table-light table-hover">

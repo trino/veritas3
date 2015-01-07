@@ -1,15 +1,15 @@
 <form method="post" action="" role="form" id="pass_form" >
         <div class="form-group">
             <label class="control-label">Current Password</label>
-            <input type="password" class="form-control" <?php if(isset($p->password)){?>value="<?php echo $p->password; ?>" disabled="disabled" <?php } ?> />
+            <input type="password" class="form-control input-medium" <?php if(isset($p->password)){?>value="<?php echo $p->password; ?>" disabled="disabled" <?php } ?> />
         </div>
         <div class="form-group">
             <label class="control-label">New Password</label>
-            <input type="password" class="form-control" name="password" id="password" required="required"/>
+            <input type="password" class="form-control input-medium" name="password" id="password" required="required"/>
         </div>
         <div class="form-group">
             <label class="control-label">Re-type New Password</label>
-            <input type="password" class="form-control" id="retype_password" required="required"/>
+            <input type="password" class="form-control input-medium" id="retype_password" required="required"/>
             <span class="error passerror" style="display: none;">Please enter same password</span>
         </div>
         <?php

@@ -15,24 +15,37 @@
         .tabbable-line {
             border: none !important;
         }
-        #tab_1_4,#tab_1_7{display:block!important;}
-        #tab_1_4,#tab_1_7{visibility:visible!important;}
-        #tab_1_4 *,#tab_1_7 *{visibility:visible!important;}
+
+        #tab_1_4, #tab_1_7 {
+            display: block !important;
+        }
+
+        #tab_1_4, #tab_1_7 {
+            visibility: visible !important;
+        }
+
+        #tab_1_4 *, #tab_1_7 * {
+            visibility: visible !important;
+        }
     }
 
 </style>
-<?php
-if (isset($disabled))
-    $is_disabled = 'disabled="disabled"';
-else
-    $is_disabled = '';
-if(isset($profile))
-    $p = $profile;
-?>
-<?php $settings = $this->requestAction('settings/get_settings'); ?>
-<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
 
+<!-- can we remove the block above? -->
+<?php
+    if (isset($disabled))
+        $is_disabled = 'disabled="disabled"';
+    else
+        $is_disabled = '';
+    if (isset($profile))
+        $p = $profile;
+?>
+
+
+<?php $settings = $this->requestAction('settings/get_settings'); ?>
+
+
+<!--div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -47,10 +60,10 @@ if(isset($profile))
                 <button type="button" class="btn default" data-dismiss="modal">Close</button>
             </div>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
-</div>
+</div-->
+
+
 <!-- /.modal -->
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN STYLE CUSTOMIZER -->
@@ -164,11 +177,13 @@ if(isset($profile))
 </div>
 <div class="clearfix"></div>
 
+
 <!-- END STYLE CUSTOMIZER -->
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?> Manager
 </h3>
+
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
@@ -177,15 +192,16 @@ if(isset($profile))
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href=""><?php echo ucfirst($settings->profile); ?></a>
+            <a href=""><?php echo ucfirst($settings->profile); ?> Manager</a>
         </li>
     </ul>
     <?php
-    if (isset($disabled)) { ?>
-        <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
-    <?php } ?>
-
+        if (isset($disabled)) { ?>
+            <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+        <?php } ?>
 </div>
+
+
 <!-- END PAGE HEADER-->
 <!-- BEGIN PAGE CONTENT-->
 <div class="row margin-top-20">
@@ -196,67 +212,63 @@ if(isset($profile))
             <div class="portlet light profile-sidebar-portlet">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
-                    <?php if(isset($p->image) && $p->image){?>
-                    <img id="ppicture" src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image?>" class="img-responsive" alt="">
-                    
-                    <?php }
-                    else
-                    {
+                    <?php if (isset($p->image) && $p->image!= "") { ?>
+                        <img id="ppicture"
+                             src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image ?>" class="img-responsive" alt="">
+
+                    <?php } else {
                         ?>
-                        <img src="<?php echo $this->request->webroot; ?>img/uploads/male.png" class="img-responsive" alt="">
-                        <?php
+                        <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive"
+                             alt="">
+                    <?php
                     }
                     ?>
-                    
+
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
-                        <?php if(isset($p->fname))echo ucwords($p->fname.' '.$p->lname);?>
+                        <?php if (isset($p->fname)) echo ucwords($p->fname . ' ' . $p->lname); ?>
                     </div>
                     <div class="profile-usertitle-job">
-                        <?php if(isset($p->id)){?>Reference Number: <?php echo $p->id;?><?php }?>
+                        <?php if (isset($p->id)) { ?>Reference Number: <?php echo $p->id; ?><?php } ?>
                     </div>
                 </div>
 
             </div>
-            <?php if($this->request->params['action'] == 'edit'){?>
-            <div class="portlet box blue">
-                <div class="portlet-title">
-                    <div class="caption">Assign to client</div>
-                </div>
-                <div class="portlet-body">
-                    <table class="table">
-                    <?php
-                    
-                        $clients = $this->requestAction('/clients/getAllClient/');
-                        $count=0;
-                        if($clients)
-                        foreach($clients as $o)
-                        {
-                            
-                            ?>
-                            
-                                <tr><td><input type="checkbox" value="<?php echo $o->id;?>" /> <?php echo $o->title;?></a></td></tr>
-                                
-                            
+            <?php if ($this->request->params['action'] == 'edit') { ?>
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption">Assign to client</div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table">
                             <?php
-                            
-                        }
-                        
-                       
-                    
-                    ?>
-                        
-                    </table>
 
-                    
-                    <div class="clearfix"></div>
+                                $clients = $this->requestAction('/clients/getAllClient/');
+                                $count = 0;
+                                if ($clients)
+                                    foreach ($clients as $o) {
 
+                                        ?>
+
+                                        <tr>
+                                            <td><input type="checkbox"
+                                                       value="<?php echo $o->id; ?>"/> <?php echo $o->title; ?></a></td>
+                                        </tr>
+
+                                    <?php
+                                    }
+                            ?>
+
+                        </table>
+
+                        <div class="clearfix"></div>
+
+                    </div>
                 </div>
-            </div>
-            <?php }?>
+            <?php } ?>
             <!-- END PORTLET MAIN -->
         </div>
         <!-- END BEGIN PROFILE SIDEBAR -->
@@ -269,49 +281,45 @@ if(isset($profile))
                             <div class="caption caption-md">
                                 <i class="icon-globe theme-font hide"></i>
                                 <span
-                                    class="caption-subject font-blue-madison bold"><?php echo ucfirst($settings->profile); ?></span>
+                                    class="caption-subject font-blue-madison bold"><?php echo ucfirst($settings->profile); ?> Manager</span>
                             </div>
                             <ul class="nav nav-tabs">
                                 <li class="active">
                                     <a href="#tab_1_1" data-toggle="tab">Settings</a>
                                 </li>
-                                <?php 
-                                if($this->request['action'] != 'add'){
-                                
-                                if($this->request->session()->read('Profile.admin') || !isset($myuser))
-                                {
-                                ?>
-                                <?php if($this->request->session()->read('Profile.admin')&& $this->request['pass'][0]==$this->Session->read('Profile.id')){?>
-                                <li>
-                                    <a href="#tab_1_4" data-toggle="tab">Display</a>
-                                </li>
                                 <?php
-                                }
-                                
-                                if($this->request->session()->read('Profile.id')==$id && $this->request->session()->read('Profile.admin'))
-                                {
-                                    ?>
-                                    
-                                <li>
-                                    <a href="#tab_1_5" data-toggle="tab">Logos</a>
-                                </li>
+                                    if ($this->request['action'] != 'add') {
 
-                                <li>
-                                    <a href="#tab_1_6" data-toggle="tab">Pages</a>
-                                </li>
-                                <?php
-                                }
-                                ?>
-                                <!--<li>
-                                                <a href="#tab_1_7" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
-                                            </li>-->
+                                        if ($this->request->session()->read('Profile.admin') || !isset($myuser)) {
+                                            ?>
+                                            <?php if ($this->request->session()->read('Profile.admin') && $this->request['pass'][0] == $this->Session->read('Profile.id')) { ?>
+                                                <li>
+                                                    <a href="#tab_1_4" data-toggle="tab">Display</a>
+                                                </li>
+                                            <?php
+                                            }
 
-                                <li>
-                                    <a href="#tab_1_7" data-toggle="tab">Permissions</a>
-                                </li>
-                                
-                                    <?php
-                                } }
+                                            if ($this->request->session()->read('Profile.id') == $id && $this->request->session()->read('Profile.admin')) {
+                                                ?>
+
+                                                <li>
+                                                    <a href="#tab_1_5" data-toggle="tab">Logos</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#tab_1_6" data-toggle="tab">Pages</a>
+                                                </li>
+                                            <?php
+                                            }
+                                            ?>
+
+                                            <li>
+                                                <a href="#tab_1_7" data-toggle="tab">Permissions</a>
+                                            </li>
+
+                                        <?php
+                                        }
+                                    }
                                 ?>
                             </ul>
                         </div>
@@ -319,40 +327,32 @@ if(isset($profile))
                             <div class="tab-content">
                                 <!-- PERSONAL INFO TAB -->
                                 <div class="tab-pane active" id="tab_1_1">
-                                    <input type="hidden" name="user_id" value="<?php echo "";?>" />
-                                    <?php include('subpages/profile/info.php');?>
+                                    <input type="hidden" name="user_id" value="<?php echo ""; ?>"/>
+                                    <?php include('subpages/profile/info.php'); ?>
                                 </div>
                                 <!-- END PERSONAL INFO TAB -->
                                 <!-- CHANGE AVATAR TAB -->
-                                <?php
-                                if($this->request['action'] != 'add'){ 
-                                ?>
-                                
-                                <!-- END CHANGE PASSWORD TAB -->
-                                <!-- PRIVACY SETTINGS TAB -->
-                                <div class="tab-pane" id="tab_1_4">
-                                    <?php include('subpages/profile/display.php');?>
-                                </div>
-                                <div class="tab-pane" id="tab_1_5">
-                                    <?php include('subpages/profile/logo.php');?>
-                                </div>
 
+                                    <?php
+                                    if ($this->request['action'] != 'add') {
+                                        ?>
 
-                                <div class="tab-pane" id="tab_1_6">
-                                    <?php include('subpages/profile/page.php');?>
-                                </div>
-                                <!-- END PRIVACY SETTINGS TAB -->
+                                        <div class="tab-pane" id="tab_1_4">
+                                            <?php include('subpages/profile/display.php'); ?>
+                                        </div>
+                                        <div class="tab-pane" id="tab_1_5">
+                                            <?php include('subpages/profile/logo.php'); ?>
+                                        </div>
 
+                                        <div class="tab-pane" id="tab_1_6">
+                                            <?php include('subpages/profile/page.php'); ?>
+                                        </div>
 
-                                <!-- PRIVACY SETTINGS TAB -->
-                                <div class="tab-pane" id="tab_1_7">
-                                    <?php include('subpages/profile/block.php');?>
-                                </div>
-                                <?php } ?>
+                                        <div class="tab-pane" id="tab_1_7">
+                                            <?php include('subpages/profile/block.php'); ?>
+                                        </div>
 
-                                <!-- PRIVACY SETTINGS TAB -->
-
-
+                                    <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -379,50 +379,34 @@ if(isset($profile))
                 });
                 $('#driver_div').hide();
             }
-             
+
         });
-        
+
         $("#pass_form").validate({
-        rules: { 
-            password: {
-                required: true
+            rules: {
+                password: {
+                    required: true
+                },
+                retype_password: {
+                    required: true,
+                    equalTo: "#password"
+                }
             },
-            retype_password: {
-                required: true,
-                equalTo: "#password"
+            messages: {
+                password: "Please enter password",
+                retype_password: "Password do not match"
+            },
+            submitHandler: function () {
+                $('#pass_form').submit();
             }
-        },
-        messages: {
-            password: "Please enter password",
-            retype_password: "Password do not match"
-        },      
-        submitHandler: function() { $('#pass_form').submit(); }
-    });
+        });
     });
 </script>
+
+
+
+
 <?php /*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="actions columns large-2 medium-3">
 	<h3><?= __('Actions') ?></h3>
 	<ul class="side-nav">

@@ -56,7 +56,7 @@
     						</a>
                             <?php }
                             else{?>
-                            <a class="more" href="javascript:;" onclick="showforms('<?php echo $d->form."?doc_id=".$d->id;?>')">
+                            <a class="more" id="sub_doc_click<?php echo $d->id;?>" href="javascript:;" onclick="showforms('<?php echo $d->form."?doc_id=".$d->id;?>')">
     						Load Document<i class="m-icon-swapright m-icon-white"></i>
     						</a>  
                             <?php

@@ -8,18 +8,132 @@
                         <div class="portlet-body form">
 								<div class="form-body">
 <h4><strong>Education Information for Last 3 Years</strong></h4>
+<?php
+$counter=0;
+if(isset($sub4['edu']) && $sub4['edu'])
+{
+    foreach($sub4['edu'] as $emp)
+    {
+        $counter++;
+        if($counter!=1)
+        {
+            if($counter==2)
+            {
+                ?>
+                <div id="more_edu">
+                <?php
+            }
+            ?>
+            <div id="toremove">
+            <?php
+        }
+        ?>
+        <div class="table-scrollable">
+            <table class="table table-striped">
+                <tr><th colspan="2">Past Education</th></tr>
+                <tr><td colspan="2">School/College Name<input type="text" class="form-control" value="<?php echo $emp->college_school_name;?>" name="college_school_name[]" /></td></tr>
+                <tr><td colspan="2">Address<input type="text" class="form-control" name="address[]" value="<?php echo $emp->address;?>" /></td></tr>
+                <tr><td>Supervisor's Name:<input type="text" class="form-control" name="supervisior_name[]" value="<?php echo $emp->supervisior_name;?>"/></td>
+                    <td>Phone #:<input type="text" class="form-control" name="supervisior_phone[]" value="<?php echo $emp->supervisior_phone;?>/></td></tr>
+                <tr><td>Supervisor's Email:<input type="text" class="form-control" name="supervisior_email[]" value="<?php echo $emp->supervisior_email;?>"/></td>
+                    <td>Secondary Email:<input type="text" class="form-control" name="supervisior_secondary_email[]" value="<?php echo $emp->supervisior_secondary_email;?>"/></td></tr>
+                <tr><td>Education Start Date:<input type="text" class="form-control date-picker" name="education_start_date[]" value="<?php echo $emp->education_start_date;?>"/></td>
+                    <td>Education End Date:<input type="text" class="form-control date-picker" name="education_end_date[]" value="<?php echo $emp->education_end_date;?>"/></td></tr>
+                <tr><td>Claims with this Tutor:&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" <?php if($emp->claim_tutor == '1'){?>checked="checked"<?php }?> value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" <?php if($emp->claim_tutor == '0'){?>checked="checked"<?php }?> value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
+                    <td>Date Claims Occured:<input type="text" class="form-control" name="date_claims_occur[]"/></td></tr>
+                <tr><td colspan="2">Education history confirmed by (Verifier Use Only):
+                <input type="text" class="form-control" name="education_history_confirmed_by[]"/></td></tr>
+                <tr><td colspan="2">
 
-<!--div class="table-scrollable">
-    <table class="table table-striped">
+
+                        <div class="form-group col-md-12">
+
+                            <label class="col-md-6 control-label">Highest grade completed : </label>
+                            <div class="col-md-6">
+                            <select name="highest_grade_completed[]" class="form-control">
+                            <?php
+                            for($i=1;$i<=8;$i++)
+                            {
+                                ?>
+                                <option <?php if($emp->highest_grade_completed == $i){?>selected="selected"<?php }?> value="<?php echo $i;?>"><?php echo $i;?></option>
+                                <?php
+                            }
+                            ?>
+                            </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="col-md-6 control-label">High School : </label>
+                            <div class="col-md-6">
+                                <select name="high_school[]" class="form-control">
+                                <?php
+                                for($i=1;$i<=4;$i++)
+                                {
+                                    ?>
+                                    <option <?php if($emp->high_school == $i){?>selected="selected"<?php }?> value="<?php echo $i?>"><?php echo $i;?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="col-md-6 control-label">College : </label>
+                            <div class="col-md-6">
+                                <select name="college[]" class="form-control">
+                                <?php
+                                for($i=1;$i<=4;$i++)
+                                {
+                                    ?>
+                                    <option <?php if($emp->college == $i){?>selected="selected"<?php }?> value="<?php echo $i?>"><?php echo $i;?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="col-md-6 control-label">Last School attended : </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" value="<?php echo $emp->last_school_attended;?>" name="last_school_attended[]" />
+                            </div>
+                        </div>
+
+
+
+
+                    </td></tr>
+                <tr><td>Signature:<input type="text" class="form-control" value="<?php echo $emp->signature;?>" name="signature[]"/></td>
+                    <td>Date/Time:<input type="text" class="form-control" value="<?php echo $emp->date_time;?>" name="date_time[]" /></td></tr>
                 
-                <tr><td colspan="2">Name<input type="text" class="form-control" name="edu_name" /></td></tr>
-                <tr><td>ID #:<input type="text" class="form-control" name="edu_id"/></td>
-                    <td>Date of Birth:<input type="text" class="form-control" placeholder="MM/DD/YYYY" name="edu_date_of_birth"/></td></tr>
-                <tr><td>Total Claims in Past 3 Years:<input type="text" class="form-control" name="edu_total_claim_past3"/></td>
-                    <td>Current Education:<input type="text" class="form-control" name="edu_current"/></td></tr>
-     </table>
-</div-->
-
+    </table>
+        </div>
+        
+        <?php
+        if($counter!=1)
+        {
+            ?>
+            <div class="delete">
+                <a href="javascript:void(0);" class="btn red" id="delete">Delete</a>
+            </div>
+            </div>
+            
+            <?php
+            if($counter==2)
+            {
+                ?>
+                </div>
+                <?php
+            }
+        }
+    }
+}
+else
+{
+   ?>
 <div class="table-scrollable">
     <table class="table table-striped">
                 <tr><th colspan="2">Past Education</th></tr>
@@ -42,41 +156,55 @@
 
                             <label class="col-md-6 control-label">Highest grade completed : </label>
                             <div class="col-md-6">
-                                <input type="radio" name="highest_grade_completed" value="1"/>&nbsp;&nbsp;1&nbsp;&nbsp;
-                                <input type="radio" name="highest_grade_completed" value="2"/>&nbsp;&nbsp;2&nbsp;&nbsp;
-                                <input type="radio" name="highest_grade_completed" value="3"/>&nbsp;&nbsp;3&nbsp;&nbsp;
-                                <input type="radio" name="highest_grade_completed" value="4"/>&nbsp;&nbsp;4&nbsp;&nbsp;
-                                <input type="radio" name="highest_grade_completed" value="5"/>&nbsp;&nbsp;5&nbsp;&nbsp;
-                                <input type="radio" name="highest_grade_completed" value="6"/>&nbsp;&nbsp;6&nbsp;&nbsp;
-                                <input type="radio" name="highest_grade_completed" value="7"/>&nbsp;&nbsp;7&nbsp;&nbsp;
-                                <input type="radio" name="highest_grade_completed" value="8"/>&nbsp;&nbsp;8&nbsp;&nbsp;
+                            <select name="highest_grade_completed[]" class="form-control">
+                            <?php
+                            for($i=1;$i<=8;$i++)
+                            {
+                                ?>
+                                <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                <?php
+                            }
+                            ?>
+                            </select>
                             </div>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label class="col-md-6 control-label">High School : </label>
                             <div class="col-md-6">
-                                <input type="radio" name="high_school" value="1"/>&nbsp;&nbsp;1&nbsp;&nbsp;
-                                <input type="radio" name="high_school" value="2"/>&nbsp;&nbsp;2&nbsp;&nbsp;
-                                <input type="radio" name="high_school" value="3"/>&nbsp;&nbsp;3&nbsp;&nbsp;
-                                <input type="radio" name="high_school" value="4"/>&nbsp;&nbsp;4&nbsp;&nbsp;
+                                <select name="high_school[]" class="form-control">
+                                <?php
+                                for($i=1;$i<=4;$i++)
+                                {
+                                    ?>
+                                    <option value="<?php echo $i?>"><?php echo $i;?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
                             </div>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label class="col-md-6 control-label">College : </label>
                             <div class="col-md-6">
-                                <input type="radio" name="college" value="1"/>&nbsp;&nbsp;1&nbsp;&nbsp;
-                                <input type="radio" name="college" value="2"/>&nbsp;&nbsp;2&nbsp;&nbsp;
-                                <input type="radio" name="college" value="3"/>&nbsp;&nbsp;3&nbsp;&nbsp;
-                                <input type="radio" name="college" value="4"/>&nbsp;&nbsp;4&nbsp;&nbsp;
+                                <select name="college[]" class="form-control">
+                                <?php
+                                for($i=1;$i<=4;$i++)
+                                {
+                                    ?>
+                                    <option value="<?php echo $i?>"><?php echo $i;?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
                             </div>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label class="col-md-6 control-label">Last School attended : </label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="last_school_attended" />
+                                <input type="text" class="form-control" name="last_school_attended[]" />
                             </div>
                         </div>
 
@@ -90,6 +218,7 @@
     </table>
 </div>
 <div id="more_edu"></div>
+<?php }?>
 <div id="add_more_edu">
     <p>&nbsp;</p>
     <input type="hidden" name="count_more_edu" id="count_more_edu" value="1" >    
@@ -125,18 +254,21 @@
 $(function(){
   $(".add_more_edu").click(function(){
     $.ajax({
-       url:"<?php echo $this->request->webroot;?>subpages/past_education.php",
+       url:"<?php echo $this->request->webroot;?>subpages/documents/past_education.php",
        success:function(res){
         $("#more_edu").append(res);
         var current = $('#count_more_edu').val();
-        $('#count_more_edu').val(parseInt(current)+1);
+        var counter = parseInt(current)+1;
+        
+        $('#count_more_edu_doc').attr('value',counter);
        }
     });
   });
   $("#delete").live("click",function(){
     $(this).parent().parent().remove(); 
      var current = $('#count_more_edu').val();
-        $('#count_more_edu').val(parseInt(current)-1);
+     var counter = parseInt(current)-1;
+        $('#count_more_edu_doc').attr('value',counter);
   }); 
   
   $('#add_more_edu_doc').click(function(){

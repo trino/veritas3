@@ -306,8 +306,8 @@
 				</div>
                 <label class="control-label col-md-3">Ever injured on the job? : </label>
 				<div class="col-md-2">
-					<input type="radio" id="injured_on_job" name="injured_on_job_1" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="injured_on_job" name="injured_on_job_0" value="0"/>&nbsp;&nbsp;No
+					<input type="radio" id="injured_on_job_1" name="injured_on_job" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
+                    <input type="radio" id="injured_on_job_0" name="injured_on_job" value="0"/>&nbsp;&nbsp;No
 				</div>
             </div>
             
@@ -649,18 +649,48 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td><input type="text" class="form-control" name="driver_license[]" /></td>
-                    <td><input type="text" class="form-control" name="province[]"/></td>
-                    <td><input type="text" class="form-control" name="license_number[]"/></td>
-                    <td><input type="text" class="form-control" name="class[]"/></td>
-                    <td><input type="text" class="form-control" name="expiration_date[]"/></td>
+                <?php 
+                    $i=0;
+                    if(isset($sub['da_li_detail']) && $sub['da_li_detail']){
+                    foreach($sub['da_li_detail'] as $da_li){
+                        $dl[$i] = $da_li->driver_license;
+                        $dp[$i] = $da_li->province;
+                        $dln[$i] = $da_li->license_number;
+                        $dc[$i] = $da_li->class;
+                        $de[$i] = $da_li->expiration_date;
+                        $i++;
+                    }
+                    }
+                    if($i<=2)
+                    {
+                        for($j=$i;$j<=2;$j++)
+                        {
+                            $dl[$j] = '';
+                        $dp[$j] = '';
+                        $dln[$j] = '';
+                        $dc[$j] = '';
+                        $de[$j] = '';
+                        }
+                    }
+                    ?>
+                    <td>
+                    
+                    
+                    <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[0]?>" /></td>
+                    <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[0]?>"/></td>
+                    <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[0]?>"/></td>
+                    <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[0]?>"/></td>
+                    <td><input type="text" class="form-control" name="expiration_date[]" value="<?php echo $de[0]?>"/></td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="form-control" name="driver_license[]" /></td>
-                    <td><input type="text" class="form-control" name="province[]" /></td>
-                    <td><input type="text" class="form-control" name="license_number[]"/></td>
-                    <td><input type="text" class="form-control" name="class[]"/></td>
-                    <td><input type="text" class="form-control" name="expiration_date[]"/></td>
+                    <td>
+                    
+                    
+                    <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[1]?>" /></td>
+                    <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[1]?>"/></td>
+                    <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[1]?>"/></td>
+                    <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[1]?>"/></td>
+                    <td><input type="text" class="form-control" name="expiration_date[]" value="<?php echo $de[1]?>"/></td>
                 </tr>
             </table>
             </div>

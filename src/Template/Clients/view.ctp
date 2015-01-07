@@ -3,6 +3,7 @@ if(isset($disabled))
 $is_disabled = 'disabled="disabled"';
 else
 $is_disabled = '';
+
 $profile = $this->requestAction('clients/getProfile/'.$id);
 $contact = $this->requestAction('clients/getContact/'.$id);
 ?>

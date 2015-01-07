@@ -1,6 +1,6 @@
 <?php $users = $this->requestAction('/profiles/getallusers');?>
 <div class="form-group">
-	<label class="control-label col-md-3">Main Admin</label>
+	<label class="control-label col-md-3">Order created for</label>
 	<div class="col-md-4">
 		<select class="form-control input-xlarge select2me" data-placeholder="Select..." name="uploaded_for" id="uploaded_for">
 			<option value=""></option>

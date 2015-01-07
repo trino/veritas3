@@ -1,4 +1,3 @@
-Place MEE Order
 <form id="form_consent">
 <div class="portlet box blue ">
 	<div class="portlet-title">

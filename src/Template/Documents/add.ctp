@@ -21,7 +21,7 @@ $is_disabled = '';
                         </a>
 					</li>
 				</ul>
-                
+
                 <?php
                 if(isset($disabled))
                 { ?>
@@ -58,13 +58,13 @@ $is_disabled = '';
                                             $doc = $this->requestAction('/documents/getDocument');
                                             ?>
 
-										
+
                                         <?php
                                         }
                                         ?>
-                                        
-                                        
-                                    
+
+
+
                                         <!--<div class="form-group mar-top-10">
                                             label class="col-md-3 control-label">Select <?php echo ucfirst($settings->document);?> Type</label>
                                             <div class="col-md-6">
@@ -79,12 +79,12 @@ $is_disabled = '';
                                             <?php  include('subpages/home_blocks.php');?>
                                         </div>
                                         <div class="form-group mar-top-10">
-                                   
-                                           
+
+
                                             <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
                                             <input type="hidden" name="sub_doc_id" value="<?php echo $sid;?>" id="sub_id" />
                                         <?php include('subpages/adminlisting.php');?>
-                                         
+
                                          </div>
 										<div class="subform1" style="display: none;">
 								            <?php include('subpages/documents/company_pre_screen_question.php');?>
@@ -97,15 +97,15 @@ $is_disabled = '';
 										</div>
                                         <div class="subform4" style="display: none;">
 								            <?php include('subpages/documents/document_tab_3.php');?>
-										</div>                                                                                                                        
+										</div>
 									</div>
 									<div class="form-actions">
 										<div class="row">
 											<div class="col-md-offset-3 col-md-9">
-												
+
 
                                                 <a href="javascript:void(0)" class="btn green cont">Save</a>
-												
+
 
 												<a href="javascript:;" class="btn blue">
 												Save As Draft <i class="m-icon-swapright m-icon-white"></i>
@@ -114,24 +114,24 @@ $is_disabled = '';
                                                 <button class="close" data-close="alert"></button>
                                                 Document uploaded successfully
                                                 </div>
-												
-                                                
+
+
 											</div>
-                                            
+
 										</div>
 									</div>
                                     </div>
 								</div>
-							
+
 						</div>
 					</div>
 				</div>
 			</div>
-            
-            
+
+
 <script>
 
-    
+
     client_id = '<?=$cid?>',
     doc_id = '<?=$did?>';
     <?php
@@ -152,10 +152,10 @@ function showforms(form_type)
     //alert(form_type);
     var arr_formtype = form_type.split('?');
     var sub_doc_id = arr_formtype[1];
-    
+
     var s_arr = sub_doc_id.split('=');
     var ftype = arr_formtype[0];
-    
+
     $('#sub_id').val(s_arr[1]);
     //var form_type = $(this).val();
     //alert(form_type);
@@ -164,16 +164,16 @@ function showforms(form_type)
     //$('.subform').show();   1
     $('.subform1 .document_type').remove();
     $('.subform1 .sub_docs_id').remove();
-    
+
     $('.subform2 .document_type').remove();
     $('.subform2 .sub_docs_id').remove();
-    
+
     $('.subform3 .document_type').remove();
     $('.subform3 .sub_docs_id').remove();
-    
+
     $('.subform4 .document_type').remove();
     $('.subform4 .sub_docs_id').remove();
-    
+
     if(s_arr[1] == 1)
     {
         $('#form_tab1').prepend('<input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>'+
@@ -194,7 +194,7 @@ function showforms(form_type)
         $('#form_tab4').prepend('<input class="document_type" type="hidden" name="document_type" value="Place MEE Order" />'+
 '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="4"  />');
     }
-    
+
     if(ftype!= ""){
         //alert(form_type);
         for(var p = 1;p<=4;p++)
@@ -211,9 +211,9 @@ function showforms(form_type)
         $.getJSON(url,param,function(res){
             if(res){
             if(ftype == "company_pre_screen_question.php"){
-                
+
                  $('#form_tab1').form('load',res);
-                
+
                 if(res.legal_eligible_work_cananda==1){
                     // debugger;
                     jQuery('#legal_eligible_work_cananda_1').closest('span').addClass('checked');
@@ -332,47 +332,47 @@ function showforms(form_type)
                      $('#form_tab2').find('#breath_alcohol_0').closest('span').addClass('checked')
 
                  }
-                
+
                 if(res.fast_card==1){
                      $('#form_tab2').find('#fast_card_1').closest('span').addClass('checked')
                  } else if(res.fast_card==0){
                      $('#form_tab2').find('#fast_card_0').closest('span').addClass('checked')
 
                  }
-                
+
                 if(res.not_able_perform_function_position==1){
                      $('#form_tab2').find('#not_able_perform_function_position_1').closest('span').addClass('checked')
                  } else if(res.not_able_perform_function_position==0){
                      $('#form_tab2').find('#not_able_perform_function_position_0').closest('span').addClass('checked')
 
                  }
-                
+
                 if(res.physical_capable_heavy_manual_work==1){
                      $('#form_tab2').find('#physical_capable_heavy_manual_work_1').closest('span').addClass('checked')
                  } else if(res.physical_capable_heavy_manual_work==0){
                      $('#form_tab2').find('#physical_capable_heavy_manual_work_0').closest('span').addClass('checked')
 
                  }
-                
+
                 if(res.injured_on_job==1){
                      $('#form_tab2').find('#injured_on_job_1').closest('span').addClass('checked')
                  } else if(res.injured_on_job==0){
                      $('#form_tab2').find('#injured_on_job_0').closest('span').addClass('checked')
 
-                 } 
-                 
+                 }
+
                  if(res.willing_physical_examination==1){
                      $('#form_tab2').find('#willing_physical_examination_1').closest('span').addClass('checked')
                  } else if(res.willing_physical_examination==0){
                      $('#form_tab2').find('#willing_physical_examination_0').closest('span').addClass('checked')
 
-                 } 
+                 }
                  if(res.ever_been_denied==1){
                      $('#form_tab2').find('#ever_been_denied_1').closest('span').addClass('checked')
                  } else if(res.ever_been_denied==0){
                      $('#form_tab2').find('#ever_been_denied_0').closest('span').addClass('checked')
 
-                 } 
+                 }
                  if(res.suspend_any_license==1){
                      $('#form_tab2').find('#suspend_any_license_1').closest('span').addClass('checked')
                  } else if(res.suspend_any_license==0){
@@ -467,7 +467,7 @@ function showforms(form_type)
                 }else if(res.driving_follows_too_closely==4){
                     $('#form_tab3').find('#driving_follows_too_closely_4').closest('span').addClass('checked')
                 }
-                
+
 
                 if(res.driving_improper_choice_lane==1){
                     $('#form_tab3').find('#driving_improper_choice_lane_1').closest('span').addClass('checked')
@@ -478,7 +478,7 @@ function showforms(form_type)
                 }else if(res.driving_improper_choice_lane==4){
                     $('#form_tab3').find('#driving_improper_choice_lane_4').closest('span').addClass('checked')
                 }
-                
+
 
                 if(res.driving_fails_use_mirror_properly==1){
                     $('#form_tab3').find('#driving_fails_use_mirror_properly_1').closest('span').addClass('checked')
@@ -519,7 +519,7 @@ function showforms(form_type)
                 }else if(res.driving_speed==4){
                     $('#form_tab3').find('#driving_speed_4').closest('span').addClass('checked')
                 }
-                
+
                 if(res.driving_incorrect_use_clutch_brake==1){
                     $('#form_tab3').find('#driving_incorrect_use_clutch_brake_1').closest('span').addClass('checked')
                 } else if(res.driving_incorrect_use_clutch_brake==2){
@@ -538,7 +538,7 @@ function showforms(form_type)
                     $('#form_tab3').find('#driving_accelerator_gear_steer_3').closest('span').addClass('checked')
                 }else if(res.driving_accelerator_gear_steer==4){
                     $('#form_tab3').find('#driving_accelerator_gear_steer_4').closest('span').addClass('checked')
-                } 
+                }
 
                 if(res.driving_incorrect_observation_skills==1){
                     $('#form_tab3').find('#driving_incorrect_observation_skills_1').closest('span').addClass('checked')
@@ -579,7 +579,7 @@ function showforms(form_type)
                 }else if(res.cornering_speed==4){
                     $('#form_tab3').find('#cornering_speed_4').closest('span').addClass('checked')
                 }
-                
+
                 if(res.cornering_fails==1){
                     $('#form_tab3').find('#cornering_fails_1').closest('span').addClass('checked')
                 } else if(res.cornering_fails==2){
@@ -609,7 +609,7 @@ function showforms(form_type)
                 }else if(res.cornering_turns==4){
                     $('#form_tab3').find('#cornering_turns_4').closest('span').addClass('checked')
                 }
-                
+
 
                 if(res.cornering_wrong_lane_impede==1){
                     $('#form_tab3').find('#cornering_wrong_lane_impede_1').closest('span').addClass('checked')
@@ -620,7 +620,7 @@ function showforms(form_type)
                 }else if(res.cornering_wrong_lane_impede==4){
                     $('#form_tab3').find('#cornering_wrong_lane_impede_4').closest('span').addClass('checked')
                 }
-                
+
                 if(res.shifting_smooth_take_off==1){
                     $('#form_tab3').find('#shifting_smooth_take_off_1').closest('span').addClass('checked')
                 } else if(res.shifting_smooth_take_off==2){
@@ -670,7 +670,7 @@ function showforms(form_type)
                 }else if(res.shifting_up_down==4){
                     $('#form_tab3').find('#shifting_up_down_4').closest('span').addClass('checked')
                 }
-                
+
                 if(res.backing_uses_proper_set_up==1){
                     $('#form_tab3').find('#backing_uses_proper_set_up_1').closest('span').addClass('checked')
                 }
@@ -706,13 +706,13 @@ function showforms(form_type)
                 if(res.backing_complete_reasonable_time_fashion==1){
                     $('#form_tab3').find('#backing_complete_reasonable_time_fashion_1').closest('span').addClass('checked')
                 }
-                
+
                 if(res.recommended_for_hire==1){
                     $('#form_tab3').find('#recommended_for_hire_1').closest('span').addClass('checked')
                 } else if(res.recommended_for_hire==2){
                     $('#form_tab3').find('#recommended_for_hire_2').closest('span').addClass('checked')
                 }
-                
+
                 if(res.recommended_full_trainee==1){
                     $('#form_tab3').find('#recommended_full_trainee_1').closest('span').addClass('checked')
                 } else if(res.recommended_full_trainee==2){
@@ -727,18 +727,18 @@ function showforms(form_type)
 
                 // end road test
             }else if(ftype == "document_tab_3.php"){
-               
+
                 $('#form_consent').find(':input').each(function(){
                  var $name = $(this).attr('name');
-                 
+
                if($name!='offence[]' && $name!='date_of_sentence[]' && $name!= 'location[]')  {
                $(this).val(res[$name]);
-               
+
                }
                });
-                
-                    
-                
+
+
+
 
             }}
         });
@@ -787,7 +787,7 @@ jQuery(document).ready(function() {
     }
     ?>
     $(document.body).on('click','.cont',function(){
-     
+
     var type=$(".document_type").val();
     alert(type);
     //alert($('#sub_id').val());return;
@@ -796,11 +796,11 @@ jQuery(document).ready(function() {
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,
        type:'post',
-       url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+doc_id+'/?document='+type, 
+       url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+doc_id+'/?document='+type,
        success:function(res) {
         $('#did').val(res);
          // saving data
-       
+
          if(type == "Pre-Screening"){
          var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
              url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document='+type,
@@ -811,7 +811,7 @@ jQuery(document).ready(function() {
          } else if(type=="Driver Application") {
                 var  order_id =$('#did').val(),
                     cid = '<?php echo $cid;?>',
-                    url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid+'/?document='+type;                      
+                    url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid+'/?document='+type;
                      savedDriverApp(url,order_id,cid);
          }else if(type=="Road test") {
               var order_id =$('#did').val(),
@@ -819,7 +819,7 @@ jQuery(document).ready(function() {
                     url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid+'/?document='+type;
                    savedDriverEvaluation(url,order_id,cid);
         } else if(type=="Place MEE Order") {
-             
+
              var order_id =$('#did').val(),
                 cid = '<?php echo $cid;?>',
                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid+'/?document='+type;
@@ -914,7 +914,7 @@ function savedDriverEvaluation(url,order_id,cid){
             data:param,
             type:'POST',
             success:function(res){
-                
+
             }
         });
     }
@@ -923,7 +923,7 @@ function savedDriverEvaluation(url,order_id,cid){
 
 
 jQuery(document).ready(function() {
-    
+
    $('#addfiles').click(function(){
             //alert("ssss");
            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
@@ -937,6 +937,6 @@ jQuery(document).ready(function() {
     .page-footer,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.form-actions,.steps,.caption{display:none!important;}
     .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
     .tabbable-line{border:none!important;}
-    
+
     }
 </style>

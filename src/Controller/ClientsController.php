@@ -252,7 +252,8 @@ class ClientsController extends AppController {
                     $division = nl2br($_POST['division']);
                     $dd = explode("<br />",$division);
                     $divisions['client_id']= $id;
-                     
+                    $client_division = TableRegistry::get('client_divison');
+                    $client_division->deleteAll(array('client_id'=>$id)); 
                     foreach($dd as $d)
                     {
                         $divisions['title']=trim($d);

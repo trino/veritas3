@@ -1287,7 +1287,7 @@ class DocumentsController extends AppController {
             echo json_encode($consentFormDetail);
 
 
-            $employment = TableRegistry::get('employment_verification');
+            /*$employment = TableRegistry::get('employment_verification');
             if(!isset($_GET['document']))
             $employmentDetail = $employment->find()->where(['client_id'=>$cid,'order_id'=>$order_id,'document_id'=>0])->first();
             else
@@ -1311,7 +1311,7 @@ class DocumentsController extends AppController {
             $educationPassDetail = $educationPass->find()->where(['education_verification_id'=>$edu_id])->first();
             if($educationPassDetail)
             $edu_id = $educationPassDetail->id;            
-            // echo json_encode($educationPassDetail);          
+            // echo json_encode($educationPassDetail);      */    
 
         }
         die;

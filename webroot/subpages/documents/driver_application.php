@@ -692,6 +692,16 @@
                     <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[1]?>"/></td>
                     <td><input type="text" class="form-control" name="expiration_date[]" value="<?php echo $de[1]?>"/></td>
                 </tr>
+                <tr>
+                    <td>
+                    
+                    
+                    <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[2]?>" /></td>
+                    <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[2]?>"/></td>
+                    <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[2]?>"/></td>
+                    <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[2]?>"/></td>
+                    <td><input type="text" class="form-control" name="expiration_date[]" value="<?php echo $de[2]?>"/></td>
+                </tr>
             </table>
             </div>
             

@@ -200,7 +200,7 @@ $is_disabled = '';
                                             </div>
                                             <div class="clearfix"></div>
                                             <?php foreach($doc2 as $d){
-                                                $j = $d->id;
+                                                $tab_count = $d->id;
                                                 ?>
     											<div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab<?php echo $d->id; ?>">
     												<?php
@@ -210,12 +210,12 @@ $is_disabled = '';
     											</div>
                                             <?php } ?>
 											
-                                                <div class="<?php echo $tab;?>" id="tab<?php echo ++$j; ?>">
+                                                <div class="<?php echo $tab;?>" id="tab<?php echo ++$tab_count; ?>">
     												<?php
                                                         include('subpages/documents/confirmation.php');
                                                     ?>
     											</div>
-                                                <div class="<?php echo $tab;?>" id="tab<?php echo ++$j; ?>">
+                                                <div class="<?php echo $tab;?>" id="tab<?php echo ++$tab_count; ?>">
     												<?php
                                                         include('subpages/documents/forview.php');
                                                     ?>
@@ -887,7 +887,7 @@ jQuery(document).ready(function() {
             savePrescreen(url,order_id,cid,forms);
 
          } else if(type=="Driver Application") {
-            alert(type);
+           // alert(type);
                 var  order_id =$('#did').val(),
                     cid = '<?php echo $cid;?>',
                     url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid;                      
@@ -898,7 +898,7 @@ jQuery(document).ready(function() {
                     url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid;
                    savedDriverEvaluation(url,order_id,cid);
         } else if(type=="Place MEE Order") {
-             
+             alert('type');
              var order_id =$('#did').val(),
                 cid = '<?php echo $cid;?>',
                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid;

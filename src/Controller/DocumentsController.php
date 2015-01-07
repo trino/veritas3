@@ -180,6 +180,52 @@ class DocumentsController extends AppController {
 		/*$profile = $this->Clients->get($id);
 		$this->set('profile', $profile);*/
         $this->set('disabled', 1);
+        $did=$id;
+        if($did)
+        {
+            $da = TableRegistry::get('driver_application');
+            $da_detail = $da->find()->where(['document_id'=>$did])->first();
+            if($da_detail){
+            $da_ac = TableRegistry::get('driver_application_accident');
+            $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $da_li = TableRegistry::get('driver_application_licenses');
+            $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $da_at = TableRegistry::get('driver_application_attachments');
+            $sub['da_at_detail'] = $da_at->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $this->set('sub',$sub);
+            }
+            
+            $con = TableRegistry::get('consent_form');
+            $con_detail = $con->find()->where(['document_id'=>$did])->first(); 
+            //echo $con_detail->id;die();
+            if($con_detail){
+            $con_cri = TableRegistry::get('consent_form_criminal');
+            $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id'=>$con_detail->id])->all();
+            $this->set('sub2',$sub2);
+            }
+            
+            
+            $emp = TableRegistry::get('employment_verification');
+            $sub3['emp'] = $emp->find()->where(['document_id'=>$did])->all(); 
+            //echo $con_detail->id;die();
+            if($sub3['emp']){
+            $emp_att = TableRegistry::get('employment_verification_attachments');
+            $sub3['att'] = $emp_att->find()->where(['document_id'=>$did])->all();
+            $this->set('sub3',$sub3);
+            }
+            
+            $edu = TableRegistry::get('education_verification');
+            $sub4['edu'] = $edu->find()->where(['document_id'=>$did])->all(); 
+            //echo $con_detail->id;die();
+            if($sub4['edu']){
+            $edu_att = TableRegistry::get('education_verification_attachments');
+            $sub4['att'] = $edu_att->find()->where(['document_id'=>$did])->all();
+            $this->set('sub4',$sub4);
+            }
+        }
         $this->render('add');
 	}
     

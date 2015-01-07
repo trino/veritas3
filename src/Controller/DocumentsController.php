@@ -233,6 +233,45 @@ class DocumentsController extends AppController {
         $this->set('modal',$order_id);
         $this->set('cid',$cid);
         $this->set('did',$did);
+        if($did)
+        {
+            $da = TableRegistry::get('driver_application');
+            $da_detail = $da->find()->where(['order_id'=>$did])->first();
+            
+            $da_ac = TableRegistry::get('driver_application_accident');
+            $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $da_li = TableRegistry::get('driver_application_licenses');
+            $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $da_at = TableRegistry::get('driver_application_attachments');
+            $sub['da_at_detail'] = $da_at->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            
+            $this->set('sub',$sub);
+            
+            $con = TableRegistry::get('consent_form');
+            $con_detail = $con->find()->where(['order_id'=>$did])->first(); 
+            //echo $con_detail->id;die();
+            $con_cri = TableRegistry::get('consent_form_criminal');
+            $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id'=>$con_detail->id])->all();
+            $this->set('sub2',$sub2);
+            
+            
+            $emp = TableRegistry::get('employment_verification');
+            $sub3['emp'] = $emp->find()->where(['order_id'=>$did])->all(); 
+            //echo $con_detail->id;die();
+            $emp_att = TableRegistry::get('employment_verification_attachments');
+            $sub3['att'] = $emp_att->find()->where(['order_id'=>$did])->all();
+            $this->set('sub3',$sub3);
+            
+            
+            $edu = TableRegistry::get('education_verification');
+            $sub4['edu'] = $edu->find()->where(['order_id'=>$did])->all(); 
+            //echo $con_detail->id;die();
+            $edu_att = TableRegistry::get('education_verification_attachments');
+            $sub4['att'] = $edu_att->find()->where(['order_id'=>$did])->all();
+            $this->set('sub4',$sub4);
+        }
         
 	}
 
@@ -249,7 +288,7 @@ class DocumentsController extends AppController {
 
             
             $arr['client_id'] = $cid;
-            $arr['order_type'] = $_POST['sub_doc_id'];
+            //$arr['order_type'] = $_POST['sub_doc_id'];
             $arr['created'] = date('Y-m-d H:i:s');
             if(!$did || $did=='0'){
                 $arr['user_id'] = $this->request->session()->read('Profile.id');
@@ -362,11 +401,11 @@ class DocumentsController extends AppController {
         
         if(!isset($_GET['document'])){
         $arr['order_id'] = $order_id;
-        $arr['document_id'] = $order_id;  
+        $arr['document_id'] = 0;  
         }
         else{
         $arr['document_id'] = $order_id;  
-        $arr['order_id'] = $order_id;
+        $arr['order_id'] = 0;
         }
         $arr['client_id'] = $cid;
         $arr['user_id'] = $this->request->session()->read('Profile.id');
@@ -517,7 +556,7 @@ class DocumentsController extends AppController {
         else
         $del->delete()->where(['document_id'=>$order_id])->execute();
         
-        
+        $post = $_POST;
         foreach($_POST as $data => $val){
 
             if( $data =='offence' || $data =='date_of_sentence' || $data =='location' ){
@@ -539,9 +578,9 @@ class DocumentsController extends AppController {
 
             for($i=0;$i<8;$i++){
                 $crm['consent_form_id'] = $id;
-                $crm['offence'] = $_POST['offence'][$i];
-                $crm['date_of_sentence'] = $_POST['date_of_sentence'][$i];
-                $crm['location'] = $_POST['location'][$i];
+                $crm['offence'] = $post['offence'][$i];
+                $crm['date_of_sentence'] = $post['date_of_sentence'][$i];
+                $crm['location'] = $post['location'][$i];
                 $saveCrm = $consentForm->newEntity($crm);
                 $consentFormCri->save($saveCrm);
             }
@@ -550,7 +589,7 @@ class DocumentsController extends AppController {
         die;
     }
 
-    function saveEmployment($order_id = NULL , $cid = NULL){
+    function saveEmployment($order_id = 0 , $cid = 0){
         // echo "<pre>";print_r($_POST);die;
         //employement 
         $employment = TableRegistry::get('employment_verification');
@@ -561,7 +600,7 @@ class DocumentsController extends AppController {
         else
         $del->delete()->where(['document_id'=>$order_id])->execute();
         
-
+        
         for($i=0;$i < $_POST['count_past_emp'];$i++){
             if(!isset($_GET['document'])){
             $arr2['order_id'] = $order_id;
@@ -688,67 +727,86 @@ class DocumentsController extends AppController {
         $del = $education->query();
         $del->delete()->where(['order_id'=>$order_id])->execute();
         
-        $edu = array();
-        if(!isset($_GET['document'])){
-            $edu['order_id'] = $order_id;
-            $edu['document_id'] = 0;
+        for($i=0;$i < $_POST['count_more_edu'];$i++){
+            if(!isset($_GET['document'])){
+            $arr2['order_id'] = $order_id;
+            $arr2['document_id'] = 0;
             }
             else{
-            $edu['document_id'] = $order_id;
-            $edu['order_id'] = 0;
+            $arr2['document_id'] = $order_id;
+            $arr2['order_id'] = 0;
             }
+            $arr2['client_id'] = $cid;
+            $arr2['user_id'] = $this->request->session()->read('Profile.id');
+
+            if( isset($_POST['college_school_name'][$i]) ){
+                $arr2['college_school_name'] = $_POST['college_school_name'][$i];
+            }
+
+            if( isset($_POST['address'][$i]) ){
+                $arr2['address'] = $_POST['address'][$i];
+            }
+
+            if( isset($_POST['supervisior_name'][$i]) ){
+                $arr2['supervisior_name'] = $_POST['supervisior_name'][$i];
+            }
+
+            if( isset($_POST['supervisior_phone'][$i]) ){
+                $arr2['supervisior_phone'] = $_POST['supervisior_phone'][$i];
+            }
+
+            if( isset($_POST['supervisior_email'][$i]) ){
+                $arr2['supervisior_email'] = $_POST['supervisior_email'][$i];
+            }
+
+            if( isset($_POST['	supervisior_secondary_email'][$i]) ){
+                $arr2['	supervisior_secondary_email'] = $_POST['	supervisior_secondary_email'][$i];
+            }
+
+            if( isset($_POST['education_start_date'][$i]) ){
+                $arr2['education_start_date'] = $_POST['education_start_date'][$i];
+            }
+
+            if( isset($_POST['education_end_date'][$i]) ){
+                $arr2['education_end_date'] = $_POST['education_end_date'][$i];
+            }
+
+            if( isset($_POST['claim_tutor'][$i]) ){
+                $arr2['claim_tutor'] = $_POST['claim_tutor'][$i];
+            }
+
+            if( isset($_POST['date_claims_occur'][$i]) ){
+                $arr2['date_claims_occur'] = $_POST['date_claims_occur'][$i];
+            }
+
+            if( isset($_POST['education_history_confirmed_by'][$i]) ){
+                $arr2['education_history_confirmed_by'] = $_POST['education_history_confirmed_by'][$i];
+            }
+            if( isset($_POST['highest_grade_completed'][$i]) ){
+                $arr2['highest_grade_completed'] = $_POST['highest_grade_completed'][$i];
+            }
+            if( isset($_POST['high_school'][$i]) ){
+                $arr2['high_school'] = $_POST['high_school'][$i];
+            }
+            if( isset($_POST['college'][$i]) ){
+                $arr2['college'] = $_POST['college'][$i];
+            }
+            if( isset($_POST['last_school_attended'][$i]) ){
+                $arr2['last_school_attended'] = $_POST['last_school_attended'][$i];
+            }
+            if( isset($_POST['signature'][$i]) ){
+                $arr2['signature'] = $_POST['signature'][$i];
+            }
+
+            if( isset($_POST['date_time'][$i]) ){
+                $arr2['date_time'] = $_POST['date_time'][$i];
+            }
+            
+
+            $save2 = $education->newEntity($arr2);
+            $education->save($save2);
+        }
         
-        $edu['client_id'] = $cid;
-        $edu['user_id'] = $this->request->session()->read('Profile.id');
-        $onlyEducation = array(
-            'edu_name',
-            'edu_id',
-            'edu_date_of_birth',
-            'edu_total_claim_past3',
-            'edu_current',
-            'highest_grade_completed',
-            'high_school',
-            'college',
-            'last_school_attended'
-        );
-        foreach($_POST as $data=>$val){
-            if($data=="document_type" || $data == "count_more_edu" || $data == "count_more_edu_doc"){
-                continue;
-            } else if ( in_array($data,$onlyEducation) ){
-                $edu[$data] = $val;
-            } 
-        }
-        $save3 = $education->newEntity($edu);
-        if($education->save($save3))
-        {
-            $edu_id = $save3->id;
-
-            $education_pass = TableRegistry::get('education_verification_pass_education');
-
-           for($i=1;$i<=$_POST['count_more_edu'];$i++){
-                $eduPass=array();
-                $eduPass['education_verification_id'] = $edu_id;
-                $eduPass['college_school_name'] = $_POST['college_school_name'][$i-1];
-                $eduPass['supervisior_name'] = $_POST['supervisior_name'][$i-1];
-                $eduPass['supervisior_phone'] = $_POST['supervisior_phone'][$i-1];
-                $eduPass['supervisior_email'] = $_POST['supervisior_email'][$i-1];
-                $eduPass['supervisior_secondary_email'] = $_POST['supervisior_secondary_email'][$i-1];
-                $eduPass['education_start_date'] = $_POST['education_start_date'][$i-1];
-                $eduPass['education_end_date'] = $_POST['education_end_date'][$i-1];
-                if(isset( $_POST['claim_tutor'][$i-1])){
-                    $eduPass['claim_tutor'] = $_POST['claim_tutor'][$i-1];
-                }
-
-                $eduPass['date_claims_occur'] = $_POST['date_claims_occur'][$i-1];
-                $eduPass['education_history_confirmed_by'] = $_POST['education_history_confirmed_by'][$i-1];
-                $eduPass['signature'] = $_POST['signature'][$i-1];
-                $eduPass['date_time'] = $_POST['date_time'][$i-1];
-                // echo "<pre>";print_r($eduPass);continue;
-                $save_edu_pass3 = $education_pass->newEntity($eduPass);
-                $education_pass->save($save_edu_pass3);
-           }
-
-        }
 
         die;
     }
@@ -1136,8 +1194,24 @@ class DocumentsController extends AppController {
 
 
     }
+    public function getSpecificData($cid=0,$order_id=0)
+    {
+         
+            $modal = TableRegistry::get($_GET['form_type']);
+            if(!isset($_GET['document']))
+            $detail = $modal->find()->where(['client_id'=>$cid,'order_id'=>$order_id,'document_id'=>0]);
+            else
+            $detail = $modal->find()->where(['client_id'=>$cid,'document_id'=>$order_id,'order_id'=>0]);
+            
+            
+        // die('asd');
+        
+        echo json_encode($detail);
 
-    public function getOrderData($cid = NULL,$order_id = NULL){
+        
+        die;
+    }
+    public function getOrderData($cid = 0,$order_id = 0){
         // print_r($_GET);die;
         if($_GET['form_type']=="company_pre_screen_question.php"){    
             $preScreen = TableRegistry::get('pre_screening');
@@ -1226,7 +1300,7 @@ class DocumentsController extends AppController {
             $educationDetail = $education->find()->where(['client_id'=>$cid,'order_id'=>$order_id,'document_id'=>0])->first();
             else
             $educationDetail = $education->find()->where(['client_id'=>$cid,'document_id'=>$order_id,'order_id'=>0])->first();
-            
+            if($educationDetail)
             $edu_id = $educationDetail->id;            
             // echo json_encode($educationDetail);
 
@@ -1235,7 +1309,7 @@ class DocumentsController extends AppController {
             $educationPassDetail = $educationPass->find()->where(['education_verification_id'=>$edu_id])->first();
             else
             $educationPassDetail = $educationPass->find()->where(['education_verification_id'=>$edu_id])->first();
-            
+            if($educationPassDetail)
             $edu_id = $educationPassDetail->id;            
             // echo json_encode($educationPassDetail);          
 

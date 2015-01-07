@@ -47,10 +47,8 @@ $c = $client;
                                         if(isset($c->image) && $c->image)
                                         {
                                             ?>
-                                            
-                                        <img class="img-responsive" id="clientpic" alt="" src="<?php echo $this->request->webroot;?>img/jobs/<?php echo $c->image;?>"/>
+                                            <img class="img-responsive" id="clientpic" alt="" src="<?php echo $this->request->webroot;?>img/jobs/<?php echo $c->image;?>"/>
                                         <?php
-                                        
                                         }
                                         else
                                         {

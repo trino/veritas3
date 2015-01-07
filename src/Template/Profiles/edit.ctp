@@ -212,7 +212,7 @@
             <div class="portlet light profile-sidebar-portlet">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
-                    <?php if (isset($p->image) && $p->image) { ?>
+                    <?php if (isset($p->image) && $p->image!= "") { ?>
                         <img id="ppicture"
                              src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image ?>" class="img-responsive" alt="">
 

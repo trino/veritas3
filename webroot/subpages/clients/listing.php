@@ -86,7 +86,7 @@
                     			<td><?= $this->Number->format($clients->id) ?></td>
                     			<td>     <?php if($clients->image){?><img src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $clients->image;?>" style="height:45px;"/><?php }?>
                                  </td>
-                    			<td><?= h($clients->company_name) ?></td>
+                    			<td><?= h($clients->title) ?></td>
                     			<td><?= h($clients->description) ?></td>
                     			<!--<td><?= h($start_date) ?></td>
                     			<td><?= h($end_date) ?></td>-->

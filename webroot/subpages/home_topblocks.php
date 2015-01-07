@@ -1,6 +1,7 @@
 <?php $block = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/blocks");
       $sidebar = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");
-      $order_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id'));
+      $order_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id')."/order");
+      $document_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id')."/document");
         
 ?>
 
@@ -50,7 +51,7 @@
 
     <?php if ($block->submitorder == 1 && $sidebar->orders_create ==1) { ?>
     
-        <a href="<?php echo $order_url;?>" class="tile bg-purple-studio" style="display: block;">
+        <a href="<?php echo $this->request->webroot.$order_url;?>" class="tile bg-purple-studio" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-clipboard"></i>
             </div>

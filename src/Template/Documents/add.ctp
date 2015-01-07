@@ -79,17 +79,12 @@ $is_disabled = '';
                                             <?php  include('subpages/home_blocks.php');?>
                                         </div>
                                         <div class="form-group mar-top-10">
-                                        <?php
-                                                    $users = $this->requestAction("documents/getAllUser");
-                                         ?>
-                                         
-                                            <label class="col-md-3 control-label">Select <?php echo ucfirst($settings->profile);?>
-                                            </label>
-                                            <div class="col-md-6">
+                                   
+                                           
                                             <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
                                             <input type="hidden" name="sub_doc_id" value="<?php echo $sid;?>" id="sub_id" />
                                         <?php include('subpages/adminlisting.php');?>
-                                         </div>
+                                         
                                          </div>
 										<div class="subform1" style="display: none;">
 								            <?php include('subpages/documents/company_pre_screen_question.php');?>

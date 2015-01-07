@@ -250,10 +250,12 @@
                                 $count = 0;
                                 if ($clients)
                                     foreach ($clients as $o) 
-                                    { ?>
+                                    { 
+                                        $pro_ids = explode(",",$o->profile_id);
+                                        ?>
 
                                         <tr>
-                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"/> <?php echo $o->title; ?></td>
+                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->title; ?></td>
                                         </tr>
 
                                     <?php
@@ -372,14 +374,14 @@
                addclient='1';
             }
             else
-                addclient='1';
+                addclient='0';
                 
             $.ajax({
                 type: "post",
-                data: "client_id="+client_id+"&add="+addclient,
+                data: "client_id="+client_id+"&add="+addclient+"&user_id="+<?php echo $id;?>,
                 url: "<?php echo $this->request->webroot;?>clients/addprofile",
                 success: function(msg){
-                    alert(msg);
+                    //alert(msg);
                 }
             })
         });

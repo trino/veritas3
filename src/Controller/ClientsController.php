@@ -555,12 +555,39 @@ class ClientsController extends AppController {
    
    function addprofile()
    {
+        $query = TableRegistry::get('clients');
+        $q = $query->find()->where(['id'=>$_POST['client_id']])->first();
+        $profile_id = $q->profile_id;
+        $pros = explode(",",$profile_id);
+                    
+        $p_ids ="";
         if($_POST['add']=='1')
         {
-            $query = TableRegistry::get('client');
-            $query->find()->where(['id'=>$_POST['client_id']])->first();
-            echo $query->profile_id;
+            
+            array_push($pros,$_POST['user_id']);
+            $pro_id = array_unique($pros);
+            
         }
+        else
+        {
+            $pro_id = array_diff($pros, array($_POST['user_id']));
+            //array_pop($pros,$_POST['user_id']);
+            
+        }
+        
+        foreach($pro_id as $k=>$p)
+        {
+            if(count($pro_id)==$k+1)
+                $p_ids .= $p;
+            else
+                $p_ids .= $p.",";
+        }
+        
+        $query->query()->update()->set(['profile_id' => $p_ids])
+        ->where(['id' => $_POST['client_id']])
+        ->execute();
+        //echo $p_ids;
+        die();
    }
    
     

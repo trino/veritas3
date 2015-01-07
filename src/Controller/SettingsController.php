@@ -134,7 +134,7 @@ class SettingsController extends AppController {
         //$this->loadModel('Clients');
         
     }
-    function getclienturl($uid)
+    function getclienturl($uid,$type)
     {
         $setting = TableRegistry::get('clients');
         $u = $uid;
@@ -145,12 +145,12 @@ class SettingsController extends AppController {
             
             if($query>1)
              {
-                $l = $this->request->webroot."clients";
+                $l = "clients";
              }
              else
              {
                 if($query2 = $setting->find()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id ="'.$u.'"'])->first())
-                    $l = $this->request->webroot."documents/addorder/".$query2->id;
+                    $l = "documents/addorder/".$query2->id;
              }
         }
         else
@@ -158,16 +158,21 @@ class SettingsController extends AppController {
              $q = $setting->find()->all();
              if(count($q)>1)
              {
-                $l = $this->request->webroot."clients";
+                $l = "clients";
              }
              else
              {
                 $query3 = $setting->find()->first();
-                $l = $this->request->webroot."documents/addorder/".$query3->id;
+                $l = "documents/addorder/".$query3->id;
              }
         }
-         
-         $this->response->body(($l));
+         if($type=='order')
+         {
+            $url = $l;
+         }
+         else
+            $url = str_replace('addorder','add',$l);
+         $this->response->body(($url));
             return $this->response;
     }
     

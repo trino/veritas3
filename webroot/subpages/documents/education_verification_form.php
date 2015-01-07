@@ -9,7 +9,7 @@
 								<div class="form-body">
 <h4><strong>Education Information for Last 3 Years</strong></h4>
 
-<div class="table-scrollable">
+<!--div class="table-scrollable">
     <table class="table table-striped">
                 
                 <tr><td colspan="2">Name<input type="text" class="form-control" name="edu_name" /></td></tr>
@@ -18,7 +18,7 @@
                 <tr><td>Total Claims in Past 3 Years:<input type="text" class="form-control" name="edu_total_claim_past3"/></td>
                     <td>Current Education:<input type="text" class="form-control" name="edu_current"/></td></tr>
      </table>
-</div>
+</div-->
 
 <div class="table-scrollable">
     <table class="table table-striped">

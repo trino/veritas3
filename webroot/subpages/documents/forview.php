@@ -16,6 +16,12 @@
                 Reference Number 1
             </div>
 
+            <div class="profile-usertitle-job">
+                <label class="uniform-inline">
+                    <input  type="checkbox" name="stat"  value="1" />
+                    Was this driver hired? </label>
+
+            </div>
 
             <!--<div class="">
                 <label class="uniform-inline">
@@ -237,13 +243,8 @@
 
 
         <div class="col-md-6">
-        <div class="">
-            <label class="uniform-inline">
-                <input  type="checkbox" name="stat"  value="1" />
-                Was this driver hired? </label>
 
-        </div>
-           <?php /* <div class="portlet-body">
+            <div class="portlet-body">
                 <div class="portlet light ">
                     <div class="portlet-title">
                         <div class="caption">
@@ -495,7 +496,7 @@
                     </div>
                 </div>
             </div>
-                */ ?>
+
 
         </div>
         <!-- END PORTLET -->
@@ -538,32 +539,7 @@
                                         euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Mark</a>
-                                            <span class="item-label">5 hrs ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-warning"></span> Pending</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                        euismod tincidunt ut laoreet dolore magna aliquam erat volutpat tincidunt ut
-                                        laoreet.
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Nick Larson</a>
-                                            <span class="item-label">8 hrs ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-primary"></span> Closed</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.
-                                    </div>
-                                </div>
+
                                 <div class="item">
                                     <div class="item-head">
                                         <div class="item-details">
@@ -663,7 +639,7 @@
                                         </div>
                                         <div class="task-title">
 															<span class="task-title-sp">
-															Driver's Record Abstract
+															Pre-screening form
  </span>
                                             <span class="label label-sm label-success">LoremIpsum</span>
 															<span class="task-bell">
@@ -700,7 +676,7 @@
                                         </div>
                                         <div class="task-title">
 															<span class="task-title-sp">
-															Pre-employment Screening Program Report 	 </span>
+															Driver Application	 </span>
                                             <span class="label label-sm label-danger">LoremIpsum</span>
                                         </div>
                                         <div class="task-config">
@@ -734,7 +710,7 @@
                                         <div class="task-title">
 															<span class="task-title-sp">
 
-CVOR 	 	</span>
+Road Test 	 	</span>
                                             <span class="label label-sm label-success">LoremIpsum</span>
 															<span class="task-bell">
 															<i class="fa fa-bell-o"></i>
@@ -771,7 +747,7 @@ CVOR 	 	</span>
                                         <div class="task-title">
 															<span class="task-title-sp">
 
-FMCSA SMS Data 	 </span>
+MEE Order	 </span>
                                             <span class="label label-sm label-warning">LoremIpsum</span>
                                         </div>
                                         <div class="task-config">
@@ -805,7 +781,7 @@ FMCSA SMS Data 	 </span>
                                         <div class="task-title">
 															<span class="task-title-sp">
 
-Premium National Criminal Record Check 	  </span>
+Confirmation  </span>
                                             <span class="label label-sm label-info">Internal Products</span>
                                         </div>
                                         <div class="task-config">
@@ -831,113 +807,7 @@ Premium National Criminal Record Check 	  </span>
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>
-                                        <div class="task-title">
-															<span class="task-title-sp">
 
-Certifications 		 </span>
-                                            <span class="label label-sm label-danger">LoremIpsum</span>
-                                        </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>
-                                        <div class="task-title">
-															<span class="task-title-sp">
-Transclick</span>
-                                            <span class="label label-sm label-default">LoremIpsum</span>
-															<span class="task-bell">
-															<i class="fa fa-bell-o"></i>
-															</span>
-                                        </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>
-                                        <div class="task-title">
-															<span class="task-title-sp">
-
-Letter of Experience </span>
-                                            <span class="label label-sm label-success">Cruise</span>
-															<span class="task-bell">
-															<i class="fa fa-bell-o"></i>
-															</span>
-                                        </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
                                 </ul>
                                 <!-- END START TASK LIST -->
                             </div>

@@ -372,12 +372,16 @@
                     $(this).hide();
                 });
                 $('#driver_div').show();
+                $('.req_driver').attr('required','required');
+                $('.un').removeAttr('required');
             }
             else {
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).show();
                 });
                 $('#driver_div').hide();
+                $('.req_driver').removeAttr('required');
+                $('.un').attr('required','required');
             }
 
         });

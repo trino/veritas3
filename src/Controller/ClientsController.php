@@ -184,27 +184,29 @@ class ClientsController extends AppController {
         foreach($_POST['profile_id'] as $ri)
         {
         	if($count==1)	
-        	$rec = $ri;
+        	   $rec = $ri;
         	else
-        	$rec = $rec.','.$ri;
+        	   $rec = $rec.','.$ri;
             $count++;
         
         }
         }
         unset($_POST['profile_id']);
         $_POST['profile_id'] = $rec;
-        
+        $rec = "";
+        $count=1;
         if(isset($_POST['contact_id'])){
         foreach($_POST['contact_id'] as $ri)
         {
         	if($count==1)	
-        	$rec = $ri;
+        	   $rec = $ri;
         	else
-        	$rec = $rec.','.$ri;
+        	   $rec = $rec.','.$ri;
             $count++;
         
         }
         }
+        
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
         $clients = TableRegistry::get('Clients');
@@ -545,6 +547,10 @@ class ClientsController extends AppController {
          $this->response->body($q);
         return $this->response;
         
+   }
+   function dropdown()
+   {
+    $this->layout = 'blank';
    }
    
     

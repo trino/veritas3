@@ -1,11 +1,19 @@
-<div class="form-group col-md-12" style="position: relative;">
-	<label class="control-label">Main Admin</label>
-	<input type="text" class="form-control madmin" name="site" <?php if(isset($c->site)){?> value="<?php echo $c->site; ?>" <?php } ?> onkeyup="loadusers(this.value);"/>
+<?php $users = $this->requestAction('/profiles/getallusers');?>
+<div class="form-group">
+	<label class="control-label col-md-3">Main Admin</label>
+	<div class="col-md-4">
+		<select class="form-control input-xlarge select2me" data-placeholder="Select..." name="admin">
+			<option value=""></option>
+			<?php foreach($users as $u){?>
+            <option value="<?php echo $u->username;?>"><?php echo $u->username;?></option>
+			<?php
+            }?>
+		</select>
+	</div>
+</div>
 
-<div class="loadusers form-group " style=" display:none;top: 60px; z-index:999; padding: 5px 0 5px 5px; width:100%; background: #fff; border:1px solid #e5e5e5;">
-</div>
-</div>
 <script>
+
     function loadusers(v)
     {
         $.ajax({

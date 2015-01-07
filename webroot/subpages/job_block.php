@@ -22,7 +22,7 @@
             </div>
             <div class="portlet-body">
                 <div class="col-sm-3">
-                    <img class="jobimg" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png" />
+                    <img class="jobimg" src="<?php echo $this->request->webroot;?>img/logos/MEELogo.png" />
                 </div>
                 <div class="col-sm-9">
 

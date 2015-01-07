@@ -40,9 +40,29 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 
 										<ul class="list-unstyled profile-nav">
 											<li>
-												<img src="<?php if(isset($client->image) && $client->image!= "") { echo $this->request->webroot;?>img/logos/<?php echo $client->image; ?>" <?php } else { echo $this->request->webroot;?>img/logos/challenger_logo.png" <?php } ?> class="img-responsive" alt=""/>
-												<a href="#" class="profile-edit">Edit </a>
-                                                <br />
+
+
+
+
+												<?php
+													if(isset($client->image) && $client->image)
+													{
+														?>
+														<img class="img-responsive" id="clientpic" alt="" src="<?php echo $this->request->webroot;?>img/jobs/<?php echo $client->image;?>"/>
+													<?php
+													}
+													else
+													{
+														?>
+														<img class="img-responsive" id="clientpic" alt="" src="<?php echo $this->request->webroot;?>img/logos/MEELogo.png"/>
+													<?php
+													}
+												?>
+
+
+
+												<!--a href="#" class="profile-edit">Edit </a>
+                                                <br /-->
                                                 <h3>Assigned to:</h3>
 											</li>
                                             <?php

@@ -553,6 +553,12 @@ class ClientsController extends AppController {
     $this->layout = 'blank';
    }
    
+   function addprofile()
+   {
+        var_dump($_POST);
+        die();
+   }
+   
     
 }
 ?>

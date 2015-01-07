@@ -2,7 +2,7 @@
 <div class="form-group">
 	<label class="control-label col-md-3">Main Admin</label>
 	<div class="col-md-4">
-		<select class="form-control input-xlarge select2me" data-placeholder="Select..." name="admin">
+		<select class="form-control input-xlarge select2me" data-placeholder="Select..." name="uploaded_for">
 			<option value=""></option>
 			<?php foreach($users as $u){?>
             <option value="<?php echo $u->id;?>" <?php if(isset($modal) && $modal->uploaded_for==$u->id){?> selected="selected"<?php } ?>><?php echo $u->username;?></option>

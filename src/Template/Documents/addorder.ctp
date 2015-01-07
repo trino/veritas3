@@ -140,7 +140,7 @@ else
 												<button class="close" data-dismiss="alert"></button>
 												Your form validation is successful!
 											</div>
-                                                                                        
+                                                                                                                                    
                                             <div class="form-group mar-top-10 col-md-12 uploaded_for">
                                                     <?php include('subpages/adminlisting.php');?>
                                                      <input type="hidden" name="client_id" value="<?php echo $cid;?>" id="client_id" />
@@ -164,7 +164,7 @@ else
                                                     
                                             </div>
                                             <?php $division = $this->requestAction("clients/getdivision/".$cid);
-                                            if(count($division)>0){?>                                            
+                                            if(count($division)>0){?>                                                                                        
                                             <div class="form-group mar-top-10 col-md-12">
                                           
                                                 <label class="col-md-3 control-label">Select Division</label>
@@ -182,7 +182,7 @@ else
                         							 </select>
                                                 </div>
                                             </div>
-                                            <?php }?>                                            
+                                            <?php }?>                                                                                        
                                             <div class="clearfix"></div>
                                             <?php foreach($doc2 as $d){
                                                 $j = $d->id;

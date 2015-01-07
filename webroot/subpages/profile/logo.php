@@ -1,3 +1,5 @@
+
+
 <div>
                                         <ul class="nav nav-tabs">
                                             <li class="active">
@@ -11,35 +13,35 @@
                                     </div>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="subtab_1_1">
-                                            <div class="portlet ">
-                                                <div class="portlet-title">
-                                                    <div class="caption">
-                                                        Choose Primary Logo
-                                                    </div>
+                                            <div class="portlet solid blue  ">
 
-                                                </div>
                                                 <div class="portlet-body">
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos"
                                                           method="post" class="form-inline" role="form">
+
+
                                                         <?php foreach ($logos as $logo) { ?>
-                                                            <div class="form-group col-md-12">
-                                                                <div class="col-md-1">
-                                                                    <input type="radio" value="<?php echo $logo->id; ?>"
-                                                                           name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?>/>
-                                                                </div>
-                                                                <div class="col-md-10">
-                                                                    <img
-                                                                        src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"
-                                                                        width="86px" height="14px"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <hr/>
+
+
+
+
+<div class="col-md-4 margin-top-20">
+<div class="form-group" style="height:100px;">
+<input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?>/>
+<img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>" />
+</div>
+</div>
+
+
+
 
                                                         <?php } ?>
-                                                        <input type="submit" class="btn btn-success" value="submit"
-                                                               name="submit"/>
+
+                                                        <div class="clearfix"></div>
+
+
+                                                        <input type="submit" class="btn btn-success" value="submit" name="submit"/>
                                                     </form>
 
                                                 </div>
@@ -47,13 +49,8 @@
 
                                         </div>
                                         <div class="tab-pane" id="subtab_1_2">
-                                            <div class="portlet ">
-                                                <div class="portlet-title">
-                                                    <div class="caption">
-                                                       Choose Secondary Logo
-                                                    </div>
+                                            <div class="portlet solid blue ">
 
-                                                </div>
                                                 <div class="portlet-body">
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/secondary"
@@ -61,21 +58,22 @@
                                                         <?php foreach ($logos1 as $logo) { 
                                                             
                                                                                                                         ?>
-                                                            <div class="form-group col-md-12">
-                                                                <div class="col-md-1">
-                                                                    <input type="radio" value="<?php echo $logo->id; ?>"
-                                                                           name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?>/>
-                                                                </div>
-                                                                <div class="col-md-10">
-                                                                    <img
-                                                                        src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"
-                                                                        width="86px" height="14px"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                            <hr/>
+
+
+                                                            <div class="col-md-4 margin-top-20">
+                                                                <div class="form-group" style="height:100px;">
+<input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> />
+<img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"             />
+</div>
+</div>
+
+
+
 
                                                         <?php } ?>
+
+                                                        <div class="clearfix"></div>
+
                                                         <input type="submit" class="btn btn-success" value="submit"
                                                                name="submit"/>
                                                     </form>

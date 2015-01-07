@@ -6,7 +6,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    <?php echo ucfirst($settings->client);?>
+                    <?php echo ucfirst($settings->client);?>s
                 </div>
             </div>
             <div class="portlet-body">
@@ -86,7 +86,7 @@
                     			<td><?= $this->Number->format($clients->id) ?></td>
                     			<td>     <?php if($clients->image){?><img src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $clients->image;?>" style="height:45px;"/><?php }?>
                                  </td>
-                    			<td><?= h($clients->title) ?></td>
+                    			<td><?= h($clients->company_name) ?></td>
                     			<td><?= h($clients->description) ?></td>
                     			<!--<td><?= h($start_date) ?></td>
                     			<td><?= h($end_date) ?></td>-->
@@ -98,7 +98,7 @@
                     				<?php  if($sidebar->client_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['controller'=>'clients','action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]);} ?>
                                     <?php  if($sidebar->orders_create == '1'){?><a href="<?php echo $this->request->webroot; ?>documents/addorder/<?php echo $clients->id;?>" class="btn btn-warning" >Submit Order</a><?php }?>
                                     <?php  if($sidebar->document_create == '1'){?><a href="<?php echo $this->request->webroot; ?>documents/add/<?php echo $clients->id;?>" class="btn btn-success" >Submit <?php echo ucfirst($settings->document);?></a><?php }?>
-                                    <?php  if($sidebar->orders_list == '1'){?><a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id;?>" class="btn btn-success" >View Order</a><?php }?>
+                                    <?php  if($sidebar->orders_list == '1'){?><a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id;?>" class="btn btn-success" >View Orders</a><?php }?>
                     			</td>
                     		</tr>
 

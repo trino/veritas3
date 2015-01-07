@@ -9,7 +9,9 @@
 					</div>-->
 					<!-- END SIDEBAR TOGGLER BUTTON -->
                     <?php $logo1 = $this->requestAction('Logos/getlogo/1');?>
-                    <center><img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  /></center>
+					<div class="whitecenterdiv">A service division of</div>
+
+                    <img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  />
 				</li>
 				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
 				<li class="sidebar-search-wrapper">

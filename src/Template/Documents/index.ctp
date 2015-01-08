@@ -225,3 +225,64 @@
     }
     
 </style>
+
+<script>
+        $('.applyBtn').live('click',function(){
+            var to = $('.daterangepicker_end_input .input-mini').val();
+           var from = $('.daterangepicker_start_input .input-mini').val();
+           var url = '<?php echo $this->request->webroot; ?>documents/index';
+           var base = url;
+           
+           <?php
+           if(isset($_GET['searchdoc']))
+           {
+            ?>
+            if(url==base)
+            url = url+'?searchdoc=<?php echo $_GET['searchdoc']?>';
+            else
+            url = url+'&searchdoc=<?php echo $_GET['searchdoc']?>';
+            <?php
+           }
+           ?> 
+            <?php
+           if(isset($_GET['submitted_by_id']))
+           {
+            ?>
+            if(url==base)
+            url = url+'?submitted_by_id=<?php echo $_GET['submitted_by_id']?>';
+            else
+            url = url+'&submitted_by_id=<?php echo $_GET['submitted_by_id']?>';
+            <?php
+           }
+           ?> 
+            <?php
+           if(isset($_GET['type']))
+           {
+            ?>
+            if(url==base)
+            url = url+'?type=<?php echo $_GET['type']?>';
+            else
+            url = url+'&type=<?php echo $_GET['type']?>';
+            <?php
+           }
+           ?> 
+           <?php
+           if(isset($_GET['client_id']))
+           {
+            ?>
+            if(url==base)
+            url = url+'?client_id=<?php echo $_GET['client_id']?>';
+            else
+            url = url+'&client_id=<?php echo $_GET['client_id']?>';
+            <?php
+           }
+           ?> 
+           if(url==base)
+           {
+            url = url+'?to='+to+'&from='+from;
+           }
+           else
+           url = url+'&to='+to+'&from='+from;
+           window.location = url;
+        });
+    </script>

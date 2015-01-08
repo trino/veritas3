@@ -44,10 +44,7 @@ class DocumentsController extends AppController {
         
         if(isset($_GET['searchdoc']) && $_GET['searchdoc'])
         {
-            if($cond == '')
-            $cond = $cond.' (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
-            else
-            $cond = $cond.' AND (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';
+            $cond = $cond.' (title LIKE "%'.$_GET['searchdoc'].'%" OR document_type LIKE "%'.$_GET['searchdoc'].'%" OR description LIKE "%'.$_GET['searchdoc'].'%")';            
         }
         if(!$this->request->session()->read('Profile.admin') && $setting->document_others == 0)
         {
@@ -77,6 +74,20 @@ class DocumentsController extends AppController {
             else
                 $cond = $cond.' AND document_type = "'.$_GET['type'].'"';
         }
+        
+        if(isset($_GET['from']) && isset($_GET['to']))
+        {
+            
+            $f = date('Y-m-d h:i:s', strtotime($_GET['from']));
+            $t = date('Y-m-d h:i:s', strtotime($_GET['to']));
+            if($cond == '')
+                $cond = $cond.' (created >="'.$f.'" AND created <= "'.$t.'")';
+            else
+                $cond = $cond.' AND (created >="'.$f.'" AND created <= "'.$t.'")';
+               // $this->set('start',$cond);
+            
+        }
+        
         if($cond)
         {
             $doc = $doc->where([$cond]);

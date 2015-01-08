@@ -86,16 +86,16 @@
                             <?php include('subpages/adminlisting.php');?>
 
                         </div>
-                        <div class="subform1" style="display: none;">
+                        <div class="subform1 padding-10" style="display: none;">
                             <?php include('subpages/documents/company_pre_screen_question.php');?>
                         </div>
-                        <div class="subform2" style="display: none;">
+                        <div class="subform2 padding-10" style="display: none;">
                             <?php include('subpages/documents/driver_application.php');?>
                         </div>
-                        <div class="subform3" style="display: none;">
+                        <div class="subform3 padding-10" style="display: none;">
                             <?php include('subpages/documents/driver_evaluation_form.php');?>
                         </div>
-                        <div class="subform4" style="display: none;">
+                        <div class="subform4 padding-10" style="display: none;">
                             <?php include('subpages/documents/document_tab_3.php');?>
                         </div>
                     </div>

@@ -234,7 +234,7 @@
                                     <label class="control-label">Date of Birth</label>
                                     <input <?php echo $is_disabled ?> name="dob" type="text"
                                                                       placeholder="eg. 06/14/1975"
-                                                                      class="form-control req_driver" <?php if (isset($p->dob)) { ?> value="<?php echo $p->dob; ?>" <?php } ?>/>
+                                                                      class="form-control req_driver date-picker" <?php if (isset($p->dob)) { ?> value="<?php echo $p->dob; ?>" <?php } ?>/>
                                 </div>
                             </div>
 

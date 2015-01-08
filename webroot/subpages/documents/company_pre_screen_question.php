@@ -43,7 +43,7 @@
                                     <div class="form-group col-md-6">
 										<label class="col-md-6 control-label">Date : </label>
 										<div class="col-md-6">
-											<input type="text" class="form-control" placeholder="(MM/DD/YYYY)" name="pre_screen_date">
+											<input type="text" class="form-control date-picker" placeholder="(YYYY-MM-DD)" name="pre_screen_date">
 										</div>
 									</div>
                                     <div class="form-group col-md-6">
@@ -111,7 +111,7 @@
                                         </tr>
                                     <tr>
                                         <td>When did you get your AZ License and have you been commercially driving consistently since you got your license?</td>
-                                        <td><input type="text" class="form-control" placeholder="MM/YYYY" name="discover_az_license_date" /></td>
+                                        <td><input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="discover_az_license_date" /></td>
                                     </tr>
                                     
                                     <tr>
@@ -213,7 +213,7 @@
                                         </tr>
                                     <tr>
                                         <td>As we are a long haul company, driving to the USA is a requirement for most runs. Are you willing cross the border? Have you ever crossed the border with a load?</td>
-                                        <td><input type="text" class="form-control" placeholder="MM/YYYY" name="willing_cross_border" /></td>
+                                        <td><input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="willing_cross_border" /></td>
                                     </tr> 
                                     
                                     <tr>

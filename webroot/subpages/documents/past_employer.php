@@ -16,7 +16,7 @@
                     <td>Employment End Date:<input type="text" class="form-control date-picker" name="employment_end_date[]"/></td></tr>
                 <tr><td>Claims with this Employer:&nbsp;&nbsp;<input type="radio" name="claims_with_employer[]" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="radio" name="claims_with_employer[]" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
-                    <td>Date Claims Occured:<input type="text" class="form-control" name="claims_recovery_date[]"/></td></tr>
+                    <td>Date Claims Occured:<input type="text" class="form-control date-picker" name="claims_recovery_date[]"/></td></tr>
                 <tr><td colspan="2">Employment history confirmed by (Verifier Use Only):<input type="text" class="form-control" name="emploment_history_confirm_verify_use[]"/></td></tr>
                 <tr><td colspan="2">US DOT MC/MX#:<input name="us_dot[]" type="text" class="form-control" name="us_dot[]" /></td></tr>
 
@@ -26,7 +26,7 @@
 
                     </td><td>
 
-                        Date/Time:<input type="text" class="form-control" name="signature_datetime[]"/>
+                        Date:<input type="text" class="form-control date-picker" name="signature_datetime[]"/>
 
 
                     </td></tr>

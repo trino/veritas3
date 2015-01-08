@@ -98,7 +98,7 @@ class ClientsController extends AppController {
 
         $querys = TableRegistry::get('Clients');
         $query = $querys->find()->where(['id' => $id]);
-        $this->set('client', $query->first()); 
+       $this->set('client', $query->first());
         $this->set('id',$id);
 		//$this->set('disabled',1);
         //$this->render('add');
@@ -454,10 +454,14 @@ class ClientsController extends AppController {
     $profile = TableRegistry::get('Clients');
     $query = $profile->find()->where(['id'=>$id]);
     $q = $query->first();
-    //$profile_id= explode(',',$q->profile_id);
-//    if(($profile_id))
-//    {
-        $pro = TableRegistry::get('Profiles');
+
+
+       $pro = TableRegistry::get('Profiles');
+
+       if($q->profile_id){
+           $q->profile_id= ltrim ($q->profile_id, ',');
+       }
+
         if($q->profile_id)
             $querys = $pro->find()->where(['id IN ('.$q->profile_id.')']);
             else

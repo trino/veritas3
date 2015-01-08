@@ -25,7 +25,7 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" placeholder="" class="form-control" name="issued_date"/>
+														<input type="text" placeholder="" class="form-control date-picker" name="issued_date"/>
 														
 													</div>
 												</div>

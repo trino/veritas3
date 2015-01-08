@@ -141,7 +141,7 @@
                      ?>
 				<li class="<?php echo(($this->request['controller']=='Documents' && ($this->request['action']=="index" || $this->request['action']=="add") ) && !isset($_GET['draft']))?'active open':'';?>">
 					<a href="javascript:;">
-					<i class="icon-notebook"></i>
+					<i class="icon-docs"></i>
 					<span class="title"><?php echo ucfirst($settings->document);?>s</span>
 					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
@@ -230,6 +230,7 @@
                 <i class="icon-notebook"></i>
 				<span class="title">Orders</span>
                 <span class="selected"></span>
+                <span class="arrow "></span>
                 </a>
                 <?php if($sidebar->orders_list==1 || $sidebar->orders_create==1){?>
 					<ul class="sub-menu">

@@ -137,6 +137,8 @@
                         //var_dump($docz);
                         foreach ($documents as $docs):
                             
+                            if($docs->document_type=='feedbacks' && !$this->request->session()->read('Profile.super'))
+                            continue;
                             
                             //$prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.array_search($docs->document_type, $docz));
                             //var_dump($prosubdoc);

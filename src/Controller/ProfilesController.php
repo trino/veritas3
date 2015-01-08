@@ -63,7 +63,7 @@ class ProfilesController extends AppController {
         $cond = $this->Settings->getprofilebyclient($u,$super);
         if($setting->profile_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -82,7 +82,7 @@ class ProfilesController extends AppController {
         
         if($setting->profile_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -108,7 +108,7 @@ class ProfilesController extends AppController {
         
         if($setting->profile_create==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -134,12 +134,12 @@ class ProfilesController extends AppController {
                         $query2->insert(['user_id'])
                         ->values(['user_id'=>$profile->id])
                         ->execute(); 
-				$this->Flash->success('The user has been saved.');
+				$this->Flash->success('User saved successfully.');
 				return $this->redirect(['action' => 'edit',$profile->id]);
 			} else {
                 //var_dump($profiles->errors()); die();
 			     //var_dump($profile);die();
-				$this->Flash->error('The user could not be saved. Please, try again.');
+				$this->Flash->error('The user could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('profile'));
@@ -160,7 +160,7 @@ class ProfilesController extends AppController {
         
         if($setting->profile_edit==0 && $id != $this->request->session()->read('Profile.id'))
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -184,10 +184,10 @@ class ProfilesController extends AppController {
             //var_dump($this->request->data); die();//echo $_POST['admin'];die();
 			$profile = $this->Profiles->patchEntity($profile, $this->request->data);
 			if ($this->Profiles->save($profile)) {
-				$this->Flash->success('The user has been saved.');
+				$this->Flash->success('User saved successfully.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The user could not be saved. Please, try again.');
+				$this->Flash->error('The user could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('profile'));
@@ -224,7 +224,7 @@ class ProfilesController extends AppController {
         
         if($setting->profile_delete==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -233,7 +233,7 @@ class ProfilesController extends AppController {
 		if ($this->Profiles->delete($profile)) {
 			$this->Flash->success('The user has been deleted.');
 		} else {
-			$this->Flash->error('The user could not be deleted. Please, try again.');
+			$this->Flash->error('User could not be deleted. Please try again.');
 		}
 		return $this->redirect(['action' => 'index']);
 	}
@@ -471,7 +471,7 @@ class ProfilesController extends AppController {
         
         if($setting->profile_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -492,7 +492,7 @@ class ProfilesController extends AppController {
         
         if($setting->profile_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -587,13 +587,16 @@ class ProfilesController extends AppController {
         
         
     }
-   function getallusers()
+   function getallusers($profile_type ="")
    {
         $u = $this->request->session()->read('Profile.id');
         $super = $this->request->session()->read('Profile.super');
         $cond = $this->Settings->getprofilebyclient($u,$super);
         $profile = TableRegistry::get('profiles');
-        $query = $profile->find()->where(['super'=>0,'OR'=>$cond]);
+        if($profile_type!="")
+            $query = $profile->find()->where(['super'=>0,'profile_type'=>$profile_type, 'OR'=>$cond]);
+        else
+            $query = $profile->find()->where(['super'=>0,'OR'=>$cond]);
                  
         $l = $query->all();
         $this->response->body($l);
@@ -660,5 +663,14 @@ class ProfilesController extends AppController {
         die();
    }
    
+   function getSuper($id = null)
+   {
+        $q = TableRegistry::get('Profiles');
+        $query = $q->find();
+        $que = $query->select('super')->where(['id'=>$id]);
+        $this->response->body($que);
+        return $this->response;
+        die();
+   }
 }
 ?>

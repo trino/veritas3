@@ -39,10 +39,53 @@ class LogosController extends AppController {
                 $this->Flash->success(__('Your Logo has been updated.'));
                 return $this->redirect(['controller'=>'profiles','action' => 'add']);
             }
-            $this->Flash->error(__('Unable to update your Logo.'));
+            $this->Flash->error(__('Unable to update logo.'));
          }
         
 	}
+    function ajaxlogo()
+    {
+        $lg = $this->Logos->find()->where(['secondary'=>'0']);
+        foreach($lg as  $l)
+        {
+
+            $log = TableRegistry::get('Logos');
+            $query = $log->query();
+            $query->update()
+            ->set(['active' => 0])
+            ->where(['id' => $l->id])
+            ->execute();
+            
+            
+        }
+        $id = $_POST['logo'];
+        $logo = TableRegistry::get('Logos');
+            $query1 = $logo->query();
+            $query1->update()->set(['active' => 1])->where(['id' => $id])->execute();
+       die();
+    }
+    function ajaxlogo1()
+    {
+        $lg = $this->Logos->find()->where(['secondary'=>'1']);
+        foreach($lg as  $l)
+        {
+
+            $log = TableRegistry::get('Logos');
+            $query = $log->query();
+            $query->update()
+            ->set(['active' => 0])
+            ->where(['id' => $l->id])
+            ->execute();
+            
+            
+        }
+        $id = $_POST['logo'];
+        $logo = TableRegistry::get('Logos');
+            $query1 = $logo->query();
+        $query1->update()->set(['active' => 1])->where(['id' => $id])->execute();
+        
+           die();
+    }
     public function secondary() {
 		$lg = $this->paginate($this->Logos->find()->where(['secondary'=>'1']));
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
@@ -68,7 +111,7 @@ class LogosController extends AppController {
                 $this->Flash->success(__('Your Logo has been updated.'));
                 return $this->redirect(['controller'=>'profiles','action' => 'add']);
             }
-            $this->Flash->error(__('Unable to update your Logo.'));
+            $this->Flash->error(__('Unable to update logo.'));
          }
         
 	}
@@ -99,7 +142,7 @@ class LogosController extends AppController {
 				$this->Flash->success('The logo has been saved.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The logo could not be saved. Please, try again.');
+				$this->Flash->error('The logo could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('logo'));
@@ -122,7 +165,7 @@ class LogosController extends AppController {
 				$this->Flash->success('The logo has been saved.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The logo could not be saved. Please, try again.');
+				$this->Flash->error('The logo could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('logo'));
@@ -141,7 +184,7 @@ class LogosController extends AppController {
 		if ($this->Logos->delete($logo)) {
 			$this->Flash->success('The logo has been deleted.');
 		} else {
-			$this->Flash->error('The logo could not be deleted. Please, try again.');
+			$this->Flash->error('The logo could not be deleted. Please try again.');
 		}
 		return $this->redirect(['action' => 'index']);
 	}

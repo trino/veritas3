@@ -7,7 +7,7 @@ else
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-	<?php echo ucfirst($settings->document);?>
+	Create Order
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -17,7 +17,8 @@ else
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href=""><?php echo ucfirst($settings->document);?>
+                        <a href="">
+                        Create Order
                         </a>
 					</li>
 				</ul>
@@ -40,8 +41,7 @@ else
                             $tab = 'nodisplay';
                         ?>
 							<div class="caption">
-								<i class="fa fa-gift"></i> <?php if($param == 'view')?><?php echo ucfirst($settings->document);?> - <span class="step-title">
-								View </span>
+                                <i class="fa fa-clipboard"></i>Order Forms
 							</div>
 
 						</div>

@@ -39,7 +39,7 @@
 				<div class="chat-form">
 					<form action="<?php echo $this->request->webroot; ?>documents/orderslist" method="get">
 						<div class="col-md-2 col-sm-12" style="padding-left:0;">
-							<input class="form-control" name="searchdoc" type="search" placeholder=" Search <?php echo ucfirst($settings->orders); ?>s" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
+							<input class="form-control" name="searchdoc" type="search" placeholder=" Search Orders" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
 						</div>
                         <?php
                             $users = $this->requestAction("documents/getAllUser");
@@ -62,7 +62,7 @@
                         ?>
 						<div class="col-md-3 col-sm-12">
 							<select class="form-control" name="type">
-								<option value=""><?php echo ucfirst($settings->order);?> type</option>
+								<option value="">Order Type</option>
 								<?php 
                                     foreach($type as $t)
                                     {
@@ -153,8 +153,10 @@
                                     }
                                      ?>
                                      <?php  if($sidebar->orders_delete=='1'){ ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a><?php }?>
-                                    
 
+                                        
+<?php                                   if($sidebar->orders_requalify=='1') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
+?>
                                 </td>
                             </tr>
 

@@ -267,7 +267,7 @@
                                         ?>
 
                                         <tr>
-                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->title; ?></td>
+                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
                                         </tr>
 
                                     <?php
@@ -439,28 +439,6 @@ new AjaxUpload(button,{
                                        $('#save_client_p1').click(function(){
                                         $('#save_client_p1').text('Saving..');
  
-        
- 
-        $('.member_type').change(function () {
-            if ($(this).val() == '5') {
-                $('.nav-tabs li:not(.active)').each(function () {
-                    $(this).hide();
-                });
-                $('#driver_div').show();
-                $('.req_driver').attr('required','required');
-                $('.un').removeAttr('required');
-            }
-            else {
-                $('.nav-tabs li:not(.active)').each(function () {
-                    $(this).show();
-                });
-                $('#driver_div').hide();
-                $('.req_driver').removeAttr('required');
-                $('.un').attr('required','required');
-            }
-
-        });
-
         $("#pass_form").validate({
             rules: {
                 password: {

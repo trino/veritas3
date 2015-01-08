@@ -106,6 +106,10 @@ $c = $client;
 														<label class="control-label">Enter name of your company</label>
 														<input type="text" class="form-control" name="company_name" <?php if(isset($c->company_name)){?> value="<?php echo $c->company_name; ?>" <?php } ?> />
 													</div>
+                                                    <div class="form-group col-md-6">
+														<label class="control-label">Description</label>
+														<input type="text" class="form-control" name="description" <?php if(isset($c->description)){?> value="<?php echo $c->description; ?>" <?php } ?> />
+													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's First Name</label>
 														<input type="text" class="form-control" name="sig_fname" <?php if(isset($c->sig_fname)){?> value="<?php echo $c->sig_fname; ?>" <?php } ?>/>

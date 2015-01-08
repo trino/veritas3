@@ -1397,6 +1397,8 @@ class DocumentsController extends AppController {
         die;
     }
     public function getOrderData($cid = 0,$order_id = 0){
+        if(!$order_id){
+        echo null;die();}
         // print_r($_GET);die;
         if($_GET['form_type']=="company_pre_screen_question.php"){    
             $preScreen = TableRegistry::get('pre_screening');

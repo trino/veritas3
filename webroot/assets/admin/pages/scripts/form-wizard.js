@@ -177,12 +177,15 @@ var FormWizard = function () {
                     $('#form_wizard_1').find('.button-previous').show();
                 }
                 
-                if(current == 4)
+                if(current == (total-1))
                 {
-                    $('.cont').html('Submit')
+                    $('.cont').html('Submit Order');
+                    $('.cont').attr('id','');
                 }
-                else
-                $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>')
+                else{
+                $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
+                $('.cont').attr('id','draft');
+                }
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();

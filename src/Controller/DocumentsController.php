@@ -1327,6 +1327,20 @@ class DocumentsController extends AppController {
             else
                 $cond = $cond.' AND order_type = "'.$_GET['type'].'"';
         }
+        if(isset($_GET['draft']))
+        {
+            if($cond == '')
+                $cond = $cond.' draft = 0';
+            else
+                $cond = $cond.' AND draft = 0';
+        }
+        else
+        {
+           if($cond == '')
+                $cond = $cond.' draft = 1';
+            else
+                $cond = $cond.' AND draft = 1'; 
+        }
         if($cond)
         {
             $order = $order->where([$cond]);

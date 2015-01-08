@@ -939,9 +939,8 @@
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
 	<div class="page-footer-inner">
-		 &copy; MEE 2014. All Rights Reserved.
+		 &copy; MEE 2015
 	</div>
-
 
     <div class="page-footer-inner" style="float:right;">
 
@@ -952,7 +951,6 @@
         <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/faq">FAQ</a>
 
     </div>
-
 
 
     <div class="scroll-to-top">

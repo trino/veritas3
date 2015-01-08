@@ -51,7 +51,7 @@ class ClientsController extends AppController {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         if($setting->client_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -64,7 +64,7 @@ class ClientsController extends AppController {
         
         if($setting->client_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -91,7 +91,7 @@ class ClientsController extends AppController {
         
         if($setting->client_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -115,7 +115,7 @@ class ClientsController extends AppController {
         
         if($setting->client_create==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -160,11 +160,11 @@ class ClientsController extends AppController {
              {
                 
              }
-				$this->Flash->success('The user has been saved.');
+				$this->Flash->success('User saved successfully.');
                 	return $this->redirect(['action' => 'edit',$client->id]);
                     
 			} else {
-				$this->Flash->error('The user could not be saved. Please, try again.');
+				$this->Flash->error('The user could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('client'));
@@ -233,10 +233,10 @@ class ClientsController extends AppController {
                     //die();
                 
                 }
-				$this->Flash->success('The client has been saved.');
+				$this->Flash->success('Client saved successfully.');
                 	echo $client->id;
 			} else {
-			     $this->Flash->error('The client could not be saved. Please, try again.');
+			     $this->Flash->error('Client could not be saved. Please try again.');
 				echo "e";
 			}
 		}
@@ -248,7 +248,7 @@ class ClientsController extends AppController {
                         ->set($_POST)
                         ->where(['id' => $id])
                         ->execute();
-                        $this->Flash->success('The client has been saved.');
+                        $this->Flash->success('Client saved successfully.');
             if($_POST['division']!="")
                 { 
                     $division = nl2br($_POST['division']);
@@ -285,7 +285,7 @@ class ClientsController extends AppController {
         
         if($setting->client_edit==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -300,10 +300,10 @@ class ClientsController extends AppController {
 			$clients = $this->Clients->patchEntity($client, $this->request->data);
 			if ($this->Clients->save($clients)) {
 			      
-				$this->Flash->success('The user has been saved.');
+				$this->Flash->success('User saved successfully.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The user could not be saved. Please, try again.');
+				$this->Flash->error('The user could not be saved. Please try again.');
 			}
 		}
         //$client_details = $query->select()->where(['id'=>$id]);
@@ -327,7 +327,7 @@ class ClientsController extends AppController {
         
         if($setting->client_delete==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -336,7 +336,7 @@ class ClientsController extends AppController {
 		if ($this->Clients->delete($profile)) {
 			$this->Flash->success('The user has been deleted.');
 		} else {
-			$this->Flash->error('The user could not be deleted. Please, try again.');
+			$this->Flash->error('User could not be deleted. Please try again.');
 		}
 		return $this->redirect(['action' => 'index']);
 	}

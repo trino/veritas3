@@ -39,7 +39,7 @@ class LogosController extends AppController {
                 $this->Flash->success(__('Your Logo has been updated.'));
                 return $this->redirect(['controller'=>'profiles','action' => 'add']);
             }
-            $this->Flash->error(__('Unable to update your Logo.'));
+            $this->Flash->error(__('Unable to update logo.'));
          }
         
 	}
@@ -68,7 +68,7 @@ class LogosController extends AppController {
                 $this->Flash->success(__('Your Logo has been updated.'));
                 return $this->redirect(['controller'=>'profiles','action' => 'add']);
             }
-            $this->Flash->error(__('Unable to update your Logo.'));
+            $this->Flash->error(__('Unable to update logo.'));
          }
         
 	}
@@ -99,7 +99,7 @@ class LogosController extends AppController {
 				$this->Flash->success('The logo has been saved.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The logo could not be saved. Please, try again.');
+				$this->Flash->error('The logo could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('logo'));
@@ -122,7 +122,7 @@ class LogosController extends AppController {
 				$this->Flash->success('The logo has been saved.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The logo could not be saved. Please, try again.');
+				$this->Flash->error('The logo could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('logo'));
@@ -141,7 +141,7 @@ class LogosController extends AppController {
 		if ($this->Logos->delete($logo)) {
 			$this->Flash->success('The logo has been deleted.');
 		} else {
-			$this->Flash->error('The logo could not be deleted. Please, try again.');
+			$this->Flash->error('The logo could not be deleted. Please try again.');
 		}
 		return $this->redirect(['action' => 'index']);
 	}

@@ -266,7 +266,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <h3 class="block">Address</h3>  
+                                        <h3 class="block">Address</h3>
                                      </div>
                             </div>
                             </div>

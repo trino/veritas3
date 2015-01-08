@@ -180,11 +180,15 @@ var FormWizard = function () {
                 if(current == (total-1))
                 {
                     $('.cont').html('Submit Order');
-                    $('.cont').attr('id','');
+                   // $('.cont').attr('id','');
                 }
                 else{
                 $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
                 $('.cont').attr('id','draft');
+                }
+                if(current==total)
+                {
+                    $('.cont').attr('id','');
                 }
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();

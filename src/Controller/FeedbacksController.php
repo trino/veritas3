@@ -37,7 +37,7 @@ class FeedbacksController extends AppController{
 				$this->Flash->success('The feedback has been sent.');
                 	return $this->redirect('/documents/index');
 			} else {
-				$this->Flash->error('The feedback could not be sent. Please, try again.');
+				$this->Flash->error('Feedback not sent. Please try again.');
                 return $this->redirect('/feedbacks/add');
 			}
 		}
@@ -63,7 +63,7 @@ class FeedbacksController extends AppController{
 				$this->Flash->success('The feedback has been sent.');
                 	return $this->redirect('/documents/index');
 			} else {
-				$this->Flash->error('The feedback could not be sent. Please, try again.');
+				$this->Flash->error('Feedback not sent. Please try again.');
                 return $this->redirect('/feedbacks/add');
 			}
 		}

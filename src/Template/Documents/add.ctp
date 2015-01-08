@@ -107,7 +107,7 @@ $is_disabled = '';
                                                 <a href="javascript:void(0)" class="btn green cont">Save</a>
 
 
-												<a href="javascript:;" class="btn blue">
+												<a href="javascript:;" id="draft" class="btn blue cont">
 												Save As Draft <i class="m-icon-swapright m-icon-white"></i>
 												</a>
                                                 <div class="margin-top-10 alert alert-success display-hide flashDoc" style="display: none;">
@@ -787,7 +787,12 @@ jQuery(document).ready(function() {
     }
     ?>
     $(document.body).on('click','.cont',function(){
-
+    if($(this).attr('id')=='draft')
+    {
+        var draft=1;
+    }
+    else
+    var draft=0;
     var type=$(".document_type").val();
     alert(type);
     //alert($('#sub_id').val());return;
@@ -796,7 +801,7 @@ jQuery(document).ready(function() {
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,
        type:'post',
-       url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+doc_id+'/?document='+type,
+       url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+doc_id+'/?document='+type+'&draft='+draft,
        success:function(res) {
         $('#did').val(res);
          // saving data
@@ -826,8 +831,8 @@ jQuery(document).ready(function() {
               savedMeeOrder(url,order_id,cid,type);
       }
         $('.flashDoc').show();
-        $('.flashDoc').hide(5000);
-        //window.location = '<?php echo $this->request->webroot?>documents/index';
+        $('.flashDoc').fadeOut(8000);
+       // window.location = '<?php echo $this->request->webroot?>documents/index';
        }
     });
     });

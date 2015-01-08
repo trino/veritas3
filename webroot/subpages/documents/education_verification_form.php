@@ -40,7 +40,7 @@
                                 <tr><td>Education Start Date:<input type="text" class="form-control date-picker" name="education_start_date[]" value="<?php echo $emp->education_start_date;?>"/></td>
                                     <td>Education End Date:<input type="text" class="form-control date-picker" name="education_end_date[]" value="<?php echo $emp->education_end_date;?>"/></td></tr>
                                 <tr><td>Claims with this Tutor:&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" <?php if($emp->claim_tutor == '1'){?>checked="checked"<?php }?> value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" <?php if($emp->claim_tutor == '0'){?>checked="checked"<?php }?> value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
-                                    <td>Date Claims Occured:<input type="text" class="form-control" name="date_claims_occur[]"/></td></tr>
+                                    <td>Date Claims Occured:<input type="text" class="form-control date-picker" name="date_claims_occur[]"/></td></tr>
                                 <tr><td colspan="2">Education history confirmed by (Verifier Use Only):
                                 <input type="text" class="form-control" name="education_history_confirmed_by[]"/></td></tr>
                                 <tr><td colspan="2">
@@ -107,7 +107,7 @@
                 
                                     </td></tr>
                                 <tr><td>Signature:<input type="text" class="form-control" value="<?php echo $emp->signature;?>" name="signature[]"/></td>
-                                    <td>Date/Time:<input type="text" class="form-control" value="<?php echo $emp->date_time;?>" name="date_time[]" /></td></tr>
+                                    <td>Date:<input type="text" class="form-control date-picker" value="<?php echo $emp->date_time;?>" name="date_time[]" /></td></tr>
                                 
                         </table>
                     </div>
@@ -152,7 +152,7 @@
                     <tr><td>Education Start Date:<input type="text" class="form-control date-picker" name="education_start_date[]"/></td>
                         <td>Education End Date:<input type="text" class="form-control date-picker" name="education_end_date[]"/></td></tr>
                     <tr><td>Claims with this Tutor:&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
-                        <td>Date Claims Occured:<input type="text" class="form-control" name="date_claims_occur[]"/></td></tr>
+                        <td>Date Claims Occured:<input type="text" class="form-control date-picker" name="date_claims_occur[]"/></td></tr>
                     <tr><td colspan="2">Education history confirmed by (Verifier Use Only):
                     <input type="text" class="form-control" name="education_history_confirmed_by[]"/></td></tr>
                     <tr><td colspan="2">
@@ -219,7 +219,7 @@
     
                         </td></tr>
                     <tr><td>Signature:<input type="text" class="form-control" name="signature[]"/></td>
-                        <td>Date/Time:<input type="text" class="form-control" name="date_time[]" /></td></tr>
+                        <td>Date:<input type="text" class="form-control date-picker" name="date_time[]" /></td></tr>
                     
         </table>
     </div>
@@ -267,6 +267,12 @@ $(function(){
         var counter = parseInt(current)+1;
         
         $('#count_more_edu').attr('value',counter);
+        $('.date-picker').datepicker({
+                rtl: Metronic.isRTL(),
+                orientation: "left",
+                autoclose: true,
+                format: 'yyyy-mm-dd'
+            });
        }
     });
   });

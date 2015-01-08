@@ -36,7 +36,7 @@
                  <div class="form-group col-md-12">
     				<label class="control-label col-md-2">Date of Birth : </label>
     				<div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="YY-MM-DD" name="birth_date" />
+    					<input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="birth_date" />
     				</div>
                     <label class="control-label col-md-2">Sex : </label>
                     <div class="col-md-2">
@@ -206,7 +206,7 @@
     				</div>
                     <label class="control-label col-md-3">Date of Birth : </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="YYYY/MM/DD" name="criminal_date_birth"/>
+    					<input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="criminal_date_birth"/>
     				</div>
                 </div>
                 
@@ -230,7 +230,7 @@
     				</div>
                     <label class="control-label col-md-3">Date: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="YYYY/MM/DD" name="criminal_date"/>
+    					<input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="criminal_date"/>
     				</div>
                 </div>
                 
@@ -296,7 +296,7 @@
                         ?>
                         <tr>
                         <td><input type="text" class="form-control" name="offence[]" value="<?php echo $co[$k];?>" /></td>
-                        <td><input type="text" class="form-control" name="date_of_sentence[]" value="<?php echo $cd[$k];?>" /></td>
+                        <td><input type="text" class="form-control date-picker" name="date_of_sentence[]" value="<?php echo $cd[$k];?>" /></td>
                         <td><input type="text" class="form-control" name="location[]" value="<?php echo $cl[$k];?>"/></td>
                     </tr>
                         <?php
@@ -338,7 +338,7 @@
             <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Date: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" name="authorize_date"/>
+    					<input type="text" class="form-control date-picker" name="authorize_date"/>
     				</div>
                     <label class="control-label col-md-3">Signature: </label>
                     <div class="col-md-3">

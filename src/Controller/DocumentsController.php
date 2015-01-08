@@ -38,7 +38,10 @@ class DocumentsController extends AppController {
         }
         $docs = TableRegistry::get('Documents');
         $doc = $docs->find();
-        $doc=$doc->select();
+        if(!isset($_GET['draft']))
+        $doc=$doc->select()->where(['draft'=>0]);
+        else
+        $doc=$doc->select()->where(['draft'=>1]);
         
         $cond='';
         
@@ -384,8 +387,10 @@ class DocumentsController extends AppController {
             $orders = TableRegistry::get('orders');
             $arr['title'] = 'order_'.$_POST['uploaded_for'].'_'.date('Y-m-d H:i:s');
             $arr['uploaded_for'] = $_POST['uploaded_for'];
-
-            
+            if(isset($_GET['draft']) && $_GET['draft'])
+            $arr['draft']=1;
+            else
+            $arr['draft']=0;
             $arr['client_id'] = $cid;
             //$arr['order_type'] = $_POST['sub_doc_id'];
             $arr['created'] = date('Y-m-d H:i:s');
@@ -414,6 +419,10 @@ class DocumentsController extends AppController {
 
         } else {
             $docs = TableRegistry::get('Documents');
+            if(isset($_GET['draft']) && $_GET['draft'])
+            $arr['draft']=1;
+            else
+            $arr['draft']=0;
             $arr['sub_doc_id'] = $_POST['sub_doc_id'];
             $arr['uploaded_for'] = $_POST['uploaded_for'];
             $arr['client_id'] = $cid;

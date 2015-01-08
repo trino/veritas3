@@ -151,11 +151,11 @@
             <div class="form-group col-md-12">
                 <label class="control-label col-md-2">Dates : From </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" name="worked_start_date"/>
+					<input type="text" class="form-control date-picker" name="worked_start_date"/>
 				</div>
                 <label class="control-label col-md-1">To </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" name="worked_end_date"/>
+					<input type="text" class="form-control date-picker" name="worked_end_date"/>
 				</div>
                 <label class="control-label col-md-2">Position </label>
 				<div class="col-md-3">
@@ -196,7 +196,7 @@
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">Date of Application : </label>
 				<div class="col-md-3">
-					<input type="text" class="form-control" name="date_of_application"/>
+					<input type="text" class="form-control date-picker" name="date_of_application"/>
 				</div>
                 <label class="control-label col-md-3">Position(s) Applied for : </label>
 				<div class="col-md-3">
@@ -278,7 +278,7 @@
                 
                 <label class="control-label col-md-2">Expiry Date</label>
                 <div class="col-md-2">
-					<input type="text" class="form-control" name="card_expiry_date"/>
+					<input type="text" class="form-control date-picker" name="card_expiry_date"/>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -564,7 +564,7 @@
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Date : </label>
                 <div class="col-md-6">
-					<input type="text" class="form-control" name="date_of_accident[]"/>
+					<input type="text" class="form-control date-picker" name="date_of_accident[]"/>
 				</div>
             </div>
             
@@ -596,7 +596,7 @@
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Date : </label>
                 <div class="col-md-6">
-					<input type="text" class="form-control" name="date_of_accident[]"/>
+					<input type="text" class="form-control date-picker" name="date_of_accident[]"/>
 				</div>
             </div>
             
@@ -680,7 +680,7 @@
                     <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[0]?>"/></td>
                     <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[0]?>"/></td>
                     <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[0]?>"/></td>
-                    <td><input type="text" class="form-control" name="expiration_date[]" value="<?php echo $de[0]?>"/></td>
+                    <td><input type="text" class="form-control date-picker" name="expiration_date[]" value="<?php echo $de[0]?>"/></td>
                 </tr>
                 <tr>
                     <td>
@@ -690,7 +690,7 @@
                     <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[1]?>"/></td>
                     <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[1]?>"/></td>
                     <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[1]?>"/></td>
-                    <td><input type="text" class="form-control" name="expiration_date[]" value="<?php echo $de[1]?>"/></td>
+                    <td><input type="text" class="form-control date-picker" name="expiration_date[]" value="<?php echo $de[1]?>"/></td>
                 </tr>
                 <tr>
                     <td>
@@ -700,7 +700,7 @@
                     <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[2]?>"/></td>
                     <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[2]?>"/></td>
                     <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[2]?>"/></td>
-                    <td><input type="text" class="form-control" name="expiration_date[]" value="<?php echo $de[2]?>"/></td>
+                    <td><input type="text" class="form-control date-picker" name="expiration_date[]" value="<?php echo $de[2]?>"/></td>
                 </tr>
             </table>
             </div>
@@ -735,26 +735,26 @@
                     </tr>
                     <tr><td class="center">Straight Truck</td>
                         <td><input type="text" class="form-control" name="straight_truck_type" /></td>
-                        <td><input type="text" class="form-control" name="straight_truck_start_date" /></td>
-                        <td><input type="text" class="form-control" name="straight_truck_end_date" /></td>
+                        <td><input type="text" class="form-control date-picker" name="straight_truck_start_date" /></td>
+                        <td><input type="text" class="form-control date-picker" name="straight_truck_end_date" /></td>
                         <td><input type="text" class="form-control" name="straight_truck_miles" /></td>
                     </tr>
                     <tr><td class="center">Tractor and Semi-Trailer</td>
                         <td><input type="text" class="form-control" name="tractor_semi_types" /></td>
-                        <td><input type="text" class="form-control" name="tractor_semi_start_date" /></td>
-                        <td><input type="text" class="form-control" name="tractor_semi_end_date" /></td>
+                        <td><input type="text" class="form-control date-picker" name="tractor_semi_start_date" /></td>
+                        <td><input type="text" class="form-control date-picker" name="tractor_semi_end_date" /></td>
                         <td><input type="text" class="form-control" name="tractor_miles" /></td
                             ></tr>
                     <tr><td class="center">Tractor-Two Trailers</td>
                         <td><input type="text" class="form-control" name="tractor_two_types" /></td>
-                        <td><input type="text" class="form-control" name="tractor_two_start_date" /></td>
-                        <td><input type="text" class="form-control" name="tractor_two_end_date" /></td>
+                        <td><input type="text" class="form-control date-picker" name="tractor_two_start_date" /></td>
+                        <td><input type="text" class="form-control date-picker" name="tractor_two_end_date" /></td>
                         <td><input type="text" class="form-control" name="tractor_two_miles" /></td>
                     </tr>
                     <tr><td class="center">Other</td>
                         <td><input type="text" class="form-control" name="other_types" /></td>
-                        <td><input type="text" class="form-control" name="other_start_date" /></td>
-                        <td><input type="text" class="form-control" name="other_end_date" /></td>
+                        <td><input type="text" class="form-control date-picker" name="other_start_date" /></td>
+                        <td><input type="text" class="form-control date-picker" name="other_end_date" /></td>
                         <td><input type="text" class="form-control" name="other_miles" /></td>
                     </tr>
             </table>
@@ -809,7 +809,7 @@
             
              <div class="form-group col-md-12">
                                     <div class="col-md-6">
-										<input type="text" class="form-control" placeholder="Date" name="medical_certify_date"/>
+										<input type="text" class="form-control date-picker" placeholder="Date" name="medical_certify_date"/>
                                         </div>
                                         <div class="col-md-6">
 			                             <input type="text" class="form-control" placeholder="Signature" name="medical_certify_signature"/>
@@ -837,7 +837,7 @@
                     <p>THIS CERTIFIES THAT THIS APPLICATION WAS COMPLETED BY ME, AND THAT ALL ENTRIES ON IT AND INFORMATION IN IT ARE TRUE AND COMPLETE TO THE BEST OF MY KNOWLEDGE. I AUTHORIZE YOU TO MAKE SUCH INVESTIGATIONS AND INQUIRIES OF MY PERSONAL, EMPLOYMENT, FINANCIAL OR MEDICAL HISTORY AND OTHER RELATED MATTERS AS MAY BE NECESSARY IN ARRIVING AT AN EMPLOYMENT DECISION. I HEREBY RELEASE EMPLOYERS, SCHOOLS OR PERSONS FROM ALL LIABILITY IN RESPONDING TO INQUIRIES IN CONNECTION WITH MY APPLICATION.IN THE EVENT OF EMPLOYMENT, I UNDERSTAND THAT FALSE OR MISLEADING INFORMATION GIVEN IN MY APPLICATION OR INTERVIEW(S) MAY RESULT IN DISCHARGE. I UNDERSTAND, ALSO, THAT I AM REQUIRED TO ABIDE BY ALL RULES AND REGULATIONS OF THE COMPANY, AS PERMITTED BY LAW.I UNDERSTAND THAT I HAVE THE RIGHT TO REVIEW INFORMATION PROVIDED BY PREVIOUS EMPLOYERS, HAVE ERRORS CORRECTED BY PREVIOUS EMPLOYER AND RESUBMITTED TO CHALLENGER MOTOR FREIGHT INC AND /OR HAVE A REBUTTAL STATEMENT ATTACHED TO ERRONEOUS INFORMATION IF MY PREVIOUS EMPLOYER AND I CANNOT AGREE ON THE ACCURACY OF THE INFORMATION. I UNDERSTAND THAT I MUST REQUEST PAST EMPLOYER INFORMATION OBTAINED BY CHALLENGER MOTOR FREIGHT INC IN WRITING WITHIN 30-DAYS OF EMPLOYMENT OR DENIAL OF EMPLOYMENT.</p>
                     <div class="form-group col-md-12">
                                     <div class="col-md-6">
-										<input type="text" class="form-control" placeholder="Date" name="read_sign_date"/>
+										<input type="text" class="form-control date-picker" placeholder="Date" name="read_sign_date"/>
                                         </div>
                                         <div class="col-md-6">
 			                             <input type="text" class="form-control" placeholder="Signature" name="read_signature"/>
@@ -883,7 +883,7 @@
                                 <label class="control-label">Exp. Date</label>
                             </div>
                             <div class="col-md-3">
-    							<input type="text" class="form-control" name="posses_expiry_date"/>
+    							<input type="text" class="form-control date-picker" name="posses_expiry_date"/>
                             </div>
                             <div class="col-md-3">
                                 <label class="control-label">Driver's Signature </label>
@@ -1067,7 +1067,7 @@
                      <div class="form-group col-md-12">
                                         <label class="control-label col-md-6">Dated at on the day of : </label>
                                         <div class="col-md-6">
-										<input type="text" class="form-control" name="dated_day"/>
+										<input type="text" class="form-control date-picker" name="dated_day"/>
                                         </div>
                        </div>
                        
@@ -1160,6 +1160,12 @@
         $('.more_acc_record').append(res);
         var c = $('#count_acc_record').val();
         $('#count_acc_record').val(parseInt(c)+1);
+        $('.date-picker').datepicker({
+                rtl: Metronic.isRTL(),
+                orientation: "left",
+                autoclose: true,
+                format: 'yyyy-mm-dd'
+            });
        } 
     });
     

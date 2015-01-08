@@ -143,6 +143,7 @@ class ProfilesController extends AppController {
 			}
 		}
 		$this->set(compact('profile'));
+        
         $this->render("edit");
 	}
 
@@ -269,13 +270,17 @@ class ProfilesController extends AppController {
             }
             foreach($_POST['block'] as $k=>$v)
             {
+                
                 $block[$k] = $v;
             }
+           
             foreach($_POST['side'] as $k=>$v)
             {
+                //echo $k."=>".$v."<br/>";
                 $side[$k] = $v;
             }
-            //var_dump($_POST)
+             //die();
+            
             $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete','document_others','orders_list','orders_create','orders_delete','orders_edit','orders_others');
             foreach($sides as $s)
             {
@@ -565,7 +570,7 @@ class ProfilesController extends AppController {
         $super = $this->request->session()->read('Profile.super');
         $cond = $this->Settings->getprofilebyclient($u,$super);
         $profile = TableRegistry::get('profiles');
-        $query = $profile->find()->where(['OR'=>$cond]);
+        $query = $profile->find()->where(['super'=>0,'OR'=>$cond]);
                  
         $l = $query->all();
         $this->response->body($l);

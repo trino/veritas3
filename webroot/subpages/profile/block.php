@@ -43,15 +43,15 @@
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[profile]"
-                                                                                          value="1" onclick="$(this).closest('td').find('.yesno').show();" <?php if (isset($sidebar) && $sidebar->profile == 1) echo "checked"; ?> />
+                                                                                          value="1" onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})" <?php if (isset($sidebar) && $sidebar->profile == 1) echo "checked"; ?> />
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[profile]"
-                                                                                          value="0" onclick="$(this).closest('td').find('.yesno').hide(); $(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});" <?php if (isset($sidebar) && $sidebar->profile == 0) echo "checked"; ?>/>
+                                                                                          value="0" onclick=" $(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})" <?php if (isset($sidebar) && $sidebar->profile == 0) echo "checked"; ?>/>
                                                         No </label>
                                                         <div class="clearfix"></div>
-                                                        <div class="col-md-12 nopad martop yesno" <?php if(isset($sidebar) && $sidebar->profile == 0){?>style="display:none;"<?php }?>>
+                                                        <div class="col-md-12 nopad martop yesno" >
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[profile_list]"
@@ -86,17 +86,17 @@
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[client]"
-                                                                                          onclick="$(this).closest('td').find('.yesno').show();"
+                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})"
                                                                                           value="1" <?php if (isset($sidebar) && $sidebar->client == 1) echo "checked"; ?>/>
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[client]"
-                                                                                          onclick="$(this).closest('td').find('.yesno').hide();"
+                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})"
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->client == 0) echo "checked"; ?>/>
                                                         No </label>
                                                         <div class="clearfix"></div>
-                                                        <div class="col-md-12 nopad martop yesno" <?php if(isset($sidebar) && $sidebar->client == 0){?>style="display:none;"<?php }?>>
+                                                        <div class="col-md-12 nopad martop yesno" >
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[client_list]"
@@ -130,17 +130,17 @@
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[document]"
-                                                                                          onclick="$(this).closest('td').find('.yesno').show();"
+                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;});"
                                                                                           value="1" <?php if (isset($sidebar) && $sidebar->document == 1) echo "checked"; ?>/>
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[document]"
-                                                                                          onclick="$(this).closest('td').find('.yesno').hide();"
+                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})"
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->document == 0) echo "checked"; ?>/>
                                                         No </label>
                                                         <div class="clearfix"></div>
-                                                        <div class="col-md-12 nopad martop yesno" <?php if(isset($sidebar) && $sidebar->document == 0){?>style="display:none;"<?php }?>>
+                                                        <div class="col-md-12 nopad martop yesno" >
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[document_list]"
@@ -178,43 +178,30 @@
                                                 </td>
                                                 <td>
                                                     <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[orders]"
-                                                                                          onclick="$(this).closest('td').find('.yesno').show();"
-                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->orders == 1) echo "checked"; ?>/>
+                                                        <input <?php echo $is_disabled ?> type="radio" name="side[orders]" onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})" value="1" <?php if (isset($sidebar) && $sidebar->orders == 1) echo "checked"; ?>/>
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[orders]"
-                                                                                          onclick="$(this).closest('td').find('.yesno').hide();"
+                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){$(this).removeAttr('checked');});"
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->orders == 0) echo "checked"; ?>/>
                                                         No </label>
                                                         <div class="clearfix"></div>
-                                                        <div class="col-md-12 nopad martop yesno" <?php if(isset($sidebar) && $sidebar->orders == 0){?>style="display:none;"<?php }?>>
+                                                        <div class="col-md-12 nopad martop yesno" >
                                                             <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[orders_list]"
-                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->orders_list == 1) echo "checked"; ?> /> List
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_list]" value="1" <?php if (isset($sidebar) && $sidebar->orders_list == 1) echo "checked"; ?> /> List
                                                             </label>
                                                             <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[orders_create]"
-                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->orders_create == 1) echo "checked"; ?> /> Create
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_create]" value="1" <?php if (isset($sidebar) && $sidebar->orders_create == 1) echo "checked"; ?> /> Create
                                                             </label>
                                                             <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[orders_edit]"
-                                                                                          value="1" <?php if ($sidebar->orders_edit == 1) echo "checked"; ?> /> Edit
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_edit]" value="1" <?php if ($sidebar->orders_edit == 1) echo "checked"; ?> /> Edit
                                                             </label>
                                                             <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[orders_delete]"
-                                                                                          value="1" <?php if ($sidebar->orders_delete == 1) echo "checked"; ?> /> Delete
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_delete]" value="1" <?php if ($sidebar->orders_delete == 1) echo "checked"; ?> /> Delete
                                                             </label>
                                                              <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[orders_others]"
-                                                                                          value="1" <?php if ($sidebar->orders_others == 1) echo "checked"; ?> /> View Others Orders
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_others]" value="1" <?php if ($sidebar->orders_others == 1) echo "checked"; ?> /> View Others Orders
                                                             </label>
                                                             
                                                             
@@ -581,9 +568,10 @@
                                                type:'post',
                                                success:function(res)
                                                {
-                                                $('.res').text(res);
-                                                $('.flash').show();
-                                                $('#save_display').text(' Save Changes ');
+                                                    //alert(res);
+                                                    $('.res').text(res);
+                                                    $('.flash').show();
+                                                    $('#save_display').text(' Save Changes ');
                                                } 
                                             })
                                        });

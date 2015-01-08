@@ -275,12 +275,12 @@
 					<ul class="sub-menu">
                         
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
-							<a href="<?php echo $this->request->webroot;?>documents/drafts">
+							<a href="<?php echo $this->request->webroot;?>documents/index?drafts">
                             <i class="icon-list"></i>
 							 <?php echo ucfirst($settings->document);?>s</a>
 						</li>
-                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
-                            <a href="<?php echo $this->request->webroot;?>documents/drafts">
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='orderslist')?'class="active"':'';?>>
+                            <a href="<?php echo $this->request->webroot;?>documents/orderslist?drafts">
                                 <i class="icon-list"></i> Orders</a>
                         </li>
                        

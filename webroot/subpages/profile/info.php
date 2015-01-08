@@ -2,9 +2,9 @@
     <li class="active">
         <a href="#subtab_4_1" data-toggle="tab">Info</a>
     </li>
-    <li class="">
+    <!--<li class="">
         <a href="#subtab_4_2" data-toggle="tab">Picture</a>
-    </li>
+    </li>-->
     <li>
         <a href="#subtab_4_3" data-toggle="tab">Password</a>
     </li>
@@ -29,7 +29,7 @@
 
                         <form role="form" action="" method="post">
 
-
+                           
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -437,9 +437,9 @@
             ?>
 
 
-            <div class="tab-pane" id="subtab_4_2">
+           <!-- <div class="tab-pane" id="subtab_4_2">
                 <?php include('avatar.php');?>
-            </div>
+            </div>-->
 
 
 
@@ -451,9 +451,9 @@
         } else {
             ?>
 
-            <div class="tab-pane" id="subtab_4_2">
+           <!-- <div class="tab-pane" id="subtab_4_2">
                 <p>Please save info first.</p>
-            </div>
+            </div>-->
 
             <div class="tab-pane" id="subtab_4_3">
                 <p>Please save info first.</p>

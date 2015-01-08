@@ -17,21 +17,16 @@
 
                                                 <div class="portlet-body">
 
-                                                    <form action="<?php echo $this->request->webroot; ?>logos"
-                                                          method="post" class="form-inline" role="form">
+                                                    <form action="<?php echo $this->request->webroot; ?>logos" method="post" class="form-inline" role="form" id="logoform">
 
 
                                                         <?php foreach ($logos as $logo) { ?>
-
-
-
-
-<div class="col-md-4 margin-top-20">
-<div class="form-group" style="height:100px;">
-<input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?>/>
-<img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>" />
-</div>
-</div>
+                                                        <div class="col-md-4 margin-top-20">
+                                                        <div class="form-group" style="height:100px;">
+                                                        <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?>/>
+                                                        <img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>" />
+                                                        </div>
+                                                        </div>
 
 
 
@@ -39,9 +34,12 @@
                                                         <?php } ?>
 
                                                         <div class="clearfix"></div>
+                                                         <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Data saved successfully
+                                                        </div>
 
-
-                                                        <input type="submit" class="btn btn-success" value="submit" name="submit"/>
+                                                        <a href='javascript:;' class="btn btn-success" id="submit">Submit</a>
                                                     </form>
 
                                                 </div>
@@ -54,18 +52,14 @@
                                                 <div class="portlet-body">
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/secondary"
-                                                          method="post" class="form-inline" role="form">
-                                                        <?php foreach ($logos1 as $logo) { 
-                                                            
-                                                                                                                        ?>
-
-
-                                                            <div class="col-md-4 margin-top-20">
+                                                          method="post" class="form-inline" role="form" id="logoform1">
+                                                        <?php foreach ($logos1 as $logo) { ?>
+                                                             <div class="col-md-4 margin-top-20">
                                                                 <div class="form-group" style="height:100px;">
-<input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> />
-<img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"             />
-</div>
-</div>
+                                                                        <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> />
+                                                                        <img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"             />
+                                                                        </div>
+                                                            </div>
 
 
 
@@ -73,9 +67,11 @@
                                                         <?php } ?>
 
                                                         <div class="clearfix"></div>
-
-                                                        <input type="submit" class="btn btn-success" value="submit"
-                                                               name="submit"/>
+                                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                                <button class="close" data-close="alert"></button>
+                                                                Data saved successfully
+                                                            </div>
+                                                        <a href='javascript:;' class="btn btn-success" id="submit1">Submit</a>
                                                     </form>
 
 
@@ -84,3 +80,37 @@
                                         </div>
 
                                     </div>
+                                    
+<script>
+$(function(){
+    $('#submit1').click(function(){
+    $('#submit1').text('Saving..');
+        var str = $('#logoform1 input').serialize();
+        $.ajax({
+           url:'<?php echo $this->request->webroot;?>logos/ajaxlogo1',
+           data:str,
+           type:'post',
+           success:function(res)
+           {
+            $('.flash').show();
+            $('#submit1').text(' Save Changes ');
+           } 
+        })
+   }); 
+    $('#submit').click(function(){
+    $('#submit').text('Saving..');
+        var str = $('#logoform input').serialize();
+        $.ajax({
+           url:'<?php echo $this->request->webroot;?>logos/ajaxlogo',
+           data:str,
+           type:'post',
+           success:function(res)
+           {
+            $('.flash').show();
+            $('#submit').text(' Save Changes ');
+           } 
+        })
+   }); 
+
+})
+</script>

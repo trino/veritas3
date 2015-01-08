@@ -230,6 +230,7 @@
                 <i class="icon-notebook"></i>
 				<span class="title">Orders</span>
                 <span class="selected"></span>
+                <span class="arrow "></span>
                 </a>
                 <?php if($sidebar->orders_list==1 || $sidebar->orders_create==1){?>
 					<ul class="sub-menu">

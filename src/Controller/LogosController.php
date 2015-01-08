@@ -43,6 +43,49 @@ class LogosController extends AppController {
          }
         
 	}
+    function ajaxlogo()
+    {
+        $lg = $this->Logos->find()->where(['secondary'=>'0']);
+        foreach($lg as  $l)
+        {
+
+            $log = TableRegistry::get('Logos');
+            $query = $log->query();
+            $query->update()
+            ->set(['active' => 0])
+            ->where(['id' => $l->id])
+            ->execute();
+            
+            
+        }
+        $id = $_POST['logo'];
+        $logo = TableRegistry::get('Logos');
+            $query1 = $logo->query();
+            $query1->update()->set(['active' => 1])->where(['id' => $id])->execute();
+       die();
+    }
+    function ajaxlogo1()
+    {
+        $lg = $this->Logos->find()->where(['secondary'=>'1']);
+        foreach($lg as  $l)
+        {
+
+            $log = TableRegistry::get('Logos');
+            $query = $log->query();
+            $query->update()
+            ->set(['active' => 0])
+            ->where(['id' => $l->id])
+            ->execute();
+            
+            
+        }
+        $id = $_POST['logo'];
+        $logo = TableRegistry::get('Logos');
+            $query1 = $logo->query();
+        $query1->update()->set(['active' => 1])->where(['id' => $id])->execute();
+        
+           die();
+    }
     public function secondary() {
 		$lg = $this->paginate($this->Logos->find()->where(['secondary'=>'1']));
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));

@@ -32,7 +32,7 @@ class DocumentsController extends AppController {
         $cn = $this->getUserDocumentcount();
         if($setting->document_list==0 || count($doc)==0 || $cn==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -111,7 +111,7 @@ class DocumentsController extends AppController {
         
         if($setting->profile_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -131,7 +131,7 @@ class DocumentsController extends AppController {
         
         if($setting->profile_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -151,7 +151,7 @@ class DocumentsController extends AppController {
         
         if($setting->profile_list==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -173,7 +173,7 @@ class DocumentsController extends AppController {
         $cn = $this->getUserDocumentcount();
         if($setting->document_list==0 || count($doc)==0 || $cn ==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -235,7 +235,7 @@ class DocumentsController extends AppController {
         $cn = $this->getUserDocumentcount();
         if($setting->orders_list==0 || count($doc)==0 || $cn ==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -306,7 +306,7 @@ class DocumentsController extends AppController {
         //die(count($doc));
         if($setting->orders_create==0 || count($doc)==0 || $cn==0 )
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -383,10 +383,10 @@ class DocumentsController extends AppController {
                 $order = $orders->newEntity($arr);
 
                     if ($orders->save($order)) {
-                        //$this->Flash->success('The client has been saved.');
+                        //$this->Flash->success('Client saved successfully.');
                         echo $order->id;
                     } else {
-                        //$this->Flash->error('The client could not be saved. Please, try again.');
+                        //$this->Flash->error('Client could not be saved. Please try again.');
                         //echo "e";
                     }
             }
@@ -397,7 +397,7 @@ class DocumentsController extends AppController {
                     ->set($arr)
                     ->where(['id' => $did])
                     ->execute();
-                //$this->Flash->success('The client has been saved.');
+                //$this->Flash->success('Client saved successfully.');
                 echo $did;
             }
 
@@ -414,10 +414,10 @@ class DocumentsController extends AppController {
 
 
                     if ($docs->save($doc)) {
-                        //$this->Flash->success('The client has been saved.');
+                        //$this->Flash->success('Client saved successfully.');
                             echo $doc->id;
                     } else {
-                         //$this->Flash->error('The client could not be saved. Please, try again.');
+                         //$this->Flash->error('Client could not be saved. Please try again.');
                         //echo "e";
                     }
 
@@ -429,7 +429,7 @@ class DocumentsController extends AppController {
                                 ->set($arr)
                                 ->where(['id' => $did])
                                 ->execute();
-                                //$this->Flash->success('The client has been saved.');
+                                //$this->Flash->success('Client saved successfully.');
                             echo $did;
             }
         }
@@ -919,7 +919,7 @@ class DocumentsController extends AppController {
         $cn = $this->getUserDocumentcount();
         if($setting->orders_edit==0 || count($doc)==0 || $cn ==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -934,10 +934,10 @@ class DocumentsController extends AppController {
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$profile = $this->Clients->patchEntity($profile, $this->request->data);
 			if ($this->Clients->save($profile)) {
-				$this->Flash->success('The user has been saved.');
+				$this->Flash->success('User saved successfully.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The user could not be saved. Please, try again.');
+				$this->Flash->error('The user could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('profile'));*/
@@ -974,14 +974,14 @@ class DocumentsController extends AppController {
                     $query = $doc->find()->where(['id' => $did])->first();
                     $this->set('document',$query);
                     if($setting->document_edit==0 || count($doc)==0 || $cn ==0) {
-                        $this->Flash->error('Sorry, You dont have the permissions.');
+                        $this->Flash->error('Sorry, you don\'t have the required permissions.');
                         	return $this->redirect("/");
                         
                     }
                     
                 } else {
                     if($setting->document_create==0 || count($doc)==0 || $cn == 0) {
-                        $this->Flash->error('Sorry, You dont have the permissions.');
+                        $this->Flash->error('Sorry, you don\'t have the required permissions.');
                         	return $this->redirect("/");
                         
                     }
@@ -1002,7 +1002,7 @@ class DocumentsController extends AppController {
             				$this->Flash->success('The document has been saved.');
                             	$this->redirect('/documents');
             			} else {
-            			     //$this->Flash->error('The client could not be saved. Please, try again.');
+            			     //$this->Flash->error('Client could not be saved. Please try again.');
             				//echo "e";
             			}
         		
@@ -1026,14 +1026,14 @@ class DocumentsController extends AppController {
                         $query = $doc->find()->where(['id' => $did])->first();
                         $this->set('document',$query);
                         if($setting->document_edit==0 || count($doc)==0 || $cn ==0) {
-                            $this->Flash->error('Sorry, You dont have the permissions.');
+                            $this->Flash->error('Sorry, you don\'t have the required permissions.');
                                 return $this->redirect("/");
                             
                         }
                         
                     } else {
                         if($setting->document_create==0 || count($doc)==0 || $cn ==0) {
-                            $this->Flash->error('Sorry, You dont have the permissions.');
+                            $this->Flash->error('Sorry, you don\'t have the required permissions.');
                                 return $this->redirect("/");
                             
                         }
@@ -1054,7 +1054,7 @@ class DocumentsController extends AppController {
                                 $this->Flash->success('The document has been saved.');
                                     $this->redirect('/orderslist');
                             } else {
-                                 //$this->Flash->error('The client could not be saved. Please, try again.');
+                                 //$this->Flash->error('Client could not be saved. Please try again.');
                                 //echo "e";
                             }
                     
@@ -1126,7 +1126,7 @@ class DocumentsController extends AppController {
         $cn = $this->getUserDocumentcount();
         if($setting->document_edit==0 || count($doc)==0 | $cn ==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -1145,7 +1145,7 @@ class DocumentsController extends AppController {
         
         if($setting->document_delete==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
@@ -1154,7 +1154,7 @@ class DocumentsController extends AppController {
 		if ($this->Clients->delete($profile)) {
 			$this->Flash->success('The user has been deleted.');
 		} else {
-			$this->Flash->error('The user could not be deleted. Please, try again.');
+			$this->Flash->error('User could not be deleted. Please try again.');
 		}
 		return $this->redirect(['action' => 'index']);*/
 	} 
@@ -1264,7 +1264,7 @@ class DocumentsController extends AppController {
 
         if($setting->orders_list==0 || count($doc)==0 || $cn ==0)
         {
-            $this->Flash->error('Sorry, You dont have the permissions.');
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
             return $this->redirect("/");
 
         }

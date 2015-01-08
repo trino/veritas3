@@ -42,10 +42,10 @@ class TodoController extends AppController {
 		$profile = $this->Profiles->newEntity($this->request->data);
 		if ($this->request->is('post')) {
 			if ($this->Profiles->save($profile)) {
-				$this->Flash->success('The user has been saved.');
+				$this->Flash->success('User saved successfully.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The user could not be saved. Please, try again.');
+				$this->Flash->error('The user could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('profile'));
@@ -70,10 +70,10 @@ class TodoController extends AppController {
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$profile = $this->Profiles->patchEntity($profile, $this->request->data);
 			if ($this->Profiles->save($profile)) {
-				$this->Flash->success('The user has been saved.');
+				$this->Flash->success('User saved successfully.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The user could not be saved. Please, try again.');
+				$this->Flash->error('The user could not be saved. Please try again.');
 			}
 		}
 		$this->set(compact('profile'));
@@ -92,7 +92,7 @@ class TodoController extends AppController {
 		if ($this->Profiles->delete($profile)) {
 			$this->Flash->success('The user has been deleted.');
 		} else {
-			$this->Flash->error('The user could not be deleted. Please, try again.');
+			$this->Flash->error('User could not be deleted. Please try again.');
 		}
 		return $this->redirect(['action' => 'index']);
 	}

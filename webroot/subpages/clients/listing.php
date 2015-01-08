@@ -86,11 +86,11 @@
 
 
                                             <?php
-                                                if (isset($client->image) && $client->image) {
+                                                if (isset($clients->image) && $clients->image) {
                                                     ?>
                                                     <img class="img-responsive" style="max-width:180px;" id="clientpic"
                                                          alt=""
-                                                         src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $client->image; ?>"/>
+                                                         src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $clients->image; ?>"/>
                                                 <?php
                                                 } else {
                                                     ?>
@@ -113,7 +113,7 @@
 
                                             <?php
                                                 if ($sidebar->client_list == '1') {
-                                                echo $this->Html->link(__('View'), ['controller' => 'clients', 'action' => 'view', $clients->id], ['class' => 'btn btn-info']);
+                                                    echo $this->Html->link(__('View'), ['controller' => 'clients', 'action' => 'view', $clients->id], ['class' => 'btn btn-info']);
                                                 }
                                                 if ($sidebar->client_edit == '1') {
                                                     echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);
@@ -126,11 +126,14 @@
                                                     echo $this->Html->link(__('Submit Order'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
                                                 }
                                                 if ($sidebar->document_create == '1') {
-                                                    echo $this->Html->link(__('Submit ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => 'btn btn-warning']);
+                                                    echo $this->Html->link(__('Submit ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => 'btn btn-success']);
                                                 }
                                                 if ($sidebar->orders_list == '1') {
-                                                    echo $this->Html->link(__('View Orders'), ['controller' => 'documents', 'action' => 'index/>client_id=', $clients->id], ['class' => 'btn btn-success']);
+                                                    echo $this->Html->link(__('View Orders'), ['controller' => 'documents', 'action' => 'index/>client_id=', $clients->id], ['class' => 'btn btn-warning']);
                                                 }
+
+
+
                                             ?>
                                         </td>
                                     </tr>

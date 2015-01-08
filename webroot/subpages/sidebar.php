@@ -141,7 +141,7 @@
                      ?>
 				<li class="<?php echo($this->request['controller']=='Documents' && ($this->request['action']=="index" || $this->request['action']=="add" ))?'active open':'';?>">
 					<a href="javascript:;">
-					<i class="icon-notebook"></i>
+					<i class="icon-docs"></i>
 					<span class="title"><?php echo ucfirst($settings->document);?>s</span>
 					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>

@@ -778,7 +778,24 @@ function subform(form_type)
     $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
 }
 jQuery(document).ready(function() {
+    
     <?php
+    if($this->request->params['action']=='view')
+    {
+        ?>
+        for(var h=1;h<5;h++)
+        {
+            $('#form_tab'+h+' input').attr('disabled','disabled');
+        $('#form_tab'+h+' textarea').attr('disabled','disabled');
+        $('#form_tab'+h+' select').attr('disabled','disabled');
+        $('#form_tab'+h+' button').hide();
+        $('#form_tab'+h+' a').hide();
+        $('#form_tab'+h+' input[type="submit"]').hide();
+        $('.form-actions').hide();
+        }
+        
+        <?php
+    }
     if(isset($did) && $did)
     {
         ?>
@@ -796,7 +813,7 @@ jQuery(document).ready(function() {
     var type=$(".document_type").val();
     alert(type);
     //alert($('#sub_id').val());return;
-    var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val()};
+    var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val(),division:$('#division').val()};
     $.ajax({
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,

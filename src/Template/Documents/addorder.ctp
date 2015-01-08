@@ -157,7 +157,7 @@ else
                                                      else
                                                      {
                                                         ?>
-                                                        <input type="hidden" name="user_id" value="<?php echo $modal->user_id;?>" id="user_id" />
+                                                        <input type="hidden" name="user_id" value="<?php if(isset($modal) && $modal)echo $modal->user_id;?>" id="user_id" />
                                                         <?php
                                                      }
                                                      ?>
@@ -860,7 +860,7 @@ jQuery(document).ready(function() {
         else
         var draft =0;
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
-    var data = {uploaded_for:$('#uploaded_for').val(),type:type};
+    var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#division').val()};
     $.ajax({
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,

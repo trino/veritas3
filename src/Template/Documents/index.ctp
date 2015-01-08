@@ -156,7 +156,7 @@
                                 
                                 <td class="actions">
 
-                                    <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $docs->id], ['class' => 'btn btn-info']);} ?>
+                                    <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view',$docs->client_id, $docs->id], ['class' => 'btn btn-info']);} ?>
                                     <?php  
                                     if($sidebar->document_edit=='1')
                                     {

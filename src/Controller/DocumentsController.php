@@ -181,7 +181,17 @@ class DocumentsController extends AppController {
     
     
 
-	public function view($id = null) {
+	public function view($cid=0,$did = 0) {
+	   $this->set('cid',$cid);
+         $this->set('did',$did);
+         $this->set('sid','');
+         if($did){
+         $docs = TableRegistry::get('documents');
+            $document = $docs->find()->where(['id' => $did])->first();
+            $this->set('mod',$document);
+            }
+         $doc = $this->getDocumentcount();
+         $cn = $this->getUserDocumentcount();
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
         $cn = $this->getUserDocumentcount();
@@ -194,7 +204,7 @@ class DocumentsController extends AppController {
 		/*$profile = $this->Clients->get($id);
 		$this->set('profile', $profile);*/
         $this->set('disabled', 1);
-        $did=$id;
+        //$did=$id;
         if($did)
         {
             $da = TableRegistry::get('driver_application');
@@ -257,19 +267,18 @@ class DocumentsController extends AppController {
         if($did)
         $order_id = $orders->find()->where(['id'=>$did])->first();
         //$did= $document_id->id;
-        if(isset($document_id))
-        $this->set('modal',$document_id);
+        if(isset($order_id))
+        $this->set('modal',$order_id);
         $this->set('cid',$cid);
         $this->set('did',$did);
 		/*$profile = $this->Clients->get($id);
 		$this->set('profile', $profile);*/
         $this->set('disabled', 1);
-        $this->render('addorder');
         if($did)
         {
             $da = TableRegistry::get('driver_application');
             $da_detail = $da->find()->where(['order_id'=>$did])->first();
-            
+            if($da_detail){
             $da_ac = TableRegistry::get('driver_application_accident');
             $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id'=>$da_detail->id])->all();
             
@@ -280,20 +289,23 @@ class DocumentsController extends AppController {
             $sub['da_at_detail'] = $da_at->find()->where(['driver_application_id'=>$da_detail->id])->all();
             
             $this->set('sub',$sub);
-            
+            }
             $con = TableRegistry::get('consent_form');
-            $con_detail = $con->find()->where(['order_id'=>$did])->first(); 
+            $con_detail = $con->find()->where(['order_id'=>$did])->first();
+            if($con_detail){ 
             //echo $con_detail->id;die();
             $con_cri = TableRegistry::get('consent_form_criminal');
             $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id'=>$con_detail->id])->all();
             $this->set('sub2',$sub2);
             
-            
+            }
             $emp = TableRegistry::get('employment_verification');
-            $sub3['emp'] = $emp->find()->where(['order_id'=>$did])->all(); 
+            $sub3['emp'] = $emp->find()->where(['order_id'=>$did])->all();
+             
             //echo $con_detail->id;die();
             $emp_att = TableRegistry::get('employment_verification_attachments');
             $sub3['att'] = $emp_att->find()->where(['order_id'=>$did])->all();
+            
             $this->set('sub3',$sub3);
             
             
@@ -304,6 +316,8 @@ class DocumentsController extends AppController {
             $sub4['att'] = $edu_att->find()->where(['order_id'=>$did])->all();
             $this->set('sub4',$sub4);
         }
+        $this->render('addorder');
+        
 	}
 
 
@@ -1330,16 +1344,16 @@ class DocumentsController extends AppController {
         if(isset($_GET['draft']))
         {
             if($cond == '')
-                $cond = $cond.' draft = 0';
+                $cond = $cond.' draft = 1';
             else
-                $cond = $cond.' AND draft = 0';
+                $cond = $cond.' AND draft = 1';
         }
         else
         {
            if($cond == '')
-                $cond = $cond.' draft = 1';
+                $cond = $cond.' draft = 0';
             else
-                $cond = $cond.' AND draft = 1'; 
+                $cond = $cond.' AND draft = 0'; 
         }
         if($cond)
         {

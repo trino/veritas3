@@ -139,7 +139,7 @@
                  <?php if($sidebar->document==1){
 
                      ?>
-				<li class="<?php echo($this->request['controller']=='Documents' && ($this->request['action']=="index" || $this->request['action']=="add" ))?'active open':'';?>">
+				<li class="<?php echo(($this->request['controller']=='Documents' && ($this->request['action']=="index" || $this->request['action']=="add") ) && !isset($_GET['draft']))?'active open':'';?>">
 					<a href="javascript:;">
 					<i class="icon-docs"></i>
 					<span class="title"><?php echo ucfirst($settings->document);?>s</span>
@@ -149,14 +149,14 @@
                     <?php if($sidebar->document_list==1 || $sidebar->document_create==1){?>
 					<ul class="sub-menu">
                         <?php if($sidebar->document_list==1){?>
-                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index' && !isset($_GET['draft']))?'class="active"':'';?>>
 							<a href="<?php echo $this->request->webroot;?>documents/index">
                             <i class="icon-list"></i>
 							List <?php echo ucfirst($settings->document);?>s</a>
 						</li>
                         <?php }?>
                         <?php if($sidebar->document_create==1){?>
-                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add' && !isset($_GET['draft']))?'class="active"':'';?>>
 							<a href="<?php echo $this->request->webroot.$document_url;?>">
                             <i class="icon-plus"></i>
 							Create <?php echo ucfirst($settings->document);?></a>
@@ -225,7 +225,7 @@
 
                 </li>
                 <?php if($sidebar->orders==1){?>
-                <li class="<?php echo($this->request['action']=='orderslist' || $this->request['action']=='addorder')?'active open':'';?>">
+                <li class="<?php echo(($this->request['action']=='orderslist' || $this->request['action']=='addorder') && !isset($_GET['draft']))?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>documents/orderslist">
                 <i class="icon-notebook"></i>
 				<span class="title">Orders</span>
@@ -234,14 +234,14 @@
                 <?php if($sidebar->orders_list==1 || $sidebar->orders_create==1){?>
 					<ul class="sub-menu">
                         <?php if($sidebar->orders_list==1){?>
-                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='orderslist')?'class="active"':'';?>>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='orderslist' && !isset($_GET['draft']))?'class="active"':'';?>>
 							<a href="<?php echo $this->request->webroot;?>documents/orderslist">
                             <i class="icon-list"></i>
 							List Order</a>
 						</li>
                         <?php }?>
                         <?php if($sidebar->orders_create==1){?>
-                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='addorder')?'class="active"':'';?>>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='addorder' && !isset($_GET['draft']))?'class="active"':'';?>>
 							<a href="<?php echo $this->request->webroot.$order_url;?>">
                             <i class="icon-plus"></i>
 							Create Order</a>
@@ -265,7 +265,7 @@
                 if($sidebar->drafts==1){
                 ?>
                 
-                <li class="<?php echo($this->request['action']=='drafts')?'active open':'';?>">
+                <li class="<?php echo(isset($_GET['draft']))?'active open':'';?>">
                 <a href="javascript:;">
                 <i class="icon-note"></i>
 				<span class="title">Draft</span>
@@ -275,12 +275,12 @@
 					<ul class="sub-menu">
                         
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
-							<a href="<?php echo $this->request->webroot;?>documents/index?drafts">
+							<a href="<?php echo $this->request->webroot;?>documents/index?draft">
                             <i class="icon-list"></i>
 							 <?php echo ucfirst($settings->document);?>s</a>
 						</li>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='orderslist')?'class="active"':'';?>>
-                            <a href="<?php echo $this->request->webroot;?>documents/orderslist?drafts">
+                            <a href="<?php echo $this->request->webroot;?>documents/orderslist?draft">
                                 <i class="icon-list"></i> Orders</a>
                         </li>
                        

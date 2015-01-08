@@ -140,7 +140,7 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 														</div>
 													</div>
 													<div class="portlet-body">
-														<ul class="list-unstyled">
+												<ul class="list-unstyled">
 
 															<li>
 																<span class="sale-info">

@@ -848,7 +848,7 @@ class DocumentsController extends AppController {
         
         $del = $education->query();
         if(!isset($_GET['document']))
-        $del->delete()->where(['order'=>$document_id])->execute();
+        $del->delete()->where(['order_id'=>$document_id])->execute();
         else
         $del->delete()->where(['document_id'=>$document_id])->execute();
         

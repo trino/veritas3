@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a163c84f-7931-4688-a0c4-59462597eb2d" name="Default" comment="[edit] listing clients as per profile(user)">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
     <ignored path="veritas3.iws" />
@@ -63,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1607565" vertical-offset="51" max-vertical-offset="5542">
+            <state vertical-scroll-proportion="-5.230769" vertical-offset="51" max-vertical-offset="5542">
               <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
               <folding />
             </state>
@@ -103,16 +102,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/add.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.115385" vertical-offset="1227" max-vertical-offset="16490">
-              <caret line="97" column="55" selection-start-line="97" selection-start-column="55" selection-end-line="97" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.22057001" vertical-offset="15615" max-vertical-offset="16490">
+              <caret line="929" column="11" selection-start-line="929" selection-start-column="11" selection-end-line="929" selection-end-column="11" />
               <folding>
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="e#5515#5758#0#PHP" expanded="true" />
-                <marker date="1420726400947" expanded="true" signature="48340:48357" placeholder="..." />
-                <marker date="1420726400947" expanded="true" signature="50734:50751" placeholder="..." />
+                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="e#5471#5714#0#PHP" expanded="true" />
+                <marker date="1420728744223" expanded="true" signature="48293:48310" placeholder="..." />
+                <marker date="1420728744223" expanded="true" signature="50687:50704" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -121,8 +124,8 @@
       <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Roaming/Skype/My Skype Received Files/add.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="16337">
-              <caret line="15" column="85" selection-start-line="0" selection-start-column="0" selection-end-line="964" selection-end-column="0" />
+            <state vertical-scroll-proportion="-15.192307" vertical-offset="13919" max-vertical-offset="16337">
+              <caret line="851" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="964" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -183,9 +186,10 @@
         <option value="$PROJECT_DIR$/webroot/subpages/clients/listing.php" />
         <option value="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Clients/view.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Documents/add.ctp" />
         <option value="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$USER_HOME$/AppData/Roaming/Skype/My Skype Received Files/add.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Documents/add.ctp" />
       </list>
     </option>
   </component>
@@ -925,27 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Skype/My Skype Received Files/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="16337">
-          <caret line="15" column="85" selection-start-line="0" selection-start-column="0" selection-end-line="964" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Documents/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.115385" vertical-offset="1227" max-vertical-offset="16490">
-          <caret line="97" column="55" selection-start-line="97" selection-start-column="55" selection-end-line="97" selection-end-column="55" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="e#5515#5758#0#PHP" expanded="true" />
-            <marker date="1420726400947" expanded="true" signature="48340:48357" placeholder="..." />
-            <marker date="1420726400947" expanded="true" signature="50734:50751" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.8461537" vertical-offset="428" max-vertical-offset="25687">
@@ -956,9 +939,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1607565" vertical-offset="51" max-vertical-offset="5542">
+        <state vertical-scroll-proportion="-5.230769" vertical-offset="51" max-vertical-offset="5542">
           <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Skype/My Skype Received Files/add.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.192307" vertical-offset="13919" max-vertical-offset="16337">
+          <caret line="851" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="964" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Documents/add.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22057001" vertical-offset="15615" max-vertical-offset="16490">
+          <caret line="929" column="11" selection-start-line="929" selection-start-column="11" selection-end-line="929" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="e#5471#5714#0#PHP" expanded="true" />
+            <marker date="1420728744223" expanded="true" signature="48293:48310" placeholder="..." />
+            <marker date="1420728744223" expanded="true" signature="50687:50704" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

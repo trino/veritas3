@@ -59,9 +59,8 @@
                                     <select name="profile_type" <?php if(isset($id) && $this->request->session()->read('Profile.id')==$id) echo "disabled='disabled'"; ?>
                                             class="form-control member_type">
                                         <option value="">Select</option>
-                                        <?php if ($this->request->session()->read('Profile.admin') && $p->super==1){?>
-                                        <option
-                                            value="1" <?php if ($p->profile_type == 1) { ?> selected="selected" <?php } ?>>
+                                        <?php if ($this->request->session()->read('Profile.super')){?>
+                                        <option value="1" <?php if ($p->profile_type == 1) { ?> selected="selected" <?php } ?>>
                                             Admin
                                         </option>
                                         <?php }?>

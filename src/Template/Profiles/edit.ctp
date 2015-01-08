@@ -213,16 +213,28 @@
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
                     <?php if (isset($p->image) && $p->image!= "") { ?>
-                        <img id="ppicture"
-                             src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image ?>" class="img-responsive" alt="">
+                        <img 
+                             src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image ?>" class="img-responsive" alt="" id="clientpic" />
 
                     <?php } else {
                         ?>
-                        <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive"
+                        <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive" id="clientpic"
                              alt=""/>
                     <?php
                     }
                     ?>
+                    <?php if(isset($id)){?>
+                    <div class="form-group">
+                    <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
+                    <div class="input-icon">
+                    <a class="btn btn-success" href="javascript:void(0)" id="clientimg">
+                    <i class="fa fa-image"></i>
+                      Add/Edit Image
+                    </a>
+                    
+                    </div>
+                    </div>
+                    <?php }?>
 
                 </div>
                 <!-- END SIDEBAR USERPIC -->
@@ -365,26 +377,70 @@
 
 
 <script>
-    $(function () {
-        $('.addclientz').click(function(){
-            var client_id = $(this).val();
-            var addclient ="";
-            if($(this).is(':checked'))
-            {
-               addclient='1';
+
+           
+function initiate_ajax_upload(button_id){
+var button = $('#'+button_id), interval;
+new AjaxUpload(button,{
+    action: base_url+"profiles/upload_img/<?php if(isset($id))echo $id;?>",                      
+    name: 'myfile',
+    onSubmit : function(file, ext){
+        button.text('Uploading');
+        this.disable();
+        interval = window.setInterval(function(){
+            var text = button.text();
+            if (text.length < 13){
+                button.text(text + '.');					
+            } else {
+                button.text('Uploading');				
             }
-            else
-                addclient='0';
-                
-            $.ajax({
-                type: "post",
-                data: "client_id="+client_id+"&add="+addclient+"&user_id="+<?php echo $id;?>,
-                url: "<?php echo $this->request->webroot;?>clients/addprofile",
-                success: function(msg){
-                    //alert(msg);
-                }
-            })
-        });
+        }, 200);
+    },
+    onComplete: function(file, response){
+        button.html('<i class="fa fa-image"></i> Add/Edit Image');
+            window.clearInterval(interval);
+            this.enable();
+            $("#clientpic").attr("src",'<?php echo $this->request->webroot;?>img/profile/'+response);
+            $('#client_img').val(response);
+            //$('.flashimg').show();
+            }                        		
+    });                
+}
+                $(function(){
+                                        initiate_ajax_upload('clientimg');
+                                        <?php
+                                        if(isset($id))
+                                        {
+                                            ?>
+                                            
+                                    
+                                       $('.addclientz').click(function(){
+                                        var client_id = $(this).val();
+                                        var addclient ="";
+                                        if($(this).is(':checked'))
+                                        {
+                                           addclient='1';
+                                        }
+                                        else
+                                            addclient='0';
+                                            
+                                        $.ajax({
+                                            type: "post",
+                                            data: "client_id="+client_id+"&add="+addclient+"&user_id="+<?php echo $id;?>,
+                                            url: "<?php echo $this->request->webroot;?>clients/addprofile",
+                                            success: function(msg){
+                                                //alert(msg);
+                                            }
+                                        })
+                                    });
+                                       <?php
+                                        } 
+                                        ?>
+                                       $('#save_client_p1').click(function(){
+                                        $('#save_client_p1').text('Saving..');
+ 
+        
+ 
         $('.member_type').change(function () {
             if ($(this).val() == '5') {
                 $('.nav-tabs li:not(.active)').each(function () {
@@ -423,6 +479,7 @@
                 $('#pass_form').submit();
             }
         });
+    });
     });
 </script>
 

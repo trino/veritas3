@@ -50,62 +50,88 @@
                 <div class="form-horizontal">
                     <div class="">
                         <div class="form-body">
-
                             <?php
+
                                 if($param !='view')
                                 {
                                     $tab = 'tab-pane';
                                     $doc = $this->requestAction('/documents/getDocument');
+                                    ?>
+
+
+                                <?php
                                 }
                             ?>
 
+
+
+                            <!--<div class="form-group mar-top-10">
+                                            label class="col-md-3 control-label">Select <?php echo ucfirst($settings->document);?> Type</label>
+                                            <div class="col-md-6">
+                                            <select name="doc_type" class="form-control" onchange="showforms(this.value);">
+                                                <option value="">Select <?php echo ucfirst($settings->document);?> type</option>
+                                                <?php foreach($doc as $d){?>
+                                                    <option value="<?php echo $d->form;?>" id="<?php echo $d->Form;?>"><?php echo ucfirst($d->title);?></option>
+                                                <?php }?>
+                                            </select>
+                                            
+                                            </div>-->
                             <?php  include('subpages/home_blocks.php');?>
+                        </div>
+                        <div class="form-group mar-top-10">
 
-                            <div class="form-group mar-top-10">
-                                <input type="hidden" name="did" value="<?php if(isset($did)){echo $did;}?>" id="did" />
-                                <input type="hidden" name="sub_doc_id" value="<?php if(isset($sid)){echo $sid;}?>" id="sub_id" />
-                                <?php include('subpages/adminlisting.php');?>
-                            </div>
 
-                            <div class="subform1 padding-10" style="display: none;">
-                                <?php include('subpages/documents/company_pre_screen_question.php');?>
-                            </div>
-
-                            <div class="subform2 padding-10" style="display: none;">
-                                <?php include('subpages/documents/driver_application.php');?>
-                            </div>
-
-                            <div class="subform3 padding-10" style="display: none;">
-                                <?php include('subpages/documents/driver_evaluation_form.php');?>
-                            </div>
-
-                            <div class="subform4 padding-10" style="display: none;">
-                                <?php include('subpages/documents/document_tab_3.php');?>
-                            </div>
+                            <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
+                            <input type="hidden" name="sub_doc_id" value="<?php echo $sid;?>" id="sub_id" />
+                            <?php include('subpages/adminlisting.php');?>
 
                         </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
+                        <div class="subform1" style="display: none;">
+                            <?php include('subpages/documents/company_pre_screen_question.php');?>
+                        </div>
+                        <div class="subform2" style="display: none;">
+                            <?php include('subpages/documents/driver_application.php');?>
+                        </div>
+                        <div class="subform3" style="display: none;">
+                            <?php include('subpages/documents/driver_evaluation_form.php');?>
+                        </div>
+                        <div class="subform4" style="display: none;">
+                            <?php include('subpages/documents/document_tab_3.php');?>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
 
-                                    <a href="javascript:void(0)" class="btn green cont">Save</a>
-                                    <a href="javascript:;" class="btn blue">Save As Draft <i class="m-icon-swapright m-icon-white"></i></a>
-                                    <div class="margin-top-10 alert alert-success display-hide flashDoc" style="display: none;">
-                                        <button class="close" data-close="alert"></button>
-                                        Document uploaded successfully
-                                    </div>
 
+                                <a href="javascript:void(0)" class="btn green cont">Save</a>
+
+
+                                <a href="javascript:;" id="draft" class="btn blue cont">
+                                    Save As Draft <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                                <div class="margin-top-10 alert alert-success display-hide flashDoc" style="display: none;">
+                                    <button class="close" data-close="alert"></button>
+                                    Document uploaded successfully
                                 </div>
+
+
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+</div>
+
 
 <script>
+
+
     client_id = '<?=$cid?>',
         doc_id = '<?=$did?>';
     <?php
@@ -752,25 +778,47 @@
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
     }
     jQuery(document).ready(function() {
+
         <?php
-        if(isset($did) && $did)
+        if($this->request->params['action']=='view')
         {
             ?>
+        for(var h=1;h<5;h++)
+        {
+            $('#form_tab'+h+' input').attr('disabled','disabled');
+            $('#form_tab'+h+' textarea').attr('disabled','disabled');
+            $('#form_tab'+h+' select').attr('disabled','disabled');
+            $('#form_tab'+h+' button').hide();
+            $('#form_tab'+h+' a').hide();
+            $('#form_tab'+h+' input[type="submit"]').hide();
+            $('.form-actions').hide();
+        }
+
+        <?php
+    }
+    if(isset($did) && $did)
+    {
+        ?>
         $('#sub_doc_click<?php echo $mod->sub_doc_id?>').click();
         <?php
     }
     ?>
         $(document.body).on('click','.cont',function(){
-
+            if($(this).attr('id')=='draft')
+            {
+                var draft=1;
+            }
+            else
+                var draft=0;
             var type=$(".document_type").val();
             alert(type);
             //alert($('#sub_id').val());return;
-            var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val()};
+            var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val(),division:$('#division').val()};
             $.ajax({
                 //data:'uploaded_for='+$('#uploaded_for').val(),
                 data : data,
                 type:'post',
-                url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+doc_id+'/?document='+type,
+                url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+doc_id+'/?document='+type+'&draft='+draft,
                 success:function(res) {
                     $('#did').val(res);
                     // saving data
@@ -800,8 +848,8 @@
                         savedMeeOrder(url,order_id,cid,type);
                     }
                     $('.flashDoc').show();
-                    $('.flashDoc').hide(5000);
-                    //window.location = '<?php echo $this->request->webroot?>documents/index';
+                    $('.flashDoc').fadeOut(8000);
+                    // window.location = '<?php echo $this->request->webroot?>documents/index';
                 }
             });
         });

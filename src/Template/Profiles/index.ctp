@@ -42,9 +42,9 @@
             <div class="portlet-body">
                     <div class="chat-form">
                             <form action="<?php echo $this->request->webroot; ?>profiles/search" method="get">
-                                <div class="col-md-2" style="padding-left:0;">
+                                <div class="col-md-3" style="padding-left:0;">
                                     <select class="form-control" style="" name="filter_profile_type">
-                                        <option value="">Filter By</option>
+                                        <option value="">Filter By <?php echo ucfirst($settings->profile); ?> Type</option>
                                         <!--<option value=""><?php //echo ucfirst($settings->profile); ?> Type</option>-->
                                         <option value="1" <?php if(isset($return_profile_type) && $return_profile_type==1){?> selected="selected"<?php } ?> >Admin</option>
                                         <option value="2" <?php if(isset($return_profile_type) && $return_profile_type==2){?> selected="selected"<?php } ?>>Recruiter</option>
@@ -52,6 +52,25 @@
                                         <option value="4" <?php if(isset($return_profile_type) && $return_profile_type==4){?> selected="selected"<?php } ?>>Safety</option>
                                         <option value="5" <?php if(isset($return_profile_type) && $return_profile_type==5){?> selected="selected"<?php } ?>>Driver</option>
                                         <option value="6" <?php if(isset($return_profile_type) && $return_profile_type==6){?> selected="selected"<?php } ?>>Contact</option>
+                                    </select>
+                                </div>
+                                <?php
+                                $getClient = $this->requestAction('profiles/getClient'); 
+                                ?>
+                                <div class="col-md-3" style="padding-left:0;">
+                                    <select class="form-control" style="" name="filter_by_client">
+                                        <option value="">Filter By <?php echo ucfirst($settings->client); ?></option>
+                                        <?php 
+                                        if($getClient)
+                                            {
+                                                foreach($getClient as $g)
+                                                    {
+                                                ?>
+                                                <option value="<?php echo $g->id; ?>" <?php if(isset($return_client) && $return_client==$g->id){?> selected="selected"<?php } ?> ><?php echo $g->title; ?></option>
+                                                <?php
+                                                    }
+                                             }
+                                         ?>
                                     </select>
                                 </div>
                                  <!--</form>

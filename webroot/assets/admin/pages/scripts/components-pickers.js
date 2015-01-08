@@ -6,7 +6,8 @@ var ComponentsPickers = function () {
             $('.date-picker').datepicker({
                 rtl: Metronic.isRTL(),
                 orientation: "left",
-                autoclose: true
+                autoclose: true,
+                format: 'yyyy-mm-dd'
             });
             //$('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
         }
@@ -50,12 +51,12 @@ var ComponentsPickers = function () {
 
         $('#defaultrange').daterangepicker({
                 opens: (Metronic.isRTL() ? 'left' : 'right'),
-                format: 'MM/DD/YYYY',
+                format: 'YYYY-MM-DD',
                 separator: ' to ',
                 startDate: moment().subtract('days', 29),
                 endDate: moment(),
-                minDate: '01/01/2012',
-                maxDate: '12/31/2014',
+                minDate: '2012-01-01',
+                maxDate: '2014-12-31',
             },
             function (start, end) {
                 $('#defaultrange input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -64,12 +65,12 @@ var ComponentsPickers = function () {
 
         $('#defaultrange_modal').daterangepicker({
                 opens: (Metronic.isRTL() ? 'left' : 'right'),
-                format: 'MM/DD/YYYY',
+                format: 'YYYY-MM-DD',
                 separator: ' to ',
                 startDate: moment().subtract('days', 29),
                 endDate: moment(),
-                minDate: '01/01/2012',
-                maxDate: '12/31/2014',
+                minDate: '2012-01-01',
+                maxDate: '2014-12-31',
             },
             function (start, end) {
                 $('#defaultrange_modal input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -88,8 +89,8 @@ var ComponentsPickers = function () {
                 opens: (Metronic.isRTL() ? 'left' : 'right'),
                 startDate: moment().subtract('days', 29),
                 endDate: moment(),
-                minDate: '01/01/2012',
-                maxDate: '12/31/2014',
+                minDate: '2012-01-01',
+                maxDate: '2014-12-31',
                 dateLimit: {
                     days: 60
                 },
@@ -109,7 +110,7 @@ var ComponentsPickers = function () {
                 buttonClasses: ['btn'],
                 applyClass: 'green',
                 cancelClass: 'default',
-                format: 'MM/DD/YYYY',
+                format: 'YYYY-MM-DD',
                 separator: ' to ',
                 locale: {
                     applyLabel: 'Apply',

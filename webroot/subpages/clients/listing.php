@@ -11,22 +11,10 @@
             <div class="portlet-body">
                 <?php
 
-                    if ($this->request->params['controller'] == 'clients') {
+                    //if ($this->request->params['controller'] == 'clients') {
                         ?>
 
                         <div class="chat-form">
-                            <!--<form>
-                                div class="col-md-2" style="padding-left:0;">
-                                    <select class="form-control" style="">
-                                        <option value=""><?php //echo ucfirst($settings->client);
-                            ?> Type</option>
-                                        <option value="">London</option>
-                                        <option value="">Quebec</option>
-                                        <option value="">BC</option>
-                                        <option value="">Ontario</option>
-                                        <option value="">Quick Contacts</option>
-                                    </select>
-                                </div-->
                             <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
                                 <div class="col-md-6" style="padding-left:0;">
                                     <input class="form-control input-inline" name="search" type="search"
@@ -38,7 +26,7 @@
                             </form>
                         </div>
                     <?php
-                    }
+                   // }
                 ?>
                 <div class="table-scrollable">
                     <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">

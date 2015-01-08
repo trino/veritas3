@@ -143,6 +143,7 @@ class ProfilesController extends AppController {
 			}
 		}
 		$this->set(compact('profile'));
+        
         $this->render("edit");
 	}
 
@@ -269,13 +270,17 @@ class ProfilesController extends AppController {
             }
             foreach($_POST['block'] as $k=>$v)
             {
+                
                 $block[$k] = $v;
             }
+           
             foreach($_POST['side'] as $k=>$v)
             {
+                //echo $k."=>".$v."<br/>";
                 $side[$k] = $v;
             }
-            //var_dump($_POST)
+             //die();
+            
             $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete','document_others','orders_list','orders_create','orders_delete','orders_edit','orders_others');
             foreach($sides as $s)
             {
@@ -492,6 +497,7 @@ class ProfilesController extends AppController {
             
         }
         
+        $cond = '';
         if(isset($_GET['searchprofile']))
         {
             $search = $_GET['searchprofile'];
@@ -502,35 +508,53 @@ class ProfilesController extends AppController {
         {
            $profile_type = $_GET['filter_profile_type']; 
         }
+        if(isset($_GET['filter_by_client']))
+        {
+           $client = $_GET['filter_by_client']; 
+        }
 		$querys = TableRegistry::get('Profiles');
-        if($_GET['filter_profile_type']=='' && isset($_GET['searchprofile']))
+        
+        if(isset($_GET['searchprofile']) && $_GET['searchprofile'])
         {
-            $query = $querys->find()
-            ->where(['LOWER(title) LIKE' => '%'.$searchs.'%'])
-             ->orWhere(['LOWER(fname) LIKE' => '%'.$searchs.'%'])
-             ->orWhere(['LOWER(lname) LIKE' => '%'.$searchs.'%'])
-             ->orWhere(['LOWER(username) LIKE' => '%'.$searchs.'%'])
-             ->orWhere(['LOWER(address) LIKE' => '%'.$searchs.'%']);
+            if($cond == '')
+                $cond = $cond.' (LOWER(title) LIKE "%'.$searchs.'%" OR LOWER(fname) LIKE "%'.$searchs.'%" OR LOWER(lname) LIKE "%'.$searchs.'%" OR LOWER(username) LIKE "%'.$searchs.'%" OR LOWER(address) LIKE "%'.$searchs.'%")';
+            else
+                $cond = $cond.' AND (LOWER(title) LIKE "%'.$searchs.'%" OR LOWER(fname) LIKE "%'.$searchs.'%" OR LOWER(lname) LIKE "%'.$searchs.'%" OR LOWER(username) LIKE "%'.$searchs.'%" OR LOWER(address) LIKE "%'.$searchs.'%")';
         }
         
-        else if(isset($_GET['filter_profile_type'])&& !isset($_GET['searchprofile']))
+        if(isset($_GET['filter_profile_type']) && $_GET['filter_profile_type'])
         {
-            $query = $querys->find()->where(['profile_type'=>$profile_type])
-            ->orWhere(['admin'=>$profile_type]);
+            if($cond == '')
+                $cond = $cond.' (profile_type = "'.$profile_type.'" OR admin = "'.$profile_type.'")';
+                
+            else
+                $cond = $cond.' AND (profile_type = "'.$profile_type.'" OR admin = "'.$profile_type.'")';
         }
         
-        else if(isset($_GET['filter_profile_type'])&& isset($_GET['searchprofile']))
+        if(isset($_GET['filter_by_client']) && $_GET['filter_by_client'])
         {
-            $query = $querys->find()
-            ->where(['LOWER(title) LIKE' => '%'.$searchs.'%'])
-             ->orWhere(['LOWER(fname) LIKE' => '%'.$searchs.'%'])
-             ->orWhere(['LOWER(lname) LIKE' => '%'.$searchs.'%'])
-             ->orWhere(['LOWER(username) LIKE' => '%'.$searchs.'%'])
-             ->orWhere(['LOWER(address) LIKE' => '%'.$searchs.'%'])
-            ->andWhere(['profile_type'=>$profile_type])
-            ->orWhere(['admin'=>$profile_type]);
+            
+        $sub = TableRegistry::get('Clients');
+        $que = $sub->find();
+        $que->select()->where(['id'=>$_GET['filter_by_client']]);
+        $q = $que->first();
+        $profile_ids = $q->profile_id;
+        if(!$profile_ids)
+        {
+            $profile_ids = '99999999999';
+        }
+            if($cond == '')
+                $cond = $cond.' (id IN ('.$profile_ids.'))';
+            else
+                $cond = $cond.' AND (id IN ('.$profile_ids.'))';
         }
         
+        /*=================================================================================================== */
+       if($cond)
+        {
+            $query = $querys->find();
+            $query = $query->where([$cond]);
+        }
         $this->set('profiles', $this->paginate($this->Profiles)); 
         $this->set('profiles',$query);
         if(isset($search))
@@ -541,6 +565,10 @@ class ProfilesController extends AppController {
         {
             $this->set('return_profile_type',$profile_type);
         }
+        if(isset($client))
+        {
+            $this->set('return_client',$client);
+        }        
         $this->render('index');
     }
     
@@ -565,7 +593,7 @@ class ProfilesController extends AppController {
         $super = $this->request->session()->read('Profile.super');
         $cond = $this->Settings->getprofilebyclient($u,$super);
         $profile = TableRegistry::get('profiles');
-        $query = $profile->find()->where(['OR'=>$cond]);
+        $query = $profile->find()->where(['super'=>0,'OR'=>$cond]);
                  
         $l = $query->all();
         $this->response->body($l);
@@ -618,6 +646,16 @@ class ProfilesController extends AppController {
         $con = TableRegistry::get('Documents');
         $query = $con->find()->where(['uploaded_for'=>$id,'document_type'=>'order']);
         $this->response->body($query);
+        return $this->response;
+        die();
+   }
+   
+   function getClient()
+   {
+        $query = TableRegistry::get('Clients');
+        $q = $query->find();
+        $que = $q->select();
+        $this->response->body($que);
         return $this->response;
         die();
    }

@@ -50,7 +50,7 @@
                                                 <tr><td colspan="2">Employment history confirmed by (Verifier Use Only):<input type="text" class="form-control" value="<?php echo $emp->emploment_history_confirm_verify_use;?>" name="emploment_history_confirm_verify_use[]"/></td></tr>
                                                 <tr><td colspan="2">US DOT MC/MX#:<input name="us_dot[]" type="text" class="form-control" value="<?php echo $emp->us_dot;?>" name="us_dot[]" /></td></tr>
                                                 <tr><td>Signature:<input type="text" class="form-control" name="signature[]"/></td><td>
-                                                Date/Time:<input type="text" class="form-control" value="<?php echo $emp->signature_datetime;?>" name="signature_datetime[]"/>
+                                                Date:<input type="text" class="form-control date-picker" value="<?php echo $emp->signature_datetime;?>" name="signature_datetime[]"/>
                                                 </td></tr>
                                                 <tr><td colspan="2" >
                                 
@@ -128,7 +128,7 @@
                                     <td>Employment End Date:<input type="text" class="form-control date-picker" name="employment_end_date[]"/></td></tr>
                                 <tr><td>Claims with this Employer:&nbsp;&nbsp;<input type="radio" name="claims_with_employer[]" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <input type="radio" name="claims_with_employer[]" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
-                                    <td>Date Claims Occured:<input type="text" class="form-control" name="claims_recovery_date[]"/></td></tr>
+                                    <td>Date Claims Occured:<input type="text" class="form-control date-picker" name="claims_recovery_date[]"/></td></tr>
                                 <tr><td colspan="2">Employment history confirmed by (Verifier Use Only):<input type="text" class="form-control" name="emploment_history_confirm_verify_use[]"/></td></tr>
                                 <tr><td colspan="2">US DOT MC/MX#:<input name="us_dot[]" type="text" class="form-control" name="us_dot[]" /></td></tr>
                 
@@ -138,7 +138,7 @@
                 
                                     </td><td>
                 
-                                        Date/Time:<input type="text" class="form-control" name="signature_datetime[]"/>
+                                        Date:<input type="text" class="form-control date-picker" name="signature_datetime[]"/>
                 
                 
                                     </td></tr>
@@ -222,6 +222,12 @@ $(function(){
         var c = $('#count_past_emp').val();
         var counter = parseInt(c)+1;
         $('#count_past_emp').attr('value',counter);
+        $('.date-picker').datepicker({
+                rtl: Metronic.isRTL(),
+                orientation: "left",
+                autoclose: true,
+                format: 'yyyy-mm-dd'
+            });
        }
     });
   });

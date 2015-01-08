@@ -36,6 +36,7 @@ class DocumentsController extends AppController {
             	return $this->redirect("/");
             
         }
+        
         $docs = TableRegistry::get('Documents');
         $doc = $docs->find();
         if(!isset($_GET['draft']))
@@ -1502,7 +1503,5 @@ class DocumentsController extends AppController {
         die;
 
     }
-
-   
     
 }

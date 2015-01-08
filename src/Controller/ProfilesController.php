@@ -587,13 +587,16 @@ class ProfilesController extends AppController {
         
         
     }
-   function getallusers()
+   function getallusers($profile_type ="")
    {
         $u = $this->request->session()->read('Profile.id');
         $super = $this->request->session()->read('Profile.super');
         $cond = $this->Settings->getprofilebyclient($u,$super);
         $profile = TableRegistry::get('profiles');
-        $query = $profile->find()->where(['super'=>0,'OR'=>$cond]);
+        if($profile_type!="")
+            $query = $profile->find()->where(['super'=>0,'profile_type'=>$profile_type, 'OR'=>$cond]);
+        else
+            $query = $profile->find()->where(['super'=>0,'OR'=>$cond]);
                  
         $l = $query->all();
         $this->response->body($l);

@@ -166,6 +166,11 @@
                                                                                           name="side[document_others]"
                                                                                           value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> /> View Others <?php echo ucfirst($settings->document); ?>
                                                             </label>
+                                                             <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_requalify]"
+                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Requalify <?php echo ucfirst($settings->document); ?>
+                                                            </label>
                                                             
                                                             
                                                         </div>
@@ -202,6 +207,9 @@
                                                             </label>
                                                              <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_others]" value="1" <?php if ($sidebar->orders_others == 1) echo "checked"; ?> /> View Others Orders
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_requalify]" value="1" <?php if ($sidebar->orders_requalify == 1) echo "checked"; ?> /> Requalify
                                                             </label>
                                                             
                                                             

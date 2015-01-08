@@ -559,7 +559,19 @@ class ProfilesController extends AppController {
         
         
     }
-   
+   function getallusers()
+   {
+        $u = $this->request->session()->read('Profile.id');
+        $super = $this->request->session()->read('Profile.super');
+        $cond = $this->Settings->getprofilebyclient($u,$super);
+        $profile = TableRegistry::get('profiles');
+        $query = $profile->find()->where(['OR'=>$cond]);
+                 
+        $l = $query->all();
+        $this->response->body($l);
+        return $this->response;
+        
+   }
    function getusers()
    {
         $title = $_POST['v'];

@@ -1,4 +1,3 @@
-Place MEE Order
 <form id="form_consent">
 <div class="portlet box blue ">
 	<div class="portlet-title">
@@ -284,9 +283,9 @@ Place MEE Order
                     {
                         for($j=$i;$j<=7;$j++)
                         {
-                            $co[$i] = '';
-                        $cd[$i] = '';
-                        $cl[$i] = '';
+                            $co[$j] = '';
+                        $cd[$j] = '';
+                        $cl[$j] = '';
                         }
                     }
                     

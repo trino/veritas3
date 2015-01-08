@@ -1,6 +1,6 @@
 <form id="form_tab2">
 <input type="hidden" class="document_type" name="document_type" value="Driver Application" id="af" />
-<input type="hidden" name="sub_doc_id" value="<?php if(isset($_GET['doc_id']))echo $_GET['doc_id']; else echo $d->id ?>" id="af" />
+<input type="hidden" name="sub_doc_id" value="2" class="sub_docs_id" id="af" />
 <div class="clearfix"></div>
 <hr />
 <p>Welcome Prospective Drivers of Challenger. </p>
@@ -691,6 +691,16 @@
                     <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[1]?>"/></td>
                     <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[1]?>"/></td>
                     <td><input type="text" class="form-control" name="expiration_date[]" value="<?php echo $de[1]?>"/></td>
+                </tr>
+                <tr>
+                    <td>
+                    
+                    
+                    <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[2]?>" /></td>
+                    <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[2]?>"/></td>
+                    <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[2]?>"/></td>
+                    <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[2]?>"/></td>
+                    <td><input type="text" class="form-control" name="expiration_date[]" value="<?php echo $de[2]?>"/></td>
                 </tr>
             </table>
             </div>

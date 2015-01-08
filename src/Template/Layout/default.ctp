@@ -113,6 +113,7 @@
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/form-wizard.js"></script>
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/components-pickers.js"></script>
+<script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/components-dropdowns.js"></script>
 </head>
 <body class="<?php echo $settings->body;?>"> 
 <!-- BEGIN HEADER -->
@@ -977,6 +978,7 @@ jQuery(document).ready(function() {
    Index.initMiniCharts();
    Tasks.initDashboardWidget();
    ComponentsPickers.init();
+   ComponentsDropdowns.init();
    //change_text(<?php echo $settings->display;?>);
    
    

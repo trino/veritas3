@@ -1,7 +1,7 @@
 <?php 
 $profiles = $this->requestAction('Profiles/getProfile');
 $contact =  $this->requestAction('Profiles/getContact');
-
+//include("subpages/profileslisting.php");
 ?>
 
 <table class="table table-striped table-bordered table-advance table-hover recruiters">

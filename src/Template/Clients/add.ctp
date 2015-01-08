@@ -53,7 +53,7 @@ $c = $client;
                                         else
                                         {
                                             ?>
-                                            <img class="img-responsive" id="clientpic" alt="" src="<?php echo $this->request->webroot;?>img/logos/challenger_logo.png"/>
+                                            <img class="img-responsive" id="clientpic" alt="" src="<?php echo $this->request->webroot;?>img/logos/MEELogo.png"/>
                                             <?php
                                         }
                                         ?>

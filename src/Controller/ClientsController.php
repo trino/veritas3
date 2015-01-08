@@ -98,7 +98,7 @@ class ClientsController extends AppController {
 
         $querys = TableRegistry::get('Clients');
         $query = $querys->find()->where(['id' => $id]);
-        $this->set('client', $query->first()); 
+       $this->set('client', $query->first());
         $this->set('id',$id);
 		//$this->set('disabled',1);
         //$this->render('add');
@@ -184,27 +184,29 @@ class ClientsController extends AppController {
         foreach($_POST['profile_id'] as $ri)
         {
         	if($count==1)	
-        	$rec = $ri;
+        	   $rec = $ri;
         	else
-        	$rec = $rec.','.$ri;
+        	   $rec = $rec.','.$ri;
             $count++;
         
         }
         }
         unset($_POST['profile_id']);
         $_POST['profile_id'] = $rec;
-        
+        $rec = "";
+        $count=1;
         if(isset($_POST['contact_id'])){
         foreach($_POST['contact_id'] as $ri)
         {
         	if($count==1)	
-        	$rec = $ri;
+        	   $rec = $ri;
         	else
-        	$rec = $rec.','.$ri;
+        	   $rec = $rec.','.$ri;
             $count++;
         
         }
         }
+        
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
         $clients = TableRegistry::get('Clients');
@@ -452,10 +454,14 @@ class ClientsController extends AppController {
     $profile = TableRegistry::get('Clients');
     $query = $profile->find()->where(['id'=>$id]);
     $q = $query->first();
-    //$profile_id= explode(',',$q->profile_id);
-//    if(($profile_id))
-//    {
-        $pro = TableRegistry::get('Profiles');
+
+
+       $pro = TableRegistry::get('Profiles');
+
+       if($q->profile_id){
+           $q->profile_id= ltrim ($q->profile_id, ',');
+       }
+
         if($q->profile_id)
             $querys = $pro->find()->where(['id IN ('.$q->profile_id.')']);
             else
@@ -545,6 +551,47 @@ class ClientsController extends AppController {
          $this->response->body($q);
         return $this->response;
         
+   }
+   function dropdown()
+   {
+    $this->layout = 'blank';
+   }
+   
+   function addprofile()
+   {
+        $query = TableRegistry::get('clients');
+        $q = $query->find()->where(['id'=>$_POST['client_id']])->first();
+        $profile_id = $q->profile_id;
+        $pros = explode(",",$profile_id);
+                    
+        $p_ids ="";
+        if($_POST['add']=='1')
+        {
+            
+            array_push($pros,$_POST['user_id']);
+            $pro_id = array_unique($pros);
+            
+        }
+        else
+        {
+            $pro_id = array_diff($pros, array($_POST['user_id']));
+            //array_pop($pros,$_POST['user_id']);
+            
+        }
+        
+        foreach($pro_id as $k=>$p)
+        {
+            if(count($pro_id)==$k+1)
+                $p_ids .= $p;
+            else
+                $p_ids .= $p.",";
+        }
+        
+        $query->query()->update()->set(['profile_id' => $p_ids])
+        ->where(['id' => $_POST['client_id']])
+        ->execute();
+        //echo $p_ids;
+        die();
    }
    
     

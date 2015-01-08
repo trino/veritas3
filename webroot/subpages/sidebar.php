@@ -1,4 +1,7 @@
-<?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar"); ?>
+<?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");
+        $order_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id')."/order");
+      $document_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id')."/document"); ?>
+
 <div class="page-sidebar-wrapper">
 
 		<div class="page-sidebar navbar-collapse collapse">
@@ -136,29 +139,30 @@
                  <?php if($sidebar->document==1){
 
                      ?>
-				<li class="<?php echo($this->request['controller']=='Documents' && $this->request['action']=="index")?'active open':'';?>">
-					<a href="<?php echo $this->request->webrrot;?>documents/index">
+				<li class="<?php echo($this->request['controller']=='Documents' && ($this->request['action']=="index" || $this->request['action']=="add" ))?'active open':'';?>">
+					<a href="javascript:;">
 					<i class="icon-notebook"></i>
 					<span class="title"><?php echo ucfirst($settings->document);?>s</span>
 					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
 					<span class="arrow "></span>
 					</a>
-                    <!--<?php if($sidebar->document_list==1 || $sidebar->document_create==1){?>
+                    <?php if($sidebar->document_list==1 || $sidebar->document_create==1){?>
 					<ul class="sub-menu">
                         <?php if($sidebar->document_list==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>documents/index">
+							<a href="<?php echo $this->request->webroot;?>documents/index">
                             <i class="icon-list"></i>
 							List <?php echo ucfirst($settings->document);?>s</a>
 						</li>
                         <?php }?>
-
-                        <?php if($sidebar->document_list==1){?>
-                            <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
-                                <a href="<?php echo WEB_ROOT;?>documents/orderslist/">
-                                    <i class="icon-list"></i> List Orders</a>
-                            </li>
-                        <?php }?>
+                        <?php if($sidebar->document_create==1){?>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
+							<a href="<?php echo $this->request->webroot.$document_url;?>">
+                            <i class="icon-plus"></i>
+							Create <?php echo ucfirst($settings->document);?></a>
+						</li>
+						<?php } ?>
+                       
 
                         <?php /*
                         if($sidebar->document_create==1){?>
@@ -178,7 +182,7 @@
                      ?>
 												
 					</ul>
-                    <?php }  ?>-->
+                    <?php }  ?>
 				</li>
                 <?php  } ?>
                 <!--<li class="<?php echo($this->request['action']=='stats')?'active open':'';?>">
@@ -221,12 +225,30 @@
 
                 </li>
                 <?php if($sidebar->orders==1){?>
-                <li class="<?php echo($this->request['action']=='orderslist')?'active open':'';?>">
+                <li class="<?php echo($this->request['action']=='orderslist' || $this->request['action']=='addorder')?'active open':'';?>">
                 <a href="<?php echo $this->request->webroot;?>documents/orderslist">
                 <i class="icon-notebook"></i>
 				<span class="title">Orders</span>
                 <span class="selected"></span>
                 </a>
+                <?php if($sidebar->orders_list==1 || $sidebar->orders_create==1){?>
+					<ul class="sub-menu">
+                        <?php if($sidebar->orders_list==1){?>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='orderslist')?'class="active"':'';?>>
+							<a href="<?php echo $this->request->webroot;?>documents/orderslist">
+                            <i class="icon-list"></i>
+							List Order</a>
+						</li>
+                        <?php }?>
+                        <?php if($sidebar->orders_create==1){?>
+                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='addorder')?'class="active"':'';?>>
+							<a href="<?php echo $this->request->webroot.$order_url;?>">
+                            <i class="icon-plus"></i>
+							Create Order</a>
+						</li>
+						<?php } ?>
+                     </ul>
+                    <?php }  ?>
                 </li>
                 <?php }?>
                 <?php if($sidebar->messages==1){?>

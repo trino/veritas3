@@ -219,7 +219,7 @@
                     <?php } else {
                         ?>
                         <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive"
-                             alt="">
+                             alt=""/>
                     <?php
                     }
                     ?>
@@ -249,13 +249,13 @@
                                 $clients = $this->requestAction('/clients/getAllClient/');
                                 $count = 0;
                                 if ($clients)
-                                    foreach ($clients as $o) {
-
+                                    foreach ($clients as $o) 
+                                    { 
+                                        $pro_ids = explode(",",$o->profile_id);
                                         ?>
 
                                         <tr>
-                                            <td><input type="checkbox"
-                                                       value="<?php echo $o->id; ?>"/> <?php echo $o->title; ?></a></td>
+                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->title; ?></td>
                                         </tr>
 
                                     <?php
@@ -366,6 +366,25 @@
 
 <script>
     $(function () {
+        $('.addclientz').click(function(){
+            var client_id = $(this).val();
+            var addclient ="";
+            if($(this).is(':checked'))
+            {
+               addclient='1';
+            }
+            else
+                addclient='0';
+                
+            $.ajax({
+                type: "post",
+                data: "client_id="+client_id+"&add="+addclient+"&user_id="+<?php echo $id;?>,
+                url: "<?php echo $this->request->webroot;?>clients/addprofile",
+                success: function(msg){
+                    //alert(msg);
+                }
+            })
+        });
         $('.member_type').change(function () {
             if ($(this).val() == '5') {
                 $('.nav-tabs li:not(.active)').each(function () {

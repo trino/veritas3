@@ -853,13 +853,19 @@ jQuery(document).ready(function() {
     }
     ?>
     $(document.body).on('click','.cont',function(){
+        if($(this).attr('id') == 'draft')
+        {
+            var draft = 1; 
+        }
+        else
+        var draft =0;
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
     var data = {uploaded_for:$('#uploaded_for').val(),type:type};
     $.ajax({
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,
        type:'post',
-       url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val(), 
+       url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft='+draft, 
        success:function(res) {
         $('#did').val(res);
          // saving data

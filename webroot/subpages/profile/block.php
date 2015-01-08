@@ -169,7 +169,7 @@
                                                              <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[document_requalify]"
-                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Requalify <?php echo ucfirst($settings->document); ?>
+                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Requalify 
                                                             </label>
                                                             
                                                             

@@ -154,8 +154,8 @@
                                      ?>
                                      <?php  if($sidebar->orders_delete=='1'){ ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a><?php }?>
 
-
-<?php                                    echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
+                                        
+<?php                                   if($sidebar->orders_requalify=='1') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
 ?>
                                 </td>
                             </tr>

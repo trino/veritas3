@@ -663,14 +663,16 @@ class ProfilesController extends AppController {
         die();
    }
    
-   function getSuper($id = null)
+   function getProfileType($id = null)
    {
         $q = TableRegistry::get('Profiles');
-        $query = $q->find();
-        $que = $query->select('super')->where(['id'=>$id]);
-        $this->response->body($que);
+        $que = $q->find();
+        $que->select(['profile_type'])->where(['id'=>$id]);
+        $query = $que->first();
+        $this->response->body($query);
         return $this->response;
         die();
    }
+  
 }
 ?>

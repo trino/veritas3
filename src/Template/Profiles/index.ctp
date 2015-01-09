@@ -98,7 +98,6 @@
                         </thead>
                         <tbody>
                         <?php
-                        $getSuper = $this->requestAction('profiles/getSuper/'.$this->request->session()->read('Profile.id'));
                         $row_color_class = "odd";
                         foreach ($profiles as $profile):
 

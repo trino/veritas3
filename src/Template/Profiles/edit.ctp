@@ -224,6 +224,7 @@
                     }
                     ?>
                     <?php if(isset($id)){?>
+                    <center>
                     <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
                     <div class="input-icon">
@@ -234,6 +235,7 @@
                     
                     </div>
                     </div>
+                    </center>
                     <?php }?>
 
                 </div>

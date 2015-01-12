@@ -1502,6 +1502,18 @@ class DocumentsController extends AppController {
         die;
 
     }
+    
+    function get_countbytype($type)
+    {
+        //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
+        //var_dump($cond);die();
+        $u = $this->request->session()->read('Profile.id');
+        $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'));
+        $model = TableRegistry::get($type);
+        $cnt = $model->find()->where(['order_id'=>0,'OR'=>$cond])->count();
+        $this->response->body(($cnt));
+        return $this->response;
+    }
 
    
     

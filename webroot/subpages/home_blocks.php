@@ -44,6 +44,7 @@
     						</div>
     						<div class="details">
     							<div class="number">
+                                <?php echo $cnt = $this->requestAction('/documents/get_countbytype/pre_screening'); ?>
     								 1349
     							</div>
     							<div class="desc">

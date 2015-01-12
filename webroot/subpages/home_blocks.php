@@ -44,8 +44,8 @@
     						</div>
     						<div class="details">
     							<div class="number">
-                                <?php echo $cnt = $this->requestAction('/documents/get_countbytype/pre_screening'); ?>
-    								 1349
+                                <?php echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->table_name); ?>
+    								
     							</div>
     							<div class="desc">
     								 <?php echo ucfirst($d->title); ?>

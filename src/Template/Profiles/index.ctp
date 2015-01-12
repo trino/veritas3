@@ -3,7 +3,7 @@
 </style>
 
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
-<?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");?>
+<?php $sidebar =$this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?>
 </h3>
@@ -66,7 +66,7 @@
                                                 foreach($getClient as $g)
                                                     {
                                                 ?>
-                                                <option value="<?php echo $g->id; ?>" <?php if(isset($return_client) && $return_client==$g->id){?> selected="selected"<?php } ?> ><?php echo $g->title; ?></option>
+                                                <option value="<?php echo $g->id; ?>" <?php if(isset($return_client) && $return_client==$g->id){?> selected="selected"<?php } ?> ><?php echo $g->company_name; ?></option>
                                                 <?php
                                                     }
                                              }
@@ -120,7 +120,19 @@
 
                                     <?php  if($sidebar->profile_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);} ?>
                                     <?php  if($sidebar->profile_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);} ?>
-                                    <?php  if($sidebar->profile_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]);} ?>
+                                    <?php  if($sidebar->profile_delete=='1')
+                                    {
+                                        if(($profile->admin == '1' || $profile->profile_type == '1') && $this->request->session()->read('Profile.super') == '1')
+                                        {
+                                            echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]);
+                                        }
+                                        
+                                        else if($profile->admin != '1' && $profile->profile_type != '1')
+                                        {
+                                            echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]);
+                                        }
+                                    } 
+                                    ?>
                                     
 
                                 </td>

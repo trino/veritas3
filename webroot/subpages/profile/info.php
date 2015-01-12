@@ -1,3 +1,6 @@
+<?php
+$getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session->read('Profile.id'));
+?>
 <ul class="nav nav-tabs">
     <li class="active">
         <a href="#subtab_4_1" data-toggle="tab">Info</a>
@@ -40,10 +43,11 @@
                             </div>
 
                                 <div class="col-md-6">
-                                    <div class="form-group">                                    <label class="control-label">Email</label>
+                                    <div class="form-group">                                    
+                                    <label class="control-label">Email</label>
                                         <input <?php echo $is_disabled ?> name="email" type="text"
                                                                           placeholder="eg. test@domain.com"
-                                                                          class="form-control req_driver" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
+                                                                          class="form-control un" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
                                     </div>
                                 </div>
                             </div>
@@ -58,22 +62,42 @@
                                     <select name="profile_type" <?php if(isset($id) && $this->request->session()->read('Profile.id')==$id) echo "disabled='disabled'"; ?>
                                             class="form-control member_type">
                                         <option value="">Select</option>
-                                        <?php if ($this->request->session()->read('Profile.admin')){?>
-                                        <option
-                                            value="1" <?php if ($p->profile_type == 1) { ?> selected="selected" <?php } ?>>
+                                        <?php
+                                         
+                                         if ($this->request->session()->read('Profile.super'))
+                                         {
+                                         ?>
+                                        <option value="1" <?php if ($p->profile_type == 1) { ?> selected="selected" <?php } ?>>
                                             Admin
                                         </option>
                                         <?php }?>
                                         <option
-                                            value="2" <?php if ($p->profile_type == 2) { ?> selected="selected" <?php } ?>>
+                                            value="2" <?php if ($p->profile_type == 2) { ?> selected="selected" <?php }
+                                             if($getProfileType->profile_type == 2)
+                                             {
+                                                ?> disabled="disabled"
+                                                <?php
+                                             } ?>>
                                             Recruiter
                                         </option>
                                         <option
-                                            value="3" <?php if ($p->profile_type == 3) { ?> selected="selected" <?php } ?>>
+                                            value="3" <?php if ($p->profile_type == 3) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                             {
+                                                ?> disabled="disabled"
+                                                <?php
+                                             }
+                                             ?>>
                                             External
                                         </option>
                                         <option
-                                            value="4" <?php if ($p->profile_type == 4) { ?> selected="selected" <?php } ?>>
+                                            value="4" <?php if ($p->profile_type == 4) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                             {
+                                                ?> disabled="disabled"
+                                                <?php
+                                             }
+                                             ?>>
                                             Safety
                                         </option>
                                         <option
@@ -81,7 +105,13 @@
                                             Driver
                                         </option>
                                         <option
-                                            value="6" <?php if ($p->profile_type == 6) { ?> selected="selected" <?php } ?>>
+                                            value="6" <?php if ($p->profile_type == 6) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                             {
+                                                ?> disabled="disabled"
+                                                <?php
+                                             }
+                                             ?>>
                                             Contact
                                         </option>
                                     </select>
@@ -94,42 +124,28 @@
                                     <div class="form-group">
                                         <label class="control-label">Driver Type</label>
 
-                                    <select name="driver" class="form-control select_driver req_driver">
+                                    <select name="driver" class="form-control select_driver">
                                         <option value="">Select Driver Type</option>
-                                        <option value="">BC - BC FTL AB/BC</option>
-                                        <option value="">BCI5 - BC FTL I5</option>
-                                        <option value="">BULK</option>
-                                        <option value="">CLIMATE</option>
-                                        <option value="">FTL - SINGLE DIVISION</option>
-                                        <option value="">FTL - TOYOTA SINGLE HRLY</option>
-                                        <option value="">FTL - TOYOTA SINGLE HWY</option>
-                                        <option value="">LCV - LCV UNITS</option>
-                                        <option value="">LOC - LOCAL</option>
-                                        <option value="">SCD - SPECIAL COMMODITIES</option>
-                                        <option value="">SST-SANDRK- OPEN FUEL</option>
-                                        <option value="">SWD-SANDRK</option>
-                                        <option value="">TBL-TRANSBORDER</option>
-                                        <option value="">TEM - TEAM DIVISION</option>
-                                        <option value="">TEM - TOYOTA TEAM</option>
-                                        <option value="">WD - Wind</option>
+                                        <option value="" class="req_driver">BC - BC FTL AB/BC</option>
+                                        <option value="" class="req_driver">BCI5 - BC FTL I5</option>
+                                        <option value="" class="req_driver">BULK</option>
+                                        <option value="" class="req_driver">CLIMATE</option>
+                                        <option value="" class="req_driver">FTL - SINGLE DIVISION</option>
+                                        <option value="" class="req_driver">FTL - TOYOTA SINGLE HRLY</option>
+                                        <option value="" class="req_driver">FTL - TOYOTA SINGLE HWY</option>
+                                        <option value="" class="req_driver">LCV - LCV UNITS</option>
+                                        <option value="" class="req_driver">LOC - LOCAL</option>
+                                        <option value="" class="req_driver">SCD - SPECIAL COMMODITIES</option>
+                                        <option value="" class="req_driver">SST-SANDRK- OPEN FUEL</option>
+                                        <option value="" class="req_driver">SWD-SANDRK</option>
+                                        <option value="" class="req_driver">TBL-TRANSBORDER</option>
+                                        <option value="" class="req_driver">TEM - TEAM DIVISION</option>
+                                        <option value="" class="req_driver">TEM - TOYOTA TEAM</option>
+                                        <option value="" class="req_driver">WD - Wind</option>
                                     </select>
                                 </div>
                                 </div>
-
-
                                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 <div class="row">
@@ -171,24 +187,6 @@
 
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             <div class="row">
 
 
@@ -212,18 +210,7 @@
                                 </div>
                             </div>
 
-
-
-
                             </div>
-
-
-
-
-
-
-
-
 
                             <div class="row">
 
@@ -249,16 +236,6 @@
                                 </div>
                             </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
 
 
                             <div class="row">
@@ -481,5 +458,25 @@
         $('#delete_trans_div').live('click', function () {
             $(this).closest('#append_trans').remove();
         })
+        
+        $('.member_type').change(function () {
+            if ($(this).val() == '5') {
+                $('.nav-tabs li:not(.active)').each(function () {
+                    $(this).hide();
+                });
+                $('#driver_div').show();
+                $('.req_driver').attr('required','required');
+                $('.un').removeAttr('required');
+            }
+            else {
+                $('.nav-tabs li:not(.active)').each(function () {
+                    $(this).show();
+                });
+                $('#driver_div').hide();
+                $('.req_driver').removeAttr('required');
+                $('.un').attr('required','required');
+            }
+
+        });
     });
 </script>

@@ -56,7 +56,7 @@ class SettingsComponent extends Component
         $pro_id = [];
          if(!$super)
          {
-            $u = $this->request->session()->read('Profile.id');
+            
             $clients = TableRegistry::get('clients');
             $qs = $clients->find()->select('id')->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id ="'.$u.'"'])->all();
             $pro_id = [];

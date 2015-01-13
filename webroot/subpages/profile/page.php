@@ -3,26 +3,26 @@
 
 
                                             <li class="active">
-                                                <a href="#subtab_1_5" data-toggle="tab">Product Example</a>
+                                                <a href="#subtab_1_1" data-toggle="tab">Product Example</a>
                                             </li>
                                             <li class="">
-                                                <a href="#subtab_1_6" data-toggle="tab">Help</a>
+                                                <a href="#subtab_1_2" data-toggle="tab">Help</a>
                                             </li>
                                             <li>
-                                                <a href="#subtab_1_4" data-toggle="tab">Privacy Code</a>
+                                                <a href="#subtab_1_3" data-toggle="tab">Privacy Code</a>
                                             </li>
                                             <li>
-                                                <a href="#subtab_1_6" data-toggle="tab">Terms</a>
+                                                <a href="#subtab_1_4" data-toggle="tab">Terms</a>
                                             </li>
                                             <li class="">
-                                                <a href="#subtab_1_7" data-toggle="tab">FAQ</a>
+                                                <a href="#subtab_1_5" data-toggle="tab">FAQ</a>
                                             </li>
 
 
                                         </ul>
                                     </div>
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="subtab_1_3">
+                                        <div class="tab-pane active" id="subtab_1_1">
                                             <div class="portlet box">
                                                 <!--div class="portlet-title">
                                                     <div class="caption">
@@ -33,14 +33,14 @@
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
-                                                    <form action="#" class="form-horizontal form-bordered">
+                                                    <form action="#" class="form-horizontal form-bordered" id="product_example">
                                                         <div class="form-body">
                                                             <div class="form-group last">
                                                                 <label class="control-label col-md-3">Page Title</label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title"
-                                                                           value="Help"/>
+                                                                           value="Product Example"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -58,9 +58,9 @@
                                                         <div class="form-actions">
                                                             <div class="row">
                                                                 <div class="col-md-offset-3 col-md-9">
-                                                                    <button type="submit" class="btn blue"><i
+                                                                    <a href="javascript:;"  class="btn blue" onclick="savepage('product_example');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </button>
+                                                                    </a>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>
@@ -73,7 +73,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="tab-pane" id="subtab_1_4">
+                                        <div class="tab-pane" id="subtab_1_2">
                                             <div class="portlet box">
                                                 <!--div class="portlet-title">
                                                     <div class="caption">
@@ -84,14 +84,13 @@
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
-                                                    <form action="#" class="form-horizontal form-bordered">
+                                                    <form action="#" class="form-horizontal form-bordered" id="help">
                                                         <div class="form-body">
                                                             <div class="form-group last">
                                                                 <label class="control-label col-md-3">Page Title</label>
 
                                                                 <div class="col-md-4">
-                                                                    <input class="form-control" name="title"
-                                                                           value="Privacy code"/>
+                                                                    <input class="form-control" name="title"  value="Privacy code"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -101,17 +100,16 @@
                                                                     class="control-label col-md-3">Description</label>
 
                                                                 <div class="col-md-9">
-                                                                    <textarea class="ckeditor form-control"
-                                                                              name="editor1" rows="6"></textarea>
+                                                                    <textarea class="ckeditor form-control" name="editor1" rows="6"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-actions">
                                                             <div class="row">
                                                                 <div class="col-md-offset-3 col-md-9">
-                                                                    <button type="submit" class="btn blue"><i
+                                                                    <a href="javascript:;" class="btn blue" onclick="savepage('help');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </button>
+                                                                    </a>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>
@@ -124,7 +122,7 @@
 
                                         </div>
 
-                                        <div class="tab-pane" id="subtab_1_5">
+                                        <div class="tab-pane" id="subtab_1_3">
                                             <div class="portlet box">
                                                 <!--div class="portlet-title">
                                                     <div class="caption">
@@ -135,7 +133,7 @@
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
-                                                    <form action="#" class="form-horizontal form-bordered">
+                                                    <form action="#" class="form-horizontal form-bordered" id="privacy_code">
                                                         <div class="form-body">
                                                             <div class="form-group last">
                                                                 <label class="control-label col-md-3">Page Title</label>
@@ -160,9 +158,9 @@
                                                         <div class="form-actions">
                                                             <div class="row">
                                                                 <div class="col-md-offset-3 col-md-9">
-                                                                    <button type="submit" class="btn blue"><i
+                                                                    <a href="javascript:;"  class="btn blue" onclick="savepage('privacy_code');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </button>
+                                                                    </a>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>
@@ -175,7 +173,7 @@
 
                                         </div>
 
-                                        <div class="tab-pane" id="subtab_1_6">
+                                        <div class="tab-pane" id="subtab_1_4">
                                             <div class="portlet box">
                                                 <!--div class="portlet-title">
                                                     <div class="caption">
@@ -186,7 +184,7 @@
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
-                                                    <form action="#" class="form-horizontal form-bordered">
+                                                    <form action="#" class="form-horizontal form-bordered" id="terms">
                                                         <div class="form-body">
                                                             <div class="form-group last">
                                                                 <label class="control-label col-md-3">Page Title</label>
@@ -211,9 +209,9 @@
                                                         <div class="form-actions">
                                                             <div class="row">
                                                                 <div class="col-md-offset-3 col-md-9">
-                                                                    <button type="submit" class="btn blue"><i
+                                                                    <a href="javascript:;" class="btn blue" onclick="savepage('terms');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </button>
+                                                                    </a>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>
@@ -226,7 +224,7 @@
 
                                         </div>
 
-                                        <div class="tab-pane" id="subtab_1_7">
+                                        <div class="tab-pane" id="subtab_1_5">
                                             <div class="portlet box">
                                                 <!--div class="portlet-title">
                                                     <div class="caption">
@@ -237,7 +235,7 @@
 
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
-                                                    <form action="#" class="form-horizontal form-bordered">
+                                                    <form action="#" class="form-horizontal form-bordered" id="faq">
                                                         <div class="form-body">
                                                             <div class="form-group last">
                                                                 <label class="control-label col-md-3">Page Title</label>
@@ -262,9 +260,9 @@
                                                         <div class="form-actions">
                                                             <div class="row">
                                                                 <div class="col-md-offset-3 col-md-9">
-                                                                    <button type="submit" class="btn blue"><i
+                                                                    <a href="javascript:;"  class="btn blue" onclick="savepage('faq');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </button>
+                                                                    </a>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>
@@ -278,3 +276,15 @@
                                         </div>
 
                                     </div>
+<script>
+    function savepage(slug)
+    {
+        var vals = $('#'+slug).serialize();
+        //alert(vals);
+        $.ajax({
+            
+        });
+    }
+
+</script>
+                                    

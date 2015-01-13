@@ -68,14 +68,10 @@
     <?php } ?>
 
 
-
-
-
-
     <?php if ($block->orderhistory == 1 && $sidebar->orders_list ==1) { ?>
         
 
-        <a href="<?php echo $this->request->webroot; ?>documents/index" style="display: block;" class="tile bg-green-meadow">
+        <a href="<?php echo $this->request->webroot; ?>documents/orderslist" style="display: block;" class="tile bg-green-meadow">
 
             <div class="tile-body">
                 <i class="fa fa-history"></i>

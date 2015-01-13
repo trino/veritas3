@@ -3,7 +3,7 @@
 </style>
 
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
-<?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");?>
+<?php $sidebar =$this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?>
 </h3>
@@ -98,7 +98,6 @@
                         </thead>
                         <tbody>
                         <?php
-                        $getSuper = $this->requestAction('profiles/getSuper/'.$this->request->session()->read('Profile.id'));
                         $row_color_class = "odd";
                         foreach ($profiles as $profile):
 

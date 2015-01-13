@@ -17,7 +17,7 @@
 
                 <?php 
                 $class = array('blue-madison','red','yellow','purple','bg-green-meadow','blue','bg-yellow-saffron','bg-grey-cascade','bg-blue-steel','bg-green','bg-red-intense');
-                
+                //echo $id;
                 $doc = $this->requestAction('/documents/getDocument');
                 $i=0;
                 if($doc){
@@ -50,8 +50,8 @@
     							<i class="fa fa-copy"></i>
     						</div>
     						<div class="details">
-    							<div class="number">1349
-    								 <?php //echo $ccd; ?>
+    							<div class="number">
+    								<?php echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->table_name."/".$id); ?>
     							</div>
     							<div class="desc">
     								 <?php echo ucfirst($d->title); ?>

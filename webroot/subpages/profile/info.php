@@ -1,3 +1,6 @@
+<?php
+$getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session->read('Profile.id'));
+?>
 <ul class="nav nav-tabs">
     <li class="active">
         <a href="#subtab_4_1" data-toggle="tab">Info</a>
@@ -59,21 +62,42 @@
                                     <select name="profile_type" <?php if(isset($id) && $this->request->session()->read('Profile.id')==$id) echo "disabled='disabled'"; ?>
                                             class="form-control member_type">
                                         <option value="">Select</option>
-                                        <?php if ($this->request->session()->read('Profile.super')){?>
+                                        <?php
+                                         
+                                         if ($this->request->session()->read('Profile.super'))
+                                         {
+                                         ?>
                                         <option value="1" <?php if ($p->profile_type == 1) { ?> selected="selected" <?php } ?>>
                                             Admin
                                         </option>
                                         <?php }?>
                                         <option
-                                            value="2" <?php if ($p->profile_type == 2) { ?> selected="selected" <?php } ?>>
+                                            value="2" <?php if ($p->profile_type == 2) { ?> selected="selected" <?php }
+                                             if($getProfileType->profile_type == 2)
+                                             {
+                                                ?> disabled="disabled"
+                                                <?php
+                                             } ?>>
                                             Recruiter
                                         </option>
                                         <option
-                                            value="3" <?php if ($p->profile_type == 3) { ?> selected="selected" <?php } ?>>
+                                            value="3" <?php if ($p->profile_type == 3) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                             {
+                                                ?> disabled="disabled"
+                                                <?php
+                                             }
+                                             ?>>
                                             External
                                         </option>
                                         <option
-                                            value="4" <?php if ($p->profile_type == 4) { ?> selected="selected" <?php } ?>>
+                                            value="4" <?php if ($p->profile_type == 4) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                             {
+                                                ?> disabled="disabled"
+                                                <?php
+                                             }
+                                             ?>>
                                             Safety
                                         </option>
                                         <option
@@ -81,7 +105,13 @@
                                             Driver
                                         </option>
                                         <option
-                                            value="6" <?php if ($p->profile_type == 6) { ?> selected="selected" <?php } ?>>
+                                            value="6" <?php if ($p->profile_type == 6) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                             {
+                                                ?> disabled="disabled"
+                                                <?php
+                                             }
+                                             ?>>
                                             Contact
                                         </option>
                                     </select>

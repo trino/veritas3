@@ -673,6 +673,43 @@ class ProfilesController extends AppController {
         return $this->response;
         die();
    }
-  
+
+   function getProfileById($id,$sub)
+   {
+        $q = TableRegistry::get('Profiles');
+        $query = $q->find();
+        $que = $query->select()->where(['id'=>$id])->first();
+        
+        if($sub==1)
+        {
+            $arr['applicant_phone_number'] = $que->phone;
+            $arr['aplicant_name'] = $que->fname.' '.$que->lname;
+            $arr['applicant_email'] = $que->email; 
+        }
+        if($sub==2)
+        {
+            $arr['street_address'] = $que->address;
+            $arr['last_name'] = $que->lname;
+            $arr['first_name'] = $que->fname;
+            $arr['phone'] = $que->phone;
+            $arr['email'] = $que->email;  
+        }
+        if($sub==3)
+        {
+            $arr['driver_name'] = $que->fname.' '.$que->lname;  
+        }
+        if($sub==4)
+        {
+            $arr['last_name'] = $que->lname;
+            $arr['first_name'] = $que->fname;
+            $arr['phone'] = $que->phone;    
+            $arr['current_street_address'] = $que->address;
+        }
+        
+        
+        echo json_encode($arr);       
+        die;
+   }
+
 }
 ?>

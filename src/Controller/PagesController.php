@@ -54,14 +54,14 @@ class PagesController extends AppController {
     function edit($slug)
     {
         $con['title'] = $_POST['title'];
-        echo $con['`desc`'] = $_POST['editor1'];//die();
+        $con['`desc`'] = $_POST['editor1'];//die();
         $pages = TableRegistry::get("contents");
         $query = $pages->query();
                     $query->update()
                     ->set($con)
                     ->where(['slug'=>$slug])
                     ->execute();
-        $this->redirect(['controller'=>'profiles','action'=>'add']);
+        $this->redirect(['controller'=>'profiles','action'=>'index']);
     }
     function get_content($slug)
     {

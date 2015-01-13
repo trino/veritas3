@@ -250,6 +250,17 @@ else
     
     client_id = '<?=$cid?>',
     doc_id = '<?=$did?>';
+    if(doc_id)
+    doc_id = parseInt(doc_id);
+    if(!doc_id)
+    {
+        $('#uploaded_for').change(function(){
+            showforms('company_pre_screen_question.php');
+             showforms('driver_application.php');
+             showforms('driver_evaluation_form.php');
+             showforms('document_tab_3.php');
+        });
+    }
     <?php
     if($did)
     {
@@ -273,7 +284,10 @@ function showforms(form_type)
             param={form_type:form_type};
         $.getJSON(url,param,function(res){
             if(form_type == "company_pre_screen_question.php"){
+                
+                 if(doc_id){
                  $('#form_tab1').form('load',res);
+                 
                 
                 if(res.legal_eligible_work_cananda==1){
                     // debugger;
@@ -316,11 +330,39 @@ function showforms(form_type)
                 } else if(res.reefer_load==0){
                     $('#form_tab1').find('#reefer_load_0').closest('span').addClass('checked')
 
-                }
+                }}
+                else
+                 {
+                   // var $this = $(this);
+                    var prof_id = $('#uploaded_for').val();
+                    if(prof_id){
+                    $.ajax({
+                    url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/1',
+                    success:function(res2)
+                    {
+                        $('#form_tab1').find(':input').each(function(){
+                         var name_attr = $(this).attr('name');
+                         var response = JSON.parse(res2);
+                         //alert(name_attr);
+                       if(response[name_attr])  {
+                       
+                       $(this).val(response[name_attr]);
+                       
+                       
+                       }
+                       });
+                        
+                    }
+                    });
+                    }
+                 }
               //$('input[type="radio"]').buttonset("refresh");
                     // end pre screening
             } else if(form_type == "driver_application.php"){
+                
+                 if(doc_id){
                  $('#form_tab2').form('load',res);
+                 
                  if(res.worked_for_client==1){
                      jQuery('#form_tab2').find('#worked_for_client_1').closest('span').addClass('checked')
                  } else if(res.worked_for_client==0){
@@ -441,10 +483,36 @@ function showforms(form_type)
                      $('#form_tab2').find('#suspend_any_license_0').closest('span').addClass('checked')
 
                  }
+                 }
+                 else
+                 {
+                    var prof_id = $('#uploaded_for').val();
+                    if(prof_id){
+                    $.ajax({
+                    url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/2',
+                    success:function(res2)
+                    {
+                        $('#form_tab2').find(':input').each(function(){
+                         var name_attr = $(this).attr('name');
+                         var response = JSON.parse(res2);
+                         //alert(name_attr);
+                       if(response[name_attr])  {
+                       
+                       $(this).val(response[name_attr]);
+                       
+                       
+                       }
+                       });
+                    }
+                    });
+                    }
+                 }
 
                  // driver applicaton ends
             }else if(form_type == "driver_evaluation_form.php"){
+                if(doc_id){
                 $('#form_tab3').form('load',res);
+                
 
                  if(res.transmission_manual_shift==1){
                      $('#form_tab3').find('#transmission_manual_shift_1').closest('span').addClass('checked')
@@ -786,6 +854,30 @@ function showforms(form_type)
                 } else if(res.recommended_fire_hire_trainee==2){
                     $('#form_tab3').find('#recommended_fire_hire_trainee_0').closest('span').addClass('checked')
                 }
+                }
+                else
+                 {
+                    var prof_id = $('#uploaded_for').val();
+                    if(prof_id){
+                    $.ajax({
+                    url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/3',
+                    success:function(res2)
+                    {
+                        $('#form_tab3').find(':input').each(function(){
+                         var name_attr = $(this).attr('name');
+                         var response = JSON.parse(res2);
+                         //alert(name_attr);
+                       if(response[name_attr])  {
+                       
+                       $(this).val(response[name_attr]);
+                       
+                       
+                       }
+                       });
+                    }
+                    });
+                    }
+                 }
 
 
                 // end road test
@@ -795,10 +887,38 @@ function showforms(form_type)
                  var $name = $(this).attr('name');
                  
                if($name!='offence[]' && $name!='date_of_sentence[]' && $name!= 'location[]')  {
+               if(doc_id)
                $(this).val(res[$name]);
+               
                
                }
                });
+               if(!doc_id)
+               {
+                
+                    var prof_id = $('#uploaded_for').val();
+                    if(prof_id){
+                    $.ajax({
+                    url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/4',
+                    success:function(res2)
+                    {
+                        $('#form_consent').find(':input').each(function(){
+                         var name_attr = $(this).attr('name');
+                         var response = JSON.parse(res2);
+                         //alert(name_attr);
+                       if(response[name_attr])  {
+                       
+                       $(this).val(response[name_attr]);
+                       
+                       
+                       }
+                       });
+                       
+                    }
+                    });
+                    }
+                 
+               }
                 
                     
                 
@@ -851,6 +971,7 @@ jQuery(document).ready(function() {
         $('.cont').removeClass('cont');
         <?php
     }
+    
     ?>
     $(document.body).on('click','.cont',function(){
         if($(this).attr('id') == 'draft')

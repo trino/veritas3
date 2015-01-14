@@ -2,7 +2,7 @@
 <input class="document_type" type="hidden" name="document_type" value="Road test" />
 
 <input type="hidden" class="sub_docs_id" name="sub_doc_id" value="3" id="af" />
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Driver name <span class="required">
 													* </span>
 													</label>
@@ -11,7 +11,7 @@
 														
 													</div>
 												</div>
-												<div class="form-group">
+												<div class="form-group col-md-12">
 													<label class="control-label col-md-3">D/L# <span class="required">
 													* </span>
 													</label>
@@ -20,7 +20,7 @@
 														
 													</div>
 												</div>
-												<div class="form-group">
+												<div class="form-group col-md-12">
 													<label class="control-label col-md-3">Date <span class="required">
 													* </span>
 													</label>
@@ -29,7 +29,7 @@
 														
 													</div>
 												</div>
-												<div class="form-group">
+												<div class="form-group col-md-12">
 													<label class="control-label col-md-3">Transmission <span class="required">
 													* </span>
 													</label>
@@ -44,7 +44,7 @@
 														</div>
 													</div>
 												</div>
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Name of evaluator <span class="required">
 													* </span>
 													</label>
@@ -53,24 +53,24 @@
 													</div>
 												</div>
                                                 
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Select <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-9">
-														<div class="checkbox-list col-md-4 nopad">
+														<div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="checkbox" name="pre_hire" value="1"/> Pre Hire </label>
 															<label>
 															<input type="checkbox" name="post_accident" value="2"/> Post Accident </label>
 														</div>
-														<div class="checkbox-list col-md-4 nopad">
+														<div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="checkbox" name="post_injury" value="1"/> Post Injury </label>
 															<label>
 															<input type="checkbox" name="post_training" value="2"/> Post Training </label>
 														</div>
-                                                        <div class="checkbox-list col-md-4 nopad">
+                                                        <div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="checkbox" name="annual" value="1"/> Annual </label>
 															<label>
@@ -78,6 +78,7 @@
 														</div>
 													</div>
 												</div>
+                                                <div class="clearfix"></div>
                                                 <hr />
                                                 
                                                 <div class="col-md-12">

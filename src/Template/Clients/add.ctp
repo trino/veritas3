@@ -68,7 +68,9 @@ $c = $client;
                                             
                                             </div>
                                             </div>
+                                            
                                             <?php include('subpages/recruiter_contact_table.php');?>
+                                            
 									</div>
 									<div class="col-md-9">
                                     <ul class="nav nav-tabs">

@@ -3,10 +3,11 @@ $profiles = $this->requestAction('Profiles/getProfile');
 $contact =  $this->requestAction('Profiles/getContact');
 //include("subpages/profileslisting.php");
 ?>
-
+<div class="scrolldiv" style="margin-bottom: 15px;">
+<input type="text" id="searchProfile" onkeyup="searchProfile()" class="form-control" placeholder="Search Profile" />
 <table class="table table-striped table-bordered table-advance table-hover recruiters">
                                                 <thead><tr><th colspan="2">Add Profiles</th></tr></thead> 
-                                                             
+                                                <tbody id="profileTable">             
                                                 <?php
                                                 $i=0;
                                                 foreach($profiles as $r)
@@ -40,9 +41,10 @@ $contact =  $this->requestAction('Profiles/getContact');
                                                     echo "</td></tr>";
                                                 }
                                                 ?>
-                                                
+                                                </tbody>
                                             </table>
-
+    </div>
+<p>&nbsp;</p>
 <table class="table table-striped table-bordered table-advance table-hover contacts">
                                                 <thead><tr><th colspan="2">Add Contacts</th></tr></thead>             
                                                 <?php
@@ -77,4 +79,25 @@ $contact =  $this->requestAction('Profiles/getContact');
                                                     echo "</td></tr>";
                                                 }
                                                 ?>
+                                                
                                             </table>
+<script>
+function searchProfile()
+{
+    var key = $('#searchProfile').val();
+    $('#profileTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
+    $.ajax({
+        url:'<?php echo $this->request->webroot;?>profiles/getAjaxProfile/<?php if(isset($id) && $id)echo $id;else echo '0'?>',
+        data:'key='+key,
+        type:'get',
+        success:function(res){
+            $('#profileTable').html(res);
+        }
+    });
+}
+$(function(){
+    $('.scrolldiv').slimScroll({
+        height: '250px'
+    });
+});
+</script>

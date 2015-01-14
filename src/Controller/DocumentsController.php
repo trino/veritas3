@@ -407,6 +407,9 @@ class DocumentsController extends AppController {
             else
             $arr['draft']=0;
             $arr['client_id'] = $cid;
+            $arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
+            $arr['conf_driver_name'] = $_POST['conf_driver_name'];
+            $arr['conf_date'] = $_POST['conf_date'];
             //$arr['order_type'] = $_POST['sub_doc_id'];
             $arr['created'] = date('Y-m-d H:i:s');
             if(!$did || $did=='0'){
@@ -443,6 +446,9 @@ class DocumentsController extends AppController {
             $arr['client_id'] = $cid;
             $arr['document_type'] = $_GET['document'];
             $arr['created'] = date('Y-m-d H:i:s');
+            $arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
+            $arr['conf_driver_name'] = $_POST['conf_driver_name'];
+            $arr['conf_date'] = $_POST['conf_date'];
             if(!$did || $did=='0'){
                 $arr['user_id'] = $this->request->session()->read('Profile.id');
                 $doc = $docs->newEntity($arr);

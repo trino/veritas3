@@ -4,15 +4,15 @@
     
     				<label class="control-label col-md-12">Recruiter Name : </label>
     				<div class="col-md-6">
-    					<input type="text" class="form-control" name="conf_recruiter_name" id="conf_recruiter_name"/>
+    					<input type="text" class="form-control" name="conf_recruiter_name" id="conf_recruiter_name" value="<?php if(isset($modal->conf_recruiter_name))echo $modal->conf_recruiter_name;?>" />
     				</div>
                     <label class="control-label col-md-12">Driver Name : </label>
     				<div class="col-md-6">
-    					<input type="text" class="form-control" name="conf_driver_name" id="conf_driver_name"/>
+    					<input type="text" class="form-control" name="conf_driver_name" id="conf_driver_name" value="<?php if(isset($modal->conf_driver_name))echo $modal->conf_driver_name;?>" />
     				</div>
                     <label class="control-label col-md-12">Date : </label>
     				<div class="col-md-6">
-    					<input type="text" class="form-control date-picker" name="conf_date" id="conf_date"/>
+    					<input type="text" class="form-control date-picker" name="conf_date" id="conf_date" value="<?php if(isset($modal->conf_date))echo $modal->conf_date;?>"/>
     				</div>
     </div>
     <div class="form-group col-md-12">

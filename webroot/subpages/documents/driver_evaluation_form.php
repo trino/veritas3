@@ -2,7 +2,7 @@
 <input class="document_type" type="hidden" name="document_type" value="Road test" />
 
 <input type="hidden" class="sub_docs_id" name="sub_doc_id" value="3" id="af" />
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Driver name <span class="required">
 													* </span>
 													</label>
@@ -11,7 +11,7 @@
 														
 													</div>
 												</div>
-												<div class="form-group">
+												<div class="form-group col-md-12">
 													<label class="control-label col-md-3">D/L# <span class="required">
 													* </span>
 													</label>
@@ -20,7 +20,7 @@
 														
 													</div>
 												</div>
-												<div class="form-group">
+												<div class="form-group col-md-12">
 													<label class="control-label col-md-3">Date <span class="required">
 													* </span>
 													</label>
@@ -29,7 +29,7 @@
 														
 													</div>
 												</div>
-												<div class="form-group">
+												<div class="form-group col-md-12">
 													<label class="control-label col-md-3">Transmission <span class="required">
 													* </span>
 													</label>
@@ -44,7 +44,7 @@
 														</div>
 													</div>
 												</div>
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Name of evaluator <span class="required">
 													* </span>
 													</label>
@@ -53,24 +53,24 @@
 													</div>
 												</div>
                                                 
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Select <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-9">
-														<div class="checkbox-list col-md-4 nopad">
+														<div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="checkbox" name="pre_hire" value="1"/> Pre Hire </label>
 															<label>
 															<input type="checkbox" name="post_accident" value="2"/> Post Accident </label>
 														</div>
-														<div class="checkbox-list col-md-4 nopad">
+														<div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="checkbox" name="post_injury" value="1"/> Post Injury </label>
 															<label>
 															<input type="checkbox" name="post_training" value="2"/> Post Training </label>
 														</div>
-                                                        <div class="checkbox-list col-md-4 nopad">
+                                                        <div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="checkbox" name="annual" value="1"/> Annual </label>
 															<label>
@@ -78,6 +78,7 @@
 														</div>
 													</div>
 												</div>
+                                                <div class="clearfix"></div>
                                                 <hr />
                                                 
                                                 <div class="col-md-12">
@@ -525,7 +526,7 @@
                                                 </div>
                                                 <div class="clearfix"></div>
                                                 <hr />
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Total score<span class="required">
 													* </span>
 													</label>
@@ -534,7 +535,7 @@
 														
 													</div>
 												</div>
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Auto shift<span class="required">
 													* </span>
 													</label>
@@ -543,7 +544,7 @@
 														
 													</div>
 												</div>
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Manual<span class="required">
 													* </span>
 													</label>
@@ -553,14 +554,14 @@
 													</div>
 												</div>
                                                 <hr />
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<p class="center col-md-12 fontRed">The total score must be less than 20 to pass for Autoshift and 24 for Manual. Pass for a full trainee is less than 30</p>
 												</div>
                                                 <hr />
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
                                                     <p class="control-label col-md-3"><strong>Summary</strong></p>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Recommended for hire <span class="required">
 													* </span>
 													</label>
@@ -575,7 +576,7 @@
 														</div>
 													</div>
 												</div>
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Recommended as Full trainee <span class="required">
 													* </span>
 													</label>
@@ -590,7 +591,7 @@
 														</div>
 													</div>
 												</div>
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Recommended fire hire with trainee <span class="required">
 													* </span>
 													</label>
@@ -606,7 +607,7 @@
 													</div>
 												</div>
                                                 
-                                                <div class="form-group">
+                                                <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Comments <span class="required">
 													* </span>
 													</label>
@@ -616,24 +617,44 @@
 													</div>
 												</div>
                                                 <div class="clearfix"></div>
-                                                
+                                                <?php
+                                                        if(!isset($sub['de_at']))
+                                                        {?>
                                                 <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-6">Attach Document : </label>
+                                                    <label class="control-label col-md-3">Attach Document : </label>
                                                     <div class="col-md-6">
                                                     <input type="hidden" class="road1" name="attach_doc[]" />
                                                     <a href="#" id="road1" onclick="fileUpload(event,'road1')" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                                                     </div>
                                                    </div>
-                                                   
+                                                   <?php }?>
                                                   <div class="form-group col-md-12">
-                                                    <div id="more_driver_doc" data-road="1">
+                                                    <div id="more_driver_doc" data-road="<?php if(isset($sub['de_at']))echo count($sub['de_at']);else echo '1';?>">
+                                                       <?php
+                                                        if(isset($sub['de_at']))
+                                                        {
+                                                            $at=0;
+                                                            foreach($sub['de_at'] as $pa)
+                                                            {
+                                                                $at++;
+                                                                ?>
+                                                                <div class="del_append_driver"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_document;?>" /><a href="#" id="road<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attached_document;?></span></div></div><div class="clearfix"></div>
+                                                                <script>
+                                                                $(function(){
+                                                                    fileUpload('road<?php echo $at;?>');
+                                                                });
+                                                                </script>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?> 
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
                                                   </div>
                                                   
                                                   <div class="form-group col-md-12">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-3">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <a href="javascript:void(0);" class="btn btn-success" id="add_more_driver_doc">Add More</a>
@@ -649,7 +670,7 @@
        $('#add_more_driver_doc').click(function(){
         var count = $('#more_driver_doc').data('road');
         $('#more_driver_doc').data('road',parseInt(count)+1);
-        $('#more_driver_doc').append('<div class="del_append_driver"><label class="control-label col-md-6">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road'+$('#more_driver_doc').data('road')+'" name="attach_doc[]" /><a href="#" id="road'+$('#more_driver_doc').data('road')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a> <span class="uploaded"></span></div></div>')
+        $('#more_driver_doc').append('<div class="del_append_driver"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-9 pad_bot"><input type="hidden" class="road'+$('#more_driver_doc').data('road')+'" name="attach_doc[]" /><a href="#" id="road'+$('#more_driver_doc').data('road')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a> <span class="uploaded"></span></div></div>')
         fileUpload('road'+$('#more_driver_doc').data('road'));
        }); 
        

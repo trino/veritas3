@@ -3,8 +3,10 @@
 <input type="hidden" name="sub_doc_id" value="2" class="sub_docs_id" id="af" />
 <div class="clearfix"></div>
 <hr />
+<div class="form-body">
 <p>Welcome Prospective Drivers of Challenger. </p>
 <p>Thank you for your interest in Challenger Motor Freight. In order to process your application in a timely manner, please complete all information requested including dates and contact information for your employment history. Please provide the following additional information.</p>
+</div>
 <!--p>We also require:</p>
 <div class="table-scrollable">
     <table class="table table-striped">
@@ -19,13 +21,9 @@
         </div>
 <p>Please return you application and above information to the Challenger Recruiting Department.</p-->
 
-<div class="portlet box blue ">
-	<div class="portlet-title">
-		<div class="caption">
-			Driver Application for Employment
+		<div class="form-group col-md-12">
+			<h4 class="col-md-12">Driver Application for Employment</h4>
 		</div>
-	</div>
-	<div class="portlet-body form">
 			<div class="form-body">
             <p>(Answer all questions)</p>
             <p>In compliance with Federal and Provincial equal employment opportunity laws, qualified applicants are considered for all positions without regard to race, colour, religion, sex, national origin, age, marital status, or the presence of a non-job related medical condition or handicap.</p>
@@ -335,230 +333,12 @@
             <div class="clearfix"></div>
             <hr />
    </div>
- </div>
- </div>
    <div class="clearfix"></div>
    
-<!--div class="portlet box blue ">
-	<div class="portlet-title">
-		<div class="caption">
-			Employment History
-		</div>
-	</div>
-	<div class="portlet-body form">
-			<div class="form-body">
-            <p>As per FMCSA regulations;please provide a complete work history for the past five (5) years, and include all commercial vehicle driving for the past ten (10) years. Please list employers in reverse order starting with the most recent, even if you were unemployed.</p>
-            <div class="clearfix"></div>
-            <hr />
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-5">Current Period Of Unemployment(if any) From:</label>
-                <div class="col-md-3">
-					<input type="text" class="form-control"/>
-                </div>
-                <label class="control-label col-md-1">To:</label>
-                <div class="col-md-3">
-					<input type="text" class="form-control"/>
-                </div>
-            </div>
-            
-            <div class="form-group col-md-12">
-				<label class="control-label col-md-3">Employer : </label>
-				<div class="col-md-9">
-					<input type="text" class="form-control"/>
-				</div>
-            </div>
-            
-            
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Address : </label>
-                <div class="col-md-3">
-					<input type="text" class="form-control" placeholder="City"/>
-				</div>
-                <div class="col-md-3">
-					<input type="text" class="form-control" placeholder="Province"/>
-				</div>
-                <div class="col-md-3">
-					<input type="text" class="form-control" placeholder="Postal Code"/>
-				</div>
-			</div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Dates : From </label>
-				<div class="col-md-3">
-					<input type="text" class="form-control" placeholder="MM/YYYY"/>
-				</div>
-                <label class="control-label col-md-3">To </label>
-				<div class="col-md-3">
-					<input type="text" class="form-control" placeholder="MM/YYYY"/>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Phone Number : </label>
-                <div class="col-md-3">
-					<input type="text" class="form-control"/>
-				</div>
-                <label class="control-label col-md-3">Position Held : </label>
-                <div class="col-md-3">
-					<input type="text" class="form-control"/>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Reason for Leaving : </label>
-                <div class="col-md-9">
-					<textarea class="form-control"></textarea>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Equipment Operated : </label>
-                <div class="col-md-6">
-					<input type="checkbox"/>&nbsp;Vans&nbsp;
-                    <input type="checkbox"/>&nbsp;Reefers&nbsp;
-                    <input type="checkbox"/>&nbsp;Decks&nbsp;
-                    <input type="checkbox"/>&nbsp;Super B's&nbsp;
-                    <input type="checkbox"/>&nbsp;Straight Truck&nbsp;
-                    <input type="checkbox"/>&nbsp;Others:
-                    </div>
-                    <div class="col-md-3"><input type="text" class="form-control" />
-                    </div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Driving Experience : </label>
-                <div class="col-md-6">
-					<input type="checkbox"/>&nbsp;Local&nbsp;
-                    <input type="checkbox"/>&nbsp;Canada&nbsp;
-                    <input type="checkbox"/>&nbsp;Canada : Rocky Mountains&nbsp;
-                    <input type="checkbox"/>&nbsp;USA&nbsp;
-                    </div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-10">Was your job designated as a safety-sensitive function in any DOT-regulated mode subject to drug and alcohol testing requirements of 49 CFR Part 40?</label>
-                <div class="col-md-2">
-					<input type="radio"/>&nbsp;Yes&nbsp;
-                    <input type="radio"/>&nbsp;No&nbsp;
-                </div>
-            </div>
-            
-            <div class="clearfix"></div>
-            <hr/>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-5">Period Of Unemployment(if any) From:</label>
-                <div class="col-md-3">
-					<input type="text" class="form-control"/>
-                </div>
-                <label class="control-label col-md-1">To:</label>
-                <div class="col-md-3">
-					<input type="text" class="form-control"/>
-                </div>
-            </div>
-            
-            <div class="form-group col-md-12">
-				<label class="control-label col-md-3">Employer : </label>
-				<div class="col-md-9">
-					<input type="text" class="form-control"/>
-				</div>
-            </div>
-            
-            
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Address : </label>
-                <div class="col-md-3">
-					<input type="text" class="form-control" placeholder="City"/>
-				</div>
-                <div class="col-md-3">
-					<input type="text" class="form-control" placeholder="Province"/>
-				</div>
-                <div class="col-md-3">
-					<input type="text" class="form-control" placeholder="Postal Code"/>
-				</div>
-			</div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Dates : From </label>
-				<div class="col-md-3">
-					<input type="text" class="form-control" placeholder="MM/YYYY"/>
-				</div>
-                <label class="control-label col-md-3">To </label>
-				<div class="col-md-3">
-					<input type="text" class="form-control" placeholder="MM/YYYY"/>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Phone Number : </label>
-                <div class="col-md-3">
-					<input type="text" class="form-control"/>
-				</div>
-                <label class="control-label col-md-3">Position Held : </label>
-                <div class="col-md-3">
-					<input type="text" class="form-control"/>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Reason for Leaving : </label>
-                <div class="col-md-9">
-					<textarea class="form-control"></textarea>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Equipment Operated : </label>
-                <div class="col-md-6">
-					<input type="checkbox"/>&nbsp;Vans&nbsp;
-                    <input type="checkbox"/>&nbsp;Reefers&nbsp;
-                    <input type="checkbox"/>&nbsp;Decks&nbsp;
-                    <input type="checkbox"/>&nbsp;Super B's&nbsp;
-                    <input type="checkbox"/>&nbsp;Straight Truck&nbsp;
-                    <input type="checkbox"/>&nbsp;Others:
-                    </div>
-                    <div class="col-md-3"><input type="text" class="form-control" />
-                    </div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Driving Experience : </label>
-                <div class="col-md-6">
-					<input type="checkbox"/>&nbsp;Local&nbsp;
-                    <input type="checkbox"/>&nbsp;Canada&nbsp;
-                    <input type="checkbox"/>&nbsp;Canada : Rocky Mountains&nbsp;
-                    <input type="checkbox"/>&nbsp;USA&nbsp;
-                    </div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-10">Was your job designated as a safety-sensitive function in any DOT-regulated mode subject to drug and alcohol testing requirements of 49 CFR Part 40?</label>
-                <div class="col-md-2">
-					<input type="radio"/>&nbsp;Yes&nbsp;
-                    <input type="radio"/>&nbsp;No&nbsp;
-                </div>
-            </div>
-            
-            <div class="clearfix"></div>
-            <hr/>
-            <div class="more_form"></div>
-            <a href="javascript:void(0);" class="btn green" id="add_more_form">Add More</a>
-             <div class="clearfix"></div>
-            </div>
-    </div>
-   
-</div>
- <div class="clearfix"></div-->
  
- <div class="portlet box blue ">
-	<div class="portlet-title">
-		<div class="caption">
-			Accident Record For Past 5 Years or More
+		<div class="form-group col-md-12">
+		  <h4 class="col-md-12">Accident Record For Past 5 Years or More</h4>	
 		</div>
-	</div>
-	<div class="portlet-body form">
         <div class="form-body">
             
             <div class="form-group col-md-12">
@@ -621,8 +401,7 @@
 				</div>
             </div>
             
-            <div class="clearfix"></div>
-            <hr />
+            
             <div class="more_acc_record"></div>
             <input type="hidden" id="count_acc_record" name="count_acc_record" value="2">
             <a href="javascript:void(0);" class="add_more_acc_record btn green">Add More</a>
@@ -631,14 +410,11 @@
             <hr />
             
         </div>
-    </div>
-</div>
 <div class="clearfix"></div>
-
 
             <div class="clearfix"></div>
             <div class="table-scrollable">
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
                     <tr>
                         <th class="center"  style="width: 20%;">Driver Licenses</th>
@@ -775,15 +551,15 @@
             </div>
             
         <div class="clearfix"></div>
+            <hr />
+            <div class="clearfix"></div>
             
-            <div class="portlet box blue ">
-            	<div class="portlet-title">
-            		<div class="caption">
-            			Medical Declaration
+            		<div class="form-group col-md-12">
+            			<h4 class="col-md-12">
+                        Medical Declaration
+                        </h4>
             		</div>
-            	</div>
-            	<div class="portlet-body form">
-                    <div class="form-body">
+                    <div class="form-body col-md-12">
             <p>
             On March 30, 1999, Transport Canada and U.S. Federal Highway Administration (FHWA) entered into a reciprocal agreement regarding the physical requirements for a Canadian driver of a commercial vehicle in the U.S., as currently contained in the Federal Motor Carrier Safety Regulations, Part 391.41 et seq, and vice-versa. The reciprocal agreement removes the requirement for a Canadian driver to carry a copy of a medical examiner's certificate indicating that the driver is physically qualified. (In effect, the existence of valid driver's license issued by a province in Canada is deemed to be proof that a driver is physically qualified to drive in the U.S.) However, FHWA will not recognize a Provincial license if the driver has certain medical conditions and those conditions would prohibit him from driving in the U.S.
             </p>
@@ -820,19 +596,13 @@
             <hr />
             
                     </div>
-                </div>
                 
-            </div>
             
 
 
-            <div class="portlet box blue ">
-            	<div class="portlet-title">
-            		<div class="caption">
-            			To be read and signed by applicant
+            		<div class="form-group col-md-12">
+            			<div class="col-md-12"><h4>To be read and signed by applicant</h4></div>
             		</div>
-            	</div>
-            	<div class="portlet-body form">
                     <div class="form-body">
                     <p>THIS CERTIFIES THAT THIS APPLICATION WAS COMPLETED BY ME, AND THAT ALL ENTRIES ON IT AND INFORMATION IN IT ARE TRUE AND COMPLETE TO THE BEST OF MY KNOWLEDGE. I AUTHORIZE YOU TO MAKE SUCH INVESTIGATIONS AND INQUIRIES OF MY PERSONAL, EMPLOYMENT, FINANCIAL OR MEDICAL HISTORY AND OTHER RELATED MATTERS AS MAY BE NECESSARY IN ARRIVING AT AN EMPLOYMENT DECISION. I HEREBY RELEASE EMPLOYERS, SCHOOLS OR PERSONS FROM ALL LIABILITY IN RESPONDING TO INQUIRIES IN CONNECTION WITH MY APPLICATION.IN THE EVENT OF EMPLOYMENT, I UNDERSTAND THAT FALSE OR MISLEADING INFORMATION GIVEN IN MY APPLICATION OR INTERVIEW(S) MAY RESULT IN DISCHARGE. I UNDERSTAND, ALSO, THAT I AM REQUIRED TO ABIDE BY ALL RULES AND REGULATIONS OF THE COMPANY, AS PERMITTED BY LAW.I UNDERSTAND THAT I HAVE THE RIGHT TO REVIEW INFORMATION PROVIDED BY PREVIOUS EMPLOYERS, HAVE ERRORS CORRECTED BY PREVIOUS EMPLOYER AND RESUBMITTED TO CHALLENGER MOTOR FREIGHT INC AND /OR HAVE A REBUTTAL STATEMENT ATTACHED TO ERRONEOUS INFORMATION IF MY PREVIOUS EMPLOYER AND I CANNOT AGREE ON THE ACCURACY OF THE INFORMATION. I UNDERSTAND THAT I MUST REQUEST PAST EMPLOYER INFORMATION OBTAINED BY CHALLENGER MOTOR FREIGHT INC IN WRITING WITHIN 30-DAYS OF EMPLOYMENT OR DENIAL OF EMPLOYMENT.</p>
                     <div class="form-group col-md-12">
@@ -845,16 +615,12 @@
                        </div>
                        <div class="clearfix"></div>
                     </div>
-                </div>
-             </div>
 
-             <div class="portlet box blue ">
-            	<div class="portlet-title">
-            		<div class="caption">
-            			Certification of compliance with driver license requirements
+                    <hr />
+                <div class="clearfix"></div>
+            		<div class="form-group col-md-12">
+            			<h4 class="col-md-12">Certification of compliance with driver license requirements</h4>
             		</div>
-            	</div>
-            	<div class="portlet-body form">
                     <div class="form-body">
                     <p>MOTOR CARRIER INSTRUCTIONS: The requirements in Part 383 apply to every driver who operates in intrastate, interstate, or foreign commerce and operates a vehicle weighing 26,001 pounds or more, can transport more than 15 people, or transports hazardous materials that require placarding.</p>
                     <p>The requirements in Part 391 apply to every driver who operates in interstate commerce and operates a vehicle weighing 10,001 pounds or more, can transport more than 15 people, or transports hazardous materials that require placarding.</p>
@@ -903,151 +669,14 @@
                        
                 <div class="clearfix"></div>
                     </div>
-                </div>
-                </div>
-
-                <!--div class="portlet box blue ">
-            	<div class="portlet-title">
-            		<div class="caption">
-            			Request and consent for information from previous employer
-            		</div>
-            	</div>
-            	<div class="portlet-body form">
-                    <div class="form-body">
-                    
-                    <p>
-                    <div class="form-group col-md-12">
-                        <div class="col-md-2"><label class="control-label">I,</label></div> 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" />
-                            </div>
-                            <div class="col-md-4">
-                            <label class="control-label">
-                            , hereby authorize that:
-                            </label>
-                            </div>
-                    </div>
-                    </p>
-                    <div class="form-group col-md-12">
-                        <div class="col-md-2"><label class="control-label">Previous Employer:</label></div>
-                        <div class="col-md-5">
-                        <input type="text" class="form-control" />
-                    </div> 
-                    <div class="col-md-2"><label class="control-label">Telephone:</label></div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" />
-                    </div>
-                    </div>
-                    <div class="col-md-12 form-group">
-                    <p>May release and forward information requested by section 2 (page 2) of this document concerning my past employment record and Alcohol/Controlled Substances testing records to:  </p>
-                    </div>
-                    
-                    <div class="form-group col-md-12">
-                    
-                        <label class="control-label col-md-3">Prospective Employer : </label>
-                        <div class="col-md-3">
-        					<input type="text" class="form-control"/>
-        				</div>
-                        
-                        <label class="control-label col-md-3">Telephone : </label>
-                        <div class="col-md-3">
-        					<input type="text" class="form-control"/>
-        				</div>
-                        
-                    </div>
-            
-                    <div class="form-group col-md-12">
-                        <label class="control-label col-md-3">Attention : </label>
-                        <div class="col-md-3">
-        					<input type="text" class="form-control"/>
-        				</div>
-                        
-                        <label class="control-label col-md-3">Fax No : </label>
-                        <div class="col-md-3">
-        					<input type="text" class="form-control"/>
-        				</div>
-                    </div>
-                    
-                    <div class="form-group col-md-12">
-                        <label class="control-label col-md-3">Address : </label>
-                        <div class="col-md-9">
-        					<input type="text" class="form-control"/>
-        				</div>
-                    </div>
-                    
-                    <div class="col-md-12">
-                    <p>I hereby authorize you or your agents, as my previous employer or company, to release all information concerning dates of employment, oral or written assessments of my job performance, over all work performance including safety records, reason for leaving and eligibility for rehire to Challenger Motor Freight Inc. for the purpose of investigations as required by Section 391.23 of the Federal Motor Carrier Safety Regulations.</p>
-                    <p>I also hereby authorize you or your agents, as my previous employer or company to release the information concerning my Alcohol and Controlled Substances Testing during the past three years; (1) alcohol tests with a result of 0.04 or higher alcohol concentration; (2) verified positive controlled substances test results; (3) refusals to be tested (including verified adulterated or substituted drug test results; (4) other violations of the DOT agency drug and alcohol testing regulations; (5) with respect to any employee who violated a DOT drug and alcohol regulation, documentation of the employees successful or failure to completion of DOT return to duty requirements (including follow up tests) and the name and phone number of any substance abuse professional who evaluated me over the past three years</p>
-                    <p>You are released from any liability, which may result from giving such information; I understand that the information in this form will be used and that prior employers will be contacted for purposes of investigation as required by 391.23 of the Motor Carrier Safety Regulation. For the purpose of facilitating this verification request I consent to providing my Social Insurance Number <div class="col-md-3 form-group"><input type="text" class="form-control" /></div>.</p>
-                    </div>
-                    <div class="col-md-12">
-                    <p>I understand that I have the right to review information provided by previous employers, have errors corrected by previous employer and resubmitted to Challenger Motor Freight Inc and /or have a rebuttal statement attached to erroneous information if my previous employer and I cannot agree on the accuracy of the information. I understand that I must request past employer information obtained by Challenger Motor Freight Inc in writing within 30-days of employment or denial or employment.</p>
-                    <p>This request is in compliance with 49 CFR Part 40, 49 CFR 391.23, 382.413 and 382.405</p>
-                    </div>
-                    
-                    <div class="form-group col-md-12">
-                                    <div class="col-md-6">
-										<input type="text" class="form-control" placeholder="Date"/>
-                                        </div>
-                                        <div class="col-md-6">
-			                             <input type="text" class="form-control" placeholder="Applicant's Signature"/>
-                                         </div>
-                       </div>
-                    <div class="clearfix"></div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="portlet box blue ">
-            	<div class="portlet-title">
-            		<div class="caption">
-            			IMPORTANT NOTICE
-            		</div>
-            	</div>
-            	<div class="portlet-body form">
-                    <div class="form-body">
-                    <strong>Regarding background reports from THEPSP Online Service</strong>       
-                        <p>In connection with your application for employment with Challenger ("Prospective Employer"), it may obtain one or more reports regarding your driving, and safety inspection history from the Federal Motor Carrier Safety Administration (FMCSA). If the Prospective Employer uses any information it obtains from FMCSA in a decision to not hire you or to make any other adverse employment decision regarding you, the Prospective Employer will provide you with a copy of the report upon which its decision was based and a written summary of your rights under the Fair Credit Reporting Act before taking any final adverse action. If any final adverse action is taken against you based upon your driving history or safety report, the Prospective Employer will notify you that the action has been taken and that the action was based in part or in whole on this report. If you agree that the Prospective Employer may obtain such background reports, please read the following and sign below:</p>
-                        <p>I authorize Challenger ("Prospective Employer") to access the FMCSA Pre-Employment Screening Program (PSP) system to seek information regarding my commercial driving safety record and information regarding my safety inspection history. I understand that I am consenting to the release of safety performance information including crash data from the previous five (5) years and inspection history from the previous three (3) years. I understand and acknowledge that this release of information may assist the Prospective Employer to make a determination regarding my suitability as an employee.</p>
-                        <p>I further understand that neither the Prospective Employer nor the FMCSA contractor supplying the crash and safety information has the capability to correct any safety data that appears to be incorrect. I understand I may challenge the accuracy of the data by submitting a request to http://dataqs.fmcsa.dot.gov. If I am challenging crash or inspection information reported by a State, FMCSA cannot change or correct this data. I understand my request will be forwarded by the DataQs system to the appropriate State for adjudication.</p>
-                        <div class="clearfix"></div>
-                        <hr />
-                        <p>I have read the above Notice Regarding Background Reports provided to me by Prospective Employer and I understand that if I sign this consent form, Prospective Employer may obtain a report of my crash and inspection history. I hereby authorize Prospective Employer and its employees, authorized agents, and/or affiliates to obtain the information authorized above.</p>
-                        <div class="form-group col-md-12">
-                                        <label class="control-label col-md-6">Date : </label>
-                                        <div class="col-md-6">
-										<input type="text" class="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="control-label col-md-6">Signature : </label>
-                                        <div class="col-md-6">
-										<input type="text" class="form-control"/>
-                                        </div>
-                       </div>
-                       
-                       <div class="form-group col-md-12">
-                                        <label class="control-label col-md-6">Name (Please print) : </label>
-                                        <div class="col-md-6">
-										<input type="text" class="form-control"/>
-                                        </div>
-                       </div>
-                       
-                       <p>NOTICE: This form is made available to monthly account holders by NICT solely for use as an example of template content. NICT assumes no legal liability or responsibility for the accuracy, completeness or currency of the information disclosed in this example. The intent of the template example is to illustrate for a monthly account holder an example of a driver consent form related to PSP, but all monthly account holders and third party information providers should consult their own legal counsel with respect to the proper format and content of this notice.</p>
-                        
-                    <div class="clearfix"></div>
-                    </div>
-                </div>
-                </div-->
 
                 
-                <div class="portlet box blue ">
-            	<div class="portlet-title">
-            		<div class="caption">
-            			Challenger Driver New Hire Application Process 
+                <hr />
+                <div class="clearfix"></div>
+                
+            		<div class="form-group col-md-12">
+            			<h4 class="col-md-12">Challenger Driver New Hire Application Process</h4> 
             		</div>
-            	</div>
-            	<div class="portlet-body form">
                     <div class="form-body">
                     <p>Thank-you for applying for a driving position with Challenger Motor Freight Inc. Please take a few minutes to review what the companies requirements are to be considered for a driving position with the company.</p>
                     <p>The following requirements need to be completed and/or provided prior to an offer of employment being given to the potential applicant:</p>
@@ -1090,7 +719,10 @@
 										<input type="text" class="form-control" placeholder="Applicant Signature" name="applicant_signature"/>
                                         </div>
                        </div>
-                       
+                       <?php
+                                        if(!isset($sub['da_at']))
+                                        {
+                                            ?>
                        <div class="form-group col-md-12">
                                         <label class="control-label col-md-3">Attach Document : </label>
                                         <div class="col-md-9">
@@ -1098,9 +730,27 @@
                                         <a href="#" id="driveApp1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                                         </div>
                        </div>
-                       
+                       <?php }?>
                       <div class="form-group col-md-12">
-                        <div id="more_doc" data-driveApp="1">
+                        <div id="more_doc" data-driveApp="<?php if(isset($sub['da_at']))echo count($sub['da_at']);else echo '1';?>'">
+                        <?php
+                                        if(isset($sub['da_at']))
+                                        {
+                                            $at=0;
+                                            foreach($sub['da_at'] as $pa)
+                                            {
+                                                $at++;
+                                                ?>
+                                                <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_doc_path;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"><?php echo $pa->attached_doc_path;?></span></div></div><div class="clearfix"></div>
+                                                <script>
+                                                $(function(){
+                                                    fileUpload('driveApp<?php echo $at;?>');
+                                                });
+                                                </script>
+                                                <?php
+                                            }
+                                        }
+                                        ?>                        
                         </div>
                       </div>
                       
@@ -1122,8 +772,6 @@
                     
                     <div class="clearfix"></div>
                     </div>
-                </div>
-                </div>
 </form>
             
         <div class="clearfix"></div>

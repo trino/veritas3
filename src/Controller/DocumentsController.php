@@ -349,6 +349,11 @@ class DocumentsController extends AppController {
         $this->set('did',$did);
         if($did)
         {
+            $pre = TableRegistry::get('pre_screening_attachments');
+            //$pre_at = TableRegistry::get('driver_application_accident');
+            $pre_at['attach_doc'] = $pre->find()->where(['order_id'=>$did])->all();
+            $this->set('pre_at',$pre_at);
+            
             $da = TableRegistry::get('driver_application');
             $da_detail = $da->find()->where(['order_id'=>$did])->first();
             if($da_detail){
@@ -359,7 +364,10 @@ class DocumentsController extends AppController {
             $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id'=>$da_detail->id])->all();
             
             $da_at = TableRegistry::get('driver_application_attachments');
-            $sub['da_at_detail'] = $da_at->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            $sub['da_at'] = $da_at->find()->where(['order_id'=>$did])->all();
+            
+            $de_at = TableRegistry::get('road_test_attachments');
+            $sub['de_at'] = $de_at->find()->where(['order_id'=>$did])->all();
             
             $this->set('sub',$sub);
             }
@@ -369,6 +377,9 @@ class DocumentsController extends AppController {
             //echo $con_detail->id;die();
             $con_cri = TableRegistry::get('consent_form_criminal');
             $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id'=>$con_detail->id])->all();
+            
+            $con_at = TableRegistry::get('consent_form_attachments');
+            $sub2['con_at'] = $con_at->find()->where(['order_id'=>$did])->all();
             $this->set('sub2',$sub2);
             
             }
@@ -446,9 +457,9 @@ class DocumentsController extends AppController {
             $arr['client_id'] = $cid;
             $arr['document_type'] = $_GET['document'];
             $arr['created'] = date('Y-m-d H:i:s');
-            $arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
-            $arr['conf_driver_name'] = $_POST['conf_driver_name'];
-            $arr['conf_date'] = $_POST['conf_date'];
+            //$arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
+            //$arr['conf_driver_name'] = $_POST['conf_driver_name'];
+            //$arr['conf_date'] = $_POST['conf_date'];
             if(!$did || $did=='0'){
                 $arr['user_id'] = $this->request->session()->read('Profile.id');
                 $doc = $docs->newEntity($arr);
@@ -520,17 +531,26 @@ class DocumentsController extends AppController {
         }
         if(!isset($att))
         $att=null;
-        var_dump($att);
+        //var_dump($att);
         if(isset($att))
         {
+            $count=0;
             foreach($att as $at)
             {
+                $count++;
+                if(!isset($_GET['document'])){
                 $saveData['order_id'] = $_POST['order_id'];
-                $saveData['doc_id'] = 0;
+                $saveData['doc_id'] = 0; 
+                }
+                else{
+                $saveData['doc_id'] = $_POST['order_id'];   
+                $saveData['order_id'] = 0;
+                } 
                 $saveData['attach_doc'] = $at;
-                $this->saveAttachmentsPrescreen($saveData);
+                $this->saveAttachmentsPrescreen($saveData,$count);
             }
         }
+        //var_dump($saveData);
 
 
         $save = $prescreen->newEntity($arr);
@@ -615,20 +635,20 @@ class DocumentsController extends AppController {
                 
             }
             if(isset($_POST['attach_doc']))
-            {
+            {$count=0;
                 foreach($_POST['attach_doc'] as $v)
                 {
-                    
+                    $count++;
                     if(!isset($_GET['document'])){
                     $att['order_id'] = $document_id;
-                    $att['document_id'] = 0;  
+                    $att['doc_id'] = 0;  
                     }
                     else{
-                    $att['document_id'] = $document_id;  
+                    $att['doc_id'] = $document_id;  
                     $att['order_id'] = 0;
                     }                    
                     $att['attached_doc_path'] = $v;
-                    $this->saveAttachmentsDriverApp($att);
+                    $this->saveAttachmentsDriverApp($att,$count);
                                     
                 }                
                             
@@ -678,10 +698,28 @@ class DocumentsController extends AppController {
         else
         $del->delete()->where(['document_id'=>$document_id])->execute(); 
         
-
+        if(isset($_POST['attach_doc']))
+        {$count=0;
+            foreach($_POST['attach_doc'] as $v)
+                {
+                    $count++;
+                    if(!isset($_GET['document'])){
+                    $att['order_id'] = $document_id;
+                    $att['doc_id'] = 0;  
+                    }
+                    else{
+                    $att['doc_id'] = $document_id;  
+                    $att['order_id'] = 0;
+                    }                    
+                    $att['attached_document'] = $v;
+                    $this->saveAttachmentsRoadTest($att,$count);
+                                    
+                } 
+        }
         foreach($_POST as $data=>$val){
           
-            if( $data=="document_type" ){
+            if( $data=="document_type" || $data == 'attach_doc' ){
+                
                 continue;
             } else {
                 if(isset($_POST[$data])){
@@ -725,10 +763,28 @@ class DocumentsController extends AppController {
         $del->delete()->where(['document_id'=>$document_id])->execute();
         
         $post = $_POST;
+        if(isset($_POST['attach_doc']))
+        {$count=0;
+            foreach($_POST['attach_doc'] as $v)
+                {
+                    $count++;
+                    if(!isset($_GET['document'])){
+                    $att['order_id'] = $document_id;
+                    $att['doc_id'] = 0;  
+                    }
+                    else{
+                    $att['doc_id'] = $document_id;  
+                    $att['order_id'] = 0;
+                    }                    
+                    $att['attach_doc'] = $v;
+                    $this->saveAttachmentsConsentForm($att,$count);
+                                    
+                } 
+        }
         foreach($_POST as $data => $val){
 
-            if( $data =='offence' || $data =='date_of_sentence' || $data =='location' ){
-                continue;
+            if( $data =='offence' || $data =='date_of_sentence' || $data =='location' || $data == 'attach_doc' ){
+                
             }
             //echo $data." ".$val."<br />";
             $arr[$data] = $val;
@@ -768,7 +824,24 @@ class DocumentsController extends AppController {
         else
         $del->delete()->where(['document_id'=>$document_id])->execute();
         
-        
+        if(isset($_POST['attach_doc']))
+        {$count=0;
+            foreach($_POST['attach_doc'] as $v)
+                {
+                    $count++;
+                    if(!isset($_GET['document'])){
+                    $att['order_id'] = $document_id;
+                    $att['document_id'] = 0;  
+                    }
+                    else{
+                    $att['document_id'] = $document_id;  
+                    $att['order_id'] = 0;
+                    }                    
+                    $att['attach_doc'] = $v;
+                    $this->saveAttachmentsEmployment($att,$count);
+                                    
+                } 
+        }
         for($i=0;$i < $_POST['count_past_emp'];$i++){
             if(!isset($_GET['document'])){
             $arr2['order_id'] = $document_id;
@@ -897,7 +970,25 @@ class DocumentsController extends AppController {
         $del->delete()->where(['order_id'=>$document_id])->execute();
         else
         $del->delete()->where(['document_id'=>$document_id])->execute();
-        
+        if(isset($_POST['attach_doc']))
+        {
+            $count=0;
+            foreach($_POST['attach_doc'] as $v)
+                {
+                    $count++;
+                    if(!isset($_GET['document'])){
+                    $att['order_id'] = $document_id;
+                    $att['document_id'] = 0;  
+                    }
+                    else{
+                    $att['document_id'] = $document_id;  
+                    $att['order_id'] = 0;
+                    }                    
+                    $att['attach_doc'] = $v;
+                    $this->saveAttachmentsEducation($att,$count);
+                                    
+                } 
+        }
         for($i=0;$i < $_POST['count_more_edu'];$i++){
             if(!isset($_GET['document'])){
             $arr2['order_id'] = $document_id;
@@ -1646,44 +1737,72 @@ class DocumentsController extends AppController {
         die();
     }
 
-    private function saveAttachmentsPrescreen($data = NULL){
-         $prescreen = TableRegistry::get('pre_screening_attachments');         
+    private function saveAttachmentsPrescreen($data = NULL,$count=0){//count is to delete all while first insertion and no delete for following insertion
+        
+         $prescreen = TableRegistry::get('pre_screening_attachments'); 
+         $del = $prescreen->query();
+         if($count==1){
+            if(!isset($_GET['document']))
+            $del->delete()->where(['order_id'=>$data['order_id']])->execute();
+            else
+            $del->delete()->where(['doc_id'=>$data['doc_id']])->execute();
+                }
          $save = $prescreen->newEntity($data);
          $prescreen->save($save);
     }
-    private function saveAttachmentsDriverApp($data = NULL){
+    private function saveAttachmentsDriverApp($data = NULL,$count=0){
          $driverApp = TableRegistry::get('driver_application_attachments');
-         //$arr['order_id'] = $data['order_id'];
-         //$arr['attached_doc_path'] = $data['path'];
+         $del = $driverApp->query();
+         if($count==1){
+            if(!isset($_GET['document']))
+            $del->delete()->where(['order_id'=>$data['order_id']])->execute();
+            else
+            $del->delete()->where(['doc_id'=>$data['doc_id']])->execute();}
          $save = $driverApp->newEntity($data);
          $driverApp->save($save);
     }
-    private function saveAttachmentsRoadTest($data = NULL){
+    private function saveAttachmentsRoadTest($data = NULL,$count=0){
          $roadTest = TableRegistry::get('road_test_attachments');
-         $arr['order_id'] = $data['order_id'];
-         $arr['attached_document'] = $data['path'];
-         $save = $roadTest->newEntity($arr);
+         $del = $roadTest->query();
+         if($count==1){
+            if(!isset($_GET['document']))
+            $del->delete()->where(['order_id'=>$data['order_id']])->execute();
+            else
+            $del->delete()->where(['doc_id'=>$data['doc_id']])->execute();}
+         $save = $roadTest->newEntity($data);
          $roadTest->save($save);
     }
-    private function saveAttachmentsConsentForm($data = NULL){
-         $consentForm = TableRegistry::get('consent_form_attachments');
-         $arr['order_id'] = $data['order_id'];
-         $arr['attach_doc'] = $data['path'];
-         $save = $consentForm->newEntity($arr);
+    private function saveAttachmentsConsentForm($data = NULL,$count=0){
+         $consentForm = TableRegistry::get('consent_form_attachments'); 
+         if($count==1){  
+         $del = $consentForm->query();
+            if(!isset($_GET['document']))
+            $del->delete()->where(['order_id'=>$data['order_id']])->execute();
+            else
+            $del->delete()->where(['doc_id'=>$data['doc_id']])->execute(); }     
+         $save = $consentForm->newEntity($data);
          $consentForm->save($save);
     }
-    private function saveAttachmentsEmployment($data = NULL){
+    private function saveAttachmentsEmployment($data = NULL,$count=0){
          $employment = TableRegistry::get('employment_verification_attachments');
-         $arr['order_id'] = $data['order_id'];
-         $arr['attach_doc'] = $data['path'];
-         $save = $employment->newEntity($arr);
+         if($count==1){
+         $del = $employment->query();
+            if(!isset($_GET['document']))
+            $del->delete()->where(['order_id'=>$data['order_id']])->execute();
+            else
+            $del->delete()->where(['document_id'=>$data['document_id']])->execute();  }
+         $save = $employment->newEntity($data);
          $employment->save($save);
     }
-    private function saveAttachmentsEducation($data = NULL){
+    private function saveAttachmentsEducation($data = NULL,$count=0){
          $education = TableRegistry::get('education_verification_attachments');
-         $arr['order_id'] = $data['order_id'];
-         $arr['attach_doc'] = $data['path'];
-         $save = $education->newEntity($arr);
+         if($count==1){
+         $del = $education->query();
+            if(!isset($_GET['document']))
+            $del->delete()->where(['order_id'=>$data['order_id']])->execute();
+            else
+            $del->delete()->where(['document_id'=>$data['document_id']])->execute(); } 
+         $save = $education->newEntity($data);
          $education->save($save);
     }
 

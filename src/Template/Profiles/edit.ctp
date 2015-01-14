@@ -252,12 +252,13 @@
 
             </div>
             <?php if ($this->request->params['action'] == 'edit') { ?>
-                <div class="portlet box blue">
+                <div class="portlet box blue scrolldiv">
                     <div class="portlet-title">
                         <div class="caption">Assign to client</div>
                     </div>
                     <div class="portlet-body">
-                        <table class="table">
+                        <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />
+                        <table class="table" id="clientTable">
                             <?php
 
                                 $clients = $this->requestAction('/clients/getAllClient/');
@@ -502,3 +503,23 @@ new AjaxUpload(button,{
 </div>
 */
 ?>
+<script>
+function searchClient()
+{
+    var key = $('#searchClient').val();
+    $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
+    $.ajax({
+        url:'<?php echo $this->request->webroot;?>clients/getAjaxClient/<?php echo $id;?>',
+        data:'key='+key,
+        type:'get',
+        success:function(res){
+            $('#clientTable').html(res);
+        }
+    });
+}
+$(function(){
+    $('.scrolldiv').slimScroll({
+        height: '250px'
+    });
+});
+</script>

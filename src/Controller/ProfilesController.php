@@ -455,6 +455,31 @@ class ProfilesController extends AppController {
         return $this->response;
         die();   
     }
+    function getAjaxProfile($id=0)
+    {
+        $this->layout = 'blank';
+        if($id)
+        {
+            $profile = $this->Profiles->get($id, [
+			'contain' => []
+		]);
+        $this->set(compact('profile'));
+        }
+        else
+        {
+            $this->set('profile',array());
+        }
+        $key = $_GET['key'];
+        $rec = TableRegistry::get('Profiles');
+        $query = $rec->find();
+        $u = $this->request->session()->read('Profile.id');
+        $super = $this->request->session()->read('Profile.super');
+        $cond = $this->Settings->getprofilebyclient($u,$super);
+        //$query = $query->select()->where(['super'=>0]);
+        $query = $query->select()->where(['profile_type NOT IN'=>'(6)','OR'=>$cond])
+            ->andWhere(['super'=>0,'(fname LIKE "%'.$key.'%" OR lname LIKE "%'.$key.'%" OR username LIKE "%'.$key.'%")']);
+        $this->set('profiles',$query);   
+    }
     
     function getContact()
     {

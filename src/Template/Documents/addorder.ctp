@@ -981,13 +981,14 @@ jQuery(document).ready(function() {
         else
         var draft =0;
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
-    var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#division').val()};
+    var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#division').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val()};
     $.ajax({
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,
        type:'post',
        url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft='+draft, 
        success:function(res) {
+        
         $('#did').val(res);
          // saving data
         doc_id = res;

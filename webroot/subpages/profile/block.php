@@ -218,6 +218,36 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td class="vtop">
+                                                    Email Notifications
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio" name="side[email]" onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})" value="1" <?php if (isset($sidebar) && $sidebar->email == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[orders]"
+                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){$(this).removeAttr('checked');});"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->email == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-md-12 nopad martop yesno" >
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[email_todo]" value="1" <?php if (isset($sidebar) && $sidebar->email_todo == 1) echo "checked"; ?> /> Todo
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[email_document]" value="1" <?php if (isset($sidebar) && $sidebar->email_document == 1) echo "checked"; ?> /> <?php echo ucwords($settings->document);?>
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[email_orders]" value="1" <?php if ($sidebar->email_orders == 1) echo "checked"; ?> /> Orders
+                                                            </label>
+                                                            
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td class="vtop">Feedbacks</td>
                                                 <td>
                                                         <label class="uniform-inline">

@@ -551,7 +551,7 @@ class ClientsController extends AppController {
         $q = $query->find();
         $u = $this->request->session()->read('Profile.id');
         if($this->request->session()->read('Profile.super'))
-        $q =$q->select()->where(['company_name LIKE "%'.$key.'%"']);
+            $q =$q->select()->where(['company_name LIKE "%'.$key.'%"']);
         else
         {
             $q =$q->select()->where(['(profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'") AND company_name LIKE "%'.$key.'%" ']);

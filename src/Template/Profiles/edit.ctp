@@ -258,7 +258,8 @@
                     </div>
                     <div class="portlet-body">
                         <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />
-                        <table class="table" id="clientTable">
+                        <table class="table" style="margin-bottom: 0!important;" >
+                           
                             <?php
 
                                 $clients = $this->requestAction('/clients/getAllClient/');
@@ -267,18 +268,21 @@
                                     foreach ($clients as $o) 
                                     { 
                                         $pro_ids = explode(",",$o->profile_id);
+                                        if(in_array($id,$pro_ids)){
                                         ?>
 
                                         <tr>
-                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
+                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> style="opacity: .5!important;" /> <?php echo $o->company_name; ?></td>
                                         </tr>
 
                                     <?php
+                                        }
                                     }
                             ?>
-
                         </table>
-
+                        <table id="clientTableload" class="table">
+                        
+                        </table>
                         <div class="clearfix"></div>
 
                     </div>
@@ -417,7 +421,7 @@ new AjaxUpload(button,{
                                             ?>
                                             
                                     
-                                       $('.addclientz').click(function(){
+                                       $('.addclientz').live('click',function(){
                                         var client_id = $(this).val();
                                         var addclient ="";
                                         if($(this).is(':checked'))
@@ -507,13 +511,14 @@ new AjaxUpload(button,{
 function searchClient()
 {
     var key = $('#searchClient').val();
-    $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
+    $('#clientTableload').html('<td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td>');
     $.ajax({
         url:'<?php echo $this->request->webroot;?>clients/getAjaxClient/<?php echo $id;?>',
         data:'key='+key,
         type:'get',
         success:function(res){
-            $('#clientTable').html(res);
+            //$('#clientTableload').("");
+            $('#clientTableload').html(res);
         }
     });
 }

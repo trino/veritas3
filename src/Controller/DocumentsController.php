@@ -366,6 +366,9 @@ class DocumentsController extends AppController {
             $da_at = TableRegistry::get('driver_application_attachments');
             $sub['da_at'] = $da_at->find()->where(['order_id'=>$did])->all();
             
+            $de_at = TableRegistry::get('road_test_attachments');
+            $sub['de_at'] = $de_at->find()->where(['order_id'=>$did])->all();
+            
             $this->set('sub',$sub);
             }
             $con = TableRegistry::get('consent_form');
@@ -374,6 +377,9 @@ class DocumentsController extends AppController {
             //echo $con_detail->id;die();
             $con_cri = TableRegistry::get('consent_form_criminal');
             $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id'=>$con_detail->id])->all();
+            
+            $con_at = TableRegistry::get('consent_form_attachments');
+            $sub2['con_at'] = $con_at->find()->where(['order_id'=>$did])->all();
             $this->set('sub2',$sub2);
             
             }

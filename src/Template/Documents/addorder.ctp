@@ -1188,9 +1188,7 @@ function savedDriverEvaluation(url,order_id,cid){
 
 <script type="text/javascript">
 
-    $(function(){
-       fileUpload('fileUpload1'); 
-    });
+    
     function fileUpload(ID){    
        // e.preventDefault();
         

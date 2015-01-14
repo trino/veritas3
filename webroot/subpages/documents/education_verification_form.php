@@ -321,6 +321,9 @@
         <input type="hidden" name="count_more_edu" id="count_more_edu" value="1" >    
         <a href="javascript:void(0);" class="btn green add_more_edu">Add More</a>
     </div>
+    <?php
+                                                        if(!isset($sub4['att']))
+                                                        {?>
     <div class="form-group col-md-12">
         <label class="control-label col-md-3">Attach Document : </label>
         <div class="col-md-9">
@@ -329,9 +332,27 @@
         
         </div>
         </div>
-        
+        <?php }?>
         <div class="form-group col-md-12">
-        <div id="more_edu_doc" data-edu="1">
+        <div id="more_edu_doc" data-edu="<?php if(isset($sub4['att']))echo count($sub4['att']);else echo '1';?>">
+             <?php
+                                                        if(isset($sub4['att']))
+                                                        {
+                                                            $at=0;
+                                                            foreach($sub4['att'] as $pa)
+                                                            {
+                                                                $at++;
+                                                                ?>
+                                                                <div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="edu<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" /><a href="#" id="edu<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_edu_doc">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attach_doc;?></span></div></div><div class="clearfix"></div>
+                                                                <script>
+                                                                $(function(){
+                                                                    fileUpload('edu<?php echo $at;?>');
+                                                                });
+                                                                </script>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
         </div>
         </div>
         

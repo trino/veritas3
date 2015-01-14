@@ -719,7 +719,10 @@
 										<input type="text" class="form-control" placeholder="Applicant Signature" name="applicant_signature"/>
                                         </div>
                        </div>
-                       
+                       <?php
+                                        if(!isset($sub['da_at']))
+                                        {
+                                            ?>
                        <div class="form-group col-md-12">
                                         <label class="control-label col-md-3">Attach Document : </label>
                                         <div class="col-md-9">
@@ -727,9 +730,27 @@
                                         <a href="#" id="driveApp1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                                         </div>
                        </div>
-                       
+                       <?php }?>
                       <div class="form-group col-md-12">
-                        <div id="more_doc" data-driveApp="1">
+                        <div id="more_doc" data-driveApp="<?php if(isset($sub['da_at']))echo count($sub['da_at']);else echo '1';?>'">
+                        <?php
+                                        if(isset($sub['da_at']))
+                                        {
+                                            $at=0;
+                                            foreach($sub['da_at'] as $pa)
+                                            {
+                                                $at++;
+                                                ?>
+                                                <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_doc_path;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"><?php echo $pa->attached_doc_path;?></span></div></div><div class="clearfix"></div>
+                                                <script>
+                                                $(function(){
+                                                    fileUpload('driveApp<?php echo $at;?>');
+                                                });
+                                                </script>
+                                                <?php
+                                            }
+                                        }
+                                        ?>                        
                         </div>
                       </div>
                       

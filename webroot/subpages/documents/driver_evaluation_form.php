@@ -617,7 +617,9 @@
 													</div>
 												</div>
                                                 <div class="clearfix"></div>
-                                                
+                                                <?php
+                                                        if(!isset($sub['de_at']))
+                                                        {?>
                                                 <div class="form-group col-md-12">
                                                     <label class="control-label col-md-3">Attach Document : </label>
                                                     <div class="col-md-6">
@@ -625,9 +627,27 @@
                                                     <a href="#" id="road1" onclick="fileUpload(event,'road1')" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                                                     </div>
                                                    </div>
-                                                   
+                                                   <?php }?>
                                                   <div class="form-group col-md-12">
-                                                    <div id="more_driver_doc" data-road="1">
+                                                    <div id="more_driver_doc" data-road="<?php if(isset($sub['de_at']))echo count($sub['de_at']);else echo '1';?>">
+                                                       <?php
+                                                        if(isset($sub['de_at']))
+                                                        {
+                                                            $at=0;
+                                                            foreach($sub['de_at'] as $pa)
+                                                            {
+                                                                $at++;
+                                                                ?>
+                                                                <div class="del_append_driver"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_document;?>" /><a href="#" id="road<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attached_document;?></span></div></div><div class="clearfix"></div>
+                                                                <script>
+                                                                $(function(){
+                                                                    fileUpload('road<?php echo $at;?>');
+                                                                });
+                                                                </script>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?> 
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>

@@ -301,7 +301,9 @@
             <input type="hidden" name="count_past_emp" id="count_past_emp" value="<?php if(isset($sub3['emp'])){echo count($sub3['emp']);}else{?>1<?php }?>">
             <a href="javascript:void(0);" class="btn green" id="add_more">Add More</a>
         </div>
-        
+         <?php
+                                                        if(!isset($sub3['att']))
+                                                        {?>
         <div class="form-group col-md-12">
             <label class="control-label col-md-3">Attach Document : </label>
             <div class="col-md-9">
@@ -309,9 +311,27 @@
             <a href="javascript:void(0);" id="emp1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
             </div>
            </div>
-           
+           <?php }?>
           <div class="form-group col-md-12">
-            <div id="more_employ_doc" data-emp="1">
+            <div id="more_employ_doc" data-emp="<?php if(isset($sub3['att']))echo count($sub3['att']);else echo '1';?>">
+            <?php
+                                                        if(isset($sub3['att']))
+                                                        {
+                                                            $at=0;
+                                                            foreach($sub3['att'] as $pa)
+                                                            {
+                                                                $at++;
+                                                                ?>
+                                                                <div class="del_append_employ"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="emp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" /><a href="#" id="emp<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attach_doc;?></span></div></div><div class="clearfix"></div>
+                                                                <script>
+                                                                $(function(){
+                                                                    fileUpload('emp<?php echo $at;?>');
+                                                                });
+                                                                </script>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
             </div>
           </div>
           
@@ -356,7 +376,7 @@ $(function(){
   $('#add_more_employ_doc').click(function(){
     var count = $('#more_employ_doc').data('emp');
     $('#more_employ_doc').data('emp',parseInt(count)+1);
-        $('#more_employ_doc').append('<div class="del_append_employ"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" name="attach_doc[]" class="emp'+$('#more_employ_doc').data('emp')+'" /><a href="javascript:void(0);" id="emp'+$('#more_employ_doc').data('emp')+'" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
+        $('#more_employ_doc').append('<div class="del_append_employ"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" name="attach_doc[]" class="emp'+$('#more_employ_doc').data('emp')+'" /><a href="javascript:void(0);" id="emp'+$('#more_employ_doc').data('emp')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
         fileUpload('emp'+$('#more_employ_doc').data('emp'));
        }); 
        

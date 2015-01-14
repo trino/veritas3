@@ -607,7 +607,7 @@
                                             {
                                                 $at++;
                                                 ?>
-                                                <div class="pad_bot" id="del_pre"> <label class="control-label col-md-3">Attach Document : </label> <div class="col-md-6 pad_bot"><input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?><" /><a href="#" id="fileUpload<?php echo $at;?>"  class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a> <span class="uploaded"><?php echo $pa->attach_doc;?></span></div></div><div class="clearfix"></div>
+                                                <div class="pad_bot" id="del_pre"> <label class="control-label col-md-3">Attach Document : </label> <div class="col-md-6 pad_bot"><input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?><" /><a href="#" id="fileUpload<?php echo $at;?>"  class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attach_doc;?></span></div></div><div class="clearfix"></div>
                                                 <script>
                                                 $(function(){
                                                     fileUpload('fileUpload<?php echo $at;?>');
@@ -636,6 +636,7 @@
 </form>
 <script>
     $(function(){
+        fileUpload('fileUpload1'); 
         $('.add_attach').click(function(){
             var count = $('.attach_more').data('count');
             $('.attach_more').data('count',parseInt(count)+1);

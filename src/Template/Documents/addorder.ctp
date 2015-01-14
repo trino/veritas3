@@ -1,4 +1,5 @@
 <script src="<?php echo $this->request->webroot;?>js/jquery.easyui.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>js/ajaxupload.js" type="text/javascript"></script>
 <?php
 if(isset($disabled))
     $is_disabled = 'disabled="disabled"';
@@ -330,8 +331,24 @@ function showforms(form_type)
                 } else if(res.reefer_load==0){
                     $('#form_tab1').find('#reefer_load_0').closest('span').addClass('checked')
 
-                }}
-                else
+                }
+
+                // attach documents
+                var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                    param={form_type:form_type};
+                $.getJSON(url,param,function(res){
+                        if(res.length > 0){
+                            var text='';
+                           for(var i=0;i<res.length;i++){
+                           //  text += '<img src="<?php echo $this->request->webroot;?>img/order/'+res[i].+'"/>';
+                           }
+                        $('.attach_more').html();
+                        }
+
+                });
+
+
+            } else
                  {
                    // var $this = $(this);
                     var prof_id = $('#uploaded_for').val();
@@ -483,6 +500,17 @@ function showforms(form_type)
                      $('#form_tab2').find('#suspend_any_license_0').closest('span').addClass('checked')
 
                  }
+
+                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                     param={form_type:form_type};
+                 $.getJSON(url,param,function(res){
+                         if(res.length > 0){
+
+                         }
+                         
+                 });
+
+
                  }
                  else
                  {
@@ -854,6 +882,15 @@ function showforms(form_type)
                 } else if(res.recommended_fire_hire_trainee==2){
                     $('#form_tab3').find('#recommended_fire_hire_trainee_0').closest('span').addClass('checked')
                 }
+
+                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                    param={form_type:form_type};
+                $.getJSON(url,param,function(res){
+                        if(res.length > 0){
+
+                        }
+                        
+                });
                 }
                 else
                  {
@@ -882,6 +919,32 @@ function showforms(form_type)
 
                 // end road test
             }else if(form_type == "document_tab_3.php"){
+
+                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                    param={form_type:form_type,sub_type:'form_consent'};
+                $.getJSON(url,param,function(res){
+                        if(res.length > 0){
+
+                        }
+                        
+                });
+                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                    param={form_type:form_type,sub_type:'form_employment'};
+
+                $.getJSON(url,param,function(res){
+                        if(res.length > 0){
+
+                        }
+                        
+                });
+                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                    param={form_type:form_type,sub_type:'form_education'};
+                $.getJSON(url,param,function(res){
+                        if(res.length > 0){
+
+                        }
+                        
+                });
                
                 $('#form_consent').find(':input').each(function(){
                  var $name = $(this).attr('name');
@@ -933,7 +996,7 @@ function showforms(form_type)
 
 
 function assignValue(formID,obj){
-    debugger;
+    // debugger;
    $('#'+formID).form('load',obj);  
    // $('#'+formID).find(':input').each(function(){
    //      var $name = $(this).attr('name');
@@ -1121,3 +1184,62 @@ function savedDriverEvaluation(url,order_id,cid){
     
     }
 </style>
+
+<script type="text/javascript">
+
+    
+    function fileUpload(e,ID){    
+        e.preventDefault();
+        
+        var $type = $(".tab-pane.active").find("input[name='document_type']").val(),
+            param = { type : 'order',
+                    doc_type : $type,                    
+                    order_id : $('#did').val(),
+                    cid : '<?php echo $cid;?>'
+                    };
+            if($type=="Place MEE Order"){
+                //get sub content tab active
+                var subContent = $(".tab-pane.active #form_tab4").find('.tab-content .tab-pane.active form').attr('id');
+                // debugger; 
+                if(subContent == "form_consent"){
+                    param.subtype = 'Consent Form';
+                } else if(subContent == "form_employment"){
+                    param.subtype = 'Employment';
+                }else if(subContent == "form_education"){
+                    param.subtype = 'Education';
+                }
+            }
+            var upload = new AjaxUpload("#"+ID,{
+            action : "<?php echo $this->request->webroot;?>documents/fileUpload",
+            enctype : 'multipart/form-data',
+            data : param,
+            name : 'myfile',
+            onSubmit : function(file,ext){
+                /*if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
+                    // extension is not allowed
+                    mestatus.text('Only JPG, PNG or GIF files are allowed');
+                    return false;
+                }
+                $("#picture_button").text("Uploading");
+                this.disable();*/
+            },
+            onComplete : function(file,response){
+                var response=eval('('+response+')');
+                if(response.action) {
+
+                } else {
+
+                }
+            
+               /* $("#picture").text("Select");
+                this.enable();*/
+            }
+            
+            });
+             /* image upload ends */
+    }
+
+
+   
+
+</script>

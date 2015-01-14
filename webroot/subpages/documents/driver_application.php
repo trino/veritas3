@@ -1094,12 +1094,12 @@
                        <div class="form-group col-md-12">
                                         <label class="control-label col-md-3">Attach Document : </label>
                                         <div class="col-md-9">
-                                        <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
+                                        <a href="#" id="driveApp1" onclick="fileUpload(event,'driveApp1')" class="btn btn-primary">Browse</a>
                                         </div>
                        </div>
                        
                       <div class="form-group col-md-12">
-                        <div id="more_doc">
+                        <div id="more_doc" data-driveApp="1">
                         </div>
                       </div>
                       
@@ -1145,10 +1145,14 @@
        });
        
     $('#add_more_doc').click(function(){
-        $('#more_doc').append('<div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a></div></div><div class="clearfix"></div>')
+        var count = $('#more_doc').data('driveApp');
+         $('#more_doc').data('driveApp',parseInt(count)+1);
+        $('#more_doc').append('<div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><a href="#" id="driveApp'+$('#more_doc').data('driveApp')+'" onclick="fileUpload(event,\'driveApp'+$('#more_doc').data('driveApp')+'\'" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a></div></div><div class="clearfix"></div>')
     }) ;
     
     $('#delete_doc').live('click',function(){
+        var count = $('#more_doc').data('driveApp');
+         $('#more_doc').data('driveApp',parseInt(count)-1);
        $(this).closest('.del_append').remove(); 
     });
  });

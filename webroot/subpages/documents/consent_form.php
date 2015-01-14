@@ -341,13 +341,13 @@
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Attach Document 1: </label>
                     <div class="col-md-9">
-                    <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
+                    <a href="javascript:void(0);" id="consent1" onclick="fileUpload(event,'consent1')" class="btn btn-primary">Browse</a>
                     </div>
                </div>
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Attach Document 2: </label>
                     <div class="col-md-9">
-                        <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
+                        <a href="javascript:void(0);" id="consent2" onclick="fileUpload(event,'consent2')"  class="btn btn-primary">Browse</a>
                     </div>
                 </div>
                        

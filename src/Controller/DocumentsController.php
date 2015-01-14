@@ -1415,6 +1415,8 @@ class DocumentsController extends AppController {
         unset($prescreenDetail->user_id);
         $prescreenDetail->sub_doc_id = 1;
         $prescreenDetail->document_type = 'Pre-Screening';
+
+
         echo json_encode($prescreenDetail);
 
         } else if($_GET['form_type']=="driver_application.php"){
@@ -1538,7 +1540,173 @@ class DocumentsController extends AppController {
         $this->response->body(($cnt));
         return $this->response;
     }
+    
 
+    function fileUpload(){       
+        // print_r($_POST);die;
+        if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
+        {
+            $arr = explode('.',$_FILES['myfile']['name']);
+            $ext = end($arr);
+            $rand = rand(100000,999999).'_'.rand(100000,999999).'.'.$ext;
+            $allowed = array(
+                            'doc',
+                            'docx',
+                            'pdf',
+                            'jpg',
+                            'jpeg',
+                            'png',
+                            'bmp',
+                            'gif'
+                            );
+            $check = strtolower($ext);
+            if(in_array($check,$allowed)){               
+
+                $doc_type = $_POST['type'];
+                $destination = APP.'../webroot/img/'.$doc_type;
+               
+                if( !dir($destination) ){
+                    @mkdir($destination,755);
+                }
+                $source = $_FILES['myfile']['tmp_name'];
+                move_uploaded_file( $source,$destination.'/'.$rand);
+                $saveData = array();
+                $saveData['order_id'] = $_POST['order_id'];
+                $saveData['path'] = $rand;
+                
+                //saving in db
+                if($_POST['doc_type'] == "Pre-Screening"){
+                    $this->saveAttachmentsPrescreen($saveData);
+                } else if($_POST['doc_type'] == "Driver Application"){
+                    $this->saveAttachmentsDriverApp($saveData);
+                }else if($_POST['doc_type'] == "Road test"){
+                    $this->saveAttachmentsRoadTest($saveData);
+                } else if($_POST['doc_type'] == "Place MEE Order"){
+                        
+                        if($_POST['subtype'] == "Consent Form"){
+                            $this->saveAttachmentsConsentForm($saveData);
+                        }else if($_POST['subtype'] == "Employment"){
+                            $this->saveAttachmentsEmployment($saveData);
+                        }else if($_POST['subtype'] == "Education"){
+                            $this->saveAttachmentsEducation($saveData);
+                        }
+                }
+               
+                
+                echo json_encode(
+                                    array(
+                                    'action'=>true,
+                                    'file'=>$rand
+                                    )
+                                );
+            }
+            else
+            {
+                echo json_encode(
+                                    array(
+                                        'action'=>false,
+                                        'msg'=>'Unable to upload File.Please try again'
+                                    )
+                                );
+                // echo "error";
+            }
+        }
+        die();
+    }
+
+    private function saveAttachmentsPrescreen($data = NULL){
+         $prescreen = TableRegistry::get('pre_screening_attachments');
+         $arr['order_id'] = $data['order_id'];
+         $arr['attach_doc'] = $data['path'];
+         $save = $prescreen->newEntity($arr);
+         $prescreen->save($save);
+    }
+    private function saveAttachmentsDriverApp($data = NULL){
+         $driverApp = TableRegistry::get('driver_application_attachments');
+         $arr['order_id'] = $data['order_id'];
+         $arr['attached_doc_path'] = $data['path'];
+         $save = $driverApp->newEntity($arr);
+         $driverApp->save($save);
+    }
+    private function saveAttachmentsRoadTest($data = NULL){
+         $roadTest = TableRegistry::get('road_test_attachments');
+         $arr['order_id'] = $data['order_id'];
+         $arr['attached_document'] = $data['path'];
+         $save = $roadTest->newEntity($arr);
+         $roadTest->save($save);
+    }
+    private function saveAttachmentsConsentForm($data = NULL){
+         $consentForm = TableRegistry::get('consent_form_attachments');
+         $arr['order_id'] = $data['order_id'];
+         $arr['attach_doc'] = $data['path'];
+         $save = $consentForm->newEntity($arr);
+         $consentForm->save($save);
+    }
+    private function saveAttachmentsEmployment($data = NULL){
+         $employment = TableRegistry::get('employment_verification_attachments');
+         $arr['order_id'] = $data['order_id'];
+         $arr['attach_doc'] = $data['path'];
+         $save = $employment->newEntity($arr);
+         $employment->save($save);
+    }
+    private function saveAttachmentsEducation($data = NULL){
+         $education = TableRegistry::get('education_verification_attachments');
+         $arr['order_id'] = $data['order_id'];
+         $arr['attach_doc'] = $data['path'];
+         $save = $education->newEntity($arr);
+         $education->save($save);
+    }
+
+
+    public function getAttachedDoc($cid = 0,$order_id = 0){
+        // $id = $_GET['id'];
+        if($_GET['form_type']=="company_pre_screen_question.php"){
+            $prescreen = TableRegistry::get('pre_screening_attachments');
+            $prescreenAttach = $prescreen
+                                ->find()
+                                ->where(['order_id'=>$order_id]);
+            echo json_encode($prescreenAttach);
+
+        }else if($_GET['form_type']=="driver_application.php"){
+            $driverApp = TableRegistry::get('driver_application_attachments');
+            $driverAppAttach = $driverApp
+                                ->find()
+                                ->where(['order_id'=>$order_id]);
+            echo json_encode($driverAppAttach);
+
+        } else if($_GET['form_type']=="driver_evaluation_form.php"){
+            $roadTest = TableRegistry::get('road_test_attachments');
+            $roadTestAttach = $roadTest
+                                ->find()
+                                ->where(['order_id'=>$order_id]);
+            echo json_encode($roadTestAttach);
+        
+        } else if($_GET['form_type']=="document_tab_3.php"){
+            if($_GET['sub_type']=="Consent Form"){
+                $consentForm = TableRegistry::get('consent_form_attachments');
+                $consentFormAttach = $consentForm
+                                    ->find()
+                                    ->where(['order_id'=>$order_id]);
+                echo json_encode($consentFormAttach);
+            } else if($_GET['sub_type']=="Employment"){
+                $employment = TableRegistry::get('employment_verification_attachments');
+                $employmentAttach = $employment
+                                    ->find()
+                                    ->where(['order_id'=>$order_id]);
+                echo json_encode($employmentAttach);
+            } else if($_GET['sub_type']=="Education"){            
+                $education = TableRegistry::get('education_verification_attachments');
+
+                $educationAttach = $education
+                                    ->find()
+                                    ->where(['order_id'=>$order_id]);
+                echo json_encode($educationAttach);
+            }
+           
+
+        }
+
+    }
 
     
 }

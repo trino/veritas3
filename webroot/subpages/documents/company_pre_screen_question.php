@@ -402,12 +402,12 @@
                                         <div class="form-group col-md-12">
                                         <label class="control-label col-md-3">Attach Document : </label>
                                         <div class="col-md-9">
-                                        <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
+                                        <a href="#" id="fileUpload1" onclick="fileUpload(event,'fileUpload1')" class="btn btn-primary">Browse</a>
                                         </div>
                                        </div>
                                       
                                       <div class="form-group col-md-12">
-                                        <div class="attach_more">
+                                        <div class="attach_more" data-count='1'>
                                         </div>
                                       </div>
                                       
@@ -430,10 +430,14 @@
 <script>
     $(function(){
         $('.add_attach').click(function(){
-           $('.attach_more').append('<div class="pad_bot" id="del_pre"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a></div></div></div><div class="clearfix"></div>') 
+            var count = $('.attach_more').data('count');
+            $('.attach_more').data('count',parseInt(count)+1);
+           $('.attach_more').append('<div class="pad_bot" id="del_pre"> <label class="control-label col-md-3">Attach Document : </label> <div class="col-md-6 pad_bot"><a href="#" id="fileUpload'+$('.attach_more').data('count')+'" onclick="fileUpload(event,\'fileUpload'+$('.attach_more').data('count')+'\')"  class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a> </div></div></div><div class="clearfix"></div>');
         });
         
         $('.delete_attach').live('click',function(){
+            var count = $('.attach_more').data('count');
+            $('.attach_more').data('count',parseInt(count)-1);
             $(this).closest('#del_pre').remove();
             
         });

@@ -1,11 +1,5 @@
 <form id="form_consent">
-<div class="portlet box blue ">
-	<div class="portlet-title">
-		<div class="caption">
-			Consent for the release of police information and disclosure of personal information
-		</div>
-	</div>
-	<div class="portlet-body form">
+<h3 class="col-md-12">Consent for the release of police information and disclosure of personal information</h3>
 			<div class="form-body">
                 <div class="form-group col-md-12">
     				<label class="control-label col-md-2">Surname : </label>
@@ -165,25 +159,16 @@
                 
             <div class="clearfix"></div>
             </div>
-    </div>
 
 
 
 
+<div class="clearfix"></div>
+<hr />
 
-
-</div>
-
-
-
-
-<div class="portlet box blue ">
-	<div class="portlet-title">
-		<div class="caption">
+		<h3 class="col-md-12">
 			Declaration of Criminal Record
-		</div>
-	</div>
-	<div class="portlet-body form">
+		</h3>
 			<div class="form-body">
             <p>*When declaration is submitted, it must be accompanied by the Consent for the Release of Police Information form.</p>
             <h4>PART 1 - DECLARATION OF CRIMINAL RECORD (if applicable) - Completed by Applicant</h4>
@@ -308,16 +293,13 @@
                 
             <div class="clearfix"></div>
             </div>
-    </div>
-</div>
+            
+            <div class="clearfix"></div>
+<hr />
 
-<div class="portlet box blue ">
-	<div class="portlet-title">
-		<div class="caption">
+		<h3 class="col-md-12">
 			Mandatory use for all account holders
-		</div>
-	</div>
-	<div class="portlet-body form">
+		</h3>
 			<div class="form-body">
             <h4>Important Notice Regarding Background Reports From The PSP Online Service</h4>
             <div class="col-md-12">
@@ -390,8 +372,6 @@
 
             </div>
 
-    </div>
-</div>
 </form>
 
 

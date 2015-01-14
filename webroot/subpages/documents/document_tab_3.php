@@ -38,7 +38,7 @@
                                                 <div class="tab-pane" id="subtab_2_2">
                                                     
                                                     
-                                						<h1>Employment Verification</h1>
+                                						<h1>Employment Verification (Employer Information for Last 3 Years)</h1>
                                                         <?php include('employment_verification_form.php');?>
                                 					
                                                                 
@@ -47,7 +47,7 @@
 
                                                 <div class="tab-pane" id="subtab_2_3">
                                                     
-                                						<h1>Education Verification</h1>
+                                						<h1>Education Verification (Education Information for Last 3 Years)</h1>
                                                         <?php include('education_verification_form.php');?>
                                 					
 

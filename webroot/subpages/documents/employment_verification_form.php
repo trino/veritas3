@@ -305,7 +305,8 @@
         <div class="form-group col-md-12">
             <label class="control-label col-md-3">Attach Document : </label>
             <div class="col-md-9">
-            <a href="javascript:void(0);" id="emp1" onclick="fileUpload(event,'emp1')" class="btn btn-primary">Browse</a>
+            <input type="hidden" name="attach_doc[]" class="emp1" />
+            <a href="javascript:void(0);" id="emp1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
             </div>
            </div>
            
@@ -326,6 +327,7 @@
 </form>
 <script>
 $(function(){
+    fileUpload('emp1');
   $("#add_more").click(function(){
     $.ajax({
        url:"<?php echo $this->request->webroot;?>subpages/documents/past_employer.php",
@@ -354,7 +356,8 @@ $(function(){
   $('#add_more_employ_doc').click(function(){
     var count = $('#more_employ_doc').data('emp');
     $('#more_employ_doc').data('emp',parseInt(count)+1);
-        $('#more_employ_doc').append('<div class="del_append_employ"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" id="emp'+$('#more_employ_doc').data('emp')+'" onclick="fileUpload(event,\''+$('#more_employ_doc').data('emp')+'\'" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a></div></div><div class="clearfix"></div>')
+        $('#more_employ_doc').append('<div class="del_append_employ"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" name="attach_doc[]" class="emp'+$('#more_employ_doc').data('emp')+'" /><a href="javascript:void(0);" id="emp'+$('#more_employ_doc').data('emp')+'" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
+        fileUpload('emp'+$('#more_employ_doc').data('emp'));
        }); 
        
        $('#delete_employ_doc').live('click',function(){

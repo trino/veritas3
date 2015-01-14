@@ -324,7 +324,9 @@
     <div class="form-group col-md-12">
         <label class="control-label col-md-3">Attach Document : </label>
         <div class="col-md-9">
-        <a href="javascript:void(0);" id="edu1" onclick="fileUpload(event,'edu1')" class="btn btn-primary">Browse</a>
+        <input type="hidden" name="attach_doc[]" class="edu1" />
+            <a href="javascript:void(0);" id="edu1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
+        
         </div>
         </div>
         
@@ -347,6 +349,7 @@
 </form>
 <script>
 $(function(){
+    fileUpload('edu1');
   $(".add_more_edu").click(function(){
     $.ajax({
        url:"<?php echo $this->request->webroot;?>subpages/documents/past_education.php",
@@ -373,9 +376,10 @@ $(function(){
   }); 
   
   $('#add_more_edu_doc').click(function(){
-        var count = $('.#more_edu_doc').data('edu');
-        $('.#more_edu_doc').data(parseInt(count)+1);
-        $('#more_edu_doc').append('<div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" id="edu'+$('.#more_edu_doc').data('edu')+'" onclick="fileUpload(event,\'edu'+$('.#more_edu_doc').data('edu')+'\')" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_edu_doc">Delete</a></div></div><div class="clearfix"></div>')
+        var count = $('#more_edu_doc').data('edu');
+        $('#more_edu_doc').data('edu',parseInt(count)+1);
+        $('#more_edu_doc').append('<div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" name="attach_doc[]" class="edu'+$('#more_edu_doc').data('edu')+'" /><a href="javascript:void(0);" id="edu'+$('#more_edu_doc').data('edu')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_edu_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
+        fileUpload('edu'+$('#more_edu_doc').data('edu'));
        }); 
        
        $('#delete_edu_doc').live('click',function(){ 

@@ -341,13 +341,15 @@
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Attach Document 1: </label>
                     <div class="col-md-9">
-                    <a href="javascript:void(0);" id="consent1" onclick="fileUpload(event,'consent1')" class="btn btn-primary">Browse</a>
+                    <input type="hidden" name="attach_doc[]" class="consent1" />
+                    <a href="javascript:void(0);" id="consent1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                     </div>
                </div>
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Attach Document 2: </label>
                     <div class="col-md-9">
-                        <a href="javascript:void(0);" id="consent2" onclick="fileUpload(event,'consent2')"  class="btn btn-primary">Browse</a>
+                        <input type="hidden" name="attach_doc[]" class="consent2" />
+                        <a href="javascript:void(0);" id="consent2"  class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                     </div>
                 </div>
                        
@@ -382,6 +384,8 @@
 
 <script>
     $(function(){
+        fileUpload('consent1');
+        fileUpload('consent2');
        $('#add_more_consent_doc').click(function(){
         $('#more_consent_doc').append('<div class="del_append_consent"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_consent_doc">Delete</a></div></div><div class="clearfix"></div>')
        }); 

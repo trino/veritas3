@@ -349,6 +349,11 @@ class DocumentsController extends AppController {
         $this->set('did',$did);
         if($did)
         {
+            $pre = TableRegistry::get('pre_screening_attachments');
+            //$pre_at = TableRegistry::get('driver_application_accident');
+            $pre_at['attach_doc'] = $pre->find()->where(['order_id'=>$did])->all();
+            $this->set('pre_at',$pre_at);
+            
             $da = TableRegistry::get('driver_application');
             $da_detail = $da->find()->where(['order_id'=>$did])->first();
             if($da_detail){
@@ -359,7 +364,7 @@ class DocumentsController extends AppController {
             $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id'=>$da_detail->id])->all();
             
             $da_at = TableRegistry::get('driver_application_attachments');
-            $sub['da_at_detail'] = $da_at->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            $sub['da_at'] = $da_at->find()->where(['order_id'=>$did])->all();
             
             $this->set('sub',$sub);
             }

@@ -334,7 +334,7 @@ function showforms(form_type)
                 }
 
                 // attach documents
-                var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
                     param={form_type:form_type};
                 $.getJSON(url,param,function(res){
                         if(res.length > 0){
@@ -345,7 +345,7 @@ function showforms(form_type)
                         $('.attach_more').html();
                         }
 
-                });
+                });*/
 
 
             } else
@@ -501,14 +501,14 @@ function showforms(form_type)
 
                  }
 
-                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                 /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
                      param={form_type:form_type};
                  $.getJSON(url,param,function(res){
                          if(res.length > 0){
 
                          }
                          
-                 });
+                 });*/
 
 
                  }
@@ -883,14 +883,14 @@ function showforms(form_type)
                     $('#form_tab3').find('#recommended_fire_hire_trainee_0').closest('span').addClass('checked')
                 }
 
-                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                 /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
                     param={form_type:form_type};
                 $.getJSON(url,param,function(res){
                         if(res.length > 0){
 
                         }
                         
-                });
+                });*/
                 }
                 else
                  {
@@ -920,15 +920,15 @@ function showforms(form_type)
                 // end road test
             }else if(form_type == "document_tab_3.php"){
 
-                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                /* var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
                     param={form_type:form_type,sub_type:'form_consent'};
                 $.getJSON(url,param,function(res){
                         if(res.length > 0){
 
                         }
                         
-                });
-                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                });*/
+                 /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
                     param={form_type:form_type,sub_type:'form_employment'};
 
                 $.getJSON(url,param,function(res){
@@ -936,15 +936,15 @@ function showforms(form_type)
 
                         }
                         
-                });
-                 var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
+                });*/
+                 /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
                     param={form_type:form_type,sub_type:'form_education'};
                 $.getJSON(url,param,function(res){
                         if(res.length > 0){
 
                         }
                         
-                });
+                });*/
                
                 $('#form_consent').find(':input').each(function(){
                  var $name = $(this).attr('name');

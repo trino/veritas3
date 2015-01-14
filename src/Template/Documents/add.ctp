@@ -849,7 +849,7 @@
                     }
                     $('.flashDoc').show();
                     $('.flashDoc').fadeOut(8000);
-                    window.location = '<?php echo $this->request->webroot?>documents/index';
+                   // window.location = '<?php echo $this->request->webroot?>documents/index';
                 }
             });
         });
@@ -951,6 +951,55 @@
             $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
         });
     });
+    function fileUpload(ID){    
+       // e.preventDefault();
+        
+        var $type = $(".tab-pane.active").find("input[name='document_type']").val(),
+            param = { type : 'order',
+                    doc_type : $type,                    
+                    order_id : $('#did').val(),
+                    cid : '<?php echo $cid;?>'
+                    };
+            if($type=="Place MEE Order"){
+                //get sub content tab active
+                var subContent = $(".tab-pane.active #form_tab4").find('.tab-content .tab-pane.active form').attr('id');
+                // debugger; 
+                if(subContent == "form_consent"){
+                    param.subtype = 'Consent Form';
+                } else if(subContent == "form_employment"){
+                    param.subtype = 'Employment';
+                }else if(subContent == "form_education"){
+                    param.subtype = 'Education';
+                }
+            }
+            var upload = new AjaxUpload("#"+ID,{
+            action : "<?php echo $this->request->webroot;?>documents/fileUpload",
+            enctype : 'multipart/form-data',
+            data : param,
+            name : 'myfile',
+            onSubmit : function(file,ext){
+                /*if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
+                    // extension is not allowed
+                    mestatus.text('Only JPG, PNG or GIF files are allowed');
+                    return false;
+                }
+                $("#picture_button").text("Uploading");
+                this.disable();*/
+            },
+            onComplete : function(file,response){
+                if(response!='error')
+                {
+                    $('#'+ID).parent().find('.uploaded').text(response);
+                    $('.'+ID).val(response);
+                }
+            
+               /* $("#picture").text("Select");
+                this.enable();*/
+            }
+            
+            });
+             /* image upload ends */
+    }
 </script>
 
 <style>

@@ -8,9 +8,17 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
     <!--<li class="">
         <a href="#subtab_4_2" data-toggle="tab">Picture</a>
     </li>-->
+    <?php
+        if($this->request['action']=='edit')
+        {
+            ?>
+           
     <li>
         <a href="#subtab_4_3" data-toggle="tab">Password</a>
     </li>
+     <?php
+        }
+     ?>
 </ul>
 <div class="tab-content">
     <div class="tab-pane active" id="subtab_4_1">
@@ -344,7 +352,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                     <div class="form-group">
                                         <label class="control-label">Expirey Date</label>
                                         <input <?php echo $is_disabled ?> name="expirey_date" type="text"
-                                                                          class="form-control req_driver" <?php if (isset($p->expirey_date)) { ?> value="<?php echo $p->expirey_date; ?>" <?php } ?> />
+                                                                          class="form-control req_driver date-picker" <?php if (isset($p->expirey_date)) { ?> value="<?php echo $p->expirey_date; ?>" <?php } ?> />
 
                                     </div></div>
                             </div>

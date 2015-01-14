@@ -620,7 +620,8 @@
                                                 <div class="form-group col-md-12">
                                                     <label class="control-label col-md-6">Attach Document : </label>
                                                     <div class="col-md-6">
-                                                    <a href="#" id="road1" onclick="fileUpload(event,'road1')" class="btn btn-primary">Browse</a>
+                                                    <input type="hidden" class="road1" name="attach_doc[]" />
+                                                    <a href="#" id="road1" onclick="fileUpload(event,'road1')" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                                                     </div>
                                                    </div>
                                                    
@@ -644,10 +645,12 @@
                                                     <div class="clearfix"></div>
  <script>
     $(function(){
+        fileUpload('road1');
        $('#add_more_driver_doc').click(function(){
         var count = $('#more_driver_doc').data('road');
         $('#more_driver_doc').data('road',parseInt(count)+1);
-        $('#more_driver_doc').append('<div class="del_append_driver"><label class="control-label col-md-6">Attach Document : </label><div class="col-md-6 pad_bot"><a href="#" id="road'+$('#more_driver_doc').data('road')+'" onclick="fileUpload(event,\'road'+$('#more_driver_doc').data('road')+'\')" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a></div></div>')
+        $('#more_driver_doc').append('<div class="del_append_driver"><label class="control-label col-md-6">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road'+$('#more_driver_doc').data('road')+'" name="attach_doc[]" /><a href="#" id="road'+$('#more_driver_doc').data('road')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a> <span class="uploaded"></span></div></div>')
+        fileUpload('road'+$('#more_driver_doc').data('road'));
        }); 
        
        $('#delete_driver_doc').live('click',function(){

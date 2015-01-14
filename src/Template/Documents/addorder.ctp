@@ -1188,9 +1188,11 @@ function savedDriverEvaluation(url,order_id,cid){
 
 <script type="text/javascript">
 
-    
-    function fileUpload(e,ID){    
-        e.preventDefault();
+    $(function(){
+       fileUpload('fileUpload1'); 
+    });
+    function fileUpload(ID){    
+       // e.preventDefault();
         
         var $type = $(".tab-pane.active").find("input[name='document_type']").val(),
             param = { type : 'order',
@@ -1225,11 +1227,10 @@ function savedDriverEvaluation(url,order_id,cid){
                 this.disable();*/
             },
             onComplete : function(file,response){
-                var response=eval('('+response+')');
-                if(response.action) {
-
-                } else {
-
+                if(response!='error')
+                {
+                    $('#'+ID).parent().find('.uploaded').text(response);
+                    $('.'+ID).val(response);
                 }
             
                /* $("#picture").text("Select");

@@ -502,17 +502,34 @@ class DocumentsController extends AppController {
         else
         $del->delete()->where(['document_id'=>$_POST['order_id']])->execute();                
 
-
+        
         foreach(explode("&",$_POST['inputs']) as $data){
             $input = explode("=",$data);
-            if($input[0]=="document_type"){
+            $input[0];
+            if($input[0]=="document_type" || $input[0] == 'attach_doc[]' || $input[0]=='attach_doc%5B%5D'){
+                if($input[0] == 'attach_doc[]' || $input[0]=='attach_doc%5B%5D')
+                $att[] = $input[1];
                 continue;
             }
           if($input[1]!='' ) {
 
               $arr[$input[0]]=$input[1];
           }
+
             //echo $data."<br/>";
+        }
+        if(!isset($att))
+        $att=null;
+        var_dump($att);
+        if(isset($att))
+        {
+            foreach($att as $at)
+            {
+                $saveData['order_id'] = $_POST['order_id'];
+                $saveData['doc_id'] = 0;
+                $saveData['attach_doc'] = $at;
+                $this->saveAttachmentsPrescreen($saveData);
+            }
         }
 
 
@@ -560,7 +577,8 @@ class DocumentsController extends AppController {
                              'province',
                              'license_number',
                              'class',
-                             'expiration_date'
+                             'expiration_date',
+                             'attach_doc'
                         );
         $total_acc_record=0;
         $accident = array();
@@ -593,7 +611,28 @@ class DocumentsController extends AppController {
                 $acc['injuries'] = $_POST['injuries'][$i];
                 $saveAcc = $driverAppAcc->newEntity($acc);
                 $driverAppAcc->save($saveAcc);
+                $att = array();
+                
             }
+            if(isset($_POST['attach_doc']))
+            {
+                foreach($_POST['attach_doc'] as $v)
+                {
+                    
+                    if(!isset($_GET['document'])){
+                    $att['order_id'] = $document_id;
+                    $att['document_id'] = 0;  
+                    }
+                    else{
+                    $att['document_id'] = $document_id;  
+                    $att['order_id'] = 0;
+                    }                    
+                    $att['attached_doc_path'] = $v;
+                    $this->saveAttachmentsDriverApp($att);
+                                    
+                }                
+                            
+            }                        
 
                $driverAppLic = TableRegistry::get('driver_application_licenses');
                // $del = $driverAppLic->query();
@@ -1569,11 +1608,9 @@ class DocumentsController extends AppController {
             if(in_array($check,$allowed)){               
 
                 $doc_type = $_POST['type'];
-                $destination = APP.'../webroot/img/'.$doc_type;
+                $destination = APP.'../webroot/attachments';
                
-                if( !dir($destination) ){
-                    @mkdir($destination,755);
-                }
+                
                 $source = $_FILES['myfile']['tmp_name'];
                 move_uploaded_file( $source,$destination.'/'.$rand);
                 $saveData = array();
@@ -1581,7 +1618,7 @@ class DocumentsController extends AppController {
                 $saveData['path'] = $rand;
                 
                 //saving in db
-                if($_POST['doc_type'] == "Pre-Screening"){
+               /* if($_POST['doc_type'] == "Pre-Screening"){
                     $this->saveAttachmentsPrescreen($saveData);
                 } else if($_POST['doc_type'] == "Driver Application"){
                     $this->saveAttachmentsDriverApp($saveData);
@@ -1596,42 +1633,29 @@ class DocumentsController extends AppController {
                         }else if($_POST['subtype'] == "Education"){
                             $this->saveAttachmentsEducation($saveData);
                         }
-                }
+                }*/
                
                 
-                echo json_encode(
-                                    array(
-                                    'action'=>true,
-                                    'file'=>$rand
-                                    )
-                                );
+                echo $rand;
             }
             else
             {
-                echo json_encode(
-                                    array(
-                                        'action'=>false,
-                                        'msg'=>'Unable to upload File.Please try again'
-                                    )
-                                );
-                // echo "error";
+                echo 'error';
             }
         }
         die();
     }
 
     private function saveAttachmentsPrescreen($data = NULL){
-         $prescreen = TableRegistry::get('pre_screening_attachments');
-         $arr['order_id'] = $data['order_id'];
-         $arr['attach_doc'] = $data['path'];
-         $save = $prescreen->newEntity($arr);
+         $prescreen = TableRegistry::get('pre_screening_attachments');         
+         $save = $prescreen->newEntity($data);
          $prescreen->save($save);
     }
     private function saveAttachmentsDriverApp($data = NULL){
          $driverApp = TableRegistry::get('driver_application_attachments');
-         $arr['order_id'] = $data['order_id'];
-         $arr['attached_doc_path'] = $data['path'];
-         $save = $driverApp->newEntity($arr);
+         //$arr['order_id'] = $data['order_id'];
+         //$arr['attached_doc_path'] = $data['path'];
+         $save = $driverApp->newEntity($data);
          $driverApp->save($save);
     }
     private function saveAttachmentsRoadTest($data = NULL){

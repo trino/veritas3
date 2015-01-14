@@ -1094,7 +1094,8 @@
                        <div class="form-group col-md-12">
                                         <label class="control-label col-md-3">Attach Document : </label>
                                         <div class="col-md-9">
-                                        <a href="#" id="driveApp1" onclick="fileUpload(event,'driveApp1')" class="btn btn-primary">Browse</a>
+                                        <input type="hidden" class="driveApp1" name="attach_doc[]" />
+                                        <a href="#" id="driveApp1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                                         </div>
                        </div>
                        
@@ -1131,6 +1132,7 @@
    $("#test2").jqScribble(); 
 });
  jQuery(function(){
+    fileUpload('driveApp1');
     $('#add_more_form').click(function(){
       $.ajax({
         url:" <?php echo $this->request->webroot;?>subpages/period_of_unemployment.php",
@@ -1147,7 +1149,9 @@
     $('#add_more_doc').click(function(){
         var count = $('#more_doc').data('driveApp');
          $('#more_doc').data('driveApp',parseInt(count)+1);
-        $('#more_doc').append('<div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><a href="#" id="driveApp'+$('#more_doc').data('driveApp')+'" onclick="fileUpload(event,\'driveApp'+$('#more_doc').data('driveApp')+'\'" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a></div></div><div class="clearfix"></div>')
+         
+        $('#more_doc').append('<div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp'+$('#more_doc').data('driveApp')+'" name="attach_doc[]" /><a href="#" id="driveApp'+$('#more_doc').data('driveApp')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>')
+        fileUpload('driveApp'+$('#more_doc').data('driveApp'));
     }) ;
     
     $('#delete_doc').live('click',function(){

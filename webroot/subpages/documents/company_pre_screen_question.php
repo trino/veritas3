@@ -425,7 +425,7 @@
                                     
                                     
                                      <div class="form-group col-md-12">
-                                     <h4 class="center">>Explain the next steps:</h4>
+                                     <h4 class="center">Explain the next steps:</h4>
                                     </div>
                                         <div class="form-group col-md-12">
                                         <div class="col-md-6">

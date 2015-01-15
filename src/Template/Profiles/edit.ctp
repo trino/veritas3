@@ -410,13 +410,14 @@ new AjaxUpload(button,{
     });                
 }
                 $(function(){
-                                        initiate_ajax_upload('clientimg');
+                                        
                                         <?php
                                         if(isset($id))
                                         {
+                                            
                                             ?>
                                             
-                                    
+                                        initiate_ajax_upload('clientimg');
                                        $('.addclientz').click(function(){
                                         var client_id = $(this).val();
                                         var addclient ="";
@@ -465,6 +466,11 @@ new AjaxUpload(button,{
 </script>
 
 <script>
+<?php
+if($this->request->params['action']=='edit')
+{
+    ?>
+    
 function searchClient()
 {
     var key = $('#searchClient').val();
@@ -478,6 +484,9 @@ function searchClient()
         }
     });
 }
+<?php
+}
+?>
 $(function(){
     $('.scrolldiv').slimScroll({
         height: '250px'

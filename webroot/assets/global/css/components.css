@@ -12216,10 +12216,11 @@ Transparent Button
 
 .secondary_logo{
     display: block;
-    margin-right: 19px;
     padding: 10px 20px 0 20px;
     width:100%;
-   
+  opacity:0.8;
+
+
 }
 
 

@@ -194,6 +194,30 @@ var FormWizard = function () {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();
                     $('.uploaded_for').hide();
+                    
+                    var count = 10;
+                    var path = window.location.pathname;
+                    if(path.replace('veritas3','')!=path)
+                    var base_url = 'http://localhost/veritas3/';
+                    else
+                    var base_url = 'http://isbmee.com/';
+                    
+                    $.ajax({
+                        url:base_url+'documents/webservice/0/0/'+$('#did').val()+'/'+$('#uploaded_for').val(),
+                    })
+                    var counter=setInterval(function(){
+                        count=count-1;
+                      $('.seconds').text(count);
+                      if (count <= 0)
+                      {
+                        
+                        clearInterval(counter);
+                         window.location=base_url;
+                         //counter ended, do something here
+                         return;
+                    }}, 1000); //1000 will  run it every 1 second
+                    
+                    
                     displayConfirm();
                 } else {
                     $('.uploaded_for').show();

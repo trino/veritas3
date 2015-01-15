@@ -101,7 +101,7 @@ else
 												<span class="number">
 												<?php echo $i++;?></span><br />
 												<span class="desc">
-												<i class="fa fa-check"></i> Report Card </span>
+												<i class="fa fa-check"></i> Success </span>
 												</a>
 											</li>
                                             
@@ -203,7 +203,8 @@ else
     											</div>
                                                 <div class="<?php echo $tab;?>" id="tab<?php echo ++$tab_count; ?>">
     												<?php
-                                                        include('subpages/documents/forview.php');
+                                                        //include('subpages/documents/forview.php');
+                                                      include('subpages/documents/success.php');  
                                                     ?>
     											</div>
                                                 <?php

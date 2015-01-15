@@ -6,18 +6,9 @@
 
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul id="mainbar" class="<?php echo $settings->sidebar;?>" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-				<li class="sidebar-toggler-wrapper">
-					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-					<!--<div class="sidebar-toggler">
-					</div>-->
-					<!-- END SIDEBAR TOGGLER BUTTON -->
-                    <?php $logo1 = $this->requestAction('Logos/getlogo/1');?>
-					<div class="whitecenterdiv">A service division of</div>
 
-                    <img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  />
-				</li>
 				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-				<li class="sidebar-search-wrapper">
+				<li class="sidebar-search-wrapper margin-top-20">
 					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
 					<!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
 					<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
@@ -79,7 +70,8 @@
 							<i class="icon-basket"></i>
 							Assign Client to user</a>
 						</li>-->
-						
+
+
 					</ul>
                     <?php }?>
 				</li>
@@ -351,6 +343,16 @@
 					<img src="<?php echo $this->request->webroot;?>img/logos/ISBWhite.png" />
                </li>-->
 
+				<li class="sidebar-toggler-wrapper">
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					<!--<div class="sidebar-toggler">
+					</div>-->
+					<!-- END SIDEBAR TOGGLER BUTTON -->
+					<?php $logo1 = $this->requestAction('Logos/getlogo/1');?>
+					<div class="whitecenterdiv">A service division of</div>
+
+					<img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  />
+				</li>
 				
 			</ul>
 			<!-- END SIDEBAR MENU -->

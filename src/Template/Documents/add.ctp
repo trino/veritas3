@@ -803,6 +803,7 @@
             $('#form_tab'+h+' select').attr('disabled','disabled');
             $('#form_tab'+h+' button').hide();
             $('#form_tab'+h+' a').hide();
+            $('.nav a').show();
             $('#form_tab'+h+' input[type="submit"]').hide();
             $('.form-actions').hide();
         }

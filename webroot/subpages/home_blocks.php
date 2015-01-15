@@ -31,9 +31,10 @@
                         //$prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$this->Session->read('Profile.id').'/'.$d->id);
                         $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.$d->id);
                         if($i==11)
-                        $i=0;
+                            $i=0;
                         ?>
-                        <?php if($prosubdoc['display'] != 0 && $d->display==1){?>
+                        <?php if($prosubdoc['display'] != 0 && $d->display==1)
+                        {?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
     					<div class="dashboard-stat <?php echo $class[$i]; ?>">
@@ -67,7 +68,7 @@
     
                     </div>
                         <?php
-                    }
+                        }
                         $i++;
                     }
                     

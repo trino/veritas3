@@ -338,6 +338,7 @@
                     <p>LAST UPDATED 10/29/2012</p>
                 </div>
                 <?php
+                /*
                 $at=0;
                 if(isset($sub2['con_at']))
                 {
@@ -385,9 +386,39 @@
                 </div>
                 <?php
                 }
-                ?>       
-                      <!--<div class="form-group col-md-12">
-                        <div id="more_consent_doc">
+                */
+                ?>
+                <?php
+                                        if(!isset($sub2['con_at']))
+                                        {?>
+                    <div class="form-group col-md-12">
+                    <label class="control-label col-md-3">Attach Document: </label>
+                    <div class="col-md-9">
+                        <input type="hidden" name="attach_doc[]" class="consent1" />
+                        <a href="javascript:void(0);" id="consent1"  class="btn btn-primary">Browse</a> <span class="uploaded"></span>
+                    </div>
+                </div>       
+                <?php }?>
+                      <div class="form-group col-md-12">
+                        <div id="more_consent_doc" data-consent="<?php if(isset($sub2['con_at']))echo count($sub2['con_at']);else echo '1';?>'">
+                             <?php
+                                        if(isset($sub2['con_at']))
+                                        {
+                                            $at=0;
+                                            foreach($sub2['con_at'] as $pa)
+                                            {
+                                                $at++;
+                                                ?>
+                                                <div class="del_append_consent"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="consent<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" /><a href="#" id="consent<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"><?php echo $pa->attach_doc;?></span></div></div><div class="clearfix"></div>
+                                                <script>
+                                                $(function(){
+                                                    fileUpload('driveApp<?php echo $at;?>');
+                                                });
+                                                </script>
+                                                <?php
+                                            }
+                                        }
+                                        ?> 
                         </div>
                       </div>
 
@@ -397,7 +428,7 @@
                         <div class="col-md-9">
                             <a href="javascript:void(0);" class="btn btn-success" id="add_more_consent_doc">Add More</a>
                         </div>
-                      </div>-->
+                      </div>
                 
             <div class="clearfix"></div>
 
@@ -422,14 +453,17 @@
         {
             ?>
             fileUpload('consent1');
-            fileUpload('consent2');
+            
             <?php
         }
         ?>
         //
         //
        $('#add_more_consent_doc').click(function(){
-        $('#more_consent_doc').append('<div class="del_append_consent"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_consent_doc">Delete</a></div></div><div class="clearfix"></div>')
+        var count = $('#more_doc').data('consent');
+         $('#more_consent_doc').data('consent',parseInt(count)+1);
+        $('#more_consent_doc').append('<div class="del_append_consent"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" name="attach_doc[]" class="consent'+$('#more_consent_doc').data('consent')+'" /><a id="consent'+$('#more_consent_doc').data('consent')+'" href="javascript:void(0);" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_consent_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
+        fileUpload('consent'+$('#more_consent_doc').data('consent'));
        }); 
        
        $('#delete_consent_doc').live('click',function(){

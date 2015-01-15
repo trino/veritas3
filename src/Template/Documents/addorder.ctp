@@ -59,7 +59,7 @@ else
 
 										<ul class="nav nav-pills nav-justified steps">    
                                             <?php
-                                                $doc = $this->requestAction('/documents/getDocument');
+                                                $doc = $this->requestAction('/documents/getDocument/orders');
                                                 
                                                 
                                                 $doc2 = $doc;
@@ -1029,6 +1029,9 @@ jQuery(document).ready(function() {
         $('.tab-content input').attr('disabled','disabled');
         $('.tab-content select').attr('disabled','disabled');
         $('.tab-content textarea').attr('disabled','disabled');
+        $('.tab-content button').hide();
+        $('.tab-content a').hide();
+        $('.nav a').show();
         $('.cont').html('Next <i class="m-icon-swapright m-icon-white"></i>');
         $('.cont').parent().find('.red').remove();
         $('.cont').removeClass('cont');

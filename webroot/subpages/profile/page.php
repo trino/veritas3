@@ -6,7 +6,7 @@
                                                 <a href="#subtab_1_1" data-toggle="tab">Product Example</a>
                                             </li>
                                             <li class="">
-                                                <a href="#subtab_1_2" data-toggle="tab">Help</a>
+                                                <a href="#subtab_1_6" data-toggle="tab">Help</a>
                                             </li>
                                             <li>
                                                 <a href="#subtab_1_3" data-toggle="tab">Privacy Code</a>
@@ -74,7 +74,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="tab-pane" id="subtab_1_2">
+                                        <div class="tab-pane" id="subtab_1_6">
                                             <div class="portlet box">
                                                 <!--div class="portlet-title">
                                                     <div class="caption">

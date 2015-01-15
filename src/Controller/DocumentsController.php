@@ -208,6 +208,11 @@ class DocumentsController extends AppController {
         //$did=$id;
         if($did)
         {
+            $pre = TableRegistry::get('pre_screening_attachments');
+            //$pre_at = TableRegistry::get('driver_application_accident');
+            $pre_at['attach_doc'] = $pre->find()->where(['doc_id'=>$did])->all();
+            $this->set('pre_at',$pre_at);
+            
             $da = TableRegistry::get('driver_application');
             $da_detail = $da->find()->where(['document_id'=>$did])->first();
             if($da_detail){
@@ -218,38 +223,41 @@ class DocumentsController extends AppController {
             $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id'=>$da_detail->id])->all();
             
             $da_at = TableRegistry::get('driver_application_attachments');
-            $sub['da_at_detail'] = $da_at->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            $sub['da_at'] = $da_at->find()->where(['doc_id'=>$did])->all();
+            
+            $de_at = TableRegistry::get('road_test_attachments');
+            $sub['de_at'] = $de_at->find()->where(['doc_id'=>$did])->all();
             
             $this->set('sub',$sub);
             }
-            
             $con = TableRegistry::get('consent_form');
-            $con_detail = $con->find()->where(['document_id'=>$did])->first(); 
+            $con_detail = $con->find()->where(['document_id'=>$did])->first();
+            if($con_detail){ 
             //echo $con_detail->id;die();
-            if($con_detail){
             $con_cri = TableRegistry::get('consent_form_criminal');
             $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id'=>$con_detail->id])->all();
+            
+            $con_at = TableRegistry::get('consent_form_attachments');
+            $sub2['con_at'] = $con_at->find()->where(['doc_id'=>$did])->all();
             $this->set('sub2',$sub2);
+            
             }
-            
-            
             $emp = TableRegistry::get('employment_verification');
-            $sub3['emp'] = $emp->find()->where(['document_id'=>$did])->all(); 
+            $sub3['emp'] = $emp->find()->where(['document_id'=>$did])->all();
+             
             //echo $con_detail->id;die();
-            if($sub3['emp']){
             $emp_att = TableRegistry::get('employment_verification_attachments');
             $sub3['att'] = $emp_att->find()->where(['document_id'=>$did])->all();
+            
             $this->set('sub3',$sub3);
-            }
+            
             
             $edu = TableRegistry::get('education_verification');
             $sub4['edu'] = $edu->find()->where(['document_id'=>$did])->all(); 
             //echo $con_detail->id;die();
-            if($sub4['edu']){
             $edu_att = TableRegistry::get('education_verification_attachments');
             $sub4['att'] = $edu_att->find()->where(['document_id'=>$did])->all();
             $this->set('sub4',$sub4);
-            }
         }
         $this->render('add');
 	}
@@ -277,6 +285,11 @@ class DocumentsController extends AppController {
         $this->set('disabled', 1);
         if($did)
         {
+            $pre = TableRegistry::get('pre_screening_attachments');
+            //$pre_at = TableRegistry::get('driver_application_accident');
+            $pre_at['attach_doc'] = $pre->find()->where(['order_id'=>$did])->all();
+            $this->set('pre_at',$pre_at);
+            
             $da = TableRegistry::get('driver_application');
             $da_detail = $da->find()->where(['order_id'=>$did])->first();
             if($da_detail){
@@ -287,7 +300,10 @@ class DocumentsController extends AppController {
             $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id'=>$da_detail->id])->all();
             
             $da_at = TableRegistry::get('driver_application_attachments');
-            $sub['da_at_detail'] = $da_at->find()->where(['driver_application_id'=>$da_detail->id])->all();
+            $sub['da_at'] = $da_at->find()->where(['order_id'=>$did])->all();
+            
+            $de_at = TableRegistry::get('road_test_attachments');
+            $sub['de_at'] = $de_at->find()->where(['order_id'=>$did])->all();
             
             $this->set('sub',$sub);
             }
@@ -297,6 +313,9 @@ class DocumentsController extends AppController {
             //echo $con_detail->id;die();
             $con_cri = TableRegistry::get('consent_form_criminal');
             $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id'=>$con_detail->id])->all();
+            
+            $con_at = TableRegistry::get('consent_form_attachments');
+            $sub2['con_at'] = $con_at->find()->where(['order_id'=>$did])->all();
             $this->set('sub2',$sub2);
             
             }
@@ -1359,11 +1378,16 @@ class DocumentsController extends AppController {
         
     }
     
-    public function getDocument()
+    public function getDocument($type = "")
     {
         $doc = TableRegistry::get('Subdocuments');
         $query = $doc->find();
-        $query->select()->where(['display' => 1])->order('id');
+        if($type == 'orders'){
+            $query->select()->where(['display' => 1, 'orders'=> 1])->order('id');
+        }
+        else
+            $query->select()->where(['display' => 1])->order('id');
+            //debug($query);
         $this->response->body($query);
         return $this->response;
     }
@@ -1563,11 +1587,12 @@ class DocumentsController extends AppController {
         unset($prescreenDetail->order_id);
         unset($prescreenDetail->client_id);
         unset($prescreenDetail->user_id);
+        if($prescreenDetail){
         $prescreenDetail->sub_doc_id = 1;
         $prescreenDetail->document_type = 'Pre-Screening';
 
 
-        echo json_encode($prescreenDetail);
+        echo json_encode($prescreenDetail);}
 
         } else if($_GET['form_type']=="driver_application.php"){
             
@@ -1584,9 +1609,10 @@ class DocumentsController extends AppController {
             unset($driveAppDetail->order_id);
             unset($driveAppDetail->client_id);
             unset($driveAppDetail->user_id);
+            if($driveAppDetail){
             $driveAppDetail->sub_doc_id = 2;
         $driveAppDetail->document_type = 'Driver Application';
-            echo json_encode($driveAppDetail);
+            echo json_encode($driveAppDetail);}
 
             // $driveAppAcc = TableRegistry::get('driver_application_accident');
             // $driveAppDetail = $driveAppAcc->find()->where(['id'=>$driveAppID,'client_id'=>$cid,'order_id'=>$order_id]);
@@ -1604,8 +1630,8 @@ class DocumentsController extends AppController {
             // $prescreenID = $prescreenDetail->id;
             if($roadTestDetail){
             $roadTestDetail->sub_doc_id = 3;
-        $roadTestDetail->document_type = 'Road test';}
-            echo json_encode($roadTestDetail);
+        $roadTestDetail->document_type = 'Road test';
+            echo json_encode($roadTestDetail);}
 
 
         } else if($_GET['form_type']=="document_tab_3.php"){

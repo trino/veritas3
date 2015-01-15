@@ -1031,6 +1031,7 @@ jQuery(document).ready(function() {
         $('.tab-content textarea').attr('disabled','disabled');
         $('.tab-content button').hide();
         $('.tab-content a').hide();
+        $('.nav a').show();
         $('.cont').html('Next <i class="m-icon-swapright m-icon-white"></i>');
         $('.cont').parent().find('.red').remove();
         $('.cont').removeClass('cont');

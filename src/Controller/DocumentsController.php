@@ -1896,6 +1896,10 @@ class DocumentsController extends AppController {
         }
 
     }
-
+    
+    function survey()
+    {
+        $this->render('survey');
+    }
     
 }

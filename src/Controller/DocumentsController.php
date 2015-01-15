@@ -1404,15 +1404,16 @@
                     $sub->delete()->where(['document_id'=>$id])->execute();
 
                 }*/
-                $docz = TableRegistry::get('Documents');
-                if( $docz->delete()->where(['id'=>$id])->execute())
+                if($this->Documents->deleteAll(array('id'=>$id)))
                 {
+                
                     $this->Flash->success('Document has been deleted.');
                 }
                 else
                 {
                     $this->Flash->error('Document could not be deleted. Please try again.');
                 }
+                
                 return $this->redirect(['action' => 'index']);
 
             }

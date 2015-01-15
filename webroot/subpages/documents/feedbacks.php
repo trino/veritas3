@@ -6,9 +6,10 @@ $is_disabled = 'disabled="disabled"';
 else
 {
 $is_disabled = '';
+}
 if(isset($feeds))
 $feed = $feeds;
-}
+
 ?>
 
 

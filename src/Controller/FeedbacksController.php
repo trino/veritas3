@@ -25,24 +25,31 @@ class FeedbacksController extends AppController{
         
     }
     
-    public function add()
+    public function add($order_id,$cid)
     {
-        //$this->set('disabled',1);
+        if(isset($_GET['document']))
+        {
+            $_POST['document_id'] = $order_id;
+        }
+        $_POST['client_id'] = $cid;
+        $_POST['user_id'] = $this->request->session()->read('Profile.id');
         
-        $docs = TableRegistry::get('Documents');
+        
+        $docs = TableRegistry::get('Feedbacks');
         $doc = $docs->newEntity($_POST);
 		if ($this->request->is('post')) {
 		  
 			if ($docs->save($doc)) {
 				$this->Flash->success('The feedback has been sent.');
-                	return $this->redirect('/documents/index');
+                	//return $this->redirect('/documents/index');
 			} else {
 				$this->Flash->error('Feedback not sent. Please try again.');
-                return $this->redirect('/feedbacks/add');
+                //return $this->redirect('/feedbacks/add');
 			}
 		}
 		//$this->set(compact('client'));
         $this->render('add');
+        die();
     }
     
     public function edit($id = NULL)

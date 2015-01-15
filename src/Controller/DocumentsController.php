@@ -1391,7 +1391,7 @@
             }
             if($id !="")
             {
-                /*$doc = TableRegistry::get('Subdocuments');
+                $doc = TableRegistry::get('Subdocuments');
                 $query = $doc->find();
                 if($type == 'orders'){
                     $query->select()->where(['display' => 1, 'orders'=> 1])->all();
@@ -1401,9 +1401,10 @@
                 foreach($query as $q)
                 {
                     $sub = TableRegistry::get($q->table_name);
-                    $sub->delete()->where(['document_id'=>$id])->execute();
+                    $sub->query()->delete()->where(['document_id'=>$id])->execute();
 
-                }*/
+                }
+               
                 if($this->Documents->deleteAll(array('id'=>$id)))
                 {
                 

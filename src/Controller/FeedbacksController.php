@@ -25,26 +25,97 @@ class FeedbacksController extends AppController{
         
     }
     
-    public function add()
+    public function add($order_id,$cid)
     {
-        //$this->set('disabled',1);
+        if(isset($_GET['document']))
+        {
+            $_POST['document_id'] = $order_id;
+        }
+        $_POST['client_id'] = $cid;
+        $_POST['user_id'] = $this->request->session()->read('Profile.id');
         
-        $docs = TableRegistry::get('Documents');
-        $doc = $docs->newEntity($_POST);
-		if ($this->request->is('post')) {
-		  
-			if ($docs->save($doc)) {
-				$this->Flash->success('The feedback has been sent.');
-                	return $this->redirect('/documents/index');
-			} else {
-				$this->Flash->error('Feedback not sent. Please try again.');
-                return $this->redirect('/feedbacks/add');
-			}
-		}
+        
+        $docs = TableRegistry::get('Feedbacks');
+        if($docx = $docs->find()->where(['document_id'=>$order_id])->first())
+        {
+            $feedback['title']= $_POST['title'];
+            $feedback['description'] = $_POST['description'];
+            $feedback['reason'] = $_POST['reason'];
+            $feedback['scale'] = $_POST['scale'];
+            $feedback['suggestion'] = $_POST['suggestion'];
+            $id = $docx->id;
+                    
+            $updates = $docs->query();
+               $update = $updates->update()
+                ->set($feedback)
+                ->where(['id' => $id])
+                ->execute();
+            	
+        }
+        else
+        {
+            $doc = $docs->newEntity($_POST);
+    		if ($this->request->is('post')) {
+    		  
+    			if ($docs->save($doc)) {
+    				$this->Flash->success('The feedback has been sent.');
+                    	//return $this->redirect('/documents/index');
+    			} else {
+    				$this->Flash->error('Feedback not sent. Please try again.');
+                    //return $this->redirect('/feedbacks/add');
+    			}
+    		}
+        }
+		//$this->set(compact('client'));
+        //$this->render('add');
+        die();
+    }
+        public function addsurvey($order_id,$cid)
+    {
+        if(isset($_GET['document']))
+        {
+            $_POST['document_id'] = $order_id;
+        }
+        $_POST['client_id'] = $cid;
+        $_POST['user_id'] = $this->request->session()->read('Profile.id');
+        
+        
+        $docs = TableRegistry::get('Survey');
+        if($docx = $docs->find()->where(['document_id'=>$order_id])->first())
+        {
+            $survey['ques1']= $_POST['ques1'];
+            $survey['ques2a'] = $_POST['ques2a'];
+            $survey['ques2b'] = $_POST['ques2b'];
+            $survey['ques2c'] = $_POST['ques2c'];
+            $survey['ques4'] = $_POST['ques4'];
+            $survey['ans4'] = $_POST['ans4'];
+            $id = $docx->id;
+                    
+            $updates = $docs->query();
+               $update = $updates->update()
+                ->set($survey)
+                ->where(['id' => $id])
+                ->execute();
+            	
+        }
+        else
+        {
+            $doc = $docs->newEntity($_POST);
+    		if ($this->request->is('post')) {
+    		  
+    			if ($docs->save($doc)) {
+    				$this->Flash->success('The Survey has been sent.');
+                    	//return $this->redirect('/documents/index');
+    			} else {
+    				$this->Flash->error('Survey not sent. Please try again.');
+                    //return $this->redirect('/feedbacks/add');
+    			}
+    		}
+        }
 		//$this->set(compact('client'));
         $this->render('add');
+        die();
     }
-    
     public function edit($id = NULL)
     {
         

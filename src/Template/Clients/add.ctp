@@ -69,7 +69,10 @@ $c = $client;
                                             </div>
                                             </div>
                                             
-                                            <?php include('subpages/recruiter_contact_table.php');?>
+                                            <?php
+                                            if($this->request->params['action']=='edit') 
+                                            include('subpages/clients/recruiter_contact_table.php');
+                                            ?>
                                             
 									</div>
 									<div class="col-md-9">

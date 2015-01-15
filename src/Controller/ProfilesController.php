@@ -460,10 +460,12 @@ class ProfilesController extends AppController {
         $this->layout = 'blank';
         if($id)
         {
-            $profile = $this->Profiles->get($id, [
+            $this->loadModel('Clients');
+            $profile = $this->Clients->get($id, [
 			'contain' => []
 		]);
-        $this->set(compact('profile'));
+        $arr = explode(',',$profile->profile_id);
+        $this->set('profile',$arr);
         }
         else
         {
@@ -479,6 +481,35 @@ class ProfilesController extends AppController {
         $query = $query->select()->where(['profile_type NOT IN'=>'(6)','OR'=>$cond])
             ->andWhere(['super'=>0,'(fname LIKE "%'.$key.'%" OR lname LIKE "%'.$key.'%" OR username LIKE "%'.$key.'%")']);
         $this->set('profiles',$query);   
+        $this->set('cid',$id);
+    }
+    function getAjaxContact($id=0)
+    {
+        $this->layout = 'blank';
+        if($id)
+        {
+            $this->loadModel('Clients');
+            $profile = $this->Clients->get($id, [
+			'contain' => []
+		]);
+        $arr = explode(',',$profile->contact_id);
+        $this->set('contact',$arr);
+        }
+        else
+        {
+            $this->set('contact',array());
+        }
+        $key = $_GET['key'];
+        $rec = TableRegistry::get('Profiles');
+        $query = $rec->find();
+        $u = $this->request->session()->read('Profile.id');
+        $super = $this->request->session()->read('Profile.super');
+        $cond = $this->Settings->getprofilebyclient($u,$super);
+        //$query = $query->select()->where(['super'=>0]);
+        $query = $query->select()->where(['profile_type NOT IN'=>'(6)','OR'=>$cond])
+            ->andWhere(['super'=>0,'profile_type'=>6,'(fname LIKE "%'.$key.'%" OR lname LIKE "%'.$key.'%" OR username LIKE "%'.$key.'%")']);
+        $this->set('contacts',$query);   
+        $this->set('cid',$id);
     }
     
     function getContact()

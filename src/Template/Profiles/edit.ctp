@@ -410,13 +410,14 @@ new AjaxUpload(button,{
     });                
 }
                 $(function(){
-                                        initiate_ajax_upload('clientimg');
+                                        
                                         <?php
                                         if(isset($id))
                                         {
+                                            
                                             ?>
                                             
-                                    
+                                        initiate_ajax_upload('clientimg');
                                        $('.addclientz').click(function(){
                                         var client_id = $(this).val();
                                         var addclient ="";
@@ -464,46 +465,12 @@ new AjaxUpload(button,{
     });
 </script>
 
-
-
-
-<?php /*
-<div class="actions columns large-2 medium-3">
-	<h3><?= __('Actions') ?></h3>
-	<ul class="side-nav">
-		<li><?= $this->Form->postLink(
-				__('Delete'),
-				['action' => 'delete', $profile->id],
-				['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]
-			)
-		?></li>
-		<li><?= $this->Html->link(__('List Profiles'), ['action' => 'index']) ?></li>
-	</ul>
-</div>
-<div class="profiles form large-10 medium-9 columns">
-	<?= $this->Form->create($profile); ?>
-	<fieldset>
-		<legend><?= __('Edit Profile') ?></legend>
-		<?php
-			echo $this->Form->input('title');
-			echo $this->Form->input('fname');
-			echo $this->Form->input('lname');
-			echo $this->Form->input('username');
-			echo $this->Form->input('email');
-			echo $this->Form->input('password');
-			echo $this->Form->input('address');
-			echo $this->Form->input('phone');
-			echo $this->Form->input('image');
-			echo $this->Form->input('admin');
-			echo $this->Form->input('super');
-		?>
-	</fieldset>
-	<?= $this->Form->button(__('Submit')) ?>
-	<?= $this->Form->end() ?>
-</div>
-*/
-?>
 <script>
+<?php
+if($this->request->params['action']=='edit')
+{
+    ?>
+    
 function searchClient()
 {
     var key = $('#searchClient').val();
@@ -517,6 +484,9 @@ function searchClient()
         }
     });
 }
+<?php
+}
+?>
 $(function(){
     $('.scrolldiv').slimScroll({
         height: '250px'

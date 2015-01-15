@@ -609,6 +609,7 @@
                                                     //alert(res);
                                                     $('.res').text(res);
                                                     $('.flash').show();
+                                                    $('.flash').fadeOut(7000);
                                                     $('#save_display').text(' Save Changes ');
                                                } 
                                             })
@@ -623,6 +624,7 @@
                                                success:function(res)
                                                {
                                                 $('.flash').show();
+                                                $('.flash').fadeOut(7000);
                                                 $('#save_display').text(' Save Changes ');
                                                } 
                                             })

@@ -110,6 +110,99 @@ class ClientsController extends AppController {
  *
  * @return void
  */
+    public function assignContact($contact,$id,$status)
+    {
+        $querys = TableRegistry::get('Clients');
+        $query = $querys->find()->where(['id' => $id])->first();
+        if($status=='yes'){
+        if($query->contact_id=='')
+        {
+            $arr['contact_id'] = $contact;
+        }
+        else
+        $arr['contact_id'] = $query->contact_id.','.$contact;
+        }
+        else
+        {
+            $arr['contact_id']='';
+            if($query->contact_id=='')
+            die();
+            else
+            {
+                $array = explode(',',$query->contact_id);
+                if($array){
+                foreach($array as $a)
+                {
+                    if($a==$contact)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if($arr['contact_id']=='')
+                        $arr['contact_id'] = $a;
+                        else
+                        $arr['contact_id'] = $arr['contact_id'].','.$a;
+                    }
+                }
+                }
+                
+            }
+        }
+        $query2 = $querys->query();
+                        $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $id])
+                        ->execute();
+                        die();
+    }
+    public function assignProfile($profile,$id,$status)
+    {
+        $querys = TableRegistry::get('Clients');
+        $query = $querys->find()->where(['id' => $id])->first();
+        
+        if($status=='yes'){
+        if($query->profile_id=='')
+        {
+            $arr['profile_id'] = $profile;
+        }
+        else
+        $arr['profile_id'] = $query->profile_id.','.$profile;
+        }
+        else
+        {
+            $arr['profile_id']='';
+            if($query->profile_id=='')
+            die();
+            else
+            {
+                $array = explode(',',$query->profile_id);
+                if($array){
+                foreach($array as $a)
+                {
+                    if($a==$profile)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if($arr['profile_id']=='')
+                        $arr['profile_id'] = $a;
+                        else
+                        $arr['profile_id'] = $arr['profile_id'].','.$a;
+                    }
+                }
+                }
+                
+            }
+        }
+        $query2 = $querys->query();
+                        $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $id])
+                        ->execute();
+                        die();
+    }
 	public function add() {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         

@@ -624,7 +624,7 @@
                                                     <label class="control-label col-md-3">Attach Document : </label>
                                                     <div class="col-md-6">
                                                     <input type="hidden" class="road1" name="attach_doc[]" />
-                                                    <a href="#" id="road1" onclick="fileUpload(event,'road1')" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
+                                                    <a href="#" id="road1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                                                     </div>
                                                    </div>
                                                    <?php }?>
@@ -666,7 +666,15 @@
                                                     <div class="clearfix"></div>
  <script>
     $(function(){
-        fileUpload('road1');
+        <?php
+        if($this->request->params['action']=='addorder')
+        {
+            ?>
+            fileUpload('road1');
+            <?php
+        }
+        ?>
+//        
        $('#add_more_driver_doc').click(function(){
         var count = $('#more_driver_doc').data('road');
         $('#more_driver_doc').data('road',parseInt(count)+1);

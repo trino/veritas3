@@ -636,7 +636,19 @@
 </form>
 <script>
     $(function(){
-        fileUpload('fileUpload1'); 
+        $('#addfiles').click(function(){
+            //alert("ssss");
+           $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
+        });
+        <?php
+        if($this->request->params['action']=='addorder')
+        {
+            ?>
+            fileUpload('fileUpload1');
+            <?php
+        }
+        ?>
+         
         $('.add_attach').click(function(){
             var count = $('.attach_more').data('count');
             $('.attach_more').data('count',parseInt(count)+1);

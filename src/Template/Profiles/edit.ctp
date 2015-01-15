@@ -258,8 +258,7 @@
                     </div>
                     <div class="portlet-body">
                         <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />
-                        <table class="table" style="margin-bottom: 0!important;" >
-                           
+                        <table class="table" id="clientTable">
                             <?php
 
                                 $clients = $this->requestAction('/clients/getAllClient/');
@@ -268,21 +267,18 @@
                                     foreach ($clients as $o) 
                                     { 
                                         $pro_ids = explode(",",$o->profile_id);
-                                        if(in_array($id,$pro_ids)){
                                         ?>
 
                                         <tr>
-                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> style="opacity: .5!important;" /> <?php echo $o->company_name; ?></td>
+                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
                                         </tr>
 
                                     <?php
-                                        }
                                     }
                             ?>
+
                         </table>
-                        <table id="clientTableload" class="table">
-                        
-                        </table>
+
                         <div class="clearfix"></div>
 
                     </div>
@@ -414,14 +410,15 @@ new AjaxUpload(button,{
     });                
 }
                 $(function(){
-                                        initiate_ajax_upload('clientimg');
+                                        
                                         <?php
                                         if(isset($id))
                                         {
+                                            
                                             ?>
                                             
-                                    
-                                       $('.addclientz').live('click',function(){
+                                        initiate_ajax_upload('clientimg');
+                                       $('.addclientz').click(function(){
                                         var client_id = $(this).val();
                                         var addclient ="";
                                         if($(this).is(':checked'))
@@ -468,60 +465,28 @@ new AjaxUpload(button,{
     });
 </script>
 
-
-
-
-<?php /*
-<div class="actions columns large-2 medium-3">
-	<h3><?= __('Actions') ?></h3>
-	<ul class="side-nav">
-		<li><?= $this->Form->postLink(
-				__('Delete'),
-				['action' => 'delete', $profile->id],
-				['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]
-			)
-		?></li>
-		<li><?= $this->Html->link(__('List Profiles'), ['action' => 'index']) ?></li>
-	</ul>
-</div>
-<div class="profiles form large-10 medium-9 columns">
-	<?= $this->Form->create($profile); ?>
-	<fieldset>
-		<legend><?= __('Edit Profile') ?></legend>
-		<?php
-			echo $this->Form->input('title');
-			echo $this->Form->input('fname');
-			echo $this->Form->input('lname');
-			echo $this->Form->input('username');
-			echo $this->Form->input('email');
-			echo $this->Form->input('password');
-			echo $this->Form->input('address');
-			echo $this->Form->input('phone');
-			echo $this->Form->input('image');
-			echo $this->Form->input('admin');
-			echo $this->Form->input('super');
-		?>
-	</fieldset>
-	<?= $this->Form->button(__('Submit')) ?>
-	<?= $this->Form->end() ?>
-</div>
-*/
-?>
 <script>
+<?php
+if($this->request->params['action']=='edit')
+{
+    ?>
+    
 function searchClient()
 {
     var key = $('#searchClient').val();
-    $('#clientTableload').html('<td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td>');
+    $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
     $.ajax({
         url:'<?php echo $this->request->webroot;?>clients/getAjaxClient/<?php echo $id;?>',
         data:'key='+key,
         type:'get',
         success:function(res){
-            //$('#clientTableload').("");
-            $('#clientTableload').html(res);
+            $('#clientTable').html(res);
         }
     });
 }
+<?php
+}
+?>
 $(function(){
     $('.scrolldiv').slimScroll({
         height: '250px'

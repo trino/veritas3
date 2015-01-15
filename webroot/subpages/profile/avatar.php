@@ -57,6 +57,7 @@
                             $("#profilepic").attr("src",'<?php echo $this->request->webroot;?>img/profile/'+response);
                             $("#ppicture").attr("src",'<?php echo $this->request->webroot;?>img/profile/'+response);
                             $('.flashimg').show();
+                            $('.flashimg').fadeOut(7000);
                             }                        		
                     });                
             }

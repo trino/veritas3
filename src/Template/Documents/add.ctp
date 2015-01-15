@@ -183,7 +183,7 @@
         $('.subform6 .document_type').remove();
         $('.subform6 .sub_docs_id').remove();
         
-        alert(s_arr[1]);
+        //alert(s_arr[1]);
         if(s_arr[1] == 1)
         {
             $('#form_tab1').prepend('<input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>'+
@@ -847,7 +847,7 @@
             else
                 var draft=0;
             var type=$(".document_type").val();
-            alert(type);
+            //alert(type);
             //alert($('#sub_id').val());return;
             var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val(),division:$('#division').val()};
             $.ajax({
@@ -859,7 +859,7 @@
                     //alert(res);
                     $('#did').val(res);
                     // saving data
-
+                    //alert($('#did').val());
                     if(type == "Pre-Screening"){
                         var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
                             url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document='+type,
@@ -890,14 +890,13 @@
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>feedbacks/add/'+order_id+'/'+cid+'/?document='+type;
                             var param = $('#form_tab6').serialize();
-                                   
-                            
-                                $.ajax({
+                               $.ajax({
                                         url:url,
                                         data: param,
                                         type:'POST',
                                         success: function(res){
-                            
+                                            if(res == 'OK')
+                                                window.location = '<?php echo $this->request->webroot?>documents/index';
                                         }
                                     });
                     
@@ -908,21 +907,23 @@
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/'+order_id+'/'+cid+'/?document='+type;
                             var param = $('#form_tab5').serialize();
-                                   
-                            
-                                $.ajax({
+                              $.ajax({
                                         url:url,
                                         data: param,
                                         type:'POST',
                                         success: function(res){
-                            
+                                             if(res == 'OK')
+                                                window.location = '<?php echo $this->request->webroot?>documents/index';
                                         }
                                     });
                     
                     }
-                    $('.flashDoc').show();
-                    $('.flashDoc').fadeOut(8000);
-                   window.location = '<?php echo $this->request->webroot?>documents/index';
+                    if(type != "Survey" || type != "Feedbacks")
+                    {
+                        $('.flashDoc').show();
+                        $('.flashDoc').fadeOut(8000);
+                        //window.location = '<?php echo $this->request->webroot?>documents/index';
+                    }
                 }
             });
         });
@@ -943,7 +944,7 @@
             data: param,
             type:'POST',
             success: function(res){
-
+                
             }
         });
     }

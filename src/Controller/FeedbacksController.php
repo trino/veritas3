@@ -38,11 +38,15 @@ class FeedbacksController extends AppController{
         $docs = TableRegistry::get('Feedbacks');
         if($docx = $docs->find()->where(['document_id'=>$order_id])->first())
         {
+            
             $feedback['title']= $_POST['title'];
             $feedback['description'] = $_POST['description'];
             $feedback['reason'] = $_POST['reason'];
             $feedback['scale'] = $_POST['scale'];
             $feedback['suggestion'] = $_POST['suggestion'];
+            //var_dump($docx);
+            // var_dump($feedback);
+            //die();
             $id = $docx->id;
                     
             $updates = $docs->query();
@@ -50,17 +54,22 @@ class FeedbacksController extends AppController{
                 ->set($feedback)
                 ->where(['id' => $id])
                 ->execute();
+             if($update)
+            	   echo "OK";
             	
         }
         else
         {
+            //die('2');
             $doc = $docs->newEntity($_POST);
     		if ($this->request->is('post')) {
     		  
     			if ($docs->save($doc)) {
+    			     echo "OK";
     				$this->Flash->success('The feedback has been sent.');
                     	//return $this->redirect('/documents/index');
     			} else {
+    			 echo "ss";
     				$this->Flash->error('Feedback not sent. Please try again.');
                     //return $this->redirect('/feedbacks/add');
     			}
@@ -70,7 +79,7 @@ class FeedbacksController extends AppController{
         //$this->render('add');
         die();
     }
-        public function addsurvey($order_id,$cid)
+    public function addsurvey($order_id,$cid)
     {
         if(isset($_GET['document']))
         {
@@ -96,7 +105,8 @@ class FeedbacksController extends AppController{
                 ->set($survey)
                 ->where(['id' => $id])
                 ->execute();
-            	
+                if($update)
+            	   echo "OK";
         }
         else
         {
@@ -104,6 +114,7 @@ class FeedbacksController extends AppController{
     		if ($this->request->is('post')) {
     		  
     			if ($docs->save($doc)) {
+    			      echo "OK";
     				$this->Flash->success('The Survey has been sent.');
                     	//return $this->redirect('/documents/index');
     			} else {

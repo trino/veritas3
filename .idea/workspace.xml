@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a163c84f-7931-4688-a0c4-59462597eb2d" name="Default" comment="[edit] listing clients as per profile(user)">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/subpages/documents/success.php" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss3.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/DocumentsController.php" afterPath="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/FeedbacksController.php" afterPath="$PROJECT_DIR$/src/Controller/FeedbacksController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/feedbacks.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/feedbacks.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" afterPath="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
     <ignored path="veritas3.iws" />
@@ -39,8 +35,8 @@
       <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56463414" vertical-offset="33248" max-vertical-offset="34102">
-              <caret line="1983" column="22" selection-start-line="1983" selection-start-column="22" selection-end-line="1983" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.6890244" vertical-offset="33350" max-vertical-offset="34170">
+              <caret line="1995" column="24" selection-start-line="1995" selection-start-column="24" selection-end-line="1995" selection-end-column="24" />
               <folding>
                 <element signature="e#41#74#0#PHP" expanded="true" />
               </folding>
@@ -61,18 +57,18 @@
       <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6346154" vertical-offset="0" max-vertical-offset="2142">
-              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+            <state vertical-scroll-proportion="-10.942307" vertical-offset="468" max-vertical-offset="2210">
+              <caret line="61" column="47" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
               <folding>
-                <marker date="1421339860307" expanded="true" signature="1556:1745" placeholder="..." />
-                <marker date="1421339860307" expanded="true" signature="1568:1729" placeholder="..." />
-                <marker date="1421339860307" expanded="true" signature="1609:1716" placeholder="..." />
-                <marker date="1421339860307" expanded="true" signature="2602:2801" placeholder="..." />
-                <marker date="1421339860307" expanded="true" signature="2613:2785" placeholder="..." />
-                <marker date="1421339860307" expanded="true" signature="2658:2701" placeholder="..." />
-                <marker date="1421339860307" expanded="true" signature="3589:3932" placeholder="..." />
-                <marker date="1421339860307" expanded="true" signature="3601:3915" placeholder="..." />
-                <marker date="1421339860307" expanded="true" signature="3647:3903" placeholder="..." />
+                <marker date="1421345248917" expanded="true" signature="1556:1745" placeholder="..." />
+                <marker date="1421345248917" expanded="true" signature="1568:1729" placeholder="..." />
+                <marker date="1421345248917" expanded="true" signature="1609:1716" placeholder="..." />
+                <marker date="1421345248917" expanded="true" signature="2602:2801" placeholder="..." />
+                <marker date="1421345248917" expanded="true" signature="2613:2785" placeholder="..." />
+                <marker date="1421345248917" expanded="true" signature="2658:2701" placeholder="..." />
+                <marker date="1421345248917" expanded="true" signature="3589:3932" placeholder="..." />
+                <marker date="1421345248917" expanded="true" signature="3601:3915" placeholder="..." />
+                <marker date="1421345248917" expanded="true" signature="3647:3903" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -81,7 +77,7 @@
       <file leaf-file-name="nusoap.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/soap/nusoap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="217" max-vertical-offset="138635">
+            <state vertical-scroll-proportion="-15.846154" vertical-offset="217" max-vertical-offset="138635">
               <caret line="72" column="75" selection-start-line="72" selection-start-column="75" selection-end-line="72" selection-end-column="75" />
               <folding>
                 <marker date="1421268722885" expanded="true" signature="62690:62865" placeholder="..." />
@@ -1103,9 +1099,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3202" max-vertical-offset="4828">
+          <caret line="224" column="61" selection-start-line="224" selection-start-column="61" selection-end-line="224" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/soap/nusoap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="217" max-vertical-offset="138635">
+        <state vertical-scroll-proportion="-15.846154" vertical-offset="217" max-vertical-offset="138635">
           <caret line="72" column="75" selection-start-line="72" selection-start-column="75" selection-end-line="72" selection-end-column="75" />
           <folding>
             <marker date="1421268722885" expanded="true" signature="62690:62865" placeholder="..." />
@@ -1135,36 +1139,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3202" max-vertical-offset="4828">
-          <caret line="224" column="61" selection-start-line="224" selection-start-column="61" selection-end-line="224" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6346154" vertical-offset="0" max-vertical-offset="2142">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        <state vertical-scroll-proportion="-10.942307" vertical-offset="468" max-vertical-offset="2210">
+          <caret line="61" column="47" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
           <folding>
-            <marker date="1421339860307" expanded="true" signature="1556:1745" placeholder="..." />
-            <marker date="1421339860307" expanded="true" signature="1568:1729" placeholder="..." />
-            <marker date="1421339860307" expanded="true" signature="1609:1716" placeholder="..." />
-            <marker date="1421339860307" expanded="true" signature="2602:2801" placeholder="..." />
-            <marker date="1421339860307" expanded="true" signature="2613:2785" placeholder="..." />
-            <marker date="1421339860307" expanded="true" signature="2658:2701" placeholder="..." />
-            <marker date="1421339860307" expanded="true" signature="3589:3932" placeholder="..." />
-            <marker date="1421339860307" expanded="true" signature="3601:3915" placeholder="..." />
-            <marker date="1421339860307" expanded="true" signature="3647:3903" placeholder="..." />
+            <marker date="1421345248917" expanded="true" signature="1556:1745" placeholder="..." />
+            <marker date="1421345248917" expanded="true" signature="1568:1729" placeholder="..." />
+            <marker date="1421345248917" expanded="true" signature="1609:1716" placeholder="..." />
+            <marker date="1421345248917" expanded="true" signature="2602:2801" placeholder="..." />
+            <marker date="1421345248917" expanded="true" signature="2613:2785" placeholder="..." />
+            <marker date="1421345248917" expanded="true" signature="2658:2701" placeholder="..." />
+            <marker date="1421345248917" expanded="true" signature="3589:3932" placeholder="..." />
+            <marker date="1421345248917" expanded="true" signature="3601:3915" placeholder="..." />
+            <marker date="1421345248917" expanded="true" signature="3647:3903" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56463414" vertical-offset="33248" max-vertical-offset="34102">
-          <caret line="1983" column="22" selection-start-line="1983" selection-start-column="22" selection-end-line="1983" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.6890244" vertical-offset="33350" max-vertical-offset="34170">
+          <caret line="1995" column="24" selection-start-line="1995" selection-start-column="24" selection-end-line="1995" selection-end-column="24" />
           <folding>
             <element signature="e#41#74#0#PHP" expanded="true" />
           </folding>

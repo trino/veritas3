@@ -115,6 +115,10 @@
   //  echo '<h2>Debug</h2><pre>' . htmlspecialchars($client->getDebug(), ENT_QUOTES) . '</pre>';
 
     $client->clearDebug();
+
+
+
+
 ?>
 
 

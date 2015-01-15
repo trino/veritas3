@@ -2,75 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a163c84f-7931-4688-a0c4-59462597eb2d" name="Default" comment="[edit] listing clients as per profile(user)">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/133865_853826.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/166302_494161.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/188742_113513.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/219778_430853.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/236724_463949.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/304263_133453.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/306982_725149.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/316485_720370.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/354882_321292.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/362051_244854.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/472766_964321.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/493667_303521.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/517260_582986.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/529840_238510.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/544808_168554.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/581091_509268.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/597982_339501.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/621823_181848.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/625338_565051.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/660055_974182.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/667800_777801.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/673403_769781.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/711526_256390.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/730587_449694.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/742123_750830.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/758026_529537.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/787606_421020.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/879754_972946.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/894888_611578.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/896755_308905.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/920843_614132.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/944848_165066.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/954544_420306.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/980197_657116.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/attachments/987448_434973.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Profiles/edit_back.ctp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/subpages/documents/feedbacks.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Profiles/get_ajax_contact.ctp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/subpages/clients/recruiter_contact_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Documents/survey.ctp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/subpages/documents/survey.php" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss3.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ClientsController.php" afterPath="$PROJECT_DIR$/src/Controller/ClientsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/DocumentsController.php" afterPath="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/FeedbacksController.php" afterPath="$PROJECT_DIR$/src/Controller/FeedbacksController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ProfilesController.php" afterPath="$PROJECT_DIR$/src/Controller/ProfilesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/avatar.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/avatar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/block.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/block.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/company_pre_screen_question.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/company_pre_screen_question.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/display.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/display.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/driver_application.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/driver_application.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/driver_evaluation_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/driver_evaluation_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" afterPath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/education_verification_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/education_verification_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/employment_verification_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/employment_verification_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/get_ajax_client.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/get_ajax_client.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Profiles/get_ajax_profile.ctp" afterPath="$PROJECT_DIR$/src/Template/Profiles/get_ajax_profile.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/home_blocks.php" afterPath="$PROJECT_DIR$/webroot/subpages/home_blocks.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/logo.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/logo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/page.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/page.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/password.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/password.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/sidebar.php" afterPath="$PROJECT_DIR$/webroot/subpages/sidebar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
@@ -97,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56182796" vertical-offset="23450" max-vertical-offset="33864">
-              <caret line="1404" column="0" selection-start-line="1404" selection-start-column="0" selection-end-line="1404" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.5961537" vertical-offset="33180" max-vertical-offset="34000">
+              <caret line="1975" column="2" selection-start-line="1975" selection-start-column="2" selection-end-line="1975" selection-end-column="2" />
               <folding>
                 <element signature="e#41#74#0#PHP" expanded="true" />
               </folding>
@@ -109,21 +44,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form-wizard.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2794" max-vertical-offset="4403">
+              <caret line="200" column="61" selection-start-line="200" selection-start-column="61" selection-end-line="200" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.3846154" vertical-offset="879" max-vertical-offset="2142">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5898389" vertical-offset="0" max-vertical-offset="2142">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding>
-                <marker date="1421299234087" expanded="true" signature="1550:1739" placeholder="..." />
-                <marker date="1421299234087" expanded="true" signature="1562:1723" placeholder="..." />
-                <marker date="1421299234087" expanded="true" signature="1603:1710" placeholder="..." />
-                <marker date="1421299234087" expanded="true" signature="2594:2793" placeholder="..." />
-                <marker date="1421299234087" expanded="true" signature="2605:2777" placeholder="..." />
-                <marker date="1421299234087" expanded="true" signature="2650:2693" placeholder="..." />
-                <marker date="1421299234087" expanded="true" signature="3579:3922" placeholder="..." />
-                <marker date="1421299234087" expanded="true" signature="3591:3905" placeholder="..." />
-                <marker date="1421299234087" expanded="true" signature="3637:3893" placeholder="..." />
+                <marker date="1421339860307" expanded="true" signature="1556:1745" placeholder="..." />
+                <marker date="1421339860307" expanded="true" signature="1568:1729" placeholder="..." />
+                <marker date="1421339860307" expanded="true" signature="1609:1716" placeholder="..." />
+                <marker date="1421339860307" expanded="true" signature="2602:2801" placeholder="..." />
+                <marker date="1421339860307" expanded="true" signature="2613:2785" placeholder="..." />
+                <marker date="1421339860307" expanded="true" signature="2658:2701" placeholder="..." />
+                <marker date="1421339860307" expanded="true" signature="3589:3932" placeholder="..." />
+                <marker date="1421339860307" expanded="true" signature="3601:3915" placeholder="..." />
+                <marker date="1421339860307" expanded="true" signature="3647:3903" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -132,7 +77,7 @@
       <file leaf-file-name="nusoap.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/soap/nusoap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.846154" vertical-offset="217" max-vertical-offset="138635">
+            <state vertical-scroll-proportion="0.0" vertical-offset="217" max-vertical-offset="138635">
               <caret line="72" column="75" selection-start-line="72" selection-start-column="75" selection-end-line="72" selection-end-column="75" />
               <folding>
                 <marker date="1421268722885" expanded="true" signature="62690:62865" placeholder="..." />
@@ -213,8 +158,8 @@
         <option value="$PROJECT_DIR$/webroot/assets/global/css/components.css" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" />
         <option value="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" />
       </list>
     </option>
   </component>
@@ -254,6 +199,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -367,6 +313,102 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="clients" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -590,7 +632,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -618,15 +659,15 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -685,24 +726,24 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0701559" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1668" y="557" width="1008" height="623" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16910867" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17094018" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0701559" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1668" y="557" width="1008" height="623" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -723,9 +764,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16117217" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -994,13 +1035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2794" max-vertical-offset="4403">
-          <caret line="181" column="37" selection-start-line="181" selection-start-column="37" selection-end-line="181" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/clients/listing.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.0" vertical-offset="1540" max-vertical-offset="3247">
@@ -1019,7 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09514926" vertical-offset="0" max-vertical-offset="536">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,7 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.230769" vertical-offset="51" max-vertical-offset="5542">
           <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,7 +1075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1051,7 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="809">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2142">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1067,15 +1096,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.076923" vertical-offset="1758" max-vertical-offset="12631">
           <caret line="125" column="40" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="40" />
-          <folding>
-            <marker date="1421331815567" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/soap/nusoap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.846154" vertical-offset="217" max-vertical-offset="138635">
+        <state vertical-scroll-proportion="0.0" vertical-offset="217" max-vertical-offset="138635">
           <caret line="72" column="75" selection-start-line="72" selection-start-column="75" selection-end-line="72" selection-end-column="75" />
           <folding>
             <marker date="1421268722885" expanded="true" signature="62690:62865" placeholder="..." />
@@ -1105,30 +1131,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
+    <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.3846154" vertical-offset="879" max-vertical-offset="2142">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <marker date="1421299234087" expanded="true" signature="1550:1739" placeholder="..." />
-            <marker date="1421299234087" expanded="true" signature="1562:1723" placeholder="..." />
-            <marker date="1421299234087" expanded="true" signature="1603:1710" placeholder="..." />
-            <marker date="1421299234087" expanded="true" signature="2594:2793" placeholder="..." />
-            <marker date="1421299234087" expanded="true" signature="2605:2777" placeholder="..." />
-            <marker date="1421299234087" expanded="true" signature="2650:2693" placeholder="..." />
-            <marker date="1421299234087" expanded="true" signature="3579:3922" placeholder="..." />
-            <marker date="1421299234087" expanded="true" signature="3591:3905" placeholder="..." />
-            <marker date="1421299234087" expanded="true" signature="3637:3893" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="2794" max-vertical-offset="4403">
+          <caret line="200" column="61" selection-start-line="200" selection-start-column="61" selection-end-line="200" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56182796" vertical-offset="23450" max-vertical-offset="33864">
-          <caret line="1404" column="0" selection-start-line="1404" selection-start-column="0" selection-end-line="1404" selection-end-column="0" />
+        <state vertical-scroll-proportion="-7.5961537" vertical-offset="33180" max-vertical-offset="34000">
+          <caret line="1975" column="2" selection-start-line="1975" selection-start-column="2" selection-end-line="1975" selection-end-column="2" />
           <folding>
             <element signature="e#41#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5898389" vertical-offset="0" max-vertical-offset="2142">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <marker date="1421339860307" expanded="true" signature="1556:1745" placeholder="..." />
+            <marker date="1421339860307" expanded="true" signature="1568:1729" placeholder="..." />
+            <marker date="1421339860307" expanded="true" signature="1609:1716" placeholder="..." />
+            <marker date="1421339860307" expanded="true" signature="2602:2801" placeholder="..." />
+            <marker date="1421339860307" expanded="true" signature="2613:2785" placeholder="..." />
+            <marker date="1421339860307" expanded="true" signature="2658:2701" placeholder="..." />
+            <marker date="1421339860307" expanded="true" signature="3589:3932" placeholder="..." />
+            <marker date="1421339860307" expanded="true" signature="3601:3915" placeholder="..." />
+            <marker date="1421339860307" expanded="true" signature="3647:3903" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -1964,9 +1964,17 @@
         {
             $this->render('survey');
         }
+
         public function webservice($callfunction = null, $body = null, $orderid = null, $driverid = null)
         {
-            $uid = "";
+
+            $model = TableRegistry::get('Profiles');
+
+                $cnt = $model->find()->where(['id'=>$driverid])->first();
+
+
+//debug( $cnt);die();
+
             $pdi = "";
             $tp = "";
             $filedata = "";

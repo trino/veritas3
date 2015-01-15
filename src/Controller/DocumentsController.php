@@ -1897,8 +1897,9 @@ class DocumentsController extends AppController {
 
     }
     
-    function survey()
+    function add_survey($doc_id=null, $user_id, $client_id)
     {
+        $q = TableRegistry::get('Survey');
         $this->render('survey');
     }
     

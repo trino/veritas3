@@ -1029,6 +1029,8 @@ jQuery(document).ready(function() {
         $('.tab-content input').attr('disabled','disabled');
         $('.tab-content select').attr('disabled','disabled');
         $('.tab-content textarea').attr('disabled','disabled');
+        $('.tab-content button').hide();
+        $('.tab-content a').hide();
         $('.cont').html('Next <i class="m-icon-swapright m-icon-white"></i>');
         $('.cont').parent().find('.red').remove();
         $('.cont').removeClass('cont');
@@ -1084,10 +1086,7 @@ jQuery(document).ready(function() {
        }
     });
     });
-   $('#addfiles').click(function(){
-            //alert("ssss");
-           $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
-        });
+   
 });
 
 function savePrescreen(url,order_id,cid){

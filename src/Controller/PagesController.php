@@ -44,7 +44,9 @@ class PagesController extends AppController {
         $this->set('hideclient',0);
 		$this->set('client', $this->paginate($this->Clients));
 	}
-   
+    function org_chart()
+    {
+    }
     
     function test()
     {

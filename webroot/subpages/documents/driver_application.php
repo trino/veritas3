@@ -780,7 +780,15 @@
    $("#test2").jqScribble(); 
 });
  jQuery(function(){
-    fileUpload('driveApp1');
+    <?php
+        if($this->request->params['action']=='addorder')
+        {
+            ?>
+            fileUpload('driveApp1');
+            <?php
+        }
+        ?>
+    //
     $('#add_more_form').click(function(){
       $.ajax({
         url:" <?php echo $this->request->webroot;?>subpages/period_of_unemployment.php",

@@ -193,7 +193,7 @@ class DocumentsController extends AppController {
             }
          $doc = $this->getDocumentcount();
          $cn = $this->getUserDocumentcount();
-	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+	    $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $doc = $this->getDocumentcount();
         $cn = $this->getUserDocumentcount();
         if($setting->document_list==0 || count($doc)==0 || $cn ==0)
@@ -1262,6 +1262,15 @@ class DocumentsController extends AppController {
         
         if($did)
         {
+             $doc = TableRegistry::get('Documents');
+                    $query = $doc->find()->where(['id' => $did])->first();
+             if($query->sub_doc_id == '6')
+             {
+                $feeds = TableRegistry::get('feedbacks');
+            //$pre_at = TableRegistry::get('driver_application_accident');
+            $feed = $feeds->find()->where(['document_id'=>$did])->first();
+            $this->set('feeds',$feed);
+             }
             
             $pre = TableRegistry::get('pre_screening_attachments');
             //$pre_at = TableRegistry::get('driver_application_accident');

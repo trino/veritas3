@@ -1378,11 +1378,16 @@ class DocumentsController extends AppController {
         
     }
     
-    public function getDocument()
+    public function getDocument($type = "")
     {
         $doc = TableRegistry::get('Subdocuments');
         $query = $doc->find();
-        $query->select()->where(['display' => 1])->order('id');
+        if($type == 'orders'){
+            $query->select()->where(['display' => 1, 'orders'=> 1])->order('id');
+        }
+        else
+            $query->select()->where(['display' => 1])->order('id');
+            //debug($query);
         $this->response->body($query);
         return $this->response;
     }

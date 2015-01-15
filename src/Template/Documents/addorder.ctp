@@ -59,7 +59,7 @@ else
 
 										<ul class="nav nav-pills nav-justified steps">    
                                             <?php
-                                                $doc = $this->requestAction('/documents/getDocument');
+                                                $doc = $this->requestAction('/documents/getDocument/orders');
                                                 
                                                 
                                                 $doc2 = $doc;

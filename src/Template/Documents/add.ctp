@@ -17,7 +17,7 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href=""><?php echo "Orders";?>
+            <a href=""><?php echo ucfirst($settings->document);?>
             </a>
         </li>
     </ul>

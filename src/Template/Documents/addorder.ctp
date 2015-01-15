@@ -1084,10 +1084,7 @@ jQuery(document).ready(function() {
        }
     });
     });
-   $('#addfiles').click(function(){
-            //alert("ssss");
-           $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
-        });
+   
 });
 
 function savePrescreen(url,order_id,cid){

@@ -347,7 +347,15 @@
 </form>
 <script>
 $(function(){
-    fileUpload('emp1');
+    <?php
+        if($this->request->params['action']=='addorder')
+        {
+            ?>
+            fileUpload('emp1');
+            <?php
+        }
+        ?>
+   // 
   $("#add_more").click(function(){
     $.ajax({
        url:"<?php echo $this->request->webroot;?>subpages/documents/past_employer.php",

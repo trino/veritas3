@@ -370,7 +370,15 @@
 </form>
 <script>
 $(function(){
-    fileUpload('edu1');
+     <?php
+        if($this->request->params['action']=='addorder')
+        {
+            ?>
+            fileUpload('edu1');
+            <?php
+        }
+        ?>
+    //
   $(".add_more_edu").click(function(){
     $.ajax({
        url:"<?php echo $this->request->webroot;?>subpages/documents/past_education.php",

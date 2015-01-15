@@ -202,6 +202,19 @@
                 $('.subform'+p).hide();
             }
             $('.subform'+s_arr[1]).show(200,function(){
+                if(s_arr[1]=='1')
+                fileUpload('fileUpload1');
+                if(s_arr[1]=='3')
+                fileUpload('road1');
+                if(s_arr[1]=='2')
+                fileUpload('driveApp1');
+                if(s_arr[1]=='4'){
+                fileUpload('consent1');
+                fileUpload('consent2');
+                fileUpload('edu1');
+                 fileUpload('emp1');
+                }
+                
                 //alert(ftype);
                 // loading data from db
                 // debugger;
@@ -944,13 +957,7 @@
 
 
 
-    jQuery(document).ready(function() {
-
-        $('#addfiles').click(function(){
-            //alert("ssss");
-            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
-        });
-    });
+    
     function fileUpload(ID){    
        // e.preventDefault();
         

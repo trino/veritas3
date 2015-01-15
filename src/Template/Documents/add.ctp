@@ -863,7 +863,7 @@
                     }
                     $('.flashDoc').show();
                     $('.flashDoc').fadeOut(8000);
-                   // window.location = '<?php echo $this->request->webroot?>documents/index';
+                   window.location = '<?php echo $this->request->webroot?>documents/index';
                 }
             });
         });

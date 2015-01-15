@@ -40,8 +40,10 @@ $(function(){
            type:'post',
            success:function(res)
            {
-            if(res==1)
+            if(res==1){
             $('.flashPass').show();
+            $('.flashPass').fadeOut(7000);
+            }
             else
             alert('Could\'t save password');
             $('#save_pass').text(' Change Password ');

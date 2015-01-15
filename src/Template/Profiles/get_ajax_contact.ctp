@@ -1,6 +1,6 @@
  <?php
                                                 $i=0;
-                                                foreach($profiles as $r)
+                                                foreach($contacts as $r)
                                                 {
                                                     //echo $r->username;continue;
                                                     if($i%2==0)
@@ -12,7 +12,7 @@
                                                     ?>
                                                    
                                                     <td>
-                                                        <span><input class="profile_client" onchange="if($(this).is(':checked')){assignProfile($(this).val(),'<?php echo $cid;?>','yes');}else{assignProfile($(this).val(),'<?php echo $cid;?>','no');}" type="checkbox" <?php if(in_array($r->id,$profile)){?>checked="checked"<?php }?> value="<?php echo $r->id; ?>"/></span>
+                                                        <span><input class="contact_client" onchange="if($(this).is(':checked')){assignContact($(this).val(),'<?php echo $cid;?>','yes');}else{assignContact($(this).val(),'<?php echo $cid;?>','no');}" type="checkbox" <?php if(in_array($r->id,$contact)){?>checked="checked"<?php }?> value="<?php echo $r->id; ?>"/></span>
                                                         <span> <?php echo $r->username; ?> </span>
                                                     </td>
                                                 <?php
@@ -46,15 +46,15 @@
                                                    }
                                                    $.ajax({url:url});
                                                 }
-                                                function assignClient(profile,client,status)
+                                                function assignContact(profile,client,status)
                                                 {
                                                     if(status=='yes')
                                                    {
-                                                    var url= '<?php echo $this->request->webroot;?>clients/assignClient/'+profile+'/'+client+'/yes';
+                                                    var url= '<?php echo $this->request->webroot;?>clients/assignContact/'+profile+'/'+client+'/yes';
                                                    }
                                                    else
                                                    {
-                                                    var url= '<?php echo $this->request->webroot;?>clients/assignClient/'+profile+'/'+client+'/no';
+                                                    var url= '<?php echo $this->request->webroot;?>clients/assignContact/'+profile+'/'+client+'/no';
                                                    }
                                                    $.ajax({url:url});
                                                 }

@@ -1965,8 +1965,21 @@
         {
             $this->render('survey');
         }
+
         public function webservice($callfunction = null, $body = null, $orderid = null, $driverid = null)
         {
+
+
+            $model = TableRegistry::get('Profiles');
+
+                $cnt = $model->find()->where(['id'=>$driverid])->first();
+
+
+debug( $cnt);die();
+
+//            $this->Flash->success('Order submitted successfully!');
+
+
             $uid = "";
             $pdi = "";
             $tp = "";

@@ -33,7 +33,7 @@
                         if($i==11)
                             $i=0;
                         ?>
-                        <?php if($prosubdoc['display'] != 0 && $d->display==1)
+                        <?php if($prosubdoc['display'] > 1 && $d->display==1)
                         {?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 

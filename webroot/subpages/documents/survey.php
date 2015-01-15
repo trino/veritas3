@@ -61,7 +61,7 @@ $is_disabled = '';
     				</div>
                 <div class="clearfix"></div>
                 </div>
-                
+ </form>              
 <script>
 $(function(){
    $("input[type='radio']").change(function() {

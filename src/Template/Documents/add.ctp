@@ -158,7 +158,7 @@
 
         var s_arr = sub_doc_id.split('=');
         var ftype = arr_formtype[0];
-
+        
         $('#sub_id').val(s_arr[1]);
         //var form_type = $(this).val();
         //alert(form_type);
@@ -182,6 +182,8 @@
         
         $('.subform6 .document_type').remove();
         $('.subform6 .sub_docs_id').remove();
+        
+        alert(s_arr[1]);
         if(s_arr[1] == 1)
         {
             $('#form_tab1').prepend('<input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>'+
@@ -202,6 +204,7 @@
             $('#form_tab4').prepend('<input class="document_type" type="hidden" name="document_type" value="Place MEE Order" />'+
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="4"  />');
         }
+      
         if(s_arr[1] == 5)
         {
             $('#form_tab5').prepend('<input class="document_type" type="hidden" name="document_type" value="Survey" />'+
@@ -212,10 +215,10 @@
             $('#form_tab6').prepend('<input class="document_type" type="hidden" name="document_type" value="Feedbacks" />'+
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="6"  />');
         }
-
+        
         if(ftype!= ""){
             //alert(form_type);
-            for(var p = 1;p<=4;p++)
+            for(var p = 1;p<=7;p++)
             {
                 $('.subform'+p).hide();
             }
@@ -815,7 +818,7 @@
         if($this->request->params['action']=='view')
         {
             ?>
-        for(var h=1;h<5;h++)
+        for(var h=1;h<7;h++)
         {
             $('#form_tab'+h+' input').attr('disabled','disabled');
             $('#form_tab'+h+' textarea').attr('disabled','disabled');
@@ -844,7 +847,7 @@
             else
                 var draft=0;
             var type=$(".document_type").val();
-            //alert(type);
+            alert(type);
             //alert($('#sub_id').val());return;
             var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val(),division:$('#division').val()};
             $.ajax({
@@ -919,7 +922,7 @@
                     }
                     $('.flashDoc').show();
                     $('.flashDoc').fadeOut(8000);
-                   //window.location = '<?php echo $this->request->webroot?>documents/index';
+                   window.location = '<?php echo $this->request->webroot?>documents/index';
                 }
             });
         });

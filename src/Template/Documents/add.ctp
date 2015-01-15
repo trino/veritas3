@@ -95,7 +95,9 @@
                         <div class="subform3" style="display: none;">
                             <?php include('subpages/documents/driver_evaluation_form.php');?>
                         </div>
-                        
+                        <div class="subform5" style="display: none;">
+                            <?php include('subpages/documents/survey.php');?>
+                        </div>
                         <div class="subform6" style="display: none;">
                             <?php include('subpages/documents/feedbacks.php');?>
                         </div>
@@ -175,6 +177,9 @@
         $('.subform4 .document_type').remove();
         $('.subform4 .sub_docs_id').remove();
         
+        $('.subform5 .document_type').remove();
+        $('.subform5 .sub_docs_id').remove();
+        
         $('.subform6 .document_type').remove();
         $('.subform6 .sub_docs_id').remove();
         if(s_arr[1] == 1)
@@ -196,6 +201,11 @@
         {
             $('#form_tab4').prepend('<input class="document_type" type="hidden" name="document_type" value="Place MEE Order" />'+
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="4"  />');
+        }
+        if(s_arr[1] == 5)
+        {
+            $('#form_tab5').prepend('<input class="document_type" type="hidden" name="document_type" value="Survey" />'+
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="5"  />');
         }
         if(s_arr[1] == 6)
         {
@@ -834,7 +844,7 @@
             else
                 var draft=0;
             var type=$(".document_type").val();
-            alert(type);
+            //alert(type);
             //alert($('#sub_id').val());return;
             var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val(),division:$('#division').val()};
             $.ajax({
@@ -843,7 +853,7 @@
                 type:'post',
                 url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+doc_id+'/?document='+type+'&draft='+draft,
                 success:function(res) {
-                    alert(res);
+                    //alert(res);
                     $('#did').val(res);
                     // saving data
 
@@ -877,6 +887,24 @@
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>feedbacks/add/'+order_id+'/'+cid+'/?document='+type;
                             var param = $('#form_tab6').serialize();
+                                   
+                            
+                                $.ajax({
+                                        url:url,
+                                        data: param,
+                                        type:'POST',
+                                        success: function(res){
+                            
+                                        }
+                                    });
+                    
+                    }
+                    else if(type == "Survey")
+                    {
+                        var order_id =$('#did').val(),
+                            cid = '<?php echo $cid;?>',
+                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/'+order_id+'/'+cid+'/?document='+type;
+                            var param = $('#form_tab5').serialize();
                                    
                             
                                 $.ajax({

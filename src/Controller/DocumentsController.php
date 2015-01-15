@@ -187,7 +187,7 @@ class DocumentsController extends AppController {
          $this->set('did',$did);
          $this->set('sid','');
          if($did){
-         $docs = TableRegistry::get('documents');
+            $docs = TableRegistry::get('documents');
             $document = $docs->find()->where(['id' => $did])->first();
             $this->set('mod',$document);
             }
@@ -208,6 +208,25 @@ class DocumentsController extends AppController {
         //$did=$id;
         if($did)
         {
+            $doc = TableRegistry::get('Documents');
+                    $query = $doc->find()->where(['id' => $did])->first();
+             if($query->sub_doc_id == '6')
+             {
+                $feeds = TableRegistry::get('feedbacks');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $feed = $feeds->find()->where(['document_id'=>$did])->first();
+                $this->set('feeds',$feed);
+                $this->set('disabled','1');
+             }
+             elseif($query->sub_doc_id == '5')
+             {
+                
+                $survey = TableRegistry::get('Survey');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $sur = $survey->find()->where(['document_id'=>$did])->first();
+                $this->set('survey',$sur);
+                $this->set('disabled','1');
+             }
             $pre = TableRegistry::get('pre_screening_attachments');
             //$pre_at = TableRegistry::get('driver_application_accident');
             $pre_at['attach_doc'] = $pre->find()->where(['doc_id'=>$did])->all();
@@ -1267,9 +1286,17 @@ class DocumentsController extends AppController {
              if($query->sub_doc_id == '6')
              {
                 $feeds = TableRegistry::get('feedbacks');
-            //$pre_at = TableRegistry::get('driver_application_accident');
-            $feed = $feeds->find()->where(['document_id'=>$did])->first();
-            $this->set('feeds',$feed);
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $feed = $feeds->find()->where(['document_id'=>$did])->first();
+                $this->set('feeds',$feed);
+             }
+             elseif($query->sub_doc_id == '5')
+             {
+                
+                $survey = TableRegistry::get('Survey');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $sur = $survey->find()->where(['document_id'=>$did])->first();
+                $this->set('survey',$sur);
              }
             
             $pre = TableRegistry::get('pre_screening_attachments');
@@ -1353,13 +1380,40 @@ class DocumentsController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function delete($id = null) {
+	public function delete($id = null, $type ="") {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
         if($setting->document_delete==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
+            
+        }
+        if($id !="")
+        {
+            /*$doc = TableRegistry::get('Subdocuments');
+            $query = $doc->find();
+            if($type == 'orders'){
+                $query->select()->where(['display' => 1, 'orders'=> 1])->all();
+            }
+            else
+                $query->select()->where(['display' => 1,'orders'=> 0])->all();
+            foreach($query as $q)
+            {
+                $sub = TableRegistry::get($q->table_name);
+                $sub->delete()->where(['document_id'=>$id])->execute();
+                
+            }*/
+            $docz = TableRegistry::get('Documents');
+           if( $docz->delete()->where(['id'=>$id])->execute())
+           {
+                $this->Flash->success('Document has been deleted.');
+           }
+           else
+           {
+                $this->Flash->error('Document could not be deleted. Please try again.');
+           }
+           return $this->redirect(['action' => 'index']);
             
         }
 		/*$profile = $this->Clients->get($id);

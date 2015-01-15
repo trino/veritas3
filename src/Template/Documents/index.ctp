@@ -170,7 +170,7 @@
                                             echo $this->Html->link(__('Edit'), ['action' => 'add',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
                                     }
                                      ?>
-                                    <?php  if($sidebar->document_delete=='1'){ echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $docs->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $docs->id)]);} ?>
+                                    <?php  if($sidebar->document_delete=='1'){ ?> <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>" onclick="return confirm('Confirm Delete?')" class="btn btn-danger" >Delete</a><?php } ?>
 
                                 </td>
                             </tr>

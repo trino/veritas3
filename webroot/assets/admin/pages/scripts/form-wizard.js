@@ -1,3 +1,8 @@
+var path = window.location.pathname;
+if(path.replace('veritas3','')!=path)
+    var base_url = 'http://localhost/veritas3/';
+else
+    var base_url = 'http://isbmee.com/';
 var FormWizard = function () {
     return {
         //main function to initiate the module
@@ -180,6 +185,9 @@ var FormWizard = function () {
                 if(current == (total-1))
                 {
                     $('.cont').html('Submit Order');
+                    $.ajax({
+                       url:base_url+'documents/createPDF/'+$('#did').val()
+                    });
                    // $('.cont').attr('id','');
                 }
                 else{
@@ -196,11 +204,7 @@ var FormWizard = function () {
                     $('.uploaded_for').hide();
                     
                     var count = 10;
-                    var path = window.location.pathname;
-                    if(path.replace('veritas3','')!=path)
-                    var base_url = 'http://localhost/veritas3/';
-                    else
-                    var base_url = 'http://isbmee.com/';
+
                     
                     $.ajax({
                         url:base_url+'documents/webservice/0/0/'+$('#did').val()+'/'+$('#uploaded_for').val(),

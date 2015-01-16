@@ -5,7 +5,7 @@
     use Cake\Event\Event;
     use Cake\Controller\Controller;
     use Cake\ORM\TableRegistry;
-
+    include(APP.'..\webroot\subpages\soap\nusoap.php');
 
     class DocumentsController extends AppController {
 
@@ -1967,7 +1967,90 @@
         }
         public function webservice($callfunction = null, $body = null, $orderid = null, $driverid = null)
         {
-            $this->Flash->success('Order submitted successfully!');
+           $this->layout="blank";
+       //     require_once(APP.'../webroot/subpages/soap/nusoap.php');
+
+
+
+// APP.'../webroot/subpages/soap/nusoap.php';
+            $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
+            $client = new nusoap_client($proxyhost, true, $proxyhost, $proxyport = null, $proxyusername = null, $proxypassword = null);
+            echo 123;die();
+
+
+            $client->clearDebug();
+            $client->useHTTPPersistentConnection();
+
+            /****************************************************************************/
+            $callfunction = "startorder";
+
+            if ($callfunction == "startorder") {
+
+            $body = '&lt;ProductData&gt;&lt;isb_FN&gt;MEE FirstName&lt;/isb_FN&gt;&lt;isb_LN&gt;MEE LastName&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;2015-01-07&lt;/isb_DOL&gt;&lt;isb_Prov&gt;ON&lt;/isb_Prov&gt;&lt;isb_UserID&gt;22435&lt;/isb_UserID&gt;&lt;/ProductData&gt;';
+            //      echo $urlDecodedStr = rawurldecode($body);
+
+            $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
+            <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <soap:Body>
+            <StartOrder xmlns="http://tempuri.org/"><IntPackage>'
+            . $body .
+            '</IntPackage>
+            <tp>MEE</tp>
+            <prod>true</prod>
+            </StartOrder>
+            </soap:Body></soap:Envelope>';
+            $result = $client->call('StartOrder', $soap_xml);
+            }
+
+            print_r($result);
+
+            echo '><pre>' . htmlspecialchars($client->response, ENT_QUOTES) . '</pre>';
+            die();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            $model = TableRegistry::get('Profiles');
+            $cnt = $model->find()->where(['id'=>$driverid])->first();
+
+
+/*
+            $querys = TableRegistry::get('orders');
+            $arr['response'] = $response;
+            $query2 = $querys->query();
+            $query2->update()
+                ->set($arr)
+                ->where(['id' => $orderid])
+                ->execute();
+*/
+//include(APP.'../webroot/')
+            // save orders table
+            //$this->getDetails($id);
+            //$this->thirdFunction($id);
+
+
+
+
+debug( $cnt);die();
+
+//            $this->Flash->success('Order submitted successfully!');
+
+
             $uid = "";
             $pdi = "";
             $tp = "";
@@ -1983,6 +2066,13 @@
             $dob = "";
             $email = "";
             $gender = "";
+
+
+
+        }
+        function getDetails($id)
+        {
+            //
         }
 
     }

@@ -1995,5 +1995,16 @@
                 ->where(['order_id' => $id]);
             $this->set('detail',$arr);
         }
+        public function createPdfEmployment($id)
+        {
+            $this->layout = 'blank';
+            $consent = TableRegistry::get('employment_verification');
+            $arr['consent'] = $consent
+                ->find()
+                ->where(['order_id' => $id])->first();
+
+            
+            $this->set('detail',$arr);
+        }
         
     }

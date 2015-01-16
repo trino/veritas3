@@ -31,4 +31,20 @@ class PdfsController extends AppController
         $this->set('detail',$arr);
         $this->set(compact('att'));
     }
+    function getEducation($oid)
+    {
+        $this->layout = 'blank';
+        $consent = TableRegistry::get('education_verification');
+        $education = $consent
+            ->find()
+            ->where(['order_id' => $oid]);;
+        
+        
+        $attach = TableRegistry::get('education_verification_attachments');
+        $att = $attach
+            ->find()
+            ->where(['order_id' => $oid]);
+        $this->set(compact('education'));
+        $this->set(compact('att'));
+    }
 }

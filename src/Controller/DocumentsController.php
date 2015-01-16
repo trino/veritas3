@@ -1967,5 +1967,14 @@
                 ->where(['order_id' => $id]);
             $this->set('detail',$arr);
         }
+        public function createPdfEducation($id)
+        {
+            $this->layout = 'blank';
+            $consent = TableRegistry::get('education_verification');
+            $arr['education'] = $consent
+                ->find()
+                ->where(['order_id' => $id])->first();
+            $this->set('detail',$arr);
+        }
         
     }

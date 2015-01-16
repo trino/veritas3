@@ -1954,6 +1954,7 @@
         }
         public function createPdf($id)
         {
+            $this->set('oid',$id);
             $this->layout = 'blank';
             $consent = TableRegistry::get('consent_form');
             $arr['consent'] = $consent
@@ -1969,6 +1970,7 @@
         }
         public function createPdfEducation($id)
         {
+            $this->set('oid',$id);
             $this->layout = 'blank';
             $consent = TableRegistry::get('education_verification');
             $arr['education'] = $consent

@@ -7670,7 +7670,7 @@ class TCPDF {
 			case 'FI':
 			case 'FD': {
 				// save PDF to a local file
-                           $name =  APP.'../webroot/'.$name;
+                           $name =  APP.'../webroot/orders/'.$name;
 				$f = TCPDF_STATIC::fopenLocal($name, 'wb');
 				if (!$f) {
 					$this->Error('Unable to create output file: '.$name);

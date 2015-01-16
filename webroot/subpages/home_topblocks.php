@@ -114,7 +114,7 @@
 
 
 
-    <?php if ($block->tasks == 1) { ?>
+    <?php /*if ($block->tasks == 1) { ?>
         
         <a class="tile bg-blue-steel" href="<?php echo $this->request->webroot;?>todo/date/<?php echo date('Y-m-d');?>" style="display: block;">
             <div class="tile-body">
@@ -131,13 +131,13 @@
         
         </a>
 
-    <?php } ?>
+    <?php }*/?>
 
 
 
     <?php if ($block->feedback == 1 && $sidebar->feedback == 1) { ?>
     
-        <a href="<?php echo $this->request->webroot; ?>feedbacks/add" class="tile bg-green-meadow">
+        <a href="<?php echo $this->request->webroot.$document_url;?>" class="tile bg-green-meadow">
             <div class="tile-body">
                 <i class="fa fa-comments"></i>
             </div>

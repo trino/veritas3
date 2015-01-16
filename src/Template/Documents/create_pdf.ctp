@@ -65,7 +65,7 @@ if($_SERVER['SERVER_NAME']='localhost')
 $initials = 'http://localhost';
 else
 $initials = 'http://isbmee.com';
-$html = file_get_contents($initials.$this->request->webroot.'pdfs/getConsent/'.$detail['consent']->order_id);
+$html = file_get_contents($initials.$this->request->webroot.'pdfs/getConsent/'.$oid);
 // Print text using writeHTMLCell()
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 

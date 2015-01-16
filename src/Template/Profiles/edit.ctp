@@ -251,6 +251,7 @@
                 </div>
 
             </div>
+            
             <?php if ($this->request->params['action'] == 'edit') { ?>
                 <div class="portlet box blue scrolldiv">
                     <div class="portlet-title">
@@ -491,5 +492,9 @@ $(function(){
     $('.scrolldiv').slimScroll({
         height: '250px'
     });
+    
 });
 </script>
+<style>
+.portlet-body{ min-height: 250px!important;}
+</style>

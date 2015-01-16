@@ -83,7 +83,7 @@
 
                             <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
                             <input type="hidden" name="sub_doc_id" value="<?php echo $sid;?>" id="sub_id" />
-                            <?php include('subpages/adminlisting.php');?>
+                            <?php //include('subpages/adminlisting.php');?>
 
                         </div>
                         <div class="subform1" style="display: none;">

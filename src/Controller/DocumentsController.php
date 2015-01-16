@@ -86,9 +86,10 @@
                 // $this->set('start',$cond);
 
             }
-
+            
             if ($cond) {
                 $doc = $doc->where([$cond]);
+                //debug($doc);die();
             }
 
             if (isset($_GET['searchdoc'])) {
@@ -1655,7 +1656,7 @@
             die;
 
         }
-
+        /*
         function get_documentcount($type, $c_id = "")
         {
             //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
@@ -1682,7 +1683,34 @@
             $this->response->body(($cnt));
             return $this->response;
         }
+        */
+        function get_documentcount($subdocid, $c_id = "")
+        {
+            //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
+            //var_dump($cond);die();
+            $u = $this->request->session()->read('Profile.id');
 
+            if (!$this->request->session()->read('Profile.super')) {
+                $setting = $this->Settings->get_permission($u);
+                if ($setting->documents_others == 0) {
+                    $u_cond = "user_id=$u";
+                }
+
+            } else
+                $u_cond = "";
+
+            $model = TableRegistry::get("Documents");
+            if ($c_id != "") {
+                $cnt = $model->find()->where(["sub_doc_id"=>$subdocid,'draft'=>'0', $u_cond, 'client_id' => $c_id])->count();
+            } else {
+                $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'));
+                $cnt = $model->find()->where(["sub_doc_id"=>$subdocid,'draft'=>'0', $u_cond, 'OR' => $cond])->count();
+            }
+            //debug($cnt); die();
+            $this->response->body(($cnt));
+            return $this->response;
+        }
+        
         function fileUpload()
         {
             // print_r($_POST);die;

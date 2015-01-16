@@ -34,7 +34,7 @@ function save(numb)
 					{
 						
                         $.ajax({
-                            url:'<?php echo $this->request->webroot;?>document/image_sess/'+numb+'/'+response
+                            url:'<?php echo $this->request->webroot;?>documents/image_sess/'+numb+'/'+response
                         });
 					});	
 				

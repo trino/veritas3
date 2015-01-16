@@ -87,7 +87,7 @@
                                 <label class="control-label col-md-3">Claims with this Employer:</label>
                                 <div class="col-md-3">
                                 <?php if($emp->claims_with_employer == 1){ echo "&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"; }?>
-                                        <?php if($emp->claims_with_employer == 0){echo "&nbsp;&nbsp;&nbsp;&nbsp;No";?>
+                                        <?php if($emp->claims_with_employer == 0){echo "&nbsp;&nbsp;&nbsp;&nbsp;No";}?>
                                 </div>
                                  <label class="control-label col-md-3">Date Claims Occured:</label>
                                  <div class="col-md-3">
@@ -140,34 +140,11 @@
                                 </div>
                 
                 </div>
+                <?php
+                    }
+                    
+                }
                 
-                        
-                        <?php
-                        if($counter!=1)
-                        {
-                            ?>
-                                <div class="delete">
-                                    <a href="javascript:void(0);" class="btn red" id="delete">Delete</a>
-                                </div>
-                            </div>
-                            
-                            <?php
-                            if($counter==2)
-                            {
-                                ?>
-                        </div>
-                                <?php
-                            }
-                        }
-                    }
-                    if($counter==1)
-                    {
-                        ?>
-                        <div id="more_div"></div>
-                        <?php
-                    }
-                }
-                }
                 ?>
         
      

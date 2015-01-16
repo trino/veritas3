@@ -31,6 +31,7 @@ class PdfsController extends AppController
         $this->set('detail',$arr);
         $this->set(compact('att'));
     }
+
     function getEmployment($oid)
     {
         $this->layout = 'blank';
@@ -38,13 +39,34 @@ class PdfsController extends AppController
         $arr['consent'] = $consent
             ->find()
             ->where(['order_id' => $oid])->all();
+            
         $this->set('detail',$arr);
-       
+        
         $attach = TableRegistry::get('employment_verification_attachments');
         $att = $attach
             ->find()
             ->where(['order_id' => $oid]);
+        
+
+        $this->set(compact('att'));
        
+    } 
+
+    function getEducation($oid)
+    {
+        $this->layout = 'blank';
+        $consent = TableRegistry::get('education_verification');
+        $education = $consent
+            ->find()
+            ->where(['order_id' => $oid]);;
+        
+        
+        $attach = TableRegistry::get('education_verification_attachments');
+        $att = $attach
+            ->find()
+            ->where(['order_id' => $oid]);
+        $this->set(compact('education'));
+
         $this->set(compact('att'));
     }
 }

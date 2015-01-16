@@ -1980,4 +1980,20 @@
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
         }
+        public function createPdf($id)
+        {
+            $this->layout = 'blank';
+            $consent = TableRegistry::get('consent_form');
+            $arr['consent'] = $consent
+                ->find()
+                ->where(['order_id' => $id])->first();
+
+            
+            $consent_attachment = TableRegistry::get('consent_form_attachments');
+            $arr['consent_attachment'] = $consent_attachment
+                ->find()
+                ->where(['order_id' => $id]);
+            $this->set('detail',$arr);
+        }
+        
     }

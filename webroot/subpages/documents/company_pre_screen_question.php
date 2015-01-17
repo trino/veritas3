@@ -12,7 +12,7 @@
 									<div class="form-group col-md-6">
 										<label class="col-md-6 control-label">Recruiter's Name : </label>
 										<div class="col-md-6">
-											<input type="text" class="form-control" name="recruiter_name" />
+											<input type="text" class="form-control" name="recruiter_name" value="<?php if(!$did)echo $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.lname');?>" />
 										</div>
 									</div>
 									<div class="form-group col-md-6">

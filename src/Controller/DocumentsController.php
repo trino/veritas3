@@ -2019,5 +2019,14 @@
 
             $this->set('detail',$arr);
         }
+        public function viewReport($client_id,$order_id)
+        {
+            $orders = TableRegistry::get('orders');
+            $order = $orders
+                ->find()
+                ->where(['id' => $order_id])->first();
+
+            $this->set('order',$order);
+        }
         
     }

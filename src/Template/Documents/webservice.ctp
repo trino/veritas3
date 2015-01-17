@@ -1,5 +1,5 @@
 <?php
-$proxyhost = 'https://infosearchsite.com/MEEEEWS/ISBService.svc?wsdl';
+$proxyhost = 'https://infosearchsite.com/MEEEWS/ISBService.svc?wsdl';
 
 $client = new nusoap_client($proxyhost, true, $proxyhost, $proxyport = null, $proxyusername = null, $proxypassword = null);
 
@@ -239,56 +239,64 @@ debug($result);
 
 
 
- if(true){
+if(true){
 //UploadBinary
 //265
 
-  $pdf_content = '';
-  $pdf_decoded = base64_decode ($pdf_content);
-  $pdf = file_get_contents('a1.pdf');
-  $body = base64_encode($pdf);
-  echo $urlDecodedStr  = rawurldecode($body);
-  $soap_xml ='<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">'.
-  '<UID>'.$ebs_id.'</UID><PDI>269</PDI><FileData>'.$body.'</FileData><productID>1650</productID><Filename>test.pdf</Filename><FileType>ConsentForm</FileType><tp>INS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
-  $result = $client->call('UploadBinaryFile',$soap_xml );
+$pdf_content = '';
+$pdf_decoded = base64_decode ($pdf_content);
+$pdf = file_get_contents('a1.pdf');
+$body = base64_encode($pdf);
+echo $urlDecodedStr  = rawurldecode($body);
+$soap_xml ='<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">'.
+'<UID>'.$ebs_id.'</UID><PDI>'. $r[0].'</PDI><FileData>'.$body.'</FileData><productID>1650</productID><Filename>test.pdf</Filename><FileType>ConsentForm</FileType><tp>INS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+$result = $client->call('UploadBinaryFile',$soap_xml );
 
- }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-if ($client->fault) {
-echo '<h2>Fault</h2><pre>';
-print_r($result);
-echo '</pre>';
-} else {
-$err = $client->getError();
-if ($err) {
-echo '<h2>Error</h2><pre>' . $err . '</pre>';
-} else {
-echo '<h2>Result</h2><pre>';
-print_r($result);
-echo '</pre>';
-}
+debug($result);
 }
 
-echo '<h2>Request</h2><pre>' . htmlspecialchars($client->request, ENT_QUOTES) . '</pre>';
-echo '<h2>Response</h2><pre>' . htmlspecialchars($client->response, ENT_QUOTES) . '</pre>';
-echo '<h2>Debug</h2><pre>' . htmlspecialchars($client->getDebug(), ENT_QUOTES) . '</pre>';
 
-$client->clearDebug();
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    if ($client->fault) {
+    echo '<h2>Fault</h2><pre>';
+    print_r($result);
+    echo '</pre>';
+    } else {
+    $err = $client->getError();
+    if ($err) {
+    echo '<h2>Error</h2><pre>' . $err . '</pre>';
+    } else {
+    echo '<h2>Result</h2><pre>';
+    print_r($result);
+    echo '</pre>';
+    }
+    }
+
+    echo '<h2>Request</h2><pre>' . htmlspecialchars($client->request, ENT_QUOTES) . '</pre>';
+    echo '<h2>Response</h2><pre>' . htmlspecialchars($client->response, ENT_QUOTES) . '</pre>';
+    echo '<h2>Debug</h2><pre>' . htmlspecialchars($client->getDebug(), ENT_QUOTES) . '</pre>';
+
+    $client->clearDebug();
+    */
 ?>

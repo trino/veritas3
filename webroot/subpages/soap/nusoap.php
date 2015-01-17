@@ -2178,11 +2178,11 @@ class soapval extends nusoap_base {
 */
 class soap_transport_http extends nusoap_base {
 
-	var $url = 'https://infosearchsite.com/MEEEEWS/ISBService.svc?wsdl';
-	var $uri = 'https://infosearchsite.com/MEEEEWS/ISBService.svc?wsdl';
+	var $url = 'https://infosearchsite.com/MEEEWS/ISBService.svc?wsdl';
+	var $uri = 'https://infosearchsite.com/MEEEWS/ISBService.svc?wsdl';
 	var $digest_uri = '';
 	var $scheme = '';
-	var $host = 'https://infosearchsite.com/MEEEEWS/ISBService.svc?wsdl';
+	var $host = 'https://infosearchsite.com/MEEEWS/ISBService.svc?wsdl';
 	var $port = '';
 	var $path = '';
 	var $request_method = 'POST';
@@ -4634,7 +4634,7 @@ class wsdl extends nusoap_base {
     var $depth = 0;
     var $depth_array = array();
 	// for getting wsdl
-	var $proxyhost = 'https://infosearchsite.com/MEEEEWS/ISBService.svc?wsdl';
+	var $proxyhost = 'https://infosearchsite.com/MEEEWS/ISBService.svc?wsdl';
     var $proxyport = '';
 	var $proxyusername = 'MEE';
 	var $proxypassword = 'yhb45cf@f';
@@ -7209,7 +7209,7 @@ class nusoap_client extends nusoap_base  {
 	var $document = '';				// SOAP body response portion (incomplete namespace resolution) (text)
 	var $endpoint;
 	var $forceEndpoint = '';		// overrides WSDL endpoint
-    var $proxyhost = 'https://infosearchsite.com/MEEEEWS/ISBService.svc?wsdl';
+    var $proxyhost = 'https://infosearchsite.com/MEEEWS/ISBService.svc?wsdl';
     var $proxyport = '';
 	var $proxyusername = 'MEE';
 	var $proxypassword = 'yhb45cf@f';

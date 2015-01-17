@@ -2019,5 +2019,9 @@
 
             $this->set('detail',$arr);
         }
+        public function viewReport($clientid, $orderid)
+        {
+
+        }
         
     }

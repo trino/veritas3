@@ -157,6 +157,7 @@
                                         
 <?php                                   if($sidebar->orders_requalify=='1') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
 ?>
+                                        <?php echo $this->Html->link(__('View report'), ['controller'=>'documents','action' => 'viewReport',$order->client_id, $order->id], ['class' => 'btn btn-success']);?>
                                 </td>
                             </tr>
 

@@ -1048,7 +1048,7 @@ jQuery(document).ready(function() {
         else
         var draft =0;
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
-    var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#division').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val()};
+    var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#division').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val(),recruiter_signature:$('#recruiter_signature').val()};
     $.ajax({
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,
@@ -1078,7 +1078,7 @@ jQuery(document).ready(function() {
                     url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid;
                    savedDriverEvaluation(url,order_id,cid);
         } else if(type=="Place MEE Order") {
-             alert('type');
+             //alert('type');
              var order_id =$('#did').val(),
                 cid = '<?php echo $cid;?>',
                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid;

@@ -67,8 +67,8 @@
         <td><b>Printed Name of Company Witness</b> : <?php echo $detail['consent']->printed_name_company_witness;?></td>
      </tr>
      <tr>
-        <td><b>Company Location (Country)</b> : <?php echo $detail['consent']->company_location;?></td>
-        <td><b>Signature of Company Witness</b> : <?php echo $detail['consent']->signature_company_witness;?></td>
+        <td colspan="2"><b>Company Location (Country)</b> : <?php echo $detail['consent']->company_location;?></td>
+        <!--<td><b>Signature of Company Witness</b> : <?php echo $detail['consent']->signature_company_witness;?></td>-->
      </tr>
      <tr>
         <td colspan="2">
@@ -90,8 +90,8 @@
      </tr>
      
      <tr>
-        <td><b>Signature of applicant</b> : <?php echo $detail['consent']->criminal_signature_applicant;?></td>
-        <td><b>Date</b> : <?php echo $detail['consent']->criminal_date;?></td>
+        <!--<td><b>Signature of applicant</b> : <?php echo $detail['consent']->criminal_signature_applicant;?></td>-->
+        <td colspan="2"><b>Date</b> : <?php echo $detail['consent']->criminal_date;?></td>
      </tr>
      <tr>
         <td colspan="2">
@@ -154,4 +154,11 @@ if($att)
     }
 }
 ?>
-
+<p>
+<strong>Signature of Driver</strong><br />
+<?php if(isset($detail['consent']) && $detail['consent']->criminal_signature_applicant){?><img src="<?php echo $this->request->webroot.'canvas/'.$detail['consent']->criminal_signature_applicant;?>" style="max-width: 100%;" /><?php }?>
+</p>
+<p>
+<strong>Signature of Company Witness</strong><br />
+<?php if(isset($detail['consent']) && $detail['consent']->signature_company_witness){?><img src="<?php echo $this->request->webroot.'canvas/'.$detail['consent']->signature_company_witness;?>" style="max-width: 100%;" /><?php }?>
+</p>

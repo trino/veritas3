@@ -2,12 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a163c84f-7931-4688-a0c4-59462597eb2d" name="Default" comment="[edit] listing clients as per profile(user)">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/136364_634072.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/726083_914965.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/734158_135760.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/767337_264739.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/941690_650469.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form240515136.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form324862670.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form423217773.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form485620117.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form834875488.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form863769531.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form942349243.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form149246215.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form228237915.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form288140869.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form449035644.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form780987548.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form803948974.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form958389282.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm211813354.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm333514404.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm442059326.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm628085327.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm720672607.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm751324462.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm967919921.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/confirmation_signature.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/consent_signature_driver.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/consent_signature_witness.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Documents/view_report.ctp" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\example_001.pdf" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss3.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form458456420.pdf" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/DocumentsController.php" afterPath="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/company_pre_screen_question.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/company_pre_screen_question.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/confirmation.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/confirmation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" afterPath="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Pdfs/get_consent.ctp" afterPath="$PROJECT_DIR$/src/Template/Pdfs/get_consent.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/canvas/jquery.jqscribble.js" afterPath="$PROJECT_DIR$/webroot/canvas/jquery.jqscribble.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
     <ignored path="veritas3.iws" />
@@ -33,11 +72,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.730769" vertical-offset="32351" max-vertical-offset="34544">
-              <caret line="1924" column="0" selection-start-line="1924" selection-start-column="0" selection-end-line="1924" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.26530612" vertical-offset="0" max-vertical-offset="34680">
+              <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
               <folding>
                 <element signature="e#41#74#0#PHP" expanded="true" />
               </folding>
@@ -45,10 +84,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="5236">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="306" max-vertical-offset="5236">
               <caret line="18" column="63" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
               <folding>
                 <marker date="1421512153968" expanded="true" signature="919:1081" placeholder="..." />
@@ -115,10 +154,10 @@
       <file leaf-file-name="form-wizard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3434" max-vertical-offset="4998">
-              <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3910" max-vertical-offset="5474">
+              <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
               <folding>
-                <marker date="1421418186720" expanded="true" signature="9927:10014" placeholder="//..." />
+                <marker date="1421526264300" expanded="true" signature="11242:11329" placeholder="//..." />
               </folding>
             </state>
           </provider>
@@ -853,10 +892,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3434" max-vertical-offset="4998">
-          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3910" max-vertical-offset="5474">
+          <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
           <folding>
-            <marker date="1421418186720" expanded="true" signature="9927:10014" placeholder="//..." />
+            <marker date="1421526264300" expanded="true" signature="11242:11329" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -866,16 +905,6 @@
         <state vertical-scroll-proportion="-11.115385" vertical-offset="51" max-vertical-offset="5542">
           <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769" vertical-offset="32351" max-vertical-offset="34544">
-          <caret line="1924" column="0" selection-start-line="1924" selection-start-column="0" selection-end-line="1924" selection-end-column="0" />
-          <folding>
-            <element signature="e#41#74#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -931,6 +960,16 @@
             <marker date="1421512153968" expanded="true" signature="6711:7220" placeholder="..." />
             <marker date="1421512153968" expanded="true" signature="7795:8309" placeholder="..." />
             <marker date="1421512153968" expanded="true" signature="8696:9106" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26530612" vertical-offset="0" max-vertical-offset="34680">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+          <folding>
+            <element signature="e#41#74#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

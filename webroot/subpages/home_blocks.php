@@ -47,7 +47,7 @@
     						</div>
     						<div class="details">
     							<div class="number">
-                                <?php echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->table_name); ?>
+                                <?php echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
     								
     							</div>
     							<div class="desc">

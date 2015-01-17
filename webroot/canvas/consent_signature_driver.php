@@ -1,4 +1,4 @@
-        <?php $_GET['num']=3;?>
+        
 		<meta name="viewport" content="width=device-width;initial-scale=1.0;maximum-scale=1.0;user-scalable=0;"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
@@ -27,28 +27,19 @@
 			}
 		</style>
 	
-		<div style="overflow: hidden; margin-bottom: 5px;display:none" class="">
-			<div class="column-left links" style="display: none;">
-				<strong>BRUSHES:</strong>
-				<a href="#" onclick='$("#test").data("jqScribble").update({brush: BasicBrush});'>Basic</a>
-				<a href="#" onclick='$("#test").data("jqScribble").update({brush: LineBrush});'>Line</a>
-				<a href="#" onclick='$("#test").data("jqScribble").update({brush: CrossBrush});'>Cross</a>
-			</div>
-			<div class="column-right links" style="display: none;">
-				<strong>COLORS:</strong>
-				<a href="#" onclick='$("#test").data("jqScribble").update({brushColor: "rgb(0,0,0)"});'>Black</a>
-				<a href="#" onclick='$("#test").data("jqScribble").update({brushColor: "rgb(255,0,0)"});'>Red</a>
-				<a href="#" onclick='$("#test").data("jqScribble").update({brushColor: "rgb(0,255,0)"});'>Green</a>
-				<a href="#" onclick='$("#test").data("jqScribble").update({brushColor: "rgb(0,0,255)"});'>Blue</a>
-			</div>
-		</div>
-        <div class="col-sm-6" style="width: 400px;">
-    		<canvas id="test<?php echo $_GET['num'];?>" style="border: 1px solid silver;border-radius: 5px;"></canvas>
+		
+        <div class="col-sm-6">
+            <input type="hidden" name="criminal_signature_applicant" id="criminal_signature_applicant" />
+            <input type="hidden" class="touched" value="0" />
+            <label class="control-label col-md-12">Signature of Applicant</label>
+    		<canvas id="test3" style="border: 1px solid silver;border-radius: 5px;"></canvas>
     		<div class="links" style="margin-top: 5px;">
     			<strong style="display: none;">OPTIONS:</strong>
     			<a href="#" onclick='addImage();' style="display: none;">Add Image</a>
-    			<a href="javascript:void(0)" onclick='$("#test<?php echo $_GET['num'];?>").data("jqScribble").clear();'>Clear</a> 			
-                <br /><br />
+    			<a href="javascript:void(0)" onclick='$("#test3").data("jqScribble").clear();'>Clear</a> 			
+                <br />
+                <?php if(isset($consent_detail) && $consent_detail->criminal_signature_applicant){?><strong>Current Signature<br /></strong><img src="<?php echo $this->request->webroot.'canvas/'.$consent_detail->criminal_signature_applicant;?>" style="max-width: 100%;" /><?php }?>
+                <br />
                 
     		</div>
         </div>

@@ -17,7 +17,8 @@
     </div>
     <div class="form-group col-md-12">
     <label class="control-label col-md-12">Please sign below to confirm your submission. </label>
-    <?php include('canvas/example.php');?>
+    <input type="hidden" name="recruiter_signature" id="recruiter_signature" value="<?php if(isset($modal->recruiter_signature))echo $this->request->webroot.'canvas/'.$modal->recruiter_signature;?>" />
+    <?php include('canvas/confirmation_signature.php');?>
     </div>
     <div class="clearfix"></div>
 
@@ -25,21 +26,7 @@
 $(function(){
    $("#test1").jqScribble(); 
 });
-function save(numb)
-		{
-		  alert('rest');return;
-			$("#test"+numb).data("jqScribble").save(function(imageData)
-			{
-				$.post('image_save.php', {imagedata: imageData}, function(response)
-					{
-						
-                        $.ajax({
-                            url:'<?php echo $this->request->webroot;?>documents/image_sess/'+numb+'/'+response
-                        });
-					});	
-				
-			});
-		}
+
 		function addImage()
 		{
 			var img = prompt("Enter the URL of the image.");

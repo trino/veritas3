@@ -399,6 +399,7 @@
                     $con_at = TableRegistry::get('consent_form_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['order_id' => $did])->all();
                     $this->set('sub2', $sub2);
+                    $this->set('consent_detail',$con_detail);
 
                 }
                 $emp = TableRegistry::get('employment_verification');
@@ -428,6 +429,7 @@
                 $orders = TableRegistry::get('orders');
                 $arr['title'] = 'order_' . $_POST['uploaded_for'] . '_' . date('Y-m-d H:i:s');
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
+                $arr['uploaded_for'] = $_POST['recruiter_signature'];
                 if (isset($_GET['draft']) && $_GET['draft'])
                     $arr['draft'] = 1;
                 else

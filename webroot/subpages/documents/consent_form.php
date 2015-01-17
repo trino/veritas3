@@ -151,10 +151,7 @@
                     <div class="col-md-2">
     					<input type="text" class="form-control" name="company_location"/>
     				</div>
-                    <label class="control-label col-md-4">Signature of Company Witness: </label>
-                    <div class="col-md-2">
-    					<input type="text" class="form-control" name="signature_company_witness"/>
-    				</div>
+                    
                 </div>
                 
             <div class="clearfix"></div>
@@ -209,10 +206,7 @@
                 </div>
                 
                 <div class="form-group col-md-12">
-                    <label class="control-label col-md-3">Signature of Applicant: </label>
-                    <div class="col-md-3">
-    					<input type="text" class="form-control" name="criminal_signature_applicant"/>
-    				</div>
+                    
                     <label class="control-label col-md-3">Date: </label>
                     <div class="col-md-3">
     					<input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="criminal_date"/>
@@ -322,10 +316,11 @@
                     <div class="col-md-3">
     					<input type="text" class="form-control date-picker" name="authorize_date"/>
     				</div>
-                    <label class="control-label col-md-3">Signature: </label>
+                    <!--<label class="control-label col-md-3">Signature: </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" name="authorize_signature"/>
-    				</div>
+    					<input type="hidden" class="form-control" name="authorize_signature"/>
+    				</div>-->
+                    <input type="hidden" class="form-control" name="authorize_signature"/>
                 </div>
                 <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Name(Please Print): </label>
@@ -430,11 +425,17 @@
                         </div>
                       </div>
                 
+            
+
+            <div class="form-group col-md-12">
+            
+            <?php include('canvas/consent_signature_driver.php');?>
+            <?php include('canvas/consent_signature_witness.php');?>
+            </div>
+            
+            
+
             <div class="clearfix"></div>
-
-
-
-
 
             </div>
 
@@ -448,6 +449,11 @@
 
 <script>
     $(function(){
+       
+           $("#test3").jqScribble(); 
+           $("#test4").jqScribble(); 
+       
+        
         <?php
         if($this->request->params['action']=='addorder')
         {

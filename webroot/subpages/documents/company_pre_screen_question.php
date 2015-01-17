@@ -678,7 +678,7 @@
        
 		function save(numb)
 		{
-		  alert('rest');return;
+		  //alert('rest');return;
 			$("#test"+numb).data("jqScribble").save(function(imageData)
 			{
 				$.post('image_save.php', {imagedata: imageData}, function(response)

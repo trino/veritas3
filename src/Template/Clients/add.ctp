@@ -620,7 +620,7 @@ $c = $client;
                 function initiate_ajax_upload(button_id){
                 var button = $('#'+button_id), interval;
                 new AjaxUpload(button,{
-                    action: base_url+"clients/upload_img/",                      
+                    action: base_url+"clients/upload_img/<?php if(isset($id))echo $id;?>",                      
                     name: 'myfile',
                     onSubmit : function(file, ext){
                         button.text('Uploading');
@@ -711,13 +711,18 @@ $c = $client;
                                                success:function(res)
                                                {
                                                 //alert(res);
-                                                if(res!='e'){
+                                                if(res!='e' && res !='email'){
                                                     window.location = '<?php echo $this->request->webroot;?>clients/edit/'+res;
                                                 }
                                                 else
-                                                {
-                                                    alert('Couldn\'t save your data');
-                                                }
+                                                    if(res == 'email')
+                                                    {
+                                                        alert('Email Already Used.');
+                                                    }
+                                                    else
+                                                    {
+                                                        alert('Couldn\'t save your data');
+                                                    }
                                                 $('#save_client_p1').text(' Save ');
                                                } 
                                             })

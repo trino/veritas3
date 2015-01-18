@@ -146,19 +146,7 @@
 
 
                     <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-                        <ul class="pagination">
-                            <li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
-                                class="paginate_button previous disabled"><a href="#"><i
-                                        class="fa fa-angle-left"></i></a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a>
-                            </li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">5</a></li>
-                            <li id="sample_2_next" tabindex="0" aria-controls="sample_2" class="paginate_button next"><a
-                                    href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
+                        
 
                         <ul class="pagination">
                             <?= $this->Paginator->prev('< ' . __('previous')); ?>

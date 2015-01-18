@@ -13,6 +13,7 @@
 
         public $paginate = [
             'limit' => 10,
+            'order'=>['id'=>'DESC'],
 
         ];
 
@@ -104,7 +105,7 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
-            $this->set('documents', $doc);
+            $this->set('documents', $this->paginate($doc));
         }
 
         /*
@@ -1524,7 +1525,7 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
-            $this->set('orders', $order);
+            $this->set('orders', $this->paginate($order));
 
         }
 

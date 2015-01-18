@@ -11,6 +11,7 @@ class ProfilesController extends AppController {
 
     public $paginate = [
             'limit' => 20,
+            'order'=>['id'=>'DESC'],
             
         ];
      public function initialize() {
@@ -643,17 +644,17 @@ class ProfilesController extends AppController {
         
         
     }
-   function getallusers($profile_type ="")
+   function getallusers($profile_type ="",$client_id="")
    {
         $u = $this->request->session()->read('Profile.id');
         $super = $this->request->session()->read('Profile.super');
-        $cond = $this->Settings->getprofilebyclient($u,$super);
+        $cond = $this->Settings->getprofilebyclient($u,$super,$client_id);
         $profile = TableRegistry::get('profiles');
         if($profile_type!="")
             $query = $profile->find()->where(['super'=>0,'profile_type'=>$profile_type, 'OR'=>$cond]);
         else
             $query = $profile->find()->where(['super'=>0,'OR'=>$cond]);
-                 
+        //debug($query);         
         $l = $query->all();
         $this->response->body($l);
         return $this->response;

@@ -110,12 +110,12 @@
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
                     		<tr>
-                                <th>ID</th>
-             			        <th>Title</th>
-                    			<th>Uploaded by</th>
-                    			<th>Uploaded for</th>   
-                                <th>Client</th>
-                                <th>Created</th>               			
+                                <th><?= $this->Paginator->sort('id');?></th>
+             			        <th><?= $this->Paginator->sort('title');?></th>
+                    			<th><?= $this->Paginator->sort('user_id','Uploaded by');?></th>
+                    			<th><?= $this->Paginator->sort('uploaded_for','Uploaded for');?></th>   
+                                <th><?= $this->Paginator->sort('client_id','Client');?></th>
+                                <th><?= $this->Paginator->sort('created','Created');?></th>               			
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
@@ -170,7 +170,11 @@
 
 
 				<div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-					
+					 <ul class="pagination">
+                        <?= $this->Paginator->prev('< ' . __('previous')); ?>
+                        <?= $this->Paginator->numbers(); ?>
+                        <?= $this->Paginator->next(__('next') . ' >'); ?>
+                    </ul>
 				</div>
 
 

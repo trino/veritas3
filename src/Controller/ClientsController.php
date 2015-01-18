@@ -23,7 +23,7 @@ class ClientsController extends AppController {
         }
         
     }
-    function upload_img()
+    function upload_img($id="")
     {
         if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
         {
@@ -34,10 +34,20 @@ class ClientsController extends AppController {
             $check = strtolower($ext);
             if(in_array($check,$allowed)){
                 move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/jobs/'.$rand);
+                 unset($_POST);
+                 if(isset($id)){
+                $_POST['image'] = $rand;
+                $img = TableRegistry::get('clients');
                 
-                
-                
+                //echo $s;die();
+                $query = $img->query();
+                        $query->update()
+                        ->set($_POST)
+                        ->where(['id' => $id])
+                        ->execute();
+                }
                         echo $rand;
+                
                  
             }
             else
@@ -77,7 +87,7 @@ class ClientsController extends AppController {
         ->where(['LOWER(title) LIKE' => '%'.$searchs.'%'])
         ->orWhere(['LOWER(description) LIKE' => '%'.$searchs.'%'])
         ->orWhere(['LOWER(company_name) LIKE' => '%'.$searchs.'%'])
-        ->orWhere(['LOWER(company_address) LIKE' => '%'.$searchs.'%']);
+        ->orWhere(['LOWER(company_address) LIKE' => '%'.$searchs.'%'])->order(['id'=>'DESC']);
         $this->set('client', $this->paginate($this->Clients)); 
         $this->set('client',$query);
         $this->set('search_text',$search);
@@ -303,46 +313,61 @@ class ClientsController extends AppController {
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
         $clients = TableRegistry::get('Clients');
-        if(!$id){
-	   
-        $client = $clients->newEntity($_POST);
-		if ($this->request->is('post')) {
-		 if ($clients->save($client)) {
-                if($_POST['division']!="")
-                { 
-                    $division = nl2br($_POST['division']);
-                    $dd = explode("<br />",$division);
-                    $divisions['client_id']= $client->id;
-                     
-                    foreach($dd as $d)
-                    {
-                        $divisions['title']=trim($d);
-                        $divs = TableRegistry::get('client_divison');
-                         $div = $divs->newEntity($divisions);
-                         $divs->save($div);
-                        unset($div);
-                    }
-                   
-                    //die();
-                
-                }
-				$this->Flash->success('Client saved successfully.');
-                	echo $client->id;
-			} else {
-			     $this->Flash->error('Client could not be saved. Please try again.');
-				echo "e";
-			}
-		}
+        if(!$id)
+        {
+    	    $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email']])->count();
+            if($cnt>0)
+            {
+                echo "email";
+            }
+            else
+            {
+                $client = $clients->newEntity($_POST);
+        		if ($this->request->is('post')) {
+        		 if ($clients->save($client)) {
+                        if($_POST['division']!="")
+                        { 
+                            $division = nl2br($_POST['division']);
+                            $dd = explode("<br />",$division);
+                            $divisions['client_id']= $client->id;
+                             
+                            foreach($dd as $d)
+                            {
+                                $divisions['title']=trim($d);
+                                $divs = TableRegistry::get('client_divison');
+                                 $div = $divs->newEntity($divisions);
+                                 $divs->save($div);
+                                unset($div);
+                            }
+                           
+                            //die();
+                        
+                        }
+        				$this->Flash->success('Client saved successfully.');
+                        	echo $client->id;
+        			} else {
+        			     $this->Flash->error('Client could not be saved. Please try again.');
+        				echo "e";
+        			}
+        		}
+            }
         }
         else
         {
-            $query2 = $clients->query();
+            $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email'],'id<>'.$id])->count();
+            if($cnt>0)
+            {
+                echo "email";
+            }
+            else
+            {
+                $query2 = $clients->query();
                         $query2->update()
                         ->set($_POST)
                         ->where(['id' => $id])
                         ->execute();
                         $this->Flash->success('Client saved successfully.');
-            if($_POST['division']!="")
+                if($_POST['division']!="")
                 { 
                     $division = nl2br($_POST['division']);
                     $dd = explode("<br />",$division);
@@ -357,11 +382,12 @@ class ClientsController extends AppController {
                          $divs->save($div);
                         unset($div);
                     }
-                   
-                    //die();
-                
+                       
+                        //die();
+                    
                 }
-                	echo $id;
+                    	echo $id;
+            }
         }
 		die();
 	}

@@ -20,7 +20,7 @@
                 $class = array('blue-madison','red','yellow','purple','green', 'red-intense','yellow-saffron','grey-cascade','blue-steel','blue');
 
                 
-                $doc = $this->requestAction('/documents/getDocument');
+                $doc = $this->requestAction('/documents/getDocument/orders');
                 $i=0;
                 if($doc){
                     //echo strtolower($document->document_type);
@@ -48,14 +48,17 @@
     						<div class="details">
     							<div class="number">
                                 <?php echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
-    								
+    							<?php //echo $cnt = $this->requestAction('/documents/get_orderscount/'.$d->table_name); ?>	
     							</div>
     							<div class="desc">
     								 <?php echo ucfirst($d->title); ?>
     							</div>
     						</div>
                             <?php if($this->request['controller']!="Documents"){?>
-    						<a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
+    						<!--<a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
+    						View more <i class="m-icon-swapright m-icon-white"></i>
+    						</a>-->
+                            <a class="more" href="<?php echo $this->request->webroot;?>documents/orderslist">
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a>
                             <?php }

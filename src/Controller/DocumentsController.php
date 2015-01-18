@@ -1511,7 +1511,11 @@
                     $cond = $cond . ' AND draft = 0';
             }
             if ($cond) {
-                $order = $order->where([$cond]);
+                $order = $order->where([$cond])->contain(['Profiles']);
+            }
+            else
+            {
+                $order = $order->contain(['Profiles']);
             }
             if (isset($_GET['searchdoc'])) {
                 $this->set('search_text', $_GET['searchdoc']);
@@ -1525,6 +1529,7 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
+            //debug($order);
             $this->set('orders', $this->paginate($order));
 
         }
@@ -1687,6 +1692,32 @@
             return $this->response;
         }
         */
+        function get_orderscount($type, $c_id = "")
+        {
+            //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
+            //var_dump($cond);die();
+            $u = $this->request->session()->read('Profile.id');
+
+            if (!$this->request->session()->read('Profile.super')) {
+                $setting = $this->Settings->get_permission($u);
+                if ($setting->documents_others == 0) {
+                    $u_cond = "user_id=$u";
+                }
+
+            } else
+                $u_cond = "";
+
+            $model = TableRegistry::get($type);
+            if ($c_id != "") {
+                $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'client_id' => $c_id])->count();
+            } else {
+                $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'),ucwords($type));
+                $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0,'OR' => $cond])->contain(['Orders'])->count();
+            }
+            //debug($cnt); die();
+            $this->response->body(($cnt));
+            return $this->response;
+        }
         function get_documentcount($subdocid, $c_id = "")
         {
             //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);

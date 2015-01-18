@@ -23,7 +23,6 @@
             if (!$this->request->session()->read('Profile.id')) {
                 $this->redirect('/login');
             }
-
         }
 
         public function index()

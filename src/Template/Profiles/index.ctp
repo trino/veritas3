@@ -55,6 +55,9 @@
                                     </select>
                                 </div>
                                 <?php
+                                $super = $this->request->session()->read('Profile.super');
+                                if(isset($super))
+                                {
                                 $getClient = $this->requestAction('profiles/getClient'); 
                                 ?>
                                 <div class="col-md-3" style="padding-left:0;">
@@ -73,6 +76,7 @@
                                          ?>
                                     </select>
                                 </div>
+                                <?php } ?>
                                  <!--</form>
                                 <form action="<?php //echo $this->request->webroot; ?>profiles/search" method="get">-->
                                 <div class="col-md-6 ">

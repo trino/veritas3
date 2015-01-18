@@ -1467,6 +1467,7 @@
             }
             $orders = TableRegistry::get('orders');
             $order = $orders->find();
+            $order = $order->order(['id' => 'DESC']);
             $order = $order->select();
 
             $cond = '';

@@ -143,16 +143,25 @@
                                 <td><?= h($order->created) ?></td>
                                 <td class="actions">
 
-                                    <?php  if($sidebar->orders_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);} ?>
-                                    <?php  
+                                    <?php
+                                      if($sidebar->orders_list=='1'){
+                                        
+                                        echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);} ?>
+                                    <?php
+                                    $super = $this->request->session()->read('Profile.super');
+                                        if(isset($super))
+                                        {  
                                     if($sidebar->orders_edit=='1')
                                     {
                                         
                                         echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'addorder',$order->client_id, $order->id], ['class' => 'btn btn-primary']);
                                         
                                     }
-                                     ?>
-                                     <?php  if($sidebar->orders_delete=='1'){ ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a><?php }?>
+                                     if($sidebar->orders_delete=='1'){
+                                        ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+                                        <?php
+                                         } } 
+                                         ?>
 
                                         
 <?php                                   if($sidebar->orders_requalify=='1') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);

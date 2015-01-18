@@ -83,9 +83,11 @@ class SettingsComponent extends Component
             //var_dump($cond);
         return $cond;
    }
-    function getclientids($u,$super)
+    function getclientids($u,$super,$model="")
    {
     
+        if($model!="")
+            $model =$model.".";
         $cond = [];
         $pro_id = [];
          if(!$super)
@@ -115,10 +117,10 @@ class SettingsComponent extends Component
                 }
             }
             else
-                $cond = ['id >'=>'0'];
+                $cond = [$model.'id >'=>'0'];
         }
         else
-            $cond = ['id >'=>'0'];
+            $cond = [$model.'id >'=>'0'];
       return $cond;
         
     }

@@ -89,8 +89,8 @@
                         <tr>
                             <th><?= $this->Paginator->sort('id') ?></th>
                             <th><?= $this->Paginator->sort('title') ?></th>
-                            <th><?= $this->Paginator->sort('fname') ?></th>
-                            <th><?= $this->Paginator->sort('lname') ?></th>
+                            <th><?= $this->Paginator->sort('fname','First Name') ?></th>
+                            <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
                             <th><?= $this->Paginator->sort('username') ?></th>
                             <th><?= $this->Paginator->sort('email') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>

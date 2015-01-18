@@ -24,16 +24,23 @@ class SettingsComponent extends Component
         if($cid != "")
         {
            $qs = $clients->find()->select('profile_id')->where(['id'=>$cid])->first();
-            $p = explode("," ,$qs->profile_id);
-            foreach($p as $pro)
-            {
-                array_push($pro_id,$pro);
+           if(count($qs)>0)
+           {
+                $p = explode("," ,$qs->profile_id);
+                foreach($p as $pro)
+                {
+                    array_push($pro_id,$pro);
+                }
+                $pro_id =array_unique($pro_id);
+                   
+                foreach($pro_id as $pid)
+                {
+                     array_push($cond,['id'=>$pid]);
+                }
             }
-            $pro_id =array_unique($pro_id);
-               
-            foreach($pro_id as $pid)
+            else
             {
-                 array_push($cond,['id'=>$pid]);
+                  $cond = ['id >'=>'0'];
             }
             
         }
@@ -45,24 +52,29 @@ class SettingsComponent extends Component
                 
                 
                 $qs = $clients->find()->select('profile_id')->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id ="'.$u.'"'])->all();
-                //debug($qs);
-                foreach($qs as $q)
+                if(count($qs)>0)
                 {
-                    
-                    $p = explode("," ,$q->profile_id);
-                    foreach($p as $pro)
+                    foreach($qs as $q)
                     {
-                        array_push($pro_id,$pro);
+                        
+                        $p = explode("," ,$q->profile_id);
+                        foreach($p as $pro)
+                        {
+                            array_push($pro_id,$pro);
+                        }
+                    }
+                    //var_dump($pro_id);
+                    $pro_id =array_unique($pro_id);
+                   
+                    foreach($pro_id as $pid)
+                    {
+                         array_push($cond,['id'=>$pid]);
                     }
                 }
-                //var_dump($pro_id);
-                $pro_id =array_unique($pro_id);
-               
-                foreach($pro_id as $pid)
+                else
                 {
-                     array_push($cond,['id'=>$pid]);
-                }
-                
+                    $cond = ['id >'=>'0'];
+                }                
                
             }
             else
@@ -73,6 +85,7 @@ class SettingsComponent extends Component
    }
     function getclientids($u,$super)
    {
+    
         $cond = [];
         $pro_id = [];
          if(!$super)
@@ -82,23 +95,27 @@ class SettingsComponent extends Component
             $qs = $clients->find()->select('id')->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id ="'.$u.'"'])->all();
             $pro_id = [];
             $cond = [];
-            //debug($qs);
-            foreach($qs as $q)
+            if(count($qs)>0)
             {
-                
-                $p = explode("," ,$q->id);
-                foreach($p as $pro)
+                foreach($qs as $q)
                 {
-                    array_push($pro_id,$pro);
+                    
+                    $p = explode("," ,$q->id);
+                    foreach($p as $pro)
+                    {
+                        array_push($pro_id,$pro);
+                    }
+                }
+                //var_dump($pro_id);die();
+                $pro_id =array_unique($pro_id);
+               
+                foreach($pro_id as $pid)
+                {
+                     array_push($cond,['client_id'=>$pid]);
                 }
             }
-            //var_dump($pro_id);die();
-            $pro_id =array_unique($pro_id);
-           
-            foreach($pro_id as $pid)
-            {
-                 array_push($cond,['client_id'=>$pid]);
-            }
+            else
+                $cond = ['id >'=>'0'];
         }
         else
             $cond = ['id >'=>'0'];

@@ -252,7 +252,7 @@
 
             </div>
             
-            <?php if ($this->request->params['action'] == 'edit') { ?>
+            <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 && $this->request->session()->read("Profile.id")==$id))) { ?>
                 <div class="portlet box blue scrolldiv">
                     <div class="portlet-title">
                         <div class="caption">Assign to client</div>

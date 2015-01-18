@@ -13,6 +13,7 @@
 
         public $paginate = [
             'limit' => 10,
+            'order'=>['id'=>'DESC'],
 
         ];
 
@@ -103,7 +104,7 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
-            $this->set('documents', $doc);
+            $this->set('documents', $this->paginate($doc));
         }
 
         /*
@@ -1465,6 +1466,7 @@
             }
             $orders = TableRegistry::get('orders');
             $order = $orders->find();
+            $order = $order->order(['id' => 'DESC']);
             $order = $order->select();
 
             $cond = '';
@@ -1523,7 +1525,7 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
-            $this->set('orders', $order);
+            $this->set('orders', $this->paginate($order));
 
         }
 

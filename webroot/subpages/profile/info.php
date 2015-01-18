@@ -185,7 +185,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                             <label class="control-label">Middle Name</label>
                             <input <?php echo $is_disabled ?> name="mname" type="text"
                                                               placeholder="eg. Lee"
-                                                              class="form-control req_driver" <?php if (isset($p->fname)) { ?> value="<?php echo $p->mname; ?>" <?php } ?>/>
+                                                              class="form-control req_driver" <?php if (isset($p->mname)) { ?> value="<?php echo $p->mname; ?>" <?php } ?>/>
                         </div>
                     </div>
 
@@ -238,7 +238,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                 <div class="form-group">
 
                                     <label class="control-label">Gender</label>
-                                    <input <?php echo $is_disabled ?> name="dob" type="text"
+                                    <input <?php echo $is_disabled ?> name="gender" type="text"
                                                                       placeholder="eg. M"
                                                                       class="form-control req_driver" <?php if (isset($p->gender)) { ?> value="<?php echo $p->gender; ?>" <?php } ?>/>
                                 </div>
@@ -260,17 +260,17 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
                                 <div class="col-md-8">
                                     <div class="form-group">
-                            <input <?php echo $is_disabled ?> name="address" type="text"
+                            <input <?php echo $is_disabled ?> name="street" type="text"
                                                                       placeholder="Street"
-                                                                      class="form-control req_driver" <?php if (isset($p->address)) { ?> value="<?php echo $p->address; ?>" <?php } ?>/>
+                                                                      class="form-control req_driver" <?php if (isset($p->street)) { ?> value="<?php echo $p->street; ?>" <?php } ?>/>
                                 </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                    <input <?php echo $is_disabled ?> type="text"
+                                    <input <?php echo $is_disabled ?> name="city" type="text"
                                                                        placeholder="City"
-                                                                       class="form-control req_driver" <?php if (isset($p->address)) { ?> value="<?php echo $p->address; ?>" <?php } ?>/>
+                                                                       class="form-control req_driver" <?php if (isset($p->city)) { ?> value="<?php echo $p->city; ?>" <?php } ?>/>
                                 </div>
                                 </div>
 
@@ -284,9 +284,9 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <input <?php echo $is_disabled ?>  type="text"
+                                        <input <?php echo $is_disabled ?> name="province" type="text"
                                                                            placeholder="Province"
-                                                                           class="form-control req_driver" <?php if (isset($p->address)) { ?> value="<?php echo $p->address; ?>" <?php } ?>/>
+                                                                           class="form-control req_driver" <?php if (isset($p->province)) { ?> value="<?php echo $p->province; ?>" <?php } ?>/>
                                     </div>
                                 </div>
 
@@ -294,7 +294,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                     <div class="form-group">
                                     <input <?php echo $is_disabled ?>  type="text"
                                                                        placeholder="Postal/Zip"
-                                                                       class="form-control req_driver" <?php if (isset($p->postal)) { ?> value="<?php echo $p->postal; ?>" <?php } ?>/>
+                                                                       class="form-control req_driver" <?php if (isset($p->postal)) { ?> name="postal" value="<?php echo $p->postal; ?>" <?php } ?>/>
                                 </div>
                                 </div>
 
@@ -302,7 +302,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                     <div class="form-group">
                                     <input <?php echo $is_disabled ?>  type="text"
                                                                        placeholder="Country"
-                                                                       class="form-control req_driver" <?php if (isset($p->address)) { ?> value="<?php echo $p->address; ?>" <?php } ?>/>
+                                                                       class="form-control req_driver" <?php if (isset($p->country)) { ?> name="country" value="<?php echo $p->country; ?>" <?php } ?>/>
                                 </div>
                                 </div>
 
@@ -350,9 +350,9 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Expirey Date</label>
-                                        <input <?php echo $is_disabled ?> name="expirey_date" type="text"
-                                                                          class="form-control req_driver date-picker" <?php if (isset($p->expirey_date)) { ?> value="<?php echo $p->expirey_date; ?>" <?php } ?> />
+                                        <label class="control-label">Expiry Date</label>
+                                        <input <?php echo $is_disabled ?> name="expiry_date" type="text"
+                                                                          class="form-control req_driver date-picker" <?php if (isset($p->expiry_date)) { ?> value="<?php echo $p->expiry_date; ?>" <?php } ?> />
 
                                     </div></div>
                             </div>

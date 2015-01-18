@@ -55,6 +55,9 @@
                                     </select>
                                 </div>
                                 <?php
+                                $super = $this->request->session()->read('Profile.super');
+                                if(isset($super))
+                                {
                                 $getClient = $this->requestAction('profiles/getClient'); 
                                 ?>
                                 <div class="col-md-3" style="padding-left:0;">
@@ -73,6 +76,7 @@
                                          ?>
                                     </select>
                                 </div>
+                                <?php } ?>
                                  <!--</form>
                                 <form action="<?php //echo $this->request->webroot; ?>profiles/search" method="get">-->
                                 <div class="col-md-6 ">
@@ -89,8 +93,8 @@
                         <tr>
                             <th><?= $this->Paginator->sort('id') ?></th>
                             <th><?= $this->Paginator->sort('title') ?></th>
-                            <th><?= $this->Paginator->sort('fname') ?></th>
-                            <th><?= $this->Paginator->sort('lname') ?></th>
+                            <th><?= $this->Paginator->sort('fname','First Name') ?></th>
+                            <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
                             <th><?= $this->Paginator->sort('username') ?></th>
                             <th><?= $this->Paginator->sort('email') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -146,19 +150,7 @@
 
 
                     <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-                        <ul class="pagination">
-                            <li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
-                                class="paginate_button previous disabled"><a href="#"><i
-                                        class="fa fa-angle-left"></i></a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a>
-                            </li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>
-                            <li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">5</a></li>
-                            <li id="sample_2_next" tabindex="0" aria-controls="sample_2" class="paginate_button next"><a
-                                    href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
+                        
 
                         <ul class="pagination">
                             <?= $this->Paginator->prev('< ' . __('previous')); ?>

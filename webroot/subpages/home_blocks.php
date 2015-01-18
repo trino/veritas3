@@ -20,7 +20,7 @@
                 $class = array('blue-madison','red','yellow','purple','green', 'red-intense','yellow-saffron','grey-cascade','blue-steel','blue');
 
                 
-                $doc = $this->requestAction('/documents/getDocument/orders');
+                $doc = $this->requestAction('/documents/getDocument');
                 $i=0;
                 if($doc){
                     //echo strtolower($document->document_type);

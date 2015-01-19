@@ -2055,10 +2055,18 @@
             $consent = TableRegistry::get('employment_verification');
             $arr['consent'] = $consent
                 ->find()
-                ->where(['order_id' => $id])->first();
-
+                ->where(['order_id' => $id])->all();
+            
             $this->set('detail',$arr);
-        }
+            $attach = TableRegistry::get('employment_verification_attachments');
+            $att = $attach
+                ->find()
+                ->where(['order_id' => $id])->all();
+            
+            $this->set('order_id',$id);
+            $this->set(compact('att'));
+        }    
+
 
         public function createPdfEducation($oid)
         {
@@ -2067,9 +2075,8 @@
             $consent = TableRegistry::get('education_verification');
             $education = $consent
                 ->find()
-                ->where(['order_id' => $oid]);;
-
-
+                ->where(['order_id' => $oid]);
+            
             $attach = TableRegistry::get('education_verification_attachments');
             $att = $attach
                 ->find()

@@ -24,7 +24,7 @@
                         <div class="form-group col-md-12">
                 
                                 <h4 class="control-label col-md-12">Past Employer</h4>
-                </div>
+                        </div>
                 
                                <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Company Name</label>

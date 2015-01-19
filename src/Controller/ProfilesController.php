@@ -61,18 +61,187 @@ class ProfilesController extends AppController {
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $u = $this->request->session()->read('Profile.id');
         $super = $this->request->session()->read('Profile.super');
-        $cond = $this->Settings->getprofilebyclient($u,$super);
+        $condition = $this->Settings->getprofilebyclient($u,$super);
         if($setting->profile_list==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
             
         }
-        //var_dump($cond);
-        $query = $this->Profiles->find()->where(['OR'=>$cond]);
+        
+        $cond = '';
+        if(isset($_GET['searchprofile']))
+        {
+            $search = $_GET['searchprofile'];
+            $searchs = strtolower($search);
+        }
+        
+        if(isset($_GET['filter_profile_type']))
+        {
+           $profile_type = $_GET['filter_profile_type']; 
+        }
+        if(isset($_GET['filter_by_client']))
+        {
+           $client = $_GET['filter_by_client']; 
+        }
+		$querys = TableRegistry::get('Profiles');
+        
+        if(isset($_GET['searchprofile']) && $_GET['searchprofile'])
+        {
+            if($cond == '')
+                $cond = $cond.' (LOWER(title) LIKE "%'.$searchs.'%" OR LOWER(fname) LIKE "%'.$searchs.'%" OR LOWER(lname) LIKE "%'.$searchs.'%" OR LOWER(username) LIKE "%'.$searchs.'%" OR LOWER(address) LIKE "%'.$searchs.'%")';
+            else
+                $cond = $cond.' AND (LOWER(title) LIKE "%'.$searchs.'%" OR LOWER(fname) LIKE "%'.$searchs.'%" OR LOWER(lname) LIKE "%'.$searchs.'%" OR LOWER(username) LIKE "%'.$searchs.'%" OR LOWER(address) LIKE "%'.$searchs.'%")';
+        }
+        
+        if(isset($_GET['filter_profile_type']) && $_GET['filter_profile_type'])
+        {
+            if($cond == '')
+                $cond = $cond.' (profile_type = "'.$profile_type.'" OR admin = "'.$profile_type.'")';
+                
+            else
+                $cond = $cond.' AND (profile_type = "'.$profile_type.'" OR admin = "'.$profile_type.'")';
+        }
+        
+        if(isset($_GET['filter_by_client']) && $_GET['filter_by_client'])
+        {
+            
+        $sub = TableRegistry::get('Clients');
+        $que = $sub->find();
+        $que->select()->where(['id'=>$_GET['filter_by_client']]);
+        $q = $que->first();
+        $profile_ids = $q->profile_id;
+        if(!$profile_ids)
+        {
+            $profile_ids = '99999999999';
+        }
+            if($cond == '')
+                $cond = $cond.' (id IN ('.$profile_ids.'))';
+            else
+                $cond = $cond.' AND (id IN ('.$profile_ids.'))';
+        }
+        
+        /*=================================================================================================== */
+       if($cond)
+        {
+            $query = $querys->find();
+            $query = $query->where([$cond]);
+        }
+        else
+        {
+            $query = $this->Profiles->find()->where(['OR'=>$condition]);
+        }
+        //$this->set('profiles', $this->paginate($this->Profiles)); 
+        //$this->set('profiles',$query);
+        if(isset($search))
+        {
+            $this->set('search_text',$search);
+        }
+        if(isset($profile_type))
+        {
+            $this->set('return_profile_type',$profile_type);
+        }
+        if(isset($client))
+        {
+            $this->set('return_client',$client);
+        }        
+        //$this->render('index');
+        
+        /*old code*/
+        
         //debug($query);
 		$this->set('profiles', $this->paginate($query)); 
 	}
+    
+    /* 
+    
+    function search()
+    {
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+        
+        if($setting->profile_list==0)
+        {
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
+            	return $this->redirect("/");
+            
+        }
+        
+        $cond = '';
+        if(isset($_GET['searchprofile']))
+        {
+            $search = $_GET['searchprofile'];
+            $searchs = strtolower($search);
+        }
+        
+        if(isset($_GET['filter_profile_type']))
+        {
+           $profile_type = $_GET['filter_profile_type']; 
+        }
+        if(isset($_GET['filter_by_client']))
+        {
+           $client = $_GET['filter_by_client']; 
+        }
+		$querys = TableRegistry::get('Profiles');
+        
+        if(isset($_GET['searchprofile']) && $_GET['searchprofile'])
+        {
+            if($cond == '')
+                $cond = $cond.' (LOWER(title) LIKE "%'.$searchs.'%" OR LOWER(fname) LIKE "%'.$searchs.'%" OR LOWER(lname) LIKE "%'.$searchs.'%" OR LOWER(username) LIKE "%'.$searchs.'%" OR LOWER(address) LIKE "%'.$searchs.'%")';
+            else
+                $cond = $cond.' AND (LOWER(title) LIKE "%'.$searchs.'%" OR LOWER(fname) LIKE "%'.$searchs.'%" OR LOWER(lname) LIKE "%'.$searchs.'%" OR LOWER(username) LIKE "%'.$searchs.'%" OR LOWER(address) LIKE "%'.$searchs.'%")';
+        }
+        
+        if(isset($_GET['filter_profile_type']) && $_GET['filter_profile_type'])
+        {
+            if($cond == '')
+                $cond = $cond.' (profile_type = "'.$profile_type.'" OR admin = "'.$profile_type.'")';
+                
+            else
+                $cond = $cond.' AND (profile_type = "'.$profile_type.'" OR admin = "'.$profile_type.'")';
+        }
+        
+        if(isset($_GET['filter_by_client']) && $_GET['filter_by_client'])
+        {
+            
+        $sub = TableRegistry::get('Clients');
+        $que = $sub->find();
+        $que->select()->where(['id'=>$_GET['filter_by_client']]);
+        $q = $que->first();
+        $profile_ids = $q->profile_id;
+        if(!$profile_ids)
+        {
+            $profile_ids = '99999999999';
+        }
+            if($cond == '')
+                $cond = $cond.' (id IN ('.$profile_ids.'))';
+            else
+                $cond = $cond.' AND (id IN ('.$profile_ids.'))';
+        }
+        
+        /*=================================================================================================== 
+       if($cond)
+        {
+            $query = $querys->find();
+            $query = $query->where([$cond]);
+        }
+        $this->set('profiles', $this->paginate($this->Profiles)); 
+        $this->set('profiles',$query);
+        if(isset($search))
+        {
+            $this->set('search_text',$search);
+        }
+        if(isset($profile_type))
+        {
+            $this->set('return_profile_type',$profile_type);
+        }
+        if(isset($client))
+        {
+            $this->set('return_client',$client);
+        }        
+        $this->render('index');
+    }
+    
+    */
 
 
 
@@ -543,91 +712,7 @@ class ProfilesController extends AppController {
         $this->render('index');
     }
     
-    function search()
-    {
-        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-        
-        if($setting->profile_list==0)
-        {
-            $this->Flash->error('Sorry, you don\'t have the required permissions.');
-            	return $this->redirect("/");
-            
-        }
-        
-        $cond = '';
-        if(isset($_GET['searchprofile']))
-        {
-            $search = $_GET['searchprofile'];
-            $searchs = strtolower($search);
-        }
-        
-        if(isset($_GET['filter_profile_type']))
-        {
-           $profile_type = $_GET['filter_profile_type']; 
-        }
-        if(isset($_GET['filter_by_client']))
-        {
-           $client = $_GET['filter_by_client']; 
-        }
-		$querys = TableRegistry::get('Profiles');
-        
-        if(isset($_GET['searchprofile']) && $_GET['searchprofile'])
-        {
-            if($cond == '')
-                $cond = $cond.' (LOWER(title) LIKE "%'.$searchs.'%" OR LOWER(fname) LIKE "%'.$searchs.'%" OR LOWER(lname) LIKE "%'.$searchs.'%" OR LOWER(username) LIKE "%'.$searchs.'%" OR LOWER(address) LIKE "%'.$searchs.'%")';
-            else
-                $cond = $cond.' AND (LOWER(title) LIKE "%'.$searchs.'%" OR LOWER(fname) LIKE "%'.$searchs.'%" OR LOWER(lname) LIKE "%'.$searchs.'%" OR LOWER(username) LIKE "%'.$searchs.'%" OR LOWER(address) LIKE "%'.$searchs.'%")';
-        }
-        
-        if(isset($_GET['filter_profile_type']) && $_GET['filter_profile_type'])
-        {
-            if($cond == '')
-                $cond = $cond.' (profile_type = "'.$profile_type.'" OR admin = "'.$profile_type.'")';
-                
-            else
-                $cond = $cond.' AND (profile_type = "'.$profile_type.'" OR admin = "'.$profile_type.'")';
-        }
-        
-        if(isset($_GET['filter_by_client']) && $_GET['filter_by_client'])
-        {
-            
-        $sub = TableRegistry::get('Clients');
-        $que = $sub->find();
-        $que->select()->where(['id'=>$_GET['filter_by_client']]);
-        $q = $que->first();
-        $profile_ids = $q->profile_id;
-        if(!$profile_ids)
-        {
-            $profile_ids = '99999999999';
-        }
-            if($cond == '')
-                $cond = $cond.' (id IN ('.$profile_ids.'))';
-            else
-                $cond = $cond.' AND (id IN ('.$profile_ids.'))';
-        }
-        
-        /*=================================================================================================== */
-       if($cond)
-        {
-            $query = $querys->find();
-            $query = $query->where([$cond]);
-        }
-        $this->set('profiles', $this->paginate($this->Profiles)); 
-        $this->set('profiles',$query);
-        if(isset($search))
-        {
-            $this->set('search_text',$search);
-        }
-        if(isset($profile_type))
-        {
-            $this->set('return_profile_type',$profile_type);
-        }
-        if(isset($client))
-        {
-            $this->set('return_client',$client);
-        }        
-        $this->render('index');
-    }
+    
     
     function getuser()
     {

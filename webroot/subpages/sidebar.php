@@ -78,7 +78,7 @@
                 <?php }?>
                 <?php if($sidebar->profile==1){?>
                     <li class="<?php echo($this->request['controller']=='Profiles' && $this->request['action']!='logo'&& $this->request['action']!='todo')?'active open':'';?>">
-					<a href="javascript:;" onclick="window.location.href='<?php echo $this->request->webroot;?>profiles';">
+					<a href="javascript:;" >
 					<i class="icon-user"></i>
 					<span class="title"><?php echo ucfirst($settings->profile);?>s</span>
                     <?php echo($this->request['controller']=='Profiles' )?'<span class="selected"></span>':'';?>
@@ -132,7 +132,7 @@
 
                      ?>
 				<li class="<?php echo(($this->request['controller']=='Documents' && ($this->request['action']=="index" || $this->request['action']=="add") ) && !isset($_GET['draft']))?'active open':'';?>">
-					<a href="javascript:;" onclick="window.location.href='<?php echo $this->request->webroot;?>documents';">
+					<a href="javascript:;" >
 					<i class="icon-docs"></i>
 					<span class="title"><?php echo ucfirst($settings->document);?>s</span>
 					<?php echo($this->request['controller']=='Documents')?'<span class="selected"></span>':'';?>
@@ -218,7 +218,7 @@
                 </li>
                 <?php if($sidebar->orders==1){?>
                 <li class="<?php echo(($this->request['action']=='orderslist' || $this->request['action']=='addorder') && !isset($_GET['draft']))?'active open':'';?>">
-                <a href="<?php echo $this->request->webroot;?>documents/orderslist" onclick="window.location.href='<?php echo $this->request->webroot;?>documents/orderslist';">
+                <a href="<?php echo $this->request->webroot;?>documents/orderslist" >
                 <i class="icon-notebook"></i>
 				<span class="title">Orders</span>
                 <span class="selected"></span>

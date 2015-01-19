@@ -87,7 +87,7 @@
                 // $this->set('start',$cond);
 
             }
-            
+
             if ($cond) {
                 $doc = $doc->where([$cond]);
                 //debug($doc);die();
@@ -1467,7 +1467,7 @@
             }
             $orders = TableRegistry::get('orders');
             $order = $orders->find();
-            $order = $order->order(['id' => 'DESC']);
+            $order = $order->order(['Orders.id' => 'DESC']);
             $order = $order->select();
 
             $cond = '';
@@ -1746,7 +1746,7 @@
             $this->response->body(($cnt));
             return $this->response;
         }
-        
+
         function fileUpload()
         {
             // print_r($_POST);die;
@@ -1940,6 +1940,7 @@
             $this->render('survey');
         }
 
+
         public function StartOrderSave($orderid = null, $response = null)
         {
             echo '!!!!!!';
@@ -1962,18 +1963,6 @@
 
 
 
-        public function save_ins_pdi($orderid, $pdi){
-
-            $query2 = TableRegistry::get('orders');
-            $arr['ins_pdi'] = $pdi ;
-            $query2 = $query2->query();
-            $query2->update()
-                ->set($arr)
-                ->where(['id' => $orderid])
-                ->execute();
-            $this->response->body($query2);
-            return $this->response;
-        }
 
 
 
@@ -2002,7 +1991,23 @@
                 ->execute();
             $this->response->body($query2);
             return $this->response;
-    }
+        }
+
+        public function save_pdi($orderid, $id, $pdi){
+
+            $query2 = TableRegistry::get('orders');
+
+            $arr['ins_79'] = $id .'123';
+            debug($arr);
+            $query2 = $query2->query();
+            $query2->update()
+                ->set($arr)
+                ->where(['id' => $orderid])
+                ->execute();
+            $this->response->body($query2);
+            return $this->response;
+        }
+
 
         public function webservice($callfunction = null, $body = null, $orderid = null, $driverid = null)
         {
@@ -2020,10 +2025,10 @@
         {
             $this->set('oid',$oid);
             $this->layout = 'blank';
-            
+
             $this->layout = 'blank';
-            
-            
+
+
             $consent = TableRegistry::get('consent_form');
             $arr['consent'] = $consent
                 ->find()
@@ -2041,7 +2046,7 @@
                 ->where(['order_id' => $oid]);
             $this->set('detail',$arr);
             $this->set(compact('att'));
-            
+
         }
 
         public function createPdfEmployment($id)
@@ -2051,9 +2056,9 @@
             $arr['consent'] = $consent
                 ->find()
                 ->where(['order_id' => $id])->first();
-            
+
             $this->set('detail',$arr);
-        }    
+        }
 
         public function createPdfEducation($oid)
         {
@@ -2063,14 +2068,14 @@
             $education = $consent
                 ->find()
                 ->where(['order_id' => $oid]);;
-            
-            
+
+
             $attach = TableRegistry::get('education_verification_attachments');
             $att = $attach
                 ->find()
                 ->where(['order_id' => $oid]);
             $this->set(compact('education'));
-    
+
             $this->set(compact('att'));
         }
 
@@ -2083,5 +2088,5 @@
 
             $this->set('order',$order);
         }
-        
+
     }

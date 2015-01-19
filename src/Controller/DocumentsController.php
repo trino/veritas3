@@ -2054,16 +2054,23 @@
             $this->set('detail',$arr);
         }    
 
-        public function createPdfEducation($id)
+        public function createPdfEducation($oid)
         {
-            $this->set('oid',$id);
+            $this->set('oid',$oid);
             $this->layout = 'blank';
             $consent = TableRegistry::get('education_verification');
-            $arr['education'] = $consent
+            $education = $consent
                 ->find()
-                ->where(['order_id' => $id])->first();
-
-            $this->set('detail',$arr);
+                ->where(['order_id' => $oid]);;
+            
+            
+            $attach = TableRegistry::get('education_verification_attachments');
+            $att = $attach
+                ->find()
+                ->where(['order_id' => $oid]);
+            $this->set(compact('education'));
+    
+            $this->set(compact('att'));
         }
 
         public function viewReport($client_id,$order_id)

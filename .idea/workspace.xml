@@ -87,8 +87,8 @@
       <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6277372" vertical-offset="33723" max-vertical-offset="35649">
-              <caret line="2009" column="0" selection-start-line="2009" selection-start-column="0" selection-end-line="2009" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5562044" vertical-offset="24592" max-vertical-offset="35649">
+              <caret line="1469" column="38" selection-start-line="1469" selection-start-column="38" selection-end-line="1469" selection-end-column="38" />
               <folding>
                 <element signature="e#41#74#0#PHP" expanded="true" />
               </folding>
@@ -99,8 +99,8 @@
       <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.32692307" vertical-offset="0" max-vertical-offset="5338">
-              <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+            <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="4930">
+              <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="83" />
               <folding>
                 <marker date="1421669811080" expanded="true" signature="1364:1548" placeholder="..." />
                 <marker date="1421669811080" expanded="true" signature="2673:2753" placeholder="..." />
@@ -424,6 +424,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Pdfs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Table" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -971,33 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.32692307" vertical-offset="0" max-vertical-offset="5338">
-          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-          <folding>
-            <marker date="1421669811080" expanded="true" signature="1364:1548" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="2673:2753" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="2673:2765" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="2673:3229" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="3954:4610" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="5262:6040" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="6693:7320" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="7973:8507" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="8052:8507" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="9177:9244" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="9177:9689" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="10372:10439" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="10372:10883" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="11564:11631" placeholder="..." />
-            <marker date="1421669811080" expanded="true" signature="11564:11972" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/soap/nusoap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.8846154" vertical-offset="37043" max-vertical-offset="139723">
@@ -1039,10 +1052,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="4930">
+          <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="83" />
+          <folding>
+            <marker date="1421669811080" expanded="true" signature="1364:1548" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="2673:2753" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="2673:2765" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="2673:3229" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="3954:4610" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="5262:6040" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="6693:7320" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="7973:8507" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="8052:8507" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="9177:9244" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="9177:9689" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="10372:10439" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="10372:10883" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="11564:11631" placeholder="..." />
+            <marker date="1421669811080" expanded="true" signature="11564:11972" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6277372" vertical-offset="33723" max-vertical-offset="35649">
-          <caret line="2009" column="0" selection-start-line="2009" selection-start-column="0" selection-end-line="2009" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5562044" vertical-offset="24592" max-vertical-offset="35649">
+          <caret line="1469" column="38" selection-start-line="1469" selection-start-column="38" selection-end-line="1469" selection-end-column="38" />
           <folding>
             <element signature="e#41#74#0#PHP" expanded="true" />
           </folding>

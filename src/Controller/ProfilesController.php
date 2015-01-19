@@ -127,7 +127,7 @@ class ProfilesController extends AppController {
             $query = $querys->find();
             $query = $query->where([$cond]);
         }
-        $this->set('profiles', $this->paginate($this->Profiles)); 
+        //$this->set('profiles', $this->paginate($this->Profiles)); 
         $this->set('profiles',$query);
         if(isset($search))
         {

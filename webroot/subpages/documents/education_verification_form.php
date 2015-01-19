@@ -2,7 +2,7 @@
 			<div class="form-body">
     <?php
     $counter=0;
-    if(isset($sub4['edu']) && $sub4['edu'])
+    if(isset($sub4['edu']) && count($sub4['edu']))
     {
         foreach($sub4['edu'] as $emp)
         {
@@ -322,7 +322,9 @@
         <a href="javascript:void(0);" class="btn green add_more_edu">Add More</a>
     </div>
     <?php
-                                                        if(!isset($sub4['att']))
+     if(!isset($sub4['att']))
+         $sub4['att'] = array();
+                                                        if(!count($sub4['att']))
                                                         {?>
     <div class="form-group col-md-12">
         <label class="control-label col-md-3">Attach Document : </label>
@@ -334,9 +336,9 @@
         </div>
         <?php }?>
         <div class="form-group col-md-12">
-        <div id="more_edu_doc" data-edu="<?php if(isset($sub4['att']))echo count($sub4['att']);else echo '1';?>">
+        <div id="more_edu_doc" data-edu="<?php if(count($sub4['att']))echo count($sub4['att']);else echo '1';?>">
              <?php
-                                                        if(isset($sub4['att']))
+                                                        if(isset($sub4['att']) && $sub4['att'])
                                                         {
                                                             $at=0;
                                                             foreach($sub4['att'] as $pa)

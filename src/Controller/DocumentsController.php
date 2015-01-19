@@ -436,6 +436,8 @@
                 else
                     $arr['draft'] = 0;
                 $arr['client_id'] = $cid;
+                if(isset($_POST['division']))
+                $arr['division'] = $_POST['division'];
                 $arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
                 $arr['conf_driver_name'] = $_POST['conf_driver_name'];
                 $arr['conf_date'] = $_POST['conf_date'];
@@ -2082,6 +2084,7 @@
             $att = $attach
                 ->find()
                 ->where(['order_id' => $oid,'attach_doc <> ""']);
+            
             $this->set(compact('education'));
 
             $this->set(compact('att'));

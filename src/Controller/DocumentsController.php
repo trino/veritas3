@@ -2123,7 +2123,7 @@
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
-                ->where(['id' => $order_id])->first();
+                ->where(['Orders.id' => $order_id])->contain(['Profiles'])->first();
 
             $this->set('order',$order);
         }

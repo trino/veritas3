@@ -122,6 +122,28 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                              ?>>
                                             Contact
                                         </option>
+
+                                        <option
+                                            value="7" <?php if ($p->profile_type == 7) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                            {
+                                                ?> disabled="disabled"
+                                            <?php
+                                            }
+                                        ?>>
+                                            Owner Operator
+                                        </option>
+
+                                        <option
+                                            value="8" <?php if ($p->profile_type ==8) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                            {
+                                                ?> disabled="disabled"
+                                            <?php
+                                            }
+                                        ?>>
+                                            Owner Driver
+                                        </option>
                                     </select>
                                 </div>
                                 </div>

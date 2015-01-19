@@ -2178,8 +2178,8 @@ class soapval extends nusoap_base {
 */
 class soap_transport_http extends nusoap_base {
 
-	var $url = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
-	var $uri = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
+	var $url = 'https://infosearchsite.com/MEEW1S/ISBService.svc?wsdl';
+	var $uri = 'https://infosearchsite.com/MEEW1S/ISBService.svc?wsdl';
 	var $digest_uri = '';
 	var $scheme = '';
 	var $host = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';

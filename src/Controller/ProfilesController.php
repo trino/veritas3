@@ -61,7 +61,7 @@ class ProfilesController extends AppController {
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $u = $this->request->session()->read('Profile.id');
         $super = $this->request->session()->read('Profile.super');
-        $cond = $this->Settings->getprofilebyclient($u,$super);
+        $condition = $this->Settings->getprofilebyclient($u,$super);
         if($setting->profile_list==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
@@ -127,8 +127,12 @@ class ProfilesController extends AppController {
             $query = $querys->find();
             $query = $query->where([$cond]);
         }
+        else
+        {
+            $query = $this->Profiles->find()->where(['OR'=>$condition]);
+        }
         //$this->set('profiles', $this->paginate($this->Profiles)); 
-        $this->set('profiles',$query);
+        //$this->set('profiles',$query);
         if(isset($search))
         {
             $this->set('search_text',$search);
@@ -144,7 +148,7 @@ class ProfilesController extends AppController {
         //$this->render('index');
         
         /*old code*/
-        $query = $this->Profiles->find()->where(['OR'=>$cond]);
+        
         //debug($query);
 		$this->set('profiles', $this->paginate($query)); 
 	}

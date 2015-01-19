@@ -206,14 +206,14 @@ $c = $client;
 													</div>
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Referred By</label>
-                                                        <select class="form-control" name="referred_by">
+                                                        <select class="form-control" name="referred_by" id="referred_by">
                                                             <option value="">Select</option>
-                                                            <option value="Transrep" <?php if(isset($c->referred_by)&& $c->referred_by=='Transrep'){?> selected="selected" <?php } ?> >Transrep</option>
-                                                            <option value="ISB" <?php if(isset($c->referred_by)&& $c->referred_by=='ISB'){?> selected="selected" <?php } ?> >ISB</option>
-                                                            <option value="AFIMAC" <?php if(isset($c->referred_by)&& $c->referred_by=='AFIMAC'){?> selected="selected" <?php } ?>>AFIMAC</option>
-                                                            <option value="Broker" <?php if(isset($c->referred_by)&& $c->referred_by=='Broker'){?> selected="selected" <?php } ?>>Broker</option>
-                                                            <option value="Online" <?php if(isset($c->referred_by)&& $c->referred_by=='Online'){?> selected="selected" <?php } ?>>Online</option>
-                                                            <option value="Tradeshow" <?php if(isset($c->referred_by)&& $c->referred_by=='Tradeshow'){?> selected="selected" <?php } ?>>Tradeshow</option>
+                                                            <option value="Transrep" <?php if(isset($c->referred_by) && $c->referred_by=="Transrep"){?> selected="selected" <?php } ?> >Transrep</option>
+                                                            <option value="ISB" <?php if(isset($c->referred_by) && $c->referred_by=="ISB"){?> selected="selected" <?php } ?> >ISB</option>
+                                                            <option value="AFIMAC" <?php if(isset($c->referred_by) && $c->referred_by=="AFIMAC"){?> selected="selected" <?php } ?>>AFIMAC</option>
+                                                            <option value="Broker" <?php if(isset($c->referred_by) && $c->referred_by=="Broker"){?> selected="selected" <?php } ?>>Broker</option>
+                                                            <option value="Online" <?php if(isset($c->referred_by) && $c->referred_by=="Online"){?> selected="selected" <?php } ?>>Online</option>
+                                                            <option value="Tradeshow" <?php if(isset($c->referred_by) && $c->referred_by=="Tradeshow"){?> selected="selected" <?php } ?>>Tradeshow</option>
                                                         </select>
 													</div>
                                                     <div class="form-group col-md-6">
@@ -273,12 +273,12 @@ $c = $client;
 
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Billing Instructions</label>
-														<input type="radio" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=='individual' ){?> selected="selected" <?php } ?> value="individual"/>&nbsp;&nbsp;Individual&nbsp;&nbsp;
-                                                        <input type="radio" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=='centralized' ){?> selected="selected" <?php } ?> value="centralized"/>&nbsp;&nbsp;Centralized&nbsp;&nbsp;
+														<input type="radio" class="billing_instructions" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=="individual" ){?> selected="selected" <?php } ?> value="individual"/>&nbsp;&nbsp;Individual&nbsp;&nbsp;
+                                                        <input type="radio" class="billing_instructions" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=="centralized" ){?> selected="selected" <?php } ?> value="centralized"/>&nbsp;&nbsp;Centralized&nbsp;&nbsp;
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Invoice Terms</label>
-														<select class="form-control" name="invoice_terms">
+														<select class="form-control" name="invoice_terms" id="invoice_terms">
                                                         <option value="">Select</option>
                                                             <option value="weekly" <?php if(isset($c->invoice_terms) && $c->invoice_terms=='weekly' ){?> selected="selected" <?php } ?>>Weekly</option>
                                                             <option value="biweekly" <?php if(isset($c->invoice_terms) && $c->invoice_terms=='biweekly' ){?> selected="selected" <?php } ?>>Bi-weekly</option>
@@ -702,6 +702,9 @@ $c = $client;
                                             str = str+'&description='+$('#tab_1_1 textarea').val();
                                             str = str+'&customer_type='+$('#customer_type').val();
                                             str = str+'&division='+$('#division').val();
+                                            str = str+'&referred_by='+$('#referred_by').val();
+                                            str = str+'&billing_instructions='+$('.billing_instructions').val();
+                                            str = str+'&invoice_terms='+$('#invoice_terms').val();
                                             
                                             
                                             $.ajax({

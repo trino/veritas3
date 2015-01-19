@@ -215,9 +215,10 @@ var FormWizard = function () {
                     $('.uploaded_for').hide();
                     
                     var count = 10;
-
+                    //alert($('#did').val()+'/'+$('#uploaded_for').val());
                     save_signature('1');
                     $.ajax({
+
                         url:base_url+'documents/webservice/0/0/'+$('#did').val()+'/'+$('#uploaded_for').val(),
                     })
                     var counter=setInterval(function(){

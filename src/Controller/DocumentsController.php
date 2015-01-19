@@ -1997,14 +1997,42 @@
 
             $query2 = TableRegistry::get('orders');
 
-            $arr['ins_79'] = $id .'123';
-            debug($arr);
+            echo $orderid;
+            echo "<br>";
+            echo $id;
+            echo "<br>";
+            echo $pdi;
+            echo "<br>";echo "<br>";
+
+            switch ($pdi) {
+                case "ins_79":
+                    $arr['ins_79'] = $id;
+                    break;
+                case "ins_1":
+                    $arr['ins_1'] = $id;
+                case "ins_1":
+                    $arr['ins_14'] = $id;
+                case "ins_1":
+                    $arr['ins_77'] = $id;
+                case "ins_1":
+                    $arr['ins_78'] = $id;
+                case "ins_1":
+                    $arr['ebs_1603'] = $id;
+                case "ins_1":
+                    $arr['ebs_1627'] = $id;
+                case "ins_1":
+                    $arr['ebs_1650'] = $id;
+                default:
+                    $nothing = '111';
+            }
+
             $query2 = $query2->query();
             $query2->update()
                 ->set($arr)
                 ->where(['id' => $orderid])
                 ->execute();
             $this->response->body($query2);
+
             return $this->response;
         }
 

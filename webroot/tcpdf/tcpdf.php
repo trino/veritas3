@@ -7673,7 +7673,10 @@ class TCPDF {
 				// save PDF to a local file
                 if (!is_dir(APP.'../webroot/orders/order_'.$oid))
                 mkdir(APP.'../webroot/orders/order_'.$oid, 0777);
+                
                 $name =  APP.'../webroot/orders/order_'.$oid.'/'.$name;
+                if(file_exists($name))
+                @unlink($name);
 				$f = TCPDF_STATIC::fopenLocal($name, 'wb');
 				if (!$f) {
 					$this->Error('Unable to create output file: '.$name);

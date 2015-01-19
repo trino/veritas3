@@ -8,7 +8,7 @@
                     
                     foreach($sub3['emp'] as $emp)
                     {
-                        die('here');
+                        //die('here');
                         $counter++;
                         if($counter!=1)
                         {

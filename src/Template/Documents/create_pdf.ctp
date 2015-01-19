@@ -338,7 +338,7 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
 ob_end_clean();
-$pdf->Output('Consent_Form'.rand(100000000,999999999).'.pdf', 'F',$oid);
+$pdf->Output('Consent_Form.pdf', 'F',$oid);
 
 //============================================================+
 // END OF FILE

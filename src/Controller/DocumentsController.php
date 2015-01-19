@@ -2082,6 +2082,7 @@
             $att = $attach
                 ->find()
                 ->where(['order_id' => $oid,'attach_doc <> ""']);
+            
             $this->set(compact('education'));
 
             $this->set(compact('att'));

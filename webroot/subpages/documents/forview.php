@@ -68,7 +68,7 @@
             <p>Filed by: <strong>Lorem Ipsum</strong></p>
 
 </span>
-            <hr/>
+            <!--hr/>
             <h4 class="profile-desc-title">About Marcus Doe</h4>
             <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
 
@@ -83,7 +83,7 @@
             <div class="margin-top-20 profile-desc-link">
                 <i class="fa fa-facebook"></i>
                 <a href="#">Lorem ipsum</a>
-            </div>
+            </div-->
 
     </div>
     <!-- END PORTLET MAIN -->
@@ -131,14 +131,13 @@
                                 <td>Premium National Criminal Record Check
 
 
+
                                 <?
-
-
-                                    echo $order->ins_79_binary;
-                                    echo "header('Content-type: application/pdf')";
-                                    echo "header('Content-Disposition: attachment; filename='my.pdf'')";
-                                    echo $order->ins_79_binary;
-
+/*
+                                    $pdf = fopen (APP . '../webroot/test.pdf','w');
+                                    fwrite ($pdf, base64_decode( $order->ins_79_binary));
+                                    fclose ($pdf);
+*/
                                 ?>
 
 
@@ -150,12 +149,7 @@
 										Satisfactory </span></td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">
-
-
-
-                                        Download</a>
-
+                                    <a href="<?=$this->request->webroot . 'test.pdf'?>" class="btn btn-primary">Download</a>
                                 </td>
                             </tr>
 
@@ -168,7 +162,7 @@
 										Passed </span></td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <a href="<?=$this->request->webroot . 'test.pdf'?>" class="btn btn-primary">Download</a>
 
 
                                 </td>
@@ -185,7 +179,7 @@
                                 </td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <a href="<?=$this->request->webroot . 'test.pdf'?>" class="btn btn-primary">Download</a>
 
                                 </td>
                             </tr>
@@ -197,7 +191,7 @@
 										Passed </span></td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <a href="<?=$this->request->webroot . 'test.pdf'?>" class="btn btn-primary">Download</a>
 
                                 </td>
                             </tr>
@@ -213,7 +207,7 @@
                                 </td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <a href="<?=$this->request->webroot . 'test.pdf'?>" class="btn btn-primary">Download</a>
 
                                 </td>
                             </tr>
@@ -225,7 +219,7 @@
 										Potential to Succeed </span></td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <a href="<?=$this->request->webroot . 'test.pdf'?>" class="btn btn-primary">Download</a>
                                 </td>
                             </tr>
 
@@ -236,7 +230,7 @@
 										Not Attached </span></td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <a href="<?=$this->request->webroot . 'test.pdf'?>" class="btn btn-primary">Download</a>
 
                                 </td>
                             </tr>
@@ -251,7 +245,7 @@
 										Beginner Driver </span></td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <a href="<?=$this->request->webroot . 'test.pdf'?>" class="btn btn-primary">Download</a>
 
                                 </td>
                             </tr>

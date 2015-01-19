@@ -1048,11 +1048,13 @@ jQuery(document).ready(function() {
         else
         var draft =0;
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
+    var confirmation = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
     var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#division').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val(),recruiter_signature:$('#recruiter_signature').val()};
     $.ajax({
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,
        type:'post',
+       beforeSend:saveSignature,
        url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft='+draft, 
        success:function(res) {
         
@@ -1084,13 +1086,49 @@ jQuery(document).ready(function() {
                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid;
               savedMeeOrder(url,order_id,cid);
       }
+      
 
        }
     });
     });
    
 });
-
+function saveSignature()
+{
+    if($(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val()=='Place MEE Order')
+    {
+        save_signature('3');
+        save_signature('4');
+    }
+}
+function save_signature(numb)
+        		{
+        		  //alert('rest');return;
+        			$("#test"+numb).data("jqScribble").save(function(imageData)
+        			{
+        			    if((numb=='1' && $('#recruiter_signature').parent().find('.touched').val()==1) || (numb=='3' && $('#criminal_signature_applicant').parent().find('.touched').val()==1) || (numb=='4' && $('#signature_company_witness').parent().find('.touched').val()==1)){
+        				$.post(base_url+'canvas/image_save.php', {imagedata: imageData}, function(response)
+        					{
+        					   if(numb=='1')
+                                {
+                                    
+                                    $('#recruiter_signature').val(response);
+                                }
+        						if(numb=='3')
+                                {
+                                    $('#criminal_signature_applicant').val(response);
+                                }
+                                if(numb=='4')
+                                {
+                                    $('#signature_company_witness').val(response);
+                                }
+        					});	
+                            }
+                            
+                            
+        				
+        			});
+        		}
 function savePrescreen(url,order_id,cid){
     var param = {
         order_id: order_id,
@@ -1138,6 +1176,11 @@ function savedDriverEvaluation(url,order_id,cid){
         data: param,
         type:'POST',
         success: function(res){
+            $.ajax({
+               url:'<?php echo $this->request->webroot;?>documents/createPdf/'+$('#did').val()
+            });
+                
+            
             //employment
             var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/'+order_id+'/'+cid,
                 employment=$('#form_employment').serialize();
@@ -1157,7 +1200,10 @@ function savedDriverEvaluation(url,order_id,cid){
             data:param,
             type:'POST',
             success:function(rea){
-
+                
+            $.ajax({
+               url:'<?php echo $this->request->webroot;?>documents/createPdfEmployment/'+$('#did').val()
+            });
             }
         });
     }
@@ -1168,7 +1214,9 @@ function savedDriverEvaluation(url,order_id,cid){
             data:param,
             type:'POST',
             success:function(res){
-                
+                $.ajax({
+               url:'<?php echo $this->request->webroot;?>documents/createPdfEducation/'+$('#did').val()
+            });
             }
         });
     }

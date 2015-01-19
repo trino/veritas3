@@ -1,4 +1,4 @@
-
+<input type="hidden" id="confirmation" value="1" />
 <div class="form-group col-md-12">
     <h4 class="block col-md-12">Confirmation</h4>
     

@@ -128,28 +128,28 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
 
 
-                                <div class="col-md-6" id="driver_div" style="display: none;">
+                                <div class="col-md-6" id="driver_div" style="display:<?php if(isset($p)&& $p->profile_type != 5)echo 'none';?>;">
                                     <div class="form-group">
                                         <label class="control-label">Driver Type</label>
 
                                     <select name="driver" class="form-control select_driver">
                                         <option value="">Select Driver Type</option>
-                                        <option value="" class="req_driver">BC - BC FTL AB/BC</option>
-                                        <option value="" class="req_driver">BCI5 - BC FTL I5</option>
-                                        <option value="" class="req_driver">BULK</option>
-                                        <option value="" class="req_driver">CLIMATE</option>
-                                        <option value="" class="req_driver">FTL - SINGLE DIVISION</option>
-                                        <option value="" class="req_driver">FTL - TOYOTA SINGLE HRLY</option>
-                                        <option value="" class="req_driver">FTL - TOYOTA SINGLE HWY</option>
-                                        <option value="" class="req_driver">LCV - LCV UNITS</option>
-                                        <option value="" class="req_driver">LOC - LOCAL</option>
-                                        <option value="" class="req_driver">SCD - SPECIAL COMMODITIES</option>
-                                        <option value="" class="req_driver">SST-SANDRK- OPEN FUEL</option>
-                                        <option value="" class="req_driver">SWD-SANDRK</option>
-                                        <option value="" class="req_driver">TBL-TRANSBORDER</option>
-                                        <option value="" class="req_driver">TEM - TEAM DIVISION</option>
-                                        <option value="" class="req_driver">TEM - TOYOTA TEAM</option>
-                                        <option value="" class="req_driver">WD - Wind</option>
+                                        <option value="1" <?php if($p->driver==1)echo "selected='slected'";?> class="req_driver">BC - BC FTL AB/BC</option>
+                                        <option value="2" <?php if($p->driver==2)echo "selected='slected'";?>class="req_driver">BCI5 - BC FTL I5</option>
+                                        <option value="3" <?php if($p->driver==3)echo "selected='slected'";?>class="req_driver">BULK</option>
+                                        <option value="4" <?php if($p->driver==4)echo "selected='slected'";?>class="req_driver">CLIMATE</option>
+                                        <option value="5" <?php if($p->driver==5)echo "selected='slected'";?>class="req_driver">FTL - SINGLE DIVISION</option>
+                                        <option value="6" <?php if($p->driver==6)echo "selected='slected'";?>class="req_driver">FTL - TOYOTA SINGLE HRLY</option>
+                                        <option value="7" <?php if($p->driver==7)echo "selected='slected'";?>class="req_driver">FTL - TOYOTA SINGLE HWY</option>
+                                        <option value="8" <?php if($p->driver==8)echo "selected='slected'";?>class="req_driver">LCV - LCV UNITS</option>
+                                        <option value="9" <?php if($p->driver==9)echo "selected='slected'";?>class="req_driver">LOC - LOCAL</option>
+                                        <option value="10" <?php if($p->driver==10)echo "selected='slected'";?>class="req_driver">SCD - SPECIAL COMMODITIES</option>
+                                        <option value="11" <?php if($p->driver==11)echo "selected='slected'";?>class="req_driver">SST-SANDRK- OPEN FUEL</option>
+                                        <option value="12" <?php if($p->driver==12)echo "selected='slected'";?>class="req_driver">SWD-SANDRK</option>
+                                        <option value="13" <?php if($p->driver==13)echo "selected='slected'";?>class="req_driver">TBL-TRANSBORDER</option>
+                                        <option value="14" <?php if($p->driver==14)echo "selected='slected'";?>class="req_driver">TEM - TEAM DIVISION</option>
+                                        <option value="15" <?php if($p->driver==15)echo "selected='slected'";?>class="req_driver">TEM - TOYOTA TEAM</option>
+                                        <option value="16" <?php if($p->driver==16)echo "selected='slected'";?>class="req_driver">WD - Wind</option>
                                     </select>
                                 </div>
                                 </div>
@@ -309,11 +309,6 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
 
                             </div>
-
-
-
-
-
 
                             <div class="row">
 

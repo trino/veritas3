@@ -1698,6 +1698,7 @@
         */
         function get_orderscount($type, $c_id = "")
         {
+            //die();
             //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
             //var_dump($cond);die();
             //die();
@@ -1706,7 +1707,7 @@
             if (!$this->request->session()->read('Profile.super')) {
                 $setting = $this->Settings->get_permission($u);
                 if ($setting->documents_others == 0) {
-                    $u_cond = "user_id=$u";
+                    $u_cond = "Orders.user_id=$u";
                 }
 
             } else

@@ -47,18 +47,18 @@
     						</div>
     						<div class="details">
     							<div class="number">
-                                <?php if($d->order==0)echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
-    							<?php if($d->order==1)echo $cnt = $this->requestAction('/documents/get_orderscount/'.$d->table_name); ?>	
+                                <?php if($d->orders==0)echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
+    							<?php if($d->orders==1)echo $cnt = $this->requestAction('/documents/get_orderscount/'.$d->table_name); ?>	
     							</div>
     							<div class="desc">
     								 <?php echo ucfirst($d->title); ?>
     							</div>
     						</div>
                             <?php if($this->request['controller']!="Documents"){?>
-    						<?php if($d->order==0){?><a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
+    						<?php if($d->orders==0){?><a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a><?php }?>
-                            <?php if($d->order==1){?>
+                            <?php if($d->orders==1){?>
                             <a class="more" href="<?php echo $this->request->webroot;?>documents/orderslist">
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a>

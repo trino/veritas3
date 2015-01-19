@@ -125,7 +125,7 @@ $c = $client;
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Company's Phone Number</label>
-														<input type="text" class="form-control" name="company_phone" <?php if(isset($c->sig_phone)){?> value="<?php echo $c->sig_phone; ?>" <?php } ?>/>
+														<input type="text" class="form-control" name="company_phone" <?php if(isset($c->company_phone)){?> value="<?php echo $c->company_phone; ?>" <?php } ?>/>
 													</div>
 													<div class="form-group col-md-6">
 														<label class="control-label">Signatory's Email Address</label>

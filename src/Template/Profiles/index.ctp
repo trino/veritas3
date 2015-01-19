@@ -41,7 +41,7 @@
 
             <div class="portlet-body">
                     <div class="chat-form">
-                            <form action="<?php echo $this->request->webroot; ?>profiles/search" method="get">
+                            <form action="<?php echo $this->request->webroot; ?>profiles/index" method="get">
                                 <div class="col-md-3" style="padding-left:0;">
                                     <select class="form-control" style="" name="filter_profile_type">
                                         <option value="">Filter By <?php echo ucfirst($settings->profile); ?> Type</option>

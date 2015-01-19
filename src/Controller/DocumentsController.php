@@ -430,7 +430,7 @@
                 $orders = TableRegistry::get('orders');
                 $arr['title'] = 'order_' . $_POST['uploaded_for'] . '_' . date('Y-m-d H:i:s');
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
-                $arr['uploaded_for'] = $_POST['recruiter_signature'];
+                $arr['recruiter_signature'] = $_POST['recruiter_signature'];
                 if (isset($_GET['draft']) && $_GET['draft'])
                     $arr['draft'] = 1;
                 else
@@ -469,6 +469,7 @@
                 else
                     $arr['draft'] = 0;
                 $arr['sub_doc_id'] = $_POST['sub_doc_id'];
+                if(isset($_POST['uploaded_for']))
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
                 $arr['client_id'] = $cid;
                 $arr['document_type'] = $_GET['document'];
@@ -2043,7 +2044,7 @@
             $attach = TableRegistry::get('consent_form_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid]);
+                ->where(['order_id' => $oid,'attach_doc <> ""']);
             $this->set('detail',$arr);
             $this->set(compact('att'));
 
@@ -2061,7 +2062,7 @@
             $attach = TableRegistry::get('employment_verification_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $id])->all();
+                ->where(['order_id' => $id,'attach_doc <> ""'])->all();
             
             $this->set('order_id',$id);
             $this->set(compact('att'));
@@ -2080,7 +2081,7 @@
             $attach = TableRegistry::get('education_verification_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid]);
+                ->where(['order_id' => $oid,'attach_doc <> ""']);
             $this->set(compact('education'));
 
             $this->set(compact('att'));

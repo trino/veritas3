@@ -51,11 +51,6 @@
     <!-- PORTLET MAIN -->
     <div class="portlet light">
 
-
-
-
-
-
 <div class="margin-bottom-20">
 
                 <a href="#" class="btn btn-lg default yellow-stripe">
@@ -133,14 +128,33 @@
 
 
                             <tr class="even" role="row">
-                                <td>Premium National Criminal Record Check</td>
+                                <td>Premium National Criminal Record Check
+
+
+                                <?
+
+
+                                    echo $order->ins_79_binary;
+                                    echo "header('Content-type: application/pdf')";
+                                    echo "header('Content-Disposition: attachment; filename='my.pdf'')";
+                                    echo $order->ins_79_binary;
+
+                                ?>
+
+
+
+                                </td>
                                 <td>
 
 										<span class="label label-sm label-warning">
 										Satisfactory </span></td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <a href="#" class="btn btn-primary">
+
+
+
+                                        Download</a>
 
                                 </td>
                             </tr>

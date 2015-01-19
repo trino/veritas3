@@ -2126,6 +2126,8 @@
                 ->where(['Orders.id' => $order_id])->contain(['Profiles'])->first();
 
             $this->set('order',$order);
+            debug($order);
         }
+
 
     }

@@ -4,16 +4,28 @@
     <div class="portlet light profile-sidebar-portlet">
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
-            <center><img alt="" class="img-circle" src="http://localhost/veritas3/img/uploads/male.png"></center>
+            <center>
+                <?php if (isset($order->profile->image) && $order->profile->image!= "") { ?>
+                        <img 
+                             src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $order->profile->image ?>" class="img-responsive" alt="" id="clientpic" />
+
+                    <?php } else {
+                        ?>
+                        <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive" id="clientpic"
+                             alt=""/>
+                    <?php
+                    }
+                    ?>
+            </center>
         </div>
         <!-- END SIDEBAR USERPIC -->
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-                Marcus Doe
+                <?php echo ucwords($order->profile->title);?>
             </div>
             <div class="profile-usertitle-job">
-                Reference Number 1
+                Reference Number <?php echo ucwords($order->profile->id);?>
             </div>
 
             <div class="profile-usertitle-job">
@@ -52,7 +64,7 @@
 </div>
 
 
-
+<?php $settings = $this->requestAction('settings/get_settings');?> 
          <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
                  <strong>Orders</strong></p>
             <p> Uploaded by: <strong>Recruiter ID # 34</strong></p>
@@ -781,7 +793,7 @@ MEE Order	 </span>
                                         <div class="task-title">
 															<span class="task-title-sp">
 
-Confirmation  </span>
+                                                            Confirmation  </span>
                                             <span class="label label-sm label-info">Internal Products</span>
                                         </div>
                                         <div class="task-config">

@@ -456,9 +456,9 @@ class ClientsController extends AppController {
 		$profile = $this->Clients->get($id);
 		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Clients->delete($profile)) {
-			$this->Flash->success('The user has been deleted.');
+			$this->Flash->success('The client has been deleted.');
 		} else {
-			$this->Flash->error('User could not be deleted. Please try again.');
+			$this->Flash->error('Client  could not be deleted. Please try again.');
 		}
 		return $this->redirect(['action' => 'index']);
 	}

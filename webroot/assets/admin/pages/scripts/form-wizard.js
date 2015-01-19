@@ -214,13 +214,13 @@ var FormWizard = function () {
                     save_signature('4');
                     $('.cont').html('Submit Order');
                     $.ajax({
-                       url:base_url+'documents/createPdf/'+$('#did').val()
+                      // url:base_url+'documents/createPdf/'+$('#did').val()
                     });
                     $.ajax({
-                       url:base_url+'documents/createPdfEducation/'+$('#did').val()
+                     //  url:base_url+'documents/createPdfEducation/'+$('#did').val()
                     });
                     $.ajax({
-                       url:base_url+'documents/createPdfEmployment/'+$('#did').val()
+                     //  url:base_url+'documents/createPdfEmployment/'+$('#did').val()
                     });
                    // $('.cont').attr('id','');
                 }

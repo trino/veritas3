@@ -86,7 +86,7 @@
                 // $this->set('start',$cond);
 
             }
-            
+
             if ($cond) {
                 $doc = $doc->where([$cond]);
                 //debug($doc);die();
@@ -1744,7 +1744,7 @@
             $this->response->body(($cnt));
             return $this->response;
         }
-        
+
         function fileUpload()
         {
             // print_r($_POST);die;
@@ -1960,18 +1960,6 @@
 
 
 
-        public function save_ins_pdi($orderid, $pdi){
-
-            $query2 = TableRegistry::get('orders');
-            $arr['ins_pdi'] = $pdi ;
-            $query2 = $query2->query();
-            $query2->update()
-                ->set($arr)
-                ->where(['id' => $orderid])
-                ->execute();
-            $this->response->body($query2);
-            return $this->response;
-        }
 
 
 
@@ -2002,6 +1990,22 @@
             return $this->response;
     }
 
+        public function save_pdi($orderid, $id, $pdi){
+
+            $query2 = TableRegistry::get('orders');
+
+            $arr['ins_79'] = $id .'123';
+debug($arr);
+            $query2 = $query2->query();
+            $query2->update()
+                ->set($arr)
+                ->where(['id' => $orderid])
+                ->execute();
+            $this->response->body($query2);
+            return $this->response;
+        }
+
+
         public function webservice($callfunction = null, $body = null, $orderid = null, $driverid = null)
         {
             $this->layout = "blank";
@@ -2014,7 +2018,8 @@
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
         }
-        public function createPdf($id)
+
+        public function createPdf1($id)
         {
             $this->set('oid',$id);
             $this->layout = 'blank';
@@ -2023,7 +2028,7 @@
                 ->find()
                 ->where(['order_id' => $id])->first();
 
-            
+
             $consent_attachment = TableRegistry::get('consent_form_attachments');
             $arr['consent_attachment'] = $consent_attachment
                 ->find()
@@ -2031,18 +2036,18 @@
             $this->set('detail',$arr);
         }
 
-        public function createPdfEmployment($id)
+        public function createPdfEmployment1($id)
         {
             $this->layout = 'blank';
             $consent = TableRegistry::get('employment_verification');
             $arr['consent'] = $consent
                 ->find()
                 ->where(['order_id' => $id])->first();
-            
-            $this->set('detail',$arr);
-        }    
 
-        public function createPdfEducation($id)
+            $this->set('detail',$arr);
+        }
+
+        public function createPdfEducation1($id)
         {
             $this->set('oid',$id);
             $this->layout = 'blank';
@@ -2063,5 +2068,5 @@
 
             $this->set('order',$order);
         }
-        
+
     }

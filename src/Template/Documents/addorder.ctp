@@ -176,7 +176,7 @@ else
                                                             foreach($division as $u)
                                                             {
                                                                 ?>
-                                                                <option value="<?php echo $u->id;?>" <?php if(isset($modal) && $modal->division==$u->title){?> selected="selected"<?php } ?> ><?php echo $u->title; ?></option>
+                                                                <option value="<?php echo $u->id;?>" <?php if(isset($modal) && $modal->division==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->title; ?></option>
                                                                 <?php
                                                             }
                                                          ?>
@@ -1049,7 +1049,7 @@ jQuery(document).ready(function() {
         var draft =0;
     var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
     var confirmation = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
-    var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#division').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val(),recruiter_signature:$('#recruiter_signature').val()};
+    var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#divison').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val(),recruiter_signature:$('#recruiter_signature').val()};
     $.ajax({
        //data:'uploaded_for='+$('#uploaded_for').val(),
        data : data,

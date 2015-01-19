@@ -169,7 +169,7 @@ $pdf->writeHTMLCell(0, 0, '', '', $attach, 0, 1, 0, true, '', true);
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
 ob_end_clean();
-$pdf->Output('Education_Form'.rand(100000000,999999999).'.pdf', 'F',$oid);
+$pdf->Output('Education_Form.pdf', 'F',$oid);
 
 //============================================================+
 // END OF FILE

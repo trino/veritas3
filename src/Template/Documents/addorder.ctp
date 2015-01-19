@@ -369,6 +369,7 @@ function showforms(form_type)
                        
                        }
                        });
+                       $('#conf_driver_name').val(response['applicant_name']);
                         
                     }
                     });
@@ -531,6 +532,7 @@ function showforms(form_type)
                        
                        
                        }
+                       $('#conf_driver_name').val(response['first_name']+' '+response['last_name']);
                        });
                     }
                     });
@@ -911,6 +913,7 @@ function showforms(form_type)
                        
                        
                        }
+                       $('#conf_driver_name').val(response['driver_name']);
                        });
                     }
                     });
@@ -976,6 +979,7 @@ function showforms(form_type)
                        
                        
                        }
+                       $('#conf_driver_name').val(response['first_name']+' '+response['last_name']);
                        });
                        
                     }

@@ -110,20 +110,21 @@
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
                     		<tr>
-                                <th>ID</th>
-             			        <th>Title</th>
-                    			<th>Uploaded by</th>
-                    			<th>Uploaded for</th>   
-                                <th>Client</th>
-                                <th>Created</th>               			
+                                <th><?= $this->Paginator->sort('id');?></th>
+             			        <th><?= $this->Paginator->sort('title');?></th>
+                    			<th><?= $this->Paginator->sort('profile->title','Uploaded by');?></th>
+                    			<th><?= $this->Paginator->sort('profile->title;','Uploaded for');?></th>   
+                                <th><?= $this->Paginator->sort('client_id','Client');?></th>
+                                <th><?= $this->Paginator->sort('created','Created');?></th>               			
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
                     	<tbody>
                         <?php
                         $row_color_class = "odd";
+                        
                         foreach ($orders as $order):
-
+                                //var_dump($order);
                             if($row_color_class=="even")
                             {
                                 $row_color_class ="odd";
@@ -135,7 +136,7 @@
                             $client = $this->requestAction("clients/getClient/".$order->client_id);
                           ?>
                           <tr class="<?=$row_color_class;?>" role="row">
-                                <td><?= $this->Number->format($order->id) ?></td>
+                                <td><?= $this->Number->format($order->id); //echo $order->profile->title; ?></td>
                                 <td><?= h($order->title) ?></td>
                                 <td><?= h($uploaded_by->username) ?></td>
                                 <td><?= h($uploaded_for->username) ?></td>
@@ -143,19 +144,28 @@
                                 <td><?= h($order->created) ?></td>
                                 <td class="actions">
 
-                                    <?php  if($sidebar->orders_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);} ?>
-                                    <?php  
+                                    <?php
+                                      if($sidebar->orders_list=='1'){
+                                        
+                                        echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);} ?>
+                                    <?php
+                                    $super = $this->request->session()->read('Profile.super');
+                                        if(isset($super))
+                                        {  
                                     if($sidebar->orders_edit=='1')
                                     {
                                         
                                         echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'addorder',$order->client_id, $order->id], ['class' => 'btn btn-primary']);
                                         
                                     }
-                                     ?>
-                                     <?php  if($sidebar->orders_delete=='1'){ ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a><?php }?>
+                                     if($sidebar->orders_delete=='1'){
+                                        ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+                                        <?php
+                                         } } 
+                                         ?>
 
                                         
-<?php                                   if($sidebar->orders_requalify=='1') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
+<?php                                   if($sidebar->orders_requalify=='1') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $order->id], ['class' => 'btn btn-warning']);
 ?>
                                         <?php echo $this->Html->link(__('View report'), ['controller'=>'documents','action' => 'viewReport',$order->client_id, $order->id], ['class' => 'btn btn-success']);?>
                                 </td>
@@ -170,7 +180,11 @@
 
 
 				<div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-					
+					 <ul class="pagination">
+                        <?= $this->Paginator->prev('< ' . __('previous')); ?>
+                        <?= $this->Paginator->numbers(); ?>
+                        <?= $this->Paginator->next(__('next') . ' >'); ?>
+                    </ul>
 				</div>
 
 

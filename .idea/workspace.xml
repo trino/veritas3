@@ -2,16 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a163c84f-7931-4688-a0c4-59462597eb2d" name="Default" comment="[edit] listing clients as per profile(user)">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/136364_634072.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/726083_914965.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/734158_135760.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/767337_264739.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/941690_650469.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form240515136.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form324862670.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form423217773.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form485620117.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form834875488.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form863769531.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Consent_Form942349243.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form149246215.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form228237915.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form288140869.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form449035644.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form780987548.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form803948974.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/Education_Form958389282.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm211813354.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm333514404.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm442059326.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm628085327.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm720672607.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm751324462.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/orders/EmplyomentForm967919921.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/confirmation_signature.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/consent_signature_driver.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/consent_signature_witness.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Documents/view_report.ctp" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\example_001.pdf" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss3.png" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form458456420.pdf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/a1.pdf" afterPath="$PROJECT_DIR$/src/Template/Documents/a1.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/a1.pdf" afterPath="$PROJECT_DIR$/webroot/a1.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/soap/a1.pdf" afterPath="$PROJECT_DIR$/webroot/subpages/soap/a1.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/soap/nusoap.php" afterPath="$PROJECT_DIR$/webroot/subpages/soap/nusoap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/DocumentsController.php" afterPath="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/company_pre_screen_question.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/company_pre_screen_question.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/confirmation.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/confirmation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" afterPath="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Pdfs/get_consent.ctp" afterPath="$PROJECT_DIR$/src/Template/Pdfs/get_consent.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/canvas/jquery.jqscribble.js" afterPath="$PROJECT_DIR$/webroot/canvas/jquery.jqscribble.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
     <ignored path="veritas3.iws" />
@@ -37,11 +72,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="32946" max-vertical-offset="33779">
-              <caret line="1940" column="0" selection-start-line="1940" selection-start-column="0" selection-end-line="1940" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.26530612" vertical-offset="0" max-vertical-offset="34680">
+              <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
               <folding>
                 <element signature="e#41#74#0#PHP" expanded="true" />
               </folding>
@@ -52,7 +87,7 @@
       <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.08" vertical-offset="0" max-vertical-offset="5236">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="306" max-vertical-offset="5236">
               <caret line="18" column="63" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
               <folding>
                 <marker date="1421512153968" expanded="true" signature="919:1081" placeholder="..." />
@@ -71,15 +106,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nusoap.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nusoap.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/soap/nusoap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27040815" vertical-offset="36814" max-vertical-offset="139281">
-              <caret line="2178" column="38" selection-start-line="2178" selection-start-column="38" selection-end-line="2178" selection-end-column="38" />
+            <state vertical-scroll-proportion="-8.807693" vertical-offset="36814" max-vertical-offset="139281">
+              <caret line="2179" column="0" selection-start-line="2178" selection-start-column="47" selection-end-line="2179" selection-end-column="0" />
               <folding>
                 <element signature="e#7#1164#0#PHP" expanded="true" />
                 <marker date="1421512178184" expanded="true" signature="62693:62868" placeholder="..." />
                 <marker date="1421512178184" expanded="true" signature="63045:63177" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="184657:188121" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="184663:187868" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="184734:186099" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="185193:185238" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="185250:185469" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="185483:185668" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="185683:185918" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="186155:187858" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="186212:186935" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="187019:187350" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="187353:187473" placeholder="//..." />
+                <marker date="1421512178184" expanded="true" signature="187500:187602" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="187662:187749" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="187700:187745" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="187769:187839" placeholder="{...}" />
+                <marker date="1421512178184" expanded="true" signature="187877:188121" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="187899:188121" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="187979:188121" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="187987:188112" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="188330:188416" placeholder="..." />
+                <marker date="1421512178184" expanded="true" signature="189263:189296" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -98,10 +154,10 @@
       <file leaf-file-name="form-wizard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3434" max-vertical-offset="4998">
-              <caret line="202" column="34" selection-start-line="202" selection-start-column="34" selection-end-line="202" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3910" max-vertical-offset="5474">
+              <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
               <folding>
-                <marker date="1421418186720" expanded="true" signature="9927:10014" placeholder="//..." />
+                <marker date="1421526264300" expanded="true" signature="11242:11329" placeholder="//..." />
               </folding>
             </state>
           </provider>
@@ -123,6 +179,7 @@
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" />
         <option value="$PROJECT_DIR$/webroot/subpages/soap/nusoap.php" />
+        <option value="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
       </list>
     </option>
   </component>
@@ -162,6 +219,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -340,7 +398,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,15 +441,15 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="1">
@@ -462,20 +519,20 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15934066" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16117217" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1668" y="557" width="1008" height="623" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1668" y="557" width="1008" height="623" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -496,9 +553,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16117217" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -791,16 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3434" max-vertical-offset="4998">
-          <caret line="202" column="34" selection-start-line="202" selection-start-column="34" selection-end-line="202" selection-end-column="34" />
-          <folding>
-            <marker date="1421418186720" expanded="true" signature="9927:10014" placeholder="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/tcpdf/config/tcpdf_config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="3502">
@@ -843,12 +890,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
+    <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="32946" max-vertical-offset="33779">
-          <caret line="1940" column="0" selection-start-line="1940" selection-start-column="0" selection-end-line="1940" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3910" max-vertical-offset="5474">
+          <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
           <folding>
-            <element signature="e#41#74#0#PHP" expanded="true" />
+            <marker date="1421526264300" expanded="true" signature="11242:11329" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -861,12 +908,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/soap/nusoap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.807693" vertical-offset="36814" max-vertical-offset="139281">
+          <caret line="2179" column="0" selection-start-line="2178" selection-start-column="47" selection-end-line="2179" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#1164#0#PHP" expanded="true" />
+            <marker date="1421512178184" expanded="true" signature="62693:62868" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="63045:63177" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="184657:188121" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="184663:187868" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="184734:186099" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="185193:185238" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="185250:185469" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="185483:185668" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="185683:185918" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="186155:187858" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="186212:186935" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="187019:187350" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="187353:187473" placeholder="//..." />
+            <marker date="1421512178184" expanded="true" signature="187500:187602" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="187662:187749" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="187700:187745" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="187769:187839" placeholder="{...}" />
+            <marker date="1421512178184" expanded="true" signature="187877:188121" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="187899:188121" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="187979:188121" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="187987:188112" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="188330:188416" placeholder="..." />
+            <marker date="1421512178184" expanded="true" signature="189263:189296" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.08" vertical-offset="0" max-vertical-offset="5236">
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="5236">
           <caret line="18" column="63" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
           <folding>
             <marker date="1421512153968" expanded="true" signature="919:1081" placeholder="..." />
@@ -884,14 +964,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/subpages/soap/nusoap.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27040815" vertical-offset="36814" max-vertical-offset="139281">
-          <caret line="2178" column="38" selection-start-line="2178" selection-start-column="38" selection-end-line="2178" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.26530612" vertical-offset="0" max-vertical-offset="34680">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
           <folding>
-            <element signature="e#7#1164#0#PHP" expanded="true" />
-            <marker date="1421512178184" expanded="true" signature="62693:62868" placeholder="..." />
-            <marker date="1421512178184" expanded="true" signature="63045:63177" placeholder="..." />
+            <element signature="e#41#74#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

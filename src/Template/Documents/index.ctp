@@ -118,10 +118,10 @@
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
                     		<tr>
-                                <th>ID</th>
-                    			<th><?php echo ucfirst($settings->document);?></th>
-                    			<th>Uploaded by<?php if(isset($end)) echo $end; if(isset($start)) echo "//".$start; ?></th>
-                    			<th>Uploaded on</th>           			
+                                <th><?= $this->Paginator->sort('id');?></th>
+                    			<th><?= $this->Paginator->sort('document_type',ucfirst($settings->document));?></th>
+                    			<th><?= $this->Paginator->sort('user_id','Uploaded by');?><?php if(isset($end)) echo $end; if(isset($start)) echo "//".$start; ?></th>
+                    			<th><?= $this->Paginator->sort('created','Uploaded on');?></th>           			
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
@@ -184,26 +184,13 @@
 
 
 				<div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-					<ul class="pagination">
-						<li id="sample_2_previous" tabindex="0" aria-controls="sample_2"
-							class="paginate_button previous disabled"><a href="#"><i
-									class="fa fa-angle-left"></i></a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button active"><a href="#">1</a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">2</a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">3</a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">4</a></li>
-						<li tabindex="0" aria-controls="sample_2" class="paginate_button "><a href="#">5</a></li>
-						<li id="sample_2_next" tabindex="0" aria-controls="sample_2" class="paginate_button next"><a
-								href="#"><i class="fa fa-angle-right"></i></a></li>
-					</ul>
-					<ul class="pagination">
-						<li class="prev disabled">
-							<a href="">< previous</a>
-						</li>
-						<li class="next">
-							<a href="#" rel="next">next ></a>
-						</li>
-					</ul>
+					
+					
+                    <ul class="pagination">
+                        <?= $this->Paginator->prev('< ' . __('previous')); ?>
+                        <?= $this->Paginator->numbers(); ?>
+                        <?= $this->Paginator->next(__('next') . ' >'); ?>
+                    </ul>
 				</div>
 
 

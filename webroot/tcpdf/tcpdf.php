@@ -7545,7 +7545,7 @@ class TCPDF {
 	 * @since 1.0
 	 * @see Close()
 	 */
-	public function Output($name='doc.pdf', $dest='I') {
+	public function Output($name='doc.pdf', $dest='I',$oid = '') {
 		//Output PDF to some destination
 		//Finish document if necessary
 		if ($this->state < 3) {
@@ -7669,8 +7669,11 @@ class TCPDF {
 			case 'F':
 			case 'FI':
 			case 'FD': {
+			     //echo $oid;die();
 				// save PDF to a local file
-                           $name =  APP.'../webroot/orders/'.$name;
+                if (!is_dir(APP.'../webroot/orders/order_'.$oid))
+                mkdir(APP.'../webroot/orders/order_'.$oid, 0777);
+                $name =  APP.'../webroot/orders/order_'.$oid.'/'.$name;
 				$f = TCPDF_STATIC::fopenLocal($name, 'wb');
 				if (!$f) {
 					$this->Error('Unable to create output file: '.$name);

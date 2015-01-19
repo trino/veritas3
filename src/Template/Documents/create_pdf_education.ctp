@@ -15,7 +15,7 @@ $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 //echo PDF_FONT_MONOSPACED;die();
 //$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 // set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Education verification form '.$education->order_id, 'by '.$this->request->session()->read('Profile.username'), array(0,64,255), array(0,64,128));
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Education verification form '.$oid, 'by '.$this->request->session()->read('Profile.username'), array(0,64,255), array(0,64,128));
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 
 // set header and footer fonts
@@ -67,12 +67,13 @@ else
 $initials = 'http://isbmee.com';
 $html = '<strong>Past education</strong><br />';
 // Print text using writeHTMLCell()
-$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+//$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 if($education)
 {
-    foreach($education as $edu)
+    foreach($education as $k=>$edu)
     {
+        $pdf->writeHTMLCell(100, 8,'','', '<strong>Past Education '.($k+1).'</strong><hr/>',0, 1, 0, true, '', true);
 $pdf->Cell(80, 5, 'School/College Name');
 $pdf->TextField('college_school_name', 50, 5,array(),array('v'=>$edu->college_school_name, 'dv'=>$edu->college_school_name));
 $pdf->Ln(6);
@@ -143,7 +144,7 @@ $pdf->TextField('date_time', 50, 5,array(),array('v'=>$edu->date_time, 'dv'=>$ed
 $pdf->Ln(6);
 }
 }
-
+if(count($att)>0){
 $attach = "<br/><br/><strong>Attachments</strong>
                 <br/>
                 ";
@@ -156,19 +157,19 @@ if($_SERVER['SERVER_NAME']='localhost')
                 {
                     foreach($att as $a)
                     {
-                    
+                        if(file_exists(APP."../webroot/attachments/".$a->attach_doc))
                         $attach = $attach."<p><img src=\"".$initials.$this->request->webroot."attachments/".$a->attach_doc."\" /><br /></p>";
                     }
                 }
 $pdf->writeHTMLCell(0, 0, '', '', $attach, 0, 1, 0, true, '', true);
-
+}
 
 // ---------------------------------------------------------
 
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
 ob_end_clean();
-$pdf->Output('Education_Form'.rand(100000000,999999999).'.pdf', 'F');
+$pdf->Output('Education_Form'.rand(100000000,999999999).'.pdf', 'F',$oid);
 
 //============================================================+
 // END OF FILE

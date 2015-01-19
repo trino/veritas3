@@ -227,7 +227,7 @@
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[orders]"
+                                                                                          name="side[email]"
                                                                                           onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){$(this).removeAttr('checked');});"
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->email == 0) echo "checked"; ?>/>
                                                         No </label>

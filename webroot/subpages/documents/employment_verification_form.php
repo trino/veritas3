@@ -2,10 +2,13 @@
         	<div class="form-body">
                 <?php
                 $counter=0;
-                if(isset($sub3['emp']) && $sub3['emp'])
+                if(isset($sub3['emp']) && count($sub3['emp']))
                 {
+                    //echo count($sub3['emp']);
+                    
                     foreach($sub3['emp'] as $emp)
                     {
+                        die('here');
                         $counter++;
                         if($counter!=1)
                         {
@@ -24,7 +27,7 @@
                         <div class="form-group col-md-12">
                 
                                 <h4 class="control-label col-md-12">Past Employer</h4>
-                </div>
+                        </div>
                 
                                <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Company Name</label>
@@ -302,7 +305,10 @@
             <a href="javascript:void(0);" class="btn green" id="add_more">Add More</a>
         </div>
          <?php
-                                                        if(!isset($sub3['att']))
+         
+         if(!isset($sub3['att']))
+         $sub3['att'] = array();
+                                                        if(!count($sub3['att']))
                                                         {?>
         <div class="form-group col-md-12">
             <label class="control-label col-md-3">Attach Document : </label>
@@ -311,11 +317,15 @@
             <a href="javascript:void(0);" id="emp1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
             </div>
            </div>
-           <?php }?>
+           <?php }
+           
+           
+           
+           ?>
           <div class="form-group col-md-12">
-            <div id="more_employ_doc" data-emp="<?php if(isset($sub3['att']))echo count($sub3['att']);else echo '1';?>">
+            <div id="more_employ_doc" data-emp="<?php if(count($sub3['att']))echo count($sub3['att']);else echo '1';?>">
             <?php
-                                                        if(isset($sub3['att']))
+                                                        if($sub3['att'])
                                                         {
                                                             $at=0;
                                                             foreach($sub3['att'] as $pa)

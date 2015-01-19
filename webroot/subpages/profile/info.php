@@ -165,6 +165,8 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                         <option value="" class="req_driver">FTL - TOYOTA SINGLE HWY</option>
                                         <option value="" class="req_driver">LCV - LCV UNITS</option>
                                         <option value="" class="req_driver">LOC - LOCAL</option>
+                                        <option value="" class="req_driver">OWNER - OPERATOR</option>
+                                        <option value="" class="req_driver">OWNER - DRIVER</option>
                                         <option value="" class="req_driver">SCD - SPECIAL COMMODITIES</option>
                                         <option value="" class="req_driver">SST-SANDRK- OPEN FUEL</option>
                                         <option value="" class="req_driver">SWD-SANDRK</option>

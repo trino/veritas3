@@ -1,5 +1,5 @@
 <?php
-    $proxyhost = 'https://infosearchsite.com/1MEEWS/ISBService.svc?wsdl';
+    $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
     $client = new nusoap_client($proxyhost, true, $proxyhost, $proxyport = null, $proxyusername = null, $proxypassword = null);
     $client->useHTTPPersistentConnection();
 
@@ -8,6 +8,7 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $startorder1 = true;
+
     $productdetails79 = true;
     $productdetails1 = true;
     $productdetails14 = true;
@@ -16,7 +17,10 @@
     $productdetailsebs1603 = true;
     $productdetailsebs1627 = true;
     $productdetailsebs1650 = true;
-    $uploadbinary1 = true;
+
+    $uploadbinaryconsent = true;
+    $uploadbinaryemployment = true;
+    $uploadbinaryeducation = true;
 
 
     if ($startorder1) {
@@ -243,14 +247,44 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    if ($uploadbinary1) {
+    if ($uploadbinaryconsent) {
         //UploadBinary
-        //265
+        //1603
 
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);
-        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\123\1.pdf');
-        $body = base64_encode($pdf);
+        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\order_'.$orderid = '60'.'\Consent_Form.pdf');
+   //     $body = base64_encode($pdf);
+        echo $urlDecodedStr = rawurldecode($body);
+        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>test.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+        $result = $client->call('UploadBinaryFile', $soap_xml);
+
+        debug($result);
+
+    }
+    if ($uploadbinaryemployment) {
+        //UploadBinary
+        //1627
+
+        $pdf_content = '';
+        $pdf_decoded = base64_decode($pdf_content);
+        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\order_'.$orderid = '60'.'\Employment_Form.pdf');
+    //    $body = base64_encode($pdf);
+        echo $urlDecodedStr = rawurldecode($body);
+        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi . '</PDI><FileData>' . $body . '</FileData><productID>1627</productID><Filename>test.pdf</Filename><FileType>ConsentForm</FileType><tp>INS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+        $result = $client->call('UploadBinaryFile', $soap_xml);
+
+        debug($result);
+
+    }
+    if ($uploadbinaryeducation) {
+        //UploadBinary
+        //1650
+
+        $pdf_content = '';
+        $pdf_decoded = base64_decode($pdf_content);
+        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\order_'.$orderid = '60'.'\Education_Form.pdf');
+  //      $body = base64_encode($pdf);
         echo $urlDecodedStr = rawurldecode($body);
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi . '</PDI><FileData>' . $body . '</FileData><productID>1650</productID><Filename>test.pdf</Filename><FileType>ConsentForm</FileType><tp>INS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);

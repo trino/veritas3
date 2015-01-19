@@ -1512,7 +1512,11 @@
                     $cond = $cond . ' AND draft = 0';
             }
             if ($cond) {
-                $order = $order->where([$cond]);
+                $order = $order->where([$cond])->contain(['Profiles']);
+            }
+            else
+            {
+                $order = $order->contain(['Profiles']);
             }
             if (isset($_GET['searchdoc'])) {
                 $this->set('search_text', $_GET['searchdoc']);
@@ -1526,6 +1530,7 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
+            //debug($order);
             $this->set('orders', $this->paginate($order));
 
         }
@@ -1688,6 +1693,32 @@
             return $this->response;
         }
         */
+        function get_orderscount($type, $c_id = "")
+        {
+            //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
+            //var_dump($cond);die();
+            $u = $this->request->session()->read('Profile.id');
+
+            if (!$this->request->session()->read('Profile.super')) {
+                $setting = $this->Settings->get_permission($u);
+                if ($setting->documents_others == 0) {
+                    $u_cond = "user_id=$u";
+                }
+
+            } else
+                $u_cond = "";
+
+            $model = TableRegistry::get($type);
+            if ($c_id != "") {
+                $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'client_id' => $c_id])->count();
+            } else {
+                $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'),ucwords($type));
+                $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0,'OR' => $cond])->contain(['Orders'])->count();
+            }
+            //debug($cnt); die();
+            $this->response->body(($cnt));
+            return $this->response;
+        }
         function get_documentcount($subdocid, $c_id = "")
         {
             //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
@@ -1984,21 +2015,32 @@
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
         }
-        public function createPdf($id)
+        public function createPdf($oid)
         {
-            $this->set('oid',$id);
+            $this->set('oid',$oid);
             $this->layout = 'blank';
+            
+            $this->layout = 'blank';
+            
+            
             $consent = TableRegistry::get('consent_form');
             $arr['consent'] = $consent
                 ->find()
-                ->where(['order_id' => $id])->first();
-
-            
-            $consent_attachment = TableRegistry::get('consent_form_attachments');
-            $arr['consent_attachment'] = $consent_attachment
-                ->find()
-                ->where(['order_id' => $id]);
+                ->where(['order_id' => $oid])->first();
             $this->set('detail',$arr);
+            $criminal = TableRegistry::get('consent_form_criminal');
+            $cri = $criminal
+                ->find()
+                ->where(['consent_form_id' => $arr['consent']->id]);
+            $this->set('detail',$arr);
+            $this->set(compact('cri'));
+            $attach = TableRegistry::get('consent_form_attachments');
+            $att = $attach
+                ->find()
+                ->where(['order_id' => $oid]);
+            $this->set('detail',$arr);
+            $this->set(compact('att'));
+            
         }
 
         public function createPdfEmployment($id)
@@ -2012,16 +2054,23 @@
             $this->set('detail',$arr);
         }    
 
-        public function createPdfEducation($id)
+        public function createPdfEducation($oid)
         {
-            $this->set('oid',$id);
+            $this->set('oid',$oid);
             $this->layout = 'blank';
             $consent = TableRegistry::get('education_verification');
-            $arr['education'] = $consent
+            $education = $consent
                 ->find()
-                ->where(['order_id' => $id])->first();
-
-            $this->set('detail',$arr);
+                ->where(['order_id' => $oid]);;
+            
+            
+            $attach = TableRegistry::get('education_verification_attachments');
+            $att = $attach
+                ->find()
+                ->where(['order_id' => $oid]);
+            $this->set(compact('education'));
+    
+            $this->set(compact('att'));
         }
 
         public function viewReport($client_id,$order_id)

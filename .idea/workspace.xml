@@ -59,7 +59,9 @@
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm976461791.pdf" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\a1.pdf" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/DocumentsController.php" afterPath="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/forview.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/forview.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Component/SettingsComponent.php" afterPath="$PROJECT_DIR$/src/Controller/Component/SettingsComponent.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/home_blocks.php" afterPath="$PROJECT_DIR$/webroot/subpages/home_blocks.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/info.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/info.php" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
     <ignored path="veritas3.iws" />
@@ -85,14 +87,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7223618" vertical-offset="35499" max-vertical-offset="36346">
-              <caret line="2122" column="51" selection-start-line="2122" selection-start-column="51" selection-end-line="2122" selection-end-column="51" />
+            <state vertical-scroll-proportion="-11.057693" vertical-offset="35516" max-vertical-offset="36363">
+              <caret line="2123" column="51" selection-start-line="2123" selection-start-column="51" selection-end-line="2123" selection-end-column="51" />
               <folding>
                 <element signature="e#41#74#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="info.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/profile/info.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.18248175" vertical-offset="2553" max-vertical-offset="8381">
+              <caret line="158" column="32" selection-start-line="158" selection-start-column="32" selection-end-line="158" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -221,11 +233,11 @@
         <option value="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/src/Template/Clients/view.ctp" />
-        <option value="$PROJECT_DIR$/webroot/subpages/profile/info.php" />
         <option value="$PROJECT_DIR$/webroot/subpages/soap/nusoap.php" />
         <option value="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" />
         <option value="$PROJECT_DIR$/webroot/subpages/documents/forview.php" />
         <option value="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
+        <option value="$PROJECT_DIR$/webroot/subpages/profile/info.php" />
       </list>
     </option>
   </component>
@@ -1057,14 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/subpages/profile/info.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31704262" vertical-offset="2569" max-vertical-offset="8466">
-          <caret line="165" column="100" selection-start-line="165" selection-start-column="100" selection-end-line="165" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/soap/nusoap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.3461537" vertical-offset="36988" max-vertical-offset="139723">
@@ -1153,11 +1157,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7223618" vertical-offset="35499" max-vertical-offset="36346">
-          <caret line="2122" column="51" selection-start-line="2122" selection-start-column="51" selection-end-line="2122" selection-end-column="51" />
+        <state vertical-scroll-proportion="-11.057693" vertical-offset="35516" max-vertical-offset="36363">
+          <caret line="2123" column="51" selection-start-line="2123" selection-start-column="51" selection-end-line="2123" selection-end-column="51" />
           <folding>
             <element signature="e#41#74#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/profile/info.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18248175" vertical-offset="2553" max-vertical-offset="8381">
+          <caret line="158" column="32" selection-start-line="158" selection-start-column="32" selection-end-line="158" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

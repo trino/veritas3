@@ -113,7 +113,7 @@ class SettingsComponent extends Component
                
                 foreach($pro_id as $pid)
                 {
-                     array_push($cond,['client_id'=>$pid]);
+                     array_push($cond,[$model.'client_id'=>$pid]);
                 }
             }
             else

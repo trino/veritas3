@@ -41,5 +41,6 @@ class LogosTable extends Table {
 
 		return $validator;
 	}
+    
 
 }

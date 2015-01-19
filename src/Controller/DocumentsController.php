@@ -1697,6 +1697,7 @@
         {
             //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
             //var_dump($cond);die();
+            //die();
             $u = $this->request->session()->read('Profile.id');
 
             if (!$this->request->session()->read('Profile.super')) {
@@ -1710,7 +1711,7 @@
 
             $model = TableRegistry::get($type);
             if ($c_id != "") {
-                $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'client_id' => $c_id])->count();
+                $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0, $type.'.client_id' => $c_id])->contain(['Orders'])->count();
             } else {
                 $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'),ucwords($type));
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0,'OR' => $cond])->contain(['Orders'])->count();

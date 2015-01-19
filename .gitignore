@@ -5,7 +5,7 @@ plugins/*
 tests/*
 tmp/*
 vendor/*
-src/Model/*
+
 webroot/attachments/*
 webroot/orders/*
 !empty

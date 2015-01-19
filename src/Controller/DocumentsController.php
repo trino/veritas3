@@ -1696,6 +1696,7 @@
         {
             //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
             //var_dump($cond);die();
+            //die();
             $u = $this->request->session()->read('Profile.id');
 
             if (!$this->request->session()->read('Profile.super')) {
@@ -1709,7 +1710,7 @@
 
             $model = TableRegistry::get($type);
             if ($c_id != "") {
-                $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'client_id' => $c_id])->count();
+                $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0, $type.'.client_id' => $c_id])->contain(['Orders'])->count();
             } else {
                 $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'),ucwords($type));
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0,'OR' => $cond])->contain(['Orders'])->count();
@@ -2018,22 +2019,45 @@ debug($arr);
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
         }
+<<<<<<< HEAD
 
         public function createPdf1($id)
+=======
+        public function createPdf($oid)
+>>>>>>> d4c239ae6981a61e5fa2991384b6c4b5f5b89417
         {
-            $this->set('oid',$id);
+            $this->set('oid',$oid);
             $this->layout = 'blank';
+            
+            $this->layout = 'blank';
+            
+            
             $consent = TableRegistry::get('consent_form');
             $arr['consent'] = $consent
                 ->find()
+<<<<<<< HEAD
                 ->where(['order_id' => $id])->first();
 
 
             $consent_attachment = TableRegistry::get('consent_form_attachments');
             $arr['consent_attachment'] = $consent_attachment
-                ->find()
-                ->where(['order_id' => $id]);
+=======
+                ->where(['order_id' => $oid])->first();
             $this->set('detail',$arr);
+            $criminal = TableRegistry::get('consent_form_criminal');
+            $cri = $criminal
+>>>>>>> d4c239ae6981a61e5fa2991384b6c4b5f5b89417
+                ->find()
+                ->where(['consent_form_id' => $arr['consent']->id]);
+            $this->set('detail',$arr);
+            $this->set(compact('cri'));
+            $attach = TableRegistry::get('consent_form_attachments');
+            $att = $attach
+                ->find()
+                ->where(['order_id' => $oid]);
+            $this->set('detail',$arr);
+            $this->set(compact('att'));
+            
         }
 
         public function createPdfEmployment1($id)
@@ -2047,16 +2071,27 @@ debug($arr);
             $this->set('detail',$arr);
         }
 
+<<<<<<< HEAD
         public function createPdfEducation1($id)
+=======
+        public function createPdfEducation($oid)
+>>>>>>> d4c239ae6981a61e5fa2991384b6c4b5f5b89417
         {
-            $this->set('oid',$id);
+            $this->set('oid',$oid);
             $this->layout = 'blank';
             $consent = TableRegistry::get('education_verification');
-            $arr['education'] = $consent
+            $education = $consent
                 ->find()
-                ->where(['order_id' => $id])->first();
-
-            $this->set('detail',$arr);
+                ->where(['order_id' => $oid]);;
+            
+            
+            $attach = TableRegistry::get('education_verification_attachments');
+            $att = $attach
+                ->find()
+                ->where(['order_id' => $oid]);
+            $this->set(compact('education'));
+    
+            $this->set(compact('att'));
         }
 
         public function viewReport($client_id,$order_id)

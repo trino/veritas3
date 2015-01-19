@@ -3,31 +3,7 @@ if(path.replace('veritas3','')!=path)
     var base_url = 'http://localhost/veritas3/';
 else
     var base_url = 'http://isbmee.com/';
-function save_signature(numb)
-        		{
-        		  //alert('rest');return;
-        			$("#test"+numb).data("jqScribble").save(function(imageData)
-        			{
-        			    if((numb=='1' && $('#recruiter_signature').parent().find('.touched').val()==1) || (numb=='3' && $('#criminal_signature_applicant').parent().find('.touched').val()==1) || (numb=='4' && $('#signature_company_witness').parent().find('.touched').val()==1)){
-        				$.post(base_url+'canvas/image_save.php', {imagedata: imageData}, function(response)
-        					{
-        					   if(numb=='1')
-                                {
-                                    
-                                    $('#recruiter_signature').val(response);
-                                }
-        						if(numb=='3')
-                                {
-                                    $('#criminal_signature_applicant').val(response);
-                                }
-                                if(numb=='4')
-                                {
-                                    $('#signature_company_witness').val(response);
-                                }
-        					});	}
-        				
-        			});
-        		}
+
 var FormWizard = function () {
     return {
         //main function to initiate the module
@@ -210,18 +186,19 @@ var FormWizard = function () {
                 if(current == (total-1))
                 {
                     
-                    save_signature('3');
-                    save_signature('4');
+                    ;
                     $('.cont').html('Submit Order');
+
                     $.ajax({
-                      // url:base_url+'documents/createPdf/'+$('#did').val()
+                      url:base_url+'documents/createPdf/'+$('#did').val()
                     });
                     $.ajax({
-                     //  url:base_url+'documents/createPdfEducation/'+$('#did').val()
+                      url:base_url+'documents/createPdfEducation/'+$('#did').val()
                     });
                     $.ajax({
-                     //  url:base_url+'documents/createPdfEmployment/'+$('#did').val()
+                        url:base_url+'documents/createPdfEmployment/'+$('#did').val()
                     });
+
                    // $('.cont').attr('id','');
                 }
                 else{

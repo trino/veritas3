@@ -88,9 +88,9 @@ class JobsController extends AppController {
 		$user = $this->Jobs->get($id);
 		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Jobs->delete($user)) {
-			$this->Flash->success('The user has been deleted.');
+			$this->Flash->success('The Job has been deleted.');
 		} else {
-			$this->Flash->error('User could not be deleted. Please try again.');
+			$this->Flash->error('Job could not be deleted. Please try again.');
 		}
 		return $this->redirect(['action' => 'index']);
 	}

@@ -273,8 +273,8 @@ $c = $client;
 
                                                     <div class="form-group col-md-12">
 														<label class="control-label">Billing Instructions</label>
-														<input type="radio" class="billing_instructions" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=="individual" ){?> selected="selected" <?php } ?> value="individual"/>&nbsp;&nbsp;Individual&nbsp;&nbsp;
-                                                        <input type="radio" class="billing_instructions" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=="centralized" ){?> selected="selected" <?php } ?> value="centralized"/>&nbsp;&nbsp;Centralized&nbsp;&nbsp;
+														<input type="radio" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=="individual" ){?> checked="checked" <?php } ?> value="individual"/>&nbsp;&nbsp;Individual&nbsp;&nbsp;
+                                                        <input type="radio" name="billing_instructions" <?php if(isset($c->billing_instructions) && $c->billing_instructions=="centralized" ){?> checked="checked" <?php } ?> value="centralized"/>&nbsp;&nbsp;Centralized&nbsp;&nbsp;
 													</div>
                                                     <div class="form-group col-md-6">
 														<label class="control-label">Invoice Terms</label>
@@ -703,7 +703,6 @@ $c = $client;
                                             str = str+'&customer_type='+$('#customer_type').val();
                                             str = str+'&division='+$('#division').val();
                                             str = str+'&referred_by='+$('#referred_by').val();
-                                            str = str+'&billing_instructions='+$('.billing_instructions').val();
                                             str = str+'&invoice_terms='+$('#invoice_terms').val();
                                             
                                             

@@ -186,18 +186,10 @@ var FormWizard = function () {
                 if(current == (total-1))
                 {
                     
-                    ;
+                    
                     $('.cont').html('Submit Order');
 
-                    $.ajax({
-                      url:base_url+'documents/createPdf/'+$('#did').val()
-                    });
-                    $.ajax({
-                      url:base_url+'documents/createPdfEducation/'+$('#did').val()
-                    });
-                    $.ajax({
-                        url:base_url+'documents/createPdfEmployment/'+$('#did').val()
-                    });
+                    
 
                    // $('.cont').attr('id','');
                 }

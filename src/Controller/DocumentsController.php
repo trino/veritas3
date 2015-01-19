@@ -2016,21 +2016,32 @@
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
         }
-        public function createPdf($id)
+        public function createPdf($oid)
         {
-            $this->set('oid',$id);
+            $this->set('oid',$oid);
             $this->layout = 'blank';
+            
+            $this->layout = 'blank';
+            
+            
             $consent = TableRegistry::get('consent_form');
             $arr['consent'] = $consent
                 ->find()
-                ->where(['order_id' => $id])->first();
-
-            
-            $consent_attachment = TableRegistry::get('consent_form_attachments');
-            $arr['consent_attachment'] = $consent_attachment
-                ->find()
-                ->where(['order_id' => $id]);
+                ->where(['order_id' => $oid])->first();
             $this->set('detail',$arr);
+            $criminal = TableRegistry::get('consent_form_criminal');
+            $cri = $criminal
+                ->find()
+                ->where(['consent_form_id' => $arr['consent']->id]);
+            $this->set('detail',$arr);
+            $this->set(compact('cri'));
+            $attach = TableRegistry::get('consent_form_attachments');
+            $att = $attach
+                ->find()
+                ->where(['order_id' => $oid]);
+            $this->set('detail',$arr);
+            $this->set(compact('att'));
+            
         }
 
         public function createPdfEmployment($id)
@@ -2044,16 +2055,23 @@
             $this->set('detail',$arr);
         }    
 
-        public function createPdfEducation($id)
+        public function createPdfEducation($oid)
         {
-            $this->set('oid',$id);
+            $this->set('oid',$oid);
             $this->layout = 'blank';
             $consent = TableRegistry::get('education_verification');
-            $arr['education'] = $consent
+            $education = $consent
                 ->find()
-                ->where(['order_id' => $id])->first();
-
-            $this->set('detail',$arr);
+                ->where(['order_id' => $oid]);;
+            
+            
+            $attach = TableRegistry::get('education_verification_attachments');
+            $att = $attach
+                ->find()
+                ->where(['order_id' => $oid]);
+            $this->set(compact('education'));
+    
+            $this->set(compact('att'));
         }
 
         public function viewReport($client_id,$order_id)

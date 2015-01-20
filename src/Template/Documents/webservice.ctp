@@ -1,5 +1,5 @@
 <?php
-    $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
+    $proxyhost = 'https://infosearchsite.com/MEEEWS/ISBService.svc?wsdl';
     $client = new nusoap_client($proxyhost, true, $proxyhost, $proxyport = null, $proxyusername = null, $proxypassword = null);
     $client->useHTTPPersistentConnection();
 
@@ -18,19 +18,16 @@
     $productdetailsebs1627 = true;
     $productdetailsebs1650 = true;
 
-    $uploadbinaryconsent = true;
-    $uploadbinaryemployment = true;
-    $uploadbinaryeducation = true;
+    $uploadbinaryconsent_1603 = true;
+    $uploadbinaryemployment_1627 = true;
+    $uploadbinaryeducation_1650 = true;
 
 
     if ($startorder1) {
-//StartOrder
 
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
             '&lt;/isb_DOL&gt;&lt;isb_Prov&gt;' . $driverinfo->driver_province . '&lt;/isb_Prov&gt;&lt;isb_UserID&gt;' . $driverinfo->id = '22435' . '&lt;/isb_UserID&gt;&lt;/ProductData&gt;';
-
-        //   echo $urlDecodedStr = rawurldecode($body);
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -57,9 +54,6 @@
 
 
     if ($productdetails79) {
-//ProductDetails
-//remove ins or  ebs
-//Product 79 – INS
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -85,8 +79,6 @@
 
 
     if ($productdetails1) {
-//ProductDetails
-//Product 1 – INS
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -108,8 +100,6 @@
 
 
     if ($productdetails14) {
-//ProductDetails
-//Product 14 – INS
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -132,8 +122,6 @@
 
 
     if ($productdetails77) {
-//ProductDetails
-//Product 77 – INS
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -156,8 +144,6 @@
 
 
     if ($productdetails78) {
-//ProductDetails
-//Product 78 – INS
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -178,8 +164,6 @@
 
 
     if ($productdetailsebs1650) {
-//ProductDetails
-//Product 1650 -  EBS -  education
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -200,8 +184,6 @@
 
 
     if ($productdetailsebs1627) {
-//ProductDetails
-//Product 1627 – EBS – employment Verification
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -222,8 +204,6 @@
 
 
     if ($productdetailsebs1603) {
-//ProductDetails
-//Product 1603 – EBS -  consent form with id
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -247,46 +227,41 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    if ($uploadbinaryconsent) {
-        //UploadBinary
-        //1603
+    if ($uploadbinaryconsent_1603) {
 
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);
-        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\order_'.$orderid = '60'.'\Consent_Form.pdf');
-   //     $body = base64_encode($pdf);
+        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\order_'.$orderid .'\Consent_Form.pdf');
+          $body = base64_encode($pdf);
         echo $urlDecodedStr = rawurldecode($body);
-        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>test.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);
 
         debug($result);
 
     }
-    if ($uploadbinaryemployment) {
-        //UploadBinary
-        //1627
+    if ($uploadbinaryemployment_1627) {
 
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);
-        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\order_'.$orderid = '60'.'\Employment_Form.pdf');
-    //    $body = base64_encode($pdf);
+        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\order_'.$orderid .'\Employment_Form.pdf');
+          $body = base64_encode($pdf);
         echo $urlDecodedStr = rawurldecode($body);
-        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi . '</PDI><FileData>' . $body . '</FileData><productID>1627</productID><Filename>test.pdf</Filename><FileType>ConsentForm</FileType><tp>INS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi . '</PDI><FileData>' . $body . '</FileData><productID>1627</productID><Filename>Employment_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);
 
         debug($result);
 
     }
-    if ($uploadbinaryeducation) {
-        //UploadBinary
-        //1650
+    if ($uploadbinaryeducation_1650) {
+
 
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);
-        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\order_'.$orderid = '60'.'\Education_Form.pdf');
-  //      $body = base64_encode($pdf);
+        $pdf = file_get_contents('C:\wamp\www\veritas3\webroot\orders\order_'.$orderid .'\Education_Form.pdf');
+        $body = base64_encode($pdf);
         echo $urlDecodedStr = rawurldecode($body);
-        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi . '</PDI><FileData>' . $body . '</FileData><productID>1650</productID><Filename>test.pdf</Filename><FileType>ConsentForm</FileType><tp>INS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi . '</PDI><FileData>' . $body . '</FileData><productID>1650</productID><Filename>Education_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);
 
         debug($result);

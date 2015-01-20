@@ -2009,23 +2009,39 @@
             echo "<br>";echo "<br>";
 
             switch ($pdi) {
+
                 case "ins_79":
                     $arr['ins_79'] = $id;
                     break;
+
                 case "ins_1":
                     $arr['ins_1'] = $id;
-                case "ins_1":
+                    break;
+
+                case "ins_14":
                     $arr['ins_14'] = $id;
-                case "ins_1":
+                    break;
+
+                case "ins_77":
                     $arr['ins_77'] = $id;
-                case "ins_1":
+                    break;
+
+                case "ins_78":
                     $arr['ins_78'] = $id;
-                case "ins_1":
+                    break;
+
+                case "ebs_1603":
                     $arr['ebs_1603'] = $id;
-                case "ins_1":
+                    break;
+
+                case "ebs_1627":
                     $arr['ebs_1627'] = $id;
-                case "ins_1":
+                    break;
+
+                case "ebs_1650":
                     $arr['ebs_1650'] = $id;
+                    break;
+
                 default:
                     $nothing = '111';
             }

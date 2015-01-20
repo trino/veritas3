@@ -150,7 +150,7 @@
                                         echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);} ?>
                                     <?php
                                     $super = $this->request->session()->read('Profile.super');
-                                        if(isset($super))
+                                        if(isset($super) || isset($_GET['draft']))
                                         {  
                                     if($sidebar->orders_edit=='1')
                                     {

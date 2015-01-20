@@ -38,7 +38,7 @@
                  <?php if($sidebar->client==1){?>
 
                 	<li class="<?php echo($this->request['controller']=='Clients' && $this->request['action']!='quickcontact')?'active open':'';?>">
-					<a href="javascript:;" onclick="window.location.href='<?php echo $this->request->webroot;?>clients';">
+					<a href="javascript:;" >
 					<i class="icon-globe"></i>
 					<span class="title"><?php echo ucfirst($settings->client);?>s</span>
                     <?php echo($this->request['controller']=='Clients')?'<span class="selected"></span>':'';?>

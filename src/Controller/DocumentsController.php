@@ -2150,6 +2150,19 @@
             $this->set('order',$order);
           //  debug($order);
         }
+        
+        function savedriver($oid)
+        {
+            
+            $arr['is_hired'] = $_POST['is_hired'];
+            $orders = TableRegistry::get('orders');
+            $order = $orders
+                ->query()->update()
+                ->set($arr)
+                ->where(['orders.id' => $oid])->execute();
+
+            die();
+        }
 
 
     }

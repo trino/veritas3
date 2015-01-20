@@ -120,7 +120,7 @@
 
             <div class="profile-usertitle-job">
                 <label class="uniform-inline">
-                    <input type="checkbox" name="stat" value="1"/>
+                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id;?>" class="checkdriver" />
                     Was this driver hired? </label>
 
             </div>
@@ -137,6 +137,31 @@
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
     </div>
+    <script>
+       $(function(){
+            
+        $('.checkdriver').click(function(){
+            
+            var oid = $(this).attr('id');
+            if($(this).is(":checked"))
+            {
+                var hired = 1;
+            }
+            else
+                var hired = 0;
+                
+            $.ajax({
+                url: "<?php echo $this->request->webroot;?>documents/savedriver/"+oid,
+                type: 'post',
+                data: 'is_hired='+hired,
+                success: function(msg){
+                    
+                }
+                
+            })
+        });
+       });
+    </script>
     <!-- END PORTLET MAIN -->
     <!-- PORTLET MAIN -->
     <div class="portlet light">

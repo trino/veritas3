@@ -951,8 +951,8 @@
     <div class="page-footer-inner" style="float:right;">
 
     <a style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/help">Help</a> /
-        <a style="color:white;"  href="<?php echo $this->request->webroot;?>pages/view/privacy-code">Privacy Code</a> /
-    <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product-example">Product Example</a> /
+        <a style="color:white;"  href="<?php echo $this->request->webroot;?>pages/view/privacy_code">Privacy Code</a> /
+    <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product_example">Product Example</a> /
         <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/terms">Terms</a> /
         <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/faq">FAQ</a>
 

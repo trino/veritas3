@@ -4634,7 +4634,7 @@ class wsdl extends nusoap_base {
     var $depth = 0;
     var $depth_array = array();
 	// for getting wsdl
-	var $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
+	var $proxyhost = 'https://infosearchsite.com/MEEEWS/ISBService.svc?wsdl';
     var $proxyport = '';
 	var $proxyusername = 'MEE';
 	var $proxypassword = 'yhb45cf@f';
@@ -7209,7 +7209,7 @@ class nusoap_client extends nusoap_base  {
 	var $document = '';				// SOAP body response portion (incomplete namespace resolution) (text)
 	var $endpoint;
 	var $forceEndpoint = '';		// overrides WSDL endpoint
-    var $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
+    var $proxyhost = 'https://infosearchsite.com/MEEEWS/ISBService.svc?wsdl';
     var $proxyport = '';
 	var $proxyusername = 'MEE';
 	var $proxypassword = 'yhb45cf@f';

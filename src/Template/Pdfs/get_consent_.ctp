@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="form-group col-md-12">
-                    <label class="control-label col-md-3">Province (Driver’s License was issued) : </label>
+                    <label class="control-label col-md-3">Province (Driverï¿½s License was issued) : </label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" name="driver_license_issued" value="<?php echo $detail['consent']->driver_license_issued;?>"/>
                     </div>
@@ -336,10 +336,10 @@
 <strong>Attachments</strong>
 <p>&nbsp;</p>
 <?php
-if($_SERVER['SERVER_NAME']='localhost')
+if($_SERVER['SERVER_NAME']=='localhost')
 $initials = 'http://localhost';
 else
-$initials = 'http://isbmee.com';
+$initials = 'http://isbmeereports.com';
 if($att)
 {
     foreach($att as $a)

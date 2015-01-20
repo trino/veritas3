@@ -2,7 +2,7 @@ var path = window.location.pathname;
 if(path.replace('veritas3','')!=path)
     var base_url = 'http://localhost/veritas3/';
 else
-    var base_url = 'http://isbmee.com/';
+    var base_url = 'http://isbmeereports.com/';
 
 var FormWizard = function () {
     return {

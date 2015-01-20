@@ -6,7 +6,7 @@
     use Cake\Controller\Controller;
     use Cake\ORM\TableRegistry;
 
-    include(APP . '..\webroot\subpages\soap\nusoap.php');
+    include(APP . '../webroot/subpages/soap/nusoap.php');
 
     class DocumentsController extends AppController
     {
@@ -1470,7 +1470,7 @@
             }
             $orders = TableRegistry::get('orders');
             $order = $orders->find();
-            $order = $order->order(['Orders.id' => 'DESC']);
+            $order = $order->order(['orders.id' => 'DESC']);
             $order = $order->select();
 
             $cond = '';
@@ -1717,7 +1717,7 @@
             if ($c_id != "") {
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0, $type.'.client_id' => $c_id])->contain(['Orders'])->count();
             } else {
-                $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'),ucwords($type));
+                $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'),$type);
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0,'OR' => $cond])->contain(['Orders'])->count();
             }
             //debug($cnt); die();
@@ -2140,7 +2140,7 @@
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
-                ->where(['Orders.id' => $order_id])->contain(['Profiles'])->first();
+                ->where(['orders.id' => $order_id])->contain(['Profiles'])->first();
 
             $this->set('order',$order);
           //  debug($order);

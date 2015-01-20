@@ -68,7 +68,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
 
                                     <select name="profile_type" <?php if(isset($id) && $this->request->session()->read('Profile.id')==$id) echo "disabled='disabled'"; ?>
-                                            class="form-control member_type">
+                                            class="form-control member_type" required='required' >
                                         <option value="">Select</option>
                                         <?php
                                          
@@ -318,7 +318,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                     <div class="form-group">
                                     <input <?php echo $is_disabled ?>  type="text"
                                                                        placeholder="Postal/Zip"
-                                                                       class="form-control req_driver" <?php if (isset($p->postal)) { ?> name="postal" value="<?php echo $p->postal; ?>" <?php } ?>/>
+                                                                       class="form-control req_driver" name="postal"  <?php if (isset($p->postal)) { ?> value="<?php echo $p->postal; ?>" <?php } ?>/>
                                 </div>
                                 </div>
 
@@ -326,7 +326,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                     <div class="form-group">
                                     <input <?php echo $is_disabled ?>  type="text"
                                                                        placeholder="Country"
-                                                                       class="form-control req_driver" <?php if (isset($p->country)) { ?> name="country" value="<?php echo $p->country; ?>" <?php } ?>/>
+                                                                       class="form-control req_driver" name="country" <?php if (isset($p->country)) { ?> value="<?php echo $p->country; ?>" <?php } ?>/>
                                 </div>
                                 </div>
 

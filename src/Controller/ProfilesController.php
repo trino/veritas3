@@ -716,17 +716,21 @@ class ProfilesController extends AppController {
     
     function getuser()
     {
-        $id = $this->request->session()->read('Profile.id');
-        $profile = TableRegistry::get('profiles');
+        if($id = $this->request->session()->read('Profile.id'))
+        {
+          $profile = TableRegistry::get('profiles');
         $query = $profile->find()->where(['id'=>$id]);
                  
         $l = $query->first();
         $this->response->body($l);
         return $this->response;
         //return $l;
+         
+        }
         
-         die();
-        
+        else return $this->response->body(null);
+         die(); 
+         
         
     }
    function getallusers($profile_type ="",$client_id="")

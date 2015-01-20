@@ -110,7 +110,7 @@ else
 											<div class="progress-bar progress-bar-info">
 											</div>
 										</div>
-                                        <div style="position:absolute;background:#000;height:720px;width:100%;z-index:1000;opacity:0.2;display:none;" id="loading5">
+                                        <div style="position:absolute;background:#000;height:770px;width:100%;z-index:1000;opacity:0.2;display:none;" id="loading5">
                                                 <center><br />
                                                 <br />
                                                 <br />

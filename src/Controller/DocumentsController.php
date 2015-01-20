@@ -900,6 +900,9 @@
                 if (isset($_POST['emploment_history_confirm_verify_use'][$i])) {
                     $arr2['emploment_history_confirm_verify_use'] = urldecode($_POST['emploment_history_confirm_verify_use'][$i]);
                 }
+                if (isset($_POST['us_dot'][$i])) {
+                    $arr2['us_dot'] = urldecode($_POST['us_dot'][$i]);
+                }
                 if (isset($_POST['us_dotsignature'][$i])) {
                     $arr2['us_dotsignature'] = urldecode($_POST['us_dotsignature'][$i]);
                 }
@@ -942,9 +945,11 @@
                 if (isset($_POST['driving_experince_usa'][$i])) {
                     $arr2['driving_experince_usa'] = urldecode($_POST['driving_experince_usa'][$i]);
                 }
-
-                if (isset($_POST['claims_with_employer'][$i])) {
-                    $arr2['claims_with_employer'] = urldecode($_POST['claims_with_employer'][$i]);
+                for($l=0;$l<=100;$l++){
+                if (isset($_POST['claims_with_employer_'.$l][$i])) {
+                    $arr2['claims_with_employer'] = urldecode($_POST['claims_with_employer_'.$l][$i]);
+                    break;
+                }
                 }
 
                 $save2 = $employment->newEntity($arr2);
@@ -1012,8 +1017,8 @@
                     $arr2['supervisior_email'] = urldecode($_POST['supervisior_email'][$i]);
                 }
 
-                if (isset($_POST['	supervisior_secondary_email'][$i])) {
-                    $arr2['	supervisior_secondary_email'] = urldecode($_POST['supervisior_secondary_email'][$i]);
+                if (isset($_POST['supervisior_secondary_email'][$i])) {
+                    $arr2['supervisior_secondary_email'] = urldecode($_POST['supervisior_secondary_email'][$i]);
                 }
 
                 if (isset($_POST['education_start_date'][$i])) {

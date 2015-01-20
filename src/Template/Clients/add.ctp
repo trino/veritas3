@@ -233,7 +233,7 @@ $c = $client;
                                                         <div>
                                                        <!-- <a href="#" class="btn btn-primary">Browse</a> -->
                                                       <?php 
-                                                        if(count($client_docs)>0){
+                                                        if(isset($client_docs) && count($client_docs)>0){
                                                             foreach($client_docs as $k=>$cd):
                                                                
                                                             ?>
@@ -629,49 +629,8 @@ $c = $client;
 </div>
 
 <script>
-                
-                function initiate_ajax_upload(button_id, doc=""){
-                var button = $('#'+button_id), interval;
-                new AjaxUpload(button,{
-                    action: base_url+"clients/upload_img/<?php if(isset($id))echo $id;?>",                      
-                    name: 'myfile',
-                    onSubmit : function(file, ext){
-                        button.text('Uploading');
-                        this.disable();
-                        interval = window.setInterval(function(){
-                            var text = button.text();
-                            if (text.length < 13){
-                                button.text(text + '.');					
-                            } else {
-                                button.text('Uploading');				
-                            }
-                        }, 200);
-                    },
-                    onComplete: function(file, response){
-                        if(doc=="")
-                            button.html('<i class="fa fa-image"></i> Add/Edit Image');
-                        else
-                            button.html('Browse');
-                            
-                            window.clearInterval(interval);
-                            this.enable();
-                            if(doc==""){
-                                $("#clientpic").attr("src",'<?php echo $this->request->webroot;?>img/jobs/'+response);
-                                $('#client_img').val(response);
-                            }
-                            else
-                            {
-                                $('#'+button_id).parent().append(" "+response);
-                                $('.'+button_id+"_doc").val(response);
-                            }
-                            //$('.flashimg').show();
-                            }                        		
-                    });                
-            }
-           </script>
-<script>
                                     $(function(){
-                                        initiate_ajax_upload('clientimg');
+                                        initiate_ajax_upload('clientimg','asdas');
                                         initiate_ajax_upload('addMore1','doc');
                                         <?php
                                         if(isset($id))
@@ -800,5 +759,46 @@ var removeLink = 0;// this variable is for showing and removing links in a add d
 
 
 
+<script>
+                
+                function initiate_ajax_upload(button_id, doc){
+                var button = $('#'+button_id), interval;
+                new AjaxUpload(button,{
+                    action: base_url+"clients/upload_img/<?php if(isset($id))echo $id;?>",                      
+                    name: 'myfile',
+                    onSubmit : function(file, ext){
+                        button.text('Uploading');
+                        this.disable();
+                        interval = window.setInterval(function(){
+                            var text = button.text();
+                            if (text.length < 13){
+                                button.text(text + '.');					
+                            } else {
+                                button.text('Uploading');				
+                            }
+                        }, 200);
+                    },
+                    onComplete: function(file, response){
+                        if(doc=="doc")
+                            button.html('Browse');
+                        else
+                            button.html('<i class="fa fa-image"></i> Add/Edit Image');
+                            
+                            window.clearInterval(interval);
+                            this.enable();
+                            if(doc=="doc"){
+                                $('#'+button_id).parent().append(" "+response);
+                                $('.'+button_id+"_doc").val(response);
+                            }
+                            else
+                            {
+                                $("#clientpic").attr("src",'<?php echo $this->request->webroot;?>img/jobs/'+response);
+                                $('#client_img').val(response);
+                            }
+                            //$('.flashimg').show();
+                            }                        		
+                    });                
+            }
+           </script>
 
 

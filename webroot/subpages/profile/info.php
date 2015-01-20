@@ -29,12 +29,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
 
                 <div class="portlet box form">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-user"></i>
-                            <?php echo ucfirst($settings->profile); ?>
-                        </div>
-                    </div>
+                   
 
 
 

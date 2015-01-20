@@ -14,6 +14,16 @@ class LogosController extends AppController {
  *
  * @return void
  */
+ 
+ public function intialize()
+    {
+        parent::intialize();
+        $this->loadComponent('Settings');
+        if(!$this->request->session()->read('Profile.id'))
+        {
+            redirect('/login');
+        }
+    }
 	public function index() {
 		$lg = $this->paginate($this->Logos->find()->where(['secondary'=>'0']));
         $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));

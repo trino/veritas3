@@ -108,7 +108,7 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 											<div class="col-md-8 profile-info">
 												<h1><?php echo $client->title; ?></h1>
 												<p>
-												<?php echo $client->description;
+												<?php echo $client->description_fre;
                                                 $doc_count = $this->requestAction("clients/getDocCount/".$id);
                                                                 $dc = '';
                                                                 foreach($doc_count as $d)

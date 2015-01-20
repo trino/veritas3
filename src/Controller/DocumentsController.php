@@ -6,7 +6,7 @@
     use Cake\Controller\Controller;
     use Cake\ORM\TableRegistry;
 
-    include(APP . '..\webroot\subpages\soap\nusoap.php');
+    include(APP . '../webroot/subpages/soap/nusoap.php');
 
     class DocumentsController extends AppController
     {
@@ -1470,7 +1470,7 @@
             }
             $orders = TableRegistry::get('orders');
             $order = $orders->find();
-            $order = $order->order(['Orders.id' => 'DESC']);
+            $order = $order->order(['orders.id' => 'DESC']);
             $order = $order->select();
 
             $cond = '';
@@ -1717,7 +1717,7 @@
             if ($c_id != "") {
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0, $type.'.client_id' => $c_id])->contain(['Orders'])->count();
             } else {
-                $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'),ucwords($type));
+                $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'),$type);
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0,'OR' => $cond])->contain(['Orders'])->count();
             }
             //debug($cnt); die();
@@ -2001,14 +2001,58 @@
 
             $query2 = TableRegistry::get('orders');
 
-            $arr['ins_79'] = $id .'123';
-            debug($arr);
+            echo $orderid;
+            echo "<br>";
+            echo $id;
+            echo "<br>";
+            echo $pdi;
+            echo "<br>";echo "<br>";
+
+            switch ($pdi) {
+
+                case "ins_79":
+                    $arr['ins_79'] = $id;
+                    break;
+
+                case "ins_1":
+                    $arr['ins_1'] = $id;
+                    break;
+
+                case "ins_14":
+                    $arr['ins_14'] = $id;
+                    break;
+
+                case "ins_77":
+                    $arr['ins_77'] = $id;
+                    break;
+
+                case "ins_78":
+                    $arr['ins_78'] = $id;
+                    break;
+
+                case "ebs_1603":
+                    $arr['ebs_1603'] = $id;
+                    break;
+
+                case "ebs_1627":
+                    $arr['ebs_1627'] = $id;
+                    break;
+
+                case "ebs_1650":
+                    $arr['ebs_1650'] = $id;
+                    break;
+
+                default:
+                    $nothing = '111';
+            }
+
             $query2 = $query2->query();
             $query2->update()
                 ->set($arr)
                 ->where(['id' => $orderid])
                 ->execute();
             $this->response->body($query2);
+
             return $this->response;
         }
 
@@ -2096,9 +2140,11 @@
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
-                ->where(['Orders.id' => $order_id])->contain(['Profiles'])->first();
+                ->where(['orders.id' => $order_id])->contain(['Profiles'])->first();
 
             $this->set('order',$order);
+          //  debug($order);
         }
+
 
     }

@@ -2,7 +2,7 @@ var path = window.location.pathname;
 if(path.replace('veritas3','')!=path)
     var base_url = 'http://localhost/veritas3/';
 else
-    var base_url = 'http://isbmee.com/';
+    var base_url = 'http://isbmeereports.com/';
 
 var FormWizard = function () {
     return {
@@ -207,9 +207,10 @@ var FormWizard = function () {
                     $('.uploaded_for').hide();
                     
                     var count = 10;
-
+                    //alert($('#did').val()+'/'+$('#uploaded_for').val());
                     save_signature('1');
                     $.ajax({
+
                         url:base_url+'documents/webservice/0/0/'+$('#did').val()+'/'+$('#uploaded_for').val(),
                     })
                     var counter=setInterval(function(){

@@ -9,6 +9,7 @@ use Cake\Controller\Component\FlashComponent;
 class LoginController extends AppController{
     public function initialize() {
         parent::initialize();
+        $this->loadComponent('Settings');
         if($this->request->session()->read('Profile.id'))
         {
             $this->redirect('/pages');

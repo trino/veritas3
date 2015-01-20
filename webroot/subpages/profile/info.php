@@ -29,12 +29,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
 
                 <div class="portlet box form">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-user"></i>
-                            <?php echo ucfirst($settings->profile); ?>
-                        </div>
-                    </div>
+                   
 
 
 
@@ -68,7 +63,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
 
                                     <select name="profile_type" <?php if(isset($id) && $this->request->session()->read('Profile.id')==$id) echo "disabled='disabled'"; ?>
-                                            class="form-control member_type">
+                                            class="form-control member_type" required='required' >
                                         <option value="">Select</option>
                                         <?php
                                          
@@ -122,6 +117,28 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                              ?>>
                                             Contact
                                         </option>
+
+                                        <option
+                                            value="7" <?php if ($p->profile_type == 7) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                            {
+                                                ?> disabled="disabled"
+                                            <?php
+                                            }
+                                        ?>>
+                                            Owner Operator
+                                        </option>
+
+                                        <option
+                                            value="8" <?php if ($p->profile_type ==8) { ?> selected="selected" <?php }
+                                            if($getProfileType->profile_type == 2)
+                                            {
+                                                ?> disabled="disabled"
+                                            <?php
+                                            }
+                                        ?>>
+                                            Owner Driver
+                                        </option>
                                     </select>
                                 </div>
                                 </div>
@@ -134,7 +151,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
                                     <select name="driver" class="form-control select_driver">
                                         <option value="">Select Driver Type</option>
-                                        <option value="1" <?php if($p->driver==1)echo "selected='slected'";?> class="req_driver">BC - BC FTL AB/BC</option>
+                                     <option value="1" <?php if($p->driver==1)echo "selected='slected'";?> class="req_driver">BC - BC FTL AB/BC</option>
                                         <option value="2" <?php if($p->driver==2)echo "selected='slected'";?>class="req_driver">BCI5 - BC FTL I5</option>
                                         <option value="3" <?php if($p->driver==3)echo "selected='slected'";?>class="req_driver">BULK</option>
                                         <option value="4" <?php if($p->driver==4)echo "selected='slected'";?>class="req_driver">CLIMATE</option>
@@ -143,6 +160,8 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                         <option value="7" <?php if($p->driver==7)echo "selected='slected'";?>class="req_driver">FTL - TOYOTA SINGLE HWY</option>
                                         <option value="8" <?php if($p->driver==8)echo "selected='slected'";?>class="req_driver">LCV - LCV UNITS</option>
                                         <option value="9" <?php if($p->driver==9)echo "selected='slected'";?>class="req_driver">LOC - LOCAL</option>
+                                        <option value="" class="req_driver">OWNER - OPERATOR</option>
+                                        <option value="" class="req_driver">OWNER - DRIVER</option>
                                         <option value="10" <?php if($p->driver==10)echo "selected='slected'";?>class="req_driver">SCD - SPECIAL COMMODITIES</option>
                                         <option value="11" <?php if($p->driver==11)echo "selected='slected'";?>class="req_driver">SST-SANDRK- OPEN FUEL</option>
                                         <option value="12" <?php if($p->driver==12)echo "selected='slected'";?>class="req_driver">SWD-SANDRK</option>
@@ -294,7 +313,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                     <div class="form-group">
                                     <input <?php echo $is_disabled ?>  type="text"
                                                                        placeholder="Postal/Zip"
-                                                                       class="form-control req_driver" <?php if (isset($p->postal)) { ?> name="postal" value="<?php echo $p->postal; ?>" <?php } ?>/>
+                                                                       class="form-control req_driver" name="postal"  <?php if (isset($p->postal)) { ?> value="<?php echo $p->postal; ?>" <?php } ?>/>
                                 </div>
                                 </div>
 
@@ -302,7 +321,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                     <div class="form-group">
                                     <input <?php echo $is_disabled ?>  type="text"
                                                                        placeholder="Country"
-                                                                       class="form-control req_driver" <?php if (isset($p->country)) { ?> name="country" value="<?php echo $p->country; ?>" <?php } ?>/>
+                                                                       class="form-control req_driver" name="country" <?php if (isset($p->country)) { ?> value="<?php echo $p->country; ?>" <?php } ?>/>
                                 </div>
                                 </div>
 

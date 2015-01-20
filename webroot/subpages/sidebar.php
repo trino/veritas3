@@ -230,7 +230,7 @@
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='orderslist' && !isset($_GET['draft']))?'class="active"':'';?>>
 							<a href="<?php echo $this->request->webroot;?>documents/orderslist">
                             <i class="icon-list"></i>
-							List Order</a>
+							List Orders</a>
 						</li>
                         <?php }?>
                         <?php if($sidebar->orders_create==1){?>

@@ -140,10 +140,10 @@
 <strong>Attachments</strong>
 <p>&nbsp;</p>
 <?php
-if($_SERVER['SERVER_NAME']='localhost')
+if($_SERVER['SERVER_NAME']=='localhost')
 $initials = 'http://localhost';
 else
-$initials = 'http://isbmee.com';
+$initials = 'http://isbmeereports.com';
 if($att)
 {
     foreach($att as $a)

@@ -1,3 +1,89 @@
+<?
+    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
+    if (!file_exists($createfile)) {
+        if (isset($order->ebs_1603_binary) && $order->ebs_1603_binary != "") {
+            $file = APP . '../webroot/test.pdf';
+            $newfile = $createfile;
+            copy($file, $newfile);
+            $pdf = fopen($createfile, 'w');
+            fwrite($pdf, base64_decode($order->ebs_1603_binary));
+            fclose($pdf);
+        }
+    }
+
+    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1.pdf';
+    if (!file_exists($createfile)) {
+        if (isset($order->ins_1_binary) && $order->ins_1_binary != "") {
+            $file = APP . '../webroot/test.pdf';
+            $newfile = $createfile;
+            copy($file, $newfile);
+            $pdf = fopen($createfile, 'w');
+            fwrite($pdf, base64_decode($order->ins_1_binary));
+            fclose($pdf);
+        }
+    }
+
+    $createfile = APP . "../webroot/orders/order_" . $order->id . '/14.pdf';
+    if (!file_exists($createfile)) {
+        if (isset($order->ins_14_binary) && $order->ins_14_binary != "") {
+            $file = APP . '../webroot/test.pdf';
+            $newfile = $createfile;
+            copy($file, $newfile);
+            $pdf = fopen($createfile, 'w');
+            fwrite($pdf, base64_decode($order->ins_14_binary));
+            fclose($pdf);
+        }
+    }
+
+    $createfile = APP . "../webroot/orders/order_" . $order->id . '/77.pdf';
+    if (!file_exists($createfile)) {
+        if (isset($order->ins_77_binary) && $order->ins_77_binary != "") {
+            $file = APP . '../webroot/test.pdf';
+            $newfile = $createfile;
+            copy($file, $newfile);
+            $pdf = fopen($createfile, 'w');
+            fwrite($pdf, base64_decode($order->ins_77_binary));
+            fclose($pdf);
+        }
+    }
+
+    $createfile = APP . "../webroot/orders/order_" . $order->id . '/78.pdf';
+    if (!file_exists($createfile)) {
+        if (isset($order->ins_78_binary) && $order->ins_78_binary != "") {
+            $file = APP . '../webroot/test.pdf';
+            $newfile = $createfile;
+            copy($file, $newfile);
+            $pdf = fopen($createfile, 'w');
+            fwrite($pdf, base64_decode($order->ins_78_binary));
+            fclose($pdf);
+        }
+    }
+
+    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1650.pdf';
+    if (!file_exists($createfile)) {
+        if (isset($order->ebs_1650_binary) && $order->ebs_1650_binary != "") {
+            $file = APP . '../webroot/test.pdf';
+            $newfile = $createfile;
+            copy($file, $newfile);
+            $pdf = fopen($createfile, 'w');
+            fwrite($pdf, base64_decode($order->ebs_1650_binary));
+            fclose($pdf);
+        }
+    }
+
+    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1627.pdf';
+    if (!file_exists($createfile)) {
+        if (isset($order->ebs_1627_binary) && $order->ebs_1627_binary != "") {
+            $file = APP . '../webroot/test.pdf';
+            $newfile = $createfile;
+            copy($file, $newfile);
+            $pdf = fopen($createfile, 'w');
+            fwrite($pdf, base64_decode($order->ebs_1627_binary));
+            fclose($pdf);
+        }
+    }
+?>
+
 <!-- BEGIN PROFILE SIDEBAR -->
 <div class="profile-sidebar">
     <!-- PORTLET MAIN -->
@@ -5,32 +91,36 @@
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
             <center>
-                <?php if (isset($order->profile->image) && $order->profile->image!= "") { ?>
-                        <img 
-                             src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $order->profile->image ?>" class="img-responsive" alt="" id="clientpic" />
+                <?php
+                    //debug($order);
+                    if (isset($order->profile->image) && $order->profile->image != "") { ?>
+                        <img
+                            src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $order->profile->image ?>"
+                            class="img-responsive" alt="" id="clientpic"/>
 
                     <?php } else {
                         ?>
-                        <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive" id="clientpic"
+                        <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive"
+                             id="clientpic"
                              alt=""/>
                     <?php
                     }
-                    ?>
+                ?>
             </center>
         </div>
         <!-- END SIDEBAR USERPIC -->
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-                <?php echo ucwords($order->profile->title);?>
+                <?php echo ucwords($order->profile->title); ?>
             </div>
             <div class="profile-usertitle-job">
-                Reference Number <?php echo ucwords($order->profile->id);?>
+                Reference Number <?php echo ucwords($order->profile->id); ?>
             </div>
 
             <div class="profile-usertitle-job">
                 <label class="uniform-inline">
-                    <input  type="checkbox" name="stat"  value="1" />
+                    <input type="checkbox" name="stat" value="1"/>
                     Was this driver hired? </label>
 
             </div>
@@ -51,44 +141,39 @@
     <!-- PORTLET MAIN -->
     <div class="portlet light">
 
+        <div class="margin-bottom-20">
+
+            <a href="#" class="btn btn-lg default yellow-stripe">
+                Road Test Score </a><a href="#" class="btn btn-lg yellow">
+                <i class="fa fa-bar-chart-o"></i> 98% </a>
+        </div>
 
 
-
-
-
-<div class="margin-bottom-20">
-
-                <a href="#" class="btn btn-lg default yellow-stripe">
-                   Road Test Score </a><a href="#" class="btn btn-lg yellow">
-            <i class="fa fa-bar-chart-o"></i>     98%           </a>
-</div>
-
-
-<?php $settings = $this->requestAction('settings/get_settings');?> 
-         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
-                 <strong>Orders</strong></p>
+        <?php $settings = $this->requestAction('settings/get_settings'); ?>
+        <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
+                <strong>Orders</strong></p>
             <p> Uploaded by: <strong>Recruiter ID # 34</strong></p>
             <p>Uploaded on: <strong>2014-12-12 18:48:19</strong></p>
             <p>Company: <strong>Lorem Ipsum</strong></p>
             <p>Filed by: <strong>Lorem Ipsum</strong></p>
 
 </span>
-            <hr/>
-            <h4 class="profile-desc-title">About Marcus Doe</h4>
-            <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
+        <!--hr/>
+        <h4 class="profile-desc-title">About Marcus Doe</h4>
+        <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
 
-            <div class="margin-top-20 profile-desc-link">
-                <i class="fa fa-globe"></i>
-                <a href="#">Lorem ipsum</a>
-            </div>
-            <div class="margin-top-20 profile-desc-link">
-                <i class="fa fa-twitter"></i>
-                <a href="#">Lorem ipsum</a>
-            </div>
-            <div class="margin-top-20 profile-desc-link">
-                <i class="fa fa-facebook"></i>
-                <a href="#">Lorem ipsum</a>
-            </div>
+        <div class="margin-top-20 profile-desc-link">
+            <i class="fa fa-globe"></i>
+            <a href="#">Lorem ipsum</a>
+        </div>
+        <div class="margin-top-20 profile-desc-link">
+            <i class="fa fa-twitter"></i>
+            <a href="#">Lorem ipsum</a>
+        </div>
+        <div class="margin-top-20 profile-desc-link">
+            <i class="fa fa-facebook"></i>
+            <a href="#">Lorem ipsum</a>
+        </div-->
 
     </div>
     <!-- END PORTLET MAIN -->
@@ -105,7 +190,7 @@
                 <div class="portlet-title">
                     <div class="caption caption-md">
                         <i class="icon-bar-chart theme-font hide"></i>
-                        <span class="caption-subject font-blue-madison bold uppercase">Report Card</span>
+                        <span class="caption-subject font-blue-madison bold uppercase">Driver Score Sheet</span>
                         <span class="caption-helper"></span>
                     </div>
                     <div class="inputs">
@@ -114,84 +199,129 @@
                         </div>
                     </div>
                 </div>
-                <div class="portlet-body">
-                    <div class="table-responsive">
-
-                        <table class="table ">
-                            <thead>
-                            <tr>
-                                <th>Criteria</th>
-                                <th>Result</th>
-
-                                <th class="actions">Attachments</th>
-                            </tr>
-                            </thead>
-                            <tbody>
 
 
+                <div class="portlet box yellow">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-folder-open-o"></i>ISB MEE Results
+                        </div>
+                        <!--div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title="">
+                            </a>
+                            <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
+                            </a>
+                            <a href="javascript:;" class="reload" data-original-title="" title="">
+                            </a>
+                            <a href="javascript:;" class="remove" data-original-title="" title="">
+                            </a>
+                        </div-->
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-scrollable">
+
+                            <table class="table ">
+
+                                <tbody>
 
 
-
-                            <tr class="even" role="row">
-                                <td>Premium National Criminal Record Check</td>
-                                <td>
-
-										<span class="label label-sm label-warning">
-										Satisfactory </span></td>
-
-                                <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
-
-                                </td>
-                            </tr>
+                                <tr class="even" role="row">
 
 
+                                    <td>
+                                        <span class="icon-notebook"></span>
+
+                                    </td>
+
+                                    <td>Premium National Criminal Record Check
 
 
-                            <tr class="even" role="row">
-                                <td>Driver's Record Abstract</td>
-                                <td><span class="label label-sm label-success">
-										Passed </span></td>
-
-                                <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    </td>
 
 
-                                </td>
-                            </tr>
+                                    <td class="actions">
+                                        <?php
+                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
+                                            if (!file_exists($createfile)) {
+                                                ?>
+                                                <span class="label label label-info">Pending </span>
+                                            <?
+                                            } else { ?>
+                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1603.pdf'; ?>"
+                                                   class="btn btn-primary">Download</a>
+                                            <? } ?>
+                                    </td>
+                                </tr>
 
 
+                                <tr class="even" role="row">
+                                    <td>
+                                        <span class="icon-notebook"></span>
+
+                                    </td>
+                                    <td>Driver's Record Abstract</td>
+
+                                    <td class="actions">
+                                        <?php
+                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1.pdf';
+                                            if (!file_exists($createfile)) {
+                                                ?>
+                                                <span class="label label label-info">Pending </span>
+                                            <?
+                                            } else { ?>
+                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1.pdf'; ?>"
+                                                   class="btn btn-primary">Download</a>
+                                            <? } ?>
+                                    </td>
+                                </tr>
 
 
-                            <tr class="even" role="row">
-                                <td>CVOR</td>
-                                <td>
-										<span class="label label-sm label-info">
-										Pending </span>
-                                </td>
+                                <tr class="even" role="row">
+                                    <td>
+                                        <span class="icon-notebook"></span>
 
-                                <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    </td>
+                                    <td>CVOR</td>
 
-                                </td>
-                            </tr>
-
-
-                            <tr class="odd" role="row">
-                                <td>Pre-employment Screening Program Report</td>
-                                <td><span class="label label-sm label-success">
-										Passed </span></td>
-
-                                <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
-
-                                </td>
-                            </tr>
+                                    <td class="actions">
+                                        <?php
+                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/14.pdf';
+                                            if (!file_exists($createfile)) {
+                                                ?>
+                                                <span class="label label label-info">Pending </span>
+                                            <?
+                                            } else { ?>
+                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/14.pdf'; ?>"
+                                                   class="btn btn-primary">Download</a>
+                                            <? } ?>
+                                    </td>
+                                </tr>
 
 
+                                <tr class="odd" role="row">
+
+                                    <td>
+                                        <span class="icon-notebook"></span>
+
+                                    </td>
+                                    <td>Pre-employment Screening Program Report</td>
+
+                                    <td class="actions">
+                                        <?php
+                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/77.pdf';
+                                            if (!file_exists($createfile)) {
+                                                ?>
+                                                <span class="label label label-info">Pending </span>
+                                            <?
+                                            } else { ?>
+                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/77.pdf'; ?>"
+                                                   class="btn btn-primary">Download</a>
+                                            <? } ?>
+                                    </td>
+                                </tr>
 
 
-                            <tr class="odd" role="row">
+                                <!--tr class="odd" role="row">
                                 <td>FMCSA SMS Data</td>
                                 <td>
 										<span class="label label-sm label-danger">
@@ -199,56 +329,87 @@
                                 </td>
 
                                 <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <a href="<?= $this->request->webroot . 'test.pdf' ?>" class="btn btn-primary">Download</a>
 
                                 </td>
-                            </tr>
+                            </tr-->
 
-                            <tr class="even" role="row">
-                                <td>Transclick</td>
-                                <td>
-										<span class="label label-sm label-warning">
-										Potential to Succeed </span></td>
+                                <tr class="even" role="row">
 
-                                <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <span class="icon-notebook"></span>
 
+                                    </td>
+                                    <td>Transclick</td>
 
-                            <tr class="odd" role="row">
-                                <td>Certifications</td>
-                                <td>	<span class="label label-sm label-danger">
-										Not Attached </span></td>
-
-                                <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
-
-                                </td>
-                            </tr>
-
+                                    <td class="actions">
+                                        <?php
+                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/78.pdf';
+                                            if (!file_exists($createfile)) {
+                                                ?>
+                                                <span class="label label label-info">Pending </span>
+                                            <?
+                                            } else { ?>
+                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/78.pdf'; ?>"
+                                                   class="btn btn-primary">Download</a>
+                                            <? } ?>
+                                    </td>
+                                </tr>
 
 
+                                <tr class="odd" role="row">
+
+                                    <td>
+                                        <span class="icon-notebook"></span>
+
+                                    </td>
+                                    <td>Certifications</td>
+
+                                    <td class="actions">
+                                        <?php
+                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1650.pdf';
+                                            if (!file_exists($createfile)) {
+                                                ?>
+                                                <span class="label label label-info">Pending </span>
+                                            <?
+                                            } else { ?>
+                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1650.pdf'; ?>"
+                                                   class="btn btn-primary">Download</a>
+                                            <? } ?>
+                                    </td>
+                                </tr>
 
 
-                            <tr class="odd" role="row">
-                                <td>Letter of Experience</td>
-                                <td><span class="label label-sm label-danger">
-										Beginner Driver </span></td>
+                                <tr class="odd" role="row">
 
-                                <td class="actions">
-                                    <a href="#" class="btn btn-primary">Download</a>
+                                    <td>
+                                        <span class="icon-notebook"></span>
 
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>Letter of Experience</td>
+
+                                    <td class="actions">
+                                        <?php
+                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1627.pdf';
+                                            if (!file_exists($createfile)) {
+                                                ?>
+                                                <span class="label label label-info">Pending </span>
+                                            <?
+                                            } else { ?>
+                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1627.pdf'; ?>"
+                                                   class="btn btn-primary">Download</a>
+                                            <? } ?>
+                                    </td>
+                                </tr>
 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-
-
                 </div>
+
+
             </div>
             <!-- END PORTLET -->
         </div>

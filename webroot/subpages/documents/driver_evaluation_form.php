@@ -619,7 +619,11 @@
                                                 <div class="clearfix"></div>
                                                 <?php
                                                         if(!isset($sub['de_at']))
-                                                        {?>
+                                                        {
+                                                            $sub['de_at'] = array();
+                                                        }
+                                                        
+                                                        if(!count($sub['de_at'])){?>
                                                 <div class="form-group col-md-12">
                                                     <label class="control-label col-md-3">Attach Document : </label>
                                                     <div class="col-md-6">
@@ -629,9 +633,9 @@
                                                    </div>
                                                    <?php }?>
                                                   <div class="form-group col-md-12">
-                                                    <div id="more_driver_doc" data-road="<?php if(isset($sub['de_at']))echo count($sub['de_at']);else echo '1';?>">
+                                                    <div id="more_driver_doc" data-road="<?php if(count($sub['de_at']))echo count($sub['de_at']);else echo '1';?>">
                                                        <?php
-                                                        if(isset($sub['de_at']))
+                                                        if(count($sub['de_at']))
                                                         {
                                                             $at=0;
                                                             foreach($sub['de_at'] as $pa)

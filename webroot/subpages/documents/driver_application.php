@@ -271,7 +271,7 @@
 				</div>
                 <label class="control-label col-md-2">Card Number </label>
                 <div class="col-md-2">
-					<input type="text" class="form-control" name="card_nmber"/>
+					<input type="text" class="form-control" name="card_number"/>
                 </div>
                 
                 <label class="control-label col-md-2">Expiry Date</label>
@@ -340,66 +340,81 @@
 		  <h4 class="col-md-12">Accident Record For Past 5 Years or More</h4>	
 		</div>
         <div class="form-body">
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Date : </label>
-                <div class="col-md-6">
-					<input type="text" class="form-control date-picker" name="date_of_accident[]"/>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Nature of Accident(Head-On, Rear-End, Upset, etc.) : </label>
-                <div class="col-md-6">
-					<textarea class="form-control" name="nature_of_accident[]"></textarea>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Fatalities : </label>
-                <div class="col-md-6">
-					<textarea class="form-control" name="fatalities[]"></textarea>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Injuries : </label>
-                <div class="col-md-6">
-					<textarea class="form-control" name="injuries[]"></textarea>
-				</div>
-            </div>
-            
-            <div class="clearfix"></div>
-            <hr />
-            
-            <h4>Last Accident</h4>
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Date : </label>
-                <div class="col-md-6">
-					<input type="text" class="form-control date-picker" name="date_of_accident[]"/>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Nature of Accident(Head-On, Rear-End, Upset, etc.) : </label>
-                <div class="col-md-6">
-					<textarea class="form-control" name="nature_of_accident[]"></textarea>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Fatalities : </label>
-                <div class="col-md-6">
-					<textarea class="form-control" name="fatalities[]"></textarea>
-				</div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Injuries : </label>
-                <div class="col-md-6">
-					<textarea class="form-control" name="injuries[]"></textarea>
-				</div>
-            </div>
+            <?php
+            if(isset($sub['da_ac_detail']) && count($sub['da_ac_detail']))
+            {
+                foreach($sub['da_ac_detail'] as $da_ac)
+                {
+                    ?>
+                    <div class="form-group col-md-12">
+                        <label class="control-label col-md-6">Date : </label>
+                        <div class="col-md-6">
+        					<input type="text" class="form-control date-picker" name="date_of_accident[]" value="<?php echo $da_ac->date_of_accident;?>"/>
+        				</div>
+                    </div>
+                    
+                    <div class="form-group col-md-12">
+                        <label class="control-label col-md-6">Nature of Accident(Head-On, Rear-End, Upset, etc.) : </label>
+                        <div class="col-md-6">
+        					<textarea class="form-control" name="nature_of_accident[]"><?php echo $da_ac->nature_of_accident;?></textarea>
+        				</div>
+                    </div>
+                    
+                    <div class="form-group col-md-12">
+                        <label class="control-label col-md-6">Fatalities : </label>
+                        <div class="col-md-6">
+        					<textarea class="form-control" name="fatalities[]"><?php echo $da_ac->fatalities;?></textarea>
+        				</div>
+                    </div>
+                    
+                    <div class="form-group col-md-12">
+                        <label class="control-label col-md-6">Injuries : </label>
+                        <div class="col-md-6">
+        					<textarea class="form-control" name="injuries[]"><?php echo $da_ac->injuries;?></textarea>
+        				</div>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                    <hr />
+                    <?php
+                }
+            }
+            else
+            {
+                ?>
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-6">Date : </label>
+                    <div class="col-md-6">
+    					<input type="text" class="form-control date-picker" name="date_of_accident[]"/>
+    				</div>
+                </div>
+                
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-6">Nature of Accident(Head-On, Rear-End, Upset, etc.) : </label>
+                    <div class="col-md-6">
+    					<textarea class="form-control" name="nature_of_accident[]"></textarea>
+    				</div>
+                </div>
+                
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-6">Fatalities : </label>
+                    <div class="col-md-6">
+    					<textarea class="form-control" name="fatalities[]"></textarea>
+    				</div>
+                </div>
+                
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-6">Injuries : </label>
+                    <div class="col-md-6">
+    					<textarea class="form-control" name="injuries[]"></textarea>
+    				</div>
+                </div>
+                
+                <div class="clearfix"></div>
+                <hr />
+                <?php
+            }
+            ?>
             
             
             <div class="more_acc_record"></div>
@@ -761,11 +776,11 @@
                             <a href="javascript:void(0);" class="btn btn-success" id="add_more_doc">Add More</a>
                         </div>
                       </div>
-                      <div class="form-group col-md-12">
+                      <!--<div class="form-group col-md-12">
                             <label class="control-label col-md-3">Signature : </label>
-                            <?php include('canvas/example2.php');?>
+                            <?php //include('canvas/example2.php');?>
                             <div class="clearfix"></div>                                        
-                      </div>
+                      </div>-->
                        
                       
                        

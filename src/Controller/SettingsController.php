@@ -14,6 +14,15 @@ class SettingsController extends AppController {
  *
  * @return void
  */
+ 
+ public function intialize()
+    {
+        parent::intialize();
+        if(!$this->request->session()->read('Profile.id'))
+        {
+            redirect('/login');
+        }
+    }
 	public function index() {
         
      
@@ -127,6 +136,7 @@ class SettingsController extends AppController {
                 return $this->getCSubDoc($scope_id,$doc_id);
             
         }
+        die();
             
     }
     

@@ -358,9 +358,10 @@ function showforms(form_type)
                     url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/1',
                     success:function(res2)
                     {
+                        var response = JSON.parse(res2);
                         $('#form_tab1').find(':input').each(function(){
                          var name_attr = $(this).attr('name');
-                         var response = JSON.parse(res2);
+                         
                          //alert(name_attr);
                        if(response[name_attr])  {
                        
@@ -522,9 +523,10 @@ function showforms(form_type)
                     url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/2',
                     success:function(res2)
                     {
+                         var response = JSON.parse(res2);
                         $('#form_tab2').find(':input').each(function(){
                          var name_attr = $(this).attr('name');
-                         var response = JSON.parse(res2);
+                        
                          //alert(name_attr);
                        if(response[name_attr])  {
                        
@@ -903,9 +905,10 @@ function showforms(form_type)
                     url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/3',
                     success:function(res2)
                     {
+                        var response = JSON.parse(res2);
                         $('#form_tab3').find(':input').each(function(){
                          var name_attr = $(this).attr('name');
-                         var response = JSON.parse(res2);
+                         
                          //alert(name_attr);
                        if(response[name_attr])  {
                        
@@ -969,9 +972,10 @@ function showforms(form_type)
                     url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/4',
                     success:function(res2)
                     {
+                        var response = JSON.parse(res2);
                         $('#form_consent').find(':input').each(function(){
                          var name_attr = $(this).attr('name');
-                         var response = JSON.parse(res2);
+                         
                          //alert(name_attr);
                        if(response[name_attr])  {
                        

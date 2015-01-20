@@ -67,8 +67,8 @@
                                 <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Claims with this Employer:</label>
                                 <div class="col-md-3">
-                                &nbsp;&nbsp;<input type="radio" name="claims_with_employer[]" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <input type="radio" name="claims_with_employer[]" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No
+                                &nbsp;&nbsp;<input type="radio" name="claims_with_employer_<?php $rand =  rand(0,100); echo $rand; ?>[]" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="claims_with_employer_<?php echo $rand;?>[]"  value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No
                                 </div>
                                  <label class="control-label col-md-3">Date Claims Occured:</label>
                                  <div class="col-md-3">

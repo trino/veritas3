@@ -229,7 +229,10 @@
 					</ul>
 				</li>
 				<?php $c = $this->requestAction('profiles/getuser');
-                    
+                 
+                 if($c)
+                 {
+                     
                 ?>
 				<li class="dropdown dropdown-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
@@ -260,6 +263,9 @@
 						</li>
 					</ul>
 				</li>
+                <?php
+                }
+                ?>
 				
 			</ul>
 		</div>

@@ -304,7 +304,7 @@ class ProfilesController extends AppController {
                         $query2->insert(['user_id'])
                         ->values(['user_id'=>$profile->id])
                         ->execute(); 
-				$this->Flash->success('User saved successfully.');
+				$this->Flash->error('Please add this user to (atleast one of the) clients listed on sidebar.');
 				return $this->redirect(['action' => 'edit',$profile->id]);
 			} else {
                 //var_dump($profiles->errors()); die();
@@ -716,17 +716,21 @@ class ProfilesController extends AppController {
     
     function getuser()
     {
-        $id = $this->request->session()->read('Profile.id');
-        $profile = TableRegistry::get('profiles');
+        if($id = $this->request->session()->read('Profile.id'))
+        {
+          $profile = TableRegistry::get('profiles');
         $query = $profile->find()->where(['id'=>$id]);
                  
         $l = $query->first();
         $this->response->body($l);
         return $this->response;
         //return $l;
+         
+        }
         
-         die();
-        
+        else return $this->response->body(null);
+         die(); 
+         
         
     }
    function getallusers($profile_type ="",$client_id="")
@@ -831,6 +835,9 @@ class ProfilesController extends AppController {
         if($sub==2)
         {
             $arr['street_address'] = $que->address;
+            $arr['city'] = $que->city;
+            $arr['state_province'] = $que->province;
+            $arr['postal_code'] = $que->postal;
             $arr['last_name'] = $que->lname;
             $arr['first_name'] = $que->fname;
             $arr['phone'] = $que->phone;

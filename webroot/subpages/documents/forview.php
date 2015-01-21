@@ -1,16 +1,84 @@
-<?
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ebs_1603_binary) && $order->ebs_1603_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ebs_1603_binary));
-            fclose($pdf);
+<?php
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+    /////////////pdis are all the same -  change them when u update binary
+
+    // $im = file_get_contents('test.html');
+    // $imdata = base64_encode($im);
+
+    function return_link($pdi, $order_id)
+    {
+
+        if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.pdf')) {
+            $link = "orders/order_" . $order_id . '/' . $pdi . '.pdf';
+            return $link;
+
+        } else if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.html')) {
+            $link = "orders/order_" . $order_id . '/' . $pdi . '.html';
+            return $link;
+
+        } else if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.txt')) {
+            $link = "orders/order_" . $order_id . '/' . $pdi . '.txt';
+            return $link;
+
+        }
+        return false;
+
+    }
+
+    function create_files_from_binary($order_id, $pdi, $binary)
+    {
+        $createfile_pdf = "orders/order_" . $order_id . '/' . $pdi . '.pdf';
+        $createfile_html = "orders/order_" . $order_id . '/' . $pdi . 'html';
+        $createfile_text = "orders/order_" . $order_id . '/' . $pdi . 'txt';
+
+        if (!file_exists($createfile_pdf) && !file_exists($createfile_text) && !file_exists($createfile_html)) {
+
+            if (isset($binary) && $binary != "") {
+                file_put_contents('unknown_file', base64_decode($binary));
+
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mime = finfo_file($finfo, 'unknown_file');
+
+                if ($mime == "application/pdf") {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.pdf');
+                } else if ($mime == "text/html") {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
+
+                } else if ($mime == "text/plain") {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.txt');
+
+                } else {
+                    echo "There was an error converting the file. Please contact the system administrator.";
+                    die();
+                }
+            }
         }
     }
 
+    create_files_from_binary($order->id, '1603', $order->ebs_1603_binary);
+    create_files_from_binary($order->id, '1', $order->ins_1_binary);
+    create_files_from_binary($order->id, '14', $order->ins_14_binary);
+    create_files_from_binary($order->id, '77', $order->ins_77_binary);
+    create_files_from_binary($order->id, '78', $order->ins_78_binary);
+    create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
+    create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
+
+
+    /*
     $createfile = APP . "../webroot/orders/order_" . $order->id . '/1.pdf';
     if (!file_exists($createfile)) {
         if (isset($order->ins_1_binary) && $order->ins_1_binary != "") {
@@ -82,6 +150,7 @@
             fclose($pdf);
         }
     }
+    */
 ?>
 
 <!-- BEGIN PROFILE SIDEBAR -->
@@ -120,7 +189,7 @@
 
             <div class="profile-usertitle-job">
                 <label class="uniform-inline">
-                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id;?>" class="checkdriver" />
+                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>" class="checkdriver"/>
                     Was this driver hired? </label>
 
             </div>
@@ -138,29 +207,28 @@
         <!-- SIDEBAR BUTTONS -->
     </div>
     <script>
-       $(function(){
-            
-        $('.checkdriver').click(function(){
-            
-            var oid = $(this).attr('id');
-            if($(this).is(":checked"))
-            {
-                var hired = 1;
-            }
-            else
-                var hired = 0;
-                
-            $.ajax({
-                url: "<?php echo $this->request->webroot;?>documents/savedriver/"+oid,
-                type: 'post',
-                data: 'is_hired='+hired,
-                success: function(msg){
-                    
+        $(function () {
+
+            $('.checkdriver').click(function () {
+
+                var oid = $(this).attr('id');
+                if ($(this).is(":checked")) {
+                    var hired = 1;
                 }
-                
-            })
+                else
+                    var hired = 0;
+
+                $.ajax({
+                    url: "<?php echo $this->request->webroot;?>documents/savedriver/" + oid,
+                    type: 'post',
+                    data: 'is_hired=' + hired,
+                    success: function (msg) {
+
+                    }
+
+                })
+            });
         });
-       });
     </script>
     <!-- END PORTLET MAIN -->
     <!-- PORTLET MAIN -->
@@ -267,14 +335,16 @@
                                     <td class="actions">
                                         <?php
                                             $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+
+
+                                            if (return_link('1603', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1603.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
+
                                     </td>
                                 </tr>
 
@@ -288,15 +358,13 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('1', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
@@ -310,15 +378,13 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/14.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('14', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/14.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
@@ -333,31 +399,16 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/77.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('77', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/77.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
-
-                                <!--tr class="odd" role="row">
-                                <td>FMCSA SMS Data</td>
-                                <td>
-										<span class="label label-sm label-danger">
-										Failed </span>
-                                </td>
-
-                                <td class="actions">
-                                    <a href="<?= $this->request->webroot . 'test.pdf' ?>" class="btn btn-primary">Download</a>
-
-                                </td>
-                            </tr-->
 
                                 <tr class="even" role="row">
 
@@ -369,15 +420,13 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/78.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('78', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/78.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
@@ -392,15 +441,13 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1650.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('1650', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1650.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
@@ -415,15 +462,13 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1627.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('1627', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1627.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 

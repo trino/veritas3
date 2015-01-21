@@ -727,8 +727,6 @@ class ProfilesController extends AppController {
         //return $l;
          
         }
-        
-        else return $this->response->body(null);
          die(); 
          
         

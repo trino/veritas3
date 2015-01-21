@@ -1,21 +1,6 @@
 <?php
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
-    /////////////pdis are all the same -  change them when u update binary
 
+    // phpinfo();die();
     // $im = file_get_contents('test.html');
     // $imdata = base64_encode($im);
 
@@ -49,21 +34,23 @@
 
             if (isset($binary) && $binary != "") {
                 file_put_contents('unknown_file', base64_decode($binary));
-
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
-                $mime = finfo_file($finfo, 'unknown_file');
+                $mime = finfo_file($finfo, 'unknown_file') ;
+
+                //echo $mime .  ' ' . $pdi .'<br>';
 
                 if ($mime == "application/pdf") {
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.pdf');
-                } else if ($mime == "text/html") {
+                } elseif ($mime == "text/html") {
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
 
-                } else if ($mime == "text/plain") {
+                } elseif ($mime == "text/plain") {
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.txt');
 
                 } else {
-                    echo "There was an error converting the file. Please contact the system administrator.";
-                    die();
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.txt');
+                    //  echo "There was an error converting the file. Please contact the system administrator.";
+                    //  die();
                 }
             }
         }
@@ -340,7 +327,7 @@
                                             if (return_link('1603', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
+                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -361,8 +348,8 @@
                                             if (return_link('1', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
-                                                   class="btn btn-primary">Download</a>
+                                                <a  target="_blank" href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
+                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
                                     </td>
@@ -381,7 +368,7 @@
                                             if (return_link('14', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
+                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -402,7 +389,7 @@
                                             if (return_link('77', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
+                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -423,7 +410,7 @@
                                             if (return_link('78', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
+                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -444,7 +431,7 @@
                                             if (return_link('1650', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
+                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -465,7 +452,7 @@
                                             if (return_link('1627', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
+                                                <a target="_blank"  href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 

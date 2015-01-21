@@ -473,6 +473,7 @@
                 $arr['sub_doc_id'] = $_POST['sub_doc_id'];
                 if(isset($_POST['uploaded_for']))
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
+                
                 $arr['client_id'] = $cid;
                 $arr['document_type'] = urldecode($_GET['document']);
                 $arr['created'] = date('Y-m-d H:i:s');
@@ -1899,7 +1900,7 @@
         public function getAttachedDoc($cid = 0, $order_id = 0)
         {
             // $id = $_GET['id'];
-            if ($_GET['form_type'] == "company_pre_screen_question.php") {
+            if($_GET['form_type'] == "company_pre_screen_question.php") {
                 $prescreen = TableRegistry::get('pre_screening_attachments');
                 $prescreenAttach = $prescreen
                     ->find()
@@ -1967,13 +1968,6 @@
                 ->execute();
             die();
         }
-
-
-
-
-
-
-
 
         public function save_ebs_pdi($orderid, $pdi){
 
@@ -2162,6 +2156,45 @@
                 ->where(['orders.id' => $oid])->execute();
 
             die();
+        }
+        function addattachment($cid, $did)
+        {
+                if(isset($_POST))
+                {
+                    $docs = TableRegistry::get('Documents');
+                    if (isset($_GET['draft']) && $_GET['draft'])
+                        $arr['draft'] = 1;
+                    else
+                        $arr['draft'] = 0;
+                    $arr['sub_doc_id'] = $_POST['sub_doc_id'];
+                    $arr['client_id'] = $cid;
+                    $arr['document_type'] = $_POST['document_type'];
+                    $arr['created'] = date('Y-m-d H:i:s');
+                    $arr['file'] = $_POST['file']; 
+                    if (!$did || $did == '0') {
+                        $arr['user_id'] = $this->request->session()->read('Profile.id');
+                        $doc = $docs->newEntity($arr);
+    
+                        if ($docs->save($doc)) {
+                            $this->Flash->success('Document saved successfully.');
+                             $this->redirect(array('action'=>'index'));
+                        } else {
+                            $this->Flash->error('Document could not be saved. Please try again.');
+                            $this->redirect(array('action'=>'index'));
+                        }
+    
+                    } else {
+                        $query2 = $docs->query();
+                        $query2->update()
+                            ->set($arr)
+                            ->where(['id' => $did])
+                            ->execute();
+                        $this->Flash->success('Document Updated successfully.');
+                        $this->redirect(array('action'=>'index'));
+                    }
+                    
+                }
+            
         }
 
 

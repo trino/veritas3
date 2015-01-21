@@ -101,6 +101,9 @@
                         <div class="subform6" style="display: none;">
                             <?php include('subpages/documents/feedbacks.php');?>
                         </div>
+                        <div class="subform7" style="display: none;">
+                            <?php include('subpages/documents/attachments.php');?>
+                        </div>
                     </div>
                     <div class="form-actions">
                         <div class="row">
@@ -183,6 +186,8 @@
         $('.subform6 .document_type').remove();
         $('.subform6 .sub_docs_id').remove();
         
+         $('.subform7 .document_type').remove();
+        $('.subform7 .sub_docs_id').remove();
         //alert(s_arr[1]);
         if(s_arr[1] == 1)
         {
@@ -215,10 +220,14 @@
             $('#form_tab6').prepend('<input class="document_type" type="hidden" name="document_type" value="Feedbacks" />'+
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="6"  />');
         }
-        
+        if(s_arr[1] == 7)
+        {
+            $('#form_tab7').prepend('<input class="document_type" type="hidden" name="document_type" value="Attachment" />'+
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="7"  />');
+        }
         if(ftype!= ""){
             //alert(form_type);
-            for(var p = 1;p<=7;p++)
+            for(var p = 1;p<=8;p++)
             {
                 $('.subform'+p).hide();
             }
@@ -809,7 +818,7 @@
     {
         var filename = form_type.replace(/\W/g, '_');
         var filename = filename.toLowerCase();
-        $('.subform').show();   1
+        $('.subform').show();   
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
     }
     jQuery(document).ready(function() {
@@ -818,7 +827,7 @@
         if($this->request->params['action']=='view')
         {
             ?>
-        for(var h=1;h<7;h++)
+        for(var h=1;h<8;h++)
         {
             $('#form_tab'+h+' input').attr('disabled','disabled');
             $('#form_tab'+h+' textarea').attr('disabled','disabled');
@@ -847,7 +856,7 @@
             else
                 var draft=0;
             var type=$(".document_type").val();
-            //alert(type);
+            alert(type);
             //alert($('#sub_id').val());return;
             var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val(),division:$('#division').val()};
             $.ajax({
@@ -918,7 +927,12 @@
                                     });
                     
                     }
-                    if(type != "Survey" || type != "Feedbacks")
+                    else if(type == "Attachment")
+                    {
+                        $('#form_tab7').submit();
+                    
+                    }
+                    if(type != "Survey" || type != "Feedbacks" || type != "Attachment")
                     {
                         $('.flashDoc').show();
                         $('.flashDoc').fadeOut(8000);

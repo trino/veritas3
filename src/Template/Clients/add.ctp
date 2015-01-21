@@ -9,8 +9,8 @@ $c = $client;
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->client);?> <small>Add/Edit <?php echo ucfirst($settings->client);?></small>
-			</h3>
+	<?php echo ucfirst($settings->client);?> <small>Add/Edit <?php echo ucfirst($settings->client);?></small>
+</h3>
 
 			<div class="page-bar">
 				<ul class="page-breadcrumb"> 

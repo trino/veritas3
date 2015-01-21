@@ -49,7 +49,7 @@ else
 						<div class="portlet-body form">
 							<!--<form action="#" class="form-horizontal" id="submit_form" method="POST"> -->
 								<div class="form-wizard">
-									<div class="form-body">
+									<div class="form-body" style="position: relative;">
                                         <?php
 
                                         if($param !='view')
@@ -110,6 +110,17 @@ else
 											<div class="progress-bar progress-bar-info">
 											</div>
 										</div>
+                                        <div style="position:absolute;background:#000;height:770px;width:100%;z-index:1000;opacity:0.2;display:none;" id="loading5">
+                                                <center><br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <strong style="color: #FFF;">Wait while pdf is being created!</strong>
+                                                <br /><br />
+                                                
+                                                <img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif" /></center>
+                                              </div>
                                         <?php
                                         }
                                         ?>
@@ -133,6 +144,7 @@ else
 										</div>
 									</div>
 										<div class="tab-content mar">
+                                            
 											<div class="alert alert-danger display-none">
 												<button class="close" data-dismiss="alert"></button>
 												You have some form errors. Please check below.
@@ -358,9 +370,10 @@ function showforms(form_type)
                     url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/1',
                     success:function(res2)
                     {
+                        var response = JSON.parse(res2);
                         $('#form_tab1').find(':input').each(function(){
                          var name_attr = $(this).attr('name');
-                         var response = JSON.parse(res2);
+                         
                          //alert(name_attr);
                        if(response[name_attr])  {
                        
@@ -522,9 +535,10 @@ function showforms(form_type)
                     url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/2',
                     success:function(res2)
                     {
+                         var response = JSON.parse(res2);
                         $('#form_tab2').find(':input').each(function(){
                          var name_attr = $(this).attr('name');
-                         var response = JSON.parse(res2);
+                        
                          //alert(name_attr);
                        if(response[name_attr])  {
                        
@@ -903,9 +917,10 @@ function showforms(form_type)
                     url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/3',
                     success:function(res2)
                     {
+                        var response = JSON.parse(res2);
                         $('#form_tab3').find(':input').each(function(){
                          var name_attr = $(this).attr('name');
-                         var response = JSON.parse(res2);
+                         
                          //alert(name_attr);
                        if(response[name_attr])  {
                        
@@ -969,9 +984,10 @@ function showforms(form_type)
                     url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/4',
                     success:function(res2)
                     {
+                        var response = JSON.parse(res2);
                         $('#form_consent').find(':input').each(function(){
                          var name_attr = $(this).attr('name');
-                         var response = JSON.parse(res2);
+                         
                          //alert(name_attr);
                        if(response[name_attr])  {
                        
@@ -1134,6 +1150,7 @@ function save_signature(numb)
         			});
         		}
 function savePrescreen(url,order_id,cid){
+    
     var param = {
         order_id: order_id,
         cid: cid,
@@ -1174,6 +1191,7 @@ function savedDriverEvaluation(url,order_id,cid){
     }
 
     function savedMeeOrder(url,order_id,cid){
+        $('#loading5').show();
         var param = $('#form_consent').serialize();
         $.ajax({
         url:url,
@@ -1219,7 +1237,10 @@ function savedDriverEvaluation(url,order_id,cid){
             type:'POST',
             success:function(res){
                 $.ajax({
-               url:'<?php echo $this->request->webroot;?>documents/createPdfEducation/'+$('#did').val()
+               url:'<?php echo $this->request->webroot;?>documents/createPdfEducation/'+$('#did').val(),
+               success:function(){
+                $('#loading5').hide();
+               }
             });
             }
         });

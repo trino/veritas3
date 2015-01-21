@@ -232,14 +232,27 @@ $c = $client;
 														<label class="control-label">Add document</label>
                                                         <div>
                                                        <!-- <a href="#" class="btn btn-primary">Browse</a> -->
+                                                      <?php 
+                                                        if(isset($client_docs) && count($client_docs)>0){
+                                                            foreach($client_docs as $k=>$cd):
+                                                               
+                                                            ?>
+                                                            <div style="margin-bottom:5px;">
+                                                            <?php  echo $cd->file;?>
+                                                            <a href="javascript:void(0);" onclick="$(this).parent().remove()" class="btn btn-danger">Delete</a>
+                                                            <input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
+                                                            </div>
+                                                        <?php
+                                                            endforeach;
+                                                      }?>
                                                       <div class="docMore" data-count="1">
                                                          <div  style="display:block;margin:5px;">
-                                                         <a href="#" class="btn btn-primary">Browse</a>
-                                                          <input type="hidden" name=""/>
+                                                             <a href="javascript:void(0)" id="addMore1"  class="btn btn-primary">Browse</a>
+                                                              <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/>
                                                            </div>
                                                        </div>
 
-                                                        <a href="#" id="addMore" class="btn btn-info" onclick="addMore(event,this)">Add More Document</a>
+                                                        <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" onclick="addMore(event,this)">Add More Document</a>
 
 
                                                          <?php if(isset($c->document)){?>
@@ -616,38 +629,9 @@ $c = $client;
 </div>
 
 <script>
-                
-                function initiate_ajax_upload(button_id){
-                var button = $('#'+button_id), interval;
-                new AjaxUpload(button,{
-                    action: base_url+"clients/upload_img/<?php if(isset($id))echo $id;?>",                      
-                    name: 'myfile',
-                    onSubmit : function(file, ext){
-                        button.text('Uploading');
-                        this.disable();
-                        interval = window.setInterval(function(){
-                            var text = button.text();
-                            if (text.length < 13){
-                                button.text(text + '.');					
-                            } else {
-                                button.text('Uploading');				
-                            }
-                        }, 200);
-                    },
-                    onComplete: function(file, response){
-                        button.html('<i class="fa fa-image"></i> Add/Edit Image');
-                            window.clearInterval(interval);
-                            this.enable();
-                            $("#clientpic").attr("src",'<?php echo $this->request->webroot;?>img/jobs/'+response);
-                            $('#client_img').val(response);
-                            //$('.flashimg').show();
-                            }                        		
-                    });                
-            }
-           </script>
-<script>
                                     $(function(){
-                                        initiate_ajax_upload('clientimg');
+                                        initiate_ajax_upload('clientimg','asdas');
+                                        initiate_ajax_upload('addMore1','doc');
                                         <?php
                                         if(isset($id))
                                         {
@@ -691,6 +675,16 @@ $c = $client;
                                             str = str+'&contact_id[]='+$(this).val();
                                            } 
                                         });
+                                        $('.moredocs').each(function(){
+                                           if($(this).val()!= "")
+                                           {
+                                            if(str=='')
+                                            str = 'client_doc[]='+$(this).val();
+                                            else
+                                            str = str+'&client_doc[]='+$(this).val();
+                                           }
+                                            
+                                        });
                                             if(str=='')
                                             {
                                                 str = $('#tab_1_1 input').serialize();
@@ -704,6 +698,7 @@ $c = $client;
                                             str = str+'&division='+$('#division').val();
                                             str = str+'&referred_by='+$('#referred_by').val();
                                             str = str+'&invoice_terms='+$('#invoice_terms').val();
+                                            
                                             
                                             
                                             $.ajax({
@@ -735,16 +730,16 @@ $c = $client;
 var removeLink = 0;// this variable is for showing and removing links in a add document
                                   function addMore(e,obj){
                                     e.preventDefault();
-
+                                        
                                         var total_count = $('.docMore').data('count');
                                         $('.docMore').data('count',parseInt(total_count)+1);
                                         total_count = $('.docMore').data('count');
-                                        var input_field = '<div style="display:block;margin:5px;"><a href="#" class="btn btn-primary">Browse</a><input type="hidden" <?php /*?>name="file_' + total_count + '"<?php */?>/></div>';
+                                        var input_field = '<div style="display:block;margin:5px;"><a href="javascript;void(0);" id="addMore'+total_count+'" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore'+total_count+'_doc moredocs" /></div>';
                                         $('.docMore').append(input_field);
                                         if( parseInt(total_count) > 1 && removeLink == 0 ){
                                         removeLink = 1;
-                                         $('#addMore').after('<a href="#" id="removeMore" class="btn btn-danger" onclick="removeMore(event,this)">Remove last</a>');
-
+                                         $('#addMoredoc').after('<a href="#" id="removeMore" class="btn btn-danger" onclick="removeMore(event,this)">Remove last</a>');
+                                            initiate_ajax_upload('addMore'+total_count,'doc');
                                         }
                                   }
 
@@ -764,5 +759,46 @@ var removeLink = 0;// this variable is for showing and removing links in a add d
 
 
 
+<script>
+                
+                function initiate_ajax_upload(button_id, doc){
+                var button = $('#'+button_id), interval;
+                new AjaxUpload(button,{
+                    action: base_url+"clients/upload_img/<?php if(isset($id))echo $id;?>",                      
+                    name: 'myfile',
+                    onSubmit : function(file, ext){
+                        button.text('Uploading');
+                        this.disable();
+                        interval = window.setInterval(function(){
+                            var text = button.text();
+                            if (text.length < 13){
+                                button.text(text + '.');					
+                            } else {
+                                button.text('Uploading');				
+                            }
+                        }, 200);
+                    },
+                    onComplete: function(file, response){
+                        if(doc=="doc")
+                            button.html('Browse');
+                        else
+                            button.html('<i class="fa fa-image"></i> Add/Edit Image');
+                            
+                            window.clearInterval(interval);
+                            this.enable();
+                            if(doc=="doc"){
+                                $('#'+button_id).parent().append(" "+response);
+                                $('.'+button_id+"_doc").val(response);
+                            }
+                            else
+                            {
+                                $("#clientpic").attr("src",'<?php echo $this->request->webroot;?>img/jobs/'+response);
+                                $('#client_img').val(response);
+                            }
+                            //$('.flashimg').show();
+                            }                        		
+                    });                
+            }
+           </script>
 
 

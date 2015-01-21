@@ -304,7 +304,7 @@ class ProfilesController extends AppController {
                         $query2->insert(['user_id'])
                         ->values(['user_id'=>$profile->id])
                         ->execute(); 
-				$this->Flash->success('User saved successfully.');
+				$this->Flash->error('Please add this user to (atleast one of the) clients listed on sidebar.');
 				return $this->redirect(['action' => 'edit',$profile->id]);
 			} else {
                 //var_dump($profiles->errors()); die();
@@ -451,7 +451,7 @@ class ProfilesController extends AppController {
             }
              //die();
             
-            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete','document_others','orders_list','orders_create','orders_delete','orders_edit','orders_others');
+            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete','document_others','document_requalify','orders_list','orders_create','orders_delete','orders_requalify','orders_edit','orders_others');
             foreach($sides as $s)
             {
                 if(!isset($_POST['side'][$s]))
@@ -833,6 +833,9 @@ class ProfilesController extends AppController {
         if($sub==2)
         {
             $arr['street_address'] = $que->address;
+            $arr['city'] = $que->city;
+            $arr['state_province'] = $que->province;
+            $arr['postal_code'] = $que->postal;
             $arr['last_name'] = $que->lname;
             $arr['first_name'] = $que->fname;
             $arr['phone'] = $que->phone;

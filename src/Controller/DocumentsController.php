@@ -437,10 +437,10 @@
                     $arr['draft'] = 0;
                 $arr['client_id'] = $cid;
                 if(isset($_POST['division']))
-                $arr['division'] = $_POST['division'];
-                $arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
-                $arr['conf_driver_name'] = $_POST['conf_driver_name'];
-                $arr['conf_date'] = $_POST['conf_date'];
+                $arr['division'] = urldecode($_POST['division']);
+                $arr['conf_recruiter_name'] = urldecode($_POST['conf_recruiter_name']);
+                $arr['conf_driver_name'] = urldecode($_POST['conf_driver_name']);
+                $arr['conf_date'] = urldecode($_POST['conf_date']);
                 //$arr['order_type'] = $_POST['sub_doc_id'];
                 $arr['created'] = date('Y-m-d H:i:s');
                 if (!$did || $did == '0') {
@@ -474,7 +474,7 @@
                 if(isset($_POST['uploaded_for']))
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
                 $arr['client_id'] = $cid;
-                $arr['document_type'] = $_GET['document'];
+                $arr['document_type'] = urldecode($_GET['document']);
                 $arr['created'] = date('Y-m-d H:i:s');
                 //$arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
                 //$arr['conf_driver_name'] = $_POST['conf_driver_name'];
@@ -540,7 +540,7 @@
                 }
                 if ($input[1] != '') {
 
-                    $arr[$input[0]] = $input[1];
+                    $arr[$input[0]] = urldecode($input[1]);
                 }
 
                 //echo $data."<br/>";
@@ -622,7 +622,7 @@
                     continue;
                 } else {
                     // if(isset($_POST[$data]) ) {
-                    $arr[$data] = $val;
+                    $arr[$data] = urldecode($val);
                     // }
                 }
             }
@@ -634,10 +634,10 @@
                 // $del->delete()->where(['driver_application_id'=>$id])->execute();
                 for ($i = 0; $i < $total_acc_record; $i++) {
                     $acc['driver_application_id'] = $id;
-                    $acc['date_of_accident'] = $_POST['date_of_accident'][$i];
-                    $acc['nature_of_accident'] = $_POST['nature_of_accident'][$i];
-                    $acc['fatalities'] = $_POST['fatalities'][$i];
-                    $acc['injuries'] = $_POST['injuries'][$i];
+                    $acc['date_of_accident'] = urldecode($_POST['date_of_accident'][$i]);
+                    $acc['nature_of_accident'] = urldecode($_POST['nature_of_accident'][$i]);
+                    $acc['fatalities'] = urldecode($_POST['fatalities'][$i]);
+                    $acc['injuries'] = urldecode($_POST['injuries'][$i]);
                     $saveAcc = $driverAppAcc->newEntity($acc);
                     $driverAppAcc->save($saveAcc);
                     $att = array();
@@ -666,11 +666,11 @@
                 // $del->delete()->where(['driver_application_id'=>$id])->execute();
                 for ($i = 0; $i < 2; $i++) {
                     $lic['driver_application_id'] = $id;
-                    $lic['driver_license'] = $_POST['driver_license'][$i];
-                    $lic['province'] = $_POST['province'][$i];
-                    $lic['license_number'] = $_POST['license_number'][$i];
+                    $lic['driver_license'] = urldecode($_POST['driver_license'][$i]);
+                    $lic['province'] = urldecode($_POST['province'][$i]);
+                    $lic['license_number'] = urldecode($_POST['license_number'][$i]);
                     $lic['class'] = $_POST['class'][$i];
-                    $lic['expiration_date'] = $_POST['expiration_date'][$i];
+                    $lic['expiration_date'] = urldecode($_POST['expiration_date'][$i]);
                     $saveLic = $driverAppLic->newEntity($lic);
                     $driverAppLic->save($saveLic);
                 }
@@ -726,7 +726,7 @@
                     continue;
                 } else {
                     if (isset($_POST[$data])) {
-                        $arr[$data] = $val;
+                        $arr[$data] = urldecode($val);
                     }
                 }
 
@@ -783,10 +783,10 @@
             foreach ($_POST as $data => $val) {
 
                 if ($data == 'offence' || $data == 'date_of_sentence' || $data == 'location' || $data == 'attach_doc') {
-
+                    continue;
                 }
                 //echo $data." ".$val."<br />";
-                $arr[$data] = $val;
+                $arr[$data] = urldecode($val);
 
             }
 
@@ -801,9 +801,9 @@
 
                 for ($i = 0; $i < 8; $i++) {
                     $crm['consent_form_id'] = $id;
-                    $crm['offence'] = $post['offence'][$i];
-                    $crm['date_of_sentence'] = $post['date_of_sentence'][$i];
-                    $crm['location'] = $post['location'][$i];
+                    $crm['offence'] = urldecode($post['offence'][$i]);
+                    $crm['date_of_sentence'] = urldecode($post['date_of_sentence'][$i]);
+                    $crm['location'] = urldecode($post['location'][$i]);
                     $saveCrm = $consentForm->newEntity($crm);
                     $consentFormCri->save($saveCrm);
                 }
@@ -852,99 +852,104 @@
                 $arr2['user_id'] = $this->request->session()->read('Profile.id');
 
                 if (isset($_POST['company_name'][$i])) {
-                    $arr2['company_name'] = $_POST['company_name'][$i];
+                    $arr2['company_name'] = urldecode($_POST['company_name'][$i]);
                 }
 
                 if (isset($_POST['address'][$i])) {
-                    $arr2['address'] = $_POST['address'][$i];
+                    $arr2['address'] = urldecode($_POST['address'][$i]);
                 }
 
                 if (isset($_POST['city'][$i])) {
-                    $arr2['city'] = $_POST['city'][$i];
+                    $arr2['city'] = urldecode($_POST['city'][$i]);
                 }
 
                 if (isset($_POST['state_province'][$i])) {
-                    $arr2['state_province'] = $_POST['state_province'][$i];
+                    $arr2['state_province'] = urldecode($_POST['state_province'][$i]);
                 }
 
                 if (isset($_POST['country'][$i])) {
-                    $arr2['country'] = $_POST['country'][$i];
+                    $arr2['country'] = urldecode($_POST['country'][$i]);
                 }
 
                 if (isset($_POST['supervisor_name'][$i])) {
-                    $arr2['supervisor_name'] = $_POST['supervisor_name'][$i];
+                    $arr2['supervisor_name'] = urldecode($_POST['supervisor_name'][$i]);
                 }
 
                 if (isset($_POST['supervisor_phone'][$i])) {
-                    $arr2['supervisor_phone'] = $_POST['supervisor_phone'][$i];
+                    $arr2['supervisor_phone'] = urldecode($_POST['supervisor_phone'][$i]);
                 }
 
                 if (isset($_POST['supervisor_email'][$i])) {
-                    $arr2['supervisor_email'] = $_POST['supervisor_email'][$i];
+                    $arr2['supervisor_email'] = urldecode($_POST['supervisor_email'][$i]);
                 }
 
                 if (isset($_POST['supervisor_secondary_email'][$i])) {
-                    $arr2['supervisor_secondary_email'] = $_POST['supervisor_secondary_email'][$i];
+                    $arr2['supervisor_secondary_email'] = urldecode($_POST['supervisor_secondary_email'][$i]);
                 }
 
                 if (isset($_POST['employment_start_date'][$i])) {
-                    $arr2['employment_start_date'] = $_POST['employment_start_date'][$i];
+                    $arr2['employment_start_date'] = urldecode($_POST['employment_start_date'][$i]);
                 }
 
                 if (isset($_POST['employment_end_date'][$i])) {
-                    $arr2['employment_end_date'] = $_POST['employment_end_date'][$i];
+                    $arr2['employment_end_date'] = urldecode($_POST['employment_end_date'][$i]);
                 }
                 if (isset($_POST['claims_recovery_date'][$i])) {
-                    $arr2['claims_recovery_date'] = $_POST['claims_recovery_date'][$i];
+                    $arr2['claims_recovery_date'] = urldecode($_POST['claims_recovery_date'][$i]);
                 }
                 if (isset($_POST['emploment_history_confirm_verify_use'][$i])) {
-                    $arr2['emploment_history_confirm_verify_use'] = $_POST['emploment_history_confirm_verify_use'][$i];
+                    $arr2['emploment_history_confirm_verify_use'] = urldecode($_POST['emploment_history_confirm_verify_use'][$i]);
+                }
+                if (isset($_POST['us_dot'][$i])) {
+                    $arr2['us_dot'] = urldecode($_POST['us_dot'][$i]);
                 }
                 if (isset($_POST['us_dotsignature'][$i])) {
-                    $arr2['us_dotsignature'] = $_POST['us_dotsignature'][$i];
+                    $arr2['us_dotsignature'] = urldecode($_POST['us_dotsignature'][$i]);
                 }
                 if (isset($_POST['signature'][$i])) {
-                    $arr2['signature'] = $_POST['signature'][$i];
+                    $arr2['signature'] = urldecode($_POST['signature'][$i]);
                 }
                 if (isset($_POST['signature_datetime'][$i])) {
-                    $arr2['signature_datetime'] = $_POST['signature_datetime'][$i];
+                    $arr2['signature_datetime'] = urldecode($_POST['signature_datetime'][$i]);
                 }
 
                 if (isset($_POST['equipment_vans'][$i])) {
-                    $arr2['equipment_vans'] = $_POST['equipment_vans'][$i];
+                    $arr2['equipment_vans'] = urldecode($_POST['equipment_vans'][$i]);
                 }
                 if (isset($_POST['equipment_reefer'][$i])) {
-                    $arr2['equipment_reefer'] = $_POST['equipment_reefer'][$i];
+                    $arr2['equipment_reefer'] = urldecode($_POST['equipment_reefer'][$i]);
                 }
                 if (isset($_POST['equipment_decks'][$i])) {
-                    $arr2['equipment_decks'] = $_POST['equipment_decks'][$i];
+                    $arr2['equipment_decks'] = urldecode($_POST['equipment_decks'][$i]);
                 }
                 if (isset($_POST['equipment_super'][$i])) {
-                    $arr2['equipment_super'] = $_POST['equipment_super'][$i];
+                    $arr2['equipment_super'] = urldecode($_POST['equipment_super'][$i]);
                 }
                 if (isset($_POST['equipment_straight_truck'][$i])) {
-                    $arr2['equipment_straight_truck'] = $_POST['equipment_straight_truck'][$i];
+                    $arr2['equipment_straight_truck'] = urldecode($_POST['equipment_straight_truck'][$i]);
                 }
                 if (isset($_POST['equipment_others'][$i])) {
-                    $arr2['equipment_others'] = $_POST['equipment_others'][$i];
+                    $arr2['equipment_others'] = urldecode($_POST['equipment_others'][$i]);
                 }
 
                 //driving
                 if (isset($_POST['driving_experince_local'][$i])) {
-                    $arr2['driving_experince_local'] = $_POST['driving_experince_local'][$i];
+                    $arr2['driving_experince_local'] = urldecode($_POST['driving_experince_local'][$i]);
                 }
                 if (isset($_POST['driving_experince_canada'][$i])) {
-                    $arr2['driving_experince_canada'] = $_POST['driving_experince_canada'][$i];
+                    $arr2['driving_experince_canada'] = urldecode($_POST['driving_experince_canada'][$i]);
                 }
                 if (isset($_POST['driving_experince_canada_rocky_mountains'][$i])) {
-                    $arr2['driving_experince_canada_rocky_mountains'] = $_POST['driving_experince_canada_rocky_mountains'][$i];
+                    $arr2['driving_experince_canada_rocky_mountains'] = urldecode($_POST['driving_experince_canada_rocky_mountains'][$i]);
                 }
                 if (isset($_POST['driving_experince_usa'][$i])) {
-                    $arr2['driving_experince_usa'] = $_POST['driving_experince_usa'][$i];
+                    $arr2['driving_experince_usa'] = urldecode($_POST['driving_experince_usa'][$i]);
                 }
-
-                if (isset($_POST['claims_with_employer'][$i])) {
-                    $arr2['claims_with_employer'] = $_POST['claims_with_employer'][$i];
+                for($l=0;$l<=100;$l++){
+                if (isset($_POST['claims_with_employer_'.$l][$i])) {
+                    $arr2['claims_with_employer'] = urldecode($_POST['claims_with_employer_'.$l][$i]);
+                    break;
+                }
                 }
 
                 $save2 = $employment->newEntity($arr2);
@@ -993,66 +998,66 @@
                 $arr2['user_id'] = $this->request->session()->read('Profile.id');
 
                 if (isset($_POST['college_school_name'][$i])) {
-                    $arr2['college_school_name'] = $_POST['college_school_name'][$i];
+                    $arr2['college_school_name'] = urldecode($_POST['college_school_name'][$i]);
                 }
 
                 if (isset($_POST['address'][$i])) {
-                    $arr2['address'] = $_POST['address'][$i];
+                    $arr2['address'] = urldecode($_POST['address'][$i]);
                 }
 
                 if (isset($_POST['supervisior_name'][$i])) {
-                    $arr2['supervisior_name'] = $_POST['supervisior_name'][$i];
+                    $arr2['supervisior_name'] = urldecode($_POST['supervisior_name'][$i]);
                 }
 
                 if (isset($_POST['supervisior_phone'][$i])) {
-                    $arr2['supervisior_phone'] = $_POST['supervisior_phone'][$i];
+                    $arr2['supervisior_phone'] = urldecode($_POST['supervisior_phone'][$i]);
                 }
 
                 if (isset($_POST['supervisior_email'][$i])) {
-                    $arr2['supervisior_email'] = $_POST['supervisior_email'][$i];
+                    $arr2['supervisior_email'] = urldecode($_POST['supervisior_email'][$i]);
                 }
 
-                if (isset($_POST['	supervisior_secondary_email'][$i])) {
-                    $arr2['	supervisior_secondary_email'] = $_POST['	supervisior_secondary_email'][$i];
+                if (isset($_POST['supervisior_secondary_email'][$i])) {
+                    $arr2['supervisior_secondary_email'] = urldecode($_POST['supervisior_secondary_email'][$i]);
                 }
 
                 if (isset($_POST['education_start_date'][$i])) {
-                    $arr2['education_start_date'] = $_POST['education_start_date'][$i];
+                    $arr2['education_start_date'] = urldecode($_POST['education_start_date'][$i]);
                 }
 
                 if (isset($_POST['education_end_date'][$i])) {
-                    $arr2['education_end_date'] = $_POST['education_end_date'][$i];
+                    $arr2['education_end_date'] = urldecode($_POST['education_end_date'][$i]);
                 }
 
                 if (isset($_POST['claim_tutor'][$i])) {
-                    $arr2['claim_tutor'] = $_POST['claim_tutor'][$i];
+                    $arr2['claim_tutor'] = urldecode($_POST['claim_tutor'][$i]);
                 }
 
                 if (isset($_POST['date_claims_occur'][$i])) {
-                    $arr2['date_claims_occur'] = $_POST['date_claims_occur'][$i];
+                    $arr2['date_claims_occur'] = urldecode($_POST['date_claims_occur'][$i]);
                 }
 
                 if (isset($_POST['education_history_confirmed_by'][$i])) {
-                    $arr2['education_history_confirmed_by'] = $_POST['education_history_confirmed_by'][$i];
+                    $arr2['education_history_confirmed_by'] = urldecode($_POST['education_history_confirmed_by'][$i]);
                 }
                 if (isset($_POST['highest_grade_completed'][$i])) {
-                    $arr2['highest_grade_completed'] = $_POST['highest_grade_completed'][$i];
+                    $arr2['highest_grade_completed'] = urldecode($_POST['highest_grade_completed'][$i]);
                 }
                 if (isset($_POST['high_school'][$i])) {
-                    $arr2['high_school'] = $_POST['high_school'][$i];
+                    $arr2['high_school'] = urldecode($_POST['high_school'][$i]);
                 }
                 if (isset($_POST['college'][$i])) {
-                    $arr2['college'] = $_POST['college'][$i];
+                    $arr2['college'] = urldecode($_POST['college'][$i]);
                 }
                 if (isset($_POST['last_school_attended'][$i])) {
-                    $arr2['last_school_attended'] = $_POST['last_school_attended'][$i];
+                    $arr2['last_school_attended'] = urldecode($_POST['last_school_attended'][$i]);
                 }
                 if (isset($_POST['signature'][$i])) {
-                    $arr2['signature'] = $_POST['signature'][$i];
+                    $arr2['signature'] = urldecode($_POST['signature'][$i]);
                 }
 
                 if (isset($_POST['date_time'][$i])) {
-                    $arr2['date_time'] = $_POST['date_time'][$i];
+                    $arr2['date_time'] = urldecode($_POST['date_time'][$i]);
                 }
 
                 $save2 = $education->newEntity($arr2);
@@ -2144,6 +2149,19 @@
 
             $this->set('order',$order);
           //  debug($order);
+        }
+        
+        function savedriver($oid)
+        {
+            
+            $arr['is_hired'] = $_POST['is_hired'];
+            $orders = TableRegistry::get('orders');
+            $order = $orders
+                ->query()->update()
+                ->set($arr)
+                ->where(['orders.id' => $oid])->execute();
+
+            die();
         }
 
 

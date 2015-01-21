@@ -121,7 +121,7 @@
                                             <label class="control-label">(If they do not have a valid Canadian passport)Do you have a Permanent Residency card and US Visa?</label>
                                         </div>
                                         <div class="col-md-6">
-                                        <input type="radio" name="have_pr_us_visa" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="have_pr_us_visa_0" name="have_pr_us_visa" value="0"/>&nbsp;&nbsp;No
+                                        <input type="radio" id="have_pr_us_visa_1" name="have_pr_us_visa" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="have_pr_us_visa_0" name="have_pr_us_visa" value="0"/>&nbsp;&nbsp;No
                                         </div>
                                     </div>
                                     
@@ -212,7 +212,7 @@
                                         <div class="form-group col-md-12">
                                             <label class="control-label col-md-3"> Type of equipment </label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" name="current_type_equipmenet" />
+                                                <input type="text" class="form-control" name="current_type_equipment" />
                                             </div>
                                         </div>
                                         
@@ -583,8 +583,14 @@
                                             </div>              
                                     
                                         <?php
+                                        
                                          if(!isset($pre_at['attach_doc']))
                                          {
+                                          $pre_at['attach_doc'] = array();  
+                                         }
+                                         //var_dump($pre_at);
+                                         //var_dump(count($pre_at['attach_doc']));
+                                         if(!count($pre_at['attach_doc'])){
                                             ?>
                                             
                                         <div class="form-group col-md-12">
@@ -598,9 +604,9 @@
                                          }
                                         ?>
                                       <div class="form-group col-md-12">
-                                        <div class="attach_more" data-count='<?php if(isset($pre_at['attach_doc']))echo count($pre_at['attach_doc']);else echo '1';?>'>
+                                        <div class="attach_more" data-count='<?php if(count($pre_at['attach_doc']))echo count($pre_at['attach_doc']);else echo '1';?>'>
                                         <?php
-                                        if(isset($pre_at['attach_doc']))
+                                        if(count($pre_at['attach_doc']))
                                         {
                                             $at=0;
                                             foreach($pre_at['attach_doc'] as $pa)

@@ -230,9 +230,9 @@ class ClientsController extends AppController {
         foreach($_POST['recruiter_id'] as $ri)
         {
         	if($count==1)	
-        	$rec = $ri;
+        	   $rec = $ri;
         	else
-        	$rec = $rec.','.$ri;
+        	   $rec = $rec.','.$ri;
             $count++;
         
         }
@@ -316,7 +316,9 @@ class ClientsController extends AppController {
         $clients = TableRegistry::get('Clients');
         if(!$id)
         {
-    	    $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email']])->count();
+            $cnt = 0;
+    	    if($_POST['sig_email']!="")
+                $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email']])->count();
             if($cnt>0)
             {
                 echo "email";
@@ -344,6 +346,21 @@ class ClientsController extends AppController {
                             //die();
                         
                         }
+                        $this->loadModel('ClientDocs');
+                        $this->ClientDocs->deleteAll(['client_id'=>$client->id]);
+                        $client_docs = array_unique($_POST['client_doc']);
+                        foreach($client_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $docs = TableRegistry::get('client_docs');
+                                $ds['client_id']= $client->id;
+                                $ds['file'] =$d;
+                                 $doc = $docs->newEntity($ds);
+                                 $docs->save($doc);
+                                unset($doc);
+                            }
+                        }
         				$this->Flash->success('Client saved successfully.');
                         	echo $client->id;
         			} else {
@@ -355,6 +372,8 @@ class ClientsController extends AppController {
         }
         else
         {
+             $cnt = 0;
+    	    if($_POST['sig_email']!="")
             $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email'],'id<>'.$id])->count();
             if($cnt>0)
             {
@@ -362,9 +381,17 @@ class ClientsController extends AppController {
             }
             else
             {
+                foreach($_POST as $k=>$v)
+                {
+                    
+                    if($k != "client_doc")
+                        $edit[$k] =$v;
+                    
+                }
+                //var_dump($edit);
                 $query2 = $clients->query();
                         $query2->update()
-                        ->set($_POST)
+                        ->set($edit)
                         ->where(['id' => $id])
                         ->execute();
                         $this->Flash->success('Client saved successfully.');
@@ -387,6 +414,22 @@ class ClientsController extends AppController {
                         //die();
                     
                 }
+                        $this->loadModel('ClientDocs');
+                        $this->ClientDocs->deleteAll(['client_id'=>$id]);
+                        $client_docs = array_unique($_POST['client_doc']);
+                        //var_dump($_POST['client_doc']);
+                        foreach($client_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $docs = TableRegistry::get('client_docs');
+                                $ds['client_id']= $id;
+                                $ds['file'] =$d;
+                                 $doc = $docs->newEntity($ds);
+                                 $docs->save($doc);
+                                unset($doc);
+                            }
+                        }
                     	echo $id;
             }
         }
@@ -409,6 +452,10 @@ class ClientsController extends AppController {
             	return $this->redirect("/");
             
         }
+        $docs = TableRegistry::get('client_docs');
+        $query = $docs->find();
+        $client_docs = $query->select()->where(['client_id'=>$id])->all();
+        $this->set('client_docs',$client_docs);
 		$client = $this->Clients->get($id, [
 			'contain' => []
 		]);

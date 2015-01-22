@@ -508,79 +508,62 @@
             $this->response->body($q);
             return $this->response;
 
-            die();
-        }
-
-        function getProSubDoc($pro_id,$doc_id)
+        
+       
+    }
+    
+    function getProSubDoc($pro_id,$doc_id)
+    {
+        $sub = TableRegistry::get('Profilessubdocument');
+        $query = $sub->find();
+        $query->select()->where(['profile_id'=>$pro_id, 'subdoc_id'=>$doc_id]);
+        $q = $query->first();
+        $this->response->body($q);
+        return $this->response;
+    }
+    
+    function displaySubdocs($id)
+    {
+        //var_dump($_POST);die();
+        $user['profile_id'] = $id;
+        $display = $_POST; //defining new variable for system base below upcoming foreach
+        
+        //for user base
+         $this->loadModel('Profilessubdocument');
+        $this->Profilessubdocument->deleteAll(['profile_id'=>$id]);
+        foreach($_POST['profile'] as $k2 =>$v)
         {
-            $sub = TableRegistry::get('Profilessubdocument');
-            $query = $sub->find();
-            $query->select()->where(['profile_id'=>$pro_id, 'subdoc_id'=>$doc_id]);
-            $q = $query->first();
-            $this->response->body($q);
-            return $this->response;
+            $subp = TableRegistry::get('Profilessubdocument');
+                    $query2 = $subp->query();
+                        $query2->insert(['profile_id','subdoc_id', 'display'])
+                        ->values(['profile_id' => $id,'subdoc_id' => $k2,'display'=>$_POST['profile'][$k2]])
+                        ->execute(); 
+            unset($subp);
         }
-
-        function displaySubdocs($id)
+        foreach($_POST as $k=>$v)
         {
-            //var_dump($_POST);die();
-            $user['profile_id'] = $id;
-            $display = $_POST; //defining new variable for system base below upcoming foreach
-
-            //for user base
-            foreach($_POST as $k=>$v)
+            if($k!='profile')
             {
-                if($k=='profileP')
-                {
-                    foreach($_POST[$k] as $k2=>$v2)
-                    {
-                        $subp = TableRegistry::get('Profilessubdocument');
-                        $query = $subp->find();
-                        $query->select()
-                            ->where(['profile_id' => $id,'subdoc_id' => $k2]);
-                        $check=$query->first();
-
-                        if($v2 == ''){
-
-                            if($check)
-                            {
-                                $query2 = $subp->query();
-                                $query2->update()
-                                    ->set(['display'=>$_POST['profile'][$k2]])
-                                    ->where(['profile_id' => $id,'subdoc_id' => $k2])
-                                    ->execute();
-                            }
-                            else
-                            {
-
-                                $query2 = $subp->query();
-                                $query2->insert(['profile_id','subdoc_id', 'display'])
-                                    ->values(['profile_id' => $id,'subdoc_id' => $k2,'display'=>$_POST['profile'][$k2]])
-                                    ->execute();
-                            }
-                        }
-                        else
-                        {
-                            if($check)
-                            {
-                                $query2 = $subp->query();
-                                $query2->update()
-                                    ->set(['display'=>0])
-                                    ->where(['subdoc_id' => $k2,'profile_id' => $id])
-                                    ->execute();
-                            }
-                            else
-                            {
-                                $query2 = $subp->query();
-                                $query2->insert(['profile_id','subdoc_id', 'display'])
-                                    ->values(['profile_id'=>$id,'subdoc_id' => $k2,'display'=>0])
-                                    ->execute();
-                            }
-                        }
-
-                    }
-                }
+                
+                $subd = TableRegistry::get('Subdocuments'); 
+                $query3 = $subd->query(); 
+                $query3->update()
+                            ->set(['display'=>$v])
+                            ->where(['id' => $k])
+                            ->execute();          
             }
+               
+                }
+                die();
+    }
+
+        /*}
+        unset($display['profileP']);
+        unset($display['profile']);
+        
+        //For System base
+        foreach($display as $k=>$v)
+=======
             unset($display['profileP']);
             unset($display['profile']);
 
@@ -603,6 +586,7 @@
 
 
         function getRecruiter()
+>>>>>>> 6ea6af59029bd947919024e111f3a305881191a7
         {
             $rec = TableRegistry::get('Profiles');
             $query = $rec->find()->where(['profile_type'=>2]);
@@ -613,8 +597,31 @@
 
             die();
         }
+<<<<<<< HEAD
+        
+        
+        //var_dump($str);
+        die('here');
+    }*/
+    
+    
+    
+    function getRecruiter()
+    {
+        $rec = TableRegistry::get('Profiles');
+        $query = $rec->find()->where(['profile_type'=>2]);
+        //$q = $query->select();
+        
+        $this->response->body($query);
+        return $this->response;
+        
+        die();   
+    }
+    
+
 
         function getProfile()
+
         {
             $rec = TableRegistry::get('Profiles');
             $query = $rec->find();

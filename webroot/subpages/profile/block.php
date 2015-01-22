@@ -543,18 +543,12 @@
                                                                  $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$id.'/'.$sub->id);
                                                             ?>
                                                             <td class="">
-                                                                <label class="uniform-inline">
+                                                                <!--<label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if($prosubdoc['display'] != 0) {?> checked="checked" <?php } ?> />
-                                                                    Yes </label>
+                                                                    Yes </label>-->
                                                                 <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="0" onclick="$(this).closest('tr').next('tr').hide();" <?php if($prosubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
-                                                                    No </label>
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                        <tr <?php if($prosubdoc['display'] == 0) {?>style="display:none;" <?php } ?> >
-                                                            <td colspan="2"></td>
-                                                            <td  class="">
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="0"  <?php if($prosubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
+                                                                    None </label>
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="1" <?php if($prosubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
                                                                     View Only </label>

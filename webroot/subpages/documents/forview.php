@@ -176,7 +176,7 @@
 
             <div class="profile-usertitle-job">
                 <label class="uniform-inline">
-                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>" class="checkdriver"/>
+                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>" class="checkdriver" <?php if($order->is_hired=='1')echo "checked";?> />
                     Was this driver hired? </label>
 
             </div>
@@ -232,10 +232,10 @@
         <?php $settings = $this->requestAction('settings/get_settings'); ?>
         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
                 <strong>Orders</strong></p>
-            <p> Uploaded by: <strong>Recruiter ID # 34</strong></p>
-            <p>Uploaded on: <strong>2014-12-12 18:48:19</strong></p>
-            <p>Company: <strong>Lorem Ipsum</strong></p>
-            <p>Filed by: <strong>Lorem Ipsum</strong></p>
+            <p> Uploaded by: <strong>Recruiter ID # <?php echo $order->user_id;?></strong></p>
+            <p>Uploaded on: <strong><?php echo $order->created;?></strong></p>
+            <p>Company: <strong><?php echo $order->client->company_name;?></strong></p>
+            <p>Filed by: <strong><?php echo $order->profile->fname;?></strong></p>
 
 </span>
         <!--hr/>

@@ -26,6 +26,9 @@ public function initialize(array $config)
             'className' => 'PreScreening',
             
         ]);
+        $this->belongsTo('Clients', [
+            'foreignKey' => 'client_id',]);
+       
         $this->hasMany('DriverApplication', [
             'className' => 'PreScreening',
             

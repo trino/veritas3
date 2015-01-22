@@ -1,5 +1,5 @@
  <?php
- 
+$initials = W_ROOT;
 ob_start();
 error_reporting(1);
 require_once('tcpdf/tcpdf.php');
@@ -63,7 +63,7 @@ $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'colo
 
 // Set some content to print
 
-$initials = $this->requestAction('/pages/getBase');
+
 //$html = file_get_contents($initials.$this->request->webroot.'pdfs/getConsent/'.$oid);
 // Print text using writeHTMLCell()
 //$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
@@ -277,7 +277,7 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                 ";
                 
                 
-                $initials = $this->requestAction('/pages/getBase');
+                //$initials = $this->requestAction('/pages/getBase');
                 
                 if($att)
                 {

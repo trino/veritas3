@@ -135,7 +135,7 @@ var FormWizard = function () {
                     } else { // display success icon for other inputs
                         label
                             .addClass('valid') // mark the current input as valid and display OK icon
-                        .closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
+                            .closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
                     }
                 },
                 submitHandler: function (form) {
@@ -188,22 +188,25 @@ var FormWizard = function () {
 
 
                     $('.cont').html('Submit Order');
+
                     $('#select_division').hide();
 
 
 
-                   // $('.cont').attr('id','');
+                    // $('.cont').attr('id','');
                 }
                 else{
-                $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
-                $('.cont').attr('id','draft');
+                    $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
+                    $('.cont').attr('id','draft');
                 }
                 if(current==total)
                 {
-                    $('.cont').attr('id','');
+                    $('.cont').attr('id','submit_ord');
+
+//                    $('.cont').attr('id','');
                     $('#select_division').hide();
                 }
-                
+
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();
@@ -212,22 +215,20 @@ var FormWizard = function () {
                     var count = 10;
                     //alert($('#did').val()+'/'+$('#uploaded_for').val());
                     save_signature('1');
-                    $.ajax({
 
-                        url:base_url+'documents/webservice/0/0/'+$('#did').val()+'/'+$('#uploaded_for').val(),
-                    })
-                    var counter=setInterval(function(){
-                        count=count-1;
-                      $('.seconds').text(count);
-                      if (count <= 0)
-                      {
+                    /*
+                     var counter=setInterval(function(){
+                     count=count-1;
+                     $('.seconds').text(count);
+                     if (count <= 0)
+                     {
 
-                        clearInterval(counter);
-                         window.location=base_url;
-                         //counter ended, do something here
-                         return;
-                    }}, 1000); //1000 will  run it every 1 second
-
+                     clearInterval(counter);
+                     window.location=base_url;
+                     //counter ended, do something here
+                     return;
+                     }}, 1000); //1000 will  run it every 1 second
+                     */
 
                     displayConfirm();
                 } else {
@@ -245,21 +246,21 @@ var FormWizard = function () {
                 onTabClick: function (tab, navigation, index, clickedIndex) {
                     return false;
                     /*
-                    success.hide();
-                    error.hide();
-                    if (form.valid() == false) {
-                        return false;
-                    }
-                    handleTitle(tab, navigation, clickedIndex);
-                    */
+                     success.hide();
+                     error.hide();
+                     if (form.valid() == false) {
+                     return false;
+                     }
+                     handleTitle(tab, navigation, clickedIndex);
+                     */
                 },
                 onNext: function (tab, navigation, index) {
                     success.hide();
                     error.hide();
 
                     /*if (form.valid() == false) {
-                        return false;
-                    }*/
+                     return false;
+                     }*/
 
                     handleTitle(tab, navigation, index);
                 },

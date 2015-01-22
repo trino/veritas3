@@ -854,7 +854,12 @@ class ProfilesController extends AppController {
         {
             $arr['last_name'] = $que->lname;
             $arr['first_name'] = $que->fname;
-            $arr['phone'] = $que->phone;    
+            $arr['mid_name'] = $que->mname;
+            $arr['sex'] = $que->gender;
+            $arr['birth_date'] = $que->dob;    
+            $arr['phone'] = $que->phone;
+            $arr['driver_license_number'] = $que->driver_license_no;   
+            $arr['driver_license_issued'] = $que->driver_province;     
             $arr['current_street_address'] = $que->address;
         }
         

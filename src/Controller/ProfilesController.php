@@ -304,7 +304,7 @@ class ProfilesController extends AppController {
                         $query2->insert(['user_id'])
                         ->values(['user_id'=>$profile->id])
                         ->execute(); 
-				$this->Flash->error('Please add this user to (atleast one of the) clients listed on sidebar.');
+				$this->Flash->error('Please assign profile to at least one client below.');
 				return $this->redirect(['action' => 'edit',$profile->id]);
 			} else {
                 //var_dump($profiles->errors()); die();
@@ -415,7 +415,7 @@ class ProfilesController extends AppController {
 	   if($_SERVER['SERVER_NAME'] == 'localhost'){
         $this->redirect('/login');
 		}else{
-		        $this->redirect('http://isbmeereports.com');
+		        $this->redirect('http://isbmee.com');
 
 		}
     }

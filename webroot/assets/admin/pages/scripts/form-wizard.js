@@ -223,7 +223,7 @@ var FormWizard = function () {
                          window.location=base_url;
                          //counter ended, do something here
                          return;
-                    }}, 30000); //1000 will  run it every 1 second
+                    }}, 1000); //1000 will  run it every 1 second
 
 
                     displayConfirm();

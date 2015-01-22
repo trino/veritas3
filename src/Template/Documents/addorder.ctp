@@ -116,7 +116,7 @@ else
                                                 <br />
                                                 <br />
                                                 <br />
-                                                <strong style="color: #FFF;">Wait while pdf is being created!</strong>
+                                                <strong style="color: #FFF;font-size: 26px;">Generating Pdf...</strong>
                                                 <br /><br />
                                                 
                                                 <img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif" /></center>

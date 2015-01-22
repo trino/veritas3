@@ -178,7 +178,7 @@ else
                                             </div>
                                             <?php $division = $this->requestAction("clients/getdivision/".$cid);
                                             if(count($division)>0){?>                                                                                        
-                                            <div class="form-group mar-top-10 col-md-12">
+                                            <div class="form-group mar-top-10 col-md-12" id="select_division">
                                           
                                                 <label class="col-md-3 control-label">Select Division</label>
                                                 <div class="col-md-6">

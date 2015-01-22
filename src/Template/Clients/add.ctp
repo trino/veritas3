@@ -693,7 +693,7 @@ $c = $client;
                                             {
                                                 str = str+'&'+$('#tab_1_1 input').serialize();
                                             }
-                                            str = str+'&description='+$('#tab_1_1 textarea').val();
+                                            //str = str+'&description='+$('#tab_1_1 textarea').val();
                                             str = str+'&customer_type='+$('#customer_type').val();
                                             str = str+'&division='+$('#division').val();
                                             str = str+'&referred_by='+$('#referred_by').val();

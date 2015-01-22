@@ -877,7 +877,7 @@
                     //alert($('#did').val());
                     if(type == "Pre-Screening"){
                         var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
-                            url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document='+type,
+                            url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document='+type+'&draft='+draft,
                             order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>';
                         savePrescreen(url,order_id,cid,forms);
@@ -885,25 +885,25 @@
                     } else if(type=="Driver Application") {
                         var  order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                         savedDriverApp(url,order_id,cid);
                     }else if(type=="Road test") {
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                         savedDriverEvaluation(url,order_id,cid);
                     } else if(type=="Place MEE Order") {
 
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                         savedMeeOrder(url,order_id,cid,type);
                     }
                     else if(type == "Feedbacks")
                     {
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>feedbacks/add/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>feedbacks/add/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                             var param = $('#form_tab6').serialize();
                                $.ajax({
                                         url:url,
@@ -920,7 +920,7 @@
                     {
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                             var param = $('#form_tab5').serialize();
                               $.ajax({
                                         url:url,
@@ -935,6 +935,8 @@
                     }
                     else if(type == "Attachment")
                     {
+                       var act =$('#form_tab7').attr('action');
+                       $('#form_tab7').attr('action',act+'?draft='+draft);
                         $('#form_tab7').submit();
                     
                     }

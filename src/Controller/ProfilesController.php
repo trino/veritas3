@@ -415,7 +415,8 @@ class ProfilesController extends AppController {
 	   if($_SERVER['SERVER_NAME'] == 'localhost'){
         $this->redirect('/login');
 		}else{
-		        $this->redirect('http://isbmeereports.com');
+		  $initials = $this->requestAction('/pages/getBase');
+		        $this->redirect($initials);
 
 		}
     }

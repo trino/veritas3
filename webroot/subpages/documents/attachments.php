@@ -49,7 +49,7 @@ $feed = $feeds;
                 else
                     echo $cd->file;
         ?>
-        <a href="javascript:void(0);" onclick="$(this).parent().remove()" class="btn btn-danger">Delete</a>
+        <a href="javascript:void(0);" onclick="$(this).parent().parent().remove()" class="btn btn-danger">Delete</a>
         <input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
         </div>
         </div>   
@@ -69,7 +69,7 @@ $feed = $feeds;
     <div class="form-group col-md-12"  >
     <label class="control-label col-md-3">&nbsp;</label>
     <div class="col-md-6">
-        <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" onclick="addMore(event,this)">Add More Document</a>
+        <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" >Add More Document</a>
     </div>
     </div>
     

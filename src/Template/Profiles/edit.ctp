@@ -310,16 +310,11 @@
 
                                         if ($this->request->session()->read('Profile.admin') || !isset($myuser)) {
                                             ?>
-                                            <?php if ($this->request->session()->read('Profile.admin') && $this->request['pass'][0] == $this->Session->read('Profile.id')) { ?>
+                                            
                                                 <li>
                                                     <a href="#tab_1_4" data-toggle="tab">Display</a>
                                                 </li>
-                                            <?php
-                                            }
-
-                                            if ($this->request->session()->read('Profile.id') == $id && $this->request->session()->read('Profile.admin')) {
-                                                ?>
-
+                                            <?php if ($this->request->session()->read('Profile.super')) {?>
                                                 <li>
                                                     <a href="#tab_1_5" data-toggle="tab">Logos</a>
                                                 </li>
@@ -328,6 +323,7 @@
                                                     <a href="#tab_1_6" data-toggle="tab">Pages</a>
                                                 </li>
                                             <?php
+                                            } 
                                             }
                                             ?>
 
@@ -337,7 +333,7 @@
 
                                         <?php
                                         }
-                                    }
+                                    
                                 ?>
                             </ul>
                         </div>

@@ -526,17 +526,40 @@ class ProfilesController extends AppController {
         $display = $_POST; //defining new variable for system base below upcoming foreach
         
         //for user base
+         $this->loadModel('Profilessubdocument');
+        $this->Profilessubdocument->deleteAll(['profile_id'=>$id]);
+        foreach($_POST['profile'] as $k2 =>$v)
+        {
+            $subp = TableRegistry::get('Profilessubdocument');
+                    $query2 = $subp->query();
+                        $query2->insert(['profile_id','subdoc_id', 'display'])
+                        ->values(['profile_id' => $id,'subdoc_id' => $k2,'display'=>$_POST['profile'][$k2]])
+                        ->execute(); 
+            unset($subp);
+        }
         foreach($_POST as $k=>$v)
         {
-            if($k=='profileP')
+            if($k!='profile')
             {
-                foreach($_POST[$k] as $k2=>$v2)
+                
+                $subd = TableRegistry::get('Subdocuments'); 
+                $query3 = $subd->query(); 
+                $query3->update()
+                            ->set(['display'=>$v])
+                            ->where(['id' => $k])
+                            ->execute();          
+            }
+               //var_dump($_POST[$k]); die();
+               /* foreach($_POST[$k] as $k2=>$v2)
                 {
+                    
+                   
+                    
                     $subp = TableRegistry::get('Profilessubdocument');
-                    $query = $subp->find();
-                    $query->select()
-                    ->where(['profile_id' => $id,'subdoc_id' => $k2]);
-                    $check=$query->first();
+                    $query2 = $subp->query();
+                        $query2->insert(['profile_id','subdoc_id', 'display'])
+                        ->values(['profile_id' => $id,'subdoc_id' => $k2,'display'=>$_POST['profile'][$k2]])
+                        ->execute(); 
                     
                     if($v2 == ''){
 
@@ -576,9 +599,11 @@ class ProfilesController extends AppController {
                         }  
                     }
                     
+                }*/
                 }
+                die();
             }
-        }
+        /*}
         unset($display['profileP']);
         unset($display['profile']);
         
@@ -596,7 +621,7 @@ class ProfilesController extends AppController {
         
         //var_dump($str);
         die('here');
-    }
+    }*/
     
     
     

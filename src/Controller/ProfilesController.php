@@ -848,7 +848,8 @@ class ProfilesController extends AppController {
         }
         if($sub==3)
         {
-            $arr['driver_name'] = $que->fname.' '.$que->lname;  
+            $arr['driver_name'] = $que->fname.' '.$que->lname; 
+            $arr['d_l'] = $que->driver_license_no; 
         }
         if($sub==4)
         {
@@ -858,9 +859,13 @@ class ProfilesController extends AppController {
             $arr['sex'] = $que->gender;
             $arr['birth_date'] = $que->dob;    
             $arr['phone'] = $que->phone;
+            $arr['current_city'] = $que->city;
+            $arr['current_province'] = $que->province;
+            $arr['current_postal_code'] = $que->postal;
             $arr['driver_license_number'] = $que->driver_license_no;   
             $arr['driver_license_issued'] = $que->driver_province;     
             $arr['current_street_address'] = $que->address;
+            $arr['applicants_email'] = $que->email;
         }
         
         

@@ -188,6 +188,7 @@ var FormWizard = function () {
 
 
                     $('.cont').html('Submit Order');
+                    $('#select_division').hide();
 
 
 
@@ -200,7 +201,9 @@ var FormWizard = function () {
                 if(current==total)
                 {
                     $('.cont').attr('id','');
+                    $('#select_division').hide();
                 }
+                
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();

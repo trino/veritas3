@@ -400,6 +400,11 @@ function showforms(form_type)
                  } else if(res.worked_for_client==0){
                      $('#form_tab2').find('#worked_for_client_0').closest('span').addClass('checked')
                  }
+                 
+                 if(res.confirm_check==1){
+                     jQuery('#form_tab2').find('#confirm_check').closest('span').addClass('checked')
+                 }
+                 
                  if(res.is_employed==1){
                      jQuery('#form_tab2').find('#is_employed_1').closest('span').addClass('checked')
                  } else if(res.is_employed==0){
@@ -1303,6 +1308,10 @@ function savedDriverEvaluation(url,order_id,cid){
                 {
                     $('#'+ID).parent().find('.uploaded').text(response);
                     $('.'+ID).val(response);
+                }
+                else
+                {
+                    alert('Invalid file type.');
                 }
             
                /* $("#picture").text("Select");

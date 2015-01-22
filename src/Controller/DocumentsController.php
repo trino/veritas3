@@ -1764,10 +1764,7 @@
                 $arr = explode('.', $_FILES['myfile']['name']);
                 $ext = end($arr);
                 $rand = rand(100000, 999999) . '_' . rand(100000, 999999) . '.' . $ext;
-                $allowed = array(
-                    'doc',
-                    'docx',
-                    'pdf',
+                $allowed = array(                    
                     'jpg',
                     'jpeg',
                     'png',

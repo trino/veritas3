@@ -1246,6 +1246,12 @@
                     $sur = $survey->find()->where(['document_id' => $did])->first();
                     $this->set('survey', $sur);
                 }
+                elseif ($query->sub_doc_id == '7') {
+                    $attachments = TableRegistry::get('attachments');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                     $attachment = $attachments->find()->where(['document_id' => $did])->all();
+                    $this->set('attachments', $attachment);
+                }
 
                 $pre = TableRegistry::get('pre_screening_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
@@ -1757,7 +1763,7 @@
             return $this->response;
         }
 
-        function fileUpload()
+        function fileUpload($id="")
         {
             // print_r($_POST);die;
             if (isset($_FILES['myfile']['name']) && $_FILES['myfile']['name']) {
@@ -1773,14 +1779,15 @@
                 );
                 $check = strtolower($ext);
                 if (in_array($check, $allowed)) {
-
-                    $doc_type = $_POST['type'];
+                    if(isset($_POST['type']))
+                        $doc_type = $_POST['type'];
                     $destination = APP . '../webroot/attachments';
 
                     $source = $_FILES['myfile']['tmp_name'];
                     move_uploaded_file($source, $destination . '/' . $rand);
                     $saveData = array();
-                    $saveData['order_id'] = $_POST['order_id'];
+                    if(isset($_POST['order_id']))
+                        $saveData['order_id'] = $_POST['order_id'];
                     $saveData['path'] = $rand;
 
                     //saving in db
@@ -2169,22 +2176,13 @@
                     $arr['title'] = $_POST['title'];
                     $arr['created'] = date('Y-m-d H:i:s');
                     
-                    if (isset($_FILES['file']['name']) && $_FILES['file']['name']!="") 
+                    /*if (isset($_FILES['file']['name']) && $_FILES['file']['name']!="") 
                     {
                         //var_dump($_FILES);die();
                         $arr1 = explode('.', $_FILES['file']['name']);
                         $ext = end($arr1);
                         $rand = rand(100000, 999999) . '_' . rand(100000, 999999) . '.' . $ext;
-                        /*$allowed = array(
-                            'doc',
-                            'docx',
-                            'pdf',
-                            'jpg',
-                            'jpeg',
-                            'png',
-                            'bmp',
-                            'gif'
-                        );*/
+                        
                         $check = strtolower($ext);
                         //if (in_array($check, $allowed)) {
         
@@ -2197,13 +2195,28 @@
                         //} else {
                         //    echo 'error';
                         //}
-                    }
+                    }*/
                      
                     if (!$did || $did == '0') {
                         $arr['user_id'] = $this->request->session()->read('Profile.id');
                         $doc = $docs->newEntity($arr);
     
-                        if ($docs->save($doc)) {
+                        if ($docs->save($doc)) 
+                        {
+                            
+                            $client_docs = array_unique($_POST['client_doc']);
+                            foreach($client_docs as $d)
+                            {
+                                if($d != "")
+                                {
+                                    $doczs = TableRegistry::get('attachments');
+                                    $ds['document_id']= $doc->id;
+                                    $ds['file'] =$d;
+                                     $docz = $doczs->newEntity($ds);
+                                     $doczs->save($docz);
+                                    unset($docz);
+                                }
+                            }
                             $this->Flash->success('Document saved successfully.');
                              $this->redirect(array('action'=>'index'));
                         } else {
@@ -2217,7 +2230,27 @@
                             ->set($arr)
                             ->where(['id' => $did])
                             ->execute();
-                           // die();
+                           $this->loadModel('Attachments');
+                           $attach = TableRegistry::get('attachments');
+                           $at = $attach->find()->where(['document_id'=>$did])->all();
+                           foreach($at as $a)
+                           {
+                                @unlink(WWW_ROOT."attachments/".$a->file);
+                           }
+                        $this->Attachments->deleteAll(['document_id'=>$did]);
+                        $client_docs = array_unique($_POST['client_doc']);
+                        foreach($client_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $docs = TableRegistry::get('attachments');
+                                $ds['document_id']= $did;
+                                $ds['file'] =$d;
+                                 $doc = $docs->newEntity($ds);
+                                 $docs->save($doc);
+                                unset($doc);
+                            }
+                        }
                         $this->Flash->success('Document Updated successfully.');
                         $this->redirect(array('action'=>'index'));
                     }

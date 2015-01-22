@@ -234,11 +234,23 @@ $c = $client;
                                                        <!-- <a href="#" class="btn btn-primary">Browse</a> -->
                                                       <?php 
                                                         if(isset($client_docs) && count($client_docs)>0){
+                                                            $allowed = array('jpg','jpeg','png','bmp','gif');
                                                             foreach($client_docs as $k=>$cd):
                                                                
                                                             ?>
                                                             <div style="margin-bottom:5px;">
-                                                            <?php  echo $cd->file;?>
+                                                            <?php  
+                                                                    $e = explode(".",$cd->file);
+                                                                    $ext = end($e);
+                                                                    if(in_array($ext, $allowed))
+                                                                    {?>
+                                                                    <img src="<?php echo $this->request->webroot;?>img/jobs/<?php echo $cd->file;?>" style="max-width: 200px;" />
+                                                                        
+                                                            <?php
+                                                                    }
+                                                                    else
+                                                                        echo $cd->file;
+                                                            ?>
                                                             <a href="javascript:void(0);" onclick="$(this).parent().remove()" class="btn btn-danger">Delete</a>
                                                             <input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
                                                             </div>
@@ -255,9 +267,7 @@ $c = $client;
                                                         <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" onclick="addMore(event,this)">Add More Document</a>
 
 
-                                                         <?php if(isset($c->document)){?>
-                                                         <img src="" />
-                                                         <?php } ?>
+                                                        
                                                          </div>
 													</div>
 

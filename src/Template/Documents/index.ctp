@@ -8,7 +8,7 @@
 					<li>
 						<i class="fa fa-home"></i>
 						<a href="<?php echo $this->request->webroot;?>">Dashboard</a>
-						<i class="fa fa-angle-right"></i>
+						<i class="fa fa-copy"></i>
 					</li>
 					<li>
 						<a href=""><?php echo ucfirst($settings->document);?>s</a>

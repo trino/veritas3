@@ -613,7 +613,16 @@
                                             {
                                                 $at++;
                                                 ?>
-                                                <div class="pad_bot" id="del_pre"> <label class="control-label col-md-3">Attach Document : </label> <div class="col-md-6 pad_bot"><input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?><" /><a href="#" id="fileUpload<?php echo $at;?>"  class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attach_doc;?></span></div></div><div class="clearfix"></div>
+                                                <div class="pad_bot" id="del_pre"> 
+                                                    <label class="control-label col-md-3">Attach Document : </label> 
+                                                    <div class="col-md-6 pad_bot">
+                                                        <input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?><" />
+                                                            <a href="#" id="fileUpload<?php echo $at;?>"  class="btn btn-primary">Browse</a> 
+                                                            <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a><?php }?> 
+                                                            <span class="uploaded"><?php echo $pa->attach_doc;?> <?php if($pa->attach_doc){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }?></span>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
                                                 <script>
                                                 $(function(){
                                                     fileUpload('fileUpload<?php echo $at;?>');

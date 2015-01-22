@@ -417,6 +417,9 @@ class ProfilesController extends AppController {
 		}else{
 		        $this->redirect('http://isbmee.com');
 
+		//$initials = $this->requestAction('/pages/getBase');
+		//$this->redirect($initials);
+
 		}
     }
     

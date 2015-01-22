@@ -95,11 +95,17 @@
                         <div class="subform3" style="display: none;">
                             <?php include('subpages/documents/driver_evaluation_form.php');?>
                         </div>
+                        <div class="subform4" style="display: none;">
+                            <?php include('subpages/documents/document_tab_3.php');?>
+                        </div>
                         <div class="subform5" style="display: none;">
                             <?php include('subpages/documents/survey.php');?>
                         </div>
                         <div class="subform6" style="display: none;">
                             <?php include('subpages/documents/feedbacks.php');?>
+                        </div>
+                        <div class="subform7" style="display: none;">
+                            <?php include('subpages/documents/attachments.php');?>
                         </div>
                     </div>
                     <div class="form-actions">
@@ -183,6 +189,8 @@
         $('.subform6 .document_type').remove();
         $('.subform6 .sub_docs_id').remove();
         
+         $('.subform7 .document_type').remove();
+        $('.subform7 .sub_docs_id').remove();
         //alert(s_arr[1]);
         if(s_arr[1] == 1)
         {
@@ -215,10 +223,14 @@
             $('#form_tab6').prepend('<input class="document_type" type="hidden" name="document_type" value="Feedbacks" />'+
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="6"  />');
         }
-        
+        if(s_arr[1] == 7)
+        {
+            $('#form_tab7').prepend('<input class="document_type" type="hidden" name="document_type" value="Attachment" />'+
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="7"  />');
+        }
         if(ftype!= ""){
             //alert(form_type);
-            for(var p = 1;p<=7;p++)
+            for(var p = 1;p<=8;p++)
             {
                 $('.subform'+p).hide();
             }
@@ -298,6 +310,9 @@
                             } else if(res.worked_for_client==0){
                                 $('#form_tab2').find('#worked_for_client_0').closest('span').addClass('checked')
                             }
+                            if(res.confirm_check==1){
+                                 jQuery('#form_tab2').find('#confirm_check').closest('span').addClass('checked')
+                             }
                             if(res.is_employed==1){
                                 jQuery('#form_tab2').find('#is_employed_1').closest('span').addClass('checked')
                             } else if(res.is_employed==0){
@@ -809,7 +824,7 @@
     {
         var filename = form_type.replace(/\W/g, '_');
         var filename = filename.toLowerCase();
-        $('.subform').show();   1
+        $('.subform').show();   
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
     }
     jQuery(document).ready(function() {
@@ -818,7 +833,7 @@
         if($this->request->params['action']=='view')
         {
             ?>
-        for(var h=1;h<7;h++)
+        for(var h=1;h<8;h++)
         {
             $('#form_tab'+h+' input').attr('disabled','disabled');
             $('#form_tab'+h+' textarea').attr('disabled','disabled');
@@ -862,7 +877,7 @@
                     //alert($('#did').val());
                     if(type == "Pre-Screening"){
                         var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
-                            url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document='+type,
+                            url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document='+type+'&draft='+draft,
                             order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>';
                         savePrescreen(url,order_id,cid,forms);
@@ -870,25 +885,25 @@
                     } else if(type=="Driver Application") {
                         var  order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                         savedDriverApp(url,order_id,cid);
                     }else if(type=="Road test") {
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                         savedDriverEvaluation(url,order_id,cid);
                     } else if(type=="Place MEE Order") {
 
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                         savedMeeOrder(url,order_id,cid,type);
                     }
                     else if(type == "Feedbacks")
                     {
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>feedbacks/add/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>feedbacks/add/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                             var param = $('#form_tab6').serialize();
                                $.ajax({
                                         url:url,
@@ -905,7 +920,7 @@
                     {
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/'+order_id+'/'+cid+'/?document='+type;
+                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/'+order_id+'/'+cid+'/?document='+type+'&draft='+draft;
                             var param = $('#form_tab5').serialize();
                               $.ajax({
                                         url:url,
@@ -918,7 +933,14 @@
                                     });
                     
                     }
-                    if(type != "Survey" || type != "Feedbacks")
+                    else if(type == "Attachment")
+                    {
+                       var act =$('#form_tab7').attr('action');
+                       $('#form_tab7').attr('action',act+'?draft='+draft);
+                        $('#form_tab7').submit();
+                    
+                    }
+                    if(type != "Survey" || type != "Feedbacks" || type != "Attachment")
                     {
                         $('.flashDoc').show();
                         $('.flashDoc').fadeOut(8000);

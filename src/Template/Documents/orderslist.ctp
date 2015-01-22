@@ -31,8 +31,8 @@
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-user"></i>
-                    <?php echo ucfirst($settings->orders);?>
+                    <i class="fa fa-clipboard"></i>
+                    <?php echo ucfirst($settings->order);?>123
                 </div>
             </div>    
             <div class="portlet-body">

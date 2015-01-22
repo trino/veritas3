@@ -61,7 +61,7 @@ $pdf->AddPage();
 $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
 // Set some content to print
-$initials = $this->requestAction('/pages/getBase');
+$initials = W_ROOT;
 $html = '<strong>Past Employment</strong><br />';
 // Print text using writeHTMLCell()
 //$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
@@ -164,7 +164,7 @@ if(isset($detail['consent']) && $detail['consent'])
 $attach = "<br/><br/><strong>Attachments</strong>
                 <br/>
                 ";
-$initials = $this->requestAction('/pages/getBase');
+//$initials = $this->requestAction('/pages/getBase');
                 
                 if($att)
                 {

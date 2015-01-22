@@ -2069,9 +2069,27 @@
             $model = TableRegistry::get('profiles');
 
             $driverinfo = $model->find()->where(['id' => $driverid])->first();
+
+            /*
+            $model2 = TableRegistry::get('consent_form_attachments');
+
+            $consent_form_attachments = $model2->find()->where(['order_id' => $orderid]);
+
+            $this->set(compact('consent_form_attachments'));
+*/
+
+
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
+
+
+
+
         }
+
+
+
+
         public function createPdf($oid)
         {
             $this->set('oid',$oid);

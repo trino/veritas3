@@ -1,5 +1,19 @@
 <?php
 
+    /*
+
+        if($cri)
+        {
+            foreach($cri as $criminal)
+            {
+
+                $declare = $declare.'<tr><td>'.$criminal->offence.'</td><td>'.$criminal->date_of_sentence.'</td><td>'.$criminal->location.'</td></tr>';
+
+            }
+        }
+
+    */
+
     $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
     $client = new nusoap_client($proxyhost, true, $proxyhost, $proxyport = null, $proxyusername = null, $proxypassword = null);
     $client->useHTTPPersistentConnection();
@@ -19,10 +33,9 @@
     $productdetailsebs1627 = true;
     $productdetailsebs1650 = true;
 
-    $uploadbinaryconsent_1603 = false;
-    $uploadbinaryemployment_1627 = false;
-    $uploadbinaryeducation_1650 = false;
-
+    $uploadbinaryconsent_1603 = true;
+    $uploadbinaryemployment_1627 = true;
+    $uploadbinaryeducation_1650 = true;
 
     if ($startorder1) {
 
@@ -53,7 +66,6 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
     if ($productdetails79) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -78,7 +90,6 @@
 
     }
 
-
     if ($productdetails1) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -98,7 +109,6 @@
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_1');
         debug($result);
     }
-
 
     if ($productdetails14) {
 
@@ -121,7 +131,6 @@
         debug($result);
     }
 
-
     if ($productdetails77) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -143,7 +152,6 @@
         debug($result);
     }
 
-
     if ($productdetails78) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -162,7 +170,6 @@
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_78');
         debug($result);
     }
-
 
     if ($productdetailsebs1650) {
 
@@ -184,7 +191,6 @@
         debug($result);
     }
 
-
     if ($productdetailsebs1627) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -201,11 +207,9 @@
         $pdi = $r[0];
         $pdi_1627 = $r[0];
 
-
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1627');
         debug($result);
     }
-
 
     if ($productdetailsebs1603) {
 
@@ -227,7 +231,6 @@
         debug($result);
     }
 
-
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -236,7 +239,7 @@
 
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);
-        $pdf = file_get_contents('orders/order_'.  $orderid  . '/Consent_Form.pdf');
+        $pdf = file_get_contents('orders/order_' . $orderid . '/Consent_Form.pdf');
 
 // echo file_exists(APP . "../webroot/orders/order_" . '101'. '/Education_Form.pdf');
 // echo file_exists('orders/order_101/Consent_Form.pdf');
@@ -244,7 +247,7 @@
 
         $body = base64_encode($pdf);
         //      echo $urlDecodedStr = rawurldecode($body);
-        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' .         $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);
 
         debug($result);
@@ -254,10 +257,10 @@
 
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);
-        $pdf = file_get_contents('orders/order_'.  $orderid . '/Employment_Form.pdf');
+        $pdf = file_get_contents('orders/order_' . $orderid . '/Employment_Form.pdf');
         $body = base64_encode($pdf);
         //     echo $urlDecodedStr = rawurldecode($body);
-        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' .  $pdi_1627  . '</PDI><FileData>' . $body . '</FileData><productID>1627</productID><Filename>Employment_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1627 . '</PDI><FileData>' . $body . '</FileData><productID>1627</productID><Filename>Employment_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);
 
         debug($result);
@@ -265,26 +268,23 @@
     }
     if ($uploadbinaryeducation_1650) {
 
-
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);
         // $pdf = file_get_contents(APP . "../webroot/orders/order_" . $order->id . '/Education_Form.pdf');
-        $pdf = file_get_contents('orders/order_'. $orderid . '/Education_Form.pdf');
+        $pdf = file_get_contents('orders/order_' . $orderid . '/Education_Form.pdf');
 
         $body = base64_encode($pdf);
         //    echo $urlDecodedStr = rawurldecode($body);
-        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' .  $pdi_1650  . '</PDI><FileData>' . $body . '</FileData><productID>1650</productID><Filename>Education_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1650 . '</PDI><FileData>' . $body . '</FileData><productID>1650</productID><Filename>Education_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);
 
         debug($result);
 
     }
 
-
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     /*
     if ($client->fault) {

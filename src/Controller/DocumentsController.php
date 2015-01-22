@@ -2169,8 +2169,39 @@
                     $arr['sub_doc_id'] = $_POST['sub_doc_id'];
                     $arr['client_id'] = $cid;
                     $arr['document_type'] = $_POST['document_type'];
+                    $arr['title'] = $_POST['title'];
                     $arr['created'] = date('Y-m-d H:i:s');
-                    $arr['file'] = $_POST['file']; 
+                    
+                    if (isset($_FILES['file']['name']) && $_FILES['file']['name']!="") 
+                    {
+                        //var_dump($_FILES);die();
+                        $arr1 = explode('.', $_FILES['file']['name']);
+                        $ext = end($arr1);
+                        $rand = rand(100000, 999999) . '_' . rand(100000, 999999) . '.' . $ext;
+                        /*$allowed = array(
+                            'doc',
+                            'docx',
+                            'pdf',
+                            'jpg',
+                            'jpeg',
+                            'png',
+                            'bmp',
+                            'gif'
+                        );*/
+                        $check = strtolower($ext);
+                        //if (in_array($check, $allowed)) {
+        
+                        //$doc_type = $_POST['type'];
+                        $destination = APP . '../webroot/attachments';
+    
+                        $source = $_FILES['file']['tmp_name'];
+                        move_uploaded_file($source, $destination . '/' . $rand);
+                        $arr['file'] = $rand;
+                        //} else {
+                        //    echo 'error';
+                        //}
+                    }
+                     
                     if (!$did || $did == '0') {
                         $arr['user_id'] = $this->request->session()->read('Profile.id');
                         $doc = $docs->newEntity($arr);
@@ -2189,6 +2220,7 @@
                             ->set($arr)
                             ->where(['id' => $did])
                             ->execute();
+                           // die();
                         $this->Flash->success('Document Updated successfully.');
                         $this->redirect(array('action'=>'index'));
                     }

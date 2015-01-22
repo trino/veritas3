@@ -13,18 +13,18 @@ $feed = $feeds;
 ?>
 
 
-<form role="form" action="<?php echo $this->request->webroot;?>documents/addattachment/<?php echo $cid;?>" method="post" id="form_tab7">
+<form role="form" enctype="multipart/form-data" action="<?php echo $this->request->webroot;?>documents/addattachment/<?php echo $cid;?>/<?php echo $did;?>" method="post" id="form_tab7">
     
     <input type="hidden" class="document_type" name="document_type" value="Attachment"/>
     <input type="hidden" name="sub_doc_id" value="7" class="sub_docs_id" id="af" />
     <div class="form-group col-md-12">
             <label class="control-label col-md-3">Title</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" name="title" <?php echo $is_disabled;?> value="<?php if(isset($feed->title)){echo $feed->title;} ?>" />
+                <input type="text" class="form-control" name="title" <?php echo $is_disabled;?> value="<?php if(isset($mod->title)){echo $mod->title;} ?>" />
             </div>
             <!--<div class="clearfix"></div>-->
     </div>
-    <?php 
+    <?php /*
     if(isset($attachments) && count($attachments)>0){
         foreach($attachments as $k=>$cd):
            
@@ -36,11 +36,12 @@ $feed = $feeds;
         </div>
     <?php
         endforeach;
-  }?>
+  } */?>
   <div class="form-group col-md-12 docMore"  data-count="1">
     <label class="control-label col-md-3">Attachments</label>
             <div class="col-md-6">
-            <input type="file" name="file" />
+                <input type="file" name="file"  />
+                <?php if(isset($mod)){echo $mod->file;}?>
          <!--<a href="javascript:void(0)" id="addMore1"  class="btn btn-primary">Browse</a>
           <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/>-->
        </div>

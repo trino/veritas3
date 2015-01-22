@@ -95,6 +95,9 @@
                         <div class="subform3" style="display: none;">
                             <?php include('subpages/documents/driver_evaluation_form.php');?>
                         </div>
+                        <div class="subform4" style="display: none;">
+                            <?php include('subpages/documents/document_tab_3.php');?>
+                        </div>
                         <div class="subform5" style="display: none;">
                             <?php include('subpages/documents/survey.php');?>
                         </div>
@@ -856,7 +859,7 @@
             else
                 var draft=0;
             var type=$(".document_type").val();
-            alert(type);
+            //alert(type);
             //alert($('#sub_id').val());return;
             var data = {uploaded_for:$('#uploaded_for').val(),type:type,sub_doc_id:$('#sub_id').val(),division:$('#division').val()};
             $.ajax({

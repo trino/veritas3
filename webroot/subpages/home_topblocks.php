@@ -80,9 +80,9 @@
                 <div class="name">
                     Order History
                 </div>
-                <div class="number">
+                <!--div class="number">
                     93
-                </div>
+                </div-->
             </div>
         
 </a>

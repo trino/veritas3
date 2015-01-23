@@ -35,7 +35,7 @@
             if (isset($binary) && $binary != "") {
                 file_put_contents('unknown_file', base64_decode($binary));
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
-                $mime = finfo_file($finfo, 'unknown_file') ;
+                $mime = finfo_file($finfo, 'unknown_file');
 
                 //echo $mime .  ' ' . $pdi .'<br>';
 
@@ -45,6 +45,11 @@
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
 
                 } elseif ($mime == "text/plain") {
+                    $binary = base64_decode($binary);
+                    $binary = str_replace("<br />", "", $binary);
+                    $binary = str_replace("&nbsp;", "", $binary);
+                    file_put_contents('unknown_file', $binary);
+
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.txt');
 
                 } else {
@@ -159,6 +164,10 @@
                         <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive"
                              id="clientpic"
                              alt=""/>
+
+
+
+
                     <?php
                     }
                 ?>
@@ -168,7 +177,7 @@
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-                <?php echo ucwords($order->profile->title); ?>
+                <?php echo ucwords($order->profile->fname); ?>   <?php echo ucwords($order->profile->lname); ?>
             </div>
             <div class="profile-usertitle-job">
                 Reference Number <?php echo ucwords($order->profile->id); ?>
@@ -176,7 +185,8 @@
 
             <div class="profile-usertitle-job">
                 <label class="uniform-inline">
-                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>" class="checkdriver"/>
+                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>"
+                           class="checkdriver" <?php if ($order->is_hired == '1') echo "checked"; ?> />
                     Was this driver hired? </label>
 
             </div>
@@ -232,10 +242,10 @@
         <?php $settings = $this->requestAction('settings/get_settings'); ?>
         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
                 <strong>Orders</strong></p>
-            <p> Uploaded by: <strong>Recruiter ID # 34</strong></p>
-            <p>Uploaded on: <strong>2014-12-12 18:48:19</strong></p>
-            <p>Company: <strong>Lorem Ipsum</strong></p>
-            <p>Filed by: <strong>Lorem Ipsum</strong></p>
+            <p> Uploaded by: <strong>Recruiter ID # <?php echo $order->user_id; ?></strong></p>
+            <p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
+            <p>Company: <strong><?php echo $order->client->company_name; ?></strong></p>
+            <p>Filed by: <strong><?php echo $order->profile->fname; ?></strong></p>
 
 </span>
         <!--hr/>
@@ -327,7 +337,8 @@
                                             if (return_link('1603', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -348,8 +359,9 @@
                                             if (return_link('1', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a  target="_blank" href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
-                                                    class="btn btn-primary">Download</a>
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
+                                                   class="btn btn-primary">Download</a>
                                             <? } ?>
 
                                     </td>
@@ -368,7 +380,8 @@
                                             if (return_link('14', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -389,7 +402,8 @@
                                             if (return_link('77', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -410,7 +424,8 @@
                                             if (return_link('78', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -431,7 +446,8 @@
                                             if (return_link('1650', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -452,7 +468,8 @@
                                             if (return_link('1627', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank"  href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -496,6 +513,11 @@
                     </div>
                     <div class="portlet-body">
                         <div id="chart_8" class="chart" style="height: 370px; overflow: hidden; text-align: left;">
+
+                            <img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
+                                 src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
+
+
                             <div style="position: relative;">
                                 <div style="">
                                     <svg version="1.1" style="position: absolute; width: 388px; height: 400px;">
@@ -750,6 +772,11 @@
                     </div>
                 </div>
                 <div class="portlet-body">
+
+                    <img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
+                         src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
+
+
                     <div class="slimScrollDiv"
                          style="position: relative; overflow: hidden; width: auto; height: 305px;">
                         <div class="scroller" style="height: 305px; overflow: hidden; width: auto;"
@@ -871,33 +898,12 @@
 															<span class="task-title-sp">
 															Pre-screening form
  </span>
-                                            <span class="label label-sm label-success">LoremIpsum</span>
-															<span class="task-bell">
-															<i class="fa fa-bell-o"></i>
-															</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
+
+
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
                                     <li>
                                         <div class="task-checkbox">
@@ -907,30 +913,11 @@
                                         <div class="task-title">
 															<span class="task-title-sp">
 															Driver Application	 </span>
-                                            <span class="label label-sm label-danger">LoremIpsum</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
+
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
                                     <li>
                                         <div class="task-checkbox">
@@ -941,33 +928,10 @@
 															<span class="task-title-sp">
 
 Road Test 	 	</span>
-                                            <span class="label label-sm label-success">LoremIpsum</span>
-															<span class="task-bell">
-															<i class="fa fa-bell-o"></i>
-															</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
                                     <li>
                                         <div class="task-checkbox">
@@ -978,30 +942,11 @@ Road Test 	 	</span>
 															<span class="task-title-sp">
 
 MEE Order	 </span>
-                                            <span class="label label-sm label-warning">LoremIpsum</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
+
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
                                     <li>
                                         <div class="task-checkbox">
@@ -1012,30 +957,11 @@ MEE Order	 </span>
 															<span class="task-title-sp">
 
                                                             Confirmation  </span>
-                                            <span class="label label-sm label-info">Internal Products</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>                                            &#x2713;
+
+
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
 
                                 </ul>

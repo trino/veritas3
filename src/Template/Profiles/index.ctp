@@ -1,11 +1,7 @@
-<style>
-    div{border:0px solid green;}
-</style>
-
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 <?php $sidebar =$this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
-    <?php echo ucfirst($settings->profile); ?>
+    <?php echo ucfirst($settings->profile); ?>s
 </h3>
 
 <div class="page-bar">
@@ -16,7 +12,7 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href=""><?php echo ucfirst($settings->profile); ?></a>
+            <a href=""><?php echo ucfirst($settings->profile); ?>s</a>
         </li>
     </ul>
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
@@ -32,7 +28,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    <?php echo ucfirst($settings->profile); ?>
+                    <?php echo ucfirst($settings->profile); ?>s Listing
                 </div>
             </div>
 
@@ -120,7 +116,7 @@
                                 <td><?= h($profile->lname) ?></td>
                                 <td><?= h($profile->username) ?></td>
                                 <td><?= h($profile->email) ?></td>
-                                <td class="actions">
+                                <td class="actions  util-btn-margin-bottom-5">
 
                                     <?php  if($sidebar->profile_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);} ?>
                                     <?php  if($sidebar->profile_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);} ?>

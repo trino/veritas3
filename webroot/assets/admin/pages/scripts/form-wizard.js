@@ -248,8 +248,12 @@ var FormWizard = function () {
                     {
                         if(!$('#confirm_check').is(':checked'))
                         {
+                            //if($('#skip').val()!='1'){
+                            
                             alert('Please confirm that you have read the conditions');
+                            $('#confirm_check').focus();
                             return false;
+                           // }
                         }
                     }
 

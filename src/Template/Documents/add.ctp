@@ -938,6 +938,7 @@
                        var act =$('#form_tab7').attr('action');
                        
                        $('#form_tab7').attr('action', function( i, val ) {return val +'?draft='+draft;});
+                       $('#form_tab7').submit();
                         
                     
                     }

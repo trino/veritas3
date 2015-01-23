@@ -480,7 +480,7 @@
                 //$arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
                 //$arr['conf_driver_name'] = $_POST['conf_driver_name'];
                 //$arr['conf_date'] = $_POST['conf_date'];
-                if (!$did || $did == '0') {
+                if ((!$did || $did == '0' )&& $arr['sub_doc_id']!=7) {
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
                     $doc = $docs->newEntity($arr);
 
@@ -492,7 +492,7 @@
                         //echo "e";
                     }
 
-                } else {
+                } elseif($arr['sub_doc_id']!=7) {
                     $query2 = $docs->query();
                     $query2->update()
                         ->set($arr)
@@ -1488,26 +1488,26 @@
             $cond = '';
 
             if (isset($_GET['searchdoc']) && $_GET['searchdoc']) {
-                $cond = $cond . ' (title LIKE "%' . $_GET['searchdoc'] . '%" OR document_type LIKE "%' . $_GET['searchdoc'] . '%" OR description LIKE "%' . $_GET['searchdoc'] . '%")';
+                $cond = $cond . ' (orders.title LIKE "%' . $_GET['searchdoc'] . '%" OR orders.description LIKE "%' . $_GET['searchdoc'] . '%")';
             }
 
             if (!$this->request->session()->read('Profile.admin') && $setting->orders_others == 0) {
                 if ($cond == '')
-                    $cond = $cond . ' user_id = ' . $this->request->session()->read('Profile.id');
+                    $cond = $cond . ' orders.user_id = ' . $this->request->session()->read('Profile.id');
                 else
-                    $cond = $cond . ' AND user_id = ' . $this->request->session()->read('Profile.id');
+                    $cond = $cond . ' AND orders.user_id = ' . $this->request->session()->read('Profile.id');
             }
             if (isset($_GET['submitted_by_id']) && $_GET['submitted_by_id']) {
                 if ($cond == '')
-                    $cond = $cond . ' user_id = ' . $_GET['submitted_by_id'];
+                    $cond = $cond . ' orders.user_id = ' . $_GET['submitted_by_id'];
                 else
-                    $cond = $cond . ' AND user_id = ' . $_GET['submitted_by_id'];
+                    $cond = $cond . ' AND orders.user_id = ' . $_GET['submitted_by_id'];
             }
             if (isset($_GET['client_id']) && $_GET['client_id']) {
                 if ($cond == '')
-                    $cond = $cond . ' client_id = ' . $_GET['client_id'];
+                    $cond = $cond . ' orders.client_id = ' . $_GET['client_id'];
                 else
-                    $cond = $cond . ' AND client_id = ' . $_GET['client_id'];
+                    $cond = $cond . ' AND orders.client_id = ' . $_GET['client_id'];
             }
             if (isset($_GET['type']) && $_GET['type']) {
                 if ($cond == '')
@@ -1517,14 +1517,14 @@
             }
             if (isset($_GET['draft'])) {
                 if ($cond == '')
-                    $cond = $cond . ' draft = 1';
+                    $cond = $cond . ' orders.draft = 1';
                 else
-                    $cond = $cond . ' AND draft = 1';
+                    $cond = $cond . ' AND orders.draft = 1';
             } else {
                 if ($cond == '')
-                    $cond = $cond . ' draft = 0';
+                    $cond = $cond . ' orders.draft = 0';
                 else
-                    $cond = $cond . ' AND draft = 0';
+                    $cond = $cond . ' AND orders.draft = 0';
             }
             if ($cond) {
                 $order = $order->where([$cond])->contain(['Profiles']);
@@ -2185,7 +2185,6 @@
                 if(isset($_POST) && isset($_GET['draft']))
                 {
                     
-                   
                     if (isset($_GET['draft']) && $_GET['draft'])
                         $arr['draft'] = 1;
                     else
@@ -2205,7 +2204,7 @@
                        
                         if ($docs->save($doc)) 
                         {
-                             //debug($doc);die();
+                             
                             $client_docs = array_unique($_POST['client_doc']);
                             foreach($client_docs as $d)
                             {
@@ -2219,6 +2218,7 @@
                                     unset($doczs);
                                 }
                             }
+                            //die('1');
                             $this->Flash->success('Document saved successfully.');
                              $this->redirect(array('action'=>'index'));
                         } 

@@ -936,8 +936,9 @@
                     else if(type == "Attachment")
                     {
                        var act =$('#form_tab7').attr('action');
-                       $('#form_tab7').attr('action',act+'?draft='+draft);
-                        $('#form_tab7').submit();
+                       
+                       $('#form_tab7').attr('action', function( i, val ) {return val +'?draft='+draft;});
+                        
                     
                     }
                     if(type != "Survey" || type != "Feedbacks" || type != "Attachment")

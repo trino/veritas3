@@ -246,7 +246,7 @@ var FormWizard = function () {
                     error.hide();
                     if($(".tab-pane.active").attr('id') == 'tab2')
                     {
-                        if(!$('#confirm_check').is(':checked'))
+                        if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')
                         {
                             //if($('#skip').val()!='1'){
                             

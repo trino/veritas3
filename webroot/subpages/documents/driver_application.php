@@ -799,9 +799,7 @@
             
         <div class="clearfix"></div>
  <script>
- $(function(){
-   $("#test2").jqScribble(); 
-});
+ 
  jQuery(function(){
     <?php
         if($this->request->params['action']=='addorder')

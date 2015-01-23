@@ -1063,6 +1063,7 @@
         $('.nav a').show();
         $('.cont').html('Next <i class="m-icon-swapright m-icon-white"></i>');
         $('.cont').parent().find('.red').remove();
+        $('.cont').attr('id','nextview');
         $('.cont').removeClass('cont');
         <?php
     }

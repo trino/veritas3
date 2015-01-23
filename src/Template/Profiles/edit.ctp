@@ -326,12 +326,14 @@
                                             } 
                                             }
                                             ?>
-
+                                            <?php  if ($this->request->session()->read('Profile.admin'))
+                                            {?>
                                             <li>
                                                 <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                             </li>
 
                                         <?php
+                                            }
                                         }
                                     
                                 ?>

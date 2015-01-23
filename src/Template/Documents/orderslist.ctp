@@ -56,7 +56,7 @@
                                  ?>
 							</select>
 						</div>
-
+                        <!--
                         <?php
                             $type = $this->requestAction("documents/getDocType");
                         ?>
@@ -74,7 +74,7 @@
                                  <option value="orders" <?php if(isset($return_type) && $return_type=='orders'){?> selected="selected"<?php } ?>>Orders</option>
                                  <option value="feedbacks" <?php if(isset($return_type) && $return_type=='feedbacks'){?> selected="selected"<?php } ?>>Feedbacks</option>
 							</select>
-						</div>
+						</div>-->
                         <!--</form>-->
                         <?php
                             $clients = $this->requestAction("documents/getAllClient");

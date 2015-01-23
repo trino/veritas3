@@ -516,8 +516,8 @@
                     <div class="portlet-body">
                         <div id="chart_8" class="chart" style="height: 370px; overflow: hidden; text-align: left;">
 
-                            <img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
-                                 src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
+                            <!--img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
+                                 src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/-->
 
 
                             <div style="position: relative;">
@@ -775,8 +775,8 @@
                 </div>
                 <div class="portlet-body">
 
-                    <img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
-                         src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
+                    <!--img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
+                         src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/-->
 
 
                     <div class="slimScrollDiv"
@@ -784,14 +784,44 @@
                         <div class="scroller" style="height: 305px; overflow: hidden; width: auto;"
                              data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2"
                              data-initialized="1">
-                            <div class="general-item-list">
+
+
+
+
+
+
+
+
+
+
+                            <div class="general-item-list ">
+
+                                <div class="item">
+                                    <div class="item-head">
+
+                                    </div>
+                                    <div class="item-body">
+
+                                        <textarea placeholder="Notes" rows="2"  class="form-control" ></textarea>
+
+
+                                        <button type="submit" class="btn green" style="float:right;margin-top:10px;
+                                        ">Submit</button>
+                                    </div>
+                                    <br>
+                                    <br>
+                                </div>
+
+
+
+
+
                                 <div class="item">
                                     <div class="item-head">
                                         <div class="item-details">
                                             <a href="" class="item-name primary-link">Nick Larson</a>
                                             <span class="item-label">3 hrs ago</span>
                                         </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
                                     </div>
                                     <div class="item-body">
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
@@ -805,7 +835,6 @@
                                             <a href="" class="item-name primary-link">Nick Larson</a>
                                             <span class="item-label">12 hrs ago</span>
                                         </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-danger"></span> Pending</span>
                                     </div>
                                     <div class="item-body">
                                         Consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing
@@ -819,7 +848,6 @@
                                             <a href="" class="item-name primary-link">Richard Stone</a>
                                             <span class="item-label">2 days ago</span>
                                         </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-danger"></span> Open</span>
                                     </div>
                                     <div class="item-body">
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ut laoreet dolore
@@ -832,7 +860,6 @@
                                             <a href="" class="item-name primary-link">Dan</a>
                                             <span class="item-label">3 days ago</span>
                                         </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-warning"></span> Pending</span>
                                     </div>
                                     <div class="item-body">
                                         Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet
@@ -845,7 +872,6 @@
                                             <a href="" class="item-name primary-link">Larry</a>
                                             <span class="item-label">4 hrs ago</span>
                                         </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
                                     </div>
                                     <div class="item-body">
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh

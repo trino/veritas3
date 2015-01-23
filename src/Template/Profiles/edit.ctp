@@ -384,7 +384,7 @@
 function initiate_ajax_upload(button_id){
 var button = $('#'+button_id), interval;
 new AjaxUpload(button,{
-    action: base_url+"profiles/upload_img/<?php if(isset($id))echo $id;?>",                      
+    action: "<?php echo $this->request->webroot;?>profiles/upload_img/<?php if(isset($id))echo $id;?>",
     name: 'myfile',
     onSubmit : function(file, ext){
         button.text('Uploading');

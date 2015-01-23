@@ -510,6 +510,7 @@
                              data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2"
                              data-initialized="1">
                             <div class="general-item-list">
+
                                 <div class="item">
                                     <div class="item-head">
                                         <div class="item-details">

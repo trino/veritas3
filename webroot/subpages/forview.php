@@ -622,7 +622,7 @@
                         <span
                             class="caption-subject font-blue-madison bold uppercase"><?php echo ucfirst($settings->document); ?>
                             Check-list</span>
-                        <span class="caption-helper">16 pending</span>
+                        <span class="caption-helper">5 Documents</span>
                     </div>
                     <div class="inputs">
                         <div class="portlet-input input-small input-inline">

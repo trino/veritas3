@@ -244,6 +244,14 @@ var FormWizard = function () {
                 onNext: function (tab, navigation, index) {
                     success.hide();
                     error.hide();
+                    if($(".tab-pane.active").attr('id') == 'tab2')
+                    {
+                        if(!$('#confirm_check').is(':checked'))
+                        {
+                            alert('Please confirm that you have read the conditions');
+                            return false;
+                        }
+                    }
 
                     /*if (form.valid() == false) {
                      return false;

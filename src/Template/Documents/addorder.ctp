@@ -1119,13 +1119,7 @@
                             url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid;
                         savedDriverApp(url,order_id,cid);
                         }
-                        else
-                        {
-                            
-                            alert('Please Confirm that you have read the conditoins');
-                            $('.button-previous').click();
-                            $('#confirm_check').focus();
-                        }
+                       
                     }else if(type=="Road test") {
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',

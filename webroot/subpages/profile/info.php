@@ -178,12 +178,19 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="control-label">Title</label>
+                            <label class="control-label">Title</label><BR>
+                            <SELECT <?php echo $is_disabled ?> name="title" class="form-control member_type" ><?php
+                                    $title = "";
+                                    if (isset($p->title)) { $title = $p->title;}
+                                    printoption("Mr.", $title, "Mr");
+                                    printoption("Mrs.", $title, "Mrs");
+                                    printoption("Ms.", $title, "Ms");
+                                ?></SELECT>
 
-
-                                    <input <?php echo $is_disabled ?> name="title" type="text"
+<!--
+                                    <input < php echo $is_disabled ?> name="title" type="text"
                                                                       placeholder="eg. Mr"
-                                                                      class="form-control req_driver" <?php if (isset($p->title)) { ?> value="<?php echo $p->title; ?>" <?php } ?> />
+                                                                      class="form-control req_driver" < php if (isset($p->title)) { ?> value="< php echo $p->title; ?>" < php } ?> /> -->
                                 </div>
                                 </div>
                     <div class="col-md-4">
@@ -245,21 +252,71 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                             <div class="col-md-4">
                                 <div class="form-group">
 
+
+
+
                                     <label class="control-label">Date of Birth</label>
                                     <input <?php echo $is_disabled ?> name="dob" type="text"
-                                                                      placeholder="eg. 06/14/1975"
+                                                                      placeholder="eg. 1975-12-31"
                                                                       class="form-control req_driver date-picker" <?php if (isset($p->dob)) { ?> value="<?php echo $p->dob; ?>" <?php } ?>/>
                                 </div>
+
+
+                                <div class="form-group">
+
+                                    <label class="control-label">Date of Birth (Year, Month, Day)</label><BR>
+                                    <?php
+                                        function printoption($option, $selected, $value=""){
+                                            $tempstr = "";
+                                            if ($option == $selected) { $tempstr = " selected";}
+                                            if (strlen($value) > 0) { $value = " value='" . $value . "'";}
+                                            echo '<OPTION' . $value . $selected . ">" . $option . "</OPTION>";
+                                        }
+
+                                        $currentyear = "0000";
+                                        $currentmonth = 0;
+                                        $currentday = 0;
+                                        if (isset($p->dob)) {
+                                            $currentyear = substr($p->dob, 0, 4);
+                                            $currentmonth = substr($p->dob, 5, 2);
+                                            $currentday = substr($p->dob, -2);
+                                        }
+                                        echo '<SELECT class="form-control req_driver date-picker" NAME="doby" ' . $is_disabled  . '>';
+                                        $now = date("Y");
+                                        for ($temp=$now; $temp>1899; $temp-=1){
+                                            printoption($temp, $currentyear, $temp);
+                                        }
+                                        echo '</SELECT> <SELECT  class="form-control req_driver date-picker" NAME="dobm" ' . $is_disabled  . '>';
+                                        $monthnames = array("Jan", "Feb", "Mar", "Apr","May","June","July","Aug","Sept","Oct","Nov","Dec");
+                                        for($temp=1; $temp<13; $temp+=1){
+                                            printoption($temp, $currentmonth, $temp);
+                                        }
+                                        echo '</SELECT> <Select  class="form-control req_driver date-picker" name="dobd" ' . $is_disabled  . '><?php';
+                                        for($temp=1; $temp<32; $temp+=1){
+                                            printoption($temp, $currentday, $temp);
+                                        }
+                                    ?></Select>
+                                </div>
+
+
                             </div>
 
 
                             <div class="col-md-4">
                                 <div class="form-group">
 
-                                    <label class="control-label">Gender</label>
-                                    <input <?php echo $is_disabled ?> name="gender" type="text"
+                                    <label class="control-label">Gender</label><BR>
+                                    <SELECT <?php echo $is_disabled ?> name="gender" class="form-control member_type" ><?php
+                                            $gender = "";
+                                            if (isset($p->gender)) { $gender = $p->gender;}
+                                            printoption("M", $gender, "M");
+                                            printoption("F", $gender, "F");
+                                    ?></SELECT>
+
+<!--
+                                    <input < php echo $is_disabled ?> name="gender" type="text"
                                                                       placeholder="eg. M"
-                                                                      class="form-control req_driver" <?php if (isset($p->gender)) { ?> value="<?php echo $p->gender; ?>" <?php } ?>/>
+                                                                      class="form-control req_driver" < php if (isset($p->gender)) { ?> value="< php echo $p->gender; ?>" < php } ?>/> -->
                                 </div>
                             </div>
                             </div>
@@ -303,16 +360,25 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <SELECT name="province" class="form-control member_type" ><?php
+                                            $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"    );
+                                            $province = "";
+                                            if (isset($p->province)) { $province = $p->province;}
+                                            for ($temp=0; $temp<count($provinces); $temp+=1){
+                                                printoption($provinces[$temp], $province, $provinces[$temp]);
+                                            }
+                                        ?></SELECT>
+<!--
                                         <input <?php echo $is_disabled ?> name="province" type="text"
                                                                            placeholder="Province"
-                                                                           class="form-control req_driver" <?php if (isset($p->province)) { ?> value="<?php echo $p->province; ?>" <?php } ?>/>
+                                                                           class="form-control req_driver" < php if (isset($p->province)) { ?> value="< php echo $p->province; ?>" < php } ?>/> -->
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                     <input <?php echo $is_disabled ?>  type="text"
-                                                                       placeholder="Postal/Zip"
+                                                                       placeholder="Postal code"
                                                                        class="form-control req_driver" name="postal"  <?php if (isset($p->postal)) { ?> value="<?php echo $p->postal; ?>" <?php } ?>/>
                                 </div>
                                 </div>
@@ -320,7 +386,7 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                 <div class="col-md-4">
                                     <div class="form-group">
                                     <input <?php echo $is_disabled ?>  type="text"
-                                                                       placeholder="Country"
+                                                                       placeholder="Country" value="Canada"
                                                                        class="form-control req_driver" name="country" <?php if (isset($p->country)) { ?> value="<?php echo $p->country; ?>" <?php } ?>/>
                                 </div>
                                 </div>
@@ -360,7 +426,32 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                     <input <?php echo $is_disabled ?> name="driver_province" type="text"
                                                                       class="form-control req_driver" <?php if (isset($p->driver_province)) { ?> value="<?php echo $p->driver_province; ?>" <?php } ?> />
                                 </div>
+
+
+
+                                        <?php
+
+
+
+                                            function printoption2($option, $selected){
+                                                $tempstr = "";
+                                                if ($option == $selected) { $tempstr = " selected";}
+                                                echo '<OPTION' . $tempstr . ">" . $option . "</OPTION>";
+                                            }
+                                            function printoptions2($name, $array, $selected){
+                                                echo '<SELECT name="' . $name . '" class="form-control member_type" >';
+                                                for ($temp=0; $temp<count($array); $temp+=1){
+                                                    printoption2($array[$temp], $selected);
+                                                }
+                                                echo '</SELECT>';
+                                            }
+                                            printoptions2("province", array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"),$p->billing_province);
+                                        ?>
+
+
                                 </div>
+
+
 
                                 <div class="col-md-4">
                                     <div class="form-group">

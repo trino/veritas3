@@ -707,7 +707,12 @@
                     </ol>
                     
                     <p>I understand that I may receive an offer of employment once this process has been completed by Challenger based on successful results of the above. I also understand that I will not receive and am not entitled to any payment for participating in the Training (Orientation) Program.</p>
-                    <p><input type="checkbox" class="form-control" value="1" id="confirm_check" name="confirm_check" /> <strong>I confirm </strong>that I have read and understand the above conditions as part of the application process. I have been given an opportunity to ask questions regarding the same.</p>
+
+                        <div class="note note-success">
+                            <p><input type="checkbox" class="form-control" value="1" id="confirm_check" name="confirm_check" /> <strong>I confirm that I have read and understand the above conditions as part of the application process. I have been given an opportunity to ask questions regarding the same.</strong></p>
+                        </div>
+
+
                      <div class="form-group col-md-12">
                                         <label class="control-label col-md-6">Dated at on the day of : </label>
                                         <div class="col-md-6">
@@ -717,15 +722,15 @@
                        
                        <div class="form-group col-md-12">
                                         <div class="col-md-6">
-										<input type="text" class="form-control" placeholder="Witness(Print Name)" name="witness_name"/>
+										<input type="text" class="form-control" placeholder="Witness (Print Name)" name="witness_name"/>
                                         </div>
                                         
                                         <div class="col-md-6">
-										<input type="text" class="form-control" placeholder="Applicant(Print Name)" name="applicant_name"/>
+										<input type="text" class="form-control" placeholder="Applicant (Print Name)" name="applicant_name"/>
                                         </div>
                        </div>
                        
-                       <div class="form-group col-md-12">
+                       <!--div class="form-group col-md-12">
                                         <div class="col-md-6">
 										<input type="text" class="form-control" placeholder="Witness Signature" name="witness_signature"/>
                                         </div>
@@ -733,7 +738,7 @@
                                         <div class="col-md-6">
 										<input type="text" class="form-control" placeholder="Applicant Signature" name="applicant_signature"/>
                                         </div>
-                       </div>
+                       </div-->
                        <?php
                                         if(!isset($sub['da_at']))
                                         {

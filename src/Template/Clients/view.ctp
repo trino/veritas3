@@ -106,7 +106,8 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 									<div class="col-md-9">
 										<div class="row">
 											<div class="col-md-8 profile-info">
-												<h1><?php echo $client->title; ?></h1>
+												<h1><?php echo $client->company_name; ?></h1>
+
 												<p>
 												<?php echo $client->description;
                                                 $doc_count = $this->requestAction("clients/getDocCount/".$id);
@@ -122,7 +123,7 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 
 
 												<a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg default yellow-stripe">
-													<?php echo $dc; ?> <?=$settings->document?>s submitted for this <?=$settings->client?> </a><a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg yellow">
+													<!--?php echo $dc; ?--> <?=$settings->document?>s submitted </a><a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg yellow">
 													View All <i class="fa fa-search"></i>
 												</a>
 
@@ -165,20 +166,20 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 																Total Uploads <i class="fa fa-img-up"></i>
 																</span>
 																<span class="sale-num">
-																<?php echo $upload; ?> </span>
+																N/A </span>
 															</li>
 
 															<li>
 																<span class="sale-info">
 																Created on </span>
 																<span class="sale-num">
-																<i class="fa fa-calendar"></i> 18 Jan 2008 </span>
+																<i class="fa fa-calendar"></i> N/A </span>
 															</li>
                                                             <li>
 																<span class="sale-info">
 																Ends on </span>
 																<span class="sale-num">
-																<i class="fa fa-calendar"></i> 18 Jan 2015 </span>
+																<i class="fa fa-calendar"></i> N/A </span>
 															</li>
 
 														</ul>

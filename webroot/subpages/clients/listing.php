@@ -4,8 +4,8 @@
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-user"></i>
-                    <?php echo ucfirst($settings->client); ?>s
+                    <i class="fa fa-globe"></i>
+                    <?php echo ucfirst($settings->client); ?>s Listing
                 </div>
             </div>
             <div class="portlet-body">
@@ -96,7 +96,7 @@
                                         <!--<td><?= h($start_date) ?></td>
                     			<td><?= h($end_date) ?></td>-->
                                         <!--td><?= h($clients->site) ?></td-->
-                                        <td class="actions">
+                                        <td class="actions  util-btn-margin-bottom-5">
 
 
                                             <?php

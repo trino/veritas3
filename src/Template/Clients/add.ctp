@@ -144,8 +144,25 @@ $c = $client;
 														<input type="text" class="form-control" name="postal" <?php if(isset($c->postal)){?> value="<?php echo $c->postal; ?>" <?php } ?>/>
 													</div>
                                                     <div class="form-group col-md-4">
-														<label class="control-label">Province/State</label>
-														<input type="text" class="form-control" name="province" <?php if(isset($c->province)){?> value="<?php echo $c->province; ?>" <?php } ?>/>
+														<label class="control-label">Province</label>
+                                                        <?php
+                                                            function printoption($option, $selected){
+                                                                $tempstr = "";
+                                                                if ($option == $selected) { $tempstr = " selected";}
+                                                                echo '<OPTION' . $tempstr . ">" . $option . "</OPTION>";
+                                                            }
+                                                            function printoptions($name, $array, $selected){
+                                                                echo '<SELECT name="' . $name . '" class="form-control member_type" >';
+                                                                for ($temp=0; $temp<count($array); $temp+=1){
+                                                                    printoption($array[$temp], $selected);
+                                                                }
+                                                                echo '</SELECT>';
+                                                            }
+                                                            printoptions("province", array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"),$c->province);
+                                                        ?>
+
+<!--
+														<input type="text" class="form-control" name="province" < php if(isset($c->province)){?> value="< php echo $c->province; ?>" < php } ?>/> -->
 													</div>
                                                   <?php /*  <div class="form-group col-md-6">
 														<label class="control-label">Administrator's First Name</label>
@@ -286,8 +303,12 @@ $c = $client;
 													</div>
 
 													<div class="form-grop col-md-6">
-                                                        <label class="control-label">Billing State/Province</label>
-                                                        <input type="text" class="form-control" name="billing_province"  value="<?php echo isset($c->billing_province)?$c->billing_province:''?>" />
+                                                        <label class="control-label">Billing Province</label>
+                                                        <?php printoptions("billing_province", array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"),$c->billing_province); ?>
+
+                                                        <!--
+                                                        <input type="text" class="form-control" name="billing_province"  value="< php echo isset($c->billing_province)?$c->billing_province:''?>" /> -->
+
                                                     </div>
                                                     <div class="form-grop col-md-6">
                                                         <label class="control-label">Billing Postal Code</label>

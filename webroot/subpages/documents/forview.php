@@ -35,7 +35,7 @@
             if (isset($binary) && $binary != "") {
                 file_put_contents('unknown_file', base64_decode($binary));
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
-                $mime = finfo_file($finfo, 'unknown_file') ;
+                $mime = finfo_file($finfo, 'unknown_file');
 
                 //echo $mime .  ' ' . $pdi .'<br>';
 
@@ -45,6 +45,11 @@
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
 
                 } elseif ($mime == "text/plain") {
+                    $binary = base64_decode($binary);
+                    $binary = str_replace("<br />", "", $binary);
+                    $binary = str_replace("&nbsp;", "", $binary);
+                    file_put_contents('unknown_file', $binary);
+
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.txt');
 
                 } else {
@@ -159,6 +164,10 @@
                         <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive"
                              id="clientpic"
                              alt=""/>
+
+
+
+
                     <?php
                     }
                 ?>
@@ -176,7 +185,8 @@
 
             <div class="profile-usertitle-job">
                 <label class="uniform-inline">
-                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>" class="checkdriver" <?php if($order->is_hired=='1')echo "checked";?> />
+                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>"
+                           class="checkdriver" <?php if ($order->is_hired == '1') echo "checked"; ?> />
                     Was this driver hired? </label>
 
             </div>
@@ -232,10 +242,10 @@
         <?php $settings = $this->requestAction('settings/get_settings'); ?>
         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
                 <strong>Orders</strong></p>
-            <p> Uploaded by: <strong>Recruiter ID # <?php echo $order->user_id;?></strong></p>
-            <p>Uploaded on: <strong><?php echo $order->created;?></strong></p>
-            <p>Company: <strong><?php echo $order->client->company_name;?></strong></p>
-            <p>Filed by: <strong><?php echo $order->profile->fname;?></strong></p>
+            <p> Uploaded by: <strong>Recruiter ID # <?php echo $order->user_id; ?></strong></p>
+            <p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
+            <p>Company: <strong><?php echo $order->client->company_name; ?></strong></p>
+            <p>Filed by: <strong><?php echo $order->profile->fname; ?></strong></p>
 
 </span>
         <!--hr/>
@@ -327,7 +337,8 @@
                                             if (return_link('1603', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -348,8 +359,9 @@
                                             if (return_link('1', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a  target="_blank" href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
-                                                    class="btn btn-primary">Download</a>
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
+                                                   class="btn btn-primary">Download</a>
                                             <? } ?>
 
                                     </td>
@@ -368,7 +380,8 @@
                                             if (return_link('14', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -389,7 +402,8 @@
                                             if (return_link('77', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -410,7 +424,8 @@
                                             if (return_link('78', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -431,7 +446,8 @@
                                             if (return_link('1650', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank" href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -452,7 +468,8 @@
                                             if (return_link('1627', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
-                                                <a target="_blank"  href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
 
@@ -496,6 +513,11 @@
                     </div>
                     <div class="portlet-body">
                         <div id="chart_8" class="chart" style="height: 370px; overflow: hidden; text-align: left;">
+
+                            <img style="z-index:99999;position: absolute;top: 60px;opacity: 0.6"
+                                 src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
+
+
                             <div style="position: relative;">
                                 <div style="">
                                     <svg version="1.1" style="position: absolute; width: 388px; height: 400px;">
@@ -750,6 +772,11 @@
                     </div>
                 </div>
                 <div class="portlet-body">
+
+                    <img style="z-index:99999;position: absolute;top: 60px;opacity: 0.6"
+                         src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
+
+
                     <div class="slimScrollDiv"
                          style="position: relative; overflow: hidden; width: auto; height: 305px;">
                         <div class="scroller" style="height: 305px; overflow: hidden; width: auto;"

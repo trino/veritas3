@@ -138,23 +138,21 @@
 		<!-- BEGIN TOP NAVIGATION MENU -->
 		<div class="top-menu">
 			<ul class="nav navbar-nav pull-right">
-				<!-- BEGIN NOTIFICATION DROPDOWN -->
-				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-				
+
 				<li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="icon-envelope-open"></i>
-					<span class="badge badge-default">
-					4 </span>
+					<!--span class="badge badge-default">
+					4 </span-->
 					</a>
 					<ul class="dropdown-menu">
 						<li class="external">
-							<h3>You have <span class="bold">7 New</span> Messages</h3>
+							<h3>You have <span class="bold">0 New</span> Messages</h3>
 							<a href="#">view all</a>
 						</li>
 						<li>
 							<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-								<li>
+								<!--li>
 									<a href="#">
 									<span class="photo">
 									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
@@ -223,7 +221,7 @@
 									<span class="message">
 									Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
 									</a>
-								</li>
+								</li-->
 							</ul>
 						</li>
 					</ul>
@@ -247,12 +245,12 @@
 							<i class="icon-user"></i> My Settings </a>
 						</li>
 						
-						<li>
+						<!--li>
 							<a href="#">
 							<i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
 							3 </span>
 							</a>
-						</li>
+						</li-->
 						
 						<li class="divider">
 						</li>

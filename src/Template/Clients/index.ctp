@@ -11,7 +11,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href=""><?php echo ucfirst($settings->client);?></a>
+						<a href=""><?php echo ucfirst($settings->client);?>s</a>
 					</li>
 				</ul>
 			<a href="javascript:window.print();" class="floatright btn btn-info">Print</a>

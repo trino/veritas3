@@ -710,9 +710,9 @@ $c = $client;
                                            if($(this).val()!= "")
                                            {
                                             if(str=='')
-                                            str = 'client_doc[]='+$(this).val();
+                                                str = 'client_doc[]='+$(this).val();
                                             else
-                                            str = str+'&client_doc[]='+$(this).val();
+                                                str = str+'&client_doc[]='+$(this).val();
                                            }
                                             
                                         });
@@ -723,6 +723,14 @@ $c = $client;
                                             else
                                             {
                                                 str = str+'&'+$('#tab_1_1 input').serialize();
+                                            }
+                                            if(str=='')
+                                            {
+                                                str = $('#tab_1_1 select').serialize();
+                                            }
+                                            else
+                                            {
+                                                str = str+'&'+$('#tab_1_1 select').serialize();
                                             }
                                             //str = str+'&description='+$('#tab_1_1 textarea').val();
                                             str = str+'&customer_type='+$('#customer_type').val();
@@ -758,7 +766,7 @@ $c = $client;
                                     });
 
 
-var removeLink = 0;// this variable is for showing and removing links in a add document
+                                    var removeLink = 0;// this variable is for showing and removing links in a add document
                                   function addMore(e,obj){
                                     e.preventDefault();
                                         

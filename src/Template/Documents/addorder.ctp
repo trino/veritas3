@@ -1113,11 +1113,19 @@
                         savePrescreen(url,order_id,cid,forms);
 
                     } else if(type=="Driver Application") {
-                        // alert(type);
+                        if($('#confirm_check').is(':checked')){
                         var  order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid;
                         savedDriverApp(url,order_id,cid);
+                        }
+                        else
+                        {
+                            
+                            alert('Please Confirm that you have read the conditoins');
+                            $('.button-previous').click();
+                            $('#confirm_check').focus();
+                        }
                     }else if(type=="Road test") {
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',
@@ -1144,6 +1152,14 @@
             save_signature('3');
             save_signature('4');
         }
+        /*if($(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val()=='Driver Application')
+        {    if(!$('#confirm_check').is(':checked'))
+            {       
+                    alert('Please Confirm that you have read the conditoins');
+                    $('#confirm_check').focus();
+                    
+            }
+        }*/
     }
 
     function save_signature(numb)

@@ -308,7 +308,7 @@
                                 <?php
                                     if ($this->request['action'] != 'add') {
 
-                                        if ($this->request->session()->read('Profile.admin') || !isset($myuser)) {
+                                        if ($this->request->session()->read('Profile.admin') && $this->request->session()->read('Profile.id')==$id) {
                                             ?>
                                             
                                                 <li>

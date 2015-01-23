@@ -287,12 +287,15 @@
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
             $profiles = TableRegistry::get('Profiles');
-            if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
-                $_POST['admin']=1;
-            $profile = $profiles->newEntity( $_POST);
+            
             //var_dump($profile);die();
             if ($this->request->is('post')) {
-
+                if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
+                $_POST['admin']=1;
+            
+                $_POST['dob'] = $_POST['doby']."-".$_POST['dobm']."-".$_POST['dobd'];
+                //debug($_POST);die();
+                $profile = $profiles->newEntity( $_POST);
                 if ($profiles->save($profile)) {
                     $blocks = TableRegistry::get('Blocks');
                     $query2 = $blocks->query();
@@ -350,7 +353,7 @@
                     $this->request->data['admin']=1;
                 else
                     $this->request->data['admin']=0;
-
+                 $this->request->data['dob'] = $_POST['doby']."-".$_POST['dobm']."-".$_POST['dobd'];
                 //var_dump($this->request->data); die();//echo $_POST['admin'];die();
                 $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                 if ($this->Profiles->save($profile)) {

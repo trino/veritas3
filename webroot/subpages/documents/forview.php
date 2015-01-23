@@ -235,17 +235,19 @@
 
             <a href="#" class="btn btn-lg default yellow-stripe">
                 Road Test Score </a><a href="#" class="btn btn-lg yellow">
-                <i class="fa fa-bar-chart-o"></i> 98% </a>
+                <i class="fa fa-bar-chart-o"></i><?php echo $order->road_test[0]->total_score;?></a>
         </div>
 
 
-        <?php $settings = $this->requestAction('settings/get_settings'); ?>
+        <?php $settings = $this->requestAction('settings/get_settings'); 
+                $uploaded_by = $this->requestAction("documents/getUser/".$order->user_id);
+        ?>
         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
                 <strong>Orders</strong></p>
             <p> Uploaded by: <strong>Recruiter ID # <?php echo $order->user_id; ?></strong></p>
             <p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
             <p>Company: <strong><?php echo $order->client->company_name; ?></strong></p>
-            <p>Filed by: <strong><?php echo $order->profile->fname; ?></strong></p>
+            <p>Filed by: <strong><?php echo $uploaded_by->fname; ?></strong></p>
 
 </span>
         <!--hr/>

@@ -2161,7 +2161,7 @@
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
-                ->where(['orders.id' => $order_id])->contain(['Profiles','Clients'])->first();
+                ->where(['orders.id' => $order_id])->contain(['Profiles','Clients','RoadTest'])->first();
 
             $this->set('order',$order);
           //  debug($order);
@@ -2182,7 +2182,7 @@
         function addattachment($cid, $did)
         {
             
-                if(isset($_POST))
+                if(isset($_POST) && isset($_GET['draft']))
                 {
                     
                    
@@ -2196,10 +2196,11 @@
                     $arr['title'] = $_POST['title'];
                     $arr['created'] = date('Y-m-d H:i:s');
                     
-                    if (!$did || $did == '0') {
+                    if (!$did || $did == '0') 
+                    {
                        
                         $arr['user_id'] = $this->request->session()->read('Profile.id');
-                         $docs = TableRegistry::get('Documents');
+                        $docs = TableRegistry::get('Documents');
                         $doc = $docs->newEntity($arr);
                        
                         if ($docs->save($doc)) 
@@ -2226,7 +2227,9 @@
                             $this->redirect(array('action'=>'index'));
                         }
     
-                    } else {
+                    } 
+                    else 
+                    {
                          $docs = TableRegistry::get('Documents');
                         $query2 = $docs->query();
                         $query2->update()

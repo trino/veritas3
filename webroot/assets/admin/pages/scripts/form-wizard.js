@@ -216,19 +216,6 @@ var FormWizard = function () {
                     //alert($('#did').val()+'/'+$('#uploaded_for').val());
                     save_signature('1');
 
-                    /*
-                     var counter=setInterval(function(){
-                     count=count-1;
-                     $('.seconds').text(count);
-                     if (count <= 0)
-                     {
-
-                     clearInterval(counter);
-                     window.location=base_url;
-                     //counter ended, do something here
-                     return;
-                     }}, 1000); //1000 will  run it every 1 second
-                     */
 
                     displayConfirm();
                 } else {
@@ -257,6 +244,18 @@ var FormWizard = function () {
                 onNext: function (tab, navigation, index) {
                     success.hide();
                     error.hide();
+                    if($(".tab-pane.active").attr('id') == 'tab2')
+                    {
+                        if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')
+                        {
+                            //if($('#skip').val()!='1'){
+                            
+                            alert('Please confirm that you have read the conditions');
+                            $('#confirm_check').focus();
+                            return false;
+                           // }
+                        }
+                    }
 
                     /*if (form.valid() == false) {
                      return false;

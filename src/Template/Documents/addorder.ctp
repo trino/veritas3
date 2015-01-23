@@ -127,19 +127,19 @@
                         <div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>">
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <a href="javascript:;" class="btn default button-previous">
+                                    <a href="javascript:;" class="btn default button-previous" onclick="$('#skip').val('0');">
                                         <i class="m-icon-swapleft"></i> Back </a>
 
-                                    <a href="javascript:;" class="btn red button-next">
+                                    <a href="javascript:;" class="btn red button-next" onclick="$('#skip').val('1');">
                                         Skip <i class="m-icon-swapdown m-icon-white"></i>
                                     </a>
-
-                                    <a href="javascript:;" class="btn blue button-next cont">
+                                    <input type="hidden" id="skip" value="0" />
+                                    <a href="javascript:;" class="btn blue button-next cont" onclick="$('#skip').val('0');">
                                         Save & Continue <i class="m-icon-swapright m-icon-white"></i>
                                     </a>
 
 
-                                    <a href="javascript:window.print();" class="btn btn-info button-submit">Print</a>
+                                    <a href="javascript:window.print();" class="btn btn-info button-submit" onclick="$('#skip').val('0');">Print</a>
                                 </div>
                             </div>
                         </div>
@@ -1063,6 +1063,7 @@
         $('.nav a').show();
         $('.cont').html('Next <i class="m-icon-swapright m-icon-white"></i>');
         $('.cont').parent().find('.red').remove();
+        $('.cont').attr('id','nextview');
         $('.cont').removeClass('cont');
         <?php
     }
@@ -1119,13 +1120,8 @@
                             url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/'+order_id+'/'+cid;
                         savedDriverApp(url,order_id,cid);
                         }
-                        else
-                        {
-                            
-                            alert('Please Confirm that you have read the conditoins');
-                            $('.button-previous').click();
-                            $('#confirm_check').focus();
-                        }
+                        
+                       
                     }else if(type=="Road test") {
                         var order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>',

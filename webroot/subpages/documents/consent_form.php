@@ -466,10 +466,10 @@
 
 <script>
     $(function(){
-       
+       <?php if($this->request->params['action'] != 'vieworder' && $this->request->params['action']!= 'view'){?>
            $("#test3").jqScribble(); 
            $("#test4").jqScribble(); 
-       
+       <?php }?>
         
         <?php
         if($this->request->params['action']=='addorder')

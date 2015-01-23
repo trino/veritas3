@@ -177,7 +177,7 @@
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-                <?php echo ucwords($order->profile->title); ?>
+                <?php echo ucwords($order->profile->fname); ?>   <?php echo ucwords($order->profile->lname); ?>
             </div>
             <div class="profile-usertitle-job">
                 Reference Number <?php echo ucwords($order->profile->id); ?>
@@ -514,7 +514,7 @@
                     <div class="portlet-body">
                         <div id="chart_8" class="chart" style="height: 370px; overflow: hidden; text-align: left;">
 
-                            <img style="z-index:99999;position: absolute;top: 60px;opacity: 0.6"
+                            <img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
                                  src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
 
 
@@ -773,7 +773,7 @@
                 </div>
                 <div class="portlet-body">
 
-                    <img style="z-index:99999;position: absolute;top: 60px;opacity: 0.6"
+                    <img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
                          src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
 
 
@@ -898,33 +898,12 @@
 															<span class="task-title-sp">
 															Pre-screening form
  </span>
-                                            <span class="label label-sm label-success">LoremIpsum</span>
-															<span class="task-bell">
-															<i class="fa fa-bell-o"></i>
-															</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
+
+
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
                                     <li>
                                         <div class="task-checkbox">
@@ -934,30 +913,11 @@
                                         <div class="task-title">
 															<span class="task-title-sp">
 															Driver Application	 </span>
-                                            <span class="label label-sm label-danger">LoremIpsum</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
+
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
                                     <li>
                                         <div class="task-checkbox">
@@ -968,33 +928,10 @@
 															<span class="task-title-sp">
 
 Road Test 	 	</span>
-                                            <span class="label label-sm label-success">LoremIpsum</span>
-															<span class="task-bell">
-															<i class="fa fa-bell-o"></i>
-															</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
                                     <li>
                                         <div class="task-checkbox">
@@ -1005,30 +942,11 @@ Road Test 	 	</span>
 															<span class="task-title-sp">
 
 MEE Order	 </span>
-                                            <span class="label label-sm label-warning">LoremIpsum</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
+
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
                                     <li>
                                         <div class="task-checkbox">
@@ -1039,30 +957,11 @@ MEE Order	 </span>
 															<span class="task-title-sp">
 
                                                             Confirmation  </span>
-                                            <span class="label label-sm label-info">Internal Products</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>                                            &#x2713;
+
+
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
 
                                 </ul>

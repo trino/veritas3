@@ -196,20 +196,7 @@
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm967919921.pdf" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm976461791.pdf" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\a1.pdf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/default.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/driver_application.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/driver_application.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/forview.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/forview.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" afterPath="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Jobs/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Jobs/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Profiles/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Profiles/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/info.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/info.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/clients/listing.php" afterPath="$PROJECT_DIR$/webroot/subpages/clients/listing.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/success.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/success.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/view.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/view.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
@@ -236,11 +223,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26984128" vertical-offset="0" max-vertical-offset="5729">
-              <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="5729">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <marker date="1421961609102" expanded="true" signature="1979:2163" placeholder="..." />
                 <marker date="1421961609102" expanded="true" signature="3235:3791" placeholder="..." />
@@ -252,6 +239,49 @@
                 <marker date="1421961609102" expanded="true" signature="10850:11361" placeholder="..." />
                 <marker date="1421961609102" expanded="true" signature="12023:12431" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forview.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/forview.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.9038463" vertical-offset="9995" max-vertical-offset="16167">
+              <caret line="606" column="50" selection-start-line="606" selection-start-column="50" selection-end-line="606" selection-end-column="50" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forview.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/documents/forview.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.9411765" vertical-offset="2929" max-vertical-offset="16847">
+              <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="183" selection-end-column="18" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#1;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#1;n#li#4;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/app.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.28747794" vertical-offset="41" max-vertical-offset="5542">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -276,7 +306,6 @@
         <option value="$PROJECT_DIR$/webroot/subpages/soap/nusoap.php" />
         <option value="$PROJECT_DIR$/src/Controller/UsersController.php" />
         <option value="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
-        <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/config/paths.php" />
         <option value="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" />
         <option value="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" />
@@ -293,12 +322,13 @@
         <option value="$PROJECT_DIR$/webroot/css/style.css" />
         <option value="$PROJECT_DIR$/webroot/assets/global/css/components.css" />
         <option value="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
-        <option value="$PROJECT_DIR$/webroot/subpages/forview.php" />
         <option value="$PROJECT_DIR$/webroot/subpages/documents/driver_application.php" />
         <option value="$PROJECT_DIR$/webroot/subpages/documents/success.php" />
         <option value="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" />
         <option value="$PROJECT_DIR$/src/Template/Clients/view.ctp" />
+        <option value="$PROJECT_DIR$/webroot/subpages/forview.php" />
         <option value="$PROJECT_DIR$/webroot/subpages/documents/forview.php" />
+        <option value="$PROJECT_DIR$/config/app.php" />
       </list>
     </option>
   </component>
@@ -941,13 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="194" max-vertical-offset="5542">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/paths.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="844" max-vertical-offset="1445">
@@ -1095,14 +1118,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/subpages/forview.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4267" max-vertical-offset="16116">
-          <caret line="251" column="115" selection-start-line="251" selection-start-column="115" selection-end-line="251" selection-end-column="115" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/driver_application.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="16728" max-vertical-offset="18428">
@@ -1151,62 +1166,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/subpages/documents/forview.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75308645" vertical-offset="423" max-vertical-offset="18547">
-          <caret line="50" column="63" selection-start-line="49" selection-start-column="65" selection-end-line="50" selection-end-column="63" />
-          <folding>
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1421987675398" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26984128" vertical-offset="0" max-vertical-offset="5729">
-          <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="5729">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <marker date="1421961609102" expanded="true" signature="1979:2163" placeholder="..." />
             <marker date="1421961609102" expanded="true" signature="3235:3791" placeholder="..." />
@@ -1218,6 +1184,43 @@
             <marker date="1421961609102" expanded="true" signature="10850:11361" placeholder="..." />
             <marker date="1421961609102" expanded="true" signature="12023:12431" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/forview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.9038463" vertical-offset="9995" max-vertical-offset="16167">
+          <caret line="606" column="50" selection-start-line="606" selection-start-column="50" selection-end-line="606" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/documents/forview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.9411765" vertical-offset="2929" max-vertical-offset="16847">
+          <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="183" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#li#4;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28747794" vertical-offset="41" max-vertical-offset="5542">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -29,7 +29,9 @@
 
 <script>
 $(function(){
+    <?php if($this->request->params['action'] != 'vieworder'  && $this->request->params['action']!= 'view'){?>
    $("#test1").jqScribble(); 
+   <?php }?>
 });
 
 		function addImage()

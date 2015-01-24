@@ -1775,7 +1775,11 @@
                     'jpeg',
                     'png',
                     'bmp',
-                    'gif'
+                    'gif',
+                    'pdf',
+                    'doc',
+                    'docx',
+                    'txt'
                 );
                 $check = strtolower($ext);
                 if (in_array($check, $allowed)) {

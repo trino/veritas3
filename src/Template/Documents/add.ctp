@@ -1,5 +1,6 @@
 <script src="<?php echo $this->request->webroot;?>js/jquery.easyui.min.js" type="text/javascript"></script>
 <?php
+    $doc_ext = array('pdf','doc','docx','pdf');
     if(isset($disabled))
         $is_disabled = 'disabled="disabled"';
     else

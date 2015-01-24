@@ -760,21 +760,9 @@
     <div class="row">
         <div class="col-md-6">
             <!-- BEGIN PORTLET -->
-            <div class="portlet light">
-                <div class="portlet-title">
-                    <div class="caption caption-md">
-                        <i class="icon-bar-chart theme-font hide"></i>
-                        <span class="caption-subject font-blue-madison bold uppercase">Recruiter Notes</span>
-                        <span class="caption-helper"></span>
-                    </div>
-                    <div class="inputs">
-                        <div class="portlet-input input-inline input-small ">
 
-                        </div>
-                    </div>
-                </div>
-                <div class="portlet-body">
 
+<<<<<<< HEAD
                     <!--img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
                          src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/-->
 
@@ -887,6 +875,11 @@
                     </div>
                 </div>
             </div>
+=======
+                                <?php include('subpages/documents/recruiter_notes.php');?>
+
+
+>>>>>>> 4134e1eb19c6cd8650a97a9b9bf0a55f4e4ac24c
             <!-- END PORTLET -->
         </div>
         <div class="col-md-6">
@@ -1009,4 +1002,3 @@ MEE Order	 </span>
     </div>
 </div>
 <!-- END PROFILE CONTENT -->
-</div>

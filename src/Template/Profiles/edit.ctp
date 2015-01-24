@@ -288,6 +288,7 @@
                 </div>
             <?php } ?>
             <!-- END PORTLET MAIN -->
+            <?php include('subpages/documents/recruiter_notes.php');?>
         </div>
         <!-- END BEGIN PROFILE SIDEBAR -->
         <!-- BEGIN PROFILE CONTENT -->

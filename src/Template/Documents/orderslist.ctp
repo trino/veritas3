@@ -146,17 +146,22 @@
 
                                     <?php
                                       if($sidebar->orders_list=='1'){
-                                        
-                                        echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);} ?>
+                                        if(!isset($_GET['table']))
+                                        echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);
+                                        else
+                                        echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id,$_GET['table']], ['class' => 'btn btn-info']);} ?>
+
                                     <?php
                                     $super = $this->request->session()->read('Profile.super');
                                         if(isset($super) || isset($_GET['draft']))
                                         {  
                                     if($sidebar->orders_edit=='1')
                                     {
-                                        
+                                        if(!isset($_GET['table']))
                                         echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'addorder',$order->client_id, $order->id], ['class' => 'btn btn-primary']);
-                                        
+                                        else
+                                        echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'addorder',$order->client_id, $order->id,$_GET['table']], ['class' => 'btn btn-primary']);
+
                                     }
                                      if($sidebar->orders_delete=='1'){
                                         ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>

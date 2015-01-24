@@ -444,10 +444,11 @@
             <div class="form-group col-md-12">
             
             <?php 
-            if($this->request->params['action']!= 'vieworder' && $this->request->params['action']!= 'view'){
+
             include('canvas/consent_signature_driver.php');?>
-            <?php include('canvas/consent_signature_witness.php');
-            }?>
+            <?php
+            include('canvas/consent_signature_witness.php');
+            ?>
             </div>
             
             

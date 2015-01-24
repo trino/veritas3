@@ -1,12 +1,6 @@
 <?php
-
-    // phpinfo();die();
-    // $im = file_get_contents('test.html');
-    // $imdata = base64_encode($im);
-
     function return_link($pdi, $order_id)
     {
-
         if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.pdf')) {
             $link = "orders/order_" . $order_id . '/' . $pdi . '.pdf';
             return $link;
@@ -21,7 +15,6 @@
 
         }
         return false;
-
     }
 
     function create_files_from_binary($order_id, $pdi, $binary)
@@ -37,25 +30,21 @@
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
                 $mime = finfo_file($finfo, 'unknown_file');
 
-                //echo $mime .  ' ' . $pdi .'<br>';
-
                 if ($mime == "application/pdf") {
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.pdf');
                 } elseif ($mime == "text/html") {
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
-
                 } elseif ($mime == "text/plain") {
+                    /*
                     $binary = base64_decode($binary);
                     $binary = str_replace("<br />", "", $binary);
                     $binary = str_replace("&nbsp;", "", $binary);
                     file_put_contents('unknown_file', $binary);
-
-                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.txt');
-
+*/
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
                 } else {
-                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.txt');
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
                     //  echo "There was an error converting the file. Please contact the system administrator.";
-                    //  die();
                 }
             }
         }
@@ -69,80 +58,6 @@
     create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
     create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
 
-
-    /*
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ins_1_binary) && $order->ins_1_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ins_1_binary));
-            fclose($pdf);
-        }
-    }
-
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/14.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ins_14_binary) && $order->ins_14_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ins_14_binary));
-            fclose($pdf);
-        }
-    }
-
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/77.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ins_77_binary) && $order->ins_77_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ins_77_binary));
-            fclose($pdf);
-        }
-    }
-
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/78.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ins_78_binary) && $order->ins_78_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ins_78_binary));
-            fclose($pdf);
-        }
-    }
-
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1650.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ebs_1650_binary) && $order->ebs_1650_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ebs_1650_binary));
-            fclose($pdf);
-        }
-    }
-
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1627.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ebs_1627_binary) && $order->ebs_1627_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ebs_1627_binary));
-            fclose($pdf);
-        }
-    }
-    */
 ?>
 
 <!-- BEGIN PROFILE SIDEBAR -->
@@ -164,10 +79,6 @@
                         <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive"
                              id="clientpic"
                              alt=""/>
-
-
-
-
                     <?php
                     }
                 ?>
@@ -198,7 +109,6 @@
 
             </div>-->
 
-
         </div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
@@ -220,9 +130,7 @@
                     type: 'post',
                     data: 'is_hired=' + hired,
                     success: function (msg) {
-
                     }
-
                 })
             });
         });
@@ -235,12 +143,12 @@
 
             <a href="#" class="btn btn-lg default yellow-stripe">
                 Road Test Score </a><a href="#" class="btn btn-lg yellow">
-                <i class="fa fa-bar-chart-o"></i><?php echo $order->road_test[0]->total_score;?></a>
+                <i class="fa fa-bar-chart-o"></i><?php echo $order->road_test[0]->total_score; ?></a>
         </div>
 
 
         <?php $settings = $this->requestAction('settings/get_settings');
-            $uploaded_by = $this->requestAction("documents/getUser/".$order->user_id);
+            $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
         ?>
         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
                 <strong>Orders</strong></p>
@@ -762,7 +670,7 @@
             <!-- BEGIN PORTLET -->
 
 
-            <?php include('subpages/documents/recruiter_notes.php');?>
+            <?php include('subpages/documents/recruiter_notes.php'); ?>
 
 
             <!-- END PORTLET -->
@@ -863,7 +771,8 @@ MEE Order	 </span>
 															<span class="task-title-sp">
 
                                                             Confirmation  </span>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>                                            &#x2713;
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
 
 
                                         </div>

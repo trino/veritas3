@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -13,7 +13,7 @@ class ClientsController extends AppController {
     public $paginate = [
             'limit' => 10,
             'order' => ['id' => 'desc']
-            
+
         ];
      public function initialize() {
         parent::initialize();
@@ -22,7 +22,7 @@ class ClientsController extends AppController {
         {
             $this->redirect('/login');
         }
-        
+
     }
     function upload_img($id="")
     {
@@ -39,7 +39,7 @@ class ClientsController extends AppController {
                  if(isset($id)){
                 $_POST['image'] = $rand;
                 $img = TableRegistry::get('clients');
-                
+
                 //echo $s;die();
                 $query = $img->query();
                         $query->update()
@@ -48,8 +48,8 @@ class ClientsController extends AppController {
                         ->execute();
                 }
                         echo $rand;
-                
-                 
+
+
             }
             else
             {
@@ -64,23 +64,23 @@ class ClientsController extends AppController {
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
-            
+
         }
 		$this->set('client', $this->paginate($this->Clients));
 	}
-    
+
     function search()
     {
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-        
+
         if($setting->client_list==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
-            
+
         }
-		
-        
+
+
         $search = $_GET['search'];
         $searchs = strtolower($search);
         $querys = TableRegistry::get('Clients');
@@ -89,7 +89,7 @@ class ClientsController extends AppController {
         ->orWhere(['LOWER(description) LIKE' => '%'.$searchs.'%'])
         ->orWhere(['LOWER(company_name) LIKE' => '%'.$searchs.'%'])
         ->orWhere(['LOWER(company_address) LIKE' => '%'.$searchs.'%'])->order(['id'=>'DESC']);
-        $this->set('client', $this->paginate($this->Clients)); 
+        $this->set('client', $this->paginate($this->Clients));
         $this->set('client',$query);
         $this->set('search_text',$search);
         $this->render('index');
@@ -99,12 +99,12 @@ class ClientsController extends AppController {
 
 	public function view($id = null) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-        
+
         if($setting->client_list==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
-            
+
         }
 
         $querys = TableRegistry::get('Clients');
@@ -114,7 +114,7 @@ class ClientsController extends AppController {
 		//$this->set('disabled',1);
         //$this->render('add');
 	}
-    
+
 
 /**
  * Add method
@@ -157,7 +157,7 @@ class ClientsController extends AppController {
                     }
                 }
                 }
-                
+
             }
         }
         $query2 = $querys->query();
@@ -171,7 +171,7 @@ class ClientsController extends AppController {
     {
         $querys = TableRegistry::get('Clients');
         $query = $querys->find()->where(['id' => $id])->first();
-        
+
         if($status=='yes'){
         if($query->profile_id=='')
         {
@@ -204,7 +204,7 @@ class ClientsController extends AppController {
                     }
                 }
                 }
-                
+
             }
         }
         $query2 = $querys->query();
@@ -216,12 +216,13 @@ class ClientsController extends AppController {
     }
 	public function add() {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-        
+
+
         if($setting->client_create==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
-            
+
         }
         $rec='';
         $con='';
@@ -229,44 +230,44 @@ class ClientsController extends AppController {
         if(isset($_POST['recruiter_id'])){
         foreach($_POST['recruiter_id'] as $ri)
         {
-        	if($count==1)	
+        	if($count==1)
         	   $rec = $ri;
         	else
         	   $rec = $rec.','.$ri;
             $count++;
-        
+
         }
         }
         unset($_POST['recruiter_id']);
         $_POST['recruiter_id'] = $rec;
-        
+
         if(isset($_POST['contact_id'])){
         foreach($_POST['contact_id'] as $ri)
         {
-        	if($count==1)	
+        	if($count==1)
         	$rec = $ri;
         	else
         	$rec = $rec.','.$ri;
             $count++;
-        
+
         }
         }
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
-        
+
 	   $clients = TableRegistry::get('Clients');
         $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
-		 
+
 			if ($clients->save($client)) {
-			 
+
              if(isset($_POST['division']))
              {
-                
+
              }
 				$this->Flash->success('User saved successfully.');
                 	return $this->redirect(['action' => 'edit',$client->id]);
-                    
+
 			} else {
 				$this->Flash->error('The user could not be saved. Please try again.');
 			}
@@ -277,22 +278,22 @@ class ClientsController extends AppController {
         $this->set('id','');
         $this->render('add');
 	}
-    
+
     public function saveClients($id=0) {
-	   
+
         $rec='';
         $con='';
         $count=1;
         if(isset($_POST['profile_id'])){
-            
+
         foreach($_POST['profile_id'] as $ri)
         {
-        	if($count==1)	
+        	if($count==1)
         	   $rec = $ri;
         	else
         	   $rec = $rec.','.$ri;
             $count++;
-        
+
         }
         }
         unset($_POST['profile_id']);
@@ -302,15 +303,15 @@ class ClientsController extends AppController {
         if(isset($_POST['contact_id'])){
         foreach($_POST['contact_id'] as $ri)
         {
-        	if($count==1)	
+        	if($count==1)
         	   $rec = $ri;
         	else
         	   $rec = $rec.','.$ri;
             $count++;
-        
+
         }
         }
-        
+
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
         $clients = TableRegistry::get('Clients');
@@ -329,11 +330,11 @@ class ClientsController extends AppController {
         		if ($this->request->is('post')) {
         		 if ($clients->save($client)) {
                         if($_POST['division']!="")
-                        { 
+                        {
                             $division = nl2br($_POST['division']);
                             $dd = explode("<br />",$division);
                             $divisions['client_id']= $client->id;
-                             
+
                             foreach($dd as $d)
                             {
                                 $divisions['title']=trim($d);
@@ -342,9 +343,9 @@ class ClientsController extends AppController {
                                  $divs->save($div);
                                 unset($div);
                             }
-                           
+
                             //die();
-                        
+
                         }
                         $this->loadModel('ClientDocs');
                         $this->ClientDocs->deleteAll(['client_id'=>$client->id]);
@@ -383,10 +384,10 @@ class ClientsController extends AppController {
             {
                 foreach($_POST as $k=>$v)
                 {
-                    
+
                     if($k != "client_doc")
                         $edit[$k] =$v;
-                    
+
                 }
                 //var_dump($edit);
                 $query2 = $clients->query();
@@ -396,12 +397,12 @@ class ClientsController extends AppController {
                         ->execute();
                         $this->Flash->success('Client saved successfully.');
                 if($_POST['division']!="")
-                { 
+                {
                     $division = nl2br($_POST['division']);
                     $dd = explode("<br />",$division);
                     $divisions['client_id']= $id;
                     $client_division = TableRegistry::get('client_divison');
-                    $client_division->deleteAll(array('client_id'=>$id)); 
+                    $client_division->deleteAll(array('client_id'=>$id));
                     foreach($dd as $d)
                     {
                         $divisions['title']=trim($d);
@@ -410,9 +411,9 @@ class ClientsController extends AppController {
                          $divs->save($div);
                         unset($div);
                     }
-                       
+
                         //die();
-                    
+
                 }
                         $this->loadModel('ClientDocs');
                         $this->ClientDocs->deleteAll(['client_id'=>$id]);
@@ -445,12 +446,12 @@ class ClientsController extends AppController {
  */
 	public function edit($id = null) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-        
+
         if($setting->client_edit==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
-            
+
         }
         $docs = TableRegistry::get('client_docs');
         $query = $docs->find();
@@ -463,10 +464,10 @@ class ClientsController extends AppController {
         $arr2 = explode(',',$client->contact_id);
 
 		if ($this->request->is(['patch', 'post', 'put'])) {
-		   
+
 			$clients = $this->Clients->patchEntity($client, $this->request->data);
 			if ($this->Clients->save($clients)) {
-			      
+
 				$this->Flash->success('User saved successfully.');
 				return $this->redirect(['action' => 'index']);
 			} else {
@@ -491,12 +492,12 @@ class ClientsController extends AppController {
  */
 	public function delete($id = null) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-        
+
         if($setting->client_delete==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
             	return $this->redirect("/");
-            
+
         }
 		$profile = $this->Clients->get($id);
 		$this->request->allowMethod(['post', 'delete']);
@@ -507,25 +508,25 @@ class ClientsController extends AppController {
 		}
 		return $this->redirect(['action' => 'index']);
 	}
-    
+
     function quickcontact()
     {
-        
+
     }
-    
+
     function getSub()
     {
         $sub = TableRegistry::get('Subdocuments');
         $query = $sub->find();
         $q = $query->select();
-        
-        
+
+
             $this->response->body($q);
             return $this->response;
-        
+
         die();
     }
-    
+
     function getCSubDoc($c_id,$doc_id)
     {
         $sub = TableRegistry::get('clientssubdocument');
@@ -535,13 +536,13 @@ class ClientsController extends AppController {
         $this->response->body($q);
         return $this->response;
     }
-    
+
     function displaySubdocs($id)
     {
         //var_dump($_POST);die();
         $user['client_id'] = $id;
         $display = $_POST; //defining new variable for system base below upcoming foreach
-        
+
         //for user base
         foreach($_POST as $k=>$v)
         {
@@ -554,7 +555,7 @@ class ClientsController extends AppController {
                     $query->select()
                     ->where(['client_id' => $id,'subdoc_id' => $k2]);
                     $check=$query->first();
-                    
+
                     if($v2 == '1'){
 
                     if($check)
@@ -567,11 +568,11 @@ class ClientsController extends AppController {
                     }
                     else
                     {
-                        
+
                        $query2 = $subp->query();
                         $query2->insert(['client_id','subdoc_id', 'display'])
                         ->values(['client_id' => $id,'subdoc_id' => $k2,'display'=>$v2])
-                        ->execute(); 
+                        ->execute();
                     }
                     }
                     else
@@ -589,33 +590,33 @@ class ClientsController extends AppController {
                            $query2 = $subp->query();
                             $query2->insert(['client_id','subdoc_id', 'display'])
                             ->values(['client_id'=>$id,'subdoc_id' => $k2,'display'=>0])
-                            ->execute(); 
-                        }  
+                            ->execute();
+                        }
                     }
-                    
+
                 }
             }
         }
         unset($display['clientC']);
         unset($display['client']);
-        
+
         //For System base
         foreach($display as $k=>$v)
         {
-            $subd = TableRegistry::get('Subdocuments'); 
-            $query3 = $subd->query(); 
+            $subd = TableRegistry::get('Subdocuments');
+            $query3 = $subd->query();
             $query3->update()
                         ->set(['display'=>$v])
                         ->where(['id' => $k])
-                        ->execute();      
+                        ->execute();
         }
-        
-        
+
+
         //var_dump($str);
         die('here');
     }
-   
-   
+
+
    function getProfile($id=null)
    {
     $profile = TableRegistry::get('Clients');
@@ -632,12 +633,12 @@ class ClientsController extends AppController {
         if($q->profile_id)
             $querys = $pro->find()->where(['id IN ('.$q->profile_id.')']);
             else
-            $querys=array();  
+            $querys=array();
             $this->response->body(($querys));
             return $this->response;
-        
+
    }
-   
+
    function getContact($id=null)
    {
     $contact = TableRegistry::get('Clients');
@@ -650,14 +651,14 @@ class ClientsController extends AppController {
         if($q->contact_id)
                 $querys = $pro->find()->where(['id IN ('.$q->contact_id.')']);
         else
-            $querys=array(); 
-             
+            $querys=array();
+
         $this->response->body(($querys));
         return $this->response;
-        
+
    }
 
-  
+
   function getDocCount($id=null)
   {
     $doc = TableRegistry::get('Documents');
@@ -665,8 +666,8 @@ class ClientsController extends AppController {
     $count = $query->select()->where(['client_id'=>$id]);
     $this->response->body(($count));
             return $this->response;
-  } 
-  
+  }
+
   function getOrderCount($id=null)
   {
     $doc = TableRegistry::get('Orders');
@@ -674,8 +675,8 @@ class ClientsController extends AppController {
     $count = $query->select()->where(['client_id'=>$id]);
     $this->response->body(($count));
             return $this->response;
-  } 
-  
+  }
+
   function countClientDoc($id=null,$doc_type=null)
   {
     $query = TableRegistry::get('Documents');
@@ -692,7 +693,7 @@ class ClientsController extends AppController {
     $this->response->body(($q));
         return $this->response;
     //return $q;
-        
+
    }
    function getAllClient()
    {
@@ -704,9 +705,9 @@ class ClientsController extends AppController {
     else
     {
         $q =$q->select()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" ']);
-            
-    }    
-            
+
+    }
+
     $this->response->body($q);
     return $this->response;
    }
@@ -722,48 +723,48 @@ class ClientsController extends AppController {
         else
         {
             $q =$q->select()->where(['(profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'") AND company_name LIKE "%'.$key.'%" ']);
-                
-        } 
+
+        }
         $this->set('clients',$q);
         $this->set('id',$id);
-        
+
    }
-   
+
    function getdivision($cid)
    {
         $query = TableRegistry::get('client_divison');
         $q = $query->find()->where(['client_id'=>$cid])->all();
          $this->response->body($q);
         return $this->response;
-        
+
    }
    function dropdown()
    {
     $this->layout = 'blank';
    }
-   
+
    function addprofile()
    {
         $query = TableRegistry::get('clients');
         $q = $query->find()->where(['id'=>$_POST['client_id']])->first();
         $profile_id = $q->profile_id;
         $pros = explode(",",$profile_id);
-                    
+
         $p_ids ="";
         if($_POST['add']=='1')
         {
-            
+
             array_push($pros,$_POST['user_id']);
             $pro_id = array_unique($pros);
-            
+
         }
         else
         {
             $pro_id = array_diff($pros, array($_POST['user_id']));
             //array_pop($pros,$_POST['user_id']);
-            
+
         }
-        
+
         foreach($pro_id as $k=>$p)
         {
             if(count($pro_id)==$k+1)
@@ -771,14 +772,14 @@ class ClientsController extends AppController {
             else
                 $p_ids .= $p.",";
         }
-        
+
         $query->query()->update()->set(['profile_id' => $p_ids])
         ->where(['id' => $_POST['client_id']])
         ->execute();
         //echo $p_ids;
         die();
    }
-   
-    
+
+
 }
 ?>

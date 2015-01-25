@@ -1,7 +1,7 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 <h3 class="page-title">
-			Orders <small>View/Edit/Delete Orders</small>
+			Orders <small>Orders Listing</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -28,13 +28,13 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="portlet box blue">
+        <div class="portlet box yellow">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-clipboard"></i>
                     Orders Listing
                 </div>
-            </div>    
+            </div>
             <div class="portlet-body">
 				<div class="chat-form">
 					<form action="<?php echo $this->request->webroot; ?>documents/orderslist" method="get">
@@ -47,7 +47,7 @@
 						<div class="col-md-3 col-sm-12">
 							<select class="form-control" name="submitted_by_id" style="">
 								<option value="">Submitted by</option>
-                                <?php 
+                                <?php
                                     foreach($users as $u) {
                                         ?>
                                         <option value="<?php echo $u->id;?>" <?php if(isset($return_user_id) && $return_user_id==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
@@ -63,7 +63,7 @@
 						<div class="col-md-3 col-sm-12">
 							<select class="form-control" name="type">
 								<option value="">Order Type</option>
-								<?php 
+								<?php
                                     foreach($type as $t)
                                     {
                                         ?>
@@ -83,7 +83,7 @@
 						<div class="col-md-3 col-sm-12">
 							<select class="form-control" name="client_id">
 								<option value=""><?php echo ucfirst($settings->client);?></option>
-								<?php 
+								<?php
                                     foreach($clients as $c)
                                     {
                                         ?>
@@ -113,16 +113,16 @@
                                 <th><?= $this->Paginator->sort('id');?></th>
              			        <th><?= $this->Paginator->sort('title');?></th>
                     			<th><?= $this->Paginator->sort('profile->title','Uploaded by');?></th>
-                    			<th><?= $this->Paginator->sort('profile->title;','Uploaded for');?></th>   
+                    			<th><?= $this->Paginator->sort('profile->title;','Uploaded for');?></th>
                                 <th><?= $this->Paginator->sort('client_id','Client');?></th>
-                                <th><?= $this->Paginator->sort('created','Created');?></th>               			
+                                <th><?= $this->Paginator->sort('created','Created');?></th>
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
                     	<tbody>
                         <?php
                         $row_color_class = "odd";
-                        
+
                         foreach ($orders as $order):
                                 //var_dump($order);
                             if($row_color_class=="even")
@@ -154,7 +154,7 @@
                                     <?php
                                     $super = $this->request->session()->read('Profile.super');
                                         if(isset($super) || isset($_GET['draft']))
-                                        {  
+                                        {
                                     if($sidebar->orders_edit=='1')
                                     {
                                         if(!isset($_GET['table']))
@@ -166,10 +166,10 @@
                                      if($sidebar->orders_delete=='1'){
                                         ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
                                         <?php
-                                         } } 
+                                         } }
                                          ?>
 
-                                        
+
 <?php                                   if($sidebar->orders_requalify=='1') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $order->id], ['class' => 'btn btn-warning']);
 ?>
                                         <?php echo $this->Html->link(__('View Score Card'), ['controller'=>'documents','action' => 'viewReport',$order->client_id, $order->id], ['class' => 'btn btn-success']);?>
@@ -211,5 +211,5 @@
     .actions{display:none}
     .paging_simple_numbers{display:none;}
     }
-    
+
 </style>

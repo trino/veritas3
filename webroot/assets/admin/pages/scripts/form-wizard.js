@@ -273,7 +273,7 @@ var FormWizard = function () {
                         {
                             //if($('#skip').val()!='1'){
                             
-                            alert('Please confirm that you have read the conditions');
+                            alert('Please confirm that you have read the conditions at the bottom of this page.');
                             $('#confirm_check').focus();
                             return false;
                            // }

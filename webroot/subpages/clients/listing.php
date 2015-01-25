@@ -92,7 +92,7 @@
 
                                         </td>
                                         <td><?= h($clients->company_name) ?></td>
-                                        <td><?= h($clients->description) ?></td>
+                                        <td  style="max-width: 350px;"><?= h($clients->description) ?></td>
                                         <!--<td><?= h($start_date) ?></td>
                     			<td><?= h($end_date) ?></td>-->
                                         <!--td><?= h($clients->site) ?></td-->

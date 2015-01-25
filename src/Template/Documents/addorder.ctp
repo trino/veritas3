@@ -3,7 +3,6 @@
 <?php
      $doc_ext = array('pdf','doc','docx','pdf');
 ?>
-       <input type="hidden" id="tablename" value="<?php echo $table;?>" />
 <?php
     if(isset($disabled))
         $is_disabled = 'disabled="disabled"';
@@ -11,6 +10,9 @@
         $is_disabled = '';
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
+
+       <input type="hidden" id="tablename" value="<?php echo $table;?>" />
+
 <h3 class="page-title">
     Create Order
 </h3>
@@ -122,13 +124,13 @@
                                     <div class="progress-bar progress-bar-info">
                                     </div>
                                 </div>
-                                <div style="position:absolute;background:#000;height:770px;width:100%;z-index:1000;opacity:0.2;display:none;" id="loading5">
+                                <div style="top:0;left:0;position:absolute;background:#000;height:100%;width:100%;z-index:1000;opacity:0.4;display:none;" id="loading5">
                                     <center><br />
                                         <br />
                                         <br />
                                         <br />
                                         <br />
-                                        <strong style="color: #FFF;font-size: 26px;">Generating Pdf...</strong>
+                                        <strong style="color: #FFF;font-size: 26px;">Please wait...</strong>
                                         <br /><br />
 
                                         <img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif" /></center>

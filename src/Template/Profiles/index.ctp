@@ -1,7 +1,7 @@
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 <?php $sidebar =$this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
-    <?php echo ucfirst($settings->profile); ?>s
+    <?php echo ucfirst($settings->profile); ?>s <small> <?php echo ucfirst($settings->profile); ?>s Listing</small>
 </h3>
 
 <div class="page-bar">

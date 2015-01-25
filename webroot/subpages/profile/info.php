@@ -120,22 +120,14 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
 
                                         <option
                                             value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
-                                            if($getProfileType->profile_type == 2)
-                                            {
-                                                ?> disabled="disabled"
-                                            <?php
-                                            }
+                                          
                                         ?>>
                                             Owner Operator
                                         </option>
 
                                         <option
                                             value="8" <?php if (isset($p) && $p->profile_type ==8) { ?> selected="selected" <?php }
-                                            if($getProfileType->profile_type == 2)
-                                            {
-                                                ?> disabled="disabled"
-                                            <?php
-                                            }
+                                            
                                         ?>>
                                             Owner Driver
                                         </option>
@@ -160,8 +152,8 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                                         <option value="7" <?php if(isset($p) && $p->driver==7)echo "selected='slected'";?>class="req_driver">FTL - TOYOTA SINGLE HWY</option>
                                         <option value="8" <?php if(isset($p) && $p->driver==8)echo "selected='slected'";?>class="req_driver">LCV - LCV UNITS</option>
                                         <option value="9" <?php if(isset($p) && $p->driver==9)echo "selected='slected'";?>class="req_driver">LOC - LOCAL</option>
-                                        <option value="10" <?php if(isset($p) && $p->driver==10)echo "selected='slected'";?>class="req_driver">OWNER - OPERATOR</option>
-                                        <option value="11" <?php if(isset($p) && $p->driver==11)echo "selected='slected'";?>class="req_driver">OWNER - DRIVER</option>
+                                        <!--<option value="10" <?php if(isset($p) && $p->driver==10)echo "selected='slected'";?>class="req_driver">OWNER - OPERATOR</option>
+                                        <option value="11" <?php if(isset($p) && $p->driver==11)echo "selected='slected'";?>class="req_driver">OWNER - DRIVER</option>-->
                                         <option value="12" <?php if(isset($p) && $p->driver==12)echo "selected='slected'";?>class="req_driver">SCD - SPECIAL COMMODITIES</option>
                                         <option value="13" <?php if(isset($p) && $p->driver==13)echo "selected='slected'";?>class="req_driver">SST-SANDRK- OPEN FUEL</option>
                                         <option value="14" <?php if(isset($p) && $p->driver==14)echo "selected='slected'";?>class="req_driver">SWD-SANDRK</option>
@@ -222,8 +214,16 @@ $getProfileType = $this->requestAction('profiles/getProfileType/'.$this->Session
                 </div>
 
                             <div class="row">
+                                
+                                <div class="col-md-4">
+                                    <div class="form-group">
 
-
+                                    <label class="control-label">ISB ID</label>
+                                    <input <?php echo $is_disabled ?> name="isb_id" type="text"
+                                                                      placeholder="eg. 123"
+                                                                      class="form-control req_driver" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>/>
+                                </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label">Last Name</label>

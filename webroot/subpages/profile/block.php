@@ -307,6 +307,21 @@
                                                         No </label>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td class="vtop">Show Logo</td>
+                                                <td>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[logo]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->logo == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[logo]"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->logo == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
                                         </table>
                                         <!--end profile-settings-->
 

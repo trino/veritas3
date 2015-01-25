@@ -342,7 +342,7 @@
                 <!--<li class="last">
 					<img src="<?php echo $this->request->webroot;?>img/logos/ISBWhite.png" />
                </li>-->
-
+                <?php if($settings->logo == '1'){?>
 				<li class="sidebar-toggler-wrapper">
 					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					<!--<div class="sidebar-toggler">
@@ -353,7 +353,7 @@
 
 					<img src="<?php echo $this->request->webroot.'img/logos/'.$logo1;?>" class="secondary_logo"  />
 				</li>
-				
+				<?php }?>
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>

@@ -144,7 +144,22 @@
     }
     */
 ?>
-
+<h3 class="page-title">
+    View Report
+</h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="<?php echo $this->request->webroot;?>">Dashboard</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="">View Report
+            </a>
+        </li>
+    </ul>
+</div>
 <!-- BEGIN PROFILE SIDEBAR -->
 <div class="profile-sidebar">
     <!-- PORTLET MAIN -->
@@ -235,7 +250,7 @@
 
             <a href="#" class="btn btn-lg default yellow-stripe">
                 Road Test Score </a><a href="#" class="btn btn-lg yellow">
-                <i class="fa fa-bar-chart-o"></i><?php echo $order->road_test[0]->total_score;?></a>
+                <i class="fa fa-bar-chart-o"></i><?php if(isset($order->road_test[0]->total_score))echo $order->road_test[0]->total_score;?></a>
         </div>
 
 
@@ -890,12 +905,12 @@
                                 <!-- START TASK LIST -->
                                 <ul class="task-list">
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <input type="hidden" value="1" name="test">
 
                                             <div class="checker"><span><input type="checkbox" class="liChild" value="2"
                                                                               name="test"></span></div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
 															<span class="task-title-sp">
 															Pre-screening form
@@ -908,10 +923,10 @@
 
                                     </li>
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
 															<span class="task-title-sp">
 															Driver Application	 </span>
@@ -922,10 +937,10 @@
 
                                     </li>
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
 															<span class="task-title-sp">
 
@@ -936,10 +951,10 @@ Road Test 	 	</span>
 
                                     </li>
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
 															<span class="task-title-sp">
 
@@ -951,10 +966,10 @@ MEE Order	 </span>
 
                                     </li>
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
 															<span class="task-title-sp">
 

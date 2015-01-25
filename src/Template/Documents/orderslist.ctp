@@ -81,19 +81,22 @@
                         ?>
                         <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByClient" method="get">-->
 						<div class="col-md-3 col-sm-12">
-							<select class="form-control" name="client_id">
+							<select class="form-control showdivision" name="client_id">
 								<option value=""><?php echo ucfirst($settings->client);?></option>
 								<?php 
                                     foreach($clients as $c)
                                     {
                                         ?>
-                                        <option value="<?php echo $c->id;?>" <?php if(isset($return_client_id) && $return_client_id==$c->id){?> selected="selected"<?php } ?> ><?php echo $c->title; ?></option>
+                                        <option value="<?php echo $c->id;?>" <?php if(isset($return_client_id) && $return_client_id==$c->id){?> selected="selected"<?php } ?> ><?php echo $c->company_name; ?></option>
                                         <?php
                                     }
                                  ?>
 
 							</select>
 						</div>
+                        <div class="col-md-3 col-sm-12 divisions">
+							
+                        </div>
                         <div class="col-md-1 col-sm-12">
 							<button type="submit" class="btn btn-primary">Search</button>
                         </div>
@@ -193,6 +196,44 @@
         </div>
         </div>
         </div>
+<script>
+$(function(){
+    <?php if(isset($_GET['division'])&& $_GET['division']!=""){
+        //var_dump($_GET);
+        ?>
+        var client_id = <?php echo $_GET['client_id'];?>;
+        var division_id = <?php echo $_GET['division'];?>;
+        //alert(client_id+'__'+division_id);
+        if(client_id !="")
+        {
+            $.ajax({
+                type: "post",
+                data: "client_id="+client_id,
+                url: "<?php echo $this->request->webroot;?>clients/getdivisions/"+division_id,
+                success: function(msg){
+                    //alert(msg);
+                    $('.divisions').html(msg);
+                } 
+            });
+        }
+    <?php
+    }?>
+    $('.showdivision').change(function(){
+            var client_id = $(this).val();
+            if(client_id !="")
+            {
+                $.ajax({
+                    type: "post",
+                    data: "client_id="+client_id,
+                    url: "<?php echo $this->request->webroot;?>clients/getdivisions",
+                    success: function(msg){
+                        $('.divisions').html(msg);
+                    } 
+                });
+            }
+    });
+})
+</script>
 <style>
 @media print {
     .page-header{display:none;}

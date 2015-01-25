@@ -779,6 +779,24 @@ class ClientsController extends AppController {
         die();
    }
    
+   function getdivisions($did="")
+   {
+        $cid = $_POST['client_id'];
+        $query = TableRegistry::get('client_divison');
+        $q = $query->find()->where(['client_id'=>$cid])->all();
+        if(count($q)>0){
+            echo "<select class='form-control' name='division'>";
+            foreach($q as $d)
+            {
+               $sel = ($did==$d->id)?"selected='selected'":'';
+                echo "<option value='".$d->id."'".$sel." >".$d->title."</option>";
+            }
+            echo "</select>";
+        }
+        die();
+        
+   }
+   
     
 }
 ?>

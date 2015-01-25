@@ -1,20 +1,20 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->document);?>s <small>View/Edit/Delete <?php echo ucfirst($settings->document);?>s</small>
+			<?php echo ucfirst($settings->document);?>s  <small><?php echo ucfirst($settings->document);?>s Listing</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
 						<a href="<?php echo $this->request->webroot;?>">Dashboard</a>
-						<i class="fa fa-angle-right"></i>
+                        <i class="fa fa-angle-right"></i>
 					</li>
 					<li>
 						<a href=""><?php echo ucfirst($settings->document);?>s</a>
 					</li>
 				</ul>
-                <form action="<?php echo $this->request->webroot; ?>documents/index" method="get">
+                <!--form action="<?php echo $this->request->webroot; ?>documents/index" method="get">
 				<div class="page-toolbar">
 					<div id="dashboard-report-range" style="padding-bottom: 6px;" class="pull-right tooltips btn btn-fit-height grey-salt docum_date_filter" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>&nbsp;
@@ -22,7 +22,7 @@
 						<i class="fa fa-angle-down"></i>
 					</div>
 				</div>
-                </form>
+                </form-->
                 <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 			</div>
 
@@ -33,24 +33,20 @@
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-user"></i>
-                    <?php echo ucfirst($settings->document);?>
+                    <i class="fa fa-copy"></i>
+                    <?php echo ucfirst($settings->document);?>s Listing
                 </div>
             </div>    
             <div class="portlet-body">
 				<div class="chat-form">
 					<form action="<?php echo $this->request->webroot; ?>documents/index" method="get">
-						<div class="col-md-2 col-sm-12" style="padding-left:0;">
 
-							<input class="form-control" name="searchdoc" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
-
-						</div>
                        <!-- </form>-->
                         <?php
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
                         <!--<form action="<?php// echo $this->request->webroot; ?>documents/submittedBy" method="get">-->
-						<div class="col-md-3 col-sm-12">
+						<div class="col-md-3 col-sm-12" style="padding-left:0;">
 							<select class="form-control" name="submitted_by_id" style="">
 								<option value="">Submitted by</option>
                                 <?php 
@@ -102,6 +98,14 @@
 
 							</select>
 						</div>
+
+
+                        <div class="col-md-2 col-sm-12" >
+
+                            <input class="form-control" name="searchdoc" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
+
+                        </div>
+
                         <div class="col-md-1 col-sm-12">
 							<button type="submit" class="btn btn-primary" id="search">Search</button>
                         </div>
@@ -156,7 +160,7 @@
                                 <td><?= h($uploaded_by->username) ?></td>
                                 <td><?= h($docs->created) ?></td>
                                 
-                                <td class="actions">
+                                <td class="actions  util-btn-margin-bottom-5 ">
 
                                     <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view',$docs->client_id, $docs->id], ['class' => 'btn btn-info']);} ?>
                                     <?php  

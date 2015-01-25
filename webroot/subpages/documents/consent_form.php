@@ -101,7 +101,7 @@
                     </div>
                     <label class="control-label col-md-3">Applicants Email : </label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="applicants_email"/>
+                        <input type="text" class="form-control email1" name="applicants_email"/>
                     </div>
                 </div>
 
@@ -385,7 +385,12 @@
                 ?>
                 <?php
                                         if(!isset($sub2['con_at']))
-                                        {?>
+                                        {
+                                            $sub2['con_at'] = array();
+                                        }
+                                            if(!count($sub2['con_at']))
+                                        {
+                                            ?>
                     <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Attach Document: </label>
                     <div class="col-md-9">
@@ -397,14 +402,23 @@
                       <div class="form-group col-md-12">
                         <div id="more_consent_doc" data-consent="<?php if(isset($sub2['con_at']))echo count($sub2['con_at']);else echo '1';?>'">
                              <?php
-                                        if(isset($sub2['con_at']))
+                                        if(count($sub2['con_at']))
                                         {
                                             $at=0;
                                             foreach($sub2['con_at'] as $pa)
                                             {
                                                 $at++;
                                                 ?>
-                                                <div class="del_append_consent"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="consent<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" /><a href="#" id="consent<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"><?php echo $pa->attach_doc;?></span></div></div><div class="clearfix"></div>
+                                                <div class="del_append_consent">
+                                                    <label class="control-label col-md-3">Attach Document : </label>
+                                                    <div class="col-md-6 pad_bot">
+                                                        <input type="hidden" class="consent<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" />
+                                                        <a href="#" id="consent<?php echo $at;?>" class="btn btn-primary">Browse</a> 
+                                                        <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> 
+                                                        <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){$ext_arr = explode('.',$pa->attach_doc);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }else{ ?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>">Download</a><?php } }?></span>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
                                                 <script>
                                                 $(function(){
                                                     fileUpload('consent<?php echo $at;?>');
@@ -429,8 +443,12 @@
 
             <div class="form-group col-md-12">
             
-            <?php include('canvas/consent_signature_driver.php');?>
-            <?php include('canvas/consent_signature_witness.php');?>
+            <?php 
+
+            include('canvas/consent_signature_driver.php');?>
+            <?php
+            include('canvas/consent_signature_witness.php');
+            ?>
             </div>
             
             
@@ -449,10 +467,10 @@
 
 <script>
     $(function(){
-       
+       <?php if($this->request->params['action'] != 'vieworder' && $this->request->params['action']!= 'view'){?>
            $("#test3").jqScribble(); 
            $("#test4").jqScribble(); 
-       
+       <?php }?>
         
         <?php
         if($this->request->params['action']=='addorder')

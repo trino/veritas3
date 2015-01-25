@@ -266,8 +266,9 @@
             $this->render('add');
         }
 
-        public function vieworder($cid = null, $did = null)
+        public function vieworder($cid = null, $did = null,$table=null)
         {
+            $this->set('table',$table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
             $cn = $this->getUserDocumentcount();
@@ -347,8 +348,9 @@
          *
          * @return void
          */
-        public function addorder($cid = 0, $did = 0)
+        public function addorder($cid = 0, $did = 0,$table=null)
         {
+            $this->set('table',$table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
             $cn = $this->getUserDocumentcount();
@@ -473,13 +475,14 @@
                 $arr['sub_doc_id'] = $_POST['sub_doc_id'];
                 if(isset($_POST['uploaded_for']))
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
+                
                 $arr['client_id'] = $cid;
                 $arr['document_type'] = urldecode($_GET['document']);
                 $arr['created'] = date('Y-m-d H:i:s');
                 //$arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
                 //$arr['conf_driver_name'] = $_POST['conf_driver_name'];
                 //$arr['conf_date'] = $_POST['conf_date'];
-                if (!$did || $did == '0') {
+                if ((!$did || $did == '0' )&& $arr['sub_doc_id']!=7) {
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
                     $doc = $docs->newEntity($arr);
 
@@ -491,7 +494,7 @@
                         //echo "e";
                     }
 
-                } else {
+                } elseif($arr['sub_doc_id']!=7) {
                     $query2 = $docs->query();
                     $query2->update()
                         ->set($arr)
@@ -1245,6 +1248,12 @@
                     $sur = $survey->find()->where(['document_id' => $did])->first();
                     $this->set('survey', $sur);
                 }
+                elseif ($query->sub_doc_id == '7') {
+                    $attachments = TableRegistry::get('attachments');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                     $attachment = $attachments->find()->where(['document_id' => $did])->all();
+                    $this->set('attachments', $attachment);
+                }
 
                 $pre = TableRegistry::get('pre_screening_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
@@ -1481,43 +1490,48 @@
             $cond = '';
 
             if (isset($_GET['searchdoc']) && $_GET['searchdoc']) {
-                $cond = $cond . ' (title LIKE "%' . $_GET['searchdoc'] . '%" OR document_type LIKE "%' . $_GET['searchdoc'] . '%" OR description LIKE "%' . $_GET['searchdoc'] . '%")';
+                $cond = $cond . ' (orders.title LIKE "%' . $_GET['searchdoc'] . '%" OR orders.description LIKE "%' . $_GET['searchdoc'] . '%")';
             }
-
+            if (isset($_GET['table']) && $_GET['table']) {
+                if ($cond == '')
+                    $cond = $cond . ' orders.id IN (SELECT order_id FROM '.$_GET['table'].')';
+                else
+                    $cond = $cond . ' AND orders.id IN (SELECT order_id FROM '.$_GET['table'].')';
+            }
             if (!$this->request->session()->read('Profile.admin') && $setting->orders_others == 0) {
                 if ($cond == '')
-                    $cond = $cond . ' user_id = ' . $this->request->session()->read('Profile.id');
+                    $cond = $cond . ' orders.user_id = ' . $this->request->session()->read('Profile.id');
                 else
-                    $cond = $cond . ' AND user_id = ' . $this->request->session()->read('Profile.id');
+                    $cond = $cond . ' AND orders.user_id = ' . $this->request->session()->read('Profile.id');
             }
             if (isset($_GET['submitted_by_id']) && $_GET['submitted_by_id']) {
                 if ($cond == '')
-                    $cond = $cond . ' user_id = ' . $_GET['submitted_by_id'];
+                    $cond = $cond . ' orders.user_id = ' . $_GET['submitted_by_id'];
                 else
-                    $cond = $cond . ' AND user_id = ' . $_GET['submitted_by_id'];
+                    $cond = $cond . ' AND orders.user_id = ' . $_GET['submitted_by_id'];
             }
             if (isset($_GET['client_id']) && $_GET['client_id']) {
                 if ($cond == '')
-                    $cond = $cond . ' client_id = ' . $_GET['client_id'];
+                    $cond = $cond . ' orders.client_id = ' . $_GET['client_id'];
                 else
-                    $cond = $cond . ' AND client_id = ' . $_GET['client_id'];
+                    $cond = $cond . ' AND orders.client_id = ' . $_GET['client_id'];
             }
-            if (isset($_GET['type']) && $_GET['type']) {
+            if (isset($_GET['division']) && $_GET['division']) {
                 if ($cond == '')
-                    $cond = $cond . ' order_type = "' . $_GET['type'] . '"';
+                    $cond = $cond . ' division = "' . $_GET['division'] . '"';
                 else
-                    $cond = $cond . ' AND order_type = "' . $_GET['type'] . '"';
+                    $cond = $cond . ' AND division = "' . $_GET['division'] . '"';
             }
             if (isset($_GET['draft'])) {
                 if ($cond == '')
-                    $cond = $cond . ' draft = 1';
+                    $cond = $cond . ' orders.draft = 1';
                 else
-                    $cond = $cond . ' AND draft = 1';
+                    $cond = $cond . ' AND orders.draft = 1';
             } else {
                 if ($cond == '')
-                    $cond = $cond . ' draft = 0';
+                    $cond = $cond . ' orders.draft = 0';
                 else
-                    $cond = $cond . ' AND draft = 0';
+                    $cond = $cond . ' AND orders.draft = 0';
             }
             if ($cond) {
                 $order = $order->where([$cond])->contain(['Profiles']);
@@ -1756,33 +1770,35 @@
             return $this->response;
         }
 
-        function fileUpload()
+        function fileUpload($id="")
         {
             // print_r($_POST);die;
             if (isset($_FILES['myfile']['name']) && $_FILES['myfile']['name']) {
                 $arr = explode('.', $_FILES['myfile']['name']);
                 $ext = end($arr);
                 $rand = rand(100000, 999999) . '_' . rand(100000, 999999) . '.' . $ext;
-                $allowed = array(
-                    'doc',
-                    'docx',
-                    'pdf',
+                $allowed = array(                    
                     'jpg',
                     'jpeg',
                     'png',
                     'bmp',
-                    'gif'
+                    'gif',
+                    'pdf',
+                    'doc',
+                    'docx',
+                    'txt'
                 );
                 $check = strtolower($ext);
                 if (in_array($check, $allowed)) {
-
-                    $doc_type = $_POST['type'];
+                    if(isset($_POST['type']))
+                        $doc_type = $_POST['type'];
                     $destination = APP . '../webroot/attachments';
 
                     $source = $_FILES['myfile']['tmp_name'];
                     move_uploaded_file($source, $destination . '/' . $rand);
                     $saveData = array();
-                    $saveData['order_id'] = $_POST['order_id'];
+                    if(isset($_POST['order_id']))
+                        $saveData['order_id'] = $_POST['order_id'];
                     $saveData['path'] = $rand;
 
                     //saving in db
@@ -1899,7 +1915,7 @@
         public function getAttachedDoc($cid = 0, $order_id = 0)
         {
             // $id = $_GET['id'];
-            if ($_GET['form_type'] == "company_pre_screen_question.php") {
+            if($_GET['form_type'] == "company_pre_screen_question.php") {
                 $prescreen = TableRegistry::get('pre_screening_attachments');
                 $prescreenAttach = $prescreen
                     ->find()
@@ -1967,13 +1983,6 @@
                 ->execute();
             die();
         }
-
-
-
-
-
-
-
 
         public function save_ebs_pdi($orderid, $pdi){
 
@@ -2071,9 +2080,27 @@
             $model = TableRegistry::get('profiles');
 
             $driverinfo = $model->find()->where(['id' => $driverid])->first();
+
+            /*
+            $model2 = TableRegistry::get('consent_form_attachments');
+
+            $consent_form_attachments = $model2->find()->where(['order_id' => $orderid]);
+
+            $this->set(compact('consent_form_attachments'));
+*/
+
+
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
+
+
+
+
         }
+
+
+
+
         public function createPdf($oid)
         {
             $this->set('oid',$oid);
@@ -2145,7 +2172,7 @@
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
-                ->where(['orders.id' => $order_id])->contain(['Profiles'])->first();
+                ->where(['orders.id' => $order_id])->contain(['Profiles','Clients','RoadTest'])->first();
 
             $this->set('order',$order);
           //  debug($order);
@@ -2162,6 +2189,100 @@
                 ->where(['orders.id' => $oid])->execute();
 
             die();
+        }
+        function addattachment($cid, $did)
+        {
+            
+                if(isset($_POST) && isset($_GET['draft']))
+                {
+                    
+                    if (isset($_GET['draft']) && $_GET['draft'])
+                        $arr['draft'] = 1;
+                    else
+                        $arr['draft'] = 0;
+                    $arr['sub_doc_id'] = $_POST['sub_doc_id'];
+                    $arr['client_id'] = $cid;
+                    $arr['document_type'] = $_POST['document_type'];
+                    $arr['title'] = $_POST['title'];
+                    $arr['created'] = date('Y-m-d H:i:s');
+                    
+                    if (!$did || $did == '0') 
+                    {
+                       
+                        $arr['user_id'] = $this->request->session()->read('Profile.id');
+                        $docs = TableRegistry::get('Documents');
+                        $doc = $docs->newEntity($arr);
+                       
+                        if ($docs->save($doc)) 
+                        {
+                             
+                            $client_docs = array_unique($_POST['client_doc']);
+                            foreach($client_docs as $d)
+                            {
+                                if($d != "")
+                                {
+                                    $doczs = TableRegistry::get('attachments');
+                                    $ds['document_id']= $doc->id;
+                                    $ds['file'] =$d;
+                                     $docz = $doczs->newEntity($ds);
+                                     $doczs->save($docz);
+                                    unset($doczs);
+                                }
+                            }
+                            //die('1');
+                            $this->Flash->success('Document saved successfully.');
+                             $this->redirect(array('action'=>'index'));
+                        } 
+                        else {
+                            $this->Flash->error('Document could not be saved. Please try again.');
+                            $this->redirect(array('action'=>'index'));
+                        }
+    
+                    } 
+                    else 
+                    {
+                         $docs = TableRegistry::get('Documents');
+                        $query2 = $docs->query();
+                        $query2->update()
+                            ->set($arr)
+                            ->where(['id' => $did])
+                            ->execute();
+                           $this->loadModel('Attachments');
+                           /*$attach = TableRegistry::get('attachments');
+                           $at = $attach->find()->where(['document_id'=>$did])->all();
+                           foreach($at as $a)
+                           {
+                                @unlink(WWW_ROOT."attachments/".$a->file);
+                           }*/
+                        $this->Attachments->deleteAll(['document_id'=>$did]);
+                        $client_docs = array_unique($_POST['client_doc']);
+                        
+                        foreach($client_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $doczs = TableRegistry::get('attachments');
+                                    $ds['document_id']= $did;
+                                    $ds['file'] =$d;
+                                     $docz = $doczs->newEntity($ds);
+                                     $doczs->save($docz);
+                                    unset($doczs);
+                            }
+                        }
+                        $this->Flash->success('Document Updated successfully.');
+                        $this->redirect(array('action'=>'index'));
+                    }
+                    
+                }
+            
+        }
+        
+        function getprocessed($table,$oid)
+        {
+            $model = TableRegistry::get($table);
+            $q = $model->find()->where(['order_id'=>$oid])->count();
+            $this->response->body($q);
+            return $this->response;
         }
 
 

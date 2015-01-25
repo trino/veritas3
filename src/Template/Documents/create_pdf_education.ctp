@@ -61,10 +61,7 @@ $pdf->AddPage();
 $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
 // Set some content to print
-if($_SERVER['SERVER_NAME']=='localhost')
-$initials = 'http://localhost';
-else
-$initials = 'http://isbmeereports.com';
+$initials = W_ROOT;
 $html = '<strong>Past education</strong><br />';
 // Print text using writeHTMLCell()
 //$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
@@ -148,10 +145,7 @@ if(count($att)>0){
 $attach = "<br/><br/><strong>Attachments</strong>
                 <br/>
                 ";
-if($_SERVER['SERVER_NAME']=='localhost')
-                $initials = 'http://localhost';
-                else
-                $initials = 'http://isbmeereports.com';
+//$initials = $this->requestAction('/pages/getBase');
                 
                 if($att)
                 {

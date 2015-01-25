@@ -1,7 +1,7 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 <h3 class="page-title">
-			Orders <small>View/Edit/Delete Orders</small>
+			Orders <small>Orders Listing</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -15,11 +15,11 @@
 					</li>
 				</ul>
 				<div class="page-toolbar">
-					<div id="dashboard-report-range" style="padding-bottom: 6px;" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
+					<!--div id="dashboard-report-range" style="padding-bottom: 6px;" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>&nbsp;
 						<span class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
 						<i class="fa fa-angle-down"></i>
-					</div>
+					</div-->
 				</div>
                 <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 			</div>
@@ -28,13 +28,13 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="portlet box blue">
+        <div class="portlet box yellow">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-user"></i>
-                    <?php echo ucfirst($settings->orders);?>
+                    <i class="fa fa-clipboard"></i>
+                    Orders Listing
                 </div>
-            </div>    
+            </div>
             <div class="portlet-body">
 				<div class="chat-form">
 					<form action="<?php echo $this->request->webroot; ?>documents/orderslist" method="get">
@@ -47,7 +47,7 @@
 						<div class="col-md-3 col-sm-12">
 							<select class="form-control" name="submitted_by_id" style="">
 								<option value="">Submitted by</option>
-                                <?php 
+                                <?php
                                     foreach($users as $u) {
                                         ?>
                                         <option value="<?php echo $u->id;?>" <?php if(isset($return_user_id) && $return_user_id==$u->id){?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
@@ -56,14 +56,14 @@
                                  ?>
 							</select>
 						</div>
-
+                        <!--
                         <?php
                             $type = $this->requestAction("documents/getDocType");
                         ?>
 						<div class="col-md-3 col-sm-12">
 							<select class="form-control" name="type">
 								<option value="">Order Type</option>
-								<?php 
+								<?php
                                     foreach($type as $t)
                                     {
                                         ?>
@@ -74,26 +74,29 @@
                                  <option value="orders" <?php if(isset($return_type) && $return_type=='orders'){?> selected="selected"<?php } ?>>Orders</option>
                                  <option value="feedbacks" <?php if(isset($return_type) && $return_type=='feedbacks'){?> selected="selected"<?php } ?>>Feedbacks</option>
 							</select>
-						</div>
+						</div>-->
                         <!--</form>-->
                         <?php
                             $clients = $this->requestAction("documents/getAllClient");
                         ?>
                         <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByClient" method="get">-->
 						<div class="col-md-3 col-sm-12">
-							<select class="form-control" name="client_id">
+							<select class="form-control showdivision" name="client_id">
 								<option value=""><?php echo ucfirst($settings->client);?></option>
-								<?php 
+								<?php
                                     foreach($clients as $c)
                                     {
                                         ?>
-                                        <option value="<?php echo $c->id;?>" <?php if(isset($return_client_id) && $return_client_id==$c->id){?> selected="selected"<?php } ?> ><?php echo $c->title; ?></option>
+                                        <option value="<?php echo $c->id;?>" <?php if(isset($return_client_id) && $return_client_id==$c->id){?> selected="selected"<?php } ?> ><?php echo $c->company_name; ?></option>
                                         <?php
                                     }
                                  ?>
 
 							</select>
 						</div>
+                        <div class="col-md-3 col-sm-12 divisions">
+							
+                        </div>
                         <div class="col-md-1 col-sm-12">
 							<button type="submit" class="btn btn-primary">Search</button>
                         </div>
@@ -113,16 +116,16 @@
                                 <th><?= $this->Paginator->sort('id');?></th>
              			        <th><?= $this->Paginator->sort('title');?></th>
                     			<th><?= $this->Paginator->sort('profile->title','Uploaded by');?></th>
-                    			<th><?= $this->Paginator->sort('profile->title;','Uploaded for');?></th>   
+                    			<th><?= $this->Paginator->sort('profile->title;','Uploaded for');?></th>
                                 <th><?= $this->Paginator->sort('client_id','Client');?></th>
-                                <th><?= $this->Paginator->sort('created','Created');?></th>               			
+                                <th><?= $this->Paginator->sort('created','Created');?></th>
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
                     	<tbody>
                         <?php
                         $row_color_class = "odd";
-                        
+
                         foreach ($orders as $order):
                                 //var_dump($order);
                             if($row_color_class=="even")
@@ -142,29 +145,34 @@
                                 <td><?= h($uploaded_for->username) ?></td>
                                 <td><?= h($client->title) ?></td>
                                 <td><?= h($order->created) ?></td>
-                                <td class="actions">
+                                <td class="actions  util-btn-margin-bottom-5" >
 
                                     <?php
                                       if($sidebar->orders_list=='1'){
-                                        
-                                        echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);} ?>
+                                        if(!isset($_GET['table']))
+                                        echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id], ['class' => 'btn btn-info']);
+                                        else
+                                        echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id,$order->id,$_GET['table']], ['class' => 'btn btn-info']);} ?>
+
                                     <?php
                                     $super = $this->request->session()->read('Profile.super');
                                         if(isset($super) || isset($_GET['draft']))
-                                        {  
+                                        {
                                     if($sidebar->orders_edit=='1')
                                     {
-                                        
+                                        if(!isset($_GET['table']))
                                         echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'addorder',$order->client_id, $order->id], ['class' => 'btn btn-primary']);
-                                        
+                                        else
+                                        echo $this->Html->link(__('Edit'), ['controller'=>'documents','action' => 'addorder',$order->client_id, $order->id,$_GET['table']], ['class' => 'btn btn-primary']);
+
                                     }
                                      if($sidebar->orders_delete=='1'){
                                         ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
                                         <?php
-                                         } } 
+                                         } }
                                          ?>
 
-                                        
+
 <?php                                   if($sidebar->orders_requalify=='1') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $order->id], ['class' => 'btn btn-warning']);
 ?>
                                         <?php echo $this->Html->link(__('View Score Card'), ['controller'=>'documents','action' => 'viewReport',$order->client_id, $order->id], ['class' => 'btn btn-success']);?>
@@ -193,6 +201,44 @@
         </div>
         </div>
         </div>
+<script>
+$(function(){
+    <?php if(isset($_GET['division'])&& $_GET['division']!=""){
+        //var_dump($_GET);
+        ?>
+        var client_id = <?php echo $_GET['client_id'];?>;
+        var division_id = <?php echo $_GET['division'];?>;
+        //alert(client_id+'__'+division_id);
+        if(client_id !="")
+        {
+            $.ajax({
+                type: "post",
+                data: "client_id="+client_id,
+                url: "<?php echo $this->request->webroot;?>clients/getdivisions/"+division_id,
+                success: function(msg){
+                    //alert(msg);
+                    $('.divisions').html(msg);
+                } 
+            });
+        }
+    <?php
+    }?>
+    $('.showdivision').change(function(){
+            var client_id = $(this).val();
+            if(client_id !="")
+            {
+                $.ajax({
+                    type: "post",
+                    data: "client_id="+client_id,
+                    url: "<?php echo $this->request->webroot;?>clients/getdivisions",
+                    success: function(msg){
+                        $('.divisions').html(msg);
+                    } 
+                });
+            }
+    });
+})
+</script>
 <style>
 @media print {
     .page-header{display:none;}
@@ -206,5 +252,5 @@
     .actions{display:none}
     .paging_simple_numbers{display:none;}
     }
-    
+
 </style>

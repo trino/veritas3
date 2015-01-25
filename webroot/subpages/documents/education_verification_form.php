@@ -53,11 +53,11 @@
                     <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Supervisor's Email</label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="supervisior_email[]" value="<?php echo $emp->supervisior_email;?>"  />
+                                    <input type="text" class="form-control email1" name="supervisior_email[]" value="<?php echo $emp->supervisior_email;?>"  />
                                 </div>
                                 <label class="control-label col-md-3">Secondary Email</label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="supervisior_secondary_email[]" value="<?php echo $emp->supervisior_secondary_email;?>"  />
+                                    <input type="text" class="form-control email1" name="supervisior_secondary_email[]" value="<?php echo $emp->supervisior_secondary_email;?>"  />
                                 </div>
                     </div>
                     
@@ -214,11 +214,11 @@
                     <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Supervisor's Email</label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="supervisior_email[]" />
+                                    <input type="text" class="form-control email1" name="supervisior_email[]" />
                                 </div>
                                 <label class="control-label col-md-3">Secondary Email</label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="supervisior_secondary_email[]" />
+                                    <input type="text" class="form-control email1" name="supervisior_secondary_email[]" />
                                 </div>
                     </div>
                     
@@ -345,7 +345,7 @@
                                                             {
                                                                 $at++;
                                                                 ?>
-                                                                <div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="edu<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" /><a href="#" id="edu<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_edu_doc">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attach_doc;?></span></div></div><div class="clearfix"></div>
+                                                                <div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="edu<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" /><a href="#" id="edu<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_edu_doc">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){$ext_arr = explode('.',$pa->attach_doc);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }else{ ?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>">Download</a><?php } }?></span></div></div><div class="clearfix"></div>
                                                                 <script>
                                                                 $(function(){
                                                                     fileUpload('edu<?php echo $at;?>');

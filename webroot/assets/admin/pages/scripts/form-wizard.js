@@ -3,6 +3,24 @@ if(path.replace('veritas3','')!=path)
     var base_url = 'http://localhost/veritas3/';
 else
     var base_url = 'http://isbmeereports.com/';
+var table=0
+$(function(){
+if($('#tablename').val()=='pre_screening')
+ table=0;
+else
+if($('#tablename').val()=='driver_application')
+    table=1;
+else
+if($('#tablename').val()=='road_test')
+   table=2;
+else
+if($('#tablename').val()=='consent_form')
+table= 3;
+
+
+
+    });
+
 
 var FormWizard = function () {
     return {
@@ -114,7 +132,7 @@ var FormWizard = function () {
                         error.insertAfter(element); // for other inputs, just perform default behavior
                     }
                 },
-                invalidHandler: function (event, validator) { //display error alert on form submit   
+                invalidHandler: function (event, validator) { //display error alert on form submit
                     success.hide();
                     error.show();
                     Metronic.scrollTo(error, -200);
@@ -135,7 +153,7 @@ var FormWizard = function () {
                     } else { // display success icon for other inputs
                         label
                             .addClass('valid') // mark the current input as valid and display OK icon
-                        .closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
+                            .closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
                     }
                 },
                 submitHandler: function (form) {
@@ -158,7 +176,7 @@ var FormWizard = function () {
                         $(this).html(input.attr("data-title"));
                     } else if ($(this).attr("data-display") == 'payment[]') {
                         var payment = [];
-                        $('[name="payment[]"]:checked', form).each(function(){ 
+                        $('[name="payment[]"]:checked', form).each(function(){
                             payment.push($(this).attr('data-title'));
                         });
                         $(this).html(payment.join("<br>"));
@@ -167,7 +185,12 @@ var FormWizard = function () {
             }
             var handleTitle = function(tab, navigation, index) {
                 var total = navigation.find('li').length;
+                if(table)
+                index = table;
                 var current = index + 1;
+                //else
+
+
                 // set wizard title
                 $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
                 // set done steps
@@ -182,50 +205,41 @@ var FormWizard = function () {
                 } else {
                     $('#form_wizard_1').find('.button-previous').show();
                 }
-                
+
                 if(current == (total-1))
                 {
-                    
-                    
+
+
                     $('.cont').html('Submit Order');
 
-                    
+                    $('#select_division').hide();
 
-                   // $('.cont').attr('id','');
+
+
+                    // $('.cont').attr('id','');
                 }
                 else{
-                $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
-                $('.cont').attr('id','draft');
+                    $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
+                    $('.cont').attr('id','draft');
                 }
                 if(current==total)
                 {
-                    $('.cont').attr('id','');
+                    $('.cont').attr('id','submit_ord');
+
+//                    $('.cont').attr('id','');
+                    $('#select_division').hide();
                 }
+
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();
                     $('.uploaded_for').hide();
-                    
+
                     var count = 10;
                     //alert($('#did').val()+'/'+$('#uploaded_for').val());
                     save_signature('1');
-                    $.ajax({
 
-                        url:base_url+'documents/webservice/0/0/'+$('#did').val()+'/'+$('#uploaded_for').val(),
-                    })
-                    var counter=setInterval(function(){
-                        count=count-1;
-                      $('.seconds').text(count);
-                      if (count <= 0)
-                      {
-                        
-                        clearInterval(counter);
-                         window.location=base_url;
-                         //counter ended, do something here
-                         return;
-                    }}, 1000); //1000 will  run it every 1 second
-                    
-                    
+
                     displayConfirm();
                 } else {
                     $('.uploaded_for').show();
@@ -242,21 +256,33 @@ var FormWizard = function () {
                 onTabClick: function (tab, navigation, index, clickedIndex) {
                     return false;
                     /*
-                    success.hide();
-                    error.hide();
-                    if (form.valid() == false) {
-                        return false;
-                    }
-                    handleTitle(tab, navigation, clickedIndex);
-                    */
+                     success.hide();
+                     error.hide();
+                     if (form.valid() == false) {
+                     return false;
+                     }
+                     handleTitle(tab, navigation, clickedIndex);
+                     */
                 },
                 onNext: function (tab, navigation, index) {
                     success.hide();
                     error.hide();
+                    if($(".tab-pane.active").attr('id') == 'tab2')
+                    {
+                        if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')
+                        {
+                            //if($('#skip').val()!='1'){
+                            
+                            alert('Please confirm that you have read the conditions at the bottom of this page.');
+                            $('#confirm_check').focus();
+                            return false;
+                           // }
+                        }
+                    }
 
                     /*if (form.valid() == false) {
-                        return false;
-                    }*/
+                     return false;
+                     }*/
 
                     handleTitle(tab, navigation, index);
                 },
@@ -268,14 +294,23 @@ var FormWizard = function () {
                 },
                 onTabShow: function (tab, navigation, index) {
                     var total = navigation.find('li').length;
+                    if(table){
+                        index = table;
+                        $('.form-wizard .tab-pane').removeClass('active');
+                        $('.form-wizard .changeactive').attr('class','tab-pane active');
+                        $('#subtab_2_1').addClass('active');
+                        table = 0;
+                    }
+                    //alert(table);
                     var current = index + 1;
                     var $percent = (current / total) * 100;
                     $('#form_wizard_1').find('.progress-bar').css({
                         width: $percent + '%'
                     });
+
                 }
             });
-
+            if(table==0)
             $('#form_wizard_1').find('.button-previous').hide();
             $('#form_wizard_1 .button-submit').click(function () {
                 alert('Done!');

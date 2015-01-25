@@ -982,7 +982,7 @@
                     </ol>
                     
                     <p>I understand that I may receive an offer of employment once this process has been completed by Challenger based on successful results of the above. I also understand that I will not receive and am not entitled to any payment for participating in the Training (Orientation) Program.</p>
-                    <p>I confirm that I have read and understand the above conditions as part of the application process. I have been given an opportunity to ask questions regarding the same.</p>
+                    <h3>I confirm that I have read and understand the above conditions as part of the application process. I have been given an opportunity to ask questions regarding the same.</h3>
                      <div class="form-group col-md-12">
                                         <label class="control-label col-md-6">Dated at on the day of : </label>
                                         <div class="col-md-6">

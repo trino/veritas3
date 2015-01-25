@@ -44,7 +44,9 @@
 		</div>
         <div class="col-sm-6" style="width: 400px;">
             <input type="hidden" class="touched" value="0" />
-    		<canvas id="test<?php echo $_GET['num'];?>" style="border: 1px solid silver;border-radius: 5px;"></canvas>
+            <?php if($this->request->params['action']!= 'vieworder' && $this->request->params['action']!= 'view'){?>
+                <canvas id="test<?php echo $_GET['num'];?>" style="border: 1px solid silver;border-radius: 5px;"></canvas>
+            <?php }?>
     		<div class="links" style="margin-top: 5px;">
     			<strong style="display: none;">OPTIONS:</strong>
     			<a href="#" onclick='addImage();' style="display: none;">Add Image</a>

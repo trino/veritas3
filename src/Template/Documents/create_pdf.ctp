@@ -1,5 +1,5 @@
  <?php
- 
+$initials = W_ROOT;
 ob_start();
 error_reporting(1);
 require_once('tcpdf/tcpdf.php');
@@ -62,10 +62,8 @@ $pdf->AddPage();
 $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
 // Set some content to print
-if($_SERVER['SERVER_NAME']=='localhost')
-$initials = 'http://localhost';
-else
-$initials = 'http://isbmeereports.com';
+
+
 //$html = file_get_contents($initials.$this->request->webroot.'pdfs/getConsent/'.$oid);
 // Print text using writeHTMLCell()
 //$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
@@ -279,10 +277,7 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                 ";
                 
                 
-                if($_SERVER['SERVER_NAME']=='localhost')
-                $initials = 'http://localhost';
-                else
-                $initials = 'http://isbmeereports.com';
+                //$initials = $this->requestAction('/pages/getBase');
                 
                 if($att)
                 {

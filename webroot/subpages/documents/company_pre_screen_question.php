@@ -27,10 +27,10 @@
 											<input type="text" class="form-control" name="aplicant_name">
 										</div>
 									</div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6" id="email_cons">
 										<label class="col-md-6 control-label">Applicant's Email : </label>
 										<div class="col-md-6">
-											<input type="text" class="form-control" name="applicant_email">
+											<input type="text" class="form-control email1" name="applicant_email">
 										</div>
 									</div>
                                     <div class="form-group col-md-6">
@@ -613,7 +613,16 @@
                                             {
                                                 $at++;
                                                 ?>
-                                                <div class="pad_bot" id="del_pre"> <label class="control-label col-md-3">Attach Document : </label> <div class="col-md-6 pad_bot"><input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?><" /><a href="#" id="fileUpload<?php echo $at;?>"  class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attach_doc;?></span></div></div><div class="clearfix"></div>
+                                                <div class="pad_bot" id="del_pre"> 
+                                                    <label class="control-label col-md-3">Attach Document : </label> 
+                                                    <div class="col-md-6 pad_bot">
+                                                        <input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?><" />
+                                                            <a href="#" id="fileUpload<?php echo $at;?>"  class="btn btn-primary">Browse</a> 
+                                                            <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a><?php }?> 
+                                                            <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){$ext_arr = explode('.',$pa->attach_doc);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }else{?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>">Download</a><?php } }?></span>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
                                                 <script>
                                                 $(function(){
                                                     fileUpload('fileUpload<?php echo $at;?>');

@@ -31,7 +31,7 @@
 
 </style>
 
-<!-- can we remove the block above? -->
+
 <?php
     if (isset($disabled))
         $is_disabled = 'disabled="disabled"';
@@ -41,30 +41,8 @@
         $p = $profile;
 ?>
 
-
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 
-
-<!--div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                Widget settings form goes here
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn blue">Save changes</button>
-                <button type="button" class="btn default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div-->
-
-
-<!-- /.modal -->
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="theme-panel hidden-xs hidden-sm">
@@ -176,12 +154,26 @@
     </div>
 </div>
 <div class="clearfix"></div>
+<?php  $param = $this->request->params['action'];
+    switch ($param) {
+        case 'add':
+            $param2 = 'Create';
+            break;
+        case 'view':
+            $param2 = 'View';
+            break;
+        case 'edit':
+            $param2 = 'Edit';
+            break;
+    }
+
+?>
 
 
 <!-- END STYLE CUSTOMIZER -->
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
-    <?php echo ucfirst($settings->profile); ?> Manager
+    <?php echo $param2 . ' ' . ucfirst($settings->profile); ?>
 </h3>
 
 <div class="page-bar">
@@ -192,7 +184,7 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href=""><?php echo ucfirst($settings->profile); ?> Manager</a>
+            <a href=""><?php echo $param2 . ' ' . ucfirst($settings->profile); ?></a>
         </li>
     </ul>
     <?php
@@ -213,7 +205,7 @@
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
                     <?php if (isset($p->image) && $p->image!= "") { ?>
-                        <img 
+                        <img
                              src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image ?>" class="img-responsive" alt="" id="clientpic" />
 
                     <?php } else {
@@ -228,11 +220,11 @@
                     <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
                     <div class="input-icon">
-                    <a class="btn btn-success" href="javascript:void(0)" id="clientimg">
+                    <a class="btn btn-xs  btn-success" href="javascript:void(0)" id="clientimg">
                     <i class="fa fa-image"></i>
                       Add/Edit Image
                     </a>
-                    
+
                     </div>
                     </div>
                     </center>
@@ -251,8 +243,8 @@
                 </div>
 
             </div>
-            
-            <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) { 
+
+            <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) {
                 //&& $this->request->session()->read("Profile.id")==$id
                 ?>
                 <div class="portlet box blue scrolldiv">
@@ -267,8 +259,8 @@
                                 $clients = $this->requestAction('/clients/getAllClient/');
                                 $count = 0;
                                 if ($clients)
-                                    foreach ($clients as $o) 
-                                    { 
+                                    foreach ($clients as $o)
+                                    {
                                         $pro_ids = explode(",",$o->profile_id);
                                         ?>
 
@@ -288,6 +280,7 @@
                 </div>
             <?php } ?>
             <!-- END PORTLET MAIN -->
+            <?php include('subpages/documents/recruiter_notes.php');?>
         </div>
         <!-- END BEGIN PROFILE SIDEBAR -->
         <!-- BEGIN PROFILE CONTENT -->
@@ -308,18 +301,13 @@
                                 <?php
                                     if ($this->request['action'] != 'add') {
 
-                                        if ($this->request->session()->read('Profile.admin') || !isset($myuser)) {
+                                        if ($this->request->session()->read('Profile.admin') && $this->request->session()->read('Profile.id')==$id) {
                                             ?>
-                                            <?php if ($this->request->session()->read('Profile.admin') && $this->request['pass'][0] == $this->Session->read('Profile.id')) { ?>
+
                                                 <li>
                                                     <a href="#tab_1_4" data-toggle="tab">Display</a>
                                                 </li>
-                                            <?php
-                                            }
-
-                                            if ($this->request->session()->read('Profile.id') == $id && $this->request->session()->read('Profile.admin')) {
-                                                ?>
-
+                                            <?php if ($this->request->session()->read('Profile.super')) {?>
                                                 <li>
                                                     <a href="#tab_1_5" data-toggle="tab">Logos</a>
                                                 </li>
@@ -329,15 +317,18 @@
                                                 </li>
                                             <?php
                                             }
+                                            }
                                             ?>
-
+                                            <?php  if ($this->request->session()->read('Profile.admin'))
+                                            {?>
                                             <li>
                                                 <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                             </li>
 
                                         <?php
+                                            }
                                         }
-                                    }
+
                                 ?>
                             </ul>
                         </div>
@@ -384,11 +375,11 @@
 
 <script>
 
-           
+
 function initiate_ajax_upload(button_id){
 var button = $('#'+button_id), interval;
 new AjaxUpload(button,{
-    action: base_url+"profiles/upload_img/<?php if(isset($id))echo $id;?>",                      
+    action: "<?php echo $this->request->webroot;?>profiles/upload_img/<?php if(isset($id))echo $id;?>",
     name: 'myfile',
     onSubmit : function(file, ext){
         button.text('Uploading');
@@ -396,9 +387,9 @@ new AjaxUpload(button,{
         interval = window.setInterval(function(){
             var text = button.text();
             if (text.length < 13){
-                button.text(text + '.');					
+                button.text(text + '.');
             } else {
-                button.text('Uploading');				
+                button.text('Uploading');
             }
         }, 200);
     },
@@ -409,17 +400,17 @@ new AjaxUpload(button,{
             $("#clientpic").attr("src",'<?php echo $this->request->webroot;?>img/profile/'+response);
             $('#client_img').val(response);
             //$('.flashimg').show();
-            }                        		
-    });                
+            }
+    });
 }
                 $(function(){
-                                        
+
                                         <?php
                                         if(isset($id))
                                         {
-                                            
+
                                             ?>
-                                            
+
                                         initiate_ajax_upload('clientimg');
                                        $('.addclientz').click(function(){
                                         var client_id = $(this).val();
@@ -430,7 +421,7 @@ new AjaxUpload(button,{
                                         }
                                         else
                                             addclient='0';
-                                            
+
                                         $.ajax({
                                             type: "post",
                                             data: "client_id="+client_id+"&add="+addclient+"&user_id="+<?php echo $id;?>,
@@ -441,11 +432,11 @@ new AjaxUpload(button,{
                                         })
                                     });
                                        <?php
-                                        } 
+                                        }
                                         ?>
                                        $('#save_client_p1').click(function(){
                                         $('#save_client_p1').text('Saving..');
- 
+
         $("#pass_form").validate({
             rules: {
                 password: {
@@ -473,7 +464,7 @@ new AjaxUpload(button,{
 if($this->request->params['action']=='edit')
 {
     ?>
-    
+
 function searchClient()
 {
     var key = $('#searchClient').val();
@@ -494,7 +485,7 @@ $(function(){
     $('.scrolldiv').slimScroll({
         height: '250px'
     });
-    
+
 });
 </script>
 <style>

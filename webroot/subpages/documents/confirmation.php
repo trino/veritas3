@@ -19,13 +19,19 @@
     <div class="form-group col-md-12">
     <label class="control-label col-md-12">Please sign below to confirm your submission. </label>
     <input type="hidden" name="recruiter_signature" id="recruiter_signature" value="<?php if(isset($modal->recruiter_signature))echo $this->request->webroot.'canvas/'.$modal->recruiter_signature;?>" />
-    <?php include('canvas/confirmation_signature.php');?>
+    
+    <?php 
+
+    include('canvas/confirmation_signature.php');
+    ?>
     </div>
     <div class="clearfix"></div>
 
 <script>
 $(function(){
+    <?php if($this->request->params['action'] != 'vieworder'  && $this->request->params['action']!= 'view'){?>
    $("#test1").jqScribble(); 
+   <?php }?>
 });
 
 		function addImage()

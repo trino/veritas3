@@ -20,22 +20,34 @@ class OrdersTable extends Table {
  */
 public function initialize(array $config)
     {
+        /*$this->belongsTo('Profiles', [
+           'foreignKey' => 'user_id',]);
+        */
         $this->belongsTo('Profiles', [
-            'foreignKey' => 'user_id',]);
+            'foreignKey' => 'uploaded_for',
+            'className' =>'Uploadedfor'
+            ]);
         $this->hasMany('PreScreening', [
             'className' => 'PreScreening',
+            'dependent' => true,
             
         ]);
+        $this->belongsTo('Clients', [
+            'foreignKey' => 'client_id',]);
+       
         $this->hasMany('DriverApplication', [
             'className' => 'PreScreening',
+            'dependent' => true,
             
         ]);
         $this->hasMany('RoadTest', [
             'className' => 'RoadTest',
+            'dependent' => true,
             
         ]);
         $this->hasMany('ConsentForm', [
             'className' => 'ConsentForm',
+            'dependent' => true,
             
         ]);
          

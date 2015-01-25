@@ -5,7 +5,7 @@ else
 $is_disabled = '';
 ?>
 <h3 class="page-title">
-			Clients <small>Add/Edit Client</small>
+    <?php echo ucfirst($settings->client);?>s
 			</h3>
 
 			<div class="page-bar">
@@ -16,10 +16,10 @@ $is_disabled = '';
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Add/Edit Clients</a>
+						<a href="">Add/Edit <?php echo ucfirst($settings->client);?></a>
 					</li>
 				</ul>
-				
+
 			</div>
 <div class="row ">
 				<div class="col-md-12">
@@ -27,39 +27,39 @@ $is_disabled = '';
 					<div class="portlet box blue">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-user"></i> Add/Edit Clients
+								<i class="fa fa-gloabe"></i> Add/Edit <?php echo ucfirst($settings->client);?>
 							</div>
-							
+
 						</div>
 						<div class="portlet-body">
                         <form class="" role="form" action="" method="post">
 							<h4>Client Detail</h4>
 								<div class="form-group col-md-6">
-									
-								
-									
-										
+
+
+
+
 											<input <?php echo $is_disabled;?> type="text" name="phone" class="form-control form-control placeholder-no-fix" id="phone" placeholder="Title">
-									
-								
+
+
 
 								</div>
-                               
+
 								<div class="form-group col-md-6">
-									
-								
+
+
 										<div class="input-icon right">
-											
+
 											<textarea <?php echo $is_disabled;?>  class="form-control" name="address" id="address" placeholder="Description"></textarea>
-									
-										
+
+
 									</div>
 
                                 </div>
 
                                 <div class="clearfix"></div>
 
-                           
+
 							          <div class="form-group col-md-12">
                     <input class="form-control placeholder-no-fix"  <?php echo $is_disabled;?> type="text" name="fullname" placeholder="Enter name of your company">
                 </div>
@@ -345,16 +345,16 @@ $is_disabled = '';
 
 							<hr>
                             <h4>Add Image</h4>
-                            
-                            
+
+
                             <div class="form-group">
 									<label class="sr-only" for="exampleInputEmail22">Add Image</label>
 									<div class="input-icon">
-										
+
 										<a href="javascript:void(0)" <?php echo $is_disabled;?> class="btn btn-success"><i class="fa fa-envelope"></i> &nbsp; Add Profile image</a>
 									</div>
 							</div>
-                            
+
                             <hr>
                             <h4>Site/Date</h4>
                             <div class="form-group col-md-12">
@@ -389,9 +389,9 @@ $is_disabled = '';
                                 <p>&nbsp;</p>
                             <hr />
                             <h4>Add Members</h4>
-                            
+
                             <div class="form-group">
-                                
+
 
                                 <span>     John </span>
                                 <input <?php echo $is_disabled;?> type="checkbox" name="canView_contracts">
@@ -416,7 +416,7 @@ $is_disabled = '';
 
                             </div>
                             <hr />
-                            <h4>Add Contacts</h4>                            
+                            <h4>Add Contacts</h4>
                             <div class="form-group">
 
                             <span>     Tyrion </span>
@@ -441,12 +441,12 @@ $is_disabled = '';
                             <input <?php echo $is_disabled;?> type="checkbox" name="Email_deployment">
 
                             </div>
-                            
-                            
+
+
                             <hr/>
                             <div class="form-group">
-									
-									
+
+
 										<?php if(!$is_disabled){?>
 										<input type="submit" value="Submit" class="form-control btn btn-primary"/>
 									   <?php }?>
@@ -456,7 +456,7 @@ $is_disabled = '';
 						</div>
 					</div>
 					<!-- END SAMPLE FORM PORTLET-->
-			
+
 
 
 

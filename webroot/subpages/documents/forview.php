@@ -1,89 +1,80 @@
-<?
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ebs_1603_binary) && $order->ebs_1603_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ebs_1603_binary));
-            fclose($pdf);
+<?php
+    function return_link($pdi, $order_id)
+    {
+        if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.pdf')) {
+            $link = "orders/order_" . $order_id . '/' . $pdi . '.pdf';
+            return $link;
+
+        } else if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.html')) {
+            $link = "orders/order_" . $order_id . '/' . $pdi . '.html';
+            return $link;
+
+        } else if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.txt')) {
+            $link = "orders/order_" . $order_id . '/' . $pdi . '.txt';
+            return $link;
+
+        }
+        return false;
+    }
+
+    function create_files_from_binary($order_id, $pdi, $binary)
+    {
+        $createfile_pdf = "orders/order_" . $order_id . '/' . $pdi . '.pdf';
+        $createfile_html = "orders/order_" . $order_id . '/' . $pdi . 'html';
+        $createfile_text = "orders/order_" . $order_id . '/' . $pdi . 'txt';
+
+        if (!file_exists($createfile_pdf) && !file_exists($createfile_text) && !file_exists($createfile_html)) {
+
+            if (isset($binary) && $binary != "") {
+                file_put_contents('unknown_file', base64_decode($binary));
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mime = finfo_file($finfo, 'unknown_file');
+
+                if ($mime == "application/pdf") {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.pdf');
+                } elseif ($mime == "text/html") {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
+                } elseif ($mime == "text/plain") {
+                    /*
+                    $binary = base64_decode($binary);
+                    $binary = str_replace("<br />", "", $binary);
+                    $binary = str_replace("&nbsp;", "", $binary);
+                    file_put_contents('unknown_file', $binary);
+*/
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
+                } else {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
+                    //  echo "There was an error converting the file. Please contact the system administrator.";
+                }
+            }
         }
     }
 
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ins_1_binary) && $order->ins_1_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ins_1_binary));
-            fclose($pdf);
-        }
-    }
+    create_files_from_binary($order->id, '1603', $order->ebs_1603_binary);
+    create_files_from_binary($order->id, '1', $order->ins_1_binary);
+    create_files_from_binary($order->id, '14', $order->ins_14_binary);
+    create_files_from_binary($order->id, '77', $order->ins_77_binary);
+    create_files_from_binary($order->id, '78', $order->ins_78_binary);
+    create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
+    create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
 
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/14.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ins_14_binary) && $order->ins_14_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ins_14_binary));
-            fclose($pdf);
-        }
-    }
-
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/77.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ins_77_binary) && $order->ins_77_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ins_77_binary));
-            fclose($pdf);
-        }
-    }
-
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/78.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ins_78_binary) && $order->ins_78_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ins_78_binary));
-            fclose($pdf);
-        }
-    }
-
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1650.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ebs_1650_binary) && $order->ebs_1650_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ebs_1650_binary));
-            fclose($pdf);
-        }
-    }
-
-    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1627.pdf';
-    if (!file_exists($createfile)) {
-        if (isset($order->ebs_1627_binary) && $order->ebs_1627_binary != "") {
-            $file = APP . '../webroot/test.pdf';
-            $newfile = $createfile;
-            copy($file, $newfile);
-            $pdf = fopen($createfile, 'w');
-            fwrite($pdf, base64_decode($order->ebs_1627_binary));
-            fclose($pdf);
-        }
-    }
 ?>
-
+<h3 class="page-title">
+    View Report
+</h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="<?php echo $this->request->webroot;?>">Dashboard</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="">View Report
+            </a>
+        </li>
+    </ul>
+</div>
 <!-- BEGIN PROFILE SIDEBAR -->
 <div class="profile-sidebar">
     <!-- PORTLET MAIN -->
@@ -112,7 +103,7 @@
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-                <?php echo ucwords($order->profile->title); ?>
+                <?php echo ucwords($order->profile->fname); ?>   <?php echo ucwords($order->profile->lname); ?>
             </div>
             <div class="profile-usertitle-job">
                 Reference Number <?php echo ucwords($order->profile->id); ?>
@@ -120,7 +111,8 @@
 
             <div class="profile-usertitle-job">
                 <label class="uniform-inline">
-                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id;?>" class="checkdriver" />
+                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>"
+                           class="checkdriver" <?php if ($order->is_hired == '1') echo "checked"; ?> />
                     Was this driver hired? </label>
 
             </div>
@@ -132,35 +124,31 @@
 
             </div>-->
 
-
         </div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
     </div>
     <script>
-       $(function(){
-            
-        $('.checkdriver').click(function(){
-            
-            var oid = $(this).attr('id');
-            if($(this).is(":checked"))
-            {
-                var hired = 1;
-            }
-            else
-                var hired = 0;
-                
-            $.ajax({
-                url: "<?php echo $this->request->webroot;?>documents/savedriver/"+oid,
-                type: 'post',
-                data: 'is_hired='+hired,
-                success: function(msg){
-                    
+        $(function () {
+
+            $('.checkdriver').click(function () {
+
+                var oid = $(this).attr('id');
+                if ($(this).is(":checked")) {
+                    var hired = 1;
                 }
-                
-            })
+                else
+                    var hired = 0;
+
+                $.ajax({
+                    url: "<?php echo $this->request->webroot;?>documents/savedriver/" + oid,
+                    type: 'post',
+                    data: 'is_hired=' + hired,
+                    success: function (msg) {
+                    }
+                })
+            });
         });
-       });
     </script>
     <!-- END PORTLET MAIN -->
     <!-- PORTLET MAIN -->
@@ -170,17 +158,21 @@
 
             <a href="#" class="btn btn-lg default yellow-stripe">
                 Road Test Score </a><a href="#" class="btn btn-lg yellow">
-                <i class="fa fa-bar-chart-o"></i> 98% </a>
+
+                <i class="fa fa-bar-chart-o"></i><?php if(isset($order->road_test[0]->total_score))echo $order->road_test[0]->total_score;?></a>
+
         </div>
 
 
-        <?php $settings = $this->requestAction('settings/get_settings'); ?>
+        <?php $settings = $this->requestAction('settings/get_settings');
+            $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
+        ?>
         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
                 <strong>Orders</strong></p>
-            <p> Uploaded by: <strong>Recruiter ID # 34</strong></p>
-            <p>Uploaded on: <strong>2014-12-12 18:48:19</strong></p>
-            <p>Company: <strong>Lorem Ipsum</strong></p>
-            <p>Filed by: <strong>Lorem Ipsum</strong></p>
+            <p> Uploaded by: <strong>Recruiter ID # <?php echo $order->user_id; ?></strong></p>
+            <p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
+            <p>Company: <strong><?php echo $order->client->company_name; ?></strong></p>
+            <p>Filed by: <strong><?php echo $uploaded_by->fname; ?></strong></p>
 
 </span>
         <!--hr/>
@@ -267,14 +259,17 @@
                                     <td class="actions">
                                         <?php
                                             $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+
+
+                                            if (return_link('1603', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1603.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
+
                                     </td>
                                 </tr>
 
@@ -288,15 +283,14 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('1', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
@@ -310,15 +304,14 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/14.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('14', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/14.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
@@ -333,31 +326,17 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/77.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('77', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/77.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
-
-                                <!--tr class="odd" role="row">
-                                <td>FMCSA SMS Data</td>
-                                <td>
-										<span class="label label-sm label-danger">
-										Failed </span>
-                                </td>
-
-                                <td class="actions">
-                                    <a href="<?= $this->request->webroot . 'test.pdf' ?>" class="btn btn-primary">Download</a>
-
-                                </td>
-                            </tr-->
 
                                 <tr class="even" role="row">
 
@@ -369,15 +348,14 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/78.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('78', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/78.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
@@ -392,15 +370,14 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1650.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('1650', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1650.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
@@ -415,15 +392,14 @@
 
                                     <td class="actions">
                                         <?php
-                                            $createfile = APP . "../webroot/orders/order_" . $order->id . '/1627.pdf';
-                                            if (!file_exists($createfile)) {
-                                                ?>
+                                            if (return_link('1627', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
-                                            <?
-                                            } else { ?>
-                                                <a href="<? echo $this->request->webroot . 'orders/order_' . $order->id . '/1627.pdf'; ?>"
+                                            <? } else { ?>
+                                                <a target="_blank"
+                                                   href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
+
                                     </td>
                                 </tr>
 
@@ -464,6 +440,11 @@
                     </div>
                     <div class="portlet-body">
                         <div id="chart_8" class="chart" style="height: 370px; overflow: hidden; text-align: left;">
+
+                            <!--img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
+                                 src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/-->
+
+
                             <div style="position: relative;">
                                 <div style="">
                                     <svg version="1.1" style="position: absolute; width: 388px; height: 400px;">
@@ -704,102 +685,11 @@
     <div class="row">
         <div class="col-md-6">
             <!-- BEGIN PORTLET -->
-            <div class="portlet light">
-                <div class="portlet-title">
-                    <div class="caption caption-md">
-                        <i class="icon-bar-chart theme-font hide"></i>
-                        <span class="caption-subject font-blue-madison bold uppercase">Recruiter Notes</span>
-                        <span class="caption-helper"></span>
-                    </div>
-                    <div class="inputs">
-                        <div class="portlet-input input-inline input-small ">
 
-                        </div>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="slimScrollDiv"
-                         style="position: relative; overflow: hidden; width: auto; height: 305px;">
-                        <div class="scroller" style="height: 305px; overflow: hidden; width: auto;"
-                             data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2"
-                             data-initialized="1">
-                            <div class="general-item-list">
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Nick Larson</a>
-                                            <span class="item-label">3 hrs ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                        euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                    </div>
-                                </div>
 
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Nick Larson</a>
-                                            <span class="item-label">12 hrs ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-danger"></span> Pending</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                        elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-                                        erat volutpat.
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Richard Stone</a>
-                                            <span class="item-label">2 days ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-danger"></span> Open</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ut laoreet dolore
-                                        magna aliquam erat volutpat.
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Dan</a>
-                                            <span class="item-label">3 days ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-warning"></span> Pending</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet
-                                        dolore magna aliquam erat volutpat.
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Larry</a>
-                                            <span class="item-label">4 hrs ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                        euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slimScrollBar"
-                             style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 140.94696969697px; background: rgb(215, 220, 226);"></div>
-                        <div class="slimScrollRail"
-                             style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(234, 234, 234);"></div>
-                    </div>
-                </div>
-            </div>
+            <?php include('subpages/documents/recruiter_notes.php'); ?>
+
+
             <!-- END PORTLET -->
         </div>
         <div class="col-md-6">
@@ -829,181 +719,84 @@
                                 <!-- START TASK LIST -->
                                 <ul class="task-list">
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <input type="hidden" value="1" name="test">
 
                                             <div class="checker"><span><input type="checkbox" class="liChild" value="2"
                                                                               name="test"></span></div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
 															<span class="task-title-sp">
 															Pre-screening form
- </span>
-                                            <span class="label label-sm label-success">LoremIpsum</span>
-															<span class="task-bell">
-															<i class="fa fa-bell-o"></i>
-															</span>
-                                        </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>
-                                        <div class="task-title">
-															<span class="task-title-sp">
-															Driver Application	 </span>
-                                            <span class="label label-sm label-danger">LoremIpsum</span>
-                                        </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>
-                                        <div class="task-title">
-															<span class="task-title-sp">
+ </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/".$order->id);?>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success"><?php echo ($cnt>0)?"Processed":"Skiped";?></span>
+                                            &#x2713;
 
-Road Test 	 	</span>
-                                            <span class="label label-sm label-success">LoremIpsum</span>
-															<span class="task-bell">
-															<i class="fa fa-bell-o"></i>
-															</span>
-                                        </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>
-                                        <div class="task-title">
-															<span class="task-title-sp">
 
-MEE Order	 </span>
-                                            <span class="label label-sm label-warning">LoremIpsum</span>
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
                                             </div>
+                                        </div>-->
+                                        <div class="task-title">
+											<span class="task-title-sp">
+											Driver Application	 </span>
+                                            <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/".$order->id);?>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success"><?php echo ($cnt>0)?"Processed":"Skiped";?></span>
+                                            &#x2713;
+
                                         </div>
+
+                                    </li>
+                                    <li>
+                                        <!--<div class="task-checkbox">
+                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                            </div>
+                                        </div>-->
+                                        <div class="task-title">
+											<span class="task-title-sp">
+                                                Road Test
+                                            </span>
+                                            <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/".$order->id);?>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success"><?php echo ($cnt>0)?"Processed":"Skiped";?></span>
+                                            &#x2713;
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <!--<div class="task-checkbox">
+                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                            </div>
+                                        </div>-->
+                                        <div class="task-title">
+											<span class="task-title-sp">
+
+                                                MEE Order	 </span>
+                                            <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/".$order->id);?>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success"><?php echo ($cnt>0)?"Processed":"Skiped";?></span>
+                                            &#x2713;
+
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <!--<div class="task-checkbox">
+                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                            </div>
+                                        </div>-->
                                         <div class="task-title">
 															<span class="task-title-sp">
 
                                                             Confirmation  </span>
-                                            <span class="label label-sm label-info">Internal Products</span>
+                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            &#x2713;
+
+
                                         </div>
-                                        <div class="task-config">
-                                            <div class="task-config-btn btn-group">
-                                                <a class="btn btn-xs default" href="#" data-toggle="dropdown"
-                                                   data-hover="dropdown" data-close-others="true">
-                                                    <i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-check"></i> Complete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o"></i> Cancel </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </li>
 
                                 </ul>
@@ -1023,4 +816,3 @@ MEE Order	 </span>
     </div>
 </div>
 <!-- END PROFILE CONTENT -->
-</div>

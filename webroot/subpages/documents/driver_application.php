@@ -113,7 +113,7 @@
                 
                 <label class="control-label col-md-2">Email Address : </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" name="email"/>
+					<input type="text" class="form-control email1" name="email"/>
 				</div>
             </div>
             
@@ -707,7 +707,12 @@
                     </ol>
                     
                     <p>I understand that I may receive an offer of employment once this process has been completed by Challenger based on successful results of the above. I also understand that I will not receive and am not entitled to any payment for participating in the Training (Orientation) Program.</p>
-                    <p>I confirm that I have read and understand the above conditions as part of the application process. I have been given an opportunity to ask questions regarding the same.</p>
+
+                        <div class="note note-success">
+                            <h4><input type="checkbox" class="form-control" value="1" id="confirm_check" name="confirm_check" /> I confirm that I have read and understand the above conditions as part of the application process. I have been given an opportunity to ask questions.</h4>
+                        </div>
+
+
                      <div class="form-group col-md-12">
                                         <label class="control-label col-md-6">Dated at on the day of : </label>
                                         <div class="col-md-6">
@@ -717,15 +722,15 @@
                        
                        <div class="form-group col-md-12">
                                         <div class="col-md-6">
-										<input type="text" class="form-control" placeholder="Witness(Print Name)" name="witness_name"/>
+										<input type="text" class="form-control" placeholder="Witness (Print Name)" name="witness_name"/>
                                         </div>
                                         
                                         <div class="col-md-6">
-										<input type="text" class="form-control" placeholder="Applicant(Print Name)" name="applicant_name"/>
+										<input type="text" class="form-control" placeholder="Applicant (Print Name)" name="applicant_name"/>
                                         </div>
                        </div>
                        
-                       <div class="form-group col-md-12">
+                       <!--div class="form-group col-md-12">
                                         <div class="col-md-6">
 										<input type="text" class="form-control" placeholder="Witness Signature" name="witness_signature"/>
                                         </div>
@@ -733,10 +738,13 @@
                                         <div class="col-md-6">
 										<input type="text" class="form-control" placeholder="Applicant Signature" name="applicant_signature"/>
                                         </div>
-                       </div>
+                       </div-->
                        <?php
                                         if(!isset($sub['da_at']))
                                         {
+                                            $sub['da_at'] = array();
+                                            }
+                                            if(!count($sub['da_at'])){
                                             ?>
                        <div class="form-group col-md-12">
                                         <label class="control-label col-md-3">Attach Document : </label>
@@ -749,14 +757,14 @@
                       <div class="form-group col-md-12">
                         <div id="more_doc" data-driveApp="<?php if(isset($sub['da_at']))echo count($sub['da_at']);else echo '1';?>'">
                         <?php
-                                        if(isset($sub['da_at']))
+                                        if(count($sub['da_at']))
                                         {
                                             $at=0;
                                             foreach($sub['da_at'] as $pa)
                                             {
                                                 $at++;
                                                 ?>
-                                                <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_doc_path;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"><?php echo $pa->attached_doc_path;?></span></div></div><div class="clearfix"></div>
+                                                <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_doc_path;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"><?php echo $pa->attached_doc_path;?>  <?php if($pa->attached_doc_path){$ext_arr = explode('.',$pa->attached_doc_path);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>" style="max-width:120px;" /><?php }else{ ?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>">Download</a><?php } }?></span></div></div><div class="clearfix"></div>
                                                 <script>
                                                 $(function(){
                                                     fileUpload('driveApp<?php echo $at;?>');
@@ -791,9 +799,7 @@
             
         <div class="clearfix"></div>
  <script>
- $(function(){
-   $("#test2").jqScribble(); 
-});
+ 
  jQuery(function(){
     <?php
         if($this->request->params['action']=='addorder')

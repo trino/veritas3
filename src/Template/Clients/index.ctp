@@ -1,7 +1,7 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->client);?>s
+			<?php echo ucfirst($settings->client);?>s <small><?php echo ucfirst($settings->client);?>s Listing</small>
 			</h3>
     <div class="page-bar">
 				<ul class="page-breadcrumb">

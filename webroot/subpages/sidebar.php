@@ -59,7 +59,7 @@
 						<li <?php echo($this->request['controller']=='Clients' && $this->request['action']=='add')?'class="active"':'';?>>
 							<a href="<?php echo WEB_ROOT;?>clients/add">
 							<i class="icon-plus"></i>
-							Add new <?php echo ucfirst($settings->client);?></a>
+							Create <?php echo ucfirst($settings->client);?></a>
 						</li>
                         
                             <?php

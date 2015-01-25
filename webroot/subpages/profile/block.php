@@ -34,7 +34,7 @@
                                                                </div>
                                                            </div>
 
-                                                           <table class="table table-light ">
+                                                           <table class=" ">
                                             <tr>
                                                 <td class="vtop">
                                                     <?php echo ucfirst($settings->profile); ?>
@@ -169,7 +169,7 @@
                                                              <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[document_requalify]"
-                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Requalify 
+                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Requalify
                                                             </label>
                                                             
                                                             
@@ -212,7 +212,7 @@
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_requalify]" value="1" <?php if ($sidebar->orders_requalify == 1) echo "checked"; ?> /> Requalify
                                                             </label>
                                                             
-                                                            
+
                                                         </div>
                                                         <div class="clearfix"></div>
                                                 </td>
@@ -327,7 +327,7 @@
 
 
                                         <input type="hidden" name="block[user_id]" value="<?php echo $uid;?>" />
-                                        <table class="table table-light table-hover">
+                                        <table class="">
                                             <tr>
                                                 <td>
                                                     Add a <?=$settings->profile; ?>
@@ -518,8 +518,8 @@
                                                     <div class="">
                                 						<!--h1> Enable <?php echo ucfirst($settings->document);?>?</h1-->
                                                         <form action="#" method="post" id="displayform">
-                                                    <table class="table table-light table-hover">
-                                                        <tr><th></th><th class="">System</th><th class="" width="40%"><?php echo ucfirst($settings->profile);?></th></tr>
+                                                    <table class="">
+                                                        <tr><th   width="25%"></th><th class=""  width="25%">System</th><th class=""><?php echo ucfirst($settings->profile);?></th></tr>
                                                         <?php
                                                         $subdoc = $this->requestAction('/profiles/getSub');
                                                         
@@ -564,7 +564,7 @@
                                                         }
                                                         ?>
                                                     </table>
-                                                    
+
                                                     <?php
                                                     if(!isset($disabled))
                                                     {

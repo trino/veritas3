@@ -2,6 +2,9 @@
 <script src="<?php echo $this->request->webroot;?>js/ajaxupload.js" type="text/javascript"></script>
 <?php
      $doc_ext = array('pdf','doc','docx','pdf');
+?>
+       <input type="hidden" id="tablename" value="<?php echo $table;?>" />
+<?php
     if(isset($disabled))
         $is_disabled = 'disabled="disabled"';
     else
@@ -65,8 +68,16 @@
 
                                         $doc2 = $doc;
                                         $i = 1;
+                                        $end = 0;
+
                                         foreach($doc as $d)
                                         {
+                                            $act = 0;
+                                            if($d->table_name == $table)
+                                            {
+                                            $act=1;
+                                            $end = 1;
+                                            }
 
                                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.$d->id);
 
@@ -74,7 +85,7 @@
                                             <?php if($prosubdoc['display'] != 0 && $d->display==1){
                                             $j = $d->id;
                                             ?>
-                                            <li>
+                                            <li <?php if($table && $end==0)echo "class = 'done'";if($act==1){echo 'class="active"';}?>>
                                                 <a href="#tab<?php echo $j;?>" data-toggle="tab" class="step">
     												<span class="number">
     												<?php echo $i; ?> </span><br />
@@ -201,7 +212,7 @@
                             <?php foreach($doc2 as $d){
                                 $tab_count = $d->id;
                                 ?>
-                                <div class="<?php echo $tab;?> <?php if($tab=='tab-pane'){?>active<?php }?>" id="tab<?php echo $d->id; ?>">
+                                <div class="<?php echo $tab;?> <?php if(!($table)){if($tab=='tab-pane'){?>active<?php }}else{if($table==$d->table_name){?>active changeactive<?php }}?>" id="tab<?php echo $d->id; ?>">
                                     <?php
 
                                         include('subpages/documents/'.$d->form);

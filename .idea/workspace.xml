@@ -332,8 +332,7 @@
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm967919921.pdf" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm976461791.pdf" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\a1.pdf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/attachments.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/attachments.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/info.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/info.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/sidebar.php" afterPath="$PROJECT_DIR$/webroot/subpages/sidebar.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
@@ -396,8 +395,8 @@
       <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/sidebar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7175141" vertical-offset="2093" max-vertical-offset="6239">
-              <caret line="151" column="88" selection-start-line="151" selection-start-column="37" selection-end-line="151" selection-end-column="88" />
+            <state vertical-scroll-proportion="0.7175141" vertical-offset="2076" max-vertical-offset="6205">
+              <caret line="150" column="53" selection-start-line="150" selection-start-column="53" selection-end-line="150" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -865,6 +864,9 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a163c84f-7931-4688-a0c4-59462597eb2d" name="Default" comment="" />
@@ -1369,8 +1371,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7175141" vertical-offset="2093" max-vertical-offset="6239">
-          <caret line="151" column="88" selection-start-line="151" selection-start-column="37" selection-end-line="151" selection-end-column="88" />
+        <state vertical-scroll-proportion="0.7175141" vertical-offset="2076" max-vertical-offset="6205">
+          <caret line="150" column="53" selection-start-line="150" selection-start-column="53" selection-end-line="150" selection-end-column="53" />
           <folding />
         </state>
       </provider>

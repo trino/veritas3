@@ -128,9 +128,7 @@
 					</ul>
 					
 				</li>-->
-                 <?php if($sidebar->document==1){
-
-                     ?>
+                 <?php if($sidebar->document==1){ ?>
 				<li class="<?php echo(($this->request['controller']=='Documents' && ($this->request['action']=="index" || $this->request['action']=="add") ) && !isset($_GET['draft']))?'active open':'';?>">
 					<a href="javascript:;" >
 					<i class="icon-docs"></i>

@@ -113,7 +113,7 @@
                 
                 <label class="control-label col-md-2">Email Address : </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" name="email"/>
+					<input type="text" class="form-control email1" name="email"/>
 				</div>
             </div>
             

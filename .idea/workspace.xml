@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1b2b92f-9a0b-4d43-843b-40f852c8923d" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\wamp\www\veritas3\Veritas2\.idea\.name" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\veritas3\Veritas2\.idea\Veritas2.iml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\veritas3\Veritas2\.idea\encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\veritas3\Veritas2\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\veritas3\Veritas2\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\veritas3\Veritas2\.idea\scopes\scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\veritas3\Veritas2\.idea\vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\veritas3\Veritas2\.idea\workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ClientsController.php" afterPath="$PROJECT_DIR$/src/Controller/ClientsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/profile/info.php" afterPath="$PROJECT_DIR$/webroot/subpages/profile/info.php" />
     </list>
     <ignored path="veritas3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,17 +27,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Clients/add.ctp">
           <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72761196" vertical-offset="14434" max-vertical-offset="16405">
+            <state vertical-scroll-proportion="-6.724138" vertical-offset="14434" max-vertical-offset="16405">
               <caret line="888" column="54" selection-start-line="888" selection-start-column="54" selection-end-line="888" selection-end-column="54" />
               <folding>
                 <marker date="1422225021290" expanded="false" signature="51712:51737" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="14.277778" vertical-offset="4647" max-vertical-offset="8602">
+              <caret line="228" column="65" selection-start-line="228" selection-start-column="60" selection-end-line="228" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="info.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/profile/info.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.36481482" vertical-offset="619" max-vertical-offset="10557">
+              <caret line="48" column="86" selection-start-line="48" selection-start-column="86" selection-end-line="48" selection-end-column="86" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,6 +88,7 @@
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/Controller/ClientsController.php" />
         <option value="$PROJECT_DIR$/src/Template/Clients/add.ctp" />
+        <option value="$PROJECT_DIR$/webroot/subpages/profile/info.php" />
       </list>
     </option>
   </component>
@@ -129,6 +140,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subpages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veritas3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subpages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="profile" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -319,11 +384,27 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72761196" vertical-offset="14434" max-vertical-offset="16405">
+        <state vertical-scroll-proportion="-6.724138" vertical-offset="14434" max-vertical-offset="16405">
           <caret line="888" column="54" selection-start-line="888" selection-start-column="54" selection-end-line="888" selection-end-column="54" />
           <folding>
             <marker date="1422225021290" expanded="false" signature="51712:51737" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="14.277778" vertical-offset="4647" max-vertical-offset="8602">
+          <caret line="228" column="65" selection-start-line="228" selection-start-column="60" selection-end-line="228" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/profile/info.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36481482" vertical-offset="619" max-vertical-offset="10557">
+          <caret line="48" column="86" selection-start-line="48" selection-start-column="86" selection-end-line="48" selection-end-column="86" />
+          <folding />
         </state>
       </provider>
     </entry>

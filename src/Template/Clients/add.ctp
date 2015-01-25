@@ -794,6 +794,9 @@ Both </label>
 
 <script>
     $(function () {
+        $('input [type="email"]').keyup(function(){
+            $(this).removeAttr('style');
+        });
         initiate_ajax_upload('clientimg', 'asdas');
         initiate_ajax_upload('addMore1', 'doc');
         <?php
@@ -818,6 +821,7 @@ Both </label>
         }
         ?>
         $('#save_client_p1').click(function () {
+
             $('#save_client_p1').text('Saving..');
             var str = '';
             $('.recruiters input').each(function () {
@@ -869,13 +873,23 @@ Both </label>
                 data: str,
                 type: 'post',
                 success: function (res) {
-//alert(res);
-                    if (res != 'e' && res != 'email') {
+
+                    if (res != 'e' && res != 'email' && res!='Invalid Email') {
                         window.location = '<?php echo $this->request->webroot;?>clients/edit/' + res;
                     }
                     else if (res == 'email') {
                         alert('Email Already Used.');
                     }
+                    else
+                    if(res == 'Invalid Email')
+                    {
+                        $('#tab_1_1 input[type="email"]').focus();
+                        $('#tab_1_1 input[type="email"]').attr('style','border-color:red');
+                        $('html,body').animate({
+                                scrollTop: $('#tab_1_1').offset().top},
+                            'slow');
+                    }
+
                     else {
                         alert('Couldn\'t save your data');
                     }

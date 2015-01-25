@@ -317,13 +317,20 @@ class ClientsController extends AppController {
         $clients = TableRegistry::get('Clients');
         if(!$id)
         {
+
             $cnt = 0;
     	    if($_POST['sig_email']!="")
                 $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email']])->count();
             if($cnt>0)
             {
                 echo "email";
+                die();
             }
+            if((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!='')
+                {
+                    echo "Invalid Email";
+                    die();
+                }
             else
             {
                 $client = $clients->newEntity($_POST);
@@ -379,6 +386,11 @@ class ClientsController extends AppController {
             if($cnt>0)
             {
                 echo "email";
+            }
+            if((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!='')
+            {
+                echo "Invalid Email";
+                die();
             }
             else
             {

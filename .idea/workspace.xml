@@ -2,16 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a163c84f-7931-4688-a0c4-59462597eb2d" name="Default" comment="[edit] listing clients as per profile(user)">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/DocumentsController.php" afterPath="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/confirmation.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/confirmation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/canvas/confirmation_signature.php" afterPath="$PROJECT_DIR$/webroot/canvas/confirmation_signature.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/consent_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/canvas/consent_signature_driver.php" afterPath="$PROJECT_DIR$/webroot/canvas/consent_signature_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/canvas/consent_signature_witness.php" afterPath="$PROJECT_DIR$/webroot/canvas/consent_signature_witness.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" afterPath="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/home_blocks.php" afterPath="$PROJECT_DIR$/webroot/subpages/home_blocks.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/133947_708120.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/282290_888433.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/img/jobs/285778_720205.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/img/jobs/439614_486773.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/canvas/641845_775247.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/img/profile/738031_487570.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/img/jobs/758465_352438.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Clients/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Clients/add.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" afterPath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/forview.php" afterPath="$PROJECT_DIR$/webroot/subpages/forview.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/forview.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/forview.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" afterPath="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
     <ignored path="veritas3.iws" />
@@ -37,19 +40,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="consent_form.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot/subpages/documents/consent_form.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4629629" vertical-offset="7446" max-vertical-offset="8534">
-              <caret line="449" column="12" selection-start-line="449" selection-start-column="12" selection-end-line="449" selection-end-column="12" />
-              <folding>
-                <element signature="e#22588#24760#0#PHP" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#6;n#div#4;n#form#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="consent_signature_driver.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/canvas/consent_signature_driver.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -147,11 +137,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form-wizard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="form-wizard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51129365" vertical-offset="5072" max-vertical-offset="5559">
-              <caret line="313" column="64" selection-start-line="313" selection-start-column="64" selection-end-line="313" selection-end-column="64" />
+            <state vertical-scroll-proportion="-2.8214285" vertical-offset="5072" max-vertical-offset="5559">
+              <caret line="303" column="35" selection-start-line="303" selection-start-column="35" selection-end-line="303" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -193,6 +193,7 @@
         <option value="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
         <option value="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" />
         <option value="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -531,13 +532,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controller/TodoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1563" max-vertical-offset="2278">
-          <caret line="99" column="13" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Pdfs/get_consent_.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5780" max-vertical-offset="6205">
@@ -778,7 +772,6 @@
           <caret line="764" column="32" selection-start-line="764" selection-start-column="32" selection-end-line="764" selection-end-column="90" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="false" />
             <element signature="n#style#0;n#svg#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="false" />
@@ -969,8 +962,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51129365" vertical-offset="5072" max-vertical-offset="5559">
-          <caret line="313" column="64" selection-start-line="313" selection-start-column="64" selection-end-line="313" selection-end-column="64" />
+        <state vertical-scroll-proportion="-2.8214285" vertical-offset="5072" max-vertical-offset="5559">
+          <caret line="303" column="35" selection-start-line="303" selection-start-column="35" selection-end-line="303" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -803,7 +803,7 @@ $c = $client;
                 function initiate_ajax_upload(button_id, doc){
                 var button = $('#'+button_id), interval;
                 new AjaxUpload(button,{
-                    action: base_url+"clients/upload_img/<?php if(isset($id))echo $id;?>",                      
+                    action: "<?php echo $this->request->webroot;?>clients/upload_img/<?php if(isset($id))echo $id;?>",
                     name: 'myfile',
                     onSubmit : function(file, ext){
                         button.text('Uploading');

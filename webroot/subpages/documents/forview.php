@@ -239,8 +239,8 @@
         </div>
 
 
-        <?php $settings = $this->requestAction('settings/get_settings'); 
-                $uploaded_by = $this->requestAction("documents/getUser/".$order->user_id);
+        <?php $settings = $this->requestAction('settings/get_settings');
+            $uploaded_by = $this->requestAction("documents/getUser/".$order->user_id);
         ?>
         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
                 <strong>Orders</strong></p>
@@ -516,8 +516,8 @@
                     <div class="portlet-body">
                         <div id="chart_8" class="chart" style="height: 370px; overflow: hidden; text-align: left;">
 
-                            <img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
-                                 src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
+                            <!--img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
+                                 src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/-->
 
 
                             <div style="position: relative;">
@@ -762,7 +762,7 @@
             <!-- BEGIN PORTLET -->
 
 
-                                <?php include('subpages/documents/recruiter_notes.php');?>
+            <?php include('subpages/documents/recruiter_notes.php');?>
 
 
             <!-- END PORTLET -->

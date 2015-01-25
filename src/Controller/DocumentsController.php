@@ -266,8 +266,9 @@
             $this->render('add');
         }
 
-        public function vieworder($cid = null, $did = null)
+        public function vieworder($cid = null, $did = null,$table=null)
         {
+            $this->set('table',$table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
             $cn = $this->getUserDocumentcount();
@@ -347,8 +348,9 @@
          *
          * @return void
          */
-        public function addorder($cid = 0, $did = 0)
+        public function addorder($cid = 0, $did = 0,$table=null)
         {
+            $this->set('table',$table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
             $cn = $this->getUserDocumentcount();
@@ -1490,7 +1492,12 @@
             if (isset($_GET['searchdoc']) && $_GET['searchdoc']) {
                 $cond = $cond . ' (orders.title LIKE "%' . $_GET['searchdoc'] . '%" OR orders.description LIKE "%' . $_GET['searchdoc'] . '%")';
             }
-
+            if (isset($_GET['table']) && $_GET['table']) {
+                if ($cond == '')
+                    $cond = $cond . ' orders.id IN (SELECT order_id FROM '.$_GET['table'].')';
+                else
+                    $cond = $cond . ' AND orders.id IN (SELECT order_id FROM '.$_GET['table'].')';
+            }
             if (!$this->request->session()->read('Profile.admin') && $setting->orders_others == 0) {
                 if ($cond == '')
                     $cond = $cond . ' orders.user_id = ' . $this->request->session()->read('Profile.id');
@@ -1775,7 +1782,11 @@
                     'jpeg',
                     'png',
                     'bmp',
-                    'gif'
+                    'gif',
+                    'pdf',
+                    'doc',
+                    'docx',
+                    'txt'
                 );
                 $check = strtolower($ext);
                 if (in_array($check, $allowed)) {
@@ -2264,6 +2275,14 @@
                     
                 }
             
+        }
+        
+        function getprocessed($table,$oid)
+        {
+            $model = TableRegistry::get($table);
+            $q = $model->find()->where(['order_id'=>$oid])->count();
+            $this->response->body($q);
+            return $this->response;
         }
 
 

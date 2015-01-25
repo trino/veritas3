@@ -882,6 +882,51 @@
             echo json_encode($arr);
             die;
         }
+        public function getNotes($driver_id)
+        {
+            $q = TableRegistry::get('recruiter_notes');
+            $que = $q->find();
+            $query = $que->select()->where(['driver_id'=>$driver_id])->order(['id'=>'desc']);
+            //$query = $que->first();
+            $this->response->body($query);
+            return $this->response;
+            die();
+        }
+    public function getRecruiterById($id)
+    {
+        $q = TableRegistry::get('Profiles');
+        $que = $q->find();
+        $query = $que->select()->where(['id'=>$id])->first();
+        //$query = $que->first();
+        $this->response->body($query);
+        return $this->response;
+        die();
+    }
+        public function saveNote($id)
+        {
+            $note = TableRegistry::get('recruiter_notes');
+            $_POST['driver_id'] = $id;
+            $_POST['recruiter_id'] = $this->request->session()->read('Profile.id');
+            $_POST['created'] = date('Y-m-d');
+            $save = $note->newEntity($_POST);
+
+            if($note->save($save))
+            echo '<div class="item">
+            <div class="item-head">
+                <div class="item-details">
+                    <a href="" class="item-name primary-link">'.$this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.mname').' '.$this->request->session()->read('Profile.lname').'</a>
+                    <span class="item-label">'.$_POST['created'].'</span>
+                </div>
+                <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
+            </div>
+            <div class="item-body">
+                '.$_POST['description'].'
+            </div>
+        </div>';
+            else
+                echo 'error';
+            die();
+        }
 
     }
 ?>

@@ -1,12 +1,21 @@
-<div class="todo-tasklist">
+<!--div class="todo-tasklist">
     <div class="todo-tasklist-item todo-tasklist-item-border-green">
 
         <div class="todo-tasklist-item-title"><h2> Success!</h2> </div>
         <div class="todo-tasklist-item-text"><h4> Your order has been submitted. You will be notified once your order is processed. <br />
 
-                <!--You will be redirected to dashboard in <span class="seconds"><strong>10</strong></span> seconds. --></h4></div>
         <div class="todo-tasklist-controls pull-left">
 
         </div>
     </div>
+</div-->
+
+
+<div class="note note-success">
+    <h4 class="block">Your Order has been Submitted!</h4>
+    <p>
+        You will be notified once your order is processed.
+    </p>
+    <!--You will be redirected to dashboard in <span class="seconds"><strong>10</strong></span> seconds. -->
+
 </div>

@@ -709,7 +709,7 @@
                     <p>I understand that I may receive an offer of employment once this process has been completed by Challenger based on successful results of the above. I also understand that I will not receive and am not entitled to any payment for participating in the Training (Orientation) Program.</p>
 
                         <div class="note note-success">
-                            <p><input type="checkbox" class="form-control" value="1" id="confirm_check" name="confirm_check" /> <strong>I confirm that I have read and understand the above conditions as part of the application process. I have been given an opportunity to ask questions regarding the same.</strong></p>
+                            <h4><input type="checkbox" class="form-control" value="1" id="confirm_check" name="confirm_check" /> I confirm that I have read and understand the above conditions as part of the application process. I have been given an opportunity to ask questions.</h4>
                         </div>
 
 
@@ -764,7 +764,7 @@
                                             {
                                                 $at++;
                                                 ?>
-                                                <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_doc_path;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"><?php echo $pa->attached_doc_path;?>   <?php if($pa->attached_doc_path){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>" style="max-width:120px;" /><?php }?></span></div></div><div class="clearfix"></div>
+                                                <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_doc_path;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"><?php echo $pa->attached_doc_path;?>  <?php if($pa->attached_doc_path){$ext_arr = explode('.',$pa->attached_doc_path);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>" style="max-width:120px;" /><?php }else{ ?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>">Download</a><?php } }?></span></div></div><div class="clearfix"></div>
                                                 <script>
                                                 $(function(){
                                                     fileUpload('driveApp<?php echo $at;?>');

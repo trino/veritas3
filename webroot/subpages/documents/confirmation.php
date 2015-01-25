@@ -21,9 +21,9 @@
     <input type="hidden" name="recruiter_signature" id="recruiter_signature" value="<?php if(isset($modal->recruiter_signature))echo $this->request->webroot.'canvas/'.$modal->recruiter_signature;?>" />
     
     <?php 
-    if($this->request->params['action']!= 'vieworder' && $this->request->params['action']!= 'view'){
+
     include('canvas/confirmation_signature.php');
-    }?>
+    ?>
     </div>
     <div class="clearfix"></div>
 

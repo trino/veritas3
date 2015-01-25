@@ -14,7 +14,7 @@ $feed = $feeds;
 
 
 <form role="form" enctype="multipart/form-data" action="<?php echo $this->request->webroot;?>documents/addattachment/<?php echo $cid;?>/<?php echo $did;?>" method="post" id="form_tab7">
-    
+    <div class="row">
     <input type="hidden" class="document_type" name="document_type" value="Attachment"/>
     <input type="hidden" name="sub_doc_id" value="7" class="sub_docs_id" id="af" />
     <div class="form-group col-md-12">
@@ -69,10 +69,11 @@ $feed = $feeds;
     <div class="form-group col-md-12"  >
     <label class="control-label col-md-3">&nbsp;</label>
     <div class="col-md-6">
-        <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" >Add More Document</a>
+        <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" >Add More</a>
     </div>
     </div>
-    
+    </div>
+
  </form>
 <script>
 $(function()

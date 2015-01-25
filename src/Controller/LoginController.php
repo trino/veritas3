@@ -34,6 +34,7 @@ class LoginController extends AppController{
             $this->request->session()->write('Profile.username',$q->username);
             $this->request->session()->write('Profile.fname',$q->fname);
             $this->request->session()->write('Profile.lname',$q->lname);
+            $this->request->session()->write('Profile.mname',$q->mname);
             $this->request->session()->write('Profile.profile_type',$q->profile_type);
             if(($q->admin ==1) || ($q->super==1))
             {

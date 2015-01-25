@@ -9,8 +9,7 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
 
-<h3 class="page-title">
-			<?php echo ucfirst($settings->client);?> <small>Add/Edit <?php echo ucfirst($settings->client);?></small>
+<h3 class="page-title"><?php echo $client->company_name; ?>
 			</h3>
 
 			<div class="page-bar">
@@ -21,7 +20,10 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Add/Edit <?php echo ucfirst($settings->client);?></a>
+						<a href="<?php echo $this->request->webroot;?>clients"><?php echo ucfirst($settings->client);?>s</a>
+					</li>
+					<li>
+
 					</li>
 				</ul>
                 <?php
@@ -106,7 +108,6 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 									<div class="col-md-9">
 										<div class="row">
 											<div class="col-md-8 profile-info">
-												<h1><?php echo $client->company_name; ?></h1>
 
 												<p>
 												<?php echo $client->description;
@@ -123,7 +124,7 @@ $contact = $this->requestAction('clients/getContact/'.$id);
 
 
 												<a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg default yellow-stripe">
-													<!--?php echo $dc; ?--> <?=$settings->document?>s submitted </a><a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg yellow">
+													<?php echo $dc; ?> <?=$settings->document?>s Submitted </a><a href="<?php echo $this->request->webroot;?>documents/" class="btn btn-lg yellow">
 													View All <i class="fa fa-search"></i>
 												</a>
 
@@ -199,14 +200,11 @@ $contact = $this->requestAction('clients/getContact/'.$id);
                                             <tr><td>Signatory's name</td><td><?php if($client->sig_fname) echo $client->sig_fname."&nbsp"; else echo "Not Available";  if($client->sig_lname) echo $client->sig_lname; ?></td></tr>
                                             <tr><td>Signatory's phone number</td><td><?php if($client->company_phone) echo $client->company_phone; else echo "Not Available"; ?></td></tr>
                                             <tr><td>Signatory's email</td><td><?php if($client->sig_email) echo $client->sig_email; else echo "Not Available"; ?></td></tr>
-                                            <tr><td>Billing Address Street Name and Number</td><td><?php if($client->billing_address) echo $client->billing_address; else echo "Not Available"; ?></td></tr>
+                                            <tr><td>Address</td><td><?php if($client->billing_address) echo $client->billing_address; else echo "Not Available"; ?></td></tr>
                                             <tr><td>City</td><td><?php if($client->city) echo $client->city; else echo "Not Available"; ?></td></tr>
-                                            <tr><td>Postal code</td><td><?php if($client->postal) echo $client->postal; else echo "Not Available"; ?></td></tr>
                                             <tr><td>Province</td><td><?php if($client->province) echo $client->province; else echo "Not Available"; ?></td></tr>
-                                            <tr><td>Country</td><td><?php if($client->country) echo $client->country; else echo "Not Available"; ?></td></tr>
-                                            <tr><td><?php // echo ucfirst($settings->client);?>Admin's Name</td><td><?php if($client->admin_fname) echo $client->sig_email; else echo "Not Available"; ?></td></tr>
-                                            <tr><td><?php // echo ucfirst($settings->client);?>Admin's phone number</td><td><?php if($client->admin_phone) echo $client->sig_email; else echo "Not Available"; ?></td></tr>
-                                            <tr><td><?php //echo ucfirst($settings->client);?>Admin's email</td><td><?php if($client->sig_email) echo $client->admin_email; else echo "Not Available"; ?></td></tr>
+											<tr><td>Postal code</td><td><?php if($client->postal) echo $client->postal; else echo "Not Available"; ?></td></tr>
+
                                         </table>
 
 									</div>

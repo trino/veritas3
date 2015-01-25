@@ -3,6 +3,24 @@ if(path.replace('veritas3','')!=path)
     var base_url = 'http://localhost/veritas3/';
 else
     var base_url = 'http://isbmeereports.com/';
+var table=0
+$(function(){
+if($('#tablename').val()=='pre_screening')
+ table=0;
+else
+if($('#tablename').val()=='driver_application')
+    table=1;
+else
+if($('#tablename').val()=='road_test')
+   table=2;
+else
+if($('#tablename').val()=='consent_form')
+table= 3;
+
+
+
+    });
+
 
 var FormWizard = function () {
     return {
@@ -167,7 +185,12 @@ var FormWizard = function () {
             }
             var handleTitle = function(tab, navigation, index) {
                 var total = navigation.find('li').length;
+                if(table)
+                index = table;
                 var current = index + 1;
+                //else
+
+
                 // set wizard title
                 $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
                 // set done steps
@@ -250,7 +273,7 @@ var FormWizard = function () {
                         {
                             //if($('#skip').val()!='1'){
                             
-                            alert('Please confirm that you have read the conditions');
+                            alert('Please confirm that you have read the conditions at the bottom of this page.');
                             $('#confirm_check').focus();
                             return false;
                            // }
@@ -271,14 +294,23 @@ var FormWizard = function () {
                 },
                 onTabShow: function (tab, navigation, index) {
                     var total = navigation.find('li').length;
+                    if(table){
+                        index = table;
+                        $('.form-wizard .tab-pane').removeClass('active');
+                        $('.form-wizard .changeactive').attr('class','tab-pane active');
+                        $('#subtab_2_1').addClass('active');
+                        table = 0;
+                    }
+                    //alert(table);
                     var current = index + 1;
                     var $percent = (current / total) * 100;
                     $('#form_wizard_1').find('.progress-bar').css({
                         width: $percent + '%'
                     });
+
                 }
             });
-
+            if(table==0)
             $('#form_wizard_1').find('.button-previous').hide();
             $('#form_wizard_1 .button-submit').click(function () {
                 alert('Done!');

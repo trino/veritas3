@@ -415,7 +415,7 @@
                                                         <input type="hidden" class="consent<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" />
                                                         <a href="#" id="consent<?php echo $at;?>" class="btn btn-primary">Browse</a> 
                                                         <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> 
-                                                        <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }?></span>
+                                                        <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){$ext_arr = explode('.',$pa->attach_doc);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }else{ ?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>">Download</a><?php } }?></span>
                                                     </div>
                                                 </div>
                                                 <div class="clearfix"></div>

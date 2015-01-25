@@ -11,3 +11,5 @@ webroot/orders/*
 !empty
 *.tar.gz
 *.tar
+.idea/*
+*.idea

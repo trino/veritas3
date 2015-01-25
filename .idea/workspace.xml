@@ -2,202 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a163c84f-7931-4688-a0c4-59462597eb2d" name="Default" comment="[edit] listing clients as per profile(user)">
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\Consent_Form361639404.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\Consent_Form485510253.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\Consent_Form802960205.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\Consent_Form972094726.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\Education_Form834161376.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\EmplyomentForm292974853.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\EmplyomentForm861132812.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\a1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\example_001.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\121368_152597.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\131118_610699.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\142984_329010.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\154492_978713.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\166741_317062.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\173031_594824.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\182342_330026.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\210632_404238.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\218350_556427.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\219998_342303.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\226232_417202.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\247601_130734.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\264932_683868.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\268640_427090.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\285119_985855.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\321813_598037.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\323983_961108.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\343292_717294.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\351724_806695.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\362463_416323.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\362655_676342.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\384436_561343.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\386715_430139.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\390258_464773.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\395367_430990.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\401739_563046.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\406188_794912.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\416708_493090.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\418218_221810.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\429122_440026.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\461120_257461.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\462823_246200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\464828_900683.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\466091_166522.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\485015_302670.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\486251_817077.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\491278_929000.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\495480_697985.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\506851_390533.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\507565_327746.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\518853_166000.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\523495_657885.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\550686_274847.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\557992_255566.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\561672_347357.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\579827_343429.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\583645_492376.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\583975_809552.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\591033_327389.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\599465_416790.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\606716_194647.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\611111_223651.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\624459_919250.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\651239_364743.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\658242_579718.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\660577_651376.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\664532_857479.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\665768_471887.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\697821_492184.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\717871_737014.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\722924_500369.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\728005_815155.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\728417_986624.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\729956_366775.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\736767_321731.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\743743_885275.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\748248_420004.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\752752_854733.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\772802_199563.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\774450_885440.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\775988_265591.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\778652_654425.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\782662_163391.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\784613_615011.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\827899_270700.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\837704_931665.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\850558_701501.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\851959_924496.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\856958_484988.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\863577_179925.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\873052_523715.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\878958_281439.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\886511_725039.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\906588_621301.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\914608_539233.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\918920_713943.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\930181_900765.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\952182_697216.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\964651_847015.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\964843_207034.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\978054_845477.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\979455_168472.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\989920_563787.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\989974_766650.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\990661_152432.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\992034_723995.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\jobs\994561_155673.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\logos\MEELogoEmboss3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\order\226617_937240.docx" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\order\418603_741848.docx" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\137353_685598.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\164434_796835.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\196542_119995.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\219064_493640.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\226892_151553.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\234609_303741.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\238565_509844.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\241366_955834.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\300061_364468.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\301928_961795.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\321951_655194.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\329257_635913.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\371554_240075.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\405612_914855.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\415225_415802.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\429507_960064.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\434286_609106.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\475567_510311.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\484823_942651.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\510723_742343.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\523468_106454.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\570846_925402.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\579470_374822.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\668872_683621.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\702133_666894.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\740420_762091.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\767199_207583.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\781838_720452.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\841604_934906.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\870910_712075.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\877062_932681.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\912686_639044.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\919580_448294.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\935702_138452.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\962454_832513.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\img\profile\Chrysanthemum.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form101016235.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form157870483.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form240515136.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form324862670.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form342358398.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form353784179.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form423217773.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form458456420.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form480484008.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form483999633.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form485620117.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form518688964.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form811419677.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form834875488.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form863769531.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Consent_Form942349243.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form149246215.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form228237915.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form258834838.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form265151977.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form288140869.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form387677001.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form421679687.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form449035644.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form546182250.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form587106323.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form760855102.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form780987548.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form803948974.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form849267578.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form949133300.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form958389282.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\Education_Form974484252.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm211813354.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm333514404.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm442059326.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm551620483.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm599301147.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm626794433.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm628085327.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm720672607.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm751324462.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm967919921.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\EmplyomentForm976461791.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\veritas3\webroot\orders\a1.pdf" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ProfilesController.php" afterPath="$PROJECT_DIR$/src/Controller/ProfilesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" afterPath="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/subpages/documents/forview.php" afterPath="$PROJECT_DIR$/webroot/subpages/documents/forview.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/assets/admin/pages/css/tasks.css" afterPath="$PROJECT_DIR$/webroot/assets/admin/pages/css/tasks.css" />
     </list>
     <list id="0edcd8d9-f0b2-4522-a4ca-82aec572854a" name="New changelist a" comment="a" />
     <ignored path="veritas3.iws" />
@@ -226,33 +35,9 @@
       <file leaf-file-name="webservice.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Documents/webservice.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="5729">
+            <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="5355">
               <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding>
-                <marker date="1421961609102" expanded="true" signature="1979:2163" placeholder="..." />
-                <marker date="1421961609102" expanded="true" signature="3235:3791" placeholder="..." />
-                <marker date="1421961609102" expanded="true" signature="4486:5156" placeholder="..." />
-                <marker date="1421961609102" expanded="true" signature="5821:6613" placeholder="..." />
-                <marker date="1421961609102" expanded="true" signature="7241:7882" placeholder="..." />
-                <marker date="1421961609102" expanded="true" signature="8510:9043" placeholder="..." />
-                <marker date="1421961609102" expanded="true" signature="9676:10188" placeholder="..." />
-                <marker date="1421961609102" expanded="true" signature="10850:11361" placeholder="..." />
-                <marker date="1421961609102" expanded="true" signature="12023:12431" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forview.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot/subpages/forview.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.9038463" vertical-offset="9995" max-vertical-offset="16167">
-              <caret line="606" column="50" selection-start-line="606" selection-start-column="50" selection-end-line="606" selection-end-column="50" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -260,27 +45,120 @@
       <file leaf-file-name="forview.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot/subpages/documents/forview.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.9411765" vertical-offset="2929" max-vertical-offset="16847">
-              <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="183" selection-end-column="18" />
+            <state vertical-scroll-proportion="-1.506329" vertical-offset="12869" max-vertical-offset="15215">
+              <caret line="764" column="32" selection-start-line="764" selection-start-column="32" selection-end-line="764" selection-end-column="90" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#svg#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#div#1;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#div#1;n#li#4;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/app.php">
+      <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/sidebar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28747794" vertical-offset="41" max-vertical-offset="5542">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state vertical-scroll-proportion="52.307693" vertical-offset="1479" max-vertical-offset="6205">
+              <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recruiter_contact_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/clients/recruiter_contact_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.576923" vertical-offset="1806" max-vertical-offset="2499">
+              <caret line="127" column="8" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recruiter_notes.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot/subpages/documents/recruiter_notes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+              <caret line="0" column="70" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <marker date="1422173241470" expanded="true" signature="1387:1452" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tasks.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/css/tasks.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1778" max-vertical-offset="2363">
+              <caret line="130" column="52" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
+          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.293103" vertical-offset="4507" max-vertical-offset="8602">
+              <caret line="290" column="16" selection-start-line="290" selection-start-column="16" selection-end-line="290" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfilesController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/ProfilesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.4074074" vertical-offset="15139" max-vertical-offset="15895">
+              <caret line="898" column="59" selection-start-line="898" selection-start-column="59" selection-end-line="898" selection-end-column="59" />
+              <folding>
+                <marker date="1422171662689" expanded="false" signature="27639:27690" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="31984:32127" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="31984:32233" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="31984:32334" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="31984:32335" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="31984:32624" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="32020:32127" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="32063:32126" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="32063:32127" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="32548:32565" placeholder="..." />
+                <marker date="1422171662689" expanded="true" signature="32548:32609" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/LoginController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.115385" vertical-offset="255" max-vertical-offset="969">
+              <caret line="36" column="66" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DocumentsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.5" vertical-offset="30762" max-vertical-offset="38624">
+              <caret line="1830" column="36" selection-start-line="1821" selection-start-column="12" selection-end-line="1830" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -288,59 +166,33 @@
       </file>
     </leaf>
   </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="true" />
+    </FindUsagesManager>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
+    <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Controller/ClientsController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/JobsController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/TodoController.php" />
-        <option value="$PROJECT_DIR$/webroot/subpages/sidebar.php" />
-        <option value="$PROJECT_DIR$/src/Template/Documents/create_pdf - Copy.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Pdfs/get_consent.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Pdfs/get_consent_.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Pdfs/get_education.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Pdfs/get_employment.ctp" />
-        <option value="$PROJECT_DIR$/webroot/subpages/soap/nusoap.php" />
-        <option value="$PROJECT_DIR$/src/Controller/UsersController.php" />
         <option value="$PROJECT_DIR$/src/Controller/DocumentsController.php" />
-        <option value="$PROJECT_DIR$/config/paths.php" />
-        <option value="$PROJECT_DIR$/src/Template/Documents/addorder.ctp" />
-        <option value="$PROJECT_DIR$/webroot/assets/admin/pages/scripts/form-wizard.js" />
+        <option value="$PROJECT_DIR$/webroot/assets/admin/pages/css/tasks.css" />
+        <option value="$PROJECT_DIR$/src/Controller/LoginController.php" />
         <option value="$PROJECT_DIR$/src/Controller/ProfilesController.php" />
-        <option value="$PROJECT_DIR$/src/Template/Documents/webservice.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Clients/add.ctp" />
-        <option value="$PROJECT_DIR$/webroot/subpages/profile/info.php" />
-        <option value="$PROJECT_DIR$/src/Template/Clients/index.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Documents/index.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Documents/orderslist.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Jobs/index.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Profiles/index.ctp" />
-        <option value="$PROJECT_DIR$/webroot/subpages/clients/listing.php" />
-        <option value="$PROJECT_DIR$/webroot/css/style.css" />
-        <option value="$PROJECT_DIR$/webroot/assets/global/css/components.css" />
-        <option value="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
-        <option value="$PROJECT_DIR$/webroot/subpages/documents/driver_application.php" />
-        <option value="$PROJECT_DIR$/webroot/subpages/documents/success.php" />
-        <option value="$PROJECT_DIR$/webroot/subpages/home_topblocks.php" />
-        <option value="$PROJECT_DIR$/src/Template/Clients/view.ctp" />
-        <option value="$PROJECT_DIR$/webroot/subpages/forview.php" />
         <option value="$PROJECT_DIR$/webroot/subpages/documents/forview.php" />
-        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/src/Template/Profiles/edit.ctp" />
+        <option value="$PROJECT_DIR$/webroot/subpages/documents/recruiter_notes.php" />
       </list>
     </option>
   </component>
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="y" value="-4" />
-    <option name="width" value="1688" />
-    <option name="height" value="1014" />
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -351,6 +203,9 @@
     <OptionsSetting value="true" id="Edit" />
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -434,28 +289,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="documents" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webroot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="subpages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="clients" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -470,191 +303,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webroot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Profiles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Documents" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Clients" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veritas3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -694,15 +343,15 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
-      <pass-parent-envs>true</pass-parent-envs>
+      <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="1">
@@ -742,24 +391,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1688" height="1014" extended-state="6" />
+    <frame x="10" y="20" width="1346" height="688" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31069043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1668" y="557" width="1008" height="623" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1904762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19022556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31069043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1668" y="557" width="1008" height="623" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -786,9 +435,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16117217" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -812,39 +461,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Template/Clients/dropdown.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6225895" vertical-offset="7475" max-vertical-offset="60129">
-          <caret line="453" column="22" selection-start-line="453" selection-start-column="22" selection-end-line="453" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ClientsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7947" max-vertical-offset="12597">
-          <caret line="470" column="21" selection-start-line="470" selection-start-column="21" selection-end-line="470" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/JobsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1368" max-vertical-offset="1819">
-          <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Clients/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="792">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/Core_d.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-40.307693" vertical-offset="3865" max-vertical-offset="6171">
@@ -957,20 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/subpages/sidebar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3706" max-vertical-offset="6205">
-          <caret line="218" column="33" selection-start-line="218" selection-start-column="25" selection-end-line="218" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="34986" max-vertical-offset="38573">
-          <caret line="2061" column="0" selection-start-line="2061" selection-start-column="0" selection-end-line="2061" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/paths.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="844" max-vertical-offset="1445">
@@ -989,7 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="22916" max-vertical-offset="23018">
           <caret line="1348" column="0" selection-start-line="1348" selection-start-column="0" selection-end-line="1348" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,21 +613,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8076923" vertical-offset="7402" max-vertical-offset="8585">
-          <caret line="444" column="32" selection-start-line="444" selection-start-column="28" selection-end-line="444" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Clients/add.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.1538463" vertical-offset="3530" max-vertical-offset="15351">
           <caret line="198" column="68" selection-start-line="198" selection-start-column="63" selection-end-line="198" selection-end-column="68" />
-          <folding>
-            <element signature="e#9940#11305#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1032,18 +627,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProfilesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5046211" vertical-offset="4453" max-vertical-offset="15249">
-          <caret line="274" column="31" selection-start-line="274" selection-start-column="31" selection-end-line="274" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Clients/index.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="408">
           <caret line="18" column="39" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1051,7 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.5" vertical-offset="2676" max-vertical-offset="5032">
           <caret line="162" column="77" selection-start-line="162" selection-start-column="77" selection-end-line="162" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,7 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.75" vertical-offset="2357" max-vertical-offset="3808">
           <caret line="144" column="76" selection-start-line="144" selection-start-column="76" selection-end-line="144" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1074,7 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2006" max-vertical-offset="3111">
           <caret line="118" column="76" selection-start-line="118" selection-start-column="76" selection-end-line="118" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1082,7 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1666" max-vertical-offset="3247">
           <caret line="98" column="84" selection-start-line="98" selection-start-column="84" selection-end-line="98" selection-end-column="84" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1090,7 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1554" max-vertical-offset="3060">
           <caret line="107" column="54" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1114,7 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4318" max-vertical-offset="18649">
           <caret line="254" column="16" selection-start-line="254" selection-start-column="16" selection-end-line="254" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1122,7 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="16728" max-vertical-offset="18428">
           <caret line="984" column="36" selection-start-line="984" selection-start-column="36" selection-end-line="984" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1130,7 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3076923" vertical-offset="12478" max-vertical-offset="15351">
           <caret line="736" column="40" selection-start-line="736" selection-start-column="40" selection-end-line="736" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1138,7 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="289">
           <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1146,7 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.192307" vertical-offset="1163" max-vertical-offset="3417">
           <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1154,7 +731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.5" vertical-offset="1690" max-vertical-offset="4080">
           <caret line="104" column="42" selection-start-line="104" selection-start-column="42" selection-end-line="104" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1162,6 +738,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.576923" vertical-offset="8490" max-vertical-offset="9775">
           <caret line="523" column="13" selection-start-line="523" selection-start-column="13" selection-end-line="523" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.269231" vertical-offset="41" max-vertical-offset="5542">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/forview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33264464" vertical-offset="1709" max-vertical-offset="16116">
+          <caret line="110" column="76" selection-start-line="110" selection-start-column="74" selection-end-line="110" selection-end-column="76" />
           <folding />
         </state>
       </provider>
@@ -1171,58 +762,116 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="5729">
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="5355">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/assets/admin/pages/css/tasks.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1778" max-vertical-offset="2363">
+          <caret line="130" column="52" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/DocumentsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5" vertical-offset="30762" max-vertical-offset="38624">
+          <caret line="1830" column="36" selection-start-line="1821" selection-start-column="12" selection-end-line="1830" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385" vertical-offset="255" max-vertical-offset="969">
+          <caret line="36" column="66" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ProfilesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4074074" vertical-offset="15139" max-vertical-offset="15895">
+          <caret line="898" column="59" selection-start-line="898" selection-start-column="59" selection-end-line="898" selection-end-column="59" />
           <folding>
-            <marker date="1421961609102" expanded="true" signature="1979:2163" placeholder="..." />
-            <marker date="1421961609102" expanded="true" signature="3235:3791" placeholder="..." />
-            <marker date="1421961609102" expanded="true" signature="4486:5156" placeholder="..." />
-            <marker date="1421961609102" expanded="true" signature="5821:6613" placeholder="..." />
-            <marker date="1421961609102" expanded="true" signature="7241:7882" placeholder="..." />
-            <marker date="1421961609102" expanded="true" signature="8510:9043" placeholder="..." />
-            <marker date="1421961609102" expanded="true" signature="9676:10188" placeholder="..." />
-            <marker date="1421961609102" expanded="true" signature="10850:11361" placeholder="..." />
-            <marker date="1421961609102" expanded="true" signature="12023:12431" placeholder="..." />
+            <marker date="1422171662689" expanded="false" signature="27639:27690" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="31984:32127" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="31984:32233" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="31984:32334" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="31984:32335" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="31984:32624" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="32020:32127" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="32063:32126" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="32063:32127" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="32548:32565" placeholder="..." />
+            <marker date="1422171662689" expanded="true" signature="32548:32609" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/subpages/forview.php">
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.9038463" vertical-offset="9995" max-vertical-offset="16167">
-          <caret line="606" column="50" selection-start-line="606" selection-start-column="50" selection-end-line="606" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="52.307693" vertical-offset="1479" max-vertical-offset="6205">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/clients/recruiter_contact_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.576923" vertical-offset="1806" max-vertical-offset="2499">
+          <caret line="127" column="8" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot/subpages/documents/forview.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.9411765" vertical-offset="2929" max-vertical-offset="16847">
-          <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="183" selection-end-column="18" />
+        <state vertical-scroll-proportion="-1.506329" vertical-offset="12869" max-vertical-offset="15215">
+          <caret line="764" column="32" selection-start-line="764" selection-start-column="32" selection-end-line="764" selection-end-column="90" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#svg#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#div#1;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#div#1;n#li#4;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
+    <entry file="file://$PROJECT_DIR$/src/Template/Profiles/edit.ctp">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28747794" vertical-offset="41" max-vertical-offset="5542">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state vertical-scroll-proportion="-7.293103" vertical-offset="4507" max-vertical-offset="8602">
+          <caret line="290" column="16" selection-start-line="290" selection-start-column="16" selection-end-line="290" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/subpages/documents/recruiter_notes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+          <caret line="0" column="70" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1422173241470" expanded="true" signature="1387:1452" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
   </component>
 </project>
+

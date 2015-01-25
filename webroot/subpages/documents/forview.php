@@ -760,107 +760,11 @@
     <div class="row">
         <div class="col-md-6">
             <!-- BEGIN PORTLET -->
-            <div class="portlet light">
-                <div class="portlet-title">
-                    <div class="caption caption-md">
-                        <i class="icon-bar-chart theme-font hide"></i>
-                        <span class="caption-subject font-blue-madison bold uppercase">Recruiter Notes</span>
-                        <span class="caption-helper"></span>
-                    </div>
-                    <div class="inputs">
-                        <div class="portlet-input input-inline input-small ">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="portlet-body">
-
-                    <img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
-                         src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/>
 
 
-                    <div class="slimScrollDiv"
-                         style="position: relative; overflow: hidden; width: auto; height: 305px;">
-                        <div class="scroller" style="height: 305px; overflow: hidden; width: auto;"
-                             data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2"
-                             data-initialized="1">
-                            <div class="general-item-list">
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Nick Larson</a>
-                                            <span class="item-label">3 hrs ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                        euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                    </div>
-                                </div>
+                                <?php include('subpages/documents/recruiter_notes.php');?>
 
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Nick Larson</a>
-                                            <span class="item-label">12 hrs ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-danger"></span> Pending</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                        elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-                                        erat volutpat.
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Richard Stone</a>
-                                            <span class="item-label">2 days ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-danger"></span> Open</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ut laoreet dolore
-                                        magna aliquam erat volutpat.
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Dan</a>
-                                            <span class="item-label">3 days ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-warning"></span> Pending</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet
-                                        dolore magna aliquam erat volutpat.
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-head">
-                                        <div class="item-details">
-                                            <a href="" class="item-name primary-link">Larry</a>
-                                            <span class="item-label">4 hrs ago</span>
-                                        </div>
-                                        <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
-                                    </div>
-                                    <div class="item-body">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                        euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slimScrollBar"
-                             style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 140.94696969697px; background: rgb(215, 220, 226);"></div>
-                        <div class="slimScrollRail"
-                             style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(234, 234, 234);"></div>
-                    </div>
-                </div>
-            </div>
+
             <!-- END PORTLET -->
         </div>
         <div class="col-md-6">
@@ -983,4 +887,3 @@ MEE Order	 </span>
     </div>
 </div>
 <!-- END PROFILE CONTENT -->
-</div>

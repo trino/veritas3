@@ -58,6 +58,40 @@ class ClientsController extends AppController {
         }
         die();
     }
+    function upload_all($id="")
+    {
+        if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
+        {
+            $arr = explode('.',$_FILES['myfile']['name']);
+            $ext = end($arr);
+            $rand = rand(100000,999999).'_'.rand(100000,999999).'.'.$ext;
+            $allowed = array('jpg','jpeg','png','bmp','gif','pdf','doc', 'docx');
+            $check = strtolower($ext);
+            if(in_array($check,$allowed)){
+                move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/jobs/'.$rand);
+                 unset($_POST);
+                 if(isset($id)){
+                $_POST['image'] = $rand;
+                $img = TableRegistry::get('clients');
+
+                //echo $s;die();
+                $query = $img->query();
+                        $query->update()
+                        ->set($_POST)
+                        ->where(['id' => $id])
+                        ->execute();
+                }
+                        echo $rand;
+
+
+            }
+            else
+            {
+                echo "error";
+            }
+        }
+        die();
+    }
 	public function index() {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         if($setting->client_list==0)
@@ -280,7 +314,6 @@ class ClientsController extends AppController {
 	}
 
     public function saveClients($id=0) {
-
         $rec='';
         $con='';
         $count=1;
@@ -317,13 +350,20 @@ class ClientsController extends AppController {
         $clients = TableRegistry::get('Clients');
         if(!$id)
         {
+
             $cnt = 0;
     	    if($_POST['sig_email']!="")
                 $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email']])->count();
             if($cnt>0)
             {
                 echo "email";
+                die();
             }
+            if((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!='')
+                {
+                    echo "Invalid Email";
+                    die();
+                }
             else
             {
                 $client = $clients->newEntity($_POST);
@@ -379,6 +419,11 @@ class ClientsController extends AppController {
             if($cnt>0)
             {
                 echo "email";
+            }
+            if((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!='')
+            {
+                echo "Invalid Email";
+                die();
             }
             else
             {
@@ -780,6 +825,26 @@ class ClientsController extends AppController {
         die();
    }
 
+   
+   function getdivisions($did="")
+   {
+        $cid = $_POST['client_id'];
+        $query = TableRegistry::get('client_divison');
+        $q = $query->find()->where(['client_id'=>$cid])->all();
+        if(count($q)>0){
+            echo "<select class='form-control' name='division'>";
+            foreach($q as $d)
+            {
+               $sel = ($did==$d->id)?"selected='selected'":'';
+                echo "<option value='".$d->id."'".$sel." >".$d->title."</option>";
+            }
+            echo "</select>";
+        }
+        die();
+        
+   }
+   
+    
 
 }
 ?>

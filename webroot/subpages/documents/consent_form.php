@@ -4,11 +4,11 @@
                 <div class="form-group col-md-12">
     				<label class="control-label col-md-2">Surname : </label>
     				<div class="col-md-2">
-    					<input type="text" class="form-control" name="last_name"/>
+    					<input type="text" class="form-control required" name="last_name"/>
     				</div>
                     <label class="control-label col-md-2">First Name : </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" name="first_name"/>
+    					<input type="text" class="form-control required" name="first_name"/>
     				</div>
                     <label class="control-label col-md-2">Middle Name : </label>
                     <div class="col-md-2">
@@ -23,18 +23,18 @@
     				</div>
                     <label class="control-label col-md-3">Place of Birth(Country) : </label>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" name="place_birth_country"/>
+    					<input type="text" class="form-control required" name="place_birth_country"/>
     				</div>
                 </div>
                 
                  <div class="form-group col-md-12">
     				<label class="control-label col-md-2">Date of Birth : </label>
     				<div class="col-md-2">
-    					<input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="birth_date" />
+    					<input type="text" class="form-control date-picker required" placeholder="YYYY-MM-DD" name="birth_date" />
     				</div>
                     <label class="control-label col-md-2">Sex : </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" name="sex"/>
+    					<input type="text" class="form-control required" name="sex"/>
     				</div>
                     <label class="control-label col-md-2">Phone Number : </label>
                     <div class="col-md-2">
@@ -47,19 +47,19 @@
                 </div>
                 <div class="form-group col-md-12">
     				<div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="Street and Number" name="current_street_address" />
+    					<input type="text" class="form-control required" placeholder="Street and Number" name="current_street_address" />
     				</div>
                     <div class="col-md-2">
     					<input type="text" class="form-control" placeholder="Apt/Unit" name="current_apt_unit"/>
     				</div>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="City" name="current_city"/>
+    					<input type="text" class="form-control required" placeholder="City" name="current_city"/>
     				</div>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" placeholder="Province" name="current_province"/>
+    					<input type="text" class="form-control required" placeholder="Province" name="current_province"/>
     				</div>
                     <div class="col-md-3">
-    					<input type="text" class="form-control" placeholder="Postal Code" name="current_postal_code"/>
+    					<input type="text" class="form-control required" placeholder="Postal Code" name="current_postal_code"/>
     				</div>
                 </div>
                 
@@ -91,7 +91,7 @@
                     </div>
                     <label class="control-label col-md-3">Drivers License Number : </label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="driver_license_number"/>
+                        <input type="text" class="form-control required" name="driver_license_number"/>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
@@ -101,7 +101,7 @@
                     </div>
                     <label class="control-label col-md-3">Applicants Email : </label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="applicants_email"/>
+                        <input type="text" class="form-control email1 required" name="applicants_email"/>
                     </div>
                 </div>
 

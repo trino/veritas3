@@ -296,33 +296,11 @@
                                                                name="sacc_number" <?php if (isset($c->sacc_number)) { ?> value="<?php echo $c->sacc_number; ?>" <?php } ?>/>
                                                     </div>
 
-
-
-
-
-
-
-
-
-
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <h3 class="block">Billing</h3>
                                                             </div>
                                                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                                                     <div class="form-group col-md-4">
@@ -375,7 +353,7 @@
                                                             </option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-6">
                                                         <label class="control-label">Billing Instructions</label>
                                                         <input type="radio"
                                                                name="billing_instructions" <?php if (isset($c->billing_instructions) && $c->billing_instructions == "individual") { ?> checked="checked" <?php } ?>
@@ -418,7 +396,7 @@
 
                                                                                 <?php
                                                                                 } else
-                                                                                    echo $cd->file;
+                                                                                    echo "<a href='".$this->request->webroot."img/jobs/".$cd->file."' target='_blank'>".$cd->file."</a>";
                                                                             ?>
                                                                             <a href="javascript:void(0);"
                                                                                onclick="$(this).parent().remove()"
@@ -434,6 +412,7 @@
                                                                 <div style="display:block;">
                                                                     <a href="javascript:void(0)" id="addMore1"
                                                                        class="btn btn-primary margin-bottom-5">Browse</a>
+                                                                       <span></span>
                                                                     <input type="hidden" name="client_doc[]" value=""
                                                                            class="addMore1_doc moredocs"/>
                                                                 </div>
@@ -794,6 +773,9 @@ Both </label>
 
 <script>
     $(function () {
+        $('input [type="email"]').keyup(function(){
+            $(this).removeAttr('style');
+        });
         initiate_ajax_upload('clientimg', 'asdas');
         initiate_ajax_upload('addMore1', 'doc');
         <?php
@@ -818,6 +800,7 @@ Both </label>
         }
         ?>
         $('#save_client_p1').click(function () {
+
             $('#save_client_p1').text('Saving..');
             var str = '';
             $('.recruiters input').each(function () {
@@ -857,11 +840,11 @@ Both </label>
             else {
                 str = str + '&' + $('#tab_1_1 select').serialize();
             }
-//str = str+'&description='+$('#tab_1_1 textarea').val();
             str = str + '&customer_type=' + $('#customer_type').val();
             str = str + '&division=' + $('#division').val();
             str = str + '&referred_by=' + $('#referred_by').val();
             str = str + '&invoice_terms=' + $('#invoice_terms').val();
+            str = str + '&description=' + $('#description').val();
 
 
             $.ajax({
@@ -869,13 +852,23 @@ Both </label>
                 data: str,
                 type: 'post',
                 success: function (res) {
-//alert(res);
-                    if (res != 'e' && res != 'email') {
+
+                    if (res != 'e' && res != 'email' && res!='Invalid Email') {
                         window.location = '<?php echo $this->request->webroot;?>clients/edit/' + res;
                     }
                     else if (res == 'email') {
                         alert('Email Already Used.');
                     }
+                    else
+                    if(res == 'Invalid Email')
+                    {
+                        $('#tab_1_1 input[type="email"]').focus();
+                        $('#tab_1_1 input[type="email"]').attr('style','border-color:red');
+                        $('html,body').animate({
+                                scrollTop: $('#tab_1_1').offset().top},
+                            'slow');
+                    }
+
                     else {
                         alert('Couldn\'t save your data');
                     }
@@ -893,7 +886,7 @@ Both </label>
         var total_count = $('.docMore').data('count');
         $('.docMore').data('count', parseInt(total_count) + 1);
         total_count = $('.docMore').data('count');
-        var input_field = '<div style="display:block;margin:5px;"><a href="javascript;void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /></div>';
+        var input_field = '<div style="display:block;margin:5px;"><a href="javascript;void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><span></span><input type="hidden" name="client_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /></div>';
         $('.docMore').append(input_field);
         if (parseInt(total_count) > 1 && removeLink == 0) {
             removeLink = 1;
@@ -921,8 +914,12 @@ Both </label>
 
     function initiate_ajax_upload(button_id, doc) {
         var button = $('#' + button_id), interval;
+        if(doc =='doc')
+            var act = "<?php echo $this->request->webroot;?>clients/upload_all/<?php if(isset($id))echo $id;?>";
+        else
+            var act = "<?php echo $this->request->webroot;?>clients/upload_img/<?php if(isset($id))echo $id;?>";
         new AjaxUpload(button, {
-            action: "<?php echo $this->request->webroot;?>clients/upload_img/<?php if(isset($id))echo $id;?>",
+            action: act,
             name: 'myfile',
             onSubmit: function (file, ext) {
                 button.text('Uploading');
@@ -945,7 +942,7 @@ Both </label>
                 window.clearInterval(interval);
                 this.enable();
                 if (doc == "doc") {
-                    $('#' + button_id).parent().append(" " + response);
+                    $('#' + button_id).parent().find('span').text(" " + response);
                     $('.' + button_id + "_doc").val(response);
                 }
                 else {

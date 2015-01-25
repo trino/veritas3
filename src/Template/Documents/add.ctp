@@ -803,7 +803,29 @@
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/' + filename);
     }
     jQuery(document).ready(function () {
+        $('.email1').live('keyup',function(){
+            //alert($('.email1').val());
+            if($(this).val()!='' && ($(this).val().replace('@','')== $(this).val() || $(this).val().replace('.','')== $(this).val() || $(this).val().length<5)){
+                $(this).attr('style','border-color:red');
+                $('.cont').attr('disabled','');
+            }
+            else{
+                // alert($('.email1').val());
+                $('.cont').removeAttr('disabled');
+                $(this).removeAttr('style');
+            }
 
+        });
+        $('.email1').live('blur',function(){
+            //alert($('.email1').val());
+            if($(this).val()!='' && ($(this).val().replace('@','')== $(this).val() || $(this).val().replace('.','')== $(this).val() || $(this).val().length<5)){
+                $(this).val('');
+                $('.cont').removeAttr('disabled');
+                $(this).removeAttr('style');
+            }
+
+
+        });
         <?php
         if($this->request->params['action']=='view')
         {
@@ -944,7 +966,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-
+                window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }
@@ -956,7 +978,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-
+                window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }
@@ -968,7 +990,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-
+                window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }
@@ -999,7 +1021,7 @@
             data: param,
             type: 'POST',
             success: function (rea) {
-
+                //window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }
@@ -1010,7 +1032,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-
+                window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }

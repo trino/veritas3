@@ -59,7 +59,22 @@
     create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
 
 ?>
-
+<h3 class="page-title">
+    View Report
+</h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="<?php echo $this->request->webroot;?>">Dashboard</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="">View Report
+            </a>
+        </li>
+    </ul>
+</div>
 <!-- BEGIN PROFILE SIDEBAR -->
 <div class="profile-sidebar">
     <!-- PORTLET MAIN -->
@@ -143,7 +158,9 @@
 
             <a href="#" class="btn btn-lg default yellow-stripe">
                 Road Test Score </a><a href="#" class="btn btn-lg yellow">
-                <i class="fa fa-bar-chart-o"></i><?php echo $order->road_test[0]->total_score; ?></a>
+
+                <i class="fa fa-bar-chart-o"></i><?php if(isset($order->road_test[0]->total_score))echo $order->road_test[0]->total_score;?></a>
+
         </div>
 
 
@@ -702,78 +719,124 @@
                                 <!-- START TASK LIST -->
                                 <ul class="task-list">
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <input type="hidden" value="1" name="test">
 
                                             <div class="checker"><span><input type="checkbox" class="liChild" value="2"
                                                                               name="test"></span></div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
 															<span class="task-title-sp">
 															Pre-screening form
- </span>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
-                                            &#x2713;
+ </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/".$order->id);?>
+                                            <?php if($cnt>0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
 
 
                                         </div>
 
                                     </li>
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
-															<span class="task-title-sp">
-															Driver Application	 </span>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
-                                            &#x2713;
+											<span class="task-title-sp">
+											Driver Application	 </span>
+                                            <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/".$order->id);?>
+                                            <?php if($cnt>0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
 
                                         </div>
 
                                     </li>
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
-															<span class="task-title-sp">
-
-Road Test 	 	</span>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
-                                            &#x2713;
+											<span class="task-title-sp">
+                                                Road Test
+                                            </span>
+                                            <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/".$order->id);?>
+                                            <?php if($cnt>0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
                                         </div>
 
                                     </li>
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
-															<span class="task-title-sp">
+											<span class="task-title-sp">
 
-MEE Order	 </span>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
-                                            &#x2713;
+                                                MEE Order	 </span>
+                                            <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/".$order->id);?>
+                                           <?php if($cnt>0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
 
                                         </div>
 
                                     </li>
                                     <li>
-                                        <div class="task-checkbox">
+                                        <!--<div class="task-checkbox">
                                             <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="task-title">
-															<span class="task-title-sp">
-
-                                                            Confirmation  </span>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
-                                            &#x2713;
-
+											<span class="task-title-sp">
+                                            Confirmation  </span>
+                                            <?php if($order->draft==0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
 
                                         </div>
 

@@ -3,6 +3,7 @@
 <?php
      $doc_ext = array('pdf','doc','docx','pdf');
 ?>
+       <input type="hidden" id="tablename" value="<?php echo $table;?>" />
 <?php
     if(isset($disabled))
         $is_disabled = 'disabled="disabled"';
@@ -10,9 +11,6 @@
         $is_disabled = '';
 ?>
 <?php $settings = $this->requestAction('settings/get_settings');?>
-
-       <input type="hidden" id="tablename" value="<?php echo $table;?>" />
-
 <h3 class="page-title">
     Create Order
 </h3>
@@ -124,13 +122,13 @@
                                     <div class="progress-bar progress-bar-info">
                                     </div>
                                 </div>
-                                <div style="top:0;left:0;position:absolute;background:#000;height:100%;width:100%;z-index:1000;opacity:0.4;display:none;" id="loading5">
+                                <div style="position:absolute;background:#000;height:770px;width:100%;z-index:1000;opacity:0.2;display:none;" id="loading5">
                                     <center><br />
                                         <br />
                                         <br />
                                         <br />
                                         <br />
-                                        <strong style="color: #FFF;font-size: 26px;">Please wait...</strong>
+                                        <strong style="color: #FFF;font-size: 26px;">Generating Pdf...</strong>
                                         <br /><br />
 
                                         <img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif" /></center>
@@ -251,14 +249,14 @@
                     <div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>">
                         <div class="row">
                             <div class="col-md-offset-3 col-md-9">
-                                <a href="javascript:;" class="btn default button-previous">
-                                    <i class="m-icon-swapleft"></i> Back </a>
+                                <a href="javascript:;" class="btn default button-previous" onclick="$('#skip').val('0');">
+                                <i class="m-icon-swapleft"></i> Back </a>
 
-                                <a href="javascript:;" class="btn red button-next">
-                                    Skip <i class="m-icon-swapdown m-icon-white"></i>
+                                <a href="javascript:;" class="btn red button-next" onclick="$('#skip').val('1');">
+                                Skip <i class="m-icon-swapdown m-icon-white"></i>
                                 </a>
 
-                                <a href="javascript:;" class="btn blue button-next cont">
+                                <a href="javascript:;" class="btn blue button-next cont" onclick="$('#skip').val('0');">
                                     Save & Continue <i class="m-icon-swapright m-icon-white"></i>
                                 </a>
 
@@ -283,6 +281,8 @@
     if(!doc_id)
     {
         $('#uploaded_for').change(function(){
+            if($(this).val())
+            $('.select2-choice').removeAttr('style');
             showforms('company_pre_screen_question.php');
             showforms('driver_application.php');
             showforms('driver_evaluation_form.php');
@@ -1058,11 +1058,61 @@
     {
         var filename = form_type.replace(/\W/g, '_');
         var filename = filename.toLowerCase();
-        $('.subform').show();   1
+        $('.subform').show();
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
     }
     jQuery(document).ready(function() {
+        $('.button-next').click(function(){
+            $('.cont').removeAttr('disabled');
+            //$('.tab-pane.active').find('input[type="email"]').val('');
+        });
+        $('.button-previous').click(function(){
+            $('.cont').removeAttr('disabled');
+            //$('.tab-pane.active input[type="email"]').val('');
+        });
+        $('.email1').live('keyup',function(){
+            //alert($('.email1').val());
+            if($(this).val()!='' && ($(this).val().replace('@','')== $(this).val() || $(this).val().replace('.','')== $(this).val() || $(this).val().length<5)){
+            $(this).attr('style','border-color:red');
+            $('.cont').attr('disabled','');
+            }
+            else{
+               // alert($('.email1').val());
+                $('.cont').removeAttr('disabled');
+                $(this).removeAttr('style');
+            }
 
+        });
+        $('.email1').live('blur',function(){
+            //alert($('.email1').val());
+            if($(this).val()!='' && ($(this).val().replace('@','')== $(this).val() || $(this).val().replace('.','')== $(this).val() || $(this).val().length<5)){
+                $(this).val('');
+                $('.cont').removeAttr('disabled');
+                $(this).removeAttr('style');
+            }
+
+
+        });
+        $('.required').live('keyup',function(){
+            //alert('test');
+            //alert($('.email1').val());
+            if($(this).val().length>0){
+                $(this).removeAttr('style');
+                //$('.cont').attr('disabled','');
+            }
+
+
+        });
+        $('.required').live('blur',function(){
+            //alert($('.email1').val());
+            if($(this).val().length==0){
+                $(this).val('');
+                //$('.cont').removeAttr('disabled');
+                $(this).attr('style','border-color:red');
+            }
+
+
+        });
 
 
         <?php
@@ -1081,7 +1131,7 @@
         $('.cont').removeClass('cont');
         <?php
     }
-    
+
     ?>
 
 
@@ -1106,9 +1156,11 @@
             }
             else
                 var draft =0;
+
             var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
             var confirmation = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
             var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#divison').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val(),recruiter_signature:$('#recruiter_signature').val()};
+
             $.ajax({
                 //data:'uploaded_for='+$('#uploaded_for').val(),
                 data : data,
@@ -1125,7 +1177,9 @@
                             url = '<?php echo $this->request->webroot;?>documents/savePrescreening',
                             order_id =$('#did').val(),
                             cid = '<?php echo $cid;?>';
+
                         savePrescreen(url,order_id,cid,forms);
+
 
                     } else if(type=="Driver Application") {
                         if($('#confirm_check').is(':checked')){

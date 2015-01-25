@@ -1516,11 +1516,11 @@
                 else
                     $cond = $cond . ' AND orders.client_id = ' . $_GET['client_id'];
             }
-            if (isset($_GET['type']) && $_GET['type']) {
+            if (isset($_GET['division']) && $_GET['division']) {
                 if ($cond == '')
-                    $cond = $cond . ' order_type = "' . $_GET['type'] . '"';
+                    $cond = $cond . ' division = "' . $_GET['division'] . '"';
                 else
-                    $cond = $cond . ' AND order_type = "' . $_GET['type'] . '"';
+                    $cond = $cond . ' AND division = "' . $_GET['division'] . '"';
             }
             if (isset($_GET['draft'])) {
                 if ($cond == '')
@@ -2275,6 +2275,14 @@
                     
                 }
             
+        }
+        
+        function getprocessed($table,$oid)
+        {
+            $model = TableRegistry::get($table);
+            $q = $model->find()->where(['order_id'=>$oid])->count();
+            $this->response->body($q);
+            return $this->response;
         }
 
 

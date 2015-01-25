@@ -43,16 +43,9 @@ if($notes)
     }
 }
 ?>
-    <?php
-    if($this->request->params['action'] == 'viewReport')
-    {
-        ?>
         <br><br>
         <textarea id="recruiter_notes" placeholder="Add Recruiter Notes" class="form-control"></textarea><br/>
         <a href="javascript:void(0);" class="btn btn-success" id="add_recruiter">Submit</a>
-    <?php
-    }
-    ?>
 </div>
 </div>
 </div>

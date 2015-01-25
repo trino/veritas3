@@ -46,7 +46,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input <?php echo $is_disabled ?> name="email" type="text"
+                            <input <?php echo $is_disabled ?> name="email" type="email"
                                                               placeholder="eg. test@domain.com"
                                                               class="form-control un" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
                         </div>
@@ -124,20 +124,14 @@
 
                                 <option
                                     value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
-                                    if ($getProfileType->profile_type == 2) {
-                                        ?> disabled="disabled"
-                                    <?php
-                                    }
+                                   
                                 ?>>
                                     Owner Operator
                                 </option>
 
                                 <option
                                     value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php }
-                                    if ($getProfileType->profile_type == 2) {
-                                        ?> disabled="disabled"
-                                    <?php
-                                    }
+                                    
                                 ?>>
                                     Owner Driver
                                 </option>
@@ -234,7 +228,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Title</label><BR>
-                            <SELECT <?php echo $is_disabled ?> name="title" class="form-control member_type"><?php
+                            <SELECT <?php echo $is_disabled ?> name="title" class="form-control "><?php
                                     $title = "";
                                     if (isset($p->title)) {
                                         $title = $p->title;
@@ -398,7 +392,7 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <SELECT  <?php echo $is_disabled ?> name="province" class="form-control member_type"><?php
+                            <SELECT  <?php echo $is_disabled ?> name="province" class="form-control "><?php
                                     $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                     $province = "";
                                     if (isset($p->province)) {
@@ -458,7 +452,7 @@
                         <div class="form-group">
                             <label class="control-label">Province (Driver's License was issued)</label>
 
-                            <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control member_type"><?php
+                            <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control "><?php
                                     $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                     $province = "";
                                     if (isset($p->driver_province)) {

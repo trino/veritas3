@@ -19,6 +19,10 @@
                 <button class="close" data-close="alert"></button>
                 Password saved successfully
             </div>
+             <div class="margin-top-10 alert alert-danger display-hide flashPass1" style="display: none;">
+                <button class="close" data-close="alert"></button>
+                Password dose not match.
+            </div>
             <div class="margin-top-10">
                 <a href="javascript:void(0)" class="btn btn-primary" id="save_pass">
                     Change Password </a>
@@ -52,12 +56,14 @@ $(function(){
         }
         else
         {
-            $('#pass_form').submit();
+            ('.flashPass').show();
+            $('.flashPass').fadeOut(7000);
         }
     }
     else
     {
-        $('#pass_form').submit();
+        $('.flashPass1').show();
+            $('.flashPass1').fadeOut(7000);
     }
    }); 
 });

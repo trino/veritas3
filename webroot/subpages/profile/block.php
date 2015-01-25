@@ -247,7 +247,7 @@
                                                         <div class="clearfix"></div>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <!--<tr>
                                                 <td class="vtop">Feedbacks</td>
                                                 <td>
                                                         <label class="uniform-inline">
@@ -261,7 +261,7 @@
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->feedback == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr>-->
                                             <tr>
                                                 <td class="vtop">Messages</td>
                                                 <td>
@@ -304,6 +304,21 @@
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[recent]"
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->recent == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vtop">Show Logo</td>
+                                                <td>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[logo]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->logo == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[logo]"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->logo == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
                                             </tr>

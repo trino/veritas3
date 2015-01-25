@@ -28,7 +28,7 @@
 		</style>
 	
 		
-        <div class="col-sm-6">
+        <div class="col-sm-10">
             <input type="hidden" name="signature_company_witness" id="signature_company_witness" />
             <input type="hidden" class="touched" value="0" />
             <label class="control-label col-md-12">Signature of Company Witness</label>

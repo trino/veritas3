@@ -58,6 +58,40 @@ class ClientsController extends AppController {
         }
         die();
     }
+    function upload_all($id="")
+    {
+        if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
+        {
+            $arr = explode('.',$_FILES['myfile']['name']);
+            $ext = end($arr);
+            $rand = rand(100000,999999).'_'.rand(100000,999999).'.'.$ext;
+            $allowed = array('jpg','jpeg','png','bmp','gif','pdf','doc', 'docx');
+            $check = strtolower($ext);
+            if(in_array($check,$allowed)){
+                move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/jobs/'.$rand);
+                 unset($_POST);
+                 if(isset($id)){
+                $_POST['image'] = $rand;
+                $img = TableRegistry::get('clients');
+
+                //echo $s;die();
+                $query = $img->query();
+                        $query->update()
+                        ->set($_POST)
+                        ->where(['id' => $id])
+                        ->execute();
+                }
+                        echo $rand;
+
+
+            }
+            else
+            {
+                echo "error";
+            }
+        }
+        die();
+    }
 	public function index() {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         if($setting->client_list==0)

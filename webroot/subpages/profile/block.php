@@ -247,7 +247,7 @@
                                                         <div class="clearfix"></div>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <!--<tr>
                                                 <td class="vtop">Feedbacks</td>
                                                 <td>
                                                         <label class="uniform-inline">
@@ -261,7 +261,7 @@
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->feedback == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr>-->
                                             <tr>
                                                 <td class="vtop">Messages</td>
                                                 <td>

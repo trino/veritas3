@@ -53,6 +53,16 @@
                     </div>
 
 
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">ISB Id</label>
+                            <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?> name="isb_id" type="text"
+                                                              placeholder="optional"
+                                                              class="form-control un" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>/>
+                        </div>
+                    </div>
+
+
 
                     <div class="col-md-4">
                         <div class="form-group">
@@ -136,7 +146,7 @@
                     </div>
 
 
-                    <div class="col-md-6" id="driver_div"
+                    <div class="col-md-4" id="driver_div"
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
                             <label class="control-label">Driver Type</label>
@@ -219,13 +229,12 @@
                         </div>
                     </div>
 
-
+<div class="clearfix"></div>
 
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Title</label><BR>
-                            <SELECT <?php echo $is_disabled ?> name="title"
-                                                               class="form-control member_type"><?php
+                            <SELECT <?php echo $is_disabled ?> name="title" class="form-control member_type"><?php
                                     $title = "";
                                     if (isset($p->title)) {
                                         $title = $p->title;
@@ -441,9 +450,6 @@
                                                               class="form-control req_driver" <?php if (isset($p->driver_license_no)) { ?> value="<?php echo $p->driver_license_no; ?>" <?php } ?> />
                         </div>
                     </div>
-
-
-
 
 
 

@@ -58,7 +58,7 @@
                             <label class="control-label">ISB Id</label>
                             <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?> name="isb_id" type="text"
                                                               placeholder="optional"
-                                                              class="form-control un" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>/>
+                                                              class="form-control" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>/>
                         </div>
                     </div>
 

@@ -301,19 +301,19 @@
                     <p>NOTICE: This form is made available to monthly account holders by NICT on behalf of the U.S. Department of Transportation, Federal Motor Carrier Safety Administration (FMCSA). Account holders are required by federal law to obtain an Applicant's written or electronic consent prior to accessing the Applicant's PSP report. Further, account holders are required by FMCSA to use the language provided in paragraphs 1-4 of this document to obtain an Applicant's consent. The language must be used in whole, exactly as provided. The language may be included with other consent forms or language at the discretion of the account holder, provided the four paragraphs remain intact and the language is unchanged.</p>
                     <p>LAST UPDATED 10/29/2012</p>
                 </div>
-                
+
                 <div class="form-group col-md-12">
-                    <label class="control-label col-md-3">Attach Document : </label>
+                    <label class="control-label col-md-3">Attach ID : </label>
                     <div class="col-md-9">
                     <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
                     </div>
                </div>
-                       
+
                       <div class="form-group col-md-12">
                         <div id="more_consent_doc">
                         </div>
                       </div>
-                      
+
                       <div class="form-group col-md-12">
                         <div class="col-md-3">
                         </div>

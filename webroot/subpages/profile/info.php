@@ -631,7 +631,7 @@
                 });
                 $('#driver_div').show();
                 $('.req_driver').attr('required', 'required');
-                $('.un').removeAttr('required');
+                //$('.un').removeAttr('required');
             }
             else {
                 $('.nav-tabs li:not(.active)').each(function () {

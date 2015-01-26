@@ -307,9 +307,11 @@ var FormWizard = function () {
                                 $(this).removeAttr('style');
                             }
                         });
-                        if(er)
+                        if(er){
+                            alert('Some of the fields of consent form is required.');
                         return false;
 
+                        }
                     }
                     else{
                         //alert('test');

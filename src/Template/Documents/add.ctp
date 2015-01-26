@@ -851,6 +851,35 @@
     }
     ?>
         $(document.body).on('click', '.cont', function () {
+            if($('.subform4').attr('style')!='display: none;'){
+                alert('tes');
+            var er = 0;
+            $('.required').each(function(){
+                if($(this).val()=='')
+                {
+                    $(this).attr('style','border-color:red');
+                    $('.cont').attr('disabled','');
+                    $(this).focus();
+                    $('html,body').animate({
+                            scrollTop: $('.active').offset().top},
+                        'slow');
+                    er = 1;
+                }
+                else
+                {
+                    $(this).removeAttr('style');
+                }
+            });
+            if(er){
+                alert('Some of the fields of consent form is required.');
+                return false;
+
+            }
+            else
+            {
+                $('.cont').removeAttr('disabled');
+            }
+            }
             if ($(this).attr('id') == 'draft') {
                 var draft = 1;
             }
@@ -910,7 +939,7 @@
                             type: 'POST',
                             success: function (res) {
                                 if (res == 'OK')
-                                    window.location = '<?php echo $this->request->webroot?>documents/index';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                             }
                         });
 
@@ -926,7 +955,7 @@
                             type: 'POST',
                             success: function (res) {
                                 if (res == 'OK')
-                                    window.location = '<?php echo $this->request->webroot?>documents/index';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                             }
                         });
 
@@ -944,7 +973,7 @@
                     if (type != "Survey" || type != "Feedbacks" || type != "Attachment") {
                         $('.flashDoc').show();
                         $('.flashDoc').fadeOut(8000);
-                        //window.location = '<?php echo $this->request->webroot?>documents/index';
+                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                     }
                 }
             });

@@ -46,11 +46,11 @@
                                <div class="form-group col-md-12">
                                <label class="control-label col-md-3">Supervisor's Email:</label>
                                <div class="col-md-3">
-                               <input type="text" class="form-control" name="supervisor_email[]"/>
+                               <input type="text" class="form-control email1" name="supervisor_email[]"/>
                                </div>
                                <label class="control-label col-md-3">Secondary Email:</label>
                                <div class="col-md-3">
-                               <input type="text" class="form-control" name="supervisor_secondary_email[]"/>
+                               <input type="text" class="form-control email1" name="supervisor_secondary_email[]"/>
                                </div>
                                </div>
                                

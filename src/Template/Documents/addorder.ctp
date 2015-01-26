@@ -1068,25 +1068,25 @@
             $('.cont').removeAttr('disabled');
             //$('.tab-pane.active input[type="email"]').val('');
         });
-        $('.email1').keyup(function(){
+        $('.email1').live('keyup',function(){
             //alert($('.email1').val());
-            if($('.email1').val()!='' && ($('.email1').val().replace('@','')== $('.email1').val() || $('.email1').val().replace('.','')== $('.email1').val() || $('.email1').val().length<5)){
-            $('.email1').attr('style','border-color:red');
+            if($(this).val()!='' && ($(this).val().replace('@','')== $(this).val() || $(this).val().replace('.','')== $(this).val() || $(this).val().length<5)){
+            $(this).attr('style','border-color:red');
             $('.cont').attr('disabled','');
             }
             else{
                // alert($('.email1').val());
                 $('.cont').removeAttr('disabled');
-                $('.email1').removeAttr('style');
+                $(this).removeAttr('style');
             }
 
         });
-        $('.email1').blur(function(){
+        $('.email1').live('blur',function(){
             //alert($('.email1').val());
-            if($('.email1').val()!='' && ($('.email1').val().replace('@','')== $('.email1').val() || $('.email1').val().replace('.','')== $('.email1').val() || $('.email1').val().length<5)){
-                $('.email1').val('');
+            if($(this).val()!='' && ($(this).val().replace('@','')== $(this).val() || $(this).val().replace('.','')== $(this).val() || $(this).val().length<5)){
+                $(this).val('');
                 $('.cont').removeAttr('disabled');
-                $('.email1').removeAttr('style');
+                $(this).removeAttr('style');
             }
 
 

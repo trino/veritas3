@@ -101,7 +101,7 @@
                     </div>
                     <label class="control-label col-md-3">Applicants Email : </label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="applicants_email"/>
+                        <input type="text" class="form-control email1" name="applicants_email"/>
                     </div>
                 </div>
 

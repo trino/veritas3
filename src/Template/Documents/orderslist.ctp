@@ -184,14 +184,17 @@
                                         ?>
                                         <?php if (!isset($_GET['draft'])) echo $this->Html->link(__('View Score Card'), ['controller' => 'documents', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
 
-                                        <?php if (isset($order->bright_planet_html_binary)) { ?>
-                                            <span class="label label-sm label-success" style="float:right;padding:4px;">order completed</span>
-                                        <?php } else { ?>
-                                            <span class="label label-sm label-warning" style="float:right;padding:4px;">order pending</span>
-
+                                        <?php if (!isset($_GET['draft'])) { ?>
+                                            <?php if (isset($order->bright_planet_html_binary)) { ?>
+                                                <span class="label label-sm label-success"
+                                                      style="float:right;padding:4px;">order completed</span>
+                                            <?php } else { ?>
+                                                <span class="label label-sm label-warning" style="float:right;padding:4px;">order pending</span>
+                                            <?php }
+                                        }else{?>
+                                            <span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>
 
                                         <?php } ?>
-
 
                                     </td>
                                 </tr>

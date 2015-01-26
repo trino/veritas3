@@ -402,7 +402,7 @@
 
             }
             $profile = $this->Profiles->get($id);
-            $this->request->allowMethod(['post', 'delete']);
+           // $this->request->allowMethod(['post', 'delete']);
             if ($this->Profiles->delete($profile)) {
                 $this->Flash->success('The user has been deleted.');
             } else {

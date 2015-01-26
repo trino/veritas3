@@ -143,7 +143,7 @@
                                 <td><?= h($order->title) ?></td>
                                 <td><?= h($uploaded_by->username) ?></td>
                                 <td><?= h($uploaded_for->username) ?></td>
-                                <td><?= h($client->title) ?></td>
+                                <td><?= h($client->company_name) ?></td>
                                 <td><?= h($order->created) ?></td>
                                 <td class="actions  util-btn-margin-bottom-5" >
 
@@ -167,7 +167,7 @@
 
                                     }
                                      if($sidebar->orders_delete=='1'){
-                                        ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+                                        ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?');">Delete</a>
                                         <?php
                                          } }
                                          ?>

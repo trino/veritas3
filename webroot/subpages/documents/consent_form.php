@@ -169,10 +169,16 @@
             <label class="control-label col-md-11">Applicant's Signature- by signing this form you agree and consent to
                 the terms and release of information listed on this form : </label>
 
-            <div class="col-md-1">
-                <input type="text" class="form-control" name="applicant_signature_agree"/>
-            </div>
+            
         </div>
+        <div class="form-group col-md-6">
+            <?php include('canvas/consent_signature_driver2.php'); ?>
+        </div>
+        <div class="form-group col-md-6">
+            <?php include('canvas/consent_signature_witness2.php'); ?>
+        </div>
+
+        <div class="clearfix"></div>        
         <div class="form-group col-md-12">
             <label class="control-label col-md-4">Company Name Requesting Search : </label>
 
@@ -593,6 +599,8 @@
         <?php if($this->request->params['action'] != 'vieworder' && $this->request->params['action']!= 'view'){?>
         $("#test3").jqScribble();
         $("#test4").jqScribble();
+        $("#test5").jqScribble();
+        $("#test6").jqScribble();
         <?php }?>
 
         <?php

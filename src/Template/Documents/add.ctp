@@ -939,7 +939,7 @@
                             type: 'POST',
                             success: function (res) {
                                 if (res == 'OK')
-                                    window.location = '<?php echo $this->request->webroot?>documents/index';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                             }
                         });
 
@@ -955,7 +955,7 @@
                             type: 'POST',
                             success: function (res) {
                                 if (res == 'OK')
-                                    window.location = '<?php echo $this->request->webroot?>documents/index';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                             }
                         });
 
@@ -973,7 +973,7 @@
                     if (type != "Survey" || type != "Feedbacks" || type != "Attachment") {
                         $('.flashDoc').show();
                         $('.flashDoc').fadeOut(8000);
-                        //window.location = '<?php echo $this->request->webroot?>documents/index';
+                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                     }
                 }
             });

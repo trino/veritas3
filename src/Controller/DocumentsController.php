@@ -106,6 +106,10 @@
                 $this->set('return_type', $_GET['type']);
             }
             $this->set('documents', $this->paginate($doc));
+            if(isset($_GET['flash']))
+            {
+                $this->Flash->success('Document saved successfully.');
+            }
         }
 
         /*

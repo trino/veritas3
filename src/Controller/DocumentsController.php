@@ -435,7 +435,8 @@
                 $orders = TableRegistry::get('orders');
                 $arr['title'] = 'order_' . $_POST['uploaded_for'] . '_' . date('Y-m-d H:i:s');
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
-                $arr['recruiter_signature'] = $_POST['recruiter_signature'];
+                $sig = explode('/',$_POST['recruiter_signature']);
+                $arr['recruiter_signature'] = end($sig);
                 if (isset($_GET['draft']) && $_GET['draft'])
                     $arr['draft'] = 1;
                 else

@@ -296,33 +296,11 @@
                                                                name="sacc_number" <?php if (isset($c->sacc_number)) { ?> value="<?php echo $c->sacc_number; ?>" <?php } ?>/>
                                                     </div>
 
-
-
-
-
-
-
-
-
-
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <h3 class="block">Billing</h3>
                                                             </div>
                                                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                                                     <div class="form-group col-md-4">
@@ -418,7 +396,7 @@
 
                                                                                 <?php
                                                                                 } else
-                                                                                    echo $cd->file;
+                                                                                    echo $this->request->webroot."".$cd->file;
                                                                             ?>
                                                                             <a href="javascript:void(0);"
                                                                                onclick="$(this).parent().remove()"

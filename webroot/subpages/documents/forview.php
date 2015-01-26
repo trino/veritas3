@@ -729,8 +729,17 @@
 															<span class="task-title-sp">
 															Pre-screening form
  </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/".$order->id);?>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success"><?php echo ($cnt>0)?"Processed":"Skiped";?></span>
-                                            &#x2713;
+                                            <?php if($cnt>0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
 
 
                                         </div>
@@ -745,8 +754,17 @@
 											<span class="task-title-sp">
 											Driver Application	 </span>
                                             <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/".$order->id);?>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success"><?php echo ($cnt>0)?"Processed":"Skiped";?></span>
-                                            &#x2713;
+                                            <?php if($cnt>0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
 
                                         </div>
 
@@ -761,8 +779,17 @@
                                                 Road Test
                                             </span>
                                             <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/".$order->id);?>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success"><?php echo ($cnt>0)?"Processed":"Skiped";?></span>
-                                            &#x2713;
+                                            <?php if($cnt>0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
                                         </div>
 
                                     </li>
@@ -776,8 +803,17 @@
 
                                                 MEE Order	 </span>
                                             <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/".$order->id);?>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success"><?php echo ($cnt>0)?"Processed":"Skiped";?></span>
-                                            &#x2713;
+                                           <?php if($cnt>0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
 
                                         </div>
 
@@ -788,12 +824,19 @@
                                             </div>
                                         </div>-->
                                         <div class="task-title">
-															<span class="task-title-sp">
-
-                                                            Confirmation  </span>
-                                            <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
-                                            &#x2713;
-
+											<span class="task-title-sp">
+                                            Confirmation  </span>
+                                            <?php if($order->draft==0){?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                                &#x2713;
+                                            <?php }
+                                            else
+                                            {
+                                            ?>
+                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
+                                                
+                                            <?php
+                                            }?>
 
                                         </div>
 

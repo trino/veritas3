@@ -19,7 +19,7 @@
                 <button class="close" data-close="alert"></button>
                 Password saved successfully
             </div>
-             <div class="margin-top-10 alert alert-error display-hide flashPass1" style="display: none;">
+             <div class="margin-top-10 alert alert-danger display-hide flashPass1" style="display: none;">
                 <button class="close" data-close="alert"></button>
                 Password dose not match.
             </div>

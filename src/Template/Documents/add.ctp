@@ -851,6 +851,35 @@
     }
     ?>
         $(document.body).on('click', '.cont', function () {
+            if($('.subform4').attr('style')!='display: none;'){
+                alert('tes');
+            var er = 0;
+            $('.required').each(function(){
+                if($(this).val()=='')
+                {
+                    $(this).attr('style','border-color:red');
+                    $('.cont').attr('disabled','');
+                    $(this).focus();
+                    $('html,body').animate({
+                            scrollTop: $('.active').offset().top},
+                        'slow');
+                    er = 1;
+                }
+                else
+                {
+                    $(this).removeAttr('style');
+                }
+            });
+            if(er){
+                alert('Some of the fields of consent form is required.');
+                return false;
+
+            }
+            else
+            {
+                $('.cont').removeAttr('disabled');
+            }
+            }
             if ($(this).attr('id') == 'draft') {
                 var draft = 1;
             }

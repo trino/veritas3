@@ -1,5 +1,7 @@
 <?php
 
+ // debug(  $this->Session->read('Profile.isb_id')  );die();
+
     /*
         if($cri)
         {
@@ -37,11 +39,11 @@
     $uploadbinaryeducation_1650 = true;
 
     //debug($orderid);die();
-
+//$driverinfo->id = '17792'
     if ($startorder1) {
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
-            '&lt;/isb_DOL&gt;&lt;isb_Prov&gt;' . $driverinfo->driver_province . '&lt;/isb_Prov&gt;&lt;isb_UserID&gt;' . $driverinfo->id = '17792' . '&lt;/isb_UserID&gt;&lt;/ProductData&gt;';
+            '&lt;/isb_DOL&gt;&lt;isb_Prov&gt;' . $driverinfo->driver_province . '&lt;/isb_Prov&gt;&lt;isb_UserID&gt;' . $this->Session->read('Profile.isb_id') . '&lt;/isb_UserID&gt;&lt;/ProductData&gt;';
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">

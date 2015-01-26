@@ -1,4 +1,48 @@
 <?php
+
+    function get_string_between($string, $start, $end)
+    {
+        $string = " " . $string;
+        $ini = strpos($string, $start);
+        if ($ini == 0) return "";
+        $ini += strlen($start);
+        $len = strpos($string, $end, $ini) - $ini;
+        return substr($string, $ini, $len);
+    }
+
+
+    function get_mee_results_binary($bright_planet_html_binary, $document_type)
+    {
+        return (get_string_between(base64_decode($bright_planet_html_binary), $document_type, '</tr>'));
+    }
+
+    function get_color($result_string)
+    {
+
+        $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+
+        switch (trim($result_string)) {
+            case 'NOT ATTACHED':
+                echo $return_color = '<span  class="label label-sm label-danger" style="float:right;padding:4px;">' . $result_string . '</span>';;
+                break;
+            case 'PASS':
+                echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'DISCREPANCIES':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'COACHING REQUIRED':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'VERIFIED':
+                echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+
+        }
+
+    }
+
+
     function return_link($pdi, $order_id)
     {
         if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.pdf')) {
@@ -66,7 +110,7 @@
     <ul class="page-breadcrumb">
         <li>
             <i class="fa fa-home"></i>
-            <a href="<?php echo $this->request->webroot;?>">Dashboard</a>
+            <a href="<?php echo $this->request->webroot; ?>">Dashboard</a>
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
@@ -159,7 +203,8 @@
             <a href="#" class="btn btn-lg default yellow-stripe">
                 Road Test Score </a><a href="#" class="btn btn-lg yellow">
 
-                <i class="fa fa-bar-chart-o"></i><?php if(isset($order->road_test[0]->total_score))echo $order->road_test[0]->total_score;?></a>
+                <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
+            </a>
 
         </div>
 
@@ -167,12 +212,14 @@
         <?php $settings = $this->requestAction('settings/get_settings');
             $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
         ?>
-        <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type
+        <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type:
                 <strong>Orders</strong></p>
-            <p> Uploaded by: <strong>Recruiter ID # <?php echo $order->user_id; ?></strong></p>
+                        <p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
+
+            <p>Recruiter ID # <strong><?php echo $order->user_id; ?></strong></p>
+                        <p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
+
             <p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
-            <p>Company: <strong><?php echo $order->client->company_name; ?></strong></p>
-            <p>Filed by: <strong><?php echo $uploaded_by->fname; ?></strong></p>
 
 </span>
         <!--hr/>
@@ -251,10 +298,11 @@
                                     </td>
 
                                     <td>Premium National Criminal Record Check
-
+                                        <?php
+                                            get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Premium National Criminal Record Check")));
+                                        ?>
 
                                     </td>
-
 
                                     <td class="actions">
                                         <?php
@@ -279,7 +327,11 @@
                                         <span class="icon-notebook"></span>
 
                                     </td>
-                                    <td>Driver's Record Abstract</td>
+                                    <td>Driver's Record Abstract
+                                        <?php
+                                            get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Driver's Record Abstract")));
+                                        ?>
+                                    </td>
 
                                     <td class="actions">
                                         <?php
@@ -300,7 +352,15 @@
                                         <span class="icon-notebook"></span>
 
                                     </td>
-                                    <td>CVOR</td>
+                                    <td>CVOR
+
+
+                                        <?php
+                                            get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "CVOR")));
+                                        ?>
+
+
+                                    </td>
 
                                     <td class="actions">
                                         <?php
@@ -322,7 +382,13 @@
                                         <span class="icon-notebook"></span>
 
                                     </td>
-                                    <td>Pre-employment Screening Program Report</td>
+                                    <td>Pre-employment Screening Program Report
+
+                                        <?php
+                                            get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Pre-employment Screening Program Report")));
+                                        ?>
+
+                                    </td>
 
                                     <td class="actions">
                                         <?php
@@ -344,7 +410,12 @@
                                         <span class="icon-notebook"></span>
 
                                     </td>
-                                    <td>Transclick</td>
+                                    <td>Transclick
+
+                                        <?php
+                                            get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "TransClick")));
+                                        ?>
+                                    </td>
 
                                     <td class="actions">
                                         <?php
@@ -366,7 +437,12 @@
                                         <span class="icon-notebook"></span>
 
                                     </td>
-                                    <td>Certifications</td>
+                                    <td>Certifications
+
+                                        <?php
+                                            get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Certifications")));
+                                        ?>
+                                    </td>
 
                                     <td class="actions">
                                         <?php
@@ -388,7 +464,12 @@
                                         <span class="icon-notebook"></span>
 
                                     </td>
-                                    <td>Letter of Experience</td>
+                                    <td>Letter of Experience
+
+                                        <?php
+                                            get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Letter Of Experience")));
+                                        ?>
+                                    </td>
 
                                     <td class="actions">
                                         <?php
@@ -683,15 +764,29 @@
 
     </div>
     <div class="row">
+
+
         <div class="col-md-6">
-            <!-- BEGIN PORTLET -->
 
 
-            <?php include('subpages/documents/recruiter_notes.php'); ?>
+            <div class="portlet light">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-pencil"></i>Recruiter Notes
+                        </div>
+
+                    </div>
+                    <div class="portlet-body">
+
+                        <?php include('subpages/documents/recruiter_notes.php'); ?>
+                    </div>
+                </div>
+            </div>
 
 
-            <!-- END PORTLET -->
         </div>
+
         <div class="col-md-6">
             <!-- BEGIN PORTLET -->
             <div class="portlet light tasks-widget">
@@ -701,7 +796,7 @@
                         <span
                             class="caption-subject font-blue-madison bold uppercase"><?php echo ucfirst($settings->document); ?>
                             Check-list</span>
-                        <span class="caption-helper">16 pending</span>
+                        <span class="caption-helper"></span>
                     </div>
                     <div class="inputs">
                         <div class="portlet-input input-small input-inline">
@@ -727,19 +822,19 @@
                                         </div>-->
                                         <div class="task-title">
 															<span class="task-title-sp">
-															Pre-screening form
- </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/".$order->id);?>
-                                            <?php if($cnt>0){?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+														<span class="icon-notebook"></span>	Pre-screening form
+ </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/" . $order->id); ?>
+                                            <?php if ($cnt > 0) { ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-success">Processed</span>
                                                 &#x2713;
-                                            <?php }
-                                            else
-                                            {
-                                            ?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
-                                                
+                                            <?php } else {
+                                                ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-danger">Skipped</span>
+
                                             <?php
-                                            }?>
+                                            } ?>
 
 
                                         </div>
@@ -752,19 +847,19 @@
                                         </div>-->
                                         <div class="task-title">
 											<span class="task-title-sp">
-											Driver Application	 </span>
-                                            <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/".$order->id);?>
-                                            <?php if($cnt>0){?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+											<span class="icon-notebook"></span> Driver Application	 </span>
+                                            <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/" . $order->id); ?>
+                                            <?php if ($cnt > 0) { ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-success">Processed</span>
                                                 &#x2713;
-                                            <?php }
-                                            else
-                                            {
-                                            ?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
-                                                
+                                            <?php } else {
+                                                ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-danger">Skipped</span>
+
                                             <?php
-                                            }?>
+                                            } ?>
 
                                         </div>
 
@@ -776,20 +871,20 @@
                                         </div>-->
                                         <div class="task-title">
 											<span class="task-title-sp">
-                                                Road Test
+                                                <span class="icon-notebook"></span> Road Test
                                             </span>
-                                            <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/".$order->id);?>
-                                            <?php if($cnt>0){?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                            <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/" . $order->id); ?>
+                                            <?php if ($cnt > 0) { ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-success">Processed</span>
                                                 &#x2713;
-                                            <?php }
-                                            else
-                                            {
-                                            ?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
-                                                
+                                            <?php } else {
+                                                ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-danger">Skipped</span>
+
                                             <?php
-                                            }?>
+                                            } ?>
                                         </div>
 
                                     </li>
@@ -801,19 +896,19 @@
                                         <div class="task-title">
 											<span class="task-title-sp">
 
-                                                MEE Order	 </span>
-                                            <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/".$order->id);?>
-                                           <?php if($cnt>0){?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                               <span class="icon-notebook"></span>  MEE Order	 </span>
+                                            <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/" . $order->id); ?>
+                                            <?php if ($cnt > 0) { ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-success">Processed</span>
                                                 &#x2713;
-                                            <?php }
-                                            else
-                                            {
-                                            ?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
-                                                
+                                            <?php } else {
+                                                ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-danger">Skipped</span>
+
                                             <?php
-                                            }?>
+                                            } ?>
 
                                         </div>
 
@@ -825,18 +920,18 @@
                                         </div>-->
                                         <div class="task-title">
 											<span class="task-title-sp">
-                                            Confirmation  </span>
-                                            <?php if($order->draft==0){?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-success">Processed</span>
+                                          <span class="icon-notebook"></span>  Confirmation  </span>
+                                            <?php if ($order->draft == 0) { ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-success">Processed</span>
                                                 &#x2713;
-                                            <?php }
-                                            else
-                                            {
-                                            ?>
-                                                <span style="float:right;padding:5px" class="label label-sm label-danger">Skipped</span>
-                                                
+                                            <?php } else {
+                                                ?>
+                                                <span style="float:right;padding:5px"
+                                                      class="label label-sm label-danger">Skipped</span>
+
                                             <?php
-                                            }?>
+                                            } ?>
 
                                         </div>
 

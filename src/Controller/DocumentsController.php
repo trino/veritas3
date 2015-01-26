@@ -2075,7 +2075,7 @@
         }
 
 
-        public function webservice($callfunction = null, $body = null, $orderid = null, $driverid = null)
+        public function webservice($recruiter_id = null, $body = null, $orderid = null, $driverid = null)
         {
             $this->layout = "blank";
             // require_once(APP.'../webroot/subpages/soap/nusoap.php');
@@ -2085,20 +2085,23 @@
 
             $driverinfo = $model->find()->where(['id' => $driverid])->first();
 
+           // debug($driverinfo);die();
+           // $isbid = $model->find()->where(['id' => $driverid])->first();
+
             /*
             $model2 = TableRegistry::get('consent_form_attachments');
-
             $consent_form_attachments = $model2->find()->where(['order_id' => $orderid]);
-
             $this->set(compact('consent_form_attachments'));
-*/
+            */
 
+
+          //  $attach = TableRegistry::get('consent_form_attachments');
+          //  $consent_form_attachments = $attach->find()->where(['order_id' => $orderid])->all();
+          //  $this->set(compact('consent_form_attachments'));
 
             $this->set('orderid', $orderid);
+
             $this->set('driverinfo', $driverinfo);
-
-
-
 
         }
 

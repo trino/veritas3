@@ -12,6 +12,7 @@
             }?>
 		</select>
 	</div>
+    <div class="clearfix"></div>
 </div>
 
 <script>

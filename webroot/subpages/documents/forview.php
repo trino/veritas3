@@ -216,7 +216,7 @@
                 <strong>Orders</strong></p>
                         <p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
 
-            <p>Recruiter ID # <strong><?php echo $order->user_id; ?></strong></p>
+            <p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
                         <p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
 
             <p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>

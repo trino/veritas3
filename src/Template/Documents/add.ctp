@@ -93,6 +93,9 @@
                     <div class="subform7" style="display: none;">
                         <?php include('subpages/documents/attachments.php'); ?>
                     </div>
+                     <div class="subform8" style="display: none;">
+                        <?php include('subpages/documents/audits.php'); ?>
+                    </div>
                 </div>
                 <div class="form-actions">
                     <div class="row">
@@ -176,6 +179,9 @@
 
         $('.subform7 .document_type').remove();
         $('.subform7 .sub_docs_id').remove();
+        
+        $('.subform8 .document_type').remove();
+        $('.subform8 .sub_docs_id').remove();
         //alert(s_arr[1]);
         if (s_arr[1] == 1) {
             $('#form_tab1').prepend('<input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>' +
@@ -206,9 +212,13 @@
             $('#form_tab7').prepend('<input class="document_type" type="hidden" name="document_type" value="Attachment" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="7"  />');
         }
+        if (s_arr[1] == 8) {
+            $('#form_tab8').prepend('<input class="document_type" type="hidden" name="document_type" value="Audits" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="8"  />');
+        }
         if (ftype != "") {
             //alert(form_type);
-            for (var p = 1; p <= 8; p++) {
+            for (var p = 1; p <= 9; p++) {
                 $('.subform' + p).hide();
             }
             $('.subform' + s_arr[1]).show(200, function () {
@@ -970,10 +980,21 @@
 
 
                     }
-                    if (type != "Survey" || type != "Feedbacks" || type != "Attachment") {
+                    else if (type == "Audits") {
+                        var act = $('#form_tab8').attr('action');
+
+                        $('#form_tab8').attr('action', function (i, val) {
+                            return val + '?draft=' + draft;
+                        });
+                        
+                        $('#form_tab8').submit();
+
+
+                    }
+                    if (type != "Survey" || type != "Feedbacks" || type != "Attachment"|| type != "Audits") {
                         $('.flashDoc').show();
                         $('.flashDoc').fadeOut(8000);
-                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                        //window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                     }
                 }
             });

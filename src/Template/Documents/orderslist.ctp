@@ -178,6 +178,8 @@
 
 
 ?>
+                                        <?php  if(!isset($_GET['draft']))echo $this->Html->link(__('View Score Card'), ['controller'=>'documents','action' => 'viewReport',$order->client_id, $order->id], ['class' => 'btn btn-success']);?>
+
                                     <?php if(isset($order->bright_planet_html_binary)){   ?>
                                  <span  class="label label-sm label-success" style="float:right;padding:4px;">order completed</span>
                                     <?php }else{  ?>
@@ -187,7 +189,7 @@
                                     <?php } ?>
 
 
-                                    <?php echo $this->Html->link(__('View Score Card'), ['controller'=>'documents','action' => 'viewReport',$order->client_id, $order->id], ['class' => 'btn btn-success']);?>
+                                    
                                 </td>
                             </tr>
 

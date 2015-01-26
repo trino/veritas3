@@ -143,8 +143,8 @@
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
                             <label class="control-label">Driver Type</label>
-
                             <select name="driver" class="form-control select_driver req_driver">
+\
                                 <option value="">Select Driver Type</option>
                                 <option
                                     value="1" <?php if (isset($p) && $p->driver == 1) echo "selected='selected'"; ?>
@@ -562,28 +562,6 @@
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php
     if ($this->request->params['action'] == 'edit') {
         ?>

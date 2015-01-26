@@ -966,7 +966,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-
+                window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }
@@ -978,7 +978,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-
+                window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }
@@ -990,7 +990,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-
+                window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }
@@ -1021,7 +1021,7 @@
             data: param,
             type: 'POST',
             success: function (rea) {
-
+                //window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }
@@ -1032,7 +1032,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-
+                window.location = '<?php echo $this->request->webroot?>documents/index';
             }
         });
     }

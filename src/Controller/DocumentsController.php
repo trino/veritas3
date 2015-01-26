@@ -1257,6 +1257,12 @@
                     $attachment = $attachments->find()->where(['document_id' => $did])->all();
                     $this->set('attachments', $attachment);
                 }
+                elseif ($query->sub_doc_id == '8') {
+                    $attachments = TableRegistry::get('audits');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    $audits = $attachments->find()->where(['document_id' => $did])->first();
+                    $this->set('audits', $audits);
+                }                
 
                 $pre = TableRegistry::get('pre_screening_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
@@ -2269,7 +2275,7 @@
             }
 
         }
-        function addaudits($cid, $did)
+        function audits($cid, $did)
         {
 
             if (isset($_POST) && isset($_GET['draft'])) {
@@ -2281,7 +2287,7 @@
                 $arr['sub_doc_id'] = $_POST['sub_doc_id'];
                 $arr['client_id'] = $cid;
                 $arr['document_type'] = $_POST['document_type'];
-                $arr['title'] = $_POST['title'];
+               
                 $arr['created'] = date('Y-m-d H:i:s');
 
                 if (!$did || $did == '0') {
@@ -2294,6 +2300,7 @@
 
                         $doczs = TableRegistry::get('audits');
                         $ds['document_id'] = $doc->id;
+                        $ds['date'] = $_POST['year']."-".$_POST['month'];
                         foreach($_POST as $k=>$v)
                         {
                             $ds[$k]=$v;
@@ -2324,7 +2331,8 @@
                     }*/
                     $this->Audits->deleteAll(['document_id' => $did]);
                      $doczs = TableRegistry::get('audits');
-                        $ds['document_id'] = $doc->id;
+                        $ds['document_id'] = $did;
+                         $ds['date'] = $_POST['year']."-".$_POST['month'];
                         foreach($_POST as $k=>$v)
                         {
                             $ds[$k]=$v;

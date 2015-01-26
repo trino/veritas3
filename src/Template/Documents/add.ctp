@@ -896,7 +896,7 @@
             else
                 var draft = 0;
             var type = $(".document_type").val();
-            alert(type);
+            //alert(type);
             //alert($('#sub_id').val());return;
             var data = {
                 uploaded_for: $('#uploaded_for').val(),
@@ -986,14 +986,15 @@
                         $('#form_tab8').attr('action', function (i, val) {
                             return val + '?draft=' + draft;
                         });
-                        //$('#form_tab8').submit();
+                        
+                        $('#form_tab8').submit();
 
 
                     }
                     if (type != "Survey" || type != "Feedbacks" || type != "Attachment"|| type != "Audits") {
                         $('.flashDoc').show();
                         $('.flashDoc').fadeOut(8000);
-                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                        //window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                     }
                 }
             });

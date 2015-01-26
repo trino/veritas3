@@ -142,7 +142,7 @@
                                     <a href="javascript:;" class="btn default button-previous" onclick="$('#skip').val('0');">
                                         <i class="m-icon-swapleft"></i> Back </a>
 
-                                    <a href="javascript:;" class="btn red button-next" onclick="$('#skip').val('1');">
+                                    <a href="javascript:;" class="btn red button-next skip" onclick="$('#skip').val('1');">
                                         Skip <i class="m-icon-swapdown m-icon-white"></i>
                                     </a>
                                     <input type="hidden" id="skip" value="0" />
@@ -246,13 +246,13 @@
                             ?>
                         </div>
                     </div>
-                    <div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>">
+                    <div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>" id="bottomact">
                         <div class="row">
                             <div class="col-md-offset-3 col-md-9">
                                 <a href="javascript:;" class="btn default button-previous" onclick="$('#skip').val('0');">
                                 <i class="m-icon-swapleft"></i> Back </a>
 
-                                <a href="javascript:;" class="btn red button-next" onclick="$('#skip').val('1');">
+                                <a href="javascript:;" class="btn red button-next skip" onclick="$('#skip').val('1');">
                                 Skip <i class="m-icon-swapdown m-icon-white"></i>
                                 </a>
 
@@ -303,7 +303,7 @@
     //showforms(doc_type);
     function showforms(form_type)
     {
-
+        //alert(form_type);
         if(form_type!= ""){
             $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+form_type);
             // loading data from db
@@ -313,7 +313,7 @@
             $.getJSON(url,param,function(res){
                 if(form_type == "company_pre_screen_question.php"){
 
-                    if(doc_id){
+                        if(res){
                         $('#form_tab1').form('load',res);
 
 
@@ -358,7 +358,7 @@
                         } else if(res.reefer_load==0){
                             $('#form_tab1').find('#reefer_load_0').closest('span').addClass('checked')
 
-                        }
+                        }}
 
                         // attach documents
                         /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
@@ -373,12 +373,7 @@
                          }
 
                          });*/
-
-
-                    } else
-                    {
-                        // var $this = $(this);
-                        var prof_id = $('#uploaded_for').val();
+                         var prof_id = $('#uploaded_for').val();
                         if(prof_id){
                             $.ajax({
                                 url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/1',
@@ -392,21 +387,25 @@
                                         if(response[name_attr])  {
 
                                             $(this).val(response[name_attr]);
-
+                                            
+                                            $(this).attr('disabled','disabled');
 
                                         }
                                     });
                                     $('#conf_driver_name').val(response['applicant_name']);
+                                    $('#conf_driver_name').attr('disabled','disabled');
 
                                 }
                             });
                         }
-                    }
+
+
+                    
                     //$('input[type="radio"]').buttonset("refresh");
                     // end pre screening
                 } else if(form_type == "driver_application.php"){
 
-                    if(doc_id){
+                        if(res){
                         $('#form_tab2').form('load',res);
 
                         if(res.worked_for_client==1){
@@ -534,7 +533,7 @@
                             $('#form_tab2').find('#suspend_any_license_0').closest('span').addClass('checked')
 
                         }
-
+                        }
                         /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
                          param={form_type:form_type};
                          $.getJSON(url,param,function(res){
@@ -543,11 +542,6 @@
                          }
 
                          });*/
-
-
-                    }
-                    else
-                    {
                         var prof_id = $('#uploaded_for').val();
                         if(prof_id){
                             $.ajax({
@@ -563,18 +557,21 @@
 
                                             $(this).val(response[name_attr]);
 
-
+                                            $(this).attr('disabled','disabled');
                                         }
                                         $('#conf_driver_name').val(response['first_name']+' '+response['last_name']);
+                                        $('#conf_driver_name').attr('disabled','disabled');
                                     });
                                 }
                             });
                         }
-                    }
+
+                    
+                    
 
                     // driver applicaton ends
                 }else if(form_type == "driver_evaluation_form.php"){
-                    if(doc_id){
+                        if(res){
                         $('#form_tab3').form('load',res);
 
 
@@ -917,19 +914,8 @@
                             $('#form_tab3').find('#recommended_fire_hire_trainee_1').closest('span').addClass('checked')
                         } else if(res.recommended_fire_hire_trainee==2){
                             $('#form_tab3').find('#recommended_fire_hire_trainee_0').closest('span').addClass('checked')
-                        }
+                        }}
 
-                        /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
-                         param={form_type:form_type};
-                         $.getJSON(url,param,function(res){
-                         if(res.length > 0){
-
-                         }
-
-                         });*/
-                    }
-                    else
-                    {
                         var prof_id = $('#uploaded_for').val();
                         if(prof_id){
                             $.ajax({
@@ -944,46 +930,25 @@
                                         if(response[name_attr])  {
 
                                             $(this).val(response[name_attr]);
+                                            $(this).attr('disabled','disabled');
 
 
                                         }
                                         $('#conf_driver_name').val(response['driver_name']);
+                                        $('#conf_driver_name').attr('disabled','disabled');
                                     });
                                 }
                             });
                         }
-                    }
+                    
+                    
 
 
                     // end road test
                 }else if(form_type == "document_tab_3.php"){
 
-                    /* var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
-                     param={form_type:form_type,sub_type:'form_consent'};
-                     $.getJSON(url,param,function(res){
-                     if(res.length > 0){
-
-                     }
-
-                     });*/
-                    /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
-                     param={form_type:form_type,sub_type:'form_employment'};
-
-                     $.getJSON(url,param,function(res){
-                     if(res.length > 0){
-
-                     }
-
-                     });*/
-                    /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
-                     param={form_type:form_type,sub_type:'form_education'};
-                     $.getJSON(url,param,function(res){
-                     if(res.length > 0){
-
-                     }
-
-                     });*/
-
+                    
+                    if(res){
                     $('#form_consent').find(':input').each(function(){
                         var $name = $(this).attr('name');
 
@@ -994,10 +959,8 @@
 
                         }
                     });
-                    if(!doc_id)
-                    {
-
-                        var prof_id = $('#uploaded_for').val();
+                    }
+                    var prof_id = $('#uploaded_for').val();
                         if(prof_id){
                             $.ajax({
                                 url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/4',
@@ -1011,17 +974,16 @@
                                         if(response[name_attr])  {
 
                                             $(this).val(response[name_attr]);
-
+                                            $(this).attr('disabled','disabled');
 
                                         }
                                         $('#conf_driver_name').val(response['first_name']+' '+response['last_name']);
+                                        $('#conf_driver_name').attr('disabled','disabled');
                                     });
 
                                 }
                             });
                         }
-
-                    }
 
 
 
@@ -1062,6 +1024,7 @@
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
     }
     jQuery(document).ready(function() {
+        
         $('.button-next').click(function(){
             $('.cont').removeAttr('disabled');
             //$('.tab-pane.active').find('input[type="email"]').val('');
@@ -1144,12 +1107,45 @@
                 url:'<?php echo $this->request->webroot;?>documents/webservice/0/0/'+$('#did').val()+'/'+$('#uploaded_for').val(),
             })
         });
-
-
+        
+        $(document.body).on('click','.button-next',function(){
+            /*if($(".tab-pane.active").attr('id') == 'tab5' || $(".tab-pane.active").attr('id') == 'tab6')
+            {
+                alert('test');
+                $('.skip').hide();
+            }
+            else
+            {
+                $('.skip').show();
+            }*/
+            
+        var ba = $('#bottomact').offset();
+            //alert(ba.top);
+            $('input[type="file"]').each(function(){
+             $(this).parent().attr('style','display: block; position: absolute; overflow: hidden; margin: 0px; padding: 0px; opacity: 0; direction: ltr; z-index: 2147483583; left: 551.5px; top: '+ba.top+'px; width: 77px; height: 34px; visibility: hidden;');
+             //  css = css. 
+            });
+            });
+        $(document.body).on('click','.button-previous',function(){
+        /*if($(".tab-pane.active").attr('id') == 'tab5' || $(".tab-pane.active").attr('id') == 'tab6')
+            {
+                $('.skip').hide();
+            }
+            else
+            {
+                $('.skip').show();
+            }*/
+        var ba = $('#bottomact').offset();
+            //alert(ba.top);
+            $('input[type="file"]').each(function(){
+             $(this).parent().attr('style','display: block; position: absolute; overflow: hidden; margin: 0px; padding: 0px; opacity: 0; direction: ltr; z-index: 2147483583; left: 551.5px; top: '+ba.top+'px; width: 77px; height: 34px; visibility: hidden;');
+             //  css = css. 
+            });
+            });
         $(document.body).on('click','.cont',function(){
 
-
-
+            
+             
             if($(this).attr('id') == 'draft')
             {
                 var draft = 1;
@@ -1215,6 +1211,9 @@
         {
             save_signature('3');
             save_signature('4');
+            save_signature('5');
+            save_signature('6');
+            save_signature('6');
         }
         /*if($(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val()=='Driver Application')
         {    if(!$('#confirm_check').is(':checked'))
@@ -1229,9 +1228,10 @@
     function save_signature(numb)
     {
         //alert('rest');return;
+        //alert(numb);
         $("#test"+numb).data("jqScribble").save(function(imageData)
         {
-            if((numb=='1' && $('#recruiter_signature').parent().find('.touched').val()==1) || (numb=='3' && $('#criminal_signature_applicant').parent().find('.touched').val()==1) || (numb=='4' && $('#signature_company_witness').parent().find('.touched').val()==1)){
+            if((numb=='1' && $('#recruiter_signature').parent().find('.touched').val()==1) || (numb=='3' && $('#criminal_signature_applicant').parent().find('.touched').val()==1) || (numb=='4' && $('#signature_company_witness').parent().find('.touched').val()==1) || (numb=='5' && $('#signature_company_witness2').parent().find('.touched').val()==1) || (numb=='6' && $('#signature_company_witness2').parent().find('.touched').val()==1)){
                 $.post('<?php echo $this->request->webroot; ?>canvas/image_save.php', {imagedata: imageData}, function(response)
                 {
                     if(numb=='1')
@@ -1247,6 +1247,14 @@
                     {
                         $('#signature_company_witness').val(response);
                     }
+                    if(numb=='5')
+                    {
+                        $('#criminal_signature_applicant2').val(response);
+                    }
+                    if(numb=='6')
+                    {
+                        $('#signature_company_witness2').val(response);
+                    }
                 });
             }
 
@@ -1255,11 +1263,15 @@
         });
     }
     function savePrescreen(url,order_id,cid){
-
+        var fields = $('#form_tab1').serialize();
+        $(':disabled[name]', '#form_tab1').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
         var param = {
             order_id: order_id,
             cid: cid,
-            inputs:$('#form_tab1').serialize()
+            
+            inputs:fields
         };
         $.ajax({
             url:url,
@@ -1272,7 +1284,11 @@
     }
 
     function savedDriverApp(url,order_id,cid){
-        var param = $('#form_tab2').serialize()
+        var fields = $('#form_tab2').serialize();
+        $(':disabled[name]', '#form_tab2').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var param = fields
         $.ajax({
             url:url,
             data: param,
@@ -1283,7 +1299,11 @@
         });
     }
     function savedDriverEvaluation(url,order_id,cid){
-        var param = $('#form_tab3').serialize();
+        var fields = $('#form_tab3').serialize();
+        $(':disabled[name]', '#form_tab3').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var param = fields
 
         $.ajax({
             url:url,
@@ -1297,7 +1317,11 @@
 
     function savedMeeOrder(url,order_id,cid){
         $('#loading5').show();
-        var param = $('#form_consent').serialize();
+       var fields = $('#form_consent').serialize();
+        $(':disabled[name]', '#form_consent').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var param = fields
         $.ajax({
             url:url,
             data: param,
@@ -1309,13 +1333,21 @@
 
 
                 //employment
-                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/'+order_id+'/'+cid,
-                    employment=$('#form_employment').serialize();
+                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/'+order_id+'/'+cid;
+                    var fields = $('#form_employment').serialize();
+        $(':disabled[name]', '#form_employment').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var employment = fields
                 saveEmployment(url,employment);
 
                 //education
-                url = '<?php echo $this->request->webroot;?>documents/saveEducation/'+order_id+'/'+cid,
-                    education=$('#form_education').serialize();
+                url = '<?php echo $this->request->webroot;?>documents/saveEducation/'+order_id+'/'+cid;
+                     var fields = $('#form_education').serialize();
+        $(':disabled[name]', '#form_education').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var education = fields
                 saveEducation(url,education);
             }
         });

@@ -184,6 +184,8 @@ var FormWizard = function () {
                 });
             }
             var handleTitle = function(tab, navigation, index) {
+                
+                //return false;
                 var total = navigation.find('li').length;
                 if(table)
                 index = table;
@@ -205,12 +207,13 @@ var FormWizard = function () {
                 } else {
                     $('#form_wizard_1').find('.button-previous').show();
                 }
-
+                
                 if(current == (total-1))
                 {
 
-
+                    
                     $('.cont').html('Submit Order');
+                    //$('.skip').hide();
 
                     $('#select_division').hide();
 
@@ -221,11 +224,12 @@ var FormWizard = function () {
                 else{
                     $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
                     $('.cont').attr('id','draft');
+                    $('.skip').show();
                 }
                 if(current==total)
                 {
                     $('.cont').attr('id','submit_ord');
-
+                    $('.skip').hide();
 //                    $('.cont').attr('id','');
                     $('#select_division').hide();
                 }
@@ -267,28 +271,49 @@ var FormWizard = function () {
                 onNext: function (tab, navigation, index) {
                     success.hide();
                     error.hide();
+                    if($(".tab-pane.active").attr('id') == 'tab1')
+                    {                    
+                    var uploaded = $('#uploaded_for').val();
+                            if(uploaded=='')
+                            {
+                                $('.select2-choice').attr('style','border-color:red');
+                                $('.select2-input').focus();  
+                                $('html,body').animate({
+                                        scrollTop: $('.active').offset().top},
+                                    'slow');                              
+                                return false;
+                            }
+                            else
+                            {
+                                handleTitle(tab, navigation, index);
+                            }
+                    }  
+                    else                          
                     if($(".tab-pane.active").attr('id') == 'tab2')
                     {
+                        
                         if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')
                         {
                             //if($('#skip').val()!='1'){
-                            
+                            //$('#confirm_check').attr('style','border-color:red');
                             alert('Please confirm that you have read the conditions');
                             $('#confirm_check').focus();
+                            $('html,body').animate({
+                                        scrollTop: $('.active').offset().top},
+                                    'slow');
                             return false;
                            // }
+                        }
+                            else{
+                            //alert('test');
+                            handleTitle(tab, navigation, index);
                         }
                     }
                     else
                     if($(".tab-pane.active").attr('id') == 'tab4')
                     {
-
-                            var uploaded = $('#uploaded_for').val();
-                            if(uploaded=='')
-                            {
-                                $('.select2-choice').attr('style','border-color:red');
-                                return false;
-                            }
+                            
+                            
 
                         var er = 0;
                         $(".tab-pane.active").find('.required').each(function(){
@@ -305,6 +330,7 @@ var FormWizard = function () {
                             else
                             {
                                 $(this).removeAttr('style');
+                                
                             }
                         });
                         if(er){
@@ -312,6 +338,11 @@ var FormWizard = function () {
                         return false;
 
                         }
+                        else{
+                        //alert('test');
+                        handleTitle(tab, navigation, index);
+                    }
+
                     }
                     else{
                         //alert('test');

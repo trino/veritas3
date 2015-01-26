@@ -71,7 +71,8 @@
                         if (response != 'error') {
 
                             $('.notes').prepend(response);
-                            window.location = "";
+                            $('#recruiter_notes').val('')
+                            //window.location = "";
                         }
                     }
                 });

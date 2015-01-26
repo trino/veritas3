@@ -435,7 +435,8 @@
                 $orders = TableRegistry::get('orders');
                 $arr['title'] = 'order_' . $_POST['uploaded_for'] . '_' . date('Y-m-d H:i:s');
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
-                $arr['recruiter_signature'] = $_POST['recruiter_signature'];
+                $sig = explode('/',$_POST['recruiter_signature']);
+                $arr['recruiter_signature'] = end($sig);
                 if (isset($_GET['draft']) && $_GET['draft'])
                     $arr['draft'] = 1;
                 else
@@ -1646,7 +1647,7 @@
                     $consentFormDetail = $consentForm->find()->where(['client_id' => $cid, 'order_id' => $order_id, 'document_id' => 0])->first();
                 else
                     $consentFormDetail = $consentForm->find()->where(['client_id' => $cid, 'document_id' => $order_id, 'order_id' => 0])->first();
-
+                if($consentFormDetail){
                 $consentFormID = $consentFormDetail->id;
 
                 $consentFormCriminal = TableRegistry::get('consent_form_criminal');
@@ -1656,6 +1657,7 @@
                     $consentFormCrmDetail = $consentFormCriminal->find()->where(['consent_form_id' => $consentFormID])->first();
 
                 echo json_encode($consentFormDetail);
+                }
 
                 /*$employment = TableRegistry::get('employment_verification');
                 if(!isset($_GET['document']))

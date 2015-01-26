@@ -127,13 +127,17 @@
                                     {
                                         if(($profile->admin == '1' || $profile->profile_type == '1') && $this->request->session()->read('Profile.super') == '1')
                                         {
-                                            echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]);
+                                            ?>
+                                            <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger" >Delete</a>
+                                            <?php
+                                            
                                         }
                                         
                                         else if($profile->admin != '1' && $profile->profile_type != '1')
                                         {
-                                            echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]);
-                                        }
+                                            ?>
+                                            <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger" >Delete</a>
+                                        <?php }
                                     } 
                                     ?>
                                     

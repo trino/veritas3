@@ -106,10 +106,10 @@
                                                 if ($sidebar->client_edit == '1') {
                                                     echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);
                                                 }
-                                                if ($sidebar->client_delete == '1') {
-                                                    echo $this->Form->postLink(__('Delete'), ['controller' => 'clients', 'action' => 'delete', $clients->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id)]);
-                                                }
-
+                                                if($sidebar->client_delete=='1'){ ?>
+                                                 <a href="<?php echo $this->request->webroot;?>clients/delete/<?php echo $clients->id;?>" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger" >Delete</a>
+                                                 <?php }
+                                                
                                                 if ($sidebar->orders_create == '1') {
                                                     echo $this->Html->link(__('Submit Order'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
                                                 }

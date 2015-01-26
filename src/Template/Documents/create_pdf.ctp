@@ -153,10 +153,18 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
      
         
             Applicant's Signature- by signing this form you agree and consent to the terms and release of information listed on this form : ";
-            if($detail['consent']->applicant_signature_agree)
-            $hereby = $hereby.'<strong>Yes</strong>';
-            else
-            $hereby = $hereby.'<strong>Yes</strong>';
+            $hereby = $hereby."<br/><br/><p>
+                            <strong>Signature of Driver</strong><br />";
+                if(isset($detail['consent']) && $detail['consent']->criminal_signature_applicant2){
+                    $hereby = $hereby."<img src=\"".$initials.$this->request->webroot.'canvas/'.$detail['consent']->criminal_signature_applicant2."\" style=\"max-width: 100%;\" />";
+                    }
+                $hereby = $hereby."<p>
+                            <strong>Signature of Company Witness</strong><br />";
+                if(isset($detail['consent']) && $detail['consent']->signature_company_witness2){
+                    $hereby = $hereby."<img src=\"".$initials.$this->request->webroot.'canvas/'.$detail['consent']->signature_company_witness2."\" style=\"max-width: 100%;\" /><br/>";
+                      }      
+                
+   // $pdf->writeHTMLCell(0, 0, '', '', $attach, 0, 1, 0, true, '', true);
             $pdf->writeHTMLCell(0, 0, '', '', $hereby, 0, 1, 0, true, '', true);
    
     $pdf->Cell(80, 5, 'Company Name Requesting Search)');
@@ -281,13 +289,20 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                 
                 if($att)
                 {
+                   $doc_ext = array('pdf','doc','docx','pdf');
                     foreach($att as $a)
                     {
+                        $ext_arr = explode('.', $a->attach_doc);
+                                            $ext = end($ext_arr);
+                                            $ext = strtolower($ext);
+                                            if (!in_array($ext, $doc_ext) && file_exists(APP."../webroot/attachments/".$a->attach_doc)) {
                     
                         $attach = $attach."<p><img src=\"".$initials.$this->request->webroot."attachments/".$a->attach_doc."\" /><br /></p>";
+                        }
+                        
                     }
                 }
-                
+                 
                 $attach = $attach."<br/><br/><p>
                             <strong>Signature of Driver</strong><br />";
                 if(isset($detail['consent']) && $detail['consent']->criminal_signature_applicant){

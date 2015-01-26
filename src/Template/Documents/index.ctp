@@ -91,7 +91,7 @@
                                     foreach($clients as $c)
                                     {
                                         ?>
-                                        <option value="<?php echo $c->id;?>" <?php if(isset($return_client_id) && $return_client_id==$c->id){?> selected="selected"<?php } ?> ><?php echo $c->title; ?></option>
+                                        <option value="<?php echo $c->id;?>" <?php if(isset($return_client_id) && $return_client_id==$c->id){?> selected="selected"<?php } ?> ><?php echo $c->company_name; ?></option>
                                         <?php
                                     }
                                  ?>
@@ -174,7 +174,7 @@
                                             echo $this->Html->link(__('Edit'), ['action' => 'add',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
                                     }
                                      ?>
-                                    <?php  if($sidebar->document_delete=='1'){ ?> <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>" onclick="return confirm('Confirm Delete?')" class="btn btn-danger" >Delete</a><?php } ?>
+                                    <?php  if($sidebar->document_delete=='1'){ ?> <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>" onclick="return confirm('Are you sure?');" class="btn btn-danger" >Delete</a><?php } ?>
 
                                 </td>
                             </tr>

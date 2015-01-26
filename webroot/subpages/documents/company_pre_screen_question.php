@@ -27,10 +27,10 @@
 											<input type="text" class="form-control" name="aplicant_name">
 										</div>
 									</div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6" id="email_cons">
 										<label class="col-md-6 control-label">Applicant's Email : </label>
 										<div class="col-md-6">
-											<input type="text" class="form-control" name="applicant_email">
+											<input type="text" class="form-control email1" name="applicant_email">
 										</div>
 									</div>
                                     <div class="form-group col-md-6">

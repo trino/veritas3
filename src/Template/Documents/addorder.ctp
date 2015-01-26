@@ -1091,6 +1091,26 @@
 
 
         });
+        $('.required').live('keyup',function(){
+            //alert('test');
+            //alert($('.email1').val());
+            if($(this).val().length>0){
+                $(this).removeAttr('style');
+                //$('.cont').attr('disabled','');
+            }
+
+
+        });
+        $('.required').live('blur',function(){
+            //alert($('.email1').val());
+            if($(this).val().length==0){
+                $(this).val('');
+                //$('.cont').removeAttr('disabled');
+                $(this).attr('style','border-color:red');
+            }
+
+
+        });
 
 
         <?php
@@ -1138,6 +1158,7 @@
             var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
             var confirmation = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
             var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#divison').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val(),recruiter_signature:$('#recruiter_signature').val()};
+
             $.ajax({
                 //data:'uploaded_for='+$('#uploaded_for').val(),
                 data : data,

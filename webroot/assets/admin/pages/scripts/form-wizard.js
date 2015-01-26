@@ -273,18 +273,45 @@ var FormWizard = function () {
                         {
                             //if($('#skip').val()!='1'){
                             
-                            alert('Please confirm that you have read the conditions at the bottom of this page.');
+                            alert('Please confirm that you have read the conditions');
                             $('#confirm_check').focus();
                             return false;
                            // }
                         }
                     }
+                    else
+                    if($(".tab-pane.active").attr('id') == 'tab4')
+                    {
+                        var er = 0;
+                        $(".tab-pane.active").find('.required').each(function(){
+                            if($(this).val()=='')
+                            {
+                                $(this).attr('style','border-color:red');
+                                $('.cont').attr('disabled','');
+                                $(this).focus();
+                                $('html,body').animate({
+                                        scrollTop: $('.active').offset().top},
+                                    'slow');
+                                er = 1;
+                            }
+                            else
+                            {
+                                $(this).removeAttr('style');
+                            }
+                        });
+                        if(er)
+                        return false;
 
+                    }
+                    else{
+                        alert('test');
+                        handleTitle(tab, navigation, index);
+                    }
                     /*if (form.valid() == false) {
                      return false;
                      }*/
 
-                    handleTitle(tab, navigation, index);
+
                 },
                 onPrevious: function (tab, navigation, index) {
                     success.hide();

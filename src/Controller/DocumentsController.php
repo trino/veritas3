@@ -485,7 +485,7 @@
                 //$arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
                 //$arr['conf_driver_name'] = $_POST['conf_driver_name'];
                 //$arr['conf_date'] = $_POST['conf_date'];
-                if ((!$did || $did == '0') && $arr['sub_doc_id'] != 7) {
+                if ((!$did || $did == '0') && $arr['sub_doc_id'] != 7&& $arr['sub_doc_id'] != 8) {
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
                     $doc = $docs->newEntity($arr);
 
@@ -2260,6 +2260,76 @@
                         }
                     }
 
+                    $this->Flash->success('Document Updated successfully.');
+                    $this->redirect(array('action' => 'index'));
+                }
+
+            }
+
+        }
+        function addaudits($cid, $did)
+        {
+
+            if (isset($_POST) && isset($_GET['draft'])) {
+
+                if (isset($_GET['draft']) && $_GET['draft'])
+                    $arr['draft'] = 1;
+                else
+                    $arr['draft'] = 0;
+                $arr['sub_doc_id'] = $_POST['sub_doc_id'];
+                $arr['client_id'] = $cid;
+                $arr['document_type'] = $_POST['document_type'];
+                $arr['title'] = $_POST['title'];
+                $arr['created'] = date('Y-m-d H:i:s');
+
+                if (!$did || $did == '0') {
+
+                    $arr['user_id'] = $this->request->session()->read('Profile.id');
+                    $docs = TableRegistry::get('Documents');
+                    $doc = $docs->newEntity($arr);
+
+                    if ($docs->save($doc)) {
+
+                        $doczs = TableRegistry::get('audits');
+                        $ds['document_id'] = $doc->id;
+                        foreach($_POST as $k=>$v)
+                        {
+                            $ds[$k]=$v;
+                        }
+                        $docz = $doczs->newEntity($ds);
+                        $doczs->save($docz);
+                        unset($doczs);
+                        $this->Flash->success('Document saved successfully.');
+                        $this->redirect(array('action' => 'index'));
+                    } else {
+                        $this->Flash->error('Document could not be saved. Please try again.');
+                        $this->redirect(array('action' => 'index'));
+                    }
+
+                } else {
+                    $docs = TableRegistry::get('Documents');
+                    $query2 = $docs->query();
+                    $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $did])
+                        ->execute();
+                    $this->loadModel('Audits');
+                    /*$attach = TableRegistry::get('attachments');
+                    $at = $attach->find()->where(['document_id'=>$did])->all();
+                    foreach($at as $a)
+                    {
+                         @unlink(WWW_ROOT."attachments/".$a->file);
+                    }*/
+                    $this->Audits->deleteAll(['document_id' => $did]);
+                     $doczs = TableRegistry::get('audits');
+                        $ds['document_id'] = $doc->id;
+                        foreach($_POST as $k=>$v)
+                        {
+                            $ds[$k]=$v;
+                        }
+                        $docz = $doczs->newEntity($ds);
+                        $doczs->save($docz);
+                        unset($doczs);
                     $this->Flash->success('Document Updated successfully.');
                     $this->redirect(array('action' => 'index'));
                 }

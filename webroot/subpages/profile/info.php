@@ -38,8 +38,7 @@
                         <div class="form-group">
                             <label class="control-label">Username</label>
                             <input <?php echo $is_disabled ?> name="username" type="text"
-                                                              class="form-control un" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>
-                                                              required="required"/>
+                                                              class="form-control un" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
                         </div>
                     </div>
 
@@ -58,7 +57,7 @@
                             <label class="control-label">ISB Id</label>
                             <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?> name="isb_id" type="text"
                                                               placeholder="optional"
-                                                              class="form-control" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>/>
+                                                              class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
                         </div>
                     </div>
 
@@ -145,78 +144,78 @@
                         <div class="form-group">
                             <label class="control-label">Driver Type</label>
 
-                            <select name="driver" class="form-control select_driver">
+                            <select name="driver" class="form-control select_driver req_driver">
                                 <option value="">Select Driver Type</option>
                                 <option
-                                    value="1" <?php if (isset($p) && $p->driver == 1) echo "selected='slected'"; ?>
-                                    class="req_driver">BC - BC FTL AB/BC
+                                    value="1" <?php if (isset($p) && $p->driver == 1) echo "selected='selected'"; ?>
+                                    >BC - BC FTL AB/BC
                                 </option>
                                 <option value="2"
-                                        <?php if (isset($p) && $p->driver == 2) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 2) echo "selected='selected'"; ?>>
                                     BCI5 - BC FTL I5
                                 </option>
                                 <option value="3"
-                                        <?php if (isset($p) && $p->driver == 3) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 3) echo "selected='selected'"; ?>>
                                     BULK
                                 </option>
                                 <option value="4"
-                                        <?php if (isset($p) && $p->driver == 4) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 4) echo "selected='selected'"; ?>>
                                     CLIMATE
                                 </option>
                                 <option value="5"
-                                        <?php if (isset($p) && $p->driver == 5) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 5) echo "selected='selected'"; ?>>
                                     FTL - SINGLE DIVISION
                                 </option>
                                 <option value="6"
-                                        <?php if (isset($p) && $p->driver == 6) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 6) echo "selected='selected'"; ?>>
                                     FTL - TOYOTA SINGLE HRLY
                                 </option>
                                 <option value="7"
-                                        <?php if (isset($p) && $p->driver == 7) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 7) echo "selected='selected'"; ?>>
                                     FTL - TOYOTA SINGLE HWY
                                 </option>
                                 <option value="8"
-                                        <?php if (isset($p) && $p->driver == 8) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 8) echo "selected='selected'"; ?>>
                                     LCV - LCV UNITS
                                 </option>
                                 <option value="9"
-                                        <?php if (isset($p) && $p->driver == 9) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 9) echo "selected='selected'"; ?>>
                                     LOC - LOCAL
                                 </option>
                                 <option value="10"
-                                        <?php if (isset($p) && $p->driver == 10) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 10) echo "selected='selected'"; ?>>
                                     OWNER - OPERATOR
                                 </option>
                                 <option value="11"
-                                        <?php if (isset($p) && $p->driver == 11) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 11) echo "selected='selected'"; ?>>
                                     OWNER - DRIVER
                                 </option>
                                 <option value="12"
-                                        <?php if (isset($p) && $p->driver == 12) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 12) echo "selected='selected'"; ?>>
                                     SCD - SPECIAL COMMODITIES
                                 </option>
                                 <option value="13"
-                                        <?php if (isset($p) && $p->driver == 13) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 13) echo "selected='selected'"; ?>>
                                     SST-SANDRK- OPEN FUEL
                                 </option>
                                 <option value="14"
-                                        <?php if (isset($p) && $p->driver == 14) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 14) echo "selected='selected'"; ?>>
                                     SWD-SANDRK
                                 </option>
                                 <option value="15"
-                                        <?php if (isset($p) && $p->driver == 15) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 15) echo "selected='selected'"; ?>>
                                     TBL-TRANSBORDER
                                 </option>
                                 <option value="16"
-                                        <?php if (isset($p) && $p->driver == 16) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 16) echo "selected='selected'"; ?>>
                                     TEM - TEAM DIVISION
                                 </option>
                                 <option value="17"
-                                        <?php if (isset($p) && $p->driver == 17) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 17) echo "selected='selected'"; ?>>
                                     TEM - TOYOTA TEAM
                                 </option>
                                 <option value="18"
-                                        <?php if (isset($p) && $p->driver == 18) echo "selected='slected'"; ?>class="req_driver">
+                                        <?php if (isset($p) && $p->driver == 18) echo "selected='selected'"; ?>>
                                     WD - Wind
                                 </option>
                             </select>
@@ -289,13 +288,29 @@
                     </div>
 
 
-
-
-
-
-
-
                     <div class="col-md-4">
+                        <div class="form-group">
+
+                            <label class="control-label">Gender</label>
+                            <input <?php echo $is_disabled ?> name="gender" type="text"
+                                                              placeholder="M / F"
+                                                              class="form-control" <?php if (isset($p->gender)) { ?> value="<?php echo $p->gender; ?>" <?php } ?>/>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <label class="control-label">Place of Birth</label>
+                            <input <?php echo $is_disabled ?> name="placeofbirth" type="text"
+                                                              placeholder=""
+                                                              class="form-control" <?php if (isset($p->placeofbirth)) { ?> value="<?php echo $p->placeofbirth; ?>" <?php } ?>/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
 
                         <div class="form-group">
                             <label class="control-label">Date of Birth (YYYY-MM-DD)</label><BR>
@@ -630,16 +645,24 @@
                     $(this).hide();
                 });
                 $('#driver_div').show();
-                $('.req_driver').attr('required', 'required');
-                //$('.un').removeAttr('required');
+                $('.un').removeProp('required');
+                $('.req_rec').removeProp('required');
+                $('.req_driver').prop('required',"required");
             }
             else {
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).show();
                 });
                 $('#driver_div').hide();
-                $('.req_driver').removeAttr('required');
-                $('.un').attr('required', 'required');
+                $('.req_driver').removeProp('required');
+                $('.req_rec').removeProp('required');
+                $('.un').prop('required',"required");
+            }
+            
+            if ($(this).val() == '2') {
+                $('.req_driver').removeProp('required');
+                $('.un').removeProp('required');
+                $('.req_rec').prop('required',"required");
             }
 
         });

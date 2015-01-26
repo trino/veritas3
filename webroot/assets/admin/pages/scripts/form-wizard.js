@@ -282,6 +282,14 @@ var FormWizard = function () {
                     else
                     if($(".tab-pane.active").attr('id') == 'tab4')
                     {
+
+                            var uploaded = $('#uploaded_for').val();
+                            if(uploaded=='')
+                            {
+                                $('.select2-choice').attr('style','border-color:red');
+                                return false;
+                            }
+
                         var er = 0;
                         $(".tab-pane.active").find('.required').each(function(){
                             if($(this).val()=='')
@@ -304,7 +312,7 @@ var FormWizard = function () {
 
                     }
                     else{
-                        alert('test');
+                        //alert('test');
                         handleTitle(tab, navigation, index);
                     }
                     /*if (form.valid() == false) {

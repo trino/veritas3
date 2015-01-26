@@ -42,7 +42,7 @@
 				<a href="#" onclick='$("#test").data("jqScribble").update({brushColor: "rgb(0,0,255)"});'>Blue</a>
 			</div>
 		</div>
-        <div class="col-sm-6" style="width: 400px;">
+        <div class="col-sm-10" style="width: 700px;">
             <input type="hidden" class="touched" value="0" />
             <?php if($this->request->params['action']!= 'vieworder' && $this->request->params['action']!= 'view'){?>
                 <canvas id="test<?php echo $_GET['num'];?>" style="border: 1px solid silver;border-radius: 5px;"></canvas>

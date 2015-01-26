@@ -281,6 +281,8 @@
     if(!doc_id)
     {
         $('#uploaded_for').change(function(){
+            if($(this).val())
+            $('.select2-choice').removeAttr('style');
             showforms('company_pre_screen_question.php');
             showforms('driver_application.php');
             showforms('driver_evaluation_form.php');

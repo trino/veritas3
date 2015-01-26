@@ -353,7 +353,7 @@
                                                             </option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-6">
                                                         <label class="control-label">Billing Instructions</label>
                                                         <input type="radio"
                                                                name="billing_instructions" <?php if (isset($c->billing_instructions) && $c->billing_instructions == "individual") { ?> checked="checked" <?php } ?>
@@ -840,11 +840,11 @@ Both </label>
             else {
                 str = str + '&' + $('#tab_1_1 select').serialize();
             }
-//str = str+'&description='+$('#tab_1_1 textarea').val();
             str = str + '&customer_type=' + $('#customer_type').val();
             str = str + '&division=' + $('#division').val();
             str = str + '&referred_by=' + $('#referred_by').val();
             str = str + '&invoice_terms=' + $('#invoice_terms').val();
+            str = str + '&description=' + $('#description').val();
 
 
             $.ajax({

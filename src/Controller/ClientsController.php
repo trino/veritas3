@@ -314,7 +314,6 @@ class ClientsController extends AppController {
 	}
 
     public function saveClients($id=0) {
-
         $rec='';
         $con='';
         $count=1;

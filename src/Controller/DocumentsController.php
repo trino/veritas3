@@ -13,7 +13,7 @@
 
         public $paginate = [
             'limit' => 10,
-            'order'=>['id'=>'DESC'],
+            'order' => ['id' => 'DESC'],
 
         ];
 
@@ -106,8 +106,7 @@
                 $this->set('return_type', $_GET['type']);
             }
             $this->set('documents', $this->paginate($doc));
-            if(isset($_GET['flash']))
-            {
+            if (isset($_GET['flash'])) {
                 $this->Flash->success('Document saved successfully.');
             }
         }
@@ -270,9 +269,9 @@
             $this->render('add');
         }
 
-        public function vieworder($cid = null, $did = null,$table=null)
+        public function vieworder($cid = null, $did = null, $table = null)
         {
-            $this->set('table',$table);
+            $this->set('table', $table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
             $cn = $this->getUserDocumentcount();
@@ -352,9 +351,9 @@
          *
          * @return void
          */
-        public function addorder($cid = 0, $did = 0,$table=null)
+        public function addorder($cid = 0, $did = 0, $table = null)
         {
-            $this->set('table',$table);
+            $this->set('table', $table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
             $cn = $this->getUserDocumentcount();
@@ -406,7 +405,7 @@
                     $con_at = TableRegistry::get('consent_form_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['order_id' => $did])->all();
                     $this->set('sub2', $sub2);
-                    $this->set('consent_detail',$con_detail);
+                    $this->set('consent_detail', $con_detail);
 
                 }
                 $emp = TableRegistry::get('employment_verification');
@@ -442,8 +441,8 @@
                 else
                     $arr['draft'] = 0;
                 $arr['client_id'] = $cid;
-                if(isset($_POST['division']))
-                $arr['division'] = urldecode($_POST['division']);
+                if (isset($_POST['division']))
+                    $arr['division'] = urldecode($_POST['division']);
                 $arr['conf_recruiter_name'] = urldecode($_POST['conf_recruiter_name']);
                 $arr['conf_driver_name'] = urldecode($_POST['conf_driver_name']);
                 $arr['conf_date'] = urldecode($_POST['conf_date']);
@@ -477,16 +476,16 @@
                 else
                     $arr['draft'] = 0;
                 $arr['sub_doc_id'] = $_POST['sub_doc_id'];
-                if(isset($_POST['uploaded_for']))
-                $arr['uploaded_for'] = $_POST['uploaded_for'];
-                
+                if (isset($_POST['uploaded_for']))
+                    $arr['uploaded_for'] = $_POST['uploaded_for'];
+
                 $arr['client_id'] = $cid;
                 $arr['document_type'] = urldecode($_GET['document']);
                 $arr['created'] = date('Y-m-d H:i:s');
                 //$arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
                 //$arr['conf_driver_name'] = $_POST['conf_driver_name'];
                 //$arr['conf_date'] = $_POST['conf_date'];
-                if ((!$did || $did == '0' )&& $arr['sub_doc_id']!=7) {
+                if ((!$did || $did == '0') && $arr['sub_doc_id'] != 7) {
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
                     $doc = $docs->newEntity($arr);
 
@@ -498,7 +497,7 @@
                         //echo "e";
                     }
 
-                } elseif($arr['sub_doc_id']!=7) {
+                } elseif ($arr['sub_doc_id'] != 7) {
                     $query2 = $docs->query();
                     $query2->update()
                         ->set($arr)
@@ -952,11 +951,11 @@
                 if (isset($_POST['driving_experince_usa'][$i])) {
                     $arr2['driving_experince_usa'] = urldecode($_POST['driving_experince_usa'][$i]);
                 }
-                for($l=0;$l<=100;$l++){
-                if (isset($_POST['claims_with_employer_'.$l][$i])) {
-                    $arr2['claims_with_employer'] = urldecode($_POST['claims_with_employer_'.$l][$i]);
-                    break;
-                }
+                for ($l = 0; $l <= 100; $l++) {
+                    if (isset($_POST['claims_with_employer_' . $l][$i])) {
+                        $arr2['claims_with_employer'] = urldecode($_POST['claims_with_employer_' . $l][$i]);
+                        break;
+                    }
                 }
 
                 $save2 = $employment->newEntity($arr2);
@@ -1251,11 +1250,10 @@
                     //$pre_at = TableRegistry::get('driver_application_accident');
                     $sur = $survey->find()->where(['document_id' => $did])->first();
                     $this->set('survey', $sur);
-                }
-                elseif ($query->sub_doc_id == '7') {
+                } elseif ($query->sub_doc_id == '7') {
                     $attachments = TableRegistry::get('attachments');
                     //$pre_at = TableRegistry::get('driver_application_accident');
-                     $attachment = $attachments->find()->where(['document_id' => $did])->all();
+                    $attachment = $attachments->find()->where(['document_id' => $did])->all();
                     $this->set('attachments', $attachment);
                 }
 
@@ -1498,9 +1496,9 @@
             }
             if (isset($_GET['table']) && $_GET['table']) {
                 if ($cond == '')
-                    $cond = $cond . ' orders.id IN (SELECT order_id FROM '.$_GET['table'].')';
+                    $cond = $cond . ' orders.id IN (SELECT order_id FROM ' . $_GET['table'] . ')';
                 else
-                    $cond = $cond . ' AND orders.id IN (SELECT order_id FROM '.$_GET['table'].')';
+                    $cond = $cond . ' AND orders.id IN (SELECT order_id FROM ' . $_GET['table'] . ')';
             }
             if (!$this->request->session()->read('Profile.admin') && $setting->orders_others == 0) {
                 if ($cond == '')
@@ -1539,9 +1537,7 @@
             }
             if ($cond) {
                 $order = $order->where([$cond])->contain(['Profiles']);
-            }
-            else
-            {
+            } else {
                 $order = $order->contain(['Profiles']);
             }
             if (isset($_GET['searchdoc'])) {
@@ -1691,6 +1687,7 @@
             die;
 
         }
+
         /*
         function get_documentcount($type, $c_id = "")
         {
@@ -1738,15 +1735,16 @@
 
             $model = TableRegistry::get($type);
             if ($c_id != "") {
-                $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0, $type.'.client_id' => $c_id])->contain(['Orders'])->count();
+                $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'Orders.draft' => 0, $type . '.client_id' => $c_id])->contain(['Orders'])->count();
             } else {
-                $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'),$type);
-                $cnt = $model->find()->where(['document_id' => 0, $u_cond,'Orders.draft'=>0,'OR' => $cond])->contain(['Orders'])->count();
+                $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'), $type);
+                $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'Orders.draft' => 0, 'OR' => $cond])->contain(['Orders'])->count();
             }
             //debug($cnt); die();
             $this->response->body(($cnt));
             return $this->response;
         }
+
         function get_documentcount($subdocid, $c_id = "")
         {
             //$cond = $this->Settings->getprofilebyclient($this->request->session()->read('Profile.id'),0);
@@ -1764,24 +1762,24 @@
 
             $model = TableRegistry::get("Documents");
             if ($c_id != "") {
-                $cnt = $model->find()->where(["sub_doc_id"=>$subdocid,'draft'=>'0', $u_cond, 'client_id' => $c_id])->count();
+                $cnt = $model->find()->where(["sub_doc_id" => $subdocid, 'draft' => '0', $u_cond, 'client_id' => $c_id])->count();
             } else {
                 $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'));
-                $cnt = $model->find()->where(["sub_doc_id"=>$subdocid,'draft'=>'0', $u_cond, 'OR' => $cond])->count();
+                $cnt = $model->find()->where(["sub_doc_id" => $subdocid, 'draft' => '0', $u_cond, 'OR' => $cond])->count();
             }
             //debug($cnt); die();
             $this->response->body(($cnt));
             return $this->response;
         }
 
-        function fileUpload($id="")
+        function fileUpload($id = "")
         {
             // print_r($_POST);die;
             if (isset($_FILES['myfile']['name']) && $_FILES['myfile']['name']) {
                 $arr = explode('.', $_FILES['myfile']['name']);
                 $ext = end($arr);
                 $rand = rand(100000, 999999) . '_' . rand(100000, 999999) . '.' . $ext;
-                $allowed = array(                    
+                $allowed = array(
                     'jpg',
                     'jpeg',
                     'png',
@@ -1794,14 +1792,14 @@
                 );
                 $check = strtolower($ext);
                 if (in_array($check, $allowed)) {
-                    if(isset($_POST['type']))
+                    if (isset($_POST['type']))
                         $doc_type = $_POST['type'];
                     $destination = APP . '../webroot/attachments';
 
                     $source = $_FILES['myfile']['tmp_name'];
                     move_uploaded_file($source, $destination . '/' . $rand);
                     $saveData = array();
-                    if(isset($_POST['order_id']))
+                    if (isset($_POST['order_id']))
                         $saveData['order_id'] = $_POST['order_id'];
                     $saveData['path'] = $rand;
 
@@ -1919,7 +1917,7 @@
         public function getAttachedDoc($cid = 0, $order_id = 0)
         {
             // $id = $_GET['id'];
-            if($_GET['form_type'] == "company_pre_screen_question.php") {
+            if ($_GET['form_type'] == "company_pre_screen_question.php") {
                 $prescreen = TableRegistry::get('pre_screening_attachments');
                 $prescreenAttach = $prescreen
                     ->find()
@@ -1969,7 +1967,6 @@
             $this->render('survey');
         }
 
-
         public function StartOrderSave($orderid = null, $response = null)
         {
             echo '!!!!!!';
@@ -1988,10 +1985,11 @@
             die();
         }
 
-        public function save_ebs_pdi($orderid, $pdi){
+        public function save_ebs_pdi($orderid, $pdi)
+        {
 
             $query2 = TableRegistry::get('orders');
-            $arr['ebs_pdi'] = $pdi ;
+            $arr['ebs_pdi'] = $pdi;
             $query2 = $query2->query();
             $query2->update()
                 ->set($arr)
@@ -2001,10 +1999,11 @@
             return $this->response;
         }
 
-        public function save_webservice_ids($orderid, $ins_id,$ebs_id){
+        public function save_webservice_ids($orderid, $ins_id, $ebs_id)
+        {
 
             $query2 = TableRegistry::get('orders');
-            $arr['ins_id'] = $ins_id ;
+            $arr['ins_id'] = $ins_id;
             $arr['ebs_id'] = $ebs_id;
             $query2 = $query2->query();
             $query2->update()
@@ -2015,7 +2014,8 @@
             return $this->response;
         }
 
-        public function save_pdi($orderid, $id, $pdi){
+        public function save_pdi($orderid, $id, $pdi)
+        {
 
             $query2 = TableRegistry::get('orders');
 
@@ -2024,7 +2024,8 @@
             echo $id;
             echo "<br>";
             echo $pdi;
-            echo "<br>";echo "<br>";
+            echo "<br>";
+            echo "<br>";
 
             switch ($pdi) {
 
@@ -2074,8 +2075,7 @@
             return $this->response;
         }
 
-
-        public function webservice($callfunction = null, $body = null, $orderid = null, $driverid = null)
+        public function webservice($recruiter_id = null, $body = null, $orderid = null, $driverid = null)
         {
             $this->layout = "blank";
             // require_once(APP.'../webroot/subpages/soap/nusoap.php');
@@ -2085,50 +2085,46 @@
 
             $driverinfo = $model->find()->where(['id' => $driverid])->first();
 
-            /*
+            // debug($driverinfo);die();
+            // $isbid = $model->find()->where(['id' => $driverid])->first();
+
             $model2 = TableRegistry::get('consent_form_attachments');
-
             $consent_form_attachments = $model2->find()->where(['order_id' => $orderid]);
-
             $this->set(compact('consent_form_attachments'));
-*/
 
+            //  $attach = TableRegistry::get('consent_form_attachments');
+            //  $consent_form_attachments = $attach->find()->where(['order_id' => $orderid])->all();
+            //  $this->set(compact('consent_form_attachments'));
 
             $this->set('orderid', $orderid);
+
             $this->set('driverinfo', $driverinfo);
-
-
-
 
         }
 
-
-
-
         public function createPdf($oid)
         {
-            $this->set('oid',$oid);
+            $this->set('oid', $oid);
             $this->layout = 'blank';
 
             $this->layout = 'blank';
-
 
             $consent = TableRegistry::get('consent_form');
             $arr['consent'] = $consent
                 ->find()
                 ->where(['order_id' => $oid])->first();
-            $this->set('detail',$arr);
+            $this->set('detail', $arr);
             $criminal = TableRegistry::get('consent_form_criminal');
             $cri = $criminal
                 ->find()
                 ->where(['consent_form_id' => $arr['consent']->id]);
-            $this->set('detail',$arr);
+            $this->set('detail', $arr);
             $this->set(compact('cri'));
             $attach = TableRegistry::get('consent_form_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid,'attach_doc <> ""']);
-            $this->set('detail',$arr);
+                ->where(['order_id' => $oid, 'attach_doc <> ""']);
+            $this->set('detail', $arr);
             $this->set(compact('att'));
 
         }
@@ -2140,51 +2136,50 @@
             $arr['consent'] = $consent
                 ->find()
                 ->where(['order_id' => $id])->all();
-            
-            $this->set('detail',$arr);
+
+            $this->set('detail', $arr);
             $attach = TableRegistry::get('employment_verification_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $id,'attach_doc <> ""'])->all();
-            
-            $this->set('order_id',$id);
-            $this->set(compact('att'));
-        }    
+                ->where(['order_id' => $id, 'attach_doc <> ""'])->all();
 
+            $this->set('order_id', $id);
+            $this->set(compact('att'));
+        }
 
         public function createPdfEducation($oid)
         {
-            $this->set('oid',$oid);
+            $this->set('oid', $oid);
             $this->layout = 'blank';
             $consent = TableRegistry::get('education_verification');
             $education = $consent
                 ->find()
                 ->where(['order_id' => $oid]);
-            
+
             $attach = TableRegistry::get('education_verification_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid,'attach_doc <> ""']);
-            
+                ->where(['order_id' => $oid, 'attach_doc <> ""']);
+
             $this->set(compact('education'));
 
             $this->set(compact('att'));
         }
 
-        public function viewReport($client_id,$order_id)
+        public function viewReport($client_id, $order_id)
         {
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
-                ->where(['orders.id' => $order_id])->contain(['Profiles','Clients','RoadTest'])->first();
+                ->where(['orders.id' => $order_id])->contain(['Profiles', 'Clients', 'RoadTest'])->first();
 
-            $this->set('order',$order);
-          //  debug($order);
+            $this->set('order', $order);
+            //  debug($order);
         }
-        
+
         function savedriver($oid)
         {
-            
+
             $arr['is_hired'] = $_POST['is_hired'];
             $orders = TableRegistry::get('orders');
             $order = $orders
@@ -2194,100 +2189,91 @@
 
             die();
         }
+
         function addattachment($cid, $did)
         {
-            
-                if(isset($_POST) && isset($_GET['draft']))
-                {
-                    
-                    if (isset($_GET['draft']) && $_GET['draft'])
-                        $arr['draft'] = 1;
-                    else
-                        $arr['draft'] = 0;
-                    $arr['sub_doc_id'] = $_POST['sub_doc_id'];
-                    $arr['client_id'] = $cid;
-                    $arr['document_type'] = $_POST['document_type'];
-                    $arr['title'] = $_POST['title'];
-                    $arr['created'] = date('Y-m-d H:i:s');
-                    
-                    if (!$did || $did == '0') 
-                    {
-                       
-                        $arr['user_id'] = $this->request->session()->read('Profile.id');
-                        $docs = TableRegistry::get('Documents');
-                        $doc = $docs->newEntity($arr);
-                       
-                        if ($docs->save($doc)) 
-                        {
-                             
-                            $client_docs = array_unique($_POST['client_doc']);
-                            foreach($client_docs as $d)
-                            {
-                                if($d != "")
-                                {
-                                    $doczs = TableRegistry::get('attachments');
-                                    $ds['document_id']= $doc->id;
-                                    $ds['file'] =$d;
-                                     $docz = $doczs->newEntity($ds);
-                                     $doczs->save($docz);
-                                    unset($doczs);
-                                }
-                            }
-                            //die('1');
-                            $this->Flash->success('Document saved successfully.');
-                             $this->redirect(array('action'=>'index'));
-                        } 
-                        else {
-                            $this->Flash->error('Document could not be saved. Please try again.');
-                            $this->redirect(array('action'=>'index'));
-                        }
-    
-                    } 
-                    else 
-                    {
-                         $docs = TableRegistry::get('Documents');
-                        $query2 = $docs->query();
-                        $query2->update()
-                            ->set($arr)
-                            ->where(['id' => $did])
-                            ->execute();
-                           $this->loadModel('Attachments');
-                           /*$attach = TableRegistry::get('attachments');
-                           $at = $attach->find()->where(['document_id'=>$did])->all();
-                           foreach($at as $a)
-                           {
-                                @unlink(WWW_ROOT."attachments/".$a->file);
-                           }*/
-                        $this->Attachments->deleteAll(['document_id'=>$did]);
+
+            if (isset($_POST) && isset($_GET['draft'])) {
+
+                if (isset($_GET['draft']) && $_GET['draft'])
+                    $arr['draft'] = 1;
+                else
+                    $arr['draft'] = 0;
+                $arr['sub_doc_id'] = $_POST['sub_doc_id'];
+                $arr['client_id'] = $cid;
+                $arr['document_type'] = $_POST['document_type'];
+                $arr['title'] = $_POST['title'];
+                $arr['created'] = date('Y-m-d H:i:s');
+
+                if (!$did || $did == '0') {
+
+                    $arr['user_id'] = $this->request->session()->read('Profile.id');
+                    $docs = TableRegistry::get('Documents');
+                    $doc = $docs->newEntity($arr);
+
+                    if ($docs->save($doc)) {
+
                         $client_docs = array_unique($_POST['client_doc']);
-                        
-                        foreach($client_docs as $d)
-                        {
-                            if($d != "")
-                            {
+                        foreach ($client_docs as $d) {
+                            if ($d != "") {
                                 $doczs = TableRegistry::get('attachments');
-                                    $ds['document_id']= $did;
-                                    $ds['file'] =$d;
-                                     $docz = $doczs->newEntity($ds);
-                                     $doczs->save($docz);
-                                    unset($doczs);
+                                $ds['document_id'] = $doc->id;
+                                $ds['file'] = $d;
+                                $docz = $doczs->newEntity($ds);
+                                $doczs->save($docz);
+                                unset($doczs);
                             }
                         }
-                        $this->Flash->success('Document Updated successfully.');
-                        $this->redirect(array('action'=>'index'));
+                        //die('1');
+                        $this->Flash->success('Document saved successfully.');
+                        $this->redirect(array('action' => 'index'));
+                    } else {
+                        $this->Flash->error('Document could not be saved. Please try again.');
+                        $this->redirect(array('action' => 'index'));
                     }
-                    
+
+                } else {
+                    $docs = TableRegistry::get('Documents');
+                    $query2 = $docs->query();
+                    $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $did])
+                        ->execute();
+                    $this->loadModel('Attachments');
+                    /*$attach = TableRegistry::get('attachments');
+                    $at = $attach->find()->where(['document_id'=>$did])->all();
+                    foreach($at as $a)
+                    {
+                         @unlink(WWW_ROOT."attachments/".$a->file);
+                    }*/
+                    $this->Attachments->deleteAll(['document_id' => $did]);
+                    $client_docs = array_unique($_POST['client_doc']);
+
+                    foreach ($client_docs as $d) {
+                        if ($d != "") {
+                            $doczs = TableRegistry::get('attachments');
+                            $ds['document_id'] = $did;
+                            $ds['file'] = $d;
+                            $docz = $doczs->newEntity($ds);
+                            $doczs->save($docz);
+                            unset($doczs);
+                        }
+                    }
+
+                    $this->Flash->success('Document Updated successfully.');
+                    $this->redirect(array('action' => 'index'));
                 }
-            
+
+            }
+
         }
-        
-        function getprocessed($table,$oid)
+
+        function getprocessed($table, $oid)
         {
             $model = TableRegistry::get($table);
-            $q = $model->find()->where(['order_id'=>$oid])->count();
+            $q = $model->find()->where(['order_id' => $oid])->count();
             $this->response->body($q);
             return $this->response;
         }
-
 
     }

@@ -238,7 +238,7 @@
                         <?php if (isset($p->fname)) echo ucwords($p->fname . ' ' . $p->lname); ?>
                     </div>
                     <div class="profile-usertitle-job">
-                        <?php if (isset($p->id)) { ?>Reference Number: <?php echo $p->id; ?><?php } ?>
+                        <?php if (isset($p->isb_id)) { ?>Reference Number: <?php echo $p->isb_id; ?><?php } ?>
                     </div>
                 </div>
 
@@ -283,7 +283,47 @@
             <?php
             if($this->request->params['action'] != 'add')
             {
-             include('subpages/documents/recruiter_notes.php');
+
+
+                ?>
+
+
+            <div class="cleafix">&nbsp;</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="portlet box green scrolldiv" style="overflow: hidden; width: auto; height: 250px;">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-pencil"></i>Recruiter Notes
+                            </div>
+
+                        </div>
+                        <div class="portlet-body">
+                            <?php include('subpages/documents/recruiter_notes.php'); ?>
+                        </div>
+                    </div>
+
+            <?php
+
+
+
+
+
+
+
+
+
              }
              ?>
              

@@ -12,7 +12,7 @@
     				</div>
                     <label class="control-label col-md-2">Middle Name : </label>
                     <div class="col-md-2">
-    					<input type="text" class="form-control" name="mid_name" value="<?php echo $detail['consent']->mid_name;?>"/>
+    					<input type="text" class="form-control" name="mid_name" value="<?php echo $detail['consent']->mname;?>"/>
     				</div>
                 </div>
                 
@@ -95,13 +95,13 @@
                     </div>
                 </div>
                 <div class="form-group col-md-12">
-                    <label class="control-label col-md-3">Province (Driver�s License was issued) : </label>
+                    <label class="control-label col-md-3">Province (Driver's License was issued) : </label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" name="driver_license_issued" value="<?php echo $detail['consent']->driver_license_issued;?>"/>
                     </div>
                     <label class="control-label col-md-3">Applicants Email : </label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="applicants_email" value="<?php echo $detail['consent']->applicants_email;?>"/>
+                        <input type="text" class="form-control" name="applicants_email" value="<?php echo $detail['consent']->email;?>"/>
                     </div>
                 </div>
 

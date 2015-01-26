@@ -215,7 +215,7 @@
                     <?php
                     }
                     ?>
-                    <?php if(isset($id)){?>
+                    <?php if(isset($id)&&!(isset($disabled))){?>
                     <center>
                     <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>

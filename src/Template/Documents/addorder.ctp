@@ -1213,6 +1213,7 @@
             save_signature('4');
             save_signature('5');
             save_signature('6');
+            save_signature('6');
         }
         /*if($(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val()=='Driver Application')
         {    if(!$('#confirm_check').is(':checked'))

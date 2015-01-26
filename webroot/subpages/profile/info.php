@@ -261,7 +261,7 @@
                             <label class="control-label">Middle Name</label>
                             <input <?php echo $is_disabled ?> name="mname" type="text"
                                                               placeholder="eg. Lee"
-                                                              class="form-control req_driver" <?php if (isset($p->mname)) { ?> value="<?php echo $p->mname; ?>" <?php } ?>/>
+                                                              class="form-control" <?php if (isset($p->mname)) { ?> value="<?php echo $p->mname; ?>" <?php } ?>/>
                         </div>
                     </div>
 

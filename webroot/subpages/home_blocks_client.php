@@ -16,7 +16,7 @@
 
 
                 <?php 
-                $class = array('blue-madison','red','yellow','purple','green-meadow','blue','bg-yellow-saffron','bg-grey-cascade','bg-blue-steel','bg-green','bg-red-intense');
+                $class = array('blue-madison','red','yellow','purple','green-meadow','blue','yellow-saffron','grey-cascade','blue-steel','green','red-intense');
                 //echo $id;
                 $doc = $this->requestAction('/documents/getDocument');
                 $i=0;

@@ -465,7 +465,6 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Province (Driver's License was issued)</label>
-
                             <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control "><?php
                                     $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                     $province = "";
@@ -473,7 +472,7 @@
                                         $driver_province = $p->driver_province;
                                     }
                                     for ($temp = 0; $temp < count($provinces); $temp += 1) {
-                                        printoption($provinces[$temp], $province, $provinces[$temp]);
+                                        printoption($provinces[$temp], $driver_province, $provinces[$temp]);
                                     }
                                 ?></SELECT>
                           </div>

@@ -536,7 +536,8 @@
                             <div class="margin-top-10 form-actions">
                                 <a href="javascript:void(0)" class="btn btn-primary" onclick="return check_username();">
                                     Save Changes
-                                </button>
+                                </a>
+                                <input type="submit" style="display: none;" id="hiddensub" />
                                 <a href="#" class="btn default">
                                     Cancel </a>
                             </div>
@@ -616,7 +617,7 @@ function check_username()
                                     return false;
             }
             else{
-                $('#signup_form').submit();
+                $('#hiddensub').click();
             }
         }
     })

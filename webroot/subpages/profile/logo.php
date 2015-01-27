@@ -88,7 +88,7 @@
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/login"
                                                           method="post" class="form-inline" role="form" id="logoform2">
-                                                        <?php foreach ($logos1 as $logo) { ?>
+                                                        <?php foreach ($logos2 as $logo) { ?>
                                                              <div class="col-md-4 margin-top-20">
                                                                 <div class="form-group" style="height:100px;">
                                                                         <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> />
@@ -133,8 +133,8 @@ $(function(){
            } 
         })
    }); 
-    $('#submit1').click(function(){
-    $('#submit1').text('Saving..');
+    $('#submit2').click(function(){
+    $('#submit2').text('Saving..');
         var str = $('#logoform2 input').serialize();
         $.ajax({
            url:'<?php echo $this->request->webroot;?>logos/ajaxlogo2',

@@ -246,7 +246,7 @@
                             ?>
                         </div>
                     </div>
-                    <div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>">
+                    <div class="form-actions <?php if($tab=='nodisplay')echo $tab;?>" id="bottomact">
                         <div class="row">
                             <div class="col-md-offset-3 col-md-9">
                                 <a href="javascript:;" class="btn default button-previous" onclick="$('#skip').val('0');">
@@ -313,7 +313,7 @@
             $.getJSON(url,param,function(res){
                 if(form_type == "company_pre_screen_question.php"){
 
-                    if(doc_id){
+                        if(res){
                         $('#form_tab1').form('load',res);
 
 
@@ -358,7 +358,7 @@
                         } else if(res.reefer_load==0){
                             $('#form_tab1').find('#reefer_load_0').closest('span').addClass('checked')
 
-                        }
+                        }}
 
                         // attach documents
                         /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
@@ -373,12 +373,7 @@
                          }
 
                          });*/
-
-
-                    } else
-                    {
-                        // var $this = $(this);
-                        var prof_id = $('#uploaded_for').val();
+                         var prof_id = $('#uploaded_for').val();
                         if(prof_id){
                             $.ajax({
                                 url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/1',
@@ -392,21 +387,25 @@
                                         if(response[name_attr])  {
 
                                             $(this).val(response[name_attr]);
-
+                                            
+                                            $(this).attr('disabled','disabled');
 
                                         }
                                     });
                                     $('#conf_driver_name').val(response['applicant_name']);
+                                    $('#conf_driver_name').attr('disabled','disabled');
 
                                 }
                             });
                         }
-                    }
+
+
+                    
                     //$('input[type="radio"]').buttonset("refresh");
                     // end pre screening
                 } else if(form_type == "driver_application.php"){
 
-                    if(doc_id){
+                        if(res){
                         $('#form_tab2').form('load',res);
 
                         if(res.worked_for_client==1){
@@ -534,7 +533,7 @@
                             $('#form_tab2').find('#suspend_any_license_0').closest('span').addClass('checked')
 
                         }
-
+                        }
                         /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
                          param={form_type:form_type};
                          $.getJSON(url,param,function(res){
@@ -543,11 +542,6 @@
                          }
 
                          });*/
-
-
-                    }
-                    else
-                    {
                         var prof_id = $('#uploaded_for').val();
                         if(prof_id){
                             $.ajax({
@@ -563,18 +557,21 @@
 
                                             $(this).val(response[name_attr]);
 
-
+                                            $(this).attr('disabled','disabled');
                                         }
                                         $('#conf_driver_name').val(response['first_name']+' '+response['last_name']);
+                                        $('#conf_driver_name').attr('disabled','disabled');
                                     });
                                 }
                             });
                         }
-                    }
+
+                    
+                    
 
                     // driver applicaton ends
                 }else if(form_type == "driver_evaluation_form.php"){
-                    if(doc_id){
+                        if(res){
                         $('#form_tab3').form('load',res);
 
 
@@ -917,19 +914,8 @@
                             $('#form_tab3').find('#recommended_fire_hire_trainee_1').closest('span').addClass('checked')
                         } else if(res.recommended_fire_hire_trainee==2){
                             $('#form_tab3').find('#recommended_fire_hire_trainee_0').closest('span').addClass('checked')
-                        }
+                        }}
 
-                        /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
-                         param={form_type:form_type};
-                         $.getJSON(url,param,function(res){
-                         if(res.length > 0){
-
-                         }
-
-                         });*/
-                    }
-                    else
-                    {
                         var prof_id = $('#uploaded_for').val();
                         if(prof_id){
                             $.ajax({
@@ -944,45 +930,24 @@
                                         if(response[name_attr])  {
 
                                             $(this).val(response[name_attr]);
+                                            $(this).attr('disabled','disabled');
 
 
                                         }
                                         $('#conf_driver_name').val(response['driver_name']);
+                                        $('#conf_driver_name').attr('disabled','disabled');
                                     });
                                 }
                             });
                         }
-                    }
+                    
+                    
 
 
                     // end road test
                 }else if(form_type == "document_tab_3.php"){
 
-                    /* var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
-                     param={form_type:form_type,sub_type:'form_consent'};
-                     $.getJSON(url,param,function(res){
-                     if(res.length > 0){
-
-                     }
-
-                     });*/
-                    /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
-                     param={form_type:form_type,sub_type:'form_employment'};
-
-                     $.getJSON(url,param,function(res){
-                     if(res.length > 0){
-
-                     }
-
-                     });*/
-                    /*var url = '<?php echo $this->request->webroot;?>documents/getAttachedDoc/'+client_id+'/'+doc_id,
-                     param={form_type:form_type,sub_type:'form_education'};
-                     $.getJSON(url,param,function(res){
-                     if(res.length > 0){
-
-                     }
-
-                     });*/
+                    
 
                     $('#form_consent').find(':input').each(function(){
                         var $name = $(this).attr('name');
@@ -994,10 +959,7 @@
 
                         }
                     });
-                    if(!doc_id)
-                    {
-
-                        var prof_id = $('#uploaded_for').val();
+                    var prof_id = $('#uploaded_for').val();
                         if(prof_id){
                             $.ajax({
                                 url:'<?php echo $this->request->webroot;?>profiles/getProfileById/'+prof_id+'/4',
@@ -1011,17 +973,16 @@
                                         if(response[name_attr])  {
 
                                             $(this).val(response[name_attr]);
-
+                                            $(this).attr('disabled','disabled');
 
                                         }
                                         $('#conf_driver_name').val(response['first_name']+' '+response['last_name']);
+                                        $('#conf_driver_name').attr('disabled','disabled');
                                     });
 
                                 }
                             });
                         }
-
-                    }
 
 
 
@@ -1062,6 +1023,7 @@
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+filename);
     }
     jQuery(document).ready(function() {
+        
         $('.button-next').click(function(){
             $('.cont').removeAttr('disabled');
             //$('.tab-pane.active').find('input[type="email"]').val('');
@@ -1144,11 +1106,26 @@
                 url:'<?php echo $this->request->webroot;?>documents/webservice/0/0/'+$('#did').val()+'/'+$('#uploaded_for').val(),
             })
         });
-
-
+        
+        $(document.body).on('click','.button-next',function(){
+        var ba = $('#bottomact').offset();
+            //alert(ba.top);
+            $('input[type="file"]').each(function(){
+             $(this).parent().attr('style','display: block; position: absolute; overflow: hidden; margin: 0px; padding: 0px; opacity: 0; direction: ltr; z-index: 2147483583; left: 551.5px; top: '+ba.top+'px; width: 77px; height: 34px; visibility: hidden;');
+             //  css = css. 
+            });
+            });
+        $(document.body).on('click','.button-previous',function(){
+        var ba = $('#bottomact').offset();
+            //alert(ba.top);
+            $('input[type="file"]').each(function(){
+             $(this).parent().attr('style','display: block; position: absolute; overflow: hidden; margin: 0px; padding: 0px; opacity: 0; direction: ltr; z-index: 2147483583; left: 551.5px; top: '+ba.top+'px; width: 77px; height: 34px; visibility: hidden;');
+             //  css = css. 
+            });
+            });
         $(document.body).on('click','.cont',function(){
 
-
+            
 
             if($(this).attr('id') == 'draft')
             {

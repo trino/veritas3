@@ -917,7 +917,7 @@
                     <a href="" class="item-name primary-link">'.$this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.mname').' '.$this->request->session()->read('Profile.lname').'</a>
                     <span class="item-label">'.$_POST['created'].'</span>
                 </div>
-                <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
+                
             </div>
             <div class="item-body">
                 '.$_POST['description'].'

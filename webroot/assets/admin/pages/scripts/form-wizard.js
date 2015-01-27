@@ -184,6 +184,8 @@ var FormWizard = function () {
                 });
             }
             var handleTitle = function(tab, navigation, index) {
+                
+                //return false;
                 var total = navigation.find('li').length;
                 if(table)
                 index = table;
@@ -205,12 +207,13 @@ var FormWizard = function () {
                 } else {
                     $('#form_wizard_1').find('.button-previous').show();
                 }
-
+                
                 if(current == (total-1))
                 {
 
 
                     $('.cont').html('Submit Order');
+                    $('.btn.red.button-next').hide();
 
                     $('#select_division').hide();
 
@@ -267,22 +270,31 @@ var FormWizard = function () {
                 onNext: function (tab, navigation, index) {
                     success.hide();
                     error.hide();
+                    
                     if($(".tab-pane.active").attr('id') == 'tab2')
                     {
+                        
                         if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')
                         {
                             //if($('#skip').val()!='1'){
-                            
+                            //$('#confirm_check').attr('style','border-color:red');
                             alert('Please confirm that you have read the conditions');
                             $('#confirm_check').focus();
+                            $('html,body').animate({
+                                        scrollTop: $('.active').offset().top},
+                                    'slow');
                             return false;
                            // }
+                        }
+                            else{
+                            //alert('test');
+                            handleTitle(tab, navigation, index);
                         }
                     }
                     else
                     if($(".tab-pane.active").attr('id') == 'tab4')
                     {
-
+                            
                             var uploaded = $('#uploaded_for').val();
                             if(uploaded=='')
                             {
@@ -305,6 +317,7 @@ var FormWizard = function () {
                             else
                             {
                                 $(this).removeAttr('style');
+                                
                             }
                         });
                         if(er){
@@ -312,6 +325,11 @@ var FormWizard = function () {
                         return false;
 
                         }
+                        else{
+                        //alert('test');
+                        handleTitle(tab, navigation, index);
+                    }
+
                     }
                     else{
                         //alert('test');

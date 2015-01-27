@@ -71,7 +71,7 @@
                         if (response != 'error') {
 
                             $('.notes').prepend(response);
-                            window.location = "";
+                            //window.location = "";
                         }
                     }
                 });

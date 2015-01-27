@@ -114,6 +114,7 @@
      * @return {Object} Contains left, top, right,bottom
      */
     function getBox(el){
+        //alert($('#bottomact').top);
         var left, right, top, bottom;
         var offset = getOffset(el);
         left = offset.left;
@@ -137,6 +138,7 @@
      * @param {Object} styles
      */
     function addStyles(el, styles){
+        
         for (var name in styles) {
             if (styles.hasOwnProperty(name)) {
                 el.style[name] = styles[name];
@@ -168,6 +170,7 @@
     * Uses innerHTML to create an element
     */
     var toElement = (function(){
+        
         var div = document.createElement('div');
         return function(html){
             div.innerHTML = html;
@@ -360,7 +363,7 @@
                 'right' : 0,
                 'margin' : 0,
                 'padding' : 0,
-                'fontSize' : '480px',                
+                'fontSize' : '23px',                
                 'cursor' : 'pointer'
             });            
 

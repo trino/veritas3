@@ -101,7 +101,7 @@
                         <tbody>
                         <?php
                         $row_color_class = "odd";
-                        $profiletype = ['Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
+                        $profiletype = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
                         foreach ($profiles as $profile):
 
                             if($row_color_class=="even")

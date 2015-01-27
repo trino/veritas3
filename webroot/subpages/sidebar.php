@@ -340,7 +340,7 @@
                 <!--<li class="last">
 					<img src="<?php echo $this->request->webroot;?>img/logos/ISBWhite.png" />
                </li>-->
-                <?php if($settings->logo == '1'){?>
+                <?php if($sidebar->logo == '1'){?>
 				<li class="sidebar-toggler-wrapper">
 					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					<!--<div class="sidebar-toggler">

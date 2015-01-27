@@ -143,7 +143,7 @@
                                 <td><?= h($order->title) ?></td>
                                 <td><?= h($uploaded_by->username) ?></td>
                                 <td><?= h($uploaded_for->username) ?></td>
-                                <td><?= h($client->title) ?></td>
+                                <td><?= h($client->company_name) ?></td>
                                 <td><?= h($order->created) ?></td>
                                 <td class="actions  util-btn-margin-bottom-5" >
 
@@ -167,7 +167,7 @@
 
                                     }
                                      if($sidebar->orders_delete=='1'){
-                                        ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+                                        ?><a href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?');">Delete</a>
                                         <?php
                                          } }
                                          ?>
@@ -178,6 +178,8 @@
 
 
 ?>
+                                        <?php  if(!isset($_GET['draft']))echo $this->Html->link(__('View Score Card'), ['controller'=>'documents','action' => 'viewReport',$order->client_id, $order->id], ['class' => 'btn btn-success']);?>
+
                                     <?php if(isset($order->bright_planet_html_binary)){   ?>
                                  <span  class="label label-sm label-success" style="float:right;padding:4px;">order completed</span>
                                     <?php }else{  ?>
@@ -187,7 +189,7 @@
                                     <?php } ?>
 
 
-                                    <?php echo $this->Html->link(__('View Score Card'), ['controller'=>'documents','action' => 'viewReport',$order->client_id, $order->id], ['class' => 'btn btn-success']);?>
+                                    
                                 </td>
                             </tr>
 

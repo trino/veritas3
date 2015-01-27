@@ -90,7 +90,7 @@
                         <thead>
                         <tr>
                             <th><?= $this->Paginator->sort('id') ?></th>
-                            <th><?= $this->Paginator->sort('title') ?></th>
+                            <th><?= $this->Paginator->sort('profile_type','Profile Type') ?></th>
                             <th><?= $this->Paginator->sort('fname','First Name') ?></th>
                             <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
                             <th><?= $this->Paginator->sort('username') ?></th>
@@ -101,6 +101,7 @@
                         <tbody>
                         <?php
                         $row_color_class = "odd";
+                        $profiletype = ['Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
                         foreach ($profiles as $profile):
 
                             if($row_color_class=="even")
@@ -113,7 +114,7 @@
 
                             <tr class="<?=$row_color_class;?>" role="row">
                                 <td><?= $this->Number->format($profile->id) ?></td>
-                                <td><?= h($profile->title) ?></td>
+                                <td><?= h($profiletype[$profile->profile_type]) ?></td>
                                 <td><?= h($profile->fname) ?></td>
                                 <td><?= h($profile->lname) ?></td>
                                 <td><?= h($profile->username) ?></td>
@@ -126,13 +127,17 @@
                                     {
                                         if(($profile->admin == '1' || $profile->profile_type == '1') && $this->request->session()->read('Profile.super') == '1')
                                         {
-                                            echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]);
+                                            ?>
+                                            <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger" >Delete</a>
+                                            <?php
+                                            
                                         }
                                         
                                         else if($profile->admin != '1' && $profile->profile_type != '1')
                                         {
-                                            echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $profile->id], ['class' => 'btn btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]);
-                                        }
+                                            ?>
+                                            <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger" >Delete</a>
+                                        <?php }
                                     } 
                                     ?>
                                     

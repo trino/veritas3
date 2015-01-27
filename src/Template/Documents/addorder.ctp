@@ -142,7 +142,7 @@
                                     <a href="javascript:;" class="btn default button-previous" onclick="$('#skip').val('0');">
                                         <i class="m-icon-swapleft"></i> Back </a>
 
-                                    <a href="javascript:;" class="btn red button-next" onclick="$('#skip').val('1');">
+                                    <a href="javascript:;" class="btn red button-next skip" onclick="$('#skip').val('1');">
                                         Skip <i class="m-icon-swapdown m-icon-white"></i>
                                     </a>
                                     <input type="hidden" id="skip" value="0" />
@@ -252,7 +252,7 @@
                                 <a href="javascript:;" class="btn default button-previous" onclick="$('#skip').val('0');">
                                 <i class="m-icon-swapleft"></i> Back </a>
 
-                                <a href="javascript:;" class="btn red button-next" onclick="$('#skip').val('1');">
+                                <a href="javascript:;" class="btn red button-next skip" onclick="$('#skip').val('1');">
                                 Skip <i class="m-icon-swapdown m-icon-white"></i>
                                 </a>
 
@@ -1108,6 +1108,16 @@
         });
         
         $(document.body).on('click','.button-next',function(){
+            /*if($(".tab-pane.active").attr('id') == 'tab5' || $(".tab-pane.active").attr('id') == 'tab6')
+            {
+                alert('test');
+                $('.skip').hide();
+            }
+            else
+            {
+                $('.skip').show();
+            }*/
+            
         var ba = $('#bottomact').offset();
             //alert(ba.top);
             $('input[type="file"]').each(function(){
@@ -1116,6 +1126,14 @@
             });
             });
         $(document.body).on('click','.button-previous',function(){
+        /*if($(".tab-pane.active").attr('id') == 'tab5' || $(".tab-pane.active").attr('id') == 'tab6')
+            {
+                $('.skip').hide();
+            }
+            else
+            {
+                $('.skip').show();
+            }*/
         var ba = $('#bottomact').offset();
             //alert(ba.top);
             $('input[type="file"]').each(function(){
@@ -1126,7 +1144,7 @@
         $(document.body).on('click','.cont',function(){
 
             
-
+             
             if($(this).attr('id') == 'draft')
             {
                 var draft = 1;

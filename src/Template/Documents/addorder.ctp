@@ -303,7 +303,7 @@
     //showforms(doc_type);
     function showforms(form_type)
     {
-
+        //alert(form_type);
         if(form_type!= ""){
             $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/'+form_type);
             // loading data from db
@@ -948,7 +948,7 @@
                 }else if(form_type == "document_tab_3.php"){
 
                     
-
+                    if(res){
                     $('#form_consent').find(':input').each(function(){
                         var $name = $(this).attr('name');
 
@@ -959,6 +959,7 @@
 
                         }
                     });
+                    }
                     var prof_id = $('#uploaded_for').val();
                         if(prof_id){
                             $.ajax({
@@ -1210,6 +1211,8 @@
         {
             save_signature('3');
             save_signature('4');
+            save_signature('5');
+            save_signature('6');
         }
         /*if($(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val()=='Driver Application')
         {    if(!$('#confirm_check').is(':checked'))
@@ -1224,9 +1227,10 @@
     function save_signature(numb)
     {
         //alert('rest');return;
+        alert(numb);
         $("#test"+numb).data("jqScribble").save(function(imageData)
         {
-            if((numb=='1' && $('#recruiter_signature').parent().find('.touched').val()==1) || (numb=='3' && $('#criminal_signature_applicant').parent().find('.touched').val()==1) || (numb=='4' && $('#signature_company_witness').parent().find('.touched').val()==1)){
+            if((numb=='1' && $('#recruiter_signature').parent().find('.touched').val()==1) || (numb=='3' && $('#criminal_signature_applicant').parent().find('.touched').val()==1) || (numb=='4' && $('#signature_company_witness').parent().find('.touched').val()==1) || (numb=='5' && $('#signature_company_witness2').parent().find('.touched').val()==1) || (numb=='6' && $('#signature_company_witness2').parent().find('.touched').val()==1)){
                 $.post('<?php echo $this->request->webroot; ?>canvas/image_save.php', {imagedata: imageData}, function(response)
                 {
                     if(numb=='1')
@@ -1241,6 +1245,14 @@
                     if(numb=='4')
                     {
                         $('#signature_company_witness').val(response);
+                    }
+                    if(numb=='5')
+                    {
+                        $('#criminal_signature_applicant2').val(response);
+                    }
+                    if(numb=='6')
+                    {
+                        $('#signature_company_witness2').val(response);
                     }
                 });
             }

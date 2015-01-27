@@ -1646,7 +1646,7 @@
                     $consentFormDetail = $consentForm->find()->where(['client_id' => $cid, 'order_id' => $order_id, 'document_id' => 0])->first();
                 else
                     $consentFormDetail = $consentForm->find()->where(['client_id' => $cid, 'document_id' => $order_id, 'order_id' => 0])->first();
-
+                if($consentFormDetail){
                 $consentFormID = $consentFormDetail->id;
 
                 $consentFormCriminal = TableRegistry::get('consent_form_criminal');
@@ -1656,6 +1656,7 @@
                     $consentFormCrmDetail = $consentFormCriminal->find()->where(['consent_form_id' => $consentFormID])->first();
 
                 echo json_encode($consentFormDetail);
+                }
 
                 /*$employment = TableRegistry::get('employment_verification');
                 if(!isset($_GET['document']))

@@ -302,7 +302,7 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                         
                     }
                 }
-                
+                 
                 $attach = $attach."<br/><br/><p>
                             <strong>Signature of Driver</strong><br />";
                 if(isset($detail['consent']) && $detail['consent']->criminal_signature_applicant){

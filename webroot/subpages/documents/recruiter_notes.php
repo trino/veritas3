@@ -71,6 +71,7 @@
                         if (response != 'error') {
 
                             $('.notes').prepend(response);
+                            $('#recruiter_notes').val('')
                             //window.location = "";
                         }
                     }

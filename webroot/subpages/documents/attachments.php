@@ -122,7 +122,7 @@ var total_count = $('.docMore').data('count');
                 function initiate_ajax_upload(button_id, doc){
                 var button = $('#'+button_id), interval;
                 new AjaxUpload(button,{
-                    action: base_url+"documents/fileUpload/<?php if(isset($id))echo $id;?>",                      
+                    action: "<?php echo $this->request->webroot;?>documents/fileUpload/<?php if(isset($id))echo $id;?>",                      
                     name: 'myfile',
                     onSubmit : function(file, ext){
                         button.text('Uploading');

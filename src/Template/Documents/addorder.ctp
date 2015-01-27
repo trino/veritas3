@@ -1262,11 +1262,15 @@
         });
     }
     function savePrescreen(url,order_id,cid){
-
+        var fields = $('#form_tab1').serialize();
+        $(':disabled[name]', '#form_tab1').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
         var param = {
             order_id: order_id,
             cid: cid,
-            inputs:$('#form_tab1').serialize()
+            
+            inputs:fields
         };
         $.ajax({
             url:url,
@@ -1279,7 +1283,11 @@
     }
 
     function savedDriverApp(url,order_id,cid){
-        var param = $('#form_tab2').serialize()
+        var fields = $('#form_tab2').serialize();
+        $(':disabled[name]', '#form_tab2').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var param = fields
         $.ajax({
             url:url,
             data: param,
@@ -1290,7 +1298,11 @@
         });
     }
     function savedDriverEvaluation(url,order_id,cid){
-        var param = $('#form_tab3').serialize();
+        var fields = $('#form_tab3').serialize();
+        $(':disabled[name]', '#form_tab3').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var param = fields
 
         $.ajax({
             url:url,
@@ -1304,7 +1316,11 @@
 
     function savedMeeOrder(url,order_id,cid){
         $('#loading5').show();
-        var param = $('#form_consent').serialize();
+       var fields = $('#form_consent').serialize();
+        $(':disabled[name]', '#form_consent').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var param = fields
         $.ajax({
             url:url,
             data: param,
@@ -1316,13 +1332,21 @@
 
 
                 //employment
-                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/'+order_id+'/'+cid,
-                    employment=$('#form_employment').serialize();
+                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/'+order_id+'/'+cid;
+                    var fields = $('#form_employment').serialize();
+        $(':disabled[name]', '#form_employment').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var employment = fields
                 saveEmployment(url,employment);
 
                 //education
-                url = '<?php echo $this->request->webroot;?>documents/saveEducation/'+order_id+'/'+cid,
-                    education=$('#form_education').serialize();
+                url = '<?php echo $this->request->webroot;?>documents/saveEducation/'+order_id+'/'+cid;
+                     var fields = $('#form_education').serialize();
+        $(':disabled[name]', '#form_education').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var education = fields
                 saveEducation(url,education);
             }
         });

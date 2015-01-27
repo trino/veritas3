@@ -13,3 +13,7 @@ webroot/orders/*
 *.tar
 .idea/*
 *.idea
+/vendor/*
+/config/app.php
+/tmp/*
+/logs/*

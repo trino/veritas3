@@ -57,7 +57,6 @@
             die();
         }
         public function index() {
-
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');
             $super = $this->request->session()->read('Profile.super');
@@ -417,10 +416,11 @@
         {
             //$this->request->session()->delete('Profile.id');
             $this->request->session()->destroy();
-            if($_SERVER['SERVER_NAME'] == 'localhost'){
-                $this->redirect('/login');
-            }else{
+            if($_SERVER['SERVER_NAME'] == 'isbmeereports.com'){
                 $this->redirect('http://isbmee.com');
+
+            }else{
+                $this->redirect('/login');
 
                 //$initials = $this->requestAction('/pages/getBase');
                 //$this->redirect($initials);

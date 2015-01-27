@@ -1112,11 +1112,15 @@
             $this->render('addorder');
         }
 
-        public function deleteOrder($id)
+        public function deleteOrder($id,$draft='')
         {
+            
             $this->loadModel('Orders');
             $this->Orders->deleteAll(array('id' => $id));
             $this->Flash->success('The order has been deleted.');
+            if($draft)
+            $this->redirect('/documents/orderslist?draft');
+            else
             $this->redirect('/documents/orderslist');
         }
 
@@ -1354,8 +1358,8 @@
                 } else
                     $query->select()->where(['display' => 1, 'orders' => 0])->all();
                 foreach ($query as $q) {
-                    $sub = TableRegistry::get($q->table_name);
-                    $sub->query()->delete()->where(['document_id' => $id])->execute();
+                    //$sub = TableRegistry::get($q->table_name);
+                    //$sub->query()->delete()->where(['document_id' => $id])->execute();
 
                 }
 
@@ -1365,8 +1369,11 @@
                 } else {
                     $this->Flash->error('Document could not be deleted. Please try again.');
                 }
-
-                return $this->redirect(['action' => 'index']);
+                if($type=='draft')
+                {
+                    return $this->redirect('/documents/index?draft');
+                }
+                else return $this->redirect('/documents/index');
 
             }
             /*$profile = $this->Clients->get($id);
@@ -2354,6 +2361,15 @@
             $q = $model->find()->where(['order_id' => $oid])->count();
             $this->response->body($q);
             return $this->response;
+        }
+        
+        function getClientById($cid)
+        {
+            $model = TableRegistry::get('Clients');
+            $q = $model->find()->where(['id' => $cid])->first();
+            $this->response->body($q);
+            return $this->response;
+            die();
         }
 
     }

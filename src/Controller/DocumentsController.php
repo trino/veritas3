@@ -38,7 +38,20 @@
                 return $this->redirect("/");
 
             }
+            if (!$this->request->session()->read('Profile.super')) {
+                $setting = $this->Settings->get_permission($u);
+                if ($setting->document_others == 0) {
+                    if ($cond == '')
+                        $cond = $cond . ' user_id = ' . $u;
+                    else
+                        $cond = $cond . ' AND user_id = ' . $u;
+                    
+                }
+                
 
+            }
+           
+                   
             $docs = TableRegistry::get('Documents');
             $doc = $docs->find();
             if (!isset($_GET['draft']))
@@ -216,6 +229,18 @@
                     $this->set('survey', $sur);
                     $this->set('disabled', '1');
                 }
+                elseif ($query->sub_doc_id == '7') {
+                    $attachments = TableRegistry::get('attachments');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    $attachment = $attachments->find()->where(['document_id' => $did])->all();
+                    $this->set('attachments', $attachment);
+                }
+                 elseif ($query->sub_doc_id == '8') {
+                    $attachments = TableRegistry::get('audits');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    $audits = $attachments->find()->where(['document_id' => $did])->first();
+                    $this->set('audits', $audits);
+                } 
                 $pre = TableRegistry::get('pre_screening_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
                 $pre_at['attach_doc'] = $pre->find()->where(['doc_id' => $did])->all();
@@ -1497,7 +1522,18 @@
             $order = $order->select();
 
             $cond = '';
+            if (!$this->request->session()->read('Profile.super')) {
+                $setting = $this->Settings->get_permission($u);
+                if ($setting->document_others == 0) {
+                    if ($cond == '')
+                        $cond = $cond . ' user_id = ' . $u;
+                    else
+                        $cond = $cond . ' AND user_id = ' . $u;
+                    
+                }
+                
 
+            }
             if (isset($_GET['searchdoc']) && $_GET['searchdoc']) {
                 $cond = $cond . ' (orders.title LIKE "%' . $_GET['searchdoc'] . '%" OR orders.description LIKE "%' . $_GET['searchdoc'] . '%")';
             }
@@ -1734,9 +1770,12 @@
 
             if (!$this->request->session()->read('Profile.super')) {
                 $setting = $this->Settings->get_permission($u);
-                if ($setting->documents_others == 0) {
+                //var_dump($setting);
+                if ($setting->document_others == 0) {
                     $u_cond = "Orders.user_id=$u";
                 }
+                else
+                    $u_cond = "";
 
             } else
                 $u_cond = "";
@@ -1746,6 +1785,7 @@
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'Orders.draft' => 0, $type . '.client_id' => $c_id])->contain(['Orders'])->count();
             } else {
                 $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'), $type);
+                //var_dump($cond);die();
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'Orders.draft' => 0, 'OR' => $cond])->contain(['Orders'])->count();
             }
             //debug($cnt); die();
@@ -1761,12 +1801,14 @@
 
             if (!$this->request->session()->read('Profile.super')) {
                 $setting = $this->Settings->get_permission($u);
-                if ($setting->documents_others == 0) {
+                if ($setting->document_others == 0) {
                     $u_cond = "user_id=$u";
                 }
+                else
+                    $u_cond = "";
 
             } else
-                $u_cond = "";
+                    $u_cond = "";
 
             $model = TableRegistry::get("Documents");
             if ($c_id != "") {
@@ -2278,7 +2320,7 @@
         function audits($cid, $did)
         {
 
-            if (isset($_POST) && isset($_GET['draft'])) {
+            if (isset($_POST)) {
 
                 if (isset($_GET['draft']) && $_GET['draft'])
                     $arr['draft'] = 1;
@@ -2288,11 +2330,12 @@
                 $arr['client_id'] = $cid;
                 $arr['document_type'] = $_POST['document_type'];
                
-                $arr['created'] = date('Y-m-d H:i:s');
+                
 
                 if (!$did || $did == '0') {
 
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
+                    $arr['created'] = date('Y-m-d H:i:s');
                     $docs = TableRegistry::get('Documents');
                     $doc = $docs->newEntity($arr);
 
@@ -2323,16 +2366,10 @@
                         ->where(['id' => $did])
                         ->execute();
                     $this->loadModel('Audits');
-                    /*$attach = TableRegistry::get('attachments');
-                    $at = $attach->find()->where(['document_id'=>$did])->all();
-                    foreach($at as $a)
-                    {
-                         @unlink(WWW_ROOT."attachments/".$a->file);
-                    }*/
                     $this->Audits->deleteAll(['document_id' => $did]);
                      $doczs = TableRegistry::get('audits');
                         $ds['document_id'] = $did;
-                         $ds['date'] = $_POST['year']."-".$_POST['month'];
+                        $ds['date'] = $_POST['year']."-".$_POST['month'];
                         foreach($_POST as $k=>$v)
                         {
                             $ds[$k]=$v;

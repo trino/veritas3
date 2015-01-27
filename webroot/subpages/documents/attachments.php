@@ -49,7 +49,7 @@ $feed = $feeds;
                 else
                     echo "<a href='".$this->request->webroot."attachments/".$cd->file."' target='_blank'>".$cd->file."</a>";
         ?>
-        <a href="javascript:void(0);" onclick="$(this).parent().parent().remove()" class="btn btn-danger">Delete</a>
+        <a href="javascript:void(0);" onclick="$(this).parent().parent().remove()" class="btn btn-danger" >Delete</a>
         <input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
         </div>
         </div>   

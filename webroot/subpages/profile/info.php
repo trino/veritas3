@@ -29,7 +29,7 @@
         <div class="portlet box form">
 
 
-            <form role="form" action="" method="post">
+            <form role="form" action="" method="post" id="signup_form">
 
 
                 <div class="row">

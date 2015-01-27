@@ -117,7 +117,6 @@
 				<div class="clearfix"></div>
 
 
-
                 <div class="table-scrollable">
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
@@ -126,6 +125,7 @@
                     			<th><?= $this->Paginator->sort('document_type',ucfirst($settings->document));?></th>
                     			<th><?= $this->Paginator->sort('user_id','Uploaded by');?><?php if(isset($end)) echo $end; if(isset($start)) echo "//".$start; ?></th>
                     			<th><?= $this->Paginator->sort('created','Uploaded on');?></th>           			
+                                <th><?= $this->Paginator->sort('client_id','Clients');?></th>
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>
@@ -153,13 +153,14 @@
                                 $row_color_class ="even";
                             }
                             $uploaded_by = $this->requestAction("documents/getUser/".$docs->user_id);
+                            $getClientById = $this->requestAction("documents/getClientById/".$docs->client_id);
                           ?>
                           <tr class="<?=$row_color_class;?>" role="row">
                                 <td><?= $this->Number->format($docs->id) ?></td>
                                 <td><?= h($docs->document_type) ?></td>
                                 <td><?= h($uploaded_by->username) ?></td>
                                 <td><?= h($docs->created) ?></td>
-                                
+                                <td><?= h($getClientById->company_name) ?></td>
                                 <td class="actions  util-btn-margin-bottom-5 ">
 
                                     <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view',$docs->client_id, $docs->id], ['class' => 'btn btn-info']);} ?>
@@ -174,7 +175,24 @@
                                             echo $this->Html->link(__('Edit'), ['action' => 'add',$docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
                                     }
                                      ?>
-                                    <?php  if($sidebar->document_delete=='1'){ ?> <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>" onclick="return confirm('Are you sure?');" class="btn btn-danger" >Delete</a><?php } ?>
+                                    <?php  if($sidebar->document_delete=='1')
+                                    {
+                                        if(isset($_GET['draft']))
+                                        {
+                                        ?> 
+                                        <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>/draft" onclick="return confirm('Are you sure you want to delete this?');" class="btn btn-danger" >Delete</a>
+                                        
+                                        <?php 
+                                        }
+                                        else
+                                        {
+                                        ?>
+                                        <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>" onclick="return confirm('Are you sure you want to delete this?');" class="btn btn-danger" >Delete</a>
+                                        <?php 
+                                        }
+                                    }
+                                        
+                                         ?>
 
                                 </td>
                             </tr>

@@ -991,10 +991,10 @@
 
 
                     }
-                    if (type != "Survey" || type != "Feedbacks" || type != "Attachment"|| type != "Audits") {
+                    if (type != "Survey" && type != "Feedbacks" && type != "Attachment" && type != "Audits") {
                         $('.flashDoc').show();
                         $('.flashDoc').fadeOut(8000);
-                        //window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                     }
                 }
             });

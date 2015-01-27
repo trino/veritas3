@@ -9,11 +9,11 @@
 
     $startorder1 = false;
 
-    $productdetails79 = true;
+    $productdetails79 = false;
     $productdetails1 = true;
-    $productdetails14 = true;
-    $productdetails77 = true;
-    $productdetails78 = true;
+    $productdetails14 = false;
+    $productdetails77 = false;
+    $productdetails78 = false;
     $productdetailsebs1603 = true;
     $productdetailsebs1627 = true;
     $productdetailsebs1650 = true;

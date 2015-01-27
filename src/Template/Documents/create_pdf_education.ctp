@@ -149,11 +149,19 @@ $attach = "<br/><br/><strong>Attachments</strong>
                 
                 if($att)
                 {
+                    $doc_ext = array('pdf','doc','docx','pdf');
                     foreach($att as $a)
                     {
-                        if(file_exists(APP."../webroot/attachments/".$a->attach_doc))
+                        $ext_arr = explode('.', $a->attach_doc);
+                                            $ext = end($ext_arr);
+                                            $ext = strtolower($ext);
+                                            if (!in_array($ext, $doc_ext) && file_exists(APP."../webroot/attachments/".$a->attach_doc)) {
+                    
                         $attach = $attach."<p><img src=\"".$initials.$this->request->webroot."attachments/".$a->attach_doc."\" /><br /></p>";
+                        }
+                        
                     }
+                    
                 }
 $pdf->writeHTMLCell(0, 0, '', '', $attach, 0, 1, 0, true, '', true);
 }

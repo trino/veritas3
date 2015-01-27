@@ -13,7 +13,7 @@
     $productdetails1 = true;
     $productdetails14 = false;
     $productdetails77 = false;
-    $productdetails78 = true;
+    $productdetails78 = false;
     $productdetailsebs1603 = true;
     $productdetailsebs1627 = true;
     $productdetailsebs1650 = true;

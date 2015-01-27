@@ -285,6 +285,7 @@
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
+            $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary'=>'2'])));
             $profiles = TableRegistry::get('Profiles');
             
             //var_dump($profile);die();
@@ -344,6 +345,7 @@
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
+            $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary'=>'2'])));
             $profile = $this->Profiles->get($id, [
                 'contain' => []
             ]);

@@ -29,7 +29,7 @@
         <div class="portlet box form">
 
 
-            <form role="form" action="" method="post">
+            <form role="form" action="" method="post" id="signup_form">
 
 
                 <div class="row">
@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <label class="control-label">Username</label>
                             <input <?php echo $is_disabled ?> name="username" type="text"
-                                                              class="form-control un" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
+                                                              class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
                         </div>
                     </div>
 
@@ -293,7 +293,7 @@
                             <label class="control-label">Gender</label>
                             <input <?php echo $is_disabled ?> name="gender" type="text"
                                                               placeholder="M / F"
-                                                              class="form-control" <?php if (isset($p->gender)) { ?> value="<?php echo $p->gender; ?>" <?php } ?>/>
+                                                              class="form-control req_driver" <?php if (isset($p->gender)) { ?> value="<?php echo $p->gender; ?>" <?php } ?>/>
                         </div>
                     </div>
 
@@ -305,7 +305,7 @@
                             <label class="control-label">Place of Birth</label>
                             <input <?php echo $is_disabled ?> name="placeofbirth" type="text"
                                                               placeholder=""
-                                                              class="form-control" <?php if (isset($p->placeofbirth)) { ?> value="<?php echo $p->placeofbirth; ?>" <?php } ?>/>
+                                                              class="form-control req_driver" <?php if (isset($p->placeofbirth)) { ?> value="<?php echo $p->placeofbirth; ?>" <?php } ?>/>
                         </div>
                     </div>
 
@@ -406,7 +406,7 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <SELECT  <?php echo $is_disabled ?> name="province" class="form-control "><?php
+                            <SELECT<?php echo $is_disabled ?> name="province" class="form-control req_driver" ><?php
                                     $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                     $province = "";
                                     if (isset($p->province)) {
@@ -465,7 +465,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Province (Driver's License was issued)</label>
-                            <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control "><?php
+                            <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control req_driver "><?php
                                     $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                     $province = "";
                                     if (isset($p->driver_province)) {
@@ -534,7 +534,7 @@
                     <div class="col-md-12">
 
                             <div class="margin-top-10 form-actions">
-                                <button type="submit" class="btn btn-primary">
+                                <a href="javascript:void(0)" class="btn btn-primary" onclick="return check_username();">
                                     Save Changes
                                 </button>
                                 <a href="#" class="btn default">
@@ -597,6 +597,30 @@
 
 </div>
 <script>
+function check_username()
+{
+    var un = $('.uname').val();
+    $.ajax({
+        url:'<?php echo $this->request->webroot;?>profiles/check_user/<?php echo $uid;?>',
+        data:'username='+$('.uname').val(),
+        type:'post',
+        success: function(res){
+            if(res=='1')
+            {
+                
+                alert('Username already exist.');
+                $('.uname').focus();
+                $('html,body').animate({
+                                        scrollTop: $('.page-title').offset().top},
+                                    'slow');
+                                    return false;
+            }
+            else{
+                $('#signup_form').submit();
+            }
+        }
+    })
+}
     $(function () {
 
         $('#addmore_id').click(function () {

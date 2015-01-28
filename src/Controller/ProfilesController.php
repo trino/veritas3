@@ -57,7 +57,6 @@
             die();
         }
         public function index() {
-
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');
             $super = $this->request->session()->read('Profile.super');
@@ -273,7 +272,7 @@
          * @return void
          */
         public function add() {
-
+            $this->set('uid','');    
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
             if($setting->profile_create==0)
@@ -286,6 +285,7 @@
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
+            $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary'=>'2'])));
             $profiles = TableRegistry::get('Profiles');
             
             //var_dump($profile);die();
@@ -345,6 +345,7 @@
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
+            $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary'=>'2'])));
             $profile = $this->Profiles->get($id, [
                 'contain' => []
             ]);
@@ -365,6 +366,7 @@
             }
             $this->set(compact('profile'));
             $this->set('id',$id);
+            $this->set('uid',$id); 
         }
 
         function changePass($id)
@@ -415,10 +417,11 @@
         {
             //$this->request->session()->delete('Profile.id');
             $this->request->session()->destroy();
-            if($_SERVER['SERVER_NAME'] == 'localhost'){
-                $this->redirect('/login');
-            }else{
+            if($_SERVER['SERVER_NAME'] == 'isbmeereports.com'){
                 $this->redirect('http://isbmee.com');
+
+            }else{
+                $this->redirect('/login');
 
                 //$initials = $this->requestAction('/pages/getBase');
                 //$this->redirect($initials);
@@ -927,6 +930,23 @@
                 echo 'error';
             die();
         }
+        public function check_user($uid='')
+        {
+            
+            $user = $_POST['username'];
+            $q = TableRegistry::get('profiles');
+            $que = $q->find();
+            $query = $que->select()->where(['id !='=>$uid,'username'=>$user])->first();
+            
+            //var_dump($query);
+            //$query = $que->first();
+            if($query)
+            echo '1';
+            else
+            echo '0';
+            die();
+        }
+        
 
     }
 ?>

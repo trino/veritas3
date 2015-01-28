@@ -273,6 +273,7 @@
                     $con_at = TableRegistry::get('consent_form_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['doc_id' => $did])->all();
                     $this->set('sub2', $sub2);
+                    $this->set('consent_detail', $con_detail);
 
                 }
                 $emp = TableRegistry::get('employment_verification');
@@ -349,6 +350,7 @@
                     $con_at = TableRegistry::get('consent_form_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['order_id' => $did])->all();
                     $this->set('sub2', $sub2);
+                    $this->set('consent_detail', $con_detail);
 
                 }
                 $emp = TableRegistry::get('employment_verification');

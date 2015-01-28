@@ -37,7 +37,7 @@ $is_disabled = '';
                                                                                                 
 <div class="form-group">
 <label class="col-md-3 control-label">Date </label>
-<?php if(isset($audits->date))
+<?php if(isset($audits))
 {
     $date = explode("-",$audits->date);
     $year = $date[0];
@@ -130,7 +130,7 @@ $is_disabled = '';
                                                     
 <div class="col-md-3">
                                                          <div class="form-group">
-                                                            <select name="total_rating"  <?php echo $is_disabled;?> class="form-control member_type">
+                                                            <select name="total_rating" <?php echo $is_disabled;?> class="form-control member_type">
                                                               <?php for($i=1; $i<=40; $i++):?>
                                                               <option value="<?php echo $i;?>" <?php if(isset($audits)&& $audits->total_rating ==$i)echo "selected='selected'";?>><?php echo $i;?></option>
                                                               <?php endfor;?>
@@ -146,7 +146,7 @@ $is_disabled = '';
                                                     What were the primary objectives at the show?
                                                     </label>
 <div class="col-md-8">
-<textarea class="form-control" <?php echo $is_disabled;?> name="primary_objectives" id="primary_objectives" rows="3"><?php if(isset($audits))echo $audits->primary_objectives;?></textarea>
+<textarea class="form-control" name="primary_objectives" id="primary_objectives" <?php echo $is_disabled;?> rows="3"><?php if(isset($audits))echo $audits->primary_objectives;?></textarea>
 </div>
                                                     
                                                     
@@ -157,7 +157,7 @@ $is_disabled = '';
                                                     Do you feel the objectives were achieved? Provide a grade rating of 1 to 10 (10 is best) and provide details.
                                                     </label>
 <div class="col-md-8">
-<textarea class="form-control" name="objectives" <?php echo $is_disabled;?> id="primary_objectives" rows="3"><?php if(isset($audits))echo $audits->objectives;?></textarea>
+<textarea class="form-control" name="objectives" id="primary_objectives" <?php echo $is_disabled;?> rows="3"><?php if(isset($audits))echo $audits->objectives;?></textarea>
 </div>
 </div>   
 
@@ -166,7 +166,7 @@ $is_disabled = '';
                                                     Please provide suggestions for improvement.
                                                     </label>
 <div class="col-md-8">
-<textarea class="form-control" name="improvement" <?php echo $is_disabled;?> id="primary_objectives" rows="3"><?php if(isset($audits))echo $audits->improvement;?></textarea>
+<textarea class="form-control" name="improvement" id="primary_objectives" <?php echo $is_disabled;?> rows="3"><?php if(isset($audits))echo $audits->improvement;?></textarea>
 </div>
 </div> 
                                                 <h2> Leads </h2>
@@ -175,7 +175,7 @@ $is_disabled = '';
                                                     Was the lead-collecting process in the booth effective (e.g. badge scanner, business card collecting)?
                                                     </label>
 <div class="col-md-8">
-<textarea class="form-control" name="lead_effective" <?php echo $is_disabled;?> id="primary_objectives" rows="3"><?php if(isset($audits))echo $audits->lead_effective;?></textarea>
+<textarea class="form-control" name="lead_effective" id="primary_objectives" <?php echo $is_disabled;?> rows="3"><?php if(isset($audits))echo $audits->lead_effective;?></textarea>
 </div>
 </div>
  
@@ -183,7 +183,7 @@ $is_disabled = '';
 <label class="col-md-3 control-label">
 How many leads were generated?                                                    </label>
 <div class="col-md-8">
-<textarea class="form-control" name="leads" <?php echo $is_disabled;?> id="primary_objectives" rows="3"><?php if(isset($audits))echo $audits->leads;?></textarea>
+<textarea class="form-control" name="leads" id="primary_objectives" <?php echo $is_disabled;?> rows="3"><?php if(isset($audits))echo $audits->leads;?></textarea>
 </div>
 </div> 
  
@@ -192,7 +192,7 @@ How many leads were generated?                                                  
 Rate the leads - how many do you feel are “quality"? 
                                                         Provide a grade rating of 1 to 10 (10 is best) and provide details.                                                   </label>
 <div class="col-md-8">
-<textarea class="form-control" name="leads_rate" <?php echo $is_disabled;?> id="primary_objectives" rows="3"><?php if(isset($audits))echo $audits->leads_rate;?></textarea>
+<textarea class="form-control" name="leads_rate" id="primary_objectives" <?php echo $is_disabled;?> rows="3"><?php if(isset($audits))echo $audits->leads_rate;?></textarea>
 </div>
 </div>
 
@@ -201,7 +201,7 @@ Rate the leads - how many do you feel are “quality"?
 <label class="col-md-3 control-label">
 Please provide suggestions for improvement of the lead collection and handling process.                                                   </label>
 <div class="col-md-8">
-<textarea class="form-control" name="handling" <?php echo $is_disabled;?> id="primary_objectives" rows="3"><?php if(isset($audits))echo $audits->handling;?></textarea>
+<textarea class="form-control" name="handling" id="primary_objectives" <?php echo $is_disabled;?> rows="3"><?php if(isset($audits))echo $audits->handling;?></textarea>
 </div>
 </div>
                                                 
@@ -243,7 +243,7 @@ Rate the volume of booth traffic.
                                                         Provide a grade rating of 1 to 10 (10 is best) and provide details.
                     </label>
 <div class="col-md-8">
-<textarea class="form-control" name="rating" id="primary_objectives" <?php echo $is_disabled;?> rows="3"><?php if(isset($audits))echo $audits->rating;?></textarea>
+<textarea class="form-control" name="rating" <?php echo $is_disabled;?> id="primary_objectives" rows="3"><?php if(isset($audits))echo $audits->rating;?></textarea>
 </div>
 </div> 
  

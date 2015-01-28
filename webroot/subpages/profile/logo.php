@@ -81,7 +81,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                         <div class="tab-pane" id="subtab_1_3">
+                                        <div class="tab-pane" id="subtab_1_3">
                                             <div class="portlet solid blue ">
 
                                                 <div class="portlet-body">
@@ -133,7 +133,7 @@ $(function(){
            } 
         })
    }); 
-   $('#submit2').click(function(){
+    $('#submit2').click(function(){
     $('#submit2').text('Saving..');
         var str = $('#logoform2 input').serialize();
         $.ajax({
@@ -144,7 +144,7 @@ $(function(){
            {
             $('.flash').show();
             $('.flash').fadeOut(7000);
-            $('#submit1').text(' Save Changes ');
+            $('#submit2').text(' Save Changes ');
            } 
         })
    }); 

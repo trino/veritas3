@@ -272,7 +272,7 @@
          * @return void
          */
         public function add() {
-
+            $this->set('uid','');    
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
             if($setting->profile_create==0)
@@ -366,6 +366,7 @@
             }
             $this->set(compact('profile'));
             $this->set('id',$id);
+            $this->set('uid',$id); 
         }
 
         function changePass($id)
@@ -927,6 +928,22 @@
         </div>';
             else
                 echo 'error';
+            die();
+        }
+        public function check_user($uid='')
+        {
+            
+            $user = $_POST['username'];
+            $q = TableRegistry::get('profiles');
+            $que = $q->find();
+            $query = $que->select()->where(['id !='=>$uid,'username'=>$user])->first();
+            
+            //var_dump($query);
+            //$query = $que->first();
+            if($query)
+            echo '1';
+            else
+            echo '0';
             die();
         }
         

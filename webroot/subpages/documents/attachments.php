@@ -7,8 +7,7 @@ else
 {
 $is_disabled = '';
 }
-if(isset($feeds))
-$feed = $feeds;
+
 
 ?>
 
@@ -31,6 +30,7 @@ $feed = $feeds;
         ?>
        
         <?php
+        
         foreach($attachments as $k=>$cd):
            
         ?>
@@ -47,16 +47,16 @@ $feed = $feeds;
         <?php
                 }
                 else
-                    echo "<a href='".$this->request->webroot."attachments/".$cd->file."' target='_blank'>".$cd->file."</a>";
+                    echo "<span onclick='window.open(\"".$this->request->webroot."attachments/".$cd->file."\")'>".$cd->file."</span>";
         ?>
-        <a href="javascript:void(0);" onclick="$(this).parent().parent().remove()" class="btn btn-danger" >Delete</a>
+        <a href="javascript:void(0);" onclick="$(this).parent().parent().remove()" class="btn btn-danger">Delete</a>
         <input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
         </div>
         </div>   
     <?php
         endforeach;
   }?>
-     
+   <?php if(!isset($disabled)){?>
   <div class="form-group col-md-12 docMore"  data-count="1">
     <label class="control-label col-md-3">Attachments</label>
             <div class="col-md-6">
@@ -72,13 +72,17 @@ $feed = $feeds;
         <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" >Add More</a>
     </div>
     </div>
+   <?php }?>
     </div>
 
  </form>
 <script>
 $(function()
 {
+    $('#form_tab7').find("a").show();
+     <?php if(!isset($disabled)){?>
     initiate_ajax_upload('addMore1','doc');
+    <?php }?>
     $('#addMoredoc').click(function(){
          var total_count = $('.docMore').data('count');
         $('.docMore').data('count',parseInt(total_count)+1);
@@ -122,7 +126,7 @@ var total_count = $('.docMore').data('count');
                 function initiate_ajax_upload(button_id, doc){
                 var button = $('#'+button_id), interval;
                 new AjaxUpload(button,{
-                    action: base_url+"documents/fileUpload/<?php if(isset($id))echo $id;?>",                      
+                    action: "<?php echo $this->request->webroot;?>documents/fileUpload/<?php if(isset($id))echo $id;?>",                      
                     name: 'myfile',
                     onSubmit : function(file, ext){
                         button.text('Uploading');

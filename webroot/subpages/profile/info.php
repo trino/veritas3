@@ -29,7 +29,7 @@
         <div class="portlet box form">
 
 
-            <form role="form" action="" method="post" id="signup_form">
+            <form role="form" action="" method="post">
 
 
                 <div class="row">
@@ -293,7 +293,7 @@
                             <label class="control-label">Gender</label>
                             <input <?php echo $is_disabled ?> name="gender" type="text"
                                                               placeholder="M / F"
-                                                              class="form-control req_driver" <?php if (isset($p->gender)) { ?> value="<?php echo $p->gender; ?>" <?php } ?>/>
+                                                              class="form-control" <?php if (isset($p->gender)) { ?> value="<?php echo $p->gender; ?>" <?php } ?>/>
                         </div>
                     </div>
 
@@ -305,7 +305,7 @@
                             <label class="control-label">Place of Birth</label>
                             <input <?php echo $is_disabled ?> name="placeofbirth" type="text"
                                                               placeholder=""
-                                                              class="form-control req_driver" <?php if (isset($p->placeofbirth)) { ?> value="<?php echo $p->placeofbirth; ?>" <?php } ?>/>
+                                                              class="form-control" <?php if (isset($p->placeofbirth)) { ?> value="<?php echo $p->placeofbirth; ?>" <?php } ?>/>
                         </div>
                     </div>
 
@@ -406,7 +406,7 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <SELECT<?php echo $is_disabled ?> name="province" class="form-control req_driver" ><?php
+                            <SELECT  <?php echo $is_disabled ?> name="province" class="form-control "><?php
                                     $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                     $province = "";
                                     if (isset($p->province)) {
@@ -465,7 +465,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Province (Driver's License was issued)</label>
-                            <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control req_driver "><?php
+                            <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control "><?php
                                     $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                     $province = "";
                                     if (isset($p->driver_province)) {

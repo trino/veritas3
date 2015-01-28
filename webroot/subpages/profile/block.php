@@ -378,36 +378,6 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    List <?=$settings->document; ?>
-                                                </td>
-                                                <td>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio" name="block[listdocument]"
-                                                                                          value="1" <?php if (isset($block) && $block->listdocument == 1) echo "checked"; ?>/>
-                                                        Yes </label>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio" name="block[listdocument]"
-                                                                                          value="0" <?php if (isset($block) && $block->listdocument == 0) echo "checked"; ?>/>
-                                                        No </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Add <?=$settings->document; ?>
-                                                </td>
-                                                <td>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio" name="block[submitdocument]"
-                                                                                          value="1" <?php if (isset($block) && $block->submitdocument == 1) echo "checked"; ?>/>
-                                                        Yes </label>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio" name="block[submitdocument]"
-                                                                                          value="0" <?php if (isset($block) && $block->submitdocument == 0) echo "checked"; ?>/>
-                                                        No </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
                                                     Submit Order
                                                 </td>
                                                 <td>

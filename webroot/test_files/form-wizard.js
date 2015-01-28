@@ -3,24 +3,6 @@ if(path.replace('veritas3','')!=path)
     var base_url = 'http://localhost/veritas3/';
 else
     var base_url = 'http://isbmeereports.com/';
-var table=0
-$(function(){
-if($('#tablename').val()=='pre_screening')
- table=0;
-else
-if($('#tablename').val()=='driver_application')
-    table=1;
-else
-if($('#tablename').val()=='road_test')
-   table=2;
-else
-if($('#tablename').val()=='consent_form')
-table= 3;
-
-
-
-    });
-
 
 var FormWizard = function () {
     return {
@@ -153,7 +135,7 @@ var FormWizard = function () {
                     } else { // display success icon for other inputs
                         label
                             .addClass('valid') // mark the current input as valid and display OK icon
-                            .closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
+                        .closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
                     }
                 },
                 submitHandler: function (form) {
@@ -184,15 +166,8 @@ var FormWizard = function () {
                 });
             }
             var handleTitle = function(tab, navigation, index) {
-                
-                //return false;
                 var total = navigation.find('li').length;
-                if(table)
-                index = table;
                 var current = index + 1;
-                //else
-
-
                 // set wizard title
                 $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
                 // set done steps
@@ -207,42 +182,25 @@ var FormWizard = function () {
                 } else {
                     $('#form_wizard_1').find('.button-previous').show();
                 }
-                
+
                 if(current == (total-1))
                 {
 
-                    
+
                     $('.cont').html('Submit Order');
-<<<<<<< HEAD
-                    $('.skip').html('Save as draft');
-=======
-                    //$('.skip').hide();
->>>>>>> ae10e1f5a5784b72d7fef6e720a0ed4da384ee29
-
-                    $('#select_division').hide();
 
 
 
-                    // $('.cont').attr('id','');
+                   // $('.cont').attr('id','');
                 }
                 else{
-                    $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
-                    $('.cont').attr('id','draft');
-<<<<<<< HEAD
-                    $('.skip').html('Skip <i class="m-icon-swapdown m-icon-white"></i>');
-                    
-=======
-                    $('.skip').show();
->>>>>>> ae10e1f5a5784b72d7fef6e720a0ed4da384ee29
+                $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
+                $('.cont').attr('id','draft');
                 }
                 if(current==total)
                 {
-                    $('.cont').attr('id','submit_ord');
-                    $('.skip').hide();
-//                    $('.cont').attr('id','');
-                    $('#select_division').hide();
+                    $('.cont').attr('id','');
                 }
-
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();
@@ -251,6 +209,21 @@ var FormWizard = function () {
                     var count = 10;
                     //alert($('#did').val()+'/'+$('#uploaded_for').val());
                     save_signature('1');
+                    $.ajax({
+
+                        url:base_url+'documents/webservice/0/0/'+$('#did').val()+'/'+$('#uploaded_for').val(),
+                    })
+                    var counter=setInterval(function(){
+                        count=count-1;
+                      $('.seconds').text(count);
+                      if (count <= 0)
+                      {
+
+                        clearInterval(counter);
+                         window.location=base_url;
+                         //counter ended, do something here
+                         return;
+                    }}, 30000); //1000 will  run it every 1 second
 
 
                     displayConfirm();
@@ -269,99 +242,23 @@ var FormWizard = function () {
                 onTabClick: function (tab, navigation, index, clickedIndex) {
                     return false;
                     /*
-                     success.hide();
-                     error.hide();
-                     if (form.valid() == false) {
-                     return false;
-                     }
-                     handleTitle(tab, navigation, clickedIndex);
-                     */
+                    success.hide();
+                    error.hide();
+                    if (form.valid() == false) {
+                        return false;
+                    }
+                    handleTitle(tab, navigation, clickedIndex);
+                    */
                 },
                 onNext: function (tab, navigation, index) {
                     success.hide();
                     error.hide();
-                    if($(".tab-pane.active").attr('id') == 'tab1')
-                    {                    
-                    var uploaded = $('#uploaded_for').val();
-                            if(uploaded=='')
-                            {
-                                $('.select2-choice').attr('style','border-color:red');
-                                $('.select2-input').focus();  
-                                $('html,body').animate({
-                                        scrollTop: $('.active').offset().top},
-                                    'slow');                              
-                                return false;
-                            }
-                            else
-                            {
-                                handleTitle(tab, navigation, index);
-                            }
-                    }  
-                    else                          
-                    if($(".tab-pane.active").attr('id') == 'tab2')
-                    {
-                        
-                        if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')
-                        {
-                            //if($('#skip').val()!='1'){
-                            //$('#confirm_check').attr('style','border-color:red');
-                            alert('Please confirm that you have read the conditions');
-                            $('#confirm_check').focus();
-                            $('html,body').animate({
-                                        scrollTop: $('.active').offset().top},
-                                    'slow');
-                            return false;
-                           // }
-                        }
-                            else{
-                            //alert('test');
-                            handleTitle(tab, navigation, index);
-                        }
-                    }
-                    else
-                    if($(".tab-pane.active").attr('id') == 'tab4')
-                    {
-                            
-                            
 
-                        var er = 0;
-                        $(".tab-pane.active").find('.required').each(function(){
-                            if($(this).val()=='')
-                            {
-                                $(this).attr('style','border-color:red');
-                                $('.cont').attr('disabled','');
-                                $(this).focus();
-                                $('html,body').animate({
-                                        scrollTop: $('.active').offset().top},
-                                    'slow');
-                                er = 1;
-                            }
-                            else
-                            {
-                                $(this).removeAttr('style');
-                                
-                            }
-                        });
-                        if(er){
-                            alert('Some of the fields of consent form is required.');
-                        return false;
-
-                        }
-                        else{
-                        //alert('test');
-                        handleTitle(tab, navigation, index);
-                    }
-
-                    }
-                    else{
-                        //alert('test');
-                        handleTitle(tab, navigation, index);
-                    }
                     /*if (form.valid() == false) {
-                     return false;
-                     }*/
+                        return false;
+                    }*/
 
-
+                    handleTitle(tab, navigation, index);
                 },
                 onPrevious: function (tab, navigation, index) {
                     success.hide();
@@ -371,23 +268,14 @@ var FormWizard = function () {
                 },
                 onTabShow: function (tab, navigation, index) {
                     var total = navigation.find('li').length;
-                    if(table){
-                        index = table;
-                        $('.form-wizard .tab-pane').removeClass('active');
-                        $('.form-wizard .changeactive').attr('class','tab-pane active');
-                        $('#subtab_2_1').addClass('active');
-                        table = 0;
-                    }
-                    //alert(table);
                     var current = index + 1;
                     var $percent = (current / total) * 100;
                     $('#form_wizard_1').find('.progress-bar').css({
                         width: $percent + '%'
                     });
-
                 }
             });
-            if(table==0)
+
             $('#form_wizard_1').find('.button-previous').hide();
             $('#form_wizard_1 .button-submit').click(function () {
                 alert('Done!');

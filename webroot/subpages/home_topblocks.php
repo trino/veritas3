@@ -48,45 +48,12 @@
         
         </a>
     <?php } ?>
-    <?php if ($block->submitdocument == 1 && $sidebar->document_create ==1) { ?>
-    
-        <a href="<?php echo $this->request->webroot.$document_url;?>" class="tile bg-green" style="display: block;">
-            <div class="tile-body">
-                <i class="fa fa-clipboard"></i>
-            </div>
-            <div class="tile-object">
-                <div class="name">
-                    Submit Documents
-                </div>
-                <div class="number">
 
-                </div>
-            </div>
-        
-        </a>
-    <?php } ?>
-    <?php if ($block->listdocument == 1 && $sidebar->document_list ==1) { ?>
-    
-        <a href="<?php echo $this->request->webroot;?>documents" class="tile bg-blue" style="display: block;">
-            <div class="tile-body">
-                <i class="fa fa-clipboard"></i>
-            </div>
-            <div class="tile-object">
-                <div class="name">
-                    List Documents
-                </div>
-                <div class="number">
-
-                </div>
-            </div>
-        
-        </a>
-    <?php } ?>
     <?php if ($block->submitorder == 1 && $sidebar->orders_create ==1) { ?>
     
         <a href="<?php echo $this->request->webroot.$order_url;?>" class="tile bg-purple-studio" style="display: block;">
             <div class="tile-body">
-                <i class="fa icon-notebook"></i>
+                <i class="fa fa-clipboard"></i>
             </div>
             <div class="tile-object">
                 <div class="name">

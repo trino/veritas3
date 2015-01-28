@@ -94,10 +94,10 @@ class SettingsController extends AppController {
         $setting = TableRegistry::get('Settings');
          $query = $setting->query();
                 $query->update()
-                ->set(['client'=>$_POST['client'],'document'=>$_POST['document'],'profile'=>$_POST['profile']])
+                ->set(['client'=>$_POST['client'],'document'=>$_POST['document'],'profile'=>$_POST['profile'],'mee'=>$_POST['mee']])
                 ->where(['id' => 1])
                 ->execute();
-        $this->redirect(['controller'=>'profiles','action'=>'add']);
+        $this->redirect(['controller'=>'profiles','action'=>'edit',$this->request->session()->read("Profile.id")]);
     }
     function getProSubDoc($pro_id,$doc_id)
     {

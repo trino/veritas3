@@ -437,7 +437,7 @@
             $this->layout= 'blank';
         }
 
-        function blocks()
+        function blocks($client="")
         {
 
 
@@ -455,14 +455,16 @@
                 $side[$k] = $v;
             }
             //die();
-
-            $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete','document_others','document_requalify','orders_list','orders_create','orders_delete','orders_requalify','orders_edit','orders_others');
-            foreach($sides as $s)
+            if($client=="")
             {
-                if(!isset($_POST['side'][$s]))
-                    $side[$s] = 0;
+                $sides = array('profile_list','profile_create','client_list','client_create','document_list','document_create','profile_edit','profile_delete','client_edit','client_delete','document_edit','document_delete','document_others','document_requalify','orders_list','orders_create','orders_delete','orders_requalify','orders_edit','orders_others');
+                foreach($sides as $s)
+                {
+                    if(!isset($_POST['side'][$s]))
+                        $side[$s] = 0;
+                }
             }
-
+            
             
             $sidebar = TableRegistry::get('sidebar');
             $s1 = $sidebar->find()->where(['user_id'=>$user_id])->count();

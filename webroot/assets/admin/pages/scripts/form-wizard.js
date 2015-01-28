@@ -213,7 +213,7 @@ var FormWizard = function () {
 
                     
                     $('.cont').html('Submit Order');
-                    //$('.skip').hide();
+                    $('.skip').html('Save as draft');
 
                     $('#select_division').hide();
 
@@ -224,7 +224,8 @@ var FormWizard = function () {
                 else{
                     $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
                     $('.cont').attr('id','draft');
-                    $('.skip').show();
+                    $('.skip').html('Skip <i class="m-icon-swapdown m-icon-white"></i>');
+                    
                 }
                 if(current==total)
                 {

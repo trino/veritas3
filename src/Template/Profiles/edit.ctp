@@ -283,25 +283,8 @@
             <?php
             if($this->request->params['action'] != 'add')
             {
-
-
                 ?>
-
-
             <div class="cleafix">&nbsp;</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div class="portlet box green scrolldiv" style="overflow: hidden; width: auto; height: 250px;">
                         <div class="portlet-title">
                             <div class="caption">
@@ -313,7 +296,6 @@
                             <?php include('subpages/documents/recruiter_notes.php'); ?>
                         </div>
                     </div>
-
             <?php
 
 

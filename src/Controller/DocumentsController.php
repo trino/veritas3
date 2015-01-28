@@ -394,6 +394,24 @@
             $orders = TableRegistry::get('orders');
             if ($did)
                 $order_id = $orders->find()->where(['id' => $did])->first();
+            if($did)
+                {
+                    $o_model = TableRegistry::get('Orders');
+                    $orde = $o_model->find()->where(['id' => $did])->first();
+                    if($orde)
+                    {
+                        $dr = $orde->draft;
+                        if($dr=='0' || !$dr)
+                        $dr = 0;
+                        else
+                        $dr =1;
+                    }
+                    else
+                    $dr = 0;
+                }
+                else
+                $dr = 0;
+                $this->set('dr',$dr);    
             //$did= $document_id->id;
             if (isset($order_id))
                 $this->set('modal', $order_id);
@@ -465,10 +483,31 @@
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
                 $sig = explode('/',$_POST['recruiter_signature']);
                 $arr['recruiter_signature'] = end($sig);
-                if (isset($_GET['draft']) && $_GET['draft'])
-                    $arr['draft'] = 1;
+                if($did)
+                {
+                    $o_model = TableRegistry::get('Orders');
+                    $orde = $o_model->find()->where(['id' => $did])->first();
+                    if($orde)
+                    {
+                        $dr = $orde->draft;
+                        if($dr=='0' || !$dr)
+                        $dr = 0;
+                        else
+                        $dr =1;
+                    }
+                    else
+                    $dr = 0;
+                }
                 else
+                $dr = 0;
+                $this->set('dr',$dr);
+                if (isset($_GET['draft']) && $_GET['draft'])
+                    if($dr)
+                    $arr['draft'] = 1;
+                else{
+                    //if(!$dr)
                     $arr['draft'] = 0;
+                    }
                 $arr['client_id'] = $cid;
                 if (isset($_POST['division']))
                     $arr['division'] = urldecode($_POST['division']);

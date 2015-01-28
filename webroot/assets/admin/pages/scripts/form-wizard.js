@@ -213,11 +213,9 @@ var FormWizard = function () {
 
                     
                     $('.cont').html('Submit Order');
-<<<<<<< HEAD
+
                     $('.skip').html('Save as draft');
-=======
-                    //$('.skip').hide();
->>>>>>> ae10e1f5a5784b72d7fef6e720a0ed4da384ee29
+
 
                     $('#select_division').hide();
 
@@ -228,12 +226,9 @@ var FormWizard = function () {
                 else{
                     $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
                     $('.cont').attr('id','draft');
-<<<<<<< HEAD
+
                     $('.skip').html('Skip <i class="m-icon-swapdown m-icon-white"></i>');
-                    
-=======
-                    $('.skip').show();
->>>>>>> ae10e1f5a5784b72d7fef6e720a0ed4da384ee29
+
                 }
                 if(current==total)
                 {

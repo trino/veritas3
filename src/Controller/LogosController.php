@@ -53,6 +53,52 @@ class LogosController extends AppController {
          }
         
 	}
+    public function upload($type="")
+    {
+        if($type == 'addnewlogo'){
+        //$response['type'] = 'primary';
+        $response['secondary'] = 0;
+        $arr['type'] = 0;
+        }
+        elseif($type == 'addnewlogo1'){
+        //$response['type'] = 'primary';
+        $response['secondary'] = 1;
+        $arr['type'] = 1;
+        }
+        elseif($type == 'addnewlogo2'){
+        //$response['type'] = 'login';
+        $response['secondary'] = 2;
+        
+        $arr['type'] = 2;
+        }
+        $response['active'] = 0;
+        $file = $_FILES['myfile']['name'];
+        $arr_file = explode('.',$file);
+        $ext = end($arr_file);
+        $lower = strtolower($ext);
+        $allowed = array('jpg','jpeg','png','gif');
+        if(in_array($lower,$allowed))
+        {
+            $rand = rand(100000000,999999999).'logo'.'.'.$ext;
+            if(move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/logos/'.$rand))
+            {
+                $arr['image'] = $rand;
+                $response['logo'] = $rand;
+                //var_dump($response);
+                $logos = TableRegistry::get('Logos');
+                $logo = $logos->newEntity($response);
+
+                    if ($logos->save($logo)) {
+                        //$this->Flash->success('Client saved successfully.');
+                        $arr['id'] = $logo->id;
+                        echo json_encode($arr);
+                        die();
+                    } 
+            }
+            
+        }
+        die();
+    }
     function ajaxlogo()
     {
         $lg = $this->Logos->find()->where(['secondary'=>'0']);

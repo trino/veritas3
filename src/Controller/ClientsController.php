@@ -825,7 +825,7 @@ class ClientsController extends AppController {
         die();
    }
 
-   
+    
    function getdivisions($did="")
    {
         $cid = $_POST['client_id'];

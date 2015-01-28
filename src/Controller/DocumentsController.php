@@ -273,6 +273,7 @@
                     $con_at = TableRegistry::get('consent_form_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['doc_id' => $did])->all();
                     $this->set('sub2', $sub2);
+                    $this->set('consent_detail', $con_detail);
 
                 }
                 $emp = TableRegistry::get('employment_verification');
@@ -349,6 +350,7 @@
                     $con_at = TableRegistry::get('consent_form_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['order_id' => $did])->all();
                     $this->set('sub2', $sub2);
+                    $this->set('consent_detail', $con_detail);
 
                 }
                 $emp = TableRegistry::get('employment_verification');
@@ -392,6 +394,24 @@
             $orders = TableRegistry::get('orders');
             if ($did)
                 $order_id = $orders->find()->where(['id' => $did])->first();
+            if($did)
+                {
+                    $o_model = TableRegistry::get('Orders');
+                    $orde = $o_model->find()->where(['id' => $did])->first();
+                    if($orde)
+                    {
+                        $dr = $orde->draft;
+                        if($dr=='0' || !$dr)
+                        $dr = 0;
+                        else
+                        $dr =1;
+                    }
+                    else
+                    $dr = 0;
+                }
+                else
+                $dr = 0;
+                $this->set('dr',$dr);    
             //$did= $document_id->id;
             if (isset($order_id))
                 $this->set('modal', $order_id);
@@ -458,14 +478,36 @@
             if (!isset($_GET['document'])) {
                 // saving in order table
                 $orders = TableRegistry::get('orders');
+                if(!$did || $did == '0')
                 $arr['title'] = 'order_' . $_POST['uploaded_for'] . '_' . date('Y-m-d H:i:s');
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
                 $sig = explode('/',$_POST['recruiter_signature']);
                 $arr['recruiter_signature'] = end($sig);
-                if (isset($_GET['draft']) && $_GET['draft'])
-                    $arr['draft'] = 1;
+                if($did)
+                {
+                    $o_model = TableRegistry::get('Orders');
+                    $orde = $o_model->find()->where(['id' => $did])->first();
+                    if($orde)
+                    {
+                        $dr = $orde->draft;
+                        if($dr=='0' || !$dr)
+                        $dr = 0;
+                        else
+                        $dr =1;
+                    }
+                    else
+                    $dr = 0;
+                }
                 else
+                $dr = 0;
+                $this->set('dr',$dr);
+                if (isset($_GET['draft']) && $_GET['draft'])
+                    if($dr)
+                    $arr['draft'] = 1;
+                else{
+                    //if(!$dr)
                     $arr['draft'] = 0;
+                    }
                 $arr['client_id'] = $cid;
                 if (isset($_POST['division']))
                     $arr['division'] = urldecode($_POST['division']);
@@ -473,6 +515,7 @@
                 $arr['conf_driver_name'] = urldecode($_POST['conf_driver_name']);
                 $arr['conf_date'] = urldecode($_POST['conf_date']);
                 //$arr['order_type'] = $_POST['sub_doc_id'];
+                if(!$did || $did == '0')
                 $arr['created'] = date('Y-m-d H:i:s');
                 if (!$did || $did == '0') {
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
@@ -507,6 +550,7 @@
 
                 $arr['client_id'] = $cid;
                 $arr['document_type'] = urldecode($_GET['document']);
+                if ((!$did || $did == '0'))
                 $arr['created'] = date('Y-m-d H:i:s');
                 //$arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
                 //$arr['conf_driver_name'] = $_POST['conf_driver_name'];
@@ -2408,5 +2452,5 @@
             return $this->response;
             die();
         }
-
+  
     }

@@ -154,7 +154,7 @@
                             }
                             $uploaded_by = $this->requestAction("documents/getUser/".$docs->user_id);
                             $getClientById = $this->requestAction("documents/getClientById/".$docs->client_id);
-                          ?>
+                          ?> 
                           <tr class="<?=$row_color_class;?>" role="row">
                                 <td><?= $this->Number->format($docs->id) ?></td>
                                 <td><?= h($docs->document_type) ?></td>

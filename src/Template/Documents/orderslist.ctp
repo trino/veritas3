@@ -251,8 +251,7 @@
                     }
                 });
             }
-<<<<<<< HEAD
-    });
+    }); 
     var client_id = $('.showdivision').val();
             if(client_id !="")
             {
@@ -265,11 +264,8 @@
                     } 
                 });
             }
-})
-=======
-        });
-    })
->>>>>>> bca662483c8474773e6d7b104b6f9281f55a3420
+
+    });
 </script>
 <style>
     @media print {

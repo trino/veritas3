@@ -215,9 +215,9 @@ var FormWizard = function () {
                     $('.cont').html('Submit Order');
 
                     $('.skip').html('Save as draft');
-
-
-                    $('#select_division').hide();
+                    $('#nextview').attr('style','visibility: hidden;');
+                    
+                    
 
 
 
@@ -226,7 +226,7 @@ var FormWizard = function () {
                 else{
                     $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
                     $('.cont').attr('id','draft');
-
+                    $('#nextview').removeAttr('style');
                     $('.skip').html('Skip <i class="m-icon-swapdown m-icon-white"></i>');
 
                 }

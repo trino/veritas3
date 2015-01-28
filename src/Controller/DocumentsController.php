@@ -458,6 +458,7 @@
             if (!isset($_GET['document'])) {
                 // saving in order table
                 $orders = TableRegistry::get('orders');
+                if(!$did || $did == '0')
                 $arr['title'] = 'order_' . $_POST['uploaded_for'] . '_' . date('Y-m-d H:i:s');
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
                 $sig = explode('/',$_POST['recruiter_signature']);
@@ -473,6 +474,7 @@
                 $arr['conf_driver_name'] = urldecode($_POST['conf_driver_name']);
                 $arr['conf_date'] = urldecode($_POST['conf_date']);
                 //$arr['order_type'] = $_POST['sub_doc_id'];
+                if(!$did || $did == '0')
                 $arr['created'] = date('Y-m-d H:i:s');
                 if (!$did || $did == '0') {
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
@@ -507,6 +509,7 @@
 
                 $arr['client_id'] = $cid;
                 $arr['document_type'] = urldecode($_GET['document']);
+                if ((!$did || $did == '0'))
                 $arr['created'] = date('Y-m-d H:i:s');
                 //$arr['conf_recruiter_name'] = $_POST['conf_recruiter_name'];
                 //$arr['conf_driver_name'] = $_POST['conf_driver_name'];
@@ -2408,5 +2411,5 @@
             return $this->response;
             die();
         }
-
+  
     }

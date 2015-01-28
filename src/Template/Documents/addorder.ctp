@@ -1092,6 +1092,7 @@
         $('.cont').parent().find('.red').remove();
         $('.cont').attr('id','nextview');
         $('.cont').removeClass('cont');
+        
         <?php
     }
 
@@ -1155,8 +1156,14 @@
                 beforeSend:saveSignature,
                 url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft=1',
                 success:function(res) {
+                    $('#did').val(res);
                     var draftmode = '<h4 class="block">Your Order has been saved as draft!</h4><p> You can edit your order by visiting orders section inside draft. </p>'
                     $('#tab6 .note').html(draftmode);
+                    $.ajax({
+                        url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft=1',
+                        type:'post',
+                        data:{uploaded_for:$('#uploaded_for').val(),type:type,division:$('#divison').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val(),recruiter_signature:$('#recruiter_signature').val()}
+                    });
                 }
             });}
             });
@@ -1182,8 +1189,13 @@
                 beforeSend:saveSignature,
                 url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft='+draft,
                 success:function(res) {
-
+                    
                     $('#did').val(res);
+                    $.ajax({
+                        url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft=0',
+                        type:'post',
+                        data:{uploaded_for:$('#uploaded_for').val(),type:type,division:$('#divison').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val(),recruiter_signature:$('#recruiter_signature').val()}
+                    });
                     // saving data
                     doc_id = res;
                     if(type == "Pre-Screening"){

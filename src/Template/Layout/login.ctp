@@ -51,8 +51,8 @@
 <div class="logo"></div>
 
 <div class="content">
-        	<?php $logo = $this->requestAction('Logos/getlogo/2');?> 
-            	<img src="<?php echo $this->request->webroot.'img/logos/'.$logo;?>"  style="max-width: 100%; "  /> 
+       <center><?php $logo = $this->requestAction('Logos/getlogo/2');?>
+            	<img src="<?php echo $this->request->webroot.'img/logos/'.$logo;?>"  style="max-width: 100%; "  /></center>
         <!--<img src="http://isbmee.com/wp-content/uploads/2014/10/MEELogo1.png" alt="" style="max-width: 100%;"/>-->
 
 
@@ -105,7 +105,7 @@
     </div>
 
 
-    <div class="create-account">
+    <!--div class="create-account">
 
 
         <p><strong>Welcome to MEE</strong></p>
@@ -117,7 +117,7 @@
             Interested in this product?&nbsp; <a href="javascript:;" id="register-btn">
                 Create an account </a>
         </p>
-    </div>
+    </div-->
 </form>
 
 
@@ -157,7 +157,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label visible-ie8 visible-ie9">Signatory�s First Name</label>
+    <label class="control-label visible-ie8 visible-ie9">Signatory's First Name</label>
     <div class="input-icon">
         <i class="fa fa-font"></i>
         <input class="form-control placeholder-no-fix" type="text" placeholder="Signatory's First Name" name="s_firstname"  required="required"/>
@@ -227,7 +227,7 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label visible-ie8 visible-ie9">Signatory�s First Name</label>
+    <label class="control-label visible-ie8 visible-ie9">Signatory's First Name</label>
     <div class="input-icon">
         <i class="fa fa-font"></i>
         <input class="form-control placeholder-no-fix" type="text" placeholder="User's First Name" name="u_firstname" required="required"/>
@@ -279,7 +279,7 @@
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-    2014 &copy; MEE. All Rights Reserved.
+    &copy; 2015 All Rights Reserved
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

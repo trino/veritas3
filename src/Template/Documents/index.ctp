@@ -1,7 +1,7 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->document);?>s  <small><?php echo ucfirst($settings->document);?>s Listing</small>
+			<?php echo ucfirst($settings->document);?>s
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -125,7 +125,7 @@
                     			<th><?= $this->Paginator->sort('document_type',ucfirst($settings->document));?></th>
                     			<th><?= $this->Paginator->sort('user_id','Uploaded by');?><?php if(isset($end)) echo $end; if(isset($start)) echo "//".$start; ?></th>
                     			<th><?= $this->Paginator->sort('created','Uploaded on');?></th>           			
-                                <th><?= $this->Paginator->sort('client_id','Clients');?></th>
+                                <th><?= $this->Paginator->sort('client_id',ucfirst($settings->client));?></th>
                     			<th class="actions"><?= __('Actions') ?></th>
                     		</tr>
                     	</thead>

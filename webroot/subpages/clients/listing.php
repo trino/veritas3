@@ -18,7 +18,7 @@
                             <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
                                 <div class="col-md-6" style="padding-left:0;">
                                     <input class="form-control input-inline" name="search" type="search"
-                                           placeholder=" Search for <?php echo ucfirst($settings->client); ?>"
+                                           placeholder="Search for <?php echo ucfirst($settings->client); ?>s"
                                            value="<?php if (isset($search_text)) echo $search_text; ?>"
                                            aria-controls="sample_1"/>
                                     <button type="submit" class="btn btn-primary">Search</button>
@@ -110,12 +110,15 @@
                                                  <a href="<?php echo $this->request->webroot;?>clients/delete/<?php echo $clients->id;?>" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger" >Delete</a>
                                                  <?php }
                                                 
-                                                if ($sidebar->orders_create == '1') {
-                                                    echo $this->Html->link(__('Submit Order'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
-                                                }
+
                                                 if ($sidebar->document_create == '1') {
-                                                    echo $this->Html->link(__('Submit ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => 'btn btn-success']);
+                                                    echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => 'btn btn-success']);
                                                 }
+
+                                                if ($sidebar->orders_create == '1') {
+                                                    echo $this->Html->link(__('Create Order'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
+                                                }
+
                                                 if ($sidebar->orders_list == '1') {
                                                     echo $this->Html->link(__('View Orders'), ['controller' => 'documents', 'action' => 'index/>client_id=', $clients->id], ['class' => 'btn btn-warning']);
                                                 }

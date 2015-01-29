@@ -4,7 +4,7 @@
 
 
 <h3 class="page-title">
-    MEE Dashboard <small>Driver Qualification System</small>
+    <?php echo $settings->mee;?> Dashboard <?php if($settings->mee == 'MEE'){ ?><small>Driver Qualification System</small><?php } ?>
 
     <!--img src="<?php echo $this->request->webroot; ?>img/logos/challenger_logoright.jpg" style="float:right;"/-->
 

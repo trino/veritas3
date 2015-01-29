@@ -394,6 +394,24 @@
             $orders = TableRegistry::get('orders');
             if ($did)
                 $order_id = $orders->find()->where(['id' => $did])->first();
+            if($did)
+                {
+                    $o_model = TableRegistry::get('Orders');
+                    $orde = $o_model->find()->where(['id' => $did])->first();
+                    if($orde)
+                    {
+                        $dr = $orde->draft;
+                        if($dr=='0' || !$dr)
+                        $dr = 0;
+                        else
+                        $dr =1;
+                    }
+                    else
+                    $dr = 1;
+                }
+                else
+                $dr = 1;
+                $this->set('dr',$dr);    
             //$did= $document_id->id;
             if (isset($order_id))
                 $this->set('modal', $order_id);
@@ -467,8 +485,8 @@
                 $arr['recruiter_signature'] = end($sig);
                 if($did)
                 {
-                    $o_model = TableRegistry::get('Order');
-                    $orde = $model->find()->where(['id' => did])->first();
+                    $o_model = TableRegistry::get('Orders');
+                    $orde = $o_model->find()->where(['id' => $did])->first();
                     if($orde)
                     {
                         $dr = $orde->draft;
@@ -482,10 +500,12 @@
                 }
                 else
                 $dr = 0;
+                $this->set('dr',$dr);
                 if (isset($_GET['draft']) && $_GET['draft'])
+                    if($dr)
                     $arr['draft'] = 1;
                 else{
-                    if(!$dr)
+                    //if(!$dr)
                     $arr['draft'] = 0;
                     }
                 $arr['client_id'] = $cid;
@@ -1551,9 +1571,10 @@
             $order = $orders->find();
             $order = $order->order(['orders.id' => 'DESC']);
             $order = $order->select();
-
             $cond = '';
             if (!$this->request->session()->read('Profile.super')) {
+                $u = $this->request->session()->read('Profile.id');
+
                 $setting = $this->Settings->get_permission($u);
                 if ($setting->document_others == 0) {
                     if ($cond == '')

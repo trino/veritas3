@@ -12,6 +12,12 @@
                                     <li class="">
                                         <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
                                     </li>
+                                    <li class="">
+                                        <a href="#subtab_2_3" data-toggle="tab">Homepage Top blocks</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
+                                    </li>
 
 
 
@@ -22,8 +28,8 @@
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
                                 					   <form action="#" method="post" id="blockform">
-                                        <input type="hidden" name="form" value="<?php echo $uid;?>" />
-                                        <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
+                                                            <input type="hidden" name="form" value="<?php echo $uid;?>" />
+                                                            <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
 
                                                            <div class="row">
 
@@ -331,7 +337,107 @@
 
 
 
-                                                           <div class="row">
+                                                        
+                              
+
+                                        <?php
+                                        if (!isset($disabled)) {
+                                            ?>
+                                            <div class="res"></div>
+                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Data saved successfully
+                                                        </div>
+                                            <div class="margin-top-10">
+                                                <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
+                                                       value="Save Changes"/>
+
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+
+
+                                    </form>
+                                						
+                                    </div>
+                                    </div>
+                                    <div class="tab-pane" id="subtab_2_2">
+                                                    
+                                                    <div class="">
+                                						<!--h1> Enable <?php echo ucfirst($settings->document);?>?</h1-->
+                                                        <form action="#" method="post" id="displayform">
+                                                    <table class="">
+                                                        <tr><th   width="25%"></th><th class=""  width="25%">System</th><th class=""><?php echo ucfirst($settings->profile);?></th></tr>
+                                                        <?php
+                                                        $subdoc = $this->requestAction('/profiles/getSub');
+                                                        
+                                                        foreach($subdoc as $sub)
+                                                        {
+                                                            ?>
+                                                            <tr>
+                                                            <td>
+                                                                
+                                                               <?php echo ucfirst($sub['title']);?>
+                                                            </td>
+                                                            <td class="">
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="1" <?php if($sub['display']==1) {?>checked="checked" <?php }?> />
+                                                                    Yes </label>
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="0" <?php if($sub['display']==0) {?>checked="checked" <?php }?> />
+                                                                    No </label>
+                                                            </td>
+                                                            <?php
+                                                                 $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$id.'/'.$sub->id);
+                                                            ?>
+                                                            <td class="">
+                                                                <!--<label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if($prosubdoc['display'] != 0) {?> checked="checked" <?php } ?> />
+                                                                    Yes </label>-->
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="0"  <?php if($prosubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
+                                                                    None </label>
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="1" <?php if($prosubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
+                                                                    View Only </label>
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="2" <?php if($prosubdoc['display'] == 2) {?> checked="checked" <?php } ?> />
+                                                                    Upload Only </label>
+                                                                <label class="uniform-inline">
+                                                                    <input <?php echo $is_disabled?> type="radio"  name="profile[<?php echo $sub->id;?>]" value="3" <?php if($prosubdoc['display'] == 3) {?> checked="checked" <?php } ?>/>
+                                                                    Both </label>
+                                                            </td>
+                                                        </tr>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </table>
+
+                                                    <?php
+                                                    if(!isset($disabled))
+                                                    {
+                                                        ?>
+
+                                                        <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Data saved successfully
+                                                        </div>
+                                                        <div class="margin-top-10">
+                                                            <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
+                                                                Save Changes </a>
+
+                                                        </div>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                    </form>
+                                					</div>
+                                                                
+                                						
+                                    </div>
+                                    <div  class="tab-pane" id="subtab_2_3">
+                                       <div class="row">
 
 
                                                                <div class="col-md-6">
@@ -341,8 +447,11 @@
                                                            </div>
 
 
-                                        <input type="hidden" name="block[user_id]" value="<?php echo $uid;?>" />
-                                        <table class="">
+                                       
+                                    <form id="homeform">
+                                     <input type="hidden" name="form" value="<?php echo $uid;?>" />
+                                     <input type="hidden" name="block[user_id]" value="<?php echo $uid;?>" />
+                                              <table class="">
                                             <tr>
                                                 <td>
                                                     Add a <?=$settings->profile; ?>
@@ -496,17 +605,9 @@
                                                         No </label>
                                                 </td>
                                             </tr-->
-
-
-
-
-
-
-
-
+    
                                         </table>
-
-                                        <?php
+                                          <?php
                                         if (!isset($disabled)) {
                                             ?>
                                             <div class="res"></div>
@@ -515,92 +616,55 @@
                                                             Data saved successfully
                                                         </div>
                                             <div class="margin-top-10">
-                                                <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
+                                                <input type="button" name="submit" class="btn btn-primary" id="save_home"
                                                        value="Save Changes"/>
 
                                             </div>
                                         <?php
                                         }
                                         ?>
-
-
-                                    </form>
-                                						
+                                        </form>
                                     </div>
-                                    </div>
-                                    <div class="tab-pane" id="subtab_2_2">
-                                                    
-                                                    <div class="">
-                                						<!--h1> Enable <?php echo ucfirst($settings->document);?>?</h1-->
-                                                        <form action="#" method="post" id="displayform">
-                                                    <table class="">
-                                                        <tr><th   width="25%"></th><th class=""  width="25%">System</th><th class=""><?php echo ucfirst($settings->profile);?></th></tr>
-                                                        <?php
-                                                        $subdoc = $this->requestAction('/profiles/getSub');
-                                                        
-                                                        foreach($subdoc as $sub)
-                                                        {
-                                                            ?>
-                                                            <tr>
-                                                            <td>
-                                                                
-                                                               <?php echo ucfirst($sub['title']);?>
-                                                            </td>
-                                                            <td class="">
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="1" <?php if($sub['display']==1) {?>checked="checked" <?php }?> />
-                                                                    Yes </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="0" <?php if($sub['display']==0) {?>checked="checked" <?php }?> />
-                                                                    No </label>
-                                                            </td>
-                                                            <?php
-                                                                 $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$id.'/'.$sub->id);
-                                                            ?>
-                                                            <td class="">
-                                                                <!--<label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if($prosubdoc['display'] != 0) {?> checked="checked" <?php } ?> />
-                                                                    Yes </label>-->
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="0"  <?php if($prosubdoc['display'] == 0) {?> checked="checked" <?php } ?> />
-                                                                    None </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="1" <?php if($prosubdoc['display'] == 1) {?> checked="checked" <?php } ?> />
-                                                                    View Only </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio" name="profile[<?php echo $sub->id;?>]" value="2" <?php if($prosubdoc['display'] == 2) {?> checked="checked" <?php } ?> />
-                                                                    Upload Only </label>
-                                                                <label class="uniform-inline">
-                                                                    <input <?php echo $is_disabled?> type="radio"  name="profile[<?php echo $sub->id;?>]" value="3" <?php if($prosubdoc['display'] == 3) {?> checked="checked" <?php } ?>/>
-                                                                    Both </label>
-                                                            </td>
-                                                        </tr>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </table>
-
-                                                    <?php
-                                                    if(!isset($disabled))
-                                                    {
-                                                        ?>
-
-                                                        <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                    <div class="tab-pane" id="subtab_2_4">
+                                        <form action="#" method="post" id="clientform">
+                                            <input type="hidden" name="form" value="<?php echo $uid;?>" />
+                                            <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
+                                             <table class=" ">
+                                            <tr>
+                                                <td class="vtop">
+                                                    Options For
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[client_option]"
+                                                                                          value="0"  <?php if (isset($sidebar) && $sidebar->client_option == 0) echo "checked"; ?> />
+                                                        ISB MEE </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[client_option]"
+                                                                                          value="1"  <?php if (isset($sidebar) && $sidebar->client_option == 1) echo "checked"; ?>/>
+                                                        Event Audit </label>
+                                                 </td>
+                                            </tr>
+                                            </table>
+                                             <?php
+                                        if (!isset($disabled)) {
+                                            ?>
+                                            <div class="res"></div>
+                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                                        <div class="margin-top-10">
-                                                            <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
-                                                                Save Changes </a>
+                                            <div class="margin-top-10">
+                                                <input type="button" name="submit" class="btn btn-primary" id="save_client"
+                                                       value="Save Changes"/>
 
-                                                        </div>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                    </form>
-                                					</div>
-                                                                
-                                						
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                            </form>
                                     </div>
                             </div>
                                     
@@ -620,6 +684,41 @@
                                                     $('.flash').show();
                                                     $('.flash').fadeOut(7000);
                                                     $('#save_display').text(' Save Changes ');
+                                               } 
+                                            })
+                                       });
+                                      
+                                       $('#save_client').click(function(){
+                                        $('#save_client').text('Saving..');
+                                            var str = $('#clientform input').serialize();
+                                            $.ajax({
+                                               url:'<?php echo $this->request->webroot; ?>profiles/blocks/client',
+                                               data:str,
+                                               type:'post',
+                                               success:function(res)
+                                               {
+                                                    //alert(res);
+                                                    $('.res').text(res);
+                                                    $('.flash').show();
+                                                    $('.flash').fadeOut(7000);
+                                                    $('#save_client').text(' Save Changes ');
+                                               } 
+                                            })
+                                       });
+                                       $('#save_home').click(function(){
+                                        $('#save_home').text('Saving..');
+                                            var str = $('#homeform input').serialize();
+                                            $.ajax({
+                                               url:'<?php echo $this->request->webroot; ?>profiles/homeblocks',
+                                               data:str,
+                                               type:'post',
+                                               success:function(res)
+                                               {
+                                                    //alert(res);
+                                                    $('.res').text(res);
+                                                    $('.flash').show();
+                                                    $('.flash').fadeOut(7000);
+                                                    $('#save_home').text(' Save Changes ');
                                                } 
                                             })
                                        });

@@ -962,6 +962,22 @@
             die();
         }
         
-
+        public function check_email($uid='')
+        {
+            
+            $email = $_POST['email'];
+            $q = TableRegistry::get('profiles');
+            $que = $q->find();
+            if($uid)
+            $query = $que->select()->where(['id !='=>$uid,'email'=>$email])->first();
+            else $query = $que->select()->where(['email'=>$email])->first();
+            //var_dump($query);
+            //$query = $que->first();
+            if($query)
+            echo '1';
+            else
+            echo '0';
+            die();
+        }
     }
 ?>

@@ -48,7 +48,7 @@
                             <label class="control-label">Email</label>
                             <input <?php echo $is_disabled ?> name="email" type="email"
                                                               placeholder="eg. test@domain.com"
-                                                              class="form-control un" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
+                                                              class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
         <div class="col-md-6">
         <div class="form-group">
             <label class="control-label">Re-type Password</label>
-            <input type="password" class="form-control input-medium" id="retype_password" required="required"/>
+            <input type="password" class="form-control input-medium" id="retype_password" <?php if(isset($p->password)){?> value="<?php echo $p->password; ?>"  <?php } ?> required="required"/>
             <span class="error passerror flashPass1" style="display: none;">Please enter same password</span>
         </div>
         </div>
@@ -637,7 +637,31 @@ function check_username()
                 $('#hiddensub').click();
             }
         }
-    });}
+    });
+    
+    var un = $('.email').val();
+    $.ajax({
+        url:'<?php echo $this->request->webroot;?>profiles/check_email/<?php echo $uid;?>',
+        data:'email='+$('.email').val(),
+        type:'post',
+        success: function(res){
+            if(res=='1')
+            {
+                
+                alert('Email already exist.');
+                $('.email').focus();
+                $('html,body').animate({
+                                        scrollTop: $('.page-title').offset().top},
+                                    'slow');
+                                    return false;
+            }
+            else{
+                $('#hiddensub').click();
+            }
+        }
+    });
+    
+    }
     else
     {
         $('#retype_password').focus();

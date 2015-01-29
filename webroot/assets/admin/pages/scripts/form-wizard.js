@@ -213,8 +213,9 @@ var FormWizard = function () {
 
                     
                     $('.cont').html('Submit Order');
-
+                    $('.cont').attr('onclick','return false;');
                     $('.skip').html('Save as draft');
+                    $('.skip').removeClass('button-next');
                     $('#nextview').attr('style','visibility: hidden;');
                     if($('#dr').val()=='0')
                     {
@@ -233,6 +234,8 @@ var FormWizard = function () {
                     $('#nextview').removeAttr('style');
                     $('.skip').html('Skip <i class="m-icon-swapdown m-icon-white"></i>');
                     $('.skip').removeAttr('disabled');
+                    $('.cont').removeAttr('onclick');
+                    $('.skip').addClass('button-next');
 
                 }
                 if(current==total)
@@ -267,6 +270,7 @@ var FormWizard = function () {
                 'nextSelector': '.button-next',
                 'previousSelector': '.button-previous',
                 onTabClick: function (tab, navigation, index, clickedIndex) {
+                    //alert(clickedIndex);
                     return false;
                     /*
                      success.hide();
@@ -278,6 +282,8 @@ var FormWizard = function () {
                      */
                 },
                 onNext: function (tab, navigation, index) {
+                    //alert(tab);
+                    
                     success.hide();
                     error.hide();
                     if($(".tab-pane.active").attr('id') == 'tab1')
@@ -353,6 +359,7 @@ var FormWizard = function () {
                     }
 
                     }
+                    
                     else{
                         //alert('test');
                         handleTitle(tab, navigation, index);

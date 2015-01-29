@@ -1170,8 +1170,19 @@
             });
         $(document.body).on('click','.cont',function(){
 
-            
-             
+           if($(".tab-pane.active").prev('.tab-pane').find('#confirmation').val() == '1')
+                    {
+                        if(confirm('Are you sure you want to submit this order?'))
+                        {
+                            //
+                        }
+                        else
+                        {
+                            $('.button-previous').click();
+                            return false;
+                        }
+                        
+                    }
             if($(this).attr('id') == 'draft')
             {
                 var draft = 1;

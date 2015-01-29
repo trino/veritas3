@@ -306,9 +306,15 @@
                         <div class="form-group">
 
                             <label class="control-label">Gender</label>
-                            <input <?php echo $is_disabled ?> name="gender" type="text"
-                                                              placeholder="M / F"
-                                                              class="form-control" <?php if (isset($p->gender)) { ?> value="<?php echo $p->gender; ?>" <?php } ?>/>
+                            <SELECT <?php echo $is_disabled ?> name="gender" class="form-control "><?php
+                                    $gender = "";
+                                    if (isset($p->gender)) {
+                                        $gender = $p->gender;
+                                    }
+                                    printoption("Select Gender","");
+                                    printoption("Male", $gender, "Male");
+                                    printoption("Female", $gender, "Female");
+                                ?></SELECT>
                         </div>
                     </div>
 

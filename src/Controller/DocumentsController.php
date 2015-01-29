@@ -190,6 +190,11 @@
 
         public function view($cid = 0, $did = 0)
         {
+            if (!$this->request->session()->read('Profile.id')) {
+                $this->redirect('/login');
+            }
+            else
+            {
             $this->set('cid', $cid);
             $this->set('did', $did);
             $this->set('sid', '');
@@ -293,6 +298,7 @@
                 $this->set('sub4', $sub4);
             }
             $this->render('add');
+            }
         }
 
         public function vieworder($cid = null, $did = null, $table = null)

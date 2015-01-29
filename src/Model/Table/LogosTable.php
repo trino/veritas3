@@ -35,7 +35,7 @@ class LogosTable extends Table {
 			->requirePresence('logo', 'create')
 			->notEmpty('logo')
 			->add('active', 'valid', ['rule' => 'numeric'])
-            ->add('secondary', 'valid', ['rule' => '!numeric'])
+            ->add('secondary', 'valid', ['rule' => 'numeric'])
 			->requirePresence('active', 'create')
 			->notEmpty('active','secondary');
 

@@ -6,7 +6,7 @@
 	<div class="portlet">
 		<div class="portlet-title">
 			<div class="caption">
-				<i class="fa fa-copy"></i>Documents
+				<i class="fa fa-copy"></i><?php echo $settings->document; ?>s
 			</div>
 
 		</div>

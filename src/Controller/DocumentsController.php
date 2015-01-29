@@ -465,10 +465,29 @@
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
                 $sig = explode('/',$_POST['recruiter_signature']);
                 $arr['recruiter_signature'] = end($sig);
+                if($did)
+                {
+                    $o_model = TableRegistry::get('Order');
+                    $orde = $model->find()->where(['id' => did])->first();
+                    if($orde)
+                    {
+                        $dr = $orde->draft;
+                        if($dr=='0' || !$dr)
+                        $dr = 0;
+                        else
+                        $dr =1;
+                    }
+                    else
+                    $dr = 0;
+                }
+                else
+                $dr = 0;
                 if (isset($_GET['draft']) && $_GET['draft'])
                     $arr['draft'] = 1;
-                else
+                else{
+                    if(!$dr)
                     $arr['draft'] = 0;
+                    }
                 $arr['client_id'] = $cid;
                 if (isset($_POST['division']))
                     $arr['division'] = urldecode($_POST['division']);

@@ -52,7 +52,7 @@
     			<a href="#" onclick='addImage();' style="display: none;">Add Image</a>
     			<a href="javascript:void(0)" onclick='$("#test<?php echo $_GET['num'];?>").data("jqScribble").clear();'>Clear</a> 			
                 <br />
-                <?php if(isset($modal) && $modal->recruiter_signature){?><strong>Current Signature<br /></strong><img src="<?php echo $modal->recruiter_signature;?>" style="max-width: 100%;" /><?php }?>
+                <?php if(isset($modal) && $modal->recruiter_signature){?><strong>Current Signature<br /></strong><img src="<?php echo $this->request->webroot.'canvas/'.$modal->recruiter_signature;?>" style="max-width: 100%;" /><?php }?>
                 <br />
                 
     		</div>

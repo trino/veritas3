@@ -18,7 +18,7 @@
     </div>
     <div class="form-group col-md-12">
     <label class="control-label col-md-12">Please sign below to confirm your submission. </label>
-    <input type="hidden" name="recruiter_signature" id="recruiter_signature" value="<?php if(isset($modal->recruiter_signature))echo $this->request->webroot.'canvas/'.$modal->recruiter_signature;?>" />
+    <input type="hidden" name="recruiter_signature" id="recruiter_signature" value="<?php if(isset($modal->recruiter_signature) && $modal->recruiter_signature)echo $modal->recruiter_signature;?>" />
     
     <?php 
 

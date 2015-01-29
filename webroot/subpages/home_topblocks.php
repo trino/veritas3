@@ -53,11 +53,11 @@
     
         <a href="<?php echo $this->request->webroot.$order_url;?>" class="tile bg-purple-studio" style="display: block;">
             <div class="tile-body">
-                <i class="fa fa-clipboard"></i>
+                <i class="icon-notebook"></i>
             </div>
             <div class="tile-object">
                 <div class="name">
-                    Submit Orders
+                    Create Order
                 </div>
                 <div class="number">
 

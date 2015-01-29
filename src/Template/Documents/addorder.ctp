@@ -123,7 +123,7 @@
                                     <div class="progress-bar progress-bar-info">
                                     </div>
                                 </div>
-                                <div style="top:0;left:0;position:absolute;background:#000;height:770px;width:100%;z-index:1000;opacity:0.2;display:none;" id="loading5">
+                                <div style="top:0;left:0;position:absolute;background:#000;height:100%;width:100%;z-index:1000;opacity:0.2;display:none;" id="loading5">
                                     <center><br />
                                         <br />
                                         <br />

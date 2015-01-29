@@ -2,7 +2,6 @@
 <?php $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id')); ?>
 <h3 class="page-title">
     Orders
-    <small>Orders Listing</small>
 </h3>
 <div class="page-bar">
     <ul class="page-breadcrumb">

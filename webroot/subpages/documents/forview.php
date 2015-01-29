@@ -37,6 +37,12 @@
             case 'VERIFIED':
                 echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
                 break;
+            case 'POTENTIAL TO SUCCEED':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            default:
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+
 
         }
 

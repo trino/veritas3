@@ -51,8 +51,8 @@
 <div class="logo"></div>
 
 <div class="content">
-        	<?php $logo = $this->requestAction('Logos/getlogo/2');?> 
-            	<img src="<?php echo $this->request->webroot.'img/logos/'.$logo;?>"  style="max-width: 100%; "  /> 
+       <center><?php $logo = $this->requestAction('Logos/getlogo/2');?>
+            	<img src="<?php echo $this->request->webroot.'img/logos/'.$logo;?>"  style="max-width: 100%; "  /></center>
         <!--<img src="http://isbmee.com/wp-content/uploads/2014/10/MEELogo1.png" alt="" style="max-width: 100%;"/>-->
 
 

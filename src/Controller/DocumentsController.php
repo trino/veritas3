@@ -1571,9 +1571,10 @@
             $order = $orders->find();
             $order = $order->order(['orders.id' => 'DESC']);
             $order = $order->select();
-
             $cond = '';
             if (!$this->request->session()->read('Profile.super')) {
+                $u = $this->request->session()->read('Profile.id');
+
                 $setting = $this->Settings->get_permission($u);
                 if ($setting->document_others == 0) {
                     if ($cond == '')

@@ -862,7 +862,7 @@
     ?>
         $(document.body).on('click', '.cont', function () {
             if($('.subform4').attr('style')!='display: none;'){
-                alert('tes');
+                //alert('tes');
             var er = 0;
             $('.required').each(function(){
                 if($(this).val()=='')

@@ -11,14 +11,14 @@
         <a href="#subtab_4_2" data-toggle="tab">Picture</a>
     </li>-->
     <?php
-        //if ($this->request['action'] == 'edit') {
+        if ($this->request['action'] == 'edit') {
             ?>
 
-            <!--<li>
+            <li>
                 <a href="#subtab_4_3" data-toggle="tab">Password</a>
-            </li>-->
+            </li>
         <?php
-        //}
+        }
     ?>
 </ul>
 <div class="tab-content">

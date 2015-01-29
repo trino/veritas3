@@ -8,6 +8,10 @@
         $c = $client;
 ?>
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
+<?php $sidebar = $this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar"); 
+        
+?>
+
 <h3 class="page-title">
     Create <?php echo ucfirst($settings->client); ?>
 </h3>
@@ -97,7 +101,7 @@
 
                                                 <div class="row">
                                                     <input type="hidden" name="image" id="client_img"/>
-
+                                                    <?php if($sidebar->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Customer Type</label>
                                                         <select class="form-control" name="customer_type"
@@ -117,7 +121,7 @@
                                                             </option>
                                                         </select>
                                                     </div>
-
+                                                    <?php }?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Company Name</label>
                                                         <input type="text" class="form-control"
@@ -180,13 +184,13 @@
                                                         <input type="text" class="form-control"
                                                                name="site" <?php if (isset($c->site)) { ?> value="<?php echo $c->site; ?>" <?php } ?>/>
                                                     </div>
-
+                                                    <?php if($sidebar->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Divisions </label>
                                                         <textarea name="division" id="division" placeholder="One division per line"
                                                                   class="form-control"><?php if (isset($c->division)) echo $c->division; ?></textarea>
                                                     </div>
-
+                                                    <?php }?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Signatory's First Name</label>
                                                         <input type="text" class="form-control"
@@ -286,6 +290,7 @@
                                                             </option>
                                                         </select>
                                                     </div>
+                                                    <?php if($sidebar->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">ARIS Agreement #</label>
                                                         <input type="text" class="form-control"
@@ -378,7 +383,7 @@
 
                                                     </div>
 
-
+                                                    <?php }?>
 
                                                     <div class="form-group col-md-12">
                                                         <label class="control-label">Attach Documents</label>

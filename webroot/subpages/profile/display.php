@@ -30,7 +30,8 @@ else
                                                        value="<?php echo $settings->document; ?>"/>
                                             </div>
                                             </div>
-                                            </div><div class="row">
+                                            </div>
+                                            <div class="row">
 
                                             <div class="col-md-4">
 
@@ -38,6 +39,17 @@ else
                                                 <label class="control-label">Profile</label>
                                                 <input type="text" name="profile" class="form-control"
                                                        value="<?php echo $settings->profile; ?>"/>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <div class="row">
+
+                                            <div class="col-md-4">
+
+                                            <div class="form-group">
+                                                <label class="control-label">MEE</label>
+                                                <input type="text" name="mee" class="form-control"
+                                                       value="<?php echo $settings->mee; ?>"/>
                                             </div>
                                             </div>
                                             </div>

@@ -41,7 +41,32 @@
                                                               class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
                         </div>
                     </div>
-        
+        <div class="col-md-6">         
+        <div class="form-group">
+            <label class="control-label">Password</label>
+            <input type="password" name="password" id="password" class="form-control input-medium" <?php if(isset($p->password)){?>value="<?php echo $p->password; ?>" <?php } ?> required="required" />
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Re-type Password</label>
+            <input type="password" class="form-control input-medium" id="retype_password" required="required"/>
+            <span class="error passerror" style="display: none;">Please enter same password</span>
+        </div>
+        </div>
+        <?php
+        if (!isset($disabled)) {
+            ?>
+            <div class="margin-top-10 alert alert-success display-hide flashPass" style="display: none;">
+                <button class="close" data-close="alert"></button>
+                Password saved successfully
+            </div>
+             <div class="margin-top-10 alert alert-danger display-hide flashPass1" style="display: none;">
+                <button class="close" data-close="alert"></button>
+                Password does not match.
+            </div>
+        <?php } ?>
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Email</label>

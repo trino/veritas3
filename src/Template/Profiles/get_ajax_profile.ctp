@@ -3,12 +3,12 @@
                                                 foreach($profiles as $r)
                                                 {
                                                     //echo $r->username;continue;
-                                                    if($i%2==0)
-                                                    {
+                                                    //if($i%2==0)
+//                                                    {
                                                         ?>
                                                         <tr>
                                                         <?php
-                                                    }
+                                                    //}
                                                     ?>
                                                    
                                                     <td>
@@ -17,19 +17,19 @@
                                                     </td>
                                                 <?php
                                                 
-                                                 if(($i+1)%2==0)
-                                                {
+                                                 //if(($i+1)%2==0)
+//                                                {
                                                  ?>
                                                  </tr>
                                                  <?php
-                                                }
+                                               // }
                                                 
                                                 $i++;
                                                 }
-                                                if(($i+1)%2!=0)
-                                                {
-                                                    echo "</td></tr>";
-                                                }
+                                                //if(($i+1)%2!=0)
+//                                                {
+//                                                    echo "</td></tr>";
+//                                                }
                                                 ?>
                                                 <script>
                                                

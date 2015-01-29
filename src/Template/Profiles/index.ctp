@@ -122,8 +122,22 @@
                                 <td class="actions  util-btn-margin-bottom-5">
 
                                     <?php  if($sidebar->profile_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);} ?>
-                                    <?php  if($sidebar->profile_edit=='1'){ echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);} ?>
-                                    <?php  if($sidebar->profile_delete=='1')
+                                    <?php  
+                                    if($sidebar->profile_edit=='1' )
+                                    {
+                                        if($profile->super == '1' && ($this->request->session()->read('Profile.super') == '1'))
+                                        {
+                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
+                                        }
+                                        else
+                                        {
+                                          if($profile->super != '1')
+                                          {
+                                            echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
+                                          }  
+                                        }
+                                    } ?>
+                                    <?php  if($sidebar->profile_delete=='1' && ($profile->profile_type!='1' && $profile->super!='1' && $profile->admin!='1'))
                                     {
                                         if(($profile->admin == '1' || $profile->profile_type == '1') && $this->request->session()->read('Profile.super') == '1')
                                         {

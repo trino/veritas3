@@ -374,6 +374,7 @@
                                                                name="billing_instructions" <?php if (isset($c->billing_instructions) && $c->billing_instructions == "centralized") { ?> checked="checked" <?php } ?>
                                                                value="centralized"/> Centralized&nbsp;&nbsp;
                                                     </div>
+                                                     <?php }?>
                                                     <div class="form-group col-md-8">
                                                         <label class="control-label">Description</label>
                                                         <textarea id="description" name="description"
@@ -383,7 +384,7 @@
 
                                                     </div>
 
-                                                    <?php }?>
+                                                   
 
                                                     <div class="form-group col-md-12">
                                                         <label class="control-label">Attach Documents</label>

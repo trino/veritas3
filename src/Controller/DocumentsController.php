@@ -1896,7 +1896,10 @@
                     'pdf',
                     'doc',
                     'docx',
-                    'txt'
+                    'txt',
+                    'xlsx',
+                    'xls',
+                    'csv'
                 );
                 $check = strtolower($ext);
                 if (in_array($check, $allowed)) {

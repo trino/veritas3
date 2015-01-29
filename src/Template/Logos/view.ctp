@@ -5,6 +5,8 @@
 		<li><?= $this->Form->postLink(__('Delete Logo'), ['action' => 'delete', $logo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $logo->id)]) ?> </li>
 		<li><?= $this->Html->link(__('List Logos'), ['action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('New Logo'), ['action' => 'add']) ?> </li>
+		
+		
 	</ul>
 </div>
 <div class="logos view large-10 medium-9 columns">

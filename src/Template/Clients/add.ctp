@@ -28,6 +28,7 @@
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
         <?php } ?>
 </div>
+
 <div class="row ">
     <div class="col-md-12">
         <!-- BEGIN SAMPLE FORM PORTLET-->
@@ -67,6 +68,12 @@
 
                         </div>
                         <div class="col-md-9">
+                        <div class="caption caption-md">
+                                <i class="icon-globe theme-font hide"></i>
+                                <span class="caption-subject font-blue-madison bold" style="font-size:15px ;"><?php echo ucfirst($settings->client); ?> Manager</span>
+                        </div>
+                        <hr />
+                        <div class="clearfix"></div>
                             <ul class="nav nav-tabs">
                                 <li class="active">
                                     <a href="#tab_1_1" data-toggle="tab">Info</a>

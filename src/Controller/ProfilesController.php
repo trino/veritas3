@@ -444,14 +444,10 @@
             $user_id = $_POST['form'];
             if($user_id!= 0)
             {
-                $block['user_id'] = $_POST['block']['user_id'];
+                //$block['user_id'] = $_POST['block']['user_id'];
                 $side['user_id'] = $_POST['side']['user_id'];
             }
-            foreach($_POST['block'] as $k=>$v)
-            {
-
-                $block[$k] = $v;
-            }
+           
 
             foreach($_POST['side'] as $k=>$v)
             {
@@ -467,23 +463,7 @@
                     $side[$s] = 0;
             }
 
-            $blocks = TableRegistry::get('blocks');
-            $s = $blocks->find()->where(['user_id'=>$user_id])->count();
-            //echo $s;die();
-            if($user_id != 0  && $s!=0)
-            {
-
-                $query = $blocks->query();
-                $query->update()
-                    ->set($block)
-                    ->where(['user_id' => $user_id])
-                    ->execute();
-            }
-            else
-            {
-                $article = $blocks->newEntity($_POST['block']);
-                $blocks->save($article);
-            }
+            
             $sidebar = TableRegistry::get('sidebar');
             $s1 = $sidebar->find()->where(['user_id'=>$user_id])->count();
             if($user_id != 0 && $s1!=0)
@@ -502,6 +482,38 @@
             die();
             //$this->redirect(['controller'=>'profiles','action'=>'add']);
 
+        }
+        function homeblocks()
+        {
+            $user_id = $_POST['form'];
+            if($user_id!= 0)
+            {
+                $block['user_id'] = $_POST['block']['user_id'];
+                //$side['user_id'] = $_POST['side']['user_id'];
+            }
+            foreach($_POST['block'] as $k=>$v)
+            {
+
+                $block[$k] = $v;
+            }
+            $blocks = TableRegistry::get('blocks');
+            $s = $blocks->find()->where(['user_id'=>$user_id])->count();
+            //echo $s;die();
+            if($user_id != 0  && $s!=0)
+            {
+
+                $query = $blocks->query();
+                $query->update()
+                    ->set($block)
+                    ->where(['user_id' => $user_id])
+                    ->execute();
+            }
+            else
+            {
+                $article = $blocks->newEntity($_POST['block']);
+                $blocks->save($article);
+            }
+            die();
         }
 
         function getSub()

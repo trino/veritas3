@@ -264,17 +264,19 @@
                 </a>
                 
 					<ul class="sub-menu">
-                        
+                        <?php if($sidebar->document_list==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='index')?'class="active"':'';?>>
 							<a href="<?php echo $this->request->webroot;?>documents/index?draft">
                             <i class="icon-list"></i>
 							 <?php echo ucfirst($settings->document);?>s</a>
 						</li>
+                        <?php }?>
+                        <?php if($sidebar->orders_list==1){?>
                         <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='orderslist')?'class="active"':'';?>>
                             <a href="<?php echo $this->request->webroot;?>documents/orderslist?draft">
                                 <i class="icon-list"></i> Orders</a>
                         </li>
-                       
+                       <?php }?>
 
                         <?php /*
                         if($sidebar->document_create==1){?>

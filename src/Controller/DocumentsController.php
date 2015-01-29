@@ -496,10 +496,10 @@
                         $dr =1;
                     }
                     else
-                    $dr = 0;
+                    $dr = 1;
                 }
                 else
-                $dr = 0;
+                $dr = 1;
                 $this->set('dr',$dr);
                 if (isset($_GET['draft']) && $_GET['draft'])
                     if($dr)

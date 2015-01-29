@@ -407,10 +407,10 @@
                         $dr =1;
                     }
                     else
-                    $dr = 0;
+                    $dr = 1;
                 }
                 else
-                $dr = 0;
+                $dr = 1;
                 $this->set('dr',$dr);    
             //$did= $document_id->id;
             if (isset($order_id))

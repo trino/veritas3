@@ -14,6 +14,7 @@
 <h3 class="page-title">
     Create Order
 </h3>
+<input type="hidden" id="dr" value="<?php if(isset($dr))echo $dr;?>" />
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>

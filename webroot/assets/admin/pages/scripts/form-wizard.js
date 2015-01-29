@@ -216,6 +216,10 @@ var FormWizard = function () {
 
                     $('.skip').html('Save as draft');
                     $('#nextview').attr('style','visibility: hidden;');
+                    if($('#dr').val()=='0')
+                    {
+                        $('.skip').attr('disabled','disabled');
+                    }
                     
                     
 
@@ -228,6 +232,7 @@ var FormWizard = function () {
                     $('.cont').attr('id','draft');
                     $('#nextview').removeAttr('style');
                     $('.skip').html('Skip <i class="m-icon-swapdown m-icon-white"></i>');
+                    $('.skip').removeAttr('disabled');
 
                 }
                 if(current==total)

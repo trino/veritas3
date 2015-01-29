@@ -157,10 +157,12 @@
                                             $super = $this->request->session()->read('Profile.super');
                                             if (isset($super) || isset($_GET['draft'])) {
                                                 if ($sidebar->orders_edit == '1') {
-                                                    if (!isset($_GET['table']))
+                                                    if (!isset($_GET['table']) && $order->draft==1){
                                                         echo $this->Html->link(__('Edit'), ['controller' => 'documents', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
-                                                    else
+                                                        }
+                                                    elseif(isset($_GET['table'])){
                                                         echo $this->Html->link(__('Edit'), ['controller' => 'documents', 'action' => 'addorder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-primary']);
+                                                        }
 
                                                 }
                                                 if ($sidebar->orders_delete == '1') {
@@ -175,7 +177,7 @@
                                         ?>
 
 
-                                        <?php if ($sidebar->orders_requalify == '1') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $order->id], ['class' => 'btn btn-warning']);
+                                        <?php if ($sidebar->orders_requalify == '1' && $order->draft == '0') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-warning']);
 
 
 

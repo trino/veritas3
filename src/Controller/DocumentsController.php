@@ -507,9 +507,12 @@
                 else
                 $dr = 1;
                 $this->set('dr',$dr);
-                if (isset($_GET['draft']) && $_GET['draft'])
+                if (isset($_GET['draft']) && $_GET['draft']){
                     if($dr)
-                    $arr['draft'] = 1;
+                    $arr['draft'] = 1;                    
+                    else
+                    $arr['draft'] = 0;
+                    }
                 else{
                     //if(!$dr)
                     $arr['draft'] = 0;

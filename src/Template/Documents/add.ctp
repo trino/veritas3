@@ -904,6 +904,7 @@
                 sub_doc_id: $('#sub_id').val(),
                 division: $('#division').val()
             };
+            //alert(type);return false;
             $.ajax({
                 //data:'uploaded_for='+$('#uploaded_for').val(),
                 data: data,
@@ -991,11 +992,7 @@
 
 
                     }
-                    if (type != "Survey" && type != "Feedbacks" && type != "Attachment" && type != "Audits") {
-                        $('.flashDoc').show();
-                        $('.flashDoc').fadeOut(8000);
-                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
-                    }
+                    
                 }
             });
         });
@@ -1016,7 +1013,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-                window.location = '<?php echo $this->request->webroot?>documents/index';
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
             }
         });
     }
@@ -1028,7 +1025,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-                window.location = '<?php echo $this->request->webroot?>documents/index';
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
             }
         });
     }
@@ -1040,7 +1037,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-                window.location = '<?php echo $this->request->webroot?>documents/index';
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
             }
         });
     }
@@ -1082,7 +1079,7 @@
             data: param,
             type: 'POST',
             success: function (res) {
-                window.location = '<?php echo $this->request->webroot?>documents/index';
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
             }
         });
     }

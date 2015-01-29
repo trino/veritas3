@@ -11,14 +11,14 @@
         <a href="#subtab_4_2" data-toggle="tab">Picture</a>
     </li>-->
     <?php
-        if ($this->request['action'] == 'edit') {
+        //if ($this->request['action'] == 'edit') {
             ?>
-
+<!--
             <li>
                 <a href="#subtab_4_3" data-toggle="tab">Password</a>
-            </li>
+            </li>-->
         <?php
-        }
+        //}
     ?>
 </ul>
 <div class="tab-content">
@@ -41,6 +41,17 @@
                                                               class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
                         </div>
                     </div>
+                    
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <input <?php echo $is_disabled ?> name="email" type="email"
+                                                              placeholder="eg. test@domain.com"
+                                                              class="form-control un" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
+                        </div>
+                    </div>
+
         <div class="col-md-6">         
         <div class="form-group">
             <label class="control-label">Password</label>
@@ -51,30 +62,10 @@
         <div class="form-group">
             <label class="control-label">Re-type Password</label>
             <input type="password" class="form-control input-medium" id="retype_password" required="required"/>
-            <span class="error passerror" style="display: none;">Please enter same password</span>
+            <span class="error passerror flashPass1" style="display: none;">Please enter same password</span>
         </div>
         </div>
-        <?php
-        if (!isset($disabled)) {
-            ?>
-            <div class="margin-top-10 alert alert-success display-hide flashPass" style="display: none;">
-                <button class="close" data-close="alert"></button>
-                Password saved successfully
-            </div>
-             <div class="margin-top-10 alert alert-danger display-hide flashPass1" style="display: none;">
-                <button class="close" data-close="alert"></button>
-                Password does not match.
-            </div>
-        <?php } ?>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Email</label>
-                            <input <?php echo $is_disabled ?> name="email" type="email"
-                                                              placeholder="eg. test@domain.com"
-                                                              class="form-control un" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
-                        </div>
-                    </div>
+        
 
 
                     <div class="col-md-4">
@@ -85,7 +76,6 @@
                                                               class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
                         </div>
                     </div>
-
 
 
                     <div class="col-md-4">
@@ -593,13 +583,13 @@
 
         <!-- <div class="tab-pane" id="subtab_4_2">
                 <?php include('avatar.php'); ?>
-            </div>-->
+            </div>
 
 
 
         <div class="tab-pane" id="subtab_4_3">
             <?php include('password.php'); ?>
-        </div>
+        </div>-->
 
     <?php
     } else {
@@ -625,6 +615,8 @@
 <script>
 function check_username()
 {
+    if($('#retype_password').val() == $('#password').val())
+    {
     var un = $('.uname').val();
     $.ajax({
         url:'<?php echo $this->request->webroot;?>profiles/check_user/<?php echo $uid;?>',
@@ -645,7 +637,18 @@ function check_username()
                 $('#hiddensub').click();
             }
         }
-    })
+    });}
+    else
+    {
+        $('#retype_password').focus();
+                $('html,body').animate({
+                                        scrollTop: $('.page-title').offset().top},
+                                    'slow');
+        $('.flashPass1').show();
+        $('.flashPass1').fadeOut(7000000);
+                                    return false;
+    }
+    
 }
     $(function () {
 

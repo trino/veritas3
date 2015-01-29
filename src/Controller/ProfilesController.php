@@ -950,8 +950,9 @@
             $user = $_POST['username'];
             $q = TableRegistry::get('profiles');
             $que = $q->find();
+            if($uid)
             $query = $que->select()->where(['id !='=>$uid,'username'=>$user])->first();
-            
+            else $query = $que->select()->where(['username'=>$user])->first();
             //var_dump($query);
             //$query = $que->first();
             if($query)

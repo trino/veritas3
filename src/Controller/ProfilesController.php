@@ -290,6 +290,7 @@
             
             //var_dump($profile);die();
             if ($this->request->is('post')) {
+                 
                 if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
                 $_POST['admin']=1;
             
@@ -297,6 +298,36 @@
                 //debug($_POST);die();
                 $profile = $profiles->newEntity( $_POST);
                 if ($profiles->save($profile)) {
+                     if($_POST['client_ids']!= "")
+                     {
+                        $client_id = explode(",",$_POST['client_ids']);
+                        foreach($client_id as $cid)
+                        {
+                            $query = TableRegistry::get('clients');
+                            $q = $query->find()->where(['id'=>$cid])->first();
+                            $profile_id = $q->profile_id;
+                            $pros = explode(",",$profile_id);
+                    
+                            $p_ids ="";
+                            
+                            array_push($pros,$profile->id);
+                            $pro_id = array_unique($pros);
+                    
+                    
+                            foreach($pro_id as $k=>$p)
+                            {
+                                if(count($pro_id)==$k+1)
+                                    $p_ids .= $p;
+                                else
+                                    $p_ids .= $p.",";
+                            }
+                    
+                            $query->query()->update()->set(['profile_id' => $p_ids])
+                            ->where(['id' =>$cid ])
+                            ->execute();
+                        }
+                     }
+                     //die();
                     $blocks = TableRegistry::get('Blocks');
                     $query2 = $blocks->query();
                     $query2->insert(['user_id'])

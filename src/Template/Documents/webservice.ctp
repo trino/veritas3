@@ -9,23 +9,19 @@
 
     $startorder1 = false;
 
+    $productdetails79 = false;
+    $productdetails1 = false;
+    $productdetails14 = false;
+    $productdetails77 = false;
+    $productdetails78 = false;
+    $productdetailsebs1603 = false;
+    $productdetailsebs1627 = false;
+    $productdetailsebs1650 = false;
 
-    $productdetails79 = true;
-    $productdetails1 = true;
-    $productdetails14 = true;
-    $productdetails77 = true;
-    $productdetails78 = true;
-    $productdetailsebs1603 = true;
-    $productdetailsebs1627 = true;
-    $productdetailsebs1650 = true;
-
-    $uploadbinaryconsent_1603 = true;
-    $uploadbinaryemployment_1627 = true;
-    $uploadbinaryeducation_1650 = true;
-    // debug(  $consent_form_attachments  );
-    $upload_additional = true;
-
-//Harpreet id = '17792'
+    $uploadbinaryconsent_1603 = false;
+    $uploadbinaryemployment_1627 = false;
+    $uploadbinaryeducation_1650 = false;
+    $upload_additional = false;
 
     if ($startorder1) {
 

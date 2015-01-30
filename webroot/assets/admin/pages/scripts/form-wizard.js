@@ -311,7 +311,7 @@ var FormWizard = function () {
                         {
                             //if($('#skip').val()!='1'){
                             //$('#confirm_check').attr('style','border-color:red');
-                            alert('Please confirm that you have read the conditions');
+                            alert('Please confirm that you have read the conditions.');
                             $('#confirm_check').focus();
                             $('html,body').animate({
                                         scrollTop: $('#confirm_check').offset().top},
@@ -349,7 +349,7 @@ var FormWizard = function () {
                             }
                         });
                         if(er){
-                            alert('Some of the fields of consent form is required.');
+                            alert('Please fill out all the required fields.');
                         return false;
 
                         }

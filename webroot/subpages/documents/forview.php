@@ -40,14 +40,16 @@
             case 'POTENTIAL TO SUCCEED':
                 echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
                 break;
+            case 'IDEAL CANDIDATE':
+                echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case '':
+                echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
             default:
-                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
-
-
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">NO COMMENT</span>';
         }
-
     }
-
 
     function return_link($pdi, $order_id)
     {
@@ -85,16 +87,9 @@
                 } elseif ($mime == "text/html") {
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
                 } elseif ($mime == "text/plain") {
-                    /*
-                    $binary = base64_decode($binary);
-                    $binary = str_replace("<br />", "", $binary);
-                    $binary = str_replace("&nbsp;", "", $binary);
-                    file_put_contents('unknown_file', $binary);
-*/
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
                 } else {
                     rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
-                    //  echo "There was an error converting the file. Please contact the system administrator.";
                 }
             }
         }
@@ -107,8 +102,8 @@
     create_files_from_binary($order->id, '78', $order->ins_78_binary);
     create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
     create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
-
 ?>
+
 <h3 class="page-title">
     View Report
 </h3>
@@ -166,14 +161,6 @@
                     Was this driver hired? </label>
 
             </div>
-
-            <!--<div class="">
-                <label class="uniform-inline">
-                    <input  type="checkbox" name="stat"  value="1" />
-                    Hired </label>
-
-            </div>-->
-
         </div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
@@ -228,22 +215,7 @@
             <p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
 
 </span>
-        <!--hr/>
-        <h4 class="profile-desc-title">About Marcus Doe</h4>
-        <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
 
-        <div class="margin-top-20 profile-desc-link">
-            <i class="fa fa-globe"></i>
-            <a href="#">Lorem ipsum</a>
-        </div>
-        <div class="margin-top-20 profile-desc-link">
-            <i class="fa fa-twitter"></i>
-            <a href="#">Lorem ipsum</a>
-        </div>
-        <div class="margin-top-20 profile-desc-link">
-            <i class="fa fa-facebook"></i>
-            <a href="#">Lorem ipsum</a>
-        </div-->
 
     </div>
     <!-- END PORTLET MAIN -->
@@ -276,16 +248,6 @@
                         <div class="caption">
                             <i class="fa fa-folder-open-o"></i>ISB MEE Results
                         </div>
-                        <!--div class="tools">
-                            <a href="javascript:;" class="collapse" data-original-title="" title="">
-                            </a>
-                            <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
-                            </a>
-                            <a href="javascript:;" class="reload" data-original-title="" title="">
-                            </a>
-                            <a href="javascript:;" class="remove" data-original-title="" title="">
-                            </a>
-                        </div-->
                     </div>
                     <div class="portlet-body">
                         <div class="table-scrollable">
@@ -313,8 +275,6 @@
                                     <td class="actions">
                                         <?php
                                             $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
-
-
                                             if (return_link('1603', $order->id) == false) { ?>
                                                 <span class="label label label-info">Pending </span>
                                             <? } else { ?>
@@ -322,8 +282,6 @@
                                                    href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
-
-
                                     </td>
                                 </tr>
 
@@ -352,20 +310,13 @@
                                     </td>
                                 </tr>
 
-
                                 <tr class="even" role="row">
                                     <td>
                                         <span class="icon-notebook"></span>
 
                                     </td>
                                     <td>CVOR
-
-
-                                        <?php
-                                            get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "CVOR")));
-                                        ?>
-
-
+                                        <?php get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "CVOR"))); ?>
                                     </td>
 
                                     <td class="actions">
@@ -377,7 +328,6 @@
                                                    href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
-
                                     </td>
                                 </tr>
 
@@ -438,13 +388,11 @@
 
 
                                 <tr class="odd" role="row">
-
                                     <td>
                                         <span class="icon-notebook"></span>
 
                                     </td>
                                     <td>Certifications
-
                                         <?php
                                             get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Certifications")));
                                         ?>
@@ -459,10 +407,8 @@
                                                    href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
-
                                     </td>
                                 </tr>
-
 
                                 <tr class="odd" role="row">
 
@@ -476,7 +422,6 @@
                                             get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Letter Of Experience")));
                                         ?>
                                     </td>
-
                                     <td class="actions">
                                         <?php
                                             if (return_link('1627', $order->id) == false) { ?>
@@ -486,18 +431,13 @@
                                                    href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
                                                    class="btn btn-primary">Download</a>
                                             <? } ?>
-
                                     </td>
                                 </tr>
-
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <!-- END PORTLET -->
         </div>
@@ -530,7 +470,6 @@
 
                             <!--img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
                                  src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/-->
-
 
                             <div style="position: relative;">
                                 <div style="">
@@ -832,7 +771,7 @@
  </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/" . $order->id); ?>
                                             <?php if ($cnt > 0) { ?>
                                                 <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Processed</span>
+                                                      class="label label-sm label-success">Submitted</span>
                                                 &#x2713;
                                             <?php } else {
                                                 ?>
@@ -857,7 +796,7 @@
                                             <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/" . $order->id); ?>
                                             <?php if ($cnt > 0) { ?>
                                                 <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Processed</span>
+                                                      class="label label-sm label-success">Submitted</span>
                                                 &#x2713;
                                             <?php } else {
                                                 ?>
@@ -882,7 +821,7 @@
                                             <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/" . $order->id); ?>
                                             <?php if ($cnt > 0) { ?>
                                                 <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Processed</span>
+                                                      class="label label-sm label-success">Submitted</span>
                                                 &#x2713;
                                             <?php } else {
                                                 ?>
@@ -906,7 +845,7 @@
                                             <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/" . $order->id); ?>
                                             <?php if ($cnt > 0) { ?>
                                                 <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Processed</span>
+                                                      class="label label-sm label-success">Submitted</span>
                                                 &#x2713;
                                             <?php } else {
                                                 ?>
@@ -929,7 +868,7 @@
                                           <span class="icon-notebook"></span>  Confirmation  </span>
                                             <?php if ($order->draft == 0) { ?>
                                                 <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Processed</span>
+                                                      class="label label-sm label-success">Submitted</span>
                                                 &#x2713;
                                             <?php } else {
                                                 ?>

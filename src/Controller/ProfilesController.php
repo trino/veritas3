@@ -338,7 +338,7 @@
                     $query2->insert(['user_id'])
                         ->values(['user_id'=>$profile->id])
                         ->execute();
-                    $this->Flash->error('Please assign profile to at least one client below.');
+                    $this->Flash->success('Profile created successfully.');
                     return $this->redirect(['action' => 'edit',$profile->id]);
                 } else {
                     //var_dump($profiles->errors()); die();

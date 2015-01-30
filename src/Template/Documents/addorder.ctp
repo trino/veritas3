@@ -1154,7 +1154,7 @@
                 url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft=1',
                 success:function(res) {
                     $('#did').val(res);
-                    var draftmode = '<h4 class="block">Your Order has been saved as draft!</h4><p> You can edit your order by visiting orders section inside draft. </p>'
+                    var draftmode = '<h4 class="block">Your order has been saved as draft.</h4><p> You can edit the order by visiting the orders section inside draft. </p>'
                     $('#tab6 .note').html(draftmode);
                     $.ajax({
                         url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft=1',

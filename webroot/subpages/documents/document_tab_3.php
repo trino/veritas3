@@ -2,7 +2,7 @@
 <input class="document_type" type="hidden" name="document_type" value="Place MEE Order" />
 <input type="hidden" class="sub_docs_id" name="sub_doc_id" value="4"  />
 <div>
-                                                <ul class="nav nav-tabs">
+                                                <ul class="nav nav-tabs consents">
 
 
                                                     <li class="active">

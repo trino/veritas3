@@ -848,6 +848,10 @@ class ClientsController extends AppController {
         
    }
    
+   function charlie()
+   {
+    $this->layout = 'blank';
+   }
     
 
 }

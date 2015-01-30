@@ -1897,9 +1897,9 @@
                     'doc',
                     'docx',
                     'txt',
-                    'csv',
+                    'xlsx',
                     'xls',
-                    'xlsx'
+                    'csv'
                 );
                 $check = strtolower($ext);
                 if (in_array($check, $allowed)) {

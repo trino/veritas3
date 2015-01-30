@@ -16,11 +16,11 @@
             $i = 0;
             foreach ($profiles as $r) {
                 //echo $r->username;continue;
-                if ($i % 2 == 0) {
+                //if ($i % 2 == 0) {
                     ?>
                     <tr>
                 <?php
-                }
+                //}
                 ?>
 
                 <td>
@@ -31,17 +31,17 @@
                 </td>
                 <?php
 
-                if (($i + 1) % 2 == 0) {
+               // if (($i + 1) % 2 == 0) {
                     ?>
                     </tr>
                 <?php
-                }
+                //}
 
                 $i++;
             }
-            if (($i + 1) % 2 != 0) {
-                echo "</td></tr>";
-            }
+            //if (($i + 1) % 2 != 0) {
+                //echo "</td></tr>";
+            //}
         ?>
         </tbody>
     </table>
@@ -58,11 +58,11 @@
     <?php
         $i = 0;
         foreach ($contact as $r) {
-            if ($i % 2 == 0) {
+            //if ($i % 2 == 0) {
                 ?>
                 <tr>
             <?php
-            }
+            //}
             ?>
             <td>
                 <span><input class="contact_client" type="checkbox"
@@ -73,17 +73,19 @@
 
             <?php
 
-            if (($i + 1) % 2 == 0) {
+            //if (($i + 1) % 2 == 0) {
                 ?>
                 </tr>
             <?php
-            }
+            //}
 
             $i++;
         }
-        if (($i + 1) % 2 != 0) {
-            echo "</td></tr>";
-        }
+        /**
+ * if (($i + 1) % 2 != 0) {
+ *             echo "</td></tr>";
+ *         }
+ */
     ?>
     </tbody>
 

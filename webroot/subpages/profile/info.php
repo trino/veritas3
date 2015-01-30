@@ -638,7 +638,9 @@
                     }
                 }
             });
-
+            
+            
+           if($('.email').val()!=''){
             var un = $('.email').val();
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>profiles/check_email/<?php echo $uid;?>',
@@ -660,7 +662,7 @@
                     }
                 }
             });
-
+}
         }
         else {
             $('#retype_password').focus();
@@ -699,6 +701,8 @@
                 });
                 $('#driver_div').show();
                 $('.un').removeProp('required');
+                $('#password').removeProp('required');
+                $('#retype_password').removeProp('required');
                 $('.req_rec').removeProp('required');
                 $('.req_driver').prop('required', "required");
             }

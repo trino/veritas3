@@ -50,21 +50,6 @@
                                 $profiles = explode(",", $clients->profile_id);
 
                                 if (in_array($profile_id, $profiles) || $this->request->session()->read('Profile.super')) {
-                                    if ($clients->date_start) {
-                                        foreach ($clients->date_start as $k => $d) {
-                                            if ($k == 'date')
-                                                $start_date = $d;
-                                        }
-                                    } else
-                                        $start_date = '';
-
-                                    if ($clients->date_end) {
-                                        foreach ($clients->date_end as $k => $d) {
-                                            if ($k == 'date')
-                                                $end_date = $d;
-                                        }
-                                    } else
-                                        $end_date = '';
                                     ?>
 
 

@@ -276,33 +276,15 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
                                                     <!--?php include('subpages/adminlisting.php');?-->
 
-                                                    <?php
-                                                        if ($c->date_start) {
-                                                            foreach ($c->date_start as $k => $d) {
-                                                                if ($k == 'date')
-                                                                    $start_date = $d;
-                                                            }
-                                                        } else
-                                                            $start_date = '';
-
-                                                        if ($c->date_end) {
-                                                            foreach ($c->date_end as $k => $d) {
-                                                                if ($k == 'date')
-                                                                    $end_date = $d;
-                                                            }
-                                                        } else
-                                                            $end_date = '';
-                                                    ?>
-
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Contract Start Date</label>
                                                         <input type="text" class="form-control date-picker"
-                                                               name="date_start" <?php if (isset($start_date)) { ?> value="<?php echo $start_date; ?>" <?php } ?>/>
+                                                               name="date_start" <?php if (isset($c->date_start)) { ?> value="<?php echo $c->date_start; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Contract End Date</label>
                                                         <input type="text" class="form-control date-picker"
-                                                               name="date_end" <?php if (isset($end_date)) { ?> value="<?php echo $end_date; ?>" <?php } ?>/>
+                                                               name="date_end" <?php if (isset($c->date_end)) { ?> value="<?php echo $c->date_end; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Referred By</label>

@@ -1,3 +1,19 @@
+<style>
+    @media print {
+        .page-header {
+            display: none;
+        }
+
+        .page-footer, .nav-tabs, .page-title, .page-bar, .theme-panel, .page-sidebar-wrapper {
+            display: none !important;
+        }
+
+        .portlet-body, .portlet-title {
+            border-top: 1px solid #578EBE;
+        }
+    }
+
+</style>
 <?php
 
     function get_string_between($string, $start, $end)
@@ -124,6 +140,7 @@
             </a>
         </li>
     </ul>
+    <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 </div>
 <!-- BEGIN PROFILE SIDEBAR -->
 <div class="profile-sidebar">

@@ -1110,34 +1110,30 @@
             })
         });
         
-        $(document.body).on('click','.button-next',function(){
-            /*if($(".tab-pane.active").attr('id') == 'tab5' || $(".tab-pane.active").attr('id') == 'tab6')
-            {
-                alert('test');
-                $('.skip').hide();
-            }
-            else
-            {
-                $('.skip').show();
-            }*/
-            
-        var ba = $('#bottomact').offset();
+        $(document.body).on('click','.consents a',function(){
+            alert($(this).attr('href').replace('#',''));
+            //$('#'+$(this).attr('href').replace('#','')).show();
+            var ba = $('#'+$(this).attr('href').replace('#','')+' .moremore').offset();
+           // alert(ba.top);
             //alert(ba.top);
             $('input[type="file"]').each(function(){
              $(this).parent().attr('style','display: block; position: absolute; overflow: hidden; margin: 0px; padding: 0px; opacity: 0; direction: ltr; z-index: 2147483583; left: 551.5px; top: '+ba.top+'px; width: 77px; height: 34px; visibility: hidden;');
              //  css = css. 
             });
             });
-        $(document.body).on('click','.button-previous',function(){
-        /*if($(".tab-pane.active").attr('id') == 'tab5' || $(".tab-pane.active").attr('id') == 'tab6')
-            {
-                $('.skip').hide();
-            }
-            else
-            {
-                $('.skip').show();
-            }*/
-        var ba = $('#bottomact').offset();
+            
+            $(document.body).on('click','.button-next',function(){
+            
+            var ba = $('#bottomact').offset();
+            //alert(ba.top);
+            $('input[type="file"]').each(function(){
+             $(this).parent().attr('style','display: block; position: absolute; overflow: hidden; margin: 0px; padding: 0px; opacity: 0; direction: ltr; z-index: 2147483583; left: 551.5px; top: '+ba.top+'px; width: 77px; height: 34px; visibility: hidden;');
+             //  css = css. 
+            });
+            });
+            
+            $(document.body).on('click','.button-previous',function(){
+                       var ba = $('#bottomact').offset();
             //alert(ba.top);
             $('input[type="file"]').each(function(){
              $(this).parent().attr('style','display: block; position: absolute; overflow: hidden; margin: 0px; padding: 0px; opacity: 0; direction: ltr; z-index: 2147483583; left: 551.5px; top: '+ba.top+'px; width: 77px; height: 34px; visibility: hidden;');
@@ -1158,7 +1154,7 @@
                 url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft=1',
                 success:function(res) {
                     $('#did').val(res);
-                    var draftmode = '<h4 class="block">Your Order has been saved as draft!</h4><p> You can edit your order by visiting orders section inside draft. </p>'
+                    var draftmode = '<h4 class="block">Your order has been saved as draft.</h4><p> You can edit the order by visiting the orders section inside draft. </p>'
                     $('#tab6 .note').html(draftmode);
                     $.ajax({
                         url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'?draft=1',

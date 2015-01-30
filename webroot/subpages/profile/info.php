@@ -2,6 +2,7 @@
 
 <?php
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
+    $sidebar = $this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar"); 
 ?>
 <ul class="nav nav-tabs">
     <li class="active">
@@ -30,7 +31,7 @@
 
 
             <form role="form" action="" method="post">
-
+                <input type="hidden" name="client_ids" value="" class="client_profile_id"  />
 
                 <div class="row">
 
@@ -67,7 +68,7 @@
         </div>
         
 
-
+                    <?php if($sidebar->client_option==0){?>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">ISB Id</label>
@@ -76,7 +77,7 @@
                                                               class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
                         </div>
                     </div>
-
+                    <?php }?>
 
                     <div class="col-md-4">
                         <div class="form-group">
@@ -623,6 +624,15 @@ function check_username()
 {
     if($('#retype_password').val() == $('#password').val())
     {
+        var client_id = $('.client_profile_id').val();
+        if(client_id == "")
+        {
+            alert('Please Assign atleat one client to the profile.');
+            $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top},
+                            'slow');
+                            return false;
+        }
     var un = $('.uname').val();
     $.ajax({
         url:'<?php echo $this->request->webroot;?>profiles/check_user/<?php echo $uid;?>',
@@ -635,7 +645,7 @@ function check_username()
                 alert('Username already exist.');
                 $('.uname').focus();
                 $('html,body').animate({
-                                        scrollTop: $('.page-title').offset().top},
+                                        scrollTop: $('.page-title').offset('200').top},
                                     'slow');
                                     return false;
             }

@@ -292,8 +292,9 @@ class ClientsController extends AppController {
 	   $clients = TableRegistry::get('Clients');
         $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
-
+           
 			if ($clients->save($client)) {
+			 
 
              if(isset($_POST['division']))
              {
@@ -756,7 +757,7 @@ class ClientsController extends AppController {
     $this->response->body($q);
     return $this->response;
    }
-   function getAjaxClient($id)
+   function getAjaxClient($id ="")
    {
         $this->layout = 'blank';
         $key = $_GET['key'];

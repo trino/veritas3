@@ -278,7 +278,43 @@
 
                     </div>
                 </div>
-            <?php } ?>
+            <?php }
+                else
+                {
+                ?>
+                <div class="portlet box blue scrolldiv">
+                    <div class="portlet-title">
+                        <div class="caption">Assign to client</div>
+                    </div>
+                    <div class="portlet-body">
+                        <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />
+                        <table class="table" id="clientTable">
+                            <?php
+
+                                $clients = $this->requestAction('/clients/getAllClient/');
+                                $count = 0;
+                                if ($clients)
+                                    foreach ($clients as $o)
+                                    {
+                                        //$pro_ids = explode(",",$o->profile_id);
+                                        ?>
+
+                                        <tr>
+                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?></td>
+                                        </tr>
+
+                                    <?php
+                                    }
+                            ?>
+
+                        </table>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+            <?php    
+                } ?>
             <!-- END PORTLET MAIN -->
             <?php
             if($this->request->params['action'] != 'add')
@@ -433,37 +469,53 @@ new AjaxUpload(button,{
 }
                 $(function(){
 
-                                        <?php
-                                        if(isset($id))
-                                        {
+                    <?php
+                    if(isset($id))
+                    {
+                     ?>
+                    initiate_ajax_upload('clientimg');
+                   $('.addclientz').click(function(){
+                    var client_id = $(this).val();
+                    var addclient ="";
+                    if($(this).is(':checked'))
+                    {
+                       addclient='1';
+                    }
+                    else
+                        addclient='0';
 
-                                            ?>
-
-                                        initiate_ajax_upload('clientimg');
-                                       $('.addclientz').click(function(){
-                                        var client_id = $(this).val();
-                                        var addclient ="";
-                                        if($(this).is(':checked'))
-                                        {
-                                           addclient='1';
-                                        }
-                                        else
-                                            addclient='0';
-
-                                        $.ajax({
-                                            type: "post",
-                                            data: "client_id="+client_id+"&add="+addclient+"&user_id="+<?php echo $id;?>,
-                                            url: "<?php echo $this->request->webroot;?>clients/addprofile",
-                                            success: function(msg){
-                                                //alert(msg);
-                                            }
-                                        })
-                                    });
-                                       <?php
-                                        }
-                                        ?>
-                                       $('#save_client_p1').click(function(){
-                                        $('#save_client_p1').text('Saving..');
+                    $.ajax({
+                        type: "post",
+                        data: "client_id="+client_id+"&add="+addclient+"&user_id="+<?php echo $id;?>,
+                        url: "<?php echo $this->request->webroot;?>clients/addprofile",
+                        success: function(msg){
+                            //alert(msg);
+                        }
+                    })
+                });
+                   <?php
+                    }
+                    else
+                    {?>
+                    $('.addclientz').click(function(){
+                        var client_id = "";
+                        $('.addclientz').each(function(){
+                            if($(this).is(':checked'))
+                            {
+                                 client_id = client_id+","+$(this).val();
+                            }
+                        });
+                        
+                        client_id = client_id.substr(1,length.client_id);
+                        $('.client_profile_id').val(client_id);
+                  
+                    });
+                    <?php
+                    }
+                    ?>
+                   $('#save_client_p1').click(function(){
+                    
+                    $('#save_client_p1').text('Saving..');
 
         $("#pass_form").validate({
             rules: {
@@ -507,6 +559,24 @@ function searchClient()
     });
 }
 <?php
+}
+else
+{
+?>
+function searchClient()
+{
+    var key = $('#searchClient').val();
+    $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
+    $.ajax({
+        url:'<?php echo $this->request->webroot;?>clients/getAjaxClient',
+        data:'key='+key,
+        type:'get',
+        success:function(res){
+            $('#clientTable').html(res);
+        }
+    });
+}
+<?php    
 }
 ?>
 $(function(){

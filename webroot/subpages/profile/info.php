@@ -35,58 +35,7 @@
                 <input type="hidden" name="client_ids" value="" class="client_profile_id"/>
 
                 <div class="row">
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Username</label>
-                            <input <?php echo $is_disabled ?> name="username" type="text"
-                                                              class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Email</label>
-                            <input <?php echo $is_disabled ?> name="email" type="email"
-                                                              placeholder="eg. test@domain.com"
-                                                              class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
-                        </div>
-                    </div>
-
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control input-medium"
-                                   <?php if (isset($p->password)){ ?>value="<?php echo $p->password; ?>" <?php } ?>
-                                   required="required"/>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Re-type Password</label>
-                            <input type="password" class="form-control input-medium"
-                                   id="retype_password" <?php if (isset($p->password)) { ?> value="<?php echo $p->password; ?>"  <?php } ?>
-                                   required="required"/>
-                            <span class="error passerror flashPass1"
-                                  style="display: none;">Please enter same password</span>
-                        </div>
-                    </div>
-
-
-                    <?php if ($sidebar->client_option == 0) { ?>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">ISB Id</label>
-                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
-                                    name="isb_id" type="text"
-                                    placeholder="optional"
-                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
-                            </div>
-                        </div>
-                    <?php } ?>
-
-                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Profile Type</label>
 
@@ -160,9 +109,8 @@
                             </select>
                         </div>
                     </div>
-
-
-                    <div class="col-md-4" id="driver_div"
+                    
+                    <div class="col-md-6" id="driver_div"
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
                             <label class="control-label">Driver Type</label>
@@ -243,8 +191,57 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="clearfix"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Username</label>
+                            <input <?php echo $is_disabled ?> name="username" type="text"
+                                                              class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <input <?php echo $is_disabled ?> name="email" type="email"
+                                                              placeholder="eg. test@domain.com"
+                                                              class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
+                        </div>
+                    </div>
+                    
+                    
+
+                    <?php if ($sidebar->client_option == 0) { ?>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">ISB Id</label>
+                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
+                                    name="isb_id" type="text"
+                                    placeholder="optional"
+                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
+                            </div>
+                        </div>
+                    <?php } ?>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <input type="password" name="password" id="password" class="form-control input-medium"
+                                   <?php if (isset($p->password)){ ?>value="<?php echo $p->password; ?>" <?php } ?>
+                                   required="required"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Re-type Password</label>
+                            <input type="password" class="form-control input-medium"
+                                   id="retype_password" <?php if (isset($p->password)) { ?> value="<?php echo $p->password; ?>"  <?php } ?>
+                                   required="required"/>
+                            <span class="error passerror flashPass1"
+                                  style="display: none;">Please enter same password</span>
+                        </div>
+                    </div>
 
                     <div class="col-md-4">
                         <div class="form-group">

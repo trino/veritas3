@@ -101,7 +101,9 @@
 
                                             <?php
                                                 if ($sidebar->client_list == '1') {
-                                                    echo $this->Html->link(__('View'), ['controller' => 'clients', 'action' => 'view', $clients->id], ['class' => 'btn btn-info']);
+                                                   ?>
+                                                   <a class="btn btn-info" href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id;?>?view">View</a>
+                                                   <?php
                                                 }
                                                 if ($sidebar->client_edit == '1') {
                                                     echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);

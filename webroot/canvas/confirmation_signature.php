@@ -10,7 +10,7 @@
 		<style>
 			.links a {
 				padding: 3px 10px;
-                background:#007ECC;
+                background:#007ECC; 
                 display: inline-block;
                 border-radius:4px;
 				text-decoration: none;

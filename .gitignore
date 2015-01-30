@@ -8,6 +8,10 @@ vendor/*
 
 webroot/attachments/*
 webroot/orders/*
+webroot/img/jobs/*
+webroot/img/logos/*
+webroot/img/profile/*
+webroot/canvas/*.png
 !empty
 *.tar.gz
 *.tar

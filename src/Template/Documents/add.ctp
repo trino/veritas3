@@ -1,6 +1,6 @@
 <script src="<?php echo $this->request->webroot; ?>js/jquery.easyui.min.js" type="text/javascript"></script>
 <?php
-    $doc_ext = array('pdf', 'doc', 'docx', 'pdf');
+    $doc_ext = array('pdf','doc','docx','txt','csv','xls','xlsx');
     if (isset($disabled))
         $is_disabled = 'disabled="disabled"';
     else
@@ -222,7 +222,7 @@
                 $('.subform' + p).hide();
             }
             $('.subform' + s_arr[1]).show(200, function () {
-                if (s_arr[1] == '1')
+                /*if (s_arr[1] == '1')
                     fileUpload('fileUpload1');
                 if (s_arr[1] == '3')
                     fileUpload('road1');
@@ -234,7 +234,7 @@
                     fileUpload('edu1');
                     fileUpload('emp1');
                 }
-
+*/
                 //alert(ftype);
                 // loading data from db
                 // debugger;
@@ -813,6 +813,26 @@
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/' + filename);
     }
     jQuery(document).ready(function () {
+        $('.required').live('keyup',function(){
+            //alert('test');
+            //alert($('.email1').val());
+            if($(this).val().length>0){
+                $(this).removeAttr('style');
+                //$('.cont').attr('disabled','');
+            }
+
+
+        });
+        $('.required').live('blur',function(){
+            //alert($('.email1').val());
+            if($(this).val().length==0){
+                $(this).val('');
+                //$('.cont').removeAttr('disabled');
+                $(this).attr('style','border-color:red');
+            }
+
+
+        });
         $('.email1').live('keyup',function(){
             //alert($('.email1').val());
             if($(this).val()!='' && ($(this).val().replace('@','')== $(this).val() || $(this).val().replace('.','')== $(this).val() || $(this).val().length<5)){
@@ -868,20 +888,21 @@
                 if($(this).val()=='')
                 {
                     $(this).attr('style','border-color:red');
-                    $('.cont').attr('disabled','');
-                    $(this).focus();
-                    $('html,body').animate({
-                            scrollTop: $('.active').offset().top},
-                        'slow');
+                    //$('.cont').attr('disabled','');
+                    //$(this).focus();
+                    
                     er = 1;
                 }
                 else
                 {
-                    $(this).removeAttr('style');
+                    //$(this).removeAttr('style');
                 }
             });
             if(er){
                 alert('Some of the fields of consent form is required.');
+                $('html,body').animate({
+                            scrollTop: $('.page-title').offset().top},
+                        'slow');
                 return false;
 
             }

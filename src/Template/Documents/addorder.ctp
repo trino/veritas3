@@ -1,7 +1,7 @@
 <script src="<?php echo $this->request->webroot;?>js/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot;?>js/ajaxupload.js" type="text/javascript"></script>
 <?php
-     $doc_ext = array('pdf','doc','docx','pdf');
+     $doc_ext = array('pdf','doc','docx','txt','csv','xls','xlsx');
 ?>
        <input type="hidden" id="tablename" value="<?php echo $table;?>" />
 <?php
@@ -953,7 +953,7 @@
                     $('#form_consent').find(':input').each(function(){
                         var $name = $(this).attr('name');
 
-                        if($name!='offence[]' && $name!='date_of_sentence[]' && $name!= 'location[]')  {
+                        if($name!='offence[]' && $name!='date_of_sentence[]' && $name!= 'location[]' && $name!='attach_doc[]')  {
                             if(doc_id)
                                 $(this).val(res[$name]);
 

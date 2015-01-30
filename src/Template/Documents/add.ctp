@@ -899,7 +899,7 @@
                 }
             });
             if(er){
-                alert('Some of the fields of consent form is required.');
+                alert('Please fill out all required fields in the consent form.');
                 $('html,body').animate({
                             scrollTop: $('.page-title').offset().top},
                         'slow');

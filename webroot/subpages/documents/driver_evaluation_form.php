@@ -618,8 +618,8 @@
 													<label class="control-label col-md-3">Comments <span class="required">
 													* </span>
 													</label>
-													<div class="col-md-4">
-														<textarea  placeholder="" class="form-control" name="comments"></textarea>
+													<div class="col-md-6">
+														<textarea  placeholder="" class="form-control" name="comments" style="height:140px"></textarea>
 														
 													</div>
 												</div>

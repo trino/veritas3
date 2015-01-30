@@ -7,8 +7,11 @@
     if (isset($client))
         $c = $client;
 ?>
-<?php $settings = $this->requestAction('settings/get_settings'); ?>
-<?php $sidebar = $this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar"); 
+<?php
+$settings = $this->requestAction('settings/get_settings'); 
+$sidebar = $this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");
+$getprofile = $this->requestAction('clients/getProfile/'.$id);
+$getcontact = $this->requestAction('clients/getContact/'.$id); 
         
 ?>
 
@@ -68,6 +71,48 @@
                             <?php
                                 if ($this->request->params['action'] == 'edit')
                                     include('subpages/clients/recruiter_contact_table.php');
+                                if(isset($_GET['view']))
+                                {
+                                    ?>
+                                    <table class="table table-striped table-bordered table-advance table-hover recruiters">
+                                        <thead>
+                                        <tr>
+                                            <th colspan="2">Assigned to:</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="">
+                                            <?php
+                                            $types = array('Driver','Admin','Recruiter','External','Safety','Driver','Contact');
+                                            $counter = 0;
+                                             foreach($getprofile as $p)
+                                                {
+                                                    ?>
+                                                   <tr> <td>
+												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $p->id; ?>">
+												    <?php echo $p->username; ?> (<?php echo $types[$p->profile_type]; ?>)&nbsp;&nbsp;(Profile)
+                                                </a>
+											</td></tr>
+                                                    <?php
+                                                    $counter++;
+                                                }
+                                                $c = $counter;   
+                                             ?>
+                                             <?php
+                                             foreach($getcontact as $c)
+                                                {
+                                                    ?>
+                                             <tr><td>
+												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $c->id; ?>">
+												    <?php echo $c->username; ?> <?php //echo $types[$p->profile_type]; ?>&nbsp;&nbsp;(Contact)
+                                                </a>
+											</tr></td>
+                                                    <?php
+                                                }    
+                                             ?>
+                                             </tbody>
+                                             </table>
+                                    <?php
+                                }
                             ?>
 
                         </div>
@@ -97,7 +142,7 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1_1">
                                         <div id="tab_1-1" class="tab-pane active">
-                                            <form role="form" action="" method="post">
+                                            <form role="form" action="" method="post" id="client_form">
 
                                                 <div class="row">
                                                     <input type="hidden" name="image" id="client_img"/>
@@ -231,33 +276,15 @@
 
                                                     <!--?php include('subpages/adminlisting.php');?-->
 
-                                                    <?php
-                                                        if ($c->date_start) {
-                                                            foreach ($c->date_start as $k => $d) {
-                                                                if ($k == 'date')
-                                                                    $start_date = $d;
-                                                            }
-                                                        } else
-                                                            $start_date = '';
-
-                                                        if ($c->date_end) {
-                                                            foreach ($c->date_end as $k => $d) {
-                                                                if ($k == 'date')
-                                                                    $end_date = $d;
-                                                            }
-                                                        } else
-                                                            $end_date = '';
-                                                    ?>
-
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Contract Start Date</label>
                                                         <input type="text" class="form-control date-picker"
-                                                               name="date_start" <?php if (isset($start_date)) { ?> value="<?php echo $start_date; ?>" <?php } ?>/>
+                                                               name="date_start" <?php if (isset($c->date_start)) { ?> value="<?php echo $c->date_start; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Contract End Date</label>
                                                         <input type="text" class="form-control date-picker"
-                                                               name="date_end" <?php if (isset($end_date)) { ?> value="<?php echo $end_date; ?>" <?php } ?>/>
+                                                               name="date_end" <?php if (isset($c->date_end)) { ?> value="<?php echo $c->date_end; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Referred By</label>
@@ -409,7 +436,7 @@
 
                                                                                 <?php
                                                                                 } else
-                                                                                    echo "<a href='".$this->request->webroot."img/jobs/".$cd->file."' target='_blank'>".$cd->file."</a>";
+                                                                                    echo "<a href='".$this->request->webroot."img/jobs/".$cd->file."' target='_blank' class='uploaded'>".$cd->file."</a>";
                                                                             ?>
                                                                             <a href="javascript:void(0);"
                                                                                onclick="$(this).parent().remove()"
@@ -786,6 +813,29 @@ Both </label>
 
 <script>
     $(function () {
+        <?php
+        if(isset($_GET['view']))
+        {
+            ?>
+          $('#client_form input').each(function(){
+            $(this).attr("disabled",'disabled');
+          });
+          $('#client_form a').hide();
+          $('.uploaded').show();
+          $('#clientimg').hide();
+          $('#client_form textarea').each(function(){
+            $(this).attr("disabled",'disabled');
+          });
+          
+          $('#client_form select').each(function(){
+            $(this).attr("disabled",'disabled');
+          }); 
+          
+          $('.recruiters input').each(function(){
+            $(this).attr("disabled",'disabled');
+          }); 
+          $('#searchProfile').hide();
+        <?php }?>
         $('input [type="email"]').keyup(function(){
             $(this).removeAttr('style');
         });

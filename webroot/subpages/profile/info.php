@@ -1,8 +1,10 @@
-<style>div{border:0px solid green;}</style>
+<style>div {
+        border: 0px solid green;
+    }</style>
 
 <?php
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
-    $sidebar = $this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar"); 
+    $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
 ?>
 <ul class="nav nav-tabs">
     <li class="active">
@@ -13,12 +15,12 @@
     </li>-->
     <?php
         //if ($this->request['action'] == 'edit') {
-            ?>
-<!--
-            <li>
-                <a href="#subtab_4_3" data-toggle="tab">Password</a>
-            </li>-->
-        <?php
+    ?>
+    <!--
+                <li>
+                    <a href="#subtab_4_3" data-toggle="tab">Password</a>
+                </li>-->
+    <?php
         //}
     ?>
 </ul>
@@ -26,60 +28,14 @@
     <div class="tab-pane active" id="subtab_4_1">
 
 
-
         <div class="portlet box form">
 
 
             <form role="form" action="" method="post">
-                <input type="hidden" name="client_ids" value="" class="client_profile_id"  />
+                <input type="hidden" name="client_ids" value="" class="client_profile_id"/>
 
                 <div class="row">
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Username</label>
-                            <input <?php echo $is_disabled ?> name="username" type="text"
-                                                              class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Email</label>
-                            <input <?php echo $is_disabled ?> name="email" type="email"
-                                                              placeholder="eg. test@domain.com"
-                                                              class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
-                        </div>
-                    </div>
-
-        <div class="col-md-6">         
-        <div class="form-group">
-            <label class="control-label">Password</label>
-            <input type="password" name="password" id="password" class="form-control input-medium" <?php if(isset($p->password)){?>value="<?php echo $p->password; ?>" <?php } ?> required="required" />
-        </div>
-        </div>
-        <div class="col-md-6">
-        <div class="form-group">
-            <label class="control-label">Re-type Password</label>
-            <input type="password" class="form-control input-medium" id="retype_password" <?php if(isset($p->password)){?> value="<?php echo $p->password; ?>"  <?php } ?> required="required"/>
-            <span class="error passerror flashPass1" style="display: none;">Please enter same password</span>
-        </div>
-        </div>
-        
-
-                    <?php if($sidebar->client_option==0){?>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">ISB Id</label>
-                            <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?> name="isb_id" type="text"
-                                                              placeholder="optional"
-                                                              class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
-                        </div>
-                    </div>
-                    <?php }?>
-
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Profile Type</label>
 
@@ -139,23 +95,22 @@
 
                                 <option
                                     value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
-                                   
+
                                 ?>>
                                     Owner Operator
                                 </option>
 
                                 <option
                                     value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php }
-                                    
+
                                 ?>>
                                     Owner Driver
                                 </option>
                             </select>
                         </div>
                     </div>
-
-
-                    <div class="col-md-4" id="driver_div"
+                    
+                    <div class="col-md-6" id="driver_div"
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
                             <label class="control-label">Driver Type</label>
@@ -166,78 +121,127 @@
                                     >BC - BC FTL AB/BC
                                 </option>
                                 <option value="2"
-                                        <?php if (isset($p) && $p->driver == 2) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 2) echo "selected='selected'"; ?>>
                                     BCI5 - BC FTL I5
                                 </option>
                                 <option value="3"
-                                        <?php if (isset($p) && $p->driver == 3) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 3) echo "selected='selected'"; ?>>
                                     BULK
                                 </option>
                                 <option value="4"
-                                        <?php if (isset($p) && $p->driver == 4) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 4) echo "selected='selected'"; ?>>
                                     CLIMATE
                                 </option>
                                 <option value="5"
-                                        <?php if (isset($p) && $p->driver == 5) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 5) echo "selected='selected'"; ?>>
                                     FTL - SINGLE DIVISION
                                 </option>
                                 <option value="6"
-                                        <?php if (isset($p) && $p->driver == 6) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 6) echo "selected='selected'"; ?>>
                                     FTL - TOYOTA SINGLE HRLY
                                 </option>
                                 <option value="7"
-                                        <?php if (isset($p) && $p->driver == 7) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 7) echo "selected='selected'"; ?>>
                                     FTL - TOYOTA SINGLE HWY
                                 </option>
                                 <option value="8"
-                                        <?php if (isset($p) && $p->driver == 8) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 8) echo "selected='selected'"; ?>>
                                     LCV - LCV UNITS
                                 </option>
                                 <option value="9"
-                                        <?php if (isset($p) && $p->driver == 9) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 9) echo "selected='selected'"; ?>>
                                     LOC - LOCAL
                                 </option>
                                 <option value="10"
-                                        <?php if (isset($p) && $p->driver == 10) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 10) echo "selected='selected'"; ?>>
                                     OWNER - OPERATOR
                                 </option>
                                 <option value="11"
-                                        <?php if (isset($p) && $p->driver == 11) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 11) echo "selected='selected'"; ?>>
                                     OWNER - DRIVER
                                 </option>
                                 <option value="12"
-                                        <?php if (isset($p) && $p->driver == 12) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 12) echo "selected='selected'"; ?>>
                                     SCD - SPECIAL COMMODITIES
                                 </option>
                                 <option value="13"
-                                        <?php if (isset($p) && $p->driver == 13) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 13) echo "selected='selected'"; ?>>
                                     SST-SANDRK- OPEN FUEL
                                 </option>
                                 <option value="14"
-                                        <?php if (isset($p) && $p->driver == 14) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 14) echo "selected='selected'"; ?>>
                                     SWD-SANDRK
                                 </option>
                                 <option value="15"
-                                        <?php if (isset($p) && $p->driver == 15) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 15) echo "selected='selected'"; ?>>
                                     TBL-TRANSBORDER
                                 </option>
                                 <option value="16"
-                                        <?php if (isset($p) && $p->driver == 16) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 16) echo "selected='selected'"; ?>>
                                     TEM - TEAM DIVISION
                                 </option>
                                 <option value="17"
-                                        <?php if (isset($p) && $p->driver == 17) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 17) echo "selected='selected'"; ?>>
                                     TEM - TOYOTA TEAM
                                 </option>
                                 <option value="18"
-                                        <?php if (isset($p) && $p->driver == 18) echo "selected='selected'"; ?>>
+                                    <?php if (isset($p) && $p->driver == 18) echo "selected='selected'"; ?>>
                                     WD - Wind
                                 </option>
                             </select>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Username</label>
+                            <input <?php echo $is_disabled ?> name="username" type="text"
+                                                              class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
+                        </div>
+                    </div>
 
-<div class="clearfix"></div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <input <?php echo $is_disabled ?> name="email" type="email"
+                                                              placeholder="eg. test@domain.com"
+                                                              class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
+                        </div>
+                    </div>
+                    
+                    
+
+                    <?php if ($sidebar->client_option == 0) { ?>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">ISB Id</label>
+                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
+                                    name="isb_id" type="text"
+                                    placeholder="optional"
+                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
+                            </div>
+                        </div>
+                    <?php } ?>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <input type="password" name="password" id="password" class="form-control input-medium"
+                                   <?php if (isset($p->password)){ ?>value="<?php echo $p->password; ?>" <?php } ?>
+                                   required="required"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Re-type Password</label>
+                            <input type="password" class="form-control input-medium"
+                                   id="retype_password" <?php if (isset($p->password)) { ?> value="<?php echo $p->password; ?>"  <?php } ?>
+                                   required="required"/>
+                            <span class="error passerror flashPass1"
+                                  style="display: none;">Please enter same password</span>
+                        </div>
+                    </div>
 
                     <div class="col-md-4">
                         <div class="form-group">
@@ -280,8 +284,6 @@
                     </div>
 
 
-
-
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Last Name</label>
@@ -312,13 +314,12 @@
                                     if (isset($p->gender)) {
                                         $gender = $p->gender;
                                     }
-                                    printoption("Select Gender","");
+                                    printoption("Select Gender", "");
                                     printoption("Male", $gender, "Male");
                                     printoption("Female", $gender, "Female");
                                 ?></SELECT>
                         </div>
                     </div>
-
 
 
                     <div class="col-md-6">
@@ -353,7 +354,6 @@
                                             }
                                             echo '<option' . $value . $tempstr . ">" . $option . "</option>";
                                         }
-
 
 
                                         $currentyear = "0000";
@@ -399,126 +399,114 @@
                             </div>
                         </div>
 
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <h3 class="block">Address</h3>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h3 class="block">Address</h3>
+                            </div>
                         </div>
-                    </div>
 
 
-
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <input <?php echo $is_disabled ?> name="street" type="text"
-                                                              placeholder="Street"
-                                                              class="form-control req_driver" <?php if (isset($p->street)) { ?> value="<?php echo $p->street; ?>" <?php } ?>/>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input <?php echo $is_disabled ?> name="street" type="text"
+                                                                  placeholder="Street"
+                                                                  class="form-control req_driver" <?php if (isset($p->street)) { ?> value="<?php echo $p->street; ?>" <?php } ?>/>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input <?php echo $is_disabled ?> name="city" type="text"
-                                                              placeholder="City"
-                                                              class="form-control req_driver" <?php if (isset($p->city)) { ?> value="<?php echo $p->city; ?>" <?php } ?>/>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input <?php echo $is_disabled ?> name="city" type="text"
+                                                                  placeholder="City"
+                                                                  class="form-control req_driver" <?php if (isset($p->city)) { ?> value="<?php echo $p->city; ?>" <?php } ?>/>
+                            </div>
                         </div>
-                    </div>
 
 
-
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <SELECT  <?php echo $is_disabled ?> name="province" class="form-control "><?php
-                                    $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
-                                    $province = "";
-                                    if (isset($p->province)) {
-                                        $province = $p->province;
-                                    }
-                                    for ($temp = 0; $temp < count($provinces); $temp += 1) {
-                                        printoption($provinces[$temp], $province, $provinces[$temp]);
-                                    }
-                                ?></SELECT>
-                            <!--
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <SELECT  <?php echo $is_disabled ?> name="province" class="form-control "><?php
+                                        $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
+                                        $province = "";
+                                        if (isset($p->province)) {
+                                            $province = $p->province;
+                                        }
+                                        for ($temp = 0; $temp < count($provinces); $temp += 1) {
+                                            printoption($provinces[$temp], $province, $provinces[$temp]);
+                                        }
+                                    ?></SELECT>
+                                <!--
                                         <input <?php echo $is_disabled ?> name="province" type="text"
                                                                            placeholder="Province"
                                                                            class="form-control req_driver" < php if (isset($p->province)) { ?> value="< php echo $p->province; ?>" < php } ?>/> -->
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input <?php echo $is_disabled ?>  type="text"
-                                                               placeholder="Postal code"
-                                                               class="form-control req_driver"
-                                                               name="postal"  <?php if (isset($p->postal)) { ?> value="<?php echo $p->postal; ?>" <?php } ?>/>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input <?php echo $is_disabled ?>  type="text"
+                                                                   placeholder="Postal code"
+                                                                   class="form-control req_driver"
+                                                                   name="postal"  <?php if (isset($p->postal)) { ?> value="<?php echo $p->postal; ?>" <?php } ?>/>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input <?php echo $is_disabled ?>  type="text"
-                                                               placeholder="Country" value="Canada"
-                                                               class="form-control req_driver"
-                                                               name="country" <?php if (isset($p->country)) { ?> value="<?php echo $p->country; ?>" <?php } ?>/>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input <?php echo $is_disabled ?>  type="text"
+                                                                   placeholder="Country" value="Canada"
+                                                                   class="form-control req_driver"
+                                                                   name="country" <?php if (isset($p->country)) { ?> value="<?php echo $p->country; ?>" <?php } ?>/>
+                            </div>
                         </div>
-                    </div>
 
 
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <h3 class="block">Driver's License</h3></div>
-                    </div>
-
-
-
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Driver License #</label>
-                            <input <?php echo $is_disabled ?> name="driver_license_no" type="text"
-                                                              class="form-control req_driver" <?php if (isset($p->driver_license_no)) { ?> value="<?php echo $p->driver_license_no; ?>" <?php } ?> />
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h3 class="block">Driver's License</h3></div>
                         </div>
-                    </div>
 
 
-
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Province (Driver's License was issued)</label>
-                            <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control "><?php
-                                    $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
-                                    $province = "";
-                                    if (isset($p->driver_province)) {
-                                        $driver_province = $p->driver_province;
-                                    }
-                                    for ($temp = 0; $temp < count($provinces); $temp += 1) {
-                                        printoption($provinces[$temp], $driver_province, $provinces[$temp]);
-                                    }
-                                ?></SELECT>
-                          </div>
-                    </div>
-
-
-
-
-
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Expiry Date</label>
-                            <input <?php echo $is_disabled ?> name="expiry_date" type="text"
-                                                              class="form-control req_driver date-picker" <?php if (isset($p->expiry_date)) { ?> value="<?php echo $p->expiry_date; ?>" <?php } ?> />
-
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Driver License #</label>
+                                <input <?php echo $is_disabled ?> name="driver_license_no" type="text"
+                                                                  class="form-control req_driver" <?php if (isset($p->driver_license_no)) { ?> value="<?php echo $p->driver_license_no; ?>" <?php } ?> />
+                            </div>
                         </div>
-                    </div>
+
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Province (Driver's License was issued)</label>
+                                <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control "><?php
+                                        $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
+                                        $province = "";
+                                        if (isset($p->driver_province)) {
+                                            $driver_province = $p->driver_province;
+                                        }
+                                        for ($temp = 0; $temp < count($provinces); $temp += 1) {
+                                            printoption($provinces[$temp], $driver_province, $provinces[$temp]);
+                                        }
+                                    ?></SELECT>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Expiry Date</label>
+                                <input <?php echo $is_disabled ?> name="expiry_date" type="text"
+                                                                  class="form-control req_driver date-picker" <?php if (isset($p->expiry_date)) { ?> value="<?php echo $p->expiry_date; ?>" <?php } ?> />
+
+                            </div>
+                        </div>
 
 
 
 
 
-                    <?php /*  <div class="col-md-12">
+                        <?php /*  <div class="col-md-12">
 
                                                             <div class="form-group col-md-6">
                                                                 <label class="control-label">US DOT MC/MX#</label>
@@ -550,30 +538,27 @@
                                                             </div>
                                                             </div>
                                                 */ ?>
-                    <?php
-                        if (!isset($disabled)) {
-                            ?>
-                    <div class="col-md-12">
+                        <?php
+                            if (!isset($disabled)) {
+                                ?>
+                                <div class="col-md-12">
 
-                            <div class="margin-top-10 form-actions">
-                                <a href="javascript:void(0)" class="btn btn-primary" onclick="return check_username();">
-                                    Save Changes
-                                </a>
-                                <input type="submit" style="display: none;" id="hiddensub" />
-                                <a href="#" class="btn default">
-                                    Cancel </a>
-                            </div>
-                            </div>
-                        <?php } ?>
-
-
-
+                                    <div class="margin-top-10 form-actions">
+                                        <a href="javascript:void(0)" class="btn btn-primary"
+                                           onclick="return check_username();">
+                                            Save Changes
+                                        </a>
+                                        <input type="submit" style="display: none;" id="hiddensub"/>
+                                        <a href="#" class="btn default">
+                                            Cancel </a>
+                                    </div>
+                                </div>
+                            <?php } ?>
 
 
             </form>
 
             <div class="clearfix"></div>
-
 
 
         </div>
@@ -620,76 +605,77 @@
 
 </div>
 <script>
-function check_username()
-{
-    if($('#retype_password').val() == $('#password').val())
-    {
-        var client_id = $('.client_profile_id').val();
-        if(client_id == "")
-        {
-            alert('Please Assign atleat one client to the profile.');
-            $('html,body').animate({
-                                scrollTop: $('.page-title').offset().top},
+    function check_username() {
+        if ($('#retype_password').val() == $('#password').val()) {
+            var client_id = $('.client_profile_id').val();
+            if (client_id == "") {
+                /*
+                 alert('Please Assign atleat one client to the profile.');
+                 $('html,body').animate({
+                 scrollTop: $('.page-title').offset().top},
+                 'slow');
+                 return false;
+                 */
+            }
+            var un = $('.uname').val();
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>profiles/check_user/<?php echo $uid;?>',
+                data: 'username=' + $('.uname').val(),
+                type: 'post',
+                success: function (res) {
+                    if (res == '1') {
+
+                        alert('Username already exists');
+                        $('.uname').focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset('200').top
+                            },
                             'slow');
-                            return false;
-        }
-    var un = $('.uname').val();
-    $.ajax({
-        url:'<?php echo $this->request->webroot;?>profiles/check_user/<?php echo $uid;?>',
-        data:'username='+$('.uname').val(),
-        type:'post',
-        success: function(res){
-            if(res=='1')
-            {
-                
-                alert('Username already exist.');
-                $('.uname').focus();
-                $('html,body').animate({
-                                        scrollTop: $('.page-title').offset('200').top},
-                                    'slow');
-                                    return false;
-            }
-            else{
-                $('#hiddensub').click();
-            }
-        }
-    });
-    
-    var un = $('.email').val();
-    $.ajax({
-        url:'<?php echo $this->request->webroot;?>profiles/check_email/<?php echo $uid;?>',
-        data:'email='+$('.email').val(),
-        type:'post',
-        success: function(res){
-            if(res=='1')
-            {
-                
-                alert('Email already exist.');
-                $('.email').focus();
-                $('html,body').animate({
-                                        scrollTop: $('.page-title').offset().top},
-                                    'slow');
-                                    return false;
-            }
-            else{
-                $('#hiddensub').click();
-            }
-        }
-    });
-    
-    }
-    else
-    {
-        $('#retype_password').focus();
-                $('html,body').animate({
-                                        scrollTop: $('.page-title').offset().top},
-                                    'slow');
-        $('.flashPass1').show();
-        $('.flashPass1').fadeOut(7000000);
-                                    return false;
-    }
-    
+                        return false;
+                    }
+                    else {
+                        $('#hiddensub').click();
+                    }
+                }
+            });
+            
+            
+           if($('.email').val()!=''){
+            var un = $('.email').val();
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>profiles/check_email/<?php echo $uid;?>',
+                data: 'email=' + $('.email').val(),
+                type: 'post',
+                success: function (res) {
+                    if (res == '1') {
+
+                        alert('Email already exist.');
+                        $('.email').focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+                        return false;
+                    }
+                    else {
+                        $('#hiddensub').click();
+                    }
+                }
+            });
 }
+        }
+        else {
+            $('#retype_password').focus();
+            $('html,body').animate({
+                    scrollTop: $('.page-title').offset().top
+                },
+                'slow');
+            $('.flashPass1').show();
+            $('.flashPass1').fadeOut(7000000);
+            return false;
+        }
+
+    }
     $(function () {
 
         $('#addmore_id').click(function () {
@@ -715,8 +701,10 @@ function check_username()
                 });
                 $('#driver_div').show();
                 $('.un').removeProp('required');
+                $('#password').removeProp('required');
+                $('#retype_password').removeProp('required');
                 $('.req_rec').removeProp('required');
-                $('.req_driver').prop('required',"required");
+                $('.req_driver').prop('required', "required");
             }
             else {
                 $('.nav-tabs li:not(.active)').each(function () {
@@ -725,13 +713,13 @@ function check_username()
                 $('#driver_div').hide();
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
-                $('.un').prop('required',"required");
+                $('.un').prop('required', "required");
             }
-            
+
             if ($(this).val() == '2') {
                 $('.req_driver').removeProp('required');
                 $('.un').removeProp('required');
-                $('.req_rec').prop('required',"required");
+                $('.req_rec').prop('required', "required");
             }
 
         });

@@ -143,9 +143,9 @@
                             </div>
     
                         <div class="form-group col-md-12">
-                                <label class="col-md-3 control-label">Signature:</label>
+                                <label class="col-md-3 control-label" style="display: none;">Signature:</label>
                                 <div class="col-md-3">
-                                <input type="text" class="form-control" name="signature[]" value="<?php echo $emp->signature;?>"/>
+                                <input type="text" class="form-control" style="display: none;" name="signature[]" value="<?php echo $emp->signature;?>"/>
                                 </div>
                         <label class="col-md-3 control-label">Date:</label>
                         <div class="col-md-3">
@@ -304,9 +304,9 @@
                             </div>
     
                         <div class="form-group col-md-12">
-                                <label class="col-md-3 control-label">Signature:</label>
+                                <label class="col-md-3 control-label" style="display: none;">Signature:</label>
                                 <div class="col-md-3">
-                                <input type="text" class="form-control" name="signature[]"/>
+                                <input type="text" class="form-control" style="display: none;" name="signature[]"/>
                                 </div>
                         <label class="col-md-3 control-label">Date:</label>
                         <div class="col-md-3">

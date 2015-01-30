@@ -111,9 +111,9 @@
                                 <div class="col-md-3">
                                 <input name="us_dot[]" type="text" class="form-control" name="us_dot[]" value="<?php echo $emp->us_dot;?>" />
                                 </div>
-                                <label class="control-label col-md-3">Signature:</label>
+                                <label class="control-label col-md-3" style="display: none;">Signature:</label>
                                 <div class="col-md-3">
-                                <input type="text" class="form-control" name="signature[]" value="<?php echo $emp->signature;?>" />
+                                <input type="text" class="form-control" style="display: none;" name="signature[]" value="<?php echo $emp->signature;?>" />
                                 </div>
                                 </div>
                                 
@@ -261,9 +261,9 @@
                                 <div class="col-md-3">
                                 <input name="us_dot[]" type="text" class="form-control" name="us_dot[]" />
                                 </div>
-                                <label class="control-label col-md-3">Signature:</label>
+                                <label class="control-label col-md-3" style="display: none;">Signature:</label>
                                 <div class="col-md-3">
-                                <input type="text" class="form-control" name="signature[]"/>
+                                <input type="text" class="form-control" style="display: none;" name="signature[]"/>
                                 </div>
                                 </div>
                                 

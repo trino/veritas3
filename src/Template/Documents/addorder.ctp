@@ -1093,6 +1093,7 @@
         $('.cont').parent().find('.red').remove();
         $('.cont').attr('id','nextview');
         $('.cont').removeClass('cont');
+        $('.uploaded a').show();
         
         <?php
     }
@@ -1111,7 +1112,7 @@
         });
         
         $(document.body).on('click','.consents a',function(){
-            alert($(this).attr('href').replace('#',''));
+            //alert($(this).attr('href').replace('#',''));
             //$('#'+$(this).attr('href').replace('#','')).show();
             var ba = $('#'+$(this).attr('href').replace('#','')+' .moremore').offset();
            // alert(ba.top);

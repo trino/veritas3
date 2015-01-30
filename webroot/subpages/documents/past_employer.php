@@ -88,9 +88,9 @@
                                 <div class="col-md-3">
                                 <input name="us_dot[]" type="text" class="form-control" name="us_dot[]" />
                                 </div>
-                                <label class="control-label col-md-3">Signature:</label>
+                                <label class="control-label col-md-3" style="display: none;">Signature:</label>
                                 <div class="col-md-3">
-                                <input type="text" class="form-control" name="signature[]"/>
+                                <input type="text" class="form-control" style="display: none;" name="signature[]"/>
                                 </div>
                                 </div>
                                 

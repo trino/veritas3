@@ -163,6 +163,7 @@ $attach = "<br/><br/><strong>Attachments</strong>
                     }
                     
                 }
+$attach = $attach."<p><img src=\"".$initials.$this->request->webroot."img/copy.jpg\" /><br /></p>";                
 $pdf->writeHTMLCell(0, 0, '', '', $attach, 0, 1, 0, true, '', true);
 }
 

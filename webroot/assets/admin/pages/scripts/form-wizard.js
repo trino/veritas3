@@ -244,6 +244,7 @@ var FormWizard = function () {
                     $('.skip').hide();
 //                    $('.cont').attr('id','');
                     $('#select_division').hide();
+                    $('.button-previous').hide();
                 }
 
                 if (current >= total) {

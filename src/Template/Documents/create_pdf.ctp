@@ -121,24 +121,24 @@ $pdf->TextField('current_postal_code', 50, 5,array(),array('v'=>$detail['consent
 $pdf->Ln(6);
 
 $pdf->Cell(80, 5, 'Previous address (street and number)');
-$pdf->TextField('previous_street_address', 50, 5,array(),array('v'=>$detail['consent']->previoust_street_address, 'dv'=>$detail['consent']->current_street_address));
+$pdf->TextField('previous_street_address', 50, 5,array(),array('v'=>$detail['consent']->previous_street_address, 'dv'=>$detail['consent']->previous_street_address));
 $pdf->Ln(6);
 
 $pdf->Cell(80, 5, 'Previous address (APT/Unit)');
-$pdf->TextField('previous_apt_unit', 50, 5,array(),array('v'=>$detail['consent']->previoust_apt_unit, 'dv'=>$detail['consent']->current_apt_unit));
+$pdf->TextField('previous_apt_unit', 50, 5,array(),array('v'=>$detail['consent']->previous_apt_unit, 'dv'=>$detail['consent']->previous_apt_unit));
 $pdf->Ln(6);
 
 $pdf->Cell(80, 5, 'Previous address (City)');
-$pdf->TextField('previous_city', 50, 5,array(),array('v'=>$detail['consent']->previous_city, 'dv'=>$detail['consent']->current_city));
+$pdf->TextField('previous_city', 50, 5,array(),array('v'=>$detail['consent']->previous_city, 'dv'=>$detail['consent']->previous_city));
 $pdf->Ln(6);
 
 $pdf->Cell(80, 5, 'Previous address (Province)');
-$pdf->TextField('previous_province', 50, 5,array(),array('v'=>$detail['consent']->previous_province, 'dv'=>$detail['consent']->current_province));
+$pdf->TextField('previous_province', 50, 5,array(),array('v'=>$detail['consent']->previous_province, 'dv'=>$detail['consent']->previous_province));
 $pdf->Ln(6);
 
 
 $pdf->Cell(80, 5, 'Previous address (Postal Code)');
-$pdf->TextField('previous_postal_code', 50, 5,array(),array('v'=>$detail['consent']->previous_postal_code, 'dv'=>$detail['consent']->current_postal_code));
+$pdf->TextField('previous_postal_code', 50, 5,array(),array('v'=>$detail['consent']->previous_postal_code, 'dv'=>$detail['consent']->previous_postal_code));
 $pdf->Ln(6);
 
 $pdf->Cell(80, 5, 'Aliases');

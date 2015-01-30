@@ -35,9 +35,11 @@
     function get_color($result_string)
     {
 
+
+
         $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
 
-        switch (trim($result_string)) {
+        switch (strtoupper(trim($result_string))) {
             case 'NOT ATTACHED':
                 echo $return_color = '<span  class="label label-sm label-danger" style="float:right;padding:4px;">' . $result_string . '</span>';;
                 break;
@@ -59,8 +61,17 @@
             case 'IDEAL CANDIDATE':
                 echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
                 break;
+            case 'INCOMPLETE':
+                echo $return_color = '<span  class="label label-sm label-danger" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'SATISFACTORY':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'REQUIRES ATTENTION':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
             case '':
-                echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+               // echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
                 break;
             default:
                 echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">NO COMMENT</span>';

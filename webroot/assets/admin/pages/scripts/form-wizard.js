@@ -314,7 +314,7 @@ var FormWizard = function () {
                             alert('Please confirm that you have read the conditions');
                             $('#confirm_check').focus();
                             $('html,body').animate({
-                                        scrollTop: $('.active').offset().top},
+                                        scrollTop: $('#confirm_check').offset().top},
                                     'slow');
                             return false;
                            // }

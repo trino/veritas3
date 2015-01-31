@@ -49,6 +49,9 @@
     <div class="toggler">
     </div>
     <div class="toggler-close">
+
+
+        
     </div>
     <div class="theme-options">
         <div class="theme-option theme-colors clearfix">
@@ -313,7 +316,7 @@
 
                     </div>
                 </div>
-            <?php    
+            <?php
                 } ?>
             <!-- END PORTLET MAIN -->
             <?php
@@ -344,7 +347,7 @@
 
              }
              ?>
-             
+
         </div>
         <!-- END BEGIN PROFILE SIDEBAR -->
         <!-- BEGIN PROFILE CONTENT -->
@@ -505,16 +508,16 @@ new AjaxUpload(button,{
                                  client_id = client_id+","+$(this).val();
                             }
                         });
-                        
+
                         client_id = client_id.substr(1,length.client_id);
                         $('.client_profile_id').val(client_id);
-                  
+
                     });
                     <?php
                     }
                     ?>
                    $('#save_client_p1').click(function(){
-                    
+
                     $('#save_client_p1').text('Saving..');
 
         $("#pass_form").validate({
@@ -576,7 +579,7 @@ function searchClient()
         }
     });
 }
-<?php    
+<?php
 }
 ?>
 $(function(){

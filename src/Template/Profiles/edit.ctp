@@ -41,6 +41,10 @@
         $p = $profile;
 ?>
 
+
+
+
+
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -51,7 +55,7 @@
     <div class="toggler-close">
 
 
-        
+
     </div>
     <div class="theme-options">
         <div class="theme-option theme-colors clearfix">

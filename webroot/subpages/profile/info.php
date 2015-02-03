@@ -17,7 +17,30 @@
         }
         echo '<option' . $value . $tempstr . ">" . $option . "</option>";
     }
+
+function printoption2($value, $selected, $option)
+{
+    $tempstr = "";
+    if ($option == $selected or $value == $selected) { $tempstr = " selected"; }
+    echo '<OPTION VALUE="' . $value . '"' . $tempstr . ">" . $option . "</OPTION>";
+}
+
+function printoptions($name, $valuearray, $selected, $optionarray, $isdisabled)
+{
+    echo '<SELECT ' . $isdisabled . ' name="' . $name . '" class="form-control member_type" >';
+    for ($temp = 0; $temp < count($valuearray); $temp += 1) {
+        printoption2($valuearray[$temp], $selected, $optionarray[$temp]);
+    }
+    echo '</SELECT>';
+}
+
+function printprovinces($name, $selected, $isdisabled){
+    printoptions($name, array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"), $isdisabled );
+
+}
 ?>
+
+<!-- removed tab
 <ul class="nav nav-tabs">
     <li class="active">
         <a href="#subtab_4_1" data-toggle="tab">Info</a>
@@ -35,7 +58,7 @@
     <?php
         //}
     ?>
-</ul>
+<!-- </ul> -->
 <div class="tab-content">
     <div class="tab-pane active" id="subtab_4_1">
 
@@ -439,7 +462,10 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <SELECT  <?php echo $is_disabled ?> name="province" class="form-control "><?php
+                                <?php printprovinces("province", $p->province, $is_disabled ); ?>
+
+                                <!-- old
+                                <SELECT  < php echo $is_disabled ?> name="province" class="form-control ">< php
                                         $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                         $province = "";
                                         if (isset($p->province)) {
@@ -449,8 +475,7 @@
                                             printoption($provinces[$temp], $province, $provinces[$temp]);
                                         }
                                     ?></SELECT>
-                                <!--
-                                        <input <?php echo $is_disabled ?> name="province" type="text"
+                                        <input < php echo $is_disabled ?> name="province" type="text"
                                                                            placeholder="Province"
                                                                            class="form-control req_driver" < php if (isset($p->province)) { ?> value="< php echo $p->province; ?>" < php } ?>/> -->
                             </div>
@@ -493,7 +518,9 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Province Driver's License was issued</label>
-                                <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control "><?php
+                                <?php printprovinces("driver_province", $p->driver_province, $is_disabled ); ?>
+                                <!-- old
+                                <SELECT  < php echo $is_disabled ?> name="driver_province" class="form-control ">< php
                                         $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                         $province = "";
                                         if (isset($p->driver_province)) {
@@ -502,7 +529,8 @@
                                         for ($temp = 0; $temp < count($provinces); $temp += 1) {
                                             printoption($provinces[$temp], $driver_province, $provinces[$temp]);
                                         }
-                                    ?></SELECT>
+                                    ?></SELECT> -->
+
                             </div>
                         </div>
 

@@ -203,25 +203,28 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Province</label>
                                                         <?php
-                                                            function printoption($option, $selected)
+                                                            function printoption($value, $selected, $option)
                                                             {
                                                                 $tempstr = "";
-                                                                if ($option == $selected) {
-                                                                    $tempstr = " selected";
-                                                                }
-                                                                echo '<OPTION' . $tempstr . ">" . $option . "</OPTION>";
+                                                                if ($option == $selected or $value == $selected) { $tempstr = " selected"; }
+                                                                echo '<OPTION VALUE="' . $value . '"' . $tempstr . ">" . $option . "</OPTION>";
                                                             }
 
-                                                            function printoptions($name, $array, $selected)
+                                                            function printoptions($name, $valuearray, $selected, $optionarray)
                                                             {
                                                                 echo '<SELECT name="' . $name . '" class="form-control member_type" >';
-                                                                for ($temp = 0; $temp < count($array); $temp += 1) {
-                                                                    printoption($array[$temp], $selected);
+                                                                for ($temp = 0; $temp < count($valuearray); $temp += 1) {
+                                                                    printoption($valuearray[$temp], $selected, $optionarray[$temp]);
                                                                 }
                                                                 echo '</SELECT>';
                                                             }
 
-                                                            printoptions("province", array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $c->province);
+                                                            function printprovinces($name, $selected){
+                                                                printoptions($name, array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"));
+
+                                                            }
+
+                                                        printprovinces("province", $c->province);
                                                         ?>
 
                                                     </div>
@@ -358,7 +361,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
 
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label">Billing Contact</label>
+                                                        <label class="control-label">teBilling Contact</label>
                                                         <input type="text" class="form-control"
                                                                name="billing_contact" <?php if (isset($c->billing_contact)) { ?> value="<?php echo $c->billing_contact; ?>" <?php } ?>/>
                                                     </div>
@@ -376,7 +379,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Billing Province</label>
-                                                        <?php printoptions("billing_province", array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $c->billing_province); ?>
+                                                        <?php printprovinces("billing_province", $c->billing_province);  ?>
 
 
                                                     </div>

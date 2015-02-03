@@ -23,6 +23,18 @@
 
 
                                 </ul>
+<!-- BEGIN BORDERED TABLE PORTLET-->
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-briefcase"></i>Permissions
+        </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse" data-original-title="" title="">
+            </a>
+        </div>
+    </div>
+    <div class="portlet-body">
                                     <div class="tab-content">
                                                 <div class="tab-pane active" id="subtab_2_1">
                                                     <div class="">
@@ -40,7 +52,8 @@
                                                                </div>
                                                            </div>
 
-                                                           <table class=" ">
+
+                                                                       <table class="table table-bordered table-hover">
                                             <tr>
                                                 <td class="vtop">
                                                     <?php echo ucfirst($settings->profile); ?>
@@ -348,11 +361,11 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10">
+                                            <div class="margin-top-10"><center>
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
                                                        value="Save Changes"/>
 
-                                            </div>
+                                                </center></div>
                                         <?php
                                         }
                                         ?>
@@ -363,11 +376,19 @@
                                     </div>
                                     </div>
                                     <div class="tab-pane" id="subtab_2_2">
-                                                    
+                                        <div class="row">
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h3 class="block">Document</h3>                            </div>
+                                            </div>
+                                        </div>
+
                                                     <div class="">
                                 						<!--h1> Enable <?php echo ucfirst($settings->document);?>?</h1-->
                                                         <form action="#" method="post" id="displayform">
-                                                    <table class="">
+                                                            <table class="table table-bordered table-hover">
                                                         <tr><th   width="25%"></th><th class=""  width="25%">System</th><th class=""><?php echo ucfirst($settings->profile);?></th></tr>
                                                         <?php
                                                         $subdoc = $this->requestAction('/profiles/getSub');
@@ -423,9 +444,9 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                                        <div class="margin-top-10">
+                                                        <div class="margin-top-10"><center>
                                                             <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
-                                                                Save Changes </a>
+                                                                Save Changes </a></center>
 
                                                         </div>
                                                     <?php
@@ -451,7 +472,7 @@
                                     <form id="homeform">
                                      <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                      <input type="hidden" name="block[user_id]" value="<?php echo $uid;?>" />
-                                              <table class="">
+                                        <table class="table table-bordered table-hover">
                                             <tr>
                                                 <td>
                                                     Add a <?=$settings->profile; ?>
@@ -615,9 +636,9 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10">
+                                            <div class="margin-top-10"><center>
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_home"
-                                                       value="Save Changes"/>
+                                                       value="Save Changes"/></center>
 
                                             </div>
                                         <?php
@@ -626,10 +647,18 @@
                                         </form>
                                     </div>
                                     <div class="tab-pane" id="subtab_2_4">
+                                        <div class="row">
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h3 class="block">Client Settings</h3>                            </div>
+                                            </div>
+                                        </div>
                                         <form action="#" method="post" id="clientform">
                                             <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                             <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
-                                             <table class=" ">
+                                            <table class="table table-bordered table-hover">
                                             <tr>
                                                 <td class="vtop">
                                                     Options For
@@ -656,9 +685,9 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10">
+                                            <div class="margin-top-10"><center>
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_client"
-                                                       value="Save Changes"/>
+                                                       value="Save Changes"/></center>
 
                                             </div>
                                         <?php

@@ -224,7 +224,7 @@
                         </div>
                     <?php } ?>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Password</label>
                             <input type="password" name="password" id="password" class="form-control input-medium"
@@ -232,7 +232,7 @@
                                    required="required"/>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Re-type Password</label>
                             <input type="password" class="form-control input-medium"
@@ -241,6 +241,8 @@
                             <span class="error passerror flashPass1"
                                   style="display: none;">Please enter same password</span>
                         </div>
+                    </div>
+                    <div class="clearfix">
                     </div>
 
                     <div class="col-md-4">
@@ -478,7 +480,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">Province (Driver's License was issued)</label>
+                                <label class="control-label">Province Driver's License was issued</label>
                                 <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control "><?php
                                         $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                         $province = "";

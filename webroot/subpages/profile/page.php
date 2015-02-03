@@ -61,7 +61,7 @@
                                                                 <div class="col-md-offset-3 col-md-9">
                                                                     <button type="submit"   class="btn blue" onclick="savepage('product_example');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </a>
+                                                                    </button>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>
@@ -111,7 +111,7 @@
                                                                 <div class="col-md-offset-3 col-md-9">
                                                                 <button type="submit" class="btn blue" onclick="savepage('help');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </a>
+                                                                    </button>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>
@@ -163,7 +163,7 @@
                                                                 <div class="col-md-offset-3 col-md-9">
                                                                     <button type="submit"  class="btn blue" onclick="savepage('privacy_code');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </a>
+                                                                    </button>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>
@@ -215,7 +215,7 @@
                                                                 <div class="col-md-offset-3 col-md-9">
                                                                     <button type="submit"  class="btn blue" onclick="savepage('terms');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </a>
+                                                                    </button>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>
@@ -267,7 +267,7 @@
                                                                 <div class="col-md-offset-3 col-md-9">
                                                                     <button type="submit"   class="btn blue" onclick="savepage('faq');"><i
                                                                             class="fa fa-check"></i> Submit
-                                                                    </a>
+                                                                    </button>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
                                                                 </div>

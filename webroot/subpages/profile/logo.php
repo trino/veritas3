@@ -1,16 +1,3 @@
-<?php
-function printlogos($logos1, $webroot, $index){ //* replaces the logo enumerators *//
-foreach ($logos1 as $logo) {
-    $img = "image" . $index; ?>
-    <div class="col-md-4 margin-top-20">
-        <div class="form-group" style="height:100px"><Center>
-            <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> id="<?php echo $img ?>"/>
-            <label for="<?php echo $img ?>"><img style="max-width:90%;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label>
-            </Center></div>
-    </div>
-    <?php
-    $index+=1;
-} return $index;} ?>
 
 
 <div>
@@ -29,17 +16,28 @@ foreach ($logos1 as $logo) {
                                     </div>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="subtab_1_1">
-                                            <div class="portlet solid blue">
+                                            <div class="portlet solid blue  ">
 
                                                 <div class="portlet-body">
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos" method="post" class="form-inline" role="form" id="logoform">
 
-                                                        <?php $index = printlogos($logos, $this->request->webroot, 0);?>
 
+                                                        <?php foreach ($logos as $logo) { ?>
+                                                        <div class="col-md-4 margin-top-20">
+                                                        <div class="form-group" style="height:100px;overflow:hidden;">
+                                                        <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?>/>
+                                                        <img style="width:200px;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>" />
+                                                        </div>
+                                                        </div>
+
+
+
+
+                                                        <?php } ?>
 
                                                         <div class="clearfix"></div>
-                                                        <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                         <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
@@ -58,7 +56,18 @@ foreach ($logos1 as $logo) {
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/secondary"
                                                           method="post" class="form-inline" role="form" id="logoform1">
-                                                        <?php $index = printlogos($logos1, $this->request->webroot, $index);?>
+                                                        <?php foreach ($logos1 as $logo) { ?>
+                                                             <div class="col-md-4 margin-top-20">
+                                                                <div class="form-group" style="height:100px;overflow:hidden;">
+                                                                        <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> />
+                                                                        <img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"             />
+                                                                        </div>
+                                                            </div>
+
+
+
+
+                                                        <?php } ?>
 
                                                         <div class="clearfix"></div>
                                                             <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
@@ -80,7 +89,18 @@ foreach ($logos1 as $logo) {
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/login"
                                                           method="post" class="form-inline" role="form" id="logoform2">
-                                                        <?php $index = printlogos($logos2, $this->request->webroot, $index);?>
+                                                        <?php foreach ($logos2 as $logo) { ?>
+                                                             <div class="col-md-4 margin-top-20">
+                                                                <div class="form-group" style="height:100px;overflow:hidden;">
+                                                                        <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> />
+                                                                        <img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"             />
+                                                                        </div>
+                                                            </div>
+
+
+
+
+                                                        <?php } ?>
 
                                                         <div class="clearfix"></div>
                                                             <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">

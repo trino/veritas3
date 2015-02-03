@@ -247,7 +247,9 @@
                     <div class="profile-usertitle-job">
                         <?php if (isset($p->isb_id)) { ?>Reference Number: <?php echo $p->isb_id; ?><?php } ?>
                     </div>
-                </div></div>
+                </div>
+
+            </div>
 
             <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) {
                 //&& $this->request->session()->read("Profile.id")==$id

@@ -50,13 +50,13 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="theme-panel hidden-xs hidden-sm">
-    <div class="toggler">
+    <!--div class="toggler">
     </div>
     <div class="toggler-close">
 
 
 
-    </div>
+    </div-->
     <div class="theme-options">
         <div class="theme-option theme-colors clearfix">
 						<span>
@@ -227,7 +227,8 @@
                     <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
                     <div class="input-icon">
-                    <a class="btn btn-xs  btn-success" href="javascript:void(0)" id="clientimg">
+                        <br>
+                    <a class="btn btn-xs  btn-success   margin-t10" href="javascript:void(0)" id="clientimg">
                     <i class="fa fa-image"></i>
                       Add/Edit Image
                     </a>

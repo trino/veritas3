@@ -74,7 +74,7 @@
 			</div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Address for past 3 years : </label>
+                <label class="control-label col-md-3">Addresses for past 3 years : </label>
             
             </div>
             
@@ -111,24 +111,23 @@
 					<input type="text" class="form-control" placeholder="Duration" name="past3_duration2"/>
 				</div>
             </div>
-            
-            <div class="form-group col-md-3">
-                <label class="control-label">Telephone : </label>
 
-					<input type="text" class="form-control" name="phone"/>
-				</div><div class="form-group col-md-3">
-                
-                <label class="control-label">Cell Phone : </label>
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-3">Contact information :</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Phone number" name="phone"/>
+                    </div>
 
-					<input type="text" class="form-control" name="mobile"/>
-				</div><div class="form-group col-md-3">
-                
-                <label class="control-label">Email Address : </label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Cell Phone" name="mobile"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control email1" placeholder="Email Address" name="email"/>
+                    </div>
+                </div>
 
-					<input type="text" class="form-control email1" name="email"/>
-				</div>
-            </div>
-            
+
+
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">In case of emergency notify : </label>
 				<div class="col-md-3">
@@ -147,34 +146,33 @@
             
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-4">Have you worked for this company before? : </label>
+                <label class="control-label col-md-3">Have you worked for this company before? : </label>
 				<div class="col-md-2">
 					<input type="radio" id="worked_for_client_1" name="worked_for_client" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
                     <input type="radio" id="worked_for_client_0" name="worked_for_client" value="0"/>&nbsp;&nbsp;No
 				</div>
-                <label class="control-label col-md-2">Where? : </label>
-				<div class="col-md-4">
-					<input type="text" class="form-control" name="worked_where"/>
-				</div>
+                <label class="control-label col-md-1">Dates : </label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="From" class="form-control date-picker" name="worked_start_date"/>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" placeholder="To" class="form-control date-picker" name="worked_end_date"/>
+                </div>
             </div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-2">Dates : From </label>
-				<div class="col-md-2">
-					<input type="text" class="form-control date-picker" name="worked_start_date"/>
-				</div>
-                <label class="control-label col-md-1">To </label>
-				<div class="col-md-2">
-					<input type="text" class="form-control date-picker" name="worked_end_date"/>
-				</div>
-                <label class="control-label col-md-2">Position </label>
+                <label class="control-label col-md-3">Where? : </label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" name="worked_where"/>
+                </div>
+                <label class="control-label col-md-3">Position : </label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" name="worked_position"/>
 				</div>
             </div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Reason for leaving </label>
+                <label class="control-label col-md-3">Reason for leaving : </label>
 				<div class="col-md-9">
 					<input type="text" class="form-control" name="reason_to_leave"/>
 				</div>
@@ -186,8 +184,8 @@
 					<input type="radio" id="is_employed_1" name="is_employed" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
                     <input type="radio" id="is_employed_0" name="is_employed" value="0" />&nbsp;&nbsp;No
 				</div>
-                <label class="control-label col-md-5">If not, how long since leaving last employment? : </label>
-				<div class="col-md-2">
+                <label class="control-label col-md-4">If not, how long since leaving last employment? : </label>
+				<div class="col-md-3">
 					<input type="text" class="form-control" name="unemployed_total_time"/>
 				</div>
             </div>
@@ -276,18 +274,19 @@
             </div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Do you have a FAST card? </label>
-                <div class="col-md-1">
+                <label class="control-label col-md-6">Do you have a FAST card? </label>
+                <div class="col-md-6">
 					<input type="radio" id="fast_card_1" name="fast_card" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
                     <input type="radio" id="fast_card_0" name="fast_card" value="0" />&nbsp;&nbsp;No
 				</div>
-                <label class="control-label col-md-2">Card Number </label>
-                <div class="col-md-2">
+                </div><div class="form-group col-md-12">
+                <label class="control-label col-md-3">Card Number </label>
+                <div class="col-md-3">
 					<input type="text" class="form-control" name="card_number"/>
                 </div>
                 
-                <label class="control-label col-md-2">Expiry Date</label>
-                <div class="col-md-2">
+                <label class="control-label col-md-3">Expiry Date</label>
+                <div class="col-md-3">
 					<input type="text" class="form-control date-picker" name="card_expiry_date"/>
                 </div>
             </div>
@@ -295,7 +294,7 @@
             <hr />
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-10">Are there any reasons you may not be able to perform the functions of the position for which you have applied? : </label>
+                <label class="control-label col-md-6">Are there any reasons you may not be able to perform the functions of the position for which you have applied? </label>
 				<div class="col-md-2">
 					<input type="radio" id="not_able_perform_function_position_1" name="not_able_perform_function_position" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
                     <input type="radio" id="not_able_perform_function_position_0" name="not_able_perform_function_position" value="0"/>&nbsp;&nbsp;No
@@ -303,18 +302,20 @@
             </div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">If yes, please provide details </label>
-                <div class="col-md-9">
+                <label class="control-label col-md-6">If yes, please provide details : </label>
+                <div class="col-md-6">
                 <textarea class="form-control" name="reason_not_perform_function_of_position"></textarea>
                 </div>
             </div>
             <div class="form-group col-md-12">
-                <label class="control-label col-md-5">Are you physically capable of heavy manual work? : </label>
+                <label class="control-label col-md-6">Are you physically capable of heavy manual work?</label>
 				<div class="col-md-2">
 					<input type="radio" id="physical_capable_heavy_manual_work_1" name="physical_capable_heavy_manual_work" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
                     <input type="radio" id="physical_capable_heavy_manual_work_0" name="physical_capable_heavy_manual_work" value="0" />&nbsp;&nbsp;No
 				</div>
-                <label class="control-label col-md-3">Ever injured on the job? : </label>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="control-label col-md-6">Have you ever been injured while on the job? </label>
 				<div class="col-md-2">
 					<input type="radio" id="injured_on_job_1" name="injured_on_job" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
                     <input type="radio" id="injured_on_job_0" name="injured_on_job" value="0"/>&nbsp;&nbsp;No
@@ -322,7 +323,7 @@
             </div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Give nature and degree of such injuries </label>
+                <label class="control-label col-md-6">Give nature and degree of such injuries : </label>
                 <div class="col-md-6">
 					<textarea class="form-control" name="give_nature_degree_of_injury"></textarea>
                 </div>
@@ -336,7 +337,7 @@
             </div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-6">Would you be willing to take a physical examination? : </label>
+                <label class="control-label col-md-6">Would you be willing to take a physical examination?</label>
 				<div class="col-md-6">
 					<input type="radio" id="willing_physical_examination_1" name="willing_physical_examination" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
                     <input type="radio" id="willing_physical_examination_0" name="willing_physical_examination" value="0" />&nbsp;&nbsp;No
@@ -509,7 +510,7 @@
             </div>
             
             <div class="form-group col-md-12">
-										<label class="col-md-9 control-label">A) Have you ever been denied a license, permit or privilege to operate a motor vehicle? </label>
+										<label class="col-md-8 control-label">A) Have you ever been denied a license, permit or privilege to operate a motor vehicle? </label>
 										<div class="col-md-3">
                                             <input type="radio" id="ever_been_denied_1" name="ever_been_denied" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
                                             <input type="radio" id="ever_been_denied_0" name="ever_been_denied" value="0" />&nbsp;&nbsp;No&nbsp;&nbsp;
@@ -517,13 +518,13 @@
             </div>
             
             <div class="form-group col-md-12">
-										<label class="col-md-9 control-label">B) Has any license, permit or privilege ever been suspended or revoked?</label>
+										<label class="col-md-8 control-label">B) Has any license, permit or privilege ever been suspended or revoked?</label>
 										<div class="col-md-3">
                                             <input type="radio" id="suspend_any_license_1" name="suspend_any_license" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
                                             <input type="radio" id="suspend_any_license_0" name="suspend_any_license" value="0" />&nbsp;&nbsp;No&nbsp;&nbsp;
                                         </div>
             </div>
-            <label class="col-md-9 control-label">If the answer to either A or B is Yes, attach statement giving details.</label>
+            <label class="col-md-8 control-label">If the answer to either A or B is Yes, attach statement giving details.</label>
             <div class="clearfix"></div>
             <hr />
             
@@ -668,7 +669,8 @@
                                 <label class="control-label">Province</label>
                             </div>
                             <div class="col-md-3">
-                                 <input type="text" class="form-control" name="posses_province"/>
+                                <?php provinces("posses_province"); ?>
+                                 <!--<input type="text" class="form-control" name="posses_province"/> -->
                             </div>
                        </div>
                        <div class="form-group col-md-12">

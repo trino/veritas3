@@ -1,54 +1,64 @@
+
+
 <form id="form_consent">
     <h3 class="col-md-12">Consent for the release of police information and disclosure of personal information</h3>
 
     <div class="form-body">
         <div class="form-group col-md-12">
-            <label class="control-label col-md-2">Surname : </label>
 
-            <div class="col-md-2">
+            <div class="col-md-4"> <label class="control-label">Surname : </label>
                 <input type="text" class="form-control required" name="last_name"/>
             </div>
-            <label class="control-label col-md-2">First Name : </label>
 
-            <div class="col-md-2">
+            <div class="col-md-4"><label class="control-label">First Name : </label>
                 <input type="text" class="form-control required" name="first_name"/>
             </div>
-            <label class="control-label col-md-2">Middle Name : </label>
 
-            <div class="col-md-2">
+            <div class="col-md-4"><label class="control-label">Middle Name : </label>
                 <input type="text" class="form-control" name="mid_name"/>
             </div>
-        </div>
 
-        <div class="form-group col-md-12">
-            <label class="control-label col-md-4">Previous Surname(s) or Maiden Name(s) : </label>
-
-            <div class="col-md-2">
+            <div class="col-md-4"><label class="control-label">Previous Surname(s) or Maiden Name(s) : </label>
                 <input type="text" class="form-control" name="previous_last_name"/>
             </div>
-            <label class="control-label col-md-3">Place of Birth(Country) : </label>
 
-            <div class="col-md-3">
+            <div class="col-md-4"><label class="control-label">Place of Birth (Country) : </label>
                 <input type="text" class="form-control" name="place_birth_country"/>
             </div>
-        </div>
 
-        <div class="form-group col-md-12">
-            <label class="control-label col-md-2">Date of Birth : </label>
 
-            <div class="col-md-2">
-                <input type="text" class="form-control date-picker required" placeholder="YYYY-MM-DD"
-                       name="birth_date"/>
+            <div class="col-md-4"><label class="control-label">Date of Birth : </label>
+                <input type="text" class="form-control date-picker required" placeholder="YYYY-MM-DD" name="birth_date"/>
             </div>
-            <label class="control-label col-md-2">Sex : </label>
 
-            <div class="col-md-2">
+            <div class="col-md-4"><label class="control-label">Sex : </label>
                 <input type="text" class="form-control" name="sex"/>
             </div>
-            <label class="control-label col-md-2">Phone Number : </label>
-
-            <div class="col-md-2">
+            
+            <div class="col-md-4"><label class="control-label">Phone Number : </label>
                 <input type="text" class="form-control" name="phone"/>
+            </div>
+
+
+            <div class="col-md-4"> <label class="control-label">Aliases : </label>
+                <input type="text" class="form-control" name="aliases"/>
+            </div>
+
+
+            <div class="col-md-4"><label class="control-label">Drivers License Number : </label>
+                <input type="text" class="form-control required" name="driver_license_number"/>
+            </div>
+
+
+
+            <div class="col-md-4"><label class="control-label">Province Driver’s License was issued :</label>
+                <?php provinces("driver_license_issued");?>
+                <!--                 <input type="text" class="form-control" name="driver_license_issued"/>-->
+            </div>
+
+
+            <div class="col-md-4"><label class="control-label">Applicants Email : </label>
+                <input type="text" class="form-control email1 " name="applicants_email"/>
             </div>
         </div>
 
@@ -67,7 +77,8 @@
                 <input type="text" class="form-control required" placeholder="City" name="current_city"/>
             </div>
             <div class="col-md-2">
-                <input type="text" class="form-control required" placeholder="Province" name="current_province"/>
+                <?php provinces("current_province");?>
+                <!-- <input type="text" class="form-control required" placeholder="Province" name="current_province"/> -->
             </div>
             <div class="col-md-3">
                 <input type="text" class="form-control required" placeholder="Postal Code" name="current_postal_code"/>
@@ -89,35 +100,11 @@
                 <input type="text" class="form-control" placeholder="City" name="previous_city"/>
             </div>
             <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Province" name="previous_province"/>
+                <?php provinces("previous_province");?>
+                <!-- <input type="text" class="form-control" placeholder="Province" name="previous_province"/> -->
             </div>
             <div class="col-md-3">
                 <input type="text" class="form-control" placeholder="Postal Code" name="previous_postal_code"/>
-            </div>
-        </div>
-
-        <div class="form-group col-md-12">
-            <label class="control-label col-md-3">Aliases : </label>
-
-            <div class="col-md-3">
-                <input type="text" class="form-control" name="aliases"/>
-            </div>
-            <label class="control-label col-md-3">Drivers License Number : </label>
-
-            <div class="col-md-3">
-                <input type="text" class="form-control required" name="driver_license_number"/>
-            </div>
-        </div>
-        <div class="form-group col-md-12">
-            <label class="control-label col-md-3">Province (Driver’s License was issued) : </label>
-
-            <div class="col-md-3">
-                <input type="text" class="form-control" name="driver_license_issued"/>
-            </div>
-            <label class="control-label col-md-3">Applicants Email : </label>
-
-            <div class="col-md-3">
-                <input type="text" class="form-control email1 " name="applicants_email"/>
             </div>
         </div>
 
@@ -180,22 +167,18 @@
 
         <div class="clearfix"></div>        
         <div class="form-group col-md-12">
-            <label class="control-label col-md-4">Company Name Requesting Search : </label>
 
-            <div class="col-md-2">
+
+            <div class="col-md-4"><label class="control-label">Company Name Requesting Search : </label>
                 <input type="text" class="form-control" name="company_name_requesting"/>
             </div>
-            <label class="control-label col-md-4">Printed Name of Company Witness : </label>
 
-            <div class="col-md-2">
+
+            <div class="col-md-4"><label class="control-label">Printed Name of Company Witness : </label>
                 <input type="text" class="form-control" name="printed_name_company_witness"/>
             </div>
-        </div>
 
-        <div class="form-group col-md-12">
-            <label class="control-label col-md-4">Company Location (Country): </label>
-
-            <div class="col-md-2">
+            <div class="col-md-4"><label class="control-label">Company Location (Country): </label>
                 <input type="text" class="form-control" name="company_location"/>
             </div>
 
@@ -218,29 +201,32 @@
         <h4>PART 1 - DECLARATION OF CRIMINAL RECORD (if applicable) - Completed by Applicant</h4>
 
         <div class="form-group col-md-12">
-            <label class="control-label col-md-3">Surname: </label>
 
-            <div class="col-md-3">
+
+            <div class="col-md-4"><label class="control-label">Surname: </label>
                 <input type="text" class="form-control" name="criminal_surname"/>
             </div>
-            <label class="control-label col-md-3">Given Name: </label>
 
-            <div class="col-md-3">
+
+            <div class="col-md-4"><label class="control-label">Given Name: </label>
                 <input type="text" class="form-control" name="criminal_given_name"/>
             </div>
-        </div>
 
-        <div class="form-group col-md-12">
-            <label class="control-label col-md-3">Sex: </label>
-
-            <div class="col-md-3">
-                <input type="text" class="form-control" name="criminal_sex"/>
+            <div class="col-md-4"><label class="control-label">Sex: </label>
+                <SELECT name="criminal_sex" class="form-control">
+                    <OPTION>Male</OPTION><OPTION>Female</OPTION>
+                </SELECT>
+                <!--<input type="text" class="form-control" name="criminal_sex"/>-->
             </div>
-            <label class="control-label col-md-3">Date of Birth : </label>
 
-            <div class="col-md-3">
+
+            <div class="col-md-4"><label class="control-label">Date of Birth : </label>
                 <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD"
                        name="criminal_date_birth"/>
+            </div>
+
+            <div class="col-md-4"><label class="control-label">Date: </label>
+                <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="criminal_date" value="<?php echo date("Y-m-d"); ?>"/>
             </div>
         </div>
 
@@ -251,21 +237,14 @@
                 <input type="text" class="form-control" placeholder="Address" name="criminal_current_address"/>
             </div>
             <div class="col-md-3">
-                <input type="text" class="form-control" placeholder="Province" name="criminal_current_province"/>
+                <?php provinces("criminal_current_province");?>
+                <!--                 <input type="text" class="form-control" placeholder="Province" name="criminal_current_province"/>-->
             </div>
             <div class="col-md-3">
                 <input type="text" class="form-control" placeholder="Postal Code" name="criminal_current_postal_code"/>
             </div>
         </div>
 
-        <div class="form-group col-md-12">
-
-            <label class="control-label col-md-3">Date: </label>
-
-            <div class="col-md-3">
-                <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="criminal_date"/>
-            </div>
-        </div>
 
         <div class="col-md-12">
             <strong>DECLARATION OF CRIMINAL RECORD</strong>

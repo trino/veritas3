@@ -18,23 +18,21 @@ $feed = $feeds;
     <input type="hidden" class="document_type" name="document_type" value="Feedbacks"/>
     <input type="hidden" name="sub_doc_id" value="6" class="sub_docs_id" id="af" />
     <div class="form-group col-md-12">
-            <label class="control-label col-md-3">Title</label>
+            <label class="control-label col-md-6">Title : </label>
             <div class="col-md-6">
                 <input type="text" class="form-control" name="title" <?php echo $is_disabled;?> value="<?php if(isset($feed->title)){echo $feed->title;} ?>" />
             </div>
             <!--<div class="clearfix"></div>-->
     </div>
     <div class="form-group col-md-12">
-            <label class="control-label col-md-3">Description</label>
+            <label class="control-label col-md-6">Description : </label>
             <div class="col-md-6">
                 <textarea class="form-control" name="description" <?php echo $is_disabled;?> ><?php if(isset($feed->description)) echo $feed->description; ?></textarea>
             </div>
             <div class="clearfix"></div>
     </div>
-        <div class="col-md-12">
-                <label class="control-label">If you had a colleague who required our services, would you recommend ISB Canada ?(Scale 1-10) </label>
-        </div><div class="clearfix"></div>
-        <div class="col-md-12">
+    <label class="control-label col-md-6">If you had a colleague who required our services, would you recommend ISB Canada? </label>
+        <div class="col-md-6">
             <input type="radio" <?php echo $is_disabled;?> class="form-control" name="scale" value="1" <?php if(isset($feed->scale)&& $feed->scale = 1){?> checked="checked" <?php } ?> />&nbsp;&nbsp;1&nbsp;&nbsp;
             <input type="radio" <?php echo $is_disabled;?> class="form-control" name="scale" value="2" <?php if(isset($feed->scale)&& $feed->scale = 2){?> checked="checked" <?php } ?> />&nbsp;&nbsp;2&nbsp;&nbsp;
             <input type="radio" <?php echo $is_disabled;?> class="form-control" name="scale" value="3" <?php if(isset($feed->scale)&& $feed->scale = 3){?> checked="checked" <?php } ?> />&nbsp;&nbsp;3&nbsp;&nbsp;
@@ -49,14 +47,14 @@ $feed = $feeds;
         <div class="clearfix"></div>
         <div class="form-group"></div>
 <div class="form-group col-md-12">
-        <label class="control-label col-md-6">What is the reason for your score in question #1?</label>
+        <label class="control-label col-md-6">What is the reason for your score?</label>
         <div class="col-md-6">
             <textarea class="form-control" name="reason" <?php echo $is_disabled;?> ><?php if(isset($feed->reason)) echo $feed->reason; ?></textarea>
         </div>
         <div class="clearfix"></div>
 </div>
 <div class="form-group col-md-12">
-        <label class="control-label col-md-6" >What could we do to improve the score you gave in question #1? </label>
+        <label class="control-label col-md-6" >What could we do to improve the score? </label>
         <div class="col-md-6">
             <textarea class="form-control" name="suggestion" <?php echo $is_disabled;?> ><?php if(isset($feed->suggestion)) echo $feed->suggestion; ?></textarea>
         </div>

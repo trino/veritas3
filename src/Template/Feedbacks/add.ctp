@@ -45,8 +45,10 @@ $feed = $feeds;
                             <form role="form" action="" method="post">
                                                     <input type="hidden" name="document_type" value="feedbacks" />
                                                     <input type="hidden" name="user_id" value="<?php echo $this->request->session()->read('Profile.id');?>" />
+
+
                                                     <div class="form-group">
-                                                            <label class="control-label col-md-6">Title</label>
+                                                            <label class="control-label col-md-6">Title: </label>
                                                             <div class="col-md-6">
                                                                 <input type="text" class="form-control" name="title" value="<?php if(isset($feed->title)){echo $feed->title;} ?>" />
                                                             </div>

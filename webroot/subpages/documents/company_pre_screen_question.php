@@ -52,10 +52,11 @@
                     <div class="clearfix"></div>
                     <hr />
 									<div class="form-group col-md-12">
-                                        <div class="col-md-6">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-4">
                                             <h4 class="center" style="width: 50%;">Screen Questions</h4>
-                                        </div>
-                                        <div class="col-md-6">
+                                        </div><div class="col-md-2"></div>
+                                        <div class="col-md-4">
                                             <h4 class="center" style="width: 50%;">Answers</h4>
                                         </div>
                                     </div>
@@ -268,7 +269,7 @@
                                     
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">Reefer:  Y or N   How many loads</label>
+                                            <label class="control-label">Reefer:  Y or N   How many loads?</label>
                                         </div>
                                         <div class="col-md-6">
                                             <input type="radio" id="reefer_load_1" name="reefer_load" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="reefer_load_0" name="reefer_load" value="0"/>&nbsp;&nbsp;No  
@@ -576,7 +577,7 @@
 
     <div class="form-group col-md-12">
         <div class="col-md-6">
-            <label class="control-label">Type of equipment</label>
+            <label class="control-label">Type of equipment :</label>
         </div>
         <div class="col-md-6">
             <textarea class="form-control" name="driven_az_type_equipment"></textarea>
@@ -585,7 +586,7 @@
 
     <div class="form-group col-md-12">
         <div class="col-md-6">
-            <label class="control-label">Recruiters comments and recommendations (note what day they are booked to come in for a road test and interview):</label>
+            <label class="control-label">Recruiters comments and recommendations (note what day they are booked to come in for a road test and interview) :</label>
         </div>
         <div class="col-md-6">
             <textarea class="form-control" name="recruiter_comment_recommendation"></textarea>

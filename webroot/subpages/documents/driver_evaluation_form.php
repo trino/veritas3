@@ -8,7 +8,7 @@
 													<label class="control-label col-md-3">Driver name <span class="required">
 													* </span>
 													</label>
-													<div class="col-md-4">
+													<div class="col-md-6">
 														<input type="text" class="form-control" name="driver_name"/>
 														
 													</div>
@@ -17,7 +17,7 @@
 													<label class="control-label col-md-3">D/L# <span class="required">
 													* </span>
 													</label>
-													<div class="col-md-4">
+													<div class="col-md-6">
 														<input type="text" placeholder="" class="form-control" name="d_l"/>
 														
 													</div>
@@ -26,7 +26,7 @@
 													<label class="control-label col-md-3">Date <span class="required">
 													* </span>
 													</label>
-													<div class="col-md-4">
+													<div class="col-md-6">
 														<input type="text" placeholder="" class="form-control date-picker" name="issued_date"/>
 														
 													</div>
@@ -35,10 +35,10 @@
 													<label class="control-label col-md-3">Transmission <span class="required">
 													* </span>
 													</label>
-													<div class="col-md-4">
-														<div class="checkbox-list">
+													<div class="col-md-9">
+                                                        <div class="checkbox-list col-md-3 nopad">
 															<label>
-															<input type="checkbox" id="transmission_manual_shift_1" name="transmission_manual_shift" value="1"/> Manual Shift </label>
+															<input type="checkbox" id="transmission_manual_shift_1" name="transmission_manual_shift" value="1"/> Manual Shift </label></div><div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="checkbox" id="transmission_auto_shift_2" name="transmission_auto_shift" value="2"/> Auto Shift </label>
 														</div>
@@ -50,7 +50,7 @@
 													<label class="control-label col-md-3">Name of evaluator <span class="required">
 													* </span>
 													</label>
-													<div class="col-md-4">
+													<div class="col-md-6">
 														<input type="text" placeholder="" class="form-control" name="name_evaluator"/>
 													</div>
 												</div>
@@ -114,8 +114,7 @@
         															<input type="checkbox" class="1" name="seat_mirror" value="1" /> Seat and Mirror set up </label>
         															<label>
         															<input type="checkbox" class="1" name="coupling" value="1" /> Coupling&nbsp; &nbsp; &nbsp; &nbsp;</label>
-                                                                    <label>
-        															<input type="checkbox" class="1" name="paperwork" value="1" /> Paperwork </label>
+
         															<label>
         															<input type="checkbox" class="1" name="lights_abs_lamps" value="1" /> Lights/ABS Lamps </label>
                                                                     <label>
@@ -126,6 +125,8 @@
         															<input type="checkbox" class="1" name="landing_gear" value="1" /> Landing Gear </label>
                                                                     <label>
         															<input type="checkbox" class="1" name="emergency_exit" value="1" /> Emergency exit </label>
+                                                                    <label>
+                                                                        <input type="checkbox" class="1" name="paperwork" value="1" /> Paperwork </label>
                                                                 </div>
                                                                 <div class="clearfix"></div>
                                                                 <input class="form-control" type="hidden" name="total1" id="total1" <?php if(!$did){?>value="0"<?php }?> />
@@ -534,28 +535,22 @@
                                                 
                                                 </div>
                                                 <div class="form-group col-md-12">
-													<label class="control-label col-md-3">Total score<span class="required">
-													* </span>
-													</label>
+
 													<div class="col-md-4">
+                                                        <label class="control-label">Total score<span class="required"> * </span> </label>
 														<input type="text" id="total_score" class="form-control" name="total_score"  <?php if(!$did){?>value="0"<?php }?>/>
 														
 													</div>
-												</div>
-                                                <div class="form-group col-md-12">
-													<label class="control-label col-md-3">Auto shift<span class="required">
-													* </span>
-													</label>
+
+
 													<div class="col-md-4">
+                                                        <label class="control-label">Auto shift<span class="required"> * </span> </label>
 														<input type="text" class="form-control" name="auto_shift"/>
 														
 													</div>
-												</div>
-                                                <div class="form-group col-md-12">
-													<label class="control-label col-md-3">Manual<span class="required">
-													* </span>
-													</label>
+
 													<div class="col-md-4">
+                                                        <label class="control-label">Manual<span class="required"> * </span></label>
 														<input type="text" class="form-control" name="manual"/>
 														
 													</div>
@@ -566,16 +561,16 @@
 												</div>
                                                 <hr />
                                                 <div class="form-group col-md-12">
-                                                    <p class="control-label col-md-3"><strong>Summary</strong></p>
+                                                    <p class="control-label col-md-6"><strong>Summary</strong></p>
                                                 </div>
                                                 <div class="form-group col-md-12">
 													<label class="control-label col-md-3">Recommended for hire <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<div class="checkbox-list">
+                                                        <div class="checkbox-list col-md-3 nopad">
 															<label>
-															<input type="radio" id="recommended_for_hire_1" name="recommended_for_hire" value="1"/> Yes </label>
+															<input type="radio" id="recommended_for_hire_1" name="recommended_for_hire" value="1"/> Yes </label></div><div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="radio" id="recommended_for_hire_2" name="recommended_for_hire" value="0"/> No </label>
 														</div>
@@ -588,9 +583,9 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<div class="checkbox-list">
+														<div class="checkbox-list col-md-3 nopad">
 															<label>
-															<input type="radio" id="recommended_full_trainee_1" name="recommended_full_trainee" value="1"/> Yes </label>
+															<input type="radio" id="recommended_full_trainee_1" name="recommended_full_trainee" value="1"/> Yes </label></div><div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="radio" id="recommended_full_trainee_0" name="recommended_full_trainee" value="0"/> No </label>
 														</div>
@@ -603,9 +598,9 @@
 													* </span>
 													</label>
 													<div class="col-md-4">
-														<div class="checkbox-list">
+                                                        <div class="checkbox-list col-md-3 nopad">
 															<label>
-															<input type="radio" id="recommended_fire_hire_trainee_1" name="recommended_fire_hire_trainee" value="1"/> Yes </label>
+															<input type="radio" id="recommended_fire_hire_trainee_1" name="recommended_fire_hire_trainee" value="1"/> Yes </label></div><div class="checkbox-list col-md-3 nopad">
 															<label>
 															<input type="radio" id="recommended_fire_hire_trainee_0" name="recommended_fire_hire_trainee" value="0"/> No </label>
 														</div>

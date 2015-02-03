@@ -678,8 +678,8 @@ class ClientsController extends AppController {
 
         if($q->profile_id)
             $querys = $pro->find()->where(['id IN ('.$q->profile_id.')']);
-            else
-            $querys=array();
+        else
+            $querys= array();
             $this->response->body(($querys));
             return $this->response;
 

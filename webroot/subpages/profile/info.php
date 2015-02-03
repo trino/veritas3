@@ -5,6 +5,18 @@
 <?php
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
+    
+    function printoption($option, $selected, $value = "")
+    {
+        $tempstr = "";
+        if ($option == $selected) {
+            $tempstr = " selected";
+        }
+        if (strlen($value) > 0) {
+            $value = " value='" . $value . "'";
+        }
+        echo '<option' . $value . $tempstr . ">" . $option . "</option>";
+    }
 ?>
 <ul class="nav nav-tabs">
     <li class="active">
@@ -36,11 +48,12 @@
 
                 <div class="row">
                 <input type="hidden" name="created_by" value="<?php echo $this->request->session()->read('Profile.id') ?>"/>
+                    <?php if ($sidebar->client_option == 0) { ?>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Profile Type</label>
 
-
+                            
                             <select  <?php echo $is_disabled ?>
                                 name="profile_type" <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
                                 class="form-control member_type" required='required'>
@@ -110,7 +123,7 @@
                             </select>
                         </div>
                     </div>
-                    
+                  
                     <div class="col-md-6" id="driver_div"
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
@@ -193,6 +206,7 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
+                    <?php }?>                    
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Username</label>
@@ -242,7 +256,7 @@
                     </div>
                     <div class="clearfix">
                     </div>
-
+                    <?php if ($sidebar->client_option == 0) { ?>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Title</label><BR>
@@ -320,10 +334,7 @@
                                 ?></SELECT>
                         </div>
                     </div>
-                    
-                    
-
-                    <?php if ($sidebar->client_option == 0) { ?>
+                   
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">ISB Id</label>
@@ -333,7 +344,7 @@
                                     class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
                             </div>
                         </div>
-                    <?php } ?>
+                    
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -356,17 +367,7 @@
                                 <div class="col-md-4 no-margin">
                                     <?php
 
-                                        function printoption($option, $selected, $value = "")
-                                        {
-                                            $tempstr = "";
-                                            if ($option == $selected) {
-                                                $tempstr = " selected";
-                                            }
-                                            if (strlen($value) > 0) {
-                                                $value = " value='" . $value . "'";
-                                            }
-                                            echo '<option' . $value . $tempstr . ">" . $option . "</option>";
-                                        }
+                                        
 
 
                                         $currentyear = "0000";
@@ -514,7 +515,15 @@
 
                             </div>
                         </div>
-
+                        <?php }
+                        else
+                        {?>
+                            <input type="hidden" name="doby" value="0000"/> 
+                            <input type="hidden" name="dobm" value="00"/> 
+                            <input type="hidden" name="dobd" value="00"/>    
+                        <?php
+                        }
+                        ?>
 
 
 

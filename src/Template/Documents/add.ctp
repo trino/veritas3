@@ -885,8 +885,9 @@
                 //alert('tes');
             var er = 0;
             $('.required').each(function(){
-                if($(this).val()=='')
+                if($(this).val()=='' && $(this).attr('name')!='' && $(this).attr('name')!='undefined'  && $(this).attr('name'))
                 {
+                    alert($(this).attr('name'));
                     $(this).attr('style','border-color:red');
                     //$('.cont').attr('disabled','');
                     //$(this).focus();

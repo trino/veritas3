@@ -46,10 +46,10 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="theme-panel hidden-xs hidden-sm">
-    <!--div class="toggler">
+    <div class="toggler">
     </div>
     <div class="toggler-close">
-    </div-->
+    </div>
     <div class="theme-options">
         <div class="theme-option theme-colors clearfix">
 						<span>
@@ -90,7 +90,7 @@
         <div class="theme-option">
 						<span>
 						Layout </span>
-            <select class="layout-option form-control input-sm" onchange="change_body();">
+            <select class="layout-option form-control input-sm" onchange="change_box();" id="boxed">
                 <option value="fluid" selected="selected">Fluid</option>
                 <option value="boxed">Boxed</option>
             </select>
@@ -379,6 +379,9 @@
                                                 <li>
                                                     <a href="#tab_1_6" data-toggle="tab">Pages</a>
                                                 </li>
+                                                <li>
+                                                    <a href="#tab_1_8" data-toggle="tab">Client Setting</a>
+                                                </li>
                                             <?php
                                             }
                                             }
@@ -423,6 +426,10 @@
 
                                         <div class="tab-pane" id="tab_1_7">
                                             <?php include('subpages/profile/block.php'); ?>
+                                        </div>
+                                        
+                                         <div class="tab-pane" id="tab_1_8">
+                                            <?php include('subpages/profile/client_setting.php'); ?>
                                         </div>
 
                                     <?php } ?>

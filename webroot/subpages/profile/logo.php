@@ -27,7 +27,8 @@
                                                         <div class="col-md-4 margin-top-20">
                                                         <div class="form-group" style="height:100px;overflow:hidden;">
                                                         <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?>/>
-                                                        <img style="width:200px;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>" />
+                                                        <img style="max-width:80%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>" />
+                                                        <a href="<?php echo $this->request->webroot;?>logos/delete/<?php echo $logo->id;?>/<?php echo $id;?>" class="btn btn-danger" onclick="return confirm('Confirm Delete?');">Delete</a>
                                                         </div>
                                                         </div>
 
@@ -60,7 +61,8 @@
                                                              <div class="col-md-4 margin-top-20">
                                                                 <div class="form-group" style="height:100px;overflow:hidden;">
                                                                         <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> />
-                                                                        <img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"             />
+                                                                        <img style="max-width:80%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"             />
+                                                                        <a href="<?php echo $this->request->webroot;?>logos/delete/<?php echo $logo->id;?>/<?php echo $id;?>" class="btn btn-danger" onclick="return confirm('Confirm Delete?');">Delete</a>
                                                                         </div>
                                                             </div>
 
@@ -93,8 +95,10 @@
                                                              <div class="col-md-4 margin-top-20">
                                                                 <div class="form-group" style="height:100px;overflow:hidden;">
                                                                         <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> />
-                                                                        <img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"             />
+                                                                        <img style="max-width:80%;" src="<?php echo $this->request->webroot; ?>img/logos/<?php echo $logo->logo; ?>"             />
+                                                                        <a href="<?php echo $this->request->webroot;?>logos/delete/<?php echo $logo->id;?>/<?php echo $id;?>" class="btn btn-danger" onclick="return confirm('Confirm Delete?');">Delete</a>
                                                                         </div>
+                                                                        
                                                             </div>
 
 

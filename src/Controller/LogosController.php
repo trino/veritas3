@@ -256,15 +256,15 @@ class LogosController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function delete($id = null) {
+	public function delete($id = null, $uid) {
 		$logo = $this->Logos->get($id);
-		$this->request->allowMethod(['post', 'delete']);
+		//$this->request->allowMethod(['post', 'delete']);
 		if ($this->Logos->delete($logo)) {
 			$this->Flash->success('The logo has been deleted.');
 		} else {
 			$this->Flash->error('The logo could not be deleted. Please try again.');
 		}
-		return $this->redirect(['action' => 'index']);
+		return $this->redirect(['controller'=>'profiles','action' => 'edit',$uid]);
 	}
     
     function getlogo($type)
@@ -314,5 +314,7 @@ class LogosController extends AppController {
             return $this->response;
          die();
     }
+        
+    
 
 }

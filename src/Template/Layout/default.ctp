@@ -118,7 +118,7 @@
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
-	<div class="page-header-inner">
+	<div class="page-header-inner <?php if($settings->box =='1')echo "container";?>">
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="<?php echo $this->request->webroot;?>">
@@ -274,6 +274,7 @@
 <div class="clearfix">
 </div>
 <!-- BEGIN CONTAINER -->
+ <?php if($settings->box =='1'){?><div class="container"><?php }?>
 <div class="page-container">
 
 	<?php include('subpages/sidebar.php');?>
@@ -937,10 +938,12 @@
 		</div>
 	</div>
 	<!-- END QUICK SIDEBAR -->
+ <?php if($settings->box =='1'){?></div><?php }?>
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
+<?php if($settings->box =='1'){?><div class="container"><?php }?>
 	<div class="page-footer-inner">
 		 &copy; <?php echo $settings->mee;?> 2015
 	</div>
@@ -959,6 +962,7 @@
     <div class="scroll-to-top">
 		<i class="icon-arrow-up"></i>
 	</div>
+    <?php if($settings->box =='1'){?></div><?php }?>
 </div>
 
 <script>
@@ -998,7 +1002,33 @@ function change_layout(msg)
         
     });
 }
-
+function change_box()
+{
+    var cls = "";
+     
+    $('body').on('change',function(){
+       var b = $('#boxed').val(); 
+     cls = $('body').attr('class');
+    if(b =="boxed")
+     var box = 1;
+     else
+     var box = 0;
+    
+       var sidebar = $('#mainbar').attr('class');
+    //alert(sidebar);
+  
+    $.ajax({
+       url: "<?php echo $this->request->webroot;?>settings/changebody",
+       type: "post",
+       data: "class="+cls+'&side='+sidebar+'&box='+box,
+       success: function(m){
+        
+       }
+        
+    });
+    
+     });
+}
 function change_body()
 {
     var cls = "";

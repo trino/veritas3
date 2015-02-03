@@ -35,6 +35,7 @@
                 <input type="hidden" name="client_ids" value="" class="client_profile_id"/>
 
                 <div class="row">
+                <input type="hidden" name="created_by" value="<?php echo $this->request->session()->read('Profile.id') ?>"/>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Profile Type</label>
@@ -192,7 +193,7 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Username</label>
                             <input <?php echo $is_disabled ?> name="username" type="text"
@@ -201,9 +202,11 @@
                                   style="display: none;">Username already exists</span>
                         </div>
                     </div>
+                    <div class="clearfix flashUser" style="display: none;">
+                    </div>
 
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Email</label>
                             <input <?php echo $is_disabled ?> name="email" type="email"
@@ -213,22 +216,12 @@
                                   style="display: none;">Email already exists</span>
                         </div>
                     </div>
-                    
+                    <div class="clearfix flashEmail" style="display: none;">
+                    </div>
                     
 
-                    <?php if ($sidebar->client_option == 0) { ?>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">ISB Id</label>
-                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
-                                    name="isb_id" type="text"
-                                    placeholder="optional"
-                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
-                            </div>
-                        </div>
-                    <?php } ?>
-
-                    <div class="col-md-4">
+                    
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Password</label>
                             <input type="password" name="password" id="password" class="form-control input-medium"
@@ -236,7 +229,8 @@
                                    required="required"/>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Re-type Password</label>
                             <input type="password" class="form-control input-medium"
@@ -326,7 +320,20 @@
                                 ?></SELECT>
                         </div>
                     </div>
+                    
+                    
 
+                    <?php if ($sidebar->client_option == 0) { ?>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">ISB Id</label>
+                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
+                                    name="isb_id" type="text"
+                                    placeholder="optional"
+                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
+                            </div>
+                        </div>
+                    <?php } ?>
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -630,44 +637,49 @@
                 type: 'post',
                 success: function (res) {
                     if (res == '1') {
-
+                        //alert(res);
+                        $('.flashUser').show();
                         $('.uname').focus();
-                        $('html,body').animate({
-                                scrollTop: $('.page-title').offset('200').top
-                            },
-                            'slow');
-                            $('.flashUser').show();
-                        return false;
-                    }
-                    else {
-                        $('#hiddensub').click();
-                    }
-                }
-            });
-            
-            
-           if($('.email').val()!=''){
-            var un = $('.email').val();
-            $.ajax({
-                url: '<?php echo $this->request->webroot;?>profiles/check_email/<?php echo $uid;?>',
-                data: 'email=' + $('.email').val(),
-                type: 'post',
-                success: function (res) {
-                    if (res == '1') {
-                        $('.email').focus();
                         $('html,body').animate({
                                 scrollTop: $('.page-title').offset().top
                             },
                             'slow');
-                            $('.flashEmail').show();
+                            
                         return false;
                     }
                     else {
+                        $('.flashUser').hide();
+                        if($('.email').val()!=''){
+                                    var un = $('.email').val();
+                                    $.ajax({
+                                        url: '<?php echo $this->request->webroot;?>profiles/check_email/<?php echo $uid;?>',
+                                        data: 'email=' + $('.email').val(),
+                                        type: 'post',
+                                        success: function (res) {
+                                            if (res == '1') {
+                                                $('.email').focus();
+                                                $('.flashEmail').show();
+                                                $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+                                                    
+                                                return false;
+                                            }
+                                            else {
+                                                $('#hiddensub').click();
+                                            }
+                                        }
+                                    });
+                        }
+                        else
                         $('#hiddensub').click();
                     }
                 }
             });
-}
+            
+            
+           
         }
         else {
             $('#retype_password').focus();

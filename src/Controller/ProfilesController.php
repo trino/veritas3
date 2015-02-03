@@ -119,7 +119,17 @@
                 else
                     $cond = $cond.' AND (id IN ('.$profile_ids.'))';
             }
+            if($this->request->session()->read('Profile.profile_type') == '2'){
+            if($cond)
+            {
+                $cond = $cond.' OR (created_by = '.$this->request->session()->read('Profile.id').')';
+            }
+            else
+            {
+               $condition['created_by'] = $this->request->session()->read('Profile.id'); 
+            }
 
+            }
             /*=================================================================================================== */
             if($cond)
             {

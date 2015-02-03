@@ -12,7 +12,7 @@ else
                                         <div class="form-group" id="notli">
 <div class="row">
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
 
                                             <div class="form-group">
                                                 <label class="control-label">Client</label>
@@ -20,9 +20,9 @@ else
                                                        value="<?php echo $settings->client; ?>"/>
                                             </div>
                                             </div>
-                                            </div><div class="row">
 
-                                            <div class="col-md-4">
+
+                                            <div class="col-md-6">
 
                                             <div class="form-group">
                                                 <label class="control-label">Document</label>
@@ -33,7 +33,7 @@ else
                                             </div>
                                             <div class="row">
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
 
                                             <div class="form-group">
                                                 <label class="control-label">Profile</label>
@@ -41,10 +41,9 @@ else
                                                        value="<?php echo $settings->profile; ?>"/>
                                             </div>
                                             </div>
-                                            </div>
-                                            <div class="row">
 
-                                            <div class="col-md-4">
+
+                                            <div class="col-md-6">
 
                                             <div class="form-group">
                                                 <label class="control-label">MEE</label>

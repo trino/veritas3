@@ -7,43 +7,45 @@
 							<div class="form-group col-md-12">
 								<h4 class="col-md-12">Driver Pre-Screen Questions</h4>
 							</div>
+
 								<div class="form-body">
 
-									<div class="form-group col-md-6">
-										<label class="col-md-6 control-label">Recruiter's Name : </label>
-										<div class="col-md-6">
-											<input type="text" class="form-control" name="recruiter_name" value="<?php if(!$did)echo $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.lname');?>" />
-										</div>
+									<div class="form-group col-md-4">
+										<label class="control-label">Recruiter's Name test: </label>
+
+											<input style="width:95%;" type="text" class="form-control" name="recruiter_name" value="<?php if(!$did)echo $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.lname');?>" />
+
 									</div>
-									<div class="form-group col-md-6">
-										<label class="col-md-6 control-label">Applicant's Phone Number : </label>
-										<div class="col-md-6">
-											<input type="text" class="form-control" name="applicant_phone_number"/>
-										</div>
+
+									<div class="form-group col-md-4">
+										<label class="control-label">Applicant's Phone Number : </label>
+
+											<input style="width:95%;" type="text" class="form-control" name="applicant_phone_number"/>
+
 									</div>
-                                    <div class="form-group col-md-6">
-										<label class="col-md-6 control-label">Applicant's Name : </label>
-										<div class="col-md-6">
-											<input type="text" class="form-control" name="aplicant_name">
-										</div>
+                                    <div class="form-group col-md-4">
+										<label class="control-label">Applicant's Name : </label>
+
+											<input style="width:95%;" type="text" class="form-control" name="aplicant_name">
+
 									</div>
-                                    <div class="form-group col-md-6" id="email_cons">
-										<label class="col-md-6 control-label">Applicant's Email : </label>
-										<div class="col-md-6">
-											<input type="text" class="form-control email1" name="applicant_email">
-										</div>
+                                    <div class="form-group col-md-4" id="email_cons">
+										<label class="control-label">Applicant's Email : </label>
+
+											<input style="width:95%;" type="text" class="form-control email1" name="applicant_email">
+
 									</div>
-                                    <div class="form-group col-md-6">
-										<label class="col-md-6 control-label">Date : </label>
-										<div class="col-md-6">
-											<input type="text" class="form-control date-picker" placeholder="(YYYY-MM-DD)" name="pre_screen_date">
-										</div>
+                                    <div class="form-group col-md-4">
+										<label class="control-label">Date : </label>
+
+											<input style="width:95%;" type="text" class="form-control date-picker" placeholder="(YYYY-MM-DD)" name="pre_screen_date">
+
 									</div>
-                                    <div class="form-group col-md-6">
-										<label class="col-md-6 control-label">Position : </label>
-										<div class="col-md-6">
-											<input type="text" class="form-control" placeholder="S,T" name="position">
-										</div>
+                                    <div class="form-group col-md-4">
+										<label class="control-label">Position : </label>
+
+											<input style="width:95%;" type="text" class="form-control" placeholder="S,T" name="position">
+
 									</div>
                                     <div class="clearfix"></div>
 								</div>
@@ -87,7 +89,7 @@
                                     
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">How did you hear about this opportunity?(make sure we confirm which site on the internet they saw our posting)</label>
+                                            <label class="control-label">How did you hear about this opportunity?<BR>(make sure we confirm which site on the internet they saw our posting)</label>
                                         </div>
                                         <div class="col-md-6">
                                         <textarea class="form-control" name="hear_about_oppurtunity"></textarea>
@@ -118,7 +120,7 @@
                                     
                                      <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">(If they do not have a valid Canadian passport)Do you have a Permanent Residency card and US Visa?</label>
+                                            <label class="control-label">(If they do not have a valid Canadian passport)<BR>Do you have a Permanent Residency card and US Visa?</label>
                                         </div>
                                         <div class="col-md-6">
                                         <input type="radio" id="have_pr_us_visa_1" name="have_pr_us_visa" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="have_pr_us_visa_0" name="have_pr_us_visa" value="0"/>&nbsp;&nbsp;No
@@ -176,7 +178,7 @@
                                     
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">Are you currently driving for another carrier?If yes, who and for how long?</label>
+                                            <label class="control-label">Are you currently driving for another carrier? If yes, who and for how long?</label>
                                         </div>
                                         <div class="col-md-6">
                                             <textarea class="form-control" name="discover_current_driving_another_carrier"></textarea> 
@@ -210,9 +212,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Type of equipment </label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control" name="current_type_equipment" />
+                                            <div class="col-md-6">
+                                                <label class="control-label">What type of equipment did you use?</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <textarea class="form-control" name="current_type_equipment"></textarea>
+
                                             </div>
                                         </div>
                                         
@@ -245,7 +250,7 @@
                                      
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">What other tractor trailer experience do you have?  How recent is this experience?For BC: Any mountain experience?</label>
+                                            <label class="control-label">What other tractor trailer experience do you have?  How recent is this experience? For BC: Any mountain experience?</label>
                                         </div>
                                         <div class="col-md-6">
                                             <textarea class="form-control" name="tractor_trailer_experience"></textarea> 
@@ -254,7 +259,7 @@
                                      
                                      <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">What type of equipment have you Operated? (Standard or automatic).</label>
+                                            <label class="control-label">What type of equipment have you Operated? (Standard or automatic)</label>
                                         </div>
                                         <div class="col-md-6">
                                             <textarea class="form-control" name="type_of_equipment_operated"></textarea> 
@@ -488,15 +493,15 @@
                                     <div class="form-group col-md-12">
                                             <div class="col-md-6">
                                                 <label class="control-label">What did you learn in class?
-                                        <br/>Answers you are looking for<br />
-                                        <ul class="no-bullet">
+                                        <br/>Answers you are looking for:<br /></label>
+                                        <ul >
                                             <li>Hours of service</li>
                                             <li>Transportation of dangerous goods</li>
                                             <li>Trip planning</li>
                                             <li>Logs</li>
                                             <li>Weight & dimensions</li>
                                             <li>Load Securement</li>
-                                        </ul></label>
+                                        </ul>
                                             </div>
                                             <div class="col-md-6">
                                                 <textarea class="form-control" name="learn_in_class"></textarea>
@@ -514,7 +519,7 @@
                                         
                                         <div class="form-group col-md-12">
                                             <div class="col-md-6">
-                                                <label class="control-label">Did you get your license on the 1st try:If no, how many attempts?</label>
+                                                <label class="control-label">Did you get your license on the 1st try? If no, how many attempts?</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <textarea class="form-control" name="license_on_1_try"></textarea>
@@ -526,47 +531,34 @@
                                         </div>
                                         
                                     
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Miles </label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" name="driven_az_miles" />
+                                        <div class="form-group col-md-4">
+                                            <label class="control-label"> Miles </label>
+
+                                                <input style="width:95%;" type="text" class="form-control" name="driven_az_miles" />
+</div><div class="form-group col-md-4">
+                                            <label class="control-label"> Time out/home </label>
+
+                                                <input style="width:95%;" type="text" class="form-control" name="driven_az_time_out_home" />
+
+                                        </div><div class="form-group col-md-4">
+
+                                            <label class="control-label "> Locations </label>
+
+                                                <input style="width:95%;" type="text" class="form-control" name="driven_az_location" />
+        </div><div class="form-group col-md-4">
+                                            <label class="control-label"> Border Cross </label>
+
+                                                <input style="width:95%;" type="text" class="form-control" name="driven_az_border_cross" />
                                             </div>
-                                            <label class="control-label col-md-3"> Time out/home </label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" name="driven_az_time_out_home" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Locations </label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" name="driven_az_location" />
-                                            </div>
-                                            <label class="control-label col-md-3"> Border Cross </label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" name="driven_az_border_cross" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Type of equipment </label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control" name="driven_az_type_equipment" />
-                                            </div>
-                                        </div>
+
+
                                         
-                                        
-                                        <div class="form-group col-md-12">
-                                            <div class="col-md-6">
-                                                <label class="control-label">Recruiters comments and recommendations (note what day they are booked to come in for a road test and interview):</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <textarea class="form-control" name="recruiter_comment_recommendation"></textarea>
-                                            </div>
-                                        </div> 
+
                                     
-                                            <div class="form-group col-md-12">
-                                            <label class="control-label col-md-4">How did you hear about us?</label>
-                                            <div class="col-md-4">
-                                            <select name="hear_about_us" class="form-control select_media">
+                                            <div class="form-group col-md-4">
+                                            <label class="control-label">How did you hear about us?</label>
+
+                                            <select style="width:95%;" name="hear_about_us" class="form-control select_media">
                                                 <option value="">Select</option>
                                                 <option value="internet">Internet</option>
                                                 <option value="jobfair">Job Fair / Trade Show</option>
@@ -576,13 +568,31 @@
                                                 <option value="radio">Radio</option>
                                                 <option value="other">Other</option>
                                             </select>
-                                            </div>
+
                                             <div class="col-md-4">
                                                 <textarea class="form-control other_div" name="hear_about_us_other" style="display: none;"></textarea>
                                             </div>
-                                            </div>              
-                                    
-                                        <?php
+                                            </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-6">
+            <label class="control-label">Type of equipment</label>
+        </div>
+        <div class="col-md-6">
+            <textarea class="form-control" name="driven_az_type_equipment"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-6">
+            <label class="control-label">Recruiters comments and recommendations (note what day they are booked to come in for a road test and interview):</label>
+        </div>
+        <div class="col-md-6">
+            <textarea class="form-control" name="recruiter_comment_recommendation"></textarea>
+        </div>
+    </div>
+
+    <?php
                                         
                                          if(!isset($pre_at['attach_doc']))
                                          {
@@ -648,7 +658,8 @@
                             <div class="clearfix"></div>
             
 
-</form>
+</form>  </div>
+
 <script>
     $(function(){
         $('#addfiles').click(function(){

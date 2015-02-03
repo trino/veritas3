@@ -117,11 +117,14 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
                         </div>
                         <div class="col-md-9">
-                        <div class="caption caption-md">
+                        <!---
+                            <div class="caption caption-md">
                                 <i class="icon-globe theme-font hide"></i>
-                                <span class="caption-subject font-blue-madison bold" style="font-size:15px ;"><?php echo ucfirst($settings->client); ?> Manager</span>
-                        </div>
-                        <hr />
+                                <span class="caption-subject font-blue-madison bold" style="font-size:15px ;">< php echo ucfirst($settings->client); ?> Manager</span>
+                        </div> <hr />
+                        -->
+
+
                         <div class="clearfix"></div>
                             <ul class="nav nav-tabs">
                                 <li class="active">
@@ -138,6 +141,17 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                 } ?>
 
                             </ul>
+                            <div class="portlet box yellow">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-briefcase"></i><?php echo ucfirst($settings->client); ?> Manager
+                                    </div>
+                                    <div class="tools">
+                                        <a href="javascript:;" class="collapse" data-original-title="" title="">
+                                        </a>
+                                    </div>
+                                </div>
+
                             <div class="portlet-body">
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1_1">
@@ -392,17 +406,19 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                             </option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label class="control-label">Billing Instructions</label>
+                                                    <div class="form-group col-md-12">
+                                                        <label class="control-label">Billing Instructions</label></DIV>
+                                                        <div class="form-group col-md-4">
                                                         <input type="radio"
                                                                name="billing_instructions" <?php if (isset($c->billing_instructions) && $c->billing_instructions == "individual") { ?> checked="checked" <?php } ?>
-                                                               value="individual"/> Individual&nbsp;&nbsp;
+                                                               value="individual"/> Individual&nbsp;&nbsp;</DIV>
+                                                        <div class="form-group col-md-4">
                                                         <input type="radio"
                                                                name="billing_instructions" <?php if (isset($c->billing_instructions) && $c->billing_instructions == "centralized") { ?> checked="checked" <?php } ?>
                                                                value="centralized"/> Centralized&nbsp;&nbsp;
                                                     </div>
                                                      <?php }?>
-                                                    <div class="form-group col-md-8">
+                                                    <div class="form-group col-md-12">
                                                         <label class="control-label">Description</label>
                                                         <textarea id="description" name="description"
                                                                   class="form-control"><?php if (isset($c->description)) {
@@ -448,25 +464,26 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                                     <?php
                                                                     endforeach;
                                                                 } ?>
-                                                            <div class="docMore" data-count="1">
-                                                                <div style="display:block;">
-                                                                    <a href="javascript:void(0)" id="addMore1"
-                                                                       class="btn btn-primary margin-bottom-5">Browse</a>
-                                                                       <span></span>
-                                                                    <input type="hidden" name="client_doc[]" value=""
-                                                                           class="addMore1_doc moredocs"/>
-                                                                </div>
-                                                            </div>
-
-                                                            <a href="javascript:void(0)" class="btn btn-info"
-                                                               id="addMoredoc" onclick="addMore(event,this)">Add More
-                                                            </a>
-
 
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group col-md-12">
+                                                    <div class="form-group col-md-6"><center>
+
+                                                            <div class="docMore" data-count="1">
+                                                                <div style="display:block;">
+                                                                    <a href="javascript:void(0)" id="addMore1" class="btn btn-primary margin-bottom-5">Browse</a>
+                                                                    <span></span>
+                                                                    <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/>
+                                                                </div>
+                                                            </div>
+</div><div class="form-group col-md-6"><center>
+                                                            <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" onclick="addMore(event,this)">
+                                                                Add More
+                                                            </a>
+
+</div><div class="form-group col-md-12"><center>
+
 
                                                     <div class="margin-top-10 alert alert-success display-hide flash1"
                                                          style="display: none;">
@@ -475,13 +492,13 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     </div>
 
 
-                                                    <div class="margin-top-10">
+                                                    <!--<div class="margin-top-10">-->
                                                         <a href="javascript:void(0)" class="btn btn-primary"
                                                            id="save_client_p1">Save</a>
                                                         <a href="" class="btn default">
                                                             Cancel </a>
                                                     </div>
-                                                    </div>
+                                                    <!--</div>-->
                                             </form>
                                         </div>
                                     </div>

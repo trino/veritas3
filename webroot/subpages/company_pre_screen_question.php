@@ -27,7 +27,7 @@
 
 
 									<div class="form-group col-md-6">
-										<label class="col-md-6 control-label">Recruiter's Name : </label>
+										<label class="control-label">Recruiter's Name : </label>
 										<div class="col-md-6">
 											<input type="text" class="form-control">
 										</div>

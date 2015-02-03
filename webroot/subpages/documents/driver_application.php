@@ -20,7 +20,16 @@
         </table>
         </div>
 <p>Please return you application and above information to the Challenger Recruiting Department.</p-->
-
+    <?php
+    function provinces($name){
+        echo '<SELECT class="form-control" name="' . $name . '">';
+        echo '<OPTION>Province</OPTION> <OPTION>Alberta</OPTION><OPTION>British Columbia</OPTION>';
+        echo '<OPTION>Manitoba</OPTION><OPTION>Newfoundland and Labrador</OPTION><OPTION>New Brunswick</OPTION>';
+        echo '<OPTION>Northwest Territories</OPTION><OPTION>Nova Scotia</OPTION><OPTION>Nunavut</OPTION>';
+        echo '<OPTION>Ontario</OPTION><OPTION>Prince Edward Island</OPTION><OPTION>Quebec</OPTION>';
+        echo '<OPTION>Saskatchewan</OPTION><OPTION>Yukon</OPTION></SELECT>';
+    }
+    ?>
 		<div class="form-group col-md-12">
 			<h4 class="col-md-12">Driver Application for Employment</h4>
 		</div>
@@ -56,7 +65,8 @@
 					<input type="text" class="form-control" placeholder="City" name="city"/>
 				</div>
                 <div class="col-md-2">
-					<input type="text" class="form-control" placeholder="Province" name="state_province"/>
+					<!--<input type="text" class="form-control" placeholder="Province" name="state_province"/>-->
+                    <?php provinces("state_province") ?>
 				</div>
                 <div class="col-md-2">
 					<input type="text" class="form-control" placeholder="Postal Code" name="postal_code"/>
@@ -74,7 +84,8 @@
     			</div>
                 
                 <div class="col-md-3">
-					<input type="text" class="form-control" placeholder="Province" name="past3_state_provinve1"/>
+					<!--<input type="text" class="form-control" placeholder="Province" name="past3_state_provinve1"/>-->
+                    <?php provinces("past3_state_provinve1") ?>
 				</div>
                 <div class="col-md-3">
 					<input type="text" class="form-control" placeholder="Postal Code" name="past3_postal_code1"/>
@@ -90,7 +101,8 @@
     			</div>
                 
                 <div class="col-md-3">
-					<input type="text" class="form-control" placeholder="Province" name="past3_state_province2"/>
+					<!--<input type="text" class="form-control" placeholder="Province" name="past3_state_province2"/>-->
+                    <?php provinces("past3_state_province2") ?>
 				</div>
                 <div class="col-md-3">
 					<input type="text" class="form-control" placeholder="Postal Code" name="past3_postal_code2"/>
@@ -100,19 +112,19 @@
 				</div>
             </div>
             
-            <div class="form-group col-md-12">
-                <label class="control-label col-md-2">Telephone : </label>
-				<div class="col-md-2">
+            <div class="form-group col-md-3">
+                <label class="control-label">Telephone : </label>
+
 					<input type="text" class="form-control" name="phone"/>
-				</div>
+				</div><div class="form-group col-md-3">
                 
-                <label class="control-label col-md-2">Cell Phone : </label>
-				<div class="col-md-2">
+                <label class="control-label">Cell Phone : </label>
+
 					<input type="text" class="form-control" name="mobile"/>
-				</div>
+				</div><div class="form-group col-md-3">
                 
-                <label class="control-label col-md-2">Email Address : </label>
-				<div class="col-md-2">
+                <label class="control-label">Email Address : </label>
+
 					<input type="text" class="form-control email1" name="email"/>
 				</div>
             </div>

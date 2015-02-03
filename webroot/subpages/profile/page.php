@@ -22,8 +22,7 @@
                                         </ul>
                                     </div>
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="subtab_1_1">
-                                            <div class="portlet box">
+
                                                 <!--div class="portlet-title">
                                                     <div class="caption">
                                                         <i class="fa fa-gift"></i>Page Manager - Help
@@ -31,13 +30,16 @@
 
                                                 </div-->
 
-                                                <div class="portlet-body form">
+
                                                     <!-- BEGIN FORM-->
+                                        <div class="tab-pane active" id="subtab_1_1">
+                                            <div class="portlet box">
+                                                <div class="portlet-body form">
                                                     <?php $cms = $this->requestAction("/pages/get_content/product_example");?>
                                                     <form action="<?php echo $this->request->webroot;?>pages/edit/product_example" method="post" class="form-horizontal form-bordered" id="product_example">
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label class="control-label col-md-3">Page Title</label>
+                                                                <label class="control-label col-md-2">Page Title<BR><small>(Product Example)</small></label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-product_example"
@@ -47,8 +49,7 @@
                                                         </div>
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label
-                                                                    class="control-label col-md-3">Description</label>
+                                                                <label class="control-label col-md-2">Description</label>
 
                                                                 <div class="col-md-9">
                                                                     <textarea class="ckeditor form-control"
@@ -58,9 +59,9 @@
                                                         </div>
                                                         <div class="form-actions">
                                                             <div class="row">
-                                                                <div class="col-md-offset-3 col-md-9">
-                                                                    <button type="submit"   class="btn blue" onclick="savepage('product_example');"><i
-                                                                            class="fa fa-check"></i> Submit
+                                                                <div class="col-md-offset-2 col-md-9">
+                                                                    <button type="submit"   class="btn blue" onclick="savepage('product_example');">
+                                                                        <i class="fa fa-check"></i> Submit
                                                                     </button>
                                                                     <button type="button" class="btn default">Cancel
                                                                     </button>
@@ -68,12 +69,14 @@
                                                             </div>
 
                                                         </div>
-                                                    </form>
+                                                    </form></div></div></div>
                                                     <!-- END FORM-->
-                                                </div>
-                                            </div>
 
-                                        </div>
+
+
+
+
+
                                         <div class="tab-pane" id="subtab_1_6">
                                             <div class="portlet box">
                                                 <!--div class="portlet-title">
@@ -89,7 +92,7 @@
                                                     <form action="<?php echo $this->request->webroot;?>pages/edit/help" method="post" class="form-horizontal form-bordered" id="help">
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label class="control-label col-md-3">Page Title</label>
+                                                                <label class="control-label col-md-2">Page Title<BR><small>(Help)</small></label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title"  value="<?php echo $cms->title;?>" id="title-help"/>
@@ -99,7 +102,7 @@
                                                         <div class="form-body">
                                                             <div class="form-group last">
                                                                 <label
-                                                                    class="control-label col-md-3">Description</label>
+                                                                    class="control-label col-md-2">Description</label>
 
                                                                 <div class="col-md-9">
                                                                     <textarea class="ckeditor form-control" name="editor1" rows="6" id="deschelp"><?php echo $cms->desc;?></textarea>
@@ -108,7 +111,7 @@
                                                         </div>
                                                         <div class="form-actions">
                                                             <div class="row">
-                                                                <div class="col-md-offset-3 col-md-9">
+                                                                <div class="col-md-offset-2 col-md-9">
                                                                 <button type="submit" class="btn blue" onclick="savepage('help');"><i
                                                                             class="fa fa-check"></i> Submit
                                                                     </button>
@@ -139,7 +142,7 @@
                                                     <form action="<?php echo $this->request->webroot;?>pages/edit/privacy_code"  method="post"class="form-horizontal form-bordered" id="privacy_code">
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label class="control-label col-md-3">Page Title</label>
+                                                                <label class="control-label col-md-2">Page Title<BR><small>(Privacy)</small></label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-privacy_code"
@@ -150,7 +153,7 @@
                                                         <div class="form-body">
                                                             <div class="form-group last">
                                                                 <label
-                                                                    class="control-label col-md-3">Description</label>
+                                                                    class="control-label col-md-2">Description</label>
 
                                                                 <div class="col-md-9">
                                                                     <textarea class="ckeditor form-control"
@@ -160,7 +163,7 @@
                                                         </div>
                                                         <div class="form-actions">
                                                             <div class="row">
-                                                                <div class="col-md-offset-3 col-md-9">
+                                                                <div class="col-md-offset-2 col-md-9">
                                                                     <button type="submit"  class="btn blue" onclick="savepage('privacy_code');"><i
                                                                             class="fa fa-check"></i> Submit
                                                                     </button>
@@ -185,46 +188,43 @@
 
                                                 </div-->
 
-                                                <div class="portlet-body form">
-                                                    <!-- BEGIN FORM-->
-                                                      <?php $cms = $this->requestAction("/pages/get_content/terms");?>
-                                                    <form action="<?php echo $this->request->webroot;?>pages/edit/terms"  method="post"class="form-horizontal form-bordered" id="terms">
-                                                        <div class="form-body">
-                                                            <div class="form-group last">
-                                                                <label class="control-label col-md-3">Page Title</label>
+                                                    <div class="portlet-body form">
+                                                        <!-- BEGIN FORM-->
+                                                          <?php $cms = $this->requestAction("/pages/get_content/terms");?>
+                                                        <form action="<?php echo $this->request->webroot;?>pages/edit/terms"  method="post"class="form-horizontal form-bordered" id="terms">
+                                                            <div class="form-body">
+                                                                <div class="form-group last">
+                                                                    <label class="control-label col-md-2">Page Title<BR><small>(Terms)</small></label>
 
-                                                                <div class="col-md-4">
-                                                                    <input class="form-control" name="title" id="title-terms"
-                                                                           value="<?php echo $cms->title;?>"/>
+                                                                    <div class="col-md-4">
+                                                                        <input class="form-control" name="title" id="title-terms" value="<?php echo $cms->title;?>"/>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-body">
-                                                            <div class="form-group last">
-                                                                <label
-                                                                    class="control-label col-md-3">Description</label>
+                                                            <div class="form-body">
+                                                                <div class="form-group last">
+                                                                    <label class="control-label col-md-2">Description</label>
 
-                                                                <div class="col-md-9">
-                                                                    <textarea class="ckeditor form-control" id="descterms"
-                                                                              name="editor1" rows="6"><?php echo $cms->desc;?></textarea>
+                                                                    <div class="col-md-9">
+                                                                        <textarea class="ckeditor form-control" id="descterms"
+                                                                                  name="editor1" rows="6"><?php echo $cms->desc;?></textarea>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-actions">
-                                                            <div class="row">
-                                                                <div class="col-md-offset-3 col-md-9">
-                                                                    <button type="submit"  class="btn blue" onclick="savepage('terms');"><i
-                                                                            class="fa fa-check"></i> Submit
-                                                                    </button>
-                                                                    <button type="button" class="btn default">Cancel
-                                                                    </button>
+                                                            <div class="form-actions">
+                                                                <div class="row">
+                                                                    <div class="col-md-offset-2 col-md-9">
+                                                                        <button type="submit"  class="btn blue" onclick="savepage('terms');">
+                                                                            <i class="fa fa-check"></i> Submit
+                                                                        </button>
+                                                                        <button type="button" class="btn default">Cancel</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </form>
-                                                    <!-- END FORM-->
+                                                        </form>
+                                                        <!-- END FORM-->
+                                                    </div>
                                                 </div>
-                                            </div>
 
                                         </div>
 
@@ -243,7 +243,7 @@
                                                     <form action="<?php echo $this->request->webroot;?>pages/edit/faq"  method="post"class="form-horizontal form-bordered" id="faq">
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label class="control-label col-md-3">Page Title</label>
+                                                                <label class="control-label col-md-2">Page Title<BR><small>(FAQ)</small></label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-faq"
@@ -254,7 +254,7 @@
                                                         <div class="form-body">
                                                             <div class="form-group last">
                                                                 <label
-                                                                    class="control-label col-md-3">Description</label>
+                                                                    class="control-label col-md-2">Description</label>
 
                                                                 <div class="col-md-9">
                                                                     <textarea class="ckeditor form-control" id="descfaq"
@@ -264,7 +264,7 @@
                                                         </div>
                                                         <div class="form-actions">
                                                             <div class="row">
-                                                                <div class="col-md-offset-3 col-md-9">
+                                                                <div class="col-md-offset-2 col-md-9">
                                                                     <button type="submit"   class="btn blue" onclick="savepage('faq');"><i
                                                                             class="fa fa-check"></i> Submit
                                                                     </button>

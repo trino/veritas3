@@ -1540,8 +1540,8 @@
         function getAllUser()
         {
             $query = TableRegistry::get('Profiles');
-            $query = $query->find();
-            $q = $query->select();
+            //$query = $query->find();
+            $q = $query->find()->where(['profile_type !=' => '5'])->all();
             $this->response->body($q);
             return $this->response;
             die();

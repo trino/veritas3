@@ -38,7 +38,7 @@
                                         <?php
                                         }
                                         ?>
-                                            </form>
+                                            </form></div>
 <script>
 $(function(){
      $('#save_client').click(function(){

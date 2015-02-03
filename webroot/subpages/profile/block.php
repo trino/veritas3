@@ -647,7 +647,7 @@
                                         </form>
                                     </div>
 
-                            </div>
+
                                     
                                     <script>
                                     $(function(){

@@ -2467,5 +2467,14 @@
             return $this->response;
             die();
         }
+        
+        function download($file)
+        {
+            
+            $this->response->file(WWW_ROOT.'attachments/'.$file,array('download' => true));
+            // Return response object to prevent controller from trying to render
+            // a view.
+            return $this->response;
+        }
   
     }

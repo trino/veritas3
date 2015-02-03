@@ -7,11 +7,7 @@ else
 {
 $is_disabled = '';
 }
-
-
 ?>
-
-
 <form role="form" enctype="multipart/form-data" action="<?php echo $this->request->webroot;?>documents/addattachment/<?php echo $cid;?>/<?php echo $did;?>" method="post" id="form_tab7">
     <div class="row">
     <input type="hidden" class="document_type" name="document_type" value="Attachment"/>
@@ -28,9 +24,7 @@ $is_disabled = '';
     if(isset($attachments) && count($attachments)>0){
         $allowed = array('jpg','jpeg','png','bmp','gif');
         ?>
-       
-        <?php
-        
+       <?php
         foreach($attachments as $k=>$cd):
            
         ?>
@@ -47,8 +41,9 @@ $is_disabled = '';
         <?php
                 }
                 else
-                    echo "<span onclick='window.open(\"".$this->request->webroot."attachments/".$cd->file."\")'>".$cd->file."</span>";
+                    echo "<span onclick='window.open(\"".$this->request->webroot."documents/download/".$cd->file."\")'>".$cd->file."</span>";
         ?>
+        <!--<a href="<?php echo $this->request->webroot.'documents/download/'.$cd->file;?>" class="btn btn-inverse">Download</a>-->
         <a href="javascript:void(0);" onclick="$(this).parent().parent().remove()" class="btn btn-danger">Delete</a>
         <input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
         </div>

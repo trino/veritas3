@@ -182,17 +182,18 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     </div>
                                                     <?php }?>
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label">Company Name</label>
+                                                        <label class="control-label"> <?php echo ($sidebar->client_option==0)?"Company":"Event";?> Name</label>
                                                         <input type="text" class="form-control"
                                                                name="company_name" <?php if (isset($c->company_name)) { ?> value="<?php echo $c->company_name; ?>" <?php } ?> />
                                                     </div>
 
-
+                                                    <?php if($sidebar->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Address</label>
                                                         <input type="text" class="form-control"
                                                                name="company_address" <?php if (isset($c->billing_address)) { ?> value="<?php echo $c->billing_address; ?>" <?php } ?>/>
                                                     </div>
+                                                    <?php }?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">City</label>
                                                         <input type="text" class="form-control"
@@ -224,7 +225,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                         ?>
 
                                                     </div>
-
+                                                    <?php if($sidebar->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Postal Code</label>
                                                         <input type="text" class="form-control"
@@ -237,7 +238,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                             <?php if (isset($c->company_phone)) { ?> value="<?php echo $c->company_phone; ?>" <?php } ?>
                                                             />
                                                     </div>
-
+                                                    <?php }?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Website</label>
                                                         <input type="text" class="form-control"
@@ -249,7 +250,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                         <textarea name="division" id="division" placeholder="One division per line"
                                                                   class="form-control"><?php if (isset($c->division)) echo $c->division; ?></textarea>
                                                     </div>
-                                                    <?php }?>
+                                                    
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Signatory's First Name</label>
                                                         <input type="text" class="form-control"
@@ -331,7 +332,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                             </option>
                                                         </select>
                                                     </div>
-                                                    <?php if($sidebar->client_option==0){?>
+                                                    
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">ARIS Agreement #</label>
                                                         <input type="text" class="form-control"
@@ -417,8 +418,9 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                                name="billing_instructions" <?php if (isset($c->billing_instructions) && $c->billing_instructions == "centralized") { ?> checked="checked" <?php } ?>
                                                                value="centralized"/> Centralized&nbsp;&nbsp;
                                                     </div>
-                                                     <?php }?>
+
                                                     <div class="form-group col-md-12">
+
                                                         <label class="control-label">Description</label>
                                                         <textarea id="description" name="description"
                                                                   class="form-control"><?php if (isset($c->description)) {
@@ -427,7 +429,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
                                                     </div>
 
-                                                   
+                                                   <?php }?>
 
                                                     <div class="form-group col-md-12">
                                                         <label class="control-label">Attach Documents</label>

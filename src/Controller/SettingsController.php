@@ -65,10 +65,14 @@ class SettingsController extends AppController {
     function changebody()
     {
          $class = $_POST['class'];
+         if(isset($_POST['box']))
+            $box = $_POST['box'];
+         else
+            $box = 0;
          $setting = TableRegistry::get('Settings');
          $query = $setting->query();
                 $query->update()
-                ->set(['body' => $class,'sidebar'=>$_POST['side']])
+                ->set(['body' => $class,'sidebar'=>$_POST['side'],'box'=>$box])
                 ->where(['id' => 1])
                 ->execute();
          

@@ -54,9 +54,8 @@
     </div>
     <div class="toggler-close">
 
-
-
     </div>
+
     <div class="theme-options">
         <div class="theme-option theme-colors clearfix">
 						<span>
@@ -97,7 +96,7 @@
         <div class="theme-option">
 						<span>
 						Layout </span>
-            <select class="layout-option form-control input-sm" onchange="change_body();">
+            <select class="layout-option form-control input-sm" onchange="change_box();" id="boxed">
                 <option value="fluid" selected="selected">Fluid</option>
                 <option value="boxed">Boxed</option>
             </select>
@@ -227,7 +226,8 @@
                     <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
                     <div class="input-icon">
-                    <a class="btn btn-xs  btn-success" href="javascript:void(0)" id="clientimg">
+                        <br>
+                    <a class="btn btn-xs  btn-success   margin-t10" href="javascript:void(0)" id="clientimg">
                     <i class="fa fa-image"></i>
                       Add/Edit Image
                     </a>
@@ -384,6 +384,9 @@
                                                 <li>
                                                     <a href="#tab_1_6" data-toggle="tab">Pages</a>
                                                 </li>
+                                                <li>
+                                                    <a href="#tab_1_8" data-toggle="tab">Client Setting</a>
+                                                </li>
                                             <?php
                                             }
                                             }
@@ -428,6 +431,10 @@
 
                                         <div class="tab-pane" id="tab_1_7">
                                             <?php include('subpages/profile/block.php'); ?>
+                                        </div>
+                                        
+                                         <div class="tab-pane" id="tab_1_8">
+                                            <?php include('subpages/profile/client_setting.php'); ?>
                                         </div>
 
                                     <?php } ?>

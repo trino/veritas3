@@ -15,9 +15,9 @@
                                     <li class="">
                                         <a href="#subtab_2_3" data-toggle="tab">Homepage Top blocks</a>
                                     </li>
-                                    <li class="">
+                                    <!--<li class="">
                                         <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
-                                    </li>
+                                    </li>-->
 
 
 
@@ -575,7 +575,7 @@
                                                         No </label>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <!--<tr>
                                                 <td>
                                                     Feedback
                                                 </td>
@@ -589,7 +589,7 @@
                                                                                           value="0" <?php if (isset($block) && $block->feedback == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr>-->
                                             <tr>
                                                 <td>
                                                     Analytics
@@ -646,55 +646,7 @@
                                         ?>
                                         </form>
                                     </div>
-                                    <div class="tab-pane" id="subtab_2_4">
-                                        <div class="row">
 
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h3 class="block">Client Settings</h3>                            </div>
-                                            </div>
-                                        </div>
-                                        <form action="#" method="post" id="clientform">
-                                            <input type="hidden" name="form" value="<?php echo $uid;?>" />
-                                            <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
-                                            <table class="table table-bordered table-hover">
-                                            <tr>
-                                                <td class="vtop">
-                                                    Options For
-                                                </td>
-                                                <td>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[client_option]"
-                                                                                          value="0"  <?php if (isset($sidebar) && $sidebar->client_option == 0) echo "checked"; ?> />
-                                                        ISB MEE </label>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[client_option]"
-                                                                                          value="1"  <?php if (isset($sidebar) && $sidebar->client_option == 1) echo "checked"; ?>/>
-                                                        Event Audit </label>
-                                                 </td>
-                                            </tr>
-                                            </table>
-                                             <?php
-                                        if (!isset($disabled)) {
-                                            ?>
-                                            <div class="res"></div>
-                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
-                                                            <button class="close" data-close="alert"></button>
-                                                            Data saved successfully
-                                                        </div>
-                                            <div class="margin-top-10"><center>
-                                                <input type="button" name="submit" class="btn btn-primary" id="save_client"
-                                                       value="Save Changes"/></center>
-
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
-                                            </form>
-                                    </div>
                             </div>
                                     
                                     <script>
@@ -717,23 +669,7 @@
                                             })
                                        });
                                       
-                                       $('#save_client').click(function(){
-                                        $('#save_client').text('Saving..');
-                                            var str = $('#clientform input').serialize();
-                                            $.ajax({
-                                               url:'<?php echo $this->request->webroot; ?>profiles/blocks/client',
-                                               data:str,
-                                               type:'post',
-                                               success:function(res)
-                                               {
-                                                    //alert(res);
-                                                    $('.res').text(res);
-                                                    $('.flash').show();
-                                                    $('.flash').fadeOut(7000);
-                                                    $('#save_client').text(' Save Changes ');
-                                               } 
-                                            })
-                                       });
+                                      
                                        $('#save_home').click(function(){
                                         $('#save_home').text('Saving..');
                                             var str = $('#homeform input').serialize();

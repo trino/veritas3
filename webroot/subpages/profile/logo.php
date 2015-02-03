@@ -37,7 +37,6 @@ foreach ($logos1 as $logo) {
 
                                                         <?php $index = printlogos($logos, $this->request->webroot, 0);?>
 
-
                                                         <div class="clearfix"></div>
                                                         <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                             <button class="close" data-close="alert"></button>
@@ -58,6 +57,7 @@ foreach ($logos1 as $logo) {
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/secondary"
                                                           method="post" class="form-inline" role="form" id="logoform1">
+
                                                         <?php $index = printlogos($logos1, $this->request->webroot, $index);?>
 
                                                         <div class="clearfix"></div>
@@ -80,6 +80,7 @@ foreach ($logos1 as $logo) {
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/login"
                                                           method="post" class="form-inline" role="form" id="logoform2">
+
                                                         <?php $index = printlogos($logos2, $this->request->webroot, $index);?>
 
                                                         <div class="clearfix"></div>

@@ -1540,8 +1540,8 @@
         function getAllUser()
         {
             $query = TableRegistry::get('Profiles');
-            $query = $query->find();
-            $q = $query->select();
+            //$query = $query->find();
+            $q = $query->find()->where(['profile_type !=' => '5'])->all();
             $this->response->body($q);
             return $this->response;
             die();
@@ -2466,6 +2466,15 @@
             $this->response->body($q);
             return $this->response;
             die();
+        }
+        
+        function download($file)
+        {
+            
+            $this->response->file(WWW_ROOT.'attachments/'.$file,array('download' => true));
+            // Return response object to prevent controller from trying to render
+            // a view.
+            return $this->response;
         }
   
     }

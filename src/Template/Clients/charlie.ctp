@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<?php $settings = $this->requestAction('settings/get_settings');?>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.1
+Version: 3.6.1
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en" class="no-js">
+<html lang="en">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title><?php echo $settings->mee;?> - Dashboard</title>
+<title>Metronic | Pages - New User Profile</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta content="" name="description"/>
 <meta content="" name="author"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
@@ -21,269 +32,486 @@
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
-<link rel="stylesheet" type="text/css" href="<?php echo $this->request->webroot;?>assets/global/plugins/select2/select2.css"/>
-<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
-<link href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
+<!-- BEGIN PAGE LEVEL STYLES -->
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
-
-<link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/todo.css" rel="stylesheet" type="text/css"/>
-
-<link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/profile-old.css" rel="stylesheet" type="text/css"/>
-
-
-<!-- END PAGE LEVEL PLUGIN STYLES -->
-<!-- BEGIN PAGE STYLES -->
 <link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
-<!-- END PAGE STYLES -->
+<!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
-<!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
 <link href="<?php echo $this->request->webroot;?>assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/themes/<?php echo $settings->layout;?>.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link id="style_color" href="<?php echo $this->request->webroot;?>assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="<?php echo WEB_ROOT?>favicon.ico"/>
-<!-- END FOOTER -->
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
-<!--[if lt IE 9]>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/respond.min.js"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/excanvas.min.js"></script> 
-<![endif]-->
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
-<!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>js/ajaxupload.js"></script>
-
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/select2/select2.min.js"></script>
-
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/clockface/js/clockface.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-<script type="text/javascript" src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="<?php echo $this->request->webroot;?>assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/index.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
-<script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/form-wizard.js"></script>
-<script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/components-pickers.js"></script>
-<script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/components-dropdowns.js"></script>
+<link rel="shortcut icon" href="favicon.ico"/>
 </head>
-<body class="<?php echo $settings->body;?>"> 
-<!-- BEGIN HEADER -->
-<div class="page-header navbar navbar-fixed-top">
-	<!-- BEGIN HEADER INNER -->
-	<div class="page-header-inner <?php if($settings->box =='1')echo "container";?>">
-		<!-- BEGIN LOGO -->
-		<div class="page-logo">
-			<a href="<?php echo $this->request->webroot;?>">
-            <?php $logo = $this->requestAction('Logos/getlogo/0',['return']);?>
-			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="" />
-			</a>
-			<div class="menu-toggler sidebar-toggler hide">
-				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-			</div>
-		</div>
-		<!-- END LOGO -->
-		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-		</a>
-		<!-- END RESPONSIVE MENU TOGGLER -->
-		<!-- BEGIN TOP NAVIGATION MENU -->
-		<div class="top-menu">
-			<ul class="nav navbar-nav pull-right">
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="">
 
-				<li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<i class="icon-envelope-open"></i>
-					<!--span class="badge badge-default">
-					4 </span-->
-					</a>
-					<ul class="dropdown-menu">
-						<li class="external">
-							<h3>You have <span class="bold">0 New</span> Messages</h3>
-							<a href="#">view all</a>
-						</li>
-						<li>
-							<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-								<!--li>
-									<a href="#">
-									<span class="photo">
-									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Lisa Wong </span>
-									<span class="time">Just Now </span>
-									</span>
-									<span class="message">
-									Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-									<span class="photo">
-									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Richard Doe </span>
-									<span class="time">16 mins </span>
-									</span>
-									<span class="message">
-									Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-									<span class="photo">
-									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Bob Nilson </span>
-									<span class="time">2 hrs </span>
-									</span>
-									<span class="message">
-									Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-									<span class="photo">
-									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Lisa Wong </span>
-									<span class="time">40 mins </span>
-									</span>
-									<span class="message">
-									Vivamus sed auctor 40% nibh congue nibh... </span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-									<span class="photo">
-									<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Richard Doe </span>
-									<span class="time">46 mins </span>
-									</span>
-									<span class="message">
-									Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-									</a>
-								</li-->
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<?php $c = $this->requestAction('profiles/getuser');
-                 
-                 if($c)
-                 {
-                     
-                ?>
-				<li class="dropdown dropdown-user">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="<?php echo $this->request->webroot;?>img/profile/<?php echo $c->image;?>"/>
-					<span class="username username-hide-on-mobile">
-					<?php echo ucfirst($c->username);?> </span>
-					<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-default">
-						<li>
-							<a href="<?php echo $this->request->webroot;?>profiles/edit/<?php echo $this->request->session()->read('Profile.id'); ?>" >
-							<i class="icon-user"></i> My Settings </a>
-						</li>
-						
-						<!--li>
-							<a href="#">
-							<i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
-							3 </span>
-							</a>
-						</li-->
-						
-						<li class="divider">
-						</li>
-						
-						<li>
-							<a href="<?php echo $this->request->webroot;?>profiles/logout">
-							<i class="icon-key"></i> Log Out </a>
-						</li>
-					</ul>
-				</li>
-                <?php
-                }
-                ?>
-				
-			</ul>
-		</div>
-		<!-- END TOP NAVIGATION MENU -->
-	</div>
-	<!-- END HEADER INNER -->
-</div>
-<!-- END HEADER -->
-<div class="clearfix">
-</div>
-<!-- BEGIN CONTAINER -->
- <?php if($settings->box =='1'){?><div class="container"><?php }?>
 <div class="page-container">
-
-	<?php include('subpages/sidebar.php');?>
-     
+	<!-- BEGIN SIDEBAR -->
+	
+	<!-- END SIDEBAR -->
+	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
-		<div class="page-content">
-        <?= $this->Flash->render() ?>
-        <?= $this->fetch('content') ?>
-        
+		<div class="">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			
+			
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row margin-top-20">
+				<div class="col-md-12">
+					<!-- BEGIN PROFILE SIDEBAR -->
+					<div class="profile-sidebar">
+						<!-- PORTLET MAIN -->
+						<div class="portlet light profile-sidebar-portlet">
+							<h3>Categories</h3>
+						<div class="scroller" style="height: 220px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+								<ul class="nav">
+									<li class="active">
+										<a href="extra_profile.html">
+										
+										Combos </a>
+									</li>
+									<li>
+										<a href="extra_profile_account.html">
+									Sides</a>
+									</li>
+									<li>
+										<a href="page_todo.html" target="_blank">
+									Sushi Rolls</a>
+									</li>
+									<li>
+										<a href="extra_profile_help.html">
+									Rice</a>
+									</li>
+                                    <li>
+										<a href="extra_profile_account.html">
+									Sides</a>
+									</li>
+									<li>
+										<a href="page_todo.html" target="_blank">
+									Sushi Rolls</a>
+									</li>
+									<li>
+										<a href="extra_profile_help.html">
+									Rice</a>
+									</li>
+								</ul>
+							</div>
+							<!-- END MENU -->
+						</div>
+						<!-- END PORTLET MAIN -->
+						<!-- PORTLET MAIN -->
+						
+						<!-- END PORTLET MAIN -->
+					</div>
+					<!-- END BEGIN PROFILE SIDEBAR -->
+					<!-- BEGIN PROFILE CONTENT -->
+					<div class="profile-content">
+						<div class="row">
+							<div class="col-md-9">
+								<div class="tiles">
+                    				<div class="tile double-down bg-blue-hoki">
+                    					<div class="tile-body">
+                    						<i class="fa fa-bell-o"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Notifications
+                    						</div>
+                    						<div class="number">
+                    							 6
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile bg-red-sunglo">
+                    					<div class="tile-body">
+                    						<i class="fa fa-calendar"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Meetings
+                    						</div>
+                    						<div class="number">
+                    							 12
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile double selected bg-green-turquoise">
+                    					<div class="corner">
+                    					</div>
+                    					<div class="check">
+                    					</div>
+                    					<div class="tile-body">
+                    						<h4>support@metronic.com</h4>
+                    						<p>
+                    							 Re: Metronic v1.2 - Project Update!
+                    						</p>
+                    						<p>
+                    							 24 March 2013 12.30PM confirmed for the project plan update meeting...
+                    						</p>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							<i class="fa fa-envelope"></i>
+                    						</div>
+                    						<div class="number">
+                    							 14
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile selected bg-yellow-saffron">
+                    					<div class="corner">
+                    					</div>
+                    					<div class="tile-body">
+                    						<i class="fa fa-user"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Members
+                    						</div>
+                    						<div class="number">
+                    							 452
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile double bg-blue-madison">
+                    					<div class="tile-body">
+                    						<img src="../../assets/admin/pages/media/profile/photo1.jpg" alt="">
+                    						<h4>Announcements</h4>
+                    						<p>
+                    							 Easily style icon color, size, shadow, and anything that's possible with CSS.
+                    						</p>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Bob Nilson
+                    						</div>
+                    						<div class="number">
+                    							 24 Jan 2013
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile bg-purple-studio">
+                    					<div class="tile-body">
+                    						<i class="fa fa-shopping-cart"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Orders
+                    						</div>
+                    						<div class="number">
+                    							 121
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile image selected">
+                    					<div class="tile-body">
+                    						<img src="../../assets/admin/pages/media/gallery/image2.jpg" alt="">
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Media
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile bg-green-meadow">
+                    					<div class="tile-body">
+                    						<i class="fa fa-comments"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Feedback
+                    						</div>
+                    						<div class="number">
+                    							 12
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile double bg-grey-cascade">
+                    					<div class="tile-body">
+                    						<img src="../../assets/admin/pages/media/profile/photo2.jpg" alt="" class="pull-right">
+                    						<h3>@lisa_wong</h3>
+                    						<p>
+                    							 I really love this theme. I look forward to check the next release!
+                    						</p>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							<i class="fa fa-twitter"></i>
+                    						</div>
+                    						<div class="number">
+                    							 10:45PM, 23 Jan
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile bg-red-intense">
+                    					<div class="tile-body">
+                    						<i class="fa fa-coffee"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Meetups
+                    						</div>
+                    						<div class="number">
+                    							 12 Jan
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile bg-green">
+                    					<div class="tile-body">
+                    						<i class="fa fa-bar-chart-o"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Reports
+                    						</div>
+                    						<div class="number">
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile bg-blue-steel">
+                    					<div class="tile-body">
+                    						<i class="fa fa-briefcase"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Documents
+                    						</div>
+                    						<div class="number">
+                    							 124
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile image double selected">
+                    					<div class="tile-body">
+                    						<img src="../../assets/admin/pages/media/gallery/image4.jpg" alt="">
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Gallery
+                    						</div>
+                    						<div class="number">
+                    							 124
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile bg-yellow-lemon selected">
+                    					<div class="corner">
+                    					</div>
+                    					<div class="check">
+                    					</div>
+                    					<div class="tile-body">
+                    						<i class="fa fa-cogs"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Settings
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="tile bg-red-sunglo">
+                    					<div class="tile-body">
+                    						<i class="fa fa-plane"></i>
+                    					</div>
+                    					<div class="tile-object">
+                    						<div class="name">
+                    							 Projects
+                    						</div>
+                    						<div class="number">
+                    							 34
+                    						</div>
+                    					</div>
+                    				</div>
+                    			</div>
+							</div>
+							<div class="col-md-3">
+								<!-- BEGIN PORTLET -->
+								<div class="portlet light">
+                                
+									<form onsubmit="if($('input.subtotal').val()=='0.00'){$('.error_order').show(function(){$('.error_order').fadeOut(5000);});return false;}else if( (Number($('input.subtotal').val()) < Number(15) ) && $('input[name=order_type]:checked').val()== 'delivery' ){ $('.error_delivery').show(function(){$('.error_delivery').fadeOut(5000);});return false;}" method="post" action="/ordering_system/restaurants/order/1">
+<h5 class="sidebar__subtitle">Order Receipt</h5>
+<div class="tab-content">
+<div id="" class="">
+<p class="tab-text"> </p>
+<ul class="listnone">
+<li class="active">
+<input type="radio" onchange="if($(this).is(':checked')){$('.df').val('0');$('#df').hide(); var tax = $('.tax').text();var grandtotal = 0; var subtotal = $('.subtotal').text(); grandtotal = Number(grandtotal)+Number(tax)+Number(subtotal); $('.grandtotal').text(grandtotal.toFixed(2));$('.grandtotal').val(grandtotal.toFixed(2)); }" value="Pickup" checked="checked" name="order_type">
+Pickup
+</li>
+<li class="">
+<input type="radio" onchange="if($(this).is(':checked')){$('#df').show(); var df ='0.00'; var tax = $('.tax').text(); var grandtotal = 0;var subtotal = $('.subtotal').text(); grandtotal = Number(grandtotal)+Number(df)+Number(subtotal)+Number(tax); $('.df').val(df);$('.grandtotal').text(grandtotal.toFixed(2));$('.grandtotal').val(grandtotal.toFixed(2)); }" value="delivery" name="order_type">
+For Delivery
+</li>
+</ul>
+<div class="scroller" style="height: 180px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+				<ul class="feeds">
+														<li>
+															<div class="col1">
+																asdasdasd
+															</div>
+															<div class="col2">
+																$ 12
+															</div>
+														</li>
+														
+														<li>
+															<div class="col1">
+																kllk
+															</div>
+															<div class="col2">
+																$ 12
+															</div>
+														</li>
+                                                        
+														<li>
+															<div class="col1">
+																bnbm
+															</div>
+															<div class="col2">
+																$ 12
+															</div>
+														</li>
+                                                        
+														<li>
+															<div class="col1">
+																jklj
+															</div>
+															<div class="col2">
+																$ 12
+															</div>
+														</li>
+                                                        
+														<li>
+															<div class="col1">
+															jhgkhjk
+															</div>
+															<div class="col2">
+																$ 12
+															</div>
+														</li>
+                                                        
+														<li>
+															<div class="col1">
+																jkljl
+															</div>
+															<div class="col2">
+																$ 12
+															</div>
+														</li>
+                                                        
+														<li>
+															<div class="col1">
+																ghjghj
+															</div>
+															<div class="col2">
+																$ 4
+															</div>
+														</li>
+														<li>
+															<div class="col1">
+																fghfgh
+															</div>
+															<div class="col2">
+																$ 1
+															</div>
+														</li>
+														<li>
+															<div class="col1">
+															zxzxczxc
+															</div>
+															<div class="col2">
+																$ 34
+															</div>
+														</li>
+													</ul>
+                                                    </div>
+<hr class="shop__divider">
+<div class="totals">
+<strong>Subtotal </strong>
+: $
+<span class="subtotal">0.00</span>
+<input class="subtotal" type="hidden" name="subtotal" value="0.00">
+<br>
+<strong>Tax </strong>
+: $
+<span class="tax">0.00</span>
+ (
+<span id="tax">13</span>
+%)
+<input class="tax" type="hidden" value="0.00" name="tax">
+<br>
+<span id="df" style="display: none;">
+<strong>Delivery Fee </strong>
+: $0.00
+<input class="df" type="hidden" value="0.00" name="delivery_fee">
+<br>
+</span>
+<strong>Total</strong>
+ : $
+<span class="grandtotal">0.00</span>
+<input class="grandtotal" type="hidden" name="g_total" value="0.00">
+<br>
+<br>
+</div>
+<div class="submits">
+<div style="float:left;">
+<input class="btn btn-success" type="submit" style="font-size:11px !important;margin-bottom:5px;margin-right:10px;width:131px;" value="Submit Order">
+</div>
+<div style="float:left;">
+<a class="btn btn-notice" style="color: #777;border:1px solid #ddd;width:131px;margin-bottom: 5px;font-size:11px" href="">Start Over</a>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>
+<div class="error_order" style="display: none;margin-top:5px;color:red;">Order can't be blank</div>
+<div class="error_delivery" style="display: none;margin-top:5px;color:red;">Minimum amount for delivery is $15 </div>
+</div>
+</div>
+</form>
+
+								</div>
+								<!-- END PORTLET -->
+							</div>
+						</div>
+						
+					</div>
+					<!-- END PROFILE CONTENT -->
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
 	<!-- END CONTENT -->
@@ -295,7 +523,7 @@
 				<ul class="nav nav-tabs nav-justified">
 					<li class="active">
 						<a href="#quick_sidebar_tab_1" data-toggle="tab">
-						Profiles <span class="badge badge-danger">2</span>
+						Users <span class="badge badge-danger">2</span>
 						</a>
 					</li>
 					<li>
@@ -938,184 +1166,67 @@
 		</div>
 	</div>
 	<!-- END QUICK SIDEBAR -->
- <?php if($settings->box =='1'){?></div><?php }?>
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
-<?php if($settings->box =='1'){?><div class="container"><?php }?>
 	<div class="page-footer-inner">
-		 &copy; <?php echo $settings->mee;?> 2015
+		 2014 &copy; Metronic by keenthemes.
 	</div>
-
-    <div class="page-footer-inner" style="float:right;">
-
-    <a style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/help">Help</a> /
-        <a style="color:white;"  href="<?php echo $this->request->webroot;?>pages/view/privacy_code">Privacy Code</a> /
-    <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product_example">Product Example</a> /
-        <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/terms">Terms</a> /
-        <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/faq">FAQ</a>
-
-    </div>
-
-
-    <div class="scroll-to-top">
+	<div class="scroll-to-top">
 		<i class="icon-arrow-up"></i>
 	</div>
-    <?php if($settings->box =='1'){?></div><?php }?>
 </div>
-
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/respond.min.js"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="<?php echo $this->request->webroot;?>assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+<script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
 <script>
-jQuery(document).ready(function() {  
-
-   Metronic.init(); // init metronic core componets
-   Layout.init(); // init layout
-   QuickSidebar.init(); // init quick sidebar
-   Demo.init(); // init demo features
-   FormWizard.init(); 
-   Index.init();   
-   Profile.init(); // init page demo
-   Index.initDashboardDaterange();
-   Index.initJQVMAP(); // init index page's custom scripts
-   //Index.initCalendar(); // init index page's custom scripts
-   Index.initCharts(); // init index page's custom scripts
-   Index.initChat();
-   Index.initMiniCharts();
-   Tasks.initDashboardWidget();
-   ComponentsPickers.init();
-   ComponentsDropdowns.init();
-   //change_text(<?php echo $settings->display;?>);
-   
-   
-   
+jQuery(document).ready(function() {       
+   // initiate layout and plugins
+   Metronic.init(); // init metronic core components
+//Layout.init(); // init current layout
+//QuickSidebar.init(); // init quick sidebar
+//Demo.init(); // init demo features
+//Profile.init(); // init page demo
 });
-//change layout
-function change_layout(msg)
-{
-    $.ajax({
-       url: "<?php echo $this->request->webroot;?>logos/change_layout",
-       type: "post",
-       data: "layout="+msg,
-       success: function(m){
-        //alert(m);
-       }
-        
-    });
-}
-function change_box()
-{
-    var cls = "";
-     
-    $('body').on('change',function(){
-       var b = $('#boxed').val(); 
-     cls = $('body').attr('class');
-    if(b =="boxed")
-     var box = 1;
-     else
-     var box = 0;
-    
-       var sidebar = $('#mainbar').attr('class');
-    //alert(sidebar);
-  
-    $.ajax({
-       url: "<?php echo $this->request->webroot;?>settings/changebody",
-       type: "post",
-       data: "class="+cls+'&side='+sidebar+'&box='+box,
-       success: function(m){
-        
-       }
-        
-    });
-    
-     });
-}
-function change_body()
-{
-    var cls = "";
-    
-    $('body').on('change',function(){
-        
-     cls = $('body').attr('class');
-    
-    
-       var sidebar = $('#mainbar').attr('class');
-    //alert(sidebar);
-  
-    $.ajax({
-       url: "<?php echo $this->request->webroot;?>settings/changebody",
-       type: "post",
-       data: "class="+cls+'&side='+sidebar,
-       success: function(m){
-        
-       }
-        
-    });
-    
-     });
-      
-   
-}
-
-function sider_bar()
-{
-    
-    $('#mainbar').on('focus',function(){
-         var sidebar = $(this).attr('class');
-         alert(sidebar);
-         });
-}
-
-function change_text(v){
-    
-    var n = $('#notli').html();
-    $.ajax({
-       type: "post",
-       url: "<?php echo $this->request->webroot;?>settings/display",
-       data: "display="+v,
-       success: function(){
-            
-       } 
-    });
-    var bdy = $('.page-container').not('#notli').html();
-    if(v=='2')
-    {
-        $('.page-container').html($('.page-container').html().replace(/Client/g, 'Job'));
-        /*if(n){
-        n = n.split('<option value="2">User/Job</option>').join('<option value="2" selected="selected">User/Job</option>');
-        n = n.split('<option value="1" selected="selected">Profile/Client</option>').join('<option value="1" >Profile/Client</option>');}
-       bdy = bdy.split('Profile').join('User');
-       bdy = bdy.split('Client').join('Job');
-       
-       $('.page-container').not('#notli').html(bdy);
-       
-       $('#notli').html(n); */
-        
-    
-       
-    }
-    if(v=='1')
-    {
-        $('.page-container').html($('.page-container').html().replace(/Job/g, 'Client'));
-       
-       /*if(n){
-        n = n.split('<option value="1">Profile/Client</option>').join('<option value="1" selected="selected">Profile/Client</option>');
-        n = n.split('<option value="2" selected="selected">User/Job</option>').join('<option value="2" >User/Job</option>');}
-       bdy = bdy.split('User').join('Profile');
-       bdy = bdy.split('Job').join('Client');
-       
-       $('.page-container').not('#notli').html(bdy);
-       
-       $('#notli').html(n); 
-        */
-    
-       
-    }
-}
-
-
 </script>
 <!-- END JAVASCRIPTS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37564768-1', 'keenthemes.com');
+  ga('send', 'pageview');
+</script>
 </body>
+
 <!-- END BODY -->
 </html>
-		

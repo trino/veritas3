@@ -39,8 +39,9 @@
 
             }
             if (!$this->request->session()->read('Profile.super')) {
+                $u = $this->request->session()->read('Profile.id');
                 $setting = $this->Settings->get_permission($u);
-                if ($setting->document_others == 0) {
+                if ($setting && $setting->document_others == 0) {
                     if ($cond == '')
                         $cond = $cond . ' user_id = ' . $u;
                     else
@@ -1378,6 +1379,7 @@
                     $con_at = TableRegistry::get('consent_form_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['doc_id' => $did])->all();
                     $this->set('sub2', $sub2);
+                    $this->set('consent_detail', $con_detail);
 
                 }
                 $emp = TableRegistry::get('employment_verification');

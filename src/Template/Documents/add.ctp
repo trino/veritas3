@@ -144,6 +144,56 @@
         <?php
     }*/
     ?>
+    
+    function saveSignature()
+    {
+        if($(".subform4").attr('style') == '')
+        {
+            save_signature('3');
+            save_signature('4');
+            save_signature('5');
+            save_signature('6');
+            //save_signature('6');
+        }
+        
+    }
+    function save_signature(numb)
+    {
+        //alert('rest');return;
+        //alert(numb);
+        $("#test"+numb).data("jqScribble").save(function(imageData)
+        {
+            if((numb=='1' && $('#recruiter_signature').parent().find('.touched').val()==1) || (numb=='3' && $('#criminal_signature_applicant').parent().find('.touched').val()==1) || (numb=='4' && $('#signature_company_witness').parent().find('.touched').val()==1) || (numb=='5' && $('#signature_company_witness2').parent().find('.touched').val()==1) || (numb=='6' && $('#signature_company_witness2').parent().find('.touched').val()==1)){
+                $.post('<?php echo $this->request->webroot; ?>canvas/image_save.php', {imagedata: imageData}, function(response)
+                {
+                    if(numb=='1')
+                    {
+
+                        $('#recruiter_signature').val(response);
+                    }
+                    if(numb=='3')
+                    {
+                        $('#criminal_signature_applicant').val(response);
+                    }
+                    if(numb=='4')
+                    {
+                        $('#signature_company_witness').val(response);
+                    }
+                    if(numb=='5')
+                    {
+                        $('#criminal_signature_applicant2').val(response);
+                    }
+                    if(numb=='6')
+                    {
+                        $('#signature_company_witness2').val(response);
+                    }
+                });
+            }
+
+
+
+        });
+    }
     //showforms(doc_type);
     function showforms(form_type) {
         //alert(form_type);
@@ -880,6 +930,7 @@
         <?php
     }
     ?>
+    var draft = 0;
         $(document.body).on('click', '.cont', function () {
             if($('.subform4').attr('style')!='display: none;'){
                 //alert('tes');
@@ -887,7 +938,7 @@
             $('.required').each(function(){
                 if($(this).val()=='' && $(this).attr('name')!='' && $(this).attr('name')!='undefined'  && $(this).attr('name'))
                 {
-                    alert($(this).attr('name'));
+                    //alert($(this).attr('name'));
                     $(this).attr('style','border-color:red');
                     //$('.cont').attr('disabled','');
                     //$(this).focus();
@@ -913,10 +964,10 @@
             }
             }
             if ($(this).attr('id') == 'draft') {
-                var draft = 1;
+                draft = 1;
             }
             else
-                var draft = 0;
+                draft = 0;
             var type = $(".document_type").val();
             //alert(type);
             //alert($('#sub_id').val());return;
@@ -931,10 +982,17 @@
                 //data:'uploaded_for='+$('#uploaded_for').val(),
                 data: data,
                 type: 'post',
+                beforeSend:saveSignature,
                 url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + doc_id + '/?document=' + type + '&draft=' + draft,
                 success: function (res) {
                     //alert(res);
                     $('#did').val(res);
+                    //$('#did').val(res);
+                    /*$.ajax({
+                        url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'/?document=' + type + '&draft=' + draft,
+                        type:'post',
+                        data:{uploaded_for:$('#uploaded_for').val(),type:type,division:$('#divison').val(),sub_doc_id: $('#sub_id').val(),}
+                    });*/
                     // saving data
                     //alert($('#did').val());
                     if (type == "Pre-Screening") {
@@ -942,24 +1000,24 @@
                             url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document=' + type + '&draft=' + draft,
                             order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>';
-                        savePrescreen(url, order_id, cid, forms);
+                        savePrescreen(url, order_id, cid, forms,draft);
 
                     } else if (type == "Driver Application") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
-                        savedDriverApp(url, order_id, cid);
+                        savedDriverApp(url, order_id, cid,draft);
                     } else if (type == "Road test") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
-                        savedDriverEvaluation(url, order_id, cid);
+                        savedDriverEvaluation(url, order_id, cid,draft);
                     } else if (type == "Place MEE Order") {
 
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
-                        savedMeeOrder(url, order_id, cid, type);
+                        savedMeeOrder(url, order_id, cid, type,draft);
                     }
                     else if (type == "Feedbacks") {
                         var order_id = $('#did').val(),
@@ -971,8 +1029,13 @@
                             data: param,
                             type: 'POST',
                             success: function (res) {
-                                if (res == 'OK')
+                                if (res == 'OK'){
+                                    if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    else
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    
+                                    }
                             }
                         });
 
@@ -987,8 +1050,13 @@
                             data: param,
                             type: 'POST',
                             success: function (res) {
-                                if (res == 'OK')
+                                if (res == 'OK'){
+                                    if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    else
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    
+                                    }
                             }
                         });
 
@@ -1024,7 +1092,7 @@
         });
     });
 
-    function savePrescreen(url, order_id, cid) {
+    function savePrescreen(url, order_id, cid,draft) {
         var param = {
             order_id: order_id,
             cid: cid,
@@ -1035,23 +1103,32 @@
             data: param,
             type: 'POST',
             success: function (res) {
-                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                
+                                    if(draft==0)
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    else
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    
+                                    
             }
         });
     }
 
-    function savedDriverApp(url, order_id, cid) {
+    function savedDriverApp(url, order_id, cid,draft) {
         var param = $('#form_tab2').serialize()
         $.ajax({
             url: url,
             data: param,
             type: 'POST',
             success: function (res) {
-                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                if(draft==0)
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    else
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
             }
         });
     }
-    function savedDriverEvaluation(url, order_id, cid) {
+    function savedDriverEvaluation(url, order_id, cid,draft) {
         var param = $('#form_tab3').serialize();
 
         $.ajax({
@@ -1059,12 +1136,15 @@
             data: param,
             type: 'POST',
             success: function (res) {
-                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                if(draft==0)
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    else
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
             }
         });
     }
 
-    function savedMeeOrder(url, order_id, cid, type) {
+    function savedMeeOrder(url, order_id, cid, type,draft) {
         var param = $('#form_consent').serialize();
         $.ajax({
             url: url,
@@ -1074,17 +1154,17 @@
                 //employment
                 var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type,
                     employment = $('#form_employment').serialize();
-                saveEmployment(url, employment);
+                saveEmployment(url, employment,draft);
 
                 //education
                 url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid + '/?document=' + type,
                     education = $('#form_education').serialize();
-                saveEducation(url, education);
+                saveEducation(url, education,draft);
             }
         });
     }
 
-    function saveEmployment(url, param) {
+    function saveEmployment(url, param,draft) {
         $.ajax({
             url: url,
             data: param,
@@ -1095,13 +1175,16 @@
         });
     }
 
-    function saveEducation(url, param) {
+    function saveEducation(url, param,draft) {
         $.ajax({
             url: url,
             data: param,
             type: 'POST',
             success: function (res) {
+                /*if(draft==0)
                 window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                else
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';*/
             }
         });
     }

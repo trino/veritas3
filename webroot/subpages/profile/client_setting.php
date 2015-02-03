@@ -38,7 +38,10 @@
                                         <?php
                                         }
                                         ?>
-                                            </form></div>
+                                            </form>
+                                        <!-- remove this when it's on it's own tab! -->
+                                        </div>
+                                        <!-- end remove this -->
 <script>
 $(function(){
      $('#save_client').click(function(){

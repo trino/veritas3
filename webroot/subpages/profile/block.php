@@ -647,7 +647,7 @@
                                         </form>
                                     </div>
 
-
+                                        <!-- put this back when the form is gone       </div>   -->
                                     
                                     <script>
                                     $(function(){

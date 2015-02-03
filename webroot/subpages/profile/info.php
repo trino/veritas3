@@ -197,6 +197,8 @@
                             <label class="control-label">Username</label>
                             <input <?php echo $is_disabled ?> name="username" type="text"
                                                               class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
+                            <span class="error passerror flashUser"
+                                  style="display: none;">Username already exists</span>
                         </div>
                     </div>
 
@@ -207,6 +209,8 @@
                             <input <?php echo $is_disabled ?> name="email" type="email"
                                                               placeholder="eg. test@domain.com"
                                                               class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
+                            <span class="error passerror flashEmail"
+                                  style="display: none;">Email already exists</span>
                         </div>
                     </div>
                     
@@ -627,12 +631,12 @@
                 success: function (res) {
                     if (res == '1') {
 
-                        alert('Username already exists');
                         $('.uname').focus();
                         $('html,body').animate({
                                 scrollTop: $('.page-title').offset('200').top
                             },
                             'slow');
+                            $('.flashUser').show();
                         return false;
                     }
                     else {
@@ -650,13 +654,12 @@
                 type: 'post',
                 success: function (res) {
                     if (res == '1') {
-
-                        alert('Email already exist.');
                         $('.email').focus();
                         $('html,body').animate({
                                 scrollTop: $('.page-title').offset().top
                             },
                             'slow');
+                            $('.flashEmail').show();
                         return false;
                     }
                     else {
@@ -673,7 +676,7 @@
                 },
                 'slow');
             $('.flashPass1').show();
-            $('.flashPass1').fadeOut(7000000);
+            //$('.flashPass1').fadeOut(7000000);
             return false;
         }
 

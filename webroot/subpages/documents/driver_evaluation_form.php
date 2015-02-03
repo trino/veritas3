@@ -564,7 +564,7 @@
                                                     <p class="control-label col-md-6"><strong>Summary</strong></p>
                                                 </div>
                                                 <div class="form-group col-md-12">
-													<label class="control-label col-md-3">Recommended for hire <span class="required">
+													<label class="control-label col-md-4">Recommended for hire <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-4">
@@ -579,7 +579,7 @@
 													</div>
 												</div>
                                                 <div class="form-group col-md-12">
-													<label class="control-label col-md-3">Recommended as Full trainee <span class="required">
+													<label class="control-label col-md-4">Recommended as Full trainee <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-4">
@@ -594,7 +594,7 @@
 													</div>
 												</div>
                                                 <div class="form-group col-md-12">
-													<label class="control-label col-md-3">Recommended fire hire with trainee <span class="required">
+													<label class="control-label col-md-4">Recommended fire hire with trainee <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-4">
@@ -610,7 +610,7 @@
 												</div>
                                                 
                                                 <div class="form-group col-md-12">
-													<label class="control-label col-md-3">Comments <span class="required">
+													<label class="control-label col-md-4">Comments <span class="required">
 													* </span>
 													</label>
 													<div class="col-md-6">
@@ -627,7 +627,7 @@
                                                         
                                                         if(!count($sub['de_at'])){?>
                                                 <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-3">Attach Document : </label>
+                                                    <label class="control-label col-md-4">Attach Document : </label>
                                                     <div class="col-md-6">
                                                     <input type="hidden" class="road1" name="attach_doc[]" />
                                                     <a href="#" id="road1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
@@ -644,7 +644,7 @@
                                                             {
                                                                 $at++;
                                                                 ?>
-                                                                <div class="del_append_driver"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_document;?>" /><a href="#" id="road<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attached_document;?>  <?php if($pa->attached_document){$ext_arr = explode('.',$pa->attached_document);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_document;?>" style="max-width:120px;" /><?php }else{ ?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_document;?>">Download</a><?php } }?></span></div></div><div class="clearfix"></div>
+                                                                <div class="del_append_driver"><label class="control-label col-md-4">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_document;?>" /><a href="#" id="road<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attached_document;?>  <?php if($pa->attached_document){$ext_arr = explode('.',$pa->attached_document);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_document;?>" style="max-width:120px;" /><?php }else{ ?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_document;?>">Download</a><?php } }?></span></div></div><div class="clearfix"></div>
                                                                 <script>
                                                                 $(function(){
                                                                     fileUpload('road<?php echo $at;?>');
@@ -660,7 +660,7 @@
                                                   </div>
                                                   
                                                   <div class="form-group col-md-12">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-4">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <a href="javascript:void(0);" class="btn btn-success" id="add_more_driver_doc">Add More</a>

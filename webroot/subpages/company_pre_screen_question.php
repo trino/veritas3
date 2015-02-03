@@ -129,27 +129,27 @@
                                     <tr>
                                         <td colspan="2">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Miles </label>
+                                            <label class="control-label col-md-3"> Miles : </label>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" />
                                             </div>
-                                            <label class="control-label col-md-3"> Time out/home </label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Locations </label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                            <label class="control-label col-md-3"> Border Cross </label>
+                                            <label class="control-label col-md-3"> Time out/home : </label>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Type of equipment </label>
+                                            <label class="control-label col-md-3"> Locations : </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-3"> Border Cross : </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-3"> Type of equipment : </label>
                                             <div class="col-md-9">
                                                 <input type="text" class="form-control" />
                                             </div>
@@ -325,27 +325,27 @@
                                     <tr>
                                         <td colspan="2">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Miles </label>
+                                            <label class="control-label col-md-3"> Miles : </label>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" />
                                             </div>
-                                            <label class="control-label col-md-3"> Time out/home </label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Locations </label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                            <label class="control-label col-md-3"> Border Cross </label>
+                                            <label class="control-label col-md-3"> Time out/home : </label>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Type of equipment </label>
+                                            <label class="control-label col-md-3"> Locations : </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-3"> Border Cross : </label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-3"> Type of equipment : </label>
                                             <div class="col-md-9">
                                                 <input type="text" class="form-control" />
                                             </div>

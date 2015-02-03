@@ -11,7 +11,7 @@
 								<div class="form-body">
 
 									<div class="form-group col-md-4">
-										<label class="control-label">Recruiter's Name test: </label>
+										<label class="control-label">Recruiter's Name : </label>
 
 											<input style="width:95%;" type="text" class="form-control" name="recruiter_name" value="<?php if(!$did)echo $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.lname');?>" />
 
@@ -38,7 +38,7 @@
                                     <div class="form-group col-md-4">
 										<label class="control-label">Date : </label>
 
-											<input style="width:95%;" type="text" class="form-control date-picker" placeholder="(YYYY-MM-DD)" name="pre_screen_date">
+											<input style="width:95%;" type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="pre_screen_date">
 
 									</div>
                                     <div class="form-group col-md-4">
@@ -193,21 +193,21 @@
                                     
                                     
                                         <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Miles </label>
+                                            <label class="control-label col-md-3"> Miles : </label>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" name="current_miles" />
                                             </div>
-                                            <label class="control-label col-md-3"> Time out/home </label>
+                                            <label class="control-label col-md-3"> Time out/home : </label>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" name="current_time_out_home" />
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3"> Locations </label>
+                                            <label class="control-label col-md-3"> Locations : </label>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" name="current_location" />
                                             </div>
-                                            <label class="control-label col-md-3"> Border Cross </label>
+                                            <label class="control-label col-md-3"> Border Cross : </label>
                                             <div class="col-md-3">
                                                 <input type="text" class="form-control" name="current_border_cross" />
                                             </div>
@@ -533,21 +533,21 @@
                                         
                                     
                                         <div class="form-group col-md-4">
-                                            <label class="control-label"> Miles </label>
+                                            <label class="control-label"> Miles : </label>
 
                                                 <input style="width:95%;" type="text" class="form-control" name="driven_az_miles" />
 </div><div class="form-group col-md-4">
-                                            <label class="control-label"> Time out/home </label>
+                                            <label class="control-label"> Time out/home : </label>
 
                                                 <input style="width:95%;" type="text" class="form-control" name="driven_az_time_out_home" />
 
                                         </div><div class="form-group col-md-4">
 
-                                            <label class="control-label "> Locations </label>
+                                            <label class="control-label "> Locations : </label>
 
                                                 <input style="width:95%;" type="text" class="form-control" name="driven_az_location" />
         </div><div class="form-group col-md-4">
-                                            <label class="control-label"> Border Cross </label>
+                                            <label class="control-label"> Border Cross : </label>
 
                                                 <input style="width:95%;" type="text" class="form-control" name="driven_az_border_cross" />
                                             </div>
@@ -659,7 +659,7 @@
                             <div class="clearfix"></div>
             
 
-</form>  </div>
+</form>
 
 <script>
     $(function(){
@@ -679,7 +679,7 @@
         $('.add_attach').click(function(){
             var count = $('.attach_more').data('count');
             $('.attach_more').data('count',parseInt(count)+1);
-           $('.attach_more').append('<div class="pad_bot" id="del_pre"> <label class="control-label col-md-3">Attach Document : </label> <div class="col-md-6 pad_bot"><input type="hidden" class="fileUpload'+$('.attach_more').data('count')+'" name="attach_doc[]" /><a href="#" id="fileUpload'+$('.attach_more').data('count')+'"  class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a> <span class="uploaded"></span></div></div></div><div class="clearfix"></div>');
+           $('.attach_more').append('<div class="pad_bot" id="del_pre"> <label class="control-label col-md-3">Attach Document : </label> <div class="col-md-6 pad_bot"><input type="hidden" class="fileUpload'+$('.attach_more').data('count')+'" name="attach_doc[]" /><a href="#" id="fileUpload'+$('.attach_more').data('count')+'"  class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
             fileUpload('fileUpload'+$('.attach_more').data('count'));
            
         });

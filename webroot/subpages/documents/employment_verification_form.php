@@ -30,95 +30,95 @@
                         </div>
                 
                                <div class="form-group col-md-12">
-                                <label class="control-label col-md-3">Company Name</label>
+                                <label class="control-label col-md-3">Company Name : </label>
                                 <div class=" col-md-9">
                                 <input type="text" class="form-control" name="company_name[]" value="<?php echo $emp->company_name;?>"  />
                                 </div>
                                 </div>
                                 <div class="form-group col-md-12">
-                                <label class="control-label col-md-3">Address</label>
+                                <label class="control-label col-md-3">Address : </label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="address[]" value="<?php echo $emp->address;?>" />
                                 </div>
-                                <label class="control-label col-md-3">City</label>
+                                <label class="control-label col-md-3">City : </label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="city[]" value="<?php echo $emp->city;?>" />
                                 </div>
                                 </div>
                                 <div class="form-group col-md-12">
-                                <label class="control-label col-md-3">State/Province</label>
+                                <label class="control-label col-md-3">State/Province : </label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="state_province[]" value="<?php echo $emp->state_province;?>" />
                                 </div>
-                                <label class="control-label col-md-3">Country</label>
+                                <label class="control-label col-md-3">Country : </label>
                                 <div class="col-md-3">
                                 <input type="text" class="form-control" name="country[]" value="<?php echo $emp->country;?>" />
                                 </div>
                                 </div>
                                 <div class="form-group col-md-12">
-                                <label class="control-label col-md-3">Supervisor's Name:</label>
+                                <label class="control-label col-md-3">Supervisor's Name : </label>
                                 <div class="col-md-3">
                                 <input type="text" class="form-control" name="supervisor_name[]" value="<?php echo $emp->address;?>" value="<?php echo $emp->supervisor_name;?>"/>
                                 </div>
-                               <label class="control-label col-md-3">Phone #:</label>
+                               <label class="control-label col-md-3">Phone # : </label>
                                <div class="col-md-3">
                                <input type="text" class="form-control" name="supervisor_phone[]" value="<?php echo $emp->supervisor_phone;?>"/>
                                </div>
                                </div>
                                
                                <div class="form-group col-md-12">
-                               <label class="control-label col-md-3">Supervisor's Email:</label>
+                               <label class="control-label col-md-3">Supervisor's Email : </label>
                                <div class="col-md-3">
                                <input type="text" class="form-control email1" name="supervisor_email[]" value="<?php echo $emp->supervisor_email;?>"/>
                                </div>
-                               <label class="control-label col-md-3">Secondary Email:</label>
+                               <label class="control-label col-md-3">Secondary Email : </label>
                                <div class="col-md-3">
                                <input type="text" class="form-control email1" name="supervisor_secondary_email[]" value="<?php echo $emp->supervisor_secondary_email;?>"/>
                                </div>
                                </div>
                                
                                <div class="form-group col-md-12">
-                                <label class="control-label col-md-3">Employment Start Date:</label>
+                                <label class="control-label col-md-3">Employment Start Date : </label>
                                 <div class="col-md-3">
                                 <input type="text" class="form-control date-picker" name="employment_start_date[]" value="<?php echo $emp->employment_start_date;?>"/>
                                 </div>
-                                <label class="control-label col-md-3">Employment End Date:</label>
+                                <label class="control-label col-md-3">Employment End Date : </label>
                                 <div class="col-md-3">
                                 <input type="text" class="form-control date-picker" name="employment_end_date[]" value="<?php echo $emp->employment_end_date;?>"/>
                                 </div>
                                 </div>
                                 <div class="form-group col-md-12">
-                                <label class="control-label col-md-3">Claims with this Employer:</label>
+                                <label class="control-label col-md-3">Claims with this Employer : </label>
                                 <div class="col-md-3">
                                 &nbsp;&nbsp;<input type="radio" name="claims_with_employer_<?php $rand = rand(0,100); echo $rand; ?>[]" value="1" <?php if($emp->claims_with_employer == 1){?>checked="checked"<?php }?>/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <input type="radio" name="claims_with_employer_<?php echo $rand;?>[]"  value="0" <?php if($emp->claims_with_employer == 0){?>checked="checked"<?php }?>/>&nbsp;&nbsp;&nbsp;&nbsp;No
                                 </div>
-                                 <label class="control-label col-md-3">Date Claims Occured:</label>
+                                 <label class="control-label col-md-3">Date Claims Occurred : </label>
                                  <div class="col-md-3">
                                  <input type="text" class="form-control date-picker" name="claims_recovery_date[]" value="<?php echo $emp->claims_recovery_date;?>"/>
                                  </div>
                                  </div>
                                  
                                  <div class="form-group col-md-12">
-                                <label class="control-label col-md-3">Employment history confirmed by (Verifier Use Only):</label>
+                                <label class="control-label col-md-3">Employment history confirmed by (Verifier Use Only) : </label>
                                 <div class="col-md-9">
                                 <input type="text" class="form-control" name="emploment_history_confirm_verify_use[]" value="<?php echo $emp->emploment_history_confirm_verify_use;?>"/>
                                 </div>
                                 </div>
                                 
                                 <div class="form-group col-md-12">
-                                <label class="control-label col-md-3">US DOT MC/MX#:</label>
+                                <label class="control-label col-md-3">US DOT MC/MX# : </label>
                                 <div class="col-md-3">
                                 <input name="us_dot[]" type="text" class="form-control" name="us_dot[]" value="<?php echo $emp->us_dot;?>" />
                                 </div>
-                                <label class="control-label col-md-3" style="display: none;">Signature:</label>
+                                <label class="control-label col-md-3" style="display: none;">Signature : </label>
                                 <div class="col-md-3">
                                 <input type="text" class="form-control" style="display: none;" name="signature[]" value="<?php echo $emp->signature;?>" />
                                 </div>
                                 </div>
                                 
                                 <div class="form-group col-md-12">
-                                <label class="control-label col-md-3">Date:</label>
+                                <label class="control-label col-md-3">Date : </label>
                                 <div class="col-md-9">
                                 <input type="text" class="form-control date-picker" name="signature_datetime[]" value="<?php echo $emp->signature_datetime;?>"/>
                                 </div>

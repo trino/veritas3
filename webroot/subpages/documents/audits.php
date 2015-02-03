@@ -16,27 +16,27 @@ $is_disabled = '';
 <div class="form-body">
                                                 
                                                 <div class="form-group">
-<label class="col-md-3 control-label">Company / Division</label>
+<label class="col-md-3 control-label">Company / Division : </label>
 <div class="col-md-4">
 <input type="text" name="company" class="form-control " <?php echo $is_disabled;?> placeholder="Enter text" value="<?php if(isset($audits))echo $audits->company;?>" />
 </div>
 </div>
                                                 
 <div class="form-group">
-<label class="col-md-3 control-label">Conference Name</label>
+<label class="col-md-3 control-label">Conference Name : </label>
 <div class="col-md-4">
 <input type="text" name="conference_name"  class="form-control " <?php echo $is_disabled;?> placeholder="Enter text" value="<?php if(isset($audits))echo $audits->conference_name;?>" />
 </div>
 </div>
 
 <div class="form-group">
-<label class="col-md-3 control-label">Related Association</label>
+<label class="col-md-3 control-label">Related Association : </label>
 <div class="col-md-4">
 <input type="text" name="association" class="form-control " <?php echo $is_disabled;?> placeholder="Enter text" value="<?php if(isset($audits))echo $audits->association;?>"/>	</div>
 </div>
                                                                                                 
 <div class="form-group">
-<label class="col-md-3 control-label">Date </label>
+<label class="col-md-3 control-label">Date : </label>
 <?php if(isset($audits))
 {
     $date = explode("-",$audits->date);
@@ -72,23 +72,20 @@ $is_disabled = '';
                                                         
                                                     </select>
                              	  </div>
-</div>   
-                                                
-                                                                                            
+</div>
+
+
                                                 <div class="form-group">
-<label class="col-md-3 control-label">Location</label>
+<label class="col-md-3 control-label">Location : </label>
 
 <div class="col-md-3">
 <input type="text" name="city"  class="form-control req_driver" <?php echo $is_disabled;?> placeholder="City" value="<?php if(isset($audits))echo $audits->city;?>">
 </div>                                                    
 
-</div>
- 
- 
-                                                <div class="form-group">                                                  
-                                                    <label class="col-md-3 control-label"> &nbsp; &nbsp; </label>
+
+
                                                     <div class="col-md-3">
-                                                         <div class="form-group">
+
                                                             <select name="province" <?php echo $is_disabled;?> class="form-control member_type">
                                                                 <option value="AB" <?php if(isset($audits)&& $audits->province =="AB")echo "selected='selected'";?>>AB</option>
                                                                 <option value="BC" <?php if(isset($audits)&& $audits->province =="BC")echo "selected='selected'";?>>BC</option>
@@ -104,7 +101,7 @@ $is_disabled = '';
                                                                 <option value="SK" <?php if(isset($audits)&& $audits->province =="SK")echo "selected='selected'";?>>SK</option>
                                                                 <option value="YT" <?php if(isset($audits)&& $audits->province =="YT")echo "selected='selected'";?>>YT</option>
                                                             </select>
-                                   	</div>
+
                                 </div>
                                                     <div class="col-md-3">
 <input type="text" name="country" class="form-control req_driver" <?php echo $is_disabled;?> value="Canada" value="<?php if(isset($audits))echo $audits->country;?>">
@@ -114,7 +111,7 @@ $is_disabled = '';
  
  
                                                 <div class="form-group">
-<label class="col-md-3 control-label">Estimated Total Cost 
+<label class="col-md-3 control-label">Estimated Total Cost :
                                                     <small class=" control-label">Booth/Travel/Hotels/Meals</small>
                                                     </label>
                                                     
@@ -124,22 +121,22 @@ $is_disabled = '';
 </div>                                                
 
  	<div class="form-group">
-<label class="col-md-3 control-label">Rating Total 
-                                                    <small class=" control-label">[Out of 40]</small>
+<label class="col-md-3 control-label">Rating Total
+                                                    <small class=" control-label">[Out of 40]</small> :
                                                     </label>
                                                     
-<div class="col-md-3">
-                                                         <div class="form-group">
+<div class="col-md-4">
+
                                                             <select name="total_rating" <?php echo $is_disabled;?> class="form-control member_type">
                                                               <?php for($i=1; $i<=40; $i++):?>
                                                               <option value="<?php echo $i;?>" <?php if(isset($audits)&& $audits->total_rating ==$i)echo "selected='selected'";?>><?php echo $i;?></option>
                                                               <?php endfor;?>
                                                             </select>
-                                   	</div>
+
                                 </div>
 </div>
                                                 
-                                       	<h2> Objectives </h2>         
+                                       	<h2> Objectives</h2>
 
 <div class="form-group">
 <label class="col-md-3 control-label">

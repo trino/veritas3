@@ -23,12 +23,23 @@
     <?php
     function provinces($name){
         echo '<SELECT class="form-control" name="' . $name . '">';
-        echo '<OPTION>Province</OPTION> <OPTION>Alberta</OPTION><OPTION>British Columbia</OPTION>';
-        echo '<OPTION>Manitoba</OPTION><OPTION>Newfoundland and Labrador</OPTION><OPTION>New Brunswick</OPTION>';
-        echo '<OPTION>Northwest Territories</OPTION><OPTION>Nova Scotia</OPTION><OPTION>Nunavut</OPTION>';
-        echo '<OPTION>Ontario</OPTION><OPTION>Prince Edward Island</OPTION><OPTION>Quebec</OPTION>';
-        echo '<OPTION>Saskatchewan</OPTION><OPTION>Yukon</OPTION></SELECT>';
+        echo '<OPTION>Province</OPTION>';
+        echo '<OPTION value="AB">Alberta</OPTION>';
+        echo '<OPTION value="BC">British Columbia</OPTION>';
+        echo '<OPTION value="MB">Manitoba</OPTION>';
+        echo '<OPTION value="NB">New Brunswick</OPTION>';
+        echo '<OPTION value="NL">Newfoundland and Labrador</OPTION>';
+        echo '<OPTION value="NT">Northwest Territories</OPTION>';
+        echo '<OPTION value="NS">Nova Scotia</OPTION>';
+        echo '<OPTION value="NU">Nunavut</OPTION>';
+        echo '<OPTION value="ON">Ontario</OPTION>';
+        echo '<OPTION value="PE">Prince Edward Island</OPTION>';
+        echo '<OPTION value="QC">Quebec</OPTION>';
+        echo '<OPTION value="SK">Saskatchewan</OPTION>';
+        echo '<OPTION value="YT">Yukon</OPTION>';
+        echo '</SELECT>';
     }
+
     ?>
 		<div class="form-group col-md-12">
 			<h4 class="col-md-12">Driver Application for Employment</h4>
@@ -730,7 +741,7 @@
                      <div class="form-group col-md-12">
                                         <label class="control-label col-md-6">Dated at on the day of : </label>
                                         <div class="col-md-6">
-										<input type="text" class="form-control date-picker" name="dated_day"/>
+										<input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="dated_day"/>
                                         </div>
                        </div>
                        

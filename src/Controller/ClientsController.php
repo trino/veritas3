@@ -353,14 +353,14 @@ class ClientsController extends AppController {
         {
 
             $cnt = 0;
-    	    if($_POST['sig_email']!="")
+    	    if(isset($_POST['sig_email']) && $_POST['sig_email']!="")
                 $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email']])->count();
             if($cnt>0)
             {
                 echo "email";
                 die();
             }
-            if((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!='')
+            if(isset($_POST['sig_email'])&&((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!=''))
                 {
                     echo "Invalid Email";
                     die();

@@ -2214,6 +2214,7 @@ class soap_transport_http extends nusoap_base {
 								// verifyhost: default is 1
 
 	/**
+	 * 
 	* constructor
 	*
 	* @param string $url The URL to which to connect

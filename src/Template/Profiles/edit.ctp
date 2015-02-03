@@ -360,8 +360,7 @@
                         <div class="portlet-title tabbable-line">
                             <div class="caption caption-md">
                                 <i class="icon-globe theme-font hide"></i>
-                                <span
-                                    class="caption-subject font-blue-madison bold"><?php echo ucfirst($settings->profile); ?> Manager</span>
+                                <span class="caption-subject font-blue-madison bold"><?php echo ucfirst($settings->profile); ?> Manager</span>
                             </div>
                             <ul class="nav nav-tabs">
                                 <li class="active">
@@ -429,14 +428,14 @@
                                             <?php include('subpages/profile/page.php'); ?>
                                         </div>
 
-                                        <div class="tab-pane" id="tab_1_7">
-                                            <?php include('subpages/profile/block.php'); ?>
-                                        </div>
+
                                         
                                          <div class="tab-pane" id="tab_1_8">
                                             <?php include('subpages/profile/client_setting.php'); ?>
                                         </div>
-
+                                        <div class="tab-pane" id="tab_1_7">
+                                            <?php include('subpages/profile/block.php'); ?>
+                                        </div>
                                     <?php } ?>
                             </div>
                         </div>

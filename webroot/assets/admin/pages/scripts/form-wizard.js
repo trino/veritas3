@@ -273,14 +273,7 @@ var FormWizard = function () {
                 onTabClick: function (tab, navigation, index, clickedIndex) {
                     //alert(clickedIndex);
                     return false;
-                    /*
-                     success.hide();
-                     error.hide();
-                     if (form.valid() == false) {
-                     return false;
-                     }
-                     handleTitle(tab, navigation, clickedIndex);
-                     */
+                    
                 },
                 onNext: function (tab, navigation, index) {
                     //alert(tab);
@@ -310,8 +303,7 @@ var FormWizard = function () {
                         
                         if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')
                         {
-                            //if($('#skip').val()!='1'){
-                            //$('#confirm_check').attr('style','border-color:red');
+                            
                             alert('Please confirm that you have read the conditions.');
                             $('#confirm_check').focus();
                             $('html,body').animate({
@@ -328,15 +320,12 @@ var FormWizard = function () {
                     else
                     if($(".tab-pane.active").attr('id') == 'tab4')
                     {
-                            
-                            
-
                         var er = 0;
                         $(".tab-pane.active").find('.required').each(function(){
-                            if($(this).val()=='')
+                            if($(this).val()=='' && $(this).attr('name')!='' && $(this).attr('name')!='undefined'  && $(this).attr('name'))
                             {
                                 $(this).attr('style','border-color:red');
-                                $('.cont').attr('disabled','');
+                                //$('.cont').attr('disabled','');
                                 $(this).focus();
                                 $('html,body').animate({
                                         scrollTop: $('.active').offset().top},
@@ -365,9 +354,7 @@ var FormWizard = function () {
                         //alert('test');
                         handleTitle(tab, navigation, index);
                     }
-                    /*if (form.valid() == false) {
-                     return false;
-                     }*/
+                    
 
 
                 },

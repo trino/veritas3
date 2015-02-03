@@ -656,7 +656,7 @@
            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
         });
         <?php
-        if($this->request->params['action']=='addorder')
+        if($this->request->params['action']=='addorder' || $this->request->params['action']=='add')
         {
             ?>
             fileUpload('fileUpload1');

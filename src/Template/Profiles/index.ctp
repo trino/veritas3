@@ -133,6 +133,12 @@
                                         {
                                           if($profile->super != '1')
                                           {
+                                            if($this->request->session()->read('Profile.profile_type') == '2'){
+                                            $pt = $profile->profile_type;
+                                            if($pt=='5' || $pt=='7' || $pt=='8' || $this->request->session()->read('Profile.id')==$profile->id)    
+                                            echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
+                                            }
+                                            else
                                             echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
                                           }  
                                         }
@@ -141,17 +147,20 @@
                                     {
                                         if(($profile->admin == '1' || $profile->profile_type == '1') && $this->request->session()->read('Profile.super') == '1')
                                         {
+                                            if($this->request->session()->read('Profile.id')!=$profile->id){
                                             ?>
                                             <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger" >Delete</a>
                                             <?php
-                                            
+                                            }
                                         }
                                         
                                         else if($profile->admin != '1' && $profile->profile_type != '1')
                                         {
+                                            if($this->request->session()->read('Profile.id')!=$profile->id){
                                             ?>
                                             <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger" >Delete</a>
                                         <?php }
+                                        }
                                     } 
                                     ?>
                                     

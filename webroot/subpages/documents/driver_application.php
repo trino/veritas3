@@ -802,7 +802,7 @@
  
  jQuery(function(){
     <?php
-        if($this->request->params['action']=='addorder')
+        if($this->request->params['action']=='addorder' || $this->request->params['action']=='add')
         {
             ?>
             fileUpload('driveApp1');

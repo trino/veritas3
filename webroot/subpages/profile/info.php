@@ -35,6 +35,7 @@
                 <input type="hidden" name="client_ids" value="" class="client_profile_id"/>
 
                 <div class="row">
+                <input type="hidden" name="created_by" value="<?php echo $this->request->session()->read('Profile.id') ?>"/>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Profile Type</label>
@@ -192,38 +193,34 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Username</label>
                             <input <?php echo $is_disabled ?> name="username" type="text"
                                                               class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
+                            <span class="error passerror flashUser"
+                                  style="display: none;">Username already exists</span>
                         </div>
+                    </div>
+                    <div class="clearfix flashUser" style="display: none;">
                     </div>
 
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Email</label>
                             <input <?php echo $is_disabled ?> name="email" type="email"
                                                               placeholder="eg. test@domain.com"
                                                               class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
+                            <span class="error passerror flashEmail"
+                                  style="display: none;">Email already exists</span>
                         </div>
                     </div>
-                    
+                    <div class="clearfix flashEmail" style="display: none;">
+                    </div>
                     
 
-                    <?php if ($sidebar->client_option == 0) { ?>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">ISB Id</label>
-                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
-                                    name="isb_id" type="text"
-                                    placeholder="optional"
-                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
-                            </div>
-                        </div>
-                    <?php } ?>
-
+                    
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Password</label>
@@ -232,6 +229,7 @@
                                    required="required"/>
                         </div>
                     </div>
+                    
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Re-type Password</label>
@@ -241,6 +239,8 @@
                             <span class="error passerror flashPass1"
                                   style="display: none;">Please enter same password</span>
                         </div>
+                    </div>
+                    <div class="clearfix">
                     </div>
 
                     <div class="col-md-4">
@@ -320,7 +320,20 @@
                                 ?></SELECT>
                         </div>
                     </div>
+                    
+                    
 
+                    <?php if ($sidebar->client_option == 0) { ?>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">ISB Id</label>
+                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
+                                    name="isb_id" type="text"
+                                    placeholder="optional"
+                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
+                            </div>
+                        </div>
+                    <?php } ?>
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -478,7 +491,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">Province (Driver's License was issued)</label>
+                                <label class="control-label">Province Driver's License was issued</label>
                                 <SELECT  <?php echo $is_disabled ?> name="driver_province" class="form-control "><?php
                                         $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");
                                         $province = "";
@@ -624,45 +637,49 @@
                 type: 'post',
                 success: function (res) {
                     if (res == '1') {
-
-                        alert('Username already exists');
+                        //alert(res);
+                        $('.flashUser').show();
                         $('.uname').focus();
-                        $('html,body').animate({
-                                scrollTop: $('.page-title').offset('200').top
-                            },
-                            'slow');
-                        return false;
-                    }
-                    else {
-                        $('#hiddensub').click();
-                    }
-                }
-            });
-            
-            
-           if($('.email').val()!=''){
-            var un = $('.email').val();
-            $.ajax({
-                url: '<?php echo $this->request->webroot;?>profiles/check_email/<?php echo $uid;?>',
-                data: 'email=' + $('.email').val(),
-                type: 'post',
-                success: function (res) {
-                    if (res == '1') {
-
-                        alert('Email already exist.');
-                        $('.email').focus();
                         $('html,body').animate({
                                 scrollTop: $('.page-title').offset().top
                             },
                             'slow');
+                            
                         return false;
                     }
                     else {
+                        $('.flashUser').hide();
+                        if($('.email').val()!=''){
+                                    var un = $('.email').val();
+                                    $.ajax({
+                                        url: '<?php echo $this->request->webroot;?>profiles/check_email/<?php echo $uid;?>',
+                                        data: 'email=' + $('.email').val(),
+                                        type: 'post',
+                                        success: function (res) {
+                                            if (res == '1') {
+                                                $('.email').focus();
+                                                $('.flashEmail').show();
+                                                $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+                                                    
+                                                return false;
+                                            }
+                                            else {
+                                                $('#hiddensub').click();
+                                            }
+                                        }
+                                    });
+                        }
+                        else
                         $('#hiddensub').click();
                     }
                 }
             });
-}
+            
+            
+           
         }
         else {
             $('#retype_password').focus();
@@ -671,7 +688,7 @@
                 },
                 'slow');
             $('.flashPass1').show();
-            $('.flashPass1').fadeOut(7000000);
+            //$('.flashPass1').fadeOut(7000000);
             return false;
         }
 

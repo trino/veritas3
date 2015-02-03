@@ -5,7 +5,7 @@ plugins/*
 tests/*
 tmp/*
 vendor/*
-
+webroot/subpages/soap/*
 webroot/attachments/*
 webroot/orders/*
 webroot/img/jobs/*

@@ -41,6 +41,10 @@
         $p = $profile;
 ?>
 
+
+
+
+
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -49,7 +53,9 @@
     <div class="toggler">
     </div>
     <div class="toggler-close">
+
     </div>
+
     <div class="theme-options">
         <div class="theme-option theme-colors clearfix">
 						<span>
@@ -220,7 +226,8 @@
                     <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
                     <div class="input-icon">
-                    <a class="btn btn-xs  btn-success" href="javascript:void(0)" id="clientimg">
+                        <br>
+                    <a class="btn btn-xs  btn-success   margin-t10" href="javascript:void(0)" id="clientimg">
                     <i class="fa fa-image"></i>
                       Add/Edit Image
                     </a>
@@ -240,9 +247,7 @@
                     <div class="profile-usertitle-job">
                         <?php if (isset($p->isb_id)) { ?>Reference Number: <?php echo $p->isb_id; ?><?php } ?>
                     </div>
-                </div>
-
-            </div>
+                </div></div>
 
             <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) {
                 //&& $this->request->session()->read("Profile.id")==$id
@@ -313,7 +318,7 @@
 
                     </div>
                 </div>
-            <?php    
+            <?php
                 } ?>
             <!-- END PORTLET MAIN -->
             <?php
@@ -344,7 +349,7 @@
 
              }
              ?>
-             
+
         </div>
         <!-- END BEGIN PROFILE SIDEBAR -->
         <!-- BEGIN PROFILE CONTENT -->
@@ -512,16 +517,16 @@ new AjaxUpload(button,{
                                  client_id = client_id+","+$(this).val();
                             }
                         });
-                        
+
                         client_id = client_id.substr(1,length.client_id);
                         $('.client_profile_id').val(client_id);
-                  
+
                     });
                     <?php
                     }
                     ?>
                    $('#save_client_p1').click(function(){
-                    
+
                     $('#save_client_p1').text('Saving..');
 
         $("#pass_form").validate({
@@ -583,7 +588,7 @@ function searchClient()
         }
     });
 }
-<?php    
+<?php
 }
 ?>
 $(function(){

@@ -12,9 +12,9 @@
 
 
 <div class="note note-success">
-    <h4 class="block">Your Order has been Submitted!</h4>
+    <h4 class="block">Your Order Has Been Submitted!</h4>
     <p>
-        You will be notified once your order is processed.
+        You will be notified once it's processed.
     </p>
     <!--You will be redirected to dashboard in <span class="seconds"><strong>10</strong></span> seconds. -->
 

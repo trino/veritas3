@@ -37,11 +37,7 @@
             <div class="portlet-body">
                 <div class="chat-form">
                     <form action="<?php echo $this->request->webroot; ?>documents/orderslist" method="get">
-                        <div class="col-md-2 col-sm-12" style="padding-left:0;">
-                            <input class="form-control" name="searchdoc" type="search" placeholder=" Search Orders"
-                                   value="<?php if (isset($search_text)) echo $search_text; ?>"
-                                   aria-controls="sample_1"/>
-                        </div>
+
                         <?php
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
@@ -96,6 +92,11 @@
                             </select>
                         </div>
                         <div class="col-md-3 col-sm-12 divisions">
+                        </div>
+                        <div class="col-md-2 col-sm-12" style="padding-left:0;">
+                            <input class="form-control" name="searchdoc" type="search" placeholder=" Search Orders"
+                                   value="<?php if (isset($search_text)) echo $search_text; ?>"
+                                   aria-controls="sample_1"/>
                         </div>
                         <div class="col-md-1 col-sm-12">
                             <button type="submit" class="btn btn-primary">Search</button>

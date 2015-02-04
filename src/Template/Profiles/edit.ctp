@@ -427,10 +427,7 @@
                                         <div class="tab-pane" id="tab_1_6">
                                             <?php include('subpages/profile/page.php'); ?>
                                         </div>
-
-
-                                        
-                                         <div class="tab-pane" id="tab_1_8">
+                                        <div class="tab-pane" id="tab_1_8">
                                             <?php include('subpages/profile/client_setting.php'); ?>
                                         </div>
                                         <div class="tab-pane" id="tab_1_7">

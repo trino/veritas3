@@ -3,13 +3,13 @@
 
 
                                             <li class="active">
-                                                <a href="#subtab_1_1" data-toggle="tab">Product Example</a>
+                                                <a href="#subtab_1_11" data-toggle="tab">Product Example</a>
                                             </li>
                                             <li class="">
                                                 <a href="#subtab_1_6" data-toggle="tab">Help</a>
                                             </li>
                                             <li>
-                                                <a href="#subtab_1_3" data-toggle="tab">Privacy Code</a>
+                                                <a href="#subtab_1_7" data-toggle="tab">Privacy Code</a>
                                             </li>
                                             <li>
                                                 <a href="#subtab_1_4" data-toggle="tab">Terms</a>
@@ -32,7 +32,7 @@
 
 
                                                     <!-- BEGIN FORM-->
-                                        <div class="tab-pane active" id="subtab_1_1">
+                                        <div class="tab-pane active" id="subtab_1_11">
                                             <div class="portlet box">
                                                 <div class="portlet-body form">
                                                     <?php $cms = $this->requestAction("/pages/get_content/product_example");?>
@@ -127,7 +127,7 @@
 
                                         </div>
 
-                                        <div class="tab-pane" id="subtab_1_3">
+                                        <div class="tab-pane" id="subtab_1_7">
                                             <div class="portlet box">
                                                 <!--div class="portlet-title">
                                                     <div class="caption">

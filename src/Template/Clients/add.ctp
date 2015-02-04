@@ -359,7 +359,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
 
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label">teBilling Contact</label>
+                                                        <label class="control-label">Billing Contact</label>
                                                         <input type="text" class="form-control"
                                                                name="billing_contact" <?php if (isset($c->billing_contact)) { ?> value="<?php echo $c->billing_contact; ?>" <?php } ?>/>
                                                     </div>

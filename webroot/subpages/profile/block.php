@@ -5,7 +5,7 @@
     <?php $block = $this->requestAction("settings/all_settings/".$uid."/blocks"); ?>
 
 <!-- BEGIN BORDERED TABLE PORTLET-->
-<div class="portlet box green-haze">
+<div class="portlet box yellow">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-briefcase"></i>Permissions

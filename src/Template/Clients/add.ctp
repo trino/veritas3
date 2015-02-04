@@ -127,7 +127,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
                         <div class="clearfix"></div>
                             
-                            <div class="portlet box red-sunglo">
+                            <div class="portlet box purple-medium">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="fa fa-briefcase"></i><?php echo ucfirst($settings->client); ?> Manager

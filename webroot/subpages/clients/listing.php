@@ -1,7 +1,7 @@
 <div class="row">
 
     <div class="col-md-12">
-        <div class="portlet box red-sunglo">
+        <div class="portlet box purple-medium ">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-globe"></i>

@@ -644,13 +644,13 @@
                                                             {
                                                                 $at++;
                                                                 ?>
-                                                                <div class="del_append_driver"><label class="control-label col-md-4">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_document;?>" /><a href="#" id="road<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a><?php }?> 
-                                                                <span class="uploaded"><?php echo $pa->attached_document;?>  <?php if($pa->attached_document){$ext_arr = explode('.',$pa->attached_document);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_document;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_document;?>">Download</a><?php }else{?><br />
-                                                             <video width="320" height="240" controls>
-                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_document;?>" type="video/mp4">
-                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attached_document);?>" type="video/ogg">
-                                                            Your browser does not support the video tag.
-                                                            </video> 
+                                                                <div class="del_append_driver"><label class="control-label col-md-4">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="road<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a><?php }?> 
+                                                                <span class="uploaded"><?php echo $pa->attachment;?>  <?php if($pa->attachment){$ext_arr = explode('.',$pa->attachment);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>">Download</a><?php }else{?><br />
+                                                                <video width="320" height="240" controls>
+                                                                <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" type="video/mp4">
+                                                                <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attachment);?>" type="video/ogg">
+                                                                 Your browser does not support the video tag.
+                                                                </video> 
                                                             <?php } }?></span>
                                                                 </div></div><div class="clearfix"></div>
                                                                 <script>

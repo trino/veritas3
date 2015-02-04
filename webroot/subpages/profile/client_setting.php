@@ -1,4 +1,11 @@
-
+<!-- BEGIN PORTLET-->
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-briefcase"></i>Client Setting
+        </div>
+    </div>
+    <div class="portlet-body">
                                     
                                         <form action="#" method="post" id="clientform">
                                             <input type="hidden" name="form" value="<?php echo $uid;?>" />
@@ -6,7 +13,7 @@
                                              <table class=" ">
                                             <tr>
                                                 <td class="vtop">
-                                                    Options For
+                                                    Options For :
                                                 </td>
                                                 <td>
                                                     <label class="uniform-inline">
@@ -30,7 +37,7 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10">
+                                            <P></P><div class="margin-top-10">
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_client"
                                                        value="Save Changes"/>
 
@@ -61,3 +68,5 @@ $(function(){
                });
 });
 </script>
+
+</DIV></DIV><!-- END PORTLET-->

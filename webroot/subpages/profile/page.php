@@ -1,4 +1,9 @@
-<div>
+<!-- BEGIN PORTLET-->
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-briefcase"></i>Pages
+        </div>
                                         <ul class="nav nav-tabs">
 
 
@@ -21,6 +26,7 @@
 
                                         </ul>
                                     </div>
+    <div class="portlet-body">
                                     <div class="tab-content">
 
                                                 <!--div class="portlet-title">
@@ -39,7 +45,7 @@
                                                     <form action="<?php echo $this->request->webroot;?>pages/edit/product_example" method="post" class="form-horizontal form-bordered" id="product_example">
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label class="control-label col-md-2">Page Title<BR><small>(Product Example)</small></label>
+                                                                <label class="control-label col-md-2">Product Example Title</label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-product_example"
@@ -92,7 +98,7 @@
                                                     <form action="<?php echo $this->request->webroot;?>pages/edit/help" method="post" class="form-horizontal form-bordered" id="help">
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label class="control-label col-md-2">Page Title<BR><small>(Help)</small></label>
+                                                                <label class="control-label col-md-2">Help Title</label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title"  value="<?php echo $cms->title;?>" id="title-help"/>
@@ -142,7 +148,7 @@
                                                     <form action="<?php echo $this->request->webroot;?>pages/edit/privacy_code"  method="post"class="form-horizontal form-bordered" id="privacy_code">
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label class="control-label col-md-2">Page Title<BR><small>(Privacy)</small></label>
+                                                                <label class="control-label col-md-2">Privacy Title</label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-privacy_code"
@@ -194,7 +200,7 @@
                                                         <form action="<?php echo $this->request->webroot;?>pages/edit/terms"  method="post"class="form-horizontal form-bordered" id="terms">
                                                             <div class="form-body">
                                                                 <div class="form-group last">
-                                                                    <label class="control-label col-md-2">Page Title<BR><small>(Terms)</small></label>
+                                                                    <label class="control-label col-md-2">Terms Title</label>
 
                                                                     <div class="col-md-4">
                                                                         <input class="form-control" name="title" id="title-terms" value="<?php echo $cms->title;?>"/>
@@ -243,7 +249,7 @@
                                                     <form action="<?php echo $this->request->webroot;?>pages/edit/faq"  method="post"class="form-horizontal form-bordered" id="faq">
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label class="control-label col-md-2">Page Title<BR><small>(FAQ)</small></label>
+                                                                <label class="control-label col-md-2">FAQ Page Title</label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-faq"
@@ -294,4 +300,6 @@
     }*/
 
 </script>
-                                    
+    </DIV>
+</DIV>
+<!-- END PORTLET-->

@@ -1,5 +1,4 @@
 <form id="form_tab1">
-
 <input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>
 <input type="hidden" name="sub_doc_id" value="1" class="sub_docs_id" id="af" />
 <div class="clearfix"></div>
@@ -7,7 +6,6 @@
 							<div class="form-group col-md-12">
 								<h4 class="col-md-12">Driver Pre-Screen Questions</h4>
 							</div>
-
 								<div class="form-body">
 
 									<div class="form-group col-md-4">
@@ -599,8 +597,6 @@
                                          {
                                           $pre_at['attach_doc'] = array();  
                                          }
-                                         //var_dump($pre_at);
-                                         //var_dump(count($pre_at['attach_doc']));
                                          if(!count($pre_at['attach_doc'])){
                                             ?>
                                             
@@ -627,13 +623,13 @@
                                                 <div class="pad_bot" id="del_pre"> 
                                                     <label class="control-label col-md-3">Attach Document : </label> 
                                                     <div class="col-md-6 pad_bot">
-                                                        <input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?><" />
+                                                        <input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?><" />
                                                             <a href="#" id="fileUpload<?php echo $at;?>"  class="btn btn-primary">Browse</a> 
                                                             <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a><?php }?> 
-                                                            <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){$ext_arr = explode('.',$pa->attach_doc);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>">Download</a><?php }else{?><br />
+                                                            <span class="uploaded"><?php echo $pa->attachment;?>  <?php if($pa->attachment){$ext_arr = explode('.',$pa->attachment);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>">Download</a><?php }else{?><br />
                                                              <video width="320" height="240" controls>
-                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" type="video/mp4">
-                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attach_doc);?>" type="video/ogg">
+                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" type="video/mp4">
+                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attachment);?>" type="video/ogg">
                                                             Your browser does not support the video tag.
                                                             </video> 
                                                             <?php } }?></span>
@@ -670,7 +666,6 @@
 <script>
     $(function(){
         $('#addfiles').click(function(){
-            //alert("ssss");
            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
         });
         <?php

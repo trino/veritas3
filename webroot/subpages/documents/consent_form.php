@@ -1,5 +1,3 @@
-
-
 <form id="form_consent">
     <h3 class="col-md-12">Consent for the release of police information and disclosure of personal information</h3>
 
@@ -53,7 +51,6 @@
 
             <div class="col-md-4"><label class="control-label">Province Driver’s License was issued :</label>
                 <?php provinces("driver_license_issued");?>
-                <!--                 <input type="text" class="form-control" name="driver_license_issued"/>-->
             </div>
 
 
@@ -78,7 +75,6 @@
             </div>
             <div class="col-md-2">
                 <?php provinces("current_province");?>
-                <!-- <input type="text" class="form-control required" placeholder="Province" name="current_province"/> -->
             </div>
             <div class="col-md-3">
                 <input type="text" class="form-control required" placeholder="Postal Code" name="current_postal_code"/>
@@ -527,15 +523,15 @@
 
                                 <div class="col-md-6 pad_bot">
                                     <input type="hidden" class="consent<?php echo $at;?>" name="attach_doc[]"
-                                           value="<?php echo $pa->attach_doc;?>"/>
+                                           value="<?php echo $pa->attachment;?>"/>
                                     <a href="#" id="consent<?php echo $at;?>" class="btn btn-primary">Browse</a>
                                     <a href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a>
-                                    <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){$ext_arr = explode('.',$pa->attach_doc);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>">Download</a><?php }else{?><br />
-                                                             <video width="320" height="240" controls>
-                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" type="video/mp4">
-                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attach_doc);?>" type="video/ogg">
-                                                            Your browser does not support the video tag.
-                                                            </video> 
+                                    <span class="uploaded"><?php echo $pa->attachment;?>  <?php if($pa->attachment){$ext_arr = explode('.',$pa->attachment);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>">Download</a><?php }else{?><br />
+                                     <video width="320" height="240" controls>
+                                      <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" type="video/mp4">
+                                      <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attachment);?>" type="video/ogg">
+                                    Your browser does not support the video tag.
+                                    </video> 
                                                             <?php } }?></span>
                                 </div>
                             </div>

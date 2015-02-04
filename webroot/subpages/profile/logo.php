@@ -13,7 +13,12 @@ foreach ($logos1 as $logo) {
 } return $index;} ?>
 
 
-<div>
+<!-- BEGIN PORTLET-->
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-briefcase"></i>Logos
+        </div>
                                         <ul class="nav nav-tabs">
                                             <li class="active">
                                                 <a href="#subtab_1_1" data-toggle="tab">Primary Logo</a>
@@ -27,9 +32,10 @@ foreach ($logos1 as $logo) {
 
                                         </ul>
                                     </div>
+    <div class="portlet-body solid blue"> <!-- blue is needed to make the white logos stand out -->
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="subtab_1_1">
-                                            <div class="portlet solid blue">
+                                            <div > <!--class="portlet solid blue" -->
 
                                                 <div class="portlet-body">
 
@@ -51,7 +57,7 @@ foreach ($logos1 as $logo) {
 
                                         </div>
                                         <div class="tab-pane" id="subtab_1_2">
-                                            <div class="portlet solid blue ">
+                                            <div > <!--class="portlet solid blue" -->
 
                                                 <div class="portlet-body">
 
@@ -74,7 +80,7 @@ foreach ($logos1 as $logo) {
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="subtab_1_3">
-                                            <div class="portlet solid blue ">
+                                            <div > <!--class="portlet solid blue" -->
 
                                                 <div class="portlet-body">
 
@@ -209,4 +215,6 @@ $(function(){
 
 });
 
-</script>
+</script></div>
+</DIV>
+<!-- END PORTLET-->

@@ -12,21 +12,21 @@
                 <?php
 
                     //if ($this->request->params['controller'] == 'clients') {
-                        ?>
+                ?>
 
-                        <div class="chat-form">
-                            <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
-                                <div class="col-md-6" style="padding-left:0;">
-                                    <input class="form-control input-inline" name="search" type="search"
-                                           placeholder="Search for <?php echo ucfirst($settings->client); ?>s"
-                                           value="<?php if (isset($search_text)) echo $search_text; ?>"
-                                           aria-controls="sample_1"/>
-                                    <button type="submit" class="btn btn-primary">Search</button>
-                                </div>
-                            </form>
+                <div class="chat-form">
+                    <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
+                        <div class="col-md-6" style="padding-left:0;">
+                            <input class="form-control input-inline" name="search" type="search"
+                                   placeholder="Search for <?php echo ucfirst($settings->client); ?>s"
+                                   value="<?php if (isset($search_text)) echo $search_text; ?>"
+                                   aria-controls="sample_1"/>
+                            <button type="submit" class="btn btn-primary">Search</button>
                         </div>
-                    <?php
-                   // }
+                    </form>
+                </div>
+                <?php
+                    // }
                 ?>
                 <div class="table-scrollable">
                     <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">
@@ -77,7 +77,7 @@
 
                                         </td>
                                         <td><?= h($clients->company_name) ?></td>
-                                        <td  style="max-width: 350px;"><?= h($clients->description) ?></td>
+                                        <td style="max-width: 350px;"><?= h($clients->description) ?></td>
                                         <!--<td><?= h($start_date) ?></td>
                     			<td><?= h($end_date) ?></td>-->
                                         <!--td><?= h($clients->site) ?></td-->
@@ -86,17 +86,20 @@
 
                                             <?php
                                                 if ($sidebar->client_list == '1') {
-                                                   ?>
-                                                   <a class="btn btn-info" href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id;?>?view">View</a>
-                                                   <?php
+                                                    ?>
+                                                    <a class="btn btn-info"
+                                                       href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id; ?>?view">View</a>
+                                                <?php
                                                 }
                                                 if ($sidebar->client_edit == '1') {
                                                     echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);
                                                 }
-                                                if($sidebar->client_delete=='1'){ ?>
-                                                 <a href="<?php echo $this->request->webroot;?>clients/delete/<?php echo $clients->id;?>" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger" >Delete</a>
-                                                 <?php }
-                                                
+                                                if ($sidebar->client_delete == '1') { ?>
+                                                    <a href="<?php echo $this->request->webroot;?>clients/delete/<?php echo $clients->id;?>"
+                                                       onclick="return confirm('Are you sure you want to delete?');"
+                                                       class="btn btn-danger">Delete</a>
+                                                <?php }
+
 
                                                 if ($sidebar->document_create == '1') {
                                                     echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => 'btn btn-success']);

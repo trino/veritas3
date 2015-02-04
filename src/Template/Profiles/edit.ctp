@@ -356,25 +356,31 @@
         <div class="profile-content">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="portlet light">
-                        <div class="portlet-title tabbable-line">
+                    <div class="portlet paddingless">
+                        <div class="portlet-title line" style="display:none;">
                             <div class="caption caption-md">
                                 <i class="icon-globe theme-font hide"></i>
-                                <span class="caption-subject font-blue-madison bold"><?php echo ucfirst($settings->profile); ?> Manager</span>
+                                <span class="caption-subject font-blue-madison bold">< php echo ucfirst($settings->profile);  > Manager</span>
                             </div>
-                            <ul class="nav nav-tabs">
-                                <li class="active">
-                                    <a href="#tab_1_1" data-toggle="tab">Settings</a>
-                                </li>
-                                <?php
+                        </div>
+
+                        <div class="portlet-body">
+
+                            <!--BEGIN TABS-->
+                            <div class="tabbable tabbable-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab_1_1" data-toggle="tab">Settings</a>
+                                    </li>
+                                    <?php
                                     if ($this->request['action'] != 'add') {
 
                                         if ($this->request->session()->read('Profile.admin') && $this->request->session()->read('Profile.id')==$id) {
                                             ?>
 
-                                                <li>
-                                                    <a href="#tab_1_4" data-toggle="tab">Display</a>
-                                                </li>
+                                            <li>
+                                                <a href="#tab_1_4" data-toggle="tab">Display</a>
+                                            </li>
                                             <?php if ($this->request->session()->read('Profile.super')) {?>
                                                 <li>
                                                     <a href="#tab_1_5" data-toggle="tab">Logos</a>
@@ -388,22 +394,23 @@
                                                 </li>
                                             <?php
                                             }
-                                            }
-                                            ?>
-                                            <?php  if ($this->request->session()->read('Profile.admin'))
-                                            {?>
+                                        }
+                                        ?>
+                                        <?php  if ($this->request->session()->read('Profile.admin'))
+                                        {?>
                                             <li>
                                                 <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                             </li>
 
                                         <?php
-                                            }
                                         }
+                                    }
 
-                                ?>
-                            </ul>
-                        </div>
-                        <div class="portlet-body">
+                                    ?>
+                                </ul>
+
+
+
                             <div class="tab-content">
                                 <!-- PERSONAL INFO TAB -->
                                 <div class="tab-pane active" id="tab_1_1">

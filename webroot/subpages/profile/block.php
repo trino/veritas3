@@ -3,36 +3,28 @@
     $uid = ($this->request['action']=='add')? "0" : $this->request['pass'][0];
     $sidebar = $this->requestAction("settings/all_settings/".$uid."/sidebar"); ?>
     <?php $block = $this->requestAction("settings/all_settings/".$uid."/blocks"); ?>
-                                <ul class="nav nav-tabs">
-                                
-                                
-                                    <li class="active">
-                                		<a href="#subtab_2_1" data-toggle="tab">Modules</a>
-                                	</li>
-                                    <li class="">
-                                        <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#subtab_2_3" data-toggle="tab">Homepage Top blocks</a>
-                                    </li>
-                                    <!--<li class="">
-                                        <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
-                                    </li>-->
 
-
-
-
-                                </ul>
 <!-- BEGIN BORDERED TABLE PORTLET-->
 <div class="portlet box yellow">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-briefcase"></i>Permissions
         </div>
-        <div class="tools">
-            <a href="javascript:;" class="collapse" data-original-title="" title="">
-            </a>
-        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#subtab_2_1" data-toggle="tab">Sidebar</a>
+            </li>
+            <li class="">
+                <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
+            </li>
+            <li class="">
+                <a href="#subtab_2_3" data-toggle="tab">Homepage Top blocks</a>
+            </li>
+            <!--<li class="">
+                <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
+            </li>-->
+        </UL>
     </div>
     <div class="portlet-body">
                                     <div class="tab-content">

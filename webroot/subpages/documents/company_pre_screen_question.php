@@ -1,5 +1,4 @@
 <form id="form_tab1">
-
 <input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>
 <input type="hidden" name="sub_doc_id" value="1" class="sub_docs_id" id="af" />
 <div class="clearfix"></div>
@@ -7,7 +6,6 @@
 							<div class="form-group col-md-12">
 								<h4 class="col-md-12">Driver Pre-Screen Questions</h4>
 							</div>
-
 								<div class="form-body">
 
 									<div class="form-group col-md-4">
@@ -599,8 +597,6 @@
                                          {
                                           $pre_at['attach_doc'] = array();  
                                          }
-                                         //var_dump($pre_at);
-                                         //var_dump(count($pre_at['attach_doc']));
                                          if(!count($pre_at['attach_doc'])){
                                             ?>
                                             
@@ -670,7 +666,6 @@
 <script>
     $(function(){
         $('#addfiles').click(function(){
-            //alert("ssss");
            $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
         });
         <?php

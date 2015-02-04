@@ -21,3 +21,4 @@ webroot/canvas/*.png
 /config/app.php
 /tmp/*
 /logs/*
+webroot/subpages/profile/page.php

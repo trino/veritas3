@@ -1,4 +1,13 @@
-<?php
+<!-- BEGIN PORTLET-->
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-briefcase"></i>Display
+        </div>
+    </div>
+    <div class="portlet-body">
+
+        <?php
  //echo $this->Session->read('Profile.admin');
 if($this->Session->read('Profile.admin') && $this->Session->read('Profile.id')== $this->request['pass'][0]  )
     $is_disabled1 = '';
@@ -92,3 +101,6 @@ else
                                        }); 
                                     });
                                     </script>
+    </DIV>
+</DIV>
+<!-- END PORTLET-->

@@ -119,6 +119,7 @@
                             <th><?= $this->Paginator->sort('client_id', 'Client'); ?></th>
                             <th><?= $this->Paginator->sort('created', 'Created'); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
+                            <th><?= $this->Paginator->sort('bright_planet_html_binary', 'Status'); ?></TH>
                         </tr>
                         </thead>
                         <tbody>
@@ -183,7 +184,7 @@
 
                                         ?>
                                         <?php if (!isset($_GET['draft'])) echo $this->Html->link(__('View Score Card'), ['controller' => 'documents', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
-
+                                    </TD><td valign="middle">
                                         <?php if (!isset($_GET['draft'])) { ?>
                                             <?php if (isset($order->bright_planet_html_binary)) { ?>
                                                 <span class="label label-sm label-success"

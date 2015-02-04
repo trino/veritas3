@@ -7,19 +7,6 @@
 <p>Welcome Prospective Drivers of Challenger. </p>
 <p>Thank you for your interest in Challenger Motor Freight. In order to process your application in a timely manner, please complete all information requested including dates and contact information for your employment history. Please provide the following additional information.</p>
 </div>
-<!--p>We also require:</p>
-<div class="table-scrollable">
-    <table class="table table-striped">
-        <tr><td>Original CVOR abstract (30 days old or less) for Ontario applicants.</td><td><a class="btn blue">Browse</a></td></tr>
-        <tr><td>Original Drivers Abstract (30 days old or less)</td><td><a class="btn blue">Browse</a></td></tr>
-        <tr><td>Copy of Drivers License</td><td><a class="btn blue">Browse</a></td></tr>
-        <tr><td>Copy of your FAST card</td><td><a class="btn blue">Browse</a></td></tr>
-        <tr><td>Original Criminal Record Search (within 90 days)</td><td><a class="btn blue">Browse</a></td></tr>
-        <tr><td>Proof of Citizenship (birth certificate, passport or Canadian citizenship/US Visa)</td><td><a class="btn blue">Browse</a></td></tr>
-        <tr><td>Completion of an on road evaluation</td><td><a class="btn blue">Browse</a></td></tr>
-        </table>
-        </div>
-<p>Please return you application and above information to the Challenger Recruiting Department.</p-->
     <?php
     function provinces($name){
         echo '<SELECT class="form-control" name="' . $name . '">';
@@ -791,11 +778,11 @@
                                                 ?>
                                                 <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> 
                                                 <span class="uploaded"><?php echo $pa->attachment;?>  <?php if($pa->attachment){$ext_arr = explode('.',$pa->attachment);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>">Download</a><?php }else{?><br />
-                                                             <video width="320" height="240" controls>
-                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" type="video/mp4">
-                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attachment);?>" type="video/ogg">
-                                                            Your browser does not support the video tag.
-                                                            </video> 
+                                                 <video width="320" height="240" controls>
+                                                  <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" type="video/mp4">
+                                                  <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attachment);?>" type="video/ogg">
+                                                Your browser does not support the video tag.
+                                                </video> 
                                                             <?php } }?></span>
                                                 </div></div><div class="clearfix"></div>
                                                 <script>

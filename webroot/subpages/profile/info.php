@@ -58,7 +58,15 @@ function printprovinces($name, $selected="", $isdisabled=""){
     <?php
         //}
     ?>
-<!-- </ul> -->
+<!-- </ul> --><!-- BEGIN PORTLET-->
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-briefcase"></i>Settings
+        </div>
+    </div>
+    <div class="portlet-body">
+
 <div class="tab-content">
     <div class="tab-pane active" id="subtab_4_1">
 
@@ -351,6 +359,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                                     if (isset($p->gender)) {
                                         $gender = $p->gender;
                                     }
+                                    echo '<!-- selected option is ' . $gender . '-->';
                                     printoption("Select Gender", "");
                                     printoption("Male", $gender, "Male");
                                     printoption("Female", $gender, "Female");
@@ -790,3 +799,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
         });
     });
 </script>
+
+</DIV>
+</DIV>
+<!-- END PORTLET-->

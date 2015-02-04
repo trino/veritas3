@@ -146,10 +146,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                     <div class="caption">
                                         <i class="fa fa-briefcase"></i><?php echo ucfirst($settings->client); ?> Manager
                                     </div>
-                                    <div class="tools">
-                                        <a href="javascript:;" class="collapse" data-original-title="" title="">
-                                        </a>
-                                    </div>
+
                                 </div>
 
                             <div class="portlet-body">

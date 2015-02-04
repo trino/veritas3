@@ -41,6 +41,11 @@
                         <?php
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
+                        <div class="col-md-2 col-sm-12" style="padding-left:0;">
+                            <input class="form-control" name="searchdoc" type="search" placeholder=" Search Orders"
+                                   value="<?php if (isset($search_text)) echo $search_text; ?>"
+                                   aria-controls="sample_1"/>
+                        </div>
                         <div class="col-md-3 col-sm-12">
                             <select class="form-control" name="submitted_by_id" style="">
                                 <option value="">Submitted by</option>
@@ -93,11 +98,7 @@
                         </div>
                         <div class="col-md-3 col-sm-12 divisions">
                         </div>
-                        <div class="col-md-2 col-sm-12" style="padding-left:0;">
-                            <input class="form-control" name="searchdoc" type="search" placeholder=" Search Orders"
-                                   value="<?php if (isset($search_text)) echo $search_text; ?>"
-                                   aria-controls="sample_1"/>
-                        </div>
+
                         <div class="col-md-1 col-sm-12">
                             <button type="submit" class="btn btn-primary">Search</button>
                         </div>

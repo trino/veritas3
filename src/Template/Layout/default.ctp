@@ -22,18 +22,17 @@
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
-<link rel="stylesheet" type="text/css" href="<?php echo $this->request->webroot;?>assets/global/plugins/select2/select2.css"/>
+	<!-- WARNING ABOUT TEST REMOVALS: The PHP question mark has been removed and would need to be replaced to un-comment the CSS -->
+<!-- TEST REMOVAL <link rel="stylesheet" type="text/css" href="< php echo $this->request->webroot;?>assets/global/plugins/select2/select2.css"/> -->
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
-
-<link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/todo.css" rel="stylesheet" type="text/css"/>
-
-<link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/profile-old.css" rel="stylesheet" type="text/css"/>
-
+	<!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/> -->
+	<!-- TEST REMOVAL ONLY NEEDED FOR PROFILES.EDIT.CTP <link href="< php echo $this->request->webroot;?>assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
+<link href="< php echo $this->request->webroot;?>assets/admin/pages/css/todo.css" rel="stylesheet" type="text/css"/>
+<link href="< php echo $this->request->webroot;?>assets/admin/pages/css/profile-old.css" rel="stylesheet" type="text/css"/>
+-->
 
 <!-- END PAGE LEVEL PLUGIN STYLES -->
 <!-- BEGIN PAGE STYLES -->
@@ -45,7 +44,7 @@
 <link href="<?php echo $this->request->webroot;?>assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/themes/<?php echo $settings->layout;?>.css" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+	<!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/> -->
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="<?php echo WEB_ROOT?>favicon.ico"/>
 <!-- END FOOTER -->
@@ -82,7 +81,7 @@
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
 <!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+	<!-- TEST REMOVAL <script src="< php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script> -->
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>

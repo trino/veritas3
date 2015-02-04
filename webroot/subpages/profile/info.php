@@ -80,81 +80,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                 <div class="row">
                 <input type="hidden" name="created_by" value="<?php echo $this->request->session()->read('Profile.id') ?>"/>
                     <?php if ($sidebar->client_option == 0) { ?>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Profile Type</label>
 
-                            
-                            <select  <?php echo $is_disabled ?>
-                                name="profile_type" <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
-                                class="form-control member_type" required='required'>
-                                <option value="">Select</option>
-                                <?php
-
-                                    if ($this->request->session()->read('Profile.super')) {
-                                        ?>
-                                        <option
-                                            value="1" <?php if (isset($p) && $p->profile_type == 1) { ?> selected="selected" <?php } ?>>
-                                            Admin
-                                        </option>
-                                    <?php } ?>
-                                <option
-                                    value="2" <?php if (isset($p) && $p->profile_type == 2) { ?> selected="selected" <?php }
-                                    if ($getProfileType->profile_type == 2) {
-                                        ?> disabled="disabled"
-                                    <?php
-                                    } ?>>
-                                    Recruiter
-                                </option>
-                                <option
-                                    value="3" <?php if (isset($p) && $p->profile_type == 3) { ?> selected="selected" <?php }
-                                    if ($getProfileType->profile_type == 2) {
-                                        ?> disabled="disabled"
-                                    <?php
-                                    }
-                                ?>>
-                                    External
-                                </option>
-                                <option
-                                    value="4" <?php if (isset($p) && $p->profile_type == 4) { ?> selected="selected" <?php }
-                                    if ($getProfileType->profile_type == 2) {
-                                        ?> disabled="disabled"
-                                    <?php
-                                    }
-                                ?>>
-                                    Safety
-                                </option>
-                                <option
-                                    value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
-                                    Driver
-                                </option>
-                                <option
-                                    value="6" <?php if (isset($p) && $p->profile_type == 6) { ?> selected="selected" <?php }
-                                    if ($getProfileType->profile_type == 2) {
-                                        ?> disabled="disabled"
-                                    <?php
-                                    }
-                                ?>>
-                                    Contact
-                                </option>
-
-                                <option
-                                    value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
-
-                                ?>>
-                                    Owner Operator
-                                </option>
-
-                                <option
-                                    value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php }
-
-                                ?>>
-                                    Owner Driver
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                  
                     <div class="col-md-6" id="driver_div"
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
@@ -266,7 +192,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                     
 
                     
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Password</label>
                             <input type="password" name="password" id="password" class="form-control input-medium"
@@ -275,7 +201,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                         </div>
                     </div>
                     
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Re-type Password</label>
                             <input type="password" class="form-control input-medium"
@@ -285,6 +211,81 @@ function printprovinces($name, $selected="", $isdisabled=""){
                                   style="display: none;">Please enter same password</span>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Profile Type</label>
+
+
+                            <select  <?php echo $is_disabled ?>
+                                name="profile_type" <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
+                                class="form-control member_type" required='required'>
+                                <option value="">Select</option>
+                                <?php
+
+                                if ($this->request->session()->read('Profile.super')) {
+                                    ?>
+                                    <option
+                                        value="1" <?php if (isset($p) && $p->profile_type == 1) { ?> selected="selected" <?php } ?>>
+                                        Admin
+                                    </option>
+                                <?php } ?>
+                                <option
+                                    value="2" <?php if (isset($p) && $p->profile_type == 2) { ?> selected="selected" <?php }
+                                if ($getProfileType->profile_type == 2) {
+                                    ?> disabled="disabled"
+                                <?php
+                                } ?>>
+                                    Recruiter
+                                </option>
+                                <option
+                                    value="3" <?php if (isset($p) && $p->profile_type == 3) { ?> selected="selected" <?php }
+                                if ($getProfileType->profile_type == 2) {
+                                    ?> disabled="disabled"
+                                <?php
+                                }
+                                ?>>
+                                    External
+                                </option>
+                                <option
+                                    value="4" <?php if (isset($p) && $p->profile_type == 4) { ?> selected="selected" <?php }
+                                if ($getProfileType->profile_type == 2) {
+                                    ?> disabled="disabled"
+                                <?php
+                                }
+                                ?>>
+                                    Safety
+                                </option>
+                                <option
+                                    value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
+                                    Driver
+                                </option>
+                                <option
+                                    value="6" <?php if (isset($p) && $p->profile_type == 6) { ?> selected="selected" <?php }
+                                if ($getProfileType->profile_type == 2) {
+                                    ?> disabled="disabled"
+                                <?php
+                                }
+                                ?>>
+                                    Contact
+                                </option>
+
+                                <option
+                                    value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
+
+                                ?>>
+                                    Owner Operator
+                                </option>
+
+                                <option
+                                    value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php }
+
+                                ?>>
+                                    Owner Driver
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="clearfix">
                     </div>
                     <?php if ($sidebar->client_option == 0) { ?>

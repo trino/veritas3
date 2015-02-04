@@ -126,27 +126,28 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
 
                         <div class="clearfix"></div>
-                            <ul class="nav nav-tabs">
-                                <li class="active">
-                                    <a href="#tab_1_1" data-toggle="tab">Info</a>
-                                </li>
-                                <?php if ($this->request['action'] != "add") {
-                                    ?>
-
-                                    <li>
-                                        <a href="#tab_1_2" data-toggle="tab">Display</a>
-                                    </li>
-                                <?php
-
-                                } ?>
-
-                            </ul>
-                            <div class="portlet box yellow">
+                            
+                            <div class="portlet box red">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="fa fa-briefcase"></i><?php echo ucfirst($settings->client); ?> Manager
                                     </div>
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#tab_1_1" data-toggle="tab">Info</a>
+                                        </li>
+                                        <?php if ($this->request['action'] != "add") {
+                                            ?>
 
+                                            <li>
+                                                <a href="#tab_1_2" data-toggle="tab">Display</a>
+                                            </li>
+                                        <?php
+
+                                        } ?>
+
+
+                                    </UL>
                                 </div>
 
                             <div class="portlet-body">

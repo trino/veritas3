@@ -7,7 +7,7 @@
                                         <ul class="nav nav-tabs">
 
 
-                                            <li class="active">
+                                            <li class="active"><!-- warning: first and third tabs do not work! -->
                                                 <a href="#subtab_1_1" data-toggle="tab">Product Example</a>
                                             </li>
                                             <li class="">

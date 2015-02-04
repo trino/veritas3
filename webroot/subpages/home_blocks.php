@@ -51,7 +51,10 @@
     							<?php if($d->orders==1)echo $cnt = $this->requestAction('/documents/get_orderscount/'.$d->table_name); ?>	
     							</div>
     							<div class="desc">
-    								 <?php echo ucfirst($d->title); ?>
+    								 <?php
+									 	$title = ucfirst($d->title);
+									 	if ($title == "Feedbacks") { $title = "Feedback"; }
+									 echo $title; ?>
     							</div>
     						</div>
                             <?php if($this->request['controller']!="Documents"){?>

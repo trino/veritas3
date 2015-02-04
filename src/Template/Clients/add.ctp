@@ -127,7 +127,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
                         <div class="clearfix"></div>
                             
-                            <div class="portlet box red">
+                            <div class="portlet box red-sunglo">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="fa fa-briefcase"></i><?php echo ucfirst($settings->client); ?> Manager
@@ -218,7 +218,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                             }
 
                                                             function printprovinces($name, $selected){
-                                                                printoptions($name, array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"));
+                                                                printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"));
 
                                                             }
 

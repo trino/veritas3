@@ -1,5 +1,5 @@
 <!-- BEGIN PORTLET-->
-<div class="portlet box yellow">
+<div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-briefcase"></i>Display

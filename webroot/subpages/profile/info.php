@@ -35,7 +35,7 @@ function printoptions($name, $valuearray, $selected="", $optionarray, $isdisable
 }
 
 function printprovinces($name, $selected="", $isdisabled=""){
-    printoptions($name, array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"), $isdisabled );
+    printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"), $isdisabled );
 
 }
 ?>
@@ -59,7 +59,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
         //}
     ?>
 <!-- </ul> --><!-- BEGIN PORTLET-->
-<div class="portlet box yellow">
+<div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-briefcase"></i>Settings

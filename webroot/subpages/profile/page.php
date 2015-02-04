@@ -19,6 +19,10 @@
                                             <li>
                                                 <a href="#subtab_1_4" data-toggle="tab">Terms</a>
                                             </li>
+
+
+
+
                                             <li class="">
                                                 <a href="#subtab_1_5" data-toggle="tab">FAQ</a>
                                             </li>

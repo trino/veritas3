@@ -205,6 +205,8 @@
                 $this->set('mod', $document);
             }
             $doc = $this->getDocumentcount();
+
+                debug($doc);
             $cn = $this->getUserDocumentcount();
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
@@ -1520,12 +1522,16 @@
         function analytics1()
         {
             $this->layout = "blank";
+
+
         }
 
         function analytics()
         {
+            $doc = $this->getDocumentcount();
 
-        }
+    debug($doc);
+    }
 
         function getUser($user_id)
         {

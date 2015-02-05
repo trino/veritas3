@@ -56,7 +56,10 @@
             }
             die();
         }
-        public function index() {
+public function training(){}
+public function quiz(){}
+
+    public function index() {
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');
             $super = $this->request->session()->read('Profile.super');

@@ -33,8 +33,8 @@
 							<div class="row">
 								<div class="col-md-3 col-sm-12">
 									<!-- BEGIN DRAGGABLE EVENTS PORTLET-->
-									<!--<h3 class="event-form-title">Draggable Events</h3>
-									<div id="external-events">
+									<!--<h3 class="event-form-title">Draggable Events</h3>-->
+									<!--<div id="external-events">
 										<form class="inline-form">
 											<input type="text" value="" class="form-control" placeholder="Event Title..." id="event_title"/><br/>
 											<a href="javascript:;" id="event_add" class="btn default">
@@ -47,6 +47,8 @@
 										<input type="checkbox" id="drop-remove"/>remove after drop </label>
 										<hr class="visible-xs"/>
 									</div>-->
+                                    <a href="<?php echo $this->request->webroot;?>todo/add" id="event_add" class="btn default">
+											Add Event </a>
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>
 								<div class="col-md-9 col-sm-12">
@@ -67,6 +69,25 @@
 <script>
 jQuery(document).ready(function() {       
   $('#calendar').fullCalendar({
+    events: [
+    /*<?php foreach($events as $event){
+            $dat = explode(" ",$event->date);
+            $date = $dat[0];
+        ?>
+        {
+            title: '<?php echo $event->title;?>',
+            start: '<?php echo $date;?>',
+            url: '<?php echo $this->request->webroot;?>todo/edit/<?php echo $event->id;?>'
+        }
+    <?php }?>*/
+        // other events here
+    ],
+    eventClick: function(event) {
+        if (event.url) {
+            window.open(event.url);
+            return false;
+        }
+    },
         dayClick: function(date, jsEvent, view) {
                 var d = date.format();
                 window.location.href = "<?php echo $this->request->webroot;?>todo/date/"+d;

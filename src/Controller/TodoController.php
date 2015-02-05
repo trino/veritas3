@@ -4,7 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Controller\Controller;
-
+use Cake\ORM\TableRegistry;
 
 class TodoController extends AppController {
 
@@ -35,21 +35,32 @@ class TodoController extends AppController {
  * @return void
  */
 	public function add() {
-	    $this->loadModel('Logos');
-	    
-        $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
-        $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
-		$profile = $this->Profiles->newEntity($this->request->data);
-		if ($this->request->is('post')) {
-			if ($this->Profiles->save($profile)) {
-				$this->Flash->success('User saved successfully.');
-				return $this->redirect(['action' => 'index']);
-			} else {
-				$this->Flash->error('The user could not be saved. Please try again.');
-			}
-		}
-		$this->set(compact('profile'));
-        $this->render("edit");
+	   if(isset($_POST['submit']))
+       {
+       
+            foreach($_POST as $k=>$v)
+            {
+                if($k == 'date')
+                    $arr[$k] = date('Y-m-d H:i:s',strtotime(trim(str_replace("-","",$v)).":00"));
+                else
+                    $arr[$k]= $v;
+            }
+            $events = TableRegistry::get('Events');
+    	    $arr['user_id'] = $this->request->session()->read('Profile.id');
+            $event = $events->newEntity($arr);
+    
+            if ($events->save($event)) {
+                $this->Flash->success('Events added successfully.');
+                
+            } 
+            else 
+            {
+                $this->Flash->error('Events could not be added. Please try again.');
+                
+            }
+            //return $this->redirect(['action' => 'calender']);
+            
+        }
 	}
 
 /**
@@ -60,23 +71,7 @@ class TodoController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
-        $this->loadModel('Logos');
-	    
-        $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
-        $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
-		$profile = $this->Profiles->get($id, [
-			'contain' => []
-		]);
-		if ($this->request->is(['patch', 'post', 'put'])) {
-			$profile = $this->Profiles->patchEntity($profile, $this->request->data);
-			if ($this->Profiles->save($profile)) {
-				$this->Flash->success('User saved successfully.');
-				return $this->redirect(['action' => 'index']);
-			} else {
-				$this->Flash->error('The user could not be saved. Please try again.');
-			}
-		}
-		$this->set(compact('profile'));
+       $this->render('add');
 	}
 
 /**
@@ -120,7 +115,10 @@ class TodoController extends AppController {
     }
     function calender()
     {
-        
+        $events = TableRegistry::get('Events');
+        $event = $events->find()->where(['user_id'=>$this->request->session()->read('Profile.id')])->all();
+        //debug($event);
+        $this->set('events', $event);
     }
    
    

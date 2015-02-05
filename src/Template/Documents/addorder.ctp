@@ -2,6 +2,7 @@
 <script src="<?php echo $this->request->webroot;?>js/ajaxupload.js" type="text/javascript"></script>
 <?php
      $doc_ext = array('pdf','doc','docx','txt','csv','xls','xlsx');
+     $img_ext = array('jpg','jpeg','png','bmp','gif');
 ?>
        <input type="hidden" id="tablename" value="<?php echo $table;?>" />
 <?php

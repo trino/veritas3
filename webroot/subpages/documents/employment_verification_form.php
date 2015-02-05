@@ -323,14 +323,22 @@
           <div class="form-group col-md-12">
             <div id="more_employ_doc" data-emp="<?php if(count($sub3['att']))echo count($sub3['att']);else echo '1';?>">
             <?php
-                                                        if($sub3['att'])
+                                                        if(count($sub3['att']))
                                                         {
                                                             $at=0;
                                                             foreach($sub3['att'] as $pa)
                                                             {
                                                                 $at++;
                                                                 ?>
-                                                                <div class="del_append_employ"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="emp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" /><a href="#" id="emp<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a><?php }?> <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){$ext_arr = explode('.',$pa->attach_doc);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }else{ ?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>">Download</a><?php } }?></span></div></div><div class="clearfix"></div>
+                                                                <div class="del_append_employ"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="emp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attach_doc;?>" /><a href="#" id="emp<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a><?php }?> 
+                                                                <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){$ext_arr = explode('.',$pa->attach_doc);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>">Download</a><?php }else{?><br />
+                                                             <video width="320" height="240" controls>
+                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" type="video/mp4">
+                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attach_doc);?>" type="video/ogg">
+                                                            Your browser does not support the video tag.
+                                                            </video> 
+                                                            <?php } }?></span>
+                                                                </div></div><div class="clearfix"></div>
                                                                 <script>
                                                                 $(function(){
                                                                     fileUpload('emp<?php echo $at;?>');

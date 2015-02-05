@@ -442,7 +442,7 @@
             
             
             <div class="more_acc_record"></div>
-            <input type="hidden" id="count_acc_record" name="count_acc_record" value="2">
+            <input type="hidden" id="count_acc_record" name="count_acc_record" value="1">
             <a href="javascript:void(0);" class="add_more_acc_record btn green">Add More</a>
             
             <div class="clearfix"></div>
@@ -789,7 +789,15 @@
                                             {
                                                 $at++;
                                                 ?>
-                                                <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_doc_path;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"><?php echo $pa->attached_doc_path;?>  <?php if($pa->attached_doc_path){$ext_arr = explode('.',$pa->attached_doc_path);$ext = end($ext_arr);$ext = strtolower($ext);if(!in_array($ext,$doc_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>" style="max-width:120px;" /><?php }else{ ?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>">Download</a><?php } }?></span></div></div><div class="clearfix"></div>
+                                                <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attached_doc_path;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> 
+                                                <span class="uploaded"><?php echo $pa->attached_doc_path;?>  <?php if($pa->attached_doc_path){$ext_arr = explode('.',$pa->attached_doc_path);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>">Download</a><?php }else{?><br />
+                                                             <video width="320" height="240" controls>
+                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attached_doc_path;?>" type="video/mp4">
+                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attached_doc_path);?>" type="video/ogg">
+                                                            Your browser does not support the video tag.
+                                                            </video> 
+                                                            <?php } }?></span>
+                                                </div></div><div class="clearfix"></div>
                                                 <script>
                                                 $(function(){
                                                     fileUpload('driveApp<?php echo $at;?>');

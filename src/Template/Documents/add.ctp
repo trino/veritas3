@@ -1,6 +1,7 @@
 <script src="<?php echo $this->request->webroot; ?>js/jquery.easyui.min.js" type="text/javascript"></script>
 <?php
     $doc_ext = array('pdf','doc','docx','txt','csv','xls','xlsx');
+    $img_ext = array('jpg','jpeg','png','bmp','gif');
     if (isset($disabled))
         $is_disabled = 'disabled="disabled"';
     else

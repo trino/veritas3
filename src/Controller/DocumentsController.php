@@ -750,7 +750,7 @@
                 $driverAppLic = TableRegistry::get('driver_application_licenses');
                 // $del = $driverAppLic->query();
                 // $del->delete()->where(['driver_application_id'=>$id])->execute();
-                for ($i = 0; $i < 2; $i++) {
+                for ($i = 0; $i <= 2; $i++) {
                     $lic['driver_application_id'] = $id;
                     $lic['driver_license'] = urldecode($_POST['driver_license'][$i]);
                     $lic['province'] = urldecode($_POST['province'][$i]);
@@ -1904,7 +1904,8 @@
                     'txt',
                     'xlsx',
                     'xls',
-                    'csv'
+                    'csv',
+                    'mp4'
                 );
                 $check = strtolower($ext);
                 if (in_array($check, $allowed)) {

@@ -18,14 +18,14 @@
         echo '<option' . $value . $tempstr . ">" . $option . "</option>";
     }
 
-function printoption2($value, $selected, $option)
+function printoption2($value, $selected="", $option)
 {
     $tempstr = "";
     if ($option == $selected or $value == $selected) { $tempstr = " selected"; }
     echo '<OPTION VALUE="' . $value . '"' . $tempstr . ">" . $option . "</OPTION>";
 }
 
-function printoptions($name, $valuearray, $selected, $optionarray, $isdisabled)
+function printoptions($name, $valuearray, $selected="", $optionarray, $isdisabled="")
 {
     echo '<SELECT ' . $isdisabled . ' name="' . $name . '" class="form-control member_type" >';
     for ($temp = 0; $temp < count($valuearray); $temp += 1) {
@@ -34,7 +34,7 @@ function printoptions($name, $valuearray, $selected, $optionarray, $isdisabled)
     echo '</SELECT>';
 }
 
-function printprovinces($name, $selected, $isdisabled){
+function printprovinces($name, $selected="", $isdisabled=""){
     printoptions($name, array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"), $isdisabled );
 
 }
@@ -462,7 +462,12 @@ function printprovinces($name, $selected, $isdisabled){
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <?php printprovinces("province", $p->province, $is_disabled ); ?>
+                                <?php 
+                                if(isset($p->province))
+                                printprovinces("province", $p->province, $is_disabled );
+                                else
+                                printprovinces("province", "", $is_disabled );
+                                ?>
 
                                 <!-- old
                                 <SELECT  < php echo $is_disabled ?> name="province" class="form-control ">< php
@@ -518,7 +523,13 @@ function printprovinces($name, $selected, $isdisabled){
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Province Driver's License was issued</label>
-                                <?php printprovinces("driver_province", $p->driver_province, $is_disabled ); ?>
+                                
+                                <?php 
+                                if(isset($p->driver_province))
+                                printprovinces("driver_province", $p->driver_province, $is_disabled );
+                                else
+                                printprovinces("driver_province", "", $is_disabled );
+                                 ?>
                                 <!-- old
                                 <SELECT  < php echo $is_disabled ?> name="driver_province" class="form-control ">< php
                                         $provinces = array("AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT");

@@ -324,12 +324,13 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                 if($att)
                 {
                    $doc_ext = array('pdf','doc','docx','pdf');
+                   $vid_ext = array('mp4');
                     foreach($att as $a)
                     {
                         $ext_arr = explode('.', $a->attach_doc);
                                             $ext = end($ext_arr);
                                             $ext = strtolower($ext);
-                                            if (!in_array($ext, $doc_ext) && file_exists(APP."../webroot/attachments/".$a->attach_doc)) {
+                                            if (!in_array($ext, $doc_ext) && !in_array($ext,$vid_ext) && file_exists(APP."../webroot/attachments/".$a->attach_doc)) {
                     
                         $attach = $attach."<p><img src=\"".$initials.$this->request->webroot."attachments/".$a->attach_doc."\" /><br /></p>";
                         }

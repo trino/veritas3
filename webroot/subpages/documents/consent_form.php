@@ -530,16 +530,13 @@
                                            value="<?php echo $pa->attach_doc;?>"/>
                                     <a href="#" id="consent<?php echo $at;?>" class="btn btn-primary">Browse</a>
                                     <a href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a>
-                                    <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if ($pa->attach_doc) {
-                                            $ext_arr = explode('.', $pa->attach_doc);
-                                            $ext = end($ext_arr);
-                                            $ext = strtolower($ext);
-                                            if (!in_array($ext, $doc_ext)) { ?><img
-                                                src="<?php echo $this->request->webroot; ?>attachments/<?php echo $pa->attach_doc; ?>"
-                                                style="max-width:120px;" /><?php } else { ?><a
-                                                href="<?php echo $this->request->webroot; ?>attachments/<?php echo $pa->attach_doc; ?>">
-                                                    Download</a><?php }
-                                        }?></span>
+                                    <span class="uploaded"><?php echo $pa->attach_doc;?>  <?php if($pa->attach_doc){$ext_arr = explode('.',$pa->attach_doc);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>">Download</a><?php }else{?><br />
+                                                             <video width="320" height="240" controls>
+                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attach_doc;?>" type="video/mp4">
+                                                              <source src="<?php echo $this->request->webroot;?>attachments/<?php echo str_replace('.mp4','.ogg',$pa->attach_doc);?>" type="video/ogg">
+                                                            Your browser does not support the video tag.
+                                                            </video> 
+                                                            <?php } }?></span>
                                 </div>
                             </div>
                             <div class="clearfix"></div>

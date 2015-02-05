@@ -45,8 +45,6 @@ $docdates= sortdates($documents);
 $doccount= total($docdates);
 $docavg = round ($doccount / $days,$decimals);
 
-/* UNCOMMENT WHEN THE PROFILES AND CLIENTS TABLES HAVE CREATED COLUMNS
-AND DONT FORGET TO ADD THE NEW COLORS/AVERAGES TO markings*/
 $profiledates = sortdates($profiles);
 $profilecount=total($profiledates);
 $profileavg= round ($profilecount / $days,$decimals);
@@ -172,6 +170,12 @@ jQuery(document).ready(function() {
 	}, {
 		label: "Orders",
 		data: [<?php echo enumdata($orderdates, $days); ?>]
+	}, {
+		label: "Profiles",
+		data: [<?php echo enumdata($profiledates, $days); ?>]
+	}, {
+		label: "Clients",
+		data: [<?php echo enumdata($clientdates, $days); ?>]
 	}];
 
 	var options = {
@@ -200,7 +204,10 @@ jQuery(document).ready(function() {
 		grid: {
 			markings: [
 				{ color: '#EDC240', lineWidth: 1, yaxis: { from: <?php echo $docavg . ", to: " . $docavg; ?> } },
-				{ color: '#AFD8F8', lineWidth: 1, yaxis: { from: <?php echo $ordavg . ", to: " . $ordavg; ?> } }
+				{ color: '#AFD8F8', lineWidth: 1, yaxis: { from: <?php echo $ordavg . ", to: " . $ordavg; ?> } },
+
+				{ color: '#CB4B19', lineWidth: 1, yaxis: { from: <?php echo $profileavg . ", to: " . $profileavg; ?> } },
+				{ color: '#4DA74D', lineWidth: 1, yaxis: { from: <?php echo $clientavg . ", to: " . $clientavg; ?> } }
 			]
 		}
 	};
@@ -269,13 +276,21 @@ debug($clients);
 echo '<HR><H1>Profiles</H1>';
 debug($profiles);
 
+
 < php
 	echo '<P>Days: ' . $days;
 	echo '<P>Documents: ' . $doccount . ' Average: ' . round ($doccount / $days,2);
 	echo '<P>Orders: ' . $ordercount . ' Average: ' . round ($ordercount / $days,2);
 
-echo "<P>Docs: " . enumdata($docdates, 30);
-echo "<P>Orders: " . enumdata($orderdates, 30);
-echo '<P>Orders (Non-drafts): ' . $ordercount;
-echo '<P>Documents (Non-drafts): ' . $doccount;
+echo '<P>Profiles: ' . $profilecount . ' Average: ' . round ($profilecount / $days,2);
+echo '<P>Clients: ' . $clientcount . ' Average: ' . round ($clientcount / $days,2);
+
+echo "<P>Docs: " . enumdata($docdates, $days);
+echo "<P>Orders: " . enumdata($orderdates, $days);
+
+echo "<P>Profiles: " . enumdata($profiledates, $days);
+echo "<P>Clients: " . enumdata($clientdates, $days);
+
+debug($profiledates);
+debug($profiledates);
 ?>-->

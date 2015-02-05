@@ -150,104 +150,107 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
 
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/charts-flotcharts.js"></script>
 <script>
-jQuery(document).ready(function() {       
-   // initiate layout and plugins
-  // Metronic.init(); // init metronic core components
+jQuery(document).ready(function() {
+	// initiate layout and plugins
+	// Metronic.init(); // init metronic core components
 //Layout.init(); // init current layout
 //QuickSidebar.init(); // init quick sidebar
 //Demo.init(); // init demo features
 	// http://www.flotcharts.org/flot/examples/
-   ChartsFlotcharts.init();
-   ChartsFlotcharts.initCharts();
-   ChartsFlotcharts.initPieCharts();
-   ChartsFlotcharts.initBarCharts();
-
+	ChartsFlotcharts.init();
+	ChartsFlotcharts.initCharts();
+	ChartsFlotcharts.initPieCharts();
+	ChartsFlotcharts.initBarCharts();
 
 
 	var data = [{
-		label: "Documents",
 		data: [<?php echo enumdata($docdates, $days); ?>]
-	}, {
-		label: "Orders",
+	}];
+	var data2 = [{
 		data: [<?php echo enumdata($orderdates, $days); ?>]
-	}, {
-		label: "Profiles",
+	}];
+	var data3 = [{
 		data: [<?php echo enumdata($profiledates, $days); ?>]
-	}, {
-		label: "Clients",
+	}];
+	var data4 = [{
 		data: [<?php echo enumdata($clientdates, $days); ?>]
 	}];
 
-	var options = {
-		series: {
-			lines: {
-				show: true
+
+	var options = marking(<?php echo $docavg; ?>);
+
+	function marking(average) {
+		return {
+			series: {
+				lines: {
+					show: true
+				},
+				points: {
+					show: true
+				}
 			},
-			points: {
-				show: true
+			legend: {
+				noColumns: 2
+			},
+			xaxis: {
+				tickDecimals: 0,
+				mode: "categories"
+			},
+			yaxis: {
+				tickDecimals: 0,
+				min: 0
+			},
+			selection: {
+				mode: "x"
+			},
+			grid: {
+				markings: [
+					{color: '#EDC240', lineWidth: 1, yaxis: {from: average, to: average}}
+				]
 			}
-		},
-		legend: {
-			noColumns: 2
-		},
-		xaxis: {
-			tickDecimals: 0,
-			mode: "categories"
-		},
-		yaxis: {
-			tickDecimals: 0,
-			min: 0
-		},
-		selection: {
-			mode: "x"
-		},
-		grid: {
-			markings: [
-				{ color: '#EDC240', lineWidth: 1, yaxis: { from: <?php echo $docavg . ", to: " . $docavg; ?> } },
-				{ color: '#AFD8F8', lineWidth: 1, yaxis: { from: <?php echo $ordavg . ", to: " . $ordavg; ?> } },
-
-				{ color: '#CB4B19', lineWidth: 1, yaxis: { from: <?php echo $profileavg . ", to: " . $profileavg; ?> } },
-				{ color: '#4DA74D', lineWidth: 1, yaxis: { from: <?php echo $clientavg . ", to: " . $clientavg; ?> } }
-			]
-		}
-	};
-
-	var placeholder = $("#chart_3");
-
-	placeholder.bind("plotselected", function (event, ranges) {
-
-		$("#selection").text(ranges.xaxis.from.toFixed(1) + " to " + ranges.xaxis.to.toFixed(1));
-
-		var zoom = $("#zoom").prop("checked");
-
-		if (zoom) {
-			$.each(plot.getXAxes(), function(_, axis) {
-				var opts = axis.options;
-				opts.min = ranges.xaxis.from;
-				opts.max = ranges.xaxis.to;
-			});
-			plot.setupGrid();
-			plot.draw();
-			plot.clearSelection();
-		}
-	});
+		};
+	}
 
 
+	function bind(name, data, average) {
+		options = marking(average);
+		var placeholder = $(name);
 
-	var plot = $.plot(placeholder, data, options);
+		placeholder.bind("plotselected", function (event, ranges) {
+
+			$("#selection").text(ranges.xaxis.from.toFixed(1) + " to " + ranges.xaxis.to.toFixed(1));
+
+			var zoom = $("#zoom").prop("checked");
+
+			if (zoom) {
+				$.each(plot.getXAxes(), function (_, axis) {
+					var opts = axis.options;
+					opts.min = ranges.xaxis.from;
+					opts.max = ranges.xaxis.to;
+				});
+				plot.setupGrid();
+				plot.draw();
+				plot.clearSelection();
+			}
+		});
+		var plot = $.plot(placeholder, data, options);
+	}
 
 
-
+	bind("#documents", data, <?php echo $docavg; ?>);
+	bind("#orders", data2, <?php echo $ordavg; ?>);
+	bind("#profiles", data3, <?php echo $profileavg; ?>);
+	bind("#clients", data4, <?php echo $clientavg; ?>);
 });
 </script>
 
 
 	<div class="row">
 		<div class="col-md-12">
-			<div class="portlet box red">
+			<div class="portlet box yellow-casablanca">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-gift"></i>Uploads by day
+						<i class="fa fa-clipboard"></i>Documents
 					</div>
 					<!--<div class="tools">
                         <a href="javascript:;" class="collapse">
@@ -261,15 +264,86 @@ jQuery(document).ready(function() {
                     </div>-->
 				</div>
 				<div class="portlet-body">
-					<div id="chart_3" class="chart">
-
-					</div>
+					<div id="documents" class="chart"> </div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+<div class="row">
+	<div class="col-md-12">
+		<div class="portlet box yellow">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-clipboard"></i>Orders
+				</div>
+				<!--<div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <a href="javascript:;" class="remove">
+                    </a>
+                </div>-->
+			</div>
+			<div class="portlet-body">
+				<div id="orders" class="chart"> </div>
+			</div>
+		</div>
+	</div>
+</div>
 
+<div class="row">
+	<div class="col-md-12">
+		<div class="portlet box green-haze">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-user"></i>Profiles
+				</div>
+				<!--<div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <a href="javascript:;" class="remove">
+                    </a>
+                </div>-->
+			</div>
+			<div class="portlet-body">
+				<div id="profiles" class="chart"> </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="portlet box grey-salsa">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-globe"></i>Clients
+				</div>
+				<!--<div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <a href="javascript:;" class="remove">
+                    </a>
+                </div>-->
+			</div>
+			<div class="portlet-body">
+				<div id="clients" class="chart"> </div>
+			</div>
+		</div>
+	</div>
+</div>
 <!--< php
 echo '<HR><H1>Clients</H1>';
 debug($clients);

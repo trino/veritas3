@@ -373,6 +373,7 @@ class ClientsController extends AppController {
                         if($_POST['division']!="")
                         {
                             $division = nl2br($_POST['division']);
+                            $division = str_replace(',','<br />',$division);
                             $dd = explode("<br />",$division);
                             $divisions['client_id']= $client->id;
 

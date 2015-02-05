@@ -196,17 +196,19 @@ function printprovinces($name, $selected="", $isdisabled=""){
                         <div class="form-group">
                             <label class="control-label">Password</label>
                             <input type="password" name="password" id="password" class="form-control input-medium"
-                                   <?php if (isset($p->password)){ ?>value="<?php echo $p->password; ?>" <?php } ?>
-                                   required="required"/>
+                                   <?php // if (isset($p->password)){ ?><?php //echo $p->password; ?> <?php //} ?>
+                                   <?php if (isset($p->password) && $p->password){//do nothing 
+                                   }else{?>required="required"<?php }?>/>
                         </div>
                     </div>
-                    
+                    <?php if (isset($p->password)){ ?>
+                    <input type="hidden" value="<?php $p->password ?>" name="hid_pass" />
+                    <?php } ?>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Re-type Password</label>
                             <input type="password" class="form-control input-medium"
-                                   id="retype_password" <?php if (isset($p->password)) { ?> value="<?php echo $p->password; ?>"  <?php } ?>
-                                   required="required"/>
+                                   id="retype_password" <?php //if (isset($p->password)) { ?> <?php // echo $p->password; ?>  <?php // } ?>/>
                             <span class="error passerror flashPass1"
                                   style="display: none;">Please enter same password</span>
                         </div>
@@ -789,6 +791,19 @@ function printprovinces($name, $selected="", $isdisabled=""){
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
                 $('.un').prop('required', "required");
+                <?php
+                if(isset($p->password) && $p->password)
+                {
+                    //do nth
+                }
+                else{
+                    ?>
+                    
+                $('#password').prop('required', "required");
+                $('#retype_password').prop('required', "required");
+                <?php
+                }
+                 ?>
             }
 
             if ($(this).val() == '2') {

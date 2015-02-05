@@ -299,6 +299,10 @@
             $profiles = TableRegistry::get('Profiles');
             
             //var_dump($profile);die();
+            if(isset($_POST['password']) && $_POST['password']=='')
+                    {
+                       unset($_POST['password']);
+                    }
             if ($this->request->is('post')) {
                  
                 if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
@@ -308,6 +312,7 @@
                 //debug($_POST);die();
                 $profile = $profiles->newEntity( $_POST);
                 if ($profiles->save($profile)) {
+                    
                      if($_POST['client_ids']!= "")
                      {
                         $client_id = explode(",",$_POST['client_ids']);
@@ -390,7 +395,14 @@
             $profile = $this->Profiles->get($id, [
                 'contain' => []
             ]);
+            //echo $profile->password;die();
+            
             if ($this->request->is(['patch', 'post', 'put'])) {
+                if(isset($_POST['password']) && $_POST['password']=='')
+                    {
+                        //die('here');
+                       $this->request->data['password'] = $profile->password;
+                    }
                 if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
                     $this->request->data['admin']=1;
                 else

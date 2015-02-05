@@ -2477,5 +2477,13 @@
             // a view.
             return $this->response;
         }
+        function download_order($oid,$file)
+        {
+            $folder = 'orders/order_'.$oid.'/'.$file;
+            $this->response->file(WWW_ROOT.$folder,array('download' => true));
+            // Return response object to prevent controller from trying to render
+            // a view.
+            return $this->response;
+        }
   
     }

@@ -46,7 +46,7 @@ $doccount= total($docdates);
 $docavg = round ($doccount / $days,$decimals);
 
 /* UNCOMMENT WHEN THE PROFILES AND CLIENTS TABLES HAVE CREATED COLUMNS
-AND DONT FORGET TO ADD THE NEW COLORS/AVERAGES TO markings
+AND DONT FORGET TO ADD THE NEW COLORS/AVERAGES TO markings*/
 $profiledates = sortdates($profiles);
 $profilecount=total($profiledates);
 $profileavg= round ($profilecount / $days,$decimals);
@@ -54,7 +54,7 @@ $profileavg= round ($profilecount / $days,$decimals);
 $clientdates = sortdates($clients);
 $clientcount=total($clientdates);
 $clientavg= round ($clientcount / $days,$decimals);
-*/
+
 
 
 

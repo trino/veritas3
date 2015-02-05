@@ -247,9 +247,9 @@
                     $audits = $attachments->find()->where(['document_id' => $did])->first();
                     $this->set('audits', $audits);
                 } 
-                $pre = TableRegistry::get('pre_screening_attachments');
+                $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
-                $pre_at['attach_doc'] = $pre->find()->where(['doc_id' => $did])->all();
+                $pre_at['attach_doc'] = $pre->find()->where(['document_id' => $did])->all();
                 $this->set('pre_at', $pre_at);
 
                 $da = TableRegistry::get('driver_application');
@@ -261,11 +261,11 @@
                     $da_li = TableRegistry::get('driver_application_licenses');
                     $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
 
-                    $da_at = TableRegistry::get('driver_application_attachments');
-                    $sub['da_at'] = $da_at->find()->where(['doc_id' => $did])->all();
+                    $da_at = TableRegistry::get('doc_attachments');
+                    $sub['da_at'] = $da_at->find()->where(['document_id' => $did])->all();
 
-                    $de_at = TableRegistry::get('road_test_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['doc_id' => $did])->all();
+                    $de_at = TableRegistry::get('doc_attachments');
+                    $sub['de_at'] = $de_at->find()->where(['document_id' => $did])->all();
 
                     $this->set('sub', $sub);
                 }
@@ -276,8 +276,8 @@
                     $con_cri = TableRegistry::get('consent_form_criminal');
                     $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
 
-                    $con_at = TableRegistry::get('consent_form_attachments');
-                    $sub2['con_at'] = $con_at->find()->where(['doc_id' => $did])->all();
+                    $con_at = TableRegistry::get('doc_attachments');
+                    $sub2['con_at'] = $con_at->find()->where(['document_id' => $did])->all();
                     $this->set('sub2', $sub2);
                     $this->set('consent_detail', $con_detail);
 
@@ -286,7 +286,7 @@
                 $sub3['emp'] = $emp->find()->where(['document_id' => $did])->all();
 
                 //echo $con_detail->id;die();
-                $emp_att = TableRegistry::get('employment_verification_attachments');
+                $emp_att = TableRegistry::get('doc_attachments');
                 $sub3['att'] = $emp_att->find()->where(['document_id' => $did])->all();
 
                 $this->set('sub3', $sub3);
@@ -294,7 +294,7 @@
                 $edu = TableRegistry::get('education_verification');
                 $sub4['edu'] = $edu->find()->where(['document_id' => $did])->all();
                 //echo $con_detail->id;die();
-                $edu_att = TableRegistry::get('education_verification_attachments');
+                $edu_att = TableRegistry::get('doc_attachments');
                 $sub4['att'] = $edu_att->find()->where(['document_id' => $did])->all();
                 $this->set('sub4', $sub4);
             }
@@ -325,9 +325,9 @@
             $this->set('profile', $profile);*/
             $this->set('disabled', 1);
             if ($did) {
-                $pre = TableRegistry::get('pre_screening_attachments');
+                $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
-                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did])->all();
+                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did,'sub_id'=>1])->all();
                 $this->set('pre_at', $pre_at);
 
                 $da = TableRegistry::get('driver_application');
@@ -339,11 +339,11 @@
                     $da_li = TableRegistry::get('driver_application_licenses');
                     $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
 
-                    $da_at = TableRegistry::get('driver_application_attachments');
-                    $sub['da_at'] = $da_at->find()->where(['order_id' => $did])->all();
+                    $da_at = TableRegistry::get('doc_attachments');
+                    $sub['da_at'] = $da_at->find()->where(['order_id' => $did,'sub_id'=>2])->all();
 
-                    $de_at = TableRegistry::get('road_test_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['order_id' => $did])->all();
+                    $de_at = TableRegistry::get('doc_attachments');
+                    $sub['de_at'] = $de_at->find()->where(['order_id' => $did,'sub_id'=>3])->all();
 
                     $this->set('sub', $sub);
                 }
@@ -354,8 +354,8 @@
                     $con_cri = TableRegistry::get('consent_form_criminal');
                     $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
 
-                    $con_at = TableRegistry::get('consent_form_attachments');
-                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $did])->all();
+                    $con_at = TableRegistry::get('doc_attachments');
+                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $did,'sub_id'=>4])->all();
                     $this->set('sub2', $sub2);
                     $this->set('consent_detail', $con_detail);
 
@@ -364,16 +364,16 @@
                 $sub3['emp'] = $emp->find()->where(['order_id' => $did])->all();
 
                 //echo $con_detail->id;die();
-                $emp_att = TableRegistry::get('employment_verification_attachments');
-                $sub3['att'] = $emp_att->find()->where(['order_id' => $did])->all();
+                $emp_att = TableRegistry::get('doc_attachments');
+                $sub3['att'] = $emp_att->find()->where(['order_id' => $did,'sub_id'=>41])->all();
 
                 $this->set('sub3', $sub3);
 
                 $edu = TableRegistry::get('education_verification');
                 $sub4['edu'] = $edu->find()->where(['order_id' => $did])->all();
                 //echo $con_detail->id;die();
-                $edu_att = TableRegistry::get('education_verification_attachments');
-                $sub4['att'] = $edu_att->find()->where(['order_id' => $did])->all();
+                $edu_att = TableRegistry::get('doc_attachments');
+                $sub4['att'] = $edu_att->find()->where(['order_id' => $did,'sub_id'=>42])->all();
                 $this->set('sub4', $sub4);
             }
             $this->render('addorder');
@@ -425,9 +425,9 @@
             $this->set('cid', $cid);
             $this->set('did', $did);
             if ($did) {
-                $pre = TableRegistry::get('pre_screening_attachments');
+                $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
-                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did])->all();
+                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did,'sub_id'=>1])->all();
                 $this->set('pre_at', $pre_at);
 
                 $da = TableRegistry::get('driver_application');
@@ -439,11 +439,11 @@
                     $da_li = TableRegistry::get('driver_application_licenses');
                     $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
 
-                    $da_at = TableRegistry::get('driver_application_attachments');
-                    $sub['da_at'] = $da_at->find()->where(['order_id' => $did])->all();
+                    $da_at = TableRegistry::get('doc_attachments');
+                    $sub['da_at'] = $da_at->find()->where(['order_id' => $did,'sub_id'=>2])->all();
 
-                    $de_at = TableRegistry::get('road_test_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['order_id' => $did])->all();
+                    $de_at = TableRegistry::get('doc_attachments');
+                    $sub['de_at'] = $de_at->find()->where(['order_id' => $did,'sub_id'=>3])->all();
 
                     $this->set('sub', $sub);
                 }
@@ -454,8 +454,8 @@
                     $con_cri = TableRegistry::get('consent_form_criminal');
                     $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
 
-                    $con_at = TableRegistry::get('consent_form_attachments');
-                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $did])->all();
+                    $con_at = TableRegistry::get('doc_attachments');
+                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $did,'sub_id'=>4])->all();
                     $this->set('sub2', $sub2);
                     $this->set('consent_detail', $con_detail);
 
@@ -464,16 +464,16 @@
                 $sub3['emp'] = $emp->find()->where(['order_id' => $did])->all();
 
                 //echo $con_detail->id;die();
-                $emp_att = TableRegistry::get('employment_verification_attachments');
-                $sub3['att'] = $emp_att->find()->where(['order_id' => $did])->all();
+                $emp_att = TableRegistry::get('doc_attachments');
+                $sub3['att'] = $emp_att->find()->where(['order_id' => $did,'sub_id'=>41])->all();
 
                 $this->set('sub3', $sub3);
 
                 $edu = TableRegistry::get('education_verification');
                 $sub4['edu'] = $edu->find()->where(['order_id' => $did])->all();
                 //echo $con_detail->id;die();
-                $edu_att = TableRegistry::get('education_verification_attachments');
-                $sub4['att'] = $edu_att->find()->where(['order_id' => $did])->all();
+                $edu_att = TableRegistry::get('doc_attachments');
+                $sub4['att'] = $edu_att->find()->where(['order_id' => $did,'sub_id'=>42])->all();
                 $this->set('sub4', $sub4);
             }
 
@@ -640,12 +640,12 @@
                     $count++;
                     if (!isset($_GET['document'])) {
                         $saveData['order_id'] = $_POST['order_id'];
-                        $saveData['doc_id'] = 0;
+                        $saveData['document_id'] = 0;
                     } else {
-                        $saveData['doc_id'] = $_POST['order_id'];
+                        $saveData['document_id'] = $_POST['order_id'];
                         $saveData['order_id'] = 0;
                     }
-                    $saveData['attach_doc'] = $at;
+                    $saveData['attachment'] = $at;
                     $this->saveAttachmentsPrescreen($saveData, $count);
                 }
             }
@@ -735,12 +735,12 @@
                         $count++;
                         if (!isset($_GET['document'])) {
                             $att['order_id'] = $document_id;
-                            $att['doc_id'] = 0;
+                            $att['document_id'] = 0;
                         } else {
-                            $att['doc_id'] = $document_id;
+                            $att['document_id'] = $document_id;
                             $att['order_id'] = 0;
                         }
-                        $att['attached_doc_path'] = $v;
+                        $att['attachment'] = $v;
                         $this->saveAttachmentsDriverApp($att, $count);
 
                     }
@@ -795,12 +795,12 @@
                     $count++;
                     if (!isset($_GET['document'])) {
                         $att['order_id'] = $document_id;
-                        $att['doc_id'] = 0;
+                        $att['document_id'] = 0;
                     } else {
-                        $att['doc_id'] = $document_id;
+                        $att['document_id'] = $document_id;
                         $att['order_id'] = 0;
                     }
-                    $att['attached_document'] = $v;
+                    $att['attachment'] = $v;
                     $this->saveAttachmentsRoadTest($att, $count);
 
                 }
@@ -856,12 +856,12 @@
                     $count++;
                     if (!isset($_GET['document'])) {
                         $att['order_id'] = $document_id;
-                        $att['doc_id'] = 0;
+                        $att['document_id'] = 0;
                     } else {
-                        $att['doc_id'] = $document_id;
+                        $att['document_id'] = $document_id;
                         $att['order_id'] = 0;
                     }
-                    $att['attach_doc'] = $v;
+                    $att['attachment'] = $v;
                     $this->saveAttachmentsConsentForm($att, $count);
 
                 }
@@ -921,7 +921,7 @@
                         $att['document_id'] = $document_id;
                         $att['order_id'] = 0;
                     }
-                    $att['attach_doc'] = $v;
+                    $att['attachment'] = $v;
                     $this->saveAttachmentsEmployment($att, $count);
 
                 }
@@ -1067,7 +1067,7 @@
                         $att['document_id'] = $document_id;
                         $att['order_id'] = 0;
                     }
-                    $att['attach_doc'] = $v;
+                    $att['attachment'] = $v;
                     $this->saveAttachmentsEducation($att, $count);
 
                 }
@@ -1347,7 +1347,7 @@
                     $this->set('audits', $audits);
                 }                
 
-                $pre = TableRegistry::get('pre_screening_attachments');
+                $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
                 $pre_at['attach_doc'] = $pre->find()->where(['doc_id' => $did])->all();
                 $this->set('pre_at', $pre_at);
@@ -1355,16 +1355,16 @@
                 $da = TableRegistry::get('driver_application');
                 $da_detail = $da->find()->where(['document_id' => $did])->first();
                 if ($da_detail) {
-                    $da_ac = TableRegistry::get('driver_application_accident');
+                    $da_ac = TableRegistry::get('doc_attachments');
                     $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id' => $da_detail->id])->all();
 
                     $da_li = TableRegistry::get('driver_application_licenses');
                     $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
 
-                    $da_at = TableRegistry::get('driver_application_attachments');
+                    $da_at = TableRegistry::get('doc_attachments');
                     $sub['da_at'] = $da_at->find()->where(['doc_id' => $did])->all();
 
-                    $de_at = TableRegistry::get('road_test_attachments');
+                    $de_at = TableRegistry::get('doc_attachments');
                     $sub['de_at'] = $de_at->find()->where(['doc_id' => $did])->all();
 
                     $this->set('sub', $sub);
@@ -1376,7 +1376,7 @@
                     $con_cri = TableRegistry::get('consent_form_criminal');
                     $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
 
-                    $con_at = TableRegistry::get('consent_form_attachments');
+                    $con_at = TableRegistry::get('doc_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['doc_id' => $did])->all();
                     $this->set('sub2', $sub2);
                     $this->set('consent_detail', $con_detail);
@@ -1386,7 +1386,7 @@
                 $sub3['emp'] = $emp->find()->where(['document_id' => $did])->all();
 
                 //echo $con_detail->id;die();
-                $emp_att = TableRegistry::get('employment_verification_attachments');
+                $emp_att = TableRegistry::get('doc_attachments');
                 $sub3['att'] = $emp_att->find()->where(['document_id' => $did])->all();
 
                 $this->set('sub3', $sub3);
@@ -1394,7 +1394,7 @@
                 $edu = TableRegistry::get('education_verification');
                 $sub4['edu'] = $edu->find()->where(['document_id' => $did])->all();
                 //echo $con_detail->id;die();
-                $edu_att = TableRegistry::get('education_verification_attachments');
+                $edu_att = TableRegistry::get('doc_attachments');
                 $sub4['att'] = $edu_att->find()->where(['document_id' => $did])->all();
                 $this->set('sub4', $sub4);
 
@@ -1949,84 +1949,90 @@
         private function saveAttachmentsPrescreen($data = NULL, $count = 0)
         {//count is to delete all while first insertion and no delete for following insertion
 
-            $prescreen = TableRegistry::get('pre_screening_attachments');
+            $prescreen = TableRegistry::get('doc_attachments');
             $del = $prescreen->query();
             if ($count == 1) {
                 if (!isset($_GET['document']))
-                    $del->delete()->where(['order_id' => $data['order_id']])->execute();
+                    $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>1])->execute();
                 else
-                    $del->delete()->where(['doc_id' => $data['doc_id']])->execute();
+                    $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
+            $data['sub_id'] = 1;
             $save = $prescreen->newEntity($data);
             $prescreen->save($save);
         }
 
         private function saveAttachmentsDriverApp($data = NULL, $count = 0)
         {
-            $driverApp = TableRegistry::get('driver_application_attachments');
+            $driverApp = TableRegistry::get('doc_attachments');
             $del = $driverApp->query();
             if ($count == 1) {
                 if (!isset($_GET['document']))
-                    $del->delete()->where(['order_id' => $data['order_id']])->execute();
+                    $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>2])->execute();
                 else
-                    $del->delete()->where(['doc_id' => $data['doc_id']])->execute();
+                    $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
+            $data['sub_id'] = 2;
             $save = $driverApp->newEntity($data);
             $driverApp->save($save);
         }
 
         private function saveAttachmentsRoadTest($data = NULL, $count = 0)
         {
-            $roadTest = TableRegistry::get('road_test_attachments');
+            $roadTest = TableRegistry::get('doc_attachments');
             $del = $roadTest->query();
             if ($count == 1) {
                 if (!isset($_GET['document']))
-                    $del->delete()->where(['order_id' => $data['order_id']])->execute();
+                    $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>3])->execute();
                 else
                     $del->delete()->where(['doc_id' => $data['doc_id']])->execute();
             }
+            $data['sub_id'] = 3;
             $save = $roadTest->newEntity($data);
             $roadTest->save($save);
         }
 
         private function saveAttachmentsConsentForm($data = NULL, $count = 0)
         {
-            $consentForm = TableRegistry::get('consent_form_attachments');
+            $consentForm = TableRegistry::get('doc_attachments');
             if ($count == 1) {
                 $del = $consentForm->query();
                 if (!isset($_GET['document']))
-                    $del->delete()->where(['order_id' => $data['order_id']])->execute();
+                    $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>4])->execute();
                 else
                     $del->delete()->where(['doc_id' => $data['doc_id']])->execute();
             }
+            $data['sub_id'] = 4;
             $save = $consentForm->newEntity($data);
             $consentForm->save($save);
         }
 
         private function saveAttachmentsEmployment($data = NULL, $count = 0)
         {
-            $employment = TableRegistry::get('employment_verification_attachments');
+            $employment = TableRegistry::get('doc_attachments');
             if ($count == 1) {
                 $del = $employment->query();
                 if (!isset($_GET['document']))
-                    $del->delete()->where(['order_id' => $data['order_id']])->execute();
+                    $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>41])->execute();
                 else
                     $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
+            $data['sub_id'] = 41;
             $save = $employment->newEntity($data);
             $employment->save($save);
         }
 
         private function saveAttachmentsEducation($data = NULL, $count = 0)
         {
-            $education = TableRegistry::get('education_verification_attachments');
+            $education = TableRegistry::get('doc_attachments');
             if ($count == 1) {
                 $del = $education->query();
                 if (!isset($_GET['document']))
-                    $del->delete()->where(['order_id' => $data['order_id']])->execute();
+                    $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>42])->execute();
                 else
                     $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
+            $data['sub_id'] = 42;
             $save = $education->newEntity($data);
             $education->save($save);
         }
@@ -2035,45 +2041,45 @@
         {
             // $id = $_GET['id'];
             if ($_GET['form_type'] == "company_pre_screen_question.php") {
-                $prescreen = TableRegistry::get('pre_screening_attachments');
+                $prescreen = TableRegistry::get('doc_attachments');
                 $prescreenAttach = $prescreen
                     ->find()
-                    ->where(['order_id' => $order_id]);
+                    ->where(['order_id' => $order_id,'sub_id'=>1]);
                 echo json_encode($prescreenAttach);
 
             } else if ($_GET['form_type'] == "driver_application.php") {
-                $driverApp = TableRegistry::get('driver_application_attachments');
+                $driverApp = TableRegistry::get('doc_attachments');
                 $driverAppAttach = $driverApp
                     ->find()
-                    ->where(['order_id' => $order_id]);
+                    ->where(['order_id' => $order_id,'sub_id'=>2]);
                 echo json_encode($driverAppAttach);
 
             } else if ($_GET['form_type'] == "driver_evaluation_form.php") {
-                $roadTest = TableRegistry::get('road_test_attachments');
+                $roadTest = TableRegistry::get('doc_attachments');
                 $roadTestAttach = $roadTest
                     ->find()
-                    ->where(['order_id' => $order_id]);
+                    ->where(['order_id' => $order_id,'sub_id'=>3]);
                 echo json_encode($roadTestAttach);
 
             } else if ($_GET['form_type'] == "document_tab_3.php") {
                 if ($_GET['sub_type'] == "Consent Form") {
-                    $consentForm = TableRegistry::get('consent_form_attachments');
+                    $consentForm = TableRegistry::get('doc_attachments');
                     $consentFormAttach = $consentForm
                         ->find()
-                        ->where(['order_id' => $order_id]);
+                        ->where(['order_id' => $order_id,'sub_id'=>4]);
                     echo json_encode($consentFormAttach);
                 } else if ($_GET['sub_type'] == "Employment") {
-                    $employment = TableRegistry::get('employment_verification_attachments');
+                    $employment = TableRegistry::get('doc_attachments');
                     $employmentAttach = $employment
                         ->find()
-                        ->where(['order_id' => $order_id]);
+                        ->where(['order_id' => $order_id,'sub_id'=>41]);
                     echo json_encode($employmentAttach);
                 } else if ($_GET['sub_type'] == "Education") {
-                    $education = TableRegistry::get('education_verification_attachments');
+                    $education = TableRegistry::get('doc_attachments');
 
                     $educationAttach = $education
                         ->find()
-                        ->where(['order_id' => $order_id]);
+                        ->where(['order_id' => $order_id,'sub_id'=>42]);
                     echo json_encode($educationAttach);
                 }
             }

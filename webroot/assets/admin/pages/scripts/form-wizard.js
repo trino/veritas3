@@ -301,7 +301,7 @@ var FormWizard = function () {
                     else   */                       
                     if($('#tab3').attr('class') == 'tab-pane active')
                     {
-                        alert('test');
+                        //alert('test');
                         if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')
                         {
                             

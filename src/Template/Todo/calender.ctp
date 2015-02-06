@@ -46,8 +46,18 @@
 									</div>-->
                                     <a href="<?php echo $this->request->webroot;?>todo/add" id="event_add" class="btn default">
 											Add Event </a>
-                                            
-                                            
+                                            <div class="portlet box green-meadow main_desc" style="display: none; margin-top:20px;">
+                        						<div class="portlet-title">
+                        							<div class="caption">
+                        								Description
+                        							</div>
+                        						</div>
+                        						<div class="portlet-body descprition">
+                                                           
+                                                                
+                                                </div>
+                                                                    
+                                                </div>                  
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>
 								<div class="col-md-9 col-sm-12">
@@ -71,7 +81,7 @@ jQuery(document).ready(function() {
     eventLimit: true,
     events: [
             <?php 
-                                           foreach($events as $event){
+            foreach($events as $event){
                                               
             $dat = explode(" ",$event->date);
             $date = $dat[0];
@@ -93,16 +103,23 @@ jQuery(document).ready(function() {
             return false;
         }
     },
-    /*eventMouseover: function(calEvent, jsEvent, view) {
+    eventMouseover: function(calEvent, jsEvent, view) {
             
-        alert(calEvent.desc);
+        $('.main_desc').show();
+        $('.descprition').html(calEvent.desc);
         //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
         //alert('View: ' + view.name);
 
         // change the border color just for fun
         $(this).css('border-color', 'red');
 
-    },*/
+    },
+    eventMouseout: function(calEvent, jsEvent, view) {
+            
+        $('.main_desc').hide();
+        
+
+    },
     dayClick: function(date, jsEvent, view) {
             var d = date.format();
             window.location.href = "<?php echo $this->request->webroot;?>todo/date/"+d;

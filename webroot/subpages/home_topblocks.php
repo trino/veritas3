@@ -53,7 +53,7 @@
     
         <a href="<?php echo $this->request->webroot.$order_url;?>" class="tile bg-purple-studio" style="display: block;">
             <div class="tile-body">
-                <i class="icon-notebook"></i>
+                <i class="fa fa-files-o"></i>
             </div>
             <div class="tile-object">
                 <div class="name">

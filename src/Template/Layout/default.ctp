@@ -57,7 +57,7 @@
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/respond.min.js"></script>
-<script src="<?php echo $this->request->webroot;?>assets/global/plugins/excanvas.min.js"></script> 
+<script src="<?php echo $this->request->webroot;?>assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
@@ -119,7 +119,7 @@
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/components-pickers.js"></script>
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/components-dropdowns.js"></script>
 </head>
-<body class="<?php echo $settings->body;?>"> 
+<body class="<?php echo $settings->body;?>">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
@@ -231,10 +231,10 @@
 					</ul>
 				</li>
 				<?php $c = $this->requestAction('profiles/getuser');
-                 
+
                  if($c)
                  {
-                     
+
                 ?>
 				<li class="dropdown dropdown-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
@@ -248,17 +248,17 @@
 							<a href="<?php echo $this->request->webroot;?>profiles/edit/<?php echo $this->request->session()->read('Profile.id'); ?>" >
 							<i class="icon-user"></i> My Settings </a>
 						</li>
-						
+
 						<!--li>
 							<a href="#">
 							<i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
 							3 </span>
 							</a>
 						</li-->
-						
+
 						<li class="divider">
 						</li>
-						
+
 						<li>
 							<a href="<?php echo $this->request->webroot;?>profiles/logout">
 							<i class="icon-key"></i> Log Out </a>
@@ -268,7 +268,7 @@
                 <?php
                 }
                 ?>
-				
+
 			</ul>
 		</div>
 		<!-- END TOP NAVIGATION MENU -->
@@ -283,7 +283,7 @@
 <div class="page-container">
 
 	<?php include('subpages/sidebar.php');?>
-     
+
 	<div class="page-content-wrapper">
 		<div class="page-content">
         <?= $this->Flash->render() ?>
@@ -971,14 +971,14 @@
 </div>
 
 <script>
-jQuery(document).ready(function() {  
+jQuery(document).ready(function() {
 
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
    QuickSidebar.init(); // init quick sidebar
    Demo.init(); // init demo features
-   FormWizard.init(); 
-   Index.init();   
+   FormWizard.init();
+   Index.init();
    Profile.init(); // init page demo
    Index.initDashboardDaterange();
    Index.initJQVMAP(); // init index page's custom scripts
@@ -990,9 +990,9 @@ jQuery(document).ready(function() {
    ComponentsPickers.init();
    ComponentsDropdowns.init();
    //change_text(<?php echo $settings->display;?>);
-   
-   
-   
+
+
+
 });
 //change layout
 function change_layout(msg)
@@ -1004,66 +1004,66 @@ function change_layout(msg)
        success: function(m){
         //alert(m);
        }
-        
+
     });
 }
 function change_box()
 {
     var cls = "";
-     
+
     $('body').on('change',function(){
-       var b = $('#boxed').val(); 
+       var b = $('#boxed').val();
      cls = $('body').attr('class');
     if(b =="boxed")
      var box = 1;
      else
      var box = 0;
-    
+
        var sidebar = $('#mainbar').attr('class');
     //alert(sidebar);
-  
+
     $.ajax({
        url: "<?php echo $this->request->webroot;?>settings/changebody",
        type: "post",
        data: "class="+cls+'&side='+sidebar+'&box='+box,
        success: function(m){
-        
+
        }
-        
+
     });
-    
+
      });
 }
 function change_body()
 {
     var cls = "";
-    
+
     $('body').on('change',function(){
-        
+
      cls = $('body').attr('class');
-    
-    
+
+
        var sidebar = $('#mainbar').attr('class');
     //alert(sidebar);
-  
+
     $.ajax({
        url: "<?php echo $this->request->webroot;?>settings/changebody",
        type: "post",
        data: "class="+cls+'&side='+sidebar,
        success: function(m){
-        
+
        }
-        
+
     });
-    
+
      });
-      
-   
+
+
 }
 
 function sider_bar()
 {
-    
+
     $('#mainbar').on('focus',function(){
          var sidebar = $(this).attr('class');
          alert(sidebar);
@@ -1071,15 +1071,15 @@ function sider_bar()
 }
 
 function change_text(v){
-    
+
     var n = $('#notli').html();
     $.ajax({
        type: "post",
        url: "<?php echo $this->request->webroot;?>settings/display",
        data: "display="+v,
        success: function(){
-            
-       } 
+
+       }
     });
     var bdy = $('.page-container').not('#notli').html();
     if(v=='2')
@@ -1090,30 +1090,30 @@ function change_text(v){
         n = n.split('<option value="1" selected="selected">Profile/Client</option>').join('<option value="1" >Profile/Client</option>');}
        bdy = bdy.split('Profile').join('User');
        bdy = bdy.split('Client').join('Job');
-       
+
        $('.page-container').not('#notli').html(bdy);
-       
+
        $('#notli').html(n); */
-        
-    
-       
+
+
+
     }
     if(v=='1')
     {
         $('.page-container').html($('.page-container').html().replace(/Job/g, 'Client'));
-       
+
        /*if(n){
         n = n.split('<option value="1">Profile/Client</option>').join('<option value="1" selected="selected">Profile/Client</option>');
         n = n.split('<option value="2" selected="selected">User/Job</option>').join('<option value="2" >User/Job</option>');}
        bdy = bdy.split('User').join('Profile');
        bdy = bdy.split('Job').join('Client');
-       
+
        $('.page-container').not('#notli').html(bdy);
-       
-       $('#notli').html(n); 
+
+       $('#notli').html(n);
         */
-    
-       
+
+
     }
 }
 

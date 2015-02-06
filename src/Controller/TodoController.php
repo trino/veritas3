@@ -31,7 +31,11 @@ class TodoController extends AppController {
 
 
 	public function view($id = null) {
-	    
+	    $events = TableRegistry::get('Events');
+        $event = $events->find()->where(['id'=>$id])->first();
+        $this->set('event',$event);
+        $this->set('isdisabled','1');
+        $this->render('add');
 	}
 
 /**
@@ -143,7 +147,10 @@ class TodoController extends AppController {
     
     function date($date)
     {
-        
+        $events = TableRegistry::get('Events');
+        $event = $events->find()->where(['user_id'=>$this->request->session()->read('Profile.id'),'date LIKE "'.$date.'%"'])->order(['date'])->all();
+        //debug($event);
+        $this->set('events', $event);
     }
     function calender()
     {

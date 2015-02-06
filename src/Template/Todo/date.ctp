@@ -10,7 +10,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="<?php echo $this->request->webroot;?>todo">Todo</a>
+						<a href="<?php echo $this->request->webroot;?>todo/calender">Todo</a>
                         <i class="fa fa-angle-right"></i>
 					</li>
                     <li>
@@ -24,21 +24,29 @@
                                     <div class="col-md-12">
 											<div class="scroller" style="max-height: 600px;" data-always-visible="0" data-rail-visible="0" data-handle-color="#dae3e7">
 												<div class="todo-tasklist">
-													<a href="<?php echo $this->request->webroot;?>todo/view/1">
+                                                <?php 
+                                                    if(count($events)>0){
+                                                    foreach($events as $event){?>
+													<a href="<?php echo $this->request->webroot;?>todo/view/<?php echo $event->id;?>">
                                                     <div class="todo-tasklist-item todo-tasklist-item-border-green">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														
 														<div class="todo-tasklist-item-title">
-															 Slider Redesign
+															 <?php echo $event->title;?>
 														</div>
 														<div class="todo-tasklist-item-text">
-															 Lorem dolor sit amet ipsum dolor sit consectetuer dolore.
+															<?php echo $event->description;?>
 														</div>
 														<div class="todo-tasklist-controls pull-left">
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',strtotime($this->request['pass'][0]));?> </span>
-															<span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
+															<!--<span class="todo-tasklist-badge badge badge-roundless">Urgent</span>-->
 														</div>
 													</div></a>
-                                                    <a href="<?php echo $this->request->webroot;?>todo/view/1">
+                                                <?php }
+                                                }
+                                                else
+                                                    echo "No schedule for the day!";
+                                                ?>
+                                                    <!--<a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-red">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
@@ -103,7 +111,7 @@
 															<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',strtotime($this->request['pass'][0]));?> </span>
 															<span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
 														</div>
-													</div></a>
+													</div></a>-->
                                                     
                                                     
 												</div>

@@ -181,6 +181,7 @@
                                 <?php //include('subpages/adminlisting.php');?>
                                 <input type="hidden" name="client_id" value="<?php echo $cid;?>" id="client_id" />
                                 <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
+                                <input type="hidden" name="uploaded_for" id="uploaded_for" value="<?php if(isset($modal) && $modal)echo $modal->uploaded_for;?>" />
                                 <?php
                                     if(!$did)
                                     {
@@ -1084,6 +1085,26 @@
 
 
         });
+        $('#driverEm').live('keyup',function(){
+            //alert('test');
+            //alert($('.email1').val());
+            if($(this).val().length>0){
+                $(this).removeAttr('style');
+                //$('.cont').attr('disabled','');
+            }
+
+
+        });
+        $('.required').live('change',function(){
+            //alert('test');
+            //alert($('.email1').val());
+            if($(this).val().length>0){
+                $(this).removeAttr('style');
+                //$('.cont').attr('disabled','');
+            }
+
+
+        });
         $('.required').live('blur',function(){
             //alert($('.email1').val());
             if($(this).val().length==0){
@@ -1184,19 +1205,6 @@
             });
         $(document.body).on('click','.cont',function(){
 
-           /*if($(".tab-pane.active").prev('.tab-pane').find('#confirmation').val() == '1')
-                    {
-                        if(confirm('Are you sure you want to submit this order?'))
-                        {
-                            //
-                        }
-                        else
-                        {
-                            $('.button-previous').click();
-                            return false;
-                        }
-                        
-                    }*/
             if($(this).attr('id') == 'draft')
             {
                 var draft = 1;
@@ -1205,11 +1213,16 @@
                 var draft =0;
 
             var type=$(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
+            if(type=='add_driver')
+            {
+                saveDriver('<?php echo $cid;?>');
+            }
+            else
+            {
             var confirmation = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
             var data = {uploaded_for:$('#uploaded_for').val(),type:type,division:$('#divison').val(),conf_recruiter_name:$('#conf_recruiter_name').val(),conf_driver_name:$('#conf_driver_name').val(),conf_date:$('#conf_date').val(),recruiter_signature:$('#recruiter_signature').val()};
 
             $.ajax({
-                //data:'uploaded_for='+$('#uploaded_for').val(),
                 data : data,
                 type:'post',
                 beforeSend:saveSignature,
@@ -1257,7 +1270,7 @@
 
 
                 }
-            });
+            });}
         });
 
     });
@@ -1316,6 +1329,39 @@
 
 
 
+        });
+    }
+    function saveDriver(cid){
+        var fields = $('#createDriver').serialize();
+        $(':disabled[name]', '#createDriver').each(function () { 
+            fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
+        });
+        var param = {            
+            cid: cid,            
+            inputs:fields
+        };
+        $.ajax({
+            url:'<?php echo $this->request->webroot;?>profiles/saveDriver',
+            data: param,
+            type:'POST',
+            success: function(res){
+                if(res!='exist'){
+                $('#uploaded_for').val(res);
+                showforms('company_pre_screen_question.php');
+                showforms('driver_application.php');
+                showforms('driver_evaluation_form.php');
+                showforms('document_tab_3.php');
+                }
+                else{
+                alert('Email already exists');    
+                $('#driverEm').focus();
+                $('#driverEm').attr('style','border-color:red');
+                $('.button-previous').click();
+                $('html,body').animate({
+                                        scrollTop: $('.active').offset().top},
+                                    'slow');
+                }
+            }
         });
     }
     function savePrescreen(url,order_id,cid){

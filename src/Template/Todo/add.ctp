@@ -67,3 +67,7 @@ else
 	</form>
 </div>
 </div>
+<style>
+.table-condensed td:hover{cursor:pointer; }
+.hour, .minute{display:inline-block; padding: 0 3px; }
+</style>

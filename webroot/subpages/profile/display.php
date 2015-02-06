@@ -94,7 +94,7 @@ else
                                                success:function(res)
                                                {
                                                 $('.flash').show();
-                                                $('.flash').fadeOut(7000);
+                                                $('.flash').fadeOut(3500);
                                                 $('#save_display').text(' Save Changes ');
                                                } 
                                             })

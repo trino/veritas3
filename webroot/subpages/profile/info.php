@@ -123,10 +123,10 @@ function printprovinces($name, $selected="", $isdisabled=""){
                                 ?>>
                                     Safety
                                 </option>
-                                <option
-                                    value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
+                                <!--<option
+                                    value="5" <?php //if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php //} ?>>
                                     Driver
-                                </option>
+                                </option>-->
                                 <option
                                     value="6" <?php if (isset($p) && $p->profile_type == 6) { ?> selected="selected" <?php }
                                 if ($getProfileType->profile_type == 2) {
@@ -153,8 +153,8 @@ function printprovinces($name, $selected="", $isdisabled=""){
                             </select>
                         </div>
                     </div>
-                    <?php if ($sidebar->client_option == 0) { ?>
-
+                    <?php // if ($sidebar->client_option == 0) { ?>
+                    <!--
                     <div class="col-md-6" id="driver_div"
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
@@ -236,8 +236,8 @@ function printprovinces($name, $selected="", $isdisabled=""){
                             </select>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <?php }?>                    
+                    <div class="clearfix"></div>-->
+                    <?php //}?>                    
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Username</label>
@@ -254,7 +254,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input <?php echo $is_disabled ?> name="email" type="email"
+                            <input <?php echo $is_disabled ?> required="required" name="email" type="email"
                                                               placeholder="eg. test@domain.com"
                                                               class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
                             <span class="error passerror flashEmail"

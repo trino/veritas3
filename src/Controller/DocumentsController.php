@@ -206,7 +206,7 @@
             }
             $doc = $this->getDocumentcount();
 
-                debug($doc);
+                //debug($doc);
             $cn = $this->getUserDocumentcount();
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
@@ -634,7 +634,7 @@
                 $input[0];
                 if ($input[0] == "document_type" || $input[0] == 'attach_doc[]' || $input[0] == 'attach_doc%5B%5D') {
                     if ($input[0] == 'attach_doc[]' || $input[0] == 'attach_doc%5B%5D')
-                        $att[] = $input[1];
+                        $att[] = urldecode($input[1]);
                     continue;
                 }
                 if ($input[1] != '') {
@@ -1369,7 +1369,7 @@
                 $da_detail = $da->find()->where(['document_id' => $did])->first();
                 if ($da_detail) {
                     $da_ac = TableRegistry::get('doc_attachments');
-                    $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id' => $da_detail->id])->all();
+                    $sub['da_ac_detail'] = $da_ac->find()->where(['document_id' => $da_detail->id])->all();
 
                     $da_li = TableRegistry::get('driver_application_licenses');
                     $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
@@ -2021,7 +2021,7 @@
                 if (!isset($_GET['document']))
                     $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>3])->execute();
                 else
-                    $del->delete()->where(['doc_id' => $data['doc_id']])->execute();
+                    $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
             $data['sub_id'] = 3;
             $save = $roadTest->newEntity($data);
@@ -2036,7 +2036,7 @@
                 if (!isset($_GET['document']))
                     $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>4])->execute();
                 else
-                    $del->delete()->where(['doc_id' => $data['doc_id']])->execute();
+                    $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
             $data['sub_id'] = 4;
             $save = $consentForm->newEntity($data);

@@ -51,7 +51,7 @@
 													* </span>
 													</label>
 													<div class="col-md-6">
-														<input type="text" placeholder="" class="form-control" name="name_evaluator"/>
+														<input type="text" placeholder="" class="form-control" name="name_evaluator" value="<?php if(!$did){echo $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.mname').' '.$this->request->session()->read('Profile.lname');}?>"/>
 													</div>
 												</div>
                                                 

@@ -46,7 +46,7 @@ $(function(){
            {
             if(res==1){
             $('.flashPass').show();
-            $('.flashPass').fadeOut(7000);
+            $('.flashPass').fadeOut(3500);
             }
             else
             alert('Could\'t save password');
@@ -57,13 +57,13 @@ $(function(){
         else
         {
             ('.flashPass').show();
-            $('.flashPass').fadeOut(7000);
+            $('.flashPass').fadeOut(3500);
         }
     }
     else
     {
         $('.flashPass1').show();
-            $('.flashPass1').fadeOut(7000);
+            $('.flashPass1').fadeOut(3500);
     }
    }); 
 });

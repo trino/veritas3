@@ -319,12 +319,18 @@ var FormWizard = function () {
                         }
                     }
                     else
-                    if($('#tab5').attr('class') == 'tab-pane active')
+                    if($('#tab5').attr('class') == 'tab-pane active' || $('#tab1').attr('class') == 'tab-pane active')
                     {
+                        if($('#tab5').attr('class') == 'tab-pane active')
+                        var curr = $('#tab5');
+                        else
+                        var curr = $('#tab1');
+                        
                         var er = 0;
-                        $(".tab-pane.active").find('.required').each(function(){
+                        curr.find('.required').each(function(){
                             if($(this).val()=='' && $(this).attr('name')!='' && $(this).attr('name')!='undefined'  && $(this).attr('name'))
                             {
+                                //alert($(this).attr('name'));
                                 $(this).attr('style','border-color:red');
                                 //$('.cont').attr('disabled','');
                                 $(this).focus();

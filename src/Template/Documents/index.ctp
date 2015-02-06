@@ -1,7 +1,7 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <?php $sidebar =$this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->document);?>s
+			<?php echo ucfirst($settings->document);?>s <?php if(isset($_GET['draft'])){?>(Draft)<?php }?>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">

@@ -1182,10 +1182,10 @@
             data: param,
             type: 'POST',
             success: function (res) {
-                /*if(draft==0)
+                if(draft==0)
                 window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                 else
-                window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';*/
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
             }
         });
     }

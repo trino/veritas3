@@ -368,6 +368,87 @@ public function quiz(){}
 
             $this->render("edit");
         }
+        
+        public function saveDriver() {
+            //echo $client_id = $_POST['cid'];die() ; 
+            $arr_post = explode('&',$_POST['inputs']);
+            foreach($arr_post as $ap)
+            {
+                $arr_ap = explode('=',$ap);
+                $post[$arr_ap[0]] = urldecode($arr_ap[1]);
+                $post[$arr_ap[0]] = str_replace('Select Gender','',$post[$arr_ap[0]]);
+            }
+            $que = $this->Profiles->find()->where(['email'=>$post['email'],'id <>'=>$post['id']])->first();
+            
+            if($que)
+            {
+                //echo count($que);
+                echo 'exist';die();
+            }    
+           //$post = $_POST['inputs'];
+          // var_dump($post);die();
+            $profiles = TableRegistry::get('Profiles');
+  
+            if ($this->request->is('post')) {
+                 //var_dump($_POST['inputs']);die();
+                $post['dob'] = $post['doby']."-".$post['dobm']."-".$post['dobd'];
+                //debug($_POST);die();
+                if($post['id'] == 0 || $post['id'] == '0'){
+                    unset($post['id']);
+                $profile = $profiles->newEntity($post);
+                if ($profiles->save($profile)) {
+                    
+                     if($post['client_ids']!= "")
+                     {
+                        $client_id = explode(",",$post['client_ids']);
+                        foreach($client_id as $cid)
+                        {
+                            $query = TableRegistry::get('clients');
+                            $q = $query->find()->where(['id'=>$cid])->first();
+                            $profile_id = $q->profile_id;
+                            $pros = explode(",",$profile_id);
+                    
+                            $p_ids ="";
+                            
+                            array_push($pros,$profile->id);
+                            $pro_id = array_unique($pros);
+                    
+                    
+                            foreach($pro_id as $k=>$p)
+                            {
+                                if(count($pro_id)==$k+1)
+                                    $p_ids .= $p;
+                                else
+                                    $p_ids .= $p.",";
+                            }
+                    
+                            $query->query()->update()->set(['profile_id' => $p_ids])
+                            ->where(['id' =>$cid ])
+                            ->execute();
+                        }
+                     }
+                     echo $profile->id;
+                     die();
+                    
+        }
+        }
+        else
+        {
+            $id = $post['id'];
+            unset($post['id']);
+            unset($post['doby']);
+            unset($post['dobm']);
+            unset($post['dobd']);
+            unset($post['client_ids']);
+           $query = $profiles->query();
+            $query->update()
+                ->set($post)
+                ->where(['id' => $id])
+                ->execute(); 
+                echo $id;die();
+        }
+        }
+        }
 
         /**
          * Edit method

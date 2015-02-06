@@ -316,8 +316,12 @@
 
             }
             $orders = TableRegistry::get('orders');
-            if ($did)
+            if ($did){
                 $order_id = $orders->find()->where(['id' => $did])->first();
+                $this->loadModel('Profiles');
+                $profiles = $this->Profiles->find()->where(['id'=>$order_id->uploaded_for])->first();
+                $this->set('p',$profiles);
+                }
             //$did= $document_id->id;
             if (isset($order_id))
                 $this->set('modal', $order_id);
@@ -327,6 +331,7 @@
             $this->set('profile', $profile);*/
             $this->set('disabled', 1);
             if ($did) {
+                
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
                 $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did,'sub_id'=>1])->all();
@@ -402,8 +407,13 @@
 
             }
             $orders = TableRegistry::get('orders');
-            if ($did)
+            if ($did){
                 $order_id = $orders->find()->where(['id' => $did])->first();
+                $this->loadModel('Profiles');
+                $profiles = $this->Profiles->find()->where(['id'=>$order_id->uploaded_for])->first();
+                $this->set('p',$profiles);
+                }
+                
             if($did)
                 {
                     $o_model = TableRegistry::get('Orders');
@@ -1352,7 +1362,7 @@
 
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
-                $pre_at['attach_doc'] = $pre->find()->where(['doc_id' => $did])->all();
+                $pre_at['attach_doc'] = $pre->find()->where(['document_id' => $did])->all();
                 $this->set('pre_at', $pre_at);
 
                 $da = TableRegistry::get('driver_application');
@@ -1365,10 +1375,10 @@
                     $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
 
                     $da_at = TableRegistry::get('doc_attachments');
-                    $sub['da_at'] = $da_at->find()->where(['doc_id' => $did])->all();
+                    $sub['da_at'] = $da_at->find()->where(['document_id' => $did])->all();
 
                     $de_at = TableRegistry::get('doc_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['doc_id' => $did])->all();
+                    $sub['de_at'] = $de_at->find()->where(['document_id' => $did])->all();
 
                     $this->set('sub', $sub);
                 }
@@ -1380,7 +1390,7 @@
                     $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
 
                     $con_at = TableRegistry::get('doc_attachments');
-                    $sub2['con_at'] = $con_at->find()->where(['doc_id' => $did])->all();
+                    $sub2['con_at'] = $con_at->find()->where(['document_id' => $did])->all();
                     $this->set('sub2', $sub2);
                     $this->set('consent_detail', $con_detail);
 

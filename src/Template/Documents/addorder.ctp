@@ -64,12 +64,20 @@
                                 ?>
 
                                 <ul class="nav nav-pills nav-justified steps">
+                                    <li>
+                                        <a href="#tab1" data-toggle="tab" class="step">
+												<span class="number">
+												1</span><br />
+												<span class="desc">
+												<i class="fa fa-check"></i> Create driver </span>
+                                        </a>
+                                    </li>
                                     <?php
                                         $doc = $this->requestAction('/documents/getDocument/orders');
 
 
                                         $doc2 = $doc;
-                                        $i = 1;
+                                        $i = 2;
                                         $end = 0;
 
                                         foreach($doc as $d)
@@ -86,6 +94,7 @@
                                             ?>
                                             <?php if($prosubdoc['display'] != 0 && $d->display==1){
                                             $j = $d->id;
+                                            $j= $j+1;
                                             ?>
                                             <li <?php if($table && $end==0)echo "class = 'done'";if($act==1){echo 'class="active"';}?>>
                                                 <a href="#tab<?php echo $j;?>" data-toggle="tab" class="step">
@@ -169,7 +178,7 @@
                             </div>
 
                             <div class="form-group mar-top-10 col-md-12 uploaded_for">
-                                <?php include('subpages/adminlisting.php');?>
+                                <?php //include('subpages/adminlisting.php');?>
                                 <input type="hidden" name="client_id" value="<?php echo $cid;?>" id="client_id" />
                                 <input type="hidden" name="did" value="<?php echo $did;?>" id="did" />
                                 <?php
@@ -211,10 +220,17 @@
                                     </div>
                                 <?php }?>
                             <div class="clearfix"></div>
+                            <div class="<?php echo $tab;?> <?php if(!($table)){if($tab=='tab-pane'){?>active<?php }}else{if($table==$d->table_name){?>active changeactive<?php }}?>" id="tab1">
+                                    <?php
+
+                                        include('subpages/profile/info_order.php');
+                                    ?>
+                                </div>
                             <?php foreach($doc2 as $d){
                                 $tab_count = $d->id;
+                                $tab_count = $tab_count+1;
                                 ?>
-                                <div class="<?php echo $tab;?> <?php if(!($table)){if($tab=='tab-pane'){?>active<?php }}else{if($table==$d->table_name){?>active changeactive<?php }}?>" id="tab<?php echo $d->id; ?>">
+                                <div class="<?php echo $tab;?>" id="tab<?php echo $tab_count; ?>">
                                     <?php
 
                                         include('subpages/documents/'.$d->form);

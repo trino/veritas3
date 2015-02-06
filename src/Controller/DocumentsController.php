@@ -389,6 +389,7 @@
          */
         public function addorder($cid = 0, $did = 0, $table = null)
         {
+            $this->set('uid','');
             $this->set('table', $table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();

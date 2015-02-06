@@ -251,7 +251,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                     </div>
 
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Email</label>
                             <input <?php echo $is_disabled ?> required="required" name="email" type="email"
@@ -266,7 +266,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                     
 
                     
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Password</label>
                             <input type="password" name="password" id="password" class="form-control input-medium"

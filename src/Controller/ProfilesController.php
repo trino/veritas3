@@ -1083,7 +1083,7 @@ public function quiz(){}
         }
         public function check_user($uid='')
         {
-            
+            if(isset($_POST['username']) && $_POST['username'])
             $user = $_POST['username'];
             $q = TableRegistry::get('profiles');
             $que = $q->find();

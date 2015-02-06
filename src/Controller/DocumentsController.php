@@ -206,7 +206,7 @@
             }
             $doc = $this->getDocumentcount();
 
-                debug($doc);
+                //debug($doc);
             $cn = $this->getUserDocumentcount();
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();

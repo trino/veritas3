@@ -9,12 +9,11 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="">Todo
-                        </a>
+						<a href="">Todo</a>
+                        <i class="fa fa-angle-right"></i>
 					</li>
                     <li>
-						<a href="">Add
-                        </a>
+						<a href=""><?php if(isset($event)){echo "Edit";}else{echo "Add";}?></a>
 					</li>
 				</ul>
                 
@@ -31,13 +30,13 @@
 			<!-- TASK TITLE -->
 			<div class="form-group">
 				<div class="col-md-12">
-					<input type="text" name="title" class="form-control todo-taskbody-tasktitle" placeholder="Task Title...">
+					<input type="text" name="title" class="form-control todo-taskbody-tasktitle" placeholder="Task Title..." value="<?php if(isset($event))echo $event->title;?>" />
 				</div>
 			</div>
 			<!-- TASK DESC -->
 			<div class="form-group">
 				<div class="col-md-12">
-					<textarea class="form-control todo-taskbody-taskdesc" name="description" rows="8" placeholder="Task Description..."></textarea>
+					<textarea class="form-control todo-taskbody-taskdesc" name="description" rows="8" placeholder="Task Description..."><?php if(isset($event))echo $event->description;?></textarea>
 				</div>
 			</div>
 			<!-- END TASK DESC -->
@@ -46,14 +45,14 @@
 				<div class="col-md-12">
 					<div class="input-icon">
 						<i class="fa fa-calendar"></i>
-						<input type="text" name="date" class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date...">
+						<input type="text" name="date" class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date..." value="<?php if(isset($event))echo date('d F Y - H:m',strtotime($event->date));?>"/>
 					</div>
 				</div>
 			</div>
 			
 			<div class="form-actions right todo-form-actions">
 				<button class="btn btn-circle btn-sm green-haze" type="submit" name="submit">Save Changes</button>
-				<button class="btn btn-circle btn-sm btn-default">Cancel</button>
+			
 			</div>
 		</div>
 		</div>

@@ -9,12 +9,9 @@
 						<a href="index.html">Home</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
+				
 					<li>
-						<a href="#">Pages</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						<a href="#">Calendar</a>
+						<a href="#">Schedules</a>
 					</li>
 				</ul>
 				
@@ -26,7 +23,7 @@
 					<div class="portlet box green-meadow calendar">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-gift"></i>Calendar
+								<i class="fa fa-gift"></i>Schedules
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -49,6 +46,8 @@
 									</div>-->
                                     <a href="<?php echo $this->request->webroot;?>todo/add" id="event_add" class="btn default">
 											Add Event </a>
+                                            
+                                            
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>
 								<div class="col-md-9 col-sm-12">
@@ -69,17 +68,23 @@
 <script>
 jQuery(document).ready(function() {       
   $('#calendar').fullCalendar({
+    eventLimit: true,
     events: [
-    /*<?php foreach($events as $event){
+            <?php 
+                                           foreach($events as $event){
+                                              
             $dat = explode(" ",$event->date);
             $date = $dat[0];
         ?>
         {
             title: '<?php echo $event->title;?>',
-            start: '<?php echo $date;?>',
+            desc: '<?php echo $event->description;?>',
+            start: '<?php echo str_replace(" ","T",$event->date);?>',
             url: '<?php echo $this->request->webroot;?>todo/edit/<?php echo $event->id;?>'
-        }
-    <?php }?>*/
+        },
+    <?php }?>
+   
+    
         // other events here
     ],
     eventClick: function(event) {
@@ -88,17 +93,20 @@ jQuery(document).ready(function() {
             return false;
         }
     },
-        dayClick: function(date, jsEvent, view) {
-                var d = date.format();
-                window.location.href = "<?php echo $this->request->webroot;?>todo/date/"+d;
-        //alert('Clicked on: ' + date.format());
-
+    /*eventMouseover: function(calEvent, jsEvent, view) {
+            
+        alert(calEvent.desc);
         //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+        //alert('View: ' + view.name);
 
-        //alert('Current view: ' + view.name);
+        // change the border color just for fun
+        $(this).css('border-color', 'red');
 
-        // change the day's background color just for fun
-        $(this).css('background-color', 'red');
+    },*/
+    dayClick: function(date, jsEvent, view) {
+            var d = date.format();
+            window.location.href = "<?php echo $this->request->webroot;?>todo/date/"+d;
+            $(this).css('background-color', 'red');
 
     }
 });

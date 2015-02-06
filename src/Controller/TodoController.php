@@ -1,10 +1,15 @@
 <?php 
 namespace App\Controller;
 
+
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
+use Cake\I18n\Time;
+
+
+
 
 class TodoController extends AppController {
 
@@ -58,7 +63,7 @@ class TodoController extends AppController {
                 $this->Flash->error('Events could not be added. Please try again.');
                 
             }
-            //return $this->redirect(['action' => 'calender']);
+            return $this->redirect(['action' => 'calender']);
             
         }
 	}
@@ -71,6 +76,33 @@ class TodoController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function edit($id = null) {
+	    $events = TableRegistry::get('Events');
+        $event = $events->find()->where(['id'=>$id])->first();
+        $this->set('event',$event);
+        if(isset($_POST['submit']))
+       {
+       
+            foreach($_POST as $k=>$v)
+            {
+                if($k!='submit')
+                if($k == 'date')
+                    $arr[$k] = date('Y-m-d H:i:s',strtotime(trim(str_replace("-","",$v)).":00"));
+                else
+                    $arr[$k]= $v;
+            }
+            $events = TableRegistry::get('Events');
+            
+            $query2 = $events->query();
+            $query2->update()
+                ->set($arr)
+                ->where(['id' => $id])
+                ->execute();
+    	        $this->Flash->success('Events edited successfully.');
+                
+            
+            return $this->redirect(['action' => 'calender']);
+            
+        }
        $this->render('add');
 	}
 
@@ -116,7 +148,7 @@ class TodoController extends AppController {
     function calender()
     {
         $events = TableRegistry::get('Events');
-        $event = $events->find()->where(['user_id'=>$this->request->session()->read('Profile.id')])->all();
+        $event = $events->find()->where(['user_id'=>$this->request->session()->read('Profile.id')])->order(['date'=>'DESC'])->all();
         //debug($event);
         $this->set('events', $event);
     }

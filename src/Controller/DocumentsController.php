@@ -389,6 +389,7 @@
          */
         public function addorder($cid = 0, $did = 0, $table = null)
         {
+            $this->set('uid','');
             $this->set('table', $table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
@@ -1527,10 +1528,28 @@
         }
 
         function analytics()
-        {
-            $doc = $this->getDocumentcount();
+        {//Add code here Roy! //
+            $orders = TableRegistry::get('orders');
+            $order = $orders->find();
+            $order = $order->order(['orders.id' => 'DESC']);
+            $order = $order->where(['draft' => 0]);
+            $order = $order->select();
+            $this->set('orders', $this->paginate($order));
 
-    debug($doc);
+            $docs = TableRegistry::get('documents');
+            $doc = $docs->find();
+            $doc = $doc->select()->where(['draft' => 0]);
+            $this->set('documents', $this->paginate($doc));
+
+            $clients = TableRegistry::get('Clients');
+            $cli =  $clients->find();
+            $cli = $cli->select();
+            $this->set('clients', $this->paginate($cli));
+
+            $profiles = TableRegistry::get('Profiles');
+            $pro =  $clients->find();
+            $pro = $pro->select();
+            $this->set('profiles', $this->paginate($pro));
     }
 
         function getUser($user_id)
@@ -1665,6 +1684,7 @@
                 $this->set('return_type', $_GET['type']);
             }
             //debug($order);
+
             $this->set('orders', $this->paginate($order));
 
         }

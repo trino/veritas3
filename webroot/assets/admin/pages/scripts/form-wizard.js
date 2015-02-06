@@ -280,7 +280,8 @@ var FormWizard = function () {
                     
                     success.hide();
                     error.hide();
-                    if($(".tab-pane.active").attr('id') == 'tab1')
+                    //alert($(".tab-pane.active").attr('id'));
+                    /*if($(".tab-pane.active").attr('id') == 'tab1')
                     {                    
                     var uploaded = $('#uploaded_for').val();
                             if(uploaded=='')
@@ -297,10 +298,10 @@ var FormWizard = function () {
                                 handleTitle(tab, navigation, index);
                             }
                     }  
-                    else                          
-                    if($(".tab-pane.active").attr('id') == 'tab2')
+                    else   */                       
+                    if($('#tab3').attr('class') == 'tab-pane active')
                     {
-                        
+                        alert('test');
                         if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')
                         {
                             
@@ -318,7 +319,7 @@ var FormWizard = function () {
                         }
                     }
                     else
-                    if($(".tab-pane.active").attr('id') == 'tab4')
+                    if($('#tab5').attr('class') == 'tab-pane active')
                     {
                         var er = 0;
                         $(".tab-pane.active").find('.required').each(function(){

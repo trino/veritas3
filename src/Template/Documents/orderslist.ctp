@@ -143,7 +143,7 @@
                                     <td><?= $this->Number->format($order->id); //echo $order->profile->title;  ?></td>
                                     <td><?= h($order->title) ?></td>
                                     <td><?= h($uploaded_by->username) ?></td>
-                                    <td><?= h($uploaded_for->username) ?></td>
+                                    <td><?= h($uploaded_for->fname.' '.$uploaded_for->mname.' '.$uploaded_for->lname) ?></td>
                                     <td><?= h($client->company_name) ?></td>
                                     <td><?= h($order->created) ?></td>
                                     <td class="actions  util-btn-margin-bottom-5">

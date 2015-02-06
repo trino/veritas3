@@ -316,8 +316,12 @@
 
             }
             $orders = TableRegistry::get('orders');
-            if ($did)
+            if ($did){
                 $order_id = $orders->find()->where(['id' => $did])->first();
+                $this->loadModel('Profiles');
+                $profiles = $this->Profiles->find()->where(['id'=>$order_id->uploaded_for])->first();
+                $this->set('p',$profiles);
+                }
             //$did= $document_id->id;
             if (isset($order_id))
                 $this->set('modal', $order_id);
@@ -327,6 +331,7 @@
             $this->set('profile', $profile);*/
             $this->set('disabled', 1);
             if ($did) {
+                
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
                 $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did,'sub_id'=>1])->all();
@@ -402,8 +407,13 @@
 
             }
             $orders = TableRegistry::get('orders');
-            if ($did)
+            if ($did){
                 $order_id = $orders->find()->where(['id' => $did])->first();
+                $this->loadModel('Profiles');
+                $profiles = $this->Profiles->find()->where(['id'=>$order_id->uploaded_for])->first();
+                $this->set('p',$profiles);
+                }
+                
             if($did)
                 {
                     $o_model = TableRegistry::get('Orders');

@@ -1347,6 +1347,7 @@
             success: function(res){
                 if(res!='exist'){
                 $('#uploaded_for').val(res);
+                $('.driver_id').val(res);
                 showforms('company_pre_screen_question.php');
                 showforms('driver_application.php');
                 showforms('driver_evaluation_form.php');

@@ -378,7 +378,7 @@ public function quiz(){}
                 $post[$arr_ap[0]] = urldecode($arr_ap[1]);
                 $post[$arr_ap[0]] = str_replace('Select Gender','',$post[$arr_ap[0]]);
             }
-            $que = $this->Profiles->find()->where(['email'=>$post['email']])->first();
+            $que = $this->Profiles->find()->where(['email'=>$post['email'],'id <>'=>$post['id']])->first();
             
             if($que)
             {
@@ -393,6 +393,8 @@ public function quiz(){}
                  //var_dump($_POST['inputs']);die();
                 $post['dob'] = $post['doby']."-".$post['dobm']."-".$post['dobd'];
                 //debug($_POST);die();
+                if($post['id'] == 0 || $post['id'] == '0'){
+                    unset($post['id']);
                 $profile = $profiles->newEntity($post);
                 if ($profiles->save($profile)) {
                     
@@ -428,6 +430,22 @@ public function quiz(){}
                      echo $profile->id;
                      die();
                     
+        }
+        }
+        else
+        {
+            $id = $post['id'];
+            unset($post['id']);
+            unset($post['doby']);
+            unset($post['dobm']);
+            unset($post['dobd']);
+            unset($post['client_ids']);
+           $query = $profiles->query();
+            $query->update()
+                ->set($post)
+                ->where(['id' => $id])
+                ->execute(); 
+                echo $id;die();
         }
         }
         }

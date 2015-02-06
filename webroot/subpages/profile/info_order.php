@@ -54,7 +54,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
             <form role="form" action="" method="post" id="createDriver">
             
                 <input type="hidden" name="client_ids" value="<?php echo $cid;?>" class="client_profile_id"/>
-
+                <input type="hidden" name="id" value="<?php if(isset($p->id))echo $p->id;else echo 0;?>" class="driver_id"/>
                 <div class="row">
                 <input type="hidden" name="created_by" value="<?php echo $this->request->session()->read('Profile.id') ?>"/>
                     <div class="col-md-6">

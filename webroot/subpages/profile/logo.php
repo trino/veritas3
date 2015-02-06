@@ -177,7 +177,7 @@ $(function(){
            success:function(res)
            {
             $('.flash').show();
-            $('.flash').fadeOut(7000);
+            $('.flash').fadeOut(3500);
             $('#submit1').text(' Save Changes ');
            } 
         })
@@ -192,7 +192,7 @@ $(function(){
            success:function(res)
            {
             $('.flash').show();
-            $('.flash').fadeOut(7000);
+            $('.flash').fadeOut(3500);
             $('#submit2').text(' Save Changes ');
            } 
         })
@@ -207,7 +207,7 @@ $(function(){
            success:function(res)
            {
             $('.flash').show();
-            $('.flash').fadeOut(7000);
+            $('.flash').fadeOut(3500);
             $('#submit').text(' Save Changes ');
            } 
         })

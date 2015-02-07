@@ -2282,7 +2282,7 @@
             $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid,'sub_id'=>4, 'attach_doc <> ""']);
+                ->where(['order_id' => $oid,'sub_id'=>4, 'attachment <> ""']);
             $this->set('detail', $arr);
             $this->set(compact('att'));
 
@@ -2300,7 +2300,7 @@
             $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $id,'sub_id'=>41, 'attach_doc <> ""'])->all();
+                ->where(['order_id' => $id,'sub_id'=>41, 'attachment <> ""'])->all();
 
             $this->set('order_id', $id);
             $this->set(compact('att'));
@@ -2318,7 +2318,7 @@
             $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid,'sub_id'=>42, 'attach_doc <> ""']);
+                ->where(['order_id' => $oid,'sub_id'=>42, 'attachment <> ""']);
 
             $this->set(compact('education'));
 

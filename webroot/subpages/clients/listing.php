@@ -108,7 +108,7 @@
                                                 }
 
                                                 if ($sidebar->orders_list == '1') {
-                                                    echo $this->Html->link(__('View Orders'), ['controller' => 'documents', 'action' => 'index/>client_id=', $clients->id], ['class' => 'btn btn-warning']);
+                                                    echo $this->Html->link(__('View Orders'), ['controller' => 'documents', 'action' => 'index/?client_id=', $clients->id], ['class' => 'btn btn-warning']);
                                                 }
 
 

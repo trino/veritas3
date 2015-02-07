@@ -201,7 +201,10 @@
 
                             </div>
                             <?php $division = $this->requestAction("clients/getdivision/".$cid);
-                                if(count($division)>0){?>
+                                if(count($division)>0){
+                                    
+                                    ?>
+                                    <input type="hidden" id="check_div" value="1" />
                                     <div class="form-group mar-top-10 col-md-12" id="select_division">
 
                                         <label class="col-md-3 control-label">Select Division : </label>
@@ -219,7 +222,14 @@
                                             </select>
                                         </div>
                                     </div>
-                                <?php }?>
+                                <?php 
+                                }
+                                else{
+                                    ?>
+                                    <input type="hidden" id="check_div" value="0" />
+                                    <?php
+                                }
+                                ?>
                             <div class="clearfix"></div>
                             <div class="<?php echo $tab;?> <?php if(!($table)){if($tab=='tab-pane'){?>active<?php }}else{if($table==$d->table_name){?>active changeactive<?php }}?>" id="tab1">
                                     <?php

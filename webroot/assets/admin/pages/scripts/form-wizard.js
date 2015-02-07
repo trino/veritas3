@@ -203,8 +203,10 @@ var FormWizard = function () {
                 }
 
                 if (current == 1) {
+                    $('#divison').removeAttr('disabled');
                     $('#form_wizard_1').find('.button-previous').hide();
                 } else {
+                    $('#divison').attr('disabled','disabled');
                     $('#form_wizard_1').find('.button-previous').show();
                 }
                 
@@ -309,6 +311,7 @@ var FormWizard = function () {
                         var curr = $('#tab1');
                         
                         var er = 0;
+                        
                         curr.find('.required').each(function(){
                             if($(this).val()=='' && $(this).attr('name')!='' && $(this).attr('name')!='undefined'  && $(this).attr('name'))
                             {
@@ -325,6 +328,18 @@ var FormWizard = function () {
                                 
                             }
                         });
+                        if($('#check_div').val()=='1' && $('#divison').val()=='')
+                        {
+                            er = 1;
+                            $('#divison').addClass('myerror');
+                            $('#divison').addClass('required');
+                            $('#divison').attr('style','border-color:red');
+                        }
+                        else
+                        {
+                            $('#divison').removeClass('myerror');
+                                $('#divison').removeAttr('style');
+                        }
                         if(er){
                             alert('Please fill out all the required fields.');
                             $('html,body').animate({

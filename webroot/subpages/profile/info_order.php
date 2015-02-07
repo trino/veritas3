@@ -93,7 +93,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
                             <label class="control-label">Driver Type</label>
-                            <select name="driver" class="form-control select_driver req_driver required">
+                            <select name="driver" class="form-control select_driver req_driver">
                                 <option value="">Select Driver Type</option>
                                 <option
                                     value="1" <?php if (isset($p) && $p->driver == 1) echo "selected='selected'"; ?>
@@ -485,81 +485,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
 </div>
 
 <script>
-    function check_username() {
-        if ($('#retype_password').val() == $('#password').val()) {
-            var client_id = $('.client_profile_id').val();
-            if (client_id == "") {
-                /*
-                 alert('Please Assign atleat one client to the profile.');
-                 $('html,body').animate({
-                 scrollTop: $('.page-title').offset().top},
-                 'slow');
-                 return false;
-                 */
-            }
-            var un = $('.uname').val();
-            $.ajax({
-                url: '<?php echo $this->request->webroot;?>profiles/check_user/<?php echo $uid;?>',
-                data: 'username=' + $('.uname').val(),
-                type: 'post',
-                success: function (res) {
-                    if (res == '1') {
-                        //alert(res);
-                        $('.flashUser').show();
-                        $('.uname').focus();
-                        $('html,body').animate({
-                                scrollTop: $('.page-title').offset().top
-                            },
-                            'slow');
-                            
-                        return false;
-                    }
-                    else {
-                        $('.flashUser').hide();
-                        if($('.email').val()!=''){
-                                    var un = $('.email').val();
-                                    $.ajax({
-                                        url: '<?php echo $this->request->webroot;?>profiles/check_email/<?php echo $uid;?>',
-                                        data: 'email=' + $('.email').val(),
-                                        type: 'post',
-                                        success: function (res) {
-                                            if (res == '1') {
-                                                $('.email').focus();
-                                                $('.flashEmail').show();
-                                                $('html,body').animate({
-                                scrollTop: $('.page-title').offset().top
-                            },
-                            'slow');
-                                                    
-                                                return false;
-                                            }
-                                            else {
-                                                $('#hiddensub').click();
-                                            }
-                                        }
-                                    });
-                        }
-                        else
-                        $('#hiddensub').click();
-                    }
-                }
-            });
-            
-            
-           
-        }
-        else {
-            $('#retype_password').focus();
-            $('html,body').animate({
-                    scrollTop: $('.page-title').offset().top
-                },
-                'slow');
-            $('.flashPass1').show();
-            //$('.flashPass1').fadeOut(7000000);
-            return false;
-        }
-
-    }
+    
     $(function () {
 
         $('#addmore_id').click(function () {
@@ -584,6 +510,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                     $(this).hide();
                 });
                 $('#driver_div').show();
+                $('#driver_div select').addClass('required');
                 $('.un').removeProp('required');
                 $('#password').removeProp('required');
                 $('#retype_password').removeProp('required');
@@ -591,6 +518,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                 $('.req_driver').prop('required', "required");
             }
             else {
+                $('#driver_div select').removeClass('required');
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).show();
                 });

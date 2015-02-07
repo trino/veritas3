@@ -1139,7 +1139,10 @@
         $('.nav a').show();
         $('.cont').html('Next <i class="m-icon-swapright m-icon-white"></i>');
         $('.cont').parent().find('.red').remove();
-        $('.cont').attr('id','nextview');
+        $('.cont').each(function(){
+          $(this).attr('id','nextview'); 
+          $(this).addClass('nextview');  
+        })
         $('.cont').removeClass('cont');
         $('.uploaded a').show();
         

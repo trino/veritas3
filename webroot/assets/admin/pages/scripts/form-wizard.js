@@ -218,7 +218,9 @@ var FormWizard = function () {
                     $('.cont').attr('onclick','return false;');
                     $('.skip').html('Save as draft');
                     $('.skip').removeClass('button-next');
-                    $('#nextview').attr('style','visibility: hidden;');
+                    $('.nextview').each(function(){
+                       $(this).attr('style','visibility: hidden;'); 
+                    });
                     if($('#dr').val()=='0')
                     {
                         $('.skip').attr('disabled','disabled');
@@ -233,7 +235,7 @@ var FormWizard = function () {
                 else{
                     $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
                     $('.cont').attr('id','draft');
-                    $('#nextview').removeAttr('style');
+                    $('.nextview').removeAttr('style');
                     $('.skip').html('Skip <i class="m-icon-swapdown m-icon-white"></i>');
                     $('.skip').removeAttr('disabled');
                     $('.cont').removeAttr('onclick');

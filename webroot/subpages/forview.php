@@ -1,3 +1,5 @@
+<?die();?>
+
 <!-- BEGIN PROFILE SIDEBAR -->
 <div class="profile-sidebar">
     <!-- PORTLET MAIN -->

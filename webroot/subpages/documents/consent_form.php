@@ -154,10 +154,10 @@
 
             
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-8">
             <?php include('canvas/consent_signature_driver2.php'); ?>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-8">
             <?php include('canvas/consent_signature_witness2.php'); ?>
         </div>
 
@@ -434,10 +434,10 @@
             <p>LAST UPDATED 10/29/2012</p>
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-8">
             <?php include('canvas/consent_signature_driver.php'); ?>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-8">
             <?php include('canvas/consent_signature_witness.php'); ?>
         </div>
 

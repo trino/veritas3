@@ -1116,5 +1116,17 @@ public function quiz(){}
             echo '0';
             die();
         }
+        
+        function sendEmail($from,$to,$subject,$message)
+    {
+        //from can be array with this structure array('email_address'=>'Sender name'));
+        $email = new Email('default');
+        
+        $email->from($from)
+        ->emailFormat('html')
+    ->to($to)
+    ->subject($subject)
+    ->send($message);
+    }
     }
 ?>

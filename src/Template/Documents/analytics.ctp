@@ -7,13 +7,19 @@ function right($text, $length){
 	return substr($text, -$length);
 }
 function extractdate($text){
+    if(str_replace(' ','',$text)!=$text)
 	return trim(left($text, strpos($text, " ")));
+    else
+    return $text;
 }
 
 function sortdates($data){
 	$dates = array();
+    
 	foreach ($data as $order) {
-		$thedate = extractdate($order->created);
+	 
+	$thedate = extractdate($order->created);
+    
 		if (array_key_exists($thedate,$dates)) {
 			$dates[$thedate] += 1;
 		} else {
@@ -52,8 +58,6 @@ $profileavg= round ($profilecount / $days,$decimals);
 $clientdates = sortdates($clients);
 $clientcount=total($clientdates);
 $clientavg= round ($clientcount / $days,$decimals);
-
-
 
 
 

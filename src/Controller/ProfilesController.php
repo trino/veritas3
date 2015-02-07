@@ -403,6 +403,7 @@ public function quiz(){}
                 $post['dob'] = $post['doby']."-".$post['dobm']."-".$post['dobd'];
                 //debug($_POST);die();
                 if($post['id'] == 0 || $post['id'] == '0'){
+                    $post['created'] = date('Y-m-d');
                     unset($post['id']);
                 $profile = $profiles->newEntity($post);
                 if ($profiles->save($profile)) {

@@ -137,7 +137,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                                     Contact
                                 </option>
 
-                                <option
+                                <!--option
                                     value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
 
                                 ?>>
@@ -149,7 +149,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
 
                                 ?>>
                                     Owner Driver
-                                </option>
+                                </option-->
                             </select>
                         </div>
                     </div>
@@ -392,7 +392,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
 
                         <div class="form-group">
                             <label class="control-label">Date of Birth (YYYY-MM-DD)</label><BR>
@@ -535,7 +535,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">Province Driver's License was issued</label>
+                                <label class="control-label">Province issued</label>
                                 
                                 <?php 
                                 if(isset($p->driver_province))

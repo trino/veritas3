@@ -2,7 +2,7 @@
 <div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-briefcase"></i>Client Setting
+            <i class="fa fa-briefcase"></i>Version
         </div>
     </div>
     <div class="portlet-body">
@@ -13,7 +13,7 @@
                                              <table class=" ">
                                             <tr>
                                                 <td class="vtop">
-                                                    Options For :
+                                                    Version For:
                                                 </td>
                                                 <td>
                                                     <label class="uniform-inline">

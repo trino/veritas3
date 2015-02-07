@@ -126,6 +126,7 @@
                     			<th><?= $this->Paginator->sort('created','Uploaded on');?></th>           			
                                 <th><?= $this->Paginator->sort('client_id',ucfirst($settings->client));?></th>
                     			<th class="actions"><?= __('Actions') ?></th>
+
                     		</tr>
                     	</thead>
                     	<tbody>

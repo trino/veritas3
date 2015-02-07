@@ -247,7 +247,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     </div>
                                                     <?php if($sidebar->client_option==0){?>
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label">Divisions </label> <small>(Separate with newlines)</small>
+                                                        <label class="control-label">Divisions </label>
                                                         <textarea name="division" id="division" placeholder="One division per line"
                                                                   class="form-control"><?php if (isset($c->division)) echo $c->division; ?></textarea>
                                                     </div>

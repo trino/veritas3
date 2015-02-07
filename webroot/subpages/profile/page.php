@@ -8,23 +8,23 @@
 
 
                                             <li class="active"><!-- warning: first and third tabs do not work! -->
-                                                <a href="#subtab_1_11" data-toggle="tab">Product Example</a>
+                                                <a href="#subtab_1_11" data-toggle="tab">Products</a>
                                             </li>
                                             <li class="">
                                                 <a href="#subtab_1_6" data-toggle="tab">Help</a>
                                             </li>
                                             <li>
-                                                <a href="#subtab_1_7" data-toggle="tab">Privacy Code</a>
+                                                <a href="#subtab_1_7" data-toggle="tab">Privacy</a>
                                             </li>
                                             <li>
                                                 <a href="#subtab_1_4" data-toggle="tab">Terms</a>
                                             </li>
 
-
-
-
                                             <li class="">
                                                 <a href="#subtab_1_5" data-toggle="tab">FAQ</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#subtab_1_8" data-toggle="tab">Version Log</a>
                                             </li>
 
 
@@ -188,6 +188,63 @@
                                             </div>
 
                                         </div>
+
+
+
+
+                                        <div class="tab-pane" id="subtab_1_8">
+                                            <div class="portlet box">
+                                                <!--div class="portlet-title">
+                                                    <div class="caption">
+                                                        <i class="fa fa-gift"></i>Page Manager - Product Example
+                                                    </div>
+
+                                                </div-->
+
+                                                <div class="portlet-body form">
+                                                    <!-- BEGIN FORM-->
+                                                    <?php $cms = $this->requestAction("/pages/get_content/version_log");?>
+                                                    <form action="<?php echo $this->request->webroot;?>pages/edit/version_log"  method="post"class="form-horizontal form-bordered" id="version_log">
+                                                        <div class="form-body">
+                                                            <div class="form-group last">
+                                                                <label class="control-label col-md-2">Title</label>
+
+                                                                <div class="col-md-4">
+                                                                    <input class="form-control" name="title" id="title-version_log"
+                                                                           value="<?php echo $cms->title;?>"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-body">
+                                                            <div class="form-group last">
+                                                                <label
+                                                                    class="control-label col-md-2">Description</label>
+
+                                                                <div class="col-md-9">
+                                                                    <textarea class="ckeditor form-control"
+                                                                              name="editor1" rows="6" id="descprivacy_code"><?php echo $cms->desc;?></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-actions">
+                                                            <div class="row">
+                                                                <div class="col-md-offset-2 col-md-9">
+                                                                    <button type="submit"  class="btn blue" onclick="savepage('privacy_code');"><i
+                                                                            class="fa fa-check"></i> Submit
+                                                                    </button>
+                                                                    <button type="button" class="btn default">Cancel
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <!-- END FORM-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
 
                                         <div class="tab-pane" id="subtab_1_4">
                                             <div class="portlet box">

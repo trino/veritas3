@@ -88,7 +88,7 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
 }
 ?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->document);?>s <small>Analytics of <?php echo ucfirst($settings->document);?>s</small>
+			MEE Analytics <small>Analytics of <?php echo ucfirst($settings->document);?>s, Orders and  Drivers</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">

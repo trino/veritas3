@@ -514,13 +514,13 @@ $is_disabled = '';
 
 
                                                     <li class="active">
-        												<a href="#subtab_1_5" data-toggle="tab">Product Example</a>
+        												<a href="#subtab_1_5" data-toggle="tab">Products</a>
         											</li>
                                                     <li class="">
                                                         <a href="#subtab_1_6" data-toggle="tab">Help</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#subtab_1_4" data-toggle="tab">Privacy Code</a>
+                                                        <a href="#subtab_1_4" data-toggle="tab">Privacy</a>
                                                     </li>
         											<li>
         												<a href="#subtab_1_6" data-toggle="tab">Terms</a>
@@ -579,7 +579,7 @@ $is_disabled = '';
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Privacy Code
+                                								<i class="fa fa-gift"></i>Page Manager - Privacy
                                 							</div>
 
                                 						</div>
@@ -622,7 +622,7 @@ $is_disabled = '';
                                                     <div class="portlet box blue">
                                 						<div class="portlet-title">
                                 							<div class="caption">
-                                								<i class="fa fa-gift"></i>Page Manager - Product Example
+                                								<i class="fa fa-gift"></i>Page Manager - Products
                                 							</div>
 
                                 						</div>

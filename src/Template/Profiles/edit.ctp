@@ -391,7 +391,7 @@
                                                     <a href="#tab_1_6" data-toggle="tab">Pages</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#tab_1_8" data-toggle="tab">Client Setting</a>
+                                                    <a href="#tab_1_8" data-toggle="tab">Version</a>
                                                 </li>
                                             <?php
                                             }

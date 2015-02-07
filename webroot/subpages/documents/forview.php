@@ -35,8 +35,6 @@
     function get_color($result_string)
     {
 
-
-
         $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
 
         switch (strtoupper(trim($result_string))) {
@@ -71,7 +69,7 @@
                 echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
                 break;
             case '':
-               // echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+                // echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
                 break;
             default:
                 echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">NO COMMENT</span>';
@@ -223,7 +221,6 @@
 
             <a href="#" class="btn btn-lg default yellow-stripe">
                 Road Test Score </a><a href="#" class="btn btn-lg yellow">
-
                 <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
             </a>
 
@@ -235,17 +232,32 @@
         ?>
         <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type:
                 <strong>Orders</strong></p>
-                        <p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
+			<p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
 
-            <p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
-                        <p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
+			<p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
+			<p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
 
-            <p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
+			<p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
 
-</span>
+			</span>
 
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-pencil"></i>Recruiter Notes
+                </div>
+
+            </div>
+            <div class="portlet-body">
+
+                <?php include('subpages/documents/recruiter_notes.php'); ?>
+            </div>
+
+        </div>
 
     </div>
+
+
     <!-- END PORTLET MAIN -->
 </div>
 <!-- END BEGIN PROFILE SIDEBAR -->
@@ -254,7 +266,7 @@
     <div class="row">
 
         <div class="clearfix"></div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <!-- BEGIN PORTLET -->
             <div class="portlet light">
                 <div class="portlet-title">
@@ -469,298 +481,13 @@
             </div>
             <!-- END PORTLET -->
         </div>
-
-
-        <div class="col-md-6">
-
-            <div class="portlet-body">
-                <div class="portlet light ">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="icon-bar-chart font-green-haze"></i>
-                            <span class="caption-subject bold uppercase font-green-haze"> Performance Chart</span>
-                        </div>
-                        <div class="tools">
-                            <!--a title="" data-original-title="" href="javascript:;" class="collapse">
-                            </a>
-                            <a title="" data-original-title="" href="#portlet-config" data-toggle="modal" class="config">
-                            </a>
-                            <a title="" data-original-title="" href="javascript:;" class="reload">
-                            </a>
-                            <a title="" data-original-title="" href="javascript:;" class="fullscreen">
-                            </a>
-                            <a title="" data-original-title="" href="javascript:;" class="remove">
-                            </a-->
-                        </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div id="chart_8" class="chart" style="height: 370px; overflow: hidden; text-align: left;">
-
-                            <!--img style="z-index:99999;position: absolute;top: 70px;opacity: 0.6"
-                                 src="<?php echo $this->request->webroot; ?>img/coming-soon.png"/-->
-
-                            <div style="position: relative;">
-                                <div style="">
-                                    <svg version="1.1" style="position: absolute; width: 388px; height: 400px;">
-                                        <g>
-                                            <path stroke-opacity="0" stroke-width="1" fill-opacity="0" stroke="#000000"
-                                                  fill="#FFFFFF" d="M0.5,0.5 L387.5,0.5 L387.5,399.5 L0.5,399.5 Z"
-                                                  cs="100,100"></path>
-                                        </g>
-                                        <g>
-                                            <g visibility="visible">
-                                                <g>
-                                                    <path stroke="#000000" stroke-opacity="0.2" stroke-width="1"
-                                                          fill="none" d="M194.5,73.5 L194.5,73.5" cs="100,100"></path>
-                                                </g>
-                                                <g>
-                                                    <path stroke="#000000" stroke-opacity="0.2" stroke-width="1"
-                                                          fill="none" d="M194.5,200.5 L194.5,200.5" cs="100,100"></path>
-                                                </g>
-                                                <g>
-                                                    <g transform="translate(194,200)">
-                                                        <path stroke-width="1" stroke-opacity="0" stroke="#000"
-                                                              fill-opacity="0.3" fill="#0066CC"
-                                                              d=" M0,0 L-89.80256121069155,-89.80256121069151 A127,127,0,0,1,89.80256121069151,-89.80256121069155 L0,0 Z"
-                                                              cs="1000,1000"></path>
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                    <path stroke="#000000" stroke-opacity="0.2" stroke-width="1"
-                                                          fill="none" d="M194.5,73.5 L194.5,73.5" cs="100,100"></path>
-                                                </g>
-                                                <g>
-                                                    <path stroke="#000000" stroke-opacity="0.2" stroke-width="1"
-                                                          fill="none" d="M194.5,200.5 L194.5,200.5" cs="100,100"></path>
-                                                </g>
-                                                <g>
-                                                    <g transform="translate(194,200)">
-                                                        <path stroke-width="1" stroke-opacity="0" stroke="#000"
-                                                              fill-opacity="0.3" fill="#CC3333"
-                                                              d=" M0,0 L89.80256121069154,89.80256121069152 A127,127,0,0,1,-89.80256121069152,89.80256121069155 L0,0 Z"
-                                                              cs="1000,1000"></path>
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                    <path stroke="#000000" stroke-opacity="0.2" stroke-width="1"
-                                                          fill="none" d="M194.5,200.5 L189.5,200.5" cs="100,100"></path>
-                                                    <circle transform="translate(194,200)" stroke-opacity="0.08"
-                                                            stroke-width="1" fill-opacity="0" stroke="#000000"
-                                                            fill="#FFFFFF" cy="0" cx="0" r="0"></circle>
-                                                </g>
-                                                <g>
-                                                    <path stroke="#000000" stroke-opacity="0.2" stroke-width="1"
-                                                          fill="none" d="M194.5,155.5 L189.5,155.5" cs="100,100"></path>
-                                                    <circle transform="translate(194,200)" stroke-opacity="0.08"
-                                                            stroke-width="1" fill-opacity="0" stroke="#000000"
-                                                            fill="#FFFFFF" cy="0" cx="0" r="45"></circle>
-                                                    <g transform="translate(194,200)">
-                                                        <path stroke-width="1" stroke-opacity="0" stroke="#000"
-                                                              fill-opacity="0.05" fill="#FFFFFF"
-                                                              d=" M0,0 L0,-45 A45,45,0,1,1,-0.04712388119100082,-44.99997532599125 L0,0 Z"
-                                                              cs="1000,1000"></path>
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                    <path stroke="#000000" stroke-opacity="0.2" stroke-width="1"
-                                                          fill="none" d="M194.5,109.5 L189.5,109.5" cs="100,100"></path>
-                                                    <circle transform="translate(194,200)" stroke-opacity="0.08"
-                                                            stroke-width="1" fill-opacity="0" stroke="#000000"
-                                                            fill="#FFFFFF" cy="0" cx="0" r="91"></circle>
-                                                </g>
-                                                <g>
-                                                    <path stroke="#000000" stroke-opacity="0.2" stroke-width="1"
-                                                          fill="none" d="M194.5,64.5 L189.5,64.5" cs="100,100"></path>
-                                                    <circle transform="translate(194,200)" stroke-opacity="0.08"
-                                                            stroke-width="1" fill-opacity="0" stroke="#000000"
-                                                            fill="#FFFFFF" cy="0" cx="0" r="136"></circle>
-                                                    <g transform="translate(194,200)">
-                                                        <path stroke-width="1" stroke-opacity="0" stroke="#000"
-                                                              fill-opacity="0.05" fill="#FFFFFF"
-                                                              d=" M0,-91 L0,-136 A136,136,0,1,1,-0.1424188409328025,-135.99992542966245 L-0.09529495974180166,-90.9999501036712 A91,91,0,1,0,0,-91 Z"
-                                                              cs="1000,1000"></path>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                        <g></g>
-                                        <g></g>
-                                        <g></g>
-                                        <g></g>
-                                        <g>
-                                            <g visibility="visible" opacity="1" transform="translate(194,200)">
-                                                <g></g>
-                                                <g></g>
-                                                <g>
-                                                    <path stroke="#67b7dc" stroke-opacity="0.9" stroke-width="1"
-                                                          fill="none"
-                                                          d="M0.5,-72.5 L58.5,-57.5 L41.5,0.5 L22.5,22.5 L0.5,83.5 L-53.5,54.5 L-100.5,0.5 L-63.5,-63.5 L0.5,-72.5 M0,0 L0,0"
-                                                          cs="100,100"></path>
-                                                    <path stroke-opacity="0" stroke-width="1" fill-opacity="0.3"
-                                                          stroke="#000" fill="#67b7dc"
-                                                          d="M0.5,-72.5 L58.5,-57.5 L41.5,0.5 L22.5,22.5 L0.5,83.5 L-53.5,54.5 L-100.5,0.5 L-63.5,-63.5 L0.5,-72.5 Z"
-                                                          cs="100,100"></path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                        <g></g>
-                                        <g>
-                                            <g visibility="visible">
-                                                <text transform="translate(191,73)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6"></tspan>
-                                                </text>
-                                                <text transform="translate(191,200)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6"></tspan>
-                                                </text>
-                                                <text transform="translate(191,73)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6"></tspan>
-                                                </text>
-                                                <text transform="translate(191,200)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6"></tspan>
-                                                </text>
-                                                <text transform="translate(186,200)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">0</tspan>
-                                                </text>
-                                                <text transform="translate(186,155)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">5</tspan>
-                                                </text>
-                                                <text transform="translate(186,109)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">10</tspan>
-                                                </text>
-                                                <text transform="translate(186,64)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">15</tspan>
-                                                </text>
-                                            </g>
-                                        </g>
-                                        <g>
-                                            <g visibility="visible">
-                                                <path stroke="#000000" stroke-opacity="0.2" stroke-width="1" fill="none"
-                                                      d="M194.5,200.5 L194.5,64.5" cs="100,100"></path>
-                                                <text transform="translate(194,49)" text-anchor="middle" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">Lorem</tspan>
-                                                </text>
-                                                <path stroke="#000000" stroke-opacity="0.2" stroke-width="1" fill="none"
-                                                      d="M194.5,200.5 L290.5,104.5" cs="100,100"></path>
-                                                <text transform="translate(302,97)" text-anchor="start" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">Lorem</tspan>
-                                                </text>
-                                                <path stroke="#000000" stroke-opacity="0.2" stroke-width="1" fill="none"
-                                                      d="M194.5,200.5 L330.5,200.5" cs="100,100"></path>
-                                                <text transform="translate(345,200)" text-anchor="start" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">Lorem</tspan>
-                                                </text>
-                                                <path stroke="#000000" stroke-opacity="0.2" stroke-width="1" fill="none"
-                                                      d="M194.5,200.5 L290.5,296.5" cs="100,100"></path>
-                                                <text transform="translate(302,303)" text-anchor="start" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">Lorem</tspan>
-                                                </text>
-                                                <path stroke="#000000" stroke-opacity="0.2" stroke-width="1" fill="none"
-                                                      d="M194.5,200.5 L194.5,336.5" cs="100,100"></path>
-                                                <text transform="translate(194,351)" text-anchor="middle" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">Lorem</tspan>
-                                                </text>
-                                                <path stroke="#000000" stroke-opacity="0.2" stroke-width="1" fill="none"
-                                                      d="M194.5,200.5 L98.5,296.5" cs="100,100"></path>
-                                                <text transform="translate(86,303)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">Lorem</tspan>
-                                                </text>
-                                                <path stroke="#000000" stroke-opacity="0.2" stroke-width="1" fill="none"
-                                                      d="M194.5,200.5 L58.5,200.5" cs="100,100"></path>
-                                                <text transform="translate(43,200)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">Lorem</tspan>
-                                                </text>
-                                                <path stroke="#000000" stroke-opacity="0.2" stroke-width="1" fill="none"
-                                                      d="M194.5,200.5 L98.5,104.5" cs="100,100"></path>
-                                                <text transform="translate(86,97)" text-anchor="end" opacity="1"
-                                                      font-size="11" font-family="Open Sans" fill="#888" y="6">
-                                                    <tspan x="0" y="6">Lorem</tspan>
-                                                </text>
-                                            </g>
-                                        </g>
-                                        <g></g>
-                                        <g></g>
-                                        <g>
-                                            <g visibility="visible" opacity="1" transform="translate(194,200)">
-                                                <circle transform="translate(0,-73)" stroke-opacity="0" stroke-width="2"
-                                                        fill-opacity="1" stroke="#67b7dc" fill="#67b7dc" cy="0" cx="0"
-                                                        r="4"></circle>
-                                                <circle transform="translate(58,-58)" stroke-opacity="0"
-                                                        stroke-width="2" fill-opacity="1" stroke="#67b7dc"
-                                                        fill="#67b7dc" cy="0" cx="0" r="4"></circle>
-                                                <circle transform="translate(41,0)" stroke-opacity="0" stroke-width="2"
-                                                        fill-opacity="1" stroke="#67b7dc" fill="#67b7dc" cy="0" cx="0"
-                                                        r="4"></circle>
-                                                <circle transform="translate(22,22)" stroke-opacity="0" stroke-width="2"
-                                                        fill-opacity="1" stroke="#67b7dc" fill="#67b7dc" cy="0" cx="0"
-                                                        r="4"></circle>
-                                                <circle transform="translate(0,83)" stroke-opacity="0" stroke-width="2"
-                                                        fill-opacity="1" stroke="#67b7dc" fill="#67b7dc" cy="0" cx="0"
-                                                        r="4"></circle>
-                                                <circle transform="translate(-54,54)" stroke-opacity="0"
-                                                        stroke-width="2" fill-opacity="1" stroke="#67b7dc"
-                                                        fill="#67b7dc" cy="0" cx="0" r="4"></circle>
-                                                <circle transform="translate(-101,0)" stroke-opacity="0"
-                                                        stroke-width="2" fill-opacity="1" stroke="#67b7dc"
-                                                        fill="#67b7dc" cy="0" cx="0" r="4"></circle>
-                                                <circle transform="translate(-64,-64)" stroke-opacity="0"
-                                                        stroke-width="2" fill-opacity="1" stroke="#67b7dc"
-                                                        fill="#67b7dc" cy="0" cx="0" r="4"></circle>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-        <!-- END PORTLET -->
-
-
     </div>
     <div class="row">
 
 
-        <div class="col-md-6">
 
 
-            <div class="portlet light">
-                <div class="portlet box green">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-pencil"></i>Recruiter Notes
-                        </div>
-
-                    </div>
-                    <div class="portlet-body">
-
-                        <?php include('subpages/documents/recruiter_notes.php'); ?>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="col-md-6">
+        <div class="col-md-12">
             <!-- BEGIN PORTLET -->
             <div class="portlet light tasks-widget">
                 <div class="portlet-title">

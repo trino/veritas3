@@ -1079,12 +1079,12 @@ public function quiz(){}
             <div class="item-head">
                 <div class="item-details">
                     <a href="" class="item-name primary-link">'.$this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.mname').' '.$this->request->session()->read('Profile.lname').'</a>
-                    <span class="item-label">'.$_POST['created'].'</span>
+                    <span class="item-label">'.date('m').'/'.date('d').'/'.(date('Y')-2000).'</span>
                 </div>
                 
             </div>
             <div class="item-body">
-                '.$_POST['description'].'
+                '.$_POST['description'].'<br/><br/>
             </div>
         </div>';
             else

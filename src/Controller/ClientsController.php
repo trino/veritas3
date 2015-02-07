@@ -377,6 +377,7 @@ class ClientsController extends AppController {
                     $sub = 'Client created successfully';
                     $msg = 'Hi,<br />Your account has been created for ISBMEE as a client .<br /> Regards';
                     $this->Profiles->sendEmail($from,$to,$sub,$msg);
+                    }
             if(isset($_POST['sig_email'])&&((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!=''))
                 {
                     echo "Invalid Email";
@@ -750,7 +751,7 @@ class ClientsController extends AppController {
     return $this->response;
   }
    function getClient($id=null)
-   {
+   { 
     $contact = TableRegistry::get('Clients');
     $query = $contact->find()->where(['id'=>$id]);
     $q = $query->first();
@@ -886,6 +887,6 @@ class ClientsController extends AppController {
     }
     
 
-}
+
 }
 ?>

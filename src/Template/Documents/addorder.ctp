@@ -1199,6 +1199,12 @@
             });
         });
         $(document.body).on('click', '.skip', function () {
+            //alert($(this).text());
+            
+            
+                $('.blockmsg').html('<h4 class="block">Your Order Has Been Saved As Draft!</h4>'+
+    '<p>You can edit your order anytime.</p>')
+            
             var type = $(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
             var tabid = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
             if (tabid == '1') {
@@ -1246,6 +1252,16 @@
             }
             else
                 var draft = 0;
+            if(draft==1)
+            {
+                $('.blockmsg').html('<h4 class="block">Your Order Has Been Saved As Draft!</h4>'+
+    '<p>You can edit your order anytime.</p>')
+            }
+            else
+            {
+                $('.blockmsg').html('<h4 class="block">Your Order Has Been Submitted!</h4>'+
+    '<p>You will be notified once it\'s processed.</p>')
+            }
 
             var type = $(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
             if (type == 'add_driver') {

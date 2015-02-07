@@ -563,11 +563,12 @@ public function quiz(){}
         {
             //$this->request->session()->delete('Profile.id');
             $this->request->session()->destroy();
-            if($_SERVER['SERVER_NAME'] == 'isbmeereports.com'){
-                $this->redirect('http://isbmee.com');
+            if($_SERVER['SERVER_NAME'] == 'localhost'){
+                $this->redirect('/login');
 
             }else{
-                $this->redirect('/login');
+                $this->redirect('http://isbmee.com');
+                
 
                 //$initials = $this->requestAction('/pages/getBase');
                 //$this->redirect($initials);

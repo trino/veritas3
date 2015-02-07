@@ -206,7 +206,7 @@
             }
             $doc = $this->getDocumentcount();
 
-                debug($doc);
+                //debug($doc);
             $cn = $this->getUserDocumentcount();
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
@@ -2279,10 +2279,10 @@
                 ->where(['consent_form_id' => $arr['consent']->id]);
             $this->set('detail', $arr);
             $this->set(compact('cri'));
-            $attach = TableRegistry::get('consent_form_attachments');
+            $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid, 'attach_doc <> ""']);
+                ->where(['order_id' => $oid,'sub_id'=>4, 'attach_doc <> ""']);
             $this->set('detail', $arr);
             $this->set(compact('att'));
 
@@ -2297,10 +2297,10 @@
                 ->where(['order_id' => $id])->all();
 
             $this->set('detail', $arr);
-            $attach = TableRegistry::get('employment_verification_attachments');
+            $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $id, 'attach_doc <> ""'])->all();
+                ->where(['order_id' => $id,'sub_id'=>41, 'attach_doc <> ""'])->all();
 
             $this->set('order_id', $id);
             $this->set(compact('att'));
@@ -2315,10 +2315,10 @@
                 ->find()
                 ->where(['order_id' => $oid]);
 
-            $attach = TableRegistry::get('education_verification_attachments');
+            $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid, 'attach_doc <> ""']);
+                ->where(['order_id' => $oid,'sub_id'=>42, 'attach_doc <> ""']);
 
             $this->set(compact('education'));
 

@@ -1336,6 +1336,7 @@
         $(':disabled[name]', '#createDriver').each(function () { 
             fields = fields+'&'+$(this).attr('name')+'='+$(this).val();
         });
+        
         var param = {            
             cid: cid,            
             inputs:fields

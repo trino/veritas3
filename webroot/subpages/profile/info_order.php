@@ -178,7 +178,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                             <label class="control-label">Email</label>
                             <input <?php echo $is_disabled ?> name="email" id="driverEm" type="email"
                                                               placeholder="eg. test@domain.com"
-                                                              class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
+                                                              class="form-control un email required" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
                             <span class="error passerror flashEmail"
                                   style="display: none;">Email already exists</span>
                         </div>

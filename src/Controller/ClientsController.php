@@ -194,6 +194,9 @@ class ClientsController extends AppController {
 
             }
         }
+        $arr['contact_id'] = str_replace(',',' ',$arr['contact_id']);
+        $arr['contact_id'] = trim($arr['contact_id']);
+        $arr['contact_id'] = str_replace(' ',',',$arr['contact_id']);
         $query2 = $querys->query();
                         $query2->update()
                         ->set($arr)
@@ -241,6 +244,9 @@ class ClientsController extends AppController {
 
             }
         }
+        $arr['profile_id'] = str_replace(',',' ',$arr['profile_id']);
+        $arr['profile_id'] = trim($arr['profile_id']);
+        $arr['profile_id'] = str_replace(' ',',',$arr['profile_id']);
         $query2 = $querys->query();
                         $query2->update()
                         ->set($arr)
@@ -819,7 +825,9 @@ class ClientsController extends AppController {
             else
                 $p_ids .= $p.",";
         }
-
+        $p_ids = str_replace(',',' ',$p_ids);
+        $p_ids = trim($p_ids);
+        $p_ids = str_replace(' ',',',$p_ids);
         $query->query()->update()->set(['profile_id' => $p_ids])
         ->where(['id' => $_POST['client_id']])
         ->execute();
@@ -853,6 +861,7 @@ class ClientsController extends AppController {
    {
     $this->layout = 'blank';
    }
+   
     
 
 }

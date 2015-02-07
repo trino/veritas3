@@ -335,7 +335,7 @@ var FormWizard = function () {
                                 //$('.cont').attr('disabled','');
                                 $(this).focus();
                                 $('html,body').animate({
-                                        scrollTop: $('.active').offset().top},
+                                        scrollTop: $('.page-title').offset().top},
                                     'slow');
                                 er = 1;
                             }

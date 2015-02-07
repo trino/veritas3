@@ -508,7 +508,7 @@ class ClientsController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function edit($id = null) {
+	 function edit($id = null) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
         if($setting->client_edit==0)
@@ -554,7 +554,7 @@ class ClientsController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function delete($id = null) {
+	function delete($id = null) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
         if($setting->client_delete==0)
@@ -886,5 +886,6 @@ class ClientsController extends AppController {
     }
     
 
+}
 }
 ?>

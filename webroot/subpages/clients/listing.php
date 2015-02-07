@@ -16,7 +16,7 @@
 
                 <div class="chat-form">
                     <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
-                        <div class="col-md-12" style="padding-left:0;" align="right">
+                        <div class="col-md-12" style="padding-left:0;" align="left">
                             <input class="form-control input-inline" name="search" type="search"
                                    placeholder="Search for <?php echo ucfirst($settings->client); ?>s"
                                    value="<?php if (isset($search_text)) echo $search_text; ?>"

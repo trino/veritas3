@@ -5,6 +5,7 @@
     use Cake\Event\Event;
     use Cake\Controller\Controller;
     use Cake\ORM\TableRegistry;
+use Cake\Network\Email\Email;
 
 
     class ProfilesController extends AppController {
@@ -301,6 +302,7 @@ public function quiz(){}
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary'=>'2'])));
             $profiles = TableRegistry::get('Profiles');
             
+        $_POST['created'] = date('Y-m-d');
             //var_dump($profile);die();
             if(isset($_POST['password']) && $_POST['password']=='')
                     {
@@ -356,6 +358,13 @@ public function quiz(){}
                     $query2->insert(['user_id'])
                         ->values(['user_id'=>$profile->id])
                         ->execute();
+                        if(isset($_POST['email']) && $_POST['email'])
+                        {
+                        $from = 'info@isbmee.com';
+                        $to = $_POST['email'];
+                        $sub = 'Profile created successfully';
+                        $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
+                        $this->sendEmail($from,$to,$sub,$msg);}
                     $this->Flash->success('Profile created successfully.');
                     return $this->redirect(['action' => 'edit',$profile->id]);
                 } else {

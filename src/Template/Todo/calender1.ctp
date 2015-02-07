@@ -1357,7 +1357,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<form class="inline-form">
 											<input type="text" value="" class="form-control" placeholder="Event Title..." id="event_title"/><br/>
 											<a href="javascript:;" id="event_add" class="btn default">
-											Add Event </a>
+											Add Task </a>
 										</form>
 										<hr/>
 										<div id="event_box">

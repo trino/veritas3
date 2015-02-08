@@ -764,7 +764,7 @@
                                             }
                                             if(!count($sub['da_at'])){
                                             ?>
-                       <div class="form-group col-md-12">
+                       <div class="form-group col-md-12" style="display:block;margin-top:5px; margin-bottom: 5px;">
                                         <label class="control-label col-md-3">Attach Document : </label>
                                         <div class="col-md-9">
                                         <input type="hidden" class="driveApp1" name="attach_doc[]" />
@@ -853,7 +853,7 @@
         var count = $('#more_doc').data('driverapp');
          $('#more_doc').data('driverapp',parseInt(count)+1);
          
-        $('#more_doc').append('<div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp'+$('#more_doc').data('driverapp')+'" name="attach_doc[]" /><a href="#" id="driveApp'+$('#more_doc').data('driverapp')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>')
+        $('#more_doc').append('<div class="del_append"><label class="control-label col-md-3"></label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp'+$('#more_doc').data('driverapp')+'" name="attach_doc[]" /><a href="#" id="driveApp'+$('#more_doc').data('driverapp')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>')
         fileUpload('driveApp'+$('#more_doc').data('driverapp'));
     }) ;
     

@@ -323,7 +323,7 @@
                                                             
                                                             <div class="portlet-body">
                                                                 <div>
-                                                                    <div class="col-md-7">
+                                                                    <div class="col-md-9">
             															Signaling: not used / late / not cancelled             
                                                                     </div>
                                                                     <div class="col-md-7 radio-list">
@@ -719,9 +719,9 @@
                                                         }
                                                         
                                                         if(!count($sub['de_at'])){?>
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group col-md-12" style="display:block;margin-top:5px; margin-bottom: 5px;">
                                                     <label class="control-label col-md-4">Attach Document : </label>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                     <input type="hidden" class="road1" name="attach_doc[]" />
                                                     <a href="#" id="road1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
                                                     </div>
@@ -756,14 +756,14 @@
                                                         }
                                                         ?> 
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                     </div>
                                                   </div>
                                                   
                                                   <div class="form-group col-md-12">
                                                     <div class="col-md-4">
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                         <a href="javascript:void(0);" class="btn btn-success" id="add_more_driver_doc">Add More</a>
                                                     </div>
                                                   </div>
@@ -820,7 +820,7 @@
        $('#add_more_driver_doc').click(function(){
         var count = $('#more_driver_doc').data('road');
         $('#more_driver_doc').data('road',parseInt(count)+1);
-        $('#more_driver_doc').append('<div class="del_append_driver"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-9 pad_bot"><input type="hidden" class="road'+$('#more_driver_doc').data('road')+'" name="attach_doc[]" /><a href="#" id="road'+$('#more_driver_doc').data('road')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a> <span class="uploaded"></span></div></div>')
+        $('#more_driver_doc').append('<div class="del_append_driver"><label class="control-label col-md-4"></label><div class="col-md-8 pad_bot"><input type="hidden" class="road'+$('#more_driver_doc').data('road')+'" name="attach_doc[]" /><a href="#" id="road'+$('#more_driver_doc').data('road')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
         fileUpload('road'+$('#more_driver_doc').data('road'));
        }); 
        

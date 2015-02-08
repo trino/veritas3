@@ -308,7 +308,7 @@
          $sub3['att'] = array();
                                                         if(!count($sub3['att']))
                                                         {?>
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-12" style="display:block;margin-top:5px; margin-bottom: 5px;">
             <label class="control-label col-md-3">Attach Document : </label>
             <div class="col-md-9">
             <input type="hidden" name="attach_doc[]" class="emp1" />
@@ -400,7 +400,7 @@ $(function(){
   $('#add_more_employ_doc').click(function(){
     var count = $('#more_employ_doc').data('emp');
     $('#more_employ_doc').data('emp',parseInt(count)+1);
-        $('#more_employ_doc').append('<div class="del_append_employ"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" name="attach_doc[]" class="emp'+$('#more_employ_doc').data('emp')+'" /><a href="javascript:void(0);" id="emp'+$('#more_employ_doc').data('emp')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
+        $('#more_employ_doc').append('<div class="del_append_employ"><label class="control-label col-md-3"></label><div class="col-md-6 pad_bot"><input type="hidden" name="attach_doc[]" class="emp'+$('#more_employ_doc').data('emp')+'" /><a href="javascript:void(0);" id="emp'+$('#more_employ_doc').data('emp')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
         fileUpload('emp'+$('#more_employ_doc').data('emp'));
        }); 
        

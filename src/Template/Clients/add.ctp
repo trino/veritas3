@@ -471,25 +471,24 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group col-md-6"><center>
+                                                    <div class="form-group col-md-12"><!--<center>-->
 
                                                             <div class="docMore" data-count="1">
-                                                                <div style="display:block;">
-                                                                    <a href="javascript:void(0)" id="addMore1" class="btn btn-primary margin-bottom-5">Browse</a>
+                                                                <div style="display:block;margin:5px;">
+                                                                    <a href="javascript:void(0)" id="addMore1" class="btn btn-primary">Browse</a>
                                                                     <span></span>
                                                                     <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/>
                                                                 </div>
                                                             </div>
-</div><div class="form-group col-md-6"><center>
+                                                            </div>
+                                                            <div class="form-group col-md-12"><!--<center>-->
                                                             <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" onclick="addMore(event,this)">
                                                                 Add More
                                                             </a>
 
-</div><div class="form-group col-md-12"><center>
-
-
-                                                    <div class="margin-top-10 alert alert-success display-hide flash1"
-                                                         style="display: none;">
+                                                            </div>
+                                                            <div class="form-group col-md-12"><!--<center>-->
+                                                            <div class="margin-top-10 alert alert-success display-hide flash1" style="display: none;">
                                                         <button class="close" data-close="alert"></button>
                                                         Data saved successfully
                                                     </div>

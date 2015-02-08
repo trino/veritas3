@@ -109,15 +109,26 @@
 
                 <div class="clearfix"></div>
 
-
+                <script>
+                $(function () {
+                    $('.sorting').find('a').each(function(){
+                        
+                       <?php if(isset($_GET['draft'])){?>
+                       var hrf = $(this).attr('href');
+                       if(hrf!="")
+                        $(this).attr('href',hrf+'&draft');
+                       <?php } ?> 
+                    });
+                })
+                </script>
                 <div class="table-responsive">
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
-                        <tr>
+                        <tr class="sorting">
                             <th><?= $this->Paginator->sort('id'); ?></th>
                             <th><?= $this->Paginator->sort('title'); ?></th>
-                            <th><?= $this->Paginator->sort('profile->title', 'Uploaded by'); ?></th>
-                            <th><?= $this->Paginator->sort('profile->title;', 'Uploaded for'); ?></th>
+                            <th><?= $this->Paginator->sort('user_id', 'Uploaded by'); ?></th>
+                            <th><?= $this->Paginator->sort('uploaded_for', 'Uploaded for'); ?></th>
                             <th><?= $this->Paginator->sort('client_id', 'Client'); ?></th>
                             <th><?= $this->Paginator->sort('created', 'Created'); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -135,8 +146,10 @@
                                 } else {
                                     $row_color_class = "even";
                                 }
-                                $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
-                                $uploaded_for = $this->requestAction("documents/getUser/" . $order->uploaded_for);
+                               
+                                    $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
+                                    $uploaded_for = $this->requestAction("documents/getUser/" . $order->uploaded_for);
+                               
                                 $client = $this->requestAction("clients/getClient/" . $order->client_id);
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
@@ -210,7 +223,10 @@
 
 
                 <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-                    <ul class="pagination">
+                    <ul class="pagination sorting">
+                    
+
+
                         <?= $this->Paginator->prev('< ' . __('previous')); ?>
                         <?= $this->Paginator->numbers(); ?>
                         <?= $this->Paginator->next(__('next') . ' >'); ?>

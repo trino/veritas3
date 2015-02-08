@@ -119,7 +119,7 @@
                 <div class="table-responsive">
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
-                    		<tr>
+                    		<tr class="sorting">
                                 <th><?= $this->Paginator->sort('id');?></th>
                     			<th><?= $this->Paginator->sort('document_type',ucfirst($settings->document));?></th>
                     			<th><?= $this->Paginator->sort('user_id','Uploaded by');?><?php if(isset($end)) echo $end; if(isset($start)) echo "//".$start; ?></th>
@@ -208,7 +208,7 @@
 				<div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
 					
 					
-                    <ul class="pagination">
+                    <ul class="pagination sorting">
                         <?= $this->Paginator->prev('< ' . __('previous')); ?>
                         <?= $this->Paginator->numbers(); ?>
                         <?= $this->Paginator->next(__('next') . ' >'); ?>
@@ -236,7 +236,18 @@
     }
     
 </style>
-
+<script>
+    $(function () {
+        $('.sorting').find('a').each(function(){
+            
+           <?php if(isset($_GET['draft'])){?>
+           var hrf = $(this).attr('href');
+           if(hrf!="")
+            $(this).attr('href',hrf+'&draft');
+           <?php } ?> 
+        });
+    })
+    </script>
 <script>
         $('.applyBtn').live('click',function(){
             var to = $('.daterangepicker_end_input .input-mini').val();

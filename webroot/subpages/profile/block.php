@@ -550,7 +550,7 @@
                                                         No </label>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                           <!-- <tr>
                                                 <td>
                                                     Tasks
                                                 </td>
@@ -567,7 +567,7 @@
                                                         No </label>
                                                 </td>
                                             </tr>
-                                            <!--<tr>
+                                            <tr>
                                                 <td>
                                                     Feedback
                                                 </td>

@@ -1206,7 +1206,15 @@
 
         public function deleteOrder($id,$draft='')
         {
-            
+           
+           $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+
+        if($setting->orders_delete==0)
+        {
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
+            	return $this->redirect("/");
+
+        } 
             $this->loadModel('Orders');
             $this->Orders->deleteAll(array('id' => $id));
             $this->Flash->success('The order has been deleted.');

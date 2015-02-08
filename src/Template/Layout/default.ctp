@@ -26,7 +26,9 @@
 <!-- TEST REMOVAL <link rel="stylesheet" type="text/css" href="< php echo $this->request->webroot;?>assets/global/plugins/select2/select2.css"/> -->
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
 <!--<link href="<?php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css"/>-->
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
 	<!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/> -->

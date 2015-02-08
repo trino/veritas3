@@ -86,7 +86,7 @@
                             </form>
                     </div>
 
-                <div class="table-scrollable">
+                <div class="table-responsive">
 
                     <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">
                         <thead>

@@ -1,6 +1,6 @@
 
 <h3 class="page-title">
-			Calendar <small>calendar page</small>
+			Calendar
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -11,7 +11,7 @@
 					</li>
 				
 					<li>
-						<a href="#">Schedules</a>
+						<a href="#">Calendar</a>
 					</li>
 				</ul>
 				
@@ -23,7 +23,7 @@
 					<div class="portlet box green-meadow calendar">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-gift"></i>Schedules
+								<i class="fa fa-gift"></i>Schedule
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -44,8 +44,13 @@
 										<input type="checkbox" id="drop-remove"/>remove after drop </label>
 										<hr class="visible-xs"/>
 									</div>-->
-                                    <a href="<?php echo $this->request->webroot;?>todo/add" id="event_add" class="btn default">
-											Add Event </a>
+                                    <a href="<?php echo $this->request->webroot;?>todo/add" id="event_add" type="button" class="btn red">
+											Add Task </a>
+
+
+
+
+
                                             <div class="portlet box green-meadow main_desc" style="display: none; margin-top:20px;">
                         						<div class="portlet-title">
                         							<div class="caption">

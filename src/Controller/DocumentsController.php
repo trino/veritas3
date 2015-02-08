@@ -1557,7 +1557,7 @@
             $this->set('clients', $this->paginate($cli));
 
             $profiles = TableRegistry::get('Profiles');
-            $pro =  $clients->find();
+            $pro =  $profiles->find();
             $pro = $pro->select();
             $this->set('profiles', $this->paginate($pro));
     }

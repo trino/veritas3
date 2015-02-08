@@ -1,16 +1,20 @@
 <?php
-function printlogos($logos1, $webroot, $index){ //* replaces the logo enumerators *//
+function printlogos($logos1, $webroot, $index,$uid){ //* replaces the logo enumerators *//
 foreach ($logos1 as $logo) {
     $img = "image" . $index; ?>
     <div class="col-md-4 margin-top-20">
-        <div class="form-group" style="height:100px"><Center>
+        <div class="form-group" ><Center>
             <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> id="<?php echo $img ?>"/>
             <label for="<?php echo $img ?>"><img style="max-width:90%;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label>
+            <a href="javascript:void(0);"  class="btn btn-danger deletelogo" id="<?php echo $logo->id;?>">Delete</a>
             </Center></div>
     </div>
     <?php
     $index+=1;
-} return $index;} ?>
+} return $index;} 
+
+$uid = $this->request->session()->read("Profile.id");
+?>
 
 
 <!-- BEGIN PORTLET-->
@@ -41,13 +45,18 @@ foreach ($logos1 as $logo) {
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos" method="post" class="form-inline" role="form" id="logoform">
 
-                                                        <?php $index = printlogos($logos, $this->request->webroot, 0);?>
+                                                        <?php $index = printlogos($logos, $this->request->webroot, 0, $uid);?>
 
                                                         <div class="clearfix"></div>
                                                         <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                             <button class="close" data-close="alert"></button>
-                                                            Data saved successfully
+                                                            Logo saved successfully
                                                         </div>
+                                                        <div class="margin-top-10 alert alert-success display-hide flash1" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Logo Deleted successfully
+                                                        </div>
+                                                        <div class="clearfix"></div>
                                                         <a href="javascript:void(0)" id="addnewlogo" class="primary btn btn-primary">Add New Logo</a>
                                                         <a href='javascript:;' class="btn btn-success" id="submit">Submit</a>
                                                     </form>
@@ -64,13 +73,18 @@ foreach ($logos1 as $logo) {
                                                     <form action="<?php echo $this->request->webroot; ?>logos/secondary"
                                                           method="post" class="form-inline" role="form" id="logoform1">
 
-                                                        <?php $index = printlogos($logos1, $this->request->webroot, $index);?>
+                                                        <?php $index = printlogos($logos1, $this->request->webroot, $index,$uid);?>
 
                                                         <div class="clearfix"></div>
                                                             <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                                 <button class="close" data-close="alert"></button>
-                                                                Data saved successfully
+                                                                Logo saved successfully
                                                             </div>
+                                                            <div class="margin-top-10 alert alert-success display-hide flash1" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Logo Deleted successfully
+                                                        </div>
+                                                        <div class="clearfix"></div>
                                                         <a href="javascript:void(0)" id="addnewlogo1" class="secondary btn btn-primary">Add New Logo</a>    
                                                         <a href='javascript:;' class="btn btn-success" id="submit1">Submit</a>
                                                     </form>
@@ -87,13 +101,18 @@ foreach ($logos1 as $logo) {
                                                     <form action="<?php echo $this->request->webroot; ?>logos/login"
                                                           method="post" class="form-inline" role="form" id="logoform2">
 
-                                                        <?php $index = printlogos($logos2, $this->request->webroot, $index);?>
+                                                        <?php $index = printlogos($logos2, $this->request->webroot, $index, $uid);?>
 
                                                         <div class="clearfix"></div>
                                                             <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                                 <button class="close" data-close="alert"></button>
-                                                                Data saved successfully
+                                                                Logo saved successfully
                                                             </div>
+                                                            <div class="margin-top-10 alert alert-success display-hide flash1" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Logo Deleted successfully
+                                                        </div>
+                                                        <div class="clearfix"></div>
                                                         <a href="javascript:void(0)" id="addnewlogo2" class="loginlogo btn btn-primary">Add New Logo</a>
                                                         <a href='javascript:;' class="btn btn-success" id="submit2">Submit</a>
                                                     </form>
@@ -164,6 +183,30 @@ new AjaxUpload(button,{
     });
 }
 $(function(){
+    $('.deletelogo').click(function(){
+        
+        var con = confirm("Confirm Delete?");
+        var lid = $(this).attr('id');
+        if(con== true)
+        {
+            $(this).parent().parent().parent().remove();
+            $.ajax({
+                url:'<?php echo $this->request->webroot;?>logos/delete/'+lid,
+               success:function(msg)
+               {
+                    if(msg == "ok")
+                    {
+                        
+                        $('.flash1').show();
+                        $('.flash1').fadeOut(3500);
+                        
+                    }
+               }
+            })
+        }
+        
+    });
+    
     initiate_ajax_upload2('addnewlogo');
     initiate_ajax_upload2('addnewlogo1');
     initiate_ajax_upload2('addnewlogo2');

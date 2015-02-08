@@ -67,7 +67,9 @@ else
 	</form>
 </div>
 </div>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->request->webroot;?>css/date.css"/>
 <style>
 .table-condensed td:hover{cursor:pointer; }
-.hour, .minute{display:inline-block; padding: 0 3px; }
+
+
 </style>

@@ -238,7 +238,7 @@
                 <p>A Certified Criminal Record can only be issued based on the submission of fingerprints to the RCMP National Repository of Criminal Records.</p>
                 </div>
                 
-                <div class="table-scrollable">
+                <div class="table-responsive">
                     <table class="table">
                     <thead>
                         <tr>

@@ -59,12 +59,12 @@ class TodoController extends AppController {
             $event = $events->newEntity($arr);
     
             if ($events->save($event)) {
-                $this->Flash->success('Events added successfully.');
+                $this->Flash->success('Task saved successfully.');
                 
             } 
             else 
             {
-                $this->Flash->error('Events could not be added. Please try again.');
+                $this->Flash->error('Error creating task. Please try again.');
                 
             }
             return $this->redirect(['action' => 'calender']);
@@ -121,7 +121,7 @@ class TodoController extends AppController {
 		$profile = $this->Profiles->get($id);
 		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Profiles->delete($profile)) {
-			$this->Flash->success('The todo has been deleted.');
+			$this->Flash->success('Todo has been deleted.');
 		} else {
 			$this->Flash->error('Todo could not be deleted. Please try again.');
 		}

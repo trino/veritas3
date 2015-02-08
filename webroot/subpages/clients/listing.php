@@ -16,7 +16,7 @@
 
                 <div class="chat-form">
                     <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
-                        <div class="col-md-12" style="padding-left:0;" align="right">
+                        <div class="col-md-12" style="padding-left:0;" align="left">
                             <input class="form-control input-inline" name="search" type="search"
                                    placeholder="Search for <?php echo ucfirst($settings->client); ?>s"
                                    value="<?php if (isset($search_text)) echo $search_text; ?>"
@@ -36,20 +36,20 @@
                             <th><?= $this->Paginator->sort('image') ?></th>
                             <th><?= $this->Paginator->sort('company_name') ?></th>
                             <th><?= $this->Paginator->sort('description') ?></th>
-                            <!--<th><?= $this->Paginator->sort('date_start') ?></th>
-                    			<th><?= $this->Paginator->sort('date_end') ?></th>-->
-                            <!--th><?= $this->Paginator->sort('site') ?></th-->
+                           
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
                             $profile_id = $this->request->session()->read('Profile.id');
+                            count($client);
                             foreach ($client as $clients):
                                 //print_r($clients);
                                 $profiles = explode(",", $clients->profile_id);
-
-                                if (in_array($profile_id, $profiles) || $this->request->session()->read('Profile.super')) {
+                                
+                                if (in_array($profile_id, $profiles) || $this->request->session()->read('Profile.super')=='1') {
+                                    //echo $this->request->session()->read('Profile.super');
                                     ?>
 
 
@@ -78,9 +78,7 @@
                                         </td>
                                         <td><?= h($clients->company_name) ?></td>
                                         <td style="max-width: 350px;"><?= h($clients->description) ?></td>
-                                        <!--<td><?= h($start_date) ?></td>
-                    			<td><?= h($end_date) ?></td>-->
-                                        <!--td><?= h($clients->site) ?></td-->
+                                        
                                         <td class="actions  util-btn-margin-bottom-5">
 
 
@@ -110,7 +108,7 @@
                                                 }
 
                                                 if ($sidebar->orders_list == '1') {
-                                                    echo $this->Html->link(__('View Orders'), ['controller' => 'documents', 'action' => 'index/>client_id=', $clients->id], ['class' => 'btn btn-warning']);
+                                                    echo $this->Html->link(__('View Orders'), ['controller' => 'documents', 'action' => 'index/?client_id=', $clients->id], ['class' => 'btn btn-warning']);
                                                 }
 
 

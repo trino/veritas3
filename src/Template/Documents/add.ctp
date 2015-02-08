@@ -939,22 +939,20 @@
             $('.required').each(function(){
                 if($(this).val()=='' && $(this).attr('name')!='' && $(this).attr('name')!='undefined'  && $(this).attr('name'))
                 {
-                    //alert($(this).attr('name'));
+                    $(this).addClass('myerror');
                     $(this).attr('style','border-color:red');
-                    //$('.cont').attr('disabled','');
-                    //$(this).focus();
-                    
                     er = 1;
                 }
                 else
                 {
+                    $(this).removeClass('myerror');
                     //$(this).removeAttr('style');
                 }
             });
             if(er){
                 alert('Please fill out all required fields in the consent form.');
                 $('html,body').animate({
-                            scrollTop: $('.page-title').offset().top},
+                            scrollTop: $('.myerror').offset().top},
                         'slow');
                 return false;
 

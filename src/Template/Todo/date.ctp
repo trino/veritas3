@@ -44,7 +44,7 @@
                                                 <?php }
                                                 }
                                                 else
-                                                    echo "No schedule for the day!";
+                                                    echo "No tasks for today.";
                                                 ?>
                                                     <!--<a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-red">

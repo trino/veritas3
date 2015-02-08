@@ -116,7 +116,7 @@
 				<div class="clearfix"></div>
 
 
-                <div class="table-scrollable">
+                <div class="table-responsive">
                     <table class="table table-hover table-striped table-bordered table-hover dataTable no-footer">
                     	<thead>
                     		<tr>
@@ -126,6 +126,7 @@
                     			<th><?= $this->Paginator->sort('created','Uploaded on');?></th>           			
                                 <th><?= $this->Paginator->sort('client_id',ucfirst($settings->client));?></th>
                     			<th class="actions"><?= __('Actions') ?></th>
+
                     		</tr>
                     	</thead>
                     	<tbody>

@@ -91,17 +91,7 @@ class PagesController extends AppController {
         $this->layout = 'blank';
     }
     
-    function sendEmail($from,$to,$subject,$message)
-    {
-        //from can be array with this structure array('email_address'=>'Sender name'));
-        $email = new Email('default');
-        
-        $email->from($from)
-        ->emailFormat('html')
-    ->to($to)
-    ->subject($subject)
-    ->send($message);
-    }
+    
     function test_email()
     {
         $this->sendEmail(array('justdoit2045@gmail.com'=>'Email tester'),array('reshma.alee@gmail.com','justdoit_2045@hotmail.com'),'Test email','<b>This is test emaikl</b>');

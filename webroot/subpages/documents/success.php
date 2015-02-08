@@ -11,7 +11,7 @@
 </div-->
 
 
-<div class="note note-success">
+<div class="note note-success blockmsg">
     <h4 class="block">Your Order Has Been Submitted!</h4>
     <p>
         You will be notified once it's processed.

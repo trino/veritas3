@@ -7,13 +7,19 @@ function right($text, $length){
 	return substr($text, -$length);
 }
 function extractdate($text){
+    if(str_replace(' ','',$text)!=$text)
 	return trim(left($text, strpos($text, " ")));
+    else
+    return $text;
 }
 
 function sortdates($data){
 	$dates = array();
+    
 	foreach ($data as $order) {
-		$thedate = extractdate($order->created);
+	 
+	$thedate = extractdate($order->created);
+    
 		if (array_key_exists($thedate,$dates)) {
 			$dates[$thedate] += 1;
 		} else {
@@ -57,8 +63,6 @@ $clientavg= round ($clientcount / $days,$decimals);
 
 
 
-
-
 function getdatestamp($date){
 	$newdate = date_create($date);
 	return date_timestamp_get($newdate);
@@ -88,7 +92,7 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
 }
 ?>
 <h3 class="page-title">
-			<?php echo ucfirst($settings->document);?>s <small>Analytics of <?php echo ucfirst($settings->document);?>s</small>
+			MEE Analytics <small>Analytics of <?php echo ucfirst($settings->document);?>s, Orders and  Drivers</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">

@@ -78,15 +78,15 @@
                                  <!--</form>
                                 <form action="<?php //echo $this->request->webroot; ?>profiles/search" method="get">-->
 
-                                <div class="col-md-5" align="right">
-                                    <input  class="form-control input-inline" type="search" name="searchprofile"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1"/>
-                                    </DIV><div class="col-md-1 ">
+                                <div class="col-md-5" align="left">
+                                    <input  class="form-control input-inline" type="search" name="searchprofile"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1" />
+                                    
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </form>
                     </div>
 
-                <div class="table-scrollable">
+                <div class="table-responsive">
 
                     <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">
                         <thead>

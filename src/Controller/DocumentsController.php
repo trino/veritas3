@@ -1565,7 +1565,7 @@
             $this->set('clients', $this->paginate($cli));
 
             $profiles = TableRegistry::get('Profiles');
-            $pro =  $clients->find();
+            $pro =  $profiles->find();
             $pro = $pro->select();
             $this->set('profiles', $this->paginate($pro));
     }
@@ -2287,10 +2287,10 @@
                 ->where(['consent_form_id' => $arr['consent']->id]);
             $this->set('detail', $arr);
             $this->set(compact('cri'));
-            $attach = TableRegistry::get('consent_form_attachments');
+            $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid, 'attach_doc <> ""']);
+                ->where(['order_id' => $oid,'sub_id'=>4, 'attachment <> ""']);
             $this->set('detail', $arr);
             $this->set(compact('att'));
 
@@ -2305,10 +2305,10 @@
                 ->where(['order_id' => $id])->all();
 
             $this->set('detail', $arr);
-            $attach = TableRegistry::get('employment_verification_attachments');
+            $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $id, 'attach_doc <> ""'])->all();
+                ->where(['order_id' => $id,'sub_id'=>41, 'attachment <> ""'])->all();
 
             $this->set('order_id', $id);
             $this->set(compact('att'));
@@ -2323,10 +2323,10 @@
                 ->find()
                 ->where(['order_id' => $oid]);
 
-            $attach = TableRegistry::get('education_verification_attachments');
+            $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid, 'attach_doc <> ""']);
+                ->where(['order_id' => $oid,'sub_id'=>42, 'attachment <> ""']);
 
             $this->set(compact('education'));
 

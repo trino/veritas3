@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
+use Cake\Network\Email\Email;
 
 
 class ClientsController extends AppController {
@@ -18,6 +19,7 @@ class ClientsController extends AppController {
      public function initialize() {
         parent::initialize();
         $this->loadComponent('Settings');
+        $this->loadComponent('Profiles');
         if(!$this->request->session()->read('Profile.id'))
         {
             $this->redirect('/login');
@@ -194,6 +196,9 @@ class ClientsController extends AppController {
 
             }
         }
+        $arr['contact_id'] = str_replace(',',' ',$arr['contact_id']);
+        $arr['contact_id'] = trim($arr['contact_id']);
+        $arr['contact_id'] = str_replace(' ',',',$arr['contact_id']);
         $query2 = $querys->query();
                         $query2->update()
                         ->set($arr)
@@ -241,6 +246,9 @@ class ClientsController extends AppController {
 
             }
         }
+        $arr['profile_id'] = str_replace(',',' ',$arr['profile_id']);
+        $arr['profile_id'] = trim($arr['profile_id']);
+        $arr['profile_id'] = str_replace(' ',',',$arr['profile_id']);
         $query2 = $querys->query();
                         $query2->update()
                         ->set($arr)
@@ -288,7 +296,6 @@ class ClientsController extends AppController {
         }
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
-
 	   $clients = TableRegistry::get('Clients');
         $client = $clients->newEntity($_POST);
 		if ($this->request->is('post')) {
@@ -348,18 +355,29 @@ class ClientsController extends AppController {
 
         unset($_POST['contact_id']);
         $_POST['contact_id'] = $rec;
+        $_POST['created'] = date('Y-m-d');
         $clients = TableRegistry::get('Clients');
         if(!$id)
         {
 
             $cnt = 0;
     	    if(isset($_POST['sig_email']) && $_POST['sig_email']!="")
-                $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email']])->count();
+                {
+                    $cnt = $clients->find()->where(['sig_email'=>$_POST['sig_email']])->count();
+                }
             if($cnt>0)
             {
                 echo "email";
                 die();
             }
+            if(isset($_POST['sig_email']) && $_POST['sig_email']!="")
+            {
+                    $from = 'info@isbmee.com';
+                    $to = $_POST['sig_email'];
+                    $sub = 'Client created successfully';
+                    $msg = 'Hi,<br />Your account has been created for ISBMEE as a client .<br /> Regards';
+                    $this->Profiles->sendEmail($from,$to,$sub,$msg);
+                    }
             if(isset($_POST['sig_email'])&&((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!=''))
                 {
                     echo "Invalid Email";
@@ -491,7 +509,7 @@ class ClientsController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function edit($id = null) {
+	 function edit($id = null) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
         if($setting->client_edit==0)
@@ -537,7 +555,7 @@ class ClientsController extends AppController {
  * @return void
  * @throws \Cake\Network\Exception\NotFoundException
  */
-	public function delete($id = null) {
+	function delete($id = null) {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
         if($setting->client_delete==0)
@@ -733,7 +751,7 @@ class ClientsController extends AppController {
     return $this->response;
   }
    function getClient($id=null)
-   {
+   { 
     $contact = TableRegistry::get('Clients');
     $query = $contact->find()->where(['id'=>$id]);
     $q = $query->first();
@@ -819,7 +837,9 @@ class ClientsController extends AppController {
             else
                 $p_ids .= $p.",";
         }
-
+        $p_ids = str_replace(',',' ',$p_ids);
+        $p_ids = trim($p_ids);
+        $p_ids = str_replace(' ',',',$p_ids);
         $query->query()->update()->set(['profile_id' => $p_ids])
         ->where(['id' => $_POST['client_id']])
         ->execute();
@@ -853,7 +873,20 @@ class ClientsController extends AppController {
    {
     $this->layout = 'blank';
    }
+   
+   function sendCEmail($from,$to,$subject,$message)
+    {
+        //from can be array with this structure array('email_address'=>'Sender name'));
+        $email = new Email('default');
+        
+        $email->from($from)
+        ->emailFormat('html')
+    ->to($to)
+    ->subject($subject)
+    ->send($message);
+    }
     
+
 
 }
 ?>

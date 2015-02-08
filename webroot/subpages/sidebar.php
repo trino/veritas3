@@ -135,7 +135,7 @@
             <?php if ($sidebar->document == 1) { ?>
                 <li class="<?php echo (($this->request['controller'] == 'Documents' && ($this->request['action'] == "index" || $this->request['action'] == "add")) && !isset($_GET['draft'])) ? 'active open' : ''; ?>">
                     <a href="javascript:;">
-                        <i class="icon-docs"></i>
+                        <i class="icon-doc"></i>
                         <span class="title"><?php echo ucfirst($settings->document); ?>s</span>
                         <?php echo ($this->request['controller'] == 'Documents') ? '<span class="selected"></span>' : ''; ?>
                         <span class="arrow "></span>
@@ -221,7 +221,7 @@
             <?php if ($sidebar->orders == 1) { ?>
                 <li class="<?php echo (($this->request['action'] == 'orderslist' || $this->request['action'] == 'addorder') && !isset($_GET['draft'])) ? 'active open' : ''; ?>">
                     <a href="<?php echo $this->request->webroot; ?>documents/orderslist">
-                        <i class="icon-notebook"></i>
+                        <i class="icon-docs"></i>
                         <span class="title">Orders</span>
                         <span class="selected"></span>
                         <span class="arrow "></span>

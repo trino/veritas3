@@ -55,7 +55,7 @@
 <script>
     $(function () {
         $('.recruiter_notes').slimScroll({
-            height: '300px'
+            height: '200px'
         });
         $('#add_recruiter').click(function () {
             if ($('#recruiter_notes').val() == '') {

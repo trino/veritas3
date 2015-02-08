@@ -5,6 +5,7 @@
     use Cake\Event\Event;
     use Cake\Controller\Controller;
     use Cake\ORM\TableRegistry;
+use Cake\Network\Email\Email;
 
 
     class ProfilesController extends AppController {
@@ -301,6 +302,7 @@ public function quiz(){}
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary'=>'2'])));
             $profiles = TableRegistry::get('Profiles');
             
+        $_POST['created'] = date('Y-m-d');
             //var_dump($profile);die();
             if(isset($_POST['password']) && $_POST['password']=='')
                     {
@@ -356,6 +358,13 @@ public function quiz(){}
                     $query2->insert(['user_id'])
                         ->values(['user_id'=>$profile->id])
                         ->execute();
+                        if(isset($_POST['email']) && $_POST['email'])
+                        {
+                        $from = 'info@isbmee.com';
+                        $to = $_POST['email'];
+                        $sub = 'Profile created successfully';
+                        $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
+                        $this->sendEmail($from,$to,$sub,$msg);}
                     $this->Flash->success('Profile created successfully.');
                     return $this->redirect(['action' => 'edit',$profile->id]);
                 } else {
@@ -394,6 +403,7 @@ public function quiz(){}
                 $post['dob'] = $post['doby']."-".$post['dobm']."-".$post['dobd'];
                 //debug($_POST);die();
                 if($post['id'] == 0 || $post['id'] == '0'){
+                    $post['created'] = date('Y-m-d');
                     unset($post['id']);
                 $profile = $profiles->newEntity($post);
                 if ($profiles->save($profile)) {
@@ -554,11 +564,12 @@ public function quiz(){}
         {
             //$this->request->session()->delete('Profile.id');
             $this->request->session()->destroy();
-            if($_SERVER['SERVER_NAME'] == 'isbmeereports.com'){
-                $this->redirect('http://isbmee.com');
+            if($_SERVER['SERVER_NAME'] == 'localhost'){
+                $this->redirect('/login');
 
             }else{
-                $this->redirect('/login');
+                $this->redirect('http://isbmee.com');
+                
 
                 //$initials = $this->requestAction('/pages/getBase');
                 //$this->redirect($initials);
@@ -1069,12 +1080,12 @@ public function quiz(){}
             <div class="item-head">
                 <div class="item-details">
                     <a href="" class="item-name primary-link">'.$this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.mname').' '.$this->request->session()->read('Profile.lname').'</a>
-                    <span class="item-label">'.$_POST['created'].'</span>
+                    <span class="item-label">'.date('m').'/'.date('d').'/'.(date('Y')-2000).'</span>
                 </div>
                 
             </div>
             <div class="item-body">
-                '.$_POST['description'].'
+                '.$_POST['description'].'<br/><br/>
             </div>
         </div>';
             else
@@ -1083,7 +1094,7 @@ public function quiz(){}
         }
         public function check_user($uid='')
         {
-            
+            if(isset($_POST['username']) && $_POST['username'])
             $user = $_POST['username'];
             $q = TableRegistry::get('profiles');
             $que = $q->find();
@@ -1116,5 +1127,17 @@ public function quiz(){}
             echo '0';
             die();
         }
+        
+        function sendEmail($from,$to,$subject,$message)
+    {
+        //from can be array with this structure array('email_address'=>'Sender name'));
+        $email = new Email('default');
+        
+        $email->from($from)
+        ->emailFormat('html')
+    ->to($to)
+    ->subject($subject)
+    ->send($message);
+    }
     }
 ?>

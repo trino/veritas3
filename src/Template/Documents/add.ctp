@@ -51,7 +51,7 @@
                             <?php
                             }
                         ?>
-
+                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();" class="btn btn-success moreback" style="display: none;">Back</a>
                         <?php include('subpages/home_blocks.php'); ?>
                     <div class="form-group mar-top-10">
 
@@ -854,9 +854,10 @@
         $('.dashboard-stat .more').click(function(){
             var moreid = $(this).attr('id');
             $('.dashboard-stat .more').each(function(){
-               $(this).parent().parent().hide(); 
+               $(this).parent().parent().fadeOut(300); 
             });
-            $('#'+moreid).parent().parent().show();
+            $('#'+moreid).parent().parent().show(300);
+            $('.moreback').show();
             
         });
         $('.required').live('keyup',function(){

@@ -1,10 +1,11 @@
 <!-- BEGIN PORTLET-->
-<div class="portlet box green-haze">
+<!--<div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-briefcase"></i>Pages
         </div>
-                                        <ul class="nav nav-tabs">
+        -->
+                                        <ul class="nav nav-tabs nav-justified">
 
 
                                             <li class="active"><!-- warning: first and third tabs do not work! -->
@@ -29,7 +30,7 @@
 
 
                                         </ul>
-                                    </div>
+                                    <!--</div>-->
     <div class="portlet-body">
                                     <div class="tab-content">
 
@@ -362,5 +363,5 @@
 
 </script>
     </div>
-</div>
+<!--</div>-->
 <!-- END PORTLET-->

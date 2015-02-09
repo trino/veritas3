@@ -4,14 +4,14 @@
     $sidebar = $this->requestAction("settings/all_settings/".$uid."/sidebar"); ?>
     <?php $block = $this->requestAction("settings/all_settings/".$uid."/blocks"); ?>
 
-<!-- BEGIN BORDERED TABLE PORTLET-->
+<!-- BEGIN BORDERED TABLE PORTLET--><!--
 <div class="portlet box yellow">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-briefcase"></i>Permissions
         </div>
-
-        <ul class="nav nav-tabs">
+-->
+        <ul class="nav nav-tabs nav-justified">
             <li class="active">
                 <a href="#subtab_2_1" data-toggle="tab">Sidebar</a>
             </li>
@@ -28,7 +28,7 @@
                 <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
             </li>-->
         </UL>
-    </div>
+    <!--</div>-->
     <div class="portlet-body">
                                     <div class="tab-content">
                                                 <div class="tab-pane active" id="subtab_2_1">
@@ -721,9 +721,9 @@
                                     </div>
                                     </div>
                                     </div>
-                                    </div>
 
-                                        <!-- put this back when the form is gone       </div>   -->
+
+                                        <!-- put this back when the form is gone   </div>     </div>   -->
                                     
                                     <script>
                                     $(function(){

@@ -353,17 +353,18 @@
                                         </div>
                                         <div class="tab-pane" id="tab_1_9">
                                             <div class="cleafix">&nbsp;</div>
+                                            <!--
                                             <div class="portlet box green scrolldiv" style="overflow: hidden; width: auto; height: 250px;">
                                                     <div class="portlet-title">
                                                         <div class="caption">
                                                             <i class="fa fa-pencil"></i>Recruiter Notes
                                                         </div>
                             
-                                                    </div>
+                                                    </div>-->
                                                     <div class="portlet-body">
                                                         <?php include('subpages/documents/recruiter_notes.php'); ?>
                                                     </div>
-                                                </div>
+                                                <!--</div>-->
                                         </div>
                                     <?php } ?>
                             </div>

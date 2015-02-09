@@ -18,12 +18,14 @@ $uid = $this->request->session()->read("Profile.id");
 
 
 <!-- BEGIN PORTLET-->
+<!--
 <div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-briefcase"></i>Logos
         </div>
-                                        <ul class="nav nav-tabs">
+        -->
+                                        <ul class="nav nav-tabs nav-justified">
                                             <li class="active">
                                                 <a href="#subtab_1_1" data-toggle="tab">Primary Logo</a>
                                             </li>
@@ -35,11 +37,11 @@ $uid = $this->request->session()->read("Profile.id");
                                             </li>
 
                                         </ul>
-                                    </div>
+
     <div class="portlet-body solid blue"> <!-- blue is needed to make the white logos stand out -->
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="subtab_1_1">
-                                            <div > <!--class="portlet solid blue" -->
+                                            <div class="portlet solid blue" -->
 
                                                 <div class="portlet-body">
 
@@ -66,7 +68,7 @@ $uid = $this->request->session()->read("Profile.id");
 
                                         </div>
                                         <div class="tab-pane" id="subtab_1_2">
-                                            <div > <!--class="portlet solid blue" -->
+                                            <div class="portlet solid blue" -->
 
                                                 <div class="portlet-body">
 
@@ -94,7 +96,7 @@ $uid = $this->request->session()->read("Profile.id");
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="subtab_1_3">
-                                            <div > <!--class="portlet solid blue" -->
+                                            <div class="portlet solid blue" -->
 
                                                 <div class="portlet-body">
 
@@ -123,7 +125,8 @@ $uid = $this->request->session()->read("Profile.id");
                                         </div>
 
                                     </div>
-                                    
+        <!--</DIV>-->
+
 <script>
 function initiate_ajax_upload2(button_id){
 var button = $('#'+button_id), interval;
@@ -259,5 +262,5 @@ $(function(){
 });
 
 </script></div>
-</DIV>
-<!-- END PORTLET-->
+
+<!-- </DIV> END PORTLET-->

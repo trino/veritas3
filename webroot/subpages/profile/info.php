@@ -59,12 +59,14 @@ function printprovinces($name, $selected="", $isdisabled=""){
         //}
     ?>
 <!-- </ul> --><!-- BEGIN PORTLET-->
+<!--
 <div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-briefcase"></i>Settings
         </div>
     </div>
+    -->
     <div class="portlet-body">
 
 <div class="tab-content">
@@ -853,5 +855,5 @@ function printprovinces($name, $selected="", $isdisabled=""){
 </script>
 
 </div>
-</div>
-<!-- END PORTLET-->
+
+<!-- </div> END PORTLET-->

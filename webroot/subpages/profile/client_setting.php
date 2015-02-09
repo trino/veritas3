@@ -1,10 +1,11 @@
-<!-- BEGIN PORTLET-->
+<!-- BEGIN PORTLET--><!--
 <div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-briefcase"></i>Others
         </div>
-        <ul class="nav nav-tabs">
+        -->
+        <ul class="nav nav-tabs nav-justified">
             <li class="active">
                 <a href="#subtabz_2_1" data-toggle="tab">Version</a>
             </li>
@@ -16,7 +17,7 @@
                 <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
             </li>-->
         </ul>
-    </div>
+    <!--</div>-->
     <div class="portlet-body">
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="subtabz_2_1">
@@ -87,4 +88,4 @@
 });*/
 </script>
 
-</DIV></DIV><!-- END PORTLET-->
+</DIV><!--</DIV> END PORTLET-->

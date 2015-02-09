@@ -85,7 +85,7 @@
                                     
                                     <tr><td>What made you decide to call Challenger today?</td><td><textarea class="form-control"></textarea></tr>
                                     <tr><td>What type of job are you interested in?</td><td><textarea class="form-control"></textarea></td></tr>
-                                    <tr><td>How did you hear about this opportunity?(make sure we confirm which site on the internet they saw our posting)</td>
+                                    <tr><td>How did you hear about this opportunity? (make sure we confirm which web site they saw our posting)</td>
                                         <td><textarea class="form-control"></textarea></td></tr>
                                         <tr>
                                             <th class="center" colspan="2">Basic Requirements</th>

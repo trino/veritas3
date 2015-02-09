@@ -638,6 +638,9 @@
                                         ?>
                                         </form>
                                     </div>
+                                    </div>
+                                    </div>
+                                    </div>
 
                                         <!-- put this back when the form is gone       </div>   -->
                                     

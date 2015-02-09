@@ -205,147 +205,61 @@
 <div class="row margin-top-20">
     <div class="col-md-12">
         <!-- BEGIN PROFILE SIDEBAR -->
-        <div class="profile-sidebar">
-            <!-- PORTLET MAIN -->
-            <div class="portlet light profile-sidebar-portlet">
-                <!-- SIDEBAR USERPIC -->
-                <div class="profile-userpic">
-                    <?php if (isset($p->image) && $p->image!= "") { ?>
-                        <img
-                             src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image ?>" class="img-responsive" alt="" id="clientpic" />
-
-                    <?php } else {
-                        ?>
-                        <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive" id="clientpic"
-                             alt=""/>
-                    <?php
-                    }
-                    ?>
-                    <?php if(isset($id)&&!(isset($disabled))){?>
-                    <center>
-                    <div class="form-group">
-                    <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
-                    <div class="input-icon">
-                        <br>
-                    <a class="btn btn-xs  btn-success   margin-t10" href="javascript:void(0)" id="clientimg">
-                    <i class="fa fa-image"></i>
-                      Add/Edit Image
-                    </a>
-
-                    </div>
-                    </div>
-                    </center>
-                    <?php }?>
-
-                </div>
-                <!-- END SIDEBAR USERPIC -->
-                <!-- SIDEBAR USER TITLE -->
-                <div class="profile-usertitle">
-                    <div class="profile-usertitle-name">
-                        <?php if (isset($p->fname)) echo ucwords($p->fname . ' ' . $p->lname); ?>
-                    </div>
-                    <div class="profile-usertitle-job">
-                        <?php if (isset($p->isb_id)) { ?>Reference Number: <?php echo $p->isb_id; ?><?php } ?>
-                    </div>
-                </div></div>
-
-            <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) {
-                //&& $this->request->session()->read("Profile.id")==$id
-                ?>
-                <div class="portlet box blue scrolldiv">
-                    <div class="portlet-title">
-                        <div class="caption">Assign to client</div>
-                    </div>
-                    <div class="portlet-body">
-                        <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> />
-                        <table class="table" id="clientTable">
-                            <?php
-
-                                $clients = $this->requestAction('/clients/getAllClient/');
-                                $count = 0;
-                                if ($clients)
-                                    foreach ($clients as $o)
-                                    {
-                                        $pro_ids = explode(",",$o->profile_id);
-                                        ?>
-
-                                        <tr>
-                                            <td><input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
-                                        </tr>
-
-                                    <?php
-                                    }
-                            ?>
-
-                        </table>
-
-                        <div class="clearfix"></div>
-
-                    </div>
-                </div>
-            <?php }
-                else
-                {
-                ?>
-                <div class="portlet box blue scrolldiv">
-                    <div class="portlet-title">
-                        <div class="caption">Assign to client</div>
-                    </div>
-                    <div class="portlet-body">
-                        <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />
-                        <table class="table" id="clientTable">
-                            <?php
-
-                                $clients = $this->requestAction('/clients/getAllClient/');
-                                $count = 0;
-                                if ($clients)
-                                    foreach ($clients as $o)
-                                    {
-                                        //$pro_ids = explode(",",$o->profile_id);
-                                        ?>
-
-                                        <tr>
-                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?></td>
-                                        </tr>
-
-                                    <?php
-                                    }
-                            ?>
-
-                        </table>
-
-                        <div class="clearfix"></div>
-
-                    </div>
-                </div>
-            <?php
-                } ?>
-            <!-- END PORTLET MAIN -->
-            <?php
-            if($this->request->params['action'] != 'add')
-            {
-                ?>
-            <div class="cleafix">&nbsp;</div>
-                <div class="portlet box green scrolldiv" style="overflow: hidden; width: auto; height: 250px;">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="fa fa-pencil"></i>Recruiter Notes
-                            </div>
-
-                        </div>
-                        <div class="portlet-body">
-                            <?php include('subpages/documents/recruiter_notes.php'); ?>
-                        </div>
-                    </div>
-            <?php
-
-             }
-             ?>
-
-        </div>
+        
         <!-- END BEGIN PROFILE SIDEBAR -->
         <!-- BEGIN PROFILE CONTENT -->
         <div class="profile-content">
+        <div class="row">
+            <div class="">
+                <!-- PORTLET MAIN -->
+                <div class="portlet light profile-sidebar-portlet">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic" style="max-width:250px;margin:0 auto;">
+                        <?php if (isset($p->image) && $p->image!= "") { ?>
+                            <img
+                                 src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image ?>" class="img-responsive" alt="" id="clientpic" />
+    
+                        <?php } else {
+                            ?>
+                            <img src="<?php echo $this->request->webroot; ?>img/profile/default.png" class="img-responsive" id="clientpic"
+                                 alt=""/>
+                        <?php
+                        }
+                        ?>
+                        <?php if(isset($id)&&!(isset($disabled))){?>
+                        <center>
+                        <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
+                        <div class="input-icon">
+                            <br>
+                        <a class="btn btn-xs  btn-success   margin-t10" href="javascript:void(0)" id="clientimg">
+                        <i class="fa fa-image"></i>
+                          Add/Edit Image
+                        </a>
+    
+                        </div>
+                        </div>
+                        </center>
+                        <?php }?>
+    
+                    </div>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            <?php if (isset($p->fname)) echo ucwords($p->fname . ' ' . $p->lname); ?>
+                        </div>
+                        <div class="profile-usertitle-job">
+                            <?php if (isset($p->isb_id)) { ?>Reference Number: <?php echo $p->isb_id; ?><?php } ?>
+                        </div>
+                    </div></div>
+    
+                
+                <!-- END PORTLET MAIN -->
+                
+    
+            </div>
+        </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="portlet paddingless">
@@ -437,8 +351,19 @@
                                         <div class="tab-pane" id="tab_1_7">
                                             <?php include('subpages/profile/block.php'); ?>
                                         </div>
-                                        <div class="tab-pane" id="tab_1_8">
-                                            <?php //include('subpages/profile/block.php'); ?>
+                                        <div class="tab-pane" id="tab_1_9">
+                                            <div class="cleafix">&nbsp;</div>
+                                            <div class="portlet box green scrolldiv" style="overflow: hidden; width: auto; height: 250px;">
+                                                    <div class="portlet-title">
+                                                        <div class="caption">
+                                                            <i class="fa fa-pencil"></i>Recruiter Notes
+                                                        </div>
+                            
+                                                    </div>
+                                                    <div class="portlet-body">
+                                                        <?php include('subpages/documents/recruiter_notes.php'); ?>
+                                                    </div>
+                                                </div>
                                         </div>
                                     <?php } ?>
                             </div>

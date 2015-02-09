@@ -73,7 +73,79 @@ function printprovinces($name, $selected="", $isdisabled=""){
 
         <div class="portlet box form">
 
+            <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) {
+                //&& $this->request->session()->read("Profile.id")==$id
+                ?>
+                <div class="portlet box">
+                    <div class="portlet-title" style="background: #CCC;">
+                        <div class="caption">Assign to client</div>
+                    </div>
+                    <div class="portlet-body">
+                        <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> />
+                        <div class="scrolldiv">
+                        <table class="table" id="clientTable">
+                            <?php
 
+                                $clients = $this->requestAction('/clients/getAllClient/');
+                                $count = 0;
+                                if ($clients)
+                                    foreach ($clients as $o)
+                                    {
+                                        $pro_ids = explode(",",$o->profile_id);
+                                        ?>
+
+                                        <tr>
+                                            <td><input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
+                                        </tr>
+
+                                    <?php
+                                    }
+                            ?>
+
+                        </table>
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+            <?php }
+                else
+                {
+                ?>
+                <div class="portlet box">
+                    <div class="portlet-title">
+                        <div class="caption">Assign to client</div>
+                    </div>
+                    <div class="portlet-body">
+                        <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />
+                        <div class="scrolldiv">
+                        <table class="table scrolldiv" id="clientTable">
+                            <?php
+
+                                $clients = $this->requestAction('/clients/getAllClient/');
+                                $count = 0;
+                                if ($clients)
+                                    foreach ($clients as $o)
+                                    {
+                                        //$pro_ids = explode(",",$o->profile_id);
+                                        ?>
+
+                                        <tr>
+                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?></td>
+                                        </tr>
+
+                                    <?php
+                                    }
+                            ?>
+
+                        </table>
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+            <?php
+                } ?>
             <form role="form" action="" method="post" id="save_clientz" >
                 <input type="hidden" name="client_ids" value="" class="client_profile_id"/>
 

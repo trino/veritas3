@@ -661,7 +661,7 @@
                         $saveData['document_id'] = $_POST['order_id'];
                         $saveData['order_id'] = 0;
                     }
-                    $saveData['attachment'] = $at;
+                    $saveData['attachment'] = str_replace('<<','',$at);
                     $this->saveAttachmentsPrescreen($saveData, $count);
                 }
             }

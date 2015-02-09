@@ -43,10 +43,10 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                     <div class="row profile-account">
                         <div class="col-md-3">
                             <?php
-                                if (isset($c->image) && $c->image) {
+                                if (isset($client->image) && $client->image) {
                                     ?>
                                     <img class="img-responsive" id="clientpic" alt=""
-                                         src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $c->image; ?>"/>
+                                         src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $client->image; ?>"/>
                                 <?php
                                 } else {
                                     ?>
@@ -98,12 +98,12 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                 $c = $counter;   
                                              ?>
                                              <?php
-                                             foreach($getcontact as $c)
+                                             foreach($getcontact as $cont)
                                                 {
                                                     ?>
                                              <tr><td>
-												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $c->id; ?>">
-												    <?php echo $c->username; ?> <?php //echo $types[$p->profile_type]; ?>&nbsp;&nbsp;(Contact)
+												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $cont->id; ?>">
+												    <?php echo $cont->username; ?> <?php //echo $types[$p->profile_type]; ?>&nbsp;&nbsp;(Contact)
                                                 </a>
 											</tr></td>
                                                     <?php
@@ -154,7 +154,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1_1">
                                         <div id="tab_1-1" class="tab-pane active">
-                                            <form role="form" action="" method="post" id="client_form">
+                                            <form role="form" action="" method="post" id="client_form" onsubmit="save_client_p1()">
 
                                                 <div class="row">
                                                     <input type="hidden" name="image" id="client_img"/>
@@ -165,15 +165,15 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                                 id="customer_type">
                                                             <option value="">Select</option>
                                                             <option value="1"
-                                                                    <?php if (isset($c->customer_type) && $c->customer_type == 1) { ?>selected="selected"<?php } ?>>
+                                                                    <?php if (isset($client->customer_type) && $client->customer_type == 1) { ?>selected="selected"<?php } ?>>
                                                                 Insurance
                                                             </option>
                                                             <option value="2"
-                                                                    <?php if (isset($c->customer_type) && $c->customer_type == 2) { ?>selected="selected"<?php } ?>>
+                                                                    <?php if (isset($client->customer_type) && $client->customer_type == 2) { ?>selected="selected"<?php } ?>>
                                                                 Fleet
                                                             </option>
                                                             <option value="3"
-                                                                    <?php if (isset($c->customer_type) && $c->customer_type == 3) { ?>selected="selected"<?php } ?>>
+                                                                    <?php if (isset($client->customer_type) && $client->customer_type == 3) { ?>selected="selected"<?php } ?>>
                                                                 Non Fleet
                                                             </option>
                                                         </select>
@@ -181,21 +181,21 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <?php }?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label"> <?php echo ($sidebar->client_option==0)?"Company":"Event";?> Name</label>
-                                                        <input type="text" class="form-control"
-                                                               name="company_name" <?php if (isset($c->company_name)) { ?> value="<?php echo $c->company_name; ?>" <?php } ?> />
+                                                        <input  required="required" type="text" class="form-control"
+                                                               name="company_name" <?php if (isset($client->company_name)) { ?> value="<?php echo $client->company_name; ?>" <?php } ?>/>
                                                     </div>
 
                                                     <?php if($sidebar->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Address</label>
                                                         <input type="text" class="form-control"
-                                                               name="company_address" <?php if (isset($c->billing_address)) { ?> value="<?php echo $c->billing_address; ?>" <?php } ?>/>
+                                                               name="company_address" <?php if (isset($client->billing_address)) { ?> value="<?php echo $client->billing_address; ?>" <?php } ?>/>
                                                     </div>
                                                     <?php }?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">City</label>
                                                         <input type="text" class="form-control"
-                                                               name="city" <?php if (isset($c->city)) { ?> value="<?php echo $c->city; ?>" <?php } ?>/>
+                                                               name="city" <?php if (isset($client->city)) { ?> value="<?php echo $client->city; ?>" <?php } ?>/>
                                                     </div>
 
                                                     <div class="form-group col-md-4">
@@ -222,7 +222,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
                                                             }
 
-                                                        printprovinces("province", $c->province);
+                                                        printprovinces("province", $client->province);
                                                         ?>
 
                                                     </div>
@@ -230,43 +230,43 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Postal Code</label>
                                                         <input type="text" class="form-control"
-                                                               name="postal" <?php if (isset($c->postal)) { ?> value="<?php echo $c->postal; ?>" <?php } ?>/>
+                                                               name="postal" <?php if (isset($client->postal)) { ?> value="<?php echo $client->postal; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Company's Phone Number</label>
                                                         <input type="text" class="form-control"
                                                                name="company_phone"
-                                                            <?php if (isset($c->company_phone)) { ?> value="<?php echo $c->company_phone; ?>" <?php } ?>
+                                                            <?php if (isset($client->company_phone)) { ?> value="<?php echo $client->company_phone; ?>" <?php } ?>
                                                             />
                                                     </div>
                                                     <?php }?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Website</label>
                                                         <input type="text" class="form-control"
-                                                               name="site" <?php if (isset($c->site)) { ?> value="<?php echo $c->site; ?>" <?php } ?>/>
+                                                               name="site" <?php if (isset($client->site)) { ?> value="<?php echo $client->site; ?>" <?php } ?>/>
                                                     </div>
                                                     <?php if($sidebar->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Divisions </label>
                                                         <textarea name="division" id="division" placeholder="One division per line"
-                                                                  class="form-control"><?php if (isset($c->division)) echo $c->division; ?></textarea>
+                                                                  class="form-control"><?php if (isset($client->division)) echo $client->division; ?></textarea>
                                                     </div>
                                                     
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Signatory's First Name</label>
                                                         <input type="text" class="form-control"
-                                                               name="sig_fname" <?php if (isset($c->sig_fname)) { ?> value="<?php echo $c->sig_fname; ?>" <?php } ?>/>
+                                                               name="sig_fname" <?php if (isset($client->sig_fname)) { ?> value="<?php echo $client->sig_fname; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Signatory's Last Name</label>
                                                         <input type="text" class="form-control"
-                                                               name="sig_lname" <?php if (isset($c->sig_lname)) { ?> value="<?php echo $c->sig_lname; ?>" <?php } ?>/>
+                                                               name="sig_lname" <?php if (isset($client->sig_lname)) { ?> value="<?php echo $client->sig_lname; ?>" <?php } ?>/>
                                                     </div>
 
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Signatory's Email Address</label>
                                                         <input type="email" id="sig_email" class="form-control"
-                                                               name="sig_email" <?php if (isset($c->sig_email)) { ?> value="<?php echo $c->sig_email; ?>" <?php } ?>/>
+                                                               name="sig_email" <?php if (isset($client->sig_email)) { ?> value="<?php echo $client->sig_email; ?>" <?php } ?>/>
                                                     </div>
 
 
@@ -295,12 +295,12 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Contract Start Date</label>
                                                         <input type="text" class="form-control date-picker"
-                                                               name="date_start" <?php if (isset($c->date_start)) { ?> value="<?php echo $c->date_start; ?>" <?php } ?>/>
+                                                               name="date_start" <?php if (isset($client->date_start)) { ?> value="<?php echo $client->date_start; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Contract End Date</label>
                                                         <input type="text" class="form-control date-picker"
-                                                               name="date_end" <?php if (isset($c->date_end)) { ?> value="<?php echo $c->date_end; ?>" <?php } ?>/>
+                                                               name="date_end" <?php if (isset($client->date_end)) { ?> value="<?php echo $client->date_end; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Referred By</label>
@@ -308,27 +308,27 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                                 id="referred_by">
                                                             <option value="">Select</option>
                                                             <option
-                                                                value="Transrep" <?php if (isset($c->referred_by) && $c->referred_by == "Transrep") { ?> selected="selected" <?php } ?> >
+                                                                value="Transrep" <?php if (isset($client->referred_by) && $client->referred_by == "Transrep") { ?> selected="selected" <?php } ?> >
                                                                 Transrep
                                                             </option>
                                                             <option
-                                                                value="ISB" <?php if (isset($c->referred_by) && $c->referred_by == "ISB") { ?> selected="selected" <?php } ?> >
+                                                                value="ISB" <?php if (isset($client->referred_by) && $client->referred_by == "ISB") { ?> selected="selected" <?php } ?> >
                                                                 ISB
                                                             </option>
                                                             <option
-                                                                value="AFIMAC" <?php if (isset($c->referred_by) && $c->referred_by == "AFIMAC") { ?> selected="selected" <?php } ?>>
+                                                                value="AFIMAC" <?php if (isset($client->referred_by) && $client->referred_by == "AFIMAC") { ?> selected="selected" <?php } ?>>
                                                                 AFIMAC
                                                             </option>
                                                             <option
-                                                                value="Broker" <?php if (isset($c->referred_by) && $c->referred_by == "Broker") { ?> selected="selected" <?php } ?>>
+                                                                value="Broker" <?php if (isset($client->referred_by) && $client->referred_by == "Broker") { ?> selected="selected" <?php } ?>>
                                                                 Broker
                                                             </option>
                                                             <option
-                                                                value="Online" <?php if (isset($c->referred_by) && $c->referred_by == "Online") { ?> selected="selected" <?php } ?>>
+                                                                value="Online" <?php if (isset($client->referred_by) && $client->referred_by == "Online") { ?> selected="selected" <?php } ?>>
                                                                 Online
                                                             </option>
                                                             <option
-                                                                value="Tradeshow" <?php if (isset($c->referred_by) && $c->referred_by == "Tradeshow") { ?> selected="selected" <?php } ?>>
+                                                                value="Tradeshow" <?php if (isset($client->referred_by) && $client->referred_by == "Tradeshow") { ?> selected="selected" <?php } ?>>
                                                                 Tradeshow
                                                             </option>
                                                         </select>
@@ -337,7 +337,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">ARIS Agreement #</label>
                                                         <input type="text" class="form-control"
-                                                               name="agreement_number" <?php if (isset($c->agreement_number)) { ?> value="<?php echo $c->agreement_number; ?>" <?php } ?>/>
+                                                               name="agreement_number" <?php if (isset($client->agreement_number)) { ?> value="<?php echo $client->agreement_number; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">ARIS Re-verification</label>
@@ -348,7 +348,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">SACC Number</label>
                                                         <input type="text" class="form-control"
-                                                               name="sacc_number" <?php if (isset($c->sacc_number)) { ?> value="<?php echo $c->sacc_number; ?>" <?php } ?>/>
+                                                               name="sacc_number" <?php if (isset($client->sacc_number)) { ?> value="<?php echo $client->sacc_number; ?>" <?php } ?>/>
                                                     </div>
 
                                                         <div class="col-md-12">
@@ -361,23 +361,23 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Billing Contact</label>
                                                         <input type="text" class="form-control"
-                                                               name="billing_contact" <?php if (isset($c->billing_contact)) { ?> value="<?php echo $c->billing_contact; ?>" <?php } ?>/>
+                                                               name="billing_contact" <?php if (isset($client->billing_contact)) { ?> value="<?php echo $client->billing_contact; ?>" <?php } ?>/>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Billing Address</label>
                                                         <input type="text" class="form-control"
-                                                               name="billing_address" <?php if (isset($c->billing_address)) { ?> value="<?php echo $c->billing_address; ?>" <?php } ?>/>
+                                                               name="billing_address" <?php if (isset($client->billing_address)) { ?> value="<?php echo $client->billing_address; ?>" <?php } ?>/>
                                                     </div>
 
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Billing City</label>
                                                         <input type="text" class="form-control" name="billing_city"
-                                                               value="<?php echo isset($c->billing_city) ? $c->billing_city : '' ?>"/>
+                                                               value="<?php echo isset($client->billing_city) ? $client->billing_city : '' ?>"/>
                                                     </div>
 
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Billing Province</label>
-                                                        <?php printprovinces("billing_province", $c->billing_province);  ?>
+                                                        <?php printprovinces("billing_province", $client->billing_province);  ?>
 
 
                                                     </div>
@@ -385,7 +385,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                         <label class="control-label">Billing Postal Code</label>
                                                         <input type="text" class="form-control"
                                                                name="billing_postal_code"
-                                                               value="<?php echo isset($c->billing_postal_code) ? $c->billing_postal_code : '' ?>"/>
+                                                               value="<?php echo isset($client->billing_postal_code) ? $client->billing_postal_code : '' ?>"/>
                                                     </div>
 
 
@@ -395,28 +395,30 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                                 id="invoice_terms">
                                                             <option value="">Select</option>
                                                             <option
-                                                                value="weekly" <?php if (isset($c->invoice_terms) && $c->invoice_terms == 'weekly') { ?> selected="selected" <?php } ?>>
+                                                                value="weekly" <?php if (isset($client->invoice_terms) && $client->invoice_terms == 'weekly') { ?> selected="selected" <?php } ?>>
                                                                 Weekly
                                                             </option>
                                                             <option
-                                                                value="biweekly" <?php if (isset($c->invoice_terms) && $c->invoice_terms == 'biweekly') { ?> selected="selected" <?php } ?>>
+                                                                value="biweekly" <?php if (isset($client->invoice_terms) && $client->invoice_terms == 'biweekly') { ?> selected="selected" <?php } ?>>
                                                                 Bi-weekly
                                                             </option>
                                                             <option
-                                                                value="monthly" <?php if (isset($c->invoice_terms) && $c->invoice_terms == 'monthly') { ?> selected="selected" <?php } ?>>
+                                                                value="monthly" <?php if (isset($client->invoice_terms) && $client->invoice_terms == 'monthly') { ?> selected="selected" <?php } ?>>
                                                                 Monthly
                                                             </option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label class="control-label">Billing Instructions</label></DIV>
+                                                        <label class="control-label">Billing Instructions</label>
+                                                    </div>
                                                         <div class="form-group col-md-4">
                                                         <input type="radio"
-                                                               name="billing_instructions" <?php if (isset($c->billing_instructions) && $c->billing_instructions == "individual") { ?> checked="checked" <?php } ?>
-                                                               value="individual"/> Individual&nbsp;&nbsp;</DIV>
+                                                               name="billing_instructions" <?php if (isset($client->billing_instructions) && $client->billing_instructions == "individual") { ?> checked="checked" <?php } ?>
+                                                               value="individual"/> Individual&nbsp;&nbsp;
+                                                        </div>
                                                         <div class="form-group col-md-4">
                                                         <input type="radio"
-                                                               name="billing_instructions" <?php if (isset($c->billing_instructions) && $c->billing_instructions == "centralized") { ?> checked="checked" <?php } ?>
+                                                               name="billing_instructions" <?php if (isset($client->billing_instructions) && $client->billing_instructions == "centralized") { ?> checked="checked" <?php } ?>
                                                                value="centralized"/> Centralized&nbsp;&nbsp;
                                                     </div>
 
@@ -424,8 +426,8 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
                                                         <label class="control-label">Description</label>
                                                         <textarea id="description" name="description"
-                                                                  class="form-control"><?php if (isset($c->description)) {
-                                                                echo $c->description;
+                                                                  class="form-control"><?php if (isset($client->description)) {
+                                                                echo $client->description;
                                                             } ?></textarea>
 
                                                     </div>
@@ -433,7 +435,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                    <?php }?>
 
                                                     <div class="form-group col-md-12">
-                                                        <label class="control-label">Attach Documents</label>
+                                                        <label class="control-label" id="attach_label">Attach Documents</label>
 
                                                         <div>
                                                             <!-- <a href="#" class="btn btn-primary">Browse</a> -->
@@ -449,9 +451,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                                                 $ext = end($e);
                                                                                 if (in_array($ext, $allowed)) {
                                                                                     ?>
-                                                                                    <img
-                                                                                        src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $cd->file; ?>"
-                                                                                        style="max-width: 200px;"/>
+                                                                                    <img src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $cd->file; ?>" style="max-width: 200px;"/>
 
                                                                                 <?php
                                                                                 } else
@@ -471,33 +471,32 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group col-md-6"><center>
+                                                    <div class="form-group col-md-12"><!--<center>-->
 
                                                             <div class="docMore" data-count="1">
-                                                                <div style="display:block;">
-                                                                    <a href="javascript:void(0)" id="addMore1" class="btn btn-primary margin-bottom-5">Browse</a>
+                                                                <div style="display:block;margin:5px;">
+                                                                    <a href="javascript:void(0)" id="addMore1" class="btn btn-primary">Browse</a>
                                                                     <span></span>
                                                                     <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/>
                                                                 </div>
                                                             </div>
-</div><div class="form-group col-md-6"><center>
+                                                            </div>
+                                                            <div class="form-group col-md-12"><!--<center>-->
                                                             <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" onclick="addMore(event,this)">
                                                                 Add More
                                                             </a>
 
-</div><div class="form-group col-md-12"><center>
-
-
-                                                    <div class="margin-top-10 alert alert-success display-hide flash1"
-                                                         style="display: none;">
+                                                            </div>
+                                                            <div class="form-group col-md-12"><!--<center>-->
+                                                            <div class="margin-top-10 alert alert-success display-hide flash1" style="display: none;">
                                                         <button class="close" data-close="alert"></button>
                                                         Data saved successfully
                                                     </div>
 
 
                                                     <!--<div class="margin-top-10">-->
-                                                        <a href="javascript:void(0)" class="btn btn-primary"
-                                                           id="save_client_p1">Save</a>
+                                                        <button type="submit" class="btn btn-primary"
+                                                           id="save_client_p1">Save</button>
                                                         <a href="" class="btn default">
                                                             Cancel </a>
                                                     </div>
@@ -855,6 +854,8 @@ Both </label>
             $(this).attr("disabled",'disabled');
           }); 
           $('#searchProfile').hide();
+          $('#save_client_p1').hide();
+          $('#attach_label').hide();
         <?php }?>
         $('input [type="email"]').keyup(function(){
             $(this).removeAttr('style');
@@ -882,7 +883,7 @@ Both </label>
         <?php
         }
         ?>
-        $('#save_client_p1').click(function () {
+        function save_client_p1(){
 
             $('#save_client_p1').text('Saving..');
             var str = '';
@@ -958,7 +959,7 @@ Both </label>
                     $('#save_client_p1').text(' Save ');
                 }
             })
-        });
+        }
     });
 
 

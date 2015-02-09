@@ -327,7 +327,7 @@
          $sub4['att'] = array();
                                                         if(!count($sub4['att']))
                                                         {?>
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-12" style="display:block;margin-top:5px; margin-bottom: 5px;">
         <label class="control-label col-md-3">Attach Document : </label>
         <div class="col-md-9">
         <input type="hidden" name="attach_doc[]" class="edu1" />
@@ -337,7 +337,7 @@
         </div>
         <?php }?>
         <div class="form-group col-md-12">
-        <div id="more_edu_doc" data-edu="<?php if(count($sub4['att']))echo count($sub4['att']);else echo '1';?>">
+        <div class="more_edu_doc" data-edu="<?php if(count($sub4['att']))echo count($sub4['att']);else echo '1';?>">
              <?php
                                                         if(count($sub4['att']))
                                                         {
@@ -346,7 +346,7 @@
                                                             {
                                                                 $at++;
                                                                 ?>
-                                                                <div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="edu<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="edu<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_edu_doc">Delete</a><?php }?> 
+                                                                <div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="edu<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="edu<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_edu_doc">Delete</a><?php }?> 
                                                                 <span class="uploaded"><?php echo $pa->attachment;?>  <?php if($pa->attachment){$ext_arr = explode('.',$pa->attachment);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>">Download</a><?php }else{?><br />
                                                                 <video width="320" height="240" controls>
                                                                   <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" type="video/mp4">
@@ -416,15 +416,15 @@ $(function(){
   }); 
   
   $('#add_more_edu_doc').click(function(){
-        var count = $('#more_edu_doc').data('edu');
-        $('#more_edu_doc').data('edu',parseInt(count)+1);
-        $('#more_edu_doc').append('<div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" name="attach_doc[]" class="edu'+$('#more_edu_doc').data('edu')+'" /><a href="javascript:void(0);" id="edu'+$('#more_edu_doc').data('edu')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_edu_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
-        fileUpload('edu'+$('#more_edu_doc').data('edu'));
+        var count = $('.more_edu_doc').data('edu');
+        $('.more_edu_doc').data('edu',parseInt(count)+1);
+        $('.more_edu_doc').append('<div class="del_append_edu"><label class="control-label col-md-3"></label><div class="col-md-6 pad_bot"><input type="hidden" name="attach_doc[]" class="edu'+$('#more_edu_doc').data('edu')+'" /><a href="javascript:void(0);" id="edu'+$('#more_edu_doc').data('edu')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger delete_edu_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
+        fileUpload('edu'+$('.more_edu_doc').data('edu'));
        }); 
        
-       $('#delete_edu_doc').live('click',function(){ 
-        var count = $('.#more_edu_doc').data('edu');
-        $('.#more_edu_doc').data(parseInt(count)-1);
+       $('.delete_edu_doc').live('click',function(){ 
+        var count = $('.more_edu_doc').data('edu');
+        $('.more_edu_doc').data(parseInt(count)-1);
             $(this).closest('.del_append_edu').remove();
        });
   

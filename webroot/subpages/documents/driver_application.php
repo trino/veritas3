@@ -145,9 +145,10 @@
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">Have you worked for this company before? : </label>
-				<div class="col-md-2">
-					<input type="radio" id="worked_for_client_1" name="worked_for_client" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="worked_for_client_0" name="worked_for_client" value="0"/>&nbsp;&nbsp;No
+				<div class="col-md-2 radio-list">
+					<label class="radio-inline"><input type="radio" id="worked_for_client_1" name="worked_for_client" value="1" /> Yes</label> 
+                    <label class="radio-inline"><input type="radio" id="worked_for_client_0" name="worked_for_client" value="0"/> No</label>
+                    
 				</div>
                 <label class="control-label col-md-1">Dates : </label>
                 <div class="col-md-3">
@@ -178,9 +179,9 @@
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">Are you now employed?: </label>
-				<div class="col-md-2">
-					<input type="radio" id="is_employed_1" name="is_employed" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="is_employed_0" name="is_employed" value="0" />&nbsp;&nbsp;No
+				<div class="col-md-2 radio-list">
+					<label class="radio-inline"><input type="radio" id="is_employed_1" name="is_employed" value="1"/>Yes</label>
+                    <label class="radio-inline"><input type="radio" id="is_employed_0" name="is_employed" value="0" />No</label>
 				</div>
                 <label class="control-label col-md-4">If not, how long since leaving last employment? : </label>
 				<div class="col-md-3">
@@ -215,67 +216,66 @@
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Are you 21 years of age or more? </label>
-                <div class="col-md-6">
-					<input type="radio" id="age_21_1" name="age_21" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="age_21_0" name="age_21" value="0"  />&nbsp;&nbsp;No
+				<div class="col-md-6 radio-list">
+					<label class="radio-inline"><input type="radio" id="age_21_1" name="age_21" value="1" /> Yes</label>
+                    <label class="radio-inline"><input type="radio" id="age_21_0" name="age_21" value="0"  /> No</label>
 				</div>
             </div>
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Can you provide proof of age?  </label>
-                <div class="col-md-6">
-					<input type="radio" id="proof_of_age_1" name="proof_of_age" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="proof_of_age_0" name="proof_of_age" value="0"  />&nbsp;&nbsp;No&nbsp;&nbsp;
-                    (Required for Truck Drivers)
+				<div class="col-md-6 radio-list">
+					<label class="radio-inline"><input type="radio" id="proof_of_age_1" name="proof_of_age" value="1" /> Yes</label>
+                    <label class="radio-inline"><input type="radio" id="proof_of_age_0" name="proof_of_age" value="0"  /> No(Required for Truck Drivers)</label>
 				</div>
             </div>
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Have you ever been convicted of a criminal offence for which a pardon has not been granted?  </label>
-                <div class="col-md-6">
-					<input type="radio" id="convicted_criminal_1" name="convicted_criminal" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="convicted_criminal_0" name="convicted_criminal" value="0" />&nbsp;&nbsp;No
+                <div class="col-md-6 radio-list">
+					<label class="radio-inline"><input type="radio" id="convicted_criminal_1" name="convicted_criminal" value="1" /> Yes</label>
+                   <label class="radio-inline"><input type="radio" id="convicted_criminal_0" name="convicted_criminal" value="0" /> No</label>
 				</div>
             </div>
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Have you ever been denied entry into the U.S? </label>
-                <div class="col-md-6">
-					<input type="radio" id="denied_entry_us_1" name="denied_entry_us" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="denied_entry_us_0" name="denied_entry_us" value="0"  />&nbsp;&nbsp;No
+                <div class="col-md-6 radio-list">
+					<label class="radio-inline"><input type="radio" id="denied_entry_us_1" name="denied_entry_us" value="1" /> Yes</label>
+                   <label class="radio-inline"> <input type="radio" id="denied_entry_us_0" name="denied_entry_us" value="0"  /> No</label>
 				</div>
             </div>
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Have you ever tested positive for a controlled substance?  </label>
-                <div class="col-md-6">
-					<input type="radio" id="positive_controlled_substance_1" name="positive_controlled_substance" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="positive_controlled_substance_0" name="positive_controlled_substance" value="0"/>&nbsp;&nbsp;No
+                <div class="col-md-6 radio-list">
+					<label class="radio-inline"><input type="radio" id="positive_controlled_substance_1" name="positive_controlled_substance" value="1" /> Yes</label>
+                    <label class="radio-inline"><input type="radio" id="positive_controlled_substance_0" name="positive_controlled_substance" value="0"/> No</label>
 				</div>
             </div>
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Have you ever refused a drug test? </label>
-                <div class="col-md-6">
-					<input type="radio" id="refuse_drug_test_1" name="refuse_drug_test" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="refuse_drug_test_0" name="refuse_drug_test" value="0" />&nbsp;&nbsp;No
+                <div class="col-md-6 radio-list">
+					<label class="radio-inline"><input type="radio" id="refuse_drug_test_1" name="refuse_drug_test" value="1"/> Yes</label>
+                    <label class="radio-inline"><input type="radio" id="refuse_drug_test_0" name="refuse_drug_test" value="0" /> No</label>
 				</div>
             </div>
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Had a breath alcohol test greater than 0.04? </label>
-                <div class="col-md-6">
-					<input type="radio" id="breath_alcohol_1" name="breath_alcohol" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="breath_alcohol_0" name="breath_alcohol" value="0" />&nbsp;&nbsp;No&nbsp;&nbsp;
-                    (For a company to which you applied but did not work for)
+                <div class="col-md-6 radio-list">
+					<label class="radio-inline"><input type="radio" id="breath_alcohol_1" name="breath_alcohol" value="1" /> Yes</label>
+                    <label class="radio-inline"><input type="radio" id="breath_alcohol_0" name="breath_alcohol" value="0" /> No
+                    (For a company to which you applied but did not work for)</label>
 				</div>
             </div>
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Do you have a FAST card? </label>
-                <div class="col-md-6">
-					<input type="radio" id="fast_card_1" name="fast_card" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="fast_card_0" name="fast_card" value="0" />&nbsp;&nbsp;No
+                <div class="col-md-6 radio-list">
+					<label class="radio-inline"><input type="radio" id="fast_card_1" name="fast_card" value="1" /> Yes</label>
+                    <label class="radio-inline"><input type="radio" id="fast_card_0" name="fast_card" value="0" /> No</label>
 				</div>
                 </div><div class="form-group col-md-12">
                 <label class="control-label col-md-3">Card Number </label>
@@ -293,9 +293,9 @@
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Are there any reasons you may not be able to perform the functions of the position for which you have applied? </label>
-				<div class="col-md-2">
-					<input type="radio" id="not_able_perform_function_position_1" name="not_able_perform_function_position" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="not_able_perform_function_position_0" name="not_able_perform_function_position" value="0"/>&nbsp;&nbsp;No
+				<div class="col-md-2 radio-list">
+					<label class="radio-inline"><input type="radio" id="not_able_perform_function_position_1" name="not_able_perform_function_position" value="1"/> Yes</label>
+                    <label class="radio-inline"><input type="radio" id="not_able_perform_function_position_0" name="not_able_perform_function_position" value="0"/> No</label>
 				</div>
             </div>
             
@@ -307,16 +307,16 @@
             </div>
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Are you physically capable of heavy manual work?</label>
-				<div class="col-md-2">
-					<input type="radio" id="physical_capable_heavy_manual_work_1" name="physical_capable_heavy_manual_work" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="physical_capable_heavy_manual_work_0" name="physical_capable_heavy_manual_work" value="0" />&nbsp;&nbsp;No
+				<div class="col-md-2 radio-list">
+					<label class="radio-inline"><input type="radio" id="physical_capable_heavy_manual_work_1" name="physical_capable_heavy_manual_work" value="1" /> Yes</label>
+                    <label class="radio-inline"><input type="radio" id="physical_capable_heavy_manual_work_0" name="physical_capable_heavy_manual_work" value="0" /> No</label>
 				</div>
             </div>
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Have you ever been injured while on the job? </label>
-				<div class="col-md-2">
-					<input type="radio" id="injured_on_job_1" name="injured_on_job" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="injured_on_job_0" name="injured_on_job" value="0"/>&nbsp;&nbsp;No
+				<div class="col-md-2 radio-list">
+					<label class="radio-inline"><input type="radio" id="injured_on_job_1" name="injured_on_job" value="1" /> Yes</label>
+                    <label class="radio-inline"><input type="radio" id="injured_on_job_0" name="injured_on_job" value="0"/> No</label>
 				</div>
             </div>
             
@@ -336,9 +336,11 @@
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Would you be willing to take a physical examination?</label>
-				<div class="col-md-6">
-					<input type="radio" id="willing_physical_examination_1" name="willing_physical_examination" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                    <input type="radio" id="willing_physical_examination_0" name="willing_physical_examination" value="0" />&nbsp;&nbsp;No
+				<div class="col-md-6 radio-list">
+					<label class="radio-inline">
+					<input type="radio" id="willing_physical_examination_1" name="willing_physical_examination" value="1"/> Yes</label>
+                    <label class="radio-inline">
+                    <input type="radio" id="willing_physical_examination_0" name="willing_physical_examination" value="0" /> No</label>
 				</div>
             </div>
             <div class="clearfix"></div>
@@ -509,17 +511,21 @@
             
             <div class="form-group col-md-12">
 										<label class="col-md-8 control-label">A) Have you ever been denied a license, permit or privilege to operate a motor vehicle? </label>
-										<div class="col-md-3">
-                                            <input type="radio" id="ever_been_denied_1" name="ever_been_denied" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                                            <input type="radio" id="ever_been_denied_0" name="ever_been_denied" value="0" />&nbsp;&nbsp;No&nbsp;&nbsp;
+										<div class="col-md-3 radio-list">
+					<label class="radio-inline">
+                                            <input type="radio" id="ever_been_denied_1" name="ever_been_denied" value="1" /> Yes</label>
+                    <label class="radio-inline">
+                                            <input type="radio" id="ever_been_denied_0" name="ever_been_denied" value="0" /> No</label>
                                         </div>
             </div>
             
             <div class="form-group col-md-12">
 										<label class="col-md-8 control-label">B) Has any license, permit or privilege ever been suspended or revoked?</label>
-										<div class="col-md-3">
-                                            <input type="radio" id="suspend_any_license_1" name="suspend_any_license" value="1" />&nbsp;&nbsp;Yes&nbsp;&nbsp;
-                                            <input type="radio" id="suspend_any_license_0" name="suspend_any_license" value="0" />&nbsp;&nbsp;No&nbsp;&nbsp;
+											<div class="col-md-3 radio-list">
+					<label class="radio-inline">
+                                            <input type="radio" id="suspend_any_license_1" name="suspend_any_license" value="1" /> Yes</label>
+                    <label class="radio-inline">
+                                            <input type="radio" id="suspend_any_license_0" name="suspend_any_license" value="0" /> No</label>
                                         </div>
             </div>
             <label class="col-md-8 control-label">If the answer to either A or B is Yes, attach statement giving details.</label>
@@ -758,7 +764,7 @@
                                             }
                                             if(!count($sub['da_at'])){
                                             ?>
-                       <div class="form-group col-md-12">
+                       <div class="form-group col-md-12" style="display:block;margin-top:5px; margin-bottom: 5px;">
                                         <label class="control-label col-md-3">Attach Document : </label>
                                         <div class="col-md-9">
                                         <input type="hidden" class="driveApp1" name="attach_doc[]" />
@@ -847,7 +853,7 @@
         var count = $('#more_doc').data('driverapp');
          $('#more_doc').data('driverapp',parseInt(count)+1);
          
-        $('#more_doc').append('<div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp'+$('#more_doc').data('driverapp')+'" name="attach_doc[]" /><a href="#" id="driveApp'+$('#more_doc').data('driverapp')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>')
+        $('#more_doc').append('<div class="del_append"><label class="control-label col-md-3"></label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp'+$('#more_doc').data('driverapp')+'" name="attach_doc[]" /><a href="#" id="driveApp'+$('#more_doc').data('driverapp')+'" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>')
         fileUpload('driveApp'+$('#more_doc').data('driverapp'));
     }) ;
     

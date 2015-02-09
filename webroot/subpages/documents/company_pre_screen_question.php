@@ -103,8 +103,9 @@
                                         <div class="col-md-6">
                                             <label class="control-label">Are you legally eligible to work in Canada?</label>
                                         </div>
-                                        <div class="col-md-6">
-                                        <input type="radio" id="legal_eligible_work_cananda_1" name="legal_eligible_work_cananda" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="legal_eligible_work_cananda_0" name="legal_eligible_work_cananda" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No
+                                        <div class="col-md-6 radio-list">
+					                       <label class="radio-inline">
+                                        <input type="radio" id="legal_eligible_work_cananda_1" name="legal_eligible_work_cananda" value="1"/> Yes</label><label class="radio-inline"><input type="radio" id="legal_eligible_work_cananda_0" name="legal_eligible_work_cananda" value="0"/> No</label>
                                         </div>
                                     </div>
                                     
@@ -112,8 +113,9 @@
                                         <div class="col-md-6">
                                             <label class="control-label">Do you currently hold a valid Canadian passport?</label>
                                         </div>
-                                        <div class="col-md-6">
-                                        <input type="radio" id="hold_current_canadian_pp_1" name="hold_current_canadian_pp" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="hold_current_canadian_pp_0" name="hold_current_canadian_pp" value="0"/>&nbsp;&nbsp;No
+                                        <div class="col-md-6 radio-list">
+					                       <label class="radio-inline">
+                                        <input type="radio" id="hold_current_canadian_pp_1" name="hold_current_canadian_pp" value="1"/> Yes</label><label class="radio-inline"><input type="radio" id="hold_current_canadian_pp_0" name="hold_current_canadian_pp" value="0"/>No</label>
                                         </div>
                                     </div>
                                     
@@ -121,8 +123,9 @@
                                         <div class="col-md-6">
                                             <label class="control-label">(If they do not have a valid Canadian passport)<BR>Do you have a Permanent Residency card and US Visa?</label>
                                         </div>
-                                        <div class="col-md-6">
-                                        <input type="radio" id="have_pr_us_visa_1" name="have_pr_us_visa" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="have_pr_us_visa_0" name="have_pr_us_visa" value="0"/>&nbsp;&nbsp;No
+                                        <div class="col-md-6 radio-list">
+					                       <label class="radio-inline">
+                                        <input type="radio" id="have_pr_us_visa_1" name="have_pr_us_visa" value="1"/> Yes</label><label class="radio-inline"><input type="radio" id="have_pr_us_visa_0" name="have_pr_us_visa" value="0"/> No</label>
                                         </div>
                                     </div>
                                     
@@ -130,8 +133,9 @@
                                         <div class="col-md-6">
                                             <label class="control-label">Do you have a FAST card?</label>
                                         </div>
-                                        <div class="col-md-6">
-                                        <input type="radio" id="fast_card_1" name="fast_card" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="fast_card_0" name="fast_card" value="0"/>&nbsp;&nbsp;No 
+                                        <div class="col-md-6 radio-list">
+					                       <label class="radio-inline">
+                                        <input type="radio" id="fast_card_1" name="fast_card" value="1"/> Yes</label><label class="radio-inline"><input type="radio" id="fast_card_0" name="fast_card" value="0"/> No</label> 
                                         </div>
                                     </div>
                                     
@@ -139,8 +143,9 @@
                                         <div class="col-md-6">
                                             <label class="control-label">Have you ever been convicted of a criminal offence for which a pardon has not been granted or, which could cause you to not cross the border?</label>
                                         </div>
-                                        <div class="col-md-6">
-                                        <input type="radio" id="criminal_offence_pardon_not_granted_1" name="criminal_offence_pardon_not_granted" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="criminal_offence_pardon_not_granted_0" name="criminal_offence_pardon_not_granted" value="0"/>&nbsp;&nbsp;No 
+                                        <div class="col-md-6 radio-list">
+					                       <label class="radio-inline">
+                                        <input type="radio" id="criminal_offence_pardon_not_granted_1" name="criminal_offence_pardon_not_granted" value="1"/> Yes</label><label class="radio-inline"><input type="radio" id="criminal_offence_pardon_not_granted_0" name="criminal_offence_pardon_not_granted" value="0"/> No</label> 
                                         </div>
                                     </div>
                                     
@@ -269,8 +274,9 @@
                                         <div class="col-md-6">
                                             <label class="control-label">Reefer:  Y or N   How many loads?</label>
                                         </div>
-                                        <div class="col-md-6">
-                                            <input type="radio" id="reefer_load_1" name="reefer_load" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="reefer_load_0" name="reefer_load" value="0"/>&nbsp;&nbsp;No  
+                                        <div class="col-md-6 radio-list">
+					                       <label class="radio-inline">
+                                            <input type="radio" id="reefer_load_1" name="reefer_load" value="1"/> Yes</label><label class="radio-inline"><input type="radio" id="reefer_load_0" name="reefer_load" value="0"/> No</label>  
                                         </div>
                                     </div>
                                     
@@ -600,7 +606,7 @@
                                          if(!count($pre_at['attach_doc'])){
                                             ?>
                                             
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-12" style="display:block;margin-top:5px; margin-bottom: 5px;">
                                         <label class="control-label col-md-3">Attach Document : </label>
                                         <div class="col-md-9">
                                         <input type="hidden" class="fileUpload1" name="attach_doc[]" />
@@ -680,7 +686,7 @@
         $('.add_attach').click(function(){
             var count = $('.attach_more').data('count');
             $('.attach_more').data('count',parseInt(count)+1);
-           $('.attach_more').append('<div class="pad_bot" id="del_pre"> <label class="control-label col-md-3">Attach Document : </label> <div class="col-md-6 pad_bot"><input type="hidden" class="fileUpload'+$('.attach_more').data('count')+'" name="attach_doc[]" /><a href="#" id="fileUpload'+$('.attach_more').data('count')+'"  class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
+           $('.attach_more').append('<div class="pad_bot" id="del_pre"> <label class="control-label col-md-3"></label> <div class="col-md-6 pad_bot"><input type="hidden" class="fileUpload'+$('.attach_more').data('count')+'" name="attach_doc[]" /><a href="#" id="fileUpload'+$('.attach_more').data('count')+'"  class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
             fileUpload('fileUpload'+$('.attach_more').data('count'));
            
         });

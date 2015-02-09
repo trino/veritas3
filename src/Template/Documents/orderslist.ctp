@@ -126,13 +126,15 @@
                         <thead>
                         <tr class="sorting">
                             <th><?= $this->Paginator->sort('id'); ?></th>
-                            <th><?= $this->Paginator->sort('title'); ?></th>
+                            <th><?= $this->Paginator->sort('orders.title', "Title"); ?></th>
+
                             <th><?= $this->Paginator->sort('user_id', 'Uploaded by'); ?></th>
                             <th><?= $this->Paginator->sort('uploaded_for', 'Uploaded for'); ?></th>
+
                             <th><?= $this->Paginator->sort('client_id', 'Client'); ?></th>
                             <th><?= $this->Paginator->sort('created', 'Created'); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
-                            <th><?= $this->Paginator->sort('bright_planet_html_binary', 'Status'); ?></TH>
+                            <th><?= $this->Paginator->sort('bright_planet_html_binary', 'Status'); ?></th>
                         </tr>
                         </thead>
                         <tbody>

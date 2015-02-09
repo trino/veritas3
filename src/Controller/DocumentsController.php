@@ -1623,7 +1623,7 @@
             }
             $orders = TableRegistry::get('orders');
             $order = $orders->find();
-            $order = $order->order(['orders.id' => 'DESC']);
+            //$order = $order->order(['orders.id' => 'DESC']);
             $order = $order->select();
             $cond = '';
             if (!$this->request->session()->read('Profile.super')) {
@@ -1701,8 +1701,10 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
-            //debug($order);
+            
 
+            //debug($order);
+            
             $this->set('orders', $this->paginate($order));
 
         }

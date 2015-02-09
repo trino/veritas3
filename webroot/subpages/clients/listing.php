@@ -32,10 +32,10 @@
                     <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                         <tr>
-                            <th><?= $this->Paginator->sort('id') ?></th>
-                            <th><?= $this->Paginator->sort('image') ?></th>
-                            <th><?= $this->Paginator->sort('company_name') ?></th>
-                            <th><?= $this->Paginator->sort('description') ?></th>
+                            <th><?= $this->Paginator->sort('id','Id',['escape' => false]) ?></th>
+                            <th><?= $this->Paginator->sort('image','Image',['escape' => false]) ?></th>
+                            <th><?= $this->Paginator->sort('company_name','Company Name',['escape' => false]) ?></th>
+                            <th><?= $this->Paginator->sort('description','Description',['escape' => false]) ?></th>
                            
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
@@ -43,7 +43,7 @@
                         <tbody>
                         <?php
                             $profile_id = $this->request->session()->read('Profile.id');
-                            count($client);
+                           
                             foreach ($client as $clients):
                                 //print_r($clients);
                                 $profiles = explode(",", $clients->profile_id);
@@ -132,6 +132,10 @@
 
 
                     <ul class="pagination">
+                    <?php /*echo $this->Paginator->counter(
+                                'Page {{page}} of {{pages}}, showing {{current}} records out of
+                                 {{count}} total, starting on record {{start}}, ending on {{end}} model is {{model}}'
+                            );*/?>
                         <?= $this->Paginator->prev('< ' . __('previous')); ?>
                         <?= $this->Paginator->numbers(); ?>
                         <?= $this->Paginator->next(__('next') . ' >'); ?>

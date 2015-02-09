@@ -20,6 +20,7 @@ class ClientsController extends AppController {
         parent::initialize();
         $this->loadComponent('Settings');
         $this->loadComponent('Profiles');
+        
         if(!$this->request->session()->read('Profile.id'))
         {
             $this->redirect('/login');
@@ -112,21 +113,23 @@ class ClientsController extends AppController {
         if($setting->client_list==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
-            	return $this->redirect("/");
+           	return $this->redirect("/");
 
         }
 
-
-        $search = $_GET['search'];
+        if(isset($_GET['search']))
+            $search = $_GET['search'];
+        else
+            $search = "";
         $searchs = strtolower($search);
         $querys = TableRegistry::get('Clients');
         $query = $querys->find()
         ->where(['LOWER(title) LIKE' => '%'.$searchs.'%'])
         ->orWhere(['LOWER(description) LIKE' => '%'.$searchs.'%'])
         ->orWhere(['LOWER(company_name) LIKE' => '%'.$searchs.'%'])
-        ->orWhere(['LOWER(company_address) LIKE' => '%'.$searchs.'%'])->order(['id'=>'DESC']);
-        $this->set('client', $this->paginate($this->Clients));
-        $this->set('client',$query);
+        ->orWhere(['LOWER(company_address) LIKE' => '%'.$searchs.'%']);
+        $this->set('client', $this->paginate($query));
+        //$this->set('client',$query);
         $this->set('search_text',$search);
         $this->render('index');
     }

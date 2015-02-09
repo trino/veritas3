@@ -1,13 +1,4 @@
-<!-- BEGIN PORTLET-->
-<div class="portlet box green-haze">
-    <div class="portlet-title">
-        <div class="caption">
-            <i class="fa fa-briefcase"></i>Display
-        </div>
-    </div>
-    <div class="portlet-body">
-
-        <?php
+  <?php
  //echo $this->Session->read('Profile.admin');
 if($this->Session->read('Profile.admin') && $this->Session->read('Profile.id')== $this->request['pass'][0]  )
     $is_disabled1 = '';
@@ -82,9 +73,7 @@ else
                                         </div>
                                     </form>
 
-                                    
-                                    <p>&nbsp;</p>
-                                                
+                                 
                                     
                                     <script>
                                     $(function(){
@@ -99,12 +88,9 @@ else
                                                {
                                                 $('.flash').show();
                                                 $('.flash').fadeOut(3500);
-                                                $('#save_display').text(' Save Changes ');
+                                                $('#save_displayz').text(' Submit ');
                                                } 
                                             })
                                        }); 
                                     });
                                     </script>
-    </div>
-</div>
-<!-- END PORTLET-->

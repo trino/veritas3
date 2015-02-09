@@ -361,6 +361,6 @@
     }*/
 
 </script>
-    </DIV>
-</DIV>
+    </div>
+</div>
 <!-- END PORTLET-->

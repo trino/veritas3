@@ -2,11 +2,24 @@
 <div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-briefcase"></i>Version
+            <i class="fa fa-briefcase"></i>Others
         </div>
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#subtabz_2_1" data-toggle="tab">Version</a>
+            </li>
+            
+            <li class="">
+                <a href="#subtabz_2_3" data-toggle="tab">Display</a>
+            </li>
+            <!--<li class="">
+                <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
+            </li>-->
+        </ul>
     </div>
     <div class="portlet-body">
-                                    
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="subtabz_2_1">
                                         <form action="#" method="post" id="clientform">
                                             <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                             <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
@@ -46,9 +59,14 @@
                                         }
                                         ?>
                                             </form>
+                                            </div>
+                                            <div class="tab-pane" id="subtabz_2_3">
+                                                <?php include('subpages/profile/other_display.php'); ?>
+                                            </div>
+                                        </div>
 
 <script>
-$(function(){
+/*$(function(){
      $('#save_client').click(function(){
                 $('#save_client').text('Saving..');
                     var str = $('#clientform input').serialize();
@@ -66,7 +84,7 @@ $(function(){
                        } 
                     })
                });
-});
+});*/
 </script>
 
 </DIV></DIV><!-- END PORTLET-->

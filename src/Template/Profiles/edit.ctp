@@ -370,9 +370,7 @@
                                         if ($this->request->session()->read('Profile.admin') && $this->request->session()->read('Profile.id')==$id) {
                                             ?>
 
-                                            <li>
-                                                <a href="#tab_1_4" data-toggle="tab">Display</a>
-                                            </li>
+                                          
                                             <?php if ($this->request->session()->read('Profile.super')) {?>
                                                 <li>
                                                     <a href="#tab_1_5" data-toggle="tab">Logos</a>
@@ -382,7 +380,7 @@
                                                     <a href="#tab_1_6" data-toggle="tab">Pages</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#tab_1_8" data-toggle="tab">Version</a>
+                                                    <a href="#tab_1_8" data-toggle="tab">Others</a>
                                                 </li>
                                             <?php
                                             }
@@ -416,9 +414,7 @@
                                     if ($this->request['action'] != 'add') {
                                         ?>
 
-                                        <div class="tab-pane" id="tab_1_4">
-                                            <?php include('subpages/profile/display.php'); ?>
-                                        </div>
+                                        
                                         <div class="tab-pane" id="tab_1_5">
                                             <?php include('subpages/profile/logo.php'); ?>
                                         </div>

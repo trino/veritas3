@@ -903,8 +903,9 @@ public function quiz(){}
             $super = $this->request->session()->read('Profile.super');
             $cond = $this->Settings->getprofilebyclient($u,$super);
             //$query = $query->select()->where(['super'=>0]);
-            $query = $query->select()->where(['profile_type NOT IN'=>'(6)','OR'=>$cond])
+            $query = $query->select()->where(['profile_type NOT IN (6,5)','OR'=>$cond])
                 ->andWhere(['super'=>0]);
+                //debug($query);die();
             $this->response->body($query);
             return $this->response;
             die();

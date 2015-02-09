@@ -1,5 +1,5 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
-<?php //* Date format= 2015-02-05  "Y-m-d"
+<?php //* Date format= 2015-02-05  "Y-m-d" http://www.flotcharts.org/flot/examples/
 function left($text, $length){
 	return substr($text,0,$length)	;
 }
@@ -58,8 +58,6 @@ $profileavg= round ($profilecount / $days,$decimals);
 $clientdates = sortdates($clients);
 $clientcount=total($clientdates);
 $clientavg= round ($clientcount / $days,$decimals);
-
-
 
 
 
@@ -167,9 +165,9 @@ jQuery(document).ready(function() {
 	}];
 
 
-	var options = marking(<?php echo $docavg; ?>);
+	var options = marking(<?php echo $docavg; ?>, 'red');
 
-	function marking(average) {
+	function marking(average, thecolor) {
 		return {
 			series: {
 				lines: {
@@ -195,15 +193,16 @@ jQuery(document).ready(function() {
 			},
 			grid: {
 				markings: [
-					{color: '#EDC240', lineWidth: 1, yaxis: {from: average, to: average}}
+					{color: thecolor, lineWidth: 1, yaxis: {from: average, to: average}}
 				]
-			}
+			},
+			colors: [thecolor],
 		};
 	}
 
 
-	function bind(name, data, average) {
-		options = marking(average);
+	function bind(name, data, average, color) {
+		options = marking(average, color);
 		var placeholder = $(name);
 
 		placeholder.bind("plotselected", function (event, ranges) {
@@ -227,74 +226,74 @@ jQuery(document).ready(function() {
 	}
 
 
-	bind("#documents", data, <?php echo $docavg; ?>);
-	bind("#orders", data2, <?php echo $ordavg; ?>);
-	bind("#profiles", data3, <?php echo $profileavg; ?>);
-	bind("#clients", data4, <?php echo $clientavg; ?>);
+	bind("#documents", data, <?php echo $docavg; ?>, "#F2784B");
+	bind("#orders", data2, <?php echo $ordavg; ?>, "#FFB848");
+	bind("#profiles", data3, <?php echo $profileavg; ?>, "#44B6AE");
+	bind("#clients", data4, <?php echo $clientavg; ?>, "#ACB5C3");
 });
 </script>
 
+<?php 
+function todate($date){
+	return date("M d", getdatestamp($date));
+}
 
-	<div class="row">
-		<div class="col-md-12">
-			<div class="portlet box yellow-casablanca">
-				<div class="portlet-title">
-					<div class="caption">
-						<i class="fa fa-clipboard"></i>Documents
-					</div>
+function newchart($color, $icon, $title, $chartid, $dates, $data){
+	echo '<div class="row"><div class="col-md-12">';
+		echo '<div class="portlet box ' . $color . '">';
+			echo '<div class="portlet-title">';
+				echo '<div class="caption">';
+					echo '<i class="' . $icon . '"></i>' . $title;
+				echo '</div></div>';
+			echo '<div class="portlet-body">';
+				echo '<div class="row"><div class="col-md-8">';
+				echo '<div id="' . $chartid . '" class="chart"> </div>';
+				
+				if (count($dates) > 0) {
+					$rawdata = "";
+					foreach($dates as $key => $value){
+						$rawdata.="<P>" . todate($key) . " has " . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)</P>";
+						$alldocs = enumsubdocs($data, $key);
+						foreach($alldocs as $key => $value){
+							$rawdata.="<P>" . $value . ' ' . $key . "(s)</P>";
+						}
+					}
+					
+				} else {
+					$rawdata = "No documents";
+				}
+				
+				echo '</DIV><div class="col-md-4">' . $rawdata  . '</div>';
+				echo '</div></div></div></div></div>';
+}
 
-				</div>
-				<div class="portlet-body">
-					<div id="documents" class="chart"> </div>
-				</div>
-			</div>
-		</div>
-	</div>
+newchart("grey-salsa", "icon-globe", "Clients", "clients", $clientdates, $clients);
+newchart("green-haze", "icon-user", "Profiles", "profiles", $profiledates, $profiles);
+newchart("yellow-casablanca", "icon-doc", "Documents", "documents", $docdates, $documents );
+newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders);
 
-<div class="row">
-	<div class="col-md-12">
-		<div class="portlet box yellow">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-clipboard"></i>Orders
-				</div>
+function enumsubdocs($thedocs, $date){
+	$alldocs = array();
+	foreach($thedocs as $adoc){
+		if(left($adoc->created, 10) == $date){
+		$doctype = $adoc->document_type;
+		if (strlen($doctype )==0){
+			$doctype = $adoc->profile_type; 
+			if (is_numeric($doctype)) { 
+				$profiletypes = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
+				$doctype = $profiletypes[$doctype]; 
+			}
+		}
+		//if (strlen($doctype )==0){$doctype = $adoc->customer_type; }
+		if (strlen($doctype )>0){
+			$quantity = 0;
+			if (array_key_exists($doctype,$alldocs)){$quantity  = $alldocs[$doctype];} 
+			$alldocs[$doctype] = $quantity+1;
+		}
+	}
+	}
+	return $alldocs;
+}
 
-			</div>
-			<div class="portlet-body">
-				<div id="orders" class="chart"> </div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-12">
-		<div class="portlet box green-haze">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-user"></i>Profiles
-				</div>
-
-			</div>
-			<div class="portlet-body">
-				<div id="profiles" class="chart"> </div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-12">
-		<div class="portlet box grey-salsa">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-globe"></i>Clients
-				</div>
-
-			</div>
-			<div class="portlet-body">
-				<div id="clients" class="chart"> </div>
-			</div>
-		</div>
-	</div>
-</div>
+//debug($clients);
+?>

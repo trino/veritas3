@@ -16,7 +16,7 @@
                 <input type="text" class="form-control" name="mid_name"/>
             </div>
 
-            <div class="col-md-4"><label class="control-label">Previous Surname(s) or Maiden Name(s) : </label>
+            <div class="col-md-4"><label class="control-label"><small>Previous Surname(s) or Maiden Name(s) : </small></label>
                 <input type="text" class="form-control" name="previous_last_name"/>
             </div>
 
@@ -49,7 +49,7 @@
 
 
 
-            <div class="col-md-4"><label class="control-label">Province Driver’s License was issued :</label>
+            <div class="col-md-4"><label class="control-label">Driver’s License was issued in :</label>
                 <?php provinces("driver_license_issued");?>
             </div>
 
@@ -60,7 +60,7 @@
         </div>
 
         <div class="form-group col-md-6">
-            <label class="control-label col-md-4">Current Address : </label>
+            <label class="control-label col-md-6">Current Address : </label>
         </div>
         <div class="form-group col-md-12">
             <div class="col-md-3">
@@ -82,7 +82,7 @@
         </div>
 
         <div class="form-group col-md-12">
-            <label class="control-label col-md-7">Previous Address (if you have not lived at Current Address for more
+            <label class="control-label col-md-9">Previous Address (if you have not lived at Current Address for more
                 than 5 years): </label>
         </div>
         <div class="form-group col-md-12">

@@ -31,7 +31,7 @@
 		<div class="form-group col-md-12">
 			<h4 class="col-md-12">Driver Application for Employment</h4>
 		</div>
-			<div class="form-body">
+			<!--<div class="form-body">-->
             <p>(Answer all questions)</p>
             <p>In compliance with Federal and Provincial equal employment opportunity laws, qualified applicants are considered for all positions without regard to race, colour, religion, sex, national origin, age, marital status, or the presence of a non-job related medical condition or handicap.</p>
             <div class="form-group col-md-12">
@@ -72,7 +72,7 @@
 			</div>
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Addresses for past 3 years : </label>
+                <label class="control-label col-md-4">Addresses for past 3 years : </label>
             
             </div>
             
@@ -144,16 +144,17 @@
             
             
             <div class="form-group col-md-12">
-                <label class="control-label col-md-3">Have you worked for this company before? : </label>
-				<div class="col-md-2 radio-list">
+                <label class="control-label col-md-6">Have you worked for this company before? : </label>
+				<div class="col-md-6 radio-list" align="center">
 					<label class="radio-inline"><input type="radio" id="worked_for_client_1" name="worked_for_client" value="1" /> Yes</label> 
                     <label class="radio-inline"><input type="radio" id="worked_for_client_0" name="worked_for_client" value="0"/> No</label>
-                    
-				</div>
-                <label class="control-label col-md-1">Dates : </label>
+                </div>
+
+                <label class="control-label col-md-3" align="left">Dates : </label>
                 <div class="col-md-3">
                     <input type="text" placeholder="From" class="form-control date-picker" name="worked_start_date"/>
                 </div>
+                <div class="col-md-3"></div>
                 <div class="col-md-3">
                     <input type="text" placeholder="To" class="form-control date-picker" name="worked_end_date"/>
                 </div>
@@ -179,11 +180,11 @@
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-3">Are you now employed?: </label>
-				<div class="col-md-2 radio-list">
+				<div class="col-md-3 radio-list">
 					<label class="radio-inline"><input type="radio" id="is_employed_1" name="is_employed" value="1"/>Yes</label>
                     <label class="radio-inline"><input type="radio" id="is_employed_0" name="is_employed" value="0" />No</label>
 				</div>
-                <label class="control-label col-md-4">If not, how long since leaving last employment? : </label>
+                <label class="control-label col-md-3">If not, how long since leaving last employment? : </label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" name="unemployed_total_time"/>
 				</div>
@@ -226,7 +227,7 @@
                 <label class="control-label col-md-6">Can you provide proof of age?  </label>
 				<div class="col-md-6 radio-list">
 					<label class="radio-inline"><input type="radio" id="proof_of_age_1" name="proof_of_age" value="1" /> Yes</label>
-                    <label class="radio-inline"><input type="radio" id="proof_of_age_0" name="proof_of_age" value="0"  /> No(Required for Truck Drivers)</label>
+                    <label class="radio-inline"><input type="radio" id="proof_of_age_0" name="proof_of_age" value="0"  /> No</label> (Required for Truck Drivers)
 				</div>
             </div>
             
@@ -266,8 +267,8 @@
                 <label class="control-label col-md-6">Had a breath alcohol test greater than 0.04? </label>
                 <div class="col-md-6 radio-list">
 					<label class="radio-inline"><input type="radio" id="breath_alcohol_1" name="breath_alcohol" value="1" /> Yes</label>
-                    <label class="radio-inline"><input type="radio" id="breath_alcohol_0" name="breath_alcohol" value="0" /> No
-                    (For a company to which you applied but did not work for)</label>
+                    <label class="radio-inline"><input type="radio" id="breath_alcohol_0" name="breath_alcohol" value="0" /> No</label>
+                    (For a company to which you applied but did not work for)
 				</div>
             </div>
             
@@ -278,12 +279,12 @@
                     <label class="radio-inline"><input type="radio" id="fast_card_0" name="fast_card" value="0" /> No</label>
 				</div>
                 </div><div class="form-group col-md-12">
-                <label class="control-label col-md-3">Card Number </label>
+                <label class="control-label col-md-3">Card Number :</label>
                 <div class="col-md-3">
 					<input type="text" class="form-control" name="card_number"/>
                 </div>
                 
-                <label class="control-label col-md-3">Expiry Date</label>
+                <label class="control-label col-md-3">Expiry Date :</label>
                 <div class="col-md-3">
 					<input type="text" class="form-control date-picker" name="card_expiry_date"/>
                 </div>
@@ -293,7 +294,7 @@
             
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Are there any reasons you may not be able to perform the functions of the position for which you have applied? </label>
-				<div class="col-md-2 radio-list">
+				<div class="col-md-6 radio-list">
 					<label class="radio-inline"><input type="radio" id="not_able_perform_function_position_1" name="not_able_perform_function_position" value="1"/> Yes</label>
                     <label class="radio-inline"><input type="radio" id="not_able_perform_function_position_0" name="not_able_perform_function_position" value="0"/> No</label>
 				</div>
@@ -307,14 +308,14 @@
             </div>
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Are you physically capable of heavy manual work?</label>
-				<div class="col-md-2 radio-list">
+				<div class="col-md-6 radio-list">
 					<label class="radio-inline"><input type="radio" id="physical_capable_heavy_manual_work_1" name="physical_capable_heavy_manual_work" value="1" /> Yes</label>
                     <label class="radio-inline"><input type="radio" id="physical_capable_heavy_manual_work_0" name="physical_capable_heavy_manual_work" value="0" /> No</label>
 				</div>
             </div>
             <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Have you ever been injured while on the job? </label>
-				<div class="col-md-2 radio-list">
+				<div class="col-md-6 radio-list">
 					<label class="radio-inline"><input type="radio" id="injured_on_job_1" name="injured_on_job" value="1" /> Yes</label>
                     <label class="radio-inline"><input type="radio" id="injured_on_job_0" name="injured_on_job" value="0"/> No</label>
 				</div>
@@ -345,7 +346,7 @@
             </div>
             <div class="clearfix"></div>
             <hr />
-   </div>
+   <!--</div>-->
    <div class="clearfix"></div>
    
  

@@ -45,7 +45,7 @@
             <div class="portlet-body">
              
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-condensed">
                     	<thead>
                     		<tr>
                     			<th><?php echo ucfirst($settings->document);?> type</th>

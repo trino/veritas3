@@ -633,8 +633,11 @@
                 $input = explode("=", $data);
                 $input[0];
                 if ($input[0] == "document_type" || $input[0] == 'attach_doc[]' || $input[0] == 'attach_doc%5B%5D') {
-                    if ($input[0] == 'attach_doc[]' || $input[0] == 'attach_doc%5B%5D')
-                        $att[] = urldecode($input[1]);
+                    if ($input[0] == 'attach_doc[]' || $input[0] == 'attach_doc%5B%5D'){
+                        $atta = urldecode($input[1]);
+                        $att[] = trim($atta);
+                        
+                        }
                     continue;
                 }
                 if ($input[1] != '') {

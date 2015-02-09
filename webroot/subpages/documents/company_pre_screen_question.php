@@ -6,7 +6,7 @@
 							<div class="form-group col-md-12">
 								<h4 class="col-md-12">Driver Pre-Screen Questions</h4>
 							</div>
-								<div class="form-body">
+								<!--<div class="form-body">-->
 
 									<div class="form-group col-md-4">
 										<label class="control-label">Recruiter's Name : </label>
@@ -46,7 +46,7 @@
 
 									</div>
                                     <div class="clearfix"></div>
-								</div>
+								<!-- </div> -->
                     <div class="clearfix"></div>
                     <hr />
 									<div class="form-group col-md-12">
@@ -88,7 +88,7 @@
                                     
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">How did you hear about this opportunity?<BR>(make sure we confirm which site on the internet they saw our posting)</label>
+                                            <label class="control-label">How did you hear about this opportunity?<BR><small>(make sure we confirm which web site they saw our posting)</small></label>
                                         </div>
                                         <div class="col-md-6">
                                         <textarea class="form-control" name="hear_about_oppurtunity"></textarea>
@@ -160,7 +160,7 @@
                                     
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">How do you feel about running team? (Do they have a partner?)</label>
+                                            <label class="control-label">How do you feel about running team?<BR><small>(Do they have a partner?)</small></label>
                                         </div>
                                         <div class="col-md-6">
                                         <textarea class="form-control" name="feel_running_team"></textarea> 
@@ -182,7 +182,7 @@
                                     
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">Are you currently driving for another carrier? If yes, who and for how long?</label>
+                                            <label class="control-label">Are you currently driving for another carrier?<BR>If yes, who and for how long?</label>
                                         </div>
                                         <div class="col-md-6">
                                             <textarea class="form-control" name="discover_current_driving_another_carrier"></textarea> 
@@ -263,7 +263,7 @@
                                      
                                      <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">What type of equipment have you Operated? (Standard or automatic)</label>
+                                            <label class="control-label">What type of equipment have you Operated?<BR><small>(Standard or automatic)</small></label>
                                         </div>
                                         <div class="col-md-6">
                                             <textarea class="form-control" name="type_of_equipment_operated"></textarea> 
@@ -282,7 +282,7 @@
                                     
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">Do you have a clean driving abstract? (and for ON drivers, their CVOR?)</label>
+                                            <label class="control-label">Do you have a clean driving abstract?<BR><small>(and for ON drivers, their CVOR?)</small></label>
                                         </div>
                                         <div class="col-md-6">
                                             <textarea class="form-control" name="clean_driving_abstract"></textarea>  
@@ -590,7 +590,7 @@
 
     <div class="form-group col-md-12">
         <div class="col-md-6">
-            <label class="control-label">Recruiters comments and recommendations (note what day they are booked to come in for a road test and interview) :</label>
+            <label class="control-label">Recruiters comments and recommendations :<BR><small>(note what day they are booked to come in for a road test and interview)</small></label>
         </div>
         <div class="col-md-6">
             <textarea class="form-control" name="recruiter_comment_recommendation"></textarea>

@@ -104,7 +104,7 @@
                     Schedule
                 </div>
                 <div class="number">
-                    14
+
                 </div>
             </div>
          </a>   

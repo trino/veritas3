@@ -851,6 +851,14 @@
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/' + filename);
     }
     jQuery(document).ready(function () {
+        $('.dashboard-stat .more').click(function(){
+            var moreid = $(this).attr('id');
+            $('.dashboard-stat .more').each(function(){
+               $(this).parent().parent().hide(); 
+            });
+            $('#'+moreid).parent().parent().show();
+            
+        });
         $('.required').live('keyup',function(){
             //alert('test');
             //alert($('.email1').val());

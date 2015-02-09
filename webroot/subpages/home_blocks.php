@@ -47,8 +47,11 @@
     						</div>
     						<div class="details">
     							<div class="number">
-                                <?php if($d->orders==0)echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
-    							<?php if($d->orders==1)echo $cnt = $this->requestAction('/documents/get_orderscount/'.$d->table_name); ?>	
+                                
+                                <?php 
+                                if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
+                                if($d->orders==0)echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
+    							<?php if($d->orders==1)echo $cnt = $this->requestAction('/documents/get_orderscount/'.$d->table_name); }?>	
     							</div>
     							<div class="desc">
     								 <?php

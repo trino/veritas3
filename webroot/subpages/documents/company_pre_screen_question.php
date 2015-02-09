@@ -664,8 +664,8 @@
         <?php //include('canvas/example.php');?>
         <?php //include('canvas/example2.php');?>
         <div class="clearfix"></div>
-    </div>
-</div>
+    
+
 </form>
 
 <script>

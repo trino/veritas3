@@ -733,7 +733,7 @@
                         <div class="note note-success">
                             <h4><input type="checkbox" class="form-control" value="1" id="confirm_check" name="confirm_check" /> I confirm that I have read and understand the above conditions as part of the application process. I have been given an opportunity to ask questions.</h4>
                         </div>
-
+                    </div>
 
                      <div class="form-group col-md-12">
                                         <label class="control-label col-md-6">Dated at on the day of : </label>
@@ -828,6 +828,7 @@
 </form>
             
         <div class="clearfix"></div>
+
  <script>
  
  jQuery(function(){

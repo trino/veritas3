@@ -21,6 +21,9 @@
             <li class="">
                 <a href="#subtab_2_3" data-toggle="tab">Homepage Top blocks</a>
             </li>
+            <li class="">
+                <a href="#subtab_2_4" data-toggle="tab">Assign to clients</a>
+            </li>
             <!--<li class="">
                 <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
             </li>-->
@@ -31,6 +34,7 @@
                                                 <div class="tab-pane active" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
+                                                                                                               
                                 					   <form action="#" method="post" id="blockform">
                                                             <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                                             <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
@@ -637,6 +641,83 @@
                                         }
                                         ?>
                                         </form>
+                                    </div>
+                                    <div class="tab-pane" id="subtab_2_4">
+                                        
+                                        <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) {
+                                            //&& $this->request->session()->read("Profile.id")==$id
+                                            ?>
+                                            <div class="portlet box">
+                                                <div class="portlet-title" style="background: #CCC;">
+                                                    <div class="caption">Assign to client</div>
+                                                </div>
+                                                <div class="portlet-body">
+                                                    <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> />
+                                                    <div class="scrolldiv">
+                                                    <table class="table" id="clientTable">
+                                                        <?php
+                            
+                                                            $clients = $this->requestAction('/clients/getAllClient/');
+                                                            $count = 0;
+                                                            if ($clients)
+                                                                foreach ($clients as $o)
+                                                                {
+                                                                    $pro_ids = explode(",",$o->profile_id);
+                                                                    ?>
+                            
+                                                                    <tr>
+                                                                        <td><input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
+                                                                    </tr>
+                            
+                                                                <?php
+                                                                }
+                                                        ?>
+                            
+                                                    </table>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                            
+                                                </div>
+                                            </div>
+                                        <?php }
+                                            else
+                                            {
+                                            ?>
+                                            <div class="portlet box">
+                                                <div class="portlet-title">
+                                                    <div class="caption">Assign to client</div>
+                                                </div>
+                                                <div class="portlet-body">
+                                                    <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />
+                                                    <div class="scrolldiv">
+                                                    <table class="table scrolldiv" id="clientTable">
+                                                        <?php
+                            
+                                                            $clients = $this->requestAction('/clients/getAllClient/');
+                                                            $count = 0;
+                                                            if ($clients)
+                                                                foreach ($clients as $o)
+                                                                {
+                                                                    //$pro_ids = explode(",",$o->profile_id);
+                                                                    ?>
+                            
+                                                                    <tr>
+                                                                        <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?></td>
+                                                                    </tr>
+                            
+                                                                <?php
+                                                                }
+                                                        ?>
+                            
+                                                    </table>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                            
+                                                </div>
+                                            </div>
+                                        <?php
+                                            } ?>
+                                        
                                     </div>
                                     </div>
                                     </div>

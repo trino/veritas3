@@ -6,7 +6,7 @@
 							<div class="form-group col-md-12">
 								<h4 class="col-md-12">Driver Pre-Screen Questions</h4>
 							</div>
-								<div class="form-body">
+								<!--<div class="form-body">-->
 
 									<div class="form-group col-md-4">
 										<label class="control-label">Recruiter's Name : </label>
@@ -46,7 +46,7 @@
 
 									</div>
                                     <div class="clearfix"></div>
-								</div>
+								<!-- </div> -->
                     <div class="clearfix"></div>
                     <hr />
 									<div class="form-group col-md-12">
@@ -263,7 +263,7 @@
                                      
                                      <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <label class="control-label">What type of equipment have you Operated?<BR><small>Standard or automatic)</small></label>
+                                            <label class="control-label">What type of equipment have you Operated?<BR><small>(Standard or automatic)</small></label>
                                         </div>
                                         <div class="col-md-6">
                                             <textarea class="form-control" name="type_of_equipment_operated"></textarea> 

@@ -31,7 +31,7 @@
 		<div class="form-group col-md-12">
 			<h4 class="col-md-12">Driver Application for Employment</h4>
 		</div>
-			<div class="form-body">
+			<!--<div class="form-body">-->
             <p>(Answer all questions)</p>
             <p>In compliance with Federal and Provincial equal employment opportunity laws, qualified applicants are considered for all positions without regard to race, colour, religion, sex, national origin, age, marital status, or the presence of a non-job related medical condition or handicap.</p>
             <div class="form-group col-md-12">
@@ -346,7 +346,7 @@
             </div>
             <div class="clearfix"></div>
             <hr />
-   </div>
+   <!--</div>-->
    <div class="clearfix"></div>
    
  

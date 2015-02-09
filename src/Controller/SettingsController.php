@@ -163,7 +163,7 @@ class SettingsController extends AppController {
             
             if($query>1)
              {
-                $l = "clients";
+                $l = "clients?flash";
              }
              else
              {
@@ -176,7 +176,7 @@ class SettingsController extends AppController {
              $q = $setting->find()->all();
              if(count($q)>1)
              {
-                $l = "clients";
+                $l = "clients?flash";
              }
              else
              {

@@ -505,8 +505,8 @@
 
                     <div class="col-md-9">
                         <input type="hidden" name="attach_doc[]" class="consent1"/>
-                        <a href="javascript:void(0);" id="consent1" class="btn btn-primary">Browse</a> <span
-                            class="uploaded"></span>
+                        <a href="javascript:void(0);" id="consent1" class="btn btn-primary">Browse</a>
+                        <span class="uploaded"></span>
                     </div>
                 </div>
             <?php } ?>

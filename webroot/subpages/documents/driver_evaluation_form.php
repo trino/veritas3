@@ -530,7 +530,7 @@
                                                                     <div class="col-md-12 radio-list">
                                                                         <label class="radio-inline">
                                                                             1<input type="radio" class="1" id="backing_uses_proper_set_up_1" name="backing_uses_proper_set_up" value="1"/>
-                                                                    </div>
+                                                                    </label>
                                                                     <div class="clearfix"></div>
                                                                 </div>
 
@@ -766,7 +766,7 @@
                                                     </div>
                                                   </div>
 
-</form>
+</div></form>
                                                     
 <div class="clearfix"></div>
  <script>

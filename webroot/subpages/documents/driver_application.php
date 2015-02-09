@@ -349,6 +349,7 @@
             <div class="clearfix"></div>
             <hr />
    </div>
+
    <div class="clearfix"></div>
 
 
@@ -554,8 +555,8 @@
                         <td><input type="text" class="form-control" name="tractor_semi_types" /></td>
                         <td><input type="text" class="form-control date-picker" name="tractor_semi_start_date" /></td>
                         <td><input type="text" class="form-control date-picker" name="tractor_semi_end_date" /></td>
-                        <td><input type="text" class="form-control" name="tractor_miles" /></td
-                            ></tr>
+                        <td><input type="text" class="form-control" name="tractor_miles" /></td>
+                    </tr>
                     <tr><td class="center">Tractor-Two Trailers</td>
                         <td><input type="text" class="form-control" name="tractor_two_types" /></td>
                         <td><input type="text" class="form-control date-picker" name="tractor_two_start_date" /></td>
@@ -823,7 +824,7 @@
                        
                     
                     <div class="clearfix"></div>
-                    </div>
+
 </form>
             
         <div class="clearfix"></div>

@@ -14,13 +14,7 @@
 						<a href="">Recruiter Stats</a>
 					</li>
 				</ul>
-				<!--<div class="page-toolbar">
-					<div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
-						<i class="icon-calendar"></i>&nbsp;
-						<span class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
-						<i class="fa fa-angle-down"></i>
-					</div>
-				</div>-->
+
 			</div>
 <div class="row">
     <div class="col-md-4 col-sm-12">
@@ -37,30 +31,7 @@
                         
                     </select>
              </div>
-             <!--<div class="col-md-4 col-sm-12">
-                    <select class="form-control">
-                        <option value="">Document type</option>
-                        <option value="0">Contract</option>
-                        <option value="3">Evidence</option>
-                        <option value="4">Report</option>
-                        <option value="5">Site Order</option>
-                        <option value="6">Orders</option>
-                        <option value="7">Template</option>
-                        <option value="8">KPI Audit</option>
-                        <option value="9">Others</option>
-                        
-                    </select>
-             </div>
-             <div class="col-md-4 col-sm-12">
-                    <select class="form-control">
-                        <option value="">Clients</option>
-                        <option value="0">Client 1</option>
-                        <option value="3">Client 2</option>
-                        <option value="4">Client 3</option>
-                        <option value="5">Client</option>
-                        
-                    </select>
-             </div>-->
+
              <div class="clearfix"></div>
              <hr />
     <div class="col-md-12">

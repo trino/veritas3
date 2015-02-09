@@ -52,25 +52,12 @@
                             }
                         ?>
 
-
-                        <!--<div class="form-group mar-top-10">
-                                            label class="col-md-3 control-label">Select <?php echo ucfirst($settings->document); ?> Type</label>
-                                            <div class="col-md-6">
-                                            <select name="doc_type" class="form-control" onchange="showforms(this.value);">
-                                                <option value="">Select <?php echo ucfirst($settings->document); ?> type</option>
-                                                <?php foreach ($doc as $d) { ?>
-                                                    <option value="<?php echo $d->form; ?>" id="<?php echo $d->Form; ?>"><?php echo ucfirst($d->title); ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            
-                                            </div>-->
                         <?php include('subpages/home_blocks.php'); ?>
                     <div class="form-group mar-top-10">
 
 
                         <input type="hidden" name="did" value="<?php echo $did; ?>" id="did"/>
                         <input type="hidden" name="sub_doc_id" value="<?php echo $sid; ?>" id="sub_id"/>
-                        <?php //include('subpages/adminlisting.php');?>
 
                     </div>
                     <div class="subform1" style="display: none;">

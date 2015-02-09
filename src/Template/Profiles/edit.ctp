@@ -437,6 +437,9 @@
                                         <div class="tab-pane" id="tab_1_7">
                                             <?php include('subpages/profile/block.php'); ?>
                                         </div>
+                                        <div class="tab-pane" id="tab_1_8">
+                                            <?php //include('subpages/profile/block.php'); ?>
+                                        </div>
                                     <?php } ?>
                             </div>
                         </div>

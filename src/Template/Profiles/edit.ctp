@@ -210,7 +210,7 @@
         <!-- BEGIN PROFILE CONTENT -->
         <div class="profile-content">
         <div class="row">
-            <div class="">
+            <div class="col-md-2">
                 <!-- PORTLET MAIN -->
                 <div class="portlet light profile-sidebar-portlet">
                     <!-- SIDEBAR USERPIC -->
@@ -249,9 +249,9 @@
                         <div class="profile-usertitle-name">
                             <?php if (isset($p->fname)) echo ucwords($p->fname . ' ' . $p->lname); ?>
                         </div>
-                        <div class="profile-usertitle-job">
-                            <?php if (isset($p->isb_id)) { ?>Reference Number: <?php echo $p->isb_id; ?><?php } ?>
-                        </div>
+                        <div class="profile-usertitle-job"><small>
+                            <?php if (isset($p->isb_id)) { ?>Reference Number: <BR><?php echo $p->isb_id; ?><?php } ?>
+                            </small></div>
                     </div></div>
     
                 
@@ -259,9 +259,8 @@
                 
     
             </div>
-        </div>
-            <div class="row">
-                <div class="col-md-12">
+
+                <div class="col-md-10">
                     <div class="portlet paddingless">
                         <div class="portlet-title line" style="display:none;">
                             <div class="caption caption-md">

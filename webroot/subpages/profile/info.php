@@ -273,7 +273,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control input-medium"
+                            <input type="password" name="password" id="password" class="form-control"
                                    <?php // if (isset($p->password)){ ?><?php //echo $p->password; ?> <?php //} ?>
                                    <?php if (isset($p->password) && $p->password){//do nothing 
                                    }else{?>required="required"<?php }?>/>
@@ -282,10 +282,10 @@ function printprovinces($name, $selected="", $isdisabled=""){
                     <?php if (isset($p->password)){ ?>
                     <input type="hidden" value="<?php $p->password ?>" name="hid_pass" />
                     <?php } ?>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Re-type Password</label>
-                            <input type="password" class="form-control input-medium"
+                            <input type="password" class="form-control"
                                    id="retype_password" <?php //if (isset($p->password)) { ?> <?php // echo $p->password; ?>  <?php // } ?>/>
                             <span class="error passerror flashPass1"
                                   style="display: none;">Please enter same password</span>

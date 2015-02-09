@@ -3,52 +3,52 @@
 <input type="hidden" name="sub_doc_id" value="1" class="sub_docs_id" id="af" />
 <div class="clearfix"></div>
 <hr/>
-        <div class="form-group ">
+        <div class="form-group row">
             <h4 class="col-md-12">Driver Pre-Screen Questions</h4>
-        </div>
 
-        <div class="form-group col-md-4">
+        <div class="col-md-4">
             <label class="control-label">Recruiter's Name : </label>
 
-            <input style="width:95%;" type="text" class="form-control" name="recruiter_name" value="<?php if(!$did)echo $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.lname');?>" />
+            <input type="text" class="form-control" name="recruiter_name" value="<?php if(!$did)echo $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.lname');?>" />
 
         </div>
 
-        <div class="form-group col-md-4">
+        <div class="col-md-4">
             <label class="control-label">Applicant's Phone Number : </label>
 
-            <input style="width:95%;" type="text" class="form-control" name="applicant_phone_number"/>
+            <input type="text" class="form-control" name="applicant_phone_number"/>
 
         </div>
-        <div class="form-group col-md-4">
+        <div class="col-md-4">
             <label class="control-label">Applicant's Name : </label>
 
-            <input style="width:95%;" type="text" class="form-control" name="aplicant_name">
+            <input type="text" class="form-control" name="aplicant_name">
 
         </div>
-        <div class="form-group col-md-4" id="email_cons">
+        <div class="col-md-4" id="email_cons">
             <label class="control-label">Applicant's Email : </label>
 
-            <input style="width:95%;" type="text" class="form-control email1" name="applicant_email">
+            <input type="text" class="form-control email1" name="applicant_email">
 
         </div>
-        <div class="form-group col-md-4">
+        <div class="col-md-4">
             <label class="control-label">Date : </label>
 
-            <input style="width:95%;" type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="pre_screen_date">
+            <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="pre_screen_date">
 
         </div>
-        <div class="form-group col-md-4">
+        <div class="col-md-4">
             <label class="control-label">Position : </label>
 
-            <input style="width:95%;" type="text" class="form-control" placeholder="S,T" name="position">
+            <input type="text" class="form-control" placeholder="S,T" name="position">
 
         </div>
+            </div>
         <div class="clearfix"></div>
         <!-- </div> -->
         <div class="clearfix"></div>
         <hr />
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-2"></div>
             <div class="col-md-4">
                 <h4 class="center">Screen Questions</h4>
@@ -61,13 +61,13 @@
 
         <div class="clearfix"></div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <h4 class="center">Intro</h4>
         </div>
 
         <div class="clearfix"></div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What made you decide to call Challenger today?</label>
             </div>
@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What type of job are you interested in?</label>
             </div>
@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">How did you hear about this opportunity?<BR><small>(make sure we confirm which web site they saw our posting)</small></label>
             </div>
@@ -94,11 +94,11 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <h4 class="center">Basic Requirements</h4>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Are you legally eligible to work in Canada?</label>
             </div>
@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Do you currently hold a valid Canadian passport?</label>
             </div>
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">(If they do not have a valid Canadian passport)<BR>Do you have a Permanent Residency card and US Visa?</label>
             </div>
@@ -128,7 +128,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Do you have a FAST card?</label>
             </div>
@@ -138,7 +138,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Have you ever been convicted of a criminal offence for which a pardon has not been granted or, which could cause you to not cross the border?</label>
             </div>
@@ -148,7 +148,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Where do you live?</label>
             </div>
@@ -157,7 +157,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">How do you feel about running team?<BR><small>(Do they have a partner?)</small></label>
             </div>
@@ -166,11 +166,11 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <h4 class="center">Discovery</h4>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">When did you get your AZ License and have you been commercially driving consistently since you got your license?</label>
             </div>
@@ -179,7 +179,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Are you currently driving for another carrier?<BR>If yes, who and for how long?</label>
             </div>
@@ -194,7 +194,7 @@
 
 
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <label class="control-label col-md-3"> Miles : </label>
             <div class="col-md-3">
                 <input type="text" class="form-control" name="current_miles" />
@@ -204,7 +204,7 @@
                 <input type="text" class="form-control" name="current_time_out_home" />
             </div>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <label class="control-label col-md-3"> Locations : </label>
             <div class="col-md-3">
                 <input type="text" class="form-control" name="current_location" />
@@ -214,7 +214,7 @@
                 <input type="text" class="form-control" name="current_border_cross" />
             </div>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What type of equipment did you use?</label>
             </div>
@@ -224,7 +224,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What did you like most about the job?</label>
             </div>
@@ -233,7 +233,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What did you like least about the job?</label>
             </div>
@@ -242,7 +242,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What is your reason for leaving?</label>
             </div>
@@ -251,7 +251,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What other tractor trailer experience do you have?  How recent is this experience? For BC: Any mountain experience?</label>
             </div>
@@ -260,7 +260,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What type of equipment have you Operated?<BR><small>(Standard or automatic)</small></label>
             </div>
@@ -269,7 +269,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Reefer:  Y or N   How many loads?</label>
             </div>
@@ -279,7 +279,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Do you have a clean driving abstract?<BR><small>(and for ON drivers, their CVOR?)</small></label>
             </div>
@@ -288,7 +288,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Do you have any violations in the USA against your CSA?</label>
             </div>
@@ -297,7 +297,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Do you have any demerit points? If any points for what?</label>
             </div>
@@ -306,7 +306,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">As part of our screening process we check previous employment references. Have you had any incidents that may not be on your CVOR, but that your previous employer has recorded?</label>
             </div>
@@ -315,7 +315,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Driving at night is a requirement for the job. Do you see any reason why you would not be able to drive at night?</label>
             </div>
@@ -324,7 +324,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Company policy is that tractors are to be parked at the driver's home terminal. Do you have access to get to the terminal?(tell them where the terminal is)</label>
             </div>
@@ -333,11 +333,11 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <h4 class="center">Expectations</h4>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">As we are a long haul company, driving to the USA is a requirement for most runs. Are you willing cross the border? Have you ever crossed the border with a load?</label>
             </div>
@@ -346,7 +346,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Tell me what kind of time out and time home you are looking for?</label>
             </div>
@@ -355,7 +355,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">How many miles are you hoping to run in a week?</label>
             </div>
@@ -364,7 +364,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Explain the areas they will be running. Discuss/document suitable runs available, giving details.  Are they willing to drive in these areas?</label>
             </div>
@@ -373,7 +373,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What is your current salary? Gross or net?</label>
             </div>
@@ -382,7 +382,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What are you looking for in your next employer?</label>
             </div>
@@ -391,7 +391,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What's important to you in your next opportunity?</label>
             </div>
@@ -400,7 +400,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What is the reason you have applied/contacted Challenger?</label>
             </div>
@@ -410,11 +410,11 @@
         </div>
 
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <h4 class="center" colspan="2">Closing</h4>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">If you were to accept a position with Challenger, how soon could you start working?</label>
             </div>
@@ -423,7 +423,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Are you interviewing with other companies?</label>
             </div>
@@ -433,10 +433,10 @@
         </div>
 
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <h4 class="center">Explain the next steps:</h4>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label"> Request the completed application </label>
             </div>
@@ -445,7 +445,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Schedule for a road test</label>
             </div>
@@ -454,7 +454,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Criminal Search</label>
             </div>
@@ -463,7 +463,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Med/Drug screen</label>
             </div>
@@ -472,11 +472,11 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <h4 class="center">Questions for Trainees</h4>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What school did you attend?</label>
             </div>
@@ -485,7 +485,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">How many total hours was your program?</label>
             </div>
@@ -494,7 +494,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">What did you learn in class?
                     <br/>Answers you are looking for:<br /></label>
@@ -512,7 +512,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">When did you take your MTO road test?</label>
             </div>
@@ -521,7 +521,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Did you get your license on the 1st try? If no, how many attempts?</label>
             </div>
@@ -530,39 +530,35 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <h4 class="center">Have you driven since getting your AZ?  If so, please provide details:</h4>
         </div>
 
-
-        <div class="form-group col-md-4">
+    <div class="form-group row">
+        <div class="col-md-4">
             <label class="control-label"> Miles : </label>
 
-            <input style="width:95%;" type="text" class="form-control" name="driven_az_miles" />
-        </div><div class="form-group col-md-4">
+            <input  type="text" class="form-control" name="driven_az_miles" />
+        </div><div class="col-md-4">
             <label class="control-label"> Time out/home : </label>
 
-            <input style="width:95%;" type="text" class="form-control" name="driven_az_time_out_home" />
+            <input type="text" class="form-control" name="driven_az_time_out_home" />
 
-        </div><div class="form-group col-md-4">
+        </div><div class="col-md-4">
 
             <label class="control-label "> Locations : </label>
 
-            <input style="width:95%;" type="text" class="form-control" name="driven_az_location" />
-        </div><div class="form-group col-md-4">
+            <input type="text" class="form-control" name="driven_az_location" />
+        </div><div class="col-md-4">
             <label class="control-label"> Border Cross : </label>
 
-            <input style="width:95%;" type="text" class="form-control" name="driven_az_border_cross" />
+            <input type="text" class="form-control" name="driven_az_border_cross" />
         </div>
 
-
-
-
-
-        <div class="form-group col-md-4">
+        <div class="col-md-4">
             <label class="control-label">How did you hear about us?</label>
 
-            <select style="width:95%;" name="hear_about_us" class="form-control select_media">
+            <select name="hear_about_us" class="form-control select_media">
                 <option value="">Select</option>
                 <option value="internet">Internet</option>
                 <option value="jobfair">Job Fair / Trade Show</option>
@@ -577,8 +573,9 @@
                 <textarea class="form-control other_div" name="hear_about_us_other" style="display: none;"></textarea>
             </div>
         </div>
+    </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Type of equipment :</label>
             </div>
@@ -587,7 +584,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-6">
                 <label class="control-label">Recruiters comments and recommendations :<BR><small>(note what day they are booked to come in for a road test and interview)</small></label>
             </div>
@@ -605,7 +602,7 @@
         if(!count($pre_at['attach_doc'])){
             ?>
 
-            <div class="form-group col-md-12" style="display:block;margin-top:5px; margin-bottom: 5px;">
+            <div class="form-group row" style="display:block;margin-top:5px; margin-bottom: 5px;">
                 <label class="control-label col-md-3">Attach Document : </label>
                 <div class="col-md-9">
                     <input type="hidden" class="fileUpload1" name="attach_doc[]" />
@@ -615,7 +612,7 @@
         <?php
         }
         ?>
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="attach_more" data-count='<?php if(count($pre_at['attach_doc']))echo count($pre_at['attach_doc']);else echo '1';?>'>
                 <?php
                 if(count($pre_at['attach_doc']))
@@ -653,7 +650,7 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-3">
             </div>
             <div class="col-md-9">

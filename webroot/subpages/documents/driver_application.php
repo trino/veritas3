@@ -3,7 +3,8 @@
 <input type="hidden" name="sub_doc_id" value="2" class="sub_docs_id" id="af" />
 <div class="clearfix"></div>
 <hr />
-    <div class="form-group">
+    <div class="form-group row">
+        <div class="col-md-12">
 <p>Welcome Prospective Drivers of Challenger. </p>
 <p>Thank you for your interest in Challenger Motor Freight. In order to process your application in a timely manner, please complete all information requested including dates and contact information for your employment history. Please provide the following additional information.</p>
 
@@ -31,7 +32,7 @@
 
 			<h4 class="">Driver Application for Employment</h4>
 		</div>
-			<div class=""><!--form-body-->
+			<div class="col-md-12"><!--form-body-->
             <p>(Answer all questions)</p>
             <p>In compliance with Federal and Provincial equal employment opportunity laws, qualified applicants are considered for all positions without regard to race, colour, religion, sex, national origin, age, marital status, or the presence of a non-job related medical condition or handicap.</p>
             <div class="form-group row">
@@ -353,7 +354,7 @@
    <div class="clearfix"></div>
 
 
-		<div class="form-group row">
+		<div class="form-group col-md-12">
 		  <h4 class="col-md-12">Accident Record For Past 5 Years or More</h4>
 		</div>
         <div class="form-body">
@@ -441,13 +442,10 @@
             <div class="clearfix"></div>
             <hr />
 
-        </div>
-<div class="clearfix"></div>
 
-            <div class="clearfix"></div>
             <div class="table-scrollable">
-            <table class="table">
-                <thead>
+                <table class="table">
+                    <thead>
                     <tr>
                         <th class="center"  style="width: 20%;">Driver Licenses</th>
                         <th class="center"  style="width: 20%;">Province</th>
@@ -455,64 +453,64 @@
                         <th class="center"  style="width: 20%;">Class</th>
                         <th class="center"  style="width: 20%;">Expiration Date</th>
                     </tr>
-                </thead>
-                <tr>
-                <?php
-                    $i=0;
-                    if(isset($sub['da_li_detail']) && $sub['da_li_detail']){
-                    foreach($sub['da_li_detail'] as $da_li){
-                        $dl[$i] = $da_li->driver_license;
-                        $dp[$i] = $da_li->province;
-                        $dln[$i] = $da_li->license_number;
-                        $dc[$i] = $da_li->class;
-                        $de[$i] = $da_li->expiration_date;
-                        $i++;
-                    }
-                    }
-                    if($i<=2)
-                    {
-                        for($j=$i;$j<=2;$j++)
-                        {
-                            $dl[$j] = '';
-                        $dp[$j] = '';
-                        $dln[$j] = '';
-                        $dc[$j] = '';
-                        $de[$j] = '';
+                    </thead>
+                    <tr>
+                        <?php
+                        $i=0;
+                        if(isset($sub['da_li_detail']) && $sub['da_li_detail']){
+                            foreach($sub['da_li_detail'] as $da_li){
+                                $dl[$i] = $da_li->driver_license;
+                                $dp[$i] = $da_li->province;
+                                $dln[$i] = $da_li->license_number;
+                                $dc[$i] = $da_li->class;
+                                $de[$i] = $da_li->expiration_date;
+                                $i++;
+                            }
                         }
-                    }
-                    ?>
-                    <td>
+                        if($i<=2)
+                        {
+                            for($j=$i;$j<=2;$j++)
+                            {
+                                $dl[$j] = '';
+                                $dp[$j] = '';
+                                $dln[$j] = '';
+                                $dc[$j] = '';
+                                $de[$j] = '';
+                            }
+                        }
+                        ?>
+                        <td>
 
 
-                    <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[0]?>" /></td>
-                    <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[0]?>"/></td>
-                    <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[0]?>"/></td>
-                    <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[0]?>"/></td>
-                    <td><input type="text" class="form-control date-picker" name="expiration_date[]" value="<?php echo $de[0]?>"/></td>
-                </tr>
-                <tr>
-                    <td>
+                            <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[0]?>" /></td>
+                        <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[0]?>"/></td>
+                        <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[0]?>"/></td>
+                        <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[0]?>"/></td>
+                        <td><input type="text" class="form-control date-picker" name="expiration_date[]" value="<?php echo $de[0]?>"/></td>
+                    </tr>
+                    <tr>
+                        <td>
 
 
-                    <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[1]?>" /></td>
-                    <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[1]?>"/></td>
-                    <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[1]?>"/></td>
-                    <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[1]?>"/></td>
-                    <td><input type="text" class="form-control date-picker" name="expiration_date[]" value="<?php echo $de[1]?>"/></td>
-                </tr>
-                <tr>
-                    <td>
+                            <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[1]?>" /></td>
+                        <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[1]?>"/></td>
+                        <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[1]?>"/></td>
+                        <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[1]?>"/></td>
+                        <td><input type="text" class="form-control date-picker" name="expiration_date[]" value="<?php echo $de[1]?>"/></td>
+                    </tr>
+                    <tr>
+                        <td>
 
 
-                    <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[2]?>" /></td>
-                    <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[2]?>"/></td>
-                    <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[2]?>"/></td>
-                    <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[2]?>"/></td>
-                    <td><input type="text" class="form-control date-picker" name="expiration_date[]" value="<?php echo $de[2]?>"/></td>
-                </tr>
-            </table>
+                            <input type="text" class="form-control" name="driver_license[]" value="<?php echo $dl[2]?>" /></td>
+                        <td><input type="text" class="form-control" name="province[]" value="<?php echo $dp[2]?>"/></td>
+                        <td><input type="text" class="form-control" name="license_number[]" value="<?php echo $dln[2]?>"/></td>
+                        <td><input type="text" class="form-control" name="class[]" value="<?php echo $dc[2]?>"/></td>
+                        <td><input type="text" class="form-control date-picker" name="expiration_date[]" value="<?php echo $de[2]?>"/></td>
+                    </tr>
+                </table>
             </div>
-
+</div>
             <div class="form-group row">
 										<label class="col-md-8 control-label">A) Have you ever been denied a license, permit or privilege to operate a motor vehicle? </label>
 										<div class="col-md-3 radio-list">
@@ -536,43 +534,44 @@
             <div class="clearfix"></div>
             <hr />
 
-            <div class="table-scrollable">
-            <table class="table table-striped">
 
-                    <tr>
-                        <th class="center"  style="width: 25%;">Class of equipment</th>
-                        <th class="center"  style="width: 25%;">Type of equipment<br />(Van,Tank,Flat,etc)</th>
-                        <th class="center"  style="width: 25%;" colspan="2">Dates<br />From&nbsp;&nbsp;&nbsp;&nbsp;To</th>
-                        <th class="center"  style="width: 25%;">Approx. No. of miles<br />(Total)</th>
-                    </tr>
-                    <tr><td class="center">Straight Truck</td>
-                        <td><input type="text" class="form-control" name="straight_truck_type" /></td>
-                        <td><input type="text" class="form-control date-picker" name="straight_truck_start_date" /></td>
-                        <td><input type="text" class="form-control date-picker" name="straight_truck_end_date" /></td>
-                        <td><input type="text" class="form-control" name="straight_truck_miles" /></td>
-                    </tr>
-                    <tr><td class="center">Tractor and Semi-Trailer</td>
-                        <td><input type="text" class="form-control" name="tractor_semi_types" /></td>
-                        <td><input type="text" class="form-control date-picker" name="tractor_semi_start_date" /></td>
-                        <td><input type="text" class="form-control date-picker" name="tractor_semi_end_date" /></td>
-                        <td><input type="text" class="form-control" name="tractor_miles" /></td>
-                    </tr>
-                    <tr><td class="center">Tractor-Two Trailers</td>
-                        <td><input type="text" class="form-control" name="tractor_two_types" /></td>
-                        <td><input type="text" class="form-control date-picker" name="tractor_two_start_date" /></td>
-                        <td><input type="text" class="form-control date-picker" name="tractor_two_end_date" /></td>
-                        <td><input type="text" class="form-control" name="tractor_two_miles" /></td>
-                    </tr>
-                    <tr><td class="center">Other</td>
-                        <td><input type="text" class="form-control" name="other_types" /></td>
-                        <td><input type="text" class="form-control date-picker" name="other_start_date" /></td>
-                        <td><input type="text" class="form-control date-picker" name="other_end_date" /></td>
-                        <td><input type="text" class="form-control" name="other_miles" /></td>
-                    </tr>
-            </table>
-            </div>
+            <div class="form-group row"><div class="col-md-12">
+                <div class="table-scrollable">
+                    <table class="table table-striped">
 
-            <div class="form-group row">
+                        <tr>
+                            <th class="center"  style="width: 25%;">Class of equipment</th>
+                            <th class="center"  style="width: 25%;">Type of equipment<br />(Van,Tank,Flat,etc)</th>
+                            <th class="center"  style="width: 25%;" colspan="2">Dates<br />From&nbsp;&nbsp;&nbsp;&nbsp;To</th>
+                            <th class="center"  style="width: 25%;">Approx. No. of miles<br />(Total)</th>
+                        </tr>
+                        <tr><td class="center">Straight Truck</td>
+                            <td><input type="text" class="form-control" name="straight_truck_type" /></td>
+                            <td><input type="text" class="form-control date-picker" name="straight_truck_start_date" /></td>
+                            <td><input type="text" class="form-control date-picker" name="straight_truck_end_date" /></td>
+                            <td><input type="text" class="form-control" name="straight_truck_miles" /></td>
+                        </tr>
+                        <tr><td class="center">Tractor and Semi-Trailer</td>
+                            <td><input type="text" class="form-control" name="tractor_semi_types" /></td>
+                            <td><input type="text" class="form-control date-picker" name="tractor_semi_start_date" /></td>
+                            <td><input type="text" class="form-control date-picker" name="tractor_semi_end_date" /></td>
+                            <td><input type="text" class="form-control" name="tractor_miles" /></td>
+                        </tr>
+                        <tr><td class="center">Tractor-Two Trailers</td>
+                            <td><input type="text" class="form-control" name="tractor_two_types" /></td>
+                            <td><input type="text" class="form-control date-picker" name="tractor_two_start_date" /></td>
+                            <td><input type="text" class="form-control date-picker" name="tractor_two_end_date" /></td>
+                            <td><input type="text" class="form-control" name="tractor_two_miles" /></td>
+                        </tr>
+                        <tr><td class="center">Other</td>
+                            <td><input type="text" class="form-control" name="other_types" /></td>
+                            <td><input type="text" class="form-control date-picker" name="other_start_date" /></td>
+                            <td><input type="text" class="form-control date-picker" name="other_end_date" /></td>
+                            <td><input type="text" class="form-control" name="other_miles" /></td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
 										<label class="col-md-6 control-label">List states operated for in five years : </label>
 										<div class="col-md-6">
                                             <textarea class="form-control" name="list_states_operated_5year"></textarea>

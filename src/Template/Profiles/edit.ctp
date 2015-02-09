@@ -394,6 +394,15 @@
 
                                         <?php
                                         }
+                                        if(if($this->request->params['action'] != 'add'))
+                                        {
+                                           ?>
+                                            <li>
+                                                <a href="#tab_1_9" data-toggle="tab">Notes</a>
+                                            </li>
+
+                                        <?php 
+                                        }
                                     }
 
                                     ?>

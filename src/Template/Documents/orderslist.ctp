@@ -33,7 +33,7 @@
             <div class="portlet-body">
                 <div class="chat-form">
                     <form action="<?php echo $this->request->webroot; ?>documents/orderslist" method="get">
-
+                        <?php if(isset($_GET['draft'])){?><input type="hidden" name="draft" /><?php }?>
                         <?php
                             $users = $this->requestAction("documents/getAllUser");
                         ?>

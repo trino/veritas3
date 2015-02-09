@@ -12,7 +12,7 @@
     {
 
         public $paginate = [
-            'limit' => 5,
+            'limit' => 10,
             'order' => ['id' => 'DESC'],
 
         ];

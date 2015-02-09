@@ -98,7 +98,7 @@ class ClientsController extends AppController {
 	public function index() {
 	   if(isset($_GET['flash']))
        {
-                $this->Flash->success('You have to select a client');
+                $this->Flash->success('Please select a client to upload.');
        }
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         if($setting->client_list==0)

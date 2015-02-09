@@ -394,7 +394,7 @@
 
                                         <?php
                                         }
-                                        if(if($this->request->params['action'] != 'add'))
+                                        if($this->request->params['action'] != 'add')
                                         {
                                            ?>
                                             <li>

@@ -302,12 +302,12 @@ public function quiz(){}
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary'=>'2'])));
             $profiles = TableRegistry::get('Profiles');
             
-        $_POST['created'] = date('Y-m-d');
+            $_POST['created'] = date('Y-m-d');
             //var_dump($profile);die();
             if(isset($_POST['password']) && $_POST['password']=='')
-                    {
-                       unset($_POST['password']);
-                    }
+            {
+               unset($_POST['password']);
+            }
             if ($this->request->is('post')) {
                  
                 if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
@@ -358,13 +358,13 @@ public function quiz(){}
                     $query2->insert(['user_id'])
                         ->values(['user_id'=>$profile->id])
                         ->execute();
-                        if(isset($_POST['email']) && $_POST['email'])
-                        {
-                        $from = 'info@isbmee.com';
-                        $to = $_POST['email'];
-                        $sub = 'Profile created successfully';
-                        $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
-                        $this->sendEmail($from,$to,$sub,$msg);}
+                    if(isset($_POST['email']) && $_POST['email'])
+                    {
+                    $from = 'info@isbmee.com';
+                    $to = $_POST['email'];
+                    $sub = 'Profile created successfully';
+                    $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
+                    $this->sendEmail($from,$to,$sub,$msg);}
                     $this->Flash->success('Profile created successfully.');
                     return $this->redirect(['action' => 'edit',$profile->id]);
                 } else {
@@ -376,6 +376,112 @@ public function quiz(){}
             $this->set(compact('profile'));
 
             $this->render("edit");
+        }
+        
+        function saveprofile($add="")
+        {
+            $profiles = TableRegistry::get('Profiles');
+            if($add =='0')
+            {
+                $_POST['created'] = date('Y-m-d');
+            
+                if(isset($_POST['password']) && $_POST['password']=='')
+                {
+                   unset($_POST['password']);
+                }
+                if ($this->request->is('post')) 
+                {
+                     
+                    if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
+                        $_POST['admin']=1;
+                
+                    $_POST['dob'] = $_POST['doby']."-".$_POST['dobm']."-".$_POST['dobd'];
+                    
+                    $profile = $profiles->newEntity( $_POST);
+                    if ($profiles->save($profile)) {
+                        
+                         if($_POST['client_ids']!= "")
+                         {
+                            $client_id = explode(",",$_POST['client_ids']);
+                            foreach($client_id as $cid)
+                            {
+                                $query = TableRegistry::get('clients');
+                                $q = $query->find()->where(['id'=>$cid])->first();
+                                $profile_id = $q->profile_id;
+                                $pros = explode(",",$profile_id);
+                        
+                                $p_ids ="";
+                                
+                                array_push($pros,$profile->id);
+                                $pro_id = array_unique($pros);
+                        
+                        
+                                foreach($pro_id as $k=>$p)
+                                {
+                                    if(count($pro_id)==$k+1)
+                                        $p_ids .= $p;
+                                    else
+                                        $p_ids .= $p.",";
+                                }
+                        
+                                $query->query()->update()->set(['profile_id' => $p_ids])
+                                ->where(['id' =>$cid ])
+                                ->execute();
+                            }
+                         }
+                        
+                        $blocks = TableRegistry::get('Blocks');
+                        $query2 = $blocks->query();
+                        $query2->insert(['user_id'])
+                            ->values(['user_id'=>$profile->id])
+                            ->execute();
+                        $side = TableRegistry::get('Sidebar');
+                        $query2 = $side->query();
+                        $query2->insert(['user_id'])
+                            ->values(['user_id'=>$profile->id])
+                            ->execute();
+                        if(isset($_POST['email']) && $_POST['email'])
+                        {
+                            $from = 'info@isbmee.com';
+                            $to = $_POST['email'];
+                            $sub = 'Profile created successfully';
+                            $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'login">click here</a> to login.<br /> Regards';
+                            $this->sendEmail($from,$to,$sub,$msg);
+                        }
+                        echo "1";
+                       
+                }
+                else
+                    echo "0";
+                }
+            }
+            else
+            {
+                $profile = $this->Profiles->get($add, [
+                'contain' => []
+                ]);
+                if ($this->request->is(['patch', 'post', 'put'])) {
+                if(isset($_POST['password']) && $_POST['password']=='')
+                    {
+                        //die('here');
+                       $this->request->data['password'] = $profile->password;
+                    }
+                if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
+                    $this->request->data['admin']=1;
+                else
+                    $this->request->data['admin']=0;
+                 $this->request->data['dob'] = $_POST['doby']."-".$_POST['dobm']."-".$_POST['dobd'];
+                //var_dump($this->request->data); die();//echo $_POST['admin'];die();
+                $profile = $this->Profiles->patchEntity($profile, $this->request->data);
+                if ($this->Profiles->save($profile)) {
+                     echo "1";
+                } else {
+                     echo "0";
+                }
+            }
+                
+            }
+             die();
         }
         
         public function saveDriver() {
@@ -1095,12 +1201,13 @@ public function quiz(){}
         public function check_user($uid='')
         {
             if(isset($_POST['username']) && $_POST['username'])
-            $user = $_POST['username'];
+                $user = $_POST['username'];
             $q = TableRegistry::get('profiles');
             $que = $q->find();
-            if($uid)
-            $query = $que->select()->where(['id !='=>$uid,'username'=>$user])->first();
-            else $query = $que->select()->where(['username'=>$user])->first();
+            if($uid!= "")
+                $query = $que->select()->where(['id !='=>$uid,'username'=>$user])->first();
+            else 
+                $query = $que->select()->where(['username'=>$user])->first();
             //var_dump($query);
             //$query = $que->first();
             if($query)
@@ -1116,8 +1223,8 @@ public function quiz(){}
             $email = $_POST['email'];
             $q = TableRegistry::get('profiles');
             $que = $q->find();
-            if($uid)
-            $query = $que->select()->where(['id !='=>$uid,'email'=>$email])->first();
+            if($uid!= "")
+                $query = $que->select()->where(['id !='=>$uid,'email'=>$email])->first();
             else $query = $que->select()->where(['email'=>$email])->first();
             //var_dump($query);
             //$query = $que->first();

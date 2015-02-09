@@ -103,7 +103,9 @@ class SettingsController extends AppController {
                 ->set(['client'=>$_POST['client'],'document'=>$_POST['document'],'profile'=>$_POST['profile'],'mee'=>$_POST['mee']])
                 ->where(['id' => 1])
                 ->execute();
-        $this->redirect(['controller'=>'profiles','action'=>'edit',$this->request->session()->read("Profile.id")]);
+        echo "1";
+        die();
+        //$this->redirect(['controller'=>'profiles','action'=>'edit',$this->request->session()->read("Profile.id")]);
     }
     function getProSubDoc($pro_id,$doc_id)
     {

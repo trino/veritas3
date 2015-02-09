@@ -16,10 +16,9 @@ else
     
 
 ?>
-<form action="<?php echo $this->request->webroot; ?>settings/change_text"
-                                          role="form" method="post">
-                                        <div class="form-group" id="notli">
-<div class="row">
+<form action="<?php echo $this->request->webroot; ?>settings/change_text" role="form" method="post" id="displayformz">
+        <div class="form-group" id="notli">
+                                        <div class="row">
 
                                             <div class="col-md-6">
 
@@ -72,9 +71,14 @@ else
 
                                         </div>
                                         <div class="margin-top-10">
-                                            <input type="submit" class="btn btn-primary" value="Submit"/>
+                                            <a id="save_displayz" class="btn btn-primary" >Submit</a>
                                             <a href="#" class="btn default">
                                                 Cancel </a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                            <button class="close" data-close="alert"></button>
+                                            Display saved successfully
                                         </div>
                                     </form>
 
@@ -84,11 +88,11 @@ else
                                     
                                     <script>
                                     $(function(){
-                                       $('#save_display').click(function(){
-                                        $('#save_display').text('Saving..');
-                                            var str = $('#displayform input').serialize();
+                                       $('#save_displayz').click(function(){
+                                        $('#save_displayz').text('Saving..');
+                                            var str = $('#displayformz').serialize();
                                             $.ajax({
-                                               url:'<?php echo $this->request->webroot;?>profiles/displaySubdocs/<?php echo $id;?>',
+                                               url:'<?php echo $this->request->webroot;?>settings/change_text/<?php echo $id;?>',
                                                data:str,
                                                type:'post',
                                                success:function(res)

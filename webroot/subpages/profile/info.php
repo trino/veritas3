@@ -74,7 +74,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
         <div class="portlet box form">
 
 
-            <form role="form" action="" method="post">
+            <form role="form" action="" method="post" id="save_clientz" >
                 <input type="hidden" name="client_ids" value="" class="client_profile_id"/>
 
                 <div class="row">
@@ -242,9 +242,11 @@ function printprovinces($name, $selected="", $isdisabled=""){
                         <div class="form-group">
                             <label class="control-label">Username</label>
                             <input <?php echo $is_disabled ?> name="username" type="text"
-                                                              class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?>/>
+                                                              class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> required />
                             <span class="error passerror flashUser"
                                   style="display: none;">Username already exists</span>
+                            <span class="error passerror flashUser1"
+                                  style="display: none;">Username is required.</span>
                         </div>
                     </div>
                     <div class="clearfix flashUser" style="display: none;">
@@ -296,13 +298,15 @@ function printprovinces($name, $selected="", $isdisabled=""){
                         <div class="form-group">
                             <label class="control-label">Title</label><BR>
                             <SELECT <?php echo $is_disabled ?> name="title" class="form-control "><?php
-                                    $title = "";
+                                    
                                     if (isset($p->title)) {
                                         $title = $p->title;
                                     }
-                                    printoption("Mr.", $title, "Mr");
-                                    printoption("Mrs.", $title, "Mrs");
-                                    printoption("Ms.", $title, "Ms");
+                                    else
+                                        $title = "";
+                                    printoption("Mr.", $title, "Mr.");
+                                    printoption("Mrs.", $title, "Mrs.");
+                                    printoption("Ms.", $title, "Ms.");
                                 ?></SELECT>
 
                             <!--
@@ -619,13 +623,18 @@ function printprovinces($name, $selected="", $isdisabled=""){
 
                                     <div class="margin-top-10 form-actions">
                                         <a href="javascript:void(0)" class="btn btn-primary"
-                                           onclick="return check_username();">
+                                           onclick="return check_username();" id="savepro">
                                             Save Changes
                                         </a>
                                         <input type="submit" style="display: none;" id="hiddensub"/>
                                         <a href="#" class="btn default">
                                             Cancel </a>
                                     </div>
+                                    <div class="clearfix"></div>
+                                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                                <button class="close" data-close="alert"></button>
+                                                                Profile saved successfully
+                                                            </div>
                                 </div>
                             <?php } ?>
 
@@ -692,6 +701,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                  */
             }
             var un = $('.uname').val();
+            
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>profiles/check_user/<?php echo $uid;?>',
                 data: 'username=' + $('.uname').val(),
@@ -700,6 +710,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                     if (res == '1') {
                         //alert(res);
                         $('.flashUser').show();
+                        
                         $('.uname').focus();
                         $('html,body').animate({
                                 scrollTop: $('.page-title').offset().top
@@ -740,6 +751,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
             });
             
             
+            
            
         }
         else {
@@ -755,7 +767,30 @@ function printprovinces($name, $selected="", $isdisabled=""){
 
     }
     $(function () {
+        $('#save_clientz').submit(function(event){
+             event.preventDefault();
+             $('#savepro').text("Saving...");
+           var strs = $(this).serialize();
+           var adds = "<?php echo ($this->request['action']=='add')?'0':$this->request['pass'][0];?>";
+           $.ajax({
+                url: '<?php echo $this->request->webroot;?>profiles/saveprofile/'+adds,
+                data: strs,
+                type: 'post',
+                success: function (res) {
+                        if(res =='1')
+                        {
+                            $('#savepro').text("Save Changes");
+                            $('.flash').show();
+                            $('.flash').fadeOut(3500);
+                            
+                        }
+                }
 
+           });
+           
+           return false;
+            
+        });
         $('#addmore_id').click(function () {
             $('#more_id_div').append('<div id="append_id"><div class="pad_bot"><a href="" class="btn btn-primary">Browse</a> <a href="javascript:void(0);" id="delete_id_div" class="btn btn-danger">Delete</a></div></div>')
         });
@@ -817,6 +852,6 @@ function printprovinces($name, $selected="", $isdisabled=""){
     });
 </script>
 
-</DIV>
-</DIV>
+</div>
+</div>
 <!-- END PORTLET-->

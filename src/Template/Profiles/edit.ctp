@@ -339,14 +339,6 @@
                     </div>
             <?php
 
-
-
-
-
-
-
-
-
              }
              ?>
 
@@ -360,7 +352,7 @@
                         <div class="portlet-title line" style="display:none;">
                             <div class="caption caption-md">
                                 <i class="icon-globe theme-font hide"></i>
-                                <span class="caption-subject font-blue-madison bold">< php echo ucfirst($settings->profile);  > Manager</span>
+                                <span class="caption-subject font-blue-madison bold"><?php echo ucfirst($settings->profile);  ?> Manager</span>
                             </div>
                         </div>
 
@@ -532,25 +524,26 @@ new AjaxUpload(button,{
 
                     $('#save_client_p1').text('Saving..');
 
-        $("#pass_form").validate({
-            rules: {
-                password: {
-                    required: true
-                },
-                retype_password: {
-                    required: true,
-                    equalTo: "#password"
-                }
-            },
-            messages: {
-                password: "Please enter password",
-                retype_password: "Password do not match"
-            },
-            submitHandler: function () {
-                $('#pass_form').submit();
-            }
-        });
-    });
+                        $("#pass_form").validate({
+                            rules: {
+                                password: {
+                                    required: true
+                                },
+                                retype_password: {
+                                    required: true,
+                                    equalTo: "#password"
+                                }
+                            },
+                            messages: {
+                                password: "Please enter password",
+                                retype_password: "Password do not match"
+                            },
+                            submitHandler: function () {
+                                $('#pass_form').submit();
+                            },
+                        });
+                    });
+          
     });
 </script>
 

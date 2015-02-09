@@ -51,7 +51,7 @@
                 </form>
                 <div class="table-responsive">
                 
-                    <table class="table table-hover">
+                    <table class="table table-condensed">
                     	<thead>
                     		<tr>
                     			<th><?= $this->Paginator->sort('id') ?></th>

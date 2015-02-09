@@ -105,7 +105,7 @@
 
                 <div class="table-responsive">
 
-                    <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">
+                    <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                         <tr>
                             <th><?= $this->Paginator->sort('id') ?></th>

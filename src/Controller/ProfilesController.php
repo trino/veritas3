@@ -448,7 +448,7 @@ public function quiz(){}
                             $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'login">click here</a> to login.<br /> Regards';
                             $this->sendEmail($from,$to,$sub,$msg);
                         }
-                        echo "1";
+                        echo $profile->id;
                        
                 }
                 else

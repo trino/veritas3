@@ -777,12 +777,12 @@ function printprovinces($name, $selected="", $isdisabled=""){
                 data: strs,
                 type: 'post',
                 success: function (res) {
-                        if(res =='1')
+                        if(res !=0)
                         {
                             $('#savepro').text("Save Changes");
                             $('.flash').show();
                             $('.flash').fadeOut(3500);
-                            
+                            window.location.href='<?php echo $this->request->webroot;?>profiles/edit/'+res;
                         }
                 }
 

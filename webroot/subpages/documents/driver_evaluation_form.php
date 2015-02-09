@@ -4,7 +4,7 @@
 <input type="hidden" class="sub_docs_id" name="sub_doc_id" value="3" id="af" />
 <div class="clearfix"></div>
 <hr />
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group row">
 													<label class="control-label col-md-3">Driver name <span class="required">
 													* </span>
 													</label>
@@ -13,7 +13,7 @@
 														
 													</div>
 												</div>
-												<div class="form-group col-md-12">
+												<div class="form-group row">
 													<label class="control-label col-md-3">D/L# <span class="required">
 													* </span>
 													</label>
@@ -22,7 +22,7 @@
 														
 													</div>
 												</div>
-												<div class="form-group col-md-12">
+												<div class="form-group row">
 													<label class="control-label col-md-3">Date <span class="required">
 													* </span>
 													</label>
@@ -31,7 +31,7 @@
 														
 													</div>
 												</div>
-												<div class="form-group col-md-12">
+												<div class="form-group row">
 													<label class="control-label col-md-3">Transmission <span class="required">
 													* </span>
 													</label>
@@ -46,7 +46,7 @@
 														</div>
 													</div>
 												</div>
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group row">
 													<label class="control-label col-md-3">Name of evaluator <span class="required">
 													* </span>
 													</label>
@@ -55,7 +55,7 @@
 													</div>
 												</div>
                                                 
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group row">
 													<label class="control-label col-md-3">Select <span class="required">
 													* </span>
 													</label>
@@ -83,7 +83,7 @@
                                                 <div class="clearfix"></div>
                                                 <hr />
                                                 <div class="scores">
-                                                    <div class="form-group col-md-12">
+                                                    <div class="form-group ">
                                                     <div class="col-md-6">
                                                         <div class="portlet box blue">
                                                             <div class="portlet-title">
@@ -132,6 +132,213 @@
                                                                 <input class="form-control" type="hidden" name="total1" id="total1" <?php if(!$did){?>value="0"<?php }?> />
                                                             </div>
                                                         </div>
+
+                                                            <div class="portlet box blue">
+                                                                <div class="portlet-title">
+                                                                    <div class="caption"><strong>Cornering:</strong></div>
+                                                                </div>
+
+                                                                <div class="portlet-body">
+                                                                    <div>
+                                                                        <div class="col-md-12">
+                                                                            Signaling: not used / late / not cancelled
+                                                                        </div>
+                                                                        <div class="col-md-12 radio-list">
+                                                                            <label class="radio-inline">
+                                                                                2<input type="radio" class="2" id="cornering_signaling_1" name="cornering_signaling" value="1"/></label>
+                                                                            <label class="radio-inline">
+                                                                                4<input type="radio" class="4" id="cornering_signaling_2" name="cornering_signaling" value="2"/></label>
+                                                                            <label class="radio-inline">
+                                                                                6<input type="radio" class="6" id="cornering_signaling_3" name="cornering_signaling" value="3"/></label>
+                                                                            <label class="radio-inline">
+                                                                                8<input type="radio" class="8" id="cornering_signaling_4" name="cornering_signaling" value="4"/></label>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div class="col-md-12">
+                                                                            Speed:  too fast / too slow/momentum
+                                                                        </div>
+                                                                        <div class="col-md-12 radio-list">
+                                                                            <label class="radio-inline">
+                                                                                2<input type="radio" class="2" id="cornering_speed_1" name="cornering_speed" value="1"/></label>
+                                                                            <label class="radio-inline">
+                                                                                4<input type="radio" class="4" id="cornering_speed_2" name="cornering_speed" value="2"/></label>
+                                                                            <label class="radio-inline">
+                                                                                6<input type="radio" class="6" id="cornering_speed_3" name="cornering_speed" value="3"/></label>
+                                                                            <label class="radio-inline">
+                                                                                8<input type="radio" class="8" id="cornering_speed_4" name="cornering_speed" value="4"/></label>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div class="col-md-12">
+                                                                            Fails to get into proper:   lane / late / position
+                                                                        </div>
+                                                                        <div class="col-md-12 radio-list">
+                                                                            <label class="radio-inline">
+                                                                                2<input type="radio" class="2" id="cornering_fails_1" name="cornering_fails" value="1"/></label>
+                                                                            <label class="radio-inline">
+                                                                                4<input type="radio" class="4" id="cornering_fails_2" name="cornering_fails" value="2"/></label>
+                                                                            <label class="radio-inline">
+                                                                                6<input type="radio" class="6" id="cornering_fails_3" name="cornering_fails" value="3"/></label>
+                                                                            <label class="radio-inline">
+                                                                                8<input type="radio" class="8" id="cornering_fails_4" name="cornering_fails" value="4"/></label>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div class="col-md-12">
+                                                                            Proper set up for turn
+                                                                        </div>
+                                                                        <div class="col-md-12 radio-list">
+                                                                            <label class="radio-inline">
+                                                                                2<input type="radio" class="2" id="cornering_proper_set_up_turn_1" name="cornering_proper_set_up_turn" value="1"/></label>
+                                                                            <label class="radio-inline">
+                                                                                4<input type="radio" class="4" id="cornering_proper_set_up_turn_2" name="cornering_proper_set_up_turn" value="2"/></label>
+                                                                            <label class="radio-inline">
+                                                                                6<input type="radio" class="6" id="cornering_proper_set_up_turn_3" name="cornering_proper_set_up_turn" value="3"/></label>
+                                                                            <label class="radio-inline">
+                                                                                8<input type="radio" class="8" id="cornering_proper_set_up_turn_4" name="cornering_proper_set_up_turn" value="4"/></label>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div class="col-md-12">
+                                                                            Turns too: wide / cuts corner / jumps curb
+                                                                        </div>
+                                                                        <div class="col-md-12 radio-list">
+                                                                            <label class="radio-inline">
+                                                                                2<input type="radio" class="2" id="cornering_turns_1" name="cornering_turns" value="1"/></label>
+                                                                            <label class="radio-inline">
+                                                                                4<input type="radio" class="4" id="cornering_turns_2" name="cornering_turns" value="2"/></label>
+                                                                            <label class="radio-inline">
+                                                                                6<input type="radio" class="6" id="cornering_turns_3" name="cornering_turns" value="3"/></label>
+                                                                            <label class="radio-inline">
+                                                                                8<input type="radio" class="8" id="cornering_turns_4" name="cornering_turns" value="4"/></label>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div class="col-md-12">
+                                                                            Use of wrong lane / impede traffic
+                                                                        </div>
+                                                                        <div class="col-md-12 radio-list">
+                                                                            <label class="radio-inline">
+                                                                                2<input type="radio" class="2" id="cornering_wrong_lane_impede_1" name="cornering_wrong_lane_impede" value="1"/></label>
+                                                                            <label class="radio-inline">
+                                                                                4<input type="radio" class="4" id="cornering_wrong_lane_impede_2" name="cornering_wrong_lane_impede" value="2"/></label>
+                                                                            <label class="radio-inline">
+                                                                                6<input type="radio" class="6" id="cornering_wrong_lane_impede_3" name="cornering_wrong_lane_impede" value="3"/></label>
+                                                                            <label class="radio-inline">
+                                                                                8<input type="radio" class="8" id="cornering_wrong_lane_impede_4" name="cornering_wrong_lane_impede" value="4"/></label>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        <div class="portlet box blue">
+                                                            <div class="portlet-title">
+                                                                <div class="caption"><strong>Shifting:</strong> Fails to perform the following</div>
+                                                            </div>
+
+                                                            <div class="portlet-body">
+                                                                <div>
+                                                                    <div class="col-md-12">
+                                                                        Smooth take off's
+                                                                    </div>
+                                                                    <div class="col-md-12 radio-list">
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="shifting_smooth_take_off_1" name="shifting_smooth_take_off" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            2<input type="radio" class="2" id="shifting_smooth_take_off_2" name="shifting_smooth_take_off" value="2"/></label>
+                                                                        <label class="radio-inline">
+                                                                            3<input type="radio" class="3" id="shifting_smooth_take_off_3" name="shifting_smooth_take_off" value="3"/></label>
+                                                                        <label class="radio-inline">
+                                                                            4<input type="radio" class="4" id="shifting_smooth_take_off_4" name="shifting_smooth_take_off" value="4"/></label>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="col-md-12">
+                                                                        Proper gear selection
+                                                                    </div>
+                                                                    <div class="col-md-12 radio-list">
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="shifting_proper_gear_selection_1" name="shifting_proper_gear_selection" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            2<input type="radio" class="2" id="shifting_proper_gear_selection_2" name="shifting_proper_gear_selection" value="2"/></label>
+                                                                        <label class="radio-inline">
+                                                                            3<input type="radio" class="3" id="shifting_proper_gear_selection_3" name="shifting_proper_gear_selection" value="3"/></label>
+                                                                        <label class="radio-inline">
+                                                                            4<input type="radio" class="4" id="shifting_proper_gear_selection_4" name="shifting_proper_gear_selection" value="4"/></label>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="col-md-12">
+                                                                        Proper clutching
+                                                                    </div>
+                                                                    <div class="col-md-12 radio-list">
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="shifting_proper_clutching_1" name="shifting_proper_clutching" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            2<input type="radio" class="2" id="shifting_proper_clutching_2" name="shifting_proper_clutching" value="2"/></label>
+                                                                        <label class="radio-inline">
+                                                                            3<input type="radio" class="3" id="shifting_proper_clutching_3" name="shifting_proper_clutching" value="3"/></label>
+                                                                        <label class="radio-inline">
+                                                                            4<input type="radio" class="4" id="shifting_proper_clutching_4" name="shifting_proper_clutching" value="4"/></label>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="col-md-12">
+                                                                        Gear recovery
+                                                                    </div>
+                                                                    <div class="col-md-12 radio-list">
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="shifting_gear_recovery_1" name="shifting_gear_recovery" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            2<input type="radio" class="2" id="shifting_gear_recovery_2" name="shifting_gear_recovery" value="2"/></label>
+                                                                        <label class="radio-inline">
+                                                                            3<input type="radio" class="3" id="shifting_gear_recovery_3" name="shifting_gear_recovery" value="3"/></label>
+                                                                        <label class="radio-inline">
+                                                                            4<input type="radio" class="4" id="shifting_gear_recovery_4" name="shifting_gear_recovery" value="4"/></label>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="col-md-12">
+                                                                        Up/down shifting
+                                                                    </div>
+                                                                    <div class="col-md-12 radio-list">
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="shifting_up_down_1" name="shifting_up_down" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            2<input type="radio" class="2" id="shifting_up_down_2" name="shifting_up_down" value="2"/></label>
+                                                                        <label class="radio-inline">
+                                                                            3<input type="radio" class="3" id="shifting_up_down_3" name="shifting_up_down" value="3"/></label>
+                                                                        <label class="radio-inline">
+                                                                            4<input type="radio" class="4" id="shifting_up_down_4" name="shifting_up_down" value="4"/></label>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="portlet box blue">
@@ -310,316 +517,107 @@
                                                                 
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-
-                                                    <div class="form-group col-md-12">
-                                                    <div class="col-md-6">
-                                                        <div class="portlet box blue">
-                                                            <div class="portlet-title">
-                                                                <div class="caption"><strong>Cornering:</strong></div>
-                                                            </div>
-                                                            
-                                                            <div class="portlet-body">
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Signaling: not used / late / not cancelled             
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="cornering_signaling_1" name="cornering_signaling" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="cornering_signaling_2" name="cornering_signaling" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        6<input type="radio" class="6" id="cornering_signaling_3" name="cornering_signaling" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        8<input type="radio" class="8" id="cornering_signaling_4" name="cornering_signaling" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div> 
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															  Speed:  too fast / too slow/momentum 
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="cornering_speed_1" name="cornering_speed" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="cornering_speed_2" name="cornering_speed" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        6<input type="radio" class="6" id="cornering_speed_3" name="cornering_speed" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        8<input type="radio" class="8" id="cornering_speed_4" name="cornering_speed" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Fails to get into proper:   lane / late / position
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="cornering_fails_1" name="cornering_fails" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="cornering_fails_2" name="cornering_fails" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        6<input type="radio" class="6" id="cornering_fails_3" name="cornering_fails" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        8<input type="radio" class="8" id="cornering_fails_4" name="cornering_fails" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>  
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Proper set up for turn  
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="cornering_proper_set_up_turn_1" name="cornering_proper_set_up_turn" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="cornering_proper_set_up_turn_2" name="cornering_proper_set_up_turn" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        6<input type="radio" class="6" id="cornering_proper_set_up_turn_3" name="cornering_proper_set_up_turn" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        8<input type="radio" class="8" id="cornering_proper_set_up_turn_4" name="cornering_proper_set_up_turn" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>  
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Turns too: wide / cuts corner / jumps curb          	
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="cornering_turns_1" name="cornering_turns" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="cornering_turns_2" name="cornering_turns" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        6<input type="radio" class="6" id="cornering_turns_3" name="cornering_turns" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        8<input type="radio" class="8" id="cornering_turns_4" name="cornering_turns" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>
-                                                                
-                                                                 <div>
-                                                                    <div class="col-md-12">
-            															Use of wrong lane / impede traffic 	
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="cornering_wrong_lane_impede_1" name="cornering_wrong_lane_impede" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="cornering_wrong_lane_impede_2" name="cornering_wrong_lane_impede" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        6<input type="radio" class="6" id="cornering_wrong_lane_impede_3" name="cornering_wrong_lane_impede" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        8<input type="radio" class="8" id="cornering_wrong_lane_impede_4" name="cornering_wrong_lane_impede" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div> 
-                                                                
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="portlet box blue">
-                                                            <div class="portlet-title">
-                                                                <div class="caption"><strong>Shifting:</strong> Fails to perform the following</div>
-                                                            </div>
-                                                            
-                                                            <div class="portlet-body">
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Smooth take off's           
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="shifting_smooth_take_off_1" name="shifting_smooth_take_off" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="shifting_smooth_take_off_2" name="shifting_smooth_take_off" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        3<input type="radio" class="3" id="shifting_smooth_take_off_3" name="shifting_smooth_take_off" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="shifting_smooth_take_off_4" name="shifting_smooth_take_off" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div> 
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															  Proper gear selection
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="shifting_proper_gear_selection_1" name="shifting_proper_gear_selection" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="shifting_proper_gear_selection_2" name="shifting_proper_gear_selection" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        3<input type="radio" class="3" id="shifting_proper_gear_selection_3" name="shifting_proper_gear_selection" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="shifting_proper_gear_selection_4" name="shifting_proper_gear_selection" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Proper clutching
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="shifting_proper_clutching_1" name="shifting_proper_clutching" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="shifting_proper_clutching_2" name="shifting_proper_clutching" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        3<input type="radio" class="3" id="shifting_proper_clutching_3" name="shifting_proper_clutching" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="shifting_proper_clutching_4" name="shifting_proper_clutching" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>  
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Gear recovery
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="shifting_gear_recovery_1" name="shifting_gear_recovery" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="shifting_gear_recovery_2" name="shifting_gear_recovery" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        3<input type="radio" class="3" id="shifting_gear_recovery_3" name="shifting_gear_recovery" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="shifting_gear_recovery_4" name="shifting_gear_recovery" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>  
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Up/down shifting         	
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="shifting_up_down_1" name="shifting_up_down" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="shifting_up_down_2" name="shifting_up_down" value="2"/></label>
-                                                                        <label class="radio-inline">
-                                                                        3<input type="radio" class="3" id="shifting_up_down_3" name="shifting_up_down" value="3"/></label>
-                                                                        <label class="radio-inline">
-                                                                        4<input type="radio" class="4" id="shifting_up_down_4" name="shifting_up_down" value="4"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>
-                                                                
-                                                                 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                    <div class="form-group col-md-12">
-                                                    <div class="col-md-6">
                                                         <div class="portlet box blue">
                                                             <div class="portlet-title">
                                                                 <div class="caption"><strong>Backing:</strong> sight side / blind side | <em>Fails to</em></div>
                                                             </div>
-                                                            
+
                                                             <div class="portlet-body">
                                                                 <div>
                                                                     <div class="col-md-12">
-            															Uses proper set up          
+                                                                        Uses proper set up
                                                                     </div>
                                                                     <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="backing_uses_proper_set_up_1" name="backing_uses_proper_set_up" value="1"/>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div> 
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															  Check vehicle path before / while backing           
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="backing_path_before_while_driving_1" name="backing_path_before_while_driving" value="1"/></label>
                                                                         <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="backing_path_before_while_driving_2" name="backing_path_before_while_driving" value="2"/></label>
+                                                                            1<input type="radio" class="1" id="backing_uses_proper_set_up_1" name="backing_uses_proper_set_up" value="1"/>
                                                                     </div>
-    							                                    <div class="clearfix"></div>
+                                                                    <div class="clearfix"></div>
                                                                 </div>
-                                                                
+
                                                                 <div>
                                                                     <div class="col-md-12">
-            															Use of 4 way flashers / city horn
+                                                                        Check vehicle path before / while backing
                                                                     </div>
                                                                     <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="backing_use_4way_flashers_city_horn_1" name="backing_use_4way_flashers_city_horn" value="1"/></label>
                                                                         <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="backing_use_4way_flashers_city_horn_2" name="backing_use_4way_flashers_city_horn" value="2"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>  
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Shows certainty while steering
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="backing_show_certainty_while_steering_1" name="backing_show_certainty_while_steering" value="1"/></label>
+                                                                            1<input type="radio" class="1" id="backing_path_before_while_driving_1" name="backing_path_before_while_driving" value="1"/></label>
                                                                         <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="backing_show_certainty_while_steering_2" name="backing_show_certainty_while_steering" value="2"/></label>
+                                                                            2<input type="radio" class="2" id="backing_path_before_while_driving_2" name="backing_path_before_while_driving" value="2"/></label>
                                                                     </div>
-    							                                    <div class="clearfix"></div>
-                                                                </div>  
-                                                                
-                                                                <div>
-                                                                    <div class="col-md-12">
-            															Continually uses mirrors        	
-                                                                    </div>
-                                                                    <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="backing_continually_uses_mirror_1" name="backing_continually_uses_mirror" value="1"/></label>
-                                                                        <label class="radio-inline">
-                                                                        2<input type="radio" class="2" id="backing_continually_uses_mirror_2" name="backing_continually_uses_mirror" value="2"/></label>
-                                                                    </div>
-    							                                    <div class="clearfix"></div>
+                                                                    <div class="clearfix"></div>
                                                                 </div>
+
                                                                 <div>
                                                                     <div class="col-md-12">
-            															Maintain proper speed	       	
+                                                                        Use of 4 way flashers / city horn
                                                                     </div>
                                                                     <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="backing_maintain_proper_seed_1" name="backing_maintain_proper_seed" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="backing_use_4way_flashers_city_horn_1" name="backing_use_4way_flashers_city_horn" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            2<input type="radio" class="2" id="backing_use_4way_flashers_city_horn_2" name="backing_use_4way_flashers_city_horn" value="2"/></label>
                                                                     </div>
-    							                                    <div class="clearfix"></div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="col-md-12">
+                                                                        Shows certainty while steering
+                                                                    </div>
+                                                                    <div class="col-md-12 radio-list">
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="backing_show_certainty_while_steering_1" name="backing_show_certainty_while_steering" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            2<input type="radio" class="2" id="backing_show_certainty_while_steering_2" name="backing_show_certainty_while_steering" value="2"/></label>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="col-md-12">
+                                                                        Continually uses mirrors
+                                                                    </div>
+                                                                    <div class="col-md-12 radio-list">
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="backing_continually_uses_mirror_1" name="backing_continually_uses_mirror" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            2<input type="radio" class="2" id="backing_continually_uses_mirror_2" name="backing_continually_uses_mirror" value="2"/></label>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
                                                                 </div>
                                                                 <div>
                                                                     <div class="col-md-12">
-            															Complete in a reasonable time and fashion	       	
+                                                                        Maintain proper speed
                                                                     </div>
                                                                     <div class="col-md-12 radio-list">
-					                                                   <label class="radio-inline">
-                                                                        1<input type="radio" class="1" id="backing_complete_reasonable_time_fashion_1" name="backing_complete_reasonable_time_fashion" value="1"/></label>
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="backing_maintain_proper_seed_1" name="backing_maintain_proper_seed" value="1"/></label>
                                                                     </div>
-    							                                    <div class="clearfix"></div>
+                                                                    <div class="clearfix"></div>
                                                                 </div>
-                                                                
-                                                                 
+                                                                <div>
+                                                                    <div class="col-md-12">
+                                                                        Complete in a reasonable time and fashion
+                                                                    </div>
+                                                                    <div class="col-md-12 radio-list">
+                                                                        <label class="radio-inline">
+                                                                            1<input type="radio" class="1" id="backing_complete_reasonable_time_fashion_1" name="backing_complete_reasonable_time_fashion" value="1"/></label>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+
+
                                                             </div>
                                                         </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="clearfix"></div>
+                                                    <div class="form-group col-md-12">
+                                                    <div class="col-md-6">
                                                     </div>
                                                 </div>
                                                 <div class="clearfix"></div>

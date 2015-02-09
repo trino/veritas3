@@ -1,3 +1,37 @@
+<style>
+    @media print {
+        .page-header {
+            display: none;
+        }
+
+        .page-footer, .chat-form, .nav-tabs, .page-title, .page-bar, .theme-panel, .page-sidebar-wrapper, .more {
+            display: none !important;
+        }
+
+        .portlet-body, .portlet-title {
+            border-top: 1px solid #578EBE;
+        }
+
+        .tabbable-line {
+            border: none !important;
+        }
+
+        a:link:after,
+        a:visited:after {
+            content: "" !important;
+        }
+
+        .actions {
+            display: none
+        }
+
+        .paging_simple_numbers {
+            display: none;
+        }
+    }
+
+</style>
+
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 <?php $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id')); ?>
 <h3 class="page-title">
@@ -15,11 +49,7 @@
         </li>
     </ul>
     <div class="page-toolbar">
-        <!--div id="dashboard-report-range" style="padding-bottom: 6px;" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
-            <i class="icon-calendar"></i>&nbsp;
-            <span class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
-            <i class="fa fa-angle-down"></i>
-        </div-->
+
     </div>
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 </div>
@@ -62,36 +92,3 @@
         </div>
     </div>
 </div>
-<style>
-    @media print {
-        .page-header {
-            display: none;
-        }
-
-        .page-footer, .chat-form, .nav-tabs, .page-title, .page-bar, .theme-panel, .page-sidebar-wrapper, .more {
-            display: none !important;
-        }
-
-        .portlet-body, .portlet-title {
-            border-top: 1px solid #578EBE;
-        }
-
-        .tabbable-line {
-            border: none !important;
-        }
-
-        a:link:after,
-        a:visited:after {
-            content: "" !important;
-        }
-
-        .actions {
-            display: none
-        }
-
-        .paging_simple_numbers {
-            display: none;
-        }
-    }
-
-</style>

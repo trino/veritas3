@@ -44,29 +44,6 @@
 
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 
-
-<!--div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                Widget settings form goes here
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn blue">Save changes</button>
-                <button type="button" class="btn default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div-->
-
-
-<!-- /.modal -->
-<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-<!-- BEGIN STYLE CUSTOMIZER -->
 <div class="theme-panel hidden-xs hidden-sm">
     <!--div class="toggler">
     </div>
@@ -470,43 +447,6 @@ new AjaxUpload(button,{
 
 
 
-
-<?php /*
-<div class="actions columns large-2 medium-3">
-	<h3><?= __('Actions') ?></h3>
-	<ul class="side-nav">
-		<li><?= $this->Form->postLink(
-				__('Delete'),
-				['action' => 'delete', $profile->id],
-				['confirm' => __('Are you sure you want to delete # {0}?', $profile->id)]
-			)
-		?></li>
-		<li><?= $this->Html->link(__('List Profiles'), ['action' => 'index']) ?></li>
-	</ul>
-</div>
-<div class="profiles form large-10 medium-9 columns">
-	<?= $this->Form->create($profile); ?>
-	<fieldset>
-		<legend><?= __('Edit Profile') ?></legend>
-		<?php
-			echo $this->Form->input('title');
-			echo $this->Form->input('fname');
-			echo $this->Form->input('lname');
-			echo $this->Form->input('username');
-			echo $this->Form->input('email');
-			echo $this->Form->input('password');
-			echo $this->Form->input('address');
-			echo $this->Form->input('phone');
-			echo $this->Form->input('image');
-			echo $this->Form->input('admin');
-			echo $this->Form->input('super');
-		?>
-	</fieldset>
-	<?= $this->Form->button(__('Submit')) ?>
-	<?= $this->Form->end() ?>
-</div>
-*/
-?>
 <script>
 function searchClient()
 {

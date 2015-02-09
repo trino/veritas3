@@ -123,16 +123,7 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
         		<div class="caption">
         			<i class="fa fa-gift"></i><?php echo ucfirst($settings->document);?>s Chart
         		</div>
-        		<!--<div class="tools">
-        			<a href="javascript:;" class="collapse">
-        			</a>
-        			<a href="#portlet-config" data-toggle="modal" class="config">
-        			</a>
-        			<a href="javascript:;" class="reload">
-        			</a>
-        			<a href="javascript:;" class="remove">
-        			</a>
-        		</div>-->
+ 
         	</div>
         	<div class="portlet-body">
         		<div id="chart_2" class="chart">
@@ -155,12 +146,7 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/charts-flotcharts.js"></script>
 <script>
 jQuery(document).ready(function() {
-	// initiate layout and plugins
-	// Metronic.init(); // init metronic core components
-//Layout.init(); // init current layout
-//QuickSidebar.init(); // init quick sidebar
-//Demo.init(); // init demo features
-	// http://www.flotcharts.org/flot/examples/
+
 	ChartsFlotcharts.init();
 	ChartsFlotcharts.initCharts();
 	ChartsFlotcharts.initPieCharts();
@@ -256,16 +242,7 @@ jQuery(document).ready(function() {
 					<div class="caption">
 						<i class="fa fa-clipboard"></i>Documents
 					</div>
-					<!--<div class="tools">
-                        <a href="javascript:;" class="collapse">
-                        </a>
-                        <a href="#portlet-config" data-toggle="modal" class="config">
-                        </a>
-                        <a href="javascript:;" class="reload">
-                        </a>
-                        <a href="javascript:;" class="remove">
-                        </a>
-                    </div>-->
+
 				</div>
 				<div class="portlet-body">
 					<div id="documents" class="chart"> </div>
@@ -281,16 +258,7 @@ jQuery(document).ready(function() {
 				<div class="caption">
 					<i class="fa fa-clipboard"></i>Orders
 				</div>
-				<!--<div class="tools">
-                    <a href="javascript:;" class="collapse">
-                    </a>
-                    <a href="#portlet-config" data-toggle="modal" class="config">
-                    </a>
-                    <a href="javascript:;" class="reload">
-                    </a>
-                    <a href="javascript:;" class="remove">
-                    </a>
-                </div>-->
+
 			</div>
 			<div class="portlet-body">
 				<div id="orders" class="chart"> </div>
@@ -306,16 +274,7 @@ jQuery(document).ready(function() {
 				<div class="caption">
 					<i class="fa fa-user"></i>Profiles
 				</div>
-				<!--<div class="tools">
-                    <a href="javascript:;" class="collapse">
-                    </a>
-                    <a href="#portlet-config" data-toggle="modal" class="config">
-                    </a>
-                    <a href="javascript:;" class="reload">
-                    </a>
-                    <a href="javascript:;" class="remove">
-                    </a>
-                </div>-->
+
 			</div>
 			<div class="portlet-body">
 				<div id="profiles" class="chart"> </div>
@@ -331,16 +290,7 @@ jQuery(document).ready(function() {
 				<div class="caption">
 					<i class="fa fa-globe"></i>Clients
 				</div>
-				<!--<div class="tools">
-                    <a href="javascript:;" class="collapse">
-                    </a>
-                    <a href="#portlet-config" data-toggle="modal" class="config">
-                    </a>
-                    <a href="javascript:;" class="reload">
-                    </a>
-                    <a href="javascript:;" class="remove">
-                    </a>
-                </div>-->
+
 			</div>
 			<div class="portlet-body">
 				<div id="clients" class="chart"> </div>
@@ -348,27 +298,3 @@ jQuery(document).ready(function() {
 		</div>
 	</div>
 </div>
-<!--< php
-echo '<HR><H1>Clients</H1>';
-debug($clients);
-echo '<HR><H1>Profiles</H1>';
-debug($profiles);
-
-
-< php
-	echo '<P>Days: ' . $days;
-	echo '<P>Documents: ' . $doccount . ' Average: ' . round ($doccount / $days,2);
-	echo '<P>Orders: ' . $ordercount . ' Average: ' . round ($ordercount / $days,2);
-
-echo '<P>Profiles: ' . $profilecount . ' Average: ' . round ($profilecount / $days,2);
-echo '<P>Clients: ' . $clientcount . ' Average: ' . round ($clientcount / $days,2);
-
-echo "<P>Docs: " . enumdata($docdates, $days);
-echo "<P>Orders: " . enumdata($orderdates, $days);
-
-echo "<P>Profiles: " . enumdata($profiledates, $days);
-echo "<P>Clients: " . enumdata($clientdates, $days);
-
-debug($profiledates);
-debug($profiledates);
-?>-->

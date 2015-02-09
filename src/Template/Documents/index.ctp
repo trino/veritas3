@@ -14,15 +14,7 @@
 						<a href=""><?php echo ucfirst($settings->document);?>s</a>
 					</li>
 				</ul>
-                <!--form action="<?php echo $this->request->webroot; ?>documents/index" method="get">
-				<div class="page-toolbar">
-					<div id="dashboard-report-range" style="padding-bottom: 6px;" class="pull-right tooltips btn btn-fit-height grey-salt docum_date_filter" data-placement="top" data-original-title="Change dashboard date range">
-						<i class="icon-calendar"></i>&nbsp;
-						<span class="thin uppercase visible-lg-inline-block" id="doc_date_filter">&nbsp;</span>&nbsp;
-						<i class="fa fa-angle-down"></i>
-					</div>
-				</div>
-                </form-->
+
                 <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 			</div>
 

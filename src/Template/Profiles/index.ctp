@@ -1,3 +1,20 @@
+<style>
+@media print {
+    .page-header{display:none;}
+    .page-footer,.chat-form,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.more{display:none!important;}
+    .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
+    .tabbable-line{border:none!important;}
+    a:link:after,
+    a:visited:after {
+        content: "" !important;
+    }
+    .actions{display:none}
+    .paging_simple_numbers{display:none;}
+    }
+    
+</style>
+
+
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 <?php $sidebar =$this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");?>
 <h3 class="page-title">
@@ -193,18 +210,3 @@
         </div>
     </div>
 </div>
-<style>
-@media print {
-    .page-header{display:none;}
-    .page-footer,.chat-form,.nav-tabs,.page-title,.page-bar,.theme-panel,.page-sidebar-wrapper,.more{display:none!important;}
-    .portlet-body,.portlet-title{border-top:1px solid #578EBE;}
-    .tabbable-line{border:none!important;}
-    a:link:after,
-    a:visited:after {
-        content: "" !important;
-    }
-    .actions{display:none}
-    .paging_simple_numbers{display:none;}
-    }
-    
-</style>

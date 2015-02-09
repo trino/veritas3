@@ -16,11 +16,12 @@
 
                 <div class="chat-form">
                     <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
-                        <div class="col-md-12" style="padding-left:0;" align="left">
+                        <div class="col-md-10" style="padding-left:0;" align="left">
                             <input class="form-control input-inline" name="search" type="search"
                                    placeholder="Search for <?php echo ucfirst($settings->client); ?>s"
                                    value="<?php if (isset($search_text)) echo $search_text; ?>"
-                                   aria-controls="sample_1"/>
+                                   aria-controls="sample_1"/></DIV>
+                        <div class="col-md-2" style="padding-left:0;padding-right:0;" align="right">
                             <button type="submit" class="btn btn-primary">Search</button>
                         </div>
                     </form>

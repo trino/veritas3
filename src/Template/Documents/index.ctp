@@ -37,7 +37,7 @@
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
                         <!--<form action="<?php// echo $this->request->webroot; ?>documents/submittedBy" method="get">-->
-						<div class="col-md-3 col-sm-12" style="padding-left:0;">
+						<div class="col-md-3" style="padding-left:0;">
 							<select class="form-control" name="submitted_by_id" style="">
 								<option value="">Submitted by</option>
                                 <?php 
@@ -55,7 +55,7 @@
                             $type = $this->requestAction("documents/getDocType");
                         ?>
                         <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByType" method="get">-->
-						<div class="col-md-3 col-sm-12">
+						<div class="col-md-3" style="padding-left:0;">
 							<select class="form-control" name="type">
 								<option value=""><?php echo ucfirst($settings->document);?> type</option>
 								<?php 
@@ -75,7 +75,7 @@
                             $clients = $this->requestAction("documents/getAllClient");
                         ?>
                         <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByClient" method="get">-->
-						<div class="col-md-3 col-sm-12">
+						<div class="col-md-2" style="padding-left:0;">
 							<select class="form-control" name="client_id">
 								<option value=""><?php echo ucfirst($settings->client);?></option>
 								<?php 
@@ -91,13 +91,13 @@
 						</div>
 
 
-                        <div class="col-md-2 col-sm-12" >
+                        <div class="col-md-2"  style="padding-left:0;">
 
                             <input class="form-control" name="searchdoc" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
 
                         </div>
 
-                        <div class="col-md-1 col-sm-12">
+                        <div class="col-md-2" style="padding-left:0;padding-right:0;" align="right">
 							<button type="submit" class="btn btn-primary" id="search">Search</button>
                         </div>
 

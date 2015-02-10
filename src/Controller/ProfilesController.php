@@ -19,6 +19,7 @@ use Cake\Network\Email\Email;
 
             parent::initialize();
             $this->loadComponent('Settings');
+            $this->loadComponent('Profiles');
             if(!$this->request->session()->read('Profile.id'))
             {
                 $this->redirect('/login');
@@ -1237,15 +1238,47 @@ public function quiz(){}
         }
         
         function sendEmail($from,$to,$subject,$message)
-    {
-        //from can be array with this structure array('email_address'=>'Sender name'));
-        $email = new Email('default');
+        {
+            //from can be array with this structure array('email_address'=>'Sender name'));
+            $email = new Email('default');
+            
+            $email->from($from)
+            ->emailFormat('html')
+        ->to($to)
+        ->subject($subject)
+        ->send($message);
+        }
         
-        $email->from($from)
-        ->emailFormat('html')
-    ->to($to)
-    ->subject($subject)
-    ->send($message);
-    }
+        function cron()
+        {
+            $date = date('Y-m-d');
+            $q = TableRegistry::get('events');
+            $que = $q->find();
+            $query = $que->select()->where(['date LIKE "%'.$date.'%"','sent'=>0])->limit(200);
+            foreach($query as $todo){
+                //echo $todo->id;
+                $q2 = TableRegistry::get('profiles');
+            $que2 = $q2->find();
+            $query2 = $que2->select()->where(['id'=>$todo->user_id])->first();
+            $email = $query2->email;
+            if($email){
+                    $from = 'info@isbmee.com';
+                    $to = $email;
+                    $sub = 'ISBMEE (Schedule) - Reminder';
+                    $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>'.$todo->title.'<br /><strong>Description : </strong>'.$todo->description.'<br /><strong>Due By : </strong>'.$todo->date.'<br /><br /> Regards';
+                    $this->Profiles->sendEmail($from,$to,$sub,$msg);  
+                    }
+                    //$ = TableRegistry::get('profiles');
+
+                    //echo $s;die();
+                    $send = $q->query();
+                    $send->update()
+                        ->set(['sent'=>1])
+                        ->where(['id' => $todo->id])
+                        ->execute();         
+                    }
+                    die();
+            
+        }
     }
 ?>

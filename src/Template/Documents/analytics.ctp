@@ -39,8 +39,18 @@ function total($array){
 
 $days = 14;
 $decimals = 2;
+$startdate = -1;
 
 if (isset($_GET["days"])) {$days = $_GET["days"]; }
+if (isset($_GET["to"]) AND isset($_GET["from"])) {
+	$startdate = $_GET["to"];
+	$enddate = $_GET["from"];
+	if (getdatestamp($_GET["to"]) < getdatestamp($_GET["from"])) { 
+		$startdate = $_GET["from"];
+		$enddate = $_GET["to"];
+	}
+	$days = date_diff(date_create($startdate), date_create($enddate), true)->days+1;
+}
 if ($days < 1) { $days = 1; }
 
 $orderdates= sortdates($orders);
@@ -80,7 +90,7 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
 		$newdate =add_date($date, -$temp,0,0);
 		$thedate = extractdate($newdate);
 		//getdatestamp($newdate); //right($thedate,2);
-		if ($temp==0) { $day = '"' . "Today". '"' ; } else {$day = '"' . date("M d" , getdatestamp($newdate)) . '"' ; }
+		if ($temp==0) { $day = '"' . "End". '"' ; } else {$day = '"' . date("M d" , getdatestamp($newdate)) . '"' ; }
 		$quantity = 0;
 		if (array_key_exists($thedate,$variable)){$quantity  = $variable[$thedate];}
 		$tempstr = "[" . $day . ',' . $quantity . "]" . $delimeter . $tempstr;
@@ -152,16 +162,16 @@ jQuery(document).ready(function() {
 
 
 	var data = [{
-		data: [<?php echo enumdata($docdates, $days); ?>]
+		data: [<?php echo enumdata($docdates, $days, $startdate); ?>]
 	}];
 	var data2 = [{
-		data: [<?php echo enumdata($orderdates, $days); ?>]
+		data: [<?php echo enumdata($orderdates, $days, $startdate); ?>]
 	}];
 	var data3 = [{
-		data: [<?php echo enumdata($profiledates, $days); ?>]
+		data: [<?php echo enumdata($profiledates, $days, $startdate); ?>]
 	}];
 	var data4 = [{
-		data: [<?php echo enumdata($clientdates, $days); ?>]
+		data: [<?php echo enumdata($clientdates, $days, $startdate); ?>]
 	}];
 
 
@@ -230,16 +240,37 @@ jQuery(document).ready(function() {
 	bind("#orders", data2, <?php echo $ordavg; ?>, "#FFB848");
 	bind("#profiles", data3, <?php echo $profileavg; ?>, "#44B6AE");
 	bind("#clients", data4, <?php echo $clientavg; ?>, "#ACB5C3");
+	
 });
 </script>
-
+									<div class="chat-form"> <form action="/veritas3/documents/analytics" method="get">
+										<div class="row">
+											<div class="col-md-9">
+												<div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
+													<span class="input-group-addon"> Start </span>
+													<input type="text" class="form-control" name="from" value="<?php echo get2("from"); ?>">
+													<span class="input-group-addon"> to </span>
+													<input type="text" class="form-control" name="to" title="Leave blank to end at today" value="<?php echo get2("to", date("Y-m-d")); ?>">
+												</div>
+											</div>
+											<div class="col-md-3" align="right" style="padding-left:0">
+												<button type="submit" class="btn btn-primary">Search</button>
+											</div>
+										</div>
+									</form></div>
+									
 <?php 
+function get2($name, $default ="" ){
+		if (isset($_GET[$name])) { return $_GET[$name]; }
+		return $default;
+	}
+	
 function todate($date){
 	return date("M d", getdatestamp($date));
 }
 
 function newchart($color, $icon, $title, $chartid, $dates, $data){
-	echo '<div class="row"><div class="col-md-12">';
+	echo '<P><div class="row"><div class="col-md-12">';
 		echo '<div class="portlet box ' . $color . '">';
 			echo '<div class="portlet-title">';
 				echo '<div class="caption">';
@@ -250,15 +281,16 @@ function newchart($color, $icon, $title, $chartid, $dates, $data){
 				echo '<div id="' . $chartid . '" class="chart"> </div>';
 				
 				if (count($dates) > 0) {
-					$rawdata = "";
+					$rawdata = '<textarea disabled style="width:100%; height:300px; background-color: white; border: none; overflow-y: auto;">';
 					foreach($dates as $key => $value){
-						$rawdata.="<P>" . todate($key) . " has " . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)</P>";
+						$rawdata.=todate($key) . " has " . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
 						$alldocs = enumsubdocs($data, $key);
 						foreach($alldocs as $key => $value){
-							$rawdata.="<P>" . $value . ' ' . $key . "(s)</P>";
+							$rawdata.="\t" . $value . ' ' . $key . "(s)\r\n";
 						}
 					}
-					
+
+					$rawdata.='</textarea>';
 				} else {
 					$rawdata = "No documents";
 				}

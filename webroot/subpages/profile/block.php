@@ -19,7 +19,7 @@
                 <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
             </li>
             <li class="">
-                <a href="#subtab_2_3" data-toggle="tab">Homepage Top blocks</a>
+                <a href="#subtab_2_3" data-toggle="tab">Top blocks</a>
             </li>
             <li class="">
                 <a href="#subtab_2_4" data-toggle="tab">Assign to clients</a>

@@ -210,7 +210,7 @@
         <!-- BEGIN PROFILE CONTENT -->
         <div class="profile-content">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <!-- PORTLET MAIN -->
                 <div class="portlet light profile-sidebar-portlet">
                     <!-- SIDEBAR USERPIC -->
@@ -260,7 +260,7 @@
     
             </div>
 
-                <div class="col-md-10">
+                <div class="col-md-9">
                     <div class="portlet paddingless">
                         <div class="portlet-title line" style="display:none;">
                             <div class="caption caption-md">

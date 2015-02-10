@@ -150,7 +150,11 @@
                           <tr class="<?=$row_color_class;?>" role="row">
                                 <td><?= $this->Number->format($docs->id) ?></td>
                                 <td><?= h($docs->document_type) ?></td>
-                                <td><?= h($uploaded_by->username) ?></td>
+                              <td><?php
+                                  if (isset($uploaded_by->username)) {
+                                     echo h($uploaded_by->username);
+                                  } else { echo "Unknown user"; }
+                                  ?></td>
                                 <td><?= h($docs->created) ?></td>
                                 <td><?= h($getClientById->company_name) ?></td>
                                 <td class="actions  util-btn-margin-bottom-5 ">

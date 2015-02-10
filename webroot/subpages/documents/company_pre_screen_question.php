@@ -625,7 +625,7 @@
                         <div class="pad_bot" id="del_pre">
                             <label class="control-label col-md-3">Attach Document : </label>
                             <div class="col-md-6 pad_bot">
-                                <input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?><" />
+                                <input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" />
                                 <a href="#" id="fileUpload<?php echo $at;?>"  class="btn btn-primary">Browse</a>
                                 <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a><?php }?>
                                 <span class="uploaded"><?php echo $pa->attachment;?>  <?php if($pa->attachment){$ext_arr = explode('.',$pa->attachment);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>">Download</a><?php }else{?><br />

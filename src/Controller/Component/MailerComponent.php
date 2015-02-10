@@ -5,7 +5,7 @@ use Cake\Controller\Component;
 use Cake\ORM\TableRegistry;
 use Cake\Network\Email\Email;
 
-class ProfilesComponent extends Component
+class MailerComponent extends Component
 {
        function sendEmail($from,$to,$subject,$message)
     {

@@ -19,7 +19,7 @@ use Cake\Network\Email\Email;
 
             parent::initialize();
             $this->loadComponent('Settings');
-            $this->loadComponent('Profiles');
+            $this->loadComponent('Mailer');
             if(!$this->request->session()->read('Profile.id'))
             {
                 $this->redirect('/login');
@@ -1266,7 +1266,7 @@ public function quiz(){}
                     $to = $email;
                     $sub = 'ISBMEE (Schedule) - Reminder';
                     $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>'.$todo->title.'<br /><strong>Description : </strong>'.$todo->description.'<br /><strong>Due By : </strong>'.$todo->date.'<br /><br /> Regards';
-                    $this->Profiles->sendEmail($from,$to,$sub,$msg);  
+                    $this->Mailer->sendEmail($from,$to,$sub,$msg);  
                     }
                     //$ = TableRegistry::get('profiles');
 

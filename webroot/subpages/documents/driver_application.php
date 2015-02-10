@@ -8,27 +8,7 @@
 <p>Welcome Prospective Drivers of Challenger. </p>
 <p>Thank you for your interest in Challenger Motor Freight. In order to process your application in a timely manner, please complete all information requested including dates and contact information for your employment history. Please provide the following additional information.</p>
 
-    <?php
-    function provinces($name){
-        echo '<SELECT class="form-control" name="' . $name . '">';
-        echo '<OPTION>Province</OPTION>';
-        echo '<OPTION value="AB">Alberta</OPTION>';
-        echo '<OPTION value="BC">British Columbia</OPTION>';
-        echo '<OPTION value="MB">Manitoba</OPTION>';
-        echo '<OPTION value="NB">New Brunswick</OPTION>';
-        echo '<OPTION value="NL">Newfoundland and Labrador</OPTION>';
-        echo '<OPTION value="NT">Northwest Territories</OPTION>';
-        echo '<OPTION value="NS">Nova Scotia</OPTION>';
-        echo '<OPTION value="NU">Nunavut</OPTION>';
-        echo '<OPTION value="ON">Ontario</OPTION>';
-        echo '<OPTION value="PE">Prince Edward Island</OPTION>';
-        echo '<OPTION value="QC">Quebec</OPTION>';
-        echo '<OPTION value="SK">Saskatchewan</OPTION>';
-        echo '<OPTION value="YT">Yukon</OPTION>';
-        echo '</SELECT>';
-    }
 
-    ?>
 
 			<h4 class="">Driver Application for Employment</h4>
 		</div>

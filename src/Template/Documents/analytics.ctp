@@ -284,7 +284,7 @@ function newchart($color, $icon, $title, $chartid, $dates, $data){
 					$rawdata = '<textarea disabled style="width:100%; height:300px; background-color: white; border: none; overflow-y: auto;">';
 					foreach($dates as $key => $value){
 						$rawdata.=todate($key) . " has " . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
-						$alldocs = enumsubdocs($data, $key);
+						$alldocs = enumsubdocs($data, $key, $chartid);
 						foreach($alldocs as $key => $value){
 							$rawdata.="\t" . $value . ' ' . $key . "(s)\r\n";
 						}
@@ -304,25 +304,33 @@ newchart("green-haze", "icon-user", "Profiles", "profiles", $profiledates, $prof
 newchart("yellow-casablanca", "icon-doc", "Documents", "documents", $docdates, $documents );
 newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders);
 
-function enumsubdocs($thedocs, $date){
+function enumsubdocs($thedocs, $date, $chartid){
 	$alldocs = array();
 	foreach($thedocs as $adoc){
 		if(left($adoc->created, 10) == $date){
-		$doctype = $adoc->document_type;
-		if (strlen($doctype )==0){
-			$doctype = $adoc->profile_type; 
-			if (is_numeric($doctype)) { 
-				$profiletypes = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
-				$doctype = $profiletypes[$doctype]; 
+			$doctype = $adoc->document_type;
+			if (strlen($doctype )==0 and $chartid == "profiles"){
+				$doctype = $adoc->profile_type;
+				if (is_numeric($doctype)) {
+					$profiletypes = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
+					$doctype = $profiletypes[$doctype];
+				}
+			}
+			if (strlen($doctype )==0 and $chartid == "orders") {
+				$doctype = $adoc->is_hired;
+				if ($doctype) {
+					$doctype = " new hiree";
+				} else {
+					$doctype = " candidate";
+				}
+			}
+			//if (strlen($doctype )==0){$doctype = $adoc->customer_type; }
+			if (strlen($doctype )>0){
+				$quantity = 0;
+				if (array_key_exists($doctype,$alldocs)){$quantity  = $alldocs[$doctype];}
+				$alldocs[$doctype] = $quantity+1;
 			}
 		}
-		//if (strlen($doctype )==0){$doctype = $adoc->customer_type; }
-		if (strlen($doctype )>0){
-			$quantity = 0;
-			if (array_key_exists($doctype,$alldocs)){$quantity  = $alldocs[$doctype];} 
-			$alldocs[$doctype] = $quantity+1;
-		}
-	}
 	}
 	return $alldocs;
 }

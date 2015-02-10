@@ -39,14 +39,7 @@
                                                             <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                                             <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
 
-                                                           <div class="row">
 
-
-                                                               <div class="col-md-6">
-                                                                   <div class="form-group">
-                                                                       <h3 class="block">Sidebar</h3>                            </div>
-                                                               </div>
-                                                           </div>
 
 
                                                                        <table class="table table-bordered table-hover">
@@ -372,14 +365,7 @@
                                     </div>
                                     </div>
                                     <div class="tab-pane" id="subtab_2_2">
-                                        <div class="row">
 
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h3 class="block">Document</h3>                            </div>
-                                            </div>
-                                        </div>
 
                                                     <div class="">
                                 						<!--h1> Enable <?php echo ucfirst($settings->document);?>?</h1-->
@@ -454,14 +440,7 @@
                                 						
                                     </div>
                                     <div  class="tab-pane" id="subtab_2_3">
-                                       <div class="row">
 
-
-                                                               <div class="col-md-6">
-                                                                   <div class="form-group">
-                                                                       <h3 class="block">Homepage Top Block</h3>                            </div>
-                                                               </div>
-                                                           </div>
 
 
                                        
@@ -647,11 +626,15 @@
                                         <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) {
                                             //&& $this->request->session()->read("Profile.id")==$id
                                             ?>
+
+                                            <!--
                                             <div class="portlet box">
                                                 <div class="portlet-title" style="background: #CCC;">
                                                     <div class="caption">Assign to client</div>
                                                 </div>
                                                 <div class="portlet-body">
+                                                -->
+
                                                     <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> />
                                                     <div class="scrolldiv">
                                                     <table class="table" id="clientTable">
@@ -677,17 +660,17 @@
                                                     </div>
                                                     <div class="clearfix"></div>
                             
-                                                </div>
-                                            </div>
+                                               <!-- </div>
+                                            </div>-->
                                         <?php }
                                             else
                                             {
-                                            ?>
+                                            ?><!--
                                             <div class="portlet box">
                                                 <div class="portlet-title">
                                                     <div class="caption">Assign to client</div>
                                                 </div>
-                                                <div class="portlet-body">
+                                                <div class="portlet-body">-->
                                                     <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />
                                                     <div class="scrolldiv">
                                                     <table class="table scrolldiv" id="clientTable">
@@ -713,8 +696,8 @@
                                                     </div>
                                                     <div class="clearfix"></div>
                             
-                                                </div>
-                                            </div>
+                                              <!--  </div>
+                                            </div>-->
                                         <?php
                                             } ?>
                                         

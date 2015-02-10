@@ -38,7 +38,7 @@
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
                         <div class="col-md-3" style="padding-left:0;">
-                            <input class="form-control" name="searchdoc" type="search" placeholder=" Search Orders"
+                            <input class="form-control" name="searchdoc" type="search" placeholder="Search Order Title"
                                    value="<?php if (isset($search_text)) echo $search_text; ?>"
                                    aria-controls="sample_1"/>
                         </div>

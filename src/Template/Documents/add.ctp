@@ -103,6 +103,10 @@ function provinces($name){
                      <div class="subform8" style="display: none;">
                         <?php include('subpages/documents/audits.php'); ?>
                     </div>
+
+                    <div class="subform9" style="display: none;">
+                        <?php include('subpages/documents/products.php'); ?>
+                    </div>
                 </div>
                 <div class="form-actions">
                     <div class="row">

@@ -35,7 +35,7 @@
                         <tr>
                             <th><?= $this->Paginator->sort('id','Id',['escape' => false]) ?></th>
                             <th><?= $this->Paginator->sort('image','Image',['escape' => false]) ?></th>
-                            <th><?= $this->Paginator->sort('company_name','Company Name',['escape' => false]) ?></th>
+                            <th><?= $this->Paginator->sort('company_name', ucfirst($settings->client) . ' Name',['escape' => false]) ?></th>
                             <th><?= $this->Paginator->sort('description','Description',['escape' => false]) ?></th>
                            
                             <th class="actions"><?= __('Actions') ?></th>

@@ -112,7 +112,7 @@
                             <th><?= $this->Paginator->sort('profile_type','Profile Type') ?></th>
                             <th><?= $this->Paginator->sort('fname','First Name') ?></th>
                             <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
-                            <th><?= $this->Paginator->sort('username') ?></th>
+                            <th><?= $this->Paginator->sort('username', ucfirst($settings->profile)) ?></th>
                             <th><?= $this->Paginator->sort('email') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>

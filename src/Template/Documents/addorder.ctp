@@ -72,13 +72,14 @@
                                     </li>
                                     <?php
                                         $doc = $this->requestAction('/documents/getDocument/orders');
-
-
+                                        $subdoccli = $this->requestAction('/clients/getSubCli2/'.$cid);
+                                        $subdoccli2 = $subdoccli;
                                         $doc2 = $doc;
                                         $i = 2;
                                         $end = 0;
 
-                                        foreach ($doc as $d) {
+                                        foreach ($subdoccli as $sd) {
+                                           $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id); 
                                             $act = 0;
                                             if ($d->table_name == $table) {
                                                 $act = 1;
@@ -252,7 +253,8 @@
                                 include('subpages/profile/info_order.php');
                             ?>
                         </div>
-                        <?php foreach ($doc2 as $d) {
+                        <?php foreach ($subdoccli as $sd) {
+                            $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
                             $tab_count = $d->id;
                             $tab_count = $tab_count + 1;
                             ?>

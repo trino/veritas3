@@ -395,6 +395,14 @@ class ClientsController extends AppController {
                 $client = $clients->newEntity($_POST);
         		if ($this->request->is('post')) {
         		 if ($clients->save($client)) {
+                	$arr_s['client_id'] = $client->id;
+                    for($i=1;$i<9;$i++)
+                    {
+                        $arr_s['sub_id'] = $i;
+                        $sub_c = TableRegistry::get('client_sub_order');
+                        $sc = $sub_c->newEntity($arr_s);
+                        $sub_c->save($sc);
+                    }
                         if($_POST['division']!="")
                         {
                             $division = nl2br($_POST['division']);
@@ -598,7 +606,40 @@ class ClientsController extends AppController {
 
         die();
     }
+    function getFirstSub($id)
+    {
+        $sub = TableRegistry::get('subdocuments');
+        $query = $sub->find();
+        $q = $query->select()->where(['id'=>$id])->first();
+        $this->response->body($q);
+            return $this->response;
 
+        die();
+    }
+    function getSubCli($id)
+    {
+        $sub = TableRegistry::get('client_sub_order');
+        $query = $sub->find();
+        $q = $query->select()->where(['client_id'=>$id])->order(['display_order'=>'ASC']);
+
+
+            $this->response->body($q);
+            return $this->response;
+
+        die();
+    }
+    function getSubCli2($id)
+    {
+        $sub = TableRegistry::get('client_sub_order');
+        $query = $sub->find();
+        $q = $query->select()->where(['client_id'=>$id,'sub_id IN (SELECT id FROM subdocuments WHERE display = 1 AND orders = 1)'])->order(['display_order'=>'ASC']);
+
+
+            $this->response->body($q);
+            return $this->response;
+
+        die();
+    }
     function getCSubDoc($c_id,$doc_id)
     {
         $sub = TableRegistry::get('clientssubdocument');
@@ -892,7 +933,44 @@ class ClientsController extends AppController {
     ->subject($subject)
     ->send($message);
     }
-    
+    function forOrder()
+    {
+        $query = TableRegistry::get('clients');
+        $q = $query->find()->all();
+        foreach($q as $c)
+        {
+            
+            $arr_s['client_id'] = $c->id;
+            for($i=1;$i<9;$i++)
+            {
+                $arr_s['sub_id'] = $i;
+                $sub_c = TableRegistry::get('client_sub_order');
+                $sc = $sub_c->newEntity($arr_s);
+                $sub_c->save($sc);
+            }
+            
+             
+        }
+        die();
+    }
+    function updateOrder($cid)
+    {
+        $ids = $_POST['tosend'];
+        $arr = explode(',',$ids);
+       $arr_s['client_id'] = $cid;
+       $sub_c = TableRegistry::get('client_sub_order');
+       $del = $sub_c->query();
+       $del->delete()->where(['client_id' => $cid])->execute();
+            foreach($arr as $k=>$sid)
+            {
+                $arr_s['sub_id'] = $sid;
+                $arr_s['display_order'] = $k+1;
+                
+                $sc = $sub_c->newEntity($arr_s);
+                $sub_c->save($sc);
+            } 
+            die();
+    }
 
 
 }

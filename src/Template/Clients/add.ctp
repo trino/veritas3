@@ -484,18 +484,21 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                     <h4> Enable <?php echo ucfirst($settings->document); ?>s?</h4>
 
                                     <form action="" id="displayform1" method="post">
-                                        <table class="table table-light table-hover">
-                                            <tr>
+                                        <table class="table table-light table-hover sortable">
+                                            <tr class="myclass">
                                                 <th></th>
                                                 <th class="">System</th>
                                                 <th class=""><?php echo ucfirst($settings->client); ?> </th>
                                             </tr>
                                             <?php
-                                                $subdoc = $this->requestAction('/clients/getSub');
+                                                //$subdoc = $this->requestAction('/clients/getSub');
+                                                $subdoccli = $this->requestAction('/clients/getSubCli/'.$id);
 
-                                                foreach ($subdoc as $sub) {
+                                                foreach ($subdoccli as $subcl) {
+                                                    //echo $subcl->sub_id;
+                                                    $sub = $this->requestAction('/clients/getFirstSub/'.$subcl->sub_id);
                                                     ?>
-                                                    <tr>
+                                                    <tr id="subd_<?php echo $sub->id;?>" class="sublisting">
                                                         <td>
 
                                                             <?php echo ucfirst($sub['title']); ?>
@@ -575,6 +578,39 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
 <script>
     $(function () {
+        var tosend = '';
+        $('.sortable tbody').sortable({
+            items: "tr:not(.myclass)",
+            update: function (event, ui) {
+                
+                $('.sublisting').each(function(){
+                   var id = $(this).attr('id'); 
+                   id = id.replace('subd_','');
+                   if(tosend=='')
+                   {
+                    tosend = id;
+                   }
+                   else
+                   tosend = tosend+','+id;
+                });
+                $.ajax({
+                   url:'<?php echo $this->request->webroot;?>clients/updateOrder/<?php if(isset($id))echo $id;?>',
+                   data:'tosend='+tosend,
+                   type:'post' 
+                });
+                tosend = '';
+                
+                /*
+            var data = $(this).sortable('serialize');
+    
+            // POST to server using $.post or $.ajax
+            $.ajax({
+                data: data,
+                type: 'POST',
+                url: '/your/url/here'
+            });*/
+        }
+        });
         <?php
         if(isset($_GET['view']))
         {

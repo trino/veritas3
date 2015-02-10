@@ -349,15 +349,14 @@
             </div>
             <div class="clearfix"></div>
             <hr />
-   </div>
-
-   <div class="clearfix"></div>
 
 
-		<div class="form-group col-md-12">
+
+
+		<div class="form-group row">
 		  <h4 class="col-md-12">Accident Record For Past 5 Years or More</h4>
 		</div>
-        <div class="form-body">
+        <div class="gndn">
             <?php
             if(isset($sub['da_ac_detail']) && count($sub['da_ac_detail']))
             {
@@ -510,9 +509,10 @@
                     </tr>
                 </table>
             </div>
-</div>
+
+<div class="clearfix"></div>
             <div class="form-group row">
-										<label class="col-md-8 control-label">A) Have you ever been denied a license, permit or privilege to operate a motor vehicle? </label>
+										<label class="control-label col-md-8">A) Have you ever been denied a license, permit or privilege to operate a motor vehicle? </label>
 										<div class="col-md-3 radio-list">
 					<label class="radio-inline">
                                             <input type="radio" id="ever_been_denied_1" name="ever_been_denied" value="1" /> Yes</label>
@@ -522,7 +522,7 @@
             </div>
 
             <div class="form-group row">
-										<label class="col-md-8 control-label">B) Has any license, permit or privilege ever been suspended or revoked?</label>
+										<label class="control-label col-md-8">B) Has any license, permit or privilege ever been suspended or revoked?</label>
 											<div class="col-md-3 radio-list">
 					<label class="radio-inline">
                                             <input type="radio" id="suspend_any_license_1" name="suspend_any_license" value="1" /> Yes</label>
@@ -530,12 +530,12 @@
                                             <input type="radio" id="suspend_any_license_0" name="suspend_any_license" value="0" /> No</label>
                                         </div>
             </div>
-            <label class="col-md-8 control-label">If the answer to either A or B is Yes, attach statement giving details.</label>
+            <label class="control-label col-md-8">If the answer to either A or B is Yes, attach statement giving details.</label>
             <div class="clearfix"></div>
             <hr />
 
 
-            <div class="form-group row"><div class="col-md-12">
+
                 <div class="table-scrollable">
                     <table class="table table-striped">
 
@@ -571,7 +571,8 @@
                         </tr>
                     </table>
                 </div>
-                </div>
+            <div class="form-group row">
+
 										<label class="col-md-6 control-label">List states operated for in five years : </label>
 										<div class="col-md-6">
                                             <textarea class="form-control" name="list_states_operated_5year"></textarea>
@@ -599,8 +600,8 @@
             On March 30, 1999, Transport Canada and U.S. Federal Highway Administration (FHWA) entered into a reciprocal agreement regarding the physical requirements for a Canadian driver of a commercial vehicle in the U.S., as currently contained in the Federal Motor Carrier Safety Regulations, Part 391.41 et seq, and vice-versa. The reciprocal agreement removes the requirement for a Canadian driver to carry a copy of a medical examiner's certificate indicating that the driver is physically qualified. (In effect, the existence of valid driver's license issued by a province in Canada is deemed to be proof that a driver is physically qualified to drive in the U.S.) However, FHWA will not recognize a Provincial license if the driver has certain medical conditions and those conditions would prohibit him from driving in the U.S.
             </p>
             <div class="">
-            <div class="col-md-1">
-                I,
+            <div class="col-md-1" align="right">
+                <!--<label class="col-md-1 control-label">I,</label>-->I,
             </div>
                 <div class="col-md-4 ">
                     <input type="text" class="form-control" name="medical_certify_name" />
@@ -618,7 +619,7 @@
             </ol>
             <p>I further agree to inform Challenger Motor Freight Inc. should my medical status change, or if I can no longer certify conditions A to D, described above.</p>
 
-             <div class="form-group col-md-12">
+             <div class="form-group row">
                                     <div class="col-md-6">
 										<input type="text" class="form-control date-picker" placeholder="Date" name="medical_certify_date"/>
                                         </div>
@@ -640,7 +641,7 @@
             		</div>
                     <div class="">
                     <p>THIS CERTIFIES THAT THIS APPLICATION WAS COMPLETED BY ME, AND THAT ALL ENTRIES ON IT AND INFORMATION IN IT ARE TRUE AND COMPLETE TO THE BEST OF MY KNOWLEDGE. I AUTHORIZE YOU TO MAKE SUCH INVESTIGATIONS AND INQUIRIES OF MY PERSONAL, EMPLOYMENT, FINANCIAL OR MEDICAL HISTORY AND OTHER RELATED MATTERS AS MAY BE NECESSARY IN ARRIVING AT AN EMPLOYMENT DECISION. I HEREBY RELEASE EMPLOYERS, SCHOOLS OR PERSONS FROM ALL LIABILITY IN RESPONDING TO INQUIRIES IN CONNECTION WITH MY APPLICATION.IN THE EVENT OF EMPLOYMENT, I UNDERSTAND THAT FALSE OR MISLEADING INFORMATION GIVEN IN MY APPLICATION OR INTERVIEW(S) MAY RESULT IN DISCHARGE. I UNDERSTAND, ALSO, THAT I AM REQUIRED TO ABIDE BY ALL RULES AND REGULATIONS OF THE COMPANY, AS PERMITTED BY LAW.I UNDERSTAND THAT I HAVE THE RIGHT TO REVIEW INFORMATION PROVIDED BY PREVIOUS EMPLOYERS, HAVE ERRORS CORRECTED BY PREVIOUS EMPLOYER AND RESUBMITTED TO CHALLENGER MOTOR FREIGHT INC AND /OR HAVE A REBUTTAL STATEMENT ATTACHED TO ERRONEOUS INFORMATION IF MY PREVIOUS EMPLOYER AND I CANNOT AGREE ON THE ACCURACY OF THE INFORMATION. I UNDERSTAND THAT I MUST REQUEST PAST EMPLOYER INFORMATION OBTAINED BY CHALLENGER MOTOR FREIGHT INC IN WRITING WITHIN 30-DAYS OF EMPLOYMENT OR DENIAL OF EMPLOYMENT.</p>
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                                     <div class="col-md-6">
 										<input type="text" class="form-control date-picker" placeholder="Date" name="read_sign_date"/>
                                         </div>
@@ -665,7 +666,7 @@
                     <p>B) Part 392.42 and Part 383.33 of the Federal Motor Carrier Safety Regulations require that you notify your employer the NEXT BUSINESS DAY of any revocation or suspension of your driver's license. In addition, Part 383.31 requires that any time you violate a state or local traffic law (other than parking), you must report it to your employing motor carrier and the state that issued your license within 30 days.</p>
                     <p>DRIVER CERTIFICATION: I certify that I have read and understand the above requirements.</p>
                     <p>The following license is the only one I will possess:</p>
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                             <div class="col-md-3">
                                 <label class="control-label">Driver's License No.</label>
                             </div>
@@ -680,7 +681,7 @@
                                  <!--<input type="text" class="form-control" name="posses_province"/> -->
                             </div>
                        </div>
-                       <div class="form-group col-md-12">
+                       <div class="form-group row">
                             <div class="col-md-3">
                                 <label class="control-label">Exp. Date</label>
                             </div>
@@ -694,7 +695,7 @@
                                  <input type="text" class="form-control" name="posses_driver_signature"/>
                             </div>
                        </div>
-                       <div class="form-group col-md-12">
+                       <div class="form-group row">
                             <div class="col-md-3">
                                 <label class="control-label">Notes </label>
                             </div>
@@ -734,14 +735,14 @@
                         </div>
                     </div>
 
-                     <div class="form-group col-md-12">
+                     <div class="form-group row">
                                         <label class="control-label col-md-6">Dated at on the day of : </label>
                                         <div class="col-md-6">
 										<input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="dated_day"/>
                                         </div>
                        </div>
 
-                       <div class="form-group col-md-12">
+                       <div class="form-group row">
                                         <div class="col-md-6">
 										<input type="text" class="form-control" placeholder="Witness (Print Name)" name="witness_name"/>
                                         </div>
@@ -775,7 +776,7 @@
                                         </div>
                        </div>
                        <?php }?>
-                      <div class="form-group col-md-12">
+                      <div class="form-group row">
                         <div id="more_doc" data-driverapp="<?php if(count($sub['da_at']))echo count($sub['da_at']);else echo '1';?>">
                         <?php
                                         if(count($sub['da_at']))
@@ -806,9 +807,8 @@
                         </div>
                       </div>
 
-                      <div class="form-group col-md-12">
-                        <div class="col-md-3">
-                        </div>
+                      <div class="form-group row">
+                        <div class="col-md-3"></div>
                         <div class="col-md-9">
                             <a href="javascript:void(0);" class="btn btn-success" id="add_more_doc">Add More</a>
                         </div>
@@ -890,4 +890,4 @@
         $('#count_acc_record').val(parseInt(c)-1);
     });
  });
- </script>
+ </script></div></div></div>

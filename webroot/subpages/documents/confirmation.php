@@ -1,6 +1,6 @@
 
 <input type="hidden" id="confirmation" value="1" />
-<div class="form-group col-md-12">
+<div class="form-group row">
     <h4 class="block col-md-12">Confirmation</h4>
     
     				<label class="control-label col-md-12">Recruiter Name : </label>
@@ -16,7 +16,7 @@
     					<input type="text" class="form-control date-picker" name="conf_date" id="conf_date" value="<?php if(isset($modal->conf_date))echo $modal->conf_date;else{echo date('Y-m-d');}?>"/>
     				</div>
     </div>
-    <div class="form-group col-md-12">
+    <div class="form-group row">
     <label class="control-label col-md-12">Please sign below to confirm your submission. </label>
     <input type="hidden" name="recruiter_signature" id="recruiter_signature" value="<?php if(isset($modal->recruiter_signature) && $modal->recruiter_signature)echo $modal->recruiter_signature;?>" />
     

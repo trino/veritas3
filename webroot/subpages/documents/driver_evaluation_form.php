@@ -83,7 +83,7 @@
                                                 <div class="clearfix"></div>
                                                 <hr />
                                                 <div class="scores">
-                                                    <div class="form-group ">
+                                                    <div class="form-group row">
                                                     <div class="col-md-6">
                                                         <div class="portlet box blue">
                                                             <div class="portlet-title">
@@ -613,19 +613,15 @@
                                                     </div>
 
                                                 </div>
-
-
-                                                <div class="clearfix"></div>
-                                                    <div class="form-group col-md-12">
-                                                    <div class="col-md-6">
                                                     </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <hr />
+
+                                                        <div class="clearfix"></div>
+                                                        <hr />
+
                                                 
                                                 
-                                                </div>
-                                                <div class="form-group col-md-12">
+
+                                                <div class="form-group row">
 
 													<div class="col-md-4">
                                                         <label class="control-label">Total score<span class="required"> * </span> </label>
@@ -647,14 +643,14 @@
 													</div>
 												</div>
 
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group row">
 													<p class="center col-md-12 fontRed">The total score must be less than 20 to pass for Autoshift and 24 for Manual. Pass for a full trainee is less than 30</p>
 												</div>
                                                 <hr />
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group row">
                                                     <p class="control-label col-md-6"><strong>Summary</strong></p>
                                                 </div>
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group row">
 													<label class="control-label col-md-4">Recommended for hire <span class="required">
 													* </span>
 													</label>
@@ -669,7 +665,7 @@
 														</div>
 													</div>
 												</div>
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group row">
 													<label class="control-label col-md-4">Recommended as Full trainee <span class="required">
 													* </span>
 													</label>
@@ -684,7 +680,7 @@
 														</div>
 													</div>
 												</div>
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group row">
 													<label class="control-label col-md-4">Recommended fire hire with trainee <span class="required">
 													* </span>
 													</label>
@@ -700,7 +696,7 @@
 													</div>
 												</div>
                                                 
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group row">
 													<label class="control-label col-md-4">Comments <span class="required">
 													* </span>
 													</label>
@@ -717,7 +713,7 @@
                                                         }
                                                         
                                                         if(!count($sub['de_at'])){?>
-                                                <div class="form-group col-md-12" style="display:block;margin-top:5px; margin-bottom: 5px;">
+                                                <div class="form-group row" style="display:block;margin-top:5px; margin-bottom: 5px;">
                                                     <label class="control-label col-md-4">Attach Document : </label>
                                                     <div class="col-md-8">
                                                     <input type="hidden" class="road1" name="attach_doc[]" />
@@ -725,7 +721,7 @@
                                                     </div>
                                                    </div>
                                                    <?php }?>
-                                                  <div class="form-group col-md-12">
+                                                  <div class="form-group row">
                                                     <div id="more_driver_doc" data-road="<?php if(count($sub['de_at']))echo count($sub['de_at']);else echo '1';?>">
                                                        <?php
                                                         if(count($sub['de_at']))
@@ -758,7 +754,7 @@
                                                     </div>
                                                   </div>
                                                   
-                                                  <div class="form-group col-md-12">
+                                                  <div class="form-group row">
                                                     <div class="col-md-4">
                                                     </div>
                                                     <div class="col-md-8">

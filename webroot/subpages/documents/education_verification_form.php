@@ -1,5 +1,9 @@
 <form id="form_education">
-			<div class="form-body">
+    <div class="form-group row">
+        <h3 class="col-md-12">Past Education</h3>
+    </div>
+
+
     <?php
     $counter=0;
     if(isset($sub4['edu']) && count($sub4['edu']))
@@ -20,25 +24,22 @@
                 <?php
             }
             ?>
-            
-            <div class="form-group col-md-12">
-                    <h4 class="control-label col-md-12">Past Education</h4>
-                    </div>
-                    <div class="form-group col-md-12">
+
+                    <div class="form-group row">
                     <label class="control-label col-md-3">School/College Name </label>
                     <div class="col-md-9">
                     <input type="text" class="form-control" name="college_school_name[]"  value="<?php echo $emp->college_school_name;?>" />
                     </div>
                     </div>
                     
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                     <label class="control-label col-md-3">Address </label>
                     <div class="col-md-9">
                     <input type="text" class="form-control" name="address[]" value="<?php echo $emp->address;?>" />
                     </div>
                     </div>
                     
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                                 <label class="control-label col-md-3">Supervisor's Name</label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="supervisior_name[]" value="<?php echo $emp->supervisior_name;?>" />
@@ -50,7 +51,7 @@
                     </div>
                     
                     
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                                 <label class="control-label col-md-3">Supervisor's Email</label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control email1" name="supervisior_email[]" value="<?php echo $emp->supervisior_email;?>"  />
@@ -61,7 +62,7 @@
                                 </div>
                     </div>
                     
-                     <div class="form-group col-md-12">
+                     <div class="form-group row">
                                 <label class="control-label col-md-3">Education Start Date</label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control date-picker" name="education_start_date[]" value="<?php echo $emp->education_start_date;?>"  />
@@ -72,10 +73,10 @@
                                 </div>
                     </div>
                     
-                     <div class="form-group col-md-12">
+                     <div class="form-group row">
                                 <label class="control-label col-md-3">Claims with this Tutor</label>
                                 <div class="col-md-3">
-                                    &nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="1" <?php if($emp->claim_tutor == '1'){?>checked="checked"<?php }?>/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="0" <?php if($emp->claim_tutor == '0'){?>checked="checked"<?php }?>/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
+                                    &nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="1" <?php if($emp->claim_tutor == '1'){?>checked="checked"<?php }?>/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="0" <?php if($emp->claim_tutor == '0'){?>checked="checked"<?php }?>/>&nbsp;&nbsp;&nbsp;&nbsp;No
                                 </div>
                                 <label class="control-label col-md-3">Date Claims Occured</label>
                                 <div class="col-md-3">
@@ -83,14 +84,14 @@
                                 </div>
                     </div>
                     
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                                 <label class="control-label col-md-3">Education history confirmed by (Verifier Use Only):</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="education_history_confirmed_by[]" value="<?php echo $emp->education_history_confirmed_by;?>" />
                                 </div>
                     </div>
     
-                            <div class="form-group col-md-12">
+                            <div class="form-group row">
     
                                 <label class="col-md-3 control-label">Highest grade completed : </label>
                                 <div class="col-md-3">
@@ -122,7 +123,7 @@
                             
     
                                                           
-                            <div class="form-group col-md-12">
+                            <div class="form-group row">
                                 <label class="col-md-3 control-label">College : </label>
                                 <div class="col-md-3">
                                     <select name="college[]" class="form-control">
@@ -142,7 +143,7 @@
                                 </div>
                             </div>
     
-                        <div class="form-group col-md-12">
+                        <div class="form-group row">
                                 <label class="col-md-3 control-label" style="display: none;">Signature:</label>
                                 <div class="col-md-3">
                                 <input type="text" class="form-control" style="display: none;" name="signature[]" value="<?php echo $emp->signature;?>"/>
@@ -182,24 +183,24 @@
     else
     {
        ?>
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                     <h4 class="control-label col-md-12">Past Education</h4>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                     <label class="control-label col-md-3">School/College Name : </label>
                     <div class="col-md-9">
                     <input type="text" class="form-control" name="college_school_name[]" />
                     </div>
                     </div>
                     
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                     <label class="control-label col-md-3">Address : </label>
                     <div class="col-md-9">
                     <input type="text" class="form-control" name="address[]" />
                     </div>
                     </div>
                     
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                                 <label class="control-label col-md-3">Supervisor's Name : </label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="supervisior_name[]" />
@@ -211,7 +212,7 @@
                     </div>
                     
                     
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                                 <label class="control-label col-md-3">Supervisor's Email : </label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control email1" name="supervisior_email[]" />
@@ -222,7 +223,7 @@
                                 </div>
                     </div>
                     
-                     <div class="form-group col-md-12">
+                     <div class="form-group row">
                                 <label class="control-label col-md-3">Education Start Date : </label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control date-picker" name="education_start_date[]" />
@@ -233,10 +234,10 @@
                                 </div>
                     </div>
                     
-                     <div class="form-group col-md-12">
+                     <div class="form-group row">
                                 <label class="control-label col-md-3">Claims with this Tutor : </label>
                                 <div class="col-md-3">
-                                    &nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No</td>
+                                    &nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="1"/>&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="claim_tutor[]" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;No
                                 </div>
                                 <label class="control-label col-md-3">Date Claims Occurred : </label>
                                 <div class="col-md-3">
@@ -244,14 +245,14 @@
                                 </div>
                     </div>
                     
-                    <div class="form-group col-md-12">
+                    <div class="form-group row">
                                 <label class="control-label col-md-3">Education history confirmed by (Verifier Use Only) : </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="education_history_confirmed_by[]" />
                                 </div>
                     </div>
     
-                            <div class="form-group col-md-12">
+                            <div class="form-group row">
     
                                 <label class="col-md-3 control-label">Highest grade completed : </label>
                                 <div class="col-md-3">
@@ -266,7 +267,7 @@
                                 ?>
                                 </select>
                                 </div>
-                                <label class="col-md-3 control-label">High School (years attended) : </label>
+                                <label class="col-md-3 control-label">High School <small>(years attended)</small> : </label>
                                 <div class="col-md-3">
                                     <select name="high_school[]" class="form-control">
                                     <?php
@@ -283,7 +284,7 @@
                             
     
                                                           
-                            <div class="form-group col-md-12">
+                            <div class="form-group row">
                                 <label class="col-md-3 control-label">College (years attended) : </label>
                                 <div class="col-md-3">
                                     <select name="college[]" class="form-control">
@@ -303,7 +304,7 @@
                                 </div>
                             </div>
     
-                        <div class="form-group col-md-12">
+                        <div class="form-group row">
 
                         <label class="col-md-3 control-label">Date : </label>
                         <div class="col-md-3">
@@ -327,7 +328,7 @@
          $sub4['att'] = array();
                                                         if(!count($sub4['att']))
                                                         {?>
-    <div class="form-group col-md-12" style="display:block;margin-top:5px; margin-bottom: 5px;">
+    <div class="form-group row" style="display:block;margin-top:5px; margin-bottom: 5px;">
         <label class="control-label col-md-3">Attach Document : </label>
         <div class="col-md-9">
         <input type="hidden" name="attach_doc[]" class="edu1" />
@@ -336,7 +337,7 @@
         </div>
         </div>
         <?php }?>
-        <div class="form-group col-md-12">
+        <div class="form-group row">
         <div class="more_edu_doc" data-edu="<?php if(count($sub4['att']))echo count($sub4['att']);else echo '1';?>">
              <?php
                                                         if(count($sub4['att']))
@@ -366,8 +367,10 @@
                                                         ?>
         </div>
         </div>
-        
-        <div class="form-group col-md-12">
+
+
+
+        <div class="form-group row">
         <div class="col-md-3">
         </div>
         <div class="col-md-9">
@@ -377,7 +380,7 @@
         </div>
         
         <div class="clearfix"></div>
-    </div>
+
 </form>
 <script>
 $(function(){

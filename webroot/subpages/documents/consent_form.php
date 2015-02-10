@@ -1,8 +1,9 @@
 <form id="form_consent">
-    <h3 class="col-md-12">Consent for the release of police information and disclosure of personal information</h3>
-
-    <div class="form-body">
-        <div class="form-group col-md-12">
+    <div class="form-group row">
+        <h3 class="col-md-12">Consent for the release of police information and disclosure of personal information</h3>
+    </div>
+    <div class="gndn">
+        <div class="form-group row">
 
             <div class="col-md-4"> <label class="control-label">Surname : </label>
                 <input type="text" class="form-control required" name="last_name"/>
@@ -59,10 +60,10 @@
             </div>
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group row">
             <label class="control-label col-md-6">Current Address : </label>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-3">
                 <input type="text" class="form-control required" placeholder="Street and Number"
                        name="current_street_address"/>
@@ -81,11 +82,11 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <label class="control-label col-md-9">Previous Address (if you have not lived at Current Address for more
                 than 5 years): </label>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <div class="col-md-3">
                 <input type="text" class="form-control" placeholder="Street and Number" name="previous_street_address"/>
             </div>
@@ -105,7 +106,7 @@
         </div>
 
 
-        <div class="col-md-12">
+        <div class="form-group row"><div class="col-md-12">
             <p>I hereby consent to the search of the following:</p>
             <ul>
                 <li>Driver Record/ Abstract - Please specify Province or State (Region where Driver's License Issued)
@@ -123,9 +124,9 @@
                     and declared criminal record (as per Section 9.6.4 of the CCRTIS Dissemination policy)
                 </li>
             </ul>
-        </div>
+        </div></div>
 
-        <div class="col-md-12">
+        <div class="form-group row"><div class="col-md-12">
             <h4>*Authorization to Release Clearance Report or Any Police Information</h4>
 
             <p>I certify that the information I have supplied is correct and true to the best of my knowledge. I consent
@@ -146,23 +147,23 @@
             <p>*I am aware and I give consent that the records named above may be transmitted electronically or in hard
                 copy within Canada and to the country from where the search was requested as indicated below. By signing
                 this waiver, I acknowledge full understanding of the content on this consent form.</p>
-        </div>
+        </div></div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <label class="control-label col-md-11">Applicant's Signature- by signing this form you agree and consent to
                 the terms and release of information listed on this form : </label>
 
             
         </div>
-        <div class="form-group col-md-8">
+        <div class="form-group row">
             <?php include('canvas/consent_signature_driver2.php'); ?>
         </div>
-        <div class="form-group col-md-8">
+        <div class="form-group row">
             <?php include('canvas/consent_signature_witness2.php'); ?>
         </div>
 
         <div class="clearfix"></div>        
-        <div class="form-group col-md-12">
+        <div class="form-group row">
 
 
             <div class="col-md-4"><label class="control-label">Company Name Requesting Search : </label>
@@ -187,46 +188,49 @@
     <div class="clearfix"></div>
     <hr/>
 
+    <div class="form-group row">
     <h3 class="col-md-12">
         Declaration of Criminal Record
     </h3>
+    </div>
 
-    <div class="form-body">
+    <div class="form-group row"><div class="col-md-12">
         <p>*When declaration is submitted, it must be accompanied by the Consent for the Release of Police Information
             form.</p>
         <h4>PART 1 - DECLARATION OF CRIMINAL RECORD (if applicable) - Completed by Applicant</h4>
 
-        <div class="form-group col-md-12">
+            <div class="form-group row">
 
 
-            <div class="col-md-4"><label class="control-label">Surname: </label>
-                <input type="text" class="form-control" name="criminal_surname"/>
+                <div class="col-md-4"><label class="control-label">Surname: </label>
+                    <input type="text" class="form-control" name="criminal_surname"/>
+                </div>
+
+
+                <div class="col-md-4"><label class="control-label">Given Name: </label>
+                    <input type="text" class="form-control" name="criminal_given_name"/>
+                </div>
+
+                <div class="col-md-4"><label class="control-label">Sex: </label>
+                    <SELECT name="criminal_sex" class="form-control">
+                        <OPTION>Male</OPTION><OPTION>Female</OPTION>
+                    </SELECT>
+                    <!--<input type="text" class="form-control" name="criminal_sex"/>-->
+                </div>
+
+
+                <div class="col-md-4"><label class="control-label">Date of Birth : </label>
+                    <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD"
+                           name="criminal_date_birth"/>
+                </div>
+
+                <div class="col-md-4"><label class="control-label">Date: </label>
+                    <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="criminal_date" value="<?php echo date("Y-m-d"); ?>"/>
+                </div>
             </div>
 
 
-            <div class="col-md-4"><label class="control-label">Given Name: </label>
-                <input type="text" class="form-control" name="criminal_given_name"/>
-            </div>
-
-            <div class="col-md-4"><label class="control-label">Sex: </label>
-                <SELECT name="criminal_sex" class="form-control">
-                    <OPTION>Male</OPTION><OPTION>Female</OPTION>
-                </SELECT>
-                <!--<input type="text" class="form-control" name="criminal_sex"/>-->
-            </div>
-
-
-            <div class="col-md-4"><label class="control-label">Date of Birth : </label>
-                <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD"
-                       name="criminal_date_birth"/>
-            </div>
-
-            <div class="col-md-4"><label class="control-label">Date: </label>
-                <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" name="criminal_date" value="<?php echo date("Y-m-d"); ?>"/>
-            </div>
-        </div>
-
-        <div class="form-group col-md-12">
+        <div class="form-group row">
             <label class="control-label col-md-3">Current Address: </label>
 
             <div class="col-md-3">
@@ -240,7 +244,7 @@
                 <input type="text" class="form-control" placeholder="Postal Code" name="criminal_current_postal_code"/>
             </div>
         </div>
-
+        </div>
 
         <div class="col-md-12">
             <strong>DECLARATION OF CRIMINAL RECORD</strong>
@@ -273,6 +277,7 @@
                 National Repository of Criminal Records.</p>
         </div>
 
+        <div class="col-md-12">
         <div class="table-scrollable">
             <table class="table">
                 <thead>
@@ -319,6 +324,7 @@
 
             </table>
         </div>
+    </div>
 
         <div class="clearfix"></div>
     </div>
@@ -326,13 +332,15 @@
     <div class="clearfix"></div>
     <hr/>
 
+    <div class="form-group row">
     <h3 class="col-md-12">
         Mandatory use for all account holders
     </h3>
 
-    <div class="form-body">
-        <h4>Important Notice Regarding Background Reports From The PSP Online Service</h4>
-
+    <div class="gndn">
+        <div class="col-md-12">
+            <h4>Important Notice Regarding Background Reports From The PSP Online Service</h4>
+        </div>
         <div class="col-md-12">
             <p>
 
@@ -401,12 +409,10 @@
                 understand that if I sign this consent form, Prospective Employer may obtain a report of my crash and
                 inspection history. I hereby authorize Prospective Employer and its employees, authorized agents, and/or
                 affiliates to obtain the information authorized above.</p>
-        </div>
 
-        <div class="form-group col-md-12">
-            <label class="control-label col-md-3">Date: </label>
+            <label class="control-label col-md-2">Date : </label>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <input type="text" class="form-control date-picker" name="authorize_date"/>
             </div>
             <!--<label class="control-label col-md-3">Signature: </label>
@@ -414,15 +420,15 @@
                 <input type="hidden" class="form-control" name="authorize_signature"/>
             </div>-->
             <input type="hidden" class="form-control" name="authorize_signature"/>
-        </div>
-        <div class="form-group col-md-12">
-            <label class="control-label col-md-3">Name(Please Print): </label>
 
-            <div class="col-md-9">
+
+            <label class="control-label col-md-2"> Name(Please Print): </label>
+
+            <div class="col-md-6">
                 <input type="text" class="form-control" name="authorize_name"/>
             </div>
         </div>
-        <div class="col-md-12">
+            <div class="col-md-12">
             <p>NOTICE: This form is made available to monthly account holders by NICT on behalf of the U.S. Department
                 of Transportation, Federal Motor Carrier Safety Administration (FMCSA). Account holders are required by
                 federal law to obtain an Applicant's written or electronic consent prior to accessing the Applicant's
@@ -597,4 +603,4 @@
             $(this).closest('.del_append_consent').remove();
         });
     });
-</script>
+</script></div>

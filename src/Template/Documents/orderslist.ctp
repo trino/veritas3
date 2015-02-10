@@ -127,6 +127,7 @@
                             <th><?= $this->Paginator->sort('uploaded_for', 'Uploaded for'); ?></th>
 
                             <th><?= $this->Paginator->sort('client_id', 'Client'); ?></th>
+                            <th>Division</th>                            
                             <th><?= $this->Paginator->sort('created', 'Created'); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                             <th><?= $this->Paginator->sort('bright_planet_html_binary', 'Status'); ?></th>
@@ -143,8 +144,9 @@
                                 } else {
                                     $row_color_class = "even";
                                 }
-                               
+                                    if($order->user_id)
                                     $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
+                                    if($order->uploaded_for)                                    
                                     $uploaded_for = $this->requestAction("documents/getUser/" . $order->uploaded_for);
                                
                                 $client = $this->requestAction("clients/getClient/" . $order->client_id);
@@ -152,9 +154,11 @@
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($order->id); //echo $order->profile->title;  ?></td>
                                     <td><?= h($order->title) ?></td>
-                                    <td><?= h($uploaded_by->username) ?></td>
-                                    <td><?= h($uploaded_for->fname.' '.$uploaded_for->mname.' '.$uploaded_for->lname) ?></td>
+                                    <td><?php if(isset($uploaded_by))echo h($uploaded_by->username) ?></td>
+                                    <td><?php if(isset($uploaded_for))echo h($uploaded_for->fname.' '.$uploaded_for->mname.' '.$uploaded_for->lname) ?></td>
                                     <td><?= h($client->company_name) ?></td>
+                                    <td><?php if($order->division){$div = $this->requestAction('/documents/getDivById/'.$order->division);echo $div->title;}else{echo '';} ?></td>
+                                                                        
                                     <td><?= h($order->created) ?></td>
                                     <td class="actions  util-btn-margin-bottom-5">
 

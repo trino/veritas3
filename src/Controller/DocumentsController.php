@@ -1518,7 +1518,21 @@
             $this->response->body($query);
             return $this->response;
         }
-
+        function getDivById($id)
+        {
+            //echo $id;die();
+            if($id){
+            $doc = TableRegistry::get('client_divison');
+            $query = $doc->find();
+            $q = $query->select()->where(['id' => $id])->first();
+            
+            $this->response->body($q);
+            return $this->response;
+            die();
+            }
+            else
+            die();
+        }
         function getDocumentcount()
         {
             $doc = TableRegistry::get('Subdocuments');

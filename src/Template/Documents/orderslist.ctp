@@ -122,10 +122,8 @@
                         <tr class="sorting">
                             <th><?= $this->Paginator->sort('id'); ?></th>
                             <th><?= $this->Paginator->sort('orders.title', "Title"); ?></th>
-
                             <th><?= $this->Paginator->sort('user_id', 'Uploaded by'); ?></th>
                             <th><?= $this->Paginator->sort('uploaded_for', 'Uploaded for'); ?></th>
-
                             <th><?= $this->Paginator->sort('client_id', 'Client'); ?></th>
                             <th>Division</th>                            
                             <th><?= $this->Paginator->sort('created', 'Created'); ?></th>
@@ -136,9 +134,8 @@
                         <tbody>
                         <?php
                             $row_color_class = "odd";
-
                             foreach ($orders as $order):
-                                //var_dump($order);
+                                
                                 if ($row_color_class == "even") {
                                     $row_color_class = "odd";
                                 } else {

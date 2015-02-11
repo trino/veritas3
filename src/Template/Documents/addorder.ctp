@@ -96,8 +96,9 @@ function provinces($name){
                                         $doc2 = $doc;
                                         $i = 2;
                                         $end = 0;
-
+                                        $k_c=0;
                                         foreach ($subdoccli as $sd) {
+                                            $k_c++;
                                            $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id); 
                                             $act = 0;
                                             if ($d->table_name == $table) {
@@ -111,6 +112,15 @@ function provinces($name){
                                             <?php if ($prosubdoc['display'] != 0 && $d->display == 1) {
                                                 $j = $d->id;
                                                 $j = $j + 1;
+                                                if($k_c==1)
+                                                {
+                                                    $k_cou = $j;
+                                                }
+                                                else
+                                                if($k_cou<$j)
+                                                {
+                                                    $k_cou=$j;
+                                                }
                                                 ?>
                                                 <li <?php if ($table && $end == 0) echo "class = 'done'";
                                                     if ($act == 1) {
@@ -131,7 +141,7 @@ function provinces($name){
                                     ?>
 
                                     <li>
-                                        <a href="#tab<?php echo ++$j; ?>" data-toggle="tab" class="step">
+                                        <a href="#tab<?php echo ++$k_cou; ?>" data-toggle="tab" class="step">
 												<span class="number">
 												<?php echo $i++;?></span><br/>
 												<span class="desc">
@@ -139,7 +149,7 @@ function provinces($name){
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#tab<?php echo ++$j; ?>" data-toggle="tab" class="step">
+                                        <a href="#tab<?php echo ++$k_cou; ?>" data-toggle="tab" class="step">
 												<span class="number">
 												<?php echo $i++;?></span><br/>
 												<span class="desc">
@@ -262,7 +272,7 @@ function provinces($name){
                         }
                     ?>
                         <div class="clearfix"></div>
-                        <div class="<?php echo $tab; ?> <?php if (!($table)) {
+                        <div class="tabber <?php echo $tab; ?> <?php if (!($table)) {
                             if ($tab == 'tab-pane') { ?>active<?php }
                         } else {
                             if ($table == $d->table_name) { ?>active changeactive<?php }
@@ -272,12 +282,25 @@ function provinces($name){
                                 include('subpages/profile/info_order.php');
                             ?>
                         </div>
-                        <?php foreach ($subdoccli as $sd) {
+                        <?php
+                        $k_c = 0;
+                        foreach ($subdoccli as $sd) {
+                            $k_c++;
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
                             $tab_count = $d->id;
+                            
                             $tab_count = $tab_count + 1;
+                            if($k_c==1)
+                            {
+                                $k_co = $tab_count;
+                            }
+                            else
+                            {
+                                if($k_co<$tab_count)
+                                $k_co = $tab_count;
+                            }
                             ?>
-                            <div class="<?php echo $tab; ?>" id="tab<?php echo $tab_count; ?>">
+                            <div class="tabber <?php echo $tab; ?>" id="tab<?php echo $tab_count; ?>">
                                 <?php
 
                                     include('subpages/documents/' . $d->form);
@@ -285,12 +308,12 @@ function provinces($name){
                             </div>
                         <?php } ?>
 
-                        <div class="<?php echo $tab; ?>" id="tab<?php echo ++$tab_count; ?>">
+                        <div class="tabber <?php echo $tab; ?>" id="tab<?php echo ++$k_co; ?>">
                             <?php
                                 include('subpages/documents/confirmation.php');
                             ?>
                         </div>
-                        <div class="<?php echo $tab; ?>" id="tab<?php echo ++$tab_count; ?>">
+                        <div class="tabber <?php echo $tab; ?>" id="tab<?php echo ++$k_co; ?>">
                             <?php
                                 //include('subpages/documents/forview.php');
                                 include('subpages/documents/success.php');
@@ -1284,12 +1307,12 @@ function provinces($name){
     '<p>You will be notified once it\'s processed.</p>')
             }
 
-            var type = $(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
+            var type = $(".tabber.active").prev('.tabber').find("input[name='document_type']").val();
             if (type == 'add_driver') {
                 saveDriver('<?php echo $cid;?>');
             }
             else {
-                var confirmation = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
+                var confirmation = $(".tabber.active").prev('.tabber').find("#confirmation").val();
                 var data = {
                     uploaded_for: $('#uploaded_for').val(),
                     type: type,
@@ -1324,7 +1347,7 @@ function provinces($name){
                         // saving data
                         doc_id = res;
                         if (type == "Pre-Screening") {
-                            var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
+                            var forms = $(".tabber.active").prev('.tabber').find(':input'),
                                 url = '<?php echo $this->request->webroot;?>documents/savePrescreening',
                                 order_id = $('#did').val(),
                                 cid = '<?php echo $cid;?>';
@@ -1347,7 +1370,8 @@ function provinces($name){
                                 url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid;
                             savedDriverEvaluation(url, order_id, cid);
                         } else if (type == "Place MEE Order") {
-                            //alert('type');
+                            
+                            alert(type);
                             var order_id = $('#did').val(),
                                 cid = '<?php echo $cid;?>',
                                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid;
@@ -1362,7 +1386,7 @@ function provinces($name){
 
     });
     function saveSignature() {
-        if ($(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val() == 'Place MEE Order') {
+        if ($(".tabber.active").prev('.tabber').find("input[name='document_type']").val() == 'Place MEE Order') {
             save_signature('3');
             save_signature('4');
             save_signature('5');
@@ -1594,7 +1618,7 @@ function provinces($name){
     function fileUpload(ID) {
         // e.preventDefault();
 
-        var $type = $(".tab-pane.active").find("input[name='document_type']").val(),
+        var $type = $(".tabber.active").find("input[name='document_type']").val(),
             param = {
                 type: 'order',
                 doc_type: $type,

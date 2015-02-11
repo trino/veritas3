@@ -250,8 +250,8 @@
 		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/faq">FAQ</a> /
 		<a style="color:white;"  href="<?php echo $this->request->webroot;?>pages/view/privacy_code">Privacy</a> /
 
-		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/terms">Terms</a> /
-		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/version_log">Version Log</a>
+		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/terms">Terms</a> <?php if($this->request->session()->read('Profile.super')){?>/
+		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/version_log">Version Log</a><?php }?>
     </div>
 
 

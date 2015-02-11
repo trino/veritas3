@@ -63,7 +63,8 @@ class PagesController extends AppController {
                     ->set($con)
                     ->where(['slug'=>$slug])
                     ->execute();
-        $this->redirect(['controller'=>'profiles','action'=>'index']);
+         $this->Flash->success('Page saved successfully');           
+        $this->redirect('/profiles/edit/'.$this->request->session()->read('Profile.id'));
     }
     function get_content($slug)
     {

@@ -205,6 +205,7 @@ var FormWizard = function () {
                 if (current == 1) {
                     $('#divison').removeAttr('disabled');
                     $('#form_wizard_1').find('.button-previous').hide();
+                    
                 } else {
                     $('#divison').attr('disabled','disabled');
                     $('#form_wizard_1').find('.button-previous').show();
@@ -249,6 +250,7 @@ var FormWizard = function () {
 //                    $('.cont').attr('id','');
                     $('#select_division').hide();
                     $('.button-previous').hide();
+                    window.location = base_url;
                 }
 
                 if (current >= total) {
@@ -285,7 +287,7 @@ var FormWizard = function () {
                     success.hide();
                     error.hide();
                                           
-                    if($('#tab3').attr('class') == 'tab-pane active')
+                    if($('.tabber.active').attr('id') == 'tab3')
                     {
                         
                         if(!$('#confirm_check').is(':checked') && $('.button-next').attr('id')!='nextview')

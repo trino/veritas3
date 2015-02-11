@@ -1251,10 +1251,26 @@ public function quiz(){}
         
         function cron()
         {
+            //die('HERE');
             $date = date('Y-m-d');
+            $time = date('H');
+            
+            $m = date('i');
+            $remainder = $m%5;
+            $m = $m-$remainder;
+            if($m<10)
+            $m = '0'.$m;
+            $m2 = $m+5;
+            if($m2<10)
+            $m2 = '0'.$m2;
+            $date2 = $date.' '.$time.':'.$m2;
+            $date = $date.' '.$time.':'.$m;
+           //echo $date2;
+            
+            
             $q = TableRegistry::get('events');
             $que = $q->find();
-            $query = $que->select()->where(['date LIKE "%'.$date.'%"','sent'=>0])->limit(200);
+            $query = $que->select()->where(['(date LIKE "%'.$date.'%" OR date LIKE "%'.$date2.'%")','sent'=>0])->limit(200);
             foreach($query as $todo){
                 //echo $todo->id;
                 $q2 = TableRegistry::get('profiles');

@@ -25,17 +25,17 @@ function printoption2($value, $selected="", $option)
     echo '<OPTION VALUE="' . $value . '"' . $tempstr . ">" . $option . "</OPTION>";
 }
 
-function printoptions($name, $valuearray, $selected="", $optionarray, $isdisabled="")
-{
-    echo '<SELECT ' . $isdisabled . ' name="' . $name . '" class="form-control member_type" >';
+function printoptions($name, $valuearray, $selected="", $optionarray, $isdisabled="", $isrequired=false){
+    echo '<SELECT ' . $isdisabled . ' name="' . $name . '" class="form-control member_type"';
+    if ($isrequired == 1) { echo ' required="required">';} else { echo '>';}
     for ($temp = 0; $temp < count($valuearray); $temp += 1) {
         printoption2($valuearray[$temp], $selected, $optionarray[$temp]);
     }
     echo '</SELECT>';
 }
 
-function printprovinces($name, $selected="", $isdisabled=""){
-    printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"), $isdisabled );
+function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
+    printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"),  $isdisabled, $isrequired );
 
 }
 ?>
@@ -139,7 +139,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                                     Contact
                                 </option>
 
-                                <!--option
+                                <option
                                     value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
 
                                 ?>>
@@ -151,7 +151,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
 
                                 ?>>
                                     Owner Driver
-                                </option-->
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -321,7 +321,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                         <div class="form-group">
 
                             <label class="control-label">First Name</label>
-                            <input <?php echo $is_disabled ?> name="fname" type="text"
+                            <input <?php echo $is_disabled ?> name="fname" type="text" required="required"
                                                               placeholder="eg. John"
                                                               class="form-control req_driver" <?php if (isset($p->fname)) { ?> value="<?php echo $p->fname; ?>" <?php } ?>/>
                         </div>
@@ -342,7 +342,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Last Name</label>
-                            <input <?php echo $is_disabled ?> name="lname" type="text"
+                            <input <?php echo $is_disabled ?> name="lname" type="text" required="required"
                                                               placeholder="eg. Doe"
                                                               class="form-control req_driver" <?php if (isset($p->lname)) { ?> value="<?php echo $p->lname; ?>" <?php } ?>/>
                         </div>
@@ -392,7 +392,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                         <div class="form-group">
 
                             <label class="control-label">Place of Birth</label>
-                            <input <?php echo $is_disabled ?> name="placeofbirth" type="text"
+                            <input <?php echo $is_disabled ?> name="placeofbirth" type="text" required="required"
                                                               placeholder=""
                                                               class="form-control" <?php if (isset($p->placeofbirth)) { ?> value="<?php echo $p->placeofbirth; ?>" <?php } ?>/>
                         </div>
@@ -423,7 +423,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                                         }
 
 
-                                        echo '<select class="form-control req_driver " NAME="doby" ' . $is_disabled . '>';
+                                        echo '<select class="form-control req_driver " NAME="doby" ' . $is_disabled . ' required="required">';
 
                                         $now = date("Y");
                                         for ($temp = $now; $temp > 1899; $temp -= 1) {
@@ -432,7 +432,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                                         echo '</select></div><div class="col-md-4">';
 
 
-                                        echo '<select  class="form-control req_driver " NAME="dobm" ' . $is_disabled . '>';
+                                        echo '<select  class="form-control req_driver " NAME="dobm" ' . $is_disabled . ' required="required">';
                                         $monthnames = array("Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec");
                                         for ($temp = 1; $temp < 13; $temp += 1) {
                                             if ($temp < 10)
@@ -442,7 +442,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                                         echo '</select></div><div class="col-md-4">';
 
 
-                                        echo '<select class="form-control req_driver " name="dobd" ' . $is_disabled . '>';
+                                        echo '<select class="form-control req_driver " name="dobd" ' . $is_disabled . ' required="required">';
                                         for ($temp = 1; $temp < 32; $temp++) {
                                             if ($temp < 10)
                                                 $temp = "0" . $temp;
@@ -483,9 +483,9 @@ function printprovinces($name, $selected="", $isdisabled=""){
                             <div class="form-group">
                                 <?php 
                                 if(isset($p->province))
-                                printprovinces("province", $p->province, $is_disabled );
+                                printprovinces("province", $p->province, $is_disabled, false );
                                 else
-                                printprovinces("province", "", $is_disabled );
+                                printprovinces("province", "", $is_disabled , false);
                                 ?>
 
                                 <!-- old
@@ -533,7 +533,7 @@ function printprovinces($name, $selected="", $isdisabled=""){
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Driver License #</label>
-                                <input <?php echo $is_disabled ?> name="driver_license_no" type="text"
+                                <input <?php echo $is_disabled ?> name="driver_license_no" type="text" required="required"
                                                                   class="form-control req_driver" <?php if (isset($p->driver_license_no)) { ?> value="<?php echo $p->driver_license_no; ?>" <?php } ?> />
                             </div>
                         </div>
@@ -545,9 +545,9 @@ function printprovinces($name, $selected="", $isdisabled=""){
                                 
                                 <?php 
                                 if(isset($p->driver_province))
-                                printprovinces("driver_province", $p->driver_province, $is_disabled );
+                                printprovinces("driver_province", $p->driver_province, $is_disabled, true );
                                 else
-                                printprovinces("driver_province", "", $is_disabled );
+                                printprovinces("driver_province", "", $is_disabled,  true );
                                  ?>
                                 <!-- old
                                 <SELECT  < php echo $is_disabled ?> name="driver_province" class="form-control ">< php

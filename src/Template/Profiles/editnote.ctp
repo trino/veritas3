@@ -42,23 +42,18 @@ function usertype($profile){
     return $profiletype[$profile->profile_type];
 }
 
+
+//This is the sub that needs to be moved to the controller //
 use Cake\ORM\TableRegistry;
 function changenote($noteid, $text){
     //$setting = $this->Settings->get_permission($userid);
 
     $q = TableRegistry::get('recruiter_notes');
     $note = $q->find()->where(['id'=>$noteid])->first();
-
-    debug($note);
-    return;
-
     if (strlen($text) == 0) {//Delete note
-        if($note->profile_delete==0){
-            $this->Flash->error('Sorry, you don\'t have the required permissions.');
-            return $this->redirect("/");
-        }
-        //if ($this->Profiles->delete($profile)) {
-        $q->delete($noteid);
+        return false;
+        $query2 = $q->query();
+        $query2->delete($noteid)->first();
     } else { //edit note text
         $arr = array("description" => $text);
         $query2 = $q->query();
@@ -96,9 +91,18 @@ function changenote($noteid, $text){
                 echo "<BR>Profile type: " . $profile->profile_type . " (" . usertype($profile) . ")";
 
                 //changenote($noteid, $text)
-                if ($_GET["action"] == "edit"){
-                    changenote($desirednote, $_GET["text"]);
+                if (canuseredit($notes, $desirednote, $userid, $profile)) {
+                    if ($_GET["action"] == "edit") {
+                        changenote($desirednote, $_GET["text"]);
+                        echo 'Note has been changed to "' . $_GET["text"] . '"';
+                    } else {
+                        //changenote($desirednote, "");
+                        echo "Note has NOT been deleted";
+                    }
+                } else {
+                    echo "You cannot edit notes";
                 }
+                echo "<P><A href='edit/" . $userid . "'>Return</A></P>";
 
             } elseif ($notes) {
                 foreach ($notes as $n) {

@@ -287,11 +287,33 @@ public function quiz(){}
          * Used to get the user type (ie: admin) for editing permissions
          * @return void
          */
+
+        /**
+        function changenote($noteid, $text){
+            //$setting = $this->Settings->get_permission($userid);
+
+            $q = TableRegistry::get('recruiter_notes');
+            $note = $q->find()->where(['id'=>$noteid])->first();
+            if (strlen($text) == 0) {//Delete note
+                $query2 = $q->query();
+                $query2->delete($noteid)->first();
+            } else { //edit note text
+                $arr = array("description" => $text);
+                $query2 = $q->query();
+                $query2->update()->set($arr)->where(['id' => $noteid])->execute();
+            }
+        }
+         */
+//debug($profile);
+
+
         public function editnote(){
             $userid=$this->request->session()->read('Profile.id');
             $profile = $this->Profiles->get($userid);
             $this->set('profile', $profile);
         }
+
+    /**
         public function changenote(){
             $noteid = $_GET["id"];
             $text = $_GET["text"];
@@ -316,7 +338,7 @@ public function quiz(){}
                 $query2->update()->set($arr)->where(['id' => $noteid])->execute();
             }
         }
-
+*/
 
 
 

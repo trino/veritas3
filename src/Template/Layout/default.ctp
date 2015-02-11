@@ -243,15 +243,28 @@
 
     <div class="page-footer-inner" style="float:right;">
 
-    <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product_example">Products</a> /
+        <?php
+        use Cake\ORM\TableRegistry;
+        function get_title($slug) {
+            $content = TableRegistry::get("contents");
+            $l =  $content->find()->where(['slug'=>$slug])->first();
+            echo $l->title;
+        }
 
-		<a style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/help">Help</a> /
+        ?>
 
-		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/faq">FAQ</a> /
-		<a style="color:white;"  href="<?php echo $this->request->webroot;?>pages/view/privacy_code">Privacy</a> /
+    <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product_example"><?php get_title('product_example') ?></a> /
 
-		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/terms">Terms</a> <?php if($this->request->session()->read('Profile.super')){?>/
-		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/version_log">Version Log</a><?php }?>
+		<a style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/help"><?php get_title('help') ?></a> /
+
+		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/faq"><?php get_title('faq') ?></a> /
+		<a style="color:white;"  href="<?php echo $this->request->webroot;?>pages/view/privacy_code"><?php get_title('privacy_code') ?></a> /
+
+		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/terms"><?php get_title('terms') ?></a>
+
+        <?php if($this->request->session()->read('Profile.super')){?> / <a  style = "color:white;" href = "<?php echo $this->request->webroot;?>pages/view/version_log" > Version Log </a >
+
+        <?php } ?>
     </div>
 
 

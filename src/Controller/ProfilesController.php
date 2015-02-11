@@ -283,13 +283,48 @@ public function quiz(){}
 
         /**
          * Add method
-         *
+         * Gets the current user profile for editnote.ctp
+         * Used to get the user type (ie: admin) for editing permissions
          * @return void
          */
         public function editnote(){
+            $userid=$this->request->session()->read('Profile.id');
+            $profile = $this->Profiles->get($userid);
+            $this->set('profile', $profile);
+        }
+        public function changenote(){
+            $noteid = $_GET["id"];
+            $text = $_GET["text"];
 
+            $userid=$this->request->session()->read('Profile.id');
+            $setting = $this->Settings->get_permission($userid);
+
+            echo 'Note: ' . $noteid . '<BR>Text: ' & $text;
+            return;
+            $q = TableRegistry::get('recruiter_notes');
+            $note = $q->find()->where(['id'=>$noteid])->first();
+            if (strlen($text) == 0) {//Delete note
+                if($note->profile_delete==0){
+                    $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                    return $this->redirect("/");
+                }
+                    //if ($this->Profiles->delete($profile)) {
+                $q->delete($noteid);
+            } else { //edit note text
+                $arr = array("description" => $text);
+                $query2 = $q->query();
+                $query2->update()->set($arr)->where(['id' => $noteid])->execute();
+            }
         }
 
+
+
+
+        /**
+         * Add method
+         *
+         * @return void
+         */
         public function add() {
             $this->set('uid','');    
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));

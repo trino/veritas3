@@ -131,6 +131,12 @@
                             array_push($docz,$d->title);
                         }
                         //var_dump($docz);
+                        if (count($documents) == 0){
+                            echo '<TR><TD COLSPAN="6" ALIGN="CENTER">No ' . strtolower($settings->document) . 's found';
+                            if(isset($_GET['searchdoc'])) { echo " matching '" . $_GET['searchdoc'] . "'";}
+                            echo '</TD></TR>';
+                        }
+
                         foreach ($documents as $docs):
                             
                             if($docs->document_type=='feedbacks' && !$this->request->session()->read('Profile.super'))

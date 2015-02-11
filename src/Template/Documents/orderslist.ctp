@@ -134,6 +134,13 @@
                         <tbody>
                         <?php
                             $row_color_class = "odd";
+
+                        if (count($orders) == 0){
+                            echo '<TR><TD COLSPAN="9" ALIGN="CENTER">No orders found';
+                            if(isset($_GET['searchdoc'])) { echo " matching '" . $_GET['searchdoc'] . "'";}
+                            echo '</TD></TR>';
+                        }
+
                             foreach ($orders as $order):
                                 
                                 if ($row_color_class == "even") {

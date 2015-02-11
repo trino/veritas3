@@ -121,6 +121,14 @@
                         <?php
                         $row_color_class = "odd";
                         $profiletype = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
+
+                        if (count($profiles) == 0){
+                            echo '<TR><TD COLSPAN="7" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';
+                            if(isset($_GET['searchprofile'])) { echo " matching '" . $_GET['searchprofile'] . "'";}
+                            echo '</TD></TR>';
+                        }
+
+
                         foreach ($profiles as $profile):
 
                             if($row_color_class=="even")

@@ -44,7 +44,13 @@
                         <tbody>
                         <?php
                             $profile_id = $this->request->session()->read('Profile.id');
-                           
+
+                        if (count($client) == 0){
+                            echo '<TR><TD COLSPAN="6" ALIGN="CENTER">No ' . strtolower($settings->client) . 's found';
+                            if(isset($_GET['search'])) { echo " matching '" . $_GET['search'] . "'";}
+                            echo '</TD></TR>';
+                        }
+
                             foreach ($client as $clients):
                                 //print_r($clients);
                                 $profiles = explode(",", $clients->profile_id);

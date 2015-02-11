@@ -151,9 +151,14 @@
                                 <td><?= $this->Number->format($docs->id) ?></td>
                                 <td><?= h($docs->document_type) ?></td>
                               <td><?php
+
                                   if (isset($uploaded_by->username)) {
-                                     echo h($uploaded_by->username);
-                                  } else { echo "Unknown user"; }
+                                      $user = h($uploaded_by->username);
+                                  } else { $user = "Unknown user"; }
+
+                                  echo $user;
+                                  $docname = h($docs->document_type) . " uploaded by " . $user . " at " . h($docs->created);
+
                                   ?></td>
                                 <td><?= h($docs->created) ?></td>
                                 <td><?= h($getClientById->company_name) ?></td>
@@ -176,14 +181,14 @@
                                         if(isset($_GET['draft']))
                                         {
                                         ?> 
-                                        <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>/draft" onclick="return confirm('Are you sure you want to delete this?');" class="btn btn-danger" >Delete</a>
+                                        <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>/draft" onclick="return confirm('Are you sure you want to delete <?= $docname;?>?');" class="btn btn-danger" >Delete</a>
                                         
                                         <?php 
                                         }
                                         else
                                         {
                                         ?>
-                                        <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>" onclick="return confirm('Are you sure you want to delete this?');" class="btn btn-danger" >Delete</a>
+                                        <a href="<?php echo $this->request->webroot;?>documents/delete/<?php echo $docs->id;?>" onclick="return confirm('Are you sure you want to delete <?= $docname;?>?');" class="btn btn-danger" >Delete</a>
                                         <?php 
                                         }
                                     }

@@ -183,7 +183,7 @@
                                                     ?><a
                                                     href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>"
                                                     class="btn btn-danger"
-                                                    onclick="return confirm('Are you sure you want to delete?');">
+                                                    onclick="return confirm('Are you sure you want to delete <?= h($order->title) ?>?');">
                                                         Delete</a>
                                                 <?php
                                                 }

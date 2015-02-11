@@ -95,7 +95,7 @@
                                                 }
                                                 if ($sidebar->client_delete == '1') { ?>
                                                     <a href="<?php echo $this->request->webroot;?>clients/delete/<?php echo $clients->id;?>"
-                                                       onclick="return confirm('Are you sure you want to delete?');"
+                                                       onclick="return confirm('Are you sure you want to delete <?= h($clients->company_name) ?>?');"
                                                        class="btn btn-danger">Delete</a>
                                                 <?php }
 

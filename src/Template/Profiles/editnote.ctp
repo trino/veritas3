@@ -46,10 +46,12 @@ use Cake\ORM\TableRegistry;
 function changenote($noteid, $text){
     //$setting = $this->Settings->get_permission($userid);
 
-    echo 'Note: ' . $noteid . '<BR>Text: ' & $text;
-    return;
     $q = TableRegistry::get('recruiter_notes');
     $note = $q->find()->where(['id'=>$noteid])->first();
+
+    debug($note);
+    return;
+
     if (strlen($text) == 0) {//Delete note
         if($note->profile_delete==0){
             $this->Flash->error('Sorry, you don\'t have the required permissions.');

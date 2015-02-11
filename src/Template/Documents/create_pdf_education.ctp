@@ -149,7 +149,13 @@ $attach = "<br/><br/><strong>Attachments</strong>
                 
                 if($att)
                 {
-                    $doc_ext = array('pdf','doc','docx','pdf');
+                    $doc_ext = array('pdf',
+                    'doc',
+                    'docx',
+                    'txt',
+                    'xlsx',
+                    'xls',
+                    'csv',);
                     $vid_ext = array('mp4');
                     foreach($att as $a)
                     {

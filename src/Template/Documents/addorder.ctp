@@ -1371,7 +1371,7 @@ function provinces($name){
                             savedDriverEvaluation(url, order_id, cid);
                         } else if (type == "Place MEE Order") {
                             
-                            alert(type);
+                            //alert(type);
                             var order_id = $('#did').val(),
                                 cid = '<?php echo $cid;?>',
                                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid;

@@ -181,7 +181,9 @@ class SettingsController extends AppController {
              else
              {
                 $query3 = $setting->find()->first();
-                $l = "documents/addorder/".$query3->id;
+                if (!is_null($query3)) {
+                    $l = "documents/addorder/" . $query3->id;
+                }
              }
         }
          if($type=='order')

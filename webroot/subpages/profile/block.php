@@ -646,10 +646,12 @@
                                                                 foreach ($clients as $o)
                                                                 {
                                                                     $pro_ids = explode(",",$o->profile_id);
+                                                                    //http://localhost/veritas3/img/jobs/115380_540579.jpg
+                                                                    //http://localhost/veritas3/profiles/img/jobs/115380_540579.jpg
                                                                     ?>
                             
                                                                     <tr>
-                                                                        <td><input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
+                                                                        <td><img height="32" src="../../img/jobs/<?php echo $o->image; ?>"><input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
                                                                     </tr>
                             
                                                                 <?php

@@ -286,6 +286,10 @@ public function quiz(){}
          *
          * @return void
          */
+        public function editnote(){
+
+        }
+
         public function add() {
             $this->set('uid','');    
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));

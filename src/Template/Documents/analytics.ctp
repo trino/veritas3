@@ -243,7 +243,7 @@ jQuery(document).ready(function() {
 	
 });
 </script>
-									<div class="chat-form"> <form action="/veritas3/documents/analytics" method="get">
+									<div class="chat-form"> <form action="<?php echo $this->request->webroot; ?>documents/analytics" method="get">
 										<div class="row">
 											<div class="col-md-9">
 												<div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">

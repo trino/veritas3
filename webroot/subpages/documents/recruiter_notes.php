@@ -53,7 +53,7 @@
                             <div class="item-body">
                                 <span id="desc<?php echo $n->id;?>"><?php echo $n->description; ?></span><br />
                                 <a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_<?php echo $n->id;?>">Edit</a>
-                                <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="note_<?php echo $n->id;?>" onclick="return confirm('Are you sure you want to delete: &quot;<?php echo $n->description; ?>&quot;?');">Delete</a>
+                                <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_<?php echo $n->id;?>" onclick="return confirm('Are you sure you want to delete this note');">Delete</a>
                                 <br><br>
                             </div>
 
@@ -79,21 +79,16 @@
         });
         $('.deletenote').live('click',function() {
             var id_note = $(this).attr('id');
-            id_note = id_note.replace('note_','');
+            id_note = id_note.replace('dnote_','');
 
-            alert('Delete note: ' + id_note);
+            
             $.ajax({
-                url: '<?php echo $this->request->webroot;?>profiles/deleteNote/',
-                data: 'id=' + id_note,
-                type: 'post',
+                url: '<?php echo $this->request->webroot;?>profiles/deleteNote/'+id_note,
                 success: function (response) {
-                    if (response != 'error') {
-                        alert('Note added successfully');
-                    } else {
-                        alert(response);
-                    }
-                },
-                error:function(exception){alert('Exeption:'+exception);}
+                    
+                    $('#dnote_'+id_note).parent().parent().remove();
+                    alert('Note deleted successfully!');
+                }
             });
 
 

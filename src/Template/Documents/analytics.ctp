@@ -90,12 +90,13 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
 		$newdate =add_date($date, -$temp,0,0);
 		$thedate = extractdate($newdate);
 		//getdatestamp($newdate); //right($thedate,2);
-		if ($temp==0) { $day = '"' . "End". '"' ; } else {$day = '"' . date("M d" , getdatestamp($newdate)) . '"' ; }
+		$day = '"' . date("M d" , getdatestamp($newdate)) . '"' ; //if ($temp==0) { $day = '"' . "End". '"' ; } else {
 		$quantity = 0;
 		if (array_key_exists($thedate,$variable)){$quantity  = $variable[$thedate];}
 		$tempstr = "[" . $day . ',' . $quantity . "]" . $delimeter . $tempstr;
 		if ($temp==0) { $delimeter = ", " ;}
 	}
+
 	return $tempstr;
 }
 ?>

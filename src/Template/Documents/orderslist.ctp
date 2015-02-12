@@ -160,7 +160,13 @@
                                     <td><?= h($order->title) ?></td>
                                     <td><?php if(isset($uploaded_by))echo h($uploaded_by->username) ?></td>
                                     <td><?php if(isset($uploaded_for))echo h($uploaded_for->fname.' '.$uploaded_for->mname.' '.$uploaded_for->lname) ?></td>
-                                    <td><?= h($client->company_name) ?></td>
+                                    <td><?php
+                                        if (is_object($client)) {
+                                            echo h($client->company_name);
+                                        } else {
+                                            echo "Deleted client";
+                                        }
+                                    ?></td>
                                     <td><?php if($order->division){$div = $this->requestAction('/documents/getDivById/'.$order->division);echo $div->title;}else{echo '';} ?></td>
                                                                         
                                     <td><?= h($order->created) ?></td>

@@ -167,7 +167,16 @@
 
                                   ?></td>
                                 <td><?= h($docs->created) ?></td>
-                                <td><?= h($getClientById->company_name) ?></td>
+                                <td>
+                                    <?php
+                                    if (is_object($getClientById)) {
+                                        echo h($getClientById->company_name);
+                                    } else {
+                                        echo "Deleted client";
+                                    }
+                                    ?>
+
+                                </td>
                                 <td class="actions  util-btn-margin-bottom-5 ">
 
                                     <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view',$docs->client_id, $docs->id], ['class' => 'btn btn-info']);} ?>

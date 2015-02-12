@@ -525,8 +525,8 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	 function edit($id = null) {
-	   $check_pro_id = $this->Settings->check_pro_id($id);
-            if($check_pro_id==1)
+	   $check_client_id = $this->Settings->check_client_id($id);
+            if($check_client_id==1)
             {
                 $this->Flash->error('Sorry, the record does not exist');
                 return $this->redirect("/clients/index");
@@ -578,8 +578,8 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	function delete($id = null) {
-	   $check_pro_id = $this->Settings->check_pro_id($id);
-            if($check_pro_id==1)
+	   $check_client_id = $this->Settings->check_client_id($id);
+            if($check_client_id==1)
             {
                 $this->Flash->error('Sorry, the record does not exist');
                 return $this->redirect("/clients/index");

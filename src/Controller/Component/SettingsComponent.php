@@ -138,6 +138,19 @@ class SettingsComponent extends Component
         }
     }
     
+    function check_client_id($id)
+    {
+        $profile = TableRegistry::get('clients');
+        $query = $profile->find()->select('id')->where(['id'=>$id]);
+                 
+         $l = $query->first();
+        if(!$l)
+        {
+            return 1;
+        }
+    }
+    
+    
     function check_permission($uid,$pid)
     {
         $user_profile = TableRegistry::get('profiles');

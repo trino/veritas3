@@ -172,7 +172,7 @@
                                     if (is_object($getClientById)) {
                                         echo h($getClientById->company_name);
                                     } else {
-                                        echo "Deleted client";
+                                        echo "Deleted " . $settings->client;
                                     }
                                     ?>
 

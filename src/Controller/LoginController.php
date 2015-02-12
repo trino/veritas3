@@ -24,6 +24,7 @@ class LoginController extends AppController{
         $this->loadModel('Profiles');
         unset($_POST['submit']);
         $_POST['username'] = $_POST['name'];
+        $_POST['password'] = md5($_POST['password']);
         unset($_POST['name']);
         $q = $this->Profiles->find()->where($_POST)->first();
         

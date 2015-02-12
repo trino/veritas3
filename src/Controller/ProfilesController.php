@@ -451,6 +451,10 @@ public function quiz(){}
                 {
                    unset($_POST['password']);
                 }
+                else
+                {
+                    $_POST['password'] = md5($_POST['password']);
+                }
                 if ($this->request->is('post')) 
                 {
                      
@@ -528,6 +532,10 @@ public function quiz(){}
                     {
                         //die('here');
                        $this->request->data['password'] = $profile->password;
+                    }
+                    else
+                    {
+                         $this->request->data['password'] = md5($_POST['password']);
                     }
                 if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
                     $this->request->data['admin']=1;
@@ -1267,6 +1275,13 @@ public function quiz(){}
         return $this->response;
         die();
     }
+        public function deleteNote($id){
+            $this->loadModel('recruiter_notes');
+            $note = $this->recruiter_notes->get($id);
+            $this->recruiter_notes->delete($note);
+            die();
+        }
+
         public function saveNote($id,$rid)
         {
             $note = TableRegistry::get('recruiter_notes');
@@ -1289,7 +1304,7 @@ public function quiz(){}
                 
             </div>
             <div class="item-body">
-                <span id="desc'.$save->id.'">'.$_POST['description'].'</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_'.$save->id.'">Edit</a><br/><br/>
+                <span id="desc'.$save->id.'">'.$_POST['description'].'</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_'.$save->id.'">Edit</a> <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_'.$save->id.'" onclick="return confirm(\'Are you sure you want to delete this note?\');">Delete</a><br/><br/>
             </div>
         </div>';
             else
@@ -1319,7 +1334,7 @@ public function quiz(){}
                 
             </div>
             <div class="item-body">
-                <span id="desc'.$rid.'">'.$_POST['description'].'</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_'.$rid.'">Edit</a><br/><br/>
+                <span id="desc'.$rid.'">'.$_POST['description'].'</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_'.$rid.'">Edit</a> <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_'.$rid.'" onclick="return confirm(\'Are you sure you want to delete this note?\');">Delete</a><br/><br/>
             </div>
         </div>';
             }

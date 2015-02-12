@@ -51,7 +51,10 @@
 
                             </div>
                             <div class="item-body">
-                                <span id="desc<?php echo $n->id;?>"><?php echo $n->description; ?></span><br /><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_<?php echo $n->id;?>">Edit</a><br><br>
+                                <span id="desc<?php echo $n->id;?>"><?php echo $n->description; ?></span><br />
+                                <a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_<?php echo $n->id;?>">Edit</a>
+                                <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="note_<?php echo $n->id;?>" onclick="return confirm('Are you sure you want to delete: &quot;<?php echo $n->description; ?>&quot;?');">Delete</a>
+                                <br><br>
                             </div>
 
                         </div>
@@ -73,6 +76,29 @@
             $('#rid').val(id_note);
             $('#recruiter_notes').val($('#desc'+id_note).html());
             
+        });
+        $('.deletenote').live('click',function() {
+            var id_note = $(this).attr('id');
+            id_note = id_note.replace('note_','');
+
+            alert('Delete note: ' + id_note);
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>profiles/deleteNote/',
+                data: 'id=' + id_note,
+                type: 'post',
+                success: function (response) {
+                    if (response != 'error') {
+                        alert('Note added successfully');
+                    } else {
+                        alert(response);
+                    }
+                },
+                error:function(exception){alert('Exeption:'+exception);}
+            });
+
+
+
+
         });
         $('.recruiter_notes').slimScroll({
             height: '200px'

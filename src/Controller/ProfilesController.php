@@ -1267,6 +1267,10 @@ public function quiz(){}
         return $this->response;
         die();
     }
+        public function deleteNote($id){
+            echo $_POST['id'] . " was deleted<BR>";
+        }
+
         public function saveNote($id,$rid)
         {
             $note = TableRegistry::get('recruiter_notes');

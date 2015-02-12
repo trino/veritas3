@@ -95,7 +95,8 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <?php
                                                     $counter++;
                                                 }
-                                                $c = $counter;   
+                                                $c = $counter;
+                                            if($counter==0){ echo "<TR><TD>No profiles</TD></TR>";}
                                              ?>
                                              <?php
                                              foreach($getcontact as $cont)

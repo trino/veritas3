@@ -753,18 +753,26 @@ class ClientsController extends AppController {
 
        $pro = TableRegistry::get('Profiles');
 
+       if (is_object($q)){
        if($q->profile_id){
            $q->profile_id= ltrim ($q->profile_id, ',');
+       }}
+
+       $didit=false;
+       if (is_object($q)) {
+           if ($q->profile_id) {
+               $querys = $pro->find()->where(['id IN (' . $q->profile_id . ')']);
+               $didit = true;
+           }
        }
 
-        if($q->profile_id)
-            $querys = $pro->find()->where(['id IN ('.$q->profile_id.')']);
-        else
-            $querys= array();
+        if(!$didit){
+            $querys = array();
             $this->response->body(($querys));
             return $this->response;
+        }
 
-   }
+        }
 
    function getContact($id=null)
    {
@@ -775,11 +783,13 @@ class ClientsController extends AppController {
 //    if(($profile_id))
 //    {
         $pro = TableRegistry::get('Profiles');
-        if($q->contact_id)
-                $querys = $pro->find()->where(['id IN ('.$q->contact_id.')']);
-        else
-            $querys=array();
 
+
+        if($q->contact_id) {
+            $querys = $pro->find()->where(['id IN (' . $q->contact_id . ')']);
+        } else {
+            $querys = array();
+        }
         $this->response->body(($querys));
         return $this->response;
 

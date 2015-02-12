@@ -45,7 +45,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    <?php echo ucfirst($settings->profile); ?>s Listing
+                    List <?php echo ucfirst($settings->profile); ?>s
                 </div>
             </div>
 

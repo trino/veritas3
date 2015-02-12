@@ -27,7 +27,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-clipboard"></i>
-                    Orders Listing
+                    List Orders
                 </div>
             </div>
             <div class="portlet-body">

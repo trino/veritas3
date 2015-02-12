@@ -25,7 +25,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-copy"></i>
-                    <?php echo ucfirst($settings->document);?>s Listing
+                    List <?php echo ucfirst($settings->document);?>s
                 </div>
             </div>    
             <div class="portlet-body">

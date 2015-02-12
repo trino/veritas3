@@ -24,7 +24,7 @@
     ?>
 
     <div class="">
-
+        <input type="hidden" id="rid" value="0" />
         <textarea id="recruiter_notes" placeholder="Add driver notes here..." rows="2" class="form-control"></textarea>
         <a href="javascript:void(0);" class="btn btn-success" id="add_recruiter" style="float:right;margin:5px 0;">Submit</a>
 
@@ -39,19 +39,19 @@
                         <div class="item">
                             <div class="item-head">
                                 <div class="item-details">
-                                    <a href="../editnote?id=<?php echo $n->id . "&pid=" . $pid; ?>">
+                                    
                                     <span class="item-name primary-link">
                                         <?php
                                             $r_info = $this->requestAction('profiles/getRecruiterById/' . $n->recruiter_id);
                                             echo $r_info->fname . ' ' . $r_info->mname . ' ' . $r_info->lname ?>
                                     </span>
                                     <span class="item-label"><?php $arr_cr = explode(',', $n->created); echo $arr_cr[0]; ?></span>
-                                    </a>
+                                    
                                 </div>
 
                             </div>
                             <div class="item-body">
-                                <?php echo $n->description; ?><br><br>
+                                <span id="desc<?php echo $n->id;?>"><?php echo $n->description; ?></span><br /><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_<?php echo $n->id;?>">Edit</a><br><br>
                             </div>
 
                         </div>
@@ -67,6 +67,13 @@
 
 <script>
     $(function () {
+        $('.editnote').live('click',function(){
+            var id_note = $(this).attr('id');
+            id_note = id_note.replace('note_','');
+            $('#rid').val(id_note);
+            $('#recruiter_notes').val($('#desc'+id_note).html());
+            
+        });
         $('.recruiter_notes').slimScroll({
             height: '200px'
         });
@@ -77,14 +84,23 @@
             }
             else {
                 $.ajax({
-                    url: '<?php echo $this->request->webroot;?>profiles/saveNote/<?php echo $pid;?>',
+                    url: '<?php echo $this->request->webroot;?>profiles/saveNote/<?php echo $pid;?>/'+$('#rid').val(),
                     data: 'description=' + $('#recruiter_notes').val(),
                     type: 'post',
                     success: function (response) {
                         if (response != 'error') {
-
+                            if($('#rid').val()=='0'){
                             $('.notes').prepend(response);
-                            $('#recruiter_notes').val('')
+                            alert('Note added successfully');
+                            }
+                            else
+                            {
+                                $('#desc'+$('#rid').val()).html($('#recruiter_notes').val());
+                                alert('Note updated successfully');
+                            }
+                            $('#rid').val('0');
+                            $('#recruiter_notes').val('');
+                            alert('Note added successfully');
                             //window.location = "";
                         }
                     }

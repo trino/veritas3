@@ -188,7 +188,7 @@
                                                 }
                                                 if ($sidebar->orders_delete == '1') {
                                                     ?><a
-                                                    href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?>"
+                                                    href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?><?php if(isset($_GET['draft']))echo "?draft";?>"
                                                     class="btn btn-danger"
                                                     onclick="return confirm('Are you sure you want to delete <?= h($order->title) ?>?');">
                                                         Delete</a>

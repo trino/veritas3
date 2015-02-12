@@ -1267,12 +1267,16 @@ public function quiz(){}
         return $this->response;
         die();
     }
-        public function saveNote($id)
+        public function saveNote($id,$rid)
         {
             $note = TableRegistry::get('recruiter_notes');
             $_POST['driver_id'] = $id;
+            if(!$rid){
             $_POST['recruiter_id'] = $this->request->session()->read('Profile.id');
+            
             $_POST['created'] = date('Y-m-d');
+            }
+            if(!$rid){
             $save = $note->newEntity($_POST);
 
             if($note->save($save))
@@ -1285,12 +1289,40 @@ public function quiz(){}
                 
             </div>
             <div class="item-body">
-                '.$_POST['description'].'<br/><br/>
+                <span id="desc'.$save->id.'">'.$_POST['description'].'</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_'.$save->id.'">Edit</a><br/><br/>
             </div>
         </div>';
             else
                 echo 'error';
             die();
+            }
+            else
+            {
+                $note->query()->update()
+                        ->set($_POST)
+                        ->where(['id' => $rid])
+                        ->execute();
+                        //$q = TableRegistry::get('Profiles');
+        $que = $note->find();
+        $query = $que->select()->where(['id'=>$id])->first();
+        $arr_cr = explode(',', $query->created);
+        
+        $q = TableRegistry::get('Profiles');
+            $query2 = $q->find();
+            $que2 = $query->select()->where(['id'=>$query->recruiter_id])->first();
+                        echo '<div class="item">
+            <div class="item-head">
+                <div class="item-details">
+                    <a href="" class="item-name primary-link">'.$que2->fname.' '.$que2->mname.' '.$que2->lname.'</a>
+                    <span class="item-label">'.$arr_cr[0].'</span>
+                </div>
+                
+            </div>
+            <div class="item-body">
+                <span id="desc'.$rid.'">'.$_POST['description'].'</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_'.$rid.'">Edit</a><br/><br/>
+            </div>
+        </div>';
+            }
         }
         public function check_user($uid='')
         {

@@ -1209,6 +1209,8 @@
 
         public function deleteOrder($id,$draft='')
         {
+            if(isset($_GET['draft']))
+            $draft=1;
            
            $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 

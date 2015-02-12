@@ -616,6 +616,7 @@
                                                     </div>
 
                                                         <div class="clearfix"></div>
+                                                        </div>
                                                         <hr />
 
                                                 
@@ -762,7 +763,7 @@
                                                     </div>
                                                   </div>
 
-</div></form>
+</form>
                                                     
 <div class="clearfix"></div>
  <script>

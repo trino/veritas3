@@ -101,7 +101,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                 <?php } ?>
                                 <option
                                     value="2" <?php if (isset($p) && $p->profile_type == 2) { ?> selected="selected" <?php }
-                                if ($getProfileType->profile_type == 2) {
+                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type == 2) {
                                     ?> disabled="disabled"
                                 <?php
                                 } ?>>
@@ -109,7 +109,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                 </option>
                                 <option
                                     value="3" <?php if (isset($p) && $p->profile_type == 3) { ?> selected="selected" <?php }
-                                if ($getProfileType->profile_type == 2) {
+                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type == 2) {
                                     ?> disabled="disabled"
                                 <?php
                                 }
@@ -118,20 +118,20 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                 </option>
                                 <option
                                     value="4" <?php if (isset($p) && $p->profile_type == 4) { ?> selected="selected" <?php }
-                                if ($getProfileType->profile_type == 2) {
+                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type == 2) {
                                     ?> disabled="disabled"
                                 <?php
                                 }
                                 ?>>
                                     Safety
                                 </option>
-                                <!--<option
-                                    value="5" <?php //if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php //} ?>>
+                                <option
+                                    value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
                                     Driver
-                                </option>-->
+                                </option>
                                 <option
                                     value="6" <?php if (isset($p) && $p->profile_type == 6) { ?> selected="selected" <?php }
-                                if ($getProfileType->profile_type == 2) {
+                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type == 2) {
                                     ?> disabled="disabled"
                                 <?php
                                 }
@@ -156,7 +156,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                         </div>
                     </div>
                     <?php // if ($sidebar->client_option == 0) { ?>
-                    <!--
+                    
                     <div class="col-md-6" id="driver_div"
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
@@ -238,7 +238,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                             </select>
                         </div>
                     </div>
-                    <div class="clearfix"></div>-->
+                    <div class="clearfix"></div>
                     <?php //}?>                    
                     <div class="col-md-6">
                         <div class="form-group">

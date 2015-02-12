@@ -784,10 +784,15 @@ class ClientsController extends AppController {
 //    {
         $pro = TableRegistry::get('Profiles');
 
+       $didit=false;
+       if (is_object($q)) {
+           if($q->contact_id) {
+               $querys = $pro->find()->where(['id IN (' . $q->contact_id . ')']);
+               $didit=true;
+           }
+       }
 
-        if($q->contact_id) {
-            $querys = $pro->find()->where(['id IN (' . $q->contact_id . ')']);
-        } else {
+        if(!$didit){
             $querys = array();
         }
         $this->response->body(($querys));

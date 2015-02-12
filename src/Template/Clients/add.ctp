@@ -4,19 +4,22 @@
     else
         $is_disabled = '';
 
-    if (isset($client))
-        $c = $client;
+    if (isset($client)) {$c = $client;}
 ?>
 <?php
 $settings = $this->requestAction('settings/get_settings'); 
 $sidebar = $this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");
 $getprofile = $this->requestAction('clients/getProfile/'.$id);
-$getcontact = $this->requestAction('clients/getContact/'.$id); 
-        
+$getcontact = $this->requestAction('clients/getContact/'.$id);
+$param = $this->request->params['action'];
+
+$action = ucfirst($param);
+if (isset($_GET["view"])) { $action = "View"; }
+if ($action == "Add") { $action  = "Create";}
 ?>
 
 <h3 class="page-title">
-    Create <?php echo ucfirst($settings->client); ?>
+    <?php echo $action . " " . ucfirst($settings->client); ?>
 </h3>
 
 <div class="page-bar">
@@ -27,7 +30,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="">Create <?php echo ucfirst($settings->client); ?></a>
+            <a href=""><?php echo $action . " " . ucfirst($settings->client); ?></a>
         </li>
     </ul>
     <?php

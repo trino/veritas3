@@ -1,5 +1,6 @@
 <script src="<?php echo $this->request->webroot; ?>js/jquery.easyui.min.js" type="text/javascript"></script>
 <?php
+$param = $this->request->params['action'];
     $doc_ext = array('pdf','doc','docx','txt','csv','xls','xlsx');
     $img_ext = array('jpg','jpeg','png','bmp','gif');
     if (isset($disabled))
@@ -26,9 +27,16 @@ function provinces($name){
     echo '</SELECT>';
 }
 ?>
-<?php $settings = $this->requestAction('settings/get_settings'); ?>
+<?php
+$settings = $this->requestAction('settings/get_settings');
+$action = ucfirst($param);
+if ($action == "Add") {
+    $action = "Create";
+    if(isset($did) && $did) { $action = "Edit";}
+}
+?>
 <h3 class="page-title">
-    Create <?php echo ucfirst($settings->document); ?>
+    <?php echo $action . " " . ucfirst($settings->document); ?>
 </h3>
 <div class="page-bar">
     <ul class="page-breadcrumb">
@@ -38,7 +46,7 @@ function provinces($name){
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="">Create <?php echo ucfirst($settings->document); ?>
+            <a href=""><?php echo $action . " " . ucfirst($settings->document); ?>
             </a>
         </li>
     </ul>
@@ -55,7 +63,6 @@ function provinces($name){
 <div class="row">
     <div class="col-md-12">
         <?php
-            $param = $this->request->params['action'];
             $tab = 'nodisplay';
         ?>
         <div class="form">

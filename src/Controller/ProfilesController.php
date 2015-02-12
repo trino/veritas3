@@ -510,6 +510,7 @@ public function quiz(){}
                             $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'login">click here</a> to login.<br /> Regards';
                             $this->sendEmail($from,$to,$sub,$msg);
                         }
+                        $this->Flash->success('Profile created successfully');
                         echo $profile->id;
                        
                 }
@@ -536,7 +537,7 @@ public function quiz(){}
                 //var_dump($this->request->data); die();//echo $_POST['admin'];die();
                 $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                 if ($this->Profiles->save($profile)) {
-                     echo "1";
+                     echo $profile->id;
                 } else {
                      echo "0";
                 }
@@ -636,9 +637,24 @@ public function quiz(){}
          * @throws \Cake\Network\Exception\NotFoundException
          */
         public function edit($id = null) {
+            
+            $check_pro_id = $this->Settings->check_pro_id($id);
+            if($check_pro_id==1)
+            {
+                $this->Flash->error('Sorry, the record does not exist');
+                return $this->redirect("/profiles/index");
+                //die();
+            }
+            
+            $checker = $this->Settings->check_permission($this->request->session()->read('Profile.id'),$id);
+            if($checker==0)
+            {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                return $this->redirect("/profiles/index");
 
+            }
+            
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-
             if($setting->profile_edit==0 && $id != $this->request->session()->read('Profile.id'))
             {
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
@@ -709,7 +725,22 @@ public function quiz(){}
          * @throws \Cake\Network\Exception\NotFoundException
          */
         public function delete($id = null) {
-
+            $check_pro_id = $this->Settings->check_pro_id($id);
+            if($check_pro_id==1)
+            {
+                $this->Flash->error('Sorry, the record does not exist');
+                return $this->redirect("/profiles/index");
+                die();
+            }
+            
+            $checker = $this->Settings->check_permission($this->request->session()->read('Profile.id'),$id);
+            if($checker==0)
+            {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                return $this->redirect("/profiles/index");
+                die();
+            }
+            
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
             if($setting->profile_delete==0)

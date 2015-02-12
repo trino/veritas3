@@ -470,8 +470,6 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <!--<div class="margin-top-10">-->
                                                         <button type="submit" class="btn btn-primary"
                                                            id="save_client_p1">Save</button>
-                                                        <a href="" class="btn default">
-                                                            Cancel </a>
                                                     </div>
                                                     <!--</div>-->
                                             </form>

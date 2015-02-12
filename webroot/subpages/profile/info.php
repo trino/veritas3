@@ -629,8 +629,6 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                             Save Changes
                                         </a>
                                         <input type="submit" style="display: none;" id="hiddensub"/>
-                                        <a href="#" class="btn default">
-                                            Cancel </a>
                                     </div>
                                     <div class="clearfix"></div>
                                                             <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
@@ -741,6 +739,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                                 return false;
                                             }
                                             else {
+                                                $(this).attr('disabled','disabled');
                                                 $('#hiddensub').click();
                                             }
                                         }

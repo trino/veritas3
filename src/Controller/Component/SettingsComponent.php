@@ -3,6 +3,7 @@ namespace App\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\ORM\TableRegistry;
+    use Cake\Event\Event;
 
 class SettingsComponent extends Component
 {
@@ -122,6 +123,53 @@ class SettingsComponent extends Component
         else
             $cond = [$model.'id >'=>'0'];
       return $cond;
+        
+    }
+    
+    function check_pro_id($id)
+    {
+        $profile = TableRegistry::get('profiles');
+        $query = $profile->find()->select('id')->where(['id'=>$id]);
+                 
+         $l = $query->first();
+        if(!$l)
+        {
+            return 1;
+        }
+    }
+    
+    function check_permission($uid,$pid)
+    {
+        $user_profile = TableRegistry::get('profiles');
+        $query = $user_profile->find()->where(['id'=>$uid]);
+        $q1 = $query->first();
+        if($q1)
+        {
+            $profile = $user_profile->find()->select('profile_type')->where(['id'=>$pid]);
+            $q2 = $profile->first();
+            $usertype = $q1->profile_type;
+            $uptype = $q2;
+            
+            if($q2->super == '1' && ($q1->super == '1'))
+            {
+                return 1;
+            }
+            else
+            {
+              if($q2->super != '1')
+              {
+                if($usertype == '2'){
+                $pt = $q2;
+                if($pt=='5' || $pt=='7' || $pt=='8' || $q1->profile_type==$q2->id)    
+                return 1;
+                }
+                else
+                return 1;
+              }  
+              else return 0;
+            }
+            //else return 0;
+        }
         
     }
 }

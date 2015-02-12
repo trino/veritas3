@@ -313,7 +313,7 @@ function enumsubdocs($thedocs, $date, $chartid){
 			if (strlen($doctype )==0 and $chartid == "profiles"){
 				$doctype = $adoc->profile_type;
 				if (is_numeric($doctype)) {
-					$profiletypes = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
+					$profiletypes = ['', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Owner Operator', 'Owner Driver', 'Employee', 'Guest', 'Partner'];
 					$doctype = $profiletypes[$doctype];
 				}
 			}

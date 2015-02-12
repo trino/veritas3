@@ -79,7 +79,7 @@
         });
         $('#add_recruiter').click(function () {
             if ($('#recruiter_notes').val() == '') {
-                alert('You can\'t submit blank note');
+                alert('You can\'t submit a blank note');
                 $('#recruiter_notes').focus();
             }
             else {
@@ -89,18 +89,17 @@
                     type: 'post',
                     success: function (response) {
                         if (response != 'error') {
+
                             if($('#rid').val()=='0'){
-                            $('.notes').prepend(response);
-                            alert('Note added successfully');
-                            }
-                            else
-                            {
+                                $('.notes').prepend(response);
+                                alert('Note added successfully');
+                            } else {
                                 $('#desc'+$('#rid').val()).html($('#recruiter_notes').val());
                                 alert('Note updated successfully');
                             }
                             $('#rid').val('0');
                             $('#recruiter_notes').val('');
-                            alert('Note added successfully');
+                            //alert('Note added successfully');
                             //window.location = "";
                         }
                     }

@@ -248,7 +248,7 @@
         function get_title($slug) {
             $content = TableRegistry::get("contents");
             $l =  $content->find()->where(['slug'=>$slug])->first();
-            echo $l->title;
+            echo ucfirst($l->title);
         }
 
         ?>

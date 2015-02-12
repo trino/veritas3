@@ -1,17 +1,21 @@
 <?php
 function printlogos($logos1, $webroot, $index,$uid){ //* replaces the logo enumerators *//
-foreach ($logos1 as $logo) {
-    $img = "image" . $index; ?>
-    <div class="col-md-4 margin-top-20">
-        <div class="form-group" ><Center>
+    echo '<div class="form-group row">';
+    foreach ($logos1 as $logo) {
+        $exists = file_exists(getcwd() . "/img/logos/" . $logo->logo);
+        if ($exists){
+        $index+=1;
+        $img = "image" . $index; ?>
+        <div class="col-md-4" align="center">
             <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> id="<?php echo $img ?>"/>
             <label for="<?php echo $img ?>"><img style="max-width:90%;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label>
             <a href="javascript:void(0);"  class="btn btn-danger deletelogo" id="<?php echo $logo->id;?>">Delete</a>
-            </Center></div>
-    </div>
-    <?php
-    $index+=1;
-} return $index;} 
+        </div>
+        <?php
+        if ($index==3){$index=0; echo '</div><div class="form-group row">'; }
+    }}
+    echo "</div>";
+    return $index;}
 
 $uid = $this->request->session()->read("Profile.id");
 ?>

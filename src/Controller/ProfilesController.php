@@ -451,6 +451,10 @@ public function quiz(){}
                 {
                    unset($_POST['password']);
                 }
+                else
+                {
+                    $_POST['password'] = md5($_POST['password']);
+                }
                 if ($this->request->is('post')) 
                 {
                      
@@ -528,6 +532,10 @@ public function quiz(){}
                     {
                         //die('here');
                        $this->request->data['password'] = $profile->password;
+                    }
+                    else
+                    {
+                         $this->request->data['password'] = md5($_POST['password']);
                     }
                 if(isset($_POST['profile_type']) && $_POST['profile_type']==1)
                     $this->request->data['admin']=1;

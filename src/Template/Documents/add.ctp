@@ -952,6 +952,7 @@ function provinces($name){
     ?>
     var draft = 0;
         $(document.body).on('click', '.cont', function () {
+            $(this).attr('disabled','disabled');
             if($('.subform4').attr('style')!='display: none;'){
                 //alert('tes');
             var er = 0;
@@ -996,6 +997,7 @@ function provinces($name){
                 division: $('#division').val()
             };
             //alert(type);return false;
+            
             $.ajax({
                 //data:'uploaded_for='+$('#uploaded_for').val(),
                 data: data,

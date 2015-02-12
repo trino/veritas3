@@ -98,7 +98,7 @@ function provinces($name){
                                         $end = 0;
                                         $k_c=0;
                                         foreach ($subdoccli as $sd) {
-                                            $k_c++;
+                                            
                                            $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id); 
                                             $act = 0;
                                             if ($d->table_name == $table) {
@@ -110,6 +110,7 @@ function provinces($name){
 
                                             ?>
                                             <?php if ($prosubdoc['display'] != 0 && $d->display == 1) {
+                                                $k_c++;
                                                 $j = $d->id;
                                                 $j = $j + 1;
                                                 if($k_c==1)
@@ -138,6 +139,8 @@ function provinces($name){
                                                 $i++;
                                             }
                                         }
+                                        if(!isset($k_cou))
+                                        $k_cou = 1;
                                     ?>
 
                                     <li>
@@ -306,7 +309,8 @@ function provinces($name){
                                     include('subpages/documents/' . $d->form);
                                 ?>
                             </div>
-                        <?php } ?>
+                        <?php }
+                        if(!isset($k_co))$k_co=1; ?>
 
                         <div class="tabber <?php echo $tab; ?>" id="tab<?php echo ++$k_co; ?>">
                             <?php

@@ -197,7 +197,7 @@ if ($action == "Add") { $action  = "Create";}
                                                     </div>
 
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label">Province</label>
+                                                        <label class="control-label">Province/State</label>
                                                         <?php
                                                             function printoption($value, $selected, $option)
                                                             {
@@ -216,7 +216,7 @@ if ($action == "Add") { $action  = "Create";}
                                                             }
 
                                                             function printprovinces($name, $selected){
-                                                                printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"));
+                                                                printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT", "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",  "Virginia", "Wisconsin", "Wyoming"));
 
                                                             }
 
@@ -353,7 +353,7 @@ if ($action == "Add") { $action  = "Create";}
                                                     </div>
 
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label">Billing Province</label>
+                                                        <label class="control-label">Billing Province/State</label>
                                                         <?php printprovinces("billing_province", $client->billing_province);  ?>
 
 

@@ -541,12 +541,19 @@ class ClientsController extends AppController {
 
             }
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-
-        if($setting->client_edit==0)
+        if(isset($_GET['view']) && $setting->client_list==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
-            	return $this->redirect("/");
-
+            	return $this->redirect("/clients");
+        }
+        else
+        {
+            if(!isset($_GET['view']) && $setting->client_edit==0)
+            {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                	return $this->redirect("/");
+    
+            }
         }
         $docs = TableRegistry::get('client_docs');
         $query = $docs->find();

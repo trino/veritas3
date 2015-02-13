@@ -152,7 +152,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
 
                                                 <div class="row">
                                                     <input type="hidden" name="image" id="client_img"/>
-                                                    <?php if($sidebar->client_option==0){?>
+                                                    <?php if($settings->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Customer Type</label>
                                                         <select class="form-control" name="customer_type"
@@ -174,12 +174,12 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     </div>
                                                     <?php }?>
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label"> <?php echo ($sidebar->client_option==0)?"Company":"Event";?> Name</label>
+                                                        <label class="control-label"> <?php echo ($settings->client_option==0)?"Company":"Event";?> Name</label>
                                                         <input  required="required" type="text" class="form-control"
                                                                name="company_name" <?php if (isset($client->company_name)) { ?> value="<?php echo $client->company_name; ?>" <?php } ?>/>
                                                     </div>
 
-                                                    <?php if($sidebar->client_option==0){?>
+                                                    <?php if($settings->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Address</label>
                                                         <input type="text" class="form-control"
@@ -220,7 +220,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                         ?>
 
                                                     </div>
-                                                    <?php if($sidebar->client_option==0){?>
+                                                    <?php if($settings->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Postal Code</label>
                                                         <input type="text" class="form-control"
@@ -239,7 +239,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                         <input type="text" class="form-control"
                                                                name="site" <?php if (isset($client->site)) { ?> value="<?php echo $client->site; ?>" <?php } ?>/>
                                                     </div>
-                                                    <?php if($sidebar->client_option==0){?>
+                                                    <?php if($settings->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Divisions </label>
                                                         <textarea name="division" id="division" placeholder="One division per line"

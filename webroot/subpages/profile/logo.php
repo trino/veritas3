@@ -8,7 +8,7 @@ function printlogos($logos1, $webroot, $index,$uid){ //* replaces the logo enume
         $img = "image" . $index; ?>
         <div class="col-md-4" align="center">
             <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> id="<?php echo $img ?>"/>
-            <label for="<?php echo $img ?>"><img style="max-width:90%;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label>
+            <label for="<?php echo $img ?>"><img style="max-width:100px;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label>
             <a href="javascript:void(0);"  class="btn btn-danger deletelogo" id="<?php echo $logo->id;?>">Delete</a>
         </div>
         <?php
@@ -159,8 +159,8 @@ new AjaxUpload(button,{
             $("#logoform").prepend('<div class="col-md-4 margin-top-20">'+
             '<div class="form-group" style="height:100px;overflow:hidden;">'+
             '<input type="radio" value="'+response["id"]+'" name="logo"/>'+
-            '<img style="width:200px;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'" />'+
-            '</div>'+
+            '<img style="max-width:100px;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'" />'+
+            '<a href="javascript:;" onclick="$(this).parent().parent().remove();" class ="btn btn-danger">Delete</a></div>'+
             '</div>');
             }
             else
@@ -169,8 +169,8 @@ new AjaxUpload(button,{
                var out = '<div class="col-md-4 margin-top-20">'+
                          '<div class="form-group" style="height:100px;overflow:hidden;">'+
                          '<input type="radio" value="'+response["id"]+'" name="logo"/>'+
-                         '<img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'"/>'+
-                         '</div></div>'; 
+                         '<img style="max-width:100px;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'"/>'+
+                         '<a href="javascript:;" onclick="$(this).parent().parent().remove();" class ="btn btn-danger">Delete</a></div></div>'; 
                 $("#logoform1").prepend(out);
             }
             else
@@ -179,8 +179,8 @@ new AjaxUpload(button,{
                var out = '<div class="col-md-4 margin-top-20">'+
                          '<div class="form-group" style="height:100px;overflow:hidden;">'+
                          '<input type="radio" value="'+response["id"]+'" name="logo"/>'+
-                         '<img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'"/>'+
-                         '</div></div>'; 
+                         '<img style="max-width:100px;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'"/>'+
+                         '<a href="javascript:;"  class ="btn btn-danger deletelogo" id="'+response['id']+'">Delete</a></div></div>'; 
                 $("#logoform2").prepend(out);
             }
             }
@@ -190,13 +190,13 @@ new AjaxUpload(button,{
     });
 }
 $(function(){
-    $('.deletelogo').click(function(){
+    $('.deletelogo').live('click',function(){
         
         var con = confirm("Confirm Delete?");
         var lid = $(this).attr('id');
         if(con== true)
         {
-            $(this).parent().parent().parent().remove();
+            $(this).parent().remove();
             $.ajax({
                 url:'<?php echo $this->request->webroot;?>logos/delete/'+lid,
                success:function(msg)

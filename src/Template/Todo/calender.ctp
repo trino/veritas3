@@ -57,11 +57,12 @@
                         								Description
                         							</div>
                         						</div>
+                                                
                         						<div class="portlet-body descprition">
                                                            
                                                                 
                                                 </div>
-                                                                    
+                                                 <a href="" class="btn btn-danger delUrl" onclick="return confirm('Confirm Delete?');">Delete</a>                   
                                                 </div>                  
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>
@@ -94,6 +95,7 @@ jQuery(document).ready(function() {
         {
             title: '<?php echo $event->title;?>',
             desc: '<?php echo $event->description;?>',
+            delUrl: '<?php echo $this->request->webroot."todo/delete/".$event->id;?>',
             start: '<?php echo str_replace(" ","T",$event->date);?>',
             url: '<?php echo $this->request->webroot;?>todo/edit/<?php echo $event->id;?>'
         },
@@ -112,6 +114,8 @@ jQuery(document).ready(function() {
             
         $('.main_desc').show();
         $('.descprition').html(calEvent.desc);
+       
+        $('.delUrl').attr('href',calEvent.delUrl);
         //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
         //alert('View: ' + view.name);
 
@@ -121,7 +125,7 @@ jQuery(document).ready(function() {
     },
     eventMouseout: function(calEvent, jsEvent, view) {
             
-        $('.main_desc').hide();
+        //$('.main_desc').hide();
         
 
     },

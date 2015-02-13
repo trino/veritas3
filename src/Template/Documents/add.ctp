@@ -981,6 +981,7 @@ if ($action == "Add") {
                 $('html,body').animate({
                             scrollTop: $('.myerror').offset().top},
                         'slow');
+                        $('.cont').removeAttr('disabled');
                 return false;
 
             }

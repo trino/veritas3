@@ -97,12 +97,20 @@ function provinces($name){
 												<i class="fa fa-check"></i> Create driver </span>
                                         </a>
                                     </li>
+                                     <li>
+                                        <a href="#tab2" data-toggle="tab" class="step">
+												<span class="number">
+												2</span><br/>
+												<span class="desc">
+												<i class="fa fa-check"></i> Products </span>
+                                        </a>
+                                    </li>
                                     <?php
                                         $doc = $this->requestAction('/documents/getDocument/orders');
                                         $subdoccli = $this->requestAction('/clients/getSubCli2/'.$cid);
                                         $subdoccli2 = $subdoccli;
                                         $doc2 = $doc;
-                                        $i = 2;
+                                        $i = 3;
                                         $end = 0;
                                         $k_c=0;
                                         foreach ($subdoccli as $sd) {
@@ -120,7 +128,7 @@ function provinces($name){
                                             <?php if ($prosubdoc['display'] != 0 && $d->display == 1) {
                                                 $k_c++;
                                                 $j = $d->id;
-                                                $j = $j + 1;
+                                                $j = $j + 2;
                                                 if($k_c==1)
                                                 {
                                                     $k_cou = $j;
@@ -293,6 +301,11 @@ function provinces($name){
                                 include('subpages/profile/info_order.php');
                             ?>
                         </div>
+                        
+                        <div class="tabber <?php echo $tab; ?>"  id="tab2">
+                            <?php include('subpages/documents/products.php'); ?>
+                        </div>
+                        
                         <?php
                         $k_c = 0;
                         foreach ($subdoccli as $sd) {
@@ -300,7 +313,7 @@ function provinces($name){
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
                             $tab_count = $d->id;
                             
-                            $tab_count = $tab_count + 1;
+                            $tab_count = $tab_count + 2;
                             if($k_c==1)
                             {
                                 $k_co = $tab_count;

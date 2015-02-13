@@ -62,8 +62,7 @@ $feed = $feeds;
                                                             <div class="clearfix"></div>
                                                     </div>
                                                     <div class="form-group">
-                                                    <div class=" col-md-12">
-                                                            <label class="control-label">If you had a colleague who required our services, would you recommend ISB Canada ?(Scale 1-10) </label>
+                                                    <div class=" col-md-12"><label class="control-label">If you had a colleague who required our services, would you recommend ISB Canada ?(Scale 1-10) </label>
                                                     </div>
                                                             <div class="col-md-12">
                                                                 <input type="radio" class="form-control" name="scale" value="1" <?php if(isset($feed->scale)&& $feed->scale = 1){?> selected="selected" <?php } ?> />&nbsp;&nbsp;1&nbsp;&nbsp;

@@ -4,19 +4,22 @@
     else
         $is_disabled = '';
 
-    if (isset($client))
-        $c = $client;
+    if (isset($client)) {$c = $client;}
 ?>
 <?php
 $settings = $this->requestAction('settings/get_settings'); 
 $sidebar = $this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");
 $getprofile = $this->requestAction('clients/getProfile/'.$id);
-$getcontact = $this->requestAction('clients/getContact/'.$id); 
-        
+$getcontact = $this->requestAction('clients/getContact/'.$id);
+$param = $this->request->params['action'];
+
+$action = ucfirst($param);
+if (isset($_GET["view"])) { $action = "View"; }
+if ($action == "Add") { $action  = "Create";}
 ?>
 
 <h3 class="page-title">
-    Create <?php echo ucfirst($settings->client); ?>
+    <?php echo $action . " " . ucfirst($settings->client); ?>
 </h3>
 
 <div class="page-bar">
@@ -27,7 +30,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="">Create <?php echo ucfirst($settings->client); ?></a>
+            <a href=""><?php echo $action . " " . ucfirst($settings->client); ?></a>
         </li>
     </ul>
     <?php
@@ -95,7 +98,8 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     <?php
                                                     $counter++;
                                                 }
-                                                $c = $counter;   
+                                                $c = $counter;
+                                            if($counter==0){ echo "<TR><TD>No profiles</TD></TR>";}
                                              ?>
                                              <?php
                                              foreach($getcontact as $cont)
@@ -193,7 +197,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     </div>
 
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label">Province</label>
+                                                        <label class="control-label">Province/State</label>
                                                         <?php
                                                             function printoption($value, $selected, $option)
                                                             {
@@ -212,7 +216,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                             }
 
                                                             function printprovinces($name, $selected){
-                                                                printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"));
+                                                                printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT", "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",  "Virginia", "Wisconsin", "Wyoming"));
 
                                                             }
 
@@ -349,7 +353,7 @@ $getcontact = $this->requestAction('clients/getContact/'.$id);
                                                     </div>
 
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label">Billing Province</label>
+                                                        <label class="control-label">Billing Province/State</label>
                                                         <?php printprovinces("billing_province", $client->billing_province);  ?>
 
 

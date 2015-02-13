@@ -2,7 +2,14 @@
     $profiles = $this->requestAction('Profiles/getProfile');
     $contact = $this->requestAction('Profiles/getContact');
     //include("subpages/profileslisting.php");
+    $viewmode = isset($_GET["view"]);
+
+if (!$viewmode){
 ?>
+
+
+
+
 <div class="scrolldiv" style="margin-bottom: 15px;">
     <input type="text" id="searchProfile" onkeyup="searchProfile()" class="form-control" placeholder="Search Profiles"/>
     <table class="table table-striped table-bordered table-advance table-hover recruiters">
@@ -46,6 +53,12 @@
         </tbody>
     </table>
 </div>
+
+
+<?php } ?>
+
+
+
 <!--p>&nbsp;</p>
 <input type="text" id="searchContact" onkeyup="searchContact()" class="form-control" placeholder="Search Contact"/>
 <table class="table table-striped table-bordered table-advance table-hover contacts">
@@ -81,6 +94,9 @@
 
             $i++;
         }
+
+
+
         /**
  * if (($i + 1) % 2 != 0) {
  *             echo "</td></tr>";

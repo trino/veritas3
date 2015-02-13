@@ -53,7 +53,7 @@
                             <div class="item-body">
                                 <span id="desc<?php echo $n->id;?>"><?php echo $n->description; ?></span><br />
                                 <a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_<?php echo $n->id;?>">Edit</a>
-                                <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_<?php echo $n->id;?>" onclick="return confirm('Are you sure you want to delete this note');">Delete</a>
+                                <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_<?php echo $n->id;?>" onclick="return confirm('Are you sure you want to delete &quot;<?php echo $n->description; ?>&quot;');">Delete</a>
                                 <br><br>
                             </div>
 

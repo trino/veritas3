@@ -5,7 +5,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-globe"></i>
-                    <?php echo ucfirst($settings->client); ?>s Listing
+                    List <?php echo ucfirst($settings->client); ?>s
                 </div>
             </div>
             <div class="portlet-body">

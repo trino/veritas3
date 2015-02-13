@@ -25,7 +25,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-copy"></i>
-                    <?php echo ucfirst($settings->document);?>s Listing
+                    List <?php echo ucfirst($settings->document);?>s
                 </div>
             </div>    
             <div class="portlet-body">
@@ -176,7 +176,7 @@
                                     if (is_object($getClientById)) {
                                         echo h($getClientById->company_name);
                                     } else {
-                                        echo "Deleted client";
+                                        echo "Deleted " . $settings->client;
                                     }
                                     ?>
 

@@ -45,7 +45,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    <?php echo ucfirst($settings->profile); ?>s Listing
+                    List <?php echo ucfirst($settings->profile); ?>s
                 </div>
             </div>
 
@@ -59,6 +59,12 @@
                                     <select class="form-control" style="" name="filter_profile_type">
                                         <option value="">Filter By <?php echo ucfirst($settings->profile); ?> Type</option>
                                         <!--<option value=""><?php //echo ucfirst($settings->profile); ?> Type</option>-->
+
+                                        <?php
+                                        $isISB = (isset($sidebar) && $sidebar->client_option == 0);
+                                        if ($isISB){
+                                        ?>
+
                                         <option value="1" <?php if(isset($return_profile_type) && $return_profile_type==1){?> selected="selected"<?php } ?> >Admin</option>
                                         <option value="2" <?php if(isset($return_profile_type) && $return_profile_type==2){?> selected="selected"<?php } ?>>Recruiter</option>
                                         <option value="3" <?php if(isset($return_profile_type) && $return_profile_type==3){?> selected="selected"<?php } ?>>External</option>
@@ -67,6 +73,12 @@
                                         <option value="6" <?php if(isset($return_profile_type) && $return_profile_type==6){?> selected="selected"<?php } ?>>Contact</option>
                                         <option value="7" <?php if(isset($return_profile_type) && $return_profile_type==7){?> selected="selected"<?php } ?>>Owner Operator</option>
                                         <option value="8" <?php if(isset($return_profile_type) && $return_profile_type==8){?> selected="selected"<?php } ?>>Owner Driver</option>
+                                        <?php } else { ?>
+                                        <option value="9" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Employee</option>
+                                        <option value="10" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Guest</option>
+                                        <option value=11 <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Partner</option>
+                                        <?php }  ?>
+
                                     </select>
                                 </div>
                                 <?php
@@ -120,7 +132,10 @@
                         <tbody>
                         <?php
                         $row_color_class = "odd";
-                        $profiletype = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
+
+                        $isISB = (isset($sidebar) && $sidebar->client_option == 0);
+                        $profiletype = ['', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Owner Operator', 'Owner Driver', 'Employee', 'Guest', 'Partner'];
+
 
                         if (count($profiles) == 0){
                             echo '<TR><TD COLSPAN="7" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';

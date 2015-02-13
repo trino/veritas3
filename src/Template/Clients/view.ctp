@@ -82,7 +82,9 @@ $contact = $this->requestAction('clients/getContact/'.$id);
                                                     <?php
                                                     $counter++;
                                                 }
-                                                $c = $counter;   
+                                                $c = $counter;
+
+
                                              ?>
                                              <li>
                                              <h3>Contacts:</h3>

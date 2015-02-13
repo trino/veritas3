@@ -1,6 +1,14 @@
 <script src="<?php echo $this->request->webroot; ?>js/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot; ?>js/ajaxupload.js" type="text/javascript"></script>
 <?php
+$param = $this->request->params['action'];
+$action = ucfirst($param);
+if ($action == "Vieworder") { $action = "View";}
+if ($action == "Addorder") {
+    $action = "Create" ;
+    if ($did>0){ $action = "Edit";}
+}
+
     $doc_ext = array('pdf', 'doc', 'docx', 'txt', 'csv', 'xls', 'xlsx');
     $img_ext = array('jpg', 'jpeg', 'png', 'bmp', 'gif');
 
@@ -32,7 +40,7 @@ function provinces($name){
 ?>
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 <h3 class="page-title">
-    Create Order
+    <?php echo $action;?> Order
 </h3>
 <input type="hidden" id="dr" value="<?php if (isset($dr)) echo $dr; ?>"/>
 <div class="page-bar">
@@ -44,7 +52,7 @@ function provinces($name){
         </li>
         <li>
             <a href="">
-                Create Order
+                <?php echo $action;?>  Order
             </a>
         </li>
     </ul>

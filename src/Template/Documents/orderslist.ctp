@@ -27,7 +27,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-clipboard"></i>
-                    Orders Listing
+                    List Orders
                 </div>
             </div>
             <div class="portlet-body">
@@ -166,7 +166,7 @@
                                         if (is_object($client)) {
                                             echo h($client->company_name);
                                         } else {
-                                            echo "Deleted client";
+                                            echo "Deleted " . $settings->client;
                                         }
                                     ?></td>
                                     <td><?php if($order->division){$div = $this->requestAction('/documents/getDivById/'.$order->division);echo $div->title;}else{echo '';} ?></td>

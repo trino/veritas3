@@ -1435,5 +1435,13 @@ public function quiz(){}
                     die();
             
         }
+        function getDriverById($id)
+        {
+            $q2 = TableRegistry::get('profiles');
+            $que2 = $q2->find();
+            $query2 = $que2->select()->where(['id'=>$id])->first();
+            $this->response->body($query2);
+            return $this->response;
+        }
     }
 ?>

@@ -212,7 +212,7 @@
                                         }
                                     } 
                                     ?>
-                                    
+                                    <a href="<?php echo $this->request->webroot;?>documents/productSelection" class="btn btn-success">Add Order</a>
 
                                 </td>
                             </tr>

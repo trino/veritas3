@@ -424,7 +424,8 @@ function change_text(v){
 
 </script>
 <style>
-.page-logo a{max-width:100%;}
+.page-logo a{max-width:100%;max-height:100%;}
+.page-logo img{max-width:100%;max-height:70px!important;}
 </style>
 <!-- END JAVASCRIPTS -->
 </body>

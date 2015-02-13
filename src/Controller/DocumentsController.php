@@ -16,7 +16,10 @@
             'order' => ['id' => 'DESC'],
 
         ];
-
+        public function productSelection()
+        {
+            
+        }
         public function initialize()
         {
             parent::initialize();

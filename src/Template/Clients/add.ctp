@@ -152,7 +152,7 @@ if ($action == "Add") { $action  = "Create";}
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1_1">
                                         <div id="tab_1-1" class="tab-pane active">
-                                            <form role="form" action="" method="post" id="client_form" onsubmit="save_client_p1()">
+                                            <form role="form" action="" method="post" id="client_form" class="save_client_all" >
 
                                                 <div class="row">
                                                     <input type="hidden" name="image" id="client_img"/>
@@ -495,7 +495,7 @@ if ($action == "Add") { $action  = "Create";}
                                             <?php
                                                 //$subdoc = $this->requestAction('/clients/getSub');
                                                 $subdoccli = $this->requestAction('/clients/getSubCli/'.$id);
-
+                                                //var_dump($subdoccli);
                                                 foreach ($subdoccli as $subcl) {
                                                     //echo $subcl->sub_id;
                                                     $sub = $this->requestAction('/clients/getFirstSub/'.$subcl->sub_id);
@@ -664,8 +664,8 @@ if ($action == "Add") { $action  = "Create";}
         <?php
         }
         ?>
-        function save_client_p1(){
-
+        $('.save_client_all').submit(function(event){
+            event.preventDefault();
             $('#save_client_p1').text('Saving..');
             var str = '';
             $('.recruiters input').each(function () {
@@ -740,7 +740,7 @@ if ($action == "Add") { $action  = "Create";}
                     $('#save_client_p1').text(' Save ');
                 }
             })
-        }
+        });
     });
 
 

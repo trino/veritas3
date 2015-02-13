@@ -442,7 +442,9 @@ public function quiz(){}
         
         function saveprofile($add="")
         {
+            $settings = $this->Settings->get_settings();
             $profiles = TableRegistry::get('Profiles');
+            
             if($add =='0')
             {
                 $_POST['created'] = date('Y-m-d');
@@ -453,6 +455,7 @@ public function quiz(){}
                 }
                 else
                 {
+                    $password = $_POST['password'];
                     $_POST['password'] = md5($_POST['password']);
                 }
                 if ($this->request->is('post')) 
@@ -508,10 +511,22 @@ public function quiz(){}
                             ->execute();
                         if(isset($_POST['email']) && $_POST['email'])
                         {
-                            $from = 'info@isbmee.com';
+                            if($settings->client_option=='0')
+                            {
+                                $com = "ISBMEE";
+                                $from = 'info@isbmee.com';
+                            }
+                            else
+                            {
+                                $com = "Event Audit";
+                                $from = 'info@eventaudit.com';
+                                
+                            }
+                            
                             $to = $_POST['email'];
                             $sub = 'Profile created successfully';
-                            $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'login">click here</a> to login.<br /> Regards';
+                            
+                            $msg = 'Hi,<br />Your account has been created for '.$com.' .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$password.'<br /> Please <a href="'.LOGIN.'login">click here</a> to login.<br /> Regards';
                             $this->sendEmail($from,$to,$sub,$msg);
                         }
                         $this->Flash->success('Profile created successfully');

@@ -17,6 +17,15 @@ class SettingsComponent extends Component
          
    }
    
+   function get_settings()
+   {
+         $settings = TableRegistry::get('settings');
+         $query = $settings->find();
+                 
+         $l = $query->first();
+         return $l;
+   }
+   
    function getprofilebyclient($u,$super,$cid="")
    {
         $cond = [];

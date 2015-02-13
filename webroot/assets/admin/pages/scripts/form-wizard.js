@@ -307,9 +307,9 @@ var FormWizard = function () {
                         }
                     }
                     else
-                    if($('#tab5').attr('class') == 'tab-pane active' || $('#tab1').attr('class') == 'tab-pane active')
+                    if($('#tab5').attr('class') == 'tabber tab-pane active' || $('#tab1').attr('class') == 'tabber tab-pane active')
                     {
-                        if($('#tab5').attr('class') == 'tab-pane active')
+                        if($('#tab5').attr('class') == 'tabber tab-pane active')
                         var curr = $('#tab5');
                         else
                         var curr = $('#tab1');

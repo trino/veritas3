@@ -42,7 +42,7 @@ $uid = $this->request->session()->read("Profile.id");
 
                                         </ul>
 
-    <div class="portlet-body solid blue"> <!-- blue is needed to make the white logos stand out -->
+                                <div class="portlet-body solid blue"> <!-- blue is needed to make the white logos stand out -->
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="subtab_1_1">
                                             <div class="portlet solid blue" -->
@@ -63,8 +63,8 @@ $uid = $this->request->session()->read("Profile.id");
                                                             Logo Deleted successfully
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <a href="javascript:void(0)" id="addnewlogo" class="primary btn btn-info">Add New Logo</a>
-                                                        <a href='javascript:;' class="btn btn-success" id="submit">Save Changes</a>
+                                                        <a href="javascript:void(0)" id="addnewlogo" class="primary btn btn-primary">Add New Logo</a>
+                                                        <a href='javascript:;' class="btn btn-success" id="submit">Submit</a>
                                                     </form>
 
                                                 </div>
@@ -91,8 +91,8 @@ $uid = $this->request->session()->read("Profile.id");
                                                             Logo Deleted successfully
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <a href="javascript:void(0)" id="addnewlogo1" class="secondary btn btn-info">Add New Logo</a>
-                                                        <a href='javascript:;' class="btn btn-success" id="submit1">Save Changes</a>
+                                                        <a href="javascript:void(0)" id="addnewlogo1" class="secondary btn btn-primary">Add New Logo</a>    
+                                                        <a href='javascript:;' class="btn btn-success" id="submit1">Submit</a>
                                                     </form>
 
 
@@ -119,8 +119,8 @@ $uid = $this->request->session()->read("Profile.id");
                                                             Logo Deleted successfully
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <a href="javascript:void(0)" id="addnewlogo2" class="loginlogo btn btn-info">Add New Logo</a>
-                                                        <a href='javascript:;' class="btn btn-success" id="submit2">Save Changes</a>
+                                                        <a href="javascript:void(0)" id="addnewlogo2" class="loginlogo btn btn-primary">Add New Logo</a>
+                                                        <a href='javascript:;' class="btn btn-success" id="submit2">Submit</a>
                                                     </form>
 
 
@@ -133,7 +133,7 @@ $uid = $this->request->session()->read("Profile.id");
 
 <script>
 function initiate_ajax_upload2(button_id){
-var button = $('#'+button_id), interva;
+var button = $('#'+button_id), interval;
 new AjaxUpload(button,{
     action: "<?php echo $this->request->webroot;?>logos/upload/"+button_id,
     name: 'myfile',

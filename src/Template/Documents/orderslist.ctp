@@ -37,12 +37,12 @@
                         <?php
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
-                        <div class="col-md-3" style="padding-left:0;">
+                        <div class="col-md-2" style="padding-left:0;">
                             <input class="form-control" name="searchdoc" type="search" placeholder="Search Order Title"
                                    value="<?php if (isset($search_text)) echo $search_text; ?>"
                                    aria-controls="sample_1"/>
                         </div>
-                        <div class="col-md-3 " style="padding-left:0;">
+                        <div class="col-md-3" style="padding-left:0;">
                             <select class="form-control" name="submitted_by_id" style="">
                                 <option value="">Submitted by</option>
                                 <?php
@@ -93,8 +93,10 @@
                             </select>
                         </div>
 
-
-                        <div class="col-md-3" align="Right" style="padding-left:0;padding-right:0;">
+                        <div class="col-md-2 divisions" style="padding-left:0;">
+                          <!-- Divisions section -->  
+                        </div>
+                        <div class="col-md-2" align="Right" style="padding-left:0;padding-right:0;">
                             <button type="submit" class="btn btn-primary">Search</button>
                         </div>
 

@@ -76,7 +76,7 @@
                                 $getClient = $this->requestAction('profiles/getClient'); 
                                 ?>
                                 <div class="col-md-3" style="padding-left:0;">
-                                    <select class="form-control" style="" name="filter_by_client">
+                                    <select class="form-control" style="" name="filter_by_client" onchange="getDivision();" >
                                         <option value="">Filter By <?php echo ucfirst($settings->client); ?></option>
                                         <?php 
                                         if($getClient)

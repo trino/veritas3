@@ -173,7 +173,7 @@ class SettingsComponent extends Component
               {
                 if($usertype == '2'){
                 $pt = $q2;
-                if($pt=='5' || $pt=='7' || $pt=='8' || $q1->profile_type==$q2->id)    
+                if( $pt=='5' || $pt=='7' || $pt=='8' /*|| $q1->profile_type==$q2->id*/ || $uid==$pid)    
                 return 1;
                 }
                 else
@@ -185,4 +185,21 @@ class SettingsComponent extends Component
         }
         
     }
+    
+    function check_client_permission($uid,$cid)
+    {
+        $client_profile = TableRegistry::get('clients');
+        //$query = $user_profile->find()->where(['id'=>$uid]);
+        
+            $client = $client_profile->find()->select('profile_id')->where(['id'=>$cid]);
+            $q2 = $client->first();
+            //var_dump($q2); echo $uid; die();
+            $arr = explode(',',$q2->profile_id);
+            if(in_array($uid,$arr))
+            {
+                return 1;
+             }
+            else return 0;
+    }
+
 }

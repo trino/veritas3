@@ -532,6 +532,14 @@ class ClientsController extends AppController {
                 return $this->redirect("/clients/index");
                 //die();
             }
+            
+        $checker = $this->Settings->check_client_permission($this->request->session()->read('Profile.id'),$id);
+            if($checker==0)
+            {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                return $this->redirect("/clients/index");
+
+            }
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
         if($setting->client_edit==0)
@@ -584,6 +592,14 @@ class ClientsController extends AppController {
                 $this->Flash->error('Sorry, the record does not exist');
                 return $this->redirect("/clients/index");
                 //die();
+            }
+            
+        $checker = $this->Settings->check_client_permission($this->request->session()->read('Profile.id'),$id);
+            if($checker==0)
+            {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                return $this->redirect("/clients/index");
+
             }
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 

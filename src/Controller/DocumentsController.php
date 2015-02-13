@@ -1976,7 +1976,11 @@
                 if (in_array($check, $allowed)) {
                     if (isset($_POST['type']))
                         $doc_type = $_POST['type'];
-                    $destination = APP . '../webroot/attachments';
+                    $destination = WWW_ROOT . 'attachments';
+
+                    if (!file_exists($destination)){
+                        mkdir($destination, 0777, true);
+                    }
 
                     $source = $_FILES['myfile']['tmp_name'];
                     move_uploaded_file($source, $destination . '/' . $rand);

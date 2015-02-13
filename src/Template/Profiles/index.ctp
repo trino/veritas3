@@ -45,7 +45,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-user"></i>
-                    <?php echo ucfirst($settings->profile); ?>s Listing
+                    List <?php echo ucfirst($settings->profile); ?>s
                 </div>
             </div>
 
@@ -55,10 +55,19 @@
             <div class="portlet-body">
                     <div class="chat-form">
                             <form action="<?php echo $this->request->webroot; ?>profiles/index" method="get">
+                            <div class="col-md-3" align="left" style="padding-left:0;">
+                                    <input  class="form-control input-inline" type="search" name="searchprofile"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1" />
+                            </div>
                                 <div class="col-md-3" style="padding-left:0;">
                                     <select class="form-control" style="" name="filter_profile_type">
                                         <option value="">Filter By <?php echo ucfirst($settings->profile); ?> Type</option>
                                         <!--<option value=""><?php //echo ucfirst($settings->profile); ?> Type</option>-->
+
+                                        <?php
+                                        $isISB = (isset($sidebar) && $sidebar->client_option == 0);
+                                        if ($isISB){
+                                        ?>
+
                                         <option value="1" <?php if(isset($return_profile_type) && $return_profile_type==1){?> selected="selected"<?php } ?> >Admin</option>
                                         <option value="2" <?php if(isset($return_profile_type) && $return_profile_type==2){?> selected="selected"<?php } ?>>Recruiter</option>
                                         <option value="3" <?php if(isset($return_profile_type) && $return_profile_type==3){?> selected="selected"<?php } ?>>External</option>
@@ -67,6 +76,12 @@
                                         <option value="6" <?php if(isset($return_profile_type) && $return_profile_type==6){?> selected="selected"<?php } ?>>Contact</option>
                                         <option value="7" <?php if(isset($return_profile_type) && $return_profile_type==7){?> selected="selected"<?php } ?>>Owner Operator</option>
                                         <option value="8" <?php if(isset($return_profile_type) && $return_profile_type==8){?> selected="selected"<?php } ?>>Owner Driver</option>
+                                        <?php } else { ?>
+                                        <option value="9" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Employee</option>
+                                        <option value="10" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Guest</option>
+                                        <option value=11 <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Partner</option>
+                                        <?php }  ?>
+
                                     </select>
                                 </div>
                                 <?php
@@ -76,7 +91,7 @@
                                 $getClient = $this->requestAction('profiles/getClient'); 
                                 ?>
                                 <div class="col-md-3" style="padding-left:0;">
-                                    <select class="form-control" style="" name="filter_by_client">
+                                    <select class="form-control showprodivision" style="" name="filter_by_client" >
                                         <option value="">Filter By <?php echo ucfirst($settings->client); ?></option>
                                         <?php 
                                         if($getClient)
@@ -91,13 +106,17 @@
                                          ?>
                                     </select>
                                 </div>
+                                
+                                <div class="col-md-2 prodivisions" style="padding-left:0;">
+                                  <!-- Divisions section -->  
+                                </div>
+                                
+                                
                                 <?php } ?>
                                  <!--</form>
                                 <form action="<?php //echo $this->request->webroot; ?>profiles/search" method="get">-->
 
-                                <div class="col-md-3" align="left" style="padding-left:0;">
-                                    <input  class="form-control input-inline" type="search" name="searchprofile"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1" /></DIV>
-                                <div class="col-md-3" align="right" style="padding-left:0;padding-right:0;">
+                                <div class="col-md-1" align="right" style="padding-left:0;padding-right:0;">
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </form>
@@ -120,7 +139,10 @@
                         <tbody>
                         <?php
                         $row_color_class = "odd";
-                        $profiletype = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
+
+                        $isISB = (isset($sidebar) && $sidebar->client_option == 0);
+                        $profiletype = ['', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Owner Operator', 'Owner Driver', 'Employee', 'Guest', 'Partner'];
+
 
                         if (count($profiles) == 0){
                             echo '<TR><TD COLSPAN="7" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';
@@ -218,3 +240,55 @@
         </div>
     </div>
 </div>
+<script>
+$(function(){
+   <?php if(isset($_GET['division'])&& $_GET['division']!=""){
+            //var_dump($_GET);
+            ?>
+        var client_id = <?php if(isset($_GET['filter_by_client'])&& $_GET['filter_by_client']!="") echo $_GET['filter_by_client'];?>;
+        var division_id = <?php echo $_GET['division'];?>;
+        //alert(client_id+'__'+division_id);
+        if (client_id != "") {
+            $.ajax({
+                type: "post",
+                data: "client_id=" + client_id,
+                url: "<?php echo $this->request->webroot;?>clients/getdivisions/" + division_id,
+                success: function (msg) {
+                    //alert(msg);
+                    $('.prodivisions').html(msg);
+                }
+            });
+        }
+        <?php
+        }
+        //if(isset($_GET['division'])&& $_GET['division']!="")
+        ?>
+        
+        $('.showprodivision').change(function () {
+            var client_id = $(this).val();
+            if (client_id != "") {
+                $.ajax({
+                    type: "post",
+                    data: "client_id=" + client_id,
+                    url: "<?php echo $this->request->webroot;?>clients/getdivisions",
+                    success: function (msg) {
+                        $('.prodivisions').html(msg);
+                    }
+                });
+            }
+    }); 
+    var client_id = $('.showprodivision').val();
+            if(client_id !="")
+            {
+                $.ajax({
+                    type: "post",
+                    data: "client_id="+client_id,
+                    url: "<?php echo $this->request->webroot;?>clients/getdivisions",
+                    success: function(msg){
+                        $('.prodivisions').html(msg);
+                    } 
+                });
+            }
+ 
+});
+</script>

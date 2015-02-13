@@ -138,6 +138,19 @@ class SettingsComponent extends Component
         }
     }
     
+    function check_client_id($id)
+    {
+        $profile = TableRegistry::get('clients');
+        $query = $profile->find()->select('id')->where(['id'=>$id]);
+                 
+         $l = $query->first();
+        if(!$l)
+        {
+            return 1;
+        }
+    }
+    
+    
     function check_permission($uid,$pid)
     {
         $user_profile = TableRegistry::get('profiles');
@@ -160,10 +173,10 @@ class SettingsComponent extends Component
               {
                 if($usertype == '2'){
                 $pt = $q2;
-                if($pt=='5' || $pt=='7' || $pt=='8' || $q1->profile_type==$q2->id)    
+                if( $pt=='5' || $pt=='7' || $pt=='8' /*|| $q1->profile_type==$q2->id*/ || $uid==$pid)    
                 return 1;
                 }
-                else
+                else if($uid==$pid)
                 return 1;
               }  
               else return 0;
@@ -172,4 +185,29 @@ class SettingsComponent extends Component
         }
         
     }
+    
+    function check_client_permission($uid,$cid)
+    {
+        $client_profile = TableRegistry::get('clients');
+        $user_profile = TableRegistry::get('profiles');
+        $query = $user_profile->find()->where(['id'=>$uid]);
+        $q1 = $query->first();
+        if($q1)
+        {
+            $profile = $user_profile->find()->where(['id'=>$uid]);
+            $q2 = $profile->first();
+            $usertype = $q1->profile_type;
+        
+            $client = $client_profile->find()->select('profile_id')->where(['id'=>$cid]);
+            $q2 = $client->first();
+            //var_dump($q2); echo $uid; die();
+            $arr = explode(',',$q2->profile_id);
+            if(in_array($uid,$arr) || $usertype== 1 || $q1->super == 1 || $q1->admin == 1 )
+            {
+                return 1;
+             }
+            else return 0;
+            }
+    }
+
 }

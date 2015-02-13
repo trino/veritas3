@@ -27,7 +27,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-clipboard"></i>
-                    Orders Listing
+                    List Orders
                 </div>
             </div>
             <div class="portlet-body">
@@ -37,12 +37,12 @@
                         <?php
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
-                        <div class="col-md-3" style="padding-left:0;">
+                        <div class="col-md-2" style="padding-left:0;">
                             <input class="form-control" name="searchdoc" type="search" placeholder="Search Order Title"
                                    value="<?php if (isset($search_text)) echo $search_text; ?>"
                                    aria-controls="sample_1"/>
                         </div>
-                        <div class="col-md-3 " style="padding-left:0;">
+                        <div class="col-md-3" style="padding-left:0;">
                             <select class="form-control" name="submitted_by_id" style="">
                                 <option value="">Submitted by</option>
                                 <?php
@@ -93,8 +93,10 @@
                             </select>
                         </div>
 
-
-                        <div class="col-md-3" align="Right" style="padding-left:0;padding-right:0;">
+                        <div class="col-md-2 divisions" style="padding-left:0;">
+                          <!-- Divisions section -->  
+                        </div>
+                        <div class="col-md-2" align="Right" style="padding-left:0;padding-right:0;">
                             <button type="submit" class="btn btn-primary">Search</button>
                         </div>
 
@@ -160,7 +162,13 @@
                                     <td><?= h($order->title) ?></td>
                                     <td><?php if(isset($uploaded_by))echo h($uploaded_by->username) ?></td>
                                     <td><?php if(isset($uploaded_for))echo h($uploaded_for->fname.' '.$uploaded_for->mname.' '.$uploaded_for->lname) ?></td>
-                                    <td><?= h($client->company_name) ?></td>
+                                    <td><?php
+                                        if (is_object($client)) {
+                                            echo h($client->company_name);
+                                        } else {
+                                            echo "Deleted " . $settings->client;
+                                        }
+                                    ?></td>
                                     <td><?php if($order->division){$div = $this->requestAction('/documents/getDivById/'.$order->division);echo $div->title;}else{echo '';} ?></td>
                                                                         
                                     <td><?= h($order->created) ?></td>
@@ -263,7 +271,10 @@
             });
         }
         <?php
-        }?>
+        }
+        //if(isset($_GET['division'])&& $_GET['division']!="")
+        ?>
+        
         $('.showdivision').change(function () {
             var client_id = $(this).val();
             if (client_id != "") {

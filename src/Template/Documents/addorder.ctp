@@ -1,6 +1,14 @@
 <script src="<?php echo $this->request->webroot; ?>js/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->request->webroot; ?>js/ajaxupload.js" type="text/javascript"></script>
 <?php
+$param = $this->request->params['action'];
+$action = ucfirst($param);
+if ($action == "Vieworder") { $action = "View";}
+if ($action == "Addorder") {
+    $action = "Create" ;
+    if ($did>0){ $action = "Edit";}
+}
+
     $doc_ext = array('pdf', 'doc', 'docx', 'txt', 'csv', 'xls', 'xlsx');
     $img_ext = array('jpg', 'jpeg', 'png', 'bmp', 'gif');
 
@@ -32,7 +40,7 @@ function provinces($name){
 ?>
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 <h3 class="page-title">
-    Create Order
+    <?php echo $action;?> Order
 </h3>
 <input type="hidden" id="dr" value="<?php if (isset($dr)) echo $dr; ?>"/>
 <div class="page-bar">
@@ -44,7 +52,7 @@ function provinces($name){
         </li>
         <li>
             <a href="">
-                Create Order
+                <?php echo $action;?>  Order
             </a>
         </li>
     </ul>
@@ -89,12 +97,20 @@ function provinces($name){
 												<i class="fa fa-check"></i> Create driver </span>
                                         </a>
                                     </li>
+                                     <li>
+                                        <a href="#tab2" data-toggle="tab" class="step">
+												<span class="number">
+												2</span><br/>
+												<span class="desc">
+												<i class="fa fa-check"></i> Products </span>
+                                        </a>
+                                    </li>
                                     <?php
                                         $doc = $this->requestAction('/documents/getDocument/orders');
                                         $subdoccli = $this->requestAction('/clients/getSubCli2/'.$cid);
                                         $subdoccli2 = $subdoccli;
                                         $doc2 = $doc;
-                                        $i = 2;
+                                        $i = 3;
                                         $end = 0;
                                         $k_c=0;
                                         foreach ($subdoccli as $sd) {
@@ -112,7 +128,7 @@ function provinces($name){
                                             <?php if ($prosubdoc['display'] != 0 && $d->display == 1) {
                                                 $k_c++;
                                                 $j = $d->id;
-                                                $j = $j + 1;
+                                                $j = $j + 2;
                                                 if($k_c==1)
                                                 {
                                                     $k_cou = $j;
@@ -285,6 +301,11 @@ function provinces($name){
                                 include('subpages/profile/info_order.php');
                             ?>
                         </div>
+                        
+                        <div class="tabber <?php echo $tab; ?>"  id="tab2">
+                            <?php include('subpages/documents/products.php'); ?>
+                        </div>
+                        
                         <?php
                         $k_c = 0;
                         foreach ($subdoccli as $sd) {
@@ -292,7 +313,7 @@ function provinces($name){
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
                             $tab_count = $d->id;
                             
-                            $tab_count = $tab_count + 1;
+                            $tab_count = $tab_count + 2;
                             if($k_c==1)
                             {
                                 $k_co = $tab_count;

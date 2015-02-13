@@ -525,20 +525,35 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	 function edit($id = null) {
-	   $check_pro_id = $this->Settings->check_pro_id($id);
-            if($check_pro_id==1)
+	   $check_client_id = $this->Settings->check_client_id($id);
+            if($check_client_id==1)
             {
                 $this->Flash->error('Sorry, the record does not exist');
                 return $this->redirect("/clients/index");
                 //die();
             }
-	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+            
+        $checker = $this->Settings->check_client_permission($this->request->session()->read('Profile.id'),$id);
+            if($checker==0)
+            {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                return $this->redirect("/clients/index");
 
-        if($setting->client_edit==0)
+            }
+	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+        if(isset($_GET['view']) && $setting->client_list==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
-            	return $this->redirect("/");
-
+            	return $this->redirect("/clients");
+        }
+        else
+        {
+            if(!isset($_GET['view']) && $setting->client_edit==0)
+            {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                	return $this->redirect("/");
+    
+            }
         }
         $docs = TableRegistry::get('client_docs');
         $query = $docs->find();
@@ -578,12 +593,20 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	function delete($id = null) {
-	   $check_pro_id = $this->Settings->check_pro_id($id);
-            if($check_pro_id==1)
+	   $check_client_id = $this->Settings->check_client_id($id);
+            if($check_client_id==1)
             {
                 $this->Flash->error('Sorry, the record does not exist');
                 return $this->redirect("/clients/index");
                 //die();
+            }
+            
+        $checker = $this->Settings->check_client_permission($this->request->session()->read('Profile.id'),$id);
+            if($checker==0)
+            {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                return $this->redirect("/clients/index");
+
             }
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
@@ -746,24 +769,32 @@ class ClientsController extends AppController {
 
    function getProfile($id=null)
    {
-    $profile = TableRegistry::get('Clients');
-    $query = $profile->find()->where(['id'=>$id]);
-    $q = $query->first();
+       $profile = TableRegistry::get('Clients');
+       $query = $profile->find()->where(['id' => $id]);
+       $q = $query->first();
 
 
        $pro = TableRegistry::get('Profiles');
 
-       if($q->profile_id){
-           $q->profile_id= ltrim ($q->profile_id, ',');
+       if (is_object($q)) {
+           if ($q->profile_id) {
+               $q->profile_id = ltrim($q->profile_id, ',');
+           }
        }
 
-        if($q->profile_id)
-            $querys = $pro->find()->where(['id IN ('.$q->profile_id.')']);
-        else
-            $querys= array();
-            $this->response->body(($querys));
-            return $this->response;
+       $didit = false;
+       if (is_object($q)) {
+           if ($q->profile_id) {
+               $querys = $pro->find()->where(['id IN (' . $q->profile_id . ')']);
+               $didit = true;
+           }
+       }
 
+       if (!$didit) {
+           $querys = array();
+       }
+       $this->response->body(($querys));
+       return $this->response;
    }
 
    function getContact($id=null)
@@ -775,11 +806,18 @@ class ClientsController extends AppController {
 //    if(($profile_id))
 //    {
         $pro = TableRegistry::get('Profiles');
-        if($q->contact_id)
-                $querys = $pro->find()->where(['id IN ('.$q->contact_id.')']);
-        else
-            $querys=array();
 
+       $didit=false;
+       if (is_object($q)) {
+           if($q->contact_id) {
+               $querys = $pro->find()->where(['id IN (' . $q->contact_id . ')']);
+               $didit=true;
+           }
+       }
+
+        if(!$didit){
+            $querys = array();
+        }
         $this->response->body(($querys));
         return $this->response;
 

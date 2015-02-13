@@ -90,12 +90,13 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
 		$newdate =add_date($date, -$temp,0,0);
 		$thedate = extractdate($newdate);
 		//getdatestamp($newdate); //right($thedate,2);
-		if ($temp==0) { $day = '"' . "End". '"' ; } else {$day = '"' . date("M d" , getdatestamp($newdate)) . '"' ; }
+		$day = '"' . date("M d" , getdatestamp($newdate)) . '"' ; //if ($temp==0) { $day = '"' . "End". '"' ; } else {
 		$quantity = 0;
 		if (array_key_exists($thedate,$variable)){$quantity  = $variable[$thedate];}
 		$tempstr = "[" . $day . ',' . $quantity . "]" . $delimeter . $tempstr;
 		if ($temp==0) { $delimeter = ", " ;}
 	}
+
 	return $tempstr;
 }
 ?>
@@ -299,9 +300,9 @@ function newchart($color, $icon, $title, $chartid, $dates, $data){
 				echo '</div></div></div></div></div>';
 }
 
-newchart("grey-salsa", "icon-globe", "Clients", "clients", $clientdates, $clients);
-newchart("green-haze", "icon-user", "Profiles", "profiles", $profiledates, $profiles);
-newchart("yellow-casablanca", "icon-doc", "Documents", "documents", $docdates, $documents );
+newchart("grey-salsa", "icon-globe", ucfirst($settings->client) . "s", "clients", $clientdates, $clients);
+newchart("green-haze", "icon-user", ucfirst($settings->profile) . "s", "profiles", $profiledates, $profiles);
+newchart("yellow-casablanca", "icon-doc", ucfirst($settings->document) . "s", "documents", $docdates, $documents );
 newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders);
 
 function enumsubdocs($thedocs, $date, $chartid){
@@ -312,7 +313,7 @@ function enumsubdocs($thedocs, $date, $chartid){
 			if (strlen($doctype )==0 and $chartid == "profiles"){
 				$doctype = $adoc->profile_type;
 				if (is_numeric($doctype)) {
-					$profiletypes = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
+					$profiletypes = ['', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Owner Operator', 'Owner Driver', 'Employee', 'Guest', 'Partner'];
 					$doctype = $profiletypes[$doctype];
 				}
 			}

@@ -76,23 +76,35 @@
                                     class="form-control member_type required">
                                     <option value="">Select</option>
 
-                                    <option
-                                        value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
+                                    <!-- php $isISB = (isset($sidebar) && $sidebar->client_option == 0);
+                                    if ($isISB) { -->
+
+                                    <option value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
                                         Driver
                                     </option>
-                                    <option
-                                        value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
 
-                                    ?>>
+                                    <option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php } ?>>
                                         Owner Operator
                                     </option>
 
-                                    <option
-                                        value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php }
-
-                                    ?>>
+                                    <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php } ?>>
                                         Owner Driver
                                     </option>
+
+                                    <!--php } else { ?>
+
+                                        <option value="9" <--php if (isset($p) && $p->profile_type == 9) { ?> selected="selected" <--php } ?>>
+                                            Employee
+                                        </option>
+                                        <option value="10" <--php if (isset($p) && $p->profile_type == 10) { ?> selected="selected" <--php } ?>>
+                                            Guest
+                                        </option>
+                                        <option value="11" <--php if (isset($p) && $p->profile_type == 11) { ?> selected="selected" <--php } ?>>
+                                            Partner
+                                        </option>
+
+                                    < php } -->
+
                                 </select>
                             </div>
                         </div>

@@ -450,7 +450,7 @@
                                         <table class="table table-bordered table-hover">
                                             <tr>
                                                 <td>
-                                                    Add a <?=$settings->profile; ?>
+                                                    Add an <?=$settings->profile; ?>
                                                 </td>
                                                 <td>
                                                     <label class="uniform-inline">

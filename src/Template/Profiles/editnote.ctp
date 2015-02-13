@@ -38,7 +38,7 @@ function canuseredit($notes, $noteid, $userid, $profile){
 }
 
 function usertype($profile){
-    $profiletype = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver'];
+    $profiletype = ['','Admin','Recruiter','External','Safety','Driver','Contact','Owner Operator','Owner Driver', 'Employee', 'Guest', 'Partner'];
     return $profiletype[$profile->profile_type];
 }
 

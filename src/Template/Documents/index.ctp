@@ -25,7 +25,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-copy"></i>
-                    <?php echo ucfirst($settings->document);?>s Listing
+                    List <?php echo ucfirst($settings->document);?>s
                 </div>
             </div>    
             <div class="portlet-body">
@@ -37,7 +37,14 @@
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
                         <!--<form action="<?php// echo $this->request->webroot; ?>documents/submittedBy" method="get">-->
-						<div class="col-md-3" style="padding-left:0;">
+						
+                        
+                        <div class="col-md-2"  style="padding-left:0;">
+
+                            <input class="form-control" name="searchdoc" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
+
+                        </div>
+                        <div class="col-md-2" style="padding-left:0;">
 							<select class="form-control" name="submitted_by_id" style="">
 								<option value="">Submitted by</option>
                                 <?php 
@@ -55,7 +62,7 @@
                             $type = $this->requestAction("documents/getDocType");
                         ?>
                         <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByType" method="get">-->
-						<div class="col-md-3" style="padding-left:0;">
+						<div class="col-md-2" style="padding-left:0;">
 							<select class="form-control" name="type">
 								<option value=""><?php echo ucfirst($settings->document);?> type</option>
 								<?php 
@@ -76,7 +83,7 @@
                         ?>
                         <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByClient" method="get">-->
 						<div class="col-md-2" style="padding-left:0;">
-							<select class="form-control" name="client_id">
+							<select class="form-control showclientdivision" name="client_id">
 								<option value=""><?php echo ucfirst($settings->client);?></option>
 								<?php 
                                     foreach($clients as $c)
@@ -90,11 +97,8 @@
 							</select>
 						</div>
 
-
-                        <div class="col-md-2"  style="padding-left:0;">
-
-                            <input class="form-control" name="searchdoc" type="search" placeholder=" Search <?php echo ucfirst($settings->document); ?>s" value="<?php if(isset($search_text)) echo $search_text; ?>" aria-controls="sample_1"/>
-
+                        <div class="col-md-2 clientdivision"  style="padding-left:0;">
+                        <!-- Divisions section -->
                         </div>
 
                         <div class="col-md-2" style="padding-left:0;padding-right:0;" align="right">
@@ -167,7 +171,16 @@
 
                                   ?></td>
                                 <td><?= h($docs->created) ?></td>
-                                <td><?= h($getClientById->company_name) ?></td>
+                                <td>
+                                    <?php
+                                    if (is_object($getClientById)) {
+                                        echo h($getClientById->company_name);
+                                    } else {
+                                        echo "Deleted " . $settings->client;
+                                    }
+                                    ?>
+
+                                </td>
                                 <td class="actions  util-btn-margin-bottom-5 ">
 
                                     <?php  if($sidebar->document_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view',$docs->client_id, $docs->id], ['class' => 'btn btn-info']);} ?>
@@ -314,4 +327,49 @@
            url = url+'&to='+to+'&from='+from;
            window.location = url;
         });
+        
+        <?php if(isset($_GET['division'])&& $_GET['division']!=""){
+            //var_dump($_GET);
+            ?>
+        var client_id = <?php echo $_GET['client_id'];?>;
+        var division_id = <?php echo $_GET['division'];?>;
+        //alert(client_id+'__'+division_id);
+        if (client_id != "") {
+            $.ajax({
+                type: "post",
+                data: "client_id=" + client_id,
+                url: "<?php echo $this->request->webroot;?>clients/getdivisions/" + division_id,
+                success: function (msg) {
+                    //alert(msg);
+                    $('.clientdivision').html(msg);
+                }
+            });
+        }
+        <?php
+        }?>
+        $('.showclientdivision').change(function () {
+            var client_id = $(this).val();
+            if (client_id != "") {
+                $.ajax({
+                    type: "post",
+                    data: "client_id=" + client_id,
+                    url: "<?php echo $this->request->webroot;?>clients/getdivisions",
+                    success: function (msg) {
+                        $('.clientdivision').html(msg);
+                    }
+                });
+            }
+    }); 
+    var client_id = $('.showclientdivision').val();
+            if(client_id !="")
+            {
+                $.ajax({
+                    type: "post",
+                    data: "client_id="+client_id,
+                    url: "<?php echo $this->request->webroot;?>clients/getdivisions",
+                    success: function(msg){
+                        $('.clientdivision').html(msg);
+                    } 
+                });
+            }
     </script>

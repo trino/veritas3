@@ -208,7 +208,7 @@
                                                     <form action="<?php echo $this->request->webroot;?>pages/edit/version_log"  method="post"class="form-horizontal form-bordered" id="version_log">
                                                         <div class="form-body">
                                                             <div class="form-group last">
-                                                                <label class="control-label col-md-2">Title</label>
+                                                                <label class="control-label col-md-2">Version Log Title</label>
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-version_log"

@@ -19,7 +19,7 @@
             
             <div class="tile-object">
                 
-                   <div class="name"> Add a <?=$settings->profile;?></div>
+                   <div class="name"> Add an <?=$settings->profile;?></div>
                 
                 <div class="number">
 

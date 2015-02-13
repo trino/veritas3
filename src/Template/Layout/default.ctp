@@ -248,7 +248,7 @@
         function get_title($slug) {
             $content = TableRegistry::get("contents");
             $l =  $content->find()->where(['slug'=>$slug])->first();
-            echo $l->title;
+            echo ucfirst($l->title);
         }
 
         ?>
@@ -423,6 +423,9 @@ function change_text(v){
 
 
 </script>
+<style>
+.page-logo a{max-width:100%;}
+</style>
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

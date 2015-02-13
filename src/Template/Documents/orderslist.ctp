@@ -271,7 +271,10 @@
             });
         }
         <?php
-        }?>
+        }
+        //if(isset($_GET['division'])&& $_GET['division']!="")
+        ?>
+        
         $('.showdivision').change(function () {
             var client_id = $(this).val();
             if (client_id != "") {

@@ -55,6 +55,9 @@
             <div class="portlet-body">
                     <div class="chat-form">
                             <form action="<?php echo $this->request->webroot; ?>profiles/index" method="get">
+                            <div class="col-md-3" align="left" style="padding-left:0;">
+                                    <input  class="form-control input-inline" type="search" name="searchprofile"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1" />
+                            </div>
                                 <div class="col-md-3" style="padding-left:0;">
                                     <select class="form-control" style="" name="filter_profile_type">
                                         <option value="">Filter By <?php echo ucfirst($settings->profile); ?> Type</option>
@@ -88,7 +91,7 @@
                                 $getClient = $this->requestAction('profiles/getClient'); 
                                 ?>
                                 <div class="col-md-3" style="padding-left:0;">
-                                    <select class="form-control" style="" name="filter_by_client" onchange="getDivision();" >
+                                    <select class="form-control showprodivision" style="" name="filter_by_client" >
                                         <option value="">Filter By <?php echo ucfirst($settings->client); ?></option>
                                         <?php 
                                         if($getClient)
@@ -103,13 +106,17 @@
                                          ?>
                                     </select>
                                 </div>
+                                
+                                <div class="col-md-2 prodivisions" style="padding-left:0;">
+                                  <!-- Divisions section -->  
+                                </div>
+                                
+                                
                                 <?php } ?>
                                  <!--</form>
                                 <form action="<?php //echo $this->request->webroot; ?>profiles/search" method="get">-->
 
-                                <div class="col-md-3" align="left" style="padding-left:0;">
-                                    <input  class="form-control input-inline" type="search" name="searchprofile"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1" /></DIV>
-                                <div class="col-md-3" align="right" style="padding-left:0;padding-right:0;">
+                                <div class="col-md-1" align="right" style="padding-left:0;padding-right:0;">
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </form>
@@ -233,3 +240,55 @@
         </div>
     </div>
 </div>
+<script>
+$(function(){
+   <?php if(isset($_GET['division'])&& $_GET['division']!=""){
+            //var_dump($_GET);
+            ?>
+        var client_id = <?php if(isset($_GET['filter_by_client'])&& $_GET['filter_by_client']!="") echo $_GET['filter_by_client'];?>;
+        var division_id = <?php echo $_GET['division'];?>;
+        //alert(client_id+'__'+division_id);
+        if (client_id != "") {
+            $.ajax({
+                type: "post",
+                data: "client_id=" + client_id,
+                url: "<?php echo $this->request->webroot;?>clients/getdivisions/" + division_id,
+                success: function (msg) {
+                    //alert(msg);
+                    $('.prodivisions').html(msg);
+                }
+            });
+        }
+        <?php
+        }
+        //if(isset($_GET['division'])&& $_GET['division']!="")
+        ?>
+        
+        $('.showprodivision').change(function () {
+            var client_id = $(this).val();
+            if (client_id != "") {
+                $.ajax({
+                    type: "post",
+                    data: "client_id=" + client_id,
+                    url: "<?php echo $this->request->webroot;?>clients/getdivisions",
+                    success: function (msg) {
+                        $('.prodivisions').html(msg);
+                    }
+                });
+            }
+    }); 
+    var client_id = $('.showprodivision').val();
+            if(client_id !="")
+            {
+                $.ajax({
+                    type: "post",
+                    data: "client_id="+client_id,
+                    url: "<?php echo $this->request->webroot;?>clients/getdivisions",
+                    success: function(msg){
+                        $('.prodivisions').html(msg);
+                    } 
+                });
+            }
+ 
+});
+</script>

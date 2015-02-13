@@ -189,17 +189,25 @@ class SettingsComponent extends Component
     function check_client_permission($uid,$cid)
     {
         $client_profile = TableRegistry::get('clients');
-        //$query = $user_profile->find()->where(['id'=>$uid]);
+        $user_profile = TableRegistry::get('profiles');
+        $query = $user_profile->find()->where(['id'=>$uid]);
+        $q1 = $query->first();
+        if($q1)
+        {
+            $profile = $user_profile->find()->where(['id'=>$uid]);
+            $q2 = $profile->first();
+            $usertype = $q1->profile_type;
         
             $client = $client_profile->find()->select('profile_id')->where(['id'=>$cid]);
             $q2 = $client->first();
             //var_dump($q2); echo $uid; die();
             $arr = explode(',',$q2->profile_id);
-            if(in_array($uid,$arr))
+            if(in_array($uid,$arr) || $usertype== 1 || $q1->super == 1 || $q1->admin == 1 )
             {
                 return 1;
              }
             else return 0;
+            }
     }
 
 }

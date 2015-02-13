@@ -172,11 +172,11 @@ class SettingsComponent extends Component
               if($q2->super != '1')
               {
                 if($usertype == '2'){
-                $pt = $q2;
-                if( $pt=='5' || $pt=='7' || $pt=='8' /*|| $q1->profile_type==$q2->id*/ || $uid==$pid)    
+                $pt = $q2->profile_type;
+                if($pt=='5' || $pt=='7' || $pt=='8' /*|| $q1->profile_type==$q2->id*/ || $uid==$pid)    
                 return 1;
                 }
-                else if($uid==$pid)
+                else if($usertype== '1' || $q1->admin == '1' || $q1->super == '1' || $uid==$pid)
                 return 1;
               }  
               else return 0;

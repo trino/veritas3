@@ -176,7 +176,7 @@ class SettingsComponent extends Component
                 if( $pt=='5' || $pt=='7' || $pt=='8' /*|| $q1->profile_type==$q2->id*/ || $uid==$pid)    
                 return 1;
                 }
-                else
+                else if($uid==$pid)
                 return 1;
               }  
               else return 0;

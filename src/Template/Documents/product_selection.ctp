@@ -29,8 +29,8 @@
     <?php include('subpages/profile/info_order2.php');?>
     </div>
 </div>
-<a href="javascript:;" class="btn blue button-next"
-                                       onclick="">
+<a class="btn blue button-next"
+                                       href="<?php echo $this->request->webroot;?>documents/addorder/30">
                                         Proceed <i class="m-icon-swapright m-icon-white"></i>
                                     </a>
                                     <p>&nbsp;</p><p>&nbsp;</p>

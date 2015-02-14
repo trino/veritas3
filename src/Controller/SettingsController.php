@@ -107,6 +107,17 @@ class SettingsController extends AppController {
         die();
         //$this->redirect(['controller'=>'profiles','action'=>'edit',$this->request->session()->read("Profile.id")]);
     }
+    function change_clients()
+    {
+        $setting = TableRegistry::get('Settings');
+         $query = $setting->query();
+                $query->update()
+                ->set(['client_option'=>$_POST['client_option']])
+                ->where(['id' => 1])
+                ->execute();
+        echo "1";
+        die();
+    }
     function getProSubDoc($pro_id,$doc_id)
     {
         $sub = TableRegistry::get('Profilessubdocument');

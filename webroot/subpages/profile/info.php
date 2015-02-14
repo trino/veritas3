@@ -5,7 +5,7 @@
 <?php
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
-    
+    $settings = $this->requestAction('settings/get_settings'); 
     function printoption($option, $selected, $value = "")
     {
         $tempstr = "";
@@ -99,7 +99,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                     </option>
                                 <?php }
 
-                                $isISB = (isset($sidebar) && $sidebar->client_option == 0);
+                                $isISB = (isset($sidebar) && $settings->client_option == 0);
                                 if ($isISB){
                                 ?>
 
@@ -158,7 +158,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                             </select>
                         </div>
                     </div>
-                    <?php // if ($sidebar->client_option == 0) { ?>
+                    <?php // if ($settings->client_option == 0) { ?>
                     
                     <div class="col-md-6" id="driver_div"
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
@@ -298,7 +298,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
 
                     <div class="clearfix">
                     </div>
-                    <?php if ($sidebar->client_option == 0) { ?>
+                    <?php if ($settings->client_option == 0) { ?>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Title</label><BR>

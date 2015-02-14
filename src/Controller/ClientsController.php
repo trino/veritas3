@@ -658,10 +658,8 @@ class ClientsController extends AppController {
         $sub = TableRegistry::get('client_sub_order');
         $query = $sub->find();
         $q = $query->select()->where(['client_id'=>$id])->order(['display_order'=>'ASC']);
-
-
-            $this->response->body($q);
-            return $this->response;
+        $this->response->body($q);
+        return $this->response;
 
         die();
     }

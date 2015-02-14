@@ -118,14 +118,13 @@ class TodoController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	public function delete($id = null) {
-		$profile = $this->Profiles->get($id);
-		$this->request->allowMethod(['post', 'delete']);
-		if ($this->Profiles->delete($profile)) {
-			$this->Flash->success('Todo has been deleted.');
-		} else {
-			$this->Flash->error('Todo could not be deleted. Please try again.');
-		}
-		return $this->redirect(['action' => 'index']);
+	  $event = TableRegistry::get('Events');
+      $query = $event->query();
+      if($query->delete()
+        ->where(['id' => $id])
+        ->execute())
+         $this->Flash->success('Events Deleted successfully.');
+		return $this->redirect(['action' => 'calender']);
 	}
     
     function logout()

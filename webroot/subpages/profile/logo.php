@@ -8,7 +8,7 @@ function printlogos($logos1, $webroot, $index,$uid){ //* replaces the logo enume
         $img = "image" . $index; ?>
         <div class="col-md-4" align="center">
             <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> id="<?php echo $img ?>"/>
-            <label for="<?php echo $img ?>"><img style="max-width:90%;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label>
+            <label for="<?php echo $img ?>"><img style="max-width:100px;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label>
             <a href="javascript:void(0);"  class="btn btn-danger deletelogo" id="<?php echo $logo->id;?>">Delete</a>
         </div>
         <?php
@@ -42,7 +42,7 @@ $uid = $this->request->session()->read("Profile.id");
 
                                         </ul>
 
-    <div class="portlet-body solid blue"> <!-- blue is needed to make the white logos stand out -->
+                                <div class="portlet-body solid blue"> <!-- blue is needed to make the white logos stand out -->
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="subtab_1_1">
                                             <div class="portlet solid blue" -->
@@ -63,8 +63,8 @@ $uid = $this->request->session()->read("Profile.id");
                                                             Logo Deleted successfully
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <a href="javascript:void(0)" id="addnewlogo" class="primary btn btn-info">Add New Logo</a>
-                                                        <a href='javascript:;' class="btn btn-success" id="submit">Save Changes</a>
+                                                        <a href="javascript:void(0)" id="addnewlogo" class="primary btn btn-primary">Add New Logo</a>
+                                                        <a href='javascript:;' class="btn btn-success" id="submit">Submit</a>
                                                     </form>
 
                                                 </div>
@@ -91,8 +91,8 @@ $uid = $this->request->session()->read("Profile.id");
                                                             Logo Deleted successfully
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <a href="javascript:void(0)" id="addnewlogo1" class="secondary btn btn-info">Add New Logo</a>
-                                                        <a href='javascript:;' class="btn btn-success" id="submit1">Save Changes</a>
+                                                        <a href="javascript:void(0)" id="addnewlogo1" class="secondary btn btn-primary">Add New Logo</a>    
+                                                        <a href='javascript:;' class="btn btn-success" id="submit1">Submit</a>
                                                     </form>
 
 
@@ -119,8 +119,8 @@ $uid = $this->request->session()->read("Profile.id");
                                                             Logo Deleted successfully
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <a href="javascript:void(0)" id="addnewlogo2" class="loginlogo btn btn-info">Add New Logo</a>
-                                                        <a href='javascript:;' class="btn btn-success" id="submit2">Save Changes</a>
+                                                        <a href="javascript:void(0)" id="addnewlogo2" class="loginlogo btn btn-primary">Add New Logo</a>
+                                                        <a href='javascript:;' class="btn btn-success" id="submit2">Submit</a>
                                                     </form>
 
 
@@ -133,7 +133,7 @@ $uid = $this->request->session()->read("Profile.id");
 
 <script>
 function initiate_ajax_upload2(button_id){
-var button = $('#'+button_id), interva;
+var button = $('#'+button_id), interval;
 new AjaxUpload(button,{
     action: "<?php echo $this->request->webroot;?>logos/upload/"+button_id,
     name: 'myfile',
@@ -159,8 +159,8 @@ new AjaxUpload(button,{
             $("#logoform").prepend('<div class="col-md-4 margin-top-20">'+
             '<div class="form-group" style="height:100px;overflow:hidden;">'+
             '<input type="radio" value="'+response["id"]+'" name="logo"/>'+
-            '<img style="width:200px;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'" />'+
-            '</div>'+
+            '<img style="max-width:100px;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'" />'+
+            '<a href="javascript:;" onclick="$(this).parent().parent().remove();" class ="btn btn-danger">Delete</a></div>'+
             '</div>');
             }
             else
@@ -169,8 +169,8 @@ new AjaxUpload(button,{
                var out = '<div class="col-md-4 margin-top-20">'+
                          '<div class="form-group" style="height:100px;overflow:hidden;">'+
                          '<input type="radio" value="'+response["id"]+'" name="logo"/>'+
-                         '<img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'"/>'+
-                         '</div></div>'; 
+                         '<img style="max-width:100px;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'"/>'+
+                         '<a href="javascript:;" onclick="$(this).parent().parent().remove();" class ="btn btn-danger">Delete</a></div></div>'; 
                 $("#logoform1").prepend(out);
             }
             else
@@ -179,8 +179,8 @@ new AjaxUpload(button,{
                var out = '<div class="col-md-4 margin-top-20">'+
                          '<div class="form-group" style="height:100px;overflow:hidden;">'+
                          '<input type="radio" value="'+response["id"]+'" name="logo"/>'+
-                         '<img style="max-width:90%;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'"/>'+
-                         '</div></div>'; 
+                         '<img style="max-width:100px;" src="<?php echo $this->request->webroot; ?>img/logos/'+response["image"]+'"/>'+
+                         '<a href="javascript:;"  class ="btn btn-danger deletelogo" id="'+response['id']+'">Delete</a></div></div>'; 
                 $("#logoform2").prepend(out);
             }
             }
@@ -190,13 +190,13 @@ new AjaxUpload(button,{
     });
 }
 $(function(){
-    $('.deletelogo').click(function(){
+    $('.deletelogo').live('click',function(){
         
         var con = confirm("Confirm Delete?");
         var lid = $(this).attr('id');
         if(con== true)
         {
-            $(this).parent().parent().parent().remove();
+            $(this).parent().remove();
             $.ajax({
                 url:'<?php echo $this->request->webroot;?>logos/delete/'+lid,
                success:function(msg)

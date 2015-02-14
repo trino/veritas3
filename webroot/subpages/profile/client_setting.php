@@ -32,13 +32,13 @@
                                                 <td>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[client_option]"
-                                                                                          value="0"  <?php if (isset($sidebar) && $sidebar->client_option == 0) echo "checked"; ?> />
+                                                                                          name="client_option"
+                                                                                          value="0"  <?php if (isset($settings) && $settings->client_option == 0) echo "checked"; ?> />
                                                         ISB MEE </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[client_option]"
-                                                                                          value="1"  <?php if (isset($sidebar) && $sidebar->client_option == 1) echo "checked"; ?>/>
+                                                                                          name="client_option"
+                                                                                          value="1"  <?php if (isset($settings) && $settings->client_option == 1) echo "checked"; ?>/>
                                                         Event Audit </label>
                                                  </td>
                                             </tr>
@@ -47,7 +47,7 @@
                                         if (!isset($disabled)) {
                                             ?>
                                             <div class="res"></div>
-                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                            <div class="margin-top-10 alert alert-success display-hide flashx" style="display: none;">
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
@@ -67,25 +67,25 @@
                                         </div>
 
 <script>
-/*$(function(){
+$(function(){
      $('#save_client').click(function(){
                 $('#save_client').text('Saving..');
                     var str = $('#clientform input').serialize();
                     $.ajax({
-                       url:'<?php echo $this->request->webroot; ?>profiles/blocks/client',
+                       url:'<?php echo $this->request->webroot; ?>settings/change_clients/<?php echo $id;?>',
                        data:str,
                        type:'post',
                        success:function(res)
                        {
                             //alert(res);
-                            $('.res').text(res);
-                            $('.flash').show();
-                            $('.flash').fadeOut(7000);
+                            //$('.res').text(res);
+                            $('.flashx').show();
+                            $('.flashx').fadeOut(7000);
                             $('#save_client').text(' Save Changes ');
                        } 
                     })
                });
-});*/
+});
 </script>
 
 </DIV><!--</DIV> END PORTLET-->

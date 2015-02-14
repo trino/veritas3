@@ -303,7 +303,7 @@ function provinces($name){
                         </div>
                         
                         <div class="tabber <?php echo $tab; ?>"  id="tab2">
-                            <?php include('subpages/documents/products.php'); ?>
+                            <?php //include('subpages/documents/products.php'); ?>
                         </div>
                         
                         <?php

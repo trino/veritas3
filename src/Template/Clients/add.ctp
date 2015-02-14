@@ -152,11 +152,11 @@ if ($action == "Add") { $action  = "Create";}
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1_1">
                                         <div id="tab_1-1" class="tab-pane active">
-                                            <form role="form" action="" method="post" id="client_form" onsubmit="save_client_p1()">
+                                            <form role="form" action="" method="post" id="client_form" class="save_client_all" >
 
                                                 <div class="row">
                                                     <input type="hidden" name="image" id="client_img"/>
-                                                    <?php if($sidebar->client_option==0){?>
+                                                    <?php if($settings->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Customer Type</label>
                                                         <select class="form-control" name="customer_type"
@@ -178,12 +178,12 @@ if ($action == "Add") { $action  = "Create";}
                                                     </div>
                                                     <?php }?>
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label"> <?php echo ($sidebar->client_option==0)?"Company":"Event";?> Name</label>
+                                                        <label class="control-label"> <?php echo ($settings->client_option==0)?"Company":"Event";?> Name</label>
                                                         <input  required="required" type="text" class="form-control"
                                                                name="company_name" <?php if (isset($client->company_name)) { ?> value="<?php echo $client->company_name; ?>" <?php } ?>/>
                                                     </div>
 
-                                                    <?php if($sidebar->client_option==0){?>
+                                                    <?php if($settings->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Address</label>
                                                         <input type="text" class="form-control"
@@ -224,7 +224,7 @@ if ($action == "Add") { $action  = "Create";}
                                                         ?>
 
                                                     </div>
-                                                    <?php if($sidebar->client_option==0){?>
+                                                    <?php if($settings->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Postal Code</label>
                                                         <input type="text" class="form-control"
@@ -243,7 +243,7 @@ if ($action == "Add") { $action  = "Create";}
                                                         <input type="text" class="form-control"
                                                                name="site" <?php if (isset($client->site)) { ?> value="<?php echo $client->site; ?>" <?php } ?>/>
                                                     </div>
-                                                    <?php if($sidebar->client_option==0){?>
+                                                    <?php if($settings->client_option==0){?>
                                                     <div class="form-group col-md-4">
                                                         <label class="control-label">Divisions </label>
                                                         <textarea name="division" id="division" placeholder="One division per line"
@@ -495,7 +495,7 @@ if ($action == "Add") { $action  = "Create";}
                                             <?php
                                                 //$subdoc = $this->requestAction('/clients/getSub');
                                                 $subdoccli = $this->requestAction('/clients/getSubCli/'.$id);
-
+                                                //var_dump($subdoccli);
                                                 foreach ($subdoccli as $subcl) {
                                                     //echo $subcl->sub_id;
                                                     $sub = $this->requestAction('/clients/getFirstSub/'.$subcl->sub_id);
@@ -664,8 +664,8 @@ if ($action == "Add") { $action  = "Create";}
         <?php
         }
         ?>
-        function save_client_p1(){
-
+        $('.save_client_all').submit(function(event){
+            event.preventDefault();
             $('#save_client_p1').text('Saving..');
             var str = '';
             $('.recruiters input').each(function () {
@@ -740,7 +740,7 @@ if ($action == "Add") { $action  = "Create";}
                     $('#save_client_p1').text(' Save ');
                 }
             })
-        }
+        });
     });
 
 

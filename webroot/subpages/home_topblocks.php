@@ -1,6 +1,7 @@
 <?php $block = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/blocks");
       $sidebar = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");
-      $order_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id')."/order");
+      //$order_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id')."/order");
+      $order_url = 'documents/productSelection';
       $document_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id')."/document");
         
 ?>

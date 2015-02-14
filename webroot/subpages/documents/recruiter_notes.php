@@ -24,9 +24,9 @@
     ?>
 
     <div class="">
-        <input type="hidden" id="rid" value="0" />
-        <textarea id="recruiter_notes" placeholder="Add driver notes here..." rows="2" class="form-control"></textarea>
-        <a href="javascript:void(0);" class="btn btn-success" id="add_recruiter" style="float:right;margin:5px 0;">Submit</a>
+        <input type="hidden" id="rid" value="0"  <?php echo $is_disabled ?> />
+        <textarea id="recruiter_notes" placeholder="Add driver notes here..." rows="2" class="form-control"  <?php echo $is_disabled ?>></textarea>
+        <a href="javascript:void(0);" class="btn btn-success" id="add_recruiter" style="float:right;margin:5px 0;" <?php echo $is_disabled ?> >Submit</a>
 
     </div>
     <div class="">
@@ -52,8 +52,8 @@
                             </div>
                             <div class="item-body">
                                 <span id="desc<?php echo $n->id;?>"><?php echo $n->description; ?></span><br />
-                                <a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_<?php echo $n->id;?>">Edit</a>
-                                <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_<?php echo $n->id;?>" onclick="return confirm('Are you sure you want to delete &quot;<?php echo $n->description; ?>&quot;');">Delete</a>
+                                <a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_<?php echo $n->id;?>"  <?php echo $is_disabled ?>>Edit</a>
+                                <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_<?php echo $n->id;?>" onclick="return confirm('Are you sure you want to delete &quot;<?php echo $n->description; ?>&quot;');"  <?php echo $is_disabled ?>>Delete</a>
                                 <br><br>
                             </div>
 

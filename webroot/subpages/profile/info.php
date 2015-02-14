@@ -164,7 +164,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                          style="display:<?php if (isset($p) && $p->profile_type == 5) echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
                             <label class="control-label">Driver Type</label>
-                            <select name="driver" class="form-control select_driver req_driver">
+                            <select  <?php echo $is_disabled ?> name="driver" class="form-control select_driver req_driver">
                                 <option value="">Select Driver Type</option>
                                 <option
                                     value="1" <?php if (isset($p) && $p->driver == 1) echo "selected='selected'"; ?>
@@ -276,7 +276,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control"
+                            <input  <?php echo $is_disabled ?> type="password" name="password" id="password" class="form-control"
                                    <?php // if (isset($p->password)){ ?><?php //echo $p->password; ?> <?php //} ?>
                                    <?php if (isset($p->password) && $p->password){//do nothing 
                                    }else{?>required="required"<?php }?>/>
@@ -288,7 +288,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Re-type Password</label>
-                            <input type="password" class="form-control"
+                            <input  <?php echo $is_disabled ?> type="password" class="form-control"
                                    id="retype_password" <?php //if (isset($p->password)) { ?> <?php // echo $p->password; ?>  <?php // } ?>/>
                             <span class="error passerror flashPass1"
                                   style="display: none;">Please enter same password</span>

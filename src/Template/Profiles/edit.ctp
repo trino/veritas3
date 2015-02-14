@@ -339,7 +339,7 @@
 
 
 
-                                            <li class="prev disabled"><a href="">&lt; previous</a></li>                                                <li class="next disabled"><a href="">next &gt;</a></li>                    </ul>
+                                            <li class="prev disabled"><a href="">&lt; previous</a></li> <li class="next disabled"><a href="">next &gt;</a></li>                    </ul>
                                     </div>
 
 

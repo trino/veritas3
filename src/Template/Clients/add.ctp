@@ -558,7 +558,7 @@ if ($action == "Add") { $action  = "Create";}
                                                 </div>
                                                 <div class="margin-top-10">
                                                     <a href="javascript:void(0)" id="save_display1"
-                                                       class="btn btn-primary"> Save Changes </a>
+                                                       class="btn btn-primary"  <?php echo $is_disabled ?>> Save Changes </a>
 
 
                                                 </div>

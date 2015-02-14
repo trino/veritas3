@@ -623,7 +623,8 @@
                                     </div>
                                     <div class="tab-pane" id="subtab_2_4">
                                         
-                                        <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) {
+                                        <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) 
+                                        {
                                             //&& $this->request->session()->read("Profile.id")==$id
                                             ?>
 
@@ -651,7 +652,7 @@
                                                                     ?>
                             
                                                                     <tr>
-                                                                        <td><img height="32" src="../../img/jobs/<?php echo $o->image; ?>"><input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
+                                                                        <td><img height="32" src="../../img/jobs/<?php echo $o->image; ?>"/><input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?>  <?php echo $is_disabled ?> /> <?php echo $o->company_name; ?></td>
                                                                     </tr>
                             
                                                                 <?php
@@ -673,7 +674,7 @@
                                                     <div class="caption">Assign to client</div>
                                                 </div>
                                                 <div class="portlet-body">-->
-                                                    <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />
+                                                    <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control"  <?php echo $is_disabled ?> />
                                                     <div class="scrolldiv">
                                                     <table class="table scrolldiv" id="clientTable">
                                                         <?php
@@ -687,7 +688,7 @@
                                                                     ?>
                             
                                                                     <tr>
-                                                                        <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?></td>
+                                                                        <td><input  <?php echo $is_disabled ?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?></td>
                                                                     </tr>
                             
                                                                 <?php

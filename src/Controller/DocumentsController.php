@@ -416,6 +416,15 @@
                 $profiles = $this->Profiles->find()->where(['id'=>$order_id->uploaded_for])->first();
                 $this->set('p',$profiles);
                 }
+                else
+                {
+                    if(isset($_GET['driver']) && is_numeric($_GET['driver']) && $_GET['driver'])
+                    {
+                        $this->loadModel('Profiles');
+                        $profiles = $this->Profiles->find()->where(['id'=>$_GET['driver']])->first();
+                        $this->set('p',$profiles);
+                    }
+                }
                 
             if($did)
                 {
@@ -2562,6 +2571,160 @@
             // Return response object to prevent controller from trying to render
             // a view.
             return $this->response;
+        }
+        function getDriverClient($driver,$client)
+        {
+            $logged_id = $this->request->session()->read('Profile.id');
+            //echo "<br/>";
+            if(!$client){
+            $cmodel = TableRegistry::get('Clients');
+            if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
+            $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'")']);
+            else
+            $clients = $cmodel->find();
+            
+            }
+            else
+            {
+               $cmodel = TableRegistry::get('Clients');
+               $clients = $cmodel->find()->where(['id'=>$client]); 
+               
+               $cmodel2 = TableRegistry::get('Clients');
+                $clients2 = $cmodel2->find()->where(['id'=>$client])->first();
+                $profile_ids2 = $clients2->profile_id;
+                
+                
+                $model = TableRegistry::get('Profiles');
+                $q = $model->find()->where(['id IN ('.$profile_ids2.')','profile_type' => 5]);
+            }
+            $profile_ids = '';
+            foreach($clients as $c)
+            {
+
+                if($profile_ids)
+                {
+                    $profile_ids = $profile_ids.','.$c->profile_id;
+                }
+                else
+                {
+                    $profile_ids = $c->profile_id;
+                }
+            }
+            if(!$profile_ids)
+            $profile_ids = '9999999';
+            //echo $profile_ids;die();
+            if($driver==0 && $client==0)
+            {
+                if($this->request->session()->read('Profile.admin') || $this->request->session()->read('Profile.super'))
+                {
+                    
+                    $model = TableRegistry::get('Profiles');
+                    $q = $model->find()->where(['profile_type' => 5]);
+                }
+                else
+                {
+                    $model = TableRegistry::get('Profiles');                    
+                    $q = $model->find()->where(['profile_type' => 5,'id IN ('.$profile_ids.')']);
+                }  
+                
+            }
+            else
+            if($driver!=0)
+            {
+               $model = TableRegistry::get('Profiles');
+               $q = $model->find()->where(['id' => $driver]); 
+            }
+            
+            $dr_cl['driver'] = $q;
+            $dr_cl['client'] = $clients; 
+            
+            $this->response->body($dr_cl);
+            return $this->response;
+            die();
+            
+        }
+        
+        function getClientByDriver($driver)
+        {
+            $logged_id = $this->request->session()->read('Profile.id');
+            $cmodel = TableRegistry::get('Clients');
+            if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
+            $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'") AND (profile_id LIKE "'.$driver.',%" OR profile_id LIKE "%,'.$driver.',%" OR profile_id LIKE "%,'.$driver.'")']);//Selecting client with respect to both loggedin user and driver
+            else
+            $clients = $cmodel->find()->where(['(profile_id LIKE "'.$driver.',%" OR profile_id LIKE "%,'.$driver.',%" OR profile_id LIKE "%,'.$driver.'")']);
+            
+            if(!is_numeric($driver))
+            {
+                if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
+                $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'")']);
+                else
+                $clients = $cmodel->find();
+            }
+            echo "<option value=''>Select Clients</option>";
+            if($clients)
+            {
+                
+                foreach($clients as $c)
+                {
+                    echo "<option value='".$c->id."'>".$c->company_name."</option>";                    
+                }
+            }
+            
+            die();
+        }
+        function getDriverByClient($client)
+        {
+            //$logged_id = $this->request->session()->read('Profile.id');
+            if(!is_numeric($client))
+            {
+                $logged_id = $this->request->session()->read('Profile.id');
+                //echo "<br/>";
+                
+                $cmodel = TableRegistry::get('Clients');
+                if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
+                $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'")']);
+                else
+                $clients = $cmodel->find();
+                
+                
+                $profile_ids = '';
+                foreach($clients as $c)
+                {
+    
+                    if($profile_ids)
+                    {
+                        $profile_ids = $profile_ids.','.$c->profile_id;
+                    }
+                    else
+                    {
+                        $profile_ids = $c->profile_id;
+                    }
+                }
+                if(!$profile_ids)
+                $profile_ids = '9999999';
+                $model = TableRegistry::get('Profiles');
+                $profile = $model->find()->where(['id IN ('.$profile_ids.')','profile_type' => 5]);
+            }
+            else{
+            $cmodel = TableRegistry::get('Clients');
+            $clients = $cmodel->find()->where(['id'=>$client])->first();
+            $profile_ids = $clients->profile_id;
+            
+            
+            $model = TableRegistry::get('Profiles');
+            $profile = $model->find()->where(['id IN ('.$profile_ids.')','profile_type' => 5]);
+            }
+            echo "<option value=''>Select Driver</option>";
+            if($profile)
+            {
+                
+                foreach($profile as $p)
+                {
+                    echo "<option value='".$p->id."'>".$p->fname.' '.$p->mname.' '.$p->lname."</option>";                    
+                }
+            }
+            
+            die();
         }
   
     }

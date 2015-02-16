@@ -25,7 +25,7 @@
 
 <!-- END GLOBAL MANDATORY STYLES -->
 	<!-- WARNING ABOUT TEST REMOVALS: The PHP question mark has been removed and would need to be replaced to un-comment the CSS -->
-<!-- TEST REMOVAL <link rel="stylesheet" type="text/css" href="< php echo $this->request->webroot;?>assets/global/plugins/select2/select2.css"/> -->
+<link rel="stylesheet" type="text/css" href="<?php echo $this->request->webroot;?>assets/global/plugins/select2/select2.css"/>
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>

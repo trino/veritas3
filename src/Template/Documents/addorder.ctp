@@ -97,20 +97,20 @@ function provinces($name){
 												<i class="fa fa-check"></i> Create driver </span>
                                         </a>
                                     </li>
-                                     <li>
+                                     <!--<li>
                                         <a href="#tab2" data-toggle="tab" class="step">
 												<span class="number">
 												2</span><br/>
 												<span class="desc">
 												<i class="fa fa-check"></i> Products </span>
                                         </a>
-                                    </li>
+                                    </li>-->
                                     <?php
                                         $doc = $this->requestAction('/documents/getDocument/orders');
                                         $subdoccli = $this->requestAction('/clients/getSubCli2/'.$cid);
                                         $subdoccli2 = $subdoccli;
                                         $doc2 = $doc;
-                                        $i = 3;
+                                        $i = 2;
                                         $end = 0;
                                         $k_c=0;
                                         foreach ($subdoccli as $sd) {
@@ -128,7 +128,7 @@ function provinces($name){
                                             <?php if ($prosubdoc['display'] != 0 && $d->display == 1) {
                                                 $k_c++;
                                                 $j = $d->id;
-                                                $j = $j + 2;
+                                                $j = $j + 1;
                                                 if($k_c==1)
                                                 {
                                                     $k_cou = $j;
@@ -238,7 +238,7 @@ function provinces($name){
                                 <input type="hidden" name="client_id" value="<?php echo $cid; ?>" id="client_id"/>
                                 <input type="hidden" name="did" value="<?php echo $did; ?>" id="did"/>
                                 <input type="hidden" name="uploaded_for" id="uploaded_for"
-                                       value="<?php if (isset($modal) && $modal) echo $modal->uploaded_for; ?>"/>
+                                       value="<?php if (isset($modal) && $modal) echo $modal->uploaded_for;else{if(isset($_GET['driver']) && is_numeric($_GET['driver']))echo $_GET['driver'];} ?>"/>
                                 <?php
                                     if (!$did) {
                                         ?>
@@ -302,9 +302,9 @@ function provinces($name){
                             ?>
                         </div>
                         
-                        <div class="tabber <?php echo $tab; ?>"  id="tab2">
+                        <!--<div class="tabber <?php echo $tab; ?>"  id="tab2">
                             <?php //include('subpages/documents/products.php'); ?>
-                        </div>
+                        </div>-->
                         
                         <?php
                         $k_c = 0;
@@ -313,7 +313,7 @@ function provinces($name){
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
                             $tab_count = $d->id;
                             
-                            $tab_count = $tab_count + 2;
+                            $tab_count = $tab_count + 1;
                             if($k_c==1)
                             {
                                 $k_co = $tab_count;
@@ -1129,6 +1129,13 @@ function provinces($name){
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/' + filename);
     }
     jQuery(document).ready(function () {
+        <?php if(isset($_GET['driver']) && is_numeric($_GET['driver'])){?>
+            
+            showforms('company_pre_screen_question.php');
+            showforms('driver_application.php');
+            showforms('driver_evaluation_form.php');
+            showforms('document_tab_3.php');
+            <?php }?>
 
         $('.button-next').click(function () {
             $('.cont').removeAttr('disabled');
@@ -1467,7 +1474,7 @@ function provinces($name){
             inputs: fields
         };
         $.ajax({
-            url: '<?php echo $this->request->webroot;?>profiles/saveDriver',
+            url: '<?php echo $this->request->webroot;?>profiles/saveDriver/',
             data: param,
             type: 'POST',
             success: function (res) {

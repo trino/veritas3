@@ -111,7 +111,10 @@
                                                 }
 
                                                 if ($sidebar->orders_create == '1') {
-                                                    echo $this->Html->link(__('Create Order'), ['controller' => 'documents', 'action' => 'addorder', $clients->id], ['class' => 'btn btn-warning']);
+                                                    ?>
+                                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>documents/productSelection?client=<?php echo $clients->id;?>" class="btn btn-info">
+                                                        Create Order</a>
+                                                    <?php
                                                 }
 
                                                 if ($sidebar->orders_list == '1') {

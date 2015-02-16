@@ -237,7 +237,7 @@
                             <?php } ?>
                             <?php if ($sidebar->orders_create == 1) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Documents' && $this->request['action'] == 'addorder' && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
-                                    <a href="<?php echo $this->request->webroot . $order_url; ?>">
+                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>documents/productSelection?driver=0">
                                         <i class="icon-plus"></i>
                                         Create Order</a>
                                 </li>

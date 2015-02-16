@@ -32,9 +32,26 @@
                 <input type="hidden" name="document_type" value="add_driver"/>
                 <div class="form-group">
                                     
+                                    <select id="selecting_client" class="form-control input-xlarge select2me" data-placeholder="Select Client" <?php if($client){?>disabled="disabled"<?php }?>>
+                                        <option>Select Client</option>
+                                        <?php
+                                       
+                                       foreach($dr_cl['client'] as $dr)
+                                       {
+                                        ?>
+                                        <option value="<?php echo $dr->id;?>" <?php if($dr->id == $client){?>selected="selected"<?php } ?>><?php echo $dr->company_name;?></option>
+                                        <?php
+                                       }
+                                       ?>
+                                    </select>
+                                    <input class="selecting_client" type="hidden" />
+
+                </div>
+                <div class="form-group">
+                                    
                                     <?php //var_dump($dr_cl['driver']);?>
                                     <select class="form-control input-xlarge select2me" data-placeholder="Select Driver" id="selecting_driver" <?php if($driver){?>disabled="disabled"<?php }?>>
-                                        <option>Select Driver</option>
+                                        <option>Create Driver</option>
                                        <?php
                                        
                                        foreach($dr_cl['driver'] as $dr)
@@ -51,23 +68,7 @@
                                     <input class="selecting_driver" type="hidden" />
 
                 </div>
-                <div class="form-group">
-                                    
-                                    <select id="selecting_client" class="form-control input-xlarge select2me" data-placeholder="Select Client" <?php if($client){?>disabled="disabled"<?php }?>>
-                                        <option>Select Client</option>
-                                        <?php
-                                       
-                                       foreach($dr_cl['client'] as $dr)
-                                       {
-                                        ?>
-                                        <option value="<?php echo $dr->id;?>" <?php if($dr->id == $client){?>selected="selected"<?php } ?>><?php echo $dr->company_name;?></option>
-                                        <?php
-                                       }
-                                       ?>
-                                    </select>
-                                    <input class="selecting_client" type="hidden" />
-
-                </div>
+                
                 <?php include('subpages/documents/products.php'); ?>
 
                 <div class="clearfix"></div>

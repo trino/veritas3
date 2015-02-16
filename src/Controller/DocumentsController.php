@@ -433,8 +433,10 @@
                     if($orde)
                     {
                         $dr = $orde->draft;
-                        if($dr=='0' || !$dr)
+                        if($dr=='0' || !$dr){
                         $dr = 0;
+                        $this->Flash->success('Your order has been submitted');
+                        }
                         else
                         $dr =1;
                     }
@@ -2580,8 +2582,12 @@
             $cmodel = TableRegistry::get('Clients');
             if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
             $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'")']);
-            else
+            else{
+                if(!$driver)
             $clients = $cmodel->find();
+            else
+            $clients = $cmodel->find()->where(['(profile_id LIKE "'.$driver.',%" OR profile_id LIKE "%,'.$driver.',%" OR profile_id LIKE "%,'.$driver.'")']);
+            }
             
             }
             else
@@ -2593,9 +2599,12 @@
                 $clients2 = $cmodel2->find()->where(['id'=>$client])->first();
                 $profile_ids2 = $clients2->profile_id;
                 
-                
+                if(!$profile_ids2)
+                $profile_ids2 = '9999999';
                 $model = TableRegistry::get('Profiles');
+                
                 $q = $model->find()->where(['id IN ('.$profile_ids2.')','profile_type' => 5]);
+                
             }
             $profile_ids = '';
             foreach($clients as $c)
@@ -2623,7 +2632,8 @@
                 }
                 else
                 {
-                    $model = TableRegistry::get('Profiles');                    
+                    $model = TableRegistry::get('Profiles');  
+                    if(!)                  
                     $q = $model->find()->where(['profile_type' => 5,'id IN ('.$profile_ids.')']);
                 }  
                 

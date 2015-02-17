@@ -1,20 +1,20 @@
 <?php
 function printlogos($logos1, $webroot, $index,$uid){ //* replaces the logo enumerators *//
-    echo '<div class="form-group row">';
+    echo '<div class="form-group col-md-12"><div class="row">';
     foreach ($logos1 as $logo) {
         $exists = file_exists(getcwd() . "/img/logos/" . $logo->logo);
         if ($exists){
         $index+=1;
         $img = "image" . $index; ?>
         <div class="col-md-4" align="center">
-            <input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> id="<?php echo $img ?>"/>
-            <label for="<?php echo $img ?>"><img style="max-width:100px;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label>
-            <a href="javascript:void(0);"  class="btn btn-danger deletelogo" id="<?php echo $logo->id;?>">Delete</a>
+            <P><input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> id="<?php echo $img ?>"/>
+            <label for="<?php echo $img ?>" class="control-label"><img style="max-width:100px;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label></P>
+            <P><a href="javascript:void(0);"  class="btn btn-danger deletelogo" id="<?php echo $logo->id;?>">Delete</a></P>
         </div>
         <?php
-        if ($index==3){$index=0; echo '</div><div class="form-group row">'; }
+        if ($index==3){$index=0; echo '</div><div class="row">'; }
     }}
-    echo "</div>";
+    echo "</div></div>";
     return $index;}
 
 $uid = $this->request->session()->read("Profile.id");
@@ -63,8 +63,8 @@ $uid = $this->request->session()->read("Profile.id");
                                                             Logo Deleted successfully
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <a href="javascript:void(0)" id="addnewlogo" class="primary btn btn-primary">Add New Logo</a>
-                                                        <a href='javascript:;' class="btn btn-success" id="submit">Submit</a>
+                                                        <a href="javascript:void(0)" id="addnewlogo" class="primary btn btn-info">Add New Logo</a>
+                                                        <a href='javascript:;' class="btn btn-success" id="submit">Save Changes</a>
                                                     </form>
 
                                                 </div>
@@ -91,8 +91,8 @@ $uid = $this->request->session()->read("Profile.id");
                                                             Logo Deleted successfully
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <a href="javascript:void(0)" id="addnewlogo1" class="secondary btn btn-primary">Add New Logo</a>    
-                                                        <a href='javascript:;' class="btn btn-success" id="submit1">Submit</a>
+                                                        <a href="javascript:void(0)" id="addnewlogo1" class="secondary btn btn-info">Add New Logo</a>
+                                                        <a href='javascript:;' class="btn btn-success" id="submit1">Save Changes</a>
                                                     </form>
 
 
@@ -119,8 +119,8 @@ $uid = $this->request->session()->read("Profile.id");
                                                             Logo Deleted successfully
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <a href="javascript:void(0)" id="addnewlogo2" class="loginlogo btn btn-primary">Add New Logo</a>
-                                                        <a href='javascript:;' class="btn btn-success" id="submit2">Submit</a>
+                                                        <a href="javascript:void(0)" id="addnewlogo2" class="loginlogo btn btn-info">Add New Logo</a>
+                                                        <a href='javascript:;' class="btn btn-success" id="submit2">Save Changes</a>
                                                     </form>
 
 

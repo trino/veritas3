@@ -914,17 +914,17 @@ class ClientsController extends AppController {
         $pros = explode(",",$profile_id);
         $flash = "";
         $p_ids ="";
-        if($_POST['add']=='1')
+        if($_POST['add']=='1')//should use $settings->client not "client"
         {
             
             array_push($pros,$_POST['user_id']);
             $pro_id = array_unique($pros);
-            $flash = "Client Added Succesfully";
+            $flash = "Assigned to client succesfully";
         }
         else
         {
             $pro_id = array_diff($pros, array($_POST['user_id']));
-            $flash = "Client Removed Succesfully";
+            $flash = "Removed from client succesfully";
             //array_pop($pros,$_POST['user_id']);
 
         }

@@ -37,6 +37,7 @@ function total($array){
 	return $total;
 }
 
+global $startdate, $enddate;
 $days = 14;
 $decimals = 2;
 $startdate = -1;
@@ -270,7 +271,11 @@ function todate($date){
 	return date("M d", getdatestamp($date));
 }
 
-function newchart($color, $icon, $title, $chartid, $dates, $data){
+function datecheck($date, $startdate, $enddate){
+	return (todate($date) >= todate($startdate) AND todate($date) <= todate($enddate)) ;
+}
+
+function newchart($color, $icon, $title, $chartid, $dates, $data,$startdate,$enddate){
 	echo '<P><div class="row"><div class="col-md-12">';
 		echo '<div class="portlet box ' . $color . '">';
 			echo '<div class="portlet-title">';
@@ -284,11 +289,13 @@ function newchart($color, $icon, $title, $chartid, $dates, $data){
 				if (count($dates) > 0) {
 					$rawdata = '<textarea disabled style="width:100%; height:300px; background-color: white; border: none; overflow-y: auto;">';
 					foreach($dates as $key => $value){
-						$rawdata.=todate($key) . " has " . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
-						$alldocs = enumsubdocs($data, $key, $chartid);
-						foreach($alldocs as $key => $value){
-							$rawdata.="\t" . $value . ' ' . $key . "(s)\r\n";
-						}
+						if (datecheck($key,$startdate,$enddate)){
+							$rawdata.=todate($key) . " has " . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
+							$alldocs = enumsubdocs($data, $key, $chartid);
+							foreach($alldocs as $key => $value){
+								$rawdata.="\t" . $value . ' ' . $key . "(s)\r\n";
+							}
+						}	
 					}
 
 					$rawdata.='</textarea>';
@@ -300,10 +307,10 @@ function newchart($color, $icon, $title, $chartid, $dates, $data){
 				echo '</div></div></div></div></div>';
 }
 
-newchart("grey-salsa", "icon-globe", ucfirst($settings->client) . "s", "clients", $clientdates, $clients);
-newchart("green-haze", "icon-user", ucfirst($settings->profile) . "s", "profiles", $profiledates, $profiles);
-newchart("yellow-casablanca", "icon-doc", ucfirst($settings->document) . "s", "documents", $docdates, $documents );
-newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders);
+newchart("grey-salsa", "icon-globe", ucfirst($settings->client) . "s", "clients", $clientdates, $clients,$startdate,$enddate);
+newchart("green-haze", "icon-user", ucfirst($settings->profile) . "s", "profiles", $profiledates, $profiles,$startdate,$enddate);
+newchart("yellow-casablanca", "icon-doc", ucfirst($settings->document) . "s", "documents", $docdates, $documents ,$startdate,$enddate);
+newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders,$startdate,$enddate);
 
 function enumsubdocs($thedocs, $date, $chartid){
 	$alldocs = array();

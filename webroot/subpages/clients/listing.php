@@ -118,11 +118,13 @@
                                                 }
 
                                                 if ($sidebar->orders_list == '1') {
-                                                    echo $this->Html->link(__('View Orders'), ['controller' => 'documents', 'action' => 'index/?client_id=', $clients->id], ['class' => 'btn btn-warning']);
+?>
+                                                    <a href="<?php echo $this->request->webroot;?>documents/index/?client_id=<?php echo $clients->id;?>" class="btn btn-warning">
+                                                    View Order</a>
+
+                                                    <?php
+
                                                 }
-
-
-
                                             ?>
                                         </td>
                                     </tr>

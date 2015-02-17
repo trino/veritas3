@@ -52,7 +52,7 @@
                                        }
                                        ?>
                                     </select>
-                                    <input class="selecting_client" type="hidden" value="<?php if($client)echo $client;else if($counting==1)echo $client_id;?>" />
+                                    <input class="selecting_client" type="hidden" value="<?php if($client)echo $client;else if($counting==1 and isset($client_id))echo $client_id;?>" />
 
                 </div>
                 <div class="form-group">
@@ -61,7 +61,7 @@
                                     <select class="form-control input-xlarge select2me" data-placeholder="Create Driver" id="selecting_driver" <?php if($driver){?>disabled="disabled"<?php }?>>
                                         <option>Create Driver</option>
                                        <?php
-                                       
+                     
                                        $counting = 0;
                                        
                                        $drcl_d = $dr_cl['driver'];
@@ -70,9 +70,9 @@
                                         
                                         $counting++;
                                        }
-                                       
-                                       foreach($dr_cl['driver'] as $dr)
-                                       {
+
+                                       foreach($dr_cl['driver'] as $dr) {
+
                                         $driver_id = $dr->id;
                                         ?>
                                         <option value="<?php echo $dr->id;?>" <?php if($dr->id == $driver || $counting==1){?>selected="selected"<?php } ?>><?php echo $dr->fname.' '.$dr->mname.' '.$dr->lname?></option>
@@ -85,10 +85,15 @@
                                             
                                     </select>
                                     <?php //echo $counting;?>
-                                    <input class="selecting_driver" type="hidden" value="<?php if($driver)echo $driver;else if($counting==1)echo $driver_id;?>" />
+                                    <input class="selecting_driver" type="hidden" value="<?php
+                                    if ($driver) {
+                                        echo $driver;
+                                    } elseif ($counting==1 and isset($driver_id)) {
+                                        echo $driver_id;
+                                    }?>" />
 
                 </div>
-                <a href="javascript:void(0);" class="btn btn-info" onclick="window.location='<?php echo $this->request->webroot;?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()">Place MEE Order</a> OR <a href="javascript:void(0);" class="btn btn-primary" onclick="$('.alacarte').show();">A La Carte</a> <p>&nbsp;</p>
+                <a href="javascript:void(0);" class="btn btn-info" onclick="window.location='<?php echo $this->request->webroot;?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()">Place MEE Order</a> or <a href="javascript:void(0);" class="btn btn-primary" onclick="$('.alacarte').show();">A La Carte</a> <p>&nbsp;</p>
                 <div class="alacarte" style="display: none;"> 
                     <?php include('subpages/documents/products.php'); ?>
                     <div class="clearfix"></div>

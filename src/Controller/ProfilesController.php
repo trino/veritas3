@@ -60,6 +60,7 @@ use Cake\Network\Email\Email;
         }
 public function training(){}
 public function quiz(){}
+public function video(){}
 
     public function index() {
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -433,8 +434,6 @@ public function quiz(){}
                     $this->Flash->success('Profile created successfully.');
                     return $this->redirect(['action' => 'edit',$profile->id]);
                 } else {
-                    //var_dump($profiles->errors()); die();
-                    //var_dump($profile);die();
                     $this->Flash->error('The user could not be saved. Please try again.');
                 }
             }
@@ -564,6 +563,7 @@ public function quiz(){}
                 $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                 if ($this->Profiles->save($profile)) {
                      echo $profile->id;
+                        $this->Flash->success('Profile created successfully');
                 } else {
                      echo "0";
                 }

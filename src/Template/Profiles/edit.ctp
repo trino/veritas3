@@ -281,7 +281,10 @@
 
 
 
-
+                    <?php
+                    if(isset($id))
+                    {
+                    ?>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portlet box yellow">
@@ -292,24 +295,17 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-
-
-
                                     <div class="clearfix"></div>
-
-                                    
                                     <div class="table-responsive">
                                         <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                                             <thead>
                                             <tr class="sorting">
                                                 <th><a href="/veritas3/documents/orderslist?sort=orders.title&amp;direction=asc">Title</a></th>
                                                 <th><a href="/veritas3/documents/orderslist?sort=created&amp;direction=asc">Created</a></th>
-
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <?php
-                                            //$prof_id = $this->request->session()->read('Profile.id');
                                             $getOrders = $this->requestAction('profiles/getOrders/'.$id);
                                             foreach($getOrders as $g )
                                             {
@@ -328,46 +324,18 @@
                                         </table>
 
                                     </div>
-
-
                                     <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
                                         <ul class="pagination sorting">
-
-
-
                                             <li class="prev disabled"><a href="">&lt; previous</a></li> <li class="next disabled"><a href="">next &gt;</a></li>                    </ul>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    
+                    <?php
+                    }
+                    ?>
                 </div>
 
                 <div class="col-md-9">

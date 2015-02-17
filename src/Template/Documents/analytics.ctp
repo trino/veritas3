@@ -53,6 +53,9 @@ if (isset($_GET["to"]) AND isset($_GET["from"])) {
 }
 if ($days < 1) { $days = 1; }
 
+if ($startdate == -1) { $startdate = date("Y-m-d"); }
+if (!isset($enddate)){ $enddate = substr(add_date($startdate, -$days+1,0,0), 0, 10); }
+
 $orderdates= sortdates($orders);
 $ordercount= total($orderdates);
 $ordavg = round ($ordercount / $days,$decimals);
@@ -249,7 +252,7 @@ jQuery(document).ready(function() {
 											<div class="col-md-9">
 												<div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
 													<span class="input-group-addon"> Start </span>
-													<input type="text" class="form-control" name="from" value="<?php echo get2("from"); ?>">
+													<input type="text" class="form-control" name="from" value="<?php echo $enddate; ?>">
 													<span class="input-group-addon"> to </span>
 													<input type="text" class="form-control" name="to" title="Leave blank to end at today" value="<?php echo get2("to", date("Y-m-d")); ?>">
 												</div>
@@ -270,7 +273,15 @@ function todate($date){
 	return date("M d", getdatestamp($date));
 }
 
-function newchart($color, $icon, $title, $chartid, $dates, $data){
+function datecheck($date, $start, $end){
+	$datestamp = getdatestamp($date);
+	$startstamp = getdatestamp($start);
+	$endstamp = getdatestamp($end);
+	//echo "<DATE " . getdatestamp($date) . " " . getdatestamp($start) . " " . getdatestamp($end) . " " . (getdatestamp($date) >= getdatestamp($start) ) . " " . ( getdatestamp($date) <= getdatestamp($end))  . ">";
+	return ( ($datestamp <= $startstamp AND $datestamp >= $endstamp)  or ($datestamp >= $startstamp AND $datestamp <= $endstamp)) ;
+}
+
+function newchart($color, $icon, $title, $chartid, $dates, $data, $start,$end){
 	echo '<P><div class="row"><div class="col-md-12">';
 		echo '<div class="portlet box ' . $color . '">';
 			echo '<div class="portlet-title">';
@@ -281,29 +292,34 @@ function newchart($color, $icon, $title, $chartid, $dates, $data){
 				echo '<div class="row"><div class="col-md-8">';
 				echo '<div id="' . $chartid . '" class="chart"> </div>';
 				
+				$didit=false;
 				if (count($dates) > 0) {
 					$rawdata = '<textarea disabled style="width:100%; height:300px; background-color: white; border: none; overflow-y: auto;">';
 					foreach($dates as $key => $value){
-						$rawdata.=todate($key) . " has " . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
-						$alldocs = enumsubdocs($data, $key, $chartid);
-						foreach($alldocs as $key => $value){
-							$rawdata.="\t" . $value . ' ' . $key . "(s)\r\n";
-						}
+						if (datecheck($key,$start,$end)){
+							$didit=true;
+							$rawdata.=todate($key) . ":\t" . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
+							$alldocs = enumsubdocs($data, $key, $chartid);
+							foreach($alldocs as $key => $value){
+								$rawdata.="\t" . $value . ' ' . $key . "(s)\r\n";
+							}
+						}	
 					}
 
 					$rawdata.='</textarea>';
-				} else {
-					$rawdata = "No documents";
+				} 
+				if (!$didit) {
+					$rawdata = "No " .  strtolower($title);
 				}
 				
 				echo '</DIV><div class="col-md-4">' . $rawdata  . '</div>';
 				echo '</div></div></div></div></div>';
 }
 
-newchart("grey-salsa", "icon-globe", ucfirst($settings->client) . "s", "clients", $clientdates, $clients);
-newchart("green-haze", "icon-user", ucfirst($settings->profile) . "s", "profiles", $profiledates, $profiles);
-newchart("yellow-casablanca", "icon-doc", ucfirst($settings->document) . "s", "documents", $docdates, $documents );
-newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders);
+newchart("grey-salsa", "icon-globe", ucfirst($settings->client) . "s", "clients", $clientdates, $clients,$startdate,$enddate);
+newchart("green-haze", "icon-user", ucfirst($settings->profile) . "s", "profiles", $profiledates, $profiles,$startdate,$enddate);
+newchart("yellow-casablanca", "icon-doc", ucfirst($settings->document) . "s", "documents", $docdates, $documents ,$startdate,$enddate);
+newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders,$startdate,$enddate);
 
 function enumsubdocs($thedocs, $date, $chartid){
 	$alldocs = array();

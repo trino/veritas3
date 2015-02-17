@@ -35,10 +35,14 @@
                                     <select id="selecting_client" class="form-control input-xlarge select2me" data-placeholder="Select Client" <?php if($client){?>disabled="disabled"<?php }?>>
                                         <option>Select Client</option>
                                         <?php
-                                       if(count($dr_cl['client'])==1)
-                                       $counting = 1;
-                                       else
+                                       
                                        $counting = 0;
+                                      $drcl_c = $dr_cl['client'];
+                                       foreach($drcl_c as $drclc)
+                                       {
+                                        
+                                        $counting++;
+                                       }
                                        foreach($dr_cl['client'] as $dr)
                                        {
                                         $client_id = $dr->id;
@@ -53,14 +57,20 @@
                 </div>
                 <div class="form-group">
                                     
-                                    <?php //var_dump($dr_cl['driver']);?>
+                                    <?php //echo count($dr_cl['driver']);?>
                                     <select class="form-control input-xlarge select2me" data-placeholder="Create Driver" id="selecting_driver" <?php if($driver){?>disabled="disabled"<?php }?>>
                                         <option>Create Driver</option>
                                        <?php
-                                       if(count($dr_cl['driver'])==1)
-                                       $counting = 1;
-                                       else
+                                       
                                        $counting = 0;
+                                       
+                                       $drcl_d = $dr_cl['driver'];
+                                       foreach($drcl_d as $drcld)
+                                       {
+                                        
+                                        $counting++;
+                                       }
+                                       
                                        foreach($dr_cl['driver'] as $dr)
                                        {
                                         $driver_id = $dr->id;

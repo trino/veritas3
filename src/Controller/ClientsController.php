@@ -107,7 +107,13 @@ class ClientsController extends AppController {
             	return $this->redirect("/");
 
         }
-		$this->set('client', $this->paginate($this->Clients));
+        if(isset($_GET['draft']))
+            $draft = 1;
+        else
+            $draft =0;
+        $querys = TableRegistry::get('Clients');
+        $query = $querys->find()->where(['drafts'=>$draft]);
+		$this->set('client', $this->paginate($query));
 	}
 
     function search()
@@ -120,6 +126,10 @@ class ClientsController extends AppController {
            	return $this->redirect("/");
 
         }
+        if(isset($_GET['draft']))
+            $draft = 1;
+        else
+            $draft =0;
 
         if(isset($_GET['search']))
             $search = $_GET['search'];
@@ -128,10 +138,18 @@ class ClientsController extends AppController {
         $searchs = strtolower($search);
         $querys = TableRegistry::get('Clients');
         $query = $querys->find()
-        ->where(['LOWER(title) LIKE' => '%'.$searchs.'%'])
+        ->where(['drafts'=>$draft, 'OR'=>
+                    [
+                        ['LOWER(title) LIKE' => '%'.$searchs.'%'],
+                        ['LOWER(description) LIKE' => '%'.$searchs.'%'],
+                        ['LOWER(company_name) LIKE' => '%'.$searchs.'%'],
+                        ['LOWER(company_address) LIKE' => '%'.$searchs.'%']
+                    ]
+                ]);
+        /*->orWhere(['LOWER(title) LIKE' => '%'.$searchs.'%'])
         ->orWhere(['LOWER(description) LIKE' => '%'.$searchs.'%'])
         ->orWhere(['LOWER(company_name) LIKE' => '%'.$searchs.'%'])
-        ->orWhere(['LOWER(company_address) LIKE' => '%'.$searchs.'%']);
+        ->orWhere(['LOWER(company_address) LIKE' => '%'.$searchs.'%']);*/
         $this->set('client', $this->paginate($query));
         //$this->set('client',$query);
         $this->set('search_text',$search);

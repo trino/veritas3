@@ -73,8 +73,11 @@ public function video(){}
                 return $this->redirect("/");
 
             }
-
-            $cond = '';
+            if(isset($_GET['draft']))
+                $draft = 1;
+            else
+                $draft =0;
+            $cond = 'drafts = '.$draft;
             if(isset($_GET['searchprofile']))
             {
                 $search = $_GET['searchprofile'];

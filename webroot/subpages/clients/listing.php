@@ -16,6 +16,7 @@
 
                 <div class="chat-form">
                     <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
+                    <?php if(isset($_GET['draft'])){?><input type="hidden" name="draft" /><?php }?>
                         <div class="col-md-10" style="padding-left:0;" align="left">
                             <input class="form-control input-inline" name="search" type="search"
                                    placeholder="Search for <?php echo ucfirst($settings->client); ?>s"
@@ -32,7 +33,7 @@
                 <div class="table-scrollable">
                     <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
-                        <tr>
+                        <tr class="sorting">
                             <th><?= $this->Paginator->sort('id','Id',['escape' => false]) ?></th>
                             <th><?= $this->Paginator->sort('image','Image',['escape' => false]) ?></th>
                             <th><?= $this->Paginator->sort('company_name', ucfirst($settings->client) . ' Name',['escape' => false]) ?></th>
@@ -143,7 +144,7 @@
                 <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
 
 
-                    <ul class="pagination">
+                    <ul class="pagination sorting">
                     <?php /*echo $this->Paginator->counter(
                                 'Page {{page}} of {{pages}}, showing {{current}} records out of
                                  {{count}} total, starting on record {{start}}, ending on {{end}} model is {{model}}'
@@ -191,3 +192,15 @@
     }
 
 </style>
+<script>
+    $(function () {
+        $('.sorting').find('a').each(function(){
+            
+           <?php if(isset($_GET['draft'])){?>
+           var hrf = $(this).attr('href');
+           if(hrf!="")
+            $(this).attr('href',hrf+'&draft');
+           <?php } ?> 
+        });
+    })
+    </script>

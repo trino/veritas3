@@ -83,10 +83,54 @@
                     <div class="col-md-12" align="right">
 
                         <a href="#" class="btn btn-warning"">Enroll</a>
-                        <a class="btn btn-info" href="quiz">View</a>
+                        <a class="btn btn-info" href="quiz?quizid=1">View</a>
                         <a href="#" class="btn btn-primary">Edit</a>
                         <a href="#" onclick="return confirm('Are you sure you want to delete this test?');" class="btn btn-danger">Delete</a>
                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box blue-steel">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-graduation-cap"></i>
+                    Active Shooter Response
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-2" align="center">
+                        <img src="/veritas3/img/Shooter.png">
+                    </div>
+                    <div class="col-md-10">
+                        <p>Total chaos typically ensues in an active shooter situation.  This course will give your organization the program planning and training suggestions which will help you minimize that. </P>
+
+                        <p>We begin with what is the most critical element of the plan - effective and timely communication to local public emergency services and simultaneously the communication to all of your facility/property occupants.  We will then outline the general deployment guidelines for on-site security forces and their cooperation with arriving public emergency service personnel.  Establishment of a command post to coordinate the lockdown of the facility and the apprehension of the shooter will be covered.  General emergency response priorities will be discussed. </P>
+
+                        <p> The course will provide suggestions regarding the training for response team members and the general training for all facility occupants.  Finally, incident documentation and post incident reaction evaluation will be addressed.</P>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5" align="left">
+                        <a href="../webroot/assets/global/ActiveShooterHandout.pdf" class="btn btn-warning"">Handout</a>
+                        <a href="video?title=Active Shooter Response&url=http://asapsecured.com/wp-content/uploads/2014/11/ActiveShoot_x264_001.mp4" class="btn btn-warning"">Video</a>
+                    </div>
+                    <div class="col-md-5" align="right">
+
+                        <a href="#" class="btn btn-warning"">Enroll</a>
+                        <a class="btn btn-info" href="quiz?quizid=2">View</a>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" onclick="return confirm('Are you sure you want to delete this test?');" class="btn btn-danger">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>

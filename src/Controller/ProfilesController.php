@@ -60,6 +60,7 @@ use Cake\Network\Email\Email;
         }
 public function training(){}
 public function quiz(){}
+public function video(){}
 
     public function index() {
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));

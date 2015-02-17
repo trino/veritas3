@@ -542,7 +542,11 @@
                     data: "client_id=" + client_id + "&add=" + addclient + "&user_id=" +<?php echo $id;?>,
                     url: "<?php echo $this->request->webroot;?>clients/addprofile",
                     success: function (msg) {
-                        //alert(msg);
+                        alert(msg);
+                        /*$('.clientadd_flash').show();
+                        $('.clientadd_flash').text(msg);
+                        $('.clientadd_flash').fadeOut('8000');*/
+                        
                     }
                 })
             });

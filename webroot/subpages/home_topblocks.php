@@ -90,7 +90,151 @@
     <?php } ?>
 
 
+     <?php if ($block->submit_document == 1 && $sidebar->document_create ==1) { ?>
+    
+        <a href="<?php echo $this->request->webroot.$document_url;?>" class="tile bg-purple-studio" style="display: block;">
+            <div class="tile-body">
+                <i class="fa fa-files-o"></i>
+            </div>
+            <div class="tile-object">
+                <div class="name">
+                    Create Document
+                </div>
+                <div class="number">
 
+                </div>
+            </div>
+        
+        </a>
+    <?php } ?>
+    <?php if ($block->list_document == 1 && $sidebar->document_list ==1) { ?>
+    
+        <a href="<?php echo $this->request->webroot; ?>documents" class="tile  bg-yellow-saffron" style="display: block;">
+
+            <div class="tile-body">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="tile-object">
+                <div class="name">
+                    Search <?=$settings->document;?>
+                </div>
+                <div class="number">
+
+                </div>
+            </div>
+        
+        </a>
+    <?php } ?>
+    <?php if ($block->list_client == 1 && $sidebar->client_list ==1) { ?>
+    
+        <a href="<?php echo $this->request->webroot; ?>clients" class="tile  bg-yellow-saffron" style="display: block;">
+
+            <div class="tile-body">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="tile-object">
+                <div class="name">
+                    Search <?=$settings->client;?>
+                </div>
+                <div class="number">
+
+                </div>
+            </div>
+        
+        </a>
+    <?php } ?>
+     <?php if ($block->add_client == 1 && $sidebar->client_create ==1) { ?>
+
+    
+        <a class="tile bg-red-sunglo" href="<?php echo $this->request->webroot; ?>clients/add" style="display: block;">
+
+            <div class="tile-body">
+                <i class="fa fa-user"></i>
+            </div>
+            
+            
+            <div class="tile-object">
+                
+                   <div class="name"> Add a <?=$settings->client;?></div>
+                
+                <div class="number">
+
+                </div>
+            </div>
+            
+
+        </a>
+        
+    <?php } ?>
+     <?php if ($block->message == 1 ) { ?>
+
+    
+        <a class="tile bg-green" href="<?php echo $this->request->webroot; ?>messages" style="display: block;">
+
+            <div class="tile-body">
+                <i class="fa icon-envelope"></i>
+            </div>
+            
+            
+            <div class="tile-object">
+                
+                   <div class="name"> Messages</div>
+                
+                <div class="number">
+
+                </div>
+            </div>
+            
+
+        </a>
+        
+    <?php } ?>
+     <?php if ($block->document_draft == 1 && $sidebar->document_list ==1 ) { ?>
+
+    
+        <a class="tile bg-red-sunglo" href="<?php echo $this->request->webroot; ?>documents?draft" style="display: block;">
+
+            <div class="tile-body">
+                <i class="fa fa-user"></i>
+            </div>
+            
+            
+            <div class="tile-object">
+                
+                   <div class="name"> <?=$settings->document;?> Draft</div>
+                
+                <div class="number">
+
+                </div>
+            </div>
+            
+
+        </a>
+        
+    <?php } ?>
+       <?php if ($block->orders_draft == 1 && $sidebar->orders_list ==1) { ?>
+
+    
+        <a class="tile bg-red-sunglo" href="<?php echo $this->request->webroot; ?>documents/orderslist?draft" style="display: block;">
+
+            <div class="tile-body">
+                <i class="fa fa-user"></i>
+            </div>
+            
+            
+            <div class="tile-object">
+                
+                   <div class="name"> Orders Draft</div>
+                
+                <div class="number">
+
+                </div>
+            </div>
+            
+
+        </a>
+        
+    <?php } ?>
     <?php if ($block->schedule == 1) { ?>
     <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
         

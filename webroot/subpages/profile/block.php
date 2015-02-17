@@ -450,7 +450,7 @@
                                         <table class="table table-bordered table-hover">
                                             <tr>
                                                 <td>
-                                                    Add an <?=$settings->profile; ?>
+                                                    Add a <?=$settings->profile; ?>
                                                 </td>
                                                 <td>
                                                     <label class="uniform-inline">
@@ -462,6 +462,91 @@
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="block[addadriver]"
                                                                                           value="0" <?php if (isset($block) && $block->addadriver == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    List a <?=$settings->profile; ?>
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[list_profile]"
+                                                                                          value="1" <?php if (isset($block) && $block->list_profile == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[list_profile]"
+                                                                                          value="0" <?php if (isset($block) && $block->list_profile == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Add a <?=$settings->client; ?>
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[add_client]"
+                                                                                          value="1" <?php if (isset($block) && $block->add_client == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[add_client]"
+                                                                                          value="0" <?php if (isset($block) && $block->add_client == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    List a <?=$settings->client; ?>
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[list_client]"
+                                                                                          value="1" <?php if (isset($block) && $block->list_client == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[list_client]"
+                                                                                          value="0" <?php if (isset($block) && $block->list_client == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Submit <?=$settings->document; ?>
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[submit_document]"
+                                                                                          value="1" <?php if (isset($block) && $block->submit_document == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[submit_document]"
+                                                                                          value="0" <?php if (isset($block) && $block->submit_document == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    List <?=$settings->document; ?>
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[list_document]"
+                                                                                          value="1" <?php if (isset($block) && $block->list_document == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[list_document]"
+                                                                                          value="0" <?php if (isset($block) && $block->list_document == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
                                             </tr>
@@ -500,6 +585,23 @@
                                             </tr>
                                             <tr>
                                                 <td>
+                                                    List Order
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[list_order]"
+                                                                                          value="1" <?php if (isset($block) && $block->list_order == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[list_order]"
+                                                                                          value="0" <?php if (isset($block) && $block->list_order == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
                                                     Order History
                                                 </td>
                                                 <td>
@@ -530,6 +632,57 @@
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="block[schedule]"
                                                                                           value="0" <?php if (isset($block) && $block->schedule == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                             <tr>
+                                                <td>
+                                                    Messages
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[message]"
+                                                                                          value="1" <?php if (isset($block) && $block->message == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[message]"
+                                                                                          value="0" <?php if (isset($block) && $block->message == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                             <tr>
+                                                <td>
+                                                    Documents Drafts
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[document_draft]"
+                                                                                          value="1" <?php if (isset($block) && $block->document_draft == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[document_draft]"
+                                                                                          value="0" <?php if (isset($block) && $block->document_draft == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                             <tr>
+                                                <td>
+                                                    Orders Drafts
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[orders_draft]"
+                                                                                          value="1" <?php if (isset($block) && $block->orders_draft == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[orders_draft]"
+                                                                                          value="0" <?php if (isset($block) && $block->orders_draft == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
                                             </tr>
@@ -703,7 +856,12 @@
                                             </div>-->
                                         <?php
                                             } ?>
-                                        
+                                            <div class="margin-top-10 alert alert-success display-hide clientadd_flash"
+                                                     style="display: none;">
+                                                    <button class="close" data-close="alert"></button>
+                                                   
+                                                </div>
+                                            
                                     </div>
                                     </div>
                                     </div>

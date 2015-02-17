@@ -912,18 +912,19 @@ class ClientsController extends AppController {
         $q = $query->find()->where(['id'=>$_POST['client_id']])->first();
         $profile_id = $q->profile_id;
         $pros = explode(",",$profile_id);
-
+        $flash = "";
         $p_ids ="";
         if($_POST['add']=='1')
         {
-
+            
             array_push($pros,$_POST['user_id']);
             $pro_id = array_unique($pros);
-
+            $flash = "Client Added Succesfully";
         }
         else
         {
             $pro_id = array_diff($pros, array($_POST['user_id']));
+            $flash = "Client Removed Succesfully";
             //array_pop($pros,$_POST['user_id']);
 
         }
@@ -938,9 +939,12 @@ class ClientsController extends AppController {
         $p_ids = str_replace(',',' ',$p_ids);
         $p_ids = trim($p_ids);
         $p_ids = str_replace(' ',',',$p_ids);
-        $query->query()->update()->set(['profile_id' => $p_ids])
+        if($query->query()->update()->set(['profile_id' => $p_ids])
         ->where(['id' => $_POST['client_id']])
-        ->execute();
+        ->execute())
+            echo $flash;
+        else
+            echo "Client Couldnot Be Added.";
         //echo $p_ids;
         die();
    }

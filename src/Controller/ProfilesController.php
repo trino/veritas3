@@ -1458,5 +1458,13 @@ public function quiz(){}
             $this->response->body($query2);
             return $this->response;
         }
+        
+        function getOrders($id)
+        {
+            $order = TableRegistry::get('orders');
+            $order = $order->find()->where(['uploaded_for'=>$id]);
+            $this->response->body($order);
+            return $this->response;
+        }
     }
 ?>

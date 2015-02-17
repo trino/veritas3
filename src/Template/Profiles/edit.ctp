@@ -297,7 +297,7 @@
 
                                     <div class="clearfix"></div>
 
-
+                                    
                                     <div class="table-responsive">
                                         <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                                             <thead>
@@ -308,26 +308,22 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            <?php
+                                            //$prof_id = $this->request->session()->read('Profile.id');
+                                            $getOrders = $this->requestAction('profiles/getOrders/'.$id);
+                                            foreach($getOrders as $g )
+                                            {
+                                             ?>
+                                             
                                             <tr class="even" role="row">
-                                                <td>order_100</td>
+                                                <td><?php echo $g->id; ?></td>
 
-                                                <td>2015-02-09 18:21</td>
+                                                <td><?php echo $g->created; ?></td>
 
                                             </tr>
-
-                                            <tr class="even" role="row">
-                                                <td>order_100</td>
-
-                                                <td>2015-02-09 18:21</td>
-
-                                            </tr>
-
-                                            <tr class="even" role="row">
-                                                <td>order_100</td>
-
-                                                <td>2015-02-09 18:21</td>
-
-                                            </tr>
+                                            <?php  
+                                            } 
+                                            ?>
                                             </tbody>
                                         </table>
 

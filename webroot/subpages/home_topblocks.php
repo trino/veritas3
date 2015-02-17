@@ -20,7 +20,7 @@
             
             <div class="tile-object">
                 
-                   <div class="name"> Add an <?=$settings->profile;?></div>
+                   <div class="name"> Add a <?=$settings->profile;?></div>
                 
                 <div class="number">
 
@@ -224,7 +224,7 @@
             
             <div class="tile-object">
                 
-                   <div class="name"> Orders Draft</div>
+                   <div class="name"> Order Draft</div>
                 
                 <div class="number">
 

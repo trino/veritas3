@@ -48,7 +48,7 @@
                                        }
                                        ?>
                                     </select>
-                                    <input class="selecting_client" type="hidden" value="<?php if($client)echo $client;else if($counting==1 and isset($client_id))echo $client_id;?>" />
+                                    <input class="selecting_client" type="hidden" value="<?php if($client)echo $client;else if($counting==1)echo $client_id;?>" />
 
                 </div>
                 <div class="form-group">

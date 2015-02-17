@@ -281,7 +281,10 @@
 
 
 
-
+                    <?php
+                    if(isset($id))
+                    {
+                    ?>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portlet box yellow">
@@ -296,8 +299,6 @@
 
 
                                     <div class="clearfix"></div>
-
-                                    
                                     <div class="table-responsive">
                                         <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                                             <thead>
@@ -309,7 +310,6 @@
                                             </thead>
                                             <tbody>
                                             <?php
-                                            //$prof_id = $this->request->session()->read('Profile.id');
                                             $getOrders = $this->requestAction('profiles/getOrders/'.$id);
                                             foreach($getOrders as $g )
                                             {
@@ -328,8 +328,6 @@
                                         </table>
 
                                     </div>
-
-
                                     <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
                                         <ul class="pagination sorting">
 
@@ -343,6 +341,10 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <?php
+                    }
+                    ?>
 
 
 

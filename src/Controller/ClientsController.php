@@ -908,6 +908,7 @@ class ClientsController extends AppController {
 
    function addprofile()
    {
+        $settings = $this->Settings->get_settings();
         $query = TableRegistry::get('clients');
         $q = $query->find()->where(['id'=>$_POST['client_id']])->first();
         $profile_id = $q->profile_id;
@@ -919,12 +920,17 @@ class ClientsController extends AppController {
             
             array_push($pros,$_POST['user_id']);
             $pro_id = array_unique($pros);
-            $flash = "Assigned to client succesfully";
+
+            $flash = "Assigned to ".$settings->client." succesfully";
+
         }
         else
         {
             $pro_id = array_diff($pros, array($_POST['user_id']));
-            $flash = "Removed from client succesfully";
+
+           
+            $flash = "Removed from ".$settings->client." succesfully";
+
             //array_pop($pros,$_POST['user_id']);
 
         }

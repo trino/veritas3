@@ -2633,7 +2633,7 @@
                 else
                 {
                     $model = TableRegistry::get('Profiles');  
-                    if(!)                  
+                     
                     $q = $model->find()->where(['profile_type' => 5,'id IN ('.$profile_ids.')']);
                 }  
                 

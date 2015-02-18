@@ -250,7 +250,8 @@ var FormWizard = function () {
 //                    $('.cont').attr('id','');
                     $('#select_division').hide();
                     $('.button-previous').hide();
-                    window.location = base_url;
+                    $('#loading5').show();
+                    window.location = base_url+'documents/orderslist';
                 }
 
                 if (current >= total) {

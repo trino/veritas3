@@ -37,7 +37,6 @@ function total($array){
 	return $total;
 }
 
-global $startdate, $enddate;
 $days = 14;
 $decimals = 2;
 $startdate = -1;
@@ -53,6 +52,9 @@ if (isset($_GET["to"]) AND isset($_GET["from"])) {
 	$days = date_diff(date_create($startdate), date_create($enddate), true)->days+1;
 }
 if ($days < 1) { $days = 1; }
+
+if ($startdate == -1) { $startdate = date("Y-m-d"); }
+if (!isset($enddate)){ $enddate = substr(add_date($startdate, -$days+1,0,0), 0, 10); }
 
 $orderdates= sortdates($orders);
 $ordercount= total($orderdates);
@@ -250,7 +252,7 @@ jQuery(document).ready(function() {
 											<div class="col-md-9">
 												<div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
 													<span class="input-group-addon"> Start </span>
-													<input type="text" class="form-control" name="from" value="<?php echo get2("from"); ?>">
+													<input type="text" class="form-control" name="from" value="<?php echo $enddate; ?>">
 													<span class="input-group-addon"> to </span>
 													<input type="text" class="form-control" name="to" title="Leave blank to end at today" value="<?php echo get2("to", date("Y-m-d")); ?>">
 												</div>
@@ -271,11 +273,15 @@ function todate($date){
 	return date("M d", getdatestamp($date));
 }
 
-function datecheck($date, $startdate, $enddate){
-	return (todate($date) >= todate($startdate) AND todate($date) <= todate($enddate)) ;
+function datecheck($date, $start, $end){
+	$datestamp = getdatestamp($date);
+	$startstamp = getdatestamp($start);
+	$endstamp = getdatestamp($end);
+	//echo "<DATE " . getdatestamp($date) . " " . getdatestamp($start) . " " . getdatestamp($end) . " " . (getdatestamp($date) >= getdatestamp($start) ) . " " . ( getdatestamp($date) <= getdatestamp($end))  . ">";
+	return ( ($datestamp <= $startstamp AND $datestamp >= $endstamp)  or ($datestamp >= $startstamp AND $datestamp <= $endstamp)) ;
 }
 
-function newchart($color, $icon, $title, $chartid, $dates, $data,$startdate,$enddate){
+function newchart($color, $icon, $title, $chartid, $dates, $data, $start,$end){
 	echo '<P><div class="row"><div class="col-md-12">';
 		echo '<div class="portlet box ' . $color . '">';
 			echo '<div class="portlet-title">';
@@ -286,11 +292,13 @@ function newchart($color, $icon, $title, $chartid, $dates, $data,$startdate,$end
 				echo '<div class="row"><div class="col-md-8">';
 				echo '<div id="' . $chartid . '" class="chart"> </div>';
 				
+				$didit=false;
 				if (count($dates) > 0) {
 					$rawdata = '<textarea disabled style="width:100%; height:300px; background-color: white; border: none; overflow-y: auto;">';
 					foreach($dates as $key => $value){
-						if (datecheck($key,$startdate,$enddate)){
-							$rawdata.=todate($key) . " has " . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
+						if (datecheck($key,$start,$end)){
+							$didit=true;
+							$rawdata.=todate($key) . ":\t" . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
 							$alldocs = enumsubdocs($data, $key, $chartid);
 							foreach($alldocs as $key => $value){
 								$rawdata.="\t" . $value . ' ' . $key . "(s)\r\n";
@@ -299,8 +307,9 @@ function newchart($color, $icon, $title, $chartid, $dates, $data,$startdate,$end
 					}
 
 					$rawdata.='</textarea>';
-				} else {
-					$rawdata = "No documents";
+				} 
+				if (!$didit) {
+					$rawdata = "No " .  strtolower($title);
 				}
 				
 				echo '</DIV><div class="col-md-4">' . $rawdata  . '</div>';

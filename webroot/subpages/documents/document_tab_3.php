@@ -24,7 +24,7 @@
                                                     
                                 						
                                 							
-                                								<h1>Consent Form</h1>
+                                								<h2>Consent Form</h2>
                                 							
 
                                 						
@@ -38,7 +38,7 @@
                                                 <div class="tab-pane" id="subtab_2_2">
                                                     
                                                     
-                                						<h1>Employment Verification (Employer Information for Last 3 Years)</h1>
+                                						<h2>Employment Verification (Employer Information for Last 3 Years)</h2>
                                                         <?php include('employment_verification_form.php');?>
                                 					
                                                                 
@@ -47,7 +47,7 @@
 
                                                 <div class="tab-pane" id="subtab_2_3">
                                                     
-                                						<h1>Education Verification (Education Information for Last 3 Years)</h1>
+                                						<h2>Education Verification (Education Information for Last 3 Years)</h2>
                                                         <?php include('education_verification_form.php');?>
                                 					
 

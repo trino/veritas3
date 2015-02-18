@@ -286,7 +286,7 @@
                 <div class="portlet box yellow">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-folder-open-o"></i>ISB MEE Results
+                            <i class="fa fa-folder-open-o"></i>ISB MEE Products
                         </div>
                     </div>
                     <div class="portlet-body">

@@ -55,6 +55,7 @@
             <div class="portlet-body">
                     <div class="chat-form">
                             <form action="<?php echo $this->request->webroot; ?>profiles/index" method="get">
+                            <?php if(isset($_GET['draft'])){?><input type="hidden" name="draft" /><?php }?>
                             <div class="col-md-3" align="left" style="padding-left:0;">
                                     <input  class="form-control input-inline" type="search" name="searchprofile"  placeholder=" Search for <?php echo ucfirst($settings->profile); ?>" value="<?php if(isset($search_text)) echo $search_text; ?>"     aria-controls="sample_1" />
                             </div>
@@ -126,7 +127,7 @@
 
                     <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
-                        <tr>
+                        <tr class="sorting">
                             <th><?= $this->Paginator->sort('id') ?></th>
                             <th><?= $this->Paginator->sort('profile_type','Profile Type') ?></th>
                             <th><?= $this->Paginator->sort('fname','First Name') ?></th>
@@ -227,7 +228,7 @@
                     <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
                         
 
-                        <ul class="pagination">
+                        <ul class="pagination sorting">
                             <?= $this->Paginator->prev('< ' . __('previous')); ?>
                             <?= $this->Paginator->numbers(); ?>
                             <?=	$this->Paginator->next(__('next') . ' >'); ?>
@@ -241,6 +242,19 @@
     </div>
 </div>
 <script>
+    $(function () {
+        $('.sorting').find('a').each(function(){
+            
+           <?php if(isset($_GET['draft'])){?>
+           var hrf = $(this).attr('href');
+           if(hrf!="")
+            $(this).attr('href',hrf+'&draft');
+           <?php } ?> 
+        });
+    })
+    </script>
+<script>
+
 $(function(){
    <?php if(isset($_GET['division'])&& $_GET['division']!=""){
             //var_dump($_GET);

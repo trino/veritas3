@@ -17,7 +17,7 @@ function pending($name, $value, $checked = true){
 <div class="portlet box yellow">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-folder-open-o"></i>ISB MEE Results
+            <i class="fa fa-folder-open-o"></i>ISB MEE Products
         </div>
     </div>
     <div class="portlet-body">
@@ -28,68 +28,53 @@ function pending($name, $value, $checked = true){
                     <tr class="even" role="row">
                         <td class="actions">
                             <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                            <!--<span class="label label label-info">Pending </span>-->
                         </td>
-                        <td><span class="icon-notebook"></span></td>
-                        <td>Premium National Criminal Record Check</td>
+                        <td><span class="icon-doc"></span> Premium National Criminal Record Check</td>
                     </tr>
-
 
                     <tr class="even" role="row">
                         <td class="actions">
                             <?php echo pending("dri_abs", "Driver's Record Abstract", false); ?>
-                            <!-- <span class="label label label-info">Pending </span>-->
                         </td>
-                        <td><span class="icon-notebook"></span></td>
-                        <td>Driver's Record Abstract</td>
+                        <td><span class="icon-doc"></span> Driver's Record Abstract</td>
                     </tr>
 
                     <tr class="even" role="row">
                         <td class="actions">
                             <?php echo pending("CVOR", "CVOR", false); ?>
-                            <!-- <span class="label label label-info">Pending </span>-->
                         </td>
-                        <td><span class="icon-notebook"></span></td>
-                        <td>CVOR</td>
+                        <td><span class="icon-doc"></span> CVOR</td>
                     </tr>
 
 
                     <tr class="odd" role="row">
                         <td class="actions">
                             <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                            <!-- <span class="label label label-info">Pending </span>-->
                         </td>
-                        <td><span class="icon-notebook"></span></td>
-                        <td>Pre-employment Screening Program Report</td>
+                        <td><span class="icon-doc"></span> Pre-employment Screening Program Report</td>
                     </tr>
 
 
                     <tr class="even" role="row">
                         <td class="actions">
                             <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                            <!--<span class="label label label-info">Pending </span> -->
                         </td>
-                        <td><span class="icon-notebook"></span></td>
-                        <td>Transclick</td>
+                        <td><span class="icon-doc"></span> Transclick</td>
                     </tr>
 
 
                     <tr class="odd" role="row">
                         <td class="actions">
                             <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                            <!--<span class="label label label-info">Pending </span>-->
                         </td>
-                        <td><span class="icon-notebook"></span></td>
-                        <td>Certifications</td>
+                        <td><span class="icon-doc"></span> Certifications</td>
                     </tr>
 
                     <tr class="odd" role="row">
                         <td class="actions">
                             <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                            <!--<span class="label label label-info">Pending </span>-->
                         </td>
-                        <td><span class="icon-notebook"></span></td>
-                        <td>Letter of Experience</td>
+                        <td> <span class="icon-doc"></span> Letter of Experience</td>
                     </tr>
 
                 </tbody>

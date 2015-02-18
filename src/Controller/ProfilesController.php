@@ -60,6 +60,7 @@ use Cake\Network\Email\Email;
         }
 public function training(){}
 public function quiz(){}
+public function video(){}
 
     public function index() {
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -72,8 +73,11 @@ public function quiz(){}
                 return $this->redirect("/");
 
             }
-
-            $cond = '';
+            if(isset($_GET['draft']))
+                $draft = 1;
+            else
+                $draft =0;
+            $cond = 'drafts = '.$draft;
             if(isset($_GET['searchprofile']))
             {
                 $search = $_GET['searchprofile'];

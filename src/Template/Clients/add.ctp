@@ -153,7 +153,7 @@ if ($action == "Add") { $action  = "Create";}
                                     <div class="tab-pane active" id="tab_1_1">
                                         <div id="tab_1-1" class="tab-pane active">
                                             <form role="form" action="" method="post" id="client_form" class="save_client_all" >
-
+                                                <input type="hidden" name="drafts" id="client_drafts" value="0"/>
                                                 <div class="row">
                                                     <input type="hidden" name="image" id="client_img"/>
                                                     <?php if($settings->client_option==0){?>
@@ -474,6 +474,7 @@ if ($action == "Add") { $action  = "Create";}
                                                     <!--<div class="margin-top-10">-->
                                                         <button type="submit" class="btn btn-primary"
                                                            id="save_client_p1">Save</button>
+                                                         <button type="submit" class="btn btn-primary" onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">Save As Draft</button>
                                                     </div>
                                                     <!--</div>-->
                                             </form>

@@ -78,7 +78,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
             
             <form role="form" action="" method="post" id="save_clientz" >
                 <input type="hidden" name="client_ids" value="" class="client_profile_id"/>
-
+                <input type="hidden" name="drafts" value="0" id="profile_drafts" />
                 <div class="row">
                 <input type="hidden" name="created_by" value="<?php echo $this->request->session()->read('Profile.id') ?>"/>
                 <div class="col-md-6">
@@ -631,6 +631,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                            onclick="return check_username();" id="savepro">
                                             Save Changes
                                         </a>
+                                        <button class="btn btn-primary" onclick="$('#profile_drafts').val('1'); $('#save_clientz').attr('novalidate','novalidate');$('#hiddensub').click();">Save As Draft</button>
                                         <input type="submit" style="display: none;" id="hiddensub"/>
                                     </div>
                                     <div class="clearfix"></div>

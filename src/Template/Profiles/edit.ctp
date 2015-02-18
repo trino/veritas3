@@ -219,13 +219,13 @@
                             <?php if (isset($p->image) && $p->image != "") { ?>
                                 <img
                                     src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $p->image ?>"
-                                    class="img-responsive" alt="" id="clientpic"/>
+                                    class="img-responsive" alt="" id="clientpic" style="height: auto;"/>
 
                             <?php } else {
                                 ?>
                                 <img src="<?php echo $this->request->webroot; ?>img/profile/default.png"
                                      class="img-responsive" id="clientpic"
-                                     alt=""/>
+                                     alt="" style="height: auto;"/>
                             <?php
                             }
                             ?>
@@ -366,14 +366,14 @@
 
                                                 <?php if ($this->request->session()->read('Profile.super')) { ?>
                                                     <li>
-                                                        <a href="#tab_1_5" data-toggle="tab">Logos</a>
+                                                        <a href="#tab_1_5" data-toggle="tab">Logo</a>
                                                     </li>
 
                                                     <li>
                                                         <a href="#tab_1_6" data-toggle="tab">Pages</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#tab_1_8" data-toggle="tab">Others</a>
+                                                        <a href="#tab_1_8" data-toggle="tab">Other</a>
                                                     </li>
                                                 <?php
                                                 }

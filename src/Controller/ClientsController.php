@@ -924,9 +924,11 @@ class ClientsController extends AppController {
     $this->layout = 'blank';
    }
 
+
    function addprofile()
    {
         $settings = $this->Settings->get_settings();
+
         $query = TableRegistry::get('clients');
         $q = $query->find()->where(['id'=>$_POST['client_id']])->first();
         $profile_id = $q->profile_id;

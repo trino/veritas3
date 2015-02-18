@@ -258,7 +258,7 @@ $is_disabled = '';
 											<div class="tab-pane active" id="tab_1_1">
 												<form role="form" action="#">
                                                     <div class="form-group">
-														<label class="control-label">Profile Type</label>
+														<label class="control-label"><?php echo ucfirst($settings->profile); ?> Type</label>
 														<select <?php echo $is_disabled?> class="form-control member_type">
                                                             <option value="Admin">Admin</option>
                                                             <option value="Member">Member</option>

@@ -126,7 +126,7 @@
                             <th><?= $this->Paginator->sort('orders.title', "Title"); ?></th>
                             <th><?= $this->Paginator->sort('user_id', 'Uploaded by'); ?></th>
                             <th><?= $this->Paginator->sort('uploaded_for', 'Uploaded for'); ?></th>
-                            <th><?= $this->Paginator->sort('client_id', 'Client'); ?></th>
+                            <th><?= $this->Paginator->sort('client_id', ucfirst($settings->client)); ?></th>
                             <th>Division</th>                            
                             <th><?= $this->Paginator->sort('created', 'Created'); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>

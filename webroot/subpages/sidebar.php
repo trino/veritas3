@@ -20,7 +20,7 @@
                     </a>
 
                     <div class="input-group">
-                        <input type="text" name="searchdoc" class="form-control" placeholder="Document Search...">
+                        <input type="text" name="searchdoc" class="form-control" placeholder="<?php echo ucfirst($settings->document); ?> Search...">
 							<span class="input-group-btn">
 							<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
 							</span>

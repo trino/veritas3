@@ -70,7 +70,7 @@
 
 
         <form class="login-form" action="" method="post">
-    <h3 class="form-title">Login to your account</h3>
+        <h3 class="form-title">Log in to your account</h3>
     
     <?= $this->Flash->render() ?>
     <div class="form-group">

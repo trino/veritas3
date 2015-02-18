@@ -1463,8 +1463,8 @@
          * @return void
          * @throws \Cake\Network\Exception\NotFoundException
          */
-        public function delete($id = null, $type = "")
-        {
+        public function delete($id = null, $type = ""){
+            $settings = $this->Settings->get_settings();
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
             if ($setting->document_delete == 0) {
@@ -1487,9 +1487,9 @@
 
                 if ($this->Documents->deleteAll(array('id' => $id))) {
 
-                    $this->Flash->success('Document has been deleted.');
+                    $this->Flash->success(ucfirst($settings->document) . ' has been deleted.');
                 } else {
-                    $this->Flash->error('Document could not be deleted. Please try again.');
+                    $this->Flash->error(ucfirst($settings->document) . ' could not be deleted. Please try again.');
                 }
                 if($type=='draft')
                 {

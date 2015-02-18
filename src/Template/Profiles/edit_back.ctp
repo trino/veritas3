@@ -231,7 +231,7 @@
             <?php if ($this->request->params['action'] == 'edit') { ?>
                 <div class="portlet box blue scrolldiv">
                     <div class="portlet-title">
-                        <div class="caption">Assign to client</div>
+                        <div class="caption">Assign to <?php echo strtolower($settings->client); ?></div>
                     </div>
                     <div class="portlet-body">
                         <input type="text" id="searchClient" onkeyup="searchClient()" class="form-control" />

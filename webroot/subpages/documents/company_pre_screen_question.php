@@ -603,7 +603,7 @@
             ?>
 
             <div class="form-group row" style="display:block;margin-top:5px; margin-bottom: 5px;">
-                <label class="control-label col-md-3">Attach Document : </label>
+                <label class="control-label col-md-3">Attach File : </label>
                 <div class="col-md-9">
                     <input type="hidden" class="fileUpload1" name="attach_doc[]" />
                     <a href="#" id="fileUpload1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
@@ -623,7 +623,7 @@
                         $at++;
                         ?>
                         <div class="pad_bot" id="del_pre">
-                            <label class="control-label col-md-3">Attach Document : </label>
+                            <label class="control-label col-md-3">Attach File : </label>
                             <div class="col-md-6 pad_bot">
                                 <input type="hidden" class="fileUpload<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" />
                                 <a href="#" id="fileUpload<?php echo $at;?>"  class="btn btn-primary">Browse</a>

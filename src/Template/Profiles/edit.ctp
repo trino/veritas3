@@ -281,61 +281,7 @@
 
 
 
-                    <?php
-                    if(isset($id) and (isset($p) && $p->profile_type == 5) )
-                    {
-                    ?>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="portlet box yellow">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-clipboard"></i>
-                                        List Orders
-                                    </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <div class="clearfix"></div>
-                                    <div class="table-responsive">
-                                        <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
-                                            <thead>
-                                            <tr class="sorting">
-                                                <th><a href="/veritas3/documents/orderslist?sort=orders.title&amp;direction=asc">Title</a></th>
-                                                <th><a href="/veritas3/documents/orderslist?sort=created&amp;direction=asc">Created</a></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php
-                                            $getOrders = $this->requestAction('profiles/getOrders/'.$id);
-                                            foreach($getOrders as $g )
-                                            {
-                                             ?>
-                                             
-                                            <tr class="even" role="row">
-                                                <td><?php echo $g->id; ?></td>
 
-                                                <td><?php echo $g->created; ?></td>
-
-                                            </tr>
-                                            <?php  
-                                            } 
-                                            ?>
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                    <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination sorting">
-                                            <li class="prev disabled"><a href="">&lt; previous</a></li> <li class="next disabled"><a href="">next &gt;</a></li>                    </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <?php
-                    }
-                    ?>
                 </div>
 
 
@@ -387,23 +333,25 @@
                                                 <?php
                                                 }
                                             }
-                                            ?>
-                                            <?php if ($this->request->session()->read('Profile.admin')) {
-                                                ?>
+
+                                            if ($this->request->session()->read('Profile.admin')) {  ?>
                                                 <li>
                                                     <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                                 </li>
 
-                                            <?php
+                                            <?php }
+                                            $needs=false;
+                                            if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
+                                                echo '<li><a href="#tab_1_10" data-toggle="tab">Orders</li></A></li>';
                                             }
+
                                             if ($this->request->params['action'] != 'add') {
                                                 ?>
                                                 <li>
                                                     <a href="#tab_1_9" data-toggle="tab">Notes</a>
                                                 </li>
 
-                                            <?php
-                                            }
+                                            <?php }
                                         }
 
                                     ?>
@@ -437,6 +385,15 @@
                                             <div class="tab-pane" id="tab_1_7">
                                                 <?php include('subpages/profile/block.php'); ?>
                                             </div>
+
+                                            <?php
+                                            if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
+                                                echo '<div class="tab-pane" id="tab_1_10">';
+                                                include('subpages/profile/listorders.php');
+                                                echo '</div>';
+                                            }
+                                            ?>
+
                                             <div class="tab-pane" id="tab_1_9">
                                                 <div class="cleafix">&nbsp;</div>
                                                 <!--

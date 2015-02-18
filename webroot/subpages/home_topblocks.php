@@ -37,7 +37,7 @@ function randomcolor(){
                 <i class="fa fa-search"></i>
             </div>
             <div class="tile-object">
-                <div class="name">List <?=$settings->client;?>s</div>
+                <div class="name">Search <?=$settings->client;?></div>
                 <div class="number"></div>
             </div>
         </a>
@@ -64,7 +64,7 @@ function randomcolor(){
                 <i class="fa fa-search"></i>
             </div>
             <div class="tile-object">
-                <div class="name">List <?=$settings->profile;?>s</div>
+                <div class="name">Search <?=$settings->profile;?></div>
                 <div class="number"></div>
             </div>
         </a>
@@ -91,7 +91,7 @@ function randomcolor(){
                 <i class="fa fa-search"></i>
             </div>
             <div class="tile-object">
-                <div class="name">List <?=$settings->document;?>s</div>
+                <div class="name">Search <?=$settings->document;?></div>
                 <div class="number"></div>
             </div>
         </a>

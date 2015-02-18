@@ -631,7 +631,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                            onclick="return check_username();" id="savepro">
                                             Save Changes
                                         </a>
-                                        <button class="btn btn-primary" onclick="$('#profile_drafts').val('1'); $('#save_clientz').attr('novalidate','novalidate');$('#hiddensub').click();">Save As Draft</button>
+                                        <button class="btn btn-primary" onclick="$('#profile_drafts').val('1'); $('#save_clientz').attr('novalidate','novalidate');$('#hiddensub').click();">Save As Drafts</button>
                                         <input type="submit" style="display: none;" id="hiddensub"/>
                                     </div>
                                     <div class="clearfix"></div>

@@ -144,17 +144,14 @@
                             </div>
     
                         <div class="form-group row">
-                            <label class="col-md-3 control-label">Date:</label>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control date-picker" name="date_time[]" value="<?php echo $emp->date_time;?>" />
-                            </div>
-
                                 <label class="col-md-3 control-label" style="display: none;">Signature:</label>
                                 <div class="col-md-3">
                                 <input type="text" class="form-control" style="display: none;" name="signature[]" value="<?php echo $emp->signature;?>"/>
                                 </div>
-
-
+                        <label class="col-md-3 control-label">Date:</label>
+                        <div class="col-md-3">
+                        <input type="text" class="form-control date-picker" name="date_time[]" value="<?php echo $emp->date_time;?>" />
+                        </div>
                 
     </div>
             
@@ -308,6 +305,7 @@
                             </div>
     
                         <div class="form-group row">
+
                         <label class="col-md-3 control-label">Date : </label>
                         <div class="col-md-3">
                         <input type="text" class="form-control date-picker" name="date_time[]" />
@@ -349,12 +347,7 @@
                                                             {
                                                                 $at++;
                                                                 ?>
-
-                                                                <div class="del_append_edu"><label class="control-label col-md-3"><?
-                                                                        if($at >0 or  $action =="add"){echo "Attach Document";}
-                                                                        ?></label>
-                                                                    <div class="col-md-6 pad_bot"><input type="hidden" class="edu<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="edu<?php echo $at;?>" class="btn btn-primary">Browse</a>
-                                                                 <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_edu_doc" onclick="$(this).parent().remove();">Delete</a><?php }?>
+                                                                <div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="edu<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="edu<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_edu_doc" onclick="$(this).parent().remove();">Delete</a><?php }?> 
                                                                 <span class="uploaded"><?php echo $pa->attachment;?>  <?php if($pa->attachment){$ext_arr = explode('.',$pa->attachment);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>">Download</a><?php }else{?><br />
                                                                 <video width="320" height="240" controls>
                                                                   <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" type="video/mp4">

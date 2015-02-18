@@ -939,7 +939,7 @@ class ClientsController extends AppController {
             array_push($pros,$_POST['user_id']);
             $pro_id = array_unique($pros);
 
-            $flash = "Assigned to ". $settings->client . " succesfully";
+            $flash = "Assigned to ".$settings->client." succesfully";
 
         }
         else
@@ -947,7 +947,7 @@ class ClientsController extends AppController {
             $pro_id = array_diff($pros, array($_POST['user_id']));
 
            
-            $flash = "Removed from " . $settings->client . " succesfully";
+            $flash = "Removed from ".$settings->client." succesfully";
 
             //array_pop($pros,$_POST['user_id']);
 

@@ -1,1 +1,1 @@
-<?php include('subpages/documents/forview.php');?>
+<?php include('subpages/documents/forview2.php');?>

@@ -8,7 +8,7 @@
 
         </div>
     </div>
-</div-->
+</div
 
 
 <div class="note note-success blockmsg">
@@ -16,6 +16,5 @@
     <p>
         You will be notified once it's processed.
     </p>
-    <!--You will be redirected to dashboard in <span class="seconds"><strong>10</strong></span> seconds. -->
-
-</div>
+  You will be redirected to dashboard in <span class="seconds"><strong>10</strong></span> seconds. 
+</div>-->

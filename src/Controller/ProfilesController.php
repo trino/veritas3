@@ -284,6 +284,17 @@ public function video(){}
             $this->set('id',$id);
             $this->render("edit");
         }
+        
+        public function viewReport($profile)
+        {
+            $orders = TableRegistry::get('orders');
+            $order = $orders
+                ->find()
+                ->where(['orders.uploaded_for' => $profile])->contain(['Profiles', 'Clients', 'RoadTest']);
+
+            $this->set('orders', $order);
+            //  debug($order);
+        }
 
         /**
          * Add method
@@ -672,13 +683,13 @@ public function video(){}
                 //die();
             }
             
-            $checker = $this->Settings->check_permission($this->request->session()->read('Profile.id'),$id);
+            $checker = $this->Settings->check_edit_permission($this->request->session()->read('Profile.id'),$id);
             if($checker==0)
             {
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
                 return $this->redirect("/profiles/index");
 
-            }
+            } 
             
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             if($setting->profile_edit==0 && $id != $this->request->session()->read('Profile.id'))

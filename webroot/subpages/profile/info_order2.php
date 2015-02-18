@@ -32,7 +32,7 @@
 
                 <div class="form-group">
 
-                    <div class="col-md-3 control-label">Select Client</div>
+                    <div class="col-md-3 control-label">Select <?php echo ucfirst($settings->client); ?> </div>
                     <div class="col-md-6">
 
 

@@ -18,7 +18,8 @@
         ];
         public function productSelection()
         {
-            
+            $settings = $this->Settings->get_settings();
+            $this->set('settings', $settings);
         }
         public function initialize()
         {
@@ -2657,6 +2658,7 @@
         
         function getClientByDriver($driver)
         {
+            $settings = $this->Settings->get_settings();
             $logged_id = $this->request->session()->read('Profile.id');
             $cmodel = TableRegistry::get('Clients');
             if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
@@ -2671,7 +2673,7 @@
                 else
                 $clients = $cmodel->find();
             }
-            echo "<option value=''>Select Clients</option>";
+            echo "<option value=''>Select " . ucfirst($settings->client) . "s</option>";
             if($clients)
             {
                 

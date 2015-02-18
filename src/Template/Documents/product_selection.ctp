@@ -1,5 +1,5 @@
 <h3 class="page-title">
-    Place MEE Order
+    Place ME Order
 </h3>
 <div class="page-bar">
     <ul class="page-breadcrumb">

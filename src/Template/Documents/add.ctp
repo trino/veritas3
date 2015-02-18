@@ -129,7 +129,7 @@ if ($action == "Add") {
 
                             <div class="margin-top-10 alert alert-success display-hide flashDoc" style="display: none;">
                                 <button class="close" data-close="alert"></button>
-                                <?php echo ucfirst($settings->document); ?> uploaded successfully
+                                Document uploaded successfully
                             </div>
 
 

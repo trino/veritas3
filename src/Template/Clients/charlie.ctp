@@ -298,7 +298,7 @@
                     					</div>
                     					<div class="tile-object">
                     						<div class="name">
-												<?php echo ucfirst($settings->document); ?>s
+                    							 Documents
                     						</div>
                     						<div class="number">
                     							 124

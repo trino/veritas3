@@ -49,7 +49,7 @@ $(function(){
             $('.flashPass').fadeOut(3500);
             }
             else
-            alert('Couldn\'t save password');
+            alert('Could\'t save password');
             $('#save_pass').text(' Change Password ');
            } 
         });

@@ -88,7 +88,7 @@ function changenote($noteid, $text){
                 if (isset($_GET["text"])) { echo " to " . $_GET["text"]; }
                 echo "<BR> and don't forget the permissions check for the current user id: " . $userid;
                 echo "<BR>Can edit: " . canuseredit($notes, $desirednote, $userid, $profile);
-                echo "<BR>" . ucfirst($settings->profile) . " type: " . $profile->profile_type . " (" . usertype($profile) . ")";
+                echo "<BR>Profile type: " . $profile->profile_type . " (" . usertype($profile) . ")";
 
                 //changenote($noteid, $text)
                 if (canuseredit($notes, $desirednote, $userid, $profile)) {

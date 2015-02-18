@@ -172,7 +172,7 @@
                                                              <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[document_others]"
-                                                                                          value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> /> View Other's <?php echo ucfirst($settings->document); ?>s
+                                                                                          value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> /> View Others <?php echo ucfirst($settings->document); ?>
                                                             </label>
                                                              <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
@@ -654,7 +654,7 @@
                                             </tr>
                                              <tr>
                                                 <td>
-                                                    <?php echo ucfirst($settings->document); ?>s Drafts
+                                                    Documents Drafts
                                                 </td>
                                                 <td>
                                                     <label class="uniform-inline">

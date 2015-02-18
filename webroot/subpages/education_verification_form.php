@@ -86,7 +86,7 @@
     <a href="javascript:void(0);" class="btn green add_more_edu">Add More</a>
 </div>
 <div class="form-group col-md-12">
-    <label class="control-label col-md-3">Attach Files : </label>
+    <label class="control-label col-md-3">Attach Document : </label>
     <div class="col-md-9">
     <a href="javascript:void(0);" class="btn btn-primary">Browse</a>
     </div>
@@ -125,7 +125,7 @@ $(function(){
   }); 
   
   $('#add_more_edu_doc').click(function(){
-        $('#more_edu_doc').append('<div class="del_append_edu"><label class="control-label col-md-3">Attach File : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_edu_doc">Delete</a></div></div><div class="clearfix"></div>')
+        $('#more_edu_doc').append('<div class="del_append_edu"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><a href="javascript:void(0);" class="btn btn-primary">Browse</a><a  href="javascript:void(0);" class="btn btn-danger" id="delete_edu_doc">Delete</a></div></div><div class="clearfix"></div>')
        }); 
        
        $('#delete_edu_doc').live('click',function(){

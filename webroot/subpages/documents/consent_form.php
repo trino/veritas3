@@ -525,7 +525,7 @@
                             $at++;
                             ?>
                             <div class="del_append_consent">
-                                <label class="control-label col-md-3">Attach File : </label>
+                                <label class="control-label col-md-3">Attach Document : </label>
 
                                 <div class="col-md-6 pad_bot">
                                     <input type="hidden" class="consent<?php echo $at;?>" name="attach_doc[]"

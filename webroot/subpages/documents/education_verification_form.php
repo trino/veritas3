@@ -331,7 +331,7 @@
                                                         if(!count($sub4['att']))
                                                         {?>
     <div class="form-group row" style="display:block;margin-top:5px; margin-bottom: 5px;">
-        <label class="control-label col-md-3">Attach File : </label>
+        <label class="control-label col-md-3">Attach Document : </label>
         <div class="col-md-9">
         <input type="hidden" name="attach_doc[]" class="edu1" />
             <a href="javascript:void(0);" id="edu1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
@@ -351,7 +351,7 @@
                                                                 ?>
 
                                                                 <div class="del_append_edu"><label class="control-label col-md-3"><?
-                                                                        if($at >0 or  $action =="add"){echo "Attach File";}
+                                                                        if($at >0 or  $action =="add"){echo "Attach Document";}
                                                                         ?></label>
                                                                     <div class="col-md-6 pad_bot"><input type="hidden" class="edu<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="edu<?php echo $at;?>" class="btn btn-primary">Browse</a>
                                                                  <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger delete_edu_doc" onclick="$(this).parent().remove();">Delete</a><?php }?>

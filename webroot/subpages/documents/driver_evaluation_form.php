@@ -715,7 +715,7 @@
                                                         
                                                         if(!count($sub['de_at'])){?>
                                                 <div class="form-group row" style="display:block;margin-top:5px; margin-bottom: 5px;">
-                                                    <label class="control-label col-md-4">Attach File : </label>
+                                                    <label class="control-label col-md-4">Attach Document : </label>
                                                     <div class="col-md-8">
                                                     <input type="hidden" class="road1" name="attach_doc[]" />
                                                     <a href="#" id="road1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
@@ -732,7 +732,7 @@
                                                             {
                                                                 $at++;
                                                                 ?>
-                                                                <div class="del_append_driver"><label class="control-label col-md-4">Attach File : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="road<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc" onclick="$(this).parent().remove();">Delete</a><?php }?>
+                                                                <div class="del_append_driver"><label class="control-label col-md-4">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="road<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc" onclick="$(this).parent().remove();">Delete</a><?php }?> 
                                                                 <span class="uploaded"><?php echo $pa->attachment;?>  <?php if($pa->attachment){$ext_arr = explode('.',$pa->attachment);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>">Download</a><?php }else{?><br />
                                                                 <video width="320" height="240" controls>
                                                                 <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" type="video/mp4">

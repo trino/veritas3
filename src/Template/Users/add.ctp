@@ -148,7 +148,7 @@
                                 <input type="checkbox" name="canUpload_KPIAudits">
                                 <span>      Orders </span>
                                 <input type="checkbox" name="canUpload_orders">
-                                <span>      <?php echo ucfirst($settings->client); ?> Feedback </span>
+                                <span>      Client Feedback </span>
                                 <input type="checkbox" name="canUpload_client_memo1">
                                 <span>      Deployment </span>
                                 <input type="checkbox" name="canUpload_deployment_rate">
@@ -171,7 +171,7 @@
                             </div>
                             <p>&nbsp;</p>
                             <div class="form-group">
-                            <div>Receive email when <?php echo strtolower($settings->document); ?> is uploaded : &nbsp; <input type="checkbox" checked="checked" name="receive2"></div>
+                            <div>Receive email when document is uploaded : &nbsp; <input type="checkbox" checked="checked" name="receive2"></div>
                             
                             <div style="display: none;">
                             <p>&nbsp;</p>

@@ -749,7 +749,7 @@
                                             if(!count($sub['da_at'])){
                                             ?>
                        <div class="form-group " style="display:block;margin-top:5px; margin-bottom: 5px;">
-                                        <label class="control-label col-md-3">Attach File : </label>
+                                        <label class="control-label col-md-3">Attach Document : </label>
                                         <div class="col-md-9">
                                         <input type="hidden" class="driveApp1" name="attach_doc[]" />
                                         <a href="#" id="driveApp1" class="btn btn-primary">Browse</a> <span class="uploaded"></span>
@@ -766,7 +766,7 @@
                                             {
                                                 $at++;
                                                 ?>
-                                                <div class="del_append"><label class="control-label col-md-3">Attach File : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc" onclick="$(this).parent().remove();">Delete</a>
+                                                <div class="del_append"><label class="control-label col-md-3">Attach Document : </label><div class="col-md-6 pad_bot"><input type="hidden" class="driveApp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="driveApp<?php echo $at;?>" class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger" id="delete_doc" onclick="$(this).parent().remove();">Delete</a>
                                                 <span class="uploaded"><?php echo $pa->attachment;?>  <?php if($pa->attachment){$ext_arr = explode('.',$pa->attachment);$ext = end($ext_arr);$ext = strtolower($ext);if(in_array($ext,$img_ext)){?><img src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" style="max-width:120px;" /><?php }elseif(in_array($ext,$doc_ext)){?><a href="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>">Download</a><?php }else{?><br />
                                                  <video width="320" height="240" controls>
                                                   <source src="<?php echo $this->request->webroot;?>attachments/<?php echo $pa->attachment;?>" type="video/mp4">

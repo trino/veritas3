@@ -237,16 +237,15 @@ class SettingsComponent extends Component
              $setting = $setting->first();
              /*=================================================================================*/
              
-             if($setting->profile_edit=='1' && ($q2->profile_type!='1' && $q2->super!='1' && $q2->admin!='1'))
-            {
-                if($usertype == '2'){
-                $pt = $q2->profile_type;
-                if(($pt=='5' || $pt=='7' || $pt=='8' )/*|| $q1->profile_type==$q2->id*/ || $uid==$pid)    
-                return 1;
-                }
-                else
-                    {
-                            return 0;
+             if($setting->profile_edit=='1' && ($q2->profile_type!='1' && $q2->super!='1' && $q2->admin!='1')) {
+                    if($usertype == '2'){
+                        $pt = $q2->profile_type;
+                        if(($pt=='5' || $pt=='7' || $pt=='8' )/*|| $q1->profile_type==$q2->id*/ || $uid==$pid) {
+                            return 1;
+                         }
+                    } else {
+                        if ($q1->super=='1') { return 1;}
+                        return 0;
                     }
                 //else 
 //                if(($q2->admin == '1' || $q2->profile_type == '1') && $q1->super == '1')
@@ -262,7 +261,7 @@ class SettingsComponent extends Component
             {
                 if(($q2->profile_type=='1' || $q2->admin='1') && $setting->profile_edit=='1' && ($q1->admin=='1' || $q1->super == '1' ||$q1->profile_type =='1') || $uid==$pid)
                 {
-                        return 1;   
+                        return 1;
                 }
                 else return 0;
             }

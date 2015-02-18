@@ -474,7 +474,7 @@ if ($action == "Add") { $action  = "Create";}
                                                     <!--<div class="margin-top-10">-->
                                                         <button type="submit" class="btn btn-primary"
                                                            id="save_client_p1">Save</button>
-                                                         <button type="submit" class="btn btn-primary" onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">Save As Drafts</button>
+                                                         <button type="submit" class="btn btn-primary" onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">Save As Draft</button>
                                                     </div>
                                                     <!--</div>-->
                                             </form>

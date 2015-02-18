@@ -172,12 +172,12 @@ class SettingsComponent extends Component
             $usertype = $q1->profile_type;
             $uptype = $q2;
             
-            if($q2->super == '1' && ($q1->super == '1'))
+            /*if($q2->super == '1' && ($q1->super == '1'))
             {
                 return 1;
             }
             else
-            {
+            {*/
               if($q2->super != '1')
               {
                 if($usertype == '2'){
@@ -189,7 +189,7 @@ class SettingsComponent extends Component
                 return 1;
               }  
               else return 0;
-            }
+            //}
             //else return 0;
         }
         

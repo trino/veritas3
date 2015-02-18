@@ -99,7 +99,7 @@ if ($action == "Add") { $action  = "Create";}
                                                     $counter++;
                                                 }
                                                 $c = $counter;
-                                            if($counter==0){ echo "<TR><TD>No profiles</TD></TR>";}
+                                            if($counter==0){ echo "<TR><TD>No <?php echo strtolower($settings->profile); ?>s</TD></TR>";}
                                              ?>
                                              <?php
                                              foreach($getcontact as $cont)
@@ -412,7 +412,7 @@ if ($action == "Add") { $action  = "Create";}
                                                    <?php }?>
 
                                                     <div class="form-group col-md-12">
-                                                        <label class="control-label" id="attach_label">Attach Documents</label>
+                                                        <label class="control-label" id="attach_label">Attach Files</label>
 
                                                         <div>
                                                             <!-- <a href="#" class="btn btn-primary">Browse</a> -->

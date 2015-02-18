@@ -44,12 +44,12 @@
                                 }
                                 if ($counting > 1) { ?>
                                     <select id="selecting_client" class="form-control input-xlarge select2me"
-                                data-placeholder="Select Client" <?php if ($client){ ?>disabled="disabled"<?php } ?>>
+                                data-placeholder="Select <?php echo ucfirst($settings->client) . '" '; if ($client){ ?>disabled="disabled"<?php } ?>>
                             <option>None Selected</option><?php
                                 } else { ?>
 
                                         <select id="selecting_client" class="form-control input-xlarge select2me"
-                                                data-placeholder="Select Client" disabled>
+                                                data-placeholder="Select <?php echo ucfirst($settings->client); ?>" disabled>
                                             <?php
 }
 

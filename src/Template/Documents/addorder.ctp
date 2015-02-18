@@ -1490,7 +1490,7 @@ function provinces($name){
                     showforms('document_tab_3.php');
                 }
                 else {
-                    alert('Email already exists');
+                    alert('Email already used');
                     $('#driverEm').focus();
                     $('#driverEm').attr('style', 'border-color:red');
                     $('.button-previous').click();

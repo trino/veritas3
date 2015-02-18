@@ -32,19 +32,28 @@
 
                 <div class="form-group">
 
-                    <div class="col-md-3 control-label">Select Client</div>
+                    <div class="col-md-3 control-label">Select <?php echo ucfirst($settings->client); ?> </div>
                     <div class="col-md-6">
 
-                        <select id="selecting_client" class="form-control input-xlarge select2me"
-                                data-placeholder="Select Client" <?php if ($client){ ?>disabled="disabled"<?php } ?>>
-                            <option>None Selected</option>
+
                             <?php
                                 $counting = 0;
                                 $drcl_c = $dr_cl['client'];
                                 foreach ($drcl_c as $drclc) {
-
                                     $counting++;
                                 }
+                                if ($counting > 1) { ?>
+                                    <select id="selecting_client" class="form-control input-xlarge select2me"
+                                data-placeholder="Select Client" <?php if ($client){ ?>disabled="disabled"<?php } ?>>
+                            <option>None Selected</option><?php
+                                } else { ?>
+
+                                        <select id="selecting_client" class="form-control input-xlarge select2me"
+                                                data-placeholder="Select Client" disabled>
+                                            <?php
+}
+
+
                                 foreach ($dr_cl['client'] as $dr) {
                                     $client_id = $dr->id;
                                     ?>
@@ -54,6 +63,12 @@
                                 }
                             ?>
                         </select>
+
+
+
+
+
+
                         <input class="selecting_client" type="hidden"
                                value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
 

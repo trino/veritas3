@@ -11,11 +11,11 @@ if (!$viewmode){
 
 
 <div class="scrolldiv" style="margin-bottom: 15px;">
-    <input type="text" id="searchProfile" onkeyup="searchProfile()" class="form-control" placeholder="Search Profiles"/>
+    <input type="text" id="searchProfile" onkeyup="searchProfile()" class="form-control" placeholder="Search <?php echo ucfirst($settings->profile); ?>s"/>
     <table class="table table-striped table-bordered table-advance table-hover recruiters">
         <thead>
         <tr>
-            <th colspan="2">Add Profiles</th>
+            <th colspan="2">Add <?php echo ucfirst($settings->profile); ?></th>
         </tr>
         </thead>
         <tbody id="profileTable">

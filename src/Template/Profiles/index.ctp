@@ -129,7 +129,7 @@
                         <thead>
                         <tr class="sorting">
                             <th><?= $this->Paginator->sort('id') ?></th>
-                            <th><?= $this->Paginator->sort('profile_type','Profile Type') ?></th>
+                            <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
                             <th><?= $this->Paginator->sort('fname','First Name') ?></th>
                             <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
                             <th><?= $this->Paginator->sort('username', ucfirst($settings->profile)) ?></th>

@@ -347,6 +347,8 @@ class ClientsController extends AppController {
 	}
 
     public function saveClients($id=0) {
+        $settings = $this->Settings->get_settings();
+
         $rec='';
         $con='';
         $count=1;
@@ -399,8 +401,8 @@ class ClientsController extends AppController {
             {
                     $from = 'info@isbmee.com';
                     $to = $_POST['sig_email'];
-                    $sub = 'Client created successfully';
-                    $msg = 'Hi,<br />Your account has been created for ISBMEE as a client .<br /> Regards';
+                    $sub = ucfirst($settings->client) . ' created successfully';
+                    $msg = 'Hi,<br />Your account has been created for ISBMEE as a ' . strtolower($settings->client) . '<br /> Regards';
                     $this->Mailer->sendEmail($from,$to,$sub,$msg);
                     }
             if(isset($_POST['sig_email'])&&((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!=''))
@@ -455,10 +457,10 @@ class ClientsController extends AppController {
                                 unset($doc);
                             }
                         }
-        				$this->Flash->success('Client saved successfully.');
+        				$this->Flash->success(ucfirst($settings->client) . ' saved successfully.');
                         	echo $client->id;
         			} else {
-        			     $this->Flash->error('Client could not be saved. Please try again.');
+        			     $this->Flash->error(ucfirst($settings->client) . ' could not be saved. Please try again.');
         				echo "e";
         			}
         		}
@@ -493,7 +495,7 @@ class ClientsController extends AppController {
                         ->set($edit)
                         ->where(['id' => $id])
                         ->execute();
-                        $this->Flash->success('Client saved successfully.');
+                        $this->Flash->success(ucfirst($settings->client) . ' saved successfully.');
                 if($_POST['division']!="")
                 {
                     $division = nl2br($_POST['division']);
@@ -611,6 +613,7 @@ class ClientsController extends AppController {
  * @throws \Cake\Network\Exception\NotFoundException
  */
 	function delete($id = null) {
+        $settings = $this->Settings->get_settings();
 	   $check_client_id = $this->Settings->check_client_id($id);
             if($check_client_id==1)
             {
@@ -637,9 +640,9 @@ class ClientsController extends AppController {
 		$profile = $this->Clients->get($id);
 		//$this->request->allowMethod(['post', 'delete']);
 		if ($this->Clients->delete($profile)) {
-			$this->Flash->success('The client has been deleted.');
+			$this->Flash->success('The ' .  strtolower($settings->client) . ' has been deleted.');
 		} else {
-			$this->Flash->error('Client  could not be deleted. Please try again.');
+			$this->Flash->error(ucfirst($settings->client) . ' could not be deleted. Please try again.');
 		}
 		return $this->redirect(['action' => 'index']);
 	}
@@ -924,9 +927,11 @@ class ClientsController extends AppController {
     $this->layout = 'blank';
    }
 
+
    function addprofile()
    {
         $settings = $this->Settings->get_settings();
+
         $query = TableRegistry::get('clients');
         $q = $query->find()->where(['id'=>$_POST['client_id']])->first();
         $profile_id = $q->profile_id;
@@ -968,7 +973,7 @@ class ClientsController extends AppController {
         ->execute())
             echo $flash;
         else
-            echo "Client Couldnot Be Added.";
+            echo ucfirst($settings->client) . " could not be added.";
         //echo $p_ids;
         die();
    }

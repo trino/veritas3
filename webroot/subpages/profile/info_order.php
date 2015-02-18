@@ -68,7 +68,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">Profile Type</label>
+                                <label class="control-label"><?php echo ucfirst($settings->profile); ?> Type</label>
 
 
                                 <select  <?php echo $is_disabled ?>

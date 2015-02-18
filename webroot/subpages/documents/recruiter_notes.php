@@ -24,9 +24,9 @@
     ?>
 
     <div class="">
-        <input type="hidden" id="rid" value="0"  <?php echo $is_disabled ?> />
-        <textarea id="recruiter_notes" placeholder="Add driver notes here..." rows="2" class="form-control"  <?php echo $is_disabled ?>></textarea>
-        <a href="javascript:void(0);" class="btn btn-success" id="add_recruiter" style="float:right;margin:5px 0;" <?php echo $is_disabled ?> >Submit</a>
+        <input type="hidden" id="rid" value="0"  />
+        <textarea id="recruiter_notes" placeholder="Add driver notes here..." rows="2" class="form-control"></textarea>
+        <a href="javascript:void(0);" class="btn btn-success" id="add_recruiter" style="float:right;margin:5px 0;" >Submit</a>
 
     </div>
     <div class="">

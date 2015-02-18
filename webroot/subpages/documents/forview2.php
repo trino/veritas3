@@ -14,28 +14,9 @@
     }
 
 </style>
-
-
-<h3 class="page-title">
-    View Report
-</h3>
-<div class="page-bar">
-    <ul class="page-breadcrumb">
-        <li>
-            <i class="fa fa-home"></i>
-            <a href="<?php echo $this->request->webroot; ?>">Dashboard</a>
-            <i class="fa fa-angle-right"></i>
-        </li>
-        <li>
-            <a href="">View Report
-            </a>
-        </li>
-    </ul>
-    <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
-</div>
-<!-- BEGIN PROFILE SIDEBAR -->
 <?php
-function get_string_between($string, $start, $end)
+
+    function get_string_between($string, $start, $end)
     {
         $string = " " . $string;
         $ini = strpos($string, $start);
@@ -138,20 +119,6 @@ function get_string_between($string, $start, $end)
             }
         }
     }
-$counting = 0;
-                                $drcl_d = $orders;
-                                foreach ($drcl_d as $drcld) {
-
-                                    $counting++;
-                                }
-$k=0;                                
-foreach($orders as $order)
-{
-    $k++;
-    ?>
-<?php
-
-    
 
     create_files_from_binary($order->id, '1603', $order->ebs_1603_binary);
     create_files_from_binary($order->id, '1', $order->ins_1_binary);
@@ -160,7 +127,26 @@ foreach($orders as $order)
     create_files_from_binary($order->id, '78', $order->ins_78_binary);
     create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
     create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
-?>    
+?>
+
+<h3 class="page-title">
+    View Report
+</h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="<?php echo $this->request->webroot; ?>">Dashboard</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="">View Report
+            </a>
+        </li>
+    </ul>
+    <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+</div>
+<!-- BEGIN PROFILE SIDEBAR -->
 <div class="profile-sidebar">
     <!-- PORTLET MAIN -->
     <div class="portlet light profile-sidebar-portlet">
@@ -254,10 +240,7 @@ foreach($orders as $order)
 			<p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
 
 			</span>
-        <?php
-        if($k==$counting){
-            ?>
-            
+
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
@@ -271,9 +254,7 @@ foreach($orders as $order)
             </div>
 
         </div>
-        <?php
-        }
-        ?>
+
     </div>
 
 
@@ -672,8 +653,4 @@ foreach($orders as $order)
         </div>
     </div>
 </div>
-<hr />
-<?php
-}
-?>
 <!-- END PROFILE CONTENT -->

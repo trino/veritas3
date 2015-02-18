@@ -213,7 +213,17 @@
                                         }
                                     } 
                                     ?>
-                                    <a href="<?php echo $this->request->webroot;?>documents/productSelection?driver=<?php echo $profile->id;?>" class="btn btn-success">Add Order</a>
+                                    <?php
+                                    if($profile->profile_type==5)
+                                    {
+                                        ?>
+                                        <a href="<?php echo $this->request->webroot;?>documents/productSelection?driver=<?php echo $profile->id;?>" class="btn btn-success">Add Order</a>
+                                        <a href="<?php echo $this->request->webroot;?>profiles/viewReport/<?php echo $profile->id;?>" class="btn btn-primary">View Scorecard</a>
+                                        <?php
+                                    }
+                                    ?>
+                                    
+                                    
 
                                 </td>
                             </tr>

@@ -30,7 +30,7 @@
             <div class="portlet box form-horizontal">
                 <input type="hidden" name="document_type" value="add_driver"/>
 
-                <div class="form-group">
+                <div class="form-group clientsel">
 
                     <div class="col-md-3 control-label">Select <?php echo ucfirst($settings->client); ?> </div>
                     <div class="col-md-6">
@@ -121,12 +121,12 @@
 
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
-                        <a href="javascript:void(0);" class="btn btn-danger"
-                           onclick="window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()">Place
+                        <a href="javascript:void(0);" class="btn btn-danger placenow"
+                           onclick="if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val();else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
                             MEE Order <i class="m-icon-swapright m-icon-white"></i></a>&nbsp;&nbsp; or &nbsp;&nbsp;<a
                             href="javascript:void(0);"
                             class="btn btn-info"
-                            onclick="$('.alacarte').show();">A La Carte <i class="m-icon-swapright m-icon-white"></i></a>
+                            onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte <i class="m-icon-swapright m-icon-white"></i></a>
                     </div>
                 </div>
 
@@ -149,7 +149,12 @@
                             <a class="btn red button-next proceed"
                                onclick="window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()">
                                 Order Products <i class="m-icon-swapright m-icon-white"></i>
-                            </a>                        </div>
+                            </a> 
+                            <a class="btn red button-next proceed"
+                               onclick="$('.alacarte').toggle(200);$('.placenow').removeAttr('disabled');">
+                                Cancel</i>
+                            </a> 
+                                                   </div>
                     </div>
                     <div class="clearfix"></div>
 
@@ -171,13 +176,24 @@
 <script>
 
     $(function () {
-        <?php
-        if(!$client)
-        {
-            ?>
+        
 
         $('#selecting_driver').change(function () {
             var driver = $('#selecting_driver').val();
+            //alert(driver);
+            if(!isNaN(parseFloat(driver)) && isFinite(driver)){
+            $('.selecting_driver').val(driver);
+            
+            }
+             else
+            {
+                $('.selecting_driver').val('');
+                return false;
+            }
+            <?php
+        if(!$client)
+        {
+            ?>
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>documents/getClientByDriver/' + driver,
                 success: function (res) {
@@ -186,18 +202,31 @@
                     $('.proceed').attr('href', '<?php echo $this->request->webroot;?>documents/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val());
                 }
             });
-        });
-        <?php
+            <?php
         } 
         ?>
+        });
+        
 
-        <?php
+        
+
+        $('#selecting_client').change(function () {
+            $('.select2-choice').removeAttr('style');
+            var client = $('#selecting_client').val();
+            if(!isNaN(parseFloat(client)) && isFinite(client)){
+            $('.selecting_client').val(client);
+            alert(client);
+            
+            }
+            else
+            {
+                $('.selecting_client').val('');
+                return false;
+            }
+            <?php
         if(!$driver)
         {
             ?>
-
-        $('#selecting_client').change(function () {
-            var client = $('#selecting_client').val();
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>documents/getDriverByClient/' + client,
                 success: function (res) {
@@ -206,10 +235,11 @@
                     $('.proceed').attr('href', '<?php echo $this->request->webroot;?>documents/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val());
                 }
             });
-        });
-
-        <?php          
+             <?php          
         }
         ?>
+        });
+
+       
     });
 </script>

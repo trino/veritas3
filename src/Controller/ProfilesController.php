@@ -284,6 +284,17 @@ public function video(){}
             $this->set('id',$id);
             $this->render("edit");
         }
+        
+        public function viewReport($profile)
+        {
+            $orders = TableRegistry::get('orders');
+            $order = $orders
+                ->find()
+                ->where(['orders.uploaded_for' => $profile])->contain(['Profiles', 'Clients', 'RoadTest']);
+
+            $this->set('orders', $order);
+            //  debug($order);
+        }
 
         /**
          * Add method

@@ -193,7 +193,7 @@
                                           }  
                                         }
                                     } ?>
-                                    <?php  if($sidebar->profile_delete=='1' && ($profile->profile_type!='1' && $profile->super!='1' && $profile->admin!='1'))
+                                    <?php  if($sidebar->profile_delete=='1')
                                     {
                                         if(($profile->admin == '1' || $profile->profile_type == '1') && $this->request->session()->read('Profile.super') == '1')
                                         {
@@ -204,7 +204,7 @@
                                             }
                                         }
                                         
-                                        else if($profile->admin != '1' && $profile->profile_type != '1')
+                                        else if($profile->admin != '1' && $profile->profile_type != '1' && $profile->super != '1')
                                         {
                                             if($this->request->session()->read('Profile.id')!=$profile->id){
                                             ?>

@@ -170,27 +170,106 @@ class SettingsComponent extends Component
             $profile = $user_profile->find()->select('profile_type')->where(['id'=>$pid]);
             $q2 = $profile->first();
             $usertype = $q1->profile_type;
-            $uptype = $q2;
             
-            /*if($q2->super == '1' && ($q1->super == '1'))
+            $setting = TableRegistry::get('sidebar');
+             $setting = $setting->find()->where(['user_id'=>$uid]); 
+             $setting = $setting->first();
+             /*=================================================================================*/
+             
+             if($setting->profile_delete=='1' && ($q2->profile_type!='1' && $q2->super!='1' && $q2->admin!='1'))
             {
-                return 1;
-            }
-            else
-            {*/
-              if($q2->super != '1')
-              {
                 if($usertype == '2'){
                 $pt = $q2->profile_type;
-                if($pt=='5' || $pt=='7' || $pt=='8' /*|| $q1->profile_type==$q2->id*/ || $uid==$pid)    
+                if(($pt=='5' || $pt=='7' || $pt=='8' )/*|| $q1->profile_type==$q2->id*/ && $uid!=$pid)    
                 return 1;
                 }
-                else if($usertype== '1' || $q1->admin == '1' || $q1->super == '1' || $uid==$pid)
+                else
+                    {
+                        if($uid!=$pid)
+                        {
+                            return 1;
+                        }
+                        else return 0;
+                    }
+                //else 
+//                if(($q2->admin == '1' || $q2->profile_type == '1') && $q1->super == '1')
+//                {
+//                    if($uid!=$pid)
+//                    {
+//                        return 1;
+//                    }
+//                    else return 0;
+//                }
+            }
+            else
+            {
+                if(($q2->profile_type=='1' || $q2->admin='1') && $setting->profile_delete=='1' && ($q1->admin=='1' || $q1->super == '1' ||$q1->profile_type =='1'))
+                {
+                       if($uid!=$pid)
+                   {
+                        return 1;
+                        }     
+                    else return 0;   
+                }
+                else return 0;
+            }
+            
+
+             /*=================================================================================*/
+            
+        }
+        
+    }
+    
+    function check_edit_permission($uid,$pid)
+    {
+        $user_profile = TableRegistry::get('profiles');
+        $query = $user_profile->find()->where(['id'=>$uid]);
+        $q1 = $query->first();
+        if($q1)
+        {
+            $profile = $user_profile->find()->select('profile_type')->where(['id'=>$pid]);
+            $q2 = $profile->first();
+            $usertype = $q1->profile_type;
+            
+            $setting = TableRegistry::get('sidebar');
+             $setting = $setting->find()->where(['user_id'=>$uid]); 
+             $setting = $setting->first();
+             /*=================================================================================*/
+             
+             if($setting->profile_edit=='1' && ($q2->profile_type!='1' && $q2->super!='1' && $q2->admin!='1'))
+            {
+                if($usertype == '2'){
+                $pt = $q2->profile_type;
+                if(($pt=='5' || $pt=='7' || $pt=='8' )/*|| $q1->profile_type==$q2->id*/ || $uid==$pid)    
                 return 1;
-              }  
-              else return 0;
-            //}
-            //else return 0;
+                }
+                else
+                    {
+                            return 0;
+                    }
+                //else 
+//                if(($q2->admin == '1' || $q2->profile_type == '1') && $q1->super == '1')
+//                {
+//                    if($uid!=$pid)
+//                    {
+//                        return 1;
+//                    }
+//                    else return 0;
+//                }
+            }
+            else
+            {
+                if(($q2->profile_type=='1' || $q2->admin='1') && $setting->profile_edit=='1' && ($q1->admin=='1' || $q1->super == '1' ||$q1->profile_type =='1') || $uid==$pid)
+                {
+                        return 1;   
+                }
+                else return 0;
+            }
+            
+
+             /*=================================================================================*/
+            
         }
         
     }

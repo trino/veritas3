@@ -284,13 +284,13 @@ function provinces($name){
                                 <div class="form-group mar-top-10 col-md-6" id="select_division">
 
 
-                                    <select class="form-control" name="division" id="divison">
+                                    <select class="form-control" name="division" id="divison" <?php if(isset($_GET['division'])&& $_GET['division']){?> disabled=""<?php  }?>>
                                         <option value="">Select Division</option>
                                         <?php
                                             foreach ($division as $u) {
                                                 ?>
                                                 <option
-                                                    value="<?php echo $u->id;?>" <?php if (isset($modal) && $modal->division == $u->id) { ?> selected="selected"<?php } ?> ><?php echo $u->title; ?></option>
+                                                    value="<?php echo $u->id;?>" <?php if ((isset($modal) && $modal->division == $u->id )|| (isset($_GET['division'])&& $_GET['division']==$u->id)) { ?> selected="selected"<?php } ?> ><?php echo $u->title; ?></option>
                                             <?php
                                             }
                                         ?>

@@ -528,28 +528,38 @@
                         $dr = $orde->draft;
                         if($dr=='0' || !$dr){
                         $dr = 0;
-                        $this->Flash->success('Order submitted successfully');
+                        //$this->Flash->success('Order submitted successfully');
                         }
                         else{
                         $dr =1;
-                        $this->Flash->success('Order saved as draft');
+                        //$this->Flash->success('Order saved as draft');
                         }
                     }
-                    else
+                    else{
                     $dr = 1;
+                    //$this->Flash->success('Order saved as draft');
+                    }
                 }
-                else
+                else{
                 $dr = 1;
+                //$this->Flash->success('Order saved as draft');
+                }
                 $this->set('dr',$dr);
                 if (isset($_GET['draft']) && $_GET['draft']){
-                    if($dr)
-                    $arr['draft'] = 1;                    
-                    else
+                    if($dr){
+                    $arr['draft'] = 1; 
+                    $this->Flash->success('Order saved as draft');
+                    
+                    }                   
+                    else{
                     $arr['draft'] = 0;
+                    $this->Flash->success('Order submitted successfully');
+                    }
                     }
                 else{
                     //if(!$dr)
                     $arr['draft'] = 0;
+                    $this->Flash->success('Order submitted successfully');
                     }
                 $arr['client_id'] = $cid;
                 if (isset($_POST['division']))
@@ -583,10 +593,14 @@
 
             } else {
                 $docs = TableRegistry::get('Documents');
-                if (isset($_GET['draft']) && $_GET['draft'])
+                if (isset($_GET['draft']) && $_GET['draft']){
                     $arr['draft'] = 1;
-                else
+                    $this->Flash->success('Document saved as draft');
+                    }
+                else{
                     $arr['draft'] = 0;
+                    $this->Flash->success('Document submitted successfully');
+                    }
                 $arr['sub_doc_id'] = $_POST['sub_doc_id'];
                 if (isset($_POST['uploaded_for']))
                     $arr['uploaded_for'] = $_POST['uploaded_for'];

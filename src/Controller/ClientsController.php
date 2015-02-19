@@ -27,6 +27,8 @@ class ClientsController extends AppController {
         }
 
     }
+    
+    
     function upload_img($id="")
     {
         if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
@@ -999,6 +1001,25 @@ class ClientsController extends AppController {
         }
         die();
         
+   }
+   function divisionDropDown($cid)
+   {
+    $query = TableRegistry::get('client_divison');
+        $q = $query->find()->where(['client_id'=>$cid])->all();
+        if(count($q)>0){
+            echo '<div class="col-md-3 control-label">Select division </div>';
+            echo '<div class="col-md-6 ">';
+            echo "<select class='form-control select2me input-xlarge' name='division' id='divisionsel'>";
+            echo '<option value="">Divisions</option>';
+            
+            foreach($q as $d)
+            {
+               $sel = '';
+                echo "<option value='".$d->id."'".$sel." >".$d->title."</option>";
+            }
+            echo "</select></div>";
+        }
+        die();
    }
    
    function charlie()

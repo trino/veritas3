@@ -17,8 +17,9 @@
 
 <?php
 $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
- $settings = $this->requestAction('settings/get_settings'); ?>
-<?php $sidebar =$this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");?>
+ $settings = $this->requestAction('settings/get_settings');
+$sidebar =$this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");
+?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?>s
 </h3>
@@ -175,25 +176,38 @@ $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Sessi
 
                                     <?php  if($sidebar->profile_list=='1'){ echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);} ?>
                                     <?php  
+                                    $checker = $this->requestAction('settings/check_edit_permission/'.$this->request->session()->read('Profile.id').'/'.$profile->id);
                                     if($sidebar->profile_edit=='1' )
                                     {
-                                        if($profile->super == '1' && ($this->request->session()->read('Profile.super') == '1'))
-                                        {
-                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-                                        }
-                                        else
-                                        {
-                                          if($profile->super != '1' || $profile->profile_type !='1')
-                                          {
-                                            if($this->request->session()->read('Profile.profile_type') != '1'){
-                                            $pt = $profile->profile_type;
-                                            if($pt=='5' || $this->request->session()->read('Profile.id')==$profile->id)    
-                                            echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-                                            }
-                                            else
-                                            echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-                                          }  
-                                        }
+                                        //if($profile->super == '1' && ($this->request->session()->read('Profile.super') == '1'))
+//                                        {
+//                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
+//                                        }
+//                                        else
+//                                        {
+//                                          if($profile->super != '1' && $profile->profile_type !='1')
+//                                          {
+//                                            if($this->request->session()->read('Profile.profile_type') != '1')
+//                                            {
+//                                                $pt = $profile->profile_type;
+//                                                if($this->request->session()->read('Profile.id') == $profile->id)
+//                                                {
+//                                                    echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
+//                                                }
+//                                                
+//                                                else if($pt=='5' || $this->request->session()->read('Profile.id')==$profile->id)    
+//                                                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
+//                                            }
+//                                            else
+//                                            echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
+//                                          }  
+//                                        }
+                                    
+            if($checker==1)
+            {
+                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
+
+            } 
                                     } ?>
                                     <?php  if($sidebar->profile_delete=='1')
                                     {

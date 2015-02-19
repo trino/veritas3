@@ -206,8 +206,65 @@ class SettingsController extends AppController {
          $this->response->body(($url));
             return $this->response;
     }
-    
-    
+    function check_edit_permission($uid,$pid)
+    {
+        $user_profile = TableRegistry::get('profiles');
+        $query = $user_profile->find()->where(['id'=>$uid]);
+        $q1 = $query->first();
+        if($q1)
+        {
+            $profile = $user_profile->find()->select('profile_type')->where(['id'=>$pid]);
+            $q2 = $profile->first();
+            $usertype = $q1->profile_type;
+            
+            $setting = TableRegistry::get('sidebar');
+             $setting = $setting->find()->where(['user_id'=>$uid]); 
+             $setting = $setting->first();
+             /*=================================================================================*/
+             
+             if($setting->profile_edit=='1')
+             {
+                if($q1->super == '1' || $uid == $pid)
+                {
+                    $this->response->body('1');
+                    return $this->response;
+                    die();
+                }
+                else if($q1->profile_type == '1' || $q1->admin == '1')
+                {
+                    if($uid == $pid)
+                    {
+                        $this->response->body('1');
+                        return $this->response;
+                        die();
+                    }
+                   else if($q2->profile_type!='1' && $q2->super!='1' && $q2->admin!='1')
+                    {
+                        $this->response->body('1');
+                    return $this->response;
+                    die();
+                    }
+                    else $this->response->body('0');
+                    return $this->response;
+                    die();;
+                }
+                else
+                {
+                    if($q2->profile_type == '5' || $uid == $pid)
+                    {
+                        $this->response->body('1');
+                    return $this->response;
+                    die();
+                    }    
+                    else $this->response->body('0');
+                    return $this->response;
+                    die();
+                }
+             }
+             /*=================================================================================*/   
+        }
+        
+    }
     
     
  }

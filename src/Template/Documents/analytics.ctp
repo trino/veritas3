@@ -13,17 +13,24 @@ function extractdate($text){
     return $text;
 }
 
-function sortdates($data){
+function sortdates($data, $draft = ""){
 	$dates = array();
-    
 	foreach ($data as $order) {
-	 
-	$thedate = extractdate($order->created);
-    
-		if (array_key_exists($thedate,$dates)) {
-			$dates[$thedate] += 1;
-		} else {
-			$dates[$thedate] = 1;
+	 	$doit = true;
+		if (strlen($draft)>0){
+			$thedraft = $order->draft;
+			$thedraft2 = $order->drafts;
+			if (strlen($thedraft)>0) { $doit = ($draft == $thedraft); }
+			if (strlen($thedraft2)>0) { $doit = ($draft == $thedraft2); }
+			//echo $thedraft . " " . $thedraft2 . " " . $doit  . "<BR>";
+		}
+		if ($doit) {
+			$thedate = extractdate($order->created);
+			if (array_key_exists($thedate, $dates)) {
+				$dates[$thedate] += 1;
+			} else {
+				$dates[$thedate] = 1;
+			}
 		}
 	}
 	return $dates;
@@ -56,19 +63,22 @@ if ($days < 1) { $days = 1; }
 if ($startdate == -1) { $startdate = date("Y-m-d"); }
 if (!isset($enddate)){ $enddate = substr(add_date($startdate, -$days+1,0,0), 0, 10); }
 
-$orderdates= sortdates($orders);
+$isdraft = "0";
+if (isset($_GET["drafts"])) {$isdraft = 1;}
+
+$orderdates= sortdates($orders, $isdraft);
 $ordercount= total($orderdates);
 $ordavg = round ($ordercount / $days,$decimals);
 
-$docdates= sortdates($documents);
+$docdates= sortdates($documents, $isdraft);
 $doccount= total($docdates);
 $docavg = round ($doccount / $days,$decimals);
 
-$profiledates = sortdates($profiles);
+$profiledates = sortdates($profiles, $isdraft);
 $profilecount=total($profiledates);
 $profileavg= round ($profilecount / $days,$decimals);
 
-$clientdates = sortdates($clients);
+$clientdates = sortdates($clients, $isdraft);
 $clientcount=total($clientdates);
 $clientavg= round ($clientcount / $days,$decimals);
 
@@ -249,13 +259,16 @@ jQuery(document).ready(function() {
 </script>
 									<div class="chat-form"> <form action="<?php echo $this->request->webroot; ?>documents/analytics" method="get">
 										<div class="row">
-											<div class="col-md-9">
+											<div class="col-md-5">
 												<div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
 													<span class="input-group-addon"> Start </span>
 													<input type="text" class="form-control" name="from" value="<?php echo $enddate; ?>">
 													<span class="input-group-addon"> to </span>
 													<input type="text" class="form-control" name="to" title="Leave blank to end at today" value="<?php echo get2("to", date("Y-m-d")); ?>">
 												</div>
+											</div>
+											<div class="col-md-4" style="position: relative;  top: 50%;  transform: translateY(+20%);">
+												<input type="checkbox" name="drafts" value="1" <?php if($isdraft){ echo "checked";}?> ><label class="control-label" for="drafts">Drafts</label>
 											</div>
 											<div class="col-md-3" align="right" style="padding-left:0">
 												<button type="submit" class="btn btn-primary">Search</button>
@@ -281,12 +294,13 @@ function datecheck($date, $start, $end){
 	return ( ($datestamp <= $startstamp AND $datestamp >= $endstamp)  or ($datestamp >= $startstamp AND $datestamp <= $endstamp)) ;
 }
 
-function newchart($color, $icon, $title, $chartid, $dates, $data, $start,$end){
+function newchart($color, $icon, $title, $chartid, $dates, $data, $start,$end, $isdraft){
 	echo '<P><div class="row"><div class="col-md-12">';
 		echo '<div class="portlet box ' . $color . '">';
 			echo '<div class="portlet-title">';
 				echo '<div class="caption">';
 					echo '<i class="' . $icon . '"></i>' . $title;
+					if($isdraft == 1){ echo " Drafts"; }
 				echo '</div></div>';
 			echo '<div class="portlet-body">';
 				echo '<div class="row"><div class="col-md-8">';
@@ -299,7 +313,7 @@ function newchart($color, $icon, $title, $chartid, $dates, $data, $start,$end){
 						if (datecheck($key,$start,$end)){
 							$didit=true;
 							$rawdata.=todate($key) . ":\t" . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
-							$alldocs = enumsubdocs($data, $key, $chartid);
+							$alldocs = enumsubdocs($data, $key, $chartid, $isdraft);
 							foreach($alldocs as $key => $value){
 								$rawdata.="\t" . $value . ' ' . $key . "(s)\r\n";
 							}
@@ -316,45 +330,64 @@ function newchart($color, $icon, $title, $chartid, $dates, $data, $start,$end){
 				echo '</div></div></div></div></div>';
 }
 
-newchart("grey-salsa", "icon-globe", ucfirst($settings->client) . "s", "clients", $clientdates, $clients,$startdate,$enddate);
-newchart("green-haze", "icon-user", ucfirst($settings->profile) . "s", "profiles", $profiledates, $profiles,$startdate,$enddate);
-newchart("yellow-casablanca", "icon-doc", ucfirst($settings->document) . "s", "documents", $docdates, $documents ,$startdate,$enddate);
-newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders,$startdate,$enddate);
+newchart("grey-salsa", "icon-globe", ucfirst($settings->client) . "s", "clients", $clientdates, $clients,$startdate,$enddate, $isdraft);
+newchart("green-haze", "icon-user", ucfirst($settings->profile) . "s", "profiles", $profiledates, $profiles,$startdate,$enddate, $isdraft);
+newchart("yellow-casablanca", "icon-doc", ucfirst($settings->document) . "s", "documents", $docdates, $documents ,$startdate,$enddate, $isdraft);
+newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders,$startdate,$enddate, $isdraft);
 
-function enumsubdocs($thedocs, $date, $chartid){
+function enumsubdocs($thedocs, $date, $chartid, $isdraft){
 	$alldocs = array();
+	$unknown= "Not specified";
 	foreach($thedocs as $adoc){
 		if(left($adoc->created, 10) == $date){
-			$doctype = $adoc->document_type;
-			if (strlen($doctype )==0 and $chartid == "profiles"){
-				$doctype = $adoc->profile_type;
-				if (is_numeric($doctype)) {
-					$profiletypes = ['', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Owner Operator', 'Owner Driver', 'Employee', 'Guest', 'Partner'];
-					$doctype = $profiletypes[$doctype];
-				}
-			}
-			if (strlen($doctype )==0 and $chartid == "orders") {
-				$doctype = $adoc->is_hired;
-				if ($doctype) {
-					$doctype = " new hiree";
-				} else {
-					$doctype = " candidate";
-				}
-			}
-			if (strlen($doctype )==0 and $chartid == "clients") {
-				$doctype = $adoc->customer_type;
-				if (is_numeric($doctype)) {
-					$profiletypes = ['', 'Insurance', 'Fleet', 'Non Fleet'];
-					$doctype = $profiletypes[$doctype];
-				}
+			$doit = true;
+
+			if (strlen($isdraft)>0){
+				$thedraft1 = $adoc->draft;
+				$thedraft2 = $adoc->drafts;
+				if (strlen($thedraft1)>0) { $doit = ($isdraft == $thedraft1); }
+				if (strlen($thedraft2)>0) { $doit = ($isdraft == $thedraft2); }
+				echo "<TEST '" . $thedraft1 . "' '" . $thedraft2 . "' (" . $doit  . ") >";
 			}
 
+			if ($doit) {
+				$doctype = $adoc->document_type;
+				if ($chartid == "profiles") {
+					$doctype = $adoc->profile_type;
+					if (is_numeric($doctype)) {
+						$profiletypes = ['', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Owner Operator', 'Owner Driver', 'Employee', 'Guest', 'Partner'];
+						$doctype = $profiletypes[$doctype];
+					} else {
+						$doctype = $unknown;
+					}
+				}
+				if ($chartid == "orders") {
+					$doctype = $adoc->is_hired;
+					if ($doctype) {
+						$doctype = " new hiree";
+					} else {
+						$doctype = " candidate";
+					}
+				}
+				if ($chartid == "clients") {
+					$doctype = $adoc->customer_type;
+					if (is_numeric($doctype)) {
+						$profiletypes = ['', 'Insurance', 'Fleet', 'Non Fleet'];
+						$doctype = $profiletypes[$doctype];
+					} else {
+						$doctype = $unknown;
+					}
+				}
 
-			//if (strlen($doctype )==0){$doctype = $adoc->customer_type; }
-			if (strlen($doctype )>0){
-				$quantity = 0;
-				if (array_key_exists($doctype,$alldocs)){$quantity  = $alldocs[$doctype];}
-				$alldocs[$doctype] = $quantity+1;
+
+				//if (strlen($doctype )==0){$doctype = $adoc->customer_type; }
+				if (strlen($doctype) > 0) {
+					$quantity = 0;
+					if (array_key_exists($doctype, $alldocs)) {
+						$quantity = $alldocs[$doctype];
+					}
+					$alldocs[$doctype] = $quantity + 1;
+				}
 			}
 		}
 	}

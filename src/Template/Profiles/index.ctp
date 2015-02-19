@@ -167,7 +167,7 @@ $sidebar =$this->requestAction("settings/all_settings/".$this->request->session(
 
                             <tr class="<?=$row_color_class;?>" role="row">
                                 <td><?= $this->Number->format($profile->id) ?></td>
-                                <td><?= h($profiletype[$profile->profile_type]) ?></td>
+                                <td><?php if (strlen( $profile->profile_type) > 0) { echo h($profiletype[$profile->profile_type]); } else {echo "Not specified"; } ?></td>
                                 <td><?= h($profile->fname) ?></td>
                                 <td><?= h($profile->lname) ?></td>
                                 <td><?= h($profile->username) ?></td>

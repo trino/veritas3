@@ -113,7 +113,7 @@
 
                             if($('#rid').val()=='0'){
                                 $('.notes').prepend(response);
-                                alert('Note added successfully');
+                                //alert('Note added successfully');
                             } else {
                                 $('#desc'+$('#rid').val()).html($('#recruiter_notes').val());
                                 alert('Note updated successfully');

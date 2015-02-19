@@ -528,28 +528,38 @@
                         $dr = $orde->draft;
                         if($dr=='0' || !$dr){
                         $dr = 0;
-                        $this->Flash->success('Order submitted successfully');
+                        //$this->Flash->success('Order submitted successfully');
                         }
                         else{
                         $dr =1;
-                        $this->Flash->success('Order saved as draft');
+                        //$this->Flash->success('Order saved as draft');
                         }
                     }
-                    else
+                    else{
                     $dr = 1;
+                    //$this->Flash->success('Order saved as draft');
+                    }
                 }
-                else
+                else{
                 $dr = 1;
+                //$this->Flash->success('Order saved as draft');
+                }
                 $this->set('dr',$dr);
                 if (isset($_GET['draft']) && $_GET['draft']){
-                    if($dr)
-                    $arr['draft'] = 1;                    
-                    else
+                    if($dr){
+                    $arr['draft'] = 1; 
+                    $this->Flash->success('Order saved as draft');
+                    
+                    }                   
+                    else{
                     $arr['draft'] = 0;
+                    $this->Flash->success('Order submitted successfully');
+                    }
                     }
                 else{
                     //if(!$dr)
                     $arr['draft'] = 0;
+                    $this->Flash->success('Order submitted successfully');
                     }
                 $arr['client_id'] = $cid;
                 if (isset($_POST['division']))
@@ -583,10 +593,14 @@
 
             } else {
                 $docs = TableRegistry::get('Documents');
-                if (isset($_GET['draft']) && $_GET['draft'])
+                if (isset($_GET['draft']) && $_GET['draft']){
                     $arr['draft'] = 1;
-                else
+                    $this->Flash->success('Document saved as draft');
+                    }
+                else{
                     $arr['draft'] = 0;
+                    $this->Flash->success('Document submitted successfully');
+                    }
                 $arr['sub_doc_id'] = $_POST['sub_doc_id'];
                 if (isset($_POST['uploaded_for']))
                     $arr['uploaded_for'] = $_POST['uploaded_for'];
@@ -2609,6 +2623,10 @@
                 $profile_ids2 = '9999999';
                 $model = TableRegistry::get('Profiles');
                 
+                $profile_ids2 = str_replace(',',' ',$profile_ids2);
+                $profile_ids2 = trim($profile_ids2);
+                $profile_ids2 = str_replace(' ',',',$profile_ids2);
+                
                 $q = $model->find()->where(['id IN ('.$profile_ids2.')','profile_type' => 5]);
                 
             }
@@ -2627,6 +2645,10 @@
             }
             if(!$profile_ids)
             $profile_ids = '9999999';
+            
+            $profile_ids = str_replace(',',' ',$profile_ids);
+                $profile_ids = trim($profile_ids);
+                $profile_ids = str_replace(' ',',',$profile_ids);
             //echo $profile_ids;die();
             if($driver==0 && $client==0)
             {
@@ -2719,6 +2741,11 @@
                 }
                 if(!$profile_ids)
                 $profile_ids = '9999999';
+                
+                 $profile_ids = str_replace(',',' ',$profile_ids);
+                $profile_ids = trim($profile_ids);
+                $profile_ids = str_replace(' ',',',$profile_ids);
+                
                 $model = TableRegistry::get('Profiles');
                 $profile = $model->find()->where(['id IN ('.$profile_ids.')','profile_type' => 5]);
             }
@@ -2727,6 +2754,9 @@
             $clients = $cmodel->find()->where(['id'=>$client])->first();
             $profile_ids = $clients->profile_id;
             
+             $profile_ids = str_replace(',',' ',$profile_ids);
+                $profile_ids = trim($profile_ids);
+                $profile_ids = str_replace(' ',',',$profile_ids);
             
             $model = TableRegistry::get('Profiles');
             $profile = $model->find()->where(['id IN ('.$profile_ids.')','profile_type' => 5]);

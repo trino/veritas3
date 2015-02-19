@@ -75,6 +75,9 @@
 
                     </div>
                 </div>
+                <div class="divisionsel form-group">
+                    <?php if($counting==1)$cl_count=1;else{$cl_count=0;}?>
+                </div>
 
 
                 <div class="form-group ">
@@ -122,7 +125,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
                         <a href="javascript:void(0);" class="btn btn-danger placenow"
-                           onclick="if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val();else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
+                           onclick="var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
                             MEE Order <i class="m-icon-swapright m-icon-white"></i></a>&nbsp;&nbsp; or &nbsp;&nbsp;<a
                             href="javascript:void(0);"
                             class="btn btn-info"
@@ -147,10 +150,10 @@
                         <div class="col-md-offset-3 col-md-9">
 
                             <a class="btn red button-next proceed"
-                               onclick="window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()">
+                               onclick="var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
                                 Order Products <i class="m-icon-swapright m-icon-white"></i>
                             </a> 
-                            <a class="btn red button-next proceed"
+                            <a class="btn grey button-next proceed"
                                onclick="$('.alacarte').toggle(200);$('.placenow').removeAttr('disabled');">
                                 Cancel</i>
                             </a> 
@@ -177,7 +180,21 @@
 
     $(function () {
         
-
+        if($('.selecting_client').val())
+        {
+            var client = $('#selecting_client').val();
+            if(!isNaN(parseFloat(client)) && isFinite(client)){
+            $('.selecting_client').val(client);
+            //alert(client);
+            $.ajax({
+               url:'<?php echo $this->request->webroot;?>clients/divisionDropDown/'+client,
+               success:function(response)
+               {
+                $('.divisionsel').html(response);
+               } 
+            });
+            }
+        }
         $('#selecting_driver').change(function () {
             var driver = $('#selecting_driver').val();
             //alert(driver);
@@ -197,9 +214,16 @@
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>documents/getClientByDriver/' + driver,
                 success: function (res) {
+                    var div = $('#divisionsel').val();
+                    if(!isNaN(parseFloat(div)) && isFinite(div))
+                    {
+                        var division = div;
+                    }
+                    else
+                    var division = '0';
                     $('#selecting_client').html(res);
                     $('.selecting_driver').val($('#selecting_driver').val());
-                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>documents/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val());
+                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>documents/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val()+'&division='+division);
                 }
             });
             <?php
@@ -216,23 +240,38 @@
             if(!isNaN(parseFloat(client)) && isFinite(client)){
             $('.selecting_client').val(client);
             //alert(client);
-            
+            $.ajax({
+               url:'<?php echo $this->request->webroot;?>clients/divisionDropDown/'+client,
+               success:function(response)
+               {
+                $('.divisionsel').html(response);
+               } 
+            });
             }
             else
             {
                 $('.selecting_client').val('');
                 return false;
             }
+            
             <?php
+            
         if(!$driver)
         {
             ?>
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>documents/getDriverByClient/' + client,
                 success: function (res) {
+                    var div = $('#divisionsel').val();
+                    if(!isNaN(parseFloat(div)) && isFinite(div))
+                    {
+                        var division = div;
+                    }
+                    else
+                    var division = '0';
                     $('#selecting_driver').html(res);
                     $('.selecting_client').val($('#selecting_client').val());
-                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>documents/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val());
+                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>documents/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val()+'&division='+division);
                 }
             });
              <?php          

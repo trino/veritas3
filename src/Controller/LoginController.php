@@ -30,7 +30,7 @@ class LoginController extends AppController{
        
         if($this->Cookie->read('Profile.username') && $this->Cookie->read('Profile.password'))
         {
-             
+            
             $_POST['username'] = $this->Cookie->read('Profile.username');
             $_POST['password'] = $this->Cookie->read('Profile.password');
             $_POST['name'] = $_POST['username'];

@@ -74,6 +74,18 @@ function provinces($name){
             <div class="portlet-title">
                 <?php
                     $param = $this->request->params['action'];
+                    if(strtolower($param) == 'vieworder')
+                    {
+                        ?>
+                        <input type="hidden" id="viewingorder" value="1" />
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <input type="hidden" id="viewingorder" value="0" />
+                        <?php
+                    }
                     $tab = 'nodisplay';
                 ?>
                 <div class="caption">

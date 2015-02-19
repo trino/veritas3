@@ -286,29 +286,7 @@ foreach($orders as $order)
                 </div>
                 
                 
-                <div class="col-sm-6" style="padding-left: 0;">
-                    <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type:
-                        <strong>Orders</strong></p>
-        			<p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
-        
-        			<p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
-        			<p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
-        
-        			<p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
-        
-        			</span>
                 
-                </div>
-                <div class="margin-bottom-20 col-sm-6" style="padding-left: 0;">
-
-                    <a href="#" class="btn btn-lg default yellow-stripe">
-                        Road Test Score </a><a href="#" class="btn btn-lg yellow">
-                        <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
-                    </a>
-        
-                </div>
-                
-                <div class="clearfix"></div>
                 <div class="portlet box yellow">
                     <div class="portlet-title">
                         <div class="caption">
@@ -316,7 +294,36 @@ foreach($orders as $order)
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div class="table-scrollable">
+                
+                
+                <div class="table-scrollable">
+                
+                
+                    <div class="col-sm-6" style="padding-top:10px;">
+                        <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type:
+                            <strong>Orders</strong></p>
+            			<p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
+            
+            			<p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
+            			<p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
+            
+            			<p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
+            
+            			</span>
+                    
+                    </div>
+                    <div class="margin-bottom-20 col-sm-6" style="text-align:right;padding-top:10px;">
+    
+                        <a href="#" class="btn btn-lg default yellow-stripe">
+                            Road Test Score </a><a href="#" class="btn btn-lg yellow">
+                            <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
+                        </a>
+            
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                
+                
 
                             <table class="table ">
 
@@ -501,185 +508,184 @@ foreach($orders as $order)
                                 </tr>
                                 </tbody>
                             </table>
+                            
+                            
+                            
+                            <div class="col-md-12">
+                                        <!-- BEGIN PORTLET -->
+                                        <div class="portlet light tasks-widget">
+                                            <div class="portlet-title">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-bar-chart theme-font hide"></i>
+                                                    <span
+                                                        class="caption-subject font-blue-madison bold uppercase"><?php echo ucfirst($settings->document); ?>
+                                                        Check-list</span>
+                                                    <span class="caption-helper"></span>
+                                                </div>
+                                                <div class="inputs">
+                                                    <div class="portlet-input input-small input-inline">
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="task-content">
+                                                    <div class="slimScrollDiv"
+                                                         style="position: relative; overflow: hidden; width: auto; height: 282px;">
+                                                        <div class="scroller" style="height: 282px; overflow: hidden; width: auto;"
+                                                             data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2"
+                                                             data-initialized="1">
+                                                            <!-- START TASK LIST -->
+                                                            <ul class="task-list">
+                                                                <li>
+                                                                    <!--<div class="task-checkbox">
+                                                                        <input type="hidden" value="1" name="test">
+                            
+                                                                        <div class="checker"><span><input type="checkbox" class="liChild" value="2"
+                                                                                                          name="test"></span></div>
+                                                                    </div>-->
+                                                                    <div class="task-title">
+                            															<span class="task-title-sp">
+                            														<span class="icon-notebook"></span>	Pre-screening form
+                             </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/" . $order->id); ?>
+                                                                        <?php if ($cnt > 0) { ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-success">Submitted</span>
+                                                                            &#x2713;
+                                                                        <?php } else {
+                                                                            ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-danger">Skipped</span>
+                            
+                                                                        <?php
+                                                                        } ?>
+                            
+                            
+                                                                    </div>
+                            
+                                                                </li>
+                                                                <li>
+                                                                    <!--<div class="task-checkbox">
+                                                                        <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                                                        </div>
+                                                                    </div>-->
+                                                                    <div class="task-title">
+                            											<span class="task-title-sp">
+                            											<span class="icon-notebook"></span> Driver Application	 </span>
+                                                                        <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/" . $order->id); ?>
+                                                                        <?php if ($cnt > 0) { ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-success">Submitted</span>
+                                                                            &#x2713;
+                                                                        <?php } else {
+                                                                            ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-danger">Skipped</span>
+                            
+                                                                        <?php
+                                                                        } ?>
+                            
+                                                                    </div>
+                            
+                                                                </li>
+                                                                <li>
+                                                                    <!--<div class="task-checkbox">
+                                                                        <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                                                        </div>
+                                                                    </div>-->
+                                                                    <div class="task-title">
+                            											<span class="task-title-sp">
+                                                                            <span class="icon-notebook"></span> Road Test
+                                                                        </span>
+                                                                        <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/" . $order->id); ?>
+                                                                        <?php if ($cnt > 0) { ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-success">Submitted</span>
+                                                                            &#x2713;
+                                                                        <?php } else {
+                                                                            ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-danger">Skipped</span>
+                            
+                                                                        <?php
+                                                                        } ?>
+                                                                    </div>
+                            
+                                                                </li>
+                                                                <li>
+                                                                    <!--<div class="task-checkbox">
+                                                                        <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                                                        </div>
+                                                                    </div>-->
+                                                                    <div class="task-title">
+                            											<span class="task-title-sp">
+                            
+                                                                           <span class="icon-notebook"></span>  MEE Order	 </span>
+                                                                        <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/" . $order->id); ?>
+                                                                        <?php if ($cnt > 0) { ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-success">Submitted</span>
+                                                                            &#x2713;
+                                                                        <?php } else {
+                                                                            ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-danger">Skipped</span>
+                            
+                                                                        <?php
+                                                                        } ?>
+                            
+                                                                    </div>
+                            
+                                                                </li>
+                                                                <li>
+                                                                    <!--<div class="task-checkbox">
+                                                                        <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                                                        </div>
+                                                                    </div>-->
+                                                                    <div class="task-title">
+                            											<span class="task-title-sp">
+                                                                      <span class="icon-notebook"></span>  Confirmation  </span>
+                                                                        <?php if ($order->draft == 0) { ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-success">Submitted</span>
+                                                                            &#x2713;
+                                                                        <?php } else {
+                                                                            ?>
+                                                                            <span style="float:right;padding:5px"
+                                                                                  class="label label-sm label-danger">Skipped</span>
+                            
+                                                                        <?php
+                                                                        } ?>
+                            
+                                                                    </div>
+                            
+                                                                </li>
+                            
+                                                            </ul>
+                                                            <!-- END START TASK LIST -->
+                                                        </div>
+                                                        <div class="slimScrollBar"
+                                                             style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 227.211428571429px; background: rgb(215, 220, 226);"></div>
+                                                        <div class="slimScrollRail"
+                                                             style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(234, 234, 234);"></div>
+                                                    </div>
+                                                </div>
+                            
+                                            </div>
+                                        </div>
+                                        <!-- END PORTLET -->
+                                    </div>
                         </div>
                     </div>
                 </div>
+                <a href="<?php echo $this->request->webroot;?>documents/vieworder/<?php echo $order->client_id;?>/<?php echo $order->id;?>" class="btn btn-primary">View order</a>
             </div>
             <!-- END PORTLET -->
         </div>
     </div>
-    <div class="row">
-
-
-
-
-        <div class="col-md-12">
-            <!-- BEGIN PORTLET -->
-            <div class="portlet light tasks-widget">
-                <div class="portlet-title">
-                    <div class="caption caption-md">
-                        <i class="icon-bar-chart theme-font hide"></i>
-                        <span
-                            class="caption-subject font-blue-madison bold uppercase"><?php echo ucfirst($settings->document); ?>
-                            Check-list</span>
-                        <span class="caption-helper"></span>
-                    </div>
-                    <div class="inputs">
-                        <div class="portlet-input input-small input-inline">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="task-content">
-                        <div class="slimScrollDiv"
-                             style="position: relative; overflow: hidden; width: auto; height: 282px;">
-                            <div class="scroller" style="height: 282px; overflow: hidden; width: auto;"
-                                 data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2"
-                                 data-initialized="1">
-                                <!-- START TASK LIST -->
-                                <ul class="task-list">
-                                    <li>
-                                        <!--<div class="task-checkbox">
-                                            <input type="hidden" value="1" name="test">
-
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value="2"
-                                                                              name="test"></span></div>
-                                        </div>-->
-                                        <div class="task-title">
-															<span class="task-title-sp">
-														<span class="icon-notebook"></span>	Pre-screening form
- </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/" . $order->id); ?>
-                                            <?php if ($cnt > 0) { ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Submitted</span>
-                                                &#x2713;
-                                            <?php } else {
-                                                ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-danger">Skipped</span>
-
-                                            <?php
-                                            } ?>
-
-
-                                        </div>
-
-                                    </li>
-                                    <li>
-                                        <!--<div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>-->
-                                        <div class="task-title">
-											<span class="task-title-sp">
-											<span class="icon-notebook"></span> Driver Application	 </span>
-                                            <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/" . $order->id); ?>
-                                            <?php if ($cnt > 0) { ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Submitted</span>
-                                                &#x2713;
-                                            <?php } else {
-                                                ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-danger">Skipped</span>
-
-                                            <?php
-                                            } ?>
-
-                                        </div>
-
-                                    </li>
-                                    <li>
-                                        <!--<div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>-->
-                                        <div class="task-title">
-											<span class="task-title-sp">
-                                                <span class="icon-notebook"></span> Road Test
-                                            </span>
-                                            <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/" . $order->id); ?>
-                                            <?php if ($cnt > 0) { ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Submitted</span>
-                                                &#x2713;
-                                            <?php } else {
-                                                ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-danger">Skipped</span>
-
-                                            <?php
-                                            } ?>
-                                        </div>
-
-                                    </li>
-                                    <li>
-                                        <!--<div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>-->
-                                        <div class="task-title">
-											<span class="task-title-sp">
-
-                                               <span class="icon-notebook"></span>  MEE Order	 </span>
-                                            <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/" . $order->id); ?>
-                                            <?php if ($cnt > 0) { ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Submitted</span>
-                                                &#x2713;
-                                            <?php } else {
-                                                ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-danger">Skipped</span>
-
-                                            <?php
-                                            } ?>
-
-                                        </div>
-
-                                    </li>
-                                    <li>
-                                        <!--<div class="task-checkbox">
-                                            <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
-                                            </div>
-                                        </div>-->
-                                        <div class="task-title">
-											<span class="task-title-sp">
-                                          <span class="icon-notebook"></span>  Confirmation  </span>
-                                            <?php if ($order->draft == 0) { ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-success">Submitted</span>
-                                                &#x2713;
-                                            <?php } else {
-                                                ?>
-                                                <span style="float:right;padding:5px"
-                                                      class="label label-sm label-danger">Skipped</span>
-
-                                            <?php
-                                            } ?>
-
-                                        </div>
-
-                                    </li>
-
-                                </ul>
-                                <!-- END START TASK LIST -->
-                            </div>
-                            <div class="slimScrollBar"
-                                 style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 227.211428571429px; background: rgb(215, 220, 226);"></div>
-                            <div class="slimScrollRail"
-                                 style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(234, 234, 234);"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- END PORTLET -->
-        </div>
-    </div>
+    
 </div>
-<hr />
+
 <?php
 }
 ?>

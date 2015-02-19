@@ -7,7 +7,9 @@ if ($clients){
 		?>
 
 		<tr>
-			<td><img height="32" src="../../img/jobs/<?php echo $o->image; ?>"><input type="checkbox" onclick="if($(this).is(':checked'))addclientz($(this).val(),1,<?php echo $id;?>);else addclientz($(this).val(),0,<?php echo $id;?>)" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
+			<td>
+				<?php if (strlen($o->image)>0) { echo '<img height="32" src="../../img/jobs/' . $o->image . '">'; }?>
+				<input type="checkbox" onclick="if($(this).is(':checked'))addclientz($(this).val(),1,<?php echo $id;?>);else addclientz($(this).val(),0,<?php echo $id;?>)" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> /> <?php echo $o->company_name; ?></td>
 		</tr>
 
 	<?php

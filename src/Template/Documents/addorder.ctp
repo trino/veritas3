@@ -1132,6 +1132,11 @@ function provinces($name){
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/' + filename);
     }
     jQuery(document).ready(function () {
+        if($('.tabber.active').attr('id')=='tab1')
+        {
+            $('.skip').hide();
+        }
+        
         <?php if(isset($_GET['driver']) && is_numeric($_GET['driver'])){?>
             
             showforms('company_pre_screen_question.php');

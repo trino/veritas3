@@ -34,7 +34,8 @@ if (!$viewmode){
                     <span><input class="profile_client" type="checkbox"
                                  <?php if (in_array($r->id, $profile)){ ?>checked="checked"<?php }?>
                                  value="<?php echo $r->id; ?>"/></span>
-                    <span> <?php echo $r->username; ?> </span>
+                    <span> <?php echo $r->username; ?> </span>&nbsp;
+                    <span class="msg_<?php echo $r->id; ?>"></span>
                 </td>
                 <?php
 
@@ -142,13 +143,19 @@ if (!$viewmode){
             $.ajax({url: url});
         });
         $('.profile_client').change(function () {
+            var msg = '';
+            var nameId = 'msg_'+$(this).val();
             if ($(this).is(':checked')) {
+                msg = '<span class="msg" style="color:#45B6AF">Added</span>';
+                
                 var url = '<?php echo $this->request->webroot;?>clients/assignProfile/' + $(this).val() + '/<?php if(isset($id) && $id)echo $id;else echo '0'?>/yes';
             }
             else {
+                msg = '<span class="msg" style="color:red">Removed</span>';
                 var url = '<?php echo $this->request->webroot;?>clients/assignProfile/' + $(this).val() + '/<?php if(isset($id) && $id)echo $id;else echo '0'?>/no';
             }
-            $.ajax({url: url});
+            
+            $.ajax({url: url,success:function(){$('.'+nameId).html(msg);}});
         });
         $('.scrolldiv').slimScroll({
             height: '250px'

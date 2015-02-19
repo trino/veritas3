@@ -278,8 +278,7 @@ var FormWizard = function () {
                 'nextSelector': '.button-next',
                 'previousSelector': '.button-previous',
                 onTabClick: function (tab, navigation, index, clickedIndex) {
-                    //alert(clickedIndex);
-                    return false;
+                    
                     
                 },
                 onNext: function (tab, navigation, index) {

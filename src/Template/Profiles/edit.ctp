@@ -461,18 +461,23 @@
             $('.addclientz').click(function () {
                 var client_id = $(this).val();
                 var addclient = "";
+                var msg='';
+                var nameId = 'msg_'+$(this).val();
                 if ($(this).is(':checked')) {
                     addclient = '1';
+                    msg = '<span class="msg" style="color:#45B6AF">Added</span>';
                 }
-                else
+                else{
                     addclient = '0';
+                    msg = '<span class="msg" style="color:red">Removed</span>';
+                    }
 
                 $.ajax({
                     type: "post",
                     data: "client_id=" + client_id + "&add=" + addclient + "&user_id=" +<?php echo $id;?>,
                     url: "<?php echo $this->request->webroot;?>clients/addprofile",
-                    success: function (msg) {
-                        alert(msg);
+                    success: function () {
+                        $('.'+nameId).html(msg);
                         /*$('.clientadd_flash').show();
                         $('.clientadd_flash').text(msg);
                         $('.clientadd_flash').fadeOut('8000');*/
@@ -485,15 +490,23 @@
              else
              {?>
             $('.addclientz').click(function () {
+                var nameId = 'msg_'+$(this).val();
                 var client_id = "";
+                var msg='';
                 $('.addclientz').each(function () {
                     if ($(this).is(':checked')) {
+                        msg = '<span class="msg" style="color:#45B6AF">Added</span>';
                         client_id = client_id + "," + $(this).val();
+                    }
+                    else
+                    {
+                        msg = '<span class="msg" style="color:red">Removed</span>';
                     }
                 });
 
                 client_id = client_id.substr(1, length.client_id);
                 $('.client_profile_id').val(client_id);
+                $('.'+nameId).html(msg);
 
             });
             <?php

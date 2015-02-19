@@ -526,10 +526,14 @@
                     if($orde)
                     {
                         $dr = $orde->draft;
-                        if($dr=='0' || !$dr)
+                        if($dr=='0' || !$dr){
                         $dr = 0;
-                        else
+                        $this->Flash->success('Order submitted successfully');
+                        }
+                        else{
                         $dr =1;
+                        $this->Flash->success('Order saved as draft');
+                        }
                     }
                     else
                     $dr = 1;

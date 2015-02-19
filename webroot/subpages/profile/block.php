@@ -805,7 +805,7 @@
                                                                     ?>
                             
                                                                     <tr>
-                                                                        <td><img height="32" src="../../img/jobs/<?php echo $o->image; ?>"/><input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?>  <?php echo $is_disabled ?> /> <?php echo $o->company_name; ?></td>
+                                                                        <td><img height="32" src="../../img/jobs/<?php echo $o->image; ?>"/><input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?>  <?php echo $is_disabled ?> /> <?php echo $o->company_name; ?> <span class="msg_<?php echo $o->id; ?>"></span></td>
                                                                     </tr>
                             
                                                                 <?php
@@ -841,7 +841,7 @@
                                                                     ?>
                             
                                                                     <tr>
-                                                                        <td><input  <?php echo $is_disabled ?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?></td>
+                                                                        <td><input  <?php echo $is_disabled ?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?> <span class="msg_<?php echo $o->id; ?>"></span></td>
                                                                     </tr>
                             
                                                                 <?php

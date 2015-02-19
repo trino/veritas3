@@ -165,6 +165,7 @@ foreach($orders as $order)
     <!-- PORTLET MAIN -->
     <div class="portlet light profile-sidebar-portlet">
         <!-- SIDEBAR USERPIC -->
+        <?php if($k==1){?>
         <div class="profile-userpic">
             <center>
                 <?php
@@ -194,14 +195,9 @@ foreach($orders as $order)
                 Reference Number <?php echo ucwords($order->profile->id); ?>
             </div>
 
-            <div class="profile-usertitle-job">
-                <label class="uniform-inline">
-                    <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>"
-                           class="checkdriver" <?php if ($order->is_hired == '1') echo "checked"; ?> />
-                    Was this driver hired? </label>
-
-            </div>
+            
         </div>
+        <?php }?>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
     </div>
@@ -231,31 +227,15 @@ foreach($orders as $order)
     <!-- PORTLET MAIN -->
     <div class="portlet light">
 
-        <div class="margin-bottom-20">
-
-            <a href="#" class="btn btn-lg default yellow-stripe">
-                Road Test Score </a><a href="#" class="btn btn-lg yellow">
-                <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
-            </a>
-
-        </div>
+        
 
 
         <?php $settings = $this->requestAction('settings/get_settings');
             $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
         ?>
-        <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type:
-                <strong>Orders</strong></p>
-			<p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
-
-			<p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
-			<p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
-
-			<p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
-
-			</span>
+        
         <?php
-        if($k==$counting){
+        if($k==1){
             ?>
             
         <div class="portlet box green">
@@ -295,13 +275,40 @@ foreach($orders as $order)
                         <span class="caption-helper"></span>
                     </div>
                     <div class="inputs">
-                        <div class="portlet-input input-inline input-small ">
-
+                        <div class="profile-usertitle-job">
+                            <label class="uniform-inline">
+                                <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>"
+                                       class="checkdriver" <?php if ($order->is_hired == '1') echo "checked"; ?> />
+                                Was this driver hired? </label>
+            
                         </div>
                     </div>
                 </div>
+                
+                
+                <div class="col-sm-6" style="padding-left: 0;">
+                    <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type:
+                        <strong>Orders</strong></p>
+        			<p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
+        
+        			<p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
+        			<p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
+        
+        			<p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
+        
+        			</span>
+                
+                </div>
+                <div class="margin-bottom-20 col-sm-6" style="padding-left: 0;">
 
-
+                    <a href="#" class="btn btn-lg default yellow-stripe">
+                        Road Test Score </a><a href="#" class="btn btn-lg yellow">
+                        <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
+                    </a>
+        
+                </div>
+                
+                <div class="clearfix"></div>
                 <div class="portlet box yellow">
                     <div class="portlet-title">
                         <div class="caption">

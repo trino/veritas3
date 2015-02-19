@@ -21,9 +21,9 @@
                             <tbody>
                             <?php
                             $getOrders = $this->requestAction('profiles/getOrders/'.$id);
-                            foreach($getOrders as $g )
-                            {
-                                ?>
+
+                            $found=false;
+                            foreach($getOrders as $g ) { $found=true; ?>
 
                                 <tr class="even" role="row">
                                     <td><?php echo $g->id; ?></td>
@@ -31,8 +31,11 @@
                                     <td><input type="checkbox" id="<?php echo $g->id; ?>"><?php echo $g->created; ?></td>
 
                                 </tr>
-                            <?php
+                            <?php }
+                            if (!$found) {
+                            echo '<tr class="even" role="row"><td colspan="2" align="center">No orders found</td></tr></tr>';
                             }
+
                             ?>
                             </tbody>
                         </table>

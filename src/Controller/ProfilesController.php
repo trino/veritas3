@@ -6,6 +6,7 @@
     use Cake\Controller\Controller;
     use Cake\ORM\TableRegistry;
 use Cake\Network\Email\Email;
+use Cake\Controller\Component\CookieComponent;
 
 
     class ProfilesController extends AppController {
@@ -800,6 +801,10 @@ public function video(){}
         function logout()
         {
             //$this->request->session()->delete('Profile.id');
+            $this->loadComponent('Cookie');
+            $this->Cookie->delete('Profile.username');
+            $this->Cookie->delete('Profile.password');
+            $this->Cookie->delete('bar');
             $this->request->session()->destroy();
             if($_SERVER['SERVER_NAME'] == 'localhost'){
                 $this->redirect('/login');

@@ -6,6 +6,7 @@ use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\View\Helper\FlashHelper;
 use Cake\Controller\Component\FlashComponent;
+use Cake\Controller\Component\CookieComponent;
 class LoginController extends AppController{
     public function initialize() {
         parent::initialize();
@@ -14,23 +15,51 @@ class LoginController extends AppController{
         {
             $this->redirect('/pages');
         }
+        //if($this->Cookie->read('name'))
         
     }
     function index()
     {
         
+        $this->loadComponent('Cookie');
+        $this->Cookie->config([
+    'expires' => '+10000 days',
+    'httpOnly' => true
+]);
         $this->layout = 'login';
+       
+        if($this->Cookie->read('Profile.username') && $this->Cookie->read('Profile.password'))
+        {
+             
+            $_POST['username'] = $this->Cookie->read('Profile.username');
+            $_POST['password'] = $this->Cookie->read('Profile.password');
+            $_POST['name'] = $_POST['username'];
+        }
+        
         if(isset($_POST['name'])){
         $this->loadModel('Profiles');
         unset($_POST['submit']);
         $_POST['username'] = $_POST['name'];
+        $arr['password'] = $_POST['password'];
         $_POST['password'] = md5($_POST['password']);
         unset($_POST['name']);
+        if(isset($_POST['remember']))
+        $arr['remember'] = 1;
+        else
+        $arr['remember'] = 0;
+        unset($_POST['remember']);
+        //die('here');
         $q = $this->Profiles->find()->where($_POST)->first();
         
         if($q)
         {
+            
             //die('here');
+            if($arr['remember']){
+                //die('here');
+            $this->Cookie->write('Profile.username', $q->username);
+            $this->Cookie->write('Profile.password', $arr['password']);
+            }
             $this->request->session()->write('Profile.id',$q->id);
             $this->request->session()->write('Profile.username',$q->username);
             $this->request->session()->write('Profile.fname',$q->fname);

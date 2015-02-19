@@ -341,6 +341,15 @@ function enumsubdocs($thedocs, $date, $chartid){
 					$doctype = " candidate";
 				}
 			}
+			if (strlen($doctype )==0 and $chartid == "clients") {
+				$doctype = $adoc->customer_type;
+				if (is_numeric($doctype)) {
+					$profiletypes = ['', 'Insurance', 'Fleet', 'Non Fleet'];
+					$doctype = $profiletypes[$doctype];
+				}
+			}
+
+
 			//if (strlen($doctype )==0){$doctype = $adoc->customer_type; }
 			if (strlen($doctype )>0){
 				$quantity = 0;

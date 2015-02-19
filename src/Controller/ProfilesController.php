@@ -372,7 +372,7 @@ public function video(){}
                     if($this->request->session()->read('Profile.profile_type')!= '2')
                     {
                         $this->Flash->error('Sorry, you don\'t have the required permissions.');
-                        return $this->redirect("/");
+                        return $this->redirect("/profiles");
                     }
                 }
 
@@ -553,9 +553,9 @@ public function video(){}
                             $msg = 'Hi,<br />Your account has been created for '.$com.' .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$password.'<br /> Please <a href="'.LOGIN.'login">click here</a> to login.<br /> Regards';
                             $this->sendEmail($from,$to,$sub,$msg);
                         }
-                        if($_POST['draft'] == '0')
+                        if(isset($_POST['draft']) && ($_POST['draft'] == '0'))
                         $this->Flash->success('Profile Saved Successfully');
-                        else $this->Flash->success('Profile Saved as draft Successfully');
+                        else $this->Flash->success('Profile saved as draft Successfully');
                         echo $profile->id;
                        
                 }

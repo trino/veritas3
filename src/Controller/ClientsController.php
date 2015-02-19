@@ -460,7 +460,10 @@ class ClientsController extends AppController {
                                 unset($doc);
                             }
                         }
-        				$this->Flash->success(ucfirst($settings->client) . ' saved successfully.');
+                        if(isset($_POST['drafts']) && $_POST['drafts'] == '1')
+                        $this->Flash->success(ucfirst($settings->client) . ' saved as draft successfully.');
+        				else
+                        $this->Flash->success(ucfirst($settings->client) . ' saved successfully.');
                         	echo $client->id;
         			} else {
         			     $this->Flash->error(ucfirst($settings->client) . ' could not be saved. Please try again.');

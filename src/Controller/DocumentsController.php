@@ -2609,6 +2609,10 @@
                 $profile_ids2 = '9999999';
                 $model = TableRegistry::get('Profiles');
                 
+                $profile_ids2 = str_replace(',',' ',$profile_ids2);
+                $profile_ids2 = trim($profile_ids2);
+                $profile_ids2 = str_replace(' ',',',$profile_ids2);
+                
                 $q = $model->find()->where(['id IN ('.$profile_ids2.')','profile_type' => 5]);
                 
             }
@@ -2627,6 +2631,10 @@
             }
             if(!$profile_ids)
             $profile_ids = '9999999';
+            
+            $profile_ids = str_replace(',',' ',$profile_ids);
+                $profile_ids = trim($profile_ids);
+                $profile_ids = str_replace(' ',',',$profile_ids);
             //echo $profile_ids;die();
             if($driver==0 && $client==0)
             {
@@ -2719,6 +2727,11 @@
                 }
                 if(!$profile_ids)
                 $profile_ids = '9999999';
+                
+                 $profile_ids = str_replace(',',' ',$profile_ids);
+                $profile_ids = trim($profile_ids);
+                $profile_ids = str_replace(' ',',',$profile_ids);
+                
                 $model = TableRegistry::get('Profiles');
                 $profile = $model->find()->where(['id IN ('.$profile_ids.')','profile_type' => 5]);
             }
@@ -2727,6 +2740,9 @@
             $clients = $cmodel->find()->where(['id'=>$client])->first();
             $profile_ids = $clients->profile_id;
             
+             $profile_ids = str_replace(',',' ',$profile_ids);
+                $profile_ids = trim($profile_ids);
+                $profile_ids = str_replace(' ',',',$profile_ids);
             
             $model = TableRegistry::get('Profiles');
             $profile = $model->find()->where(['id IN ('.$profile_ids.')','profile_type' => 5]);

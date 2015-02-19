@@ -221,7 +221,7 @@ class SettingsController extends AppController {
              $setting = $setting->find()->where(['user_id'=>$uid]); 
              $setting = $setting->first();
              /*=================================================================================*/
-             
+             /*
              if($setting->profile_edit=='1')
              {
                 if($q1->super == '1' || $uid == $pid)
@@ -260,8 +260,38 @@ class SettingsController extends AppController {
                     return $this->response;
                     die();
                 }
-             }
-             /*=================================================================================*/   
+             }*/
+             /*=================================================================================*/ 
+             
+             if($setting->profile_edit=='1')
+             {
+                if($q1->super == '1' || $uid == $pid)
+                {
+                    $this->response->body('1');
+                    return $this->response;
+                    die();
+                }
+                else
+                {
+                    if($q1->profile_type == '2')
+                    {
+                        if($q2->profile_type == '5' || $uid == $pid)
+                        {
+                            $this->response->body('1');
+                            return $this->response;
+                            die();
+                        }    
+                        else 
+                        {$this->response->body('0');
+                        return $this->response;
+                        die();}
+                    }
+                    else
+                        {$this->response->body('0');
+                        return $this->response;
+                        die();}
+                }
+             }  
         }
         
     }

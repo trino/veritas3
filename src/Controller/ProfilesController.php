@@ -366,12 +366,21 @@ public function video(){}
         public function add() {
             $this->set('uid','');    
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+            // Only super admin and recruiter are allowed to create profiles as discussed on feb 19
+            if(!$this->request->session()->read('Profile.super'))
+                {
+                    if($this->request->session()->read('Profile.profile_type')!= '2')
+                    {
+                        $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                        return $this->redirect("/");
+                    }
+                }
 
-            if($setting->profile_create==0)
+            if($setting->profile_create==0 && !$this->request->session()->read('Profile.super'))
             {
-                $this->Flash->error('Sorry, you don\'t have the required permissions.');
-                return $this->redirect("/");
-
+                        $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                        return $this->redirect("/");
+                   
             }
             $this->loadModel('Logos');
 
@@ -544,7 +553,9 @@ public function video(){}
                             $msg = 'Hi,<br />Your account has been created for '.$com.' .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$password.'<br /> Please <a href="'.LOGIN.'login">click here</a> to login.<br /> Regards';
                             $this->sendEmail($from,$to,$sub,$msg);
                         }
-                        $this->Flash->success('Profile created successfully');
+                        if($_POST['draft'] == '0')
+                        $this->Flash->success('Profile Saved Successfully');
+                        else $this->Flash->success('Profile Saved as draft Successfully');
                         echo $profile->id;
                        
                 }
@@ -576,7 +587,7 @@ public function video(){}
                 $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                 if ($this->Profiles->save($profile)) {
                      echo $profile->id;
-                        $this->Flash->success('Profile created successfully');
+                        $this->Flash->success('Profile Saved Successfully');
                 } else {
                      echo "0";
                 }

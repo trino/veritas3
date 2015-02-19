@@ -105,24 +105,24 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
 
 
                                 <option value="2" <?php if (isset($p) && $p->profile_type == 2) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled"
+                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->admin != 1 && $getProfileType->super != 1) { ?> disabled="disabled"
                                 <?php } ?>>
                                     Recruiter
                                 </option>
 
                                 <option value="3" <?php if (isset($p) && $p->profile_type == 3) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled"
+                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->admin != 1 && $getProfileType->super != 1) { ?> disabled="disabled"
                                 <?php } ?>>
                                     External
                                 </option>
 
                                 <option value="4" <?php if (isset($p) && $p->profile_type == 4) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled"
+                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->admin != 1 && $getProfileType->super != 1) { ?> disabled="disabled"
                                 <?php } ?>>
                                     Safety
                                 </option>
 
-                                <option value="5" <?php if ((isset($p) && $p->profile_type == 5) || (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1)) { ?> selected="selected" <?php } ?>>
+                                <option value="5" <?php if ((isset($p) && $p->profile_type == 5) || (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->profile_type == 2)) { ?> selected="selected" <?php } ?>>
                                     Driver
                                 </option>
 
@@ -132,13 +132,15 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                     Contact
                                 </option>
 
-                               <!-- <option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php } ?>>
+                                <option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php } if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled"
+                                <?php }?>>
                                     Owner Operator
                                 </option>
 
-                                <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php } ?>>
+                                <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php } if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled"
+                                <?php } ?>>
                                     Owner Driver
-                                </option> -->
+                                </option> 
 
                                 <?php } else { ?>
 
@@ -640,7 +642,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                     <div class="clearfix"></div>
                                                             <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                                 <button class="close" data-close="alert"></button>
-                                                                Profile saved successfully
+                                                                Profile saved successfullly
                                                             </div>
                                 </div>
                             <?php } ?>

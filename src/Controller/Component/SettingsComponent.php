@@ -11,7 +11,6 @@ class SettingsComponent extends Component
    {
         $setting = TableRegistry::get('sidebar');
          $query = $setting->find()->where(['user_id'=>$uid]);
-                 
          $l = $query->first();
          return $l;
          
@@ -175,7 +174,7 @@ class SettingsComponent extends Component
              $setting = $setting->find()->where(['user_id'=>$uid]); 
              $setting = $setting->first();
              /*=================================================================================*/
-             
+             /*
              if($setting->profile_delete == '1')
              {
                 if($q1->profile_type  == '1' && $q1->super == '1' && $q1->admin == '1')
@@ -205,6 +204,26 @@ class SettingsComponent extends Component
                     }
                     else return 0;
                 }
+             } */
+             
+             if($setting->profile_delete == '1')
+             {
+                if($q1->super == '1')
+                {
+                    if($uid != $pid)
+                    {
+                        return 1;
+                    }
+                    else return 0;
+                }
+                else if(($q1->profile_type == '2' && $q2->profile_type == '5'))
+                {
+                        if($uid != $pid)
+                        {
+                            return 1;
+                        }
+                        else return 0;
+                }
              }
         }
         
@@ -226,6 +245,7 @@ class SettingsComponent extends Component
              $setting = $setting->first();
              /*=================================================================================*/
              
+             /* only admin super admin
              if($setting->profile_edit=='1')
              {
                 if($q1->super == '1' || $uid == $pid)
@@ -252,6 +272,23 @@ class SettingsComponent extends Component
                     }    
                     else return 0;
                 }
+             } */
+             
+             if($setting->profile_edit=='1')
+             {
+                if($q1->super == '1' || $uid == $pid)
+                {
+                    return 1;
+                }
+                else if($q1->profile_type == '2')
+                {
+                    if($q2->profile_type == '5' || $uid == $pid)
+                    {
+                        return 1;
+                    }    
+                    else return 0;
+                }
+                else return 0;
              }
              /*=================================================================================*/   
         }

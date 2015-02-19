@@ -78,8 +78,8 @@ $sidebar =$this->requestAction("settings/all_settings/".$this->request->session(
                                         <option value="4" <?php if(isset($return_profile_type) && $return_profile_type==4){?> selected="selected"<?php } ?>>Safety</option>
                                         <option value="5" <?php if(isset($return_profile_type) && $return_profile_type==5){?> selected="selected"<?php } ?>>Driver</option>
                                         <option value="6" <?php if(isset($return_profile_type) && $return_profile_type==6){?> selected="selected"<?php } ?>>Contact</option>
-                                       <!-- <option value="7" <?php if(isset($return_profile_type) && $return_profile_type==7){?> selected="selected"<?php } ?>>Owner Operator</option>
-                                        <option value="8" <?php if(isset($return_profile_type) && $return_profile_type==8){?> selected="selected"<?php } ?>>Owner Driver</option> -->
+                                       <option value="7" <?php if(isset($return_profile_type) && $return_profile_type==7){?> selected="selected"<?php } ?>>Owner Operator</option>
+                                        <option value="8" <?php if(isset($return_profile_type) && $return_profile_type==8){?> selected="selected"<?php } ?>>Owner Driver</option>
                                         <?php } else { ?>
                                         <option value="9" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Employee</option>
                                         <option value="10" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Guest</option>
@@ -219,19 +219,11 @@ $sidebar =$this->requestAction("settings/all_settings/".$this->request->session(
                                             <?php
                                             }
                                         }
-                                        
-                                        else if($this->request->session()->read('Profile.admin') == '1')
-                                        {
-                                            if(($this->request->session()->read('Profile.id')!=$profile->id) && $profile->super != '1' && $profile->admin != '1')
-                                            {
-                                            ?>
-                                            <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');" class="btn btn-danger" >Delete</a>
-                                        <?php } }
-                                        else if($profile->profile_type == '5')
+                                        else if($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5'))
                                         {                                        
-                                        ?> 
-                                        <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');" class="btn btn-danger" >Delete</a>
-                                        <?php
+                                                ?> 
+                                                <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');" class="btn btn-danger" >Delete</a>
+                                                <?php
                                         }
                                         
                                         

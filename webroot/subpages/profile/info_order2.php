@@ -153,7 +153,7 @@
                                onclick="var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
                                 Order Products <i class="m-icon-swapright m-icon-white"></i>
                             </a> 
-                            <a class="btn red button-next proceed"
+                            <a class="btn grey button-next proceed"
                                onclick="$('.alacarte').toggle(200);$('.placenow').removeAttr('disabled');">
                                 Cancel</i>
                             </a> 

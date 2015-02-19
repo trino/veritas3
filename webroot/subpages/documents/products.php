@@ -26,55 +26,48 @@ function pending($name, $value, $checked = true){
                 <tbody>
 
                     <tr class="even" role="row">
-                        <td class="actions">
-                            <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                        </td>
-                        <td><span class="icon-doc"></span> Premium National Criminal Record Check</td>
+
+                        <td>                            <?php echo pending("prem_nat", "PremiumNational", false); ?>
+                             <span class="icon-doc"></span> Premium National Criminal Record Check</td>
                     </tr>
 
                     <tr class="even" role="row">
-                        <td class="actions">
-                            <?php echo pending("dri_abs", "Driver's Record Abstract", false); ?>
-                        </td>
-                        <td><span class="icon-doc"></span> Driver's Record Abstract</td>
+
+                        <td>                            <?php echo pending("dri_abs", "Driver's Record Abstract", false); ?>
+                             <span class="icon-doc"></span> Driver's Record Abstract</td>
                     </tr>
 
                     <tr class="even" role="row">
-                        <td class="actions">
-                            <?php echo pending("CVOR", "CVOR", false); ?>
-                        </td>
-                        <td><span class="icon-doc"></span> CVOR</td>
+
+                        <td>                            <?php echo pending("CVOR", "CVOR", false); ?>
+                             <span class="icon-doc"></span> CVOR</td>
                     </tr>
 
 
                     <tr class="odd" role="row">
-                        <td class="actions">
-                            <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                        </td>
-                        <td><span class="icon-doc"></span> Pre-employment Screening Program Report</td>
+
+                        <td>                            <?php echo pending("prem_nat", "PremiumNational", false); ?>
+                             <span class="icon-doc"></span> Pre-employment Screening Program Report</td>
                     </tr>
 
 
                     <tr class="even" role="row">
-                        <td class="actions">
-                            <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                        </td>
-                        <td><span class="icon-doc"></span> Transclick</td>
+
+                        <td>                            <?php echo pending("prem_nat", "PremiumNational", false); ?>
+                             <span class="icon-doc"></span> Transclick</td>
                     </tr>
 
 
                     <tr class="odd" role="row">
-                        <td class="actions">
-                            <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                        </td>
-                        <td><span class="icon-doc"></span> Certifications</td>
+
+                        <td>                            <?php echo pending("prem_nat", "PremiumNational", false); ?>
+                             <span class="icon-doc"></span> Certifications</td>
                     </tr>
 
                     <tr class="odd" role="row">
-                        <td class="actions">
-                            <?php echo pending("prem_nat", "PremiumNational", false); ?>
-                        </td>
-                        <td> <span class="icon-doc"></span> Letter of Experience</td>
+
+                        <td>                             <?php echo pending("prem_nat", "PremiumNational", false); ?>
+                             <span class="icon-doc"></span> Letter of Experience</td>
                     </tr>
 
                 </tbody>

@@ -437,11 +437,12 @@ public function video(){}
                         ->execute();
                     if(isset($_POST['email']) && $_POST['email'])
                     {
-                    $from = 'info@isbmee.com';
-                    $to = $_POST['email'];
-                    $sub = 'Profile created successfully';
-                    $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
-                    $this->sendEmail($from,$to,$sub,$msg);}
+                        $from = 'info@isbmee.com';
+                        $to = $_POST['email'];
+                        $sub = 'Profile created successfully';
+                        $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
+                        $this->sendEmail($from,$to,$sub,$msg);
+                    }
                     $this->Flash->success('Profile created successfully.');
                     return $this->redirect(['action' => 'edit',$profile->id]);
                 } else {

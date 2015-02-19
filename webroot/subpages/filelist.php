@@ -1,8 +1,8 @@
  <?php 
-$webroot= $this->request->webroot; //MALFUNCTION! GLOBAL VARIABLE NOT WORKING AS THEY SHOULD//
+	$GLOBALS['webroot'] = $webroot= $this->request->webroot;
   function listfiles($client_docs, $dir, $method=true){
-	global $webroot;//MALFUNCTION! GLOBAL VARIABLE NOT WORKING AS THEY SHOULD//
-   if($method) { ?>
+	$webroot=$GLOBALS['webroot'] ;
+   if($method) {//old layout ?>
    
    
    <div class="form-group col-md-12">
@@ -43,7 +43,7 @@ $webroot= $this->request->webroot; //MALFUNCTION! GLOBAL VARIABLE NOT WORKING AS
 	</div>
    
 
-<?php } else { ?>
+<?php } else { //metronic method ?>
    
    
 	<div class="form-group col-md-12">

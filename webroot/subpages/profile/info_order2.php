@@ -215,7 +215,7 @@
             var client = $('#selecting_client').val();
             if(!isNaN(parseFloat(client)) && isFinite(client)){
             $('.selecting_client').val(client);
-            alert(client);
+            //alert(client);
             
             }
             else

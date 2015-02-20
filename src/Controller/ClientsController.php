@@ -412,14 +412,14 @@ class ClientsController extends AppController {
                 echo "email";
                 die();
             }
-            if(isset($_POST['sig_email']) && $_POST['sig_email']!="")
+            /*if(isset($_POST['sig_email']) && $_POST['sig_email']!="")
             {
                     $from = 'info@isbmee.com';
                     $to = $_POST['sig_email'];
                     $sub = ucfirst($settings->client) . ' created successfully';
                     $msg = 'Hi,<br />Your account has been created for ISBMEE as a ' . strtolower($settings->client) . '<br /> Regards';
                     $this->Mailer->sendEmail($from,$to,$sub,$msg);
-                    }
+                    }*/
             if(isset($_POST['sig_email'])&&((str_replace(array('@','.'),array('',''),$_POST['sig_email'])==$_POST['sig_email'] || strlen($_POST['sig_email'])<5) && $_POST['sig_email']!=''))
                 {
                     echo "Invalid Email";
@@ -706,7 +706,7 @@ class ClientsController extends AppController {
     {
         $sub = TableRegistry::get('client_sub_order');
         $query = $sub->find();
-        $q = $query->select()->where(['client_id'=>$id,'sub_id IN (SELECT id FROM subdocuments WHERE display = 1 AND orders = 1)'])->order(['display_order'=>'ASC']);
+        $q = $query->select()->where(['client_id'=>$id,'sub_id IN (SELECT id FROM subdocuments WHERE display = 1 AND orders = 1)','sub_id IN (SELECT subdoc_id FROM clientssubdocument WHERE display > 0 AND client_id = '.$id.')'])->order(['display_order'=>'ASC']);
 
 
             $this->response->body($q);

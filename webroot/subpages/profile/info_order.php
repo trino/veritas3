@@ -63,6 +63,9 @@
                            class="driver_id"/>
 
                     <div class="row">
+                        
+                        <div style="display:inline-block;border-radius:30px;"><img id="clientpic" class="img-responsive" style="height: auto;width: 150px;margin-left:15px;" alt="" src="/veritas3/img/profile/default.png" /></div>
+                        <div class="clearfix"></div>
                         <input type="hidden" name="created_by"
                                value="<?php echo $this->request->session()->read('Profile.id') ?>"/>
 

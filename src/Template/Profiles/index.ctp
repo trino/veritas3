@@ -78,8 +78,8 @@ $sidebar =$this->requestAction("settings/all_settings/".$this->request->session(
                                         <option value="4" <?php if(isset($return_profile_type) && $return_profile_type==4){?> selected="selected"<?php } ?>>Safety</option>
                                         <option value="5" <?php if(isset($return_profile_type) && $return_profile_type==5){?> selected="selected"<?php } ?>>Driver</option>
                                         <option value="6" <?php if(isset($return_profile_type) && $return_profile_type==6){?> selected="selected"<?php } ?>>Contact</option>
-                                       <option value="7" <?php if(isset($return_profile_type) && $return_profile_type==7){?> selected="selected"<?php } ?>>Owner Operator</option>
-                                        <option value="8" <?php if(isset($return_profile_type) && $return_profile_type==8){?> selected="selected"<?php } ?>>Owner Driver</option>
+                                       <!--<option value="7" <?php if(isset($return_profile_type) && $return_profile_type==7){?> selected="selected"<?php } ?>>Owner Operator</option>
+                                        <option value="8" <?php if(isset($return_profile_type) && $return_profile_type==8){?> selected="selected"<?php } ?>>Owner Driver</option>-->
                                         <?php } else { ?>
                                         <option value="9" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Employee</option>
                                         <option value="10" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Guest</option>
@@ -167,7 +167,7 @@ $sidebar =$this->requestAction("settings/all_settings/".$this->request->session(
 
                             <tr class="<?=$row_color_class;?>" role="row">
                                 <td><?= $this->Number->format($profile->id) ?></td>
-                                <td><?php if (strlen( $profile->profile_type) > 0) { echo h($profiletype[$profile->profile_type]); } else {echo "Not specified"; } ?></td>
+                                <td><?= h($profiletype[$profile->profile_type]) ?></td>
                                 <td><?= h($profile->fname) ?></td>
                                 <td><?= h($profile->lname) ?></td>
                                 <td><?= h($profile->username) ?></td>

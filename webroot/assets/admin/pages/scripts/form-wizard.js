@@ -3,8 +3,20 @@ if(path.replace('veritas3','')!=path)
     var base_url = 'http://localhost/veritas3/';
 else
     var base_url = 'http://isbmeereports.com/';
-var table=0
+var table=0;
+var draft = 0;
 $(function(){
+  
+$(document.body).on('click', '.skip', function () {
+
+            draft=1;
+                //alert(draft);
+                }); 
+$(document.body).on('click', '.button-next', function () {
+
+            draft=0;
+                //alert(draft);
+                });                  
 if($('#tablename').val()=='pre_screening')
  table=0;
 else
@@ -20,6 +32,7 @@ table= 3;
 
 
     });
+
 
 
 var FormWizard = function () {
@@ -220,6 +233,7 @@ var FormWizard = function () {
                     $('.skip').html('Save as draft');
                     $('.skip').removeClass('button-next');
                     $('.nextview').each(function(){
+                        
                        $(this).attr('style','visibility: hidden;'); 
                     });
                     if($('#dr').val()=='0')
@@ -251,7 +265,13 @@ var FormWizard = function () {
                     $('#select_division').hide();
                     $('.button-previous').hide();
                     $('#loading5').show();
-                    window.location = base_url+'documents/orderslist';
+                    //alert($('.cont').attr('id'));
+                    //alert(draft);
+                    if(draft==1)
+                    window.location = base_url+'documents/orderslist?draft&flash';
+                    else
+                    window.location = base_url+'documents/orderslist?flash';
+                    
                 }
 
                 if (current >= total) {

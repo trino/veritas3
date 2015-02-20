@@ -548,18 +548,19 @@
                 if (isset($_GET['draft']) && $_GET['draft']){
                     if($dr){
                     $arr['draft'] = 1; 
-                    $this->Flash->success('Order saved as draft');
+                    //if(isset($_POST['conf_date']))
+                    //$this->Flash->success('Order saved as draft');
                     
                     }                   
                     else{
                     $arr['draft'] = 0;
-                    $this->Flash->success('Order submitted successfully');
+                    //$this->Flash->success('Order submitted successfully');
                     }
                     }
                 else{
                     //if(!$dr)
                     $arr['draft'] = 0;
-                    $this->Flash->success('Order submitted successfully');
+                    //$this->Flash->success('Order submitted successfully');
                     }
                 $arr['client_id'] = $cid;
                 if (isset($_POST['division']))
@@ -1665,6 +1666,15 @@
 
         public function orderslist()
         {
+            if(isset($_GET['draft'])&&isset($_GET['flash']))
+            {
+                $this->Flash->success('Order saved as draft');
+            }
+            else
+            if(isset($_GET['flash']))
+            {
+                $this->Flash->success('Order saved successfully');
+            }
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->getDocumentcount();
             $cn = $this->getUserDocumentcount();

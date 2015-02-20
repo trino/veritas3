@@ -1341,13 +1341,14 @@ function provinces($name){
                 });
             }
         });
+        var draft = 0;
         $(document.body).on('click', '.cont', function () {
 
             if ($(this).attr('id') == 'draft') {
-                var draft = 1;
+                draft = 1;
             }
             else
-                var draft = 0;
+                draft = 0;
             if(draft==1)
             {
                 $('.blockmsg').html('<h4 class="block">Your Order Has Been Saved As Draft!</h4>'+

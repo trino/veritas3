@@ -29,10 +29,11 @@
 									echo "<a href='" .$webroot . $dir . $cd->file."' target='_blank' class='uploaded'>".$cd->file."</a>";
 							?><BR>
 							<a href="<?php echo $webroot . $dir . $cd->file ?>" download="<?= $cd->file ?>" class="btn btn-info">Download</a>
-							
+							<span>
 							<a href="javascript:void(0);"
-							   onclick="$(this).parent().remove();" title="The file won't actually be deleted!"
-							   class="btn btn-danger">Delete</a>
+							   title="<?php echo $cd->file;?>&<?php echo $cd->id;?>"
+							   class="btn btn-danger img_delete">Delete</a>
+                               </span>
 							<input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
 						</div>
 					<?php

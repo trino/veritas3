@@ -415,9 +415,11 @@ if ($action == "Add") { $action  = "Create";}
                                                     </div>
 
                                                    <?php }
-												   
-												   include '/../../../webroot/subpages/filelist.php';
-												   listfiles($client_docs, "img/jobs/");
+												   if(isset($client_docs))
+                                                   {
+    												    include '/../../../webroot/subpages/filelist.php';
+    												    listfiles($client_docs, "img/jobs/");
+                                                    }
 												   ?>
 
                                                     <div class="form-group col-md-12"><!--<center>-->
@@ -431,7 +433,8 @@ if ($action == "Add") { $action  = "Create";}
                                                             </div>
                                                             </div>
                                                             <div class="form-group col-md-12"><!--<center>-->
-                                                            <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" onclick="addMore(event,this)">
+                                                             
+                                                            <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" >
                                                                 Add More
                                                             </a>
 
@@ -716,7 +719,48 @@ if ($action == "Add") { $action  = "Create";}
         });
     });
 
-
+        $('#addMoredoc').click(function(){
+         var total_count = $('.docMore').data('count');
+        $('.docMore').data('count',parseInt(total_count)+1);
+        total_count = $('.docMore').data('count');
+         var input_field = '<div  class="form-group col-md-12"><div class="col-md-6"><span></span><a href="javascript:void(0);" id="addMore'+total_count+'" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore'+total_count+'_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore'+total_count+'" title ="">Delete</a></div></div>';
+    $('.docMore').append(input_field);
+    initiate_ajax_upload('addMore'+total_count,'doc');
+        
+    });
+    //delete image
+    $('.img_delete').live('click',function(){
+        var con = confirm('Confirm Delete?');
+        if(con == true)
+        {
+            var file = $(this).attr('title');
+            if(file == file.replace("&"," "))
+            {
+                var id =0;
+            }
+            else
+            {
+                var f = file.split("&");
+                file = f[0];
+                var id = f[1];
+            }
+            
+            
+            $.ajax({
+                type: "post",
+                data: 'id='+id,
+                url: "<?php echo $this->request->webroot;?>clients/removefiles/"+file,
+                success:function(msg)
+                {
+                    
+                }
+            });
+           $(this).parent().parent().remove(); 
+            
+        }
+        else
+            return false;
+    });
     var removeLink = 0;// this variable is for showing and removing links in a add document
     function addMore(e, obj) {
         e.preventDefault();
@@ -782,8 +826,10 @@ if ($action == "Add") { $action  = "Create";}
                 if (doc == "doc") {
                     $('#' + button_id).parent().find('span').text(" " + response);
                     $('.' + button_id + "_doc").val(response);
+                    $('#delete_'+button_id).attr('title',response);
                 }
-                else {
+                else 
+                {
                     $("#clientpic").attr("src", '<?php echo $this->request->webroot;?>img/jobs/' + response);
                     $('#client_img').val(response);
                 }

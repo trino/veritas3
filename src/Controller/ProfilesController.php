@@ -5,8 +5,8 @@
     use Cake\Event\Event;
     use Cake\Controller\Controller;
     use Cake\ORM\TableRegistry;
-use Cake\Network\Email\Email;
-use Cake\Controller\Component\CookieComponent;
+    use Cake\Network\Email\Email;
+    use Cake\Controller\Component\CookieComponent;
 
 
     class ProfilesController extends AppController {
@@ -1496,6 +1496,45 @@ public function video(){}
             $order = $order->find()->where(['uploaded_for'=>$id]);
             $this->response->body($order);
             return $this->response;
+        }
+        
+        function forgetpassword()
+        {
+            $email = $_POST['email'];
+            $profiles = TableRegistry::get('profiles');
+            if($profile = $profiles->find()->where(['email'=>$email])->first())
+            {
+                //debug($profile);
+                $new_pwd = $this->generateRandomString(6);
+                $p = TableRegistry::get('profiles');
+                if($p->query()->update()->set(['password'=>md5($new_pwd)])->where(['id' => $profile->id])->execute())
+                {         
+                    $from = 'info@isbmee.com';
+                    $to = $profile->email;
+                    $sub = 'New Password created successfully';
+                    $msg = 'Hi,<br />Your  new password has been created.<br /> Your login details are:<br /> Username: '.$profile->username.'<br /> Password: '.$new_pwd.'<br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
+                    $this->sendEmail($from,$to,$sub,$msg);
+                    echo "Password has been reset succesfully. Please Check your email for the new password.";
+                }
+            }
+            else
+            {
+                echo "Sorry the email dosenot exists.";
+            }
+            
+            die();
+            
+            
+        }
+        function generateRandomString($length = 10) 
+        {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+            return $randomString;
         }
     }
 ?>

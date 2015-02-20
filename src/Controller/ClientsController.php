@@ -75,7 +75,7 @@ class ClientsController extends AppController {
             if(in_array($check,$allowed)){
                 move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/jobs/'.$rand);
                  unset($_POST);
-                 if(isset($id)){
+                 /*if(isset($id)){
                 $_POST['image'] = $rand;
                 $img = TableRegistry::get('clients');
 
@@ -85,8 +85,9 @@ class ClientsController extends AppController {
                         ->set($_POST)
                         ->where(['id' => $id])
                         ->execute();
-                }
-                        echo $rand;
+                }*/
+                    
+                    echo $rand;
 
 
             }
@@ -95,6 +96,17 @@ class ClientsController extends AppController {
                 echo "error";
             }
         }
+        die();
+    }
+    function removefiles($file)
+    {
+        if(isset($_POST['id']) && $_POST['id']!= 0)
+        {
+            $this->loadModel("ClientDocs");
+            $this->ClientDocs->deleteAll(['id'=>$_POST['id']]);
+            
+        }
+        @unlink(WWW_ROOT."img/jobs/".$file);
         die();
     }
 	public function index() {

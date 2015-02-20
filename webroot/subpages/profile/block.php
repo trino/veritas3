@@ -285,7 +285,7 @@
                                                         No </label>
                                                     </td>
                                                     </tr>    
-                                                        <tr>
+                                                <!--<tr>
                                                 <td class="vtop">Drafts</td>
                                                 <td>
                                                         <label class="uniform-inline">
@@ -299,7 +299,7 @@
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->drafts == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr>-->
                                               <tr>
                                                 <td class="vtop">Recent Activity</td>
                                                 <td>

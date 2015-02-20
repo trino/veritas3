@@ -311,7 +311,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                    <?php // if (isset($p->password)){ ?><?php //echo $p->password; ?> <?php //} ?>
                                    <?php if (isset($p->password) && $p->password){//do nothing 
                                    }else{?>required="required"<?php }?>  />-->
-                                   <input  <?php echo $is_disabled ?> type="password" name="password" id="password" class="form-control not_rec_driver"/>
+                                   <input  <?php echo $is_disabled ?> type="password" value="" autocomplete="off" name="password" id="password" class="form-control not_rec_driver"/>
                         </div>
                     </div>
                     <?php if (isset($p->password)){ ?>
@@ -792,11 +792,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
 
     }
     $(function () {
-        <?php
-    if ($this->request->params['action'] == 'edit') {
-        ?>
-        $('#password').val('');
-        <?php }?>
+                       
         $('#save_clientz').submit(function(event){
              event.preventDefault();
              $('#savepro').text("Saving...");

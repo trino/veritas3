@@ -26,8 +26,8 @@ function printoption2($value, $selected="", $option)
 }
 
 function printoptions($name, $valuearray, $selected="", $optionarray, $isdisabled="", $isrequired=false){
-    echo '<SELECT ' . $isdisabled . ' name="' . $name . '" class="form-control member_type"';
-    if ($isrequired == 1) { echo ' required="required">';} else { echo '>';}
+    echo '<SELECT ' . $isdisabled . ' name="' . $name . '" class="form-control member_type req_driver"';
+     echo '>';
     for ($temp = 0; $temp < count($valuearray); $temp += 1) {
         printoption2($valuearray[$temp], $selected, $optionarray[$temp]);
     }
@@ -141,7 +141,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                     Contact
                                 </option>
 
-                                <option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php } if(!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
+                                <!--<option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php } if(!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
                                 <?php }?>>
                                     Owner Operator
                                 </option>
@@ -149,7 +149,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                 <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php } if(!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
                                 <?php } ?>>
                                     Owner Driver
-                                </option> 
+                                </option> -->
 
                                 <?php } else { ?>
 
@@ -172,6 +172,19 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                             </select>
                         </div>
                     </div>
+                    
+                        <div class="col-md-6" id="isb_id"
+                         style="display:<?php if ((isset($p) && $p->profile_type != 5) && (isset($getProfileType->profile_type) && $getProfileType->profile_type == 1)) echo 'block'; else echo "none" ?>;">
+                            <div class="form-group">
+                                <label class="control-label">ISB Id</label>
+                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
+                                    name="isb_id" type="text"
+                                    placeholder="optional"
+                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
+                            </div>
+                        </div>
+                    
+
                     <?php // if ($settings->client_option == 0) { ?>
                     
                     <div class="col-md-6" id="driver_div"
@@ -261,7 +274,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                         <div class="form-group">
                             <label class="control-label">Username</label>
                             <input <?php echo $is_disabled ?> name="username" type="text"
-                                                              class="form-control uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> required />
+                                                              class="form-control req_driver" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
                             <span class="error passerror flashUser"
                                   style="display: none;">Username already exists</span>
                             <span class="error passerror flashUser1"
@@ -275,9 +288,9 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input <?php echo $is_disabled ?> required="required" name="email" type="email"
+                            <input <?php echo $is_disabled ?> name="email" type="email"
                                                               placeholder="eg. test@domain.com"
-                                                              class="form-control un email" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
+                                                              class="form-control un email req_driver" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
                             <span class="error passerror flashEmail"
                                   style="display: none;">Email already exists</span>
                         </div>
@@ -290,10 +303,11 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Password</label>
-                            <input  <?php echo $is_disabled ?> type="password" name="password" id="password" class="form-control"
+                           <!-- <input  <?php echo $is_disabled ?> type="password" name="password" id="password" class="form-control"
                                    <?php // if (isset($p->password)){ ?><?php //echo $p->password; ?> <?php //} ?>
                                    <?php if (isset($p->password) && $p->password){//do nothing 
-                                   }else{?>required="required"<?php }?>/>
+                                   }else{?>required="required"<?php }?>  />-->
+                                   <input  <?php echo $is_disabled ?> type="password" name="password" id="password" class="form-control not_rec_driver"/>
                         </div>
                     </div>
                     <?php if (isset($p->password)){ ?>
@@ -302,7 +316,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Re-type Password</label>
-                            <input  <?php echo $is_disabled ?> type="password" class="form-control"
+                            <input  <?php echo $is_disabled ?> type="password" class="form-control not_rec_driver"
                                    id="retype_password" <?php //if (isset($p->password)) { ?> <?php // echo $p->password; ?>  <?php // } ?>/>
                             <span class="error passerror flashPass1"
                                   style="display: none;">Please enter same password</span>
@@ -338,7 +352,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                         <div class="form-group">
 
                             <label class="control-label">First Name</label>
-                            <input <?php echo $is_disabled ?> name="fname" type="text" required="required"
+                            <input <?php echo $is_disabled ?> name="fname" type="text"
                                                               placeholder="eg. John"
                                                               class="form-control req_driver" <?php if (isset($p->fname)) { ?> value="<?php echo $p->fname; ?>" <?php } ?>/>
                         </div>
@@ -359,7 +373,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Last Name</label>
-                            <input <?php echo $is_disabled ?> name="lname" type="text" required="required"
+                            <input <?php echo $is_disabled ?> name="lname" type="text" 
                                                               placeholder="eg. Doe"
                                                               class="form-control req_driver" <?php if (isset($p->lname)) { ?> value="<?php echo $p->lname; ?>" <?php } ?>/>
                         </div>
@@ -381,7 +395,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                         <div class="form-group">
 
                             <label class="control-label">Gender</label>
-                            <SELECT <?php echo $is_disabled ?> name="gender" class="form-control "><?php
+                            <SELECT <?php echo $is_disabled ?> name="gender" class="form-control req_driver"><?php
                                     $gender = "";
                                     if (isset($p->gender)) {
                                         $gender = $p->gender;
@@ -394,24 +408,12 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                         </div>
                     </div>
                    
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label">ISB Id</label>
-                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
-                                    name="isb_id" type="text"
-                                    placeholder="optional"
-                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
-                            </div>
-                        </div>
-                    
-
                     <div class="col-md-6">
                         <div class="form-group">
 
                             <label class="control-label">Place of Birth</label>
-                            <input <?php echo $is_disabled ?> name="placeofbirth" type="text" required="required"
-                                                              placeholder=""
-                                                              class="form-control" <?php if (isset($p->placeofbirth)) { ?> value="<?php echo $p->placeofbirth; ?>" <?php } ?>/>
+                            <input <?php echo $is_disabled ?> name="placeofbirth" type="text" placeholder=""
+                                                              class="form-control req_driver" <?php if (isset($p->placeofbirth)) { ?> value="<?php echo $p->placeofbirth; ?>" <?php } ?>/>
                         </div>
                     </div>
 
@@ -440,7 +442,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                         }
 
 
-                                        echo '<select class="form-control req_driver " NAME="doby" ' . $is_disabled . ' required="required">';
+                                        echo '<select class="form-control req_driver " NAME="doby" ' . $is_disabled . '>';
 
                                         $now = date("Y");
                                         for ($temp = $now; $temp > 1899; $temp -= 1) {
@@ -449,7 +451,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                         echo '</select></div><div class="col-md-4">';
 
 
-                                        echo '<select  class="form-control req_driver " NAME="dobm" ' . $is_disabled . ' required="required">';
+                                        echo '<select  class="form-control req_driver " NAME="dobm" ' . $is_disabled . '>';
                                         $monthnames = array("Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec");
                                         for ($temp = 1; $temp < 13; $temp += 1) {
                                             if ($temp < 10)
@@ -459,7 +461,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                         echo '</select></div><div class="col-md-4">';
 
 
-                                        echo '<select class="form-control req_driver " name="dobd" ' . $is_disabled . ' required="required">';
+                                        echo '<select class="form-control req_driver " name="dobd" ' . $is_disabled . '>';
                                         for ($temp = 1; $temp < 32; $temp++) {
                                             if ($temp < 10)
                                                 $temp = "0" . $temp;
@@ -550,7 +552,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Driver License #</label>
-                                <input <?php echo $is_disabled ?> name="driver_license_no" type="text" required="required"
+                                <input <?php echo $is_disabled ?> name="driver_license_no" type="text" 
                                                                   class="form-control req_driver" <?php if (isset($p->driver_license_no)) { ?> value="<?php echo $p->driver_license_no; ?>" <?php } ?> />
                             </div>
                         </div>
@@ -586,7 +588,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                             <div class="form-group">
                                 <label class="control-label">Expiry Date</label>
                                 <input <?php echo $is_disabled ?> name="expiry_date" type="text"
-                                                                  class="form-control req_driver date-picker" <?php if (isset($p->expiry_date)) { ?> value="<?php echo $p->expiry_date; ?>" <?php } ?> />
+                                                                  class="form-control req_driver date-picker"  value="<?php if (isset($p->expiry_date)) echo $p->expiry_date; ?>" />
 
                             </div>
                         </div>
@@ -801,7 +803,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                             $('#savepro').text("Save Changes");
                             $('.flash').show();
                             $('.flash').fadeOut(3500);
-                            window.location.href='<?php echo $this->request->webroot;?>profiles/edit/'+res;
+                           // window.location.href='<?php echo $this->request->webroot;?>profiles/edit/'+res;
                         }
                 }
 
@@ -832,38 +834,42 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     $(this).hide();
                 });
                 $('#driver_div').show();
-                $('.un').removeProp('required');
-                $('#password').removeProp('required');
-                $('#retype_password').removeProp('required');
+                $('#isb_id').hide();
+                //$('.un').removeProp('required');
+                //$('#password').removeProp('required');
+//                $('#retype_password').removeProp('required');
                 $('.req_rec').removeProp('required');
-                $('.req_driver').prop('required', "required");
+                $('.req_driver').each(function(){
+                   $(this).attr('required',"required") 
+                });
             }
             else {
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).show();
                 });
                 $('#driver_div').hide();
-                $('.req_driver').removeProp('required');
+                $('#isb_id').show();
+                $('.req_driver').removeAttr('required');
                 $('.req_rec').removeProp('required');
-                $('.un').prop('required', "required");
+                //$('.un').prop('required', "required");
                 <?php
                 if(isset($p->password) && $p->password)
                 {
                     //do nth
                 }
-                else{
+               /* else{
                     ?>
                     
                 $('#password').prop('required', "required");
                 $('#retype_password').prop('required', "required");
                 <?php
-                }
+                }*/
                  ?>
             }
 
             if ($(this).val() == '2') {
                 $('.req_driver').removeProp('required');
-                $('.un').removeProp('required');
+                //$('.un').removeProp('required');
                 $('.req_rec').prop('required', "required");
             }
 

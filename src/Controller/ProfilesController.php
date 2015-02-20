@@ -475,6 +475,7 @@ public function video(){}
             
                 if(isset($_POST['password']) && $_POST['password']=='')
                 {
+                    $password = '';
                    unset($_POST['password']);
                 }
                 else
@@ -553,13 +554,13 @@ public function video(){}
                             $msg = 'Hi,<br />Your account has been created for '.$com.' .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$password.'<br /> Please <a href="'.LOGIN.'login">click here</a> to login.<br /> Regards';
                             $this->sendEmail($from,$to,$sub,$msg);
                         }
-                        if(isset($_POST['draft']) && ($_POST['draft'] == '0'))
+                        if(isset($_POST['draft']) && ($_POST['draft'] == '1'))
                         {
-                            $this->Flash->success('Profile Saved Successfully');
+                            $this->Flash->success('1Profile Saved as draft Successfully');
                         }
-                        else 
+                        else if(isset($_POST['draft']) && ($_POST['draft'] == '0')) 
                         {
-                            $this->Flash->success('Profile saved as draft Successfully');
+                            $this->Flash->success('2Profile saved Successfully');
                         }
                         echo $profile->id;
                        
@@ -592,13 +593,13 @@ public function video(){}
                 $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                 if ($this->Profiles->save($profile)) {
                      echo $profile->id;
-                        if(isset($_POST['draft']) && ($_POST['draft'] == '0'))
+                        if(isset($_POST['draft']) && ($_POST['draft'] == '1'))
                         {
-                            $this->Flash->success('Profile Saved Successfully');
+                            $this->Flash->success('3Profile Saved as draft Successfully');
                         }
-                        else 
+                        else if(isset($_POST['draft']) && ($_POST['draft'] == '0'))
                         {
-                            $this->Flash->success('Profile saved as draft Successfully');
+                            $this->Flash->success('4Profile saved Successfully');
                         }
                 } else {
                      echo "0";

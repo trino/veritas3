@@ -12,6 +12,9 @@
         </div>
 -->
         <ul class="nav nav-tabs nav-justified">
+        <?php if($this->request->session()->read('Profile.profile_type')!='2')
+        {
+            ?>
             <li class="active">
                 <a href="#subtab_2_1" data-toggle="tab">Sidebar</a>
             </li>
@@ -21,6 +24,9 @@
             <li class="">
                 <a href="#subtab_2_3" data-toggle="tab">Top blocks</a>
             </li>
+            <?php
+        }
+         ?>
             <li class="">
                 <a href="#subtab_2_4" data-toggle="tab">Assign to <?php echo ucfirst($settings->client) ?></a>
             </li>

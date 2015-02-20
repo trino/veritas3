@@ -334,7 +334,7 @@
                                                 }
                                             }
 
-                                            if ($this->request->session()->read('Profile.admin')) {  ?>
+                                            if ($this->request->session()->read('Profile.admin') || ($this->request->session()->read('Profile.profile_type')=='2') ) {  ?>
                                                 <li>
                                                     <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                                 </li>
@@ -345,7 +345,7 @@
                                                 echo '<li><a href="#tab_1_10" data-toggle="tab">Orders</li></A></li>';
                                             }
 
-                                            if ($this->request->params['action'] != 'add') {
+                                            if ($this->request->params['action'] != 'add' && ($this->request->session()->read('Profile.profile_type')!='2')) {
                                                 ?>
                                                 <li>
                                                     <a href="#tab_1_9" data-toggle="tab">Notes</a>

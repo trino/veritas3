@@ -82,8 +82,8 @@ $sidebar =$this->requestAction("settings/all_settings/".$this->request->session(
                                         <option value="8" <?php if(isset($return_profile_type) && $return_profile_type==8){?> selected="selected"<?php } ?>>Owner Driver</option>-->
                                         <?php } else { ?>
                                         <option value="9" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Employee</option>
-                                        <option value="10" <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Guest</option>
-                                        <option value=11 <?php if(isset($return_profile_type) && $return_profile_type==9){?> selected="selected"<?php } ?> >Partner</option>
+                                        <option value="10" <?php if(isset($return_profile_type) && $return_profile_type==10){?> selected="selected"<?php } ?> >Guest</option>
+                                        <option value="11" <?php if(isset($return_profile_type) && $return_profile_type==11){?> selected="selected"<?php } ?> >Partner</option>
                                         <?php }  ?>
 
                                     </select>

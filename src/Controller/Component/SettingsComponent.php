@@ -231,6 +231,8 @@ class SettingsComponent extends Component
     
     function check_edit_permission($uid,$pid)
     {
+        if($uid == $pid)
+        return 1;
         $user_profile = TableRegistry::get('profiles');
         $query = $user_profile->find()->where(['id'=>$uid]);
         $q1 = $query->first();

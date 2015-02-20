@@ -91,7 +91,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
 
 
                             <select  <?php echo $is_disabled ?>
-                                name="profile_type" <?php //if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
+                                name="profile_type" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
                                 class="form-control member_type" required='required'>
                                 <option value="">Select</option>
                                 <?php
@@ -128,7 +128,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                     Safety
                                 </option>
 
-                                <option value="5" <?php if ((isset($p) && $p->profile_type == 5) || (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->profile_type == 2)) { ?> selected="selected" <?php } 
+                                <option value="5" <?php if ((isset($p) && $p->profile_type == 5) || (!isset($p) && isset($getProfileType->profile_type) && $getProfileType->profile_type == 2)) { ?> selected="selected" <?php } 
                                 if(!$this->request->session()->read('Profile.super') && ($this->request->session()->read('Profile.profile_type') != '2'))
                                 {
                                     ?>
@@ -181,7 +181,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                          style="display:<?php if ((isset($p) && $p->profile_type != 5) && (isset($getProfileType->profile_type) && $getProfileType->profile_type == 1)) echo 'block'; else echo "none" ?>;">
                             <div class="form-group">
                                 <label class="control-label">ISB Id</label>
-                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
+                                <input <?php echo $is_disabled ?>
                                     name="isb_id" type="text"
                                     placeholder="optional"
                                     class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
@@ -192,7 +192,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     <?php // if ($settings->client_option == 0) { ?>
                     
                     <div class="col-md-6" id="driver_div"
-                         style="display:<?php if ((isset($p) && $p->profile_type == 5) || (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1)) echo 'block'; else echo "none" ?>;">
+                         style="display:<?php if ((isset($p) && $p->profile_type == 5))  echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
                             <label class="control-label">Driver Type</label>
                             <select  <?php echo $is_disabled ?> name="driver" class="form-control select_driver req_driver">
@@ -655,10 +655,10 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                         <input type="submit" style="display: none;" id="hiddensub"/>
                                     </div>
                                     <div class="clearfix"></div>
-                                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                            <!--<div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                                 <button class="close" data-close="alert"></button>
                                                                 Profile saved successfullly
-                                                            </div>
+                                                            </div>-->
                                 </div>
                             <?php } ?>
 
@@ -797,6 +797,9 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
              event.preventDefault();
              $('#savepro').text("Saving...");
            var strs = $(this).serialize();
+           $(':disabled[name]', '#save_clientz').each(function () {
+                    strs = strs + '&' + $(this).attr('name') + '=' + $(this).val();
+                });
            var adds = "<?php echo ($this->request['action']=='add')?'0':$this->request['pass'][0];?>";
            $.ajax({
                 url: '<?php echo $this->request->webroot;?>profiles/saveprofile/'+adds,

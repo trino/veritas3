@@ -1,3 +1,8 @@
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link href="../../assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/pages/css/portfolio.css" rel="stylesheet" type="text/css"/>
+<!-- END PAGE LEVEL STYLES -->
+
 <?php
     if (isset($disabled))
         $is_disabled = 'disabled="disabled"';
@@ -409,44 +414,11 @@ if ($action == "Add") { $action  = "Create";}
 
                                                     </div>
 
-                                                   <?php }?>
-
-                                                    <div class="form-group col-md-12">
-                                                        <label class="control-label" id="attach_label">Attach Files</label>
-
-                                                        <div>
-                                                            <!-- <a href="#" class="btn btn-primary">Browse</a> -->
-                                                            <?php
-                                                                if (isset($client_docs) && count($client_docs) > 0) {
-                                                                    $allowed = array('jpg', 'jpeg', 'png', 'bmp', 'gif');
-                                                                    foreach ($client_docs as $k => $cd):
-
-                                                                        ?>
-                                                                        <div style="margin-bottom:5px;">
-                                                                            <?php
-                                                                                $e = explode(".", $cd->file);
-                                                                                $ext = end($e);
-                                                                                if (in_array($ext, $allowed)) {
-                                                                                    ?>
-                                                                                    <img src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $cd->file; ?>" style="max-width: 200px;"/>
-
-                                                                                <?php
-                                                                                } else
-                                                                                    echo "<a href='".$this->request->webroot."img/jobs/".$cd->file."' target='_blank' class='uploaded'>".$cd->file."</a>";
-                                                                            ?>
-                                                                            <a href="javascript:void(0);"
-                                                                               onclick="$(this).parent().remove()"
-                                                                               class="btn btn-danger">Delete</a>
-                                                                            <input type="hidden" name="client_doc[]"
-                                                                                   value="<?php echo $cd->file;?>"
-                                                                                   class="moredocs"/>
-                                                                        </div>
-                                                                    <?php
-                                                                    endforeach;
-                                                                } ?>
-
-                                                        </div>
-                                                    </div>
+                                                   <?php }
+												   
+												   include '/../../../webroot/subpages/filelist.php';
+												   listfiles($client_docs, "img/jobs/");
+												   ?>
 
                                                     <div class="form-group col-md-12"><!--<center>-->
 

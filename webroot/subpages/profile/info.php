@@ -105,39 +105,48 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
 
 
                                 <option value="2" <?php if (isset($p) && $p->profile_type == 2) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->admin != 1 && $getProfileType->super != 1) { ?> disabled="disabled"
+                                if(!$this->request->session()->read('Profile.super'))
+                                  {
+                                    ?> disabled="disabled"
                                 <?php } ?>>
                                     Recruiter
                                 </option>
 
                                 <option value="3" <?php if (isset($p) && $p->profile_type == 3) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->admin != 1 && $getProfileType->super != 1) { ?> disabled="disabled"
+                                if (!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
                                 <?php } ?>>
                                     External
                                 </option>
 
                                 <option value="4" <?php if (isset($p) && $p->profile_type == 4) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->admin != 1 && $getProfileType->super != 1) { ?> disabled="disabled"
+                                if (!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
                                 <?php } ?>>
                                     Safety
                                 </option>
 
-                                <option value="5" <?php if ((isset($p) && $p->profile_type == 5) || (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->profile_type == 2)) { ?> selected="selected" <?php } ?>>
+                                <option value="5" <?php if ((isset($p) && $p->profile_type == 5) || (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1 && $getProfileType->profile_type == 2)) { ?> selected="selected" <?php } 
+                                if(!$this->request->session()->read('Profile.super') && ($this->request->session()->read('Profile.profile_type') != '2'))
+                                {
+                                    ?>
+                                    disabled="disabled"
+                                    <?php
+                                }
+                                 ?>>
                                     Driver
                                 </option>
 
                                 <option value="6" <?php if (isset($p) && $p->profile_type == 6) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled"
+                                if (!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
                                 <?php } ?>>
                                     Contact
                                 </option>
 
-                                <option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php } if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled"
+                                <option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php } if(!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
                                 <?php }?>>
                                     Owner Operator
                                 </option>
 
-                                <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php } if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled"
+                                <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php } if(!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
                                 <?php } ?>>
                                     Owner Driver
                                 </option> 
@@ -145,15 +154,15 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                 <?php } else { ?>
 
                                     <option value="9" <?php if (isset($p) && $p->profile_type == 9) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled" <?php } ?>>
+                                if(!$this->request->session()->read('Profile.super')) { ?> disabled="disabled" <?php } ?>>
                                         Employee
                                     </option>
                                     <option value="10" <?php if (isset($p) && $p->profile_type == 10) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled" <?php } ?>>
+                                if(!$this->request->session()->read('Profile.super')) { ?> disabled="disabled" <?php } ?>>
                                         Guest
                                     </option>
                                     <option value="11" <?php if (isset($p) && $p->profile_type == 11) { ?> selected="selected" <?php }
-                                if (isset($getProfileType->profile_type) && $getProfileType->profile_type != 1) { ?> disabled="disabled" <?php } ?> >
+                                if(!$this->request->session()->read('Profile.super')) { ?> disabled="disabled" <?php } ?> >
                                         Partner
                                     </option>
 

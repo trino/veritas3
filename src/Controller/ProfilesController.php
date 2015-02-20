@@ -554,8 +554,13 @@ public function video(){}
                             $this->sendEmail($from,$to,$sub,$msg);
                         }
                         if(isset($_POST['draft']) && ($_POST['draft'] == '0'))
-                        $this->Flash->success('Profile Saved Successfully');
-                        else $this->Flash->success('Profile saved as draft Successfully');
+                        {
+                            $this->Flash->success('Profile Saved Successfully');
+                        }
+                        else 
+                        {
+                            $this->Flash->success('Profile saved as draft Successfully');
+                        }
                         echo $profile->id;
                        
                 }
@@ -587,7 +592,14 @@ public function video(){}
                 $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                 if ($this->Profiles->save($profile)) {
                      echo $profile->id;
-                        $this->Flash->success('Profile Saved Successfully');
+                        if(isset($_POST['draft']) && ($_POST['draft'] == '0'))
+                        {
+                            $this->Flash->success('Profile Saved Successfully');
+                        }
+                        else 
+                        {
+                            $this->Flash->success('Profile saved as draft Successfully');
+                        }
                 } else {
                      echo "0";
                 }

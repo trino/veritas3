@@ -554,13 +554,13 @@ public function video(){}
                             $msg = 'Hi,<br />Your account has been created for '.$com.' .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$password.'<br /> Please <a href="'.LOGIN.'login">click here</a> to login.<br /> Regards';
                             $this->sendEmail($from,$to,$sub,$msg);
                         }
-                        if(isset($_POST['draft']) && ($_POST['draft'] == '1'))
+                        if(isset($_POST['drafts']) && ($_POST['drafts'] == '1'))
                         {
-                            $this->Flash->success('1Profile Saved as draft Successfully');
+                            $this->Flash->success('Profile Saved as draft Successfully');
                         }
-                        else if(isset($_POST['draft']) && ($_POST['draft'] == '0')) 
+                        else
                         {
-                            $this->Flash->success('2Profile saved Successfully');
+                            $this->Flash->success('Profile saved Successfully');
                         }
                         echo $profile->id;
                        
@@ -593,13 +593,13 @@ public function video(){}
                 $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                 if ($this->Profiles->save($profile)) {
                      echo $profile->id;
-                        if(isset($_POST['draft']) && ($_POST['draft'] == '1'))
+                        if(isset($_POST['drafts']) && ($_POST['drafts'] == '1'))
                         {
-                            $this->Flash->success('3Profile Saved as draft Successfully');
+                            $this->Flash->success('Profile Saved as draft Successfully');
                         }
-                        else if(isset($_POST['draft']) && ($_POST['draft'] == '0'))
+                        else
                         {
-                            $this->Flash->success('4Profile saved Successfully');
+                            $this->Flash->success('Profile saved Successfully');
                         }
                 } else {
                      echo "0";

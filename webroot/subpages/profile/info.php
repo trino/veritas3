@@ -26,8 +26,12 @@ function printoption2($value, $selected="", $option)
 }
 
 function printoptions($name, $valuearray, $selected="", $optionarray, $isdisabled="", $isrequired=false){
+    if($name=='profile_type')
     echo '<SELECT ' . $isdisabled . ' name="' . $name . '" class="form-control member_type req_driver"';
+    else
+    echo '<SELECT ' . $isdisabled . ' name="' . $name . '" class="form-control req_driver"';
      echo '>';
+     
     for ($temp = 0; $temp < count($valuearray); $temp += 1) {
         printoption2($valuearray[$temp], $selected, $optionarray[$temp]);
     }
@@ -788,6 +792,11 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
 
     }
     $(function () {
+        <?php
+    if ($this->request->params['action'] == 'edit') {
+        ?>
+        $('#password').val('');
+        <?php }?>
         $('#save_clientz').submit(function(event){
              event.preventDefault();
              $('#savepro').text("Saving...");
@@ -803,7 +812,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                             $('#savepro').text("Save Changes");
                             $('.flash').show();
                             $('.flash').fadeOut(3500);
-                           // window.location.href='<?php echo $this->request->webroot;?>profiles/edit/'+res;
+                            window.location.href='<?php echo $this->request->webroot;?>profiles/edit/'+res;
                         }
                 }
 
@@ -830,6 +839,10 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
 
         $('.member_type').change(function () {
             if ($(this).val() == '5') {
+                $('.req_driver').each(function(){
+                   $(this).attr('required',"required");
+                   //alert($(this).attr('name'));
+                });
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).hide();
                 });
@@ -839,9 +852,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                 //$('#password').removeProp('required');
 //                $('#retype_password').removeProp('required');
                 $('.req_rec').removeProp('required');
-                $('.req_driver').each(function(){
-                   $(this).attr('required',"required") 
-                });
+                
             }
             else {
                 $('.nav-tabs li:not(.active)').each(function () {
@@ -874,6 +885,56 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
             }
 
         });
+        
+        var mem_type = $('.member_type').val();
+        if(!isNaN(parseFloat(mem_type)) && isFinite(mem_type))
+        {
+            if (mem_type == '5') {
+                    $('.req_driver').each(function(){
+                       $(this).attr('required',"required");
+                       //alert($(this).attr('name'));
+                    });
+                    $('.nav-tabs li:not(.active)').each(function () {
+                        $(this).hide();
+                    });
+                    $('#driver_div').show();
+                    $('#isb_id').hide();
+                    //$('.un').removeProp('required');
+                    //$('#password').removeProp('required');
+    //                $('#retype_password').removeProp('required');
+                    $('.req_rec').removeProp('required');
+                    
+                }
+                else {
+                    $('.nav-tabs li:not(.active)').each(function () {
+                        $(this).show();
+                    });
+                    $('#driver_div').hide();
+                    $('#isb_id').show();
+                    $('.req_driver').removeAttr('required');
+                    $('.req_rec').removeProp('required');
+                    //$('.un').prop('required', "required");
+                    <?php
+                    if(isset($p->password) && $p->password)
+                    {
+                        //do nth
+                    }
+                   /* else{
+                        ?>
+                        
+                    $('#password').prop('required', "required");
+                    $('#retype_password').prop('required', "required");
+                    <?php
+                    }*/
+                     ?>
+                }
+    
+                if (mem_type == '2') {
+                    $('.req_driver').removeProp('required');
+                    //$('.un').removeProp('required');
+                    $('.req_rec').prop('required', "required");
+                }
+        }
     });
 </script>
 

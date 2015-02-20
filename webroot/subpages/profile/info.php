@@ -91,7 +91,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
 
 
                             <select  <?php echo $is_disabled ?>
-                                name="profile_type" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
+                                name="profile_type" <?php //if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
                                 class="form-control member_type" required='required'>
                                 <option value="">Select</option>
                                 <?php

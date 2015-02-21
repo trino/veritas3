@@ -76,7 +76,7 @@ class LoginController extends AppController{
             
         }
         else{
-            $this->Flash->error('Invalid username or password');
+            $this->Flash->error('Invalid username or password.');
         }
         $this->redirect('/pages');
         }else

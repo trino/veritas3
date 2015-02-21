@@ -101,7 +101,7 @@ class TodoController extends AppController {
                 ->set($arr)
                 ->where(['id' => $id])
                 ->execute();
-    	        $this->Flash->success('Events edited successfully.');
+    	        $this->Flash->success('Event saved successfully.');
                 
             
             return $this->redirect(['action' => 'calender']);
@@ -123,7 +123,7 @@ class TodoController extends AppController {
       if($query->delete()
         ->where(['id' => $id])
         ->execute())
-         $this->Flash->success('Events Deleted successfully.');
+         $this->Flash->success('Event deleted successfully.');
 		return $this->redirect(['action' => 'calender']);
 	}
     

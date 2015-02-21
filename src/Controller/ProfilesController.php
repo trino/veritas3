@@ -556,11 +556,11 @@ public function video(){}
                         }
                         if(isset($_POST['drafts']) && ($_POST['drafts'] == '1'))
                         {
-                            $this->Flash->success('Profile Saved as draft Successfully');
+                            $this->Flash->success('Profile Saved as draft Successfully.');
                         }
                         else
                         {
-                            $this->Flash->success('Profile saved Successfully');
+                            $this->Flash->success('Profile saved Successfully.');
                         }
                         echo $profile->id;
                        
@@ -595,11 +595,11 @@ public function video(){}
                      echo $profile->id;
                         if(isset($_POST['drafts']) && ($_POST['drafts'] == '1'))
                         {
-                            $this->Flash->success('Profile Saved as draft Successfully');
+                            $this->Flash->success('Profile Saved as draft.');
                         }
                         else
                         {
-                            $this->Flash->success('Profile saved Successfully');
+                            $this->Flash->success('Profile saved Successfully.');
                         }
                 } else {
                      echo "0";
@@ -704,7 +704,7 @@ public function video(){}
             $check_pro_id = $this->Settings->check_pro_id($id);
             if($check_pro_id==1)
             {
-                $this->Flash->error('Sorry, the record does not exist');
+                $this->Flash->error('The record does not exist.');
                 return $this->redirect("/profiles/index");
                 //die();
             }
@@ -791,7 +791,7 @@ public function video(){}
             $check_pro_id = $this->Settings->check_pro_id($id);
             if($check_pro_id==1)
             {
-                $this->Flash->error('Sorry, the record does not exist');
+                $this->Flash->error('Sorry, the record does not exist.');
                 return $this->redirect("/profiles/index");
                 die();
             }

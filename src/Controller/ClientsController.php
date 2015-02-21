@@ -473,7 +473,7 @@ class ClientsController extends AppController {
                             }
                         }
                         if(isset($_POST['drafts']) && $_POST['drafts'] == '1')
-                        $this->Flash->success(ucfirst($settings->client) . ' saved as draft successfully.');
+                        $this->Flash->success(ucfirst($settings->client) . ' saved as draft.');
         				else
                         $this->Flash->success(ucfirst($settings->client) . ' saved successfully.');
                         	echo $client->id;
@@ -566,7 +566,7 @@ class ClientsController extends AppController {
 	   $check_client_id = $this->Settings->check_client_id($id);
             if($check_client_id==1)
             {
-                $this->Flash->error('Sorry, the record does not exist');
+                $this->Flash->error('The record does not exist.');
                 return $this->redirect("/clients/index");
                 //die();
             }
@@ -611,7 +611,7 @@ class ClientsController extends AppController {
 				$this->Flash->success('User saved successfully.');
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error('The user could not be saved. Please try again.');
+				$this->Flash->error('User could not be saved. Please try again.');
 			}
 		}
         //$client_details = $query->select()->where(['id'=>$id]);

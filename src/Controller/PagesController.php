@@ -63,7 +63,7 @@ class PagesController extends AppController {
                     ->set($con)
                     ->where(['slug'=>$slug])
                     ->execute();
-         $this->Flash->success('Page saved successfully');           
+         $this->Flash->success('Page saved successfully.');
         $this->redirect('/profiles/edit/'.$this->request->session()->read('Profile.id'));
     }
     function get_content($slug)

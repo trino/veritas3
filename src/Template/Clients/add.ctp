@@ -250,7 +250,7 @@ if ($action == "Add") { $action  = "Create";}
                                                     </div>
                                                     <?php if($settings->client_option==0){?>
                                                     <div class="form-group col-md-4">
-                                                        <label class="control-label">Divisions (1 per line)</label>
+                                                        <label class="control-label">Divisions </label>
                                                         <textarea name="division" id="division" placeholder="One division per line"
                                                                   class="form-control"><?php if (isset($client->division)) echo $client->division; ?></textarea>
                                                     </div>

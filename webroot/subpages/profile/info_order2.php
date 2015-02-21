@@ -125,7 +125,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
                         <a href="javascript:void(0);" class="btn btn-danger placenow"
-                           onclick="var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
+                           onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
                             MEE Order <i class="m-icon-swapright m-icon-white"></i></a>&nbsp;&nbsp; or &nbsp;&nbsp;<a
                             href="javascript:void(0);"
                             class="btn btn-info"
@@ -150,7 +150,7 @@
                         <div class="col-md-offset-3 col-md-9">
 
                             <a class="btn red button-next proceed"
-                               onclick="var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
+                               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
                                 Order Products <i class="m-icon-swapright m-icon-white"></i>
                             </a> 
                             <a class="btn grey button-next proceed"
@@ -177,9 +177,29 @@
 </div>
 
 <script>
-
-    $(function () {
+    function check_div()
+    {
+        var checker = 0;
+        $('.divisionsel select').each(function(){
+            checker++;
+        });
+        if(checker>0)
+        {
+            //alert($('.divisionsel select').val());
+            if(!$('.divisionsel select').val()){
+            $('.divisionsel select').attr('style','border:1px solid red;');    
+            return false;
+            }
+            return true;
+        }
+        else
+        return true;
         
+    }
+    $(function () {
+        $('#divisionsel').live('change',function(){
+            $(this).removeAttr('style');
+        });
         if($('.selecting_client').val())
         {
             var client = $('#selecting_client').val();

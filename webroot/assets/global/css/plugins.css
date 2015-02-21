@@ -311,6 +311,12 @@ Bootstrap Modal
   overflow: hidden !important;
 }
 
+/* BS 3.3.1 fix */
+.modal-backdrop {
+  position: fixed;
+  bottom: 0;
+}
+
 /***
 Bootstrap Select
 ***/
@@ -331,11 +337,11 @@ Bootstrap Select
 }
 
 .bootstrap-select.open .btn {
-  border-color: #999999;
+  border-color: #999;
 }
 
 .bootstrap-select.open.dropup .btn {
-  border-color: #999999;
+  border-color: #999;
 }
 
 .bootstrap-select .btn:focus {
@@ -397,37 +403,37 @@ Color variants
 ***/
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
-  color: white;
+  color: #fff;
   background: #428bca;
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info {
-  color: white;
-  background: #89c4f4;
+  color: #fff;
+  background: #89C4F4;
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success {
-  color: white;
-  background: #45b6af;
+  color: #fff;
+  background: #45B6AF;
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning {
-  color: white;
+  color: #fff;
   background: #dfba49;
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger {
-  color: white;
-  background: #f3565d;
+  color: #fff;
+  background: #F3565D;
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
-  color: #444444;
+  color: #444;
   background: #ececec;
 }
 
@@ -505,12 +511,18 @@ Toastr Notifications
   left: 50%;
   margin-left: -150px;
 }
+.toast-top-center .toast {
+  margin: 0 !important;
+}
 
 .toast-bottom-center {
   bottom: 12px;
   margin: 0 auto;
   left: 50%;
   margin-left: -150px;
+}
+.toast-bottom-center .toast {
+  margin: 0 !important;
 }
 
 /***
@@ -522,14 +534,14 @@ Bootstrap Wizard
 .form-wizard .steps {
   padding: 10px 0;
   margin-bottom: 15px;
-  background-color: white;
+  background-color: #fff;
   background-image: none;
   filter: none;
   border: 0px;
   box-shadow: none;
 }
 .form-wizard .steps > li > a.step {
-  background-color: white;
+  background-color: #fff;
   background-image: none;
   filter: none;
   border: 0px;
@@ -561,7 +573,7 @@ Bootstrap Wizard
   display: none;
 }
 .form-wizard .steps > li.active > a.step .number {
-  background-color: #89C4F4;
+  background-color: #45B6AF;
   color: #fff;
 }
 .form-wizard .steps > li.active > a.step .desc {
@@ -681,6 +693,28 @@ Error state for WYSIWYG Editors
 
 .has-warning .note-editor {
   border: 1px solid #faebcc !important;
+}
+
+/***
+Bootstrap GtreeTable
+***/
+.gtreetable .dropdown-menu {
+  margin-top: 0px;
+}
+.gtreetable .dropdown-menu:after, .gtreetable .dropdown-menu:before {
+  display: none !important;
+}
+.gtreetable .node-action .form-control {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+}
+.gtreetable .node-icon-selected,
+.gtreetable .node-icon-handle,
+.gtreetable .node-icon-ce,
+.gtreetable .node-icon-type {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
 }
 
 /***
@@ -855,7 +889,7 @@ Datatables Plugin(in v1.3)
 }
 
 .dataTable .details {
-  background-color: #eeeeee;
+  background-color: #eee;
 }
 
 .dataTable .details td,
@@ -872,12 +906,12 @@ Datatables Plugin(in v1.3)
 
 .dataTable .details tr:nth-child(odd) td,
 .dataTable .details tr:nth-child(odd) th {
-  background-color: #eeeeee;
+  background-color: #eee;
 }
 
 .dataTable .details tr:nth-child(even) td,
 .dataTable .details tr:nth-child(even) th {
-  background-color: #eeeeee;
+  background-color: #eee;
 }
 
 .dataTable > thead > tr > th.sorting,
@@ -1261,7 +1295,7 @@ Fullcalendar
 .portlet.calendar .fc-widget-header {
   background-image: none;
   filter: none;
-  background-color: #eeeeee;
+  background-color: #eee;
   text-transform: uppercase;
   font-weight: 300;
 }
@@ -1278,7 +1312,7 @@ Fullcalendar
 }
 .portlet.calendar.light .fc-button.fc-state-active, .portlet.calendar.light .fc-button.fc-state-hover {
   color: #333;
-  border-bottom: 2px solid #45b6af;
+  border-bottom: 2px solid #45B6AF;
 }
 .portlet.calendar.light .fc-button.fc-state-disabled {
   color: #aaa;
@@ -1287,7 +1321,7 @@ Fullcalendar
   padding: 0px 6px 20px 6px;
   margin-left: 2px;
   border: 0;
-  background-color: #dddddd;
+  background-color: #ddd;
   background-image: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -1300,10 +1334,10 @@ Fullcalendar
   text-align: center;
 }
 .portlet.calendar .mobile .fc-button.fc-state-hover, .portlet.calendar .mobile .fc-button.fc-state-active {
-  background-color: #eeeeee;
+  background-color: #eee;
 }
 .portlet.calendar .mobile .fc-button.fc-state-disabled {
-  color: #bbbbbb;
+  color: #bbb;
 }
 .portlet.calendar .mobile .fc-button-prev {
   margin-right: 5px;
@@ -1618,8 +1652,8 @@ div.tagsinput {
 }
 
 div.tagsinput span.tag {
-  background: #aaaaaa;
-  color: white;
+  background: #aaa;
+  color: #fff;
   border: 0;
   padding: 3px 6px;
   margin-top: 0;
@@ -1632,11 +1666,11 @@ div.tagsinput input {
 }
 
 div.tagsinput span.tag a {
-  color: white;
+  color: #fff;
 }
 
 div.tagsinput .not_valid {
-  color: white;
+  color: #fff;
   padding: 3px 6px;
   background-color: #e02222;
 }
@@ -1676,13 +1710,13 @@ JQVMAP Plugin
 .jqvmap-zoomin {
   height: 16px;
   width: 16px;
-  background-color: #666666;
+  background-color: #666;
 }
 
 .jqvmap-zoomout {
   height: 16px;
   width: 16px;
-  background-color: #666666;
+  background-color: #666;
 }
 
 .vmaps {
@@ -1811,12 +1845,12 @@ Color variants
 
 .noUi-info.noUi-connect,
 .noUi-info .noUi-connect {
-  background: #89c4f4;
+  background: #89C4F4;
 }
 
 .noUi-success.noUi-connect,
 .noUi-success .noUi-connect {
-  background: #45b6af;
+  background: #45B6AF;
 }
 
 .noUi-warning.noUi-connect,
@@ -1826,7 +1860,7 @@ Color variants
 
 .noUi-danger.noUi-connect,
 .noUi-danger .noUi-connect {
-  background: #f3565d;
+  background: #F3565D;
 }
 
 .noUi-default.noUi-connect,
@@ -1888,7 +1922,7 @@ Select2 Plugin
 }
 
 .select2-drop-active {
-  border: 1px solid #999999;
+  border: 1px solid #999;
   border-top: 0;
 }
 
@@ -1940,7 +1974,7 @@ Select2 Plugin
 
 .select2-container-active .select2-choice,
 .select2-container-active .select2-choices {
-  border: 1px solid #999999 !important;
+  border: 1px solid #999 !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
@@ -1956,7 +1990,7 @@ Select2 Plugin
 
 .select2-dropdown-open.select2-drop-above .select2-choice,
 .select2-dropdown-open.select2-drop-above .select2-choices {
-  border: 1px solid #999999 !important;
+  border: 1px solid #999 !important;
   border-top: 0 !important;
   background-image: none;
   background-color: #fff;
@@ -1966,7 +2000,7 @@ Select2 Plugin
 }
 
 .select2-drop.select2-drop-above.select2-drop-active {
-  border: 1px solid #999999 !important;
+  border: 1px solid #999 !important;
   border-bottom: 0 !important;
 }
 
@@ -2135,6 +2169,29 @@ Color variants
 
 .modal-open .select2-search {
   z-index: 10053;
+}
+
+/***
+Bootstrap input sizes
+***/
+/* Large input size */
+.form-control.input-lg .select2-choice {
+  height: 46px;
+  padding: 10px 16px;
+}
+
+.select2-container.input-lg .select2-choice .select2-arrow b {
+  background-position: 0 7px;
+}
+
+/* Small input size */
+.form-control.input-sm .select2-choice {
+  height: 30px;
+  padding: 1px 10px 5px 10px;
+}
+
+.select2-container.input-sm .select2-choice .select2-arrow b {
+  background-position: 0 0px;
 }
 
 /***

@@ -47,7 +47,7 @@
                         <div class="col-md-2" style="padding-left:0;">
 							<select class="form-control" name="submitted_by_id" style="">
 								<option value="">Submitted by</option>
-                                <?php 
+                                <?php
                                     foreach($users as $u)
                                     {
                                         ?>
@@ -65,7 +65,7 @@
 						<div class="col-md-2" style="padding-left:0;">
 							<select class="form-control" name="type">
 								<option value=""><?php echo ucfirst($settings->document);?> type</option>
-								<?php 
+								<?php
                                     foreach($type as $t)
                                     {
                                         ?>
@@ -119,7 +119,7 @@
                                 <th><?= $this->Paginator->sort('id');?></th>
                     			<th><?= $this->Paginator->sort('document_type',ucfirst($settings->document));?></th>
                     			<th><?= $this->Paginator->sort('user_id','Uploaded by');?><?php if(isset($end)) echo $end; if(isset($start)) echo "//".$start; ?></th>
-                    			<th><?= $this->Paginator->sort('created','Uploaded on');?></th>           			
+                    			<th><?= $this->Paginator->sort('created','Uploaded on');?></th>
                                 <th><?= $this->Paginator->sort('client_id',ucfirst($settings->client));?></th>
                     			<th class="actions"><?= __('Actions') ?></th>
 

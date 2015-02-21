@@ -24,36 +24,33 @@
 <link href="<?php echo $this->request->webroot;?>css/jquery-ui.css" rel="stylesheet" type="text/css"/>
 
 <!-- END GLOBAL MANDATORY STYLES -->
-	<!-- WARNING ABOUT TEST REMOVALS: The PHP question mark has been removed and would need to be replaced to un-comment the CSS -->
 <link rel="stylesheet" type="text/css" href="<?php echo $this->request->webroot;?>assets/global/plugins/select2/select2.css"/>
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->request->webroot;?>assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css"/>
 
-<!--<link href="<?php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css"/>-->
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
-	<!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/> -->
-
-	<!-- TEST REMOVAL ONLY NEEDED FOR PROFILES.EDIT.CTP <link href="< php echo $this->request->webroot;?>assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>-->
-
 <link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
 
 <link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/todo.css" rel="stylesheet" type="text/css"/>
-<!--<link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/profile-old.css" rel="stylesheet" type="text/css"/>-->
 
 
 <!-- END PAGE LEVEL PLUGIN STYLES -->
 <!-- BEGIN PAGE STYLES -->
 <link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
-<!-- END PAGE STYLES -->
-<!-- BEGIN THEME STYLES -->
-<!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
+
+    <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
 <link href="<?php echo $this->request->webroot;?>assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/themes/<?php echo $settings->layout;?>.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/> -->
+
+
+
+    <link href="<?php echo $this->request->webroot;?>css/style.css" rel="stylesheet" type="text/css"/>
+
+    <!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/> -->
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="<?php echo WEB_ROOT?>favicon.ico"/>
 <!-- END FOOTER -->

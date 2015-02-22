@@ -8,37 +8,42 @@
                     List <?php echo ucfirst($settings->client); ?>s
                 </div>
             </div>
-            <div class="portlet-body">
-                <?php
+            <div class="portlet-body ">
 
-                    //if ($this->request->params['controller'] == 'clients') {
-                ?>
 
-                <div class="chat-form">
-                    <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
-                    <?php if(isset($_GET['draft'])){?><input type="hidden" name="draft" /><?php }?>
-                        <div class="col-md-10" style="padding-left:0;" align="left">
-                            <input class="form-control input-inline" name="search" type="search"
-                                   placeholder="Search for <?php echo ucfirst($settings->client); ?>s"
-                                   value="<?php if (isset($search_text)) echo $search_text; ?>"
-                                   aria-controls="sample_1"/></DIV>
-                        <div class="col-md-2" style="padding-left:0;padding-right:0;" align="right">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </div>
-                    </form>
+                <div class="form-actions top chat-form" style="margin-top:0;">
+                    <div class="btn-set pull-left">
+
+                    </div>
+                    <div class="btn-set pull-right">
+
+
+                        <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
+                            <div class="form-actions top right">
+
+
+                                <?php if (isset($_GET['draft'])) { ?><input type="hidden" name="draft"/><?php } ?>
+
+                                <input class="form-control input-inline" name="search" type="search"
+                                       placeholder="Search <?php echo ucfirst($settings->client); ?>s"
+                                       value="<?php if (isset($search_text)) echo $search_text; ?>"
+                                       aria-controls="sample_1"/>
+                                <button type="submit" class="btn btn-primary input-inline">Search</button>
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
-                <?php
-                    // }
-                ?>
-                <div class="table-scrollable">
+
+
+                <div class="table-scrollable ">
                     <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                         <tr class="sorting">
-                            <th><?= $this->Paginator->sort('id','Id',['escape' => false]) ?></th>
-                            <th><?= $this->Paginator->sort('image','Image',['escape' => false]) ?></th>
-                            <th><?= $this->Paginator->sort('company_name', ucfirst($settings->client) . ' Name',['escape' => false]) ?></th>
-                            <th><?= $this->Paginator->sort('description','Description',['escape' => false]) ?></th>
-                           
+                            <th><?= $this->Paginator->sort('id', 'Id', ['escape' => false]) ?></th>
+                            <th>Logo</th>
+                            <th><?= $this->Paginator->sort('company_name', ucfirst($settings->client), ['escape' => false]) ?></th>
+
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         </thead>
@@ -46,18 +51,18 @@
                         <?php
                             $profile_id = $this->request->session()->read('Profile.id');
 
-                        if (count($client) == 0){
-                            echo '<TR><TD COLSPAN="6" ALIGN="CENTER">No ' . strtolower($settings->client) . 's found';
-                            if(isset($_GET['search'])) { echo " matching '" . $_GET['search'] . "'";}
-                            echo '</TD></TR>';
-                        }
+                            if (count($client) == 0) {
+                                echo '<TR><TD COLSPAN="6" ALIGN="CENTER">No ' . strtolower($settings->client) . 's found';
+                                if (isset($_GET['search'])) {
+                                    echo " matching '" . $_GET['search'] . "'";
+                                }
+                                echo '</TD></TR>';
+                            }
 
                             foreach ($client as $clients):
-                                //print_r($clients);
                                 $profiles = explode(",", $clients->profile_id);
-                                
-                                if (in_array($profile_id, $profiles) || $this->request->session()->read('Profile.super')=='1') {
-                                    //echo $this->request->session()->read('Profile.super');
+
+                                if (in_array($profile_id, $profiles) || $this->request->session()->read('Profile.super') == '1') {
                                     ?>
 
 
@@ -85,8 +90,8 @@
 
                                         </td>
                                         <td><?= h($clients->company_name) ?></td>
-                                        <td style="max-width: 350px;"><?= h($clients->description) ?></td>
-                                        
+                                        <!--td style="max-width: 250px;"><?= h($clients->description) ?></td-->
+
                                         <td class="actions  util-btn-margin-bottom-5">
 
 
@@ -101,9 +106,10 @@
                                                     echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);
                                                 }
                                                 if ($sidebar->client_delete == '1') { ?>
-                                                    <a href="<?php echo $this->request->webroot;?>clients/delete/<?php echo $clients->id;?>"
+                                                    <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $clients->id; ?>"
                                                        onclick="return confirm('Are you sure you want to delete <?= h($clients->company_name) ?>?');"
                                                        class="btn btn-danger">Delete</a>
+
                                                 <?php }
 
 
@@ -113,17 +119,20 @@
 
                                                 if ($sidebar->orders_create == '1') {
                                                     ?>
-                                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>documents/productSelection?client=<?php echo $clients->id;?>" class="btn btn-info">
+                                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/
+                                                        echo $this->request->webroot; ?>documents/productSelection?client=<?php echo $clients->id; ?>"
+                                                       class="btn btn-info">
                                                         Create Order</a>
-                                                    <?php
+                                                <?php
                                                 }
 
                                                 if ($sidebar->orders_list == '1') {
-?>
-                                                    <a href="<?php echo $this->request->webroot;?>documents/index/?client_id=<?php echo $clients->id;?>" class="btn btn-warning">
-                                                    View Order</a>
+                                                    ?>
+                                                    <a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id; ?>"
+                                                       class="btn btn-warning">
+                                                        View Orders</a>
 
-                                                    <?php
+                                                <?php
 
                                                 }
                                             ?>
@@ -145,10 +154,10 @@
 
 
                     <ul class="pagination sorting">
-                    <?php /*echo $this->Paginator->counter(
+                        <?php /*echo $this->Paginator->counter(
                                 'Page {{page}} of {{pages}}, showing {{current}} records out of
                                  {{count}} total, starting on record {{start}}, ending on {{end}} model is {{model}}'
-                            );*/?>
+                            );*/ ?>
                         <?= $this->Paginator->prev('< ' . __('previous')); ?>
                         <?= $this->Paginator->numbers(); ?>
                         <?= $this->Paginator->next(__('next') . ' >'); ?>
@@ -194,13 +203,13 @@
 </style>
 <script>
     $(function () {
-        $('.sorting').find('a').each(function(){
-            
-           <?php if(isset($_GET['draft'])){?>
-           var hrf = $(this).attr('href');
-           if(hrf!="")
-            $(this).attr('href',hrf+'&draft');
-           <?php } ?> 
+        $('.sorting').find('a').each(function () {
+
+            <?php if(isset($_GET['draft'])){?>
+            var hrf = $(this).attr('href');
+            if (hrf != "")
+                $(this).attr('href', hrf + '&draft');
+            <?php } ?>
         });
     })
-    </script>
+</script>

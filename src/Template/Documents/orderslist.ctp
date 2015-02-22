@@ -31,19 +31,23 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="chat-form">
+
+
+
+
+                <div class="form-actions top chat-form" style="margin-top:0;">
+                    <div class="btn-set pull-left">
+
+                    </div>
+                    <div class="btn-set pull-right">
+
                     <form action="<?php echo $this->request->webroot; ?>documents/orderslist" method="get">
                         <?php if(isset($_GET['draft'])){?><input type="hidden" name="draft" /><?php }?>
                         <?php
                             $users = $this->requestAction("documents/getAllUser");
                         ?>
-                        <div class="col-md-2" style="padding-left:0;">
-                            <input class="form-control" name="searchdoc" type="search" placeholder="Search Order Title"
-                                   value="<?php if (isset($search_text)) echo $search_text; ?>"
-                                   aria-controls="sample_1"/>
-                        </div>
-                        <div class="col-md-3" style="padding-left:0;">
-                            <select class="form-control" name="submitted_by_id" style="">
+
+                            <select class="form-control input-inline" name="submitted_by_id" style="">
                                 <option value="">Submitted by</option>
                                 <?php
                                     foreach ($users as $u) {
@@ -54,32 +58,11 @@
                                     }
                                 ?>
                             </select>
-                        </div>
-                        <!--
-                        <?php
-                            $type = $this->requestAction("documents/getDocType");
-                        ?>
-						<div class="col-md-3 col-sm-12">
-							<select class="form-control" name="type">
-								<option value="">Order Type</option>
-								<?php
-                            foreach ($type as $t) {
-                                ?>
-                                        <option value="<?php echo $t->title;?>" <?php if (isset($return_type) && $return_type == $t->title) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($t->title); ?></option>
-                                        <?php
-                            }
-                        ?>
-                                 <option value="orders" <?php if (isset($return_type) && $return_type == 'orders') { ?> selected="selected"<?php } ?>>Orders</option>
-                                 <option value="feedbacks" <?php if (isset($return_type) && $return_type == 'feedbacks') { ?> selected="selected"<?php } ?>>Feedbacks</option>
-							</select>
-						</div>-->
-                        <!--</form>-->
+
                         <?php
                             $clients = $this->requestAction("documents/getAllClient");
                         ?>
-                        <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByClient" method="get">-->
-                        <div class="col-md-3 " style="padding-left:0;">
-                            <select class="form-control showdivision" name="client_id">
+                            <select class="form-control showdivision input-inline" name="client_id">
                                 <option value=""><?php echo ucfirst($settings->client); ?></option>
                                 <?php
                                     foreach ($clients as $c) {
@@ -91,16 +74,23 @@
                                 ?>
 
                             </select>
-                        </div>
 
-                        <div class="col-md-2 divisions" style="padding-left:0;">
+                        <div class=" divisions input-inline" style="">
                           <!-- Divisions section -->  
                         </div>
-                        <div class="col-md-2" align="Right" style="padding-left:0;padding-right:0;">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </div>
+
+                        <input class="form-control input-inline" name="searchdoc" type="search" placeholder="Search Orders"
+                               value="<?php if (isset($search_text)) echo $search_text; ?>"
+                               aria-controls="sample_1"/>
+
+
+
+
+                        <button type="submit" class="btn btn-primary input-inline">Search</button>
+
 
                     </form>
+                </div>
                 </div>
 
 
@@ -118,14 +108,14 @@
                     });
                 })
                 </script>
-                <div class="table-responsive">
+                <div class="table-scrollable">
                     <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                         <tr class="sorting">
                             <th><?= $this->Paginator->sort('id'); ?></th>
                             <th><?= $this->Paginator->sort('orders.title', "Title"); ?></th>
-                            <th><?= $this->Paginator->sort('user_id', 'Uploaded by'); ?></th>
-                            <th><?= $this->Paginator->sort('uploaded_for', 'Uploaded for'); ?></th>
+                            <th><?= $this->Paginator->sort('user_id', 'Submitted by'); ?></th>
+                            <th><?= $this->Paginator->sort('uploaded_for', 'Submitted for'); ?></th>
                             <th><?= $this->Paginator->sort('client_id', ucfirst($settings->client)); ?></th>
                             <th>Division</th>                            
                             <th><?= $this->Paginator->sort('created', 'Created'); ?></th>

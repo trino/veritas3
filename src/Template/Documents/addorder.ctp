@@ -323,9 +323,12 @@ function provinces($name){
                         
                         <?php
                         $k_c = 0;
-                        foreach ($subdoccli as $sd) {
+                        foreach ($subdoccli2 as $sd) {
+                            $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
+                            if ($prosubdoc['display'] != 0 && $d->display == 1) {
                             $k_c++;
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
+                            
                             $tab_count = $d->id;
                             
                             $tab_count = $tab_count + 1;
@@ -345,7 +348,7 @@ function provinces($name){
                                     include('subpages/documents/' . $d->form);
                                 ?>
                             </div>
-                        <?php }
+                        <?php }}
                         if(!isset($k_co))$k_co=1; ?>
 
                         <div class="tabber <?php echo $tab; ?>" id="tab<?php echo ++$k_co; ?>">

@@ -192,7 +192,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     <?php // if ($settings->client_option == 0) { ?>
                     
                     <div class="col-md-6" id="driver_div"
-                         style="display:<?php if ((isset($p) && $p->profile_type == 5))  echo 'block'; else echo "none" ?>;">
+                         style="display:<?php if ((isset($p) && $p->profile_type == 5) || ($this->request->session()->read('Profile.profile_type') == 2))  echo 'block'; else echo "none" ?>;">
                         <div class="form-group">
                             <label class="control-label">Driver Type</label>
                             <select  <?php echo $is_disabled ?> name="driver" class="form-control select_driver req_driver">
@@ -278,7 +278,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                         <div class="form-group">
                             <label class="control-label">Username</label>
                             <input <?php echo $is_disabled ?> name="username" type="text"
-                                                              class="form-control req_driver" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
+                                                              class="form-control req_driver req_rec" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
                             <span class="error passerror flashUser"
                                   style="display: none;">Username already exists</span>
                             <span class="error passerror flashUser1"
@@ -311,7 +311,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                    <?php // if (isset($p->password)){ ?><?php //echo $p->password; ?> <?php //} ?>
                                    <?php if (isset($p->password) && $p->password){//do nothing 
                                    }else{?>required="required"<?php }?>  />-->
-                                   <input  <?php echo $is_disabled ?> type="password" value="" autocomplete="off" name="password" id="password" class="form-control not_rec_driver"/>
+                                   <input  <?php echo $is_disabled ?> type="password" value="" autocomplete="off" name="password" id="password" class="form-control req_rec"/>
                         </div>
                     </div>
                     <?php if (isset($p->password)){ ?>
@@ -320,7 +320,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Re-type Password</label>
-                            <input  <?php echo $is_disabled ?> type="password" class="form-control not_rec_driver"
+                            <input  <?php echo $is_disabled ?> type="password" class="form-control req_rec"
                                    id="retype_password" <?php //if (isset($p->password)) { ?> <?php // echo $p->password; ?>  <?php // } ?>/>
                             <span class="error passerror flashPass1"
                                   style="display: none;">Please enter same password</span>
@@ -797,7 +797,10 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
              event.preventDefault();
              $('#savepro').text("Saving...");
            var strs = $(this).serialize();
-           $(':disabled[name]', '#save_clientz').each(function () {
+           $('#save_clientz').each(function () {
+                    strs = strs + '&' + $(this).attr('name') + '=' + $(this).val();
+                });
+                $(':disabled[name]').each(function(){
                     strs = strs + '&' + $(this).attr('name') + '=' + $(this).val();
                 });
            var adds = "<?php echo ($this->request['action']=='add')?'0':$this->request['pass'][0];?>";
@@ -839,12 +842,12 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
         $('.member_type').change(function () {
             if ($(this).val() == '5') {
                 $('.req_driver').each(function(){
-                   $(this).attr('required',"required");
+                   $(this).prop('required');
                    //alert($(this).attr('name'));
                 });
-                $('.nav-tabs li:not(.active)').each(function () {
-                    $(this).hide();
-                });
+                //$('.nav-tabs li:not(.active)').each(function () {
+                  //  $(this).hide();
+                //});
                 $('#driver_div').show();
                 $('#isb_id').hide();
                 //$('.un').removeProp('required');
@@ -859,7 +862,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                 });
                 $('#driver_div').hide();
                 $('#isb_id').show();
-                $('.req_driver').removeAttr('required');
+                $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
                 //$('.un').prop('required', "required");
                 <?php
@@ -890,11 +893,11 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
         {
             if (mem_type == '5') {
                     $('.req_driver').each(function(){
-                       $(this).attr('required',"required");
+                       $(this).prop('required');
                        //alert($(this).attr('name'));
-                    });
-                    $('.nav-tabs li:not(.active)').each(function () {
-                        $(this).hide();
+                    //});
+                    //$('.nav-tabs li:not(.active)').each(function () {
+                      //  $(this).hide();
                     });
                     $('#driver_div').show();
                     $('#isb_id').hide();
@@ -910,7 +913,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                     });
                     $('#driver_div').hide();
                     $('#isb_id').show();
-                    $('.req_driver').removeAttr('required');
+                    $('.req_driver').removeProp('required');
                     $('.req_rec').removeProp('required');
                     //$('.un').prop('required', "required");
                     <?php

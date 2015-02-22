@@ -450,7 +450,7 @@ public function video(){}
                         $from = 'info@isbmee.com';
                         $to = $_POST['email'];
                         $sub = 'Profile created successfully';
-                        $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
+                        $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: ';if(isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
                         $this->sendEmail($from,$to,$sub,$msg);
                     }
                     $this->Flash->success('Profile created successfully.');

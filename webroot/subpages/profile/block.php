@@ -27,7 +27,7 @@
             <?php
         }
          ?>
-            <li class="">
+            <li <?php if($this->request->session()->read('Profile.profile_type')=='2') echo 'class = "active"'; ?>>
                 <a href="#subtab_2_4" data-toggle="tab">Assign to <?php echo ucfirst($settings->client) ?></a>
             </li>
             <!--<li class="">
@@ -37,7 +37,7 @@
     <!--</div>-->
     <div class="portlet-body">
                                     <div class="tab-content">
-                                                <div class="tab-pane active" id="subtab_2_1">
+                                                <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")!=2) echo 'active'; ?>" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
                                                                                                                
@@ -780,7 +780,7 @@
                                         ?>
                                         </form>
                                     </div>
-                                    <div class="tab-pane" id="subtab_2_4">
+                                    <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")==2) echo 'active'; ?>" id="subtab_2_4">
                                         
                                         <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) 
                                         {

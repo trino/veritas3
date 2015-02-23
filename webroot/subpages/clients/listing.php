@@ -128,9 +128,14 @@
 
                                                 if ($sidebar->orders_list == '1') {
                                                     ?>
-                                                    <a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id; ?>"
+                                                    <a href="<?php echo $this->request->webroot; ?>documents/orderslist/?client_id=<?php echo $clients->id; ?>"
                                                        class="btn btn-warning">
                                                         View Orders</a>
+
+                                                    <a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id; ?>"
+                                                       class="btn btn-warning">
+                                                        View Documents</a>
+
 
                                                 <?php
 
@@ -147,9 +152,10 @@
                         </tbody>
                     </table>
 
-                </div>
+                </div></div>
 
-
+            <div class="form-actions">
+                <div class="modal-footer">
                 <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
 
 
@@ -164,10 +170,16 @@
                     </ul>
 
                 </div>
-            </div>
+                </div>
+</div>
+
         </div>
     </div>
 </div>
+
+
+
+
 <style>
     @media print {
         .page-header {

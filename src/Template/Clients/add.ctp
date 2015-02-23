@@ -161,7 +161,7 @@
                         </UL>
                     </div>
 
-                    <div class="portlet-body">
+                    <div class="portlet-body form"><div class="form-body" style="padding-bottom: 0px;">
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_1_1">
                                 <div id="tab_1-1" class="tab-pane active">
@@ -440,7 +440,7 @@
 
                                                 <div class="docMore" data-count="1">
                                                     <div style="display:block;">
-                                                        <a href="javascript:void(0)" id="addMore1" class="btn btn-primary" style="margin-bottom:15px;">Browse</a>
+                                                        <a href="javascript:void(0)" id="addMore1" class="btn btn-primary" >Browse</a>
                                                         <span> <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/></span>
                                                     </div>
                                                 </div>
@@ -462,18 +462,18 @@
                                                     <button class="close" data-close="alert"></button>
                                                     Data saved successfully
                                                 </div>
-
-
-                                                <!--<div class="margin-top-10">-->
-                                                <button type="submit" class="btn btn-primary"
-                                                        id="save_client_p1">Save
-                                                </button>
-                                                <button type="submit" class="btn btn-info"
-                                                        onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">
-                                                    Save As Draft
-                                                </button>
                                             </div>
-                                            <!--</div>-->
+
+                                            <div class="clearfix"></div>
+
+
+                                            <div class="form-actions top chat-form" style="height:75px; margin-bottom:-1px;padding-right: 30px;margin-right: 5px;margin-left: 5px;" align="right">
+                                                <div class="row">
+                                            <button type="submit" class="btn btn-primary" id="save_client_p1">Save Changes</button>
+                                            <button type="submit" class="btn btn-info" onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">Save As Draft</button>
+</div></div>
+
+
                                     </form>
                                 </div>
                             </div>
@@ -568,7 +568,7 @@
                         </div>
 
                         <!-- END SAMPLE FORM PORTLET-->
-
+</div>
                     </div>
                 </div>
             </div>

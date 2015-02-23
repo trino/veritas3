@@ -172,7 +172,7 @@ echo '';
 <td class="actions  util-btn-margin-bottom-5">
 
 <?php
-if ($sidebar->orders_list == '1' && !isset($_GET["draft"]) {
+if ($sidebar->orders_list == '1' && !isset($_GET["draft"])) {
 if (!isset($_GET['table']))
 echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id], ['class' => 'btn btn-info']);
 else

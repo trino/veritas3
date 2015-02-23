@@ -173,132 +173,136 @@
                 </div>
 
                 <div class="form-body">
-                <div class="table-scrollable">
+                    <div class="table-scrollable">
 
-                    <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
-                        <thead>
-                        <tr class="sorting">
-                            <th><?= $this->Paginator->sort('id') ?></th>
+                        <table
+                            class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
+                            <thead>
+                            <tr class="sorting">
+                                <th><?= $this->Paginator->sort('id') ?></th>
 
-                            <th><?= $this->Paginator->sort('username', 'Username') ?></th>
-                            <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
-                            <th><?= $this->Paginator->sort('email') ?></th>
+                                <th><?= $this->Paginator->sort('username', 'Username') ?></th>
+                                <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
+                                <th><?= $this->Paginator->sort('email') ?></th>
 
-                            <th><?= $this->Paginator->sort('fname', 'First Name') ?></th>
-                            <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
+                                <th><?= $this->Paginator->sort('fname', 'First Name') ?></th>
+                                <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
 
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                            $row_color_class = "odd";
+                                <th class="actions"><?= __('Actions') ?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                $row_color_class = "odd";
 
-                            $isISB = (isset($sidebar) && $sidebar->client_option == 0);
-                            $profiletype = ['', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Owner Operator', 'Owner Driver', 'Employee', 'Guest', 'Partner'];
+                                $isISB = (isset($sidebar) && $sidebar->client_option == 0);
+                                $profiletype = ['', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Owner Operator', 'Owner Driver', 'Employee', 'Guest', 'Partner'];
 
 
-                            if (count($profiles) == 0) {
-                                echo '<TR><TD COLSPAN="7" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';
-                                if (isset($_GET['searchprofile'])) {
-                                    echo " matching '" . $_GET['searchprofile'] . "'";
+                                if (count($profiles) == 0) {
+                                    echo '<TR><TD COLSPAN="7" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';
+                                    if (isset($_GET['searchprofile'])) {
+                                        echo " matching '" . $_GET['searchprofile'] . "'";
+                                    }
+                                    echo '</TD></TR>';
                                 }
-                                echo '</TD></TR>';
-                            }
 
-                            foreach ($profiles as $profile):
-                                if ($row_color_class == "even") {
-                                    $row_color_class = "odd";
-                                } else {
-                                    $row_color_class = "even";
-                                }
-                                ?>
+                                foreach ($profiles as $profile):
+                                    if ($row_color_class == "even") {
+                                        $row_color_class = "odd";
+                                    } else {
+                                        $row_color_class = "even";
+                                    }
+                                    ?>
 
-                                <tr class="<?= $row_color_class; ?>" role="row">
-                                    <td><?= $this->Number->format($profile->id) ?></td>
+                                    <tr class="<?= $row_color_class; ?>" role="row">
+                                        <td><?= $this->Number->format($profile->id) ?></td>
 
-                                    <td><?= h($profile->username) ?></td>
-                                    <td><?php
-                                        if (strlen($profile->profile_type) > 0) {
-                                                echo h($profiletype[$profile->profile_type]);
-  }else{
-                                            echo "Draft";
-                                        }
-                                        ?></td>
-
-                                    <td><?= h($profile->email) ?></td>
-
-
-                                    <td><?= h($profile->fname) ?></td>
-                                    <td><?= h($profile->lname) ?></td>
-
-
-                                    <td class="actions  util-btn-margin-bottom-5">
-
-                                        <?php if ($sidebar->profile_list == '1') {
-                                            echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);
-                                        } ?>
-                                        <?php
-                                            $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
-                                            if ($sidebar->profile_edit == '1') {
-
-                                                if ($checker == 1) {
-                                                    echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-
+                                        <td><?= h($profile->username) ?></td>
+                                        <td><?php
+                                                if (strlen($profile->profile_type) > 0) {
+                                                    echo h($profiletype[$profile->profile_type]);
+                                                } else {
+                                                    echo "Draft";
                                                 }
+                                            ?></td>
+
+                                        <td><?= h($profile->email) ?></td>
+
+
+                                        <td><?= h($profile->fname) ?></td>
+                                        <td><?= h($profile->lname) ?></td>
+
+
+                                        <td class="actions  util-btn-margin-bottom-5">
+
+                                            <?php if ($sidebar->profile_list == '1') {
+                                                echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);
                                             } ?>
-                                        <?php if ($sidebar->profile_delete == '1') {
-                                            if ($this->request->session()->read('Profile.super') == '1') {
-                                                if ($this->request->session()->read('Profile.id') != $profile->id) {
+                                            <?php
+                                                $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
+                                                if ($sidebar->profile_edit == '1') {
+
+                                                    if ($checker == 1) {
+                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
+
+                                                    }
+                                                } ?>
+                                            <?php if ($sidebar->profile_delete == '1') {
+                                                if ($this->request->session()->read('Profile.super') == '1') {
+                                                    if ($this->request->session()->read('Profile.id') != $profile->id) {
+                                                        ?>
+                                                        <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?>"
+                                                           onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');"
+                                                           class="btn btn-danger">Delete</a>
+                                                    <?php
+                                                    }
+                                                } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
                                                     ?>
                                                     <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?>"
                                                        onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');"
                                                        class="btn btn-danger">Delete</a>
                                                 <?php
                                                 }
-                                            } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
-                                                ?>
-                                                <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?>"
-                                                   onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');"
-                                                   class="btn btn-danger">Delete</a>
-                                            <?php
+
                                             }
-
-                                        }
-                                        ?>
-                                        <?php
-                                            if ($profile->profile_type == 5) {
-                                                ?>
-                                                <a href="<?php echo $this->request->webroot; ?>documents/productSelection?driver=<?php echo $profile->id; ?>"
-                                                   class="btn btn-success">Create Order</a>
-                                                <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
-                                                   class="btn btn-primary">Score Card</a>
+                                            ?>
                                             <?php
-                                            }
-                                        ?>
+                                                if ($profile->profile_type == 5) {
+                                                    ?>
+                                                    <a href="<?php echo $this->request->webroot; ?>documents/productSelection?driver=<?php echo $profile->id; ?>"
+                                                       class="btn btn-success">Create Order</a>
+                                                    <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
+                                                       class="btn btn-primary">Score Card</a>
+                                                <?php
+                                                }
+                                            ?>
 
 
-                                    </td>
+                                        </td>
 
-                                </tr>
+                                    </tr>
 
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-</div>
 
                 <div class="form-actions" style="height:75px;">
                     <div class="row">
                         <div class="col-md-12" align="right">
-                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" align="right" style="margin-top:-10px;">
-                    <ul class="pagination sorting">
-                        <?= $this->Paginator->prev('< ' . __('previous')); ?>
-                        <?= $this->Paginator->numbers(); ?>
-                        <?= $this->Paginator->next(__('next') . ' >'); ?>
-                    </ul>
+                            <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" align="right"
+                                 style="margin-top:-10px;">
+                                <ul class="pagination sorting">
+                                    <?= $this->Paginator->prev('< ' . __('previous')); ?>
+                                    <?= $this->Paginator->numbers(); ?>
+                                    <?= $this->Paginator->next(__('next') . ' >'); ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                        </div></div></div>
 
             </div>
         </div>

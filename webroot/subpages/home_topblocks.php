@@ -176,7 +176,7 @@ function randomcolor(){
 
 
 
-     <?php if ($block->message == 1 ) { ?>
+     <?php if ($block->message == 1 && $sidebar->messages ==1) { ?>
         <a class="tile bg-green" href="<?php echo $this->request->webroot; ?>messages" style="display: block;">
             <div class="tile-body">
                 <i class="fa icon-envelope"></i>
@@ -188,7 +188,7 @@ function randomcolor(){
         </a>
     <?php } ?>
 
-    <?php if ($block->schedule == 1) { ?>
+    <?php if ($block->schedule == 1 && $sidebar->schedule ==1) { ?>
     <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
         <a  href="<?php echo $this->request->webroot;?>todo/calender" class="tile bg-green-meadow" style="display: block;">
             <div class="tile-body">
@@ -237,7 +237,7 @@ function randomcolor(){
     <?php } ?>
 
 
-    <?php if ($block->analytics == 1) { ?>
+    <?php if ($block->analytics == 1 && $sidebar->analytics ==1) { ?>
         <a href="<?php echo $this->request->webroot;?>documents/analytics" class="tile bg-red-sunglo" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-bar-chart-o"></i>
@@ -247,7 +247,7 @@ function randomcolor(){
                 <div class="number"></div>
             </div>
         </a>
-        <a href="<?php echo $this->request->webroot;?>documents/analytics?drafts=1" class="tile bg-red-sunglo" style="display: block;">
+        <!--<a href="<?php echo $this->request->webroot;?>documents/analytics?drafts=1" class="tile bg-red-sunglo" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-bar-chart-o"></i>
             </div>
@@ -255,7 +255,7 @@ function randomcolor(){
                 <div class="name">Analytics for Drafts</div>
                 <div class="number"></div>
             </div>
-        </a>
+        </a>-->
     <?php } ?>
 
 

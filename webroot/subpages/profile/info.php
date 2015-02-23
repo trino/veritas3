@@ -269,7 +269,7 @@
                             <div class="form-group">
                                 <label class="control-label">Username</label>
                                 <input <?php echo $is_disabled ?> name="username" type="text"
-                                                                  class="form-control req_driver req_rec" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
+                                                                  class="form-control req_driver req_rec uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
                             <span class="error passerror flashUser"
                                   style="display: none;">Username already exists</span>
                             <span class="error passerror flashUser1"
@@ -656,6 +656,7 @@
 <script>
     function check_username() {
         if ($('#retype_password').val() == $('#password').val()) {
+            
             var client_id = $('.client_profile_id').val();
             if (client_id == "") {
 
@@ -706,7 +707,9 @@
                             });
                         }
                         else
+                        {
                             $('#hiddensub').click();
+                        }
                     }
                 }
             });

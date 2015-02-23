@@ -289,8 +289,38 @@
                                                                                           name="side[messages]"
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->messages == 0) echo "checked"; ?>/>
                                                         No </label>
-                                                    </td>
-                                                    </tr>    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vtop">Schedule</td>
+                                                <td>
+                                                     <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[schedule]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->schedule == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[schedule]"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->schedule == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="vtop">Analytics</td>
+                                                <td>
+                                                     <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[analytics]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->analytics == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[analytics]"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->analytics == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>       
                                                 <!--<tr>
                                                 <td class="vtop">Drafts</td>
                                                 <td>

@@ -440,15 +440,22 @@
 
                                                 <div class="docMore" data-count="1">
                                                     <div style="display:block;">
-                                                        <a href="javascript:void(0)" id="addMore1"
-                                                           class="btn btn-primary">Browse</a>
-                                                        <span></span>
-                                                        <input type="hidden" name="client_doc[]" value=""
-                                                               class="addMore1_doc moredocs"/>
+                                                        <a href="javascript:void(0)" id="addMore1" class="btn btn-primary" style="margin-bottom:15px;">Browse</a>
+                                                        <span> <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/></span>
                                                     </div>
                                                 </div>
                                             </div>
 
+
+
+
+                                            <div class="form-group col-md-12"><!--<center>-->
+
+                                                <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc">
+                                                    Add More
+                                                </a>
+
+                                            </div>
                                             <div class="form-group col-md-12" align="right"><!--<center>-->
                                                 <div class="margin-top-10 alert alert-success display-hide flash1"
                                                      style="display: none;">
@@ -458,11 +465,6 @@
 
 
                                                 <!--<div class="margin-top-10">-->
-                                            </div><div class="form-group col-md-2" align="left">
-                                                <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc">
-                                                    Add More
-                                                </a>
-                                                </div><div class="form-group col-md-10" align="right">
                                                 <button type="submit" class="btn btn-primary"
                                                         id="save_client_p1">Save
                                                 </button>
@@ -734,7 +736,7 @@
         var total_count = $('.docMore').data('count');
         $('.docMore').data('count', parseInt(total_count) + 1);
         total_count = $('.docMore').data('count');
-        var input_field = '<div  class="form-group col-md-12"><div class="col-md-6"><span></span><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a></div></div>';
+        var input_field = '<div  class="form-group col-md-12"><div class="col-md-12"><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a></div></div>';
         $('.docMore').append(input_field);
         initiate_ajax_upload('addMore' + total_count, 'doc');
 

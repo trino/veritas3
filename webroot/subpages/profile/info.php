@@ -311,7 +311,7 @@ function printprovinces($name, $selected="", $isdisabled="", $isrequired=false){
                                    <?php // if (isset($p->password)){ ?><?php //echo $p->password; ?> <?php //} ?>
                                    <?php if (isset($p->password) && $p->password){//do nothing 
                                    }else{?>required="required"<?php }?>  />-->
-                                   <input  <?php echo $is_disabled ?> type="password" value="" autocomplete="off" name="password" id="password" class="form-control req_rec"/>
+                                   <input  <?php echo $is_disabled ?> type="password" value="<?php if (isset($p->real_pass) && $p->real_pass) echo $p->real_pass; ?>" autocomplete="off" name="password" id="password" class="form-control req_rec"/>
                         </div>
                     </div>
                     <?php if (isset($p->password)){ ?>

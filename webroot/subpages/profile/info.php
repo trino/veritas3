@@ -299,8 +299,8 @@
                                 <label class="control-label">Password</label>
                                 <!-- <input  <?php echo $is_disabled ?> type="password" name="password" id="password" class="form-control"
                                    <?php // if (isset($p->password)){ ?><?php //echo $p->password; ?> <?php //} ?>
-                                   <?php if (isset($p->password) && $p->password){//do nothing 
-                                    }else{ ?>required="required"<?php } ?>  />-->
+                                   <?php if (isset($p->password) && $p->password){//do nothing
+                                   }else{?>required="required"<?php }?>  />-->
                                 <input  <?php echo $is_disabled ?> type="password" value="" autocomplete="off"
                                                                    name="password" id="password"
                                                                    class="form-control req_rec"/>

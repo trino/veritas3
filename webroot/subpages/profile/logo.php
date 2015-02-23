@@ -8,8 +8,9 @@ function printlogos($logos1, $webroot, $index,$uid){ //* replaces the logo enume
         $img = "image" . $index; ?>
         <div class="col-md-4" align="center">
             <P><input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> id="<?php echo $img ?>"/>
-            <label for="<?php echo $img ?>" class="control-label"><img style="max-width:100px;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" /></label></P>
-            <P><a href="javascript:void(0);"  class="btn btn-danger deletelogo" id="<?php echo $logo->id;?>">Delete</a></P>
+            <label for="<?php echo $img ?>" class="control-label">
+                <img alt="<?php echo $logo->id;?>" style="max-width:100px;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" />
+            </label></P><P><a href="javascript:void(0);"  class="btn btn-danger deletelogo" id="<?php echo $logo->id;?>">Delete Logo <?php echo $logo->id;?></a></P>
         </div>
         <?php
         if ($index==3){$index=0; echo '</div><div class="row">'; }
@@ -191,9 +192,8 @@ new AjaxUpload(button,{
 }
 $(function(){
     $('.deletelogo').live('click',function(){
-        
-        var con = confirm("Confirm Delete?");
         var lid = $(this).attr('id');
+        var con = confirm("Are you sure you want to delete logo "+lid+"?");
         if(con== true)
         {
             $(this).parent().remove();

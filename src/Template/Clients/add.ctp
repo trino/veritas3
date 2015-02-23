@@ -742,19 +742,18 @@
     });
     //delete image
     $('.img_delete').live('click', function () {
-        var con = confirm('Confirm Delete?');
+        var file = $(this).attr('title');
+        if (file == file.replace("&", " ")) {
+            var id = 0;
+        }
+        else {
+            var f = file.split("&");
+            file = f[0];
+            var id = f[1];
+        }
+
+        var con = confirm('Are you sure you want to delete "' + file + '"?');
         if (con == true) {
-            var file = $(this).attr('title');
-            if (file == file.replace("&", " ")) {
-                var id = 0;
-            }
-            else {
-                var f = file.split("&");
-                file = f[0];
-                var id = f[1];
-            }
-
-
             $.ajax({
                 type: "post",
                 data: 'id=' + id,

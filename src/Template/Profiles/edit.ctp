@@ -311,24 +311,7 @@
                                     <?php
                                         if ($this->request['action'] != 'add') {
 
-                                            if ($this->request->session()->read('Profile.admin') && $this->request->session()->read('Profile.id') == $id) {
-                                                ?>
-
-
-                                                <?php if ($this->request->session()->read('Profile.super')) { ?>
-                                                    <li>
-                                                        <a href="#tab_1_5" data-toggle="tab">Logo</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#tab_1_6" data-toggle="tab">Pages</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab_1_8" data-toggle="tab">Other</a>
-                                                    </li>
-                                                <?php
-                                                }
-                                            }
+                                            
 
                                             if ($this->request->session()->read('Profile.admin') || $this->request->session()->read('Profile.profile_type') == '2') { ?>
                                                 <li>

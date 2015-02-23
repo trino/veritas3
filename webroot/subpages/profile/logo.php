@@ -8,8 +8,8 @@ function printlogos($logos1, $webroot, $index,$uid){ //* replaces the logo enume
         $img = "image" . $index; ?>
         <div class="col-md-4" align="center">
             <P><input type="radio" value="<?php echo $logo->id; ?>" name="logo" <?php echo ($logo->active == '1') ? "checked='checked'" : ""; ?> id="<?php echo $img ?>"/>
-            <label for="<?php echo $img ?>" class="control-label">
-                <img alt="<?php echo $logo->id;?>" style="max-width:100px;max-height:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" />
+            <label for="<?php echo $img ?>" class="control-label" style="min-height: 50px;">
+                <img alt="<?php echo $logo->id;?>" style="max-width:100px;" src="<?php echo $webroot; ?>img/logos/<?php echo $logo->logo; ?>" />
             </label></P><P><a href="javascript:void(0);"  class="btn btn-danger deletelogo" id="<?php echo $logo->id;?>">Delete Logo <?php echo $logo->id;?></a></P>
         </div>
         <?php
@@ -48,7 +48,7 @@ $uid = $this->request->session()->read("Profile.id");
                                         <div class="tab-pane active" id="subtab_1_1">
                                             <div class="portlet solid blue" -->
 
-                                                <div class="portlet-body">
+                                                <div class="portlet-body" align="right">
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos" method="post" class="form-inline" role="form" id="logoform">
 
@@ -75,7 +75,7 @@ $uid = $this->request->session()->read("Profile.id");
                                         <div class="tab-pane" id="subtab_1_2">
                                             <div class="portlet solid blue" -->
 
-                                                <div class="portlet-body">
+                                                <div class="portlet-body" align="right">
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/secondary"
                                                           method="post" class="form-inline" role="form" id="logoform1">
@@ -103,7 +103,7 @@ $uid = $this->request->session()->read("Profile.id");
                                         <div class="tab-pane" id="subtab_1_3">
                                             <div class="portlet solid blue" -->
 
-                                                <div class="portlet-body">
+                                                <div class="portlet-body" align="right">
 
                                                     <form action="<?php echo $this->request->webroot; ?>logos/login"
                                                           method="post" class="form-inline" role="form" id="logoform2">

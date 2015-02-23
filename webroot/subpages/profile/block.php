@@ -382,15 +382,19 @@
                                         if (!isset($disabled)) {
                                             ?>
                                             <div class="res"></div>
+
+
+
+
                                             <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10"><center>
+                                            <div class="margin-top-10" align="right">
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
                                                        value="Save Changes"/>
 
-                                                </center></div>
+                                                </div>
                                         <?php
                                         }
                                         ?>
@@ -462,10 +466,9 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                                        <div class="margin-top-10"><center>
+                                                        <div class="margin-top-10" align="right">
                                                             <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
-                                                                Save Changes </a></center>
-
+                                                                Save Changes </a>
                                                         </div>
                                                     <?php
                                                     }
@@ -800,9 +803,9 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10"><center>
+                                            <div class="margin-top-10" align="right">
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_home"
-                                                       value="Save Changes"/></center>
+                                                       value="Save Changes"/>
 
                                             </div>
                                         <?php

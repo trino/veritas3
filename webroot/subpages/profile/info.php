@@ -55,7 +55,7 @@
         <div class="tab-pane active" id="subtab_4_1">
 
 
-            <div class="portlet box form">
+            <div class="portlet box ">
 
 
                 <form role="form" action="" method="post" id="save_clientz">
@@ -611,12 +611,12 @@
                             ?>
                                 <div class="col-md-12">
 
-                                    <div class="margin-top-10 form-actions">
+                                    <div class="margin-top-10 form-actions" align="right">
                                         <a href="javascript:void(0)" class="btn btn-primary"
                                            onclick="return check_username();" id="savepro">
                                             Save Changes
                                         </a>
-                                        <button class="btn btn-primary"
+                                        <button class="btn btn-info"
                                                 onclick="$('#profile_drafts').val('1'); $('#save_clientz').attr('novalidate','novalidate');$('#hiddensub').click();">
                                             Save As Draft
                                         </button>

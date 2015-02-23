@@ -8,18 +8,11 @@
                     List <?php echo ucfirst($settings->client); ?>s
                 </div>
             </div>
-            <div class="portlet-body ">
+            <div class="portlet-body form">
 
 
-                <div class="form-actions top chat-form" style="margin-top:0;">
-                    <div class="btn-set pull-left">
+                        <form action="<?php echo $this->request->webroot; ?>clients/search" method="get" class="form-actions" style="height:75px;" align="right">
 
-                    </div>
-                    <div class="btn-set pull-right">
-
-
-                        <form action="<?php echo $this->request->webroot; ?>clients/search" method="get">
-                            <div class="form-actions top right">
 
 
                                 <?php if (isset($_GET['draft'])) { ?><input type="hidden" name="draft"/><?php } ?>
@@ -28,14 +21,14 @@
                                        placeholder="Search <?php echo ucfirst($settings->client); ?>s"
                                        value="<?php if (isset($search_text)) echo $search_text; ?>"
                                        aria-controls="sample_1"/>
-                                <button type="submit" class="btn btn-primary input-inline">Search</button>
-                            </div>
+                                <button type="submit" class="btn btn-primary input-inline" style="margin-left:10px;">Search</button>
+
                         </form>
 
-                    </div>
-                </div>
 
 
+
+                <div class="form-body">
                 <div class="table-scrollable ">
                     <table class="table table-hover  table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
@@ -152,11 +145,16 @@
                         </tbody>
                     </table>
 
-                </div></div>
+                </div>
+                    </div>
             <div class="clearfix"></div>
-            <div class="form-actions" align="right">
-                <div class="row" style="padding-right: 13px;padding-top: 3px;"><div class="col-md-12">
-                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
+
+                <div class="form-actions" style="height:75px;">
+                    <div class="row">
+                        <div class="col-md-12" align="right">
+
+
+                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" style="margin-top:-10px;">
 
 
                     <ul class="pagination sorting">
@@ -169,11 +167,10 @@
                         <?= $this->Paginator->next(__('next') . ' >'); ?>
                     </ul>
 
-                </div></div>
                 </div>
-</div>
+</div></div></div>
 
-        </div>
+        </div></div></div>
     </div>
 </div>
 

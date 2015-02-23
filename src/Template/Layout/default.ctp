@@ -270,7 +270,9 @@
 
 		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/terms"><?php get_title('terms') ?></a>
 
-        <?php if($this->request->session()->read('Profile.super')){?> / <a  style = "color:white;" href = "<?php echo $this->request->webroot;?>pages/view/version_log" ><?php get_title('version_log') ?></a >
+        <?php if($this->request->session()->read('Profile.super')){?>
+            /  <a style = "color:white;" href = "<?php echo $this->request->webroot;?>pages/view/version_log" ><?php get_title('version_log') ?></a>
+            / <a style = "color:white;" href = "<?php echo $this->request->webroot;?>profiles/settings" >Settings</a >
 
         <?php } ?>
     </div>

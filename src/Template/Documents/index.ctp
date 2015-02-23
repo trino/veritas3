@@ -28,10 +28,10 @@
                     List <?php echo ucfirst($settings->document); ?>s
                 </div>
             </div>
-            <div class="portlet-body">
+            <div class="portlet-body form">
 
 
-                <div class="form-actions top chat-form" style="margin-top:0;">
+                <div class="form-actions top chat-form" style="height:75px; margin-bottom:0;" align="right">
                     <div class="btn-set pull-left">
 
                     </div>
@@ -137,7 +137,7 @@
 
                 <div class="clearfix"></div>
 
-
+            <div class="form-body">
                 <div class="table-scrollable">
                     <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
@@ -251,10 +251,14 @@
                     </table>
 
                 </div>
+            </div>
+
+                <div class="form-actions" style="height:75px;">
+                    <div class="row">
+                        <div class="col-md-12" align="right">
 
 
-                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" align="right">
-
+                            <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" style="margin-top:-10px;">
 
                     <ul class="pagination sorting">
                         <?= $this->Paginator->prev('< ' . __('previous')); ?>
@@ -262,7 +266,7 @@
                         <?= $this->Paginator->next(__('next') . ' >'); ?>
                     </ul>
                 </div>
-
+                        </div></div></div>
 
             </div>
         </div>

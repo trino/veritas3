@@ -834,7 +834,6 @@ public function settings(){
 
         function logout()
         {
-            //$this->request->session()->delete('Profile.id');
             $this->loadComponent('Cookie');
             $this->Cookie->delete('Profile.username');
             $this->Cookie->delete('Profile.password');
@@ -845,11 +844,6 @@ public function settings(){
 
             }else{
                 $this->redirect('http://isbmee.com');
-                
-
-                //$initials = $this->requestAction('/pages/getBase');
-                //$this->redirect($initials);
-
             }
         }
 

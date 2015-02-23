@@ -202,12 +202,9 @@ Delete</a>
 ?>
 
 <?php if ($sidebar->orders_requalify == '1' && $order->draft == '0') {
-
 ?>
-    <a class="clearfix btn btn-warning" href="<?php echo $this->request->webroot;?>documents/productSelection?driver=<?php echo $order->uploaded_for; ?>"/>Re-qualify</a>
+    <!--a class="clearfix btn btn-warning" href="<?php echo $this->request->webroot;?>documents/productSelection?driver=<?php echo $order->uploaded_for; ?>"/>Re-qualify</a-->
 <?php
-//debug($order);
-
     }
 ?>
 <?php if (!isset($_GET['draft'])) echo $this->Html->link(__('Score Card'), ['controller' => 'documents', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>

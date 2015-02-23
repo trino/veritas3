@@ -153,9 +153,9 @@
                     </table>
 
                 </div></div>
-
-            <div class="form-actions">
-                <div class="modal-footer">
+            <div class="clearfix"></div>
+            <div class="form-actions" align="right">
+                <div class="row" style="padding-right: 13px;padding-top: 3px;"><div class="col-md-12">
                 <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
 
 
@@ -169,7 +169,7 @@
                         <?= $this->Paginator->next(__('next') . ' >'); ?>
                     </ul>
 
-                </div>
+                </div></div>
                 </div>
 </div>
 

@@ -183,8 +183,8 @@
                             <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
                             <th><?= $this->Paginator->sort('email') ?></th>
 
-                            <th><?= $this->Paginator->sort('fname', 'FName') ?></th>
-                            <th><?= $this->Paginator->sort('lname', 'LName') ?></th>
+                            <th><?= $this->Paginator->sort('fname', 'First Name') ?></th>
+                            <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
 
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
@@ -217,7 +217,13 @@
                                     <td><?= $this->Number->format($profile->id) ?></td>
 
                                     <td><?= h($profile->username) ?></td>
-                                    <td><?= h($profiletype[$profile->profile_type]) ?></td>
+                                    <td><?php
+                                        if (strlen($profile->profile_type) > 0) {
+                                                echo h($profiletype[$profile->profile_type]);
+  }else{
+                                            echo "Draft";
+                                        }
+                                        ?></td>
 
                                     <td><?= h($profile->email) ?></td>
 
@@ -279,15 +285,16 @@
                         </tbody>
                     </table>
                 </div>
+                
 
-
-                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
+                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" align="right">
                     <ul class="pagination sorting">
                         <?= $this->Paginator->prev('< ' . __('previous')); ?>
                         <?= $this->Paginator->numbers(); ?>
                         <?= $this->Paginator->next(__('next') . ' >'); ?>
                     </ul>
                 </div>
+
             </div>
         </div>
     </div>

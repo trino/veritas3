@@ -253,7 +253,7 @@
                 </div>
 
 
-                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
+                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" align="right">
 
 
                     <ul class="pagination sorting">

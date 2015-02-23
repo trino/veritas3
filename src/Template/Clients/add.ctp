@@ -439,7 +439,7 @@
                                             <div class="form-group col-md-12"><!--<center>-->
 
                                                 <div class="docMore" data-count="1">
-                                                    <div style="display:block;margin:5px;">
+                                                    <div style="display:block;">
                                                         <a href="javascript:void(0)" id="addMore1"
                                                            class="btn btn-primary">Browse</a>
                                                         <span></span>
@@ -448,14 +448,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group col-md-12"><!--<center>-->
 
-                                                <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc">
-                                                    Add More
-                                                </a>
-
-                                            </div>
-                                            <div class="form-group col-md-12"><!--<center>-->
+                                            <div class="form-group col-md-12" align="right"><!--<center>-->
                                                 <div class="margin-top-10 alert alert-success display-hide flash1"
                                                      style="display: none;">
                                                     <button class="close" data-close="alert"></button>
@@ -464,10 +458,15 @@
 
 
                                                 <!--<div class="margin-top-10">-->
+                                            </div><div class="form-group col-md-2" align="left">
+                                                <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc">
+                                                    Add More
+                                                </a>
+                                                </div><div class="form-group col-md-10" align="right">
                                                 <button type="submit" class="btn btn-primary"
                                                         id="save_client_p1">Save
                                                 </button>
-                                                <button type="submit" class="btn btn-primary"
+                                                <button type="submit" class="btn btn-info"
                                                         onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">
                                                     Save As Draft
                                                 </button>

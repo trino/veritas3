@@ -16,14 +16,14 @@
         {
             ?>
             <li class="active">
-                <a href="#subtab_2_1" data-toggle="tab">Sidebar</a>
+                <a href="#subtab_2_1" data-toggle="tab">Configuration</a>
             </li>
             <li class="">
                 <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
             </li>
-            <li class="">
+            <!--<li class="">
                 <a href="#subtab_2_3" data-toggle="tab">Top blocks</a>
-            </li>
+            </li>-->
             <?php
         }
          ?>
@@ -475,7 +475,7 @@
                                                                 
                                 						
                                     </div>
-                                    <div  class="tab-pane" id="subtab_2_3">
+                                    <?php /* ?><div  class="tab-pane" id="subtab_2_3">
 
 
 
@@ -809,7 +809,7 @@
                                         }
                                         ?>
                                         </form>
-                                    </div>
+                                    </div><?php */?>
                                     <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")==2) echo 'active'; ?>" id="subtab_2_4">
                                         
                                         <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) 

@@ -9,18 +9,24 @@
     else
         $is_disabled = '';
 
-    if (isset($client)) {$c = $client;}
+    if (isset($client)) {
+        $c = $client;
+    }
 ?>
 <?php
-$settings = $this->requestAction('settings/get_settings'); 
-$sidebar = $this->requestAction("settings/all_settings/".$this->request->session()->read('Profile.id')."/sidebar");
-$getprofile = $this->requestAction('clients/getProfile/'.$id);
-$getcontact = $this->requestAction('clients/getContact/'.$id);
-$param = $this->request->params['action'];
+    $settings = $this->requestAction('settings/get_settings');
+    $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
+    $getprofile = $this->requestAction('clients/getProfile/' . $id);
+    $getcontact = $this->requestAction('clients/getContact/' . $id);
+    $param = $this->request->params['action'];
 
-$action = ucfirst($param);
-if (isset($_GET["view"])) { $action = "View"; }
-if ($action == "Add") { $action  = "Create";}
+    $action = ucfirst($param);
+    if (isset($_GET["view"])) {
+        $action = "View";
+    }
+    if ($action == "Add") {
+        $action = "Create";
+    }
 ?>
 
 <h3 class="page-title">
@@ -48,505 +54,521 @@ if ($action == "Add") { $action  = "Create";}
     <div class="col-md-12">
         <!-- BEGIN SAMPLE FORM PORTLET-->
 
-                    <div class="row profile-account">
-                        <div class="col-md-3">
+        <div class="row profile-account">
+            <div class="col-md-3">
+                <?php
+                    if (isset($client->image) && $client->image) {
+                        ?>
+                        <img class="img-responsive" id="clientpic" alt=""
+                             src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $client->image; ?>"/>
+                    <?php
+                    } else {
+                        ?>
+                        <img class="img-responsive" id="clientpic" alt=""
+                             src="<?php echo $this->request->webroot; ?>img/logos/MEELogo.png"/>
+                    <?php
+                    }
+                ?>
+
+                <div class="form-group">
+                    <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
+
+                    <div class="input-icon">
+                        <a class="btn btn-xs btn-success" href="javascript:void(0)" id="clientimg">
+                            <i class="fa fa-image"></i>
+                            Add/Edit Image
+                        </a>
+
+                    </div>
+                </div>
+
+                <?php
+                    if ($this->request->params['action'] == 'edit')
+                        include('subpages/clients/recruiter_contact_table.php');
+                    if (isset($_GET['view'])) {
+                        ?>
+                        <table class="table table-striped table-bordered table-advance table-hover recruiters">
+                            <thead>
+                            <tr>
+                                <th colspan="2">Assigned to:</th>
+                            </tr>
+                            </thead>
+                            <tbody id="">
                             <?php
-                                if (isset($client->image) && $client->image) {
+                                $types = array('Driver', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact');
+                                $counter = 0;
+                                foreach ($getprofile as $p) {
                                     ?>
-                                    <img class="img-responsive" id="clientpic" alt=""
-                                         src="<?php echo $this->request->webroot; ?>img/jobs/<?php echo $client->image; ?>"/>
-                                <?php
-                                } else {
-                                    ?>
-                                    <img class="img-responsive" id="clientpic" alt=""
-                                         src="<?php echo $this->request->webroot; ?>img/logos/MEELogo.png"/>
-                                <?php
+                                    <tr>
+                                        <td>
+                                            <a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $p->id; ?>">
+                                                <?php echo $p->username; ?> (<?php echo $types[$p->profile_type]; ?>)&nbsp;&nbsp;(Profile)
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $counter++;
+                                }
+                                $c = $counter;
+                                if ($counter == 0) {
+                                    echo "<TR><TD>No <?php echo strtolower($settings->profile); ?>s</TD></TR>";
                                 }
                             ?>
-
-                            <div class="form-group">
-                                <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
-
-                                <div class="input-icon">
-                                    <a class="btn btn-xs btn-success" href="javascript:void(0)" id="clientimg">
-                                        <i class="fa fa-image"></i>
-                                        Add/Edit Image
-                                    </a>
-
-                                </div>
-                            </div>
-
                             <?php
-                                if ($this->request->params['action'] == 'edit')
-                                    include('subpages/clients/recruiter_contact_table.php');
-                                if(isset($_GET['view']))
-                                {
+                                foreach ($getcontact as $cont) {
                                     ?>
-                                    <table class="table table-striped table-bordered table-advance table-hover recruiters">
-                                        <thead>
-                                        <tr>
-                                            <th colspan="2">Assigned to:</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="">
-                                            <?php
-                                            $types = array('Driver','Admin','Recruiter','External','Safety','Driver','Contact');
-                                            $counter = 0;
-                                             foreach($getprofile as $p)
-                                                {
-                                                    ?>
-                                                   <tr> <td>
-												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $p->id; ?>">
-												    <?php echo $p->username; ?> (<?php echo $types[$p->profile_type]; ?>)&nbsp;&nbsp;(Profile)
-                                                </a>
-											</td></tr>
-                                                    <?php
-                                                    $counter++;
-                                                }
-                                                $c = $counter;
-                                            if($counter==0){ echo "<TR><TD>No <?php echo strtolower($settings->profile); ?>s</TD></TR>";}
-                                             ?>
-                                             <?php
-                                             foreach($getcontact as $cont)
-                                                {
-                                                    ?>
                                              <tr><td>
 												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $cont->id; ?>">
-												    <?php echo $cont->username; ?> <?php //echo $types[$p->profile_type]; ?>&nbsp;&nbsp;(Contact)
+												    <?php echo $cont->username; ?> <?php //echo $types[$p->profile_type];
+                                    ?>&nbsp;&nbsp;(Contact)
                                                 </a>
 											</tr></td>
                                                     <?php
-                                                }    
-                                             ?>
-                                             </tbody>
-                                             </table>
-                                    <?php
                                 }
                             ?>
+                            </tbody>
+                        </table>
+                    <?php
+                    }
+                ?>
 
+            </div>
+            <div class="col-md-9">
+
+
+                <div class="clearfix"></div>
+
+                <div class="portlet box grey-salsa">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-briefcase"></i><?php echo ucfirst($settings->client); ?> Manager
                         </div>
-                        <div class="col-md-9">
-        
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#tab_1_1" data-toggle="tab">Info</a>
+                            </li>
+                            <?php if ($this->request['action'] != "add") {
+                                ?>
 
-                        <div class="clearfix"></div>
-                            
-                            <div class="portlet box grey-salsa">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-briefcase"></i><?php echo ucfirst($settings->client); ?> Manager
-                                    </div>
-                                    <ul class="nav nav-tabs">
-                                        <li class="active">
-                                            <a href="#tab_1_1" data-toggle="tab">Info</a>
-                                        </li>
-                                        <?php if ($this->request['action'] != "add") {
-                                            ?>
+                                <li>
+                                    <a href="#tab_1_2" data-toggle="tab">Display</a>
+                                </li>
+                            <?php
 
-                                            <li>
-                                                <a href="#tab_1_2" data-toggle="tab">Display</a>
-                                            </li>
-                                        <?php
-
-                                        } ?>
+                            } ?>
 
 
-                                    </UL>
-                                </div>
+                        </UL>
+                    </div>
 
-                            <div class="portlet-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="tab_1_1">
-                                        <div id="tab_1-1" class="tab-pane active">
-                                            <form role="form" action="" method="post" id="client_form" class="save_client_all" >
-                                                <input type="hidden" name="drafts" id="client_drafts" value="0"/>
-                                                <div class="row">
-                                                    <input type="hidden" name="image" id="client_img"/>
-                                                    <?php if($settings->client_option==0){?>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Customer Type</label>
-                                                        <select class="form-control" name="customer_type"
-                                                                id="customer_type">
-                                                            <option value="">Select</option>
-                                                            <option value="1"
-                                                                    <?php if (isset($client->customer_type) && $client->customer_type == 1) { ?>selected="selected"<?php } ?>>
-                                                                Insurance
-                                                            </option>
-                                                            <option value="2"
-                                                                    <?php if (isset($client->customer_type) && $client->customer_type == 2) { ?>selected="selected"<?php } ?>>
-                                                                Fleet
-                                                            </option>
-                                                            <option value="3"
-                                                                    <?php if (isset($client->customer_type) && $client->customer_type == 3) { ?>selected="selected"<?php } ?>>
-                                                                Non Fleet
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <?php }?>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label"> <?php echo ($settings->client_option==0)?"Company":"Event";?> Name</label>
-                                                        <input  required="required" type="text" class="form-control"
-                                                               name="company_name" <?php if (isset($client->company_name)) { ?> value="<?php echo $client->company_name; ?>" <?php } ?>/>
-                                                    </div>
+                    <div class="portlet-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1_1">
+                                <div id="tab_1-1" class="tab-pane active">
+                                    <form role="form" action="" method="post" id="client_form" class="save_client_all">
+                                        <input type="hidden" name="drafts" id="client_drafts" value="0"/>
 
-                                                    <?php if($settings->client_option==0){?>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Address</label>
-                                                        <input type="text" class="form-control"
-                                                               name="company_address" <?php if (isset($client->billing_address)) { ?> value="<?php echo $client->billing_address; ?>" <?php } ?>/>
-                                                    </div>
-                                                    <?php }?>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">City</label>
-                                                        <input type="text" class="form-control"
-                                                               name="city" <?php if (isset($client->city)) { ?> value="<?php echo $client->city; ?>" <?php } ?>/>
-                                                    </div>
+                                        <div class="row">
+                                            <input type="hidden" name="image" id="client_img"/>
+                                            <?php if ($settings->client_option == 0) { ?>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Customer Type</label>
+                                                    <select class="form-control" name="customer_type"
+                                                            id="customer_type">
+                                                        <option value="">Select</option>
+                                                        <option value="1"
+                                                                <?php if (isset($client->customer_type) && $client->customer_type == 1) { ?>selected="selected"<?php } ?>>
+                                                            Insurance
+                                                        </option>
+                                                        <option value="2"
+                                                                <?php if (isset($client->customer_type) && $client->customer_type == 2) { ?>selected="selected"<?php } ?>>
+                                                            Fleet
+                                                        </option>
+                                                        <option value="3"
+                                                                <?php if (isset($client->customer_type) && $client->customer_type == 3) { ?>selected="selected"<?php } ?>>
+                                                            Non Fleet
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            <?php } ?>
+                                            <div class="form-group col-md-4">
+                                                <label
+                                                    class="control-label"> <?php echo ($settings->client_option == 0) ? "Company" : "Event"; ?>
+                                                    Name</label>
+                                                <input required="required" type="text" class="form-control"
+                                                       name="company_name" <?php if (isset($client->company_name)) { ?> value="<?php echo $client->company_name; ?>" <?php } ?>/>
+                                            </div>
 
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Province/State</label>
-                                                        <?php
-                                                            function printoption($value, $selected, $option)
-                                                            {
-                                                                $tempstr = "";
-                                                                if ($option == $selected or $value == $selected) { $tempstr = " selected"; }
-                                                                echo '<OPTION VALUE="' . $value . '"' . $tempstr . ">" . $option . "</OPTION>";
-                                                            }
+                                            <?php if ($settings->client_option == 0) { ?>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Address</label>
+                                                    <input type="text" class="form-control"
+                                                           name="company_address" <?php if (isset($client->billing_address)) { ?> value="<?php echo $client->billing_address; ?>" <?php } ?>/>
+                                                </div>
+                                            <?php } ?>
+                                            <div class="form-group col-md-4">
+                                                <label class="control-label">City</label>
+                                                <input type="text" class="form-control"
+                                                       name="city" <?php if (isset($client->city)) { ?> value="<?php echo $client->city; ?>" <?php } ?>/>
+                                            </div>
 
-                                                            function printoptions($name, $valuearray, $selected, $optionarray)
-                                                            {
-                                                                echo '<SELECT name="' . $name . '" class="form-control member_type" >';
-                                                                for ($temp = 0; $temp < count($valuearray); $temp += 1) {
-                                                                    printoption($valuearray[$temp], $selected, $optionarray[$temp]);
-                                                                }
-                                                                echo '</SELECT>';
-                                                            }
+                                            <div class="form-group col-md-4">
+                                                <label class="control-label">Province/State</label>
+                                                <?php
+                                                    function printoption($value, $selected, $option)
+                                                    {
+                                                        $tempstr = "";
+                                                        if ($option == $selected or $value == $selected) {
+                                                            $tempstr = " selected";
+                                                        }
+                                                        echo '<OPTION VALUE="' . $value . '"' . $tempstr . ">" . $option . "</OPTION>";
+                                                    }
 
-                                                            function printprovinces($name, $selected){
-                                                                printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT", "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",  "Virginia", "Wisconsin", "Wyoming"));
+                                                    function printoptions($name, $valuearray, $selected, $optionarray)
+                                                    {
+                                                        echo '<SELECT name="' . $name . '" class="form-control member_type" >';
+                                                        for ($temp = 0; $temp < count($valuearray); $temp += 1) {
+                                                            printoption($valuearray[$temp], $selected, $optionarray[$temp]);
+                                                        }
+                                                        echo '</SELECT>';
+                                                    }
 
-                                                            }
+                                                    function printprovinces($name, $selected)
+                                                    {
+                                                        printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT", "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "Virginia", "Wisconsin", "Wyoming"));
 
-                                                        printprovinces("province", $client->province);
-                                                        ?>
+                                                    }
 
-                                                    </div>
-                                                    <?php if($settings->client_option==0){?>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Postal Code</label>
-                                                        <input type="text" class="form-control"
-                                                               name="postal" <?php if (isset($client->postal)) { ?> value="<?php echo $client->postal; ?>" <?php } ?>/>
-                                                    </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Company's Phone Number</label>
-                                                        <input type="text" class="form-control"
-                                                               name="company_phone"
-                                                            <?php if (isset($client->company_phone)) { ?> value="<?php echo $client->company_phone; ?>" <?php } ?>
-                                                            />
-                                                    </div>
-                                                    <?php }?>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Website</label>
-                                                        <input type="text" class="form-control"
-                                                               name="site" <?php if (isset($client->site)) { ?> value="<?php echo $client->site; ?>" <?php } ?>/>
-                                                    </div>
-                                                    <?php if($settings->client_option==0){?>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Divisions </label>
-                                                        <textarea name="division" id="division" placeholder="One division per line"
+                                                    printprovinces("province", $client->province);
+                                                ?>
+
+                                            </div>
+                                            <?php if ($settings->client_option == 0) { ?>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Postal Code</label>
+                                                    <input type="text" class="form-control"
+                                                           name="postal" <?php if (isset($client->postal)) { ?> value="<?php echo $client->postal; ?>" <?php } ?>/>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Company's Phone Number</label>
+                                                    <input type="text" class="form-control"
+                                                           name="company_phone"
+                                                        <?php if (isset($client->company_phone)) { ?> value="<?php echo $client->company_phone; ?>" <?php } ?>
+                                                        />
+                                                </div>
+                                            <?php } ?>
+                                            <div class="form-group col-md-4">
+                                                <label class="control-label">Website</label>
+                                                <input type="text" class="form-control"
+                                                       name="site" <?php if (isset($client->site)) { ?> value="<?php echo $client->site; ?>" <?php } ?>/>
+                                            </div>
+                                            <?php if ($settings->client_option == 0) { ?>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Divisions </label>
+                                                        <textarea name="division" id="division"
+                                                                  placeholder="One division per line"
                                                                   class="form-control"><?php if (isset($client->division)) echo $client->division; ?></textarea>
-                                                    </div>
-                                                    
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Signatory's First Name</label>
-                                                        <input type="text" class="form-control"
-                                                               name="sig_fname" <?php if (isset($client->sig_fname)) { ?> value="<?php echo $client->sig_fname; ?>" <?php } ?>/>
-                                                    </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Signatory's Last Name</label>
-                                                        <input type="text" class="form-control"
-                                                               name="sig_lname" <?php if (isset($client->sig_lname)) { ?> value="<?php echo $client->sig_lname; ?>" <?php } ?>/>
-                                                    </div>
+                                                </div>
 
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Signatory's Email Address</label>
-                                                        <input type="email" id="sig_email" class="form-control"
-                                                               name="sig_email" <?php if (isset($client->sig_email)) { ?> value="<?php echo $client->sig_email; ?>" <?php } ?>/>
-                                                    </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Signatory's First Name</label>
+                                                    <input type="text" class="form-control"
+                                                           name="sig_fname" <?php if (isset($client->sig_fname)) { ?> value="<?php echo $client->sig_fname; ?>" <?php } ?>/>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Signatory's Last Name</label>
+                                                    <input type="text" class="form-control"
+                                                           name="sig_lname" <?php if (isset($client->sig_lname)) { ?> value="<?php echo $client->sig_lname; ?>" <?php } ?>/>
+                                                </div>
 
-
-
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Contract Start Date</label>
-                                                        <input type="text" class="form-control date-picker"
-                                                               name="date_start" <?php if (isset($client->date_start)) { ?> value="<?php echo $client->date_start; ?>" <?php } ?>/>
-                                                    </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Contract End Date</label>
-                                                        <input type="text" class="form-control date-picker"
-                                                               name="date_end" <?php if (isset($client->date_end)) { ?> value="<?php echo $client->date_end; ?>" <?php } ?>/>
-                                                    </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Referred By</label>
-                                                        <select class="form-control" name="referred_by"
-                                                                id="referred_by">
-                                                            <option value="">Select</option>
-                                                            <option
-                                                                value="Transrep" <?php if (isset($client->referred_by) && $client->referred_by == "Transrep") { ?> selected="selected" <?php } ?> >
-                                                                Transrep
-                                                            </option>
-                                                            <option
-                                                                value="ISB" <?php if (isset($client->referred_by) && $client->referred_by == "ISB") { ?> selected="selected" <?php } ?> >
-                                                                ISB
-                                                            </option>
-                                                            <option
-                                                                value="AFIMAC" <?php if (isset($client->referred_by) && $client->referred_by == "AFIMAC") { ?> selected="selected" <?php } ?>>
-                                                                AFIMAC
-                                                            </option>
-                                                            <option
-                                                                value="Broker" <?php if (isset($client->referred_by) && $client->referred_by == "Broker") { ?> selected="selected" <?php } ?>>
-                                                                Broker
-                                                            </option>
-                                                            <option
-                                                                value="Online" <?php if (isset($client->referred_by) && $client->referred_by == "Online") { ?> selected="selected" <?php } ?>>
-                                                                Online
-                                                            </option>
-                                                            <option
-                                                                value="Tradeshow" <?php if (isset($client->referred_by) && $client->referred_by == "Tradeshow") { ?> selected="selected" <?php } ?>>
-                                                                Tradeshow
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">ARIS Agreement #</label>
-                                                        <input type="text" class="form-control"
-                                                               name="agreement_number" <?php if (isset($client->agreement_number)) { ?> value="<?php echo $client->agreement_number; ?>" <?php } ?>/>
-                                                    </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">ARIS Re-verification</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-inline date-picker"
-                                                               name="reverification" <?php if (isset($end_date)) { ?> value="<?php echo $end_date; ?>" <?php } ?>/>
-                                                    </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">SACC Number</label>
-                                                        <input type="text" class="form-control"
-                                                               name="sacc_number" <?php if (isset($client->sacc_number)) { ?> value="<?php echo $client->sacc_number; ?>" <?php } ?>/>
-                                                    </div>
-
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <h3 class="block">Billing</h3>
-                                                            </div>
-                                                        </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Signatory's Email Address</label>
+                                                    <input type="email" id="sig_email" class="form-control"
+                                                           name="sig_email" <?php if (isset($client->sig_email)) { ?> value="<?php echo $client->sig_email; ?>" <?php } ?>/>
+                                                </div>
 
 
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Billing Contact</label>
-                                                        <input type="text" class="form-control"
-                                                               name="billing_contact" <?php if (isset($client->billing_contact)) { ?> value="<?php echo $client->billing_contact; ?>" <?php } ?>/>
-                                                    </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Billing Address</label>
-                                                        <input type="text" class="form-control"
-                                                               name="billing_address" <?php if (isset($client->billing_address)) { ?> value="<?php echo $client->billing_address; ?>" <?php } ?>/>
-                                                    </div>
 
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Billing City</label>
-                                                        <input type="text" class="form-control" name="billing_city"
-                                                               value="<?php echo isset($client->billing_city) ? $client->billing_city : '' ?>"/>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Contract Start Date</label>
+                                                    <input type="text" class="form-control date-picker"
+                                                           name="date_start" <?php if (isset($client->date_start)) { ?> value="<?php echo $client->date_start; ?>" <?php } ?>/>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Contract End Date</label>
+                                                    <input type="text" class="form-control date-picker"
+                                                           name="date_end" <?php if (isset($client->date_end)) { ?> value="<?php echo $client->date_end; ?>" <?php } ?>/>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Referred By</label>
+                                                    <select class="form-control" name="referred_by"
+                                                            id="referred_by">
+                                                        <option value="">Select</option>
+                                                        <option
+                                                            value="Transrep" <?php if (isset($client->referred_by) && $client->referred_by == "Transrep") { ?> selected="selected" <?php } ?> >
+                                                            Transrep
+                                                        </option>
+                                                        <option
+                                                            value="ISB" <?php if (isset($client->referred_by) && $client->referred_by == "ISB") { ?> selected="selected" <?php } ?> >
+                                                            ISB
+                                                        </option>
+                                                        <option
+                                                            value="AFIMAC" <?php if (isset($client->referred_by) && $client->referred_by == "AFIMAC") { ?> selected="selected" <?php } ?>>
+                                                            AFIMAC
+                                                        </option>
+                                                        <option
+                                                            value="Broker" <?php if (isset($client->referred_by) && $client->referred_by == "Broker") { ?> selected="selected" <?php } ?>>
+                                                            Broker
+                                                        </option>
+                                                        <option
+                                                            value="Online" <?php if (isset($client->referred_by) && $client->referred_by == "Online") { ?> selected="selected" <?php } ?>>
+                                                            Online
+                                                        </option>
+                                                        <option
+                                                            value="Tradeshow" <?php if (isset($client->referred_by) && $client->referred_by == "Tradeshow") { ?> selected="selected" <?php } ?>>
+                                                            Tradeshow
+                                                        </option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">ARIS Agreement #</label>
+                                                    <input type="text" class="form-control"
+                                                           name="agreement_number" <?php if (isset($client->agreement_number)) { ?> value="<?php echo $client->agreement_number; ?>" <?php } ?>/>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">ARIS Re-verification</label>
+                                                    <input type="text"
+                                                           class="form-control form-control-inline date-picker"
+                                                           name="reverification" <?php if (isset($end_date)) { ?> value="<?php echo $end_date; ?>" <?php } ?>/>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">SACC Number</label>
+                                                    <input type="text" class="form-control"
+                                                           name="sacc_number" <?php if (isset($client->sacc_number)) { ?> value="<?php echo $client->sacc_number; ?>" <?php } ?>/>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <h3 class="block">Billing</h3>
                                                     </div>
-
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Billing Province/State</label>
-                                                        <?php printprovinces("billing_province", $client->billing_province);  ?>
+                                                </div>
 
 
-                                                    </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Billing Postal Code</label>
-                                                        <input type="text" class="form-control"
-                                                               name="billing_postal_code"
-                                                               value="<?php echo isset($client->billing_postal_code) ? $client->billing_postal_code : '' ?>"/>
-                                                    </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Billing Contact</label>
+                                                    <input type="text" class="form-control"
+                                                           name="billing_contact" <?php if (isset($client->billing_contact)) { ?> value="<?php echo $client->billing_contact; ?>" <?php } ?>/>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Billing Address</label>
+                                                    <input type="text" class="form-control"
+                                                           name="billing_address" <?php if (isset($client->billing_address)) { ?> value="<?php echo $client->billing_address; ?>" <?php } ?>/>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Billing City</label>
+                                                    <input type="text" class="form-control" name="billing_city"
+                                                           value="<?php echo isset($client->billing_city) ? $client->billing_city : '' ?>"/>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Billing Province/State</label>
+                                                    <?php printprovinces("billing_province", $client->billing_province); ?>
 
 
-                                                    <div class="form-group col-md-4">
-                                                        <label class="control-label">Invoice Terms</label>
-                                                        <select class="form-control" name="invoice_terms"
-                                                                id="invoice_terms">
-                                                            <option value="">Select</option>
-                                                            <option
-                                                                value="weekly" <?php if (isset($client->invoice_terms) && $client->invoice_terms == 'weekly') { ?> selected="selected" <?php } ?>>
-                                                                Weekly
-                                                            </option>
-                                                            <option
-                                                                value="biweekly" <?php if (isset($client->invoice_terms) && $client->invoice_terms == 'biweekly') { ?> selected="selected" <?php } ?>>
-                                                                Bi-weekly
-                                                            </option>
-                                                            <option
-                                                                value="monthly" <?php if (isset($client->invoice_terms) && $client->invoice_terms == 'monthly') { ?> selected="selected" <?php } ?>>
-                                                                Monthly
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label class="control-label">Billing Instructions</label>
-                                                    </div>
-                                                        <div class="form-group col-md-4">
-                                                        <input type="radio"
-                                                               name="billing_instructions" <?php if (isset($client->billing_instructions) && $client->billing_instructions == "individual") { ?> checked="checked" <?php } ?>
-                                                               value="individual"/> Individual&nbsp;&nbsp;
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                        <input type="radio"
-                                                               name="billing_instructions" <?php if (isset($client->billing_instructions) && $client->billing_instructions == "centralized") { ?> checked="checked" <?php } ?>
-                                                               value="centralized"/> Centralized&nbsp;&nbsp;
-                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Billing Postal Code</label>
+                                                    <input type="text" class="form-control"
+                                                           name="billing_postal_code"
+                                                           value="<?php echo isset($client->billing_postal_code) ? $client->billing_postal_code : '' ?>"/>
+                                                </div>
 
-                                                    <div class="form-group col-md-12">
 
-                                                        <label class="control-label">Description</label>
+                                                <div class="form-group col-md-4">
+                                                    <label class="control-label">Invoice Terms</label>
+                                                    <select class="form-control" name="invoice_terms"
+                                                            id="invoice_terms">
+                                                        <option value="">Select</option>
+                                                        <option
+                                                            value="weekly" <?php if (isset($client->invoice_terms) && $client->invoice_terms == 'weekly') { ?> selected="selected" <?php } ?>>
+                                                            Weekly
+                                                        </option>
+                                                        <option
+                                                            value="biweekly" <?php if (isset($client->invoice_terms) && $client->invoice_terms == 'biweekly') { ?> selected="selected" <?php } ?>>
+                                                            Bi-weekly
+                                                        </option>
+                                                        <option
+                                                            value="monthly" <?php if (isset($client->invoice_terms) && $client->invoice_terms == 'monthly') { ?> selected="selected" <?php } ?>>
+                                                            Monthly
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label class="control-label">Billing Instructions</label>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <input type="radio"
+                                                           name="billing_instructions" <?php if (isset($client->billing_instructions) && $client->billing_instructions == "individual") { ?> checked="checked" <?php } ?>
+                                                           value="individual"/> Individual&nbsp;&nbsp;
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <input type="radio"
+                                                           name="billing_instructions" <?php if (isset($client->billing_instructions) && $client->billing_instructions == "centralized") { ?> checked="checked" <?php } ?>
+                                                           value="centralized"/> Centralized&nbsp;&nbsp;
+                                                </div>
+
+                                                <div class="form-group col-md-12">
+
+                                                    <label class="control-label">Description</label>
                                                         <textarea id="description" name="description"
                                                                   class="form-control"><?php if (isset($client->description)) {
                                                                 echo $client->description;
                                                             } ?></textarea>
 
-                                                    </div>
+                                                </div>
 
-                                                   <?php }
-												   if(isset($client_docs))
-                                                   {
-    												    include '/../../../webroot/subpages/filelist.php';
-    												    listfiles($client_docs, "img/jobs/");
-                                                    }
-												   ?>
-
-                                                    <div class="form-group col-md-12"><!--<center>-->
-
-                                                            <div class="docMore" data-count="1">
-                                                                <div style="display:block;margin:5px;">
-                                                                    <a href="javascript:void(0)" id="addMore1" class="btn btn-primary">Browse</a>
-                                                                    <span></span>
-                                                                    <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/>
-                                                                </div>
-                                                            </div>
-                                                            </div>
-                                                            <div class="form-group col-md-12"><!--<center>-->
-                                                             
-                                                            <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" >
-                                                                Add More
-                                                            </a>
-
-                                                            </div>
-                                                            <div class="form-group col-md-12"><!--<center>-->
-                                                            <div class="margin-top-10 alert alert-success display-hide flash1" style="display: none;">
-                                                        <button class="close" data-close="alert"></button>
-                                                        Data saved successfully
-                                                    </div>
-
-
-                                                    <!--<div class="margin-top-10">-->
-                                                        <button type="submit" class="btn btn-primary"
-                                                           id="save_client_p1">Save</button>
-                                                         <button type="submit" class="btn btn-primary" onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">Save As Draft</button>
-                                                    </div>
-                                                    <!--</div>-->
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tab_1_2">
-
-
-                                    <h4> Enable <?php echo ucfirst($settings->document); ?>s?</h4>
-
-                                    <form action="" id="displayform1" method="post">
-                                        <table class="table table-light table-hover sortable">
-                                            <tr class="myclass">
-                                                <th></th>
-                                                <th class="">System</th>
-                                                <th class=""><?php echo ucfirst($settings->client); ?> </th>
-                                            </tr>
-                                            <?php
-                                                //$subdoc = $this->requestAction('/clients/getSub');
-                                                $subdoccli = $this->requestAction('/clients/getSubCli/'.$id);
-                                                //var_dump($subdoccli);
-                                                foreach ($subdoccli as $subcl) {
-                                                    //echo $subcl->sub_id;
-                                                    $sub = $this->requestAction('/clients/getFirstSub/'.$subcl->sub_id);
-                                                    ?>
-                                                    <tr id="subd_<?php echo $sub->id;?>" class="sublisting">
-                                                        <td>
-
-                                                            <?php echo ucfirst($sub['title']); ?>
-                                                        </td>
-                                                        <td class="">
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="radio"
-                                                                                                  name="<?php echo $sub->id; ?>"
-                                                                                                  value="1"
-                                                                                                  <?php if ($sub['display'] == 1) { ?>checked="checked" <?php } ?>
-                                                                                                  disabled="disabled"/>
-                                                                Yes </label>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="radio"
-                                                                                                  name="<?php echo $sub->id; ?>"
-                                                                                                  value="0"
-                                                                                                  <?php if ($sub['display'] == 0) { ?>checked="checked" <?php } ?>
-                                                                                                  disabled="disabled"/>
-                                                                No </label>
-                                                        </td>
-                                                        <?php
-                                                            $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/' . $id . '/' . $sub->id);
-                                                        ?>
-                                                        <td class="">
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="radio"
-                                                                                                  name="clientC[<?php echo $sub->id; ?>]"
-                                                                                                  value="1"  <?php if ($csubdoc['display'] == 1) { ?> checked="checked" <?php } ?> />
-                                                                Yes </label>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="radio"
-                                                                                                  name="clientC[<?php echo $sub->id; ?>]"
-                                                                                                  value="0"  <?php if ($csubdoc['display'] == 0) { ?> checked="checked" <?php } ?> />
-                                                                No </label>
-                                                        </td>
-
-                                                    </tr>
-
-                                                <?php
+                                            <?php }
+                                                if (isset($client_docs)) {
+                                                    include '/../../../webroot/subpages/filelist.php';
+                                                    listfiles($client_docs, "img/jobs/");
                                                 }
                                             ?>
 
-                                        </table>
+                                            <div class="form-group col-md-12"><!--<center>-->
 
-                                        <!--end profile-settings-->
+                                                <div class="docMore" data-count="1">
+                                                    <div style="display:block;margin:5px;">
+                                                        <a href="javascript:void(0)" id="addMore1"
+                                                           class="btn btn-primary">Browse</a>
+                                                        <span></span>
+                                                        <input type="hidden" name="client_doc[]" value=""
+                                                               class="addMore1_doc moredocs"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-12"><!--<center>-->
 
-                                        <?php
-                                            if (!isset($disabled)) {
-                                                ?>
+                                                <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc">
+                                                    Add More
+                                                </a>
 
-                                                <div class="margin-top-10 alert alert-success display-hide flash"
+                                            </div>
+                                            <div class="form-group col-md-12"><!--<center>-->
+                                                <div class="margin-top-10 alert alert-success display-hide flash1"
                                                      style="display: none;">
                                                     <button class="close" data-close="alert"></button>
                                                     Data saved successfully
                                                 </div>
-                                                <div class="margin-top-10">
-                                                    <a href="javascript:void(0)" id="save_display1"
-                                                       class="btn btn-primary"  <?php echo $is_disabled ?>> Save Changes </a>
 
 
-                                                </div>
-                                            <?php
-                                            }
-                                        ?>
-
+                                                <!--<div class="margin-top-10">-->
+                                                <button type="submit" class="btn btn-primary"
+                                                        id="save_client_p1">Save
+                                                </button>
+                                                <button type="submit" class="btn btn-primary"
+                                                        onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">
+                                                    Save As Draft
+                                                </button>
+                                            </div>
+                                            <!--</div>-->
                                     </form>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab_1_2">
 
-                    <!-- END SAMPLE FORM PORTLET-->
 
+                            <h4> Enable <?php echo ucfirst($settings->document); ?>s?</h4>
+
+                            <form action="" id="displayform1" method="post">
+                                <table class="table table-light table-hover sortable">
+                                    <tr class="myclass">
+                                        <th></th>
+                                        <th class="">System</th>
+                                        <th class=""><?php echo ucfirst($settings->client); ?> </th>
+                                    </tr>
+                                    <?php
+                                        //$subdoc = $this->requestAction('/clients/getSub');
+                                        $subdoccli = $this->requestAction('/clients/getSubCli/' . $id);
+                                        //var_dump($subdoccli);
+                                        foreach ($subdoccli as $subcl) {
+                                            //echo $subcl->sub_id;
+                                            $sub = $this->requestAction('/clients/getFirstSub/' . $subcl->sub_id);
+                                            ?>
+                                            <tr id="subd_<?php echo $sub->id; ?>" class="sublisting">
+                                                <td>
+
+                                                    <?php echo ucfirst($sub['title']); ?>
+                                                </td>
+                                                <td class="">
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="<?php echo $sub->id; ?>"
+                                                                                          value="1"
+                                                                                          <?php if ($sub['display'] == 1) { ?>checked="checked" <?php } ?>
+                                                                                          disabled="disabled"/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="<?php echo $sub->id; ?>"
+                                                                                          value="0"
+                                                                                          <?php if ($sub['display'] == 0) { ?>checked="checked" <?php } ?>
+                                                                                          disabled="disabled"/>
+                                                        No </label>
+                                                </td>
+                                                <?php
+                                                    $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/' . $id . '/' . $sub->id);
+                                                ?>
+                                                <td class="">
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="clientC[<?php echo $sub->id; ?>]"
+                                                                                          value="1"  <?php if ($csubdoc['display'] == 1) { ?> checked="checked" <?php } ?> />
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="clientC[<?php echo $sub->id; ?>]"
+                                                                                          value="0"  <?php if ($csubdoc['display'] == 0) { ?> checked="checked" <?php } ?> />
+                                                        No </label>
+                                                </td>
+
+                                            </tr>
+
+                                        <?php
+                                        }
+                                    ?>
+
+                                </table>
+
+                                <!--end profile-settings-->
+
+                                <?php
+                                    if (!isset($disabled)) {
+                                        ?>
+
+                                        <div class="margin-top-10 alert alert-success display-hide flash"
+                                             style="display: none;">
+                                            <button class="close" data-close="alert"></button>
+                                            Data saved successfully
+                                        </div>
+                                        <div class="margin-top-10">
+                                            <a href="javascript:void(0)" id="save_display1"
+                                               class="btn btn-primary"  <?php echo $is_disabled ?>> Save Changes </a>
+
+
+                                        </div>
+                                    <?php
+                                    }
+                                ?>
+
+                            </form>
+                        </div>
+
+                        <!-- END SAMPLE FORM PORTLET-->
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -560,61 +582,52 @@ if ($action == "Add") { $action  = "Create";}
         $('.sortable tbody').sortable({
             items: "tr:not(.myclass)",
             update: function (event, ui) {
-                
-                $('.sublisting').each(function(){
-                   var id = $(this).attr('id'); 
-                   id = id.replace('subd_','');
-                   if(tosend=='')
-                   {
-                    tosend = id;
-                   }
-                   else
-                   tosend = tosend+','+id;
+
+                $('.sublisting').each(function () {
+                    var id = $(this).attr('id');
+                    id = id.replace('subd_', '');
+                    if (tosend == '') {
+                        tosend = id;
+                    }
+                    else
+                        tosend = tosend + ',' + id;
                 });
                 $.ajax({
-                   url:'<?php echo $this->request->webroot;?>clients/updateOrder/<?php if(isset($id))echo $id;?>',
-                   data:'tosend='+tosend,
-                   type:'post' 
+                    url: '<?php echo $this->request->webroot;?>clients/updateOrder/<?php if(isset($id))echo $id;?>',
+                    data: 'tosend=' + tosend,
+                    type: 'post'
                 });
                 tosend = '';
-                
-                /*
-            var data = $(this).sortable('serialize');
-    
-            // POST to server using $.post or $.ajax
-            $.ajax({
-                data: data,
-                type: 'POST',
-                url: '/your/url/here'
-            });*/
-        }
+
+
+            }
         });
         <?php
         if(isset($_GET['view']))
         {
             ?>
-          $('#client_form input').each(function(){
-            $(this).attr("disabled",'disabled');
-          });
-          $('#client_form a').hide();
-          $('.uploaded').show();
-          $('#clientimg').hide();
-          $('#client_form textarea').each(function(){
-            $(this).attr("disabled",'disabled');
-          });
-          
-          $('#client_form select').each(function(){
-            $(this).attr("disabled",'disabled');
-          }); 
-          
-          $('.recruiters input').each(function(){
-            $(this).attr("disabled",'disabled');
-          }); 
-          $('#searchProfile').hide();
-          $('#save_client_p1').hide();
-          $('#attach_label').hide();
+        $('#client_form input').each(function () {
+            $(this).attr("disabled", 'disabled');
+        });
+        $('#client_form a').hide();
+        $('.uploaded').show();
+        $('#clientimg').hide();
+        $('#client_form textarea').each(function () {
+            $(this).attr("disabled", 'disabled');
+        });
+
+        $('#client_form select').each(function () {
+            $(this).attr("disabled", 'disabled');
+        });
+
+        $('.recruiters input').each(function () {
+            $(this).attr("disabled", 'disabled');
+        });
+        $('#searchProfile').hide();
+        $('#save_client_p1').hide();
+        $('#attach_label').hide();
         <?php }?>
-        $('input [type="email"]').keyup(function(){
+        $('input [type="email"]').keyup(function () {
             $(this).removeAttr('style');
         });
         initiate_ajax_upload('clientimg', 'asdas');
@@ -640,7 +653,7 @@ if ($action == "Add") { $action  = "Create";}
         <?php
         }
         ?>
-        $('.save_client_all').submit(function(event){
+        $('.save_client_all').submit(function (event) {
             event.preventDefault();
             $('#save_client_p1').text('Saving..');
             var str = '';
@@ -694,19 +707,18 @@ if ($action == "Add") { $action  = "Create";}
                 type: 'post',
                 success: function (res) {
 
-                    if (res != 'e' && res != 'email' && res!='Invalid Email') {
+                    if (res != 'e' && res != 'email' && res != 'Invalid Email') {
                         window.location = '<?php echo $this->request->webroot;?>clients/edit/' + res;
                     }
                     else if (res == 'email') {
                         alert('Email Already Used.');
                     }
-                    else
-                    if(res == 'Invalid Email')
-                    {
+                    else if (res == 'Invalid Email') {
                         $('#tab_1_1 input[type="email"]').focus();
-                        $('#tab_1_1 input[type="email"]').attr('style','border-color:red');
+                        $('#tab_1_1 input[type="email"]').attr('style', 'border-color:red');
                         $('html,body').animate({
-                                scrollTop: $('#tab_1_1').offset().top},
+                                scrollTop: $('#tab_1_1').offset().top
+                            },
                             'slow');
                     }
 
@@ -719,44 +731,40 @@ if ($action == "Add") { $action  = "Create";}
         });
     });
 
-        $('#addMoredoc').click(function(){
-         var total_count = $('.docMore').data('count');
-        $('.docMore').data('count',parseInt(total_count)+1);
+    $('#addMoredoc').click(function () {
+        var total_count = $('.docMore').data('count');
+        $('.docMore').data('count', parseInt(total_count) + 1);
         total_count = $('.docMore').data('count');
-         var input_field = '<div  class="form-group col-md-12"><div class="col-md-6"><span></span><a href="javascript:void(0);" id="addMore'+total_count+'" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore'+total_count+'_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore'+total_count+'" title ="">Delete</a></div></div>';
-    $('.docMore').append(input_field);
-    initiate_ajax_upload('addMore'+total_count,'doc');
-        
+        var input_field = '<div  class="form-group col-md-12"><div class="col-md-6"><span></span><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a></div></div>';
+        $('.docMore').append(input_field);
+        initiate_ajax_upload('addMore' + total_count, 'doc');
+
     });
     //delete image
-    $('.img_delete').live('click',function(){
+    $('.img_delete').live('click', function () {
         var con = confirm('Confirm Delete?');
-        if(con == true)
-        {
+        if (con == true) {
             var file = $(this).attr('title');
-            if(file == file.replace("&"," "))
-            {
-                var id =0;
+            if (file == file.replace("&", " ")) {
+                var id = 0;
             }
-            else
-            {
+            else {
                 var f = file.split("&");
                 file = f[0];
                 var id = f[1];
             }
-            
-            
+
+
             $.ajax({
                 type: "post",
-                data: 'id='+id,
-                url: "<?php echo $this->request->webroot;?>clients/removefiles/"+file,
-                success:function(msg)
-                {
-                    
+                data: 'id=' + id,
+                url: "<?php echo $this->request->webroot;?>clients/removefiles/" + file,
+                success: function (msg) {
+
                 }
             });
-           $(this).parent().parent().remove(); 
-            
+            $(this).parent().parent().remove();
+
         }
         else
             return false;
@@ -796,7 +804,7 @@ if ($action == "Add") { $action  = "Create";}
 
     function initiate_ajax_upload(button_id, doc) {
         var button = $('#' + button_id), interval;
-        if(doc =='doc')
+        if (doc == 'doc')
             var act = "<?php echo $this->request->webroot;?>clients/upload_all/<?php if(isset($id))echo $id;?>";
         else
             var act = "<?php echo $this->request->webroot;?>clients/upload_img/<?php if(isset($id))echo $id;?>";
@@ -826,10 +834,9 @@ if ($action == "Add") { $action  = "Create";}
                 if (doc == "doc") {
                     $('#' + button_id).parent().find('span').text(" " + response);
                     $('.' + button_id + "_doc").val(response);
-                    $('#delete_'+button_id).attr('title',response);
+                    $('#delete_' + button_id).attr('title', response);
                 }
-                else 
-                {
+                else {
                     $("#clientpic").attr("src", '<?php echo $this->request->webroot;?>img/jobs/' + response);
                     $('#client_img').val(response);
                 }

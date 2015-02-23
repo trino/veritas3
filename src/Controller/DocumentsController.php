@@ -2033,23 +2033,6 @@
                         $saveData['order_id'] = $_POST['order_id'];
                     $saveData['path'] = $rand;
 
-                    //saving in db
-                    /* if($_POST['doc_type'] == "Pre-Screening"){
-                         $this->saveAttachmentsPrescreen($saveData);
-                     } else if($_POST['doc_type'] == "Driver Application"){
-                         $this->saveAttachmentsDriverApp($saveData);
-                     }else if($_POST['doc_type'] == "Road test"){
-                         $this->saveAttachmentsRoadTest($saveData);
-                     } else if($_POST['doc_type'] == "Place MEE Order"){
-
-                             if($_POST['subtype'] == "Consent Form"){
-                                 $this->saveAttachmentsConsentForm($saveData);
-                             }else if($_POST['subtype'] == "Employment"){
-                                 $this->saveAttachmentsEmployment($saveData);
-                             }else if($_POST['subtype'] == "Education"){
-                                 $this->saveAttachmentsEducation($saveData);
-                             }
-                     }*/
 
                     echo $rand;
                 } else {

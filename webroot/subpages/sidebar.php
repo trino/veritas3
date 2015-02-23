@@ -8,11 +8,8 @@
         <ul id="mainbar" class="<?php echo $settings->sidebar; ?>" data-keep-expanded="false" data-auto-scroll="true"
             data-slide-speed="200">
 
-            <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
             <li class="sidebar-search-wrapper margin-top-20">
-                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-                <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-                <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+
                 <form class="sidebar-search " action="<?php echo $this->request->webroot . 'documents'; ?>"
                       method="get">
                     <a href="javascript:;" class="remove">
@@ -80,11 +77,6 @@
 								<?php }     ?>
 
 
-                            <!--<li>
-							<a href="<?php echo WEB_ROOT; ?>clients/add">
-							<i class="icon-basket"></i>
-							Assign Client to user</a>
-						</li>-->
 
 
                         </ul>
@@ -116,7 +108,7 @@
                                         Create <?php echo ucfirst($settings->profile); ?></a>
                                 </li>
                             <?php } ?>
-						<?php if ($sidebar->profile_list == 1) { ?>
+						<?php if ($sidebar->profile_create == 1) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Profiles' && $this->request['action'] == 'index' && isset($_GET["draft"]) ) ? 'class="active"' : ''; ?>>
                                     <a href="<?php echo WEB_ROOT; ?>profiles/index?draft">
                                         <i class="fa fa-pencil"></i>
@@ -127,28 +119,7 @@
                     <?php } ?>
                 </li>
             <?php } ?>
-            <!--<li class="start <?php echo ($this->request['controller'] == 'Logos') ? 'active open' : ''; ?>">
-					<a href="javascript:;">
-					<i class="icon-home"></i>
-					<span class="title">Logo Manager </span>
-					<span class="selected"></span>
-					</a>
-                    <ul class="sub-menu">
-						<li <?php echo ($this->request['controller'] == 'Logos' && $this->request['action'] == 'index') ? 'class="active"' : ''; ?>>
-							<a href="<?php echo $this->request->webroot; ?>Logos">
-							<i class="icon-home"></i>
-							Primary logo</a>
-						</li>
-						<li <?php echo ($this->request['controller'] == 'Profiles' && $this->request['action'] == 'secondary') ? 'class="active"' : ''; ?>>
-							<a href="<?php echo $this->request->webroot; ?>Logos/secondary">
-							<i class="icon-basket"></i>
-							Secondary logo</a>
-						</li>
-                        
-						
-					</ul>
-					
-				</li>-->
+
             <?php if ($sidebar->document == 1) { ?>
                 <li class="<?php echo (($this->request['controller'] == 'Documents' && ($this->request['action'] == "index" || $this->request['action'] == "add")) && !isset($_GET['draft'])) ? 'active open' : ''; ?>">
                     <a href="javascript:;">
@@ -180,65 +151,13 @@
                                         <?php echo ucfirst($settings->document); ?> Drafts</a>
                                 </li>
                             <?php } 
-							
-							/*
-                        if($sidebar->document_create==1){?>
-                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='order')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>documents/addorder/1">
-                            <i class="icon-plus"></i> 
-							Submit Orders</a>
-						</li>
-						<?php }?>
-                        <?php if($sidebar->document_create==1){?>
-                        <li <?php echo($this->request['controller']=='Documents' && $this->request['action']=='add')?'class="active"':'';?>>
-							<a href="<?php echo WEB_ROOT;?>documents/add/1">
-                            <i class="icon-plus"></i>
-							Submit <?php echo ucfirst($settings->document);?></a>
-						</li>
-						<?php } */
+
                             ?>
 
                         </ul>
                     <?php } ?>
                 </li>
             <?php } ?>
-            <!--<li class="<?php echo ($this->request['action'] == 'stats') ? 'active open' : ''; ?>">
-                <a href="<?php echo $this->request->webroot; ?>documents/stats">
-                <i class="icon-list"></i>
-				<span class="title">Stats By Recruiter</span>
-                <span class="selected"></span>
-                </a>
-                </li>
-                
-                <li class="<?php echo ($this->request['controller'] == 'Todo') ? 'active open' : ''; ?>">
-                <a href="javascript:;">
-                <i class="icon-calendar"></i>
-				<span class="title">Todo (Reminders)</span>
-                <span class="selected"></span>
-                <span class="arrow "></span>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="<?php echo $this->request->webroot; ?>todo/view/1">
-                        <i class="icon-clock"></i>
-                        Slider Redesign
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $this->request->webroot; ?>todo/view/1">
-                        <i class="icon-clock"></i>
-                        Slider Redesign
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $this->request->webroot; ?>todo/view/1">
-                        <i class="icon-clock"></i>
-                        Slider Redesign
-                        </a>
-                    </li>
-                </ul>
-
-                </li>-->
 
             </li>
             <?php if ($sidebar->orders == 1) { ?>
@@ -286,46 +205,7 @@
                 </li>
             <?php } ?>
 
-            <!--
-                <li class="<?php echo ($this->request['controller'] == 'Pages' && $this->request['action'] == 'cms') ? 'active open' : ''; ?> last">
-                    <a href="javascript:;">
-					<i class="icon-rocket"></i>
-					<span class="title">Pages</span>
-                    <span class="selected"></span>
-					<span class="arrow "></span>
-					</a>
-                    <ul class="sub-menu">
-						<li>
-							<a href="<?php echo $this->request->webroot; ?>pages/cms/help">
-							<i class="icon-home"></i>
-							Help</a>
-						</li>
-						<li>
-							<a href="<?php echo $this->request->webroot; ?>pages/cms/privacy-code">
-							<i class="icon-home"></i>
-							Privacy code</a>
-						</li>
-                        <li>
-							<a href="<?php echo $this->request->webroot; ?>pages/cms/product-example">
-							<i class="icon-home"></i>
-							Product example</a>
-						</li>
-                        <li>
-							<a href="<?php echo $this->request->webroot; ?>pages/cms/terms">
-							<i class="icon-home"></i>
-							Terms</a>
-						</li>
-                        <li>
-							<a href="<?php echo $this->request->webroot; ?>pages/cms/faq">
-							<i class="icon-home"></i>
-							FAQ</a>
-						</li>
-						
-					</ul>
-                </li>-->
-            <!--<li class="last">
-					<img src="<?php echo $this->request->webroot; ?>img/logos/ISBWhite.png" />
-               </li>-->
+
             <?php if ($sidebar->logo == '1') { ?>
                 <li class="sidebar-toggler-wrapper">
                     <!-- BEGIN SIDEBAR TOGGLER BUTTON -->

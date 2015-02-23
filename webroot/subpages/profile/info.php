@@ -49,8 +49,9 @@
 
 ?>
 
-<div class="portlet-body form" style="margin-bottom: -10px">
-
+<div class="portlet-body form" >
+    <input type="hidden" name="client_ids" value="" class="client_profile_id"/>
+    <div class="form-body">
     <div class="tab-content">
         <div class="tab-pane active" id="subtab_4_1">
 
@@ -609,25 +610,30 @@
                         <?php
                                 if (!isset($disabled)) {
                             ?>
-                                <div class="form-actions" style="height:75px;margin-left:-5px;margin-right:-5px;margin-bottom:-10px;">
-                                    <div class="row">
+
+
+
+
+
+
+
+
                                         <div class="col-md-12" align="right">
 
 
-                                        <div class="margin-top-10 form-actions" align="right">
-                                        <a href="javascript:void(0)" class="btn btn-primary"
-                                           onclick="return check_username();" id="savepro">
-                                            Save Changes
-                                        </a>
-                                        <button class="btn btn-info"
-                                                onclick="$('#profile_drafts').val('1'); $('#save_clientz').attr('novalidate','novalidate');$('#hiddensub').click();">
-                                            Save As Draft
-                                        </button>
-                                        <input type="submit" style="display: none;" id="hiddensub"/>
-                                    </div>
-                                    <div class="clearfix"></div>
 
-                                </div></div></div>
+                                                <a href="javascript:void(0)" class="btn btn-primary"
+                                                   onclick="return check_username();" id="savepro">
+                                                    Save Changes
+                                                </a>
+                                                <button class="btn btn-info"
+                                                        onclick="$('#profile_drafts').val('1'); $('#save_clientz').attr('novalidate','novalidate');$('#hiddensub').click();">
+                                                    Save As Draft
+                                                </button>
+                                                <input type="submit" style="display: none;" id="hiddensub"/>
+                                        </div>
+
+                        <div class="clearfix"></div>
                             <?php } ?>
 
 
@@ -639,6 +645,7 @@
 
         </div>
 
+    </div>
     </div>
     <?php
         if ($this->request->params['action'] == 'edit') {

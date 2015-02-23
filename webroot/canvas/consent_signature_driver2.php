@@ -40,7 +40,7 @@
     			<a href="#" onclick='addImage();' style="display: none;">Add Image</a>
     			<a href="javascript:void(0)" onclick='$("#test5").data("jqScribble").clear();'>Clear</a> 			
                 <br />
-                <?php if(isset($consent_detail) && $consent_detail->criminal_signature_applicant2){?><strong>Current Signature<br /></strong><img src="<?php echo $this->request->webroot.'canvas/'.$consent_detail->criminal_signature_applicant2;?>" style="max-width: 100%;" /><?php }?>
+                <?php if(isset($consent_detail) && $consent_detail->criminal_signature_applicant2){?><img src="<?php echo $this->request->webroot.'canvas/'.$consent_detail->criminal_signature_applicant2;?>" style="max-width: 100%;" /><?php }?>
                 <br />
                 
     		</div>

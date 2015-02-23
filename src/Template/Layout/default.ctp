@@ -226,12 +226,20 @@
         
 		</div>
 	</div>
+
+
+
 	<!-- END CONTENT -->
 	<!-- BEGIN QUICK SIDEBAR -->
 	<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
 	
 	<!-- END QUICK SIDEBAR -->
  <?php if($settings->box =='1'){?></div><?php }?>
+
+
+
+
+
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->

@@ -47,13 +47,8 @@
 <div>
 
     <div class="portlet-body">
-
-
         <div class="createDriver">
-
-
             <div class="portlet box form">
-
                 <input type="hidden" name="document_type" value="add_driver"/>
 
                 <form role="form" action="" method="post" id="createDriver">
@@ -63,8 +58,16 @@
                            class="driver_id"/>
 
                     <div class="row">
-                        
-                        <div style="display:inline-block;border-radius:30px;"><img id="clientpic" class="img-responsive" style="height: auto;width: 150px;margin-left:15px;" alt="" src="/veritas3/img/profile/default.png" /></div>
+                        <div class="col-md-3">
+
+                        <div style="display:inline-block;border-radius:30px;"><img id="clientpic" class="img-responsive"
+                                                                                   style="height: auto;width: 150px;margin-left:15px;"
+                                                                                   alt=""
+                                                                                   src="/veritas3/img/profile/default.png"/>
+                        </div>
+                        </div>
+                        <div class="col-md-9">
+
                         <div class="clearfix"></div>
                         <input type="hidden" name="created_by"
                                value="<?php echo $this->request->session()->read('Profile.id') ?>"/>
@@ -79,34 +82,22 @@
                                     class="form-control member_type required">
                                     <option value="">Select</option>
 
-                                    <!-- php $isISB = (isset($sidebar) && $sidebar->client_option == 0);
-                                    if ($isISB) { -->
 
-                                    <option value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
+                                    <option
+                                        value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
                                         Driver
                                     </option>
 
-                                    <option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php } ?>>
+                                    <option
+                                        value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php } ?>>
                                         Owner Operator
                                     </option>
 
-                                    <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php } ?>>
+                                    <option
+                                        value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php } ?>>
                                         Owner Driver
                                     </option>
 
-                                    <!--php } else { ?>
-
-                                        <option value="9" <--php if (isset($p) && $p->profile_type == 9) { ?> selected="selected" <--php } ?>>
-                                            Employee
-                                        </option>
-                                        <option value="10" <--php if (isset($p) && $p->profile_type == 10) { ?> selected="selected" <--php } ?>>
-                                            Guest
-                                        </option>
-                                        <option value="11" <--php if (isset($p) && $p->profile_type == 11) { ?> selected="selected" <--php } ?>>
-                                            Partner
-                                        </option>
-
-                                    < php } -->
 
                                 </select>
                             </div>
@@ -292,18 +283,8 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label">ISB Id</label>
-                                <input <?php echo $is_disabled ?>  <?php if (isset($id) && $this->request->session()->read('Profile.id') == $id) echo "disabled='disabled'"; ?>
-                                    name="isb_id" type="text"
-                                    placeholder="optional"
-                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
-                            </div>
-                        </div>
 
-
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
 
                                 <label class="control-label">Place of Birth</label>
@@ -313,10 +294,10 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-8">
 
                             <div class="form-group">
-                                <label class="control-label">Date of Birth (YYYY-MM-DD)</label><BR>
+                                <label class="control-label">Date of Birth (YYYY MM DD)</label><BR>
 
                                 <div class="row">
 
@@ -481,6 +462,7 @@
                 <div class="clearfix"></div>
 
 
+            </div>
             </div>
 
 

@@ -74,9 +74,6 @@
             <div class="portlet-body">
 
 
-
-
-
                 <div class="form-actions top chat-form" style="margin-top:0;">
                     <div class="btn-set pull-left">
 
@@ -85,7 +82,7 @@
 
 
                         <form action="<?php echo $this->request->webroot; ?>profiles/index" method="get">
-                        <?php if (isset($_GET['draft'])) { ?><input type="hidden" name="draft"/><?php } ?>
+                            <?php if (isset($_GET['draft'])) { ?><input type="hidden" name="draft"/><?php } ?>
 
 
                             <select class="form-control input-inline" style="" name="filter_profile_type">
@@ -120,8 +117,7 @@
                                             value="6" <?php if (isset($return_profile_type) && $return_profile_type == 6) { ?> selected="selected"<?php } ?>>
                                             Contact
                                         </option>
-                                        <!--<option value="7" <?php if (isset($return_profile_type) && $return_profile_type == 7) { ?> selected="selected"<?php } ?>>Owner Operator</option>
-                                        <option value="8" <?php if (isset($return_profile_type) && $return_profile_type == 8) { ?> selected="selected"<?php } ?>>Owner Driver</option>-->
+
                                     <?php } else { ?>
                                         <option
                                             value="9" <?php if (isset($return_profile_type) && $return_profile_type == 9) { ?> selected="selected"<?php } ?> >
@@ -139,12 +135,13 @@
 
                             </select>
 
-                        <?php
-                            $super = $this->request->session()->read('Profile.super');
-                            if (isset($super)) {
-                                $getClient = $this->requestAction('profiles/getClient');
-                                ?>
-                                    <select class="form-control showprodivision input-inline" style="" name="filter_by_client">
+                            <?php
+                                $super = $this->request->session()->read('Profile.super');
+                                if (isset($super)) {
+                                    $getClient = $this->requestAction('profiles/getClient');
+                                    ?>
+                                    <select class="form-control showprodivision input-inline" style=""
+                                            name="filter_by_client">
                                         <option value=""><?php echo ucfirst($settings->client); ?></option>
                                         <?php
                                             if ($getClient) {
@@ -159,20 +156,20 @@
                                     </select>
 
 
-                                <div class="prodivisions input-inline">
-                                    <!-- Divisions section -->
-                                </div>
+                                    <div class="prodivisions input-inline">
+                                        <!-- Divisions section -->
+                                    </div>
 
 
-                            <?php } ?>
+                                <?php } ?>
 
                             <input class="form-control input-inline" type="search" name="searchprofile"
                                    placeholder=" Search for <?php echo ucfirst($settings->profile); ?>"
                                    value="<?php if (isset($search_text)) echo $search_text; ?>"
                                    aria-controls="sample_1"/>
                             <button type="submit" class="btn btn-primary input-inline">Search</button>
-                    </form>
-                </div>
+                        </form>
+                    </div>
                 </div>
 
                 <div class="table-scrollable">
@@ -181,11 +178,14 @@
                         <thead>
                         <tr class="sorting">
                             <th><?= $this->Paginator->sort('id') ?></th>
+
+                            <th><?= $this->Paginator->sort('username', 'Username') ?></th>
                             <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
-                            <th><?= $this->Paginator->sort('fname', 'First Name') ?></th>
-                            <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
-                            <th><?= $this->Paginator->sort('username', ucfirst($settings->profile)) ?></th>
                             <th><?= $this->Paginator->sort('email') ?></th>
+
+                            <th><?= $this->Paginator->sort('fname', 'FName') ?></th>
+                            <th><?= $this->Paginator->sort('lname', 'LName') ?></th>
+
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         </thead>
@@ -205,9 +205,7 @@
                                 echo '</TD></TR>';
                             }
 
-
                             foreach ($profiles as $profile):
-
                                 if ($row_color_class == "even") {
                                     $row_color_class = "odd";
                                 } else {
@@ -217,11 +215,17 @@
 
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($profile->id) ?></td>
+
+                                    <td><?= h($profile->username) ?></td>
                                     <td><?= h($profiletype[$profile->profile_type]) ?></td>
+
+                                    <td><?= h($profile->email) ?></td>
+
+
                                     <td><?= h($profile->fname) ?></td>
                                     <td><?= h($profile->lname) ?></td>
-                                    <td><?= h($profile->username) ?></td>
-                                    <td><?= h($profile->email) ?></td>
+
+
                                     <td class="actions  util-btn-margin-bottom-5">
 
                                         <?php if ($sidebar->profile_list == '1') {
@@ -230,29 +234,6 @@
                                         <?php
                                             $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
                                             if ($sidebar->profile_edit == '1') {
-                                                //if($profile->super == '1' && ($this->request->session()->read('Profile.super') == '1'))
-//                                        {
-//                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-//                                        }
-//                                        else
-//                                        {
-//                                          if($profile->super != '1' && $profile->profile_type !='1')
-//                                          {
-//                                            if($this->request->session()->read('Profile.profile_type') != '1')
-//                                            {
-//                                                $pt = $profile->profile_type;
-//                                                if($this->request->session()->read('Profile.id') == $profile->id)
-//                                                {
-//                                                    echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-//                                                }
-//                                                
-//                                                else if($pt=='5' || $this->request->session()->read('Profile.id')==$profile->id)    
-//                                                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-//                                            }
-//                                            else
-//                                            echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-//                                          }  
-//                                        }
 
                                                 if ($checker == 1) {
                                                     echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
@@ -263,44 +244,35 @@
                                             if ($this->request->session()->read('Profile.super') == '1') {
                                                 if ($this->request->session()->read('Profile.id') != $profile->id) {
                                                     ?>
-                                                    <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>"
+                                                    <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?>"
                                                        onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');"
                                                        class="btn btn-danger">Delete</a>
                                                 <?php
                                                 }
                                             } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
                                                 ?>
-                                                <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>"
+                                                <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?>"
                                                    onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');"
                                                    class="btn btn-danger">Delete</a>
                                             <?php
                                             }
 
-                                            /*else if($this->request->session()->read('Profile.profile_type') != '1')
-                                            {
-                                                $pt = $profile->profile_type;
-                                                if($pt=='5' && $this->request->session()->read('Profile.id')==$profile->id)
-                                                {
-                                                    ?>
-                                                    <a href="<?php echo $this->request->webroot;?>profiles/delete/<?php echo $profile->id;?>" onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');" class="btn btn-danger" >Delete</a>
-                                                    <?php
-                                                }
-                                            }*/
                                         }
                                         ?>
                                         <?php
                                             if ($profile->profile_type == 5) {
                                                 ?>
-                                                <a href="<?php echo $this->request->webroot;?>documents/productSelection?driver=<?php echo $profile->id;?>"
-                                                   class="btn btn-success">Add Order</a>
-                                                <a href="<?php echo $this->request->webroot;?>profiles/viewReport/<?php echo $profile->id;?>"
-                                                   class="btn btn-primary">View Scorecard</a>
+                                                <a href="<?php echo $this->request->webroot; ?>documents/productSelection?driver=<?php echo $profile->id; ?>"
+                                                   class="btn btn-success">Create Order</a>
+                                                <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
+                                                   class="btn btn-primary">Score Card</a>
                                             <?php
                                             }
                                         ?>
 
 
                                     </td>
+
                                 </tr>
 
                             <?php endforeach; ?>
@@ -310,18 +282,12 @@
 
 
                 <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
-
-
                     <ul class="pagination sorting">
                         <?= $this->Paginator->prev('< ' . __('previous')); ?>
                         <?= $this->Paginator->numbers(); ?>
                         <?= $this->Paginator->next(__('next') . ' >'); ?>
                     </ul>
-
-
                 </div>
-
-
             </div>
         </div>
     </div>

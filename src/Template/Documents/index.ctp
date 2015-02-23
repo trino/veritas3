@@ -143,10 +143,10 @@
                         <thead>
                         <tr class="sorting">
                             <th><?= $this->Paginator->sort('id'); ?></th>
-                            <th><?= $this->Paginator->sort('document_type', ucfirst($settings->document)); ?></th>
+                            <th><?= $this->Paginator->sort('document_type', ucfirst($settings->document) . ' type'); ?></th>
                             <th><?= $this->Paginator->sort('user_id', 'Submitted by'); ?><?php if (isset($end)) echo $end;
                                     if (isset($start)) echo "//" . $start; ?></th>
-                            <th><?= $this->Paginator->sort('created', 'On'); ?></th>
+                            <th><?= $this->Paginator->sort('created', 'Date'); ?></th>
                             <th><?= $this->Paginator->sort('client_id', ucfirst($settings->client)); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
 
@@ -174,8 +174,7 @@
                                 if ($docs->document_type == 'feedbacks' && !$this->request->session()->read('Profile.super'))
                                     continue;
 
-//$prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.array_search($docs->document_type, $docz));
-//var_dump($prosubdoc);
+
                                 if ($row_color_class == "even") {
                                     $row_color_class = "odd";
                                 } else {

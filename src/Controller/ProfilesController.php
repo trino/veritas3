@@ -63,6 +63,16 @@ public function training(){}
 public function quiz(){}
 public function video(){}
 
+public function settings(){
+    $this->loadModel('Logos');
+
+    $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
+    $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
+    $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary'=>'2'])));
+
+
+}
+
     public function index() {
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');

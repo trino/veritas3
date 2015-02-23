@@ -49,13 +49,13 @@
 
 ?>
 
-<div class="portlet-body">
+<div class="portlet-body form" style="margin-bottom: -10px">
 
     <div class="tab-content">
         <div class="tab-pane active" id="subtab_4_1">
 
 
-            <div class="portlet box ">
+            <div class="portlet box" style="margin-bottom:0px;">
 
 
                 <form role="form" action="" method="post" id="save_clientz">
@@ -320,8 +320,8 @@
                         </div>
 
 
-                        <div class="clearfix">
-                        </div>
+                        <div class="clearfix"></div>
+
                         <?php if ($settings->client_option == 0) { ?>
                         <div class="col-md-4">
                             <div class="form-group">
@@ -609,9 +609,12 @@
                         <?php
                                 if (!isset($disabled)) {
                             ?>
-                                <div class="col-md-12">
+                                <div class="form-actions" style="height:75px;margin-left:-5px;margin-right:-5px;margin-bottom:-10px;">
+                                    <div class="row">
+                                        <div class="col-md-12" align="right">
 
-                                    <div class="margin-top-10 form-actions" align="right">
+
+                                        <div class="margin-top-10 form-actions" align="right">
                                         <a href="javascript:void(0)" class="btn btn-primary"
                                            onclick="return check_username();" id="savepro">
                                             Save Changes
@@ -624,7 +627,7 @@
                                     </div>
                                     <div class="clearfix"></div>
 
-                                </div>
+                                </div></div></div>
                             <?php } ?>
 
 

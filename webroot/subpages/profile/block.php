@@ -1,8 +1,10 @@
 <?php 
 
     $uid = ($this->request['action']=='add')? "0" : $this->request['pass'][0];
-    $sidebar = $this->requestAction("settings/all_settings/".$uid."/sidebar"); ?>
-    <?php $block = $this->requestAction("settings/all_settings/".$uid."/blocks"); ?>
+    $sidebar = $this->requestAction("settings/all_settings/".$uid."/sidebar");
+    $block = $this->requestAction("settings/all_settings/".$uid."/blocks");
+    if(!isset($is_disabled1)){$is_disabled1 = "";}//something is wrong with this variable
+?>
 
 <!-- BEGIN BORDERED TABLE PORTLET--><!--
 <div class="portlet box yellow">
@@ -35,12 +37,12 @@
             </li>-->
         </UL>
     <!--</div>-->
-    <div class="portlet-body">
+    <div class="portlet-body form">
                                     <div class="tab-content">
                                                 <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")!=2) echo 'active'; ?>" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
-                                                                                                               
+
                                 					   <form action="#" method="post" id="blockform">
                                                             <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                                             <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
@@ -390,11 +392,13 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10" align="right">
+                                                           <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                                                               <div class="row">
+                                                                   <div class="col-md-12" align="right">
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
                                                        value="Save Changes"/>
 
-                                                </div>
+                                                </div> </div> </div>
                                         <?php
                                         }
                                         ?>
@@ -466,10 +470,12 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                                        <div class="margin-top-10" align="right">
+                                                            <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-12" align="right">
                                                             <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
                                                                 Save Changes </a>
-                                                        </div>
+                                                        </div></div></div>
                                                     <?php
                                                     }
                                                     ?>
@@ -803,11 +809,15 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10" align="right">
+
+                                            <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                                                <div class="row">
+                                                    <div class="col-md-12" align="right">
+
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_home"
                                                        value="Save Changes"/>
 
-                                            </div>
+                                            </div></div></div>
                                         <?php
                                         }
                                         ?>

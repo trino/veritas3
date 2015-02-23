@@ -235,7 +235,7 @@
 
                                     <td class="actions  util-btn-margin-bottom-5">
 
-                                        <?php if ($sidebar->profile_list == '1') {
+                                        <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                             echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);
                                         } ?>
                                         <?php

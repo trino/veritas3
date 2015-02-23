@@ -21,7 +21,7 @@
                                        placeholder="Search <?php echo ucfirst($settings->client); ?>s"
                                        value="<?php if (isset($search_text)) echo $search_text; ?>"
                                        aria-controls="sample_1"/>
-                                <button type="submit" class="btn btn-primary input-inline" style="margin-left:10px;">Search</button>
+                                <button type="submit" class="btn btn-primary input-inline" >Search</button>
 
                         </form>
 
@@ -89,7 +89,7 @@
 
 
                                             <?php
-                                                if ($sidebar->client_list == '1') {
+                                                if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
                                                     ?>
                                                     <a class="btn btn-info"
                                                        href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id; ?>?view">View</a>
@@ -105,7 +105,7 @@
 
                                                 <?php }
 
-
+if (!isset($_GET["draft"])){
                                                 if ($sidebar->document_create == '1') {
                                                     echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => 'btn btn-success']);
                                                 }
@@ -132,7 +132,7 @@
 
                                                 <?php
 
-                                                }
+                                                }}
                                             ?>
                                         </td>
                                     </tr>
@@ -172,7 +172,6 @@
 
         </div></div></div>
     </div>
-</div>
 
 
 

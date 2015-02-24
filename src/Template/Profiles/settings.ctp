@@ -91,7 +91,7 @@ if (isset($profile))
                                 <a href="#tab_1_6" data-toggle="tab">Pages</a>
                             </li>
                             <li>
-                                <a href="#tab_1_8" data-toggle="tab">Other</a>
+                                <a href="#tab_1_8" data-toggle="tab">Display</a>
                             </li>
                         <?php
                         }

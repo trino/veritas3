@@ -642,12 +642,15 @@ class ClientsController extends AppController {
                 return $this->redirect("/clients/index");
                 //die();
             }
-            
+          if(isset($_GET['draft']))
+                $draft= "?draft";
+            else
+                $draft = "";   
         $checker = $this->Settings->check_client_permission($this->request->session()->read('Profile.id'),$id);
             if($checker==0)
             {
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
-                return $this->redirect("/clients/index");
+                return $this->redirect("/clients/index".$draft);
 
             }
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -665,7 +668,7 @@ class ClientsController extends AppController {
 		} else {
 			$this->Flash->error(ucfirst($settings->client) . ' could not be deleted. Please try again.');
 		}
-		return $this->redirect(['action' => 'index']);
+		return $this->redirect(['action' => 'index'.$draft]);
 	}
 
     function quickcontact()
@@ -1077,10 +1080,19 @@ class ClientsController extends AppController {
    {
     $query = TableRegistry::get('client_divison');
         $q = $query->find()->where(['client_id'=>$cid])->all();
+        $q2 = $q;
+        $u=0;
+        foreach($q2 as $q3)
+        {
+            $u++;
+        }
         if(count($q)>0){
             echo '<div class="col-md-3 control-label">Select division </div>';
             echo '<div class="col-md-6 ">';
+            if($u!=1)
             echo "<select class='form-control select2me input-xlarge' name='division' id='divisionsel'>";
+            else
+            echo "<select class='form-control select2me input-xlarge' name='division' id='divisionsel' disabled='disabled'>";
 
             foreach($q as $d)
             {

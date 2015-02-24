@@ -71,15 +71,21 @@ $contact = $this->requestAction('clients/getContact/'.$id);
                                             <?php
                                             $types = array('Driver','Admin','Recruiter','External','Safety','Driver','Contact');
                                             $counter = 0;
-                                             foreach($profile as $p)
-                                                {
-                                                    ?>
-                                                    <li>
-												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $p->id; ?>">
-												    <?php echo $p->username; ?> (<?php echo $types[$p->profile_type]; ?>)
-                                                </a>
-											</li>
-                                                    <?php
+                                             foreach($profile as $p) {
+                                                    echo '<LI><a href="' . $this->request->webroot . "profiles/view/" .  $p->id . '">';
+                                                     if (strlen(trim($p->username)>0)) {
+                                                         echo $p->username;
+                                                     } elseif(strlen(trim($p->fname . $p->lname))>0) {
+                                                         echo $p->fname . " " . $p->lname;
+                                                     } else {
+                                                         echo "[NO NAME]";
+                                                     }
+                                                     if (strlen($p->profile_type)>0) {
+                                                         echo "(" . $types[$p->profile_type] . ")";
+                                                     } else {
+                                                         echo "(Draft)";
+                                                     }
+                                                    echo "</A></LI>";
                                                     $counter++;
                                                 }
                                                 $c = $counter;

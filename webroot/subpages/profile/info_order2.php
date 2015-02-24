@@ -21,18 +21,23 @@
 
 
 
-
-
-
-<div>
     <div class="portlet-body">
         <div class="createDriver">
             <div class="portlet box form-horizontal">
+
+                <?php
+                if ($driver && !$client){
+                    echo '<div class="alert alert-danger"><strong>Error!</strong> This driver is not assigned to a client.</div>';
+                }
+?>
+
+
+
                 <input type="hidden" name="document_type" value="add_driver"/>
 
                 <div class="form-group clientsel">
 
-                    <div class="col-md-3 control-label">Select <?php echo ucfirst($settings->client); ?> </div>
+                    <div class="col-md-3 control-label"><?php echo ucfirst($settings->client); ?> </div>
                     <div class="col-md-6">
                         <?php
                             $counting = 0;
@@ -74,14 +79,14 @@
 
                 <div class="form-group ">
 
-                    <div class="col-md-3 control-label">Select Driver</div>
+                    <div class="col-md-3 control-label">Driver</div>
                     <div class="col-md-6">
 
 
                         <?php //echo count($dr_cl['driver']);?>
                         <select class="form-control input-xlarge select2me" data-placeholder="Create New Driver"
                                 id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
-                            <option>Create New Driver</option>
+                            <option <? if($driver =='0'){echo 'selected';}?>>Create New Driver</option>
                             <?php
                                 $counting = 0;
                                 $drcl_d = $dr_cl['driver'];
@@ -95,7 +100,7 @@
                                     $driver_id = $dr->id;
                                     ?>
                                     <option value="<?php echo $dr->id; ?>"
-                                            <?php if ($dr->id == $driver || $counting == 1){ ?>selected="selected"<?php } ?>><?php echo $dr->fname . ' ' . $dr->mname . ' ' . $dr->lname ?></option>
+                                            <?php if ($dr->id == $driver || $counting == 1 && $driver !='0'){ ?>selected="selected"<?php } ?>><?php echo $dr->fname . ' ' . $dr->mname . ' ' . $dr->lname ?></option>
                                 <?php
                                 }
                             ?>
@@ -114,18 +119,27 @@
 
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
+
+
                         <a href="javascript:void(0);" class="btn btn-danger placenow"
+
                            onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
-                            MEE Order <i class="m-icon-swapright m-icon-white"></i></a>&nbsp;&nbsp; or &nbsp;&nbsp;<a
+                            MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
+
+
+
+                        &nbsp;&nbsp; or &nbsp;&nbsp;
+
+
+                        <a
                             href="javascript:void(0);"
                             class="btn btn-info"
                             onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte <i
                                 class="m-icon-swapright m-icon-white"></i></a>
+
+
                     </div>
                 </div>
-
-
-                <p>&nbsp;</p>
 
 
                 <div class="alacarte" style="display: none;">
@@ -154,10 +168,13 @@
 
             </div>
         </div>
+
+
+
+
     </div>
 
 
-</div>
 
 <script>
     function check_div() {
@@ -212,6 +229,8 @@
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>orders/getClientByDriver/' + driver,
                 success: function (res) {
+                    if(res =='Error')
+                        window.location = "<?php echo $this->request->webroot;?>profiles/edit/"+driver+"?clientflash";
                     var div = $('#divisionsel').val();
                     if (!isNaN(parseFloat(div)) && isFinite(div)) {
                         var division = div;
@@ -274,7 +293,140 @@
        }
        ?>
         });
-
-
     });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row margin-bottom-20">
+
+    <div class="col-md-7">
+        <div class="pricing pricing-active hover-effect">
+            <div class="pricing-head pricing-head-active">
+                <h3>Place MEE Order <span>
+											The all in one package </span>
+                </h3>
+                <h4><i>$</i>90<i>.00</i>
+											<span>
+											One Time Payment </span>
+                </h4>
+            </div>
+            <ul class="pricing-content list-unstyled">
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Driver's Record Abstract
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="CVOR" value=""></span>
+                    <i class="fa fa-file-text-o"></i> CVOR
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Transclick
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Certifications
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Letter of Experience
+                </li>
+
+
+            </ul>
+            <div class="pricing-footer">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
+                </p>
+                <a href="#" class="btn red-flamingo">
+                    Place Order <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="pricing hover-effect">
+            <div class="pricing-head">
+                <h3>A La Carte / Re-qualify <span>
+											Officia deserunt mollitia </span>
+                </h3>
+                <h4><i>$</i>45<i>.00+</i>
+											<span>
+											(Starting At) </span>
+                </h4>
+            </div>
+            <ul class="pricing-content list-unstyled">
+
+                <li>
+                    <input checked  type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
+                </li>
+
+                <li>
+                    <input checked  type="checkbox" name="dri_abs" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Driver's Record Abstract
+                </li>
+
+                <li>
+                    <input checked  type="checkbox" name="CVOR" value=""></span>
+                    <i class="fa fa-file-text-o"></i> CVOR
+                </li>
+
+                <li>
+                    <input checked  type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
+                </li>
+
+                <li>
+                    <input checked  type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Transclick
+                </li>
+
+                <li>
+                    <input checked  type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Certifications
+                </li>
+
+                <li>
+                    <input checked  type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Letter of Experience
+                </li>
+
+            </ul>
+            <div class="pricing-footer">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </p>
+                <a href="#" class="btn yellow-crusta">
+                    Place Order <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--//End Pricing -->
+</div>

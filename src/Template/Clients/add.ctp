@@ -101,9 +101,25 @@
                                     ?>
                                     <tr>
                                         <td>
-                                            <a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $p->id; ?>">
-                                                <?php echo $p->username; ?> (<?php echo $types[$p->profile_type]; ?>)&nbsp;&nbsp;(Profile)
-                                            </a>
+                                            <?php
+                                                echo '<a href="' . $this->request->webroot . 'profiles/view/' . $p->id . '">';
+                                                if (strlen($p->username)>0) {
+                                                    echo $p->username;
+                                                } elseif(strlen($p->fname)>0 or strlen($p->lname)>0) {
+                                                    echo $p->fname . " " . $p->lname;
+                                                } else {
+                                                    echo "[NO NAME]";
+                                                }
+                                                if (strlen($p->profile_type)>0) {
+                                                    echo "(" . $types[$p->profile_type] . ")";
+                                                } else {
+                                                    echo "(Draft)";
+                                                }
+                                                echo "&nbsp;&nbsp;(Profile)</a>"
+                                                //<a href="<?php echo $this->request->webroot;!>profiles/view/<?php echo $p->id; !>">
+                                            //<?php echo $p->username; !> (<?php echo $types[$p->profile_type]; !>)&nbsp;&nbsp;(Profile)</a>
+
+                                            ?>
                                         </td>
                                     </tr>
                                     <?php
@@ -488,7 +504,7 @@
                                 <table class="table table-light table-hover sortable">
                                     <tr class="myclass">
                                         <th></th>
-                                                <th class="">System</th>
+                                                <!--<th class="">System</th>-->
                                                 <th class=""><?php echo ucfirst($settings->document); ?> </th>
                                                 <th class="">Orders</th>
                                                 <th class="">Display Order</th>
@@ -506,7 +522,7 @@
 
                                                     <?php echo ucfirst($sub['title']); ?>
                                                 </td>
-                                                <td class="">
+                                                <!--<td class="">
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="<?php echo $sub->id; ?>"
@@ -521,7 +537,7 @@
                                                                                           <?php if ($sub['display'] == 0) { ?>checked="checked" <?php } ?>
                                                                                           disabled="disabled"/>
                                                         No </label>
-                                                </td>
+                                                </td>-->
                                                 <?php
                                                     $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/' . $id . '/' . $sub->id);
                                                 ?>
@@ -745,7 +761,7 @@
         var total_count = $('.docMore').data('count');
         $('.docMore').data('count', parseInt(total_count) + 1);
         total_count = $('.docMore').data('count');
-        var input_field = '<div  class="form-group col-md-12"><div class="col-md-12"><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a></div></div>';
+        var input_field = '<div  class="form-group col-md-12"><div class="col-md-12"><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a><span></span></div></div>';
         $('.docMore').append(input_field);
         initiate_ajax_upload('addMore' + total_count, 'doc');
 

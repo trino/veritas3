@@ -324,14 +324,14 @@
                     $query = $doc->find()->where(['id' => $did])->first();
                     $this->set('document', $query);
                     if ($setting->document_edit == 0 || count($doc) == 0 || $cn == 0) {
-                        $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                        $this->Flash->error('Sorry you don\'t have the required permissions to upload documents, please enable.');
                         return $this->redirect("/");
 
                     }
 
                 } else {
                     if ($setting->document_create == 0 || count($doc) == 0 || $cn == 0) {
-                        $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                        $this->Flash->error('Sorry you don\'t have the required permissions to upload documents, please enable.');
                         return $this->redirect("/");
 
                     }
@@ -462,11 +462,19 @@
                     $da_at = TableRegistry::get('doc_attachments');
                     $sub['da_at'] = $da_at->find()->where(['document_id' => $did])->all();
 
-                    $de_at = TableRegistry::get('doc_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['document_id' => $did])->all();
+                    
 
                     $this->set('sub', $sub);
                 }
+                $de = TableRegistry::get('road_test');
+                $de_detail = $de->find()->where(['document_id' => $did])->first();
+                if ($de_detail) {
+                   $de_at = TableRegistry::get('doc_attachments');
+                    $sub['de_at'] = $de_at->find()->where(['document_id' => $did])->all(); 
+                    $this->set('sub', $sub);
+                }
+                
+                
                 $con = TableRegistry::get('consent_form');
                 $con_detail = $con->find()->where(['document_id' => $did])->first();
                 if ($con_detail) {

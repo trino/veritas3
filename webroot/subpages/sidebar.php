@@ -204,6 +204,24 @@
                     </a>
                 </li>
             <?php } ?>
+             <?php if ($sidebar->analytics == 1) { ?>
+                <li class="<?php echo ($this->request['action'] == 'analytics') ? 'active open' : ''; ?>">
+                    <a href="<?php echo $this->request->webroot; ?>documents/analytics">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span class="title">Analytics</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+            <?php } ?>
+             <?php if ($sidebar->schedule == 1) { ?>
+                <li class="<?php echo ($this->request['controller'] == 'Todo') ? 'active open' : ''; ?>">
+                    <a href="<?php echo $this->request->webroot; ?>todo/calender">
+                        <i class="fa fa-calendar"></i>
+                        <span class="title">Schedule</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+            <?php } ?>
 
 
             <?php if ($sidebar->logo == '1') { ?>

@@ -1,5 +1,6 @@
 <?php
 $i=0;
+$pType = ['','Admin','Recruiter','External','Safety','Driver','Contact'];
 foreach($profiles as $r)
 {
 //echo $r->username;continue;
@@ -13,7 +14,7 @@ foreach($profiles as $r)
 
 <td>
 <span><input class="profile_client" onchange="if($(this).is(':checked')){assignProfile($(this).val(),'<?php echo $cid;?>','yes');}else{assignProfile($(this).val(),'<?php echo $cid;?>','no');}" type="checkbox" <?php if(in_array($r->id,$profile)){?>checked="checked"<?php }?> value="<?php echo $r->id; ?>"/></span>
-<span> <?php echo $r->username; ?> </span>
+<span> <?php echo $r->username; ?> <?php if($r->profile_type!=""){?>(<?=$pType[$r->profile_type];?>)<?php }?> </span>
 </td>
 <?php
 

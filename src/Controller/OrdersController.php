@@ -913,25 +913,30 @@
             $logged_id = $this->request->session()->read('Profile.id');
             $cmodel = TableRegistry::get('Clients');
             if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
-            $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'") AND (profile_id LIKE "'.$driver.',%" OR profile_id LIKE "%,'.$driver.',%" OR profile_id LIKE "%,'.$driver.'")']);//Selecting client with respect to both loggedin user and driver
+                $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'") AND (profile_id LIKE "'.$driver.',%" OR profile_id LIKE "%,'.$driver.',%" OR profile_id LIKE "%,'.$driver.'")']);//Selecting client with respect to both loggedin user and driver
             else
-            $clients = $cmodel->find()->where(['(profile_id LIKE "'.$driver.',%" OR profile_id LIKE "%,'.$driver.',%" OR profile_id LIKE "%,'.$driver.'")']);
+                $clients = $cmodel->find()->where(['(profile_id LIKE "'.$driver.',%" OR profile_id LIKE "%,'.$driver.',%" OR profile_id LIKE "%,'.$driver.'")']);
             
             if(!is_numeric($driver))
             {
                 if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
-                $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'")']);
+                    $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'")']);
                 else
-                $clients = $cmodel->find();
+                    $clients = $cmodel->find();
             }
-            echo "<option value=''>Select " . ucfirst($settings->client) . "s</option>";
-            if($clients)
+            //debug($clients);
+            
+            if($clients->count()>0)
             {
-                
+                echo "<option value=''>Select " . ucfirst($settings->client) . "s</option>";
                 foreach($clients as $c)
                 {
                     echo "<option value='".$c->id."'>".$c->company_name."</option>";                    
                 }
+            }
+            else
+            {
+                echo "Error";
             }
             
             die();

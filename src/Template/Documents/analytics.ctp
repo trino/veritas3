@@ -268,7 +268,7 @@ jQuery(document).ready(function() {
 												</div>
 											</div>
 											<div class="col-md-4" style="position: relative;  top: 50%;  transform: translateY(+20%);">
-												<input type="checkbox" name="drafts" value="1" <?php if($isdraft){ echo "checked";}?> ><label class="control-label" for="drafts">Drafts</label>
+												<!--input type="checkbox" name="drafts" value="1" <?php if($isdraft){ echo "checked";}?> ><label class="control-label" for="drafts">Drafts</label-->
 											</div>
 											<div class="col-md-3" align="right" style="padding-left:0">
 												<button type="submit" class="btn btn-primary">Search</button>

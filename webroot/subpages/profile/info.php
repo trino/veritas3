@@ -649,13 +649,12 @@
     </div>
     <?php
         if ($this->request->params['action'] == 'edit') {
-    ?>
-    <?php
+
         } else {
     ?>
-        <div class="tab-pane" id="subtab_4_3">
+        <!--div class="tab-pane" id="subtab_4_3">
             <p>Please save info first.</p>
-        </div>
+        </div-->
 
     <?php
         }

@@ -47,7 +47,7 @@
 
 
                             <?php
-                                $type = $this->requestAction("documents/getDocType");
+                                $type = $doc_comp->getDocType();
                             ?>
 
                             <select class="form-control input-inline" name="type">
@@ -76,7 +76,7 @@
 
 
                             <?php
-                                $users = $this->requestAction("documents/getAllUser");
+                                $users = $doc_comp->getAllUser();
                             ?>
 
 
@@ -97,7 +97,7 @@
 
 
                             <?php
-                                $clients = $this->requestAction("documents/getAllClient");
+                                $clients = $doc_comp->getAllClient();
                             ?>
 
 
@@ -180,8 +180,8 @@
                                 } else {
                                     $row_color_class = "even";
                                 }
-                                $uploaded_by = $this->requestAction("documents/getUser/" . $docs->user_id);
-                                $getClientById = $this->requestAction("documents/getClientById/" . $docs->client_id);
+                                $uploaded_by = $doc_comp->getUser($docs->user_id);
+                                $getClientById = $doc_comp->getClientById($docs->client_id);
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($docs->id) ?></td>

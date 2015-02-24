@@ -30,6 +30,8 @@ class PagesController extends AppController {
         
     }
 	public function index() {
+	   $this->loadComponent('Document');
+       $this->set('doc_comp',$this->Document);
 	   $this->loadModel('Clients');
 
 		$setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));

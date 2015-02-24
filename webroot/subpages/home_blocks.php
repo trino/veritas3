@@ -1,3 +1,4 @@
+<?php //echo die('here');?>
 <div class="row">
 
 
@@ -20,7 +21,9 @@
                 $class = array('blue-madison','red','yellow','purple','green', 'red-intense','yellow-saffron','grey-cascade','blue-steel','blue');
 
                 
-                $doc = $this->requestAction('/documents/getDocument');
+                $doc = $doc_comp->getDocument();
+                
+                //
                 $i=0;
                 if($doc){
                     //echo strtolower($document->document_type);
@@ -51,7 +54,7 @@
                                 <?php 
                                 if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
                                 if($d->orders==0)echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
-    							<?php if($d->orders==1)echo $cnt = $this->requestAction('/documents/get_orderscount/'.$d->table_name); }?>	
+    							<?php if($d->orders==1)echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name); }?>	
     							</div>
     							<div class="desc">
     								 <?php
@@ -84,6 +87,7 @@
                         }
                         $i++;
                     }
+                   
                     
                 }
                  ?>
@@ -179,3 +183,4 @@
 				
 			-->	
 			</div>
+            

@@ -229,7 +229,7 @@
                             var hired = 0;
 
                         $.ajax({
-                            url: "<?php echo $this->request->webroot;?>documents/savedriver/" + oid,
+                            url: "<?php echo $this->request->webroot;?>orders/savedriver/" + oid,
                             type: 'post',
                             data: 'is_hired=' + hired,
                             success: function (msg) {
@@ -244,7 +244,7 @@
 
 
                 <?php $settings = $this->requestAction('settings/get_settings');
-                    $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
+                    $uploaded_by = $doc_comp->getUser($order->user_id);
                 ?>
 
                 <?php
@@ -571,7 +571,7 @@
                                                             <div class="task-title">
                             															<span class="task-title-sp">
                             														<span class="icon-notebook"></span>	Pre-screening form
-                             </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/" . $order->id); ?>
+                             </span>                                    <?php $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id); ?>
                                                                 <?php if ($cnt > 0) { ?>
                                                                     <span style="float:right;padding:5px"
                                                                           class="label label-sm label-success">Submitted</span>
@@ -596,7 +596,7 @@
                                                             <div class="task-title">
                             											<span class="task-title-sp">
                             											<span class="icon-notebook"></span> Driver Application	 </span>
-                                                                <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/" . $order->id); ?>
+                                                                <?php $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id); ?>
                                                                 <?php if ($cnt > 0) { ?>
                                                                     <span style="float:right;padding:5px"
                                                                           class="label label-sm label-success">Submitted</span>
@@ -621,7 +621,7 @@
                             											<span class="task-title-sp">
                                                                             <span class="icon-notebook"></span> Road Test
                                                                         </span>
-                                                                <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/" . $order->id); ?>
+                                                                <?php $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id); ?>
                                                                 <?php if ($cnt > 0) { ?>
                                                                     <span style="float:right;padding:5px"
                                                                           class="label label-sm label-success">Submitted</span>
@@ -645,7 +645,7 @@
                             											<span class="task-title-sp">
 
                                                                            <span class="icon-notebook"></span>  MEE Order	 </span>
-                                                                <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/" . $order->id); ?>
+                                                                <?php $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id); ?>
                                                                 <?php if ($cnt > 0) { ?>
                                                                     <span style="float:right;padding:5px"
                                                                           class="label label-sm label-success">Submitted</span>

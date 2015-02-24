@@ -449,6 +449,7 @@
 
 
 
+
                                             <div class="form-group col-md-12"><!--<center>-->
 
                                                 <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc">
@@ -487,15 +488,17 @@
                                 <table class="table table-light table-hover sortable">
                                     <tr class="myclass">
                                         <th></th>
-                                        <th class="">System</th>
-                                        <th class=""><?php echo ucfirst($settings->client); ?> </th>
+                                                <th class="">System</th>
+                                                <th class=""><?php echo ucfirst($settings->document); ?> </th>
+                                                <th class="">Orders</th>
+                                                <th class="">Display Order</th>
                                     </tr>
                                     <?php
                                         //$subdoc = $this->requestAction('/clients/getSub');
                                         $subdoccli = $this->requestAction('/clients/getSubCli/' . $id);
-                                        //var_dump($subdoccli);
-                                        foreach ($subdoccli as $subcl) {
-                                            //echo $subcl->sub_id;
+                                        $u=0;
+                                                foreach ($subdoccli as $subcl) {
+                                                    $u++;
                                             $sub = $this->requestAction('/clients/getFirstSub/' . $subcl->sub_id);
                                             ?>
                                             <tr id="subd_<?php echo $sub->id; ?>" class="sublisting">
@@ -534,6 +537,12 @@
                                                                                           value="0"  <?php if ($csubdoc['display'] == 0) { ?> checked="checked" <?php } ?> />
                                                         No </label>
                                                 </td>
+                                                <td>
+                                                            <input <?php if ($csubdoc['display_order'] == 1) { ?> checked="checked" <?php } ?> type="checkbox" onclick="$(this).closest('td').find('.fororder').val('1')"  /> Show<input class="fororder" type="hidden" value="<?php if ($csubdoc['display_order'] == 1) {echo '1';}else{?>0<?php } ?>" name="clientO[<?php echo $sub->id; ?>]" />
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $u;?>
+                                                        </td>
 
                                             </tr>
 

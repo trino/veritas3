@@ -448,12 +448,12 @@
                     ->execute();
                 if (isset($_POST['email']) && $_POST['email']) {
 
-                    $from = 'info@isbmee.com';
-                    $to = $_POST['email'];
-                    $sub = 'Profile created successfully';
-                    $msg = 'Hi,<br />An account has been created for you in https://isbmeereports.com<br /> Your login details are:<br /> Username: ' . $_POST['username'] . '<br /> Password: ';
-                    if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards,<br />The ISB Team';
-                    $this->sendEmail($from, $to, $sub, $msg);
+                //    $from = 'info@isbmee.com';
+                  //  $to = $_POST['email'];
+               //     $sub = 'Profile created successfully';
+                //    $msg = 'Hi,<br />An account has been created for you in https://isbmeereports.com<br /> Your login details are:<br /> Username: ' . $_POST['username'] . '<br /> Password: ';
+              //      if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards,<br />The ISB Team';
+               //     $this->sendEmail($from, $to, $sub, $msg);
                 }
                 $this->Flash->success('Profile created successfully.');
                 return $this->redirect(['action' => 'edit', $profile->id]);
@@ -530,23 +530,23 @@
                 ->execute();
             if (isset($_POST['email']) && $_POST['email']) {
 
-                $com = "ISBMEE";
-                $from = 'info@isbmee.com';
+           //     $com = "ISBMEE";
+           //     $from = 'info@isbmee.com';
 
-                $to = $_POST['email'];
+           //     $to = $_POST['email'];
 
-                $sub = 'Profile created successfully';
-                $msg = 'Hi,<br />An account has been created for you in https://isbmeereports.com<br /> Your login details are:<br /> Username: ' . $_POST['username'] . '<br /> Password: ';
-                if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not specified';
+          //      $sub = 'Profile created successfully';
+          //      $msg = 'Hi,<br />An account has been created for you in https://isbmeereports.com<br /> Your login details are:<br /> Username: ' . $_POST['username'] . '<br /> Password: ';
+           //     if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not specified';
 
-              echo '<br /> Please <a href = "'.LOGIN.'" > click here </a > to login .<br /> Regards,<br />The ISB Team';
-
-
+      //        echo '<br /> Please <a href = "'.LOGIN.'" > click here </a > to login .<br /> Regards,<br />The ISB Team';
 
 
 
 
-                            $this->sendEmail($from,$to,$sub,$msg);
+
+
+                  //          $this->sendEmail($from,$to,$sub,$msg);
                         }
                         if(isset($_POST['drafts']) && ($_POST['drafts'] == '1'))
                         {

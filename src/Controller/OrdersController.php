@@ -16,15 +16,17 @@
             'order' => ['id' => 'DESC'],
 
         ];
+
         public function productSelection()
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $settings = $this->Settings->get_settings();
             $this->set('settings', $settings);
         }
+
         public function initialize()
         {
-            
+
             parent::initialize();
             $this->loadComponent('Settings');
             $this->loadComponent('Document');
@@ -33,10 +35,10 @@
             }
 
         }
-        
+
         public function vieworder($cid = null, $did = null, $table = null)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $this->set('table', $table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->Document->getDocumentcount();
@@ -47,12 +49,12 @@
 
             }
             $orders = TableRegistry::get('orders');
-            if ($did){
+            if ($did) {
                 $order_id = $orders->find()->where(['id' => $did])->first();
                 $this->loadModel('Profiles');
-                $profiles = $this->Profiles->find()->where(['id'=>$order_id->uploaded_for])->first();
-                $this->set('p',$profiles);
-                }
+                $profiles = $this->Profiles->find()->where(['id' => $order_id->uploaded_for])->first();
+                $this->set('p', $profiles);
+            }
             //$did= $document_id->id;
             if (isset($order_id))
                 $this->set('modal', $order_id);
@@ -62,10 +64,10 @@
             $this->set('profile', $profile);*/
             $this->set('disabled', 1);
             if ($did) {
-                
+
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
-                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did,'sub_id'=>1])->all();
+                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did, 'sub_id' => 1])->all();
                 $this->set('pre_at', $pre_at);
 
                 $da = TableRegistry::get('driver_application');
@@ -78,10 +80,10 @@
                     $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
 
                     $da_at = TableRegistry::get('doc_attachments');
-                    $sub['da_at'] = $da_at->find()->where(['order_id' => $did,'sub_id'=>2])->all();
+                    $sub['da_at'] = $da_at->find()->where(['order_id' => $did, 'sub_id' => 2])->all();
 
                     $de_at = TableRegistry::get('doc_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['order_id' => $did,'sub_id'=>3])->all();
+                    $sub['de_at'] = $de_at->find()->where(['order_id' => $did, 'sub_id' => 3])->all();
 
                     $this->set('sub', $sub);
                 }
@@ -93,7 +95,7 @@
                     $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
 
                     $con_at = TableRegistry::get('doc_attachments');
-                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $did,'sub_id'=>4])->all();
+                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $did, 'sub_id' => 4])->all();
                     $this->set('sub2', $sub2);
                     $this->set('consent_detail', $con_detail);
 
@@ -103,7 +105,7 @@
 
                 //echo $con_detail->id;die();
                 $emp_att = TableRegistry::get('doc_attachments');
-                $sub3['att'] = $emp_att->find()->where(['order_id' => $did,'sub_id'=>41])->all();
+                $sub3['att'] = $emp_att->find()->where(['order_id' => $did, 'sub_id' => 41])->all();
 
                 $this->set('sub3', $sub3);
 
@@ -111,17 +113,17 @@
                 $sub4['edu'] = $edu->find()->where(['order_id' => $did])->all();
                 //echo $con_detail->id;die();
                 $edu_att = TableRegistry::get('doc_attachments');
-                $sub4['att'] = $edu_att->find()->where(['order_id' => $did,'sub_id'=>42])->all();
+                $sub4['att'] = $edu_att->find()->where(['order_id' => $did, 'sub_id' => 42])->all();
                 $this->set('sub4', $sub4);
             }
             $this->render('addorder');
 
         }
-        
+
         public function addorder($cid = 0, $did = 0, $table = null)
         {
-            $this->set('doc_comp',$this->Document);
-            $this->set('uid','');
+            $this->set('doc_comp', $this->Document);
+            $this->set('uid', '');
             $this->set('table', $table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->Document->getDocumentcount();
@@ -134,43 +136,35 @@
 
             }
             $orders = TableRegistry::get('orders');
-            if ($did){
+            if ($did) {
                 $order_id = $orders->find()->where(['id' => $did])->first();
                 $this->loadModel('Profiles');
-                $profiles = $this->Profiles->find()->where(['id'=>$order_id->uploaded_for])->first();
-                $this->set('p',$profiles);
+                $profiles = $this->Profiles->find()->where(['id' => $order_id->uploaded_for])->first();
+                $this->set('p', $profiles);
+            } else {
+                if (isset($_GET['driver']) && is_numeric($_GET['driver']) && $_GET['driver']) {
+                    $this->loadModel('Profiles');
+                    $profiles = $this->Profiles->find()->where(['id' => $_GET['driver']])->first();
+                    $this->set('p', $profiles);
                 }
-                else
-                {
-                    if(isset($_GET['driver']) && is_numeric($_GET['driver']) && $_GET['driver'])
-                    {
-                        $this->loadModel('Profiles');
-                        $profiles = $this->Profiles->find()->where(['id'=>$_GET['driver']])->first();
-                        $this->set('p',$profiles);
-                    }
-                }
-                
-            if($did)
-                {
-                    $o_model = TableRegistry::get('Orders');
-                    $orde = $o_model->find()->where(['id' => $did])->first();
-                    if($orde)
-                    {
-                        $dr = $orde->draft;
-                        if($dr=='0' || !$dr){
+            }
+
+            if ($did) {
+                $o_model = TableRegistry::get('Orders');
+                $orde = $o_model->find()->where(['id' => $did])->first();
+                if ($orde) {
+                    $dr = $orde->draft;
+                    if ($dr == '0' || !$dr) {
                         $dr = 0;
                         $this->Flash->success('Your order has been submitted');
                         //die();
-                        }
-                        else
-                        $dr =1;
-                    }
-                    else
+                    } else
+                        $dr = 1;
+                } else
                     $dr = 1;
-                }
-                else
+            } else
                 $dr = 1;
-                $this->set('dr',$dr);    
+            $this->set('dr', $dr);
             //$did= $document_id->id;
             if (isset($order_id))
                 $this->set('modal', $order_id);
@@ -179,7 +173,7 @@
             if ($did) {
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
-                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did,'sub_id'=>1])->all();
+                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did, 'sub_id' => 1])->all();
                 $this->set('pre_at', $pre_at);
 
                 $da = TableRegistry::get('driver_application');
@@ -192,10 +186,10 @@
                     $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
 
                     $da_at = TableRegistry::get('doc_attachments');
-                    $sub['da_at'] = $da_at->find()->where(['order_id' => $did,'sub_id'=>2])->all();
+                    $sub['da_at'] = $da_at->find()->where(['order_id' => $did, 'sub_id' => 2])->all();
 
                     $de_at = TableRegistry::get('doc_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['order_id' => $did,'sub_id'=>3])->all();
+                    $sub['de_at'] = $de_at->find()->where(['order_id' => $did, 'sub_id' => 3])->all();
 
                     $this->set('sub', $sub);
                 }
@@ -207,7 +201,7 @@
                     $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
 
                     $con_at = TableRegistry::get('doc_attachments');
-                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $did,'sub_id'=>4])->all();
+                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $did, 'sub_id' => 4])->all();
                     $this->set('sub2', $sub2);
                     $this->set('consent_detail', $con_detail);
 
@@ -217,7 +211,7 @@
 
                 //echo $con_detail->id;die();
                 $emp_att = TableRegistry::get('doc_attachments');
-                $sub3['att'] = $emp_att->find()->where(['order_id' => $did,'sub_id'=>41])->all();
+                $sub3['att'] = $emp_att->find()->where(['order_id' => $did, 'sub_id' => 41])->all();
 
                 $this->set('sub3', $sub3);
 
@@ -225,19 +219,18 @@
                 $sub4['edu'] = $edu->find()->where(['order_id' => $did])->all();
                 //echo $con_detail->id;die();
                 $edu_att = TableRegistry::get('doc_attachments');
-                $sub4['att'] = $edu_att->find()->where(['order_id' => $did,'sub_id'=>42])->all();
+                $sub4['att'] = $edu_att->find()->where(['order_id' => $did, 'sub_id' => 42])->all();
                 $this->set('sub4', $sub4);
             }
-
         }
-        
+
         public function savedoc($cid = 0, $did = 0)
         {
             //$this->set('doc_comp',$this->Document);
-            $this->Document->savedoc($cid,$did);
+            $this->Document->savedoc($cid, $did);
             die();
         }
-        
+
         public function savePrescreening()
         {
             $this->Document->savePrescreening();
@@ -249,7 +242,7 @@
          */
         public function savedDriverApp($document_id = 0, $cid = 0)
         {
-            $this->Document->savedDriverApp($document_id,$cid);
+            $this->Document->savedDriverApp($document_id, $cid);
 
             die;
         }
@@ -259,8 +252,8 @@
          */
         public function savedDriverEvaluation($document_id = 0, $cid = 0)
         {
-           $this->Document->savedDriverEvaluation($document_id,$cid); 
-           die();
+            $this->Document->savedDriverEvaluation($document_id, $cid);
+            die();
         }
 
         /**
@@ -268,66 +261,58 @@
          */
         public function savedMeeOrder($document_id = 0, $cid = 0)
         {
-            $this->Document->savedMeeOrder($document_id,$cid); 
-           die();
+            $this->Document->savedMeeOrder($document_id, $cid);
+            die();
         }
 
         function saveEmployment($document_id = 0, $cid = 0)
         {
-            $this->Document->saveEmployment($document_id,$cid); 
-           die();
+            $this->Document->saveEmployment($document_id, $cid);
+            die();
         }
 
         function saveEducation($document_id = 0, $cid = 0)
         {
-            $this->Document->saveEducation($document_id,$cid); 
-           die();
+            $this->Document->saveEducation($document_id, $cid);
+            die();
         }
-        
-        public function deleteOrder($id,$draft='')
-        {
-            if(isset($_GET['draft']))
-            $draft=1;
-           
-           $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
-        if($setting->orders_delete==0)
+        public function deleteOrder($id, $draft = '')
         {
-            $this->Flash->error('Sorry, you don\'t have the required permissions.');
-            	return $this->redirect("/");
+            if (isset($_GET['draft']))
+                $draft = 1;
 
-        } 
+            $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+            if ($setting->orders_delete == 0) {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                return $this->redirect("/");
+            }
+
             $this->loadModel('Orders');
             $this->Orders->deleteAll(array('id' => $id));
             $this->Flash->success('The order has been deleted.');
-            if($draft)
-            $this->redirect('/orders/orderslist?draft');
+            if ($draft)
+                $this->redirect('/orders/orderslist?draft');
             else
-            $this->redirect('/orders/orderslist');
+                $this->redirect('/orders/orderslist');
         }
-        
+
         public function subpages($filename)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $this->layout = "blank";
             $this->set("filename", $filename);
         }
-        
-        
 
-    
-    public function index()
+        public function index()
         {
-            $this->set('doc_comp',$this->Document);
-            if(isset($_GET['draft'])&&isset($_GET['flash']))
-            {
+            $this->set('doc_comp', $this->Document);
+            if (isset($_GET['draft']) && isset($_GET['flash'])) {
                 $this->Flash->success('Order saved as draft');
-            }
-            else
-            if(isset($_GET['flash']))
-            {
-                $this->Flash->success('Order submitted successfully.');
-            }
+            } else
+                if (isset($_GET['flash'])) {
+                    $this->Flash->success('Order submitted successfully.');
+                }
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->Document->getDocumentcount();
             $cn = $this->Document->getUserDocumentcount();
@@ -351,9 +336,8 @@
                         $cond = $cond . ' user_id = ' . $u;
                     else
                         $cond = $cond . ' AND user_id = ' . $u;
-                    
+
                 }
-                
 
             }
             if (isset($_GET['searchdoc']) && $_GET['searchdoc']) {
@@ -417,14 +401,10 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
-            
-
-            //debug($order);
-            
             $this->set('orders', $this->paginate($order));
 
         }
-        
+
         function get_orderscount($type, $c_id = "")
         {
             $u = $this->request->session()->read('Profile.id');
@@ -434,8 +414,7 @@
                 //var_dump($setting);
                 if ($setting->document_others == 0) {
                     $u_cond = "Orders.user_id=$u";
-                }
-                else
+                } else
                     $u_cond = "";
 
             } else
@@ -454,10 +433,10 @@
             return $this->response;
             die();
         }
-        
+
         public function StartOrderSave($orderid = null, $response = null)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             echo '!!!!!!';
             echo $response;
             echo $arr['response'] = $_GET['response'];
@@ -476,7 +455,7 @@
 
         public function save_ebs_pdi($orderid, $pdi)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $query2 = TableRegistry::get('orders');
             $arr['ebs_pdi'] = $pdi;
             $query2 = $query2->query();
@@ -490,7 +469,7 @@
 
         public function save_webservice_ids($orderid, $ins_id, $ebs_id)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $query2 = TableRegistry::get('orders');
             $arr['ins_id'] = $ins_id;
             $arr['ebs_id'] = $ebs_id;
@@ -505,7 +484,7 @@
 
         public function save_pdi($orderid, $id, $pdi)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $query2 = TableRegistry::get('orders');
 
             echo $orderid;
@@ -566,18 +545,13 @@
 
         public function webservice($recruiter_id = null, $body = null, $orderid = null, $driverid = null)
         {
-
-
-
-
-
-
-
             if ($orderid) {
+
                 $pre = TableRegistry::get('doc_attachments');
-                //$pre_at = TableRegistry::get('driver_application_accident');
-                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $orderid,'sub_id'=>1])->all();
+                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $orderid, 'sub_id' => 1])->all();
                 $this->set('pre_at', $pre_at);
+debug($pre_at);
+                //////////////////////////////////////////////////////////// driver application
 
                 $da = TableRegistry::get('driver_application');
                 $da_detail = $da->find()->where(['order_id' => $orderid])->first();
@@ -589,77 +563,77 @@
                     $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
 
                     $da_at = TableRegistry::get('doc_attachments');
-                    $sub['da_at'] = $da_at->find()->where(['order_id' => $orderid,'sub_id'=>2])->all();
+                    $sub['da_at'] = $da_at->find()->where(['order_id' => $orderid, 'sub_id' => 2])->all();
 
                     $de_at = TableRegistry::get('doc_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['order_id' => $orderid,'sub_id'=>3])->all();
+                    $sub['de_at'] = $de_at->find()->where(['order_id' => $orderid, 'sub_id' => 3])->all();
 
                     $this->set('sub', $sub);
+
+                    debug($sub);
                 }
+
+                //////////////////////////////////////////////////////////// conbsent form
+
                 $con = TableRegistry::get('consent_form');
                 $con_detail = $con->find()->where(['order_id' => $orderid])->first();
                 if ($con_detail) {
-                    //echo $con_detail->id;die();
+
                     $con_cri = TableRegistry::get('consent_form_criminal');
                     $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
 
                     $con_at = TableRegistry::get('doc_attachments');
-                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $orderid,'sub_id'=>4])->all();
+                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $orderid, 'sub_id' => 4])->all();
                     $this->set('sub2', $sub2);
                     $this->set('consent_detail', $con_detail);
-
+                    debug($con_detail);
                 }
+
+                //////////////////////////////////////////////////////////// employment veritfication
+
                 $emp = TableRegistry::get('employment_verification');
                 $sub3['emp'] = $emp->find()->where(['order_id' => $orderid])->all();
 
-                //echo $con_detail->id;die();
                 $emp_att = TableRegistry::get('doc_attachments');
-                $sub3['att'] = $emp_att->find()->where(['order_id' => $orderid,'sub_id'=>41])->all();
+                $sub3['att'] = $emp_att->find()->where(['order_id' => $orderid, 'sub_id' => 41])->all();
 
                 $this->set('sub3', $sub3);
+                //////////////////////////////////////////////////////////// education attach docs
 
                 $edu = TableRegistry::get('education_verification');
                 $sub4['edu'] = $edu->find()->where(['order_id' => $orderid])->all();
-                //echo $con_detail->id;die();
+
                 $edu_att = TableRegistry::get('doc_attachments');
-                $sub4['att'] = $edu_att->find()->where(['order_id' => $orderid,'sub_id'=>42])->all();
+                $sub4['att'] = $edu_att->find()->where(['order_id' => $orderid, 'sub_id' => 42])->all();
                 $this->set('sub4', $sub4);
+                debug($sub4);
+
             }
 
-
-
-
-
-
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $this->layout = "blank";
-            // require_once(APP.'../webroot/subpages/soap/nusoap.php');
 
-            //$model = TableRegistry::get('Profiles');
+
+
+
             $model = TableRegistry::get('profiles');
-
             $driverinfo = $model->find()->where(['id' => $driverid])->first();
 
-            // debug($driverinfo);die();
-            // $isbid = $model->find()->where(['id' => $driverid])->first();
+            /*
+                        $model2 = TableRegistry::get('consent_form_attachments');
+                        $consent_form_attachments = $model2->find()->where(['order_id' => $orderid]);
 
-            $model2 = TableRegistry::get('consent_form_attachments');
-            $consent_form_attachments = $model2->find()->where(['order_id' => $orderid]);
-            $this->set(compact('consent_form_attachments'));
-
-            //  $attach = TableRegistry::get('consent_form_attachments');
-            //  $consent_form_attachments = $attach->find()->where(['order_id' => $orderid])->all();
-            //  $this->set(compact('consent_form_attachments'));
+                        debug($consent_form_attachments);
+                        $this->set(compact('consent_form_attachments'));
+            */
 
             $this->set('orderid', $orderid);
-
             $this->set('driverinfo', $driverinfo);
-
         }
 
         public function createPdf($oid)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $this->set('oid', $oid);
             $this->layout = 'blank';
 
@@ -679,16 +653,15 @@
             $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid,'sub_id'=>4, 'attachment <> ""']);
+                ->where(['order_id' => $oid, 'sub_id' => 4, 'attachment <> ""']);
             $this->set('detail', $arr);
             $this->set(compact('att'));
-            
 
         }
 
         public function createPdfEmployment($id)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $this->layout = 'blank';
             $consent = TableRegistry::get('employment_verification');
             $arr['consent'] = $consent
@@ -699,7 +672,7 @@
             $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $id,'sub_id'=>41, 'attachment <> ""'])->all();
+                ->where(['order_id' => $id, 'sub_id' => 41, 'attachment <> ""'])->all();
 
             $this->set('order_id', $id);
             $this->set(compact('att'));
@@ -707,7 +680,7 @@
 
         public function createPdfEducation($oid)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $this->set('oid', $oid);
             $this->layout = 'blank';
             $consent = TableRegistry::get('education_verification');
@@ -718,7 +691,7 @@
             $attach = TableRegistry::get('doc_attachments');
             $att = $attach
                 ->find()
-                ->where(['order_id' => $oid,'sub_id'=>42, 'attachment <> ""']);
+                ->where(['order_id' => $oid, 'sub_id' => 42, 'attachment <> ""']);
 
             $this->set(compact('education'));
 
@@ -727,7 +700,7 @@
 
         public function viewReport($client_id, $order_id)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
@@ -739,7 +712,7 @@
 
         function savedriver($oid)
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
             $arr['is_hired'] = $_POST['is_hired'];
             $orders = TableRegistry::get('profiles');
             $order = $orders
@@ -749,44 +722,44 @@
 
             die();
         }
-        
+
         public function saveAttachmentsPrescreen($data = NULL, $count = 0)
         {//count is to delete all while first insertion and no delete for following insertion
 
-            $this->Document->saveAttachmentsPrescreen($data,$count); 
-           die();
+            $this->Document->saveAttachmentsPrescreen($data, $count);
+            die();
         }
 
         public function saveAttachmentsDriverApp($data = NULL, $count = 0)
         {
-            $this->Document->saveAttachmentsDriverApp($data,$count); 
-           die();
+            $this->Document->saveAttachmentsDriverApp($data, $count);
+            die();
         }
 
         public function saveAttachmentsRoadTest($data = NULL, $count = 0)
         {
-            $this->Document->saveAttachmentsRoadTest($data,$count); 
-           die();
+            $this->Document->saveAttachmentsRoadTest($data, $count);
+            die();
         }
 
         public function saveAttachmentsConsentForm($data = NULL, $count = 0)
         {
-            $this->Document->saveAttachmentsConsentForm($data,$count); 
-           die();
+            $this->Document->saveAttachmentsConsentForm($data, $count);
+            die();
         }
 
         public function saveAttachmentsEmployment($data = NULL, $count = 0)
         {
-            $this->Document->saveAttachmentsEmployment($data,$count); 
-           die();
+            $this->Document->saveAttachmentsEmployment($data, $count);
+            die();
         }
 
         public function saveAttachmentsEducation($data = NULL, $count = 0)
         {
-            $this->Document->saveAttachmentsEducation($data,$count); 
-           die();
+            $this->Document->saveAttachmentsEducation($data, $count);
+            die();
         }
-        
+
         function getprocessed($table, $oid)
         {
             $model = TableRegistry::get($table);
@@ -794,88 +767,80 @@
             $this->response->body($q);
             return $this->response;
         }
+
         public function drafts()
         {
 
         }
+
         function getDriverByClient($client)
         {
             //$logged_id = $this->request->session()->read('Profile.id');
-            if(!is_numeric($client))
-            {
+            if (!is_numeric($client)) {
                 $logged_id = $this->request->session()->read('Profile.id');
                 //echo "<br/>";
-                
+
                 $cmodel = TableRegistry::get('Clients');
-                if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
-                $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'")']);
+                if (!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
+                    $clients = $cmodel->find()->where(['(profile_id LIKE "' . $logged_id . ',%" OR profile_id LIKE "%,' . $logged_id . ',%" OR profile_id LIKE "%,' . $logged_id . '")']);
                 else
-                $clients = $cmodel->find();
-                
-                
+                    $clients = $cmodel->find();
+
                 $profile_ids = '';
-                foreach($clients as $c)
-                {
-    
-                    if($profile_ids)
-                    {
-                        $profile_ids = $profile_ids.','.$c->profile_id;
-                    }
-                    else
-                    {
+                foreach ($clients as $c) {
+
+                    if ($profile_ids) {
+                        $profile_ids = $profile_ids . ',' . $c->profile_id;
+                    } else {
                         $profile_ids = $c->profile_id;
                     }
                 }
-                if(!$profile_ids)
-                $profile_ids = '9999999';
-                
-                 $profile_ids = str_replace(',',' ',$profile_ids);
+                if (!$profile_ids)
+                    $profile_ids = '9999999';
+
+                $profile_ids = str_replace(',', ' ', $profile_ids);
                 $profile_ids = trim($profile_ids);
-                $profile_ids = str_replace(' ',',',$profile_ids);
-                
+                $profile_ids = str_replace(' ', ',', $profile_ids);
+
                 $model = TableRegistry::get('Profiles');
-                $profile = $model->find()->where(['id IN ('.$profile_ids.')','profile_type' => 5]);
-            }
-            else{
-            $cmodel = TableRegistry::get('Clients');
-            $clients = $cmodel->find()->where(['id'=>$client])->first();
-            $profile_ids = $clients->profile_id;
-            
-             $profile_ids = str_replace(',',' ',$profile_ids);
+                $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);
+            } else {
+                $cmodel = TableRegistry::get('Clients');
+                $clients = $cmodel->find()->where(['id' => $client])->first();
+                $profile_ids = $clients->profile_id;
+
+                $profile_ids = str_replace(',', ' ', $profile_ids);
                 $profile_ids = trim($profile_ids);
-                $profile_ids = str_replace(' ',',',$profile_ids);
-            
-            $model = TableRegistry::get('Profiles');
-            $profile = $model->find()->where(['id IN ('.$profile_ids.')','profile_type' => 5]);
+                $profile_ids = str_replace(' ', ',', $profile_ids);
+
+                $model = TableRegistry::get('Profiles');
+                $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);
             }
             echo "<option value=''>Select Driver</option>";
-            if($profile)
-            {
-                
-                foreach($profile as $p)
-                {
-                    echo "<option value='".$p->id."'>".$p->fname.' '.$p->mname.' '.$p->lname."</option>";                    
+            if ($profile) {
+
+                foreach ($profile as $p) {
+                    echo "<option value='" . $p->id . "'>" . $p->fname . ' ' . $p->mname . ' ' . $p->lname . "</option>";
                 }
             }
-            
+
             die();
         }
+
         function testing()
         {
-            $this->set('doc_comp',$this->Document);
+            $this->set('doc_comp', $this->Document);
         }
+
         public function orderslist()
         {
-            $this->set('doc_comp',$this->Document);
-            if(isset($_GET['draft'])&&isset($_GET['flash']))
-            {
+            $this->set('doc_comp', $this->Document);
+            if (isset($_GET['draft']) && isset($_GET['flash'])) {
                 $this->Flash->success('Order saved as draft');
-            }
-            else
-            if(isset($_GET['flash']))
-            {
-                $this->Flash->success('Order saved successfully');
-            }
+            } else
+                if (isset($_GET['flash'])) {
+                    $this->Flash->success('Order saved successfully');
+                }
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->Document->getDocumentcount();
             $cn = $this->Document->getUserDocumentcount();
@@ -899,9 +864,8 @@
                         $cond = $cond . ' user_id = ' . $u;
                     else
                         $cond = $cond . ' AND user_id = ' . $u;
-                    
+
                 }
-                
 
             }
             if (isset($_GET['searchdoc']) && $_GET['searchdoc']) {
@@ -965,52 +929,48 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
-            
 
             //debug($order);
-            
+
             $this->set('orders', $this->paginate($order));
 
         }
+
         function getClientByDriver($driver)
         {
             //$controller = $this->_registry->getController();
             $settings = $this->Settings->get_settings();
             $logged_id = $this->request->session()->read('Profile.id');
             $cmodel = TableRegistry::get('Clients');
-            if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
-                $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'") AND (profile_id LIKE "'.$driver.',%" OR profile_id LIKE "%,'.$driver.',%" OR profile_id LIKE "%,'.$driver.'")']);//Selecting client with respect to both loggedin user and driver
+            if (!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
+                $clients = $cmodel->find()->where(['(profile_id LIKE "' . $logged_id . ',%" OR profile_id LIKE "%,' . $logged_id . ',%" OR profile_id LIKE "%,' . $logged_id . '") AND (profile_id LIKE "' . $driver . ',%" OR profile_id LIKE "%,' . $driver . ',%" OR profile_id LIKE "%,' . $driver . '")']);//Selecting client with respect to both loggedin user and driver
             else
-                $clients = $cmodel->find()->where(['(profile_id LIKE "'.$driver.',%" OR profile_id LIKE "%,'.$driver.',%" OR profile_id LIKE "%,'.$driver.'")']);
-            
-            if(!is_numeric($driver))
-            {
-                if(!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
-                    $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'")']);
+                $clients = $cmodel->find()->where(['(profile_id LIKE "' . $driver . ',%" OR profile_id LIKE "%,' . $driver . ',%" OR profile_id LIKE "%,' . $driver . '")']);
+
+            if (!is_numeric($driver)) {
+                if (!$this->request->session()->read('Profile.admin') && !$this->request->session()->read('Profile.super'))
+                    $clients = $cmodel->find()->where(['(profile_id LIKE "' . $logged_id . ',%" OR profile_id LIKE "%,' . $logged_id . ',%" OR profile_id LIKE "%,' . $logged_id . '")']);
                 else
                     $clients = $cmodel->find();
             }
             //debug($clients);
-            
-            if($clients->count()>0)
-            {
+
+            if ($clients->count() > 0) {
                 echo "<option value=''>Select " . ucfirst($settings->client) . "s</option>";
-                foreach($clients as $c)
-                {
-                    echo "<option value='".$c->id."'>".$c->company_name."</option>";                    
+                foreach ($clients as $c) {
+                    echo "<option value='" . $c->id . "'>" . $c->company_name . "</option>";
                 }
-            }
-            else
-            {
+            } else {
                 echo "Error";
             }
-            
+
             die();
         }
+
         public function getOrderData($cid = 0, $order_id = 0)
         {
-            $this->Document->getOrderData($cid,$order_id);
+            $this->Document->getOrderData($cid, $order_id);
             die;
 
         }
-     }       
+    }

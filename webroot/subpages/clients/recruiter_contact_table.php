@@ -25,7 +25,7 @@ if (!$viewmode){
                 //echo $r->username;continue;
                 //if ($i % 2 == 0) {
                     $username = "[NO NAME]";
-                    if (strlen(trim($r->username)>0)) {
+                    if (strlen(trim($r->username))>0) {
                         $username = $r->username;
                     } elseif(strlen(trim($r->fname . $r->lname))>0) {
                         $username = $r->fname . " " . $r->lname;

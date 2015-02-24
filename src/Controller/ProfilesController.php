@@ -477,7 +477,7 @@ public function settings(){
                         $from = 'info@isbmee.com';
                         $to = $_POST['email'];
                         $sub = 'Profile created successfully';
-                        $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: ';if(isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
+                        $msg = 'Hi,<br />An account has been created for you in https://isbmeereports.com<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: ';if(isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards,<br />The ISB Team';
                         $this->sendEmail($from,$to,$sub,$msg);
                     }
                     $this->Flash->success('Profile created successfully.');

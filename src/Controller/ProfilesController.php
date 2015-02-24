@@ -712,7 +712,7 @@
             $clientcount = $this->Settings->getClientCountByProfile($id);
             $this->set('Clientcount',$clientcount);
             if(isset($_GET['clientflash']) || $clientcount== 0)
-                $this->Flash->error('Please assign profile to at least one client');
+                $this->Flash->error('Please assign profile to at least one client.');
 
             $checker = $this->Settings->check_edit_permission($this->request->session()->read('Profile.id'),$id);
             if($checker==0)
@@ -1044,8 +1044,8 @@
             $rec = TableRegistry::get('Profiles');
             $query = $rec->find();
             $u = $this->request->session()->read('Profile.id');
-            $super = $this->request->session()->read('Profile.super');
-
+            $super = $this->request->session()->read('Profile.admin');
+                
              $cond = $this->Settings->getprofilebyclient($u,$super);
            
             //$query = $query->select()->where(['super'=>0]);
@@ -1076,7 +1076,7 @@
             $rec = TableRegistry::get('Profiles');
             $query = $rec->find();
             $u = $this->request->session()->read('Profile.id');
-            $super = $this->request->session()->read('Profile.super');
+            $super = $this->request->session()->read('Profile.admin');
             $cond = $this->Settings->getprofilebyclient($u, $super);
             //$query = $query->select()->where(['super'=>0]);
 

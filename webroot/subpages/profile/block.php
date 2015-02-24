@@ -17,7 +17,7 @@
         <?php if($this->request->session()->read('Profile.profile_type')!='2')
         {
             ?>
-            <li class="active">
+            <li class="<?php if(isset($Clientcount)&& $Clientcount!=0)echo 'active';?>">
                 <a href="#subtab_2_1" data-toggle="tab">Configuration</a>
             </li>
             <li class="">
@@ -29,7 +29,7 @@
             <?php
         }
          ?>
-            <li <?php if($this->request->session()->read('Profile.profile_type')=='2') echo 'class = "active"'; ?>>
+            <li <?php if($this->request->session()->read('Profile.profile_type')=='2' ||(isset($Clientcount)&& $Clientcount==0)) echo 'class = "active"'; ?>>
                 <a href="#subtab_2_4" data-toggle="tab">Assign to <?php echo ucfirst($settings->client) ?></a>
             </li>
             <!--<li class="">
@@ -39,7 +39,7 @@
     <!--</div>-->
     <div class="portlet-body form">
                                     <div class="tab-content">
-                                                <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")!=2) echo 'active'; ?>" id="subtab_2_1">
+                                                <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")!=2 &&(isset($Clientcount)&& $Clientcount!=0)) echo 'active'; ?>" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
 
@@ -823,7 +823,7 @@
                                         ?>
                                         </form>
                                     </div><?php */?>
-                                    <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")==2) echo 'active'; ?>" id="subtab_2_4">
+                                    <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")==2 ||(isset($Clientcount)&& $Clientcount==0)) echo 'active'; ?>" id="subtab_2_4">
                                         
                                         <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) 
                                         {

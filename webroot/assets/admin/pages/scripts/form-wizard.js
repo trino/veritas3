@@ -267,10 +267,10 @@ var FormWizard = function () {
                     $('#loading5').show();
                     //alert($('.cont').attr('id'));
                     //alert(draft);
-                    /*if(draft==1)
+                    if(draft==1)
                     window.location = base_url+'orders/orderslist?draft&flash';
                     else
-                    window.location = base_url+'orders/orderslist?flash';*/
+                    window.location = base_url+'orders/orderslist?flash';
                     
                 }
 

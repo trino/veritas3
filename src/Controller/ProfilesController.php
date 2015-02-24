@@ -711,8 +711,9 @@
 
             $clientcount = $this->Settings->getClientCountByProfile($id);
             $this->set('Clientcount',$clientcount);
-            if(isset($_GET['clientflash']) || $clientcount== 0)
-                $this->Flash->error('Please assign profile to at least one client.');
+            if(isset($_GET['clientflash']) || $clientcount== 0) {
+                $this->Flash->error('Please assign the profile to at least one client.');
+            }
 
             $checker = $this->Settings->check_edit_permission($this->request->session()->read('Profile.id'),$id);
             if($checker==0)

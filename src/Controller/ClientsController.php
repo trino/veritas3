@@ -430,6 +430,7 @@ class ClientsController extends AppController {
                 }
             else
             {
+                $_POST['profile_id'] = $this->request->session()->read('Profile.id');
                 $client = $clients->newEntity($_POST);
         		if ($this->request->is('post')) {
         		 if ($clients->save($client)) {

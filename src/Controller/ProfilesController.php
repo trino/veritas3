@@ -1103,10 +1103,14 @@ public function settings(){
             $query = $rec->find();
             $u = $this->request->session()->read('Profile.id');
             $super = $this->request->session()->read('Profile.super');
-            $cond = $this->Settings->getprofilebyclient($u,$super);
+             $cond = $this->Settings->getprofilebyclient($u,$super);
+           
             //$query = $query->select()->where(['super'=>0]);
             $query = $query->select()->where(['profile_type NOT IN (6,5)','OR'=>$cond])
                 ->andWhere(['super'=>0]);
+            if(!$super)
+              $query = $query->orWhere(['created_by'=>$u]);
+              
                 //debug($query);die();
             $this->response->body($query);
             return $this->response;
@@ -1135,8 +1139,10 @@ public function settings(){
             $super = $this->request->session()->read('Profile.super');
             $cond = $this->Settings->getprofilebyclient($u,$super);
             //$query = $query->select()->where(['super'=>0]);
-            $query = $query->select()->where(['profile_type NOT IN'=>'(6)','OR'=>$cond])
+            $query = $query->select()->where(['profile_type NOT IN'=>'(5,6)','OR'=>$cond])
                 ->andWhere(['super'=>0,'(fname LIKE "%'.$key.'%" OR lname LIKE "%'.$key.'%" OR username LIKE "%'.$key.'%")']);
+             if(!$super)
+              $query = $query->orWhere(['created_by'=>$u]);
             $this->set('profiles',$query);
             $this->set('cid',$id);
         }

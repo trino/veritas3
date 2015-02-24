@@ -277,7 +277,7 @@
                                             <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
                                                class="btn red-flamingo">MEE Order</a>
                                             <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
-                                               class="btn btn-success" style="margin-top:10px;">A La Carte/Requalify</a>
+                                               class="btn btn-success" style="margin-top:10px;">A La Carte/Re-qualify</a>
                                         <?php
                                         }
 

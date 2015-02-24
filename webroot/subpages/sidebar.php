@@ -188,7 +188,7 @@
                                 <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'addorder' && $_GET["ordertype"] == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                             <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART">
                                 <i class="icon-plus"></i>
-                                A La Carte/Requalify </a>
+                                A La Carte/Re-qualify </a>
                 </li>
                             <?php } ?>
 							<?php if ($sidebar->orders_list == 1) { ?>

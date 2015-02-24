@@ -119,7 +119,7 @@
                                                         echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;                                                                         ?>&ordertype=MEE" class="btn red-flamingo">Place Order</a>
 
                                                         <a href="<?php /*echo $this->request->webroot . $order_url;*/
-                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;                                                                         ?>&ordertype=CART" class="btn btn-success"> A La Carte/Requalify</a>
+                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;                                                                         ?>&ordertype=CART" class="btn btn-success"> A La Carte/Re-qualify</a>
 
                                                     <?php
                                                     }

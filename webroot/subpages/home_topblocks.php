@@ -131,7 +131,7 @@ function randomcolor(){
 
 
     <?php if ($sidebar->orders_list ==1) { ?>
-        <a href="<?php echo $this->request->webroot; ?>documents/orderslist" style="display: block;" class="tile bg-yellow">
+        <a href="<?php echo $this->request->webroot; ?>orders/orderslist" style="display: block;" class="tile bg-yellow">
             <div class="tile-body">
                 <i class="fa fa-search"></i>
             </div>
@@ -156,7 +156,7 @@ function randomcolor(){
 
 
     <?php if ($sidebar->orders_list ==1) { ?>
-        <a class="tile bg-yellow" href="<?php echo $this->request->webroot; ?>documents/orderslist?draft" style="display: block;">
+        <a class="tile bg-yellow" href="<?php echo $this->request->webroot; ?>orders/orderslist?draft" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
             </div>

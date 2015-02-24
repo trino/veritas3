@@ -90,7 +90,7 @@
                         <table class="table table-striped table-bordered table-advance table-hover recruiters">
                             <thead>
                             <tr>
-                                <th colspan="2">Assigned to:</th>
+                                <th colspan="2">Assigned Profiles:</th>
                             </tr>
                             </thead>
                             <tbody id="">
@@ -115,7 +115,7 @@
                                                 } else {
                                                     echo "(Draft)";
                                                 }
-                                                echo "&nbsp;&nbsp;(Profile)</a>"
+                                                echo "</a>"
                                                 //<a href="<?php echo $this->request->webroot;!>profiles/view/<?php echo $p->id; !>">
                                             //<?php echo $p->username; !> (<?php echo $types[$p->profile_type]; !>)&nbsp;&nbsp;(Profile)</a>
 

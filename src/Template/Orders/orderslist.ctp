@@ -33,7 +33,7 @@
             <div class="portlet-body form">
 
 
-                <div class="form-actions top chat-form" style="height:75px; margin-bottom:0;" align="right">
+                <div class="form-actions top chat-form" style="margin-bottom:0;" align="right">
 
                     <div class="btn-set pull-left">
 

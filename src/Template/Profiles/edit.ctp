@@ -274,9 +274,10 @@
                                     }
                                         if ($profile->profile_type == 5) {
                                             ?>
-                                            <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>"
-                                               class="btn btn-success">Create Order</a>
-
+                                            <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
+                                               class="btn red-flamingo">MEE Order</a>
+                                            <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
+                                               class="btn btn-success" style="margin-top:10px;">A La Carte/Requalify</a>
                                         <?php
                                         }
 
@@ -350,7 +351,7 @@
 
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
-                                    <div class="tab-pane  <?php if($this->request['action']=='add' ||(!isset($_GET['getprofilescore'])&&($Clientcount!=0))){ ?> active <?php } ?> " id="tab_1_1">
+                                    <div class="tab-pane  <?php if($this->request['action']=='add' ||(!isset($_GET['getprofilescore'])&&($Clientcount!=0))){ ?> class="active" <?php } ?> " id="tab_1_1">
                                         <input type="hidden" name="user_id" value="<?php echo ""; ?>"/>
                                         <?php include('subpages/profile/info.php'); ?>
                                     </div>

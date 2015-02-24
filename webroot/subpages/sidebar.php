@@ -143,6 +143,7 @@
                                         <i class="icon-plus"></i>
                                         Create <?php echo ucfirst($settings->document); ?></a>
                                 </li>
+
                             <?php } ?>
 							<?php if ($sidebar->document_list == 1) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Documents' && $this->request['action'] == 'index' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
@@ -179,10 +180,16 @@
                             <?php } ?>
                             <?php if ($sidebar->orders_create == 1) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'addorder' && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
-                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?driver=0">
+                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=MEE">
                                         <i class="icon-plus"></i>
-                                        Create Order</a>
+                                        Create MEE Order</a>
                                 </li>
+
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'addorder' && $_GET["ordertype"] == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                            <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART">
+                                <i class="icon-plus"></i>
+                                A La Carte/Requalify </a>
+                </li>
                             <?php } ?>
 							<?php if ($sidebar->orders_list == 1) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Documents' && $this->request['action'] == 'orderslist' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>

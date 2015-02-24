@@ -6,10 +6,11 @@
     if(!isset($is_disabled1)){$is_disabled1 = "";}//something is wrong with this variable
 
 if ($activetab == "permissions") {
-    if (isset($Clientcount) && $Clientcount == 0) { $activetab = "assign"; } else {$activetab = "";}
+    if (isset($Clientcount) && $Clientcount == 0) { $activetab = "assign"; } else {$activetab = "config";}
 } else {
-    $activetab ="";
+    $activetab ="config";
 }
+
 ?>
 
 <!-- BEGIN BORDERED TABLE PORTLET--><!--
@@ -23,7 +24,7 @@ if ($activetab == "permissions") {
         <?php if($this->request->session()->read('Profile.profile_type')!='2')
         {
             ?>
-            <li <?php $activetab=activetab($activetab, "config") ?>>
+            <li <?php activetab($activetab, "config"); ?>>
                 <a href="#subtab_2_1" data-toggle="tab">Configuration</a>
             </li>
             <li class="">
@@ -45,7 +46,7 @@ if ($activetab == "permissions") {
     <!--</div>-->
     <div class="portlet-body form">
                                     <div class="tab-content">
-                                                <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")!=2 &&(isset($Clientcount)&& $Clientcount!=0)) echo 'active'; ?>" id="subtab_2_1">
+                                                <div class="tab-pane <?php activetab($activetab, "config", false); ?>" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
 

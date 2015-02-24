@@ -21,6 +21,7 @@
             parent::initialize();
             $this->loadComponent('Settings');
             $this->loadComponent('Mailer');
+            $this->loadComponent('Document');
             if(!$this->request->session()->read('Profile.id'))
             {
                 $this->redirect('/login');
@@ -298,6 +299,7 @@ public function settings(){
         
         public function viewReport($profile,$profile_edit_view = 0)
         {
+            $this->set('doc_comp',$this->Document);
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()

@@ -29,6 +29,7 @@
 <div class="clearfix"></div>
 
 <?php include('subpages/home_blocks.php'); ?>
+
 <div class="clearfix"></div>
 
 <?php

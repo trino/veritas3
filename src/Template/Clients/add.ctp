@@ -90,12 +90,12 @@
                         <table class="table table-striped table-bordered table-advance table-hover recruiters">
                             <thead>
                             <tr>
-                                <th colspan="2">Assigned Profiles:</th>
+                                <th colspan="2">Assigned <?= $settings->profile ?>s :</th>
                             </tr>
                             </thead>
                             <tbody id="">
                             <?php
-                                $types = array('Driver', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact');
+                                $types = array('Driver', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Employee', 'Guest', 'Partner');
                                 $counter = 0;
                                 foreach ($getprofile as $p) {
                                     ?>
@@ -110,11 +110,16 @@
                                                 } else {
                                                     echo "[NO NAME]";
                                                 }
-                                                if (strlen($p->profile_type)>0) {
-                                                    echo "(" . $types[$p->profile_type] . ")";
-                                                } else {
-                                                    echo "(Draft)";
+                                                $profiletype = " (Draft)";
+                                                if (strlen($p->profile_type)>0 ) {
+                                                    if ($p->profile_type < count($types)) {
+                                                        $profiletype = " (" . $types[$p->profile_type] . ")";
+                                                    } else {
+                                                        $profiletype = " (UNKNOWN)";
+                                                    }
                                                 }
+                                                echo $profiletype;
+
                                                 echo "</a>"
                                                 //<a href="<?php echo $this->request->webroot;!>profiles/view/<?php echo $p->id; !>">
                                             //<?php echo $p->username; !> (<?php echo $types[$p->profile_type]; !>)&nbsp;&nbsp;(Profile)</a>

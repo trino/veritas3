@@ -245,6 +245,7 @@ class SettingsComponent extends Component
             $setting = TableRegistry::get('sidebar');
              $setting = $setting->find()->where(['user_id'=>$uid]); 
              $setting = $setting->first();
+
              /*=================================================================================*/
              
              /* only admin super admin
@@ -279,7 +280,7 @@ class SettingsComponent extends Component
              if($setting->profile_edit=='1')
              {
                 if($q1->super == '1' || $uid == $pid)
-                {
+                 {
                     return 1;
                 }
                 else if($q1->profile_type == '2')

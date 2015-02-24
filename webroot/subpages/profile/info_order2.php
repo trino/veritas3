@@ -47,7 +47,7 @@ function printbutton($index){
                     <i class="m-icon-swapright m-icon-white"></i></a>
             <?php
             break;
-}
+}}
 ?>
 
 

@@ -30,9 +30,10 @@
         return $default;
     }
 
-    $ordertype = GET("ordertype");
+    $ordertype = strtoupper(GET("ordertype"));
 
-function printbutton($webroot, $index){
+function printbutton($type, $webroot, $index){
+    if ($index>2 && strlen($type) > 0 ) { $index = $index - 2;}
     switch ($index){
             case 1: ?>
 <a href="javascript:void(0);" class="btn btn-danger placenow"
@@ -46,6 +47,12 @@ function printbutton($webroot, $index){
                    onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte
                     <i class="m-icon-swapright m-icon-white"></i></a>
             <?php
+            break;
+            case 3:
+                echo '<a href="#" class="btn red-flamingo"> Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
+            break;
+            case 4:
+                echo '<a href="#" class="btn yellow-crusta">Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
             break;
 }}
 ?>
@@ -160,14 +167,13 @@ function printbutton($webroot, $index){
                     <div class="col-md-offset-3 col-md-9">
 
 
-                        <?php printbutton( $this->request->webroot, 1); ?>
-
-
-
-                        &nbsp;&nbsp; or &nbsp;&nbsp;
-
-
-                        <?php printbutton( $this->request->webroot, 2); ?>
+                        <?php
+                        if ($ordertype=="") {
+                            printbutton($ordertype, $this->request->webroot, 1);
+                            echo "&nbsp;&nbsp; or &nbsp;&nbsp";
+                            printbutton($ordertype, $this->request->webroot, 2);
+                        }
+                        ?>
 
 
                     </div>
@@ -340,8 +346,12 @@ function printbutton($webroot, $index){
 
 
 <div class="row margin-bottom-20">
-
-    <div class="col-md-7">
+<?php
+    $offset="";
+    if ($ordertype == "" || $ordertype =="MEE"){
+    if ($ordertype !="") { $offset = " col-md-offset-3"; }
+?>
+    <div class="col-md-7<?= $offset ?>">
         <div class="pricing pricing-active hover-effect">
             <div class="pricing-head pricing-head-active">
                 <h3>Place MEE Order <span>
@@ -395,13 +405,19 @@ function printbutton($webroot, $index){
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
                 </p>
-                <a href="#" class="btn red-flamingo">
-                    Place Order <i class="m-icon-swapright m-icon-white"></i>
-                </a>
+                <?php printbutton($ordertype, $this->request->webroot, 3); ?>
+
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+<?php }
+
+$offset="";
+if ($ordertype == "" || $ordertype =="CART"){
+    if ($ordertype !="") { $offset = " col-md-offset-3"; }
+
+?>
+    <div class="col-md-5<?= $offset; ?>">
         <div class="pricing hover-effect">
             <div class="pricing-head">
                 <h3>A La Carte / Re-qualify <span>
@@ -454,11 +470,10 @@ function printbutton($webroot, $index){
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing.
                 </p>
-                <a href="#" class="btn yellow-crusta">
-                    Place Order <i class="m-icon-swapright m-icon-white"></i>
-                </a>
+                <?php printbutton($ordertype, $this->request->webroot, 4); ?>
             </div>
         </div>
     </div>
+    <?php } ?>
     <!--//End Pricing -->
 </div>

@@ -125,7 +125,7 @@
 
                                                         <a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id; ?>"
                                                            class="btn btn-warning">
-                                                            View Documents</a>
+                                                            View <?php echo ucfirst($settings->document)); ?></a>
 
 
                                                     <?php

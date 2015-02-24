@@ -163,7 +163,7 @@
                             <li class="active">
                                 <a href="#tab_1_1" data-toggle="tab">Info</a>
                             </li>
-                            <?php if ($this->request['action'] != "add") {
+                            <?php if ($this->request['action'] != "add" && !isset($_GET['view'])) {
                                 ?>
 
                                 <li>
@@ -495,6 +495,10 @@
                                 </div>
                             </div>
                         </div>
+                        <?php
+                        if ($this->request['action'] != "add" && !isset($_GET['view']) )
+                        {
+                         ?>
                         <div class="tab-pane" id="tab_1_2">
 
 
@@ -591,6 +595,7 @@
 
                             </form>
                         </div>
+                        <?php } ?>
 
                         <!-- END SAMPLE FORM PORTLET-->
 </div>

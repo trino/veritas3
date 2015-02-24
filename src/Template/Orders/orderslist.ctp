@@ -207,7 +207,13 @@ Delete</a>
 <?php
     }
 ?>
-<?php if (!isset($_GET['draft'])) echo $this->Html->link(__('Score Card'), ['controller' => 'orders', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
+<?php if (!isset($_GET['draft']))
+{
+?>
+<a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $order->profile->id ?>?getprofilescore=1" class="btn btn-success">Score Card</a>
+<?php
+} ?>
+<?php //if (!isset($_GET['draft'])) echo $this->Html->link(__('Score Card'), ['controller' => 'orders', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
 </TD>
 <td valign="middle">
 <?php if (!isset($_GET['draft'])) { ?>

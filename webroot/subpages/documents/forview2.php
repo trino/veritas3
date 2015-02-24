@@ -185,11 +185,12 @@
         
                     <!--<div class="inputs">
                         <div class="profile-usertitle-job">--> 
+                        <?php if($order->profile->profile_type == 5) { ?>                        
                             <label class="uniform-inline" style="margin-top:10px;">
-                                <input type="checkbox" name="stat" value="1" id="<?php echo $order->profile->id; ?>"
+                                <input <?php if(!$this->request->session()->read('Profile.super') && ($this->request->session()->read('Profile.profile_type') != '2')) {?> disabled="disabled" <?php }?> type="checkbox" name="stat" value="1" id="<?php echo $order->profile->id; ?>"
                                        class="checkdriver" <?php if ($order->profile->is_hired == '1') echo "checked"; ?> />
                                 Was this driver hired? </label>
-            
+                            <?php } ?>
                        <!-- </div>
                     </div>--></div>
         <!-- END SIDEBAR USER TITLE -->

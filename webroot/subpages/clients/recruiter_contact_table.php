@@ -3,7 +3,7 @@
     $contact = $this->requestAction('Profiles/getContact');
     //include("subpages/profileslisting.php");
     $viewmode = isset($_GET["view"]);
-
+    $pType = ['','Admin','Recruiter','External','Safety','Driver','Contact'];
 if (!$viewmode){
 ?>
 
@@ -34,7 +34,7 @@ if (!$viewmode){
                     <span><input class="profile_client" type="checkbox"
                                  <?php if (in_array($r->id, $profile)){ ?>checked="checked"<?php }?>
                                  value="<?php echo $r->id; ?>"/></span>
-                    <span> <?php echo $r->username; ?> </span>&nbsp;
+                    <span> <?php echo $r->username; ?> <?php if($r->profile_type!=""){?>(<?=$pType[$r->profile_type];?>)<?php }?> </span>&nbsp;
                     <span class="msg_<?php echo $r->id; ?>"></span>
                 </td>
                 <?php
@@ -116,6 +116,7 @@ if (!$viewmode){
             data: 'key=' + key,
             type: 'get',
             success: function (res) {
+                
                 $('#profileTable').html(res);
             }
         });

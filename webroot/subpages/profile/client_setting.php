@@ -6,21 +6,21 @@
         </div>
         -->
         <ul class="nav nav-tabs nav-justified">
-            <li class="active">
+            <!--<li class="active">
                 <a href="#subtabz_2_1" data-toggle="tab">Version</a>
             </li>
             
             <li class="">
                 <a href="#subtabz_2_3" data-toggle="tab">Display</a>
-            </li>
+            </li>-->
             <!--<li class="">
                 <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
             </li>-->
         </ul>
     <!--</div>-->
     <div class="portlet-body">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="subtabz_2_1">
+                                     <!--<div class="tab-content">
+                                       <div class="tab-pane active" id="subtabz_2_1">
                                         <form action="#" method="post" id="clientform">
                                             <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                             <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
@@ -60,11 +60,11 @@
                                         }
                                         ?>
                                             </form>
-                                            </div>
+                                            </div>-->
                                             <div class="tab-pane" id="subtabz_2_3">
                                                 <?php include('subpages/profile/other_display.php'); ?>
                                             </div>
-                                        </div>
+                                        <!--</div>-->
 
 <script>
 $(function(){

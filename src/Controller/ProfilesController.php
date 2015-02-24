@@ -856,6 +856,10 @@ public function settings(){
                 return $this->redirect("/");
 
             }
+            if(isset($_GET['draft']))
+                $draft= "?draft";
+            else
+                $draft = "";
             $profile = $this->Profiles->get($id);
            // $this->request->allowMethod(['post', 'delete']);
             if ($this->Profiles->delete($profile)) {
@@ -863,7 +867,7 @@ public function settings(){
             } else {
                 $this->Flash->error('User could not be deleted. Please try again.');
             }
-            return $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index'.$draft]);
         }
 
         function logout()

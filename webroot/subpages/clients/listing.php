@@ -97,7 +97,7 @@
                                                         echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => 'btn btn-primary']);
                                                     }
                                                     if ($sidebar->client_delete == '1') { ?>
-                                                        <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $clients->id; ?>"
+                                                        <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $clients->id; ?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                                                            onclick="return confirm('Are you sure you want to delete <?= h($clients->company_name) ?>?');"
                                                            class="btn btn-danger">Delete</a>
 

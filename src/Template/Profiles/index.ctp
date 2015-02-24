@@ -254,14 +254,16 @@
                                                 if ($this->request->session()->read('Profile.super') == '1') {
                                                     if ($this->request->session()->read('Profile.id') != $profile->id) {
                                                         ?>
-                                                        <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?>"
+                                                        
+                                                        <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                                                            onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');"
                                                            class="btn btn-danger">Delete</a>
+                                                        </span>
                                                     <?php
                                                     }
                                                 } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
                                                     ?>
-                                                    <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?>"
+                                                    <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                                                        onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');"
                                                        class="btn btn-danger">Delete</a>
                                                 <?php

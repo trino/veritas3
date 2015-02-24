@@ -642,12 +642,15 @@ class ClientsController extends AppController {
                 return $this->redirect("/clients/index");
                 //die();
             }
-            
+          if(isset($_GET['draft']))
+                $draft= "?draft";
+            else
+                $draft = "";   
         $checker = $this->Settings->check_client_permission($this->request->session()->read('Profile.id'),$id);
             if($checker==0)
             {
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
-                return $this->redirect("/clients/index");
+                return $this->redirect("/clients/index".$draft);
 
             }
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -665,7 +668,7 @@ class ClientsController extends AppController {
 		} else {
 			$this->Flash->error(ucfirst($settings->client) . ' could not be deleted. Please try again.');
 		}
-		return $this->redirect(['action' => 'index']);
+		return $this->redirect(['action' => 'index'.$draft]);
 	}
 
     function quickcontact()

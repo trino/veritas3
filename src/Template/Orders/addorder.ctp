@@ -1476,9 +1476,8 @@ function provinces($name){
     }
     function saveDriver(cid) {
         var fields = $('#createDriver').serialize();
-        $(':disabled[name]', '#createDriver').each(function () {
-            fields = fields + '&' + $(this).attr('name') + '=' + $(this).val();
-        });
+        fields = fields + '&profile_type=' + $('.member_type').val();
+        
 
         var param = {
             cid: cid,

@@ -646,6 +646,7 @@ public function settings(){
                 $post[$arr_ap[0]] = urldecode($arr_ap[1]);
                 $post[$arr_ap[0]] = str_replace('Select Gender','',$post[$arr_ap[0]]);
             }
+            
             $que = $this->Profiles->find()->where(['email'=>$post['email'],'id <>'=>$post['id']])->first();
             
             if($que)
@@ -656,8 +657,9 @@ public function settings(){
            //$post = $_POST['inputs'];
           // var_dump($post);die();
             $profiles = TableRegistry::get('Profiles');
-  
+            
             if ($this->request->is('post')) {
+                
                  //var_dump($_POST['inputs']);die();
                 $post['dob'] = $post['doby']."-".$post['dobm']."-".$post['dobd'];
                 //debug($_POST);die();
@@ -703,20 +705,23 @@ public function settings(){
         }
         else
         {
+            
+            //var_dump($post);
             $id = $post['id'];
             unset($post['id']);
-            unset($post['doby']);
-            unset($post['dobm']);
-            unset($post['dobd']);
-            unset($post['client_ids']);
-           $query = $profiles->query();
-            $query->update()
-                ->set($post)
-                ->where(['id' => $id])
-                ->execute(); 
+            unset($post['profile_type']);
+            
+            $pro = $this->Profiles->get($id, [
+			'contain' => []
+		]);
+            $pros = $this->Profiles->patchEntity($pro, $post);
+			$this->Profiles->save($pros);
+            
                 echo $id;die();
+                
         }
         }
+        die();
         }
 
         /**

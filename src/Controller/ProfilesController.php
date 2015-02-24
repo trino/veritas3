@@ -296,14 +296,22 @@ public function settings(){
             $this->render("edit");
         }
         
-        public function viewReport($profile)
+        public function viewReport($profile,$profile_edit_view = 0)
         {
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
                 ->where(['orders.uploaded_for' => $profile])->contain(['Profiles', 'Clients', 'RoadTest']);
 
-            $this->set('orders', $order);
+            
+            if(isset($profile_edit_view) && $profile_edit_view == 1)
+            {
+                $this->response->body(($order));
+                return $this->response;
+                die();
+                //$this->set('profile_edit_view', $profile_edit_view);
+            }
+            else $this->set('orders', $order);            
             //  debug($order);
         }
 
@@ -710,6 +718,7 @@ public function settings(){
          * @throws \Cake\Network\Exception\NotFoundException
          */
         public function edit($id = null) {
+                                    
             
             $check_pro_id = $this->Settings->check_pro_id($id);
             if($check_pro_id==1)
@@ -834,7 +843,6 @@ public function settings(){
 
         function logout()
         {
-            //$this->request->session()->delete('Profile.id');
             $this->loadComponent('Cookie');
             $this->Cookie->delete('Profile.username');
             $this->Cookie->delete('Profile.password');
@@ -845,11 +853,6 @@ public function settings(){
 
             }else{
                 $this->redirect('http://isbmee.com');
-                
-
-                //$initials = $this->requestAction('/pages/getBase');
-                //$this->redirect($initials);
-
             }
         }
 

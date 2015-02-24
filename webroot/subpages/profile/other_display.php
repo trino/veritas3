@@ -1,6 +1,6 @@
   <?php
  //echo $this->Session->read('Profile.admin');
-if($this->Session->read('Profile.admin') && $this->Session->read('Profile.id')== $this->request['pass'][0]  )
+if($this->Session->read('Profile.admin')  )//&& $this->Session->read('Profile.id')== $this->request['pass'][0] PASS 0 returned unknown offset
     $is_disabled1 = '';
 else
     $is_disabled1 = 'disabled="disabled"';
@@ -61,7 +61,7 @@ else
                                             </select>-->
 
                                         </div>
-                                        <div class="margin-top-10">
+                                        <div align="right">
                                             <a id="save_displayz" class="btn btn-primary" >Submit</a>
                                             <a href="#" class="btn default">
                                                 Cancel </a>

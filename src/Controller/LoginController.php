@@ -53,13 +53,11 @@ class LoginController extends AppController{
         
         if($q)
         {
-            
-            //die('here');
             if($arr['remember']){
-                //die('here');
             $this->Cookie->write('Profile.username', $q->username);
             $this->Cookie->write('Profile.password', $arr['password']);
             }
+            
             $this->request->session()->write('Profile.id',$q->id);
             $this->request->session()->write('Profile.username',$q->username);
             $this->request->session()->write('Profile.fname',$q->fname);
@@ -73,12 +71,13 @@ class LoginController extends AppController{
                 if($q->super == 1)
                 $this->request->session()->write('Profile.super',1);
             }
-            
+            $this->redirect('/pages');
         }
         else{
             $this->Flash->error('Invalid username or password.');
+            $this->redirect('/login');
+
         }
-        $this->redirect('/pages');
         }else
         {
            // die();

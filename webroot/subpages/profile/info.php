@@ -49,13 +49,14 @@
 
 ?>
 
-<div class="portlet-body">
-
+<div class="portlet-body form" >
+    <input type="hidden" name="client_ids" value="" class="client_profile_id"/>
+    <div class="form-body">
     <div class="tab-content">
         <div class="tab-pane active" id="subtab_4_1">
 
 
-            <div class="portlet box form">
+            <div class="portlet box" style="margin-bottom:0px;">
 
 
                 <form role="form" action="" method="post" id="save_clientz">
@@ -269,7 +270,7 @@
                             <div class="form-group">
                                 <label class="control-label">Username</label>
                                 <input <?php echo $is_disabled ?> name="username" type="text"
-                                                                  class="form-control req_driver req_rec" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
+                                                                  class="form-control req_driver req_rec uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
                             <span class="error passerror flashUser"
                                   style="display: none;">Username already exists</span>
                             <span class="error passerror flashUser1"
@@ -320,8 +321,8 @@
                         </div>
 
 
-                        <div class="clearfix">
-                        </div>
+                        <div class="clearfix"></div>
+
                         <?php if ($settings->client_option == 0) { ?>
                         <div class="col-md-4">
                             <div class="form-group">
@@ -609,22 +610,30 @@
                         <?php
                                 if (!isset($disabled)) {
                             ?>
-                                <div class="col-md-12">
 
-                                    <div class="margin-top-10 form-actions">
-                                        <a href="javascript:void(0)" class="btn btn-primary"
-                                           onclick="return check_username();" id="savepro">
-                                            Save Changes
-                                        </a>
-                                        <button class="btn btn-primary"
-                                                onclick="$('#profile_drafts').val('1'); $('#save_clientz').attr('novalidate','novalidate');$('#hiddensub').click();">
-                                            Save As Draft
-                                        </button>
-                                        <input type="submit" style="display: none;" id="hiddensub"/>
-                                    </div>
-                                    <div class="clearfix"></div>
 
-                                </div>
+
+
+
+
+
+
+                                        <div class="col-md-12" align="right">
+
+
+
+                                                <a href="javascript:void(0)" class="btn btn-primary"
+                                                   onclick="return check_username();" id="savepro">
+                                                    Save Changes
+                                                </a>
+                                                <button class="btn btn-info"
+                                                        onclick="$('#profile_drafts').val('1'); $('#save_clientz').attr('novalidate','novalidate');$('#hiddensub').click();">
+                                                    Save As Draft
+                                                </button>
+                                                <input type="submit" style="display: none;" id="hiddensub"/>
+                                        </div>
+
+                        <div class="clearfix"></div>
                             <?php } ?>
 
 
@@ -636,6 +645,7 @@
 
         </div>
 
+    </div>
     </div>
     <?php
         if ($this->request->params['action'] == 'edit') {
@@ -656,6 +666,7 @@
 <script>
     function check_username() {
         if ($('#retype_password').val() == $('#password').val()) {
+            
             var client_id = $('.client_profile_id').val();
             if (client_id == "") {
 
@@ -706,7 +717,9 @@
                             });
                         }
                         else
+                        {
                             $('#hiddensub').click();
+                        }
                     }
                 }
             });

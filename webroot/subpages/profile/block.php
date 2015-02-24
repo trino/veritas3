@@ -1,8 +1,10 @@
 <?php 
 
     $uid = ($this->request['action']=='add')? "0" : $this->request['pass'][0];
-    $sidebar = $this->requestAction("settings/all_settings/".$uid."/sidebar"); ?>
-    <?php $block = $this->requestAction("settings/all_settings/".$uid."/blocks"); ?>
+    $sidebar = $this->requestAction("settings/all_settings/".$uid."/sidebar");
+    $block = $this->requestAction("settings/all_settings/".$uid."/blocks");
+    if(!isset($is_disabled1)){$is_disabled1 = "";}//something is wrong with this variable
+?>
 
 <!-- BEGIN BORDERED TABLE PORTLET--><!--
 <div class="portlet box yellow">
@@ -16,14 +18,14 @@
         {
             ?>
             <li class="active">
-                <a href="#subtab_2_1" data-toggle="tab">Sidebar</a>
+                <a href="#subtab_2_1" data-toggle="tab">Configuration</a>
             </li>
             <li class="">
                 <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
             </li>
-            <li class="">
+            <!--<li class="">
                 <a href="#subtab_2_3" data-toggle="tab">Top blocks</a>
-            </li>
+            </li>-->
             <?php
         }
          ?>
@@ -35,12 +37,12 @@
             </li>-->
         </UL>
     <!--</div>-->
-    <div class="portlet-body">
+    <div class="portlet-body form">
                                     <div class="tab-content">
                                                 <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")!=2) echo 'active'; ?>" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
-                                                                                                               
+
                                 					   <form action="#" method="post" id="blockform">
                                                             <input type="hidden" name="form" value="<?php echo $uid;?>" />
                                                             <input type="hidden" name="side[user_id]" value="<?php echo $uid;?>" />
@@ -289,8 +291,38 @@
                                                                                           name="side[messages]"
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->messages == 0) echo "checked"; ?>/>
                                                         No </label>
-                                                    </td>
-                                                    </tr>    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vtop">Schedule</td>
+                                                <td>
+                                                     <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[schedule]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->schedule == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[schedule]"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->schedule == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="vtop">Analytics</td>
+                                                <td>
+                                                     <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[analytics]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->analytics == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                        <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[analytics]"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->analytics == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>       
                                                 <!--<tr>
                                                 <td class="vtop">Drafts</td>
                                                 <td>
@@ -352,15 +384,21 @@
                                         if (!isset($disabled)) {
                                             ?>
                                             <div class="res"></div>
+
+
+
+
                                             <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10"><center>
+                                                           <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                                                               <div class="row">
+                                                                   <div class="col-md-12" align="right">
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
                                                        value="Save Changes"/>
 
-                                                </center></div>
+                                                </div> </div> </div>
                                         <?php
                                         }
                                         ?>
@@ -432,11 +470,12 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                                        <div class="margin-top-10"><center>
+                                                            <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-12" align="right">
                                                             <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
-                                                                Save Changes </a></center>
-
-                                                        </div>
+                                                                Save Changes </a>
+                                                        </div></div></div>
                                                     <?php
                                                     }
                                                     ?>
@@ -445,7 +484,7 @@
                                                                 
                                 						
                                     </div>
-                                    <div  class="tab-pane" id="subtab_2_3">
+                                    <?php /* ?><div  class="tab-pane" id="subtab_2_3">
 
 
 
@@ -770,16 +809,20 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <div class="margin-top-10"><center>
-                                                <input type="button" name="submit" class="btn btn-primary" id="save_home"
-                                                       value="Save Changes"/></center>
 
-                                            </div>
+                                            <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                                                <div class="row">
+                                                    <div class="col-md-12" align="right">
+
+                                                <input type="button" name="submit" class="btn btn-primary" id="save_home"
+                                                       value="Save Changes"/>
+
+                                            </div></div></div>
                                         <?php
                                         }
                                         ?>
                                         </form>
-                                    </div>
+                                    </div><?php */?>
                                     <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")==2) echo 'active'; ?>" id="subtab_2_4">
                                         
                                         <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) 

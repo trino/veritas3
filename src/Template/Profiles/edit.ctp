@@ -308,17 +308,17 @@
                                     <li class="active">
                                         <a href="#tab_1_1" data-toggle="tab">Settings</a>
                                     </li>
-                                    <?php
-                                        if ($this->request['action'] != 'add') {
-
-                                            ?>
-                                            <li><a href="<?php echo $this->request->webroot;?>profiles/viewReport/<?php echo $p->id;?>" data-toggle = "tab" >View Scorecard</a></li>
+                                            <li>
+                                                <a href="#tab_1_11" data-toggle = "tab" >View Scorecard</a>
+                                            </li>
                                             <?php
                                             $needs = false;
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<li><a href="#tab_1_10" data-toggle="tab">Orders</li></A></li>';
                                             }
 
+                                        if ($this->request['action'] != 'add') {
+                                                                                        
                                             if ($this->request->params['action'] != 'add' && ($this->request->session()->read('Profile.profile_type') != '2')) {
                                                 ?>
                                                 <li>
@@ -334,8 +334,7 @@
                                                 </li>
 
                                             <?php }
-                                        }
-
+                                            }
                                     ?>
                                 </ul>
 
@@ -354,25 +353,27 @@
                                             ?>
 
 
-                                            <div class="tab-pane" id="tab_1_5">
-                                                <?php include('subpages/profile/logo.php'); ?>
+                                            <!--div class="tab-pane" id="tab_1_5">
+                                                php include('subpages/profile/logo.php'); ?>
                                             </div>
 
                                             <div class="tab-pane" id="tab_1_6">
-                                                <?php include('subpages/profile/page.php'); ?>
+                                                <!php include('subpages/profile/page.php'); ?>
                                             </div>
                                             <div class="tab-pane" id="tab_1_8">
-                                                <?php include('subpages/profile/client_setting.php'); ?>
+                                                <!php include('subpages/profile/client_setting.php'); ?>
                                             </div>
+                                            -->
+
                                             <div class="tab-pane" id="tab_1_7">
-                                                <?php include('subpages/profile/block.php'); ?>
+                                                <?php include('subpages/profile/block.php');//permissions ?>
                                             </div>
 
                                             <?php
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<div class="tab-pane" id="tab_1_10">';
                                                 include('subpages/profile/listorders.php');
-                                                echo '</div>';
+                                                echo '</div>';//lists driver's orders
                                             }
                                             ?>
 
@@ -380,11 +381,599 @@
                                                 <div class="cleafix">&nbsp;</div>
 
                                                 <div class="portlet-body">
-                                                    <?php include('subpages/documents/recruiter_notes.php'); ?>
+                                                    <?php include('subpages/documents/recruiter_notes.php');//notes ?>
                                                 </div>
                                                 <!--</div>-->
                                             </div>
-                                        <?php } ?>
+                                            
+                                            <?php } ?>
+                                            <div class="tab-pane" id="tab_1_11">
+                                            
+                            <label class="uniform-inline" style="float:right;margin-top:10px;">
+                                <input type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
+                                       class="checkdriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
+                                Was this driver hired? </label>                                                                                        
+                                                <?php $orders = $this->requestAction('profiles/viewReport/'.$p->id.'/1');
+                                                if($orders){
+    //include('subpages/documents/forprofileview.php');
+    
+    function get_string_between($string, $start, $end)
+    {
+        $string = " " . $string;
+        $ini = strpos($string, $start);
+        if ($ini == 0) return "";
+        $ini += strlen($start);
+        $len = strpos($string, $end, $ini) - $ini;
+        return substr($string, $ini, $len);
+    }
+
+
+    function get_mee_results_binary($bright_planet_html_binary, $document_type)
+    {
+        return (get_string_between(base64_decode($bright_planet_html_binary), $document_type, '</tr>'));
+    }
+
+    function get_color($result_string)
+    {
+
+        $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+
+        switch (strtoupper(trim($result_string))) {
+            case 'NOT ATTACHED':
+                echo $return_color = '<span  class="label label-sm label-danger" style="float:right;padding:4px;">' . $result_string . '</span>';;
+                break;
+            case 'PASS':
+                echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'DISCREPANCIES':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'COACHING REQUIRED':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'VERIFIED':
+                echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'POTENTIAL TO SUCCEED':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'IDEAL CANDIDATE':
+                echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'INCOMPLETE':
+                echo $return_color = '<span  class="label label-sm label-danger" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'SATISFACTORY':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case 'REQUIRES ATTENTION':
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            case '':
+                // echo $return_color = '<span  class="label label-sm label-success" style="float:right;padding:4px;">' . $result_string . '</span>';
+                break;
+            default:
+                echo $return_color = '<span  class="label label-sm label-warning" style="float:right;padding:4px;">NO COMMENT</span>';
+        }
+    }
+
+    function return_link($pdi, $order_id)
+    {
+        if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.pdf')) {
+            $link = "orders/order_" . $order_id . '/' . $pdi . '.pdf';
+            return $link;
+
+        } else if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.html')) {
+            $link = "orders/order_" . $order_id . '/' . $pdi . '.html';
+            return $link;
+
+        } else if (file_exists("orders/order_" . $order_id . '/' . $pdi . '.txt')) {
+            $link = "orders/order_" . $order_id . '/' . $pdi . '.txt';
+            return $link;
+
+        }
+        return false;
+    }
+
+    function create_files_from_binary($order_id, $pdi, $binary)
+    {
+        $createfile_pdf = "orders/order_" . $order_id . '/' . $pdi . '.pdf';
+        $createfile_html = "orders/order_" . $order_id . '/' . $pdi . 'html';
+        $createfile_text = "orders/order_" . $order_id . '/' . $pdi . 'txt';
+
+        if (!file_exists($createfile_pdf) && !file_exists($createfile_text) && !file_exists($createfile_html)) {
+
+            if (isset($binary) && $binary != "") {
+                file_put_contents('unknown_file', base64_decode($binary));
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mime = finfo_file($finfo, 'unknown_file');
+
+                if ($mime == "application/pdf") {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.pdf');
+                } elseif ($mime == "text/html") {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
+                } elseif ($mime == "text/plain") {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
+                } else {
+                    rename("unknown_file", "orders/order_" . $order_id . '/' . $pdi . '.html');
+                }
+            }
+        }
+    }
+
+    $counting = 0;
+    $drcl_d = $orders;
+    foreach ($drcl_d as $drcld) {
+
+        $counting++;
+    }
+
+    $k = 0;
+    foreach ($orders as $order) {
+        $k++;
+        
+        $settings = $this->requestAction('settings/get_settings');
+        $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);                
+        ?>
+        <?php
+   
+        create_files_from_binary($order->id, '1603', $order->ebs_1603_binary);
+        create_files_from_binary($order->id, '1', $order->ins_1_binary);
+        create_files_from_binary($order->id, '14', $order->ins_14_binary);
+        create_files_from_binary($order->id, '77', $order->ins_77_binary);
+        create_files_from_binary($order->id, '78', $order->ins_78_binary);
+        create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
+        create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
+ ?>
+        <!-- BEGIN PROFILE CONTENT -->
+        <div class="">
+            <div class="row">
+
+                <div class="clearfix"></div>
+                <div class="col-md-12">
+                    <!-- BEGIN PORTLET -->
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption caption-md">
+                                <i class="icon-bar-chart theme-font hide"></i>
+                                <span class="caption-subject font-blue-madison bold uppercase">Driver Score Sheet</span>
+                                <span class="caption-helper"></span>
+
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="portlet box yellow">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-folder-open-o"></i>ISB MEE Products
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+
+
+                                <div class="table-scrollable">
+
+
+                                    <div class="col-sm-12" style="padding-top:10px;">
+                        <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type:
+                                <strong>Orders</strong></p>
+            			<p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
+            
+            			<p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
+            			<p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
+            
+            			<p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
+            
+            			</span>
+
+
+
+
+
+                                    </div>
+
+                                    <div class="col-sm-12"  style="padding:10px;">
+                                        <center>
+                                        <a style="" href="#" class=" btn btn-lg default yellow-stripe">
+                                            Road Test Score </a><a href="#" class="btn btn-lg yellow">
+                                            <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
+                                        </a>
+                                        </center>
+
+
+                                    </div>
+
+
+
+
+                                    <div class="clearfix"></div>
+
+
+                                    <table class="table ">
+
+                                        <tbody>
+
+
+                                        <tr class="even" role="row">
+
+
+                                            <td>
+                                                <span class="icon-notebook"></span>
+
+                                            </td>
+
+                                            <td>Premium National Criminal Record Check
+                                                <?php
+                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Premium National Criminal Record Check")));
+                                                ?>
+
+                                            </td>
+
+                                            <td class="actions">
+                                                <?php
+                                                    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
+                                                    if (return_link('1603', $order->id) == false) { ?>
+                                                        <span class="label label label-info">Pending </span>
+                                                    <? } else { ?>
+                                                        <a target="_blank"
+                                                           href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
+                                                           class="btn btn-primary">Download</a>
+                                                    <? } ?>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr class="even" role="row">
+                                            <td>
+                                                <span class="icon-notebook"></span>
+
+                                            </td>
+                                            <td>Driver's Record Abstract
+                                                <?php
+                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Driver's Record Abstract")));
+                                                ?>
+                                            </td>
+
+                                            <td class="actions">
+                                                <?php
+                                                    if (return_link('1', $order->id) == false) { ?>
+                                                        <span class="label label label-info">Pending </span>
+                                                    <? } else { ?>
+                                                        <a target="_blank"
+                                                           href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
+                                                           class="btn btn-primary">Download</a>
+                                                    <? } ?>
+
+                                            </td>
+                                        </tr>
+
+                                        <tr class="even" role="row">
+                                            <td>
+                                                <span class="icon-notebook"></span>
+
+                                            </td>
+                                            <td>CVOR
+                                                <?php get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "CVOR"))); ?>
+                                            </td>
+
+                                            <td class="actions">
+                                                <?php
+                                                    if (return_link('14', $order->id) == false) { ?>
+                                                        <span class="label label label-info">Pending </span>
+                                                    <? } else { ?>
+                                                        <a target="_blank"
+                                                           href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
+                                                           class="btn btn-primary">Download</a>
+                                                    <? } ?>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr class="odd" role="row">
+
+                                            <td>
+                                                <span class="icon-notebook"></span>
+
+                                            </td>
+                                            <td>Pre-employment Screening Program Report
+
+                                                <?php
+                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Pre-employment Screening Program Report")));
+                                                ?>
+
+                                            </td>
+
+                                            <td class="actions">
+                                                <?php
+                                                    if (return_link('77', $order->id) == false) { ?>
+                                                        <span class="label label label-info">Pending </span>
+                                                    <? } else { ?>
+                                                        <a target="_blank"
+                                                           href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
+                                                           class="btn btn-primary">Download</a>
+                                                    <? } ?>
+
+                                            </td>
+                                        </tr>
+
+
+                                        <tr class="even" role="row">
+
+                                            <td>
+                                                <span class="icon-notebook"></span>
+
+                                            </td>
+                                            <td>Transclick
+
+                                                <?php
+                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "TransClick")));
+                                                ?>
+                                            </td>
+
+                                            <td class="actions">
+                                                <?php
+                                                    if (return_link('78', $order->id) == false) { ?>
+                                                        <span class="label label label-info">Pending </span>
+                                                    <? } else { ?>
+                                                        <a target="_blank"
+                                                           href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
+                                                           class="btn btn-primary">Download</a>
+                                                    <? } ?>
+
+                                            </td>
+                                        </tr>
+
+
+                                        <tr class="odd" role="row">
+                                            <td>
+                                                <span class="icon-notebook"></span>
+
+                                            </td>
+                                            <td>Certifications
+                                                <?php
+                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Certifications")));
+                                                ?>
+                                            </td>
+
+                                            <td class="actions">
+                                                <?php
+                                                    if (return_link('1650', $order->id) == false) { ?>
+                                                        <span class="label label label-info">Pending </span>
+                                                    <? } else { ?>
+                                                        <a target="_blank"
+                                                           href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
+                                                           class="btn btn-primary">Download</a>
+                                                    <? } ?>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="odd" role="row">
+
+                                            <td>
+                                                <span class="icon-notebook"></span>
+
+                                            </td>
+                                            <td>Letter of Experience
+
+                                                <?php
+                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Letter Of Experience")));
+                                                ?>
+                                            </td>
+                                            <td class="actions">
+                                                <?php
+                                                    if (return_link('1627', $order->id) == false) { ?>
+                                                        <span class="label label label-info">Pending </span>
+                                                    <? } else { ?>
+                                                        <a target="_blank"
+                                                           href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
+                                                           class="btn btn-primary">Download</a>
+                                                    <? } ?>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+
+
+
+
+
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <!-- BEGIN PORTLET -->
+                                        <div class="portlet light tasks-widget">
+                                            <div class="portlet-title">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-bar-chart theme-font hide"></i>
+                                                    <span
+                                                        class="caption-subject font-blue-madison bold uppercase"><?php echo ucfirst($settings->document); ?>
+                                                        Check-list</span>
+                                                    <span class="caption-helper"></span>
+                                                </div>
+                                                <div class="inputs">
+                                                    <div class="portlet-input input-small input-inline">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="task-content">
+
+
+                                                    <!-- START TASK LIST -->
+                                                    <ul class="task-list">
+                                                        <li>
+                                                            <!--<div class="task-checkbox">
+                                                                <input type="hidden" value="1" name="test">
+
+                                                                <div class="checker"><span><input type="checkbox" class="liChild" value="2"
+                                                                                                  name="test"></span></div>
+                                                            </div>-->
+                                                            <div class="task-title">
+                            															<span class="task-title-sp">
+                            														<span class="icon-notebook"></span>	Pre-screening form
+                             </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/" . $order->id); ?>
+                                                                <?php if ($cnt > 0) { ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-success">Submitted</span>
+                                                                    &#x2713;
+                                                                <?php } else {
+                                                                    ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-danger">Skipped</span>
+
+                                                                <?php
+                                                                } ?>
+
+
+                                                            </div>
+
+                                                        </li>
+                                                        <li>
+                                                            <!--<div class="task-checkbox">
+                                                                <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                                                </div>
+                                                            </div>-->
+                                                            <div class="task-title">
+                            											<span class="task-title-sp">
+                            											<span class="icon-notebook"></span> Driver Application	 </span>
+                                                                <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/" . $order->id); ?>
+                                                                <?php if ($cnt > 0) { ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-success">Submitted</span>
+                                                                    &#x2713;
+                                                                <?php } else {
+                                                                    ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-danger">Skipped</span>
+
+                                                                <?php
+                                                                } ?>
+
+                                                            </div>
+
+                                                        </li>
+                                                        <li>
+                                                            <!--<div class="task-checkbox">
+                                                                <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                                                </div>
+                                                            </div>-->
+                                                            <div class="task-title">
+                            											<span class="task-title-sp">
+                                                                            <span class="icon-notebook"></span> Road Test
+                                                                        </span>
+                                                                <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/" . $order->id); ?>
+                                                                <?php if ($cnt > 0) { ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-success">Submitted</span>
+                                                                    &#x2713;
+                                                                <?php } else {
+                                                                    ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-danger">Skipped</span>
+
+                                                                <?php
+                                                                } ?>
+                                                            </div>
+
+                                                        </li>
+                                                        <li>
+                                                            <!--<div class="task-checkbox">
+                                                                <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                                                </div>
+                                                            </div>-->
+                                                            <div class="task-title">
+                            											<span class="task-title-sp">
+
+                                                                           <span class="icon-notebook"></span>  MEE Order	 </span>
+                                                                <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/" . $order->id); ?>
+                                                                <?php if ($cnt > 0) { ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-success">Submitted</span>
+                                                                    &#x2713;
+                                                                <?php } else {
+                                                                    ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-danger">Skipped</span>
+
+                                                                <?php
+                                                                } ?>
+
+                                                            </div>
+
+                                                        </li>
+                                                        <li>
+                                                            <!--<div class="task-checkbox">
+                                                                <div class="checker"><span><input type="checkbox" class="liChild" value=""></span>
+                                                                </div>
+                                                            </div>-->
+                                                            <div class="task-title">
+                            											<span class="task-title-sp">
+                                                                      <span class="icon-notebook"></span>  Confirmation  </span>
+                                                                <?php if ($order->draft == 0) { ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-success">Submitted</span>
+                                                                    &#x2713;
+                                                                <?php } else {
+                                                                    ?>
+                                                                    <span style="float:right;padding:5px"
+                                                                          class="label label-sm label-danger">Skipped</span>
+
+                                                                <?php
+                                                                } ?>
+
+                                                            </div>
+
+                                                        </li>
+
+                                                    </ul>
+                                                    <!-- END START TASK LIST -->
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <a href="<?php echo $this->request->webroot;?>documents/vieworder/<?php echo $order->client_id;?>/<?php echo $order->id;?>"
+                                           class="btn btn-primary">View Order</a>
+
+
+
+                                        <!-- END PORTLET -->
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                    <!-- END PORTLET -->
+                </div>
+            </div>
+
+        </div>
+
+ <?php   } ?>
+<!-- END PROFILE CONTENT -->
+<?php
+}
+                                                 ?>
+                                            </div>                                                                                                                                                                                
+                                        <?php  ?>
                                 </div>
                             </div>
                         </div>

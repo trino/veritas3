@@ -25,10 +25,10 @@
 
     <?php
         if (isset($disabled)) { ?>
-            <a href="javascript:window.print();" class="floatright btn btn-primary">Print Report</a>
+            <a href="javascript:window.print();" class="floatright btn btn-primary">Print</a>
 
-            <a href="" class="floatright btn btn-success">Re-Qualify</a>
-            <a href="" class="floatright btn btn-info">Add to Task List</a>
+            <!--a href="" class="floatright btn btn-success">Re-Qualify</a>
+            <a href="" class="floatright btn btn-info">Add to Task List</a-->
         <?php } ?>
 
 </div>

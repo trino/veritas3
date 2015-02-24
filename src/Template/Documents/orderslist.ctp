@@ -30,10 +30,11 @@
                     List Orders
                 </div>
             </div>
-            <div class="portlet-body">
+            <div class="portlet-body form">
 
 
-                <div class="form-actions top chat-form" style="margin-top:0;">
+                <div class="form-actions top chat-form" style="height:75px; margin-bottom:0;" align="right">
+
                     <div class="btn-set pull-left">
 
                     </div>
@@ -105,6 +106,8 @@
                         });
                     })
                 </script>
+
+                <div class="form-body">
                 <div class="table-scrollable">
                     <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
@@ -169,11 +172,11 @@ echo '';
 <td class="actions  util-btn-margin-bottom-5">
 
 <?php
-if ($sidebar->orders_list == '1') {
+if ($sidebar->orders_list == '1' && !isset($_GET["draft"])) {
 if (!isset($_GET['table']))
-echo $this->Html->link(__('View Order'), ['action' => 'vieworder', $order->client_id, $order->id], ['class' => 'btn btn-info']);
+echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id], ['class' => 'btn btn-info']);
 else
-echo $this->Html->link(__('View Order'), ['action' => 'vieworder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-info']);
+echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-info']);
 } ?>
 
 <?php
@@ -191,7 +194,7 @@ if (isset($super)) {
 ?><a
 href="<?php echo $this->request->webroot; ?>documents/deleteorder/<?php echo $order->id; ?><?php if (isset($_GET['draft'])) echo "?draft"; ?>"
 class="btn btn-danger"
-onclick="return confirm('Are you sure you want to delete <?= h($order->title) ?>?');">
+onclick="return confirm('Are you sure you want to delete order <?= $order->id ?>?');">
 Delete</a>
 <?php
 }
@@ -199,12 +202,9 @@ Delete</a>
 ?>
 
 <?php if ($sidebar->orders_requalify == '1' && $order->draft == '0') {
-
 ?>
-    <a class="clearfix btn btn-warning" href="<?php echo $this->request->webroot;?>documents/productSelection?driver=<?php echo $order->uploaded_for; ?>"/>Re-qualify</a>
+    <!--a class="clearfix btn btn-warning" href="<?php echo $this->request->webroot;?>documents/productSelection?driver=<?php echo $order->uploaded_for; ?>"/>Re-qualify</a-->
 <?php
-//debug($order);
-
     }
 ?>
 <?php if (!isset($_GET['draft'])) echo $this->Html->link(__('Score Card'), ['controller' => 'documents', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
@@ -228,15 +228,20 @@ style="float:right;padding:4px;">pending</span>
 </table>
 
 </div>
+</div>
+
+                <div class="form-actions" style="height:75px;">
+                    <div class="row">
+                        <div class="col-md-12" align="right">
 
 
-                <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers">
+                            <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" style="margin-top:-10px;">
                     <ul class="pagination sorting">
                         <?= $this->Paginator->prev('< ' . __('previous')); ?>
                         <?= $this->Paginator->numbers(); ?>
                         <?= $this->Paginator->next(__('next') . ' >'); ?>
                     </ul>
-                </div>
+                </div> </div> </div> </div>
 
 
             </div>

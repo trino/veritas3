@@ -351,25 +351,27 @@
                                             ?>
 
 
-                                            <div class="tab-pane" id="tab_1_5">
-                                                <?php include('subpages/profile/logo.php'); ?>
+                                            <!--div class="tab-pane" id="tab_1_5">
+                                                <!--php include('subpages/profile/logo.php'); ?>
                                             </div>
 
                                             <div class="tab-pane" id="tab_1_6">
-                                                <?php include('subpages/profile/page.php'); ?>
+                                                <!php include('subpages/profile/page.php'); ?>
                                             </div>
                                             <div class="tab-pane" id="tab_1_8">
-                                                <?php include('subpages/profile/client_setting.php'); ?>
+                                                <!php include('subpages/profile/client_setting.php'); ?>
                                             </div>
+                                            -->
+
                                             <div class="tab-pane" id="tab_1_7">
-                                                <?php include('subpages/profile/block.php'); ?>
+                                                <?php include('subpages/profile/block.php');//permissions ?>
                                             </div>
 
                                             <?php
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<div class="tab-pane" id="tab_1_10">';
                                                 include('subpages/profile/listorders.php');
-                                                echo '</div>';
+                                                echo '</div>';//lists driver's orders
                                             }
                                             ?>
 
@@ -377,7 +379,7 @@
                                                 <div class="cleafix">&nbsp;</div>
 
                                                 <div class="portlet-body">
-                                                    <?php include('subpages/documents/recruiter_notes.php'); ?>
+                                                    <?php include('subpages/documents/recruiter_notes.php');//notes ?>
                                                 </div>
                                                 <!--</div>-->
                                             </div>

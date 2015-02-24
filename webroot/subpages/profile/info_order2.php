@@ -33,7 +33,16 @@
     $ordertype = strtoupper(GET("ordertype"));
 
 function printbutton($type, $webroot, $index){
-    if ($index>2 && strlen($type) > 0 ) { $index = $index - 2;}
+    if (strlen($type) > 0){
+        switch ($index){
+            case 3:
+                $index = 1;
+                break;
+            case 4:
+                $index=5;
+                break;
+        }
+    }
     switch ($index){
             case 1: ?>
 <a href="javascript:void(0);" class="btn btn-danger placenow"
@@ -54,6 +63,14 @@ function printbutton($type, $webroot, $index){
             case 4:
                 echo '<a href="#" class="btn yellow-crusta">Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
             break;
+            case 5: ?>
+
+<a class="btn red button-next proceed"
+   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
+    Order Products <i class="m-icon-swapright m-icon-white"></i>
+</a>
+
+<?php
 }}
 ?>
 
@@ -92,7 +109,7 @@ function printbutton($type, $webroot, $index){
 
                             if ($counting > 1) { ?>
                             <select id="selecting_client" class="form-control input-xlarge select2me"
-                                onchange="reload(-1);"
+                                onoldchange="reload(-1);"
                                 data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
                                 if ($client) { ?>disabled="disabled"<?php } ?>>
                                     <option>None Selected</option><?php
@@ -188,10 +205,8 @@ function printbutton($type, $webroot, $index){
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
 
-                            <a class="btn red button-next proceed"
-                               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
-                                Order Products <i class="m-icon-swapright m-icon-white"></i>
-                            </a>
+                            <?php printbutton($ordertype, $this->request->webroot, 5);?>
+
                             <a class="btn grey button-next proceed"
                                onclick="$('.alacarte').toggle(200);$('.placenow').removeAttr('disabled');">
                                 Cancel</i>

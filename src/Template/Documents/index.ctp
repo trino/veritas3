@@ -215,7 +215,7 @@
                                             echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => 'btn btn-info']);
                                         } ?>
                                         <?php
-                                            if ($sidebar->document_edit == '1') {
+                                            if ($sidebar->document_edit == '1') { 
                                                 if ($docs->document_type == 'feedbacks')
                                                     echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);
                                                 elseif ($docs->document_type == 'order')

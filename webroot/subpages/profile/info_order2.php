@@ -5,15 +5,17 @@
 </style>
 
 <?php
-    if (isset($_GET['driver']))
+    if (isset($_GET['driver'])) {
         $driver = $_GET['driver'];
-    else
+    } else {
         $driver = 0;
+    }
 
-    if (isset($_GET['client']))
+    if (isset($_GET['client'])) {
         $client = $_GET['client'];
-    else
+    } else {
         $client = 0;
+    }
 
     $dr_cl = $doc_comp->getDriverClient($driver,$client);
 
@@ -22,6 +24,30 @@
     foreach ($drcl_c as $drclc) {
         $counting++;
     }
+
+    function GET($name, $default=""){
+        if (isset($_GET[$name])){ return $_GET[$name];}
+        return $default;
+    }
+
+    $ordertype = GET("ordertype");
+
+function printbutton($index){
+    switch ($index){
+            case 1: ?>
+<a href="javascript:void(0);" class="btn btn-danger placenow"
+   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
+    MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
+
+            <?php
+            break;
+            case 2: ?>
+                <a href="javascript:void(0);" class="btn btn-info"
+                   onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte
+                    <i class="m-icon-swapright m-icon-white"></i></a>
+            <?php
+            break;
+}
 ?>
 
 
@@ -45,13 +71,24 @@
 
                     <div class="col-md-3 control-label"><?php echo ucfirst($settings->client); ?> </div>
                     <div class="col-md-6">
+
+                        <script type="text/javascript">
+                            function reload(value){
+                                var container = document.getElementById("selecting_driver");
+                                var was = container.value;
+                                container.value = value;  //THIS IS NOT WORKING!!!
+                                //this should set the select dropdown to "Create a Driver"
+                            }
+                        </script>
+
                         <?php
 
                             if ($counting > 1) { ?>
                             <select id="selecting_client" class="form-control input-xlarge select2me"
-                            data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
-                            if ($client) { ?>disabled="disabled"<?php } ?>>
-                            <option>None Selected</option><?php
+                                onchange="reload(-1);"
+                                data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
+                                if ($client) { ?>disabled="disabled"<?php } ?>>
+                                    <option>None Selected</option><?php
                         } else { ?>
 
                         <select id="selecting_client" class="form-control input-xlarge select2me"
@@ -123,21 +160,14 @@
                     <div class="col-md-offset-3 col-md-9">
 
 
-                        <a href="javascript:void(0);" class="btn btn-danger placenow"
-
-                           onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
-                            MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
+                        <?php printbutton(1); ?>
 
 
 
                         &nbsp;&nbsp; or &nbsp;&nbsp;
 
 
-                        <a
-                            href="javascript:void(0);"
-                            class="btn btn-info"
-                            onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte <i
-                                class="m-icon-swapright m-icon-white"></i></a>
+                        <?php printbutton(2); ?>
 
 
                     </div>

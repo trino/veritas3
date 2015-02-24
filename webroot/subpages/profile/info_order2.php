@@ -32,11 +32,11 @@
 
     $ordertype = GET("ordertype");
 
-function printbutton($index){
+function printbutton($webroot, $index){
     switch ($index){
             case 1: ?>
 <a href="javascript:void(0);" class="btn btn-danger placenow"
-   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
+   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
     MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
 
             <?php
@@ -160,14 +160,14 @@ function printbutton($index){
                     <div class="col-md-offset-3 col-md-9">
 
 
-                        <?php printbutton(1); ?>
+                        <?php printbutton( $this->request->webroot, 1); ?>
 
 
 
                         &nbsp;&nbsp; or &nbsp;&nbsp;
 
 
-                        <?php printbutton(2); ?>
+                        <?php printbutton( $this->request->webroot, 2); ?>
 
 
                     </div>

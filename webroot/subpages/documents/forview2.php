@@ -181,7 +181,17 @@
             </div>
 
             
-        </div>
+        
+        
+                    <!--<div class="inputs">
+                        <div class="profile-usertitle-job">--> 
+                            <label class="uniform-inline" style="margin-top:10px;">
+                                <input type="checkbox" name="stat" value="1" id="<?php echo $order->profile->id; ?>"
+                                       class="checkdriver" <?php if ($order->profile->is_hired == '1') echo "checked"; ?> />
+                                Was this driver hired? </label>
+            
+                       <!-- </div>
+                    </div>--></div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
     </div>
@@ -239,15 +249,6 @@
     <!-- END PORTLET MAIN -->
 </div>
 
-                    <div class="inputs">
-                        <div class="profile-usertitle-job">
-                            <label class="uniform-inline">
-                                <input type="checkbox" name="stat" value="1" id="<?php echo $order->profile->id; ?>"
-                                       class="checkdriver" <?php if ($order->profile->is_hired == '1') echo "checked"; ?> />
-                                Was this driver hired? </label>
-            
-                        </div>
-                    </div>
 <!-- END BEGIN PROFILE SIDEBAR -->
 <!-- BEGIN PROFILE CONTENT -->
 <div class="profile-content">

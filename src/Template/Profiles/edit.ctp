@@ -260,11 +260,14 @@
                             </div>
 
 
-                                    <?php }
+                                    <?php } ?>
 
+                                    <label class="uniform-inline" style="margin-top:10px;">
+                                <input <?php  echo $is_disabled ?> type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
+                                       class="checkdriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
+                                Was this driver hired? </label> 
 
-
-
+                                    <?php
                                         if ($profile->profile_type == 5) {
                                             ?>
                                             <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>"
@@ -387,12 +390,7 @@
                                             </div>
                                             
                                             <?php } ?>
-                                            <div class="tab-pane" id="tab_1_11">
-                                            
-                            <label class="uniform-inline" style="float:right;margin-top:10px;">
-                                <input <?php  echo $is_disabled ?> type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
-                                       class="checkdriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
-                                Was this driver hired? </label>                                                                                        
+                                            <div class="tab-pane" id="tab_1_11">                                                                                       
                                                 <?php
                                                 include('subpages/documents/forview.php');
                                                  ?>

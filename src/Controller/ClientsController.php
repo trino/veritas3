@@ -966,7 +966,7 @@ class ClientsController extends AppController {
     $q =$q->select();
     else
     {
-        $q =$q->select()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" ']);
+        $q =$q->select()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id LIKE "'.$u.'" ']);
 
     }
 
@@ -984,7 +984,7 @@ class ClientsController extends AppController {
             $q =$q->select()->where(['company_name LIKE "%'.$key.'%"']);
         else
         {
-            $q =$q->select()->where(['(profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'") AND company_name LIKE "%'.$key.'%" ']);
+            $q =$q->select()->where(['(profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'"  OR profile_id LIKE "'.$u.'" ) AND company_name LIKE "%'.$key.'%" ']);
 
         }
         $this->set('clients',$q);

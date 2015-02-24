@@ -312,7 +312,7 @@
                             <!--BEGIN TABS-->
                             <div class="tabbable tabbable-custom">
                                 <ul class="nav nav-tabs">
-                                    <li <?php if(!isset($_GET['getprofilescore'])){ ?> class="active" <?php } ?> >
+                                    <li <?php if($this->request['action']=='add' ||(!isset($_GET['getprofilescore'])&&($Clientcount!=0))){ ?> class="active" <?php } ?> >
                                         <a href="#tab_1_1" data-toggle="tab">Profile</a>
                                     </li>
                                     <?php if ($this->request['action'] == 'view') { ?>
@@ -338,7 +338,7 @@
                                             
                                             
                                             if ($this->request->session()->read('Profile.admin') || $this->request->session()->read('Profile.profile_type') == '2') { ?>
-                                                <li>
+                                                <li <?php if(isset($Clientcount)&& $Clientcount==0) echo 'class="active"';?>>
                                                     <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                                 </li>
 
@@ -350,7 +350,7 @@
 
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
-                                    <div class="tab-pane  <?php if(!isset($_GET['getprofilescore'])){ ?> active <?php } ?> " id="tab_1_1">
+                                    <div class="tab-pane  <?php if($this->request['action']=='add' ||(!isset($_GET['getprofilescore'])&&($Clientcount!=0))){ ?> active <?php } ?> " id="tab_1_1">
                                         <input type="hidden" name="user_id" value="<?php echo ""; ?>"/>
                                         <?php include('subpages/profile/info.php'); ?>
                                     </div>
@@ -374,7 +374,7 @@
                                             </div>
                                             -->
 
-                                            <div class="tab-pane" id="tab_1_7">
+                                            <div class="tab-pane <?php if(isset($Clientcount)&& $Clientcount==0) echo 'active';?>" id="tab_1_7">
                                                 <?php include('subpages/profile/block.php');//permissions ?>
                                             </div>
 

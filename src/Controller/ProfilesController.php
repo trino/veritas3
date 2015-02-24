@@ -720,6 +720,8 @@ public function settings(){
                 return $this->redirect("/profiles/index");
                 //die();
             }
+            if(isset($_GET['clientflash']))
+                $this->Flash->error('Please Assign a client to this profile.');
             
             $checker = $this->Settings->check_edit_permission($this->request->session()->read('Profile.id'),$id);
             if($checker==0)

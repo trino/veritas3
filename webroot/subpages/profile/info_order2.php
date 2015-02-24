@@ -212,6 +212,8 @@
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>orders/getClientByDriver/' + driver,
                 success: function (res) {
+                    if(res =='Error')
+                        window.location = "<?php echo $this->request->webroot;?>profiles/edit/"+driver+"?clientflash";
                     var div = $('#divisionsel').val();
                     if (!isNaN(parseFloat(div)) && isFinite(div)) {
                         var division = div;

@@ -488,7 +488,7 @@
                                 <table class="table table-light table-hover sortable">
                                     <tr class="myclass">
                                         <th></th>
-                                                <th class="">System</th>
+                                                <!--<th class="">System</th>-->
                                                 <th class=""><?php echo ucfirst($settings->document); ?> </th>
                                                 <th class="">Orders</th>
                                                 <th class="">Display Order</th>
@@ -506,7 +506,7 @@
 
                                                     <?php echo ucfirst($sub['title']); ?>
                                                 </td>
-                                                <td class="">
+                                                <!--<td class="">
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="<?php echo $sub->id; ?>"
@@ -521,7 +521,7 @@
                                                                                           <?php if ($sub['display'] == 0) { ?>checked="checked" <?php } ?>
                                                                                           disabled="disabled"/>
                                                         No </label>
-                                                </td>
+                                                </td>-->
                                                 <?php
                                                     $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/' . $id . '/' . $sub->id);
                                                 ?>

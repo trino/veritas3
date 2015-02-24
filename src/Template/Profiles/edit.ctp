@@ -311,14 +311,9 @@
                                     <?php
                                         if ($this->request['action'] != 'add') {
 
-                                            
-
-                                            if ($this->request->session()->read('Profile.admin') || $this->request->session()->read('Profile.profile_type') == '2') { ?>
-                                                <li>
-                                                    <a href="#tab_1_7" data-toggle="tab">Permissions</a>
-                                                </li>
-
-                                            <?php }
+                                            ?>
+                                            <li><a href="<?php echo $this->request->webroot;?>profiles/viewReport/<?php echo $p->id;?>" data-toggle = "tab" >View Scorecard</a></li>
+                                            <?php
                                             $needs = false;
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<li><a href="#tab_1_10" data-toggle="tab">Orders</li></A></li>';
@@ -328,6 +323,14 @@
                                                 ?>
                                                 <li>
                                                     <a href="#tab_1_9" data-toggle="tab">Notes</a>
+                                                </li>
+
+                                            <?php }
+                                            
+                                            
+                                            if ($this->request->session()->read('Profile.admin') || $this->request->session()->read('Profile.profile_type') == '2') { ?>
+                                                <li>
+                                                    <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                                 </li>
 
                                             <?php }

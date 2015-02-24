@@ -34,26 +34,23 @@
 
                     <div class="col-md-3 control-label">Select <?php echo ucfirst($settings->client); ?> </div>
                     <div class="col-md-6">
-
-
-                            <?php
-                                $counting = 0;
-                                $drcl_c = $dr_cl['client'];
-                                foreach ($drcl_c as $drclc) {
-                                    $counting++;
-                                }
-                                if ($counting > 1) { ?>
-                                    <select id="selecting_client" class="form-control input-xlarge select2me"
-                                data-placeholder="Select <?php echo ucfirst($settings->client) . '" '; if ($client){ ?>disabled="disabled"<?php } ?>>
+                        <?php
+                            $counting = 0;
+                            $drcl_c = $dr_cl['client'];
+                            foreach ($drcl_c as $drclc) {
+                                $counting++;
+                            }
+                            if ($counting > 1) { ?>
+                            <select id="selecting_client" class="form-control input-xlarge select2me"
+                            data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
+                            if ($client) { ?>disabled="disabled"<?php } ?>>
                             <option>None Selected</option><?php
-                                } else { ?>
+                        } else { ?>
 
-                                        <select id="selecting_client" class="form-control input-xlarge select2me"
-                                                data-placeholder="Select <?php echo ucfirst($settings->client); ?>" disabled>
-                                            <?php
-}
-
-
+                        <select id="selecting_client" class="form-control input-xlarge select2me"
+                                data-placeholder="Select <?php echo ucfirst($settings->client); ?>" disabled>
+                            <?php
+                                }
                                 foreach ($dr_cl['client'] as $dr) {
                                     $client_id = $dr->id;
                                     ?>
@@ -64,19 +61,14 @@
                             ?>
                         </select>
 
-
-
-
-
-
                         <input class="selecting_client" type="hidden"
                                value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
-
-
                     </div>
                 </div>
                 <div class="divisionsel form-group">
-                    <?php if($counting==1)$cl_count=1;else{$cl_count=0;}?>
+                    <?php if ($counting == 1) $cl_count = 1; else {
+                        $cl_count = 0;
+                    } ?>
                 </div>
 
 
@@ -120,8 +112,6 @@
                 </div>
 
 
-
-
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
                         <a href="javascript:void(0);" class="btn btn-danger placenow"
@@ -129,21 +119,18 @@
                             MEE Order <i class="m-icon-swapright m-icon-white"></i></a>&nbsp;&nbsp; or &nbsp;&nbsp;<a
                             href="javascript:void(0);"
                             class="btn btn-info"
-                            onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte <i class="m-icon-swapright m-icon-white"></i></a>
+                            onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte <i
+                                class="m-icon-swapright m-icon-white"></i></a>
                     </div>
                 </div>
-
 
 
                 <p>&nbsp;</p>
 
 
-
                 <div class="alacarte" style="display: none;">
                     <?php include('subpages/documents/products.php'); ?>
                     <div class="clearfix"></div>
-
-
 
 
                     <div class="row">
@@ -152,21 +139,17 @@
                             <a class="btn red button-next proceed"
                                onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
                                 Order Products <i class="m-icon-swapright m-icon-white"></i>
-                            </a> 
+                            </a>
                             <a class="btn grey button-next proceed"
                                onclick="$('.alacarte').toggle(200);$('.placenow').removeAttr('disabled');">
                                 Cancel</i>
-                            </a> 
-                                                   </div>
+                            </a>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
 
 
-
                 </div>
-
-
-
 
 
             </div>
@@ -177,53 +160,48 @@
 </div>
 
 <script>
-    function check_div()
-    {
+    function check_div() {
         var checker = 0;
-        $('.divisionsel select').each(function(){
+        $('.divisionsel select').each(function () {
             checker++;
         });
-        if(checker>0)
-        {
+        if (checker > 0) {
             //alert($('.divisionsel select').val());
-            if(!$('.divisionsel select').val()){
-            $('.divisionsel select').attr('style','border:1px solid red;');    
-            return false;
+            if (!$('.divisionsel select').val()) {
+                $('.divisionsel select').attr('style', 'border:1px solid red;');
+                return false;
             }
             return true;
         }
         else
-        return true;
-        
+            return true;
+
     }
     $(function () {
-        $('#divisionsel').live('change',function(){
+        $('#divisionsel').live('change', function () {
             $(this).removeAttr('style');
         });
-        if($('.selecting_client').val())
-        {
+        if ($('.selecting_client').val()) {
             var client = $('#selecting_client').val();
-            if(!isNaN(parseFloat(client)) && isFinite(client)){
-            $('.selecting_client').val(client);
-            //alert(client);
-            $.ajax({
-               url:'<?php echo $this->request->webroot;?>clients/divisionDropDown/'+client,
-               success:function(response)
-               {
-                $('.divisionsel').html(response);
-               } 
-            });
+            if (!isNaN(parseFloat(client)) && isFinite(client)) {
+                $('.selecting_client').val(client);
+                //alert(client);
+                $.ajax({
+                    url: '<?php echo $this->request->webroot;?>clients/divisionDropDown/' + client,
+                    success: function (response) {
+                        $('.divisionsel').html(response);
+                    }
+                });
             }
         }
         $('#selecting_driver').change(function () {
             var driver = $('#selecting_driver').val();
             //alert(driver);
-            if(!isNaN(parseFloat(driver)) && isFinite(driver)){
-            $('.selecting_driver').val(driver);
-            
+            if (!isNaN(parseFloat(driver)) && isFinite(driver)) {
+                $('.selecting_driver').val(driver);
+
             }
-             else
-            {
+            else {
                 $('.selecting_driver').val('');
                 return false;
             }
@@ -235,47 +213,44 @@
                 url: '<?php echo $this->request->webroot;?>orders/getClientByDriver/' + driver,
                 success: function (res) {
                     var div = $('#divisionsel').val();
-                    if(!isNaN(parseFloat(div)) && isFinite(div))
-                    {
+                    if (!isNaN(parseFloat(div)) && isFinite(div)) {
                         var division = div;
                     }
                     else
-                    var division = '0';
+                        var division = '0';
                     $('#selecting_client').html(res);
                     $('.selecting_driver').val($('#selecting_driver').val());
+
                     $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val()+'&division='+division);
+
                 }
             });
             <?php
-        } 
+        }
         ?>
         });
-        
 
-        
 
         $('#selecting_client').change(function () {
             $('.select2-choice').removeAttr('style');
             var client = $('#selecting_client').val();
-            if(!isNaN(parseFloat(client)) && isFinite(client)){
-            $('.selecting_client').val(client);
-            //alert(client);
-            $.ajax({
-               url:'<?php echo $this->request->webroot;?>clients/divisionDropDown/'+client,
-               success:function(response)
-               {
-                $('.divisionsel').html(response);
-               } 
-            });
+            if (!isNaN(parseFloat(client)) && isFinite(client)) {
+                $('.selecting_client').val(client);
+                //alert(client);
+                $.ajax({
+                    url: '<?php echo $this->request->webroot;?>clients/divisionDropDown/' + client,
+                    success: function (response) {
+                        $('.divisionsel').html(response);
+                    }
+                });
             }
-            else
-            {
+            else {
                 $('.selecting_client').val('');
                 return false;
             }
-            
+
             <?php
-            
+
         if(!$driver)
         {
             ?>
@@ -283,22 +258,23 @@
                 url: '<?php echo $this->request->webroot;?>orders/getDriverByClient/' + client,
                 success: function (res) {
                     var div = $('#divisionsel').val();
-                    if(!isNaN(parseFloat(div)) && isFinite(div))
-                    {
+                    if (!isNaN(parseFloat(div)) && isFinite(div)) {
                         var division = div;
                     }
                     else
-                    var division = '0';
+                        var division = '0';
                     $('#selecting_driver').html(res);
                     $('.selecting_client').val($('#selecting_client').val());
+
                     $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val()+'&division='+division);
+
                 }
             });
-             <?php          
-        }
-        ?>
+            <?php
+       }
+       ?>
         });
 
-       
+
     });
 </script>

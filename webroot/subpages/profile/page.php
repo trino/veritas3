@@ -54,7 +54,7 @@
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-product_example"
-                                                                           value="<?php echo $cms->title;?>"/>
+                                                                           value="<?php echo ucfirst($cms->title);?>"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -68,13 +68,13 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-actions">
-                                                            <div class="row">
+                                                        <div class="form-actions" style="margin-left: -10px;margin-right: -10px;">
+                                                            <div class="row" align="right">
                                                                 <div class="col-md-offset-2 col-md-9">
                                                                     <button type="submit"   class="btn blue" onclick="savepage('product_example');">
-                                                                        <i class="fa fa-check"></i> Submit
+                                                                        Save Changes
                                                                     </button>
-                                                                    <button type="button" class="btn default">Cancel
+                                                                    <button type="button" class="btn default" style="margin-right: 8px;">Cancel
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -106,7 +106,7 @@
                                                                 <label class="control-label col-md-2">Help Title</label>
 
                                                                 <div class="col-md-4">
-                                                                    <input class="form-control" name="title"  value="<?php echo $cms->title;?>" id="title-help"/>
+                                                                    <input class="form-control" name="title"  value="<?php echo ucfirst($cms->title);?>" id="title-help"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -120,13 +120,12 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-actions">
-                                                            <div class="row">
+                                                        <div class="form-actions" style="margin-left: -10px;margin-right: -10px;">
+                                                            <div class="row" align="right">
                                                                 <div class="col-md-offset-2 col-md-9">
-                                                                <button type="submit" class="btn blue" onclick="savepage('help');"><i
-                                                                            class="fa fa-check"></i> Submit
+                                                                <button type="submit" class="btn blue" onclick="savepage('help');"> Save Changes
                                                                     </button>
-                                                                    <button type="button" class="btn default">Cancel
+                                                                    <button type="button" class="btn default" style="margin-right: 8px;">Cancel
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -157,7 +156,7 @@
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-privacy_code"
-                                                                           value="<?php echo $cms->title;?>"/>
+                                                                           value="<?php echo ucfirst($cms->title);?>"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -172,13 +171,12 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-actions">
-                                                            <div class="row">
+                                                        <div class="form-actions"  style="margin-left: -10px;margin-right: -10px;">
+                                                            <div class="row" align="right">
                                                                 <div class="col-md-offset-2 col-md-9">
-                                                                    <button type="submit"  class="btn blue" onclick="savepage('privacy_code');"><i
-                                                                            class="fa fa-check"></i> Submit
+                                                                    <button type="submit"  class="btn blue" onclick="savepage('privacy_code');"> Save Changes
                                                                     </button>
-                                                                    <button type="button" class="btn default">Cancel
+                                                                    <button type="button" class="btn default" style="margin-right: 8px;">Cancel
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -212,7 +210,7 @@
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-version_log"
-                                                                           value="<?php echo $cms->title;?>"/>
+                                                                           value="<?php echo ucfirst($cms->title);?>"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -227,13 +225,13 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-actions">
-                                                            <div class="row">
-                                                                <div class="col-md-offset-2 col-md-9">
-                                                                    <button type="submit"  class="btn blue" onclick="savepage('privacy_code');"><i
-                                                                            class="fa fa-check"></i> Submit
+                                                        <div class="form-actions" style="margin-left: -10px;margin-right: -10px;">
+                                                            <div class="row" align="right">
+                                                                <div class="col-md-offset-2 col-md-9" align="right">
+                                                                    <button type="submit"  class="btn blue" onclick="savepage('privacy_code');">
+                                                                        Save Changes
                                                                     </button>
-                                                                    <button type="button" class="btn default">Cancel
+                                                                    <button type="button" class="btn default" style="margin-right: 8px;">Cancel
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -265,7 +263,7 @@
                                                                     <label class="control-label col-md-2">Terms Title</label>
 
                                                                     <div class="col-md-4">
-                                                                        <input class="form-control" name="title" id="title-terms" value="<?php echo $cms->title;?>"/>
+                                                                        <input class="form-control" name="title" id="title-terms" value="<?php echo ucfirst($cms->title);?>"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -279,13 +277,13 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-actions">
-                                                                <div class="row">
+                                                            <div class="form-actions" style="margin-left: -10px;margin-right: -10px;">
+                                                                <div class="row" align="right">
                                                                     <div class="col-md-offset-2 col-md-9">
                                                                         <button type="submit"  class="btn blue" onclick="savepage('terms');">
-                                                                            <i class="fa fa-check"></i> Submit
+                                                                            Save Changes
                                                                         </button>
-                                                                        <button type="button" class="btn default">Cancel</button>
+                                                                        <button type="button" class="btn default" style="margin-right: 8px;">Cancel</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -315,7 +313,7 @@
 
                                                                 <div class="col-md-4">
                                                                     <input class="form-control" name="title" id="title-faq"
-                                                                           value="<?php echo $cms->title;?>"/>
+                                                                           value="<?php echo ucfirst($cms->title);?>"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -330,13 +328,13 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-actions">
-                                                            <div class="row">
-                                                                <div class="col-md-offset-2 col-md-9">
-                                                                    <button type="submit"   class="btn blue" onclick="savepage('faq');"><i
-                                                                            class="fa fa-check"></i> Submit
+
+                                                        <div class="form-actions" style="margin-left: -10px;margin-right: -10px;">
+                                                            <div class="row" style="margin-left: -10px;">
+                                                                <div class="col-md-offset-2 col-md-9" align="right">
+                                                                    <button type="submit"   class="btn blue" onclick="savepage('faq');"> Save Changes
                                                                     </button>
-                                                                    <button type="button" class="btn default">Cancel
+                                                                    <button type="button" class="btn default" style="margin-right: 8px;">Cancel
                                                                     </button>
                                                                 </div>
                                                             </div>

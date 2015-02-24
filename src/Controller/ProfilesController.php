@@ -64,6 +64,16 @@ public function training(){}
 public function quiz(){}
 public function video(){}
 
+public function settings(){
+    $this->loadModel('Logos');
+
+    $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
+    $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
+    $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary'=>'2'])));
+
+
+}
+
     public function index() {
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');
@@ -452,7 +462,7 @@ public function video(){}
                         $from = 'info@isbmee.com';
                         $to = $_POST['email'];
                         $sub = 'Profile created successfully';
-                        $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: '.$_POST['password'].'<br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
+                        $msg = 'Hi,<br />Your account has been created for ISBMEE .<br /> Your login details are:<br /> Username: '.$_POST['username'].'<br /> Password: ';if(isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="'.LOGIN.'">click here</a> to login.<br /> Regards';
                         $this->sendEmail($from,$to,$sub,$msg);
                     }
                     $this->Flash->success('Profile created successfully.');
@@ -826,7 +836,6 @@ public function video(){}
 
         function logout()
         {
-            //$this->request->session()->delete('Profile.id');
             $this->loadComponent('Cookie');
             $this->Cookie->delete('Profile.username');
             $this->Cookie->delete('Profile.password');
@@ -837,11 +846,6 @@ public function video(){}
 
             }else{
                 $this->redirect('http://isbmee.com');
-                
-
-                //$initials = $this->requestAction('/pages/getBase');
-                //$this->redirect($initials);
-
             }
         }
 

@@ -22,18 +22,16 @@
 								$ext = end($e);
 								if (in_array($ext, $allowed)) {
 									?>
-									<img src="<?php echo $webroot . $dir . $cd->file; ?>" style="max-width: 200px;max-height: 200px;"/>
+									<img src="<?php echo $webroot . $dir . $cd->file; ?>" style="max-width: 200px;max-height: 200px;" title="<?php echo $cd->file;?>"/>
 
 								<?php
 								} else
 									echo "<a href='" .$webroot . $dir . $cd->file."' target='_blank' class='uploaded'>".$cd->file."</a>";
-							?><BR>
+							?><BR><?php echo $cd->file;?><BR>
 							<a href="<?php echo $webroot . $dir . $cd->file ?>" download="<?= $cd->file ?>" class="btn btn-info">Download</a>
 							<span>
-							<a href="javascript:void(0);"
-							   title="<?php echo $cd->file;?>&<?php echo $cd->id;?>"
-							   class="btn btn-danger img_delete">Delete</a>
-                               </span>
+								<a href="javascript:void(0);" title="<?php echo $cd->file;?>&<?php echo $cd->id;?>" class="btn btn-danger img_delete">Delete</a>
+                            </span>
 							<input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
 						</div>
 					<?php

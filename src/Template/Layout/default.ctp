@@ -226,13 +226,16 @@
         
 		</div>
 	</div>
+
+
+
 	<!-- END CONTENT -->
 	<!-- BEGIN QUICK SIDEBAR -->
 	<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
 	
 	<!-- END QUICK SIDEBAR -->
  <?php if($settings->box =='1'){?></div><?php }?>
- 
+
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
@@ -268,7 +271,9 @@
 
 		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/terms"><?php get_title('terms') ?></a>
 
-        <?php if($this->request->session()->read('Profile.super')){?> / <a  style = "color:white;" href = "<?php echo $this->request->webroot;?>pages/view/version_log" ><?php get_title('version_log') ?></a >
+        <?php if($this->request->session()->read('Profile.super')){?>
+            /  <a style = "color:white;" href = "<?php echo $this->request->webroot;?>pages/view/version_log" ><?php get_title('version_log') ?></a>
+            / <a style = "color:white;" href = "<?php echo $this->request->webroot;?>profiles/settings" >Settings</a >
 
         <?php } ?>
     </div>

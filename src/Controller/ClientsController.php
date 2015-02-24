@@ -112,7 +112,10 @@ class ClientsController extends AppController {
 	public function index() {
 	   if(isset($_GET['flash']))
        {
-                $this->Flash->success('Please select a ' . strtolower($settings->client) . ' to upload.');
+           $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+//           debug($setting);
+
+                $this->Flash->success('Select a client to upload.');
        }
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         if($setting->client_list==0)
@@ -1078,8 +1081,7 @@ class ClientsController extends AppController {
             echo '<div class="col-md-3 control-label">Select division </div>';
             echo '<div class="col-md-6 ">';
             echo "<select class='form-control select2me input-xlarge' name='division' id='divisionsel'>";
-            echo '<option value="">Divisions</option>';
-            
+
             foreach($q as $d)
             {
                $sel = '';

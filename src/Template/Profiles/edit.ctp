@@ -43,10 +43,6 @@
         $p = $profile;
 ?>
 
-
-
-
-
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -176,9 +172,6 @@
 
 ?>
 
-
-<!-- END STYLE CUSTOMIZER -->
-<!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
     <?php echo $param2 . ' ' . ucfirst($settings->profile); ?>
 </h3>
@@ -205,10 +198,7 @@
 <!-- BEGIN PAGE CONTENT-->
 <div class="row margin-top-20">
     <div class="col-md-12">
-        <!-- BEGIN PROFILE SIDEBAR -->
 
-        <!-- END BEGIN PROFILE SIDEBAR -->
-        <!-- BEGIN PROFILE CONTENT -->
         <div class="profile-content">
             <div class="row">
                 <div class="col-md-3">
@@ -254,43 +244,49 @@
                             <div class="profile-usertitle-name">
                                 <?php if (isset($p->fname)) echo ucwords($p->fname . ' ' . $p->lname); ?>
                             </div>
+
+                                    <?php if (isset($p->isb_id) && ($p->isb_id != ""))
+                                        {
+                                        ?>
                             <div class="profile-usertitle-job">
                                 <small>
-                                    <?php if (isset($p->isb_id)) { ?>Reference Number:
-                                        <BR><?php echo $p->isb_id; ?><?php } ?>
+                                        ISB ID:
+
+
+
+                                        <?php echo $p->isb_id; ?>
+
                                 </small>
                             </div>
+
+
+                                    <?php }
+
+
+
+
+                                        if ($profile->profile_type == 5) {
+                                            ?>
+                                            <a href="<?php echo $this->request->webroot; ?>documents/productSelection?driver=<?php echo $profile->id; ?>"
+                                               class="btn btn-success">Create Order</a>
+
+                                        <?php
+                                        }
+
+
+                                    ?>
+
                         </div>
+
+
+
+
+
+
                     </div>
 
 
-                    <!-- END PORTLET MAIN -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
-
-
-
-
-
-
-
-
 
 
                 <div class="col-md-9">
@@ -315,37 +311,20 @@
                                     <?php
                                         if ($this->request['action'] != 'add') {
 
-                                            if ($this->request->session()->read('Profile.admin') && $this->request->session()->read('Profile.id') == $id) {
-                                                ?>
+                                            
 
-
-                                                <?php if ($this->request->session()->read('Profile.super')) { ?>
-                                                    <li>
-                                                        <a href="#tab_1_5" data-toggle="tab">Logo</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#tab_1_6" data-toggle="tab">Pages</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab_1_8" data-toggle="tab">Other</a>
-                                                    </li>
-                                                <?php
-                                                }
-                                            }
-
-                                            if ($this->request->session()->read('Profile.admin') || ($this->request->session()->read('Profile.profile_type')=='2') ) {  ?>
+                                            if ($this->request->session()->read('Profile.admin') || $this->request->session()->read('Profile.profile_type') == '2') { ?>
                                                 <li>
                                                     <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                                 </li>
 
                                             <?php }
-                                            $needs=false;
+                                            $needs = false;
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<li><a href="#tab_1_10" data-toggle="tab">Orders</li></A></li>';
                                             }
 
-                                            if ($this->request->params['action'] != 'add' && ($this->request->session()->read('Profile.profile_type')!='2')) {
+                                            if ($this->request->params['action'] != 'add' && ($this->request->session()->read('Profile.profile_type') != '2')) {
                                                 ?>
                                                 <li>
                                                     <a href="#tab_1_9" data-toggle="tab">Notes</a>
@@ -372,40 +351,35 @@
                                             ?>
 
 
-                                            <div class="tab-pane" id="tab_1_5">
-                                                <?php include('subpages/profile/logo.php'); ?>
+                                            <!--div class="tab-pane" id="tab_1_5">
+                                                <!--php include('subpages/profile/logo.php'); ?>
                                             </div>
 
                                             <div class="tab-pane" id="tab_1_6">
-                                                <?php include('subpages/profile/page.php'); ?>
+                                                <!php include('subpages/profile/page.php'); ?>
                                             </div>
                                             <div class="tab-pane" id="tab_1_8">
-                                                <?php include('subpages/profile/client_setting.php'); ?>
+                                                <!php include('subpages/profile/client_setting.php'); ?>
                                             </div>
+                                            -->
+
                                             <div class="tab-pane" id="tab_1_7">
-                                                <?php include('subpages/profile/block.php'); ?>
+                                                <?php include('subpages/profile/block.php');//permissions ?>
                                             </div>
 
                                             <?php
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<div class="tab-pane" id="tab_1_10">';
                                                 include('subpages/profile/listorders.php');
-                                                echo '</div>';
+                                                echo '</div>';//lists driver's orders
                                             }
                                             ?>
 
                                             <div class="tab-pane" id="tab_1_9">
                                                 <div class="cleafix">&nbsp;</div>
-                                                <!--
-                                                <div class="portlet box green scrolldiv" style="overflow: hidden; width: auto; height: 250px;">
-                                                        <div class="portlet-title">
-                                                            <div class="caption">
-                                                                <i class="fa fa-pencil"></i>Recruiter Notes
-                                                            </div>
 
-                                                        </div>-->
                                                 <div class="portlet-body">
-                                                    <?php include('subpages/documents/recruiter_notes.php'); ?>
+                                                    <?php include('subpages/documents/recruiter_notes.php');//notes ?>
                                                 </div>
                                                 <!--</div>-->
                                             </div>
@@ -418,6 +392,7 @@
             </div>
             <!-- END PROFILE CONTENT -->
         </div>
+    </div>
     </div>
 
 
@@ -447,7 +422,6 @@
                     this.enable();
                     $("#clientpic").attr("src", '<?php echo $this->request->webroot;?>img/profile/' + response);
                     $('#client_img').val(response);
-                    //$('.flashimg').show();
                 }
             });
         }
@@ -461,27 +435,23 @@
             $('.addclientz').click(function () {
                 var client_id = $(this).val();
                 var addclient = "";
-                var msg='';
-                var nameId = 'msg_'+$(this).val();
+                var msg = '';
+                var nameId = 'msg_' + $(this).val();
                 if ($(this).is(':checked')) {
                     addclient = '1';
                     msg = '<span class="msg" style="color:#45B6AF">Added</span>';
                 }
-                else{
+                else {
                     addclient = '0';
                     msg = '<span class="msg" style="color:red">Removed</span>';
-                    }
+                }
 
                 $.ajax({
                     type: "post",
                     data: "client_id=" + client_id + "&add=" + addclient + "&user_id=" +<?php echo $id;?>,
                     url: "<?php echo $this->request->webroot;?>clients/addprofile",
                     success: function () {
-                        $('.'+nameId).html(msg);
-                        /*$('.clientadd_flash').show();
-                        $('.clientadd_flash').text(msg);
-                        $('.clientadd_flash').fadeOut('8000');*/
-                        
+                        $('.' + nameId).html(msg);
                     }
                 })
             });
@@ -490,23 +460,22 @@
              else
              {?>
             $('.addclientz').click(function () {
-                var nameId = 'msg_'+$(this).val();
+                var nameId = 'msg_' + $(this).val();
                 var client_id = "";
-                var msg='';
+                var msg = '';
                 $('.addclientz').each(function () {
                     if ($(this).is(':checked')) {
                         msg = '<span class="msg" style="color:#45B6AF">Added</span>';
                         client_id = client_id + "," + $(this).val();
                     }
-                    else
-                    {
+                    else {
                         msg = '<span class="msg" style="color:red">Removed</span>';
                     }
                 });
 
                 client_id = client_id.substr(1, length.client_id);
                 $('.client_profile_id').val(client_id);
-                $('.'+nameId).html(msg);
+                $('.' + nameId).html(msg);
 
             });
             <?php

@@ -217,8 +217,8 @@ class SettingsController extends AppController {
             $q2 = $profile->first();
             $usertype = $q1->profile_type;
             
-            $setting = TableRegistry::get('sidebar');
-             $setting = $setting->find()->where(['user_id'=>$uid]); 
+            $settings = TableRegistry::get('sidebar');
+             $setting = $settings->find()->where(['user_id'=>$uid]); 
              $setting = $setting->first();
              /*=================================================================================*/
              /*
@@ -291,8 +291,21 @@ class SettingsController extends AppController {
                         return $this->response;
                         die();}
                 }
+             }
+             else
+             {
+               $this->response->body('0');
+                        return $this->response;
+                        die(); 
              }  
         }
+        else
+        {
+             $this->response->body('0');
+                        return $this->response;
+                        die(); 
+        }
+       
         
     }
     

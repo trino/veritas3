@@ -53,10 +53,10 @@ if ($action == "Add") {
 
     <?php
         if (isset($disabled)) { ?>
-            <a href="javascript:window.print();" class="floatright btn btn-primary">Print Report</a>
+            <a href="javascript:window.print();" class="floatright btn btn-primary">Print</a>
 
-            <a href="" class="floatright btn btn-success">Re-Qualify</a>
-            <a href="" class="floatright btn btn-info">Add to Task List</a>
+            <!--a href="" class="floatright btn btn-success">Re-Qualify</a>
+            <a href="" class="floatright btn btn-info">Add to Task List</a-->
         <?php } ?>
 
 </div>
@@ -264,7 +264,7 @@ if ($action == "Add") {
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="3" id="af" />');
         }
         if (s_arr[1] == 4) {
-            $('#form_tab4').prepend('<input class="document_type" type="hidden" name="document_type" value="Place MEE Order" />' +
+            $('#form_tab4').prepend('<input class="document_type" type="hidden" name="document_type" value="Consent Form" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="4"  />');
         }
 
@@ -1040,7 +1040,7 @@ if ($action == "Add") {
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
                         savedDriverEvaluation(url, order_id, cid,draft);
-                    } else if (type == "Place MEE Order") {
+                    } else if (type == "Consent Form") {
 
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
@@ -1234,7 +1234,7 @@ if ($action == "Add") {
                 order_id: $('#did').val(),
                 cid: '<?php echo $cid;?>'
             };
-        if ($type == "Place MEE Order") {
+        if ($type == "Consent Form") {
             //get sub content tab active
             var subContent = $(".tab-pane.active #form_tab4").find('.tab-content .tab-pane.active form').attr('id');
             // debugger;

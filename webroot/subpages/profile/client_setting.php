@@ -51,7 +51,7 @@
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
                                                         </div>
-                                            <P></P><div class="margin-top-10">
+                                            <P></P><div class="margin-top-10" align="right">
                                                 <input type="button" name="submit" class="btn btn-primary" id="save_client"
                                                        value="Save Changes"/>
 

@@ -58,10 +58,10 @@ function provinces($name){
     </ul>
     <?php
         if (isset($disabled)) { ?>
-            <a href="javascript:window.print();" class="floatright btn btn-primary">Print Report</a>
+            <a href="javascript:window.print();" class="floatright btn btn-primary">Print</a>
 
-            <a href="" class="floatright btn btn-success">Re-Qualify</a>
-            <a href="" class="floatright btn btn-info">Add to Task List</a>
+            <!--a href="" class="floatright btn btn-success">Re-Qualify</a>
+            <a href="" class="floatright btn btn-info">Add to Task List</a-->
         <?php } ?>
 
 </div>
@@ -197,14 +197,23 @@ function provinces($name){
                                     </div>
                                 </div>
                                 <div
-                                    style="top:0;left:0;position:absolute;background:#000;height:100%;width:100%;z-index:1000;opacity:0.2;display:none;"
+                                    style="
+  opacity:0.5;
+    background-color:#dadada;
+                                    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+    display:none;"
                                     id="loading5">
                                     <center><br/>
                                         <br/>
                                         <br/>
                                         <br/>
                                         <br/>
-                                        <strong style="color: #FFF;font-size: 26px;">Please wait...</strong>
+                                        <strong style="color: #111;font-size: 36px;">Please wait...</strong>
                                         <br/><br/>
 
                                         <img
@@ -248,8 +257,7 @@ function provinces($name){
                                 Your form validation is successful!
                             </div>
 
-                            <div class="form-group mar-top-10 col-md-12 uploaded_for">
-                                <?php //include('subpages/adminlisting.php');?>
+                            <div class="form-group col-md-12 uploaded_for">
                                 <input type="hidden" name="client_id" value="<?php echo $cid; ?>" id="client_id"/>
                                 <input type="hidden" name="did" value="<?php echo $did; ?>" id="did"/>
                                 <input type="hidden" name="uploaded_for" id="uploaded_for"
@@ -278,25 +286,6 @@ function provinces($name){
                             ?>
                             <input type="hidden" id="check_div" value="1"/>
 
-                            <div class="row">
-                                <label class="col-md-12 control-label">Select Division : </label>
-
-                                <div class="form-group mar-top-10 col-md-6" id="select_division">
-
-
-                                    <select class="form-control" name="division" id="divison" <?php if(isset($_GET['division'])&& $_GET['division']){?> disabled=""<?php  }?>>
-                                        <option value="">Select Division</option>
-                                        <?php
-                                            foreach ($division as $u) {
-                                                ?>
-                                                <option
-                                                    value="<?php echo $u->id;?>" <?php if ((isset($modal) && $modal->division == $u->id )|| (isset($_GET['division'])&& $_GET['division']==$u->id)) { ?> selected="selected"<?php } ?> ><?php echo $u->title; ?></option>
-                                            <?php
-                                            }
-                                        ?>
-                                    </select>
-                            </div>
-                        </div>
                     <?php
                         }
                         else {
@@ -1425,7 +1414,7 @@ function provinces($name){
                                 cid = '<?php echo $cid;?>',
                                 url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid;
                             savedDriverEvaluation(url, order_id, cid);
-                        } else if (type == "Place MEE Order") {
+                        } else if (type == "Consent Form") {
                             
                             //alert(type);
                             var order_id = $('#did').val(),
@@ -1442,7 +1431,7 @@ function provinces($name){
 
     });
     function saveSignature() {
-        if ($(".tabber.active").prev('.tabber').find("input[name='document_type']").val() == 'Place MEE Order') {
+        if ($(".tabber.active").prev('.tabber').find("input[name='document_type']").val() == 'Consent Form') {
             save_signature('3');
             save_signature('4');
             save_signature('5');
@@ -1483,8 +1472,6 @@ function provinces($name){
                     }
                 });
             }
-
-
         });
     }
     function saveDriver(cid) {
@@ -1681,7 +1668,7 @@ function provinces($name){
                 order_id: $('#did').val(),
                 cid: '<?php echo $cid;?>'
             };
-        if ($type == "Place MEE Order") {
+        if ($type == "Consent Form") {
             //get sub content tab active
             var subContent = $(".tab-pane.active #form_tab4").find('.tab-content .tab-pane.active form').attr('id');
             // debugger;

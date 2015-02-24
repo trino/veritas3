@@ -390,7 +390,7 @@
                                             <div class="tab-pane" id="tab_1_11">
                                             
                             <label class="uniform-inline" style="float:right;margin-top:10px;">
-                                <input type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
+                                <input <?php  echo $is_disabled ?> type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
                                        class="checkdriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
                                 Was this driver hired? </label>                                                                                        
                                                 <?php
@@ -521,7 +521,28 @@
 
         });
     </script>
+<script>
+        $(function () {
 
+            $('.checkdriver').click(function () {
+
+                var oid = $(this).attr('id');
+                if ($(this).is(":checked")) {
+                    var hired = 1;
+                }
+                else
+                    var hired = 0;
+
+                $.ajax({
+                    url: "<?php echo $this->request->webroot;?>orders/savedriver/" + oid,
+                    type: 'post',
+                    data: 'is_hired=' + hired,
+                    success: function (msg) {
+                    }
+                })
+            });
+        });
+    </script>
     <script>
         <?php
         if($this->request->params['action']=='edit')

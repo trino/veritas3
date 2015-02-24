@@ -291,6 +291,13 @@ public function settings(){
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
             $profile = $this->Profiles->get($id, [ 'contain' => []]);
+            $this->set('doc_comp',$this->Document);
+            $orders = TableRegistry::get('orders');
+            $order = $orders
+                ->find()
+                ->where(['orders.uploaded_for' => $id])->contain(['Profiles', 'Clients', 'RoadTest']);
+
+            $this->set('orders', $order);
             $this->set('profile', $profile);
             $this->set('disabled', 1);
             $this->set('id',$id);

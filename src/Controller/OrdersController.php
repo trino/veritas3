@@ -675,11 +675,11 @@
         {
             $this->set('doc_comp',$this->Document);
             $arr['is_hired'] = $_POST['is_hired'];
-            $orders = TableRegistry::get('orders');
+            $orders = TableRegistry::get('profiles');
             $order = $orders
                 ->query()->update()
                 ->set($arr)
-                ->where(['orders.id' => $oid])->execute();
+                ->where(['profiles.id' => $oid])->execute();
 
             die();
         }

@@ -101,9 +101,25 @@
                                     ?>
                                     <tr>
                                         <td>
-                                            <a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $p->id; ?>">
-                                                <?php echo $p->username; ?> (<?php echo $types[$p->profile_type]; ?>)&nbsp;&nbsp;(Profile)
-                                            </a>
+                                            <?php
+                                                echo '<a href="' . $this->request->webroot . 'profiles/view/' . $p->id . '">';
+                                                if (strlen($p->username)>0) {
+                                                    echo $p->username;
+                                                } elseif(strlen($p->fname)>0 or strlen($p->lname)>0) {
+                                                    echo $p->fname . " " . $p->lname;
+                                                } else {
+                                                    echo "[NO NAME]";
+                                                }
+                                                if (strlen($p->profile_type)>0) {
+                                                    echo "(" . $types[$p->profile_type] . ")";
+                                                } else {
+                                                    echo "(Draft)";
+                                                }
+                                                echo "&nbsp;&nbsp;(Profile)</a>"
+                                                //<a href="<?php echo $this->request->webroot;!>profiles/view/<?php echo $p->id; !>">
+                                            //<?php echo $p->username; !> (<?php echo $types[$p->profile_type]; !>)&nbsp;&nbsp;(Profile)</a>
+
+                                            ?>
                                         </td>
                                     </tr>
                                     <?php

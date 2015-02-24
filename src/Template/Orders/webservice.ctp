@@ -1,4 +1,115 @@
-<?php
+
+
+
+
+
+
+    <!-- DONT REMOVE / USED FOR WEBSERVICE .... DO NOT CHANGE THE STRUCTURE OF DIV INSIDE NOT EVEN AN ENTER-->
+<div class="attachments_all" style="">
+    <div class="pre"><?php
+    if(isset($pre_at['attach_doc'])){
+        $c1 = 0;
+        foreach($pre_at['attach_doc'] as $pat)
+        {
+            $c1++;
+            if($c1==1)
+                echo $pat->attachment;
+            else
+                echo ','.$pat->attachment;
+        }
+
+    }
+    ?></div>
+
+<div class="da"><?php
+        if(isset($sub['da_at'])){
+            $c1 = 0;
+            foreach($sub['da_at'] as $pat)
+            {
+                $c1++;
+                if($c1==1)
+                    echo $pat->attachment;
+                else
+                    echo ','.$pat->attachment;
+            }
+
+        }
+    ?></div>
+
+<div class="de"><?php
+        if(isset($sub['de_at'])){
+            $c1 = 0;
+            foreach($sub['de_at'] as $pat)
+            {
+                $c1++;
+                if($c1==1)
+                    echo $pat->attachment;
+                else
+                    echo ','.$pat->attachment;
+            }
+
+        }
+    ?></div>
+
+
+<div class="con"><?php
+        if(isset($sub2['con_at'])){
+            $c1 = 0;
+            foreach($sub2['con_at'] as $pat)
+            {
+                $c1++;
+                if($c1==1)
+                    echo $pat->attachment;
+                else
+                    echo ','.$pat->attachment;
+            }
+
+        }
+    ?></div>
+
+
+<div class="emp"><?php
+        if(isset($sub3['att'])){
+            $c1 = 0;
+            foreach($sub3['att'] as $pat)
+            {
+                $c1++;
+                if($c1==1)
+                    echo $pat->attachment;
+                else
+                    echo ','.$pat->attachment;
+            }
+
+        }
+    ?></div>
+
+
+<div class="edu"><?php
+        if(isset($sub4['att'])){
+            $c1 = 0;
+            foreach($sub4['att'] as $pat)
+            {
+                $c1++;
+                if($c1==1)
+                    echo $pat->attachment;
+                else
+                    echo ','.$pat->attachment;
+            }
+
+        }
+    ?></div>
+
+
+</div>
+
+    <?php
+
+
+
+
+
+
+        die();
     $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
     $client = new nusoap_client($proxyhost, true, $proxyhost, $proxyport = null, $proxyusername = null, $proxypassword = null);
     $client->useHTTPPersistentConnection();

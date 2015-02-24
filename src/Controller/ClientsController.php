@@ -1087,7 +1087,7 @@ class ClientsController extends AppController {
             $u++;
         }
         if(count($q)>0){
-            echo '<div class="col-md-3 control-label">Select division </div>';
+            echo '<div class="col-md-3 control-label">Division </div>';
             echo '<div class="col-md-6 ">';
             if($u!=1)
             echo "<select class='form-control select2me input-xlarge' name='division' id='divisionsel'>";

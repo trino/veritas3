@@ -261,17 +261,20 @@ var FormWizard = function () {
                 {
                     $('.cont').attr('id','submit_ord');
                     $('.skip').hide();
-//                    $('.cont').attr('id','');
+
                     $('#select_division').hide();
                     $('.button-previous').hide();
                     $('#loading5').show();
-                    //alert($('.cont').attr('id'));
-                    //alert(draft);
+
+                    // VAN REENABLE BELOW
+
                     if(draft==1)
                     window.location = base_url+'orders/orderslist?draft&flash';
                     else
                     window.location = base_url+'orders/orderslist?flash';
-                    
+          
+
+
                 }
 
                 if (current >= total) {

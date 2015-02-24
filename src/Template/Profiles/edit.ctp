@@ -306,7 +306,7 @@
                             <div class="tabbable tabbable-custom">
                                 <ul class="nav nav-tabs">
                                     <li class="active">
-                                        <a href="#tab_1_1" data-toggle="tab">Settings</a>
+                                        <a href="#tab_1_1" data-toggle="tab">Profile</a>
                                     </li>
                                             <li>
                                                 <a href="#tab_1_11" data-toggle = "tab" >View Scorecard</a>

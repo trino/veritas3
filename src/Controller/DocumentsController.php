@@ -35,7 +35,7 @@
             $doc = $this->Document->getDocumentcount();
             $cn = $this->Document->getUserDocumentcount();
             if ($setting->document_list == 0 || count($doc) == 0 || $cn == 0) {
-                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                $this->Flash->error('Sorry, you don\'t have the required permissions to view documents. Please enable them in your settings');
                 return $this->redirect("/");
 
             }
@@ -324,14 +324,14 @@
                     $query = $doc->find()->where(['id' => $did])->first();
                     $this->set('document', $query);
                     if ($setting->document_edit == 0 || count($doc) == 0 || $cn == 0) {
-                        $this->Flash->error('Sorry you don\'t have the required permissions to upload documents, please enable.');
+                        $this->Flash->error('Sorry you don\'t have the required permissions to upload documents, please enable them in your settings.');
                         return $this->redirect("/");
 
                     }
 
                 } else {
                     if ($setting->document_create == 0 || count($doc) == 0 || $cn == 0) {
-                        $this->Flash->error('Sorry you don\'t have the required permissions to upload documents, please enable.');
+                        $this->Flash->error('Sorry you don\'t have the required permissions to upload documents, please enable them in your settings.');
                         return $this->redirect("/");
 
                     }

@@ -207,7 +207,7 @@ Delete</a>
 <?php
     }
 ?>
-<?php if (!isset($_GET['draft']))
+<?php if (!isset($_GET['draft']) && is_object($order->profile))
 {
 ?>
 <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $order->profile->id ?>?getprofilescore=1" class="btn btn-success">Score Card</a>

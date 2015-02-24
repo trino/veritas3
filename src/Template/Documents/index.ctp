@@ -211,7 +211,7 @@
                                     </td>
                                     <td class="actions  util-btn-margin-bottom-5 ">
 
-                                        <?php if ($sidebar->document_list == '1') {
+                                        <?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
                                             echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => 'btn btn-info']);
                                         } ?>
                                         <?php

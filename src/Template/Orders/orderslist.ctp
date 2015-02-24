@@ -40,10 +40,10 @@
                     </div>
                     <div class="btn-set pull-right">
 
-                        <form action="<?php echo $this->request->webroot; ?>documents/orderslist" method="get">
+                        <form action="<?php echo $this->request->webroot; ?>orders/orderslist" method="get">
                             <?php if (isset($_GET['draft'])) { ?><input type="hidden" name="draft"/><?php } ?>
                             <?php
-                                $users = $this->requestAction("documents/getAllUser");
+                                $users = $doc_comp->getAllUser();
                             ?>
 
                             <select class="form-control input-inline" name="submitted_by_id" style="">
@@ -59,7 +59,7 @@
                             </select>
 
                             <?php
-                                $clients = $this->requestAction("documents/getAllClient");
+                                $clients = $doc_comp->getAllClient();
                             ?>
                             <select class="form-control showdivision input-inline" name="client_id">
                                 <option value=""><?php echo ucfirst($settings->client); ?></option>
@@ -143,9 +143,9 @@
                                     $row_color_class = "even";
                                 }
                                 if ($order->user_id)
-                                    $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
+                                    $uploaded_by = $doc_comp->getUser($order->user_id);
                                 if ($order->uploaded_for)
-                                    $uploaded_for = $this->requestAction("documents/getUser/" . $order->uploaded_for);
+                                    $uploaded_for = $doc_comp->getUser($order->uploaded_for);
 
                                 $client = $this->requestAction("clients/getClient/" . $order->client_id);
                                 ?>
@@ -162,7 +162,7 @@
                                             }
                                         ?></td>
                                     <td><?php if ($order->division) {
-                                            $div = $this->requestAction('/documents/getDivById/' . $order->division);
+                                            $div = $doc_comp->getDivById($order->division);
                                             echo $div->title;
 } else {
 echo '';
@@ -184,15 +184,15 @@ $super = $this->request->session()->read('Profile.super');
 if (isset($super) || isset($_GET['draft'])) {
 if ($sidebar->orders_edit == '1') {
 if (!isset($_GET['table']) && $order->draft == 1) {
-echo $this->Html->link(__('Edit'), ['controller' => 'documents', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
+echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
 } elseif (isset($_GET['table'])) {
-echo $this->Html->link(__('Edit'), ['controller' => 'documents', 'action' => 'addorder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-primary']);
+echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-primary']);
 }
 
 }
 if (isset($super)) {
 ?><a
-href="<?php echo $this->request->webroot; ?>documents/deleteorder/<?php echo $order->id; ?><?php if (isset($_GET['draft'])) echo "?draft"; ?>"
+href="<?php echo $this->request->webroot; ?>orders/deleteorder/<?php echo $order->id; ?><?php if (isset($_GET['draft'])) echo "?draft"; ?>"
 class="btn btn-danger"
 onclick="return confirm('Are you sure you want to delete order <?= $order->id ?>?');">
 Delete</a>
@@ -207,7 +207,7 @@ Delete</a>
 <?php
     }
 ?>
-<?php if (!isset($_GET['draft'])) echo $this->Html->link(__('Score Card'), ['controller' => 'documents', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
+<?php if (!isset($_GET['draft'])) echo $this->Html->link(__('Score Card'), ['controller' => 'orders', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
 </TD>
 <td valign="middle">
 <?php if (!isset($_GET['draft'])) { ?>

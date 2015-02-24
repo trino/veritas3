@@ -709,7 +709,7 @@ class ClientsController extends AppController {
     {
         $sub = TableRegistry::get('client_sub_order');
         $query = $sub->find();
-        $q = $query->select()->where(['client_id'=>$id,'sub_id IN (SELECT id FROM subdocuments WHERE display = 1 AND orders = 1)','sub_id IN (SELECT subdoc_id FROM clientssubdocument WHERE display > 0 AND client_id = '.$id.')'])->order(['display_order'=>'ASC']);
+        $q = $query->select()->where(['client_id'=>$id,'sub_id IN (SELECT id FROM subdocuments WHERE display = 1 AND orders = 1)','sub_id IN (SELECT subdoc_id FROM clientssubdocument WHERE display_order > 0 AND client_id = '.$id.')'])->order(['display_order'=>'ASC']);
 
 
             $this->response->body($q);
@@ -786,8 +786,61 @@ class ClientsController extends AppController {
 
                 }
             }
+            if($k=='clientO')
+            {
+                foreach($_POST[$k] as $k2=>$v2)
+                {
+                    //echo $id.'_'.$k2.'_'.$v2.'<br/>';
+                    $subp = TableRegistry::get('clientssubdocument');
+                    $query = $subp->find();
+                    $query->select()
+                    ->where(['client_id' => $id,'subdoc_id' => $k2]);
+                    $check=$query->first();
+
+                    if($v2 == '1'){
+
+                    if($check)
+                    {
+                        
+                        $query2 = $subp->query();
+                        $query2->update()
+                        ->set(['display_order'=>$v2])
+                        ->where(['client_id' => $id,'subdoc_id' => $k2])
+                        ->execute();
+                    }
+                    else
+                    {
+
+                       $query2 = $subp->query();
+                        $query2->insert(['client_id','subdoc_id', 'display_order'])
+                        ->values(['client_id' => $id,'subdoc_id' => $k2,'display_order'=>$v2])
+                        ->execute();
+                    }
+                    }
+                    else
+                    {
+                      if($check)
+                        {
+                            $query2 = $subp->query();
+                            $query2->update()
+                            ->set(['display_order'=>0])
+                            ->where(['subdoc_id' => $k2,'client_id' => $id])
+                            ->execute();
+                        }
+                        else
+                        {
+                           $query2 = $subp->query();
+                            $query2->insert(['client_id','subdoc_id', 'display_order'])
+                            ->values(['client_id'=>$id,'subdoc_id' => $k2,'display_order'=>0])
+                            ->execute();
+                        }
+                    }
+
+                }
+            }
         }
         unset($display['clientC']);
+        unset($display['clientO']);
         unset($display['client']);
 
         //For System base

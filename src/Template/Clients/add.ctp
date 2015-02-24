@@ -449,6 +449,7 @@
 
 
 
+
                                             <div class="form-group col-md-12"><!--<center>-->
 
                                                 <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc">
@@ -487,15 +488,17 @@
                                 <table class="table table-light table-hover sortable">
                                     <tr class="myclass">
                                         <th></th>
-                                        <th class="">System</th>
-                                        <th class=""><?php echo ucfirst($settings->client); ?> </th>
+                                                <!--<th class="">System</th>-->
+                                                <th class=""><?php echo ucfirst($settings->document); ?> </th>
+                                                <th class="">Orders</th>
+                                                <th class="">Display Order</th>
                                     </tr>
                                     <?php
                                         //$subdoc = $this->requestAction('/clients/getSub');
                                         $subdoccli = $this->requestAction('/clients/getSubCli/' . $id);
-                                        //var_dump($subdoccli);
-                                        foreach ($subdoccli as $subcl) {
-                                            //echo $subcl->sub_id;
+                                        $u=0;
+                                                foreach ($subdoccli as $subcl) {
+                                                    $u++;
                                             $sub = $this->requestAction('/clients/getFirstSub/' . $subcl->sub_id);
                                             ?>
                                             <tr id="subd_<?php echo $sub->id; ?>" class="sublisting">
@@ -503,7 +506,7 @@
 
                                                     <?php echo ucfirst($sub['title']); ?>
                                                 </td>
-                                                <td class="">
+                                                <!--<td class="">
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="<?php echo $sub->id; ?>"
@@ -518,7 +521,7 @@
                                                                                           <?php if ($sub['display'] == 0) { ?>checked="checked" <?php } ?>
                                                                                           disabled="disabled"/>
                                                         No </label>
-                                                </td>
+                                                </td>-->
                                                 <?php
                                                     $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/' . $id . '/' . $sub->id);
                                                 ?>
@@ -534,6 +537,12 @@
                                                                                           value="0"  <?php if ($csubdoc['display'] == 0) { ?> checked="checked" <?php } ?> />
                                                         No </label>
                                                 </td>
+                                                <td>
+                                                            <input <?php if ($csubdoc['display_order'] == 1) { ?> checked="checked" <?php } ?> type="checkbox" onclick="$(this).closest('td').find('.fororder').val('1')"  /> Show<input class="fororder" type="hidden" value="<?php if ($csubdoc['display_order'] == 1) {echo '1';}else{?>0<?php } ?>" name="clientO[<?php echo $sub->id; ?>]" />
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $u;?>
+                                                        </td>
 
                                             </tr>
 
@@ -736,7 +745,7 @@
         var total_count = $('.docMore').data('count');
         $('.docMore').data('count', parseInt(total_count) + 1);
         total_count = $('.docMore').data('count');
-        var input_field = '<div  class="form-group col-md-12"><div class="col-md-12"><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a></div></div>';
+        var input_field = '<div  class="form-group col-md-12"><div class="col-md-12"><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a><span></span></div></div>';
         $('.docMore').append(input_field);
         initiate_ajax_upload('addMore' + total_count, 'doc');
 

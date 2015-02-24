@@ -267,7 +267,7 @@
 
                                         if ($profile->profile_type == 5) {
                                             ?>
-                                            <a href="<?php echo $this->request->webroot; ?>documents/productSelection?driver=<?php echo $profile->id; ?>"
+                                            <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>"
                                                class="btn btn-success">Create Order</a>
 
                                         <?php
@@ -308,22 +308,17 @@
                                     <li class="active">
                                         <a href="#tab_1_1" data-toggle="tab">Settings</a>
                                     </li>
-                                    <?php
-                                        if ($this->request['action'] != 'add') {
-
-                                            
-
-                                            if ($this->request->session()->read('Profile.admin') || $this->request->session()->read('Profile.profile_type') == '2') { ?>
-                                                <li>
-                                                    <a href="#tab_1_7" data-toggle="tab">Permissions</a>
-                                                </li>
-
-                                            <?php }
+                                            <li>
+                                                <a href="#tab_1_11" data-toggle = "tab" >View Scorecard</a>
+                                            </li>
+                                            <?php
                                             $needs = false;
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<li><a href="#tab_1_10" data-toggle="tab">Orders</li></A></li>';
                                             }
 
+                                        if ($this->request['action'] != 'add') {
+                                                                                        
                                             if ($this->request->params['action'] != 'add' && ($this->request->session()->read('Profile.profile_type') != '2')) {
                                                 ?>
                                                 <li>
@@ -331,8 +326,15 @@
                                                 </li>
 
                                             <?php }
-                                        }
+                                            
+                                            
+                                            if ($this->request->session()->read('Profile.admin') || $this->request->session()->read('Profile.profile_type') == '2') { ?>
+                                                <li>
+                                                    <a href="#tab_1_7" data-toggle="tab">Permissions</a>
+                                                </li>
 
+                                            <?php }
+                                            }
                                     ?>
                                 </ul>
 
@@ -352,7 +354,7 @@
 
 
                                             <!--div class="tab-pane" id="tab_1_5">
-                                                <!--php include('subpages/profile/logo.php'); ?>
+                                                php include('subpages/profile/logo.php'); ?>
                                             </div>
 
                                             <div class="tab-pane" id="tab_1_6">
@@ -383,7 +385,19 @@
                                                 </div>
                                                 <!--</div>-->
                                             </div>
-                                        <?php } ?>
+                                            
+                                            <?php } ?>
+                                            <div class="tab-pane" id="tab_1_11">
+                                            
+                            <label class="uniform-inline" style="float:right;margin-top:10px;">
+                                <input <?php  echo $is_disabled ?> type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
+                                       class="checkdriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
+                                Was this driver hired? </label>                                                                                        
+                                                <?php
+                                                include('subpages/documents/forview.php');
+                                                 ?>
+                                            </div>                                                                                                                                                                                
+                                        <?php  ?>
                                 </div>
                             </div>
                         </div>
@@ -507,7 +521,28 @@
 
         });
     </script>
+<script>
+        $(function () {
 
+            $('.checkdriver').click(function () {
+
+                var oid = $(this).attr('id');
+                if ($(this).is(":checked")) {
+                    var hired = 1;
+                }
+                else
+                    var hired = 0;
+
+                $.ajax({
+                    url: "<?php echo $this->request->webroot;?>orders/savedriver/" + oid,
+                    type: 'post',
+                    data: 'is_hired=' + hired,
+                    success: function (msg) {
+                    }
+                })
+            });
+        });
+    </script>
     <script>
         <?php
         if($this->request->params['action']=='edit')

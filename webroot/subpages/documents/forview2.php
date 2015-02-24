@@ -198,7 +198,7 @@
                     var hired = 0;
 
                 $.ajax({
-                    url: "<?php echo $this->request->webroot;?>documents/savedriver/" + oid,
+                    url: "<?php echo $this->request->webroot;?>orders/savedriver/" + oid,
                     type: 'post',
                     data: 'is_hired=' + hired,
                     success: function (msg) {
@@ -215,7 +215,7 @@
 
 
         <?php $settings = $this->requestAction('settings/get_settings');
-            $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
+            $uploaded_by = $doc_comp->getUser($order->user_id);
         ?>
         
 
@@ -238,6 +238,16 @@
 
     <!-- END PORTLET MAIN -->
 </div>
+
+                    <div class="inputs">
+                        <div class="profile-usertitle-job">
+                            <label class="uniform-inline">
+                                <input type="checkbox" name="stat" value="1" id="<?php echo $order->profile->id; ?>"
+                                       class="checkdriver" <?php if ($order->profile->is_hired == '1') echo "checked"; ?> />
+                                Was this driver hired? </label>
+            
+                        </div>
+                    </div>
 <!-- END BEGIN PROFILE SIDEBAR -->
 <!-- BEGIN PROFILE CONTENT -->
 <div class="profile-content">
@@ -252,15 +262,6 @@
                         <i class="icon-bar-chart theme-font hide"></i>
                         <span class="caption-subject font-blue-madison bold uppercase">Driver Score Sheet</span>
                         <span class="caption-helper"></span>
-                    </div>
-                    <div class="inputs">
-                        <div class="profile-usertitle-job">
-                            <label class="uniform-inline">
-                                <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>"
-                                       class="checkdriver" <?php if ($order->is_hired == '1') echo "checked"; ?> />
-                                Was this driver hired? </label>
-            
-                        </div>
                     </div>
                 </div>
 
@@ -522,7 +523,7 @@
                                                                 <div class="task-title">
                         															<span class="task-title-sp">
                         														<span class="icon-notebook"></span>	Pre-screening form
-                         </span>                                    <?php $cnt = $this->requestAction("/documents/getprocessed/pre_screening/" . $order->id); ?>
+                         </span>                                    <?php $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id); ?>
                                                                     <?php if ($cnt > 0) { ?>
                                                                         <span style="float:right;padding:5px"
                                                                               class="label label-sm label-success">Submitted</span>
@@ -547,7 +548,7 @@
                                                                 <div class="task-title">
                         											<span class="task-title-sp">
                         											<span class="icon-notebook"></span> Driver Application	 </span>
-                                                                    <?php $cnt = $this->requestAction("/documents/getprocessed/driver_application/" . $order->id); ?>
+                                                                    <?php $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id); ?>
                                                                     <?php if ($cnt > 0) { ?>
                                                                         <span style="float:right;padding:5px"
                                                                               class="label label-sm label-success">Submitted</span>
@@ -572,7 +573,7 @@
                         											<span class="task-title-sp">
                                                                         <span class="icon-notebook"></span> Road Test
                                                                     </span>
-                                                                    <?php $cnt = $this->requestAction("/documents/getprocessed/road_test/" . $order->id); ?>
+                                                                    <?php $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id); ?>
                                                                     <?php if ($cnt > 0) { ?>
                                                                         <span style="float:right;padding:5px"
                                                                               class="label label-sm label-success">Submitted</span>
@@ -596,7 +597,7 @@
                         											<span class="task-title-sp">
                         
                                                                        <span class="icon-notebook"></span>  MEE Order	 </span>
-                                                                    <?php $cnt = $this->requestAction("/documents/getprocessed/consent_form/" . $order->id); ?>
+                                                                    <?php $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id); ?>
                                                                     <?php if ($cnt > 0) { ?>
                                                                         <span style="float:right;padding:5px"
                                                                               class="label label-sm label-success">Submitted</span>

@@ -272,10 +272,10 @@
                                             <?php
                                                 if ($profile->profile_type == 5) {
                                                     ?>
-                                                    <a href="<?php echo $this->request->webroot; ?>documents/productSelection?driver=<?php echo $profile->id; ?>"
+                                                    <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>"
                                                        class="btn btn-success">Create Order</a>
-                                                    <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
-                                                       class="btn btn-primary">Score Card</a>
+                                                  <!--  <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
+                                                       class="btn btn-primary">Score Card</a> -->
                                                 <?php
                                                 }
                                             ?>

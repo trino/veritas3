@@ -169,7 +169,7 @@
                         </div>
 
                         <div class="col-md-6" id="isb_id"
-                             style="display:<?php if ((isset($p) && $p->profile_type != 5) && (isset($getProfileType->profile_type) && $getProfileType->profile_type == 1)) echo 'block'; else echo "none" ?>;">
+                             style="display:<?php if ((isset($p) && $p->profile_type != 5) && (isset($getProfileType->profile_type) && $getProfileType->profile_type == 1) || ($this->request->session()->read('Profile.profile_type') == 2 && ($p->id == ($this->request->session()->read('Profile.id'))))) echo 'block'; else echo "none" ?>;">
                             <div class="form-group">
                                 <label class="control-label">ISB Id</label>
                                 <input <?php echo $is_disabled ?>
@@ -183,7 +183,7 @@
                         <?php // if ($settings->client_option == 0) { ?>
 
                         <div class="col-md-6" id="driver_div"
-                             style="display:<?php if ((isset($p) && $p->profile_type == 5) || ($this->request->session()->read('Profile.profile_type') == 2)) echo 'block'; else echo "none" ?>;">
+                             style="display:<?php if ((isset($p) && $p->profile_type == 5) || ($this->request->session()->read('Profile.profile_type') == 2 && ($p->id != ($this->request->session()->read('Profile.id'))))) echo 'block'; else echo "none" ?>;">
                             <div class="form-group">
                                 <label class="control-label">Driver Type</label>
                                 <select  <?php echo $is_disabled ?> name="driver"

@@ -1,3 +1,4 @@
+<?php //echo die('here');?>
 <div class="row">
 
 
@@ -20,9 +21,11 @@
                 $class = array('blue-madison','red','yellow','purple','green', 'red-intense','yellow-saffron','grey-cascade','blue-steel','blue');
 
                 
-                $doc = $this->requestAction('/documents/getDocument');
+                $doc = $doc_comp->getDocument();
+                //debug($doc);
+                //
                 $i=0;
-                if($doc){
+                //if($doc){
                     //echo strtolower($document->document_type);
                     $form_type = "";
                     foreach($doc as $d)
@@ -32,10 +35,13 @@
                              $form_type = $d->form;
                         //$prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$this->Session->read('Profile.id').'/'.$d->id);
                         $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.$d->id);
+                        $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/'.$cid.'/'.$d->id);
+                        
+                        //echo $d->id.":".$csubdoc['display']."-".$prosubdoc['display']."-".$d->display.",";
                         if($i==11)
                             $i=0;
                         ?>
-                        <?php if($prosubdoc['display'] > 1 && $d->display==1)
+                        <?php if($prosubdoc['display'] > 1 && $d->display == 1 && (isset($csubdoc) && $csubdoc['display'] == 1))
                         {?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
@@ -51,7 +57,7 @@
                                 <?php 
                                 if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
                                 if($d->orders==0)echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
-    							<?php if($d->orders==1)echo $cnt = $this->requestAction('/documents/get_orderscount/'.$d->table_name); }?>	
+    							<?php if($d->orders==1)echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name); }?>	
     							</div>
     							<div class="desc">
     								 <?php
@@ -84,8 +90,9 @@
                         }
                         $i++;
                     }
+                   
                     
-                }
+                //}
                  ?>
 			<!--	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
@@ -179,3 +186,4 @@
 				
 			-->	
 			</div>
+            

@@ -1,5 +1,4 @@
  <?php
-
 $initials = W_ROOT;
 ob_start();
 error_reporting(1);
@@ -274,7 +273,6 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                 ";
                 
                 //var_dump($cri);die();
-                
                 if($cri)
                 {
                     foreach($cri as $criminal)
@@ -284,7 +282,6 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                        
                     }                    
                 }
-                
                 $declare = $declare.'</table>';
                 $declare = $declare."<p>
                 <strong>Mandatory use for all account holders</strong>
@@ -324,8 +321,6 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                 
                 //$initials = $this->requestAction('/pages/getBase');
                 
-                
-                
                 if($att)
                 {
                    $doc_ext = array('pdf',
@@ -336,9 +331,6 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                     'xls',
                     'csv');
                    $vid_ext = array('mp4');
-                   
-                   
-                
                     foreach($att as $a)
                     {
                         $ext_arr = explode('.', $a->attachment);
@@ -350,7 +342,6 @@ $hereby = "<p><br/>I hereby consent to the search of the following:</p>
                         }
                         
                     }
-                    
                 }
                  
                 $attach = $attach."<br/><br/><p>

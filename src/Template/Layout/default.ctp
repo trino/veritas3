@@ -143,8 +143,7 @@
 				<li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="icon-envelope-open"></i>
-					<!--span class="badge badge-default">
-					4 </span-->
+					<!--span class="badge badge-default"> 4 /span -->
 					</a>
 					<ul class="dropdown-menu">
 						<li class="external">
@@ -182,7 +181,7 @@
 							<i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
 							3 </span>
 							</a>
-						</li-->
+						/li-->
 
 						<li class="divider">
 						</li>
@@ -227,13 +226,10 @@
 	<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
 	
 	<!-- END QUICK SIDEBAR -->
+    </div>
  <?php if($settings->box =='1'){?></div><?php }?>
 
 
-
-
-
-</div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
@@ -246,13 +242,18 @@
 
         <?php
         use Cake\ORM\TableRegistry;
+        if(!function_exists('get_title')){
         function get_title($slug) {
             $content = TableRegistry::get("contents");
             $l =  $content->find()->where(['slug'=>$slug])->first();
+            if(isset($l->title))
             echo ucfirst($l->title);
-        }
+            else
+            echo '';
+        }}
 
         ?>
+        
 
     <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product_example"><?php get_title('product_example') ?></a> /
 
@@ -433,5 +434,4 @@ function change_text(v){
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
-</html>
-		
+</html>	

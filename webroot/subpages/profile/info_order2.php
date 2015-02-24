@@ -15,7 +15,7 @@
     else
         $client = 0;
 
-    $dr_cl = $this->requestAction('/documents/getDriverClient/' . $driver . '/' . $client);
+    $dr_cl = $doc_comp->getDriverClient($driver,$client);
 ?>
 
 
@@ -119,16 +119,19 @@
 
 
                         <a href="javascript:void(0);" class="btn btn-danger placenow"
+
                            onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
                             MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
+
 
 
                         &nbsp;&nbsp; or &nbsp;&nbsp;
 
 
-                        <a href="javascript:void(0);"
-                           class="btn btn-info"
-                           onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte <i
+                        <a
+                            href="javascript:void(0);"
+                            class="btn btn-info"
+                            onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte <i
                                 class="m-icon-swapright m-icon-white"></i></a>
 
 
@@ -145,7 +148,7 @@
                         <div class="col-md-offset-3 col-md-9">
 
                             <a class="btn red button-next proceed"
-                               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $this->request->webroot; ?>documents/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
+                               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
                                 Order Products <i class="m-icon-swapright m-icon-white"></i>
                             </a>
                             <a class="btn grey button-next proceed"
@@ -221,8 +224,10 @@
         {
             ?>
             $.ajax({
-                url: '<?php echo $this->request->webroot;?>documents/getClientByDriver/' + driver,
+                url: '<?php echo $this->request->webroot;?>orders/getClientByDriver/' + driver,
                 success: function (res) {
+                    if(res =='Error')
+                        window.location = "<?php echo $this->request->webroot;?>profiles/edit/"+driver+"?clientflash";
                     var div = $('#divisionsel').val();
                     if (!isNaN(parseFloat(div)) && isFinite(div)) {
                         var division = div;
@@ -231,7 +236,9 @@
                         var division = '0';
                     $('#selecting_client').html(res);
                     $('.selecting_driver').val($('#selecting_driver').val());
-                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>documents/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division);
+
+                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val()+'&division='+division);
+
                 }
             });
             <?php
@@ -264,7 +271,7 @@
         {
             ?>
             $.ajax({
-                url: '<?php echo $this->request->webroot;?>documents/getDriverByClient/' + client,
+                url: '<?php echo $this->request->webroot;?>orders/getDriverByClient/' + client,
                 success: function (res) {
                     var div = $('#divisionsel').val();
                     if (!isNaN(parseFloat(div)) && isFinite(div)) {
@@ -274,7 +281,9 @@
                         var division = '0';
                     $('#selecting_driver').html(res);
                     $('.selecting_client').val($('#selecting_client').val());
-                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>documents/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division);
+
+                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val()+'&division='+division);
+
                 }
             });
             <?php

@@ -4,6 +4,12 @@
     $sidebar = $this->requestAction("settings/all_settings/".$uid."/sidebar");
     $block = $this->requestAction("settings/all_settings/".$uid."/blocks");
     if(!isset($is_disabled1)){$is_disabled1 = "";}//something is wrong with this variable
+
+if ($activetab == "permissions") {
+    if (isset($Clientcount) && $Clientcount == 0) { $activetab = "assign"; } else {$activetab = "";}
+} else {
+    $activetab ="";
+}
 ?>
 
 <!-- BEGIN BORDERED TABLE PORTLET--><!--
@@ -17,7 +23,7 @@
         <?php if($this->request->session()->read('Profile.profile_type')!='2')
         {
             ?>
-            <li class="<?php if(isset($Clientcount)&& $Clientcount!=0)echo 'active';?>">
+            <li <?php $activetab=activetab($activetab, "config") ?>>
                 <a href="#subtab_2_1" data-toggle="tab">Configuration</a>
             </li>
             <li class="">

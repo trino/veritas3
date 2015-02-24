@@ -25,8 +25,11 @@
         <div class="createDriver">
             <div class="portlet box form-horizontal">
 
-
-
+                <?php
+                if ($driver && !$client){
+                    echo '<div class="alert alert-danger"><strong>Error!</strong> This driver is not assigned to a client.</div>';
+                }
+?>
 
 
 

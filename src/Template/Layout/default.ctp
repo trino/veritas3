@@ -33,21 +33,16 @@
 
 <!--<link href="<?php echo $this->request->webroot;?>assets/global/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css"/>-->
 <link href="<?php echo $this->request->webroot;?>assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
-	<!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/> -->
-
-	<!-- TEST REMOVAL ONLY NEEDED FOR PROFILES.EDIT.CTP <link href="< php echo $this->request->webroot;?>assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>-->
 
 <link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/pricing-table.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/pricing-tables.css" rel="stylesheet" type="text/css"/>
 
 <link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/todo.css" rel="stylesheet" type="text/css"/>
 <!--<link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/profile-old.css" rel="stylesheet" type="text/css"/>-->
 
-
-<!-- END PAGE LEVEL PLUGIN STYLES -->
-<!-- BEGIN PAGE STYLES -->
 <link href="<?php echo $this->request->webroot;?>assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
-<!-- END PAGE STYLES -->
-<!-- BEGIN THEME STYLES -->
+
 <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
 <link href="<?php echo $this->request->webroot;?>assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
@@ -56,9 +51,7 @@
 	<!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/> -->
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="<?php echo WEB_ROOT?>favicon.ico"/>
-<!-- END FOOTER -->
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
+
 <!--[if lt IE 9]>
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/respond.min.js"></script>
 <script src="<?php echo $this->request->webroot;?>assets/global/plugins/excanvas.min.js"></script>

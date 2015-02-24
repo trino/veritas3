@@ -277,7 +277,7 @@ public function settings(){
 
         public function view($id = null) {
 
-
+            $this->set('doc_comp',$this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
             if($setting->profile_list==0)
@@ -291,13 +291,20 @@ public function settings(){
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary'=>'0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary'=>'1'])));
             $profile = $this->Profiles->get($id, [ 'contain' => []]);
+            $this->set('doc_comp',$this->Document);
+            $orders = TableRegistry::get('orders');
+            $order = $orders
+                ->find()
+                ->where(['orders.uploaded_for' => $id])->contain(['Profiles', 'Clients', 'RoadTest']);
+
+            $this->set('orders', $order);
             $this->set('profile', $profile);
             $this->set('disabled', 1);
             $this->set('id',$id);
             $this->render("edit");
         }
         
-        public function viewReport($profile)
+        public function viewReport($profile,$profile_edit_view = 0)
         {
             $this->set('doc_comp',$this->Document);
             $orders = TableRegistry::get('orders');
@@ -305,7 +312,15 @@ public function settings(){
                 ->find()
                 ->where(['orders.uploaded_for' => $profile])->contain(['Profiles', 'Clients', 'RoadTest']);
 
-            $this->set('orders', $order);
+            
+            if(isset($profile_edit_view) && $profile_edit_view == 1)
+            {
+                $this->response->body(($order));
+                return $this->response;
+                die();
+                //$this->set('profile_edit_view', $profile_edit_view);
+            }
+            else $this->set('orders', $order);            
             //  debug($order);
         }
 
@@ -631,6 +646,7 @@ public function settings(){
                 $post[$arr_ap[0]] = urldecode($arr_ap[1]);
                 $post[$arr_ap[0]] = str_replace('Select Gender','',$post[$arr_ap[0]]);
             }
+            
             $que = $this->Profiles->find()->where(['email'=>$post['email'],'id <>'=>$post['id']])->first();
             
             if($que)
@@ -641,8 +657,9 @@ public function settings(){
            //$post = $_POST['inputs'];
           // var_dump($post);die();
             $profiles = TableRegistry::get('Profiles');
-  
+            
             if ($this->request->is('post')) {
+                
                  //var_dump($_POST['inputs']);die();
                 $post['dob'] = $post['doby']."-".$post['dobm']."-".$post['dobd'];
                 //debug($_POST);die();
@@ -688,20 +705,23 @@ public function settings(){
         }
         else
         {
+            
+            //var_dump($post);
             $id = $post['id'];
             unset($post['id']);
-            unset($post['doby']);
-            unset($post['dobm']);
-            unset($post['dobd']);
-            unset($post['client_ids']);
-           $query = $profiles->query();
-            $query->update()
-                ->set($post)
-                ->where(['id' => $id])
-                ->execute(); 
+            unset($post['profile_type']);
+            
+            $pro = $this->Profiles->get($id, [
+			'contain' => []
+		]);
+            $pros = $this->Profiles->patchEntity($pro, $post);
+			$this->Profiles->save($pros);
+            
                 echo $id;die();
+                
         }
         }
+        die();
         }
 
         /**
@@ -712,7 +732,8 @@ public function settings(){
          * @throws \Cake\Network\Exception\NotFoundException
          */
         public function edit($id = null) {
-            
+                                    
+            $this->set('doc_comp',$this->Document);
             $check_pro_id = $this->Settings->check_pro_id($id);
             if($check_pro_id==1)
             {
@@ -772,6 +793,15 @@ public function settings(){
                     $this->Flash->error('The user could not be saved. Please try again.');
                 }
             }
+            
+            
+            $this->set('doc_comp',$this->Document);
+            $orders = TableRegistry::get('orders');
+            $order = $orders
+                ->find()
+                ->where(['orders.uploaded_for' => $id])->contain(['Profiles', 'Clients', 'RoadTest']);
+
+            $this->set('orders', $order);
             $this->set(compact('profile'));
             $this->set('id',$id);
             $this->set('uid',$id); 

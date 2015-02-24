@@ -14,31 +14,10 @@
     }
 
 </style>
-
-
-<h3 class="page-title">
-    View Report
-</h3>
-<div class="page-bar">
-    <ul class="page-breadcrumb">
-        <li>
-            <i class="fa fa-home"></i>
-            <a href="<?php echo $this->request->webroot; ?>">Dashboard</a>
-            <i class="fa fa-angle-right"></i>
-        </li>
-        <li>
-            <a href="">View Report
-            </a>
-        </li>
-    </ul>
-    <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
-</div>
-
-
-
-
 <?php
-
+{
+    //include('subpages/documents/forprofileview.php');
+    
     function get_string_between($string, $start, $end)
     {
         $string = " " . $string;
@@ -143,17 +122,6 @@
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
     $counting = 0;
     $drcl_d = $orders;
     foreach ($drcl_d as $drcld) {
@@ -161,12 +129,15 @@
         $counting++;
     }
 
-
     $k = 0;
     foreach ($orders as $order) {
         $k++;
+        
+        $settings = $this->requestAction('settings/get_settings');
+        $uploaded_by = $doc_comp->getUser($order->user_id);                
         ?>
         <?php
+   
         create_files_from_binary($order->id, '1603', $order->ebs_1603_binary);
         create_files_from_binary($order->id, '1', $order->ins_1_binary);
         create_files_from_binary($order->id, '14', $order->ins_14_binary);
@@ -174,107 +145,9 @@
         create_files_from_binary($order->id, '78', $order->ins_78_binary);
         create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
         create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
-        ?>
-        <div class="profile-sidebar">
-            <!-- PORTLET MAIN -->
-            <div class="portlet light profile-sidebar-portlet">
-                <!-- SIDEBAR USERPIC -->
-                <?php if ($k == 1) { ?>
-                    <div class="profile-userpic">
-                        <center>
-                            <?php
-                                //debug($order);
-                                if (isset($order->profile->image) && $order->profile->image != "") { ?>
-                                    <img
-                                        src="<?php echo $this->request->webroot; ?>img/profile/<?php echo $order->profile->image ?>"
-                                        class="img-responsive" alt="" id="clientpic"/>
-
-                                <?php } else {
-                                    ?>
-                                    <img src="<?php echo $this->request->webroot; ?>img/profile/default.png"
-                                         class="img-responsive"
-                                         id="clientpic"
-                                         alt=""/>
-                                <?php
-                                }
-                            ?>
-                        </center>
-                    </div>
-                    <!-- END SIDEBAR USERPIC -->
-                    <!-- SIDEBAR USER TITLE -->
-                    <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">
-                            <?php echo ucwords($order->profile->fname); ?>   <?php echo ucwords($order->profile->lname); ?>
-                        </div>
-                        <div class="profile-usertitle-job">
-                            Reference Number <?php echo ucwords($order->profile->id); ?>
-                        </div>
-
-
-                    </div>
-                <?php }?>
-                <!-- END SIDEBAR USER TITLE -->
-                <!-- SIDEBAR BUTTONS -->
-            </div>
-            <script>
-                $(function () {
-
-                    $('.checkdriver').click(function () {
-
-                        var oid = $(this).attr('id');
-                        if ($(this).is(":checked")) {
-                            var hired = 1;
-                        }
-                        else
-                            var hired = 0;
-
-                        $.ajax({
-                            url: "<?php echo $this->request->webroot;?>orders/savedriver/" + oid,
-                            type: 'post',
-                            data: 'is_hired=' + hired,
-                            success: function (msg) {
-                            }
-                        })
-                    });
-                });
-            </script>
-            <!-- END PORTLET MAIN -->
-            <!-- PORTLET MAIN -->
-            <div class="portlet light">
-
-
-                <?php $settings = $this->requestAction('settings/get_settings');
-                    $uploaded_by = $doc_comp->getUser($order->user_id);
-                ?>
-
-                <?php
-                    if ($k == 1) {
-                        ?>
-
-                        <div class="portlet box green">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-pencil"></i>Recruiter Notes
-                                </div>
-
-                            </div>
-                            <div class="portlet-body">
-
-                                <?php include('subpages/documents/recruiter_notes.php'); ?>
-                            </div>
-
-                        </div>
-                    <?php
-                    }
-                ?>
-            </div>
-
-
-            <!-- END PORTLET MAIN -->
-        </div>
-        <!-- END BEGIN PROFILE SIDEBAR -->
+ ?>
         <!-- BEGIN PROFILE CONTENT -->
-        <div class="profile-content">
+        <div class="">
             <div class="row">
 
                 <div class="clearfix"></div>
@@ -290,10 +163,6 @@
 
 
                             </div>
-                            <label class="uniform-inline" style="float:right;margin-top:10px;">
-                                <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>"
-                                       class="checkdriver" <?php if ($order->is_hired == '1') echo "checked"; ?> />
-                                Was this driver hired? </label>
 
                         </div>
 
@@ -696,7 +565,7 @@
                                         </div>
 
 
-                                        <a href="<?php echo $this->request->webroot;?>documents/vieworder/<?php echo $order->client_id;?>/<?php echo $order->id;?>"
+                                        <a href="<?php echo $this->request->webroot;?>orders/vieworder/<?php echo $order->client_id;?>/<?php echo $order->id;?>"
                                            class="btn btn-primary">View Order</a>
 
 
@@ -719,7 +588,7 @@
 
         </div>
 
-    <?php
-    }
-?>
+ <?php   } ?>
 <!-- END PROFILE CONTENT -->
+<?php
+}

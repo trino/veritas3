@@ -238,6 +238,16 @@
 
     <!-- END PORTLET MAIN -->
 </div>
+
+                    <div class="inputs">
+                        <div class="profile-usertitle-job">
+                            <label class="uniform-inline">
+                                <input type="checkbox" name="stat" value="1" id="<?php echo $order->profile->id; ?>"
+                                       class="checkdriver" <?php if ($order->profile->is_hired == '1') echo "checked"; ?> />
+                                Was this driver hired? </label>
+            
+                        </div>
+                    </div>
 <!-- END BEGIN PROFILE SIDEBAR -->
 <!-- BEGIN PROFILE CONTENT -->
 <div class="profile-content">
@@ -252,15 +262,6 @@
                         <i class="icon-bar-chart theme-font hide"></i>
                         <span class="caption-subject font-blue-madison bold uppercase">Driver Score Sheet</span>
                         <span class="caption-helper"></span>
-                    </div>
-                    <div class="inputs">
-                        <div class="profile-usertitle-job">
-                            <label class="uniform-inline">
-                                <input type="checkbox" name="stat" value="1" id="<?php echo $order->id; ?>"
-                                       class="checkdriver" <?php if ($order->is_hired == '1') echo "checked"; ?> />
-                                Was this driver hired? </label>
-            
-                        </div>
                     </div>
                 </div>
 

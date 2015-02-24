@@ -64,7 +64,88 @@
 
 <div class="clearfix"></div>
 
-
+<div class="attachments_all">
+    
+    <?php
+    if(isset($pre_at['attach_doc'])){
+        ?>
+        <strong>Prescreening</strong>
+        <?php
+    foreach($pre_at['attach_doc'] as $pat)
+    {
+        echo $pat->attachment.', ';
+    }
+    echo "<br/>";
+    }
+    ?>
+    
+    <?php
+    if(isset($sub['da_at'])){
+        ?>
+        <strong>Driver Application</strong>
+        <?php
+    foreach($sub['da_at'] as $pat)
+    {
+        echo $pat->attachment.', ';
+    }
+    echo "<br/>";
+    }
+    ?>
+    
+    <?php
+    if(isset($sub['de_at'])){
+        ?>
+        <strong>Road test</strong>
+        <?php
+    foreach($sub['de_at'] as $pat)
+    {
+        echo $pat->attachment.', ';
+    }
+    echo "<br/>";
+    }
+    ?>
+    
+    <?php
+    if(isset($sub2['con_at'])){
+        ?>
+        <strong>Consent form</strong>
+        <?php
+    foreach($sub2['con_at'] as $pat)
+    {
+        echo $pat->attachment.', ';
+    }
+    echo "<br/>";
+    }
+    ?>
+    
+    
+    <?php
+    if(isset($sub3['att'])){
+        ?>
+        <strong>Employment</strong>
+        <?php
+    foreach($sub3['att'] as $pat)
+    {
+        echo $pat->attachment.', ';
+    }
+    echo "<br/>";
+    }
+    ?>
+    
+    
+    <?php
+    if(isset($sub4['att'])){
+        ?>
+        <strong>Education</strong>
+        <?php
+    foreach($sub4['att'] as $pat)
+    {
+        echo $pat->attachment.', ';
+    }
+    echo "<br/>";
+    }
+    ?>
+</div>
 
 
 <script>

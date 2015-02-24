@@ -16,6 +16,12 @@
         $client = 0;
 
     $dr_cl = $doc_comp->getDriverClient($driver,$client);
+
+    $counting = 0;
+    $drcl_c = $dr_cl['client'];
+    foreach ($drcl_c as $drclc) {
+        $counting++;
+    }
 ?>
 
 
@@ -26,8 +32,8 @@
             <div class="portlet box form-horizontal">
 
                 <?php
-                if ($driver && !$client){
-                    echo '<div class="alert alert-danger"><strong>Error!</strong> This driver is not assigned to a client.</div>';
+                if ($driver && !$client && $counting == 0){
+                    echo '<div class="alert alert-danger"><strong>Error!</strong> This driver is not assigned to a client. <A href="' . $this->request->webroot . 'profiles/edit/' . $driver . '">Click here to assign them to one</A></div>';
                 }
 ?>
 
@@ -40,11 +46,7 @@
                     <div class="col-md-3 control-label"><?php echo ucfirst($settings->client); ?> </div>
                     <div class="col-md-6">
                         <?php
-                            $counting = 0;
-                            $drcl_c = $dr_cl['client'];
-                            foreach ($drcl_c as $drclc) {
-                                $counting++;
-                            }
+
                             if ($counting > 1) { ?>
                             <select id="selecting_client" class="form-control input-xlarge select2me"
                             data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';

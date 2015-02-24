@@ -159,7 +159,8 @@
                         $dr = $orde->draft;
                         if($dr=='0' || !$dr){
                         $dr = 0;
-                        $this->Flash->success('Your order has been submitted');
+                        //$this->Flash->success('Your order has been submitted');
+                        //die();
                         }
                         else
                         $dr =1;

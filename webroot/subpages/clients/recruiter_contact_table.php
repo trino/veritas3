@@ -24,17 +24,22 @@ if (!$viewmode){
             foreach ($profiles as $r) {
                 //echo $r->username;continue;
                 //if ($i % 2 == 0) {
+                    $username = "[NO NAME]";
+                    if (strlen(trim($r->username)>0)) {
+                        $username = $r->username;
+                    } elseif(strlen(trim($r->fname . $r->lname))>0) {
+                        $username = $r->fname . " " . $r->lname;
+                    }
+                    $profiletype = "(" . $pType[$r->profile_type] . ")";
+                    if ($profiletype == "()") {$profiletype = "(Draft)"; }
                     ?>
                     <tr>
-                <?php
-                //}
-                ?>
 
                 <td>
                     <span><input class="profile_client" type="checkbox"
                                  <?php if (in_array($r->id, $profile)){ ?>checked="checked"<?php }?>
                                  value="<?php echo $r->id; ?>"/></span>
-                    <span> <?php echo $r->username; ?> <?php if($r->profile_type!=""){?>(<?=$pType[$r->profile_type];?>)<?php }?> </span>&nbsp;
+                    <span> <?php echo $username; ?> <?php if($r->profile_type!=""){ echo $profiletype;}?> </span>&nbsp;
                     <span class="msg_<?php echo $r->id; ?>"></span>
                 </td>
                 <?php

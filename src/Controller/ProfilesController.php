@@ -277,7 +277,7 @@ public function settings(){
 
         public function view($id = null) {
 
-
+            $this->set('doc_comp',$this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
             if($setting->profile_list==0)
@@ -721,7 +721,7 @@ public function settings(){
          */
         public function edit($id = null) {
                                     
-            
+            $this->set('doc_comp',$this->Document);
             $check_pro_id = $this->Settings->check_pro_id($id);
             if($check_pro_id==1)
             {
@@ -779,6 +779,15 @@ public function settings(){
                     $this->Flash->error('The user could not be saved. Please try again.');
                 }
             }
+            
+            
+            $this->set('doc_comp',$this->Document);
+            $orders = TableRegistry::get('orders');
+            $order = $orders
+                ->find()
+                ->where(['orders.uploaded_for' => $id])->contain(['Profiles', 'Clients', 'RoadTest']);
+
+            $this->set('orders', $order);
             $this->set(compact('profile'));
             $this->set('id',$id);
             $this->set('uid',$id); 

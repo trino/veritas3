@@ -1252,7 +1252,9 @@ function provinces($name){
 //alert('test');
             $.ajax({
 
-                url: '<?php echo $this->request->webroot;?>documents/webservice/0/0/' + $('#did').val() + '/' + $('#uploaded_for').val(),
+                url: '<?php echo $this->request->webroot;?>orders/webservice/0/0/' + $('#did').val() + '/' + $('#uploaded_for').val(),
+                data: 'pre='+$('.attachments_all .pre').html()+'&da='+$('.attachments_all .da').html()+'&de='+$('.attachments_all .de').html()+'&con='+$('.attachments_all .con').html()+'&emp='+$('.attachments_all .emp').html()+'&edu='+$('.attachments_all .edu').html(),
+                type: 'post'
             })
         });
 

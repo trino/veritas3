@@ -64,87 +64,104 @@
 
 <div class="clearfix"></div>
 
-<div class="attachments_all">
-    
-    <?php
+
+
+<!-- DONT REMOVE / USED FOR WEBSERVICE .... DO NOT CHANGE THE STRUCTURE OF DIV INSIDE NOT EVEN AN ENTER-->
+<div class="attachments_all" style="display: none;">
+    <div class="pre"><?php
     if(isset($pre_at['attach_doc'])){
-        ?>
-        <strong>Prescreening</strong>
-        <?php
+        $c1 = 0;
     foreach($pre_at['attach_doc'] as $pat)
     {
-        echo $pat->attachment.', ';
+        $c1++;
+        if($c1==1)
+        echo $pat->attachment;
+        else
+        echo ','.$pat->attachment;
     }
-    echo "<br/>";
-    }
-    ?>
     
-    <?php
+    }
+    ?></div>
+    
+    <div class="da"><?php
     if(isset($sub['da_at'])){
-        ?>
-        <strong>Driver Application</strong>
-        <?php
+        $c1 = 0;
     foreach($sub['da_at'] as $pat)
     {
-        echo $pat->attachment.', ';
+        $c1++;
+        if($c1==1)
+        echo $pat->attachment;
+        else
+        echo ','.$pat->attachment;
     }
-    echo "<br/>";
-    }
-    ?>
     
-    <?php
+    }
+    ?></div>
+    
+    <div class="de"><?php
     if(isset($sub['de_at'])){
-        ?>
-        <strong>Road test</strong>
-        <?php
+        $c1 = 0;
     foreach($sub['de_at'] as $pat)
     {
-        echo $pat->attachment.', ';
+        $c1++;
+        if($c1==1)
+        echo $pat->attachment;
+        else
+        echo ','.$pat->attachment;
     }
-    echo "<br/>";
-    }
-    ?>
     
-    <?php
+    }
+    ?></div>
+    
+    
+    <div class="con"><?php
     if(isset($sub2['con_at'])){
-        ?>
-        <strong>Consent form</strong>
-        <?php
+        $c1 = 0;
     foreach($sub2['con_at'] as $pat)
     {
-        echo $pat->attachment.', ';
+        $c1++;
+        if($c1==1)
+        echo $pat->attachment;
+        else
+        echo ','.$pat->attachment;
     }
-    echo "<br/>";
+    
     }
-    ?>
+    ?></div>
     
     
-    <?php
+    <div class="emp"><?php
     if(isset($sub3['att'])){
-        ?>
-        <strong>Employment</strong>
-        <?php
+        $c1 = 0;
     foreach($sub3['att'] as $pat)
     {
-        echo $pat->attachment.', ';
+        $c1++;
+        if($c1==1)
+        echo $pat->attachment;
+        else
+        echo ','.$pat->attachment;
     }
-    echo "<br/>";
+    
     }
-    ?>
+    ?></div>
     
     
-    <?php
+    <div class="edu"><?php
     if(isset($sub4['att'])){
-        ?>
-        <strong>Education</strong>
-        <?php
+        $c1 = 0;
     foreach($sub4['att'] as $pat)
     {
-        echo $pat->attachment.', ';
+        $c1++;
+        if($c1==1)
+        echo $pat->attachment;
+        else
+        echo ','.$pat->attachment;
     }
-    echo "<br/>";
+    
     }
-    ?>
+    ?></div>
+    
+    
 </div>
 
 

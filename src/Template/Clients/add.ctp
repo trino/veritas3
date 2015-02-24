@@ -466,13 +466,17 @@ if ($action == "Add") { $action  = "Create";}
                                             <tr class="myclass">
                                                 <th></th>
                                                 <th class="">System</th>
-                                                <th class=""><?php echo ucfirst($settings->client); ?> </th>
+                                                <th class=""><?php echo ucfirst($settings->document); ?> </th>
+                                                <th class="">Orders</th>
+                                                <th class="">Display Order</th>
                                             </tr>
                                             <?php
                                                 //$subdoc = $this->requestAction('/clients/getSub');
                                                 $subdoccli = $this->requestAction('/clients/getSubCli/'.$id);
                                                 //var_dump($subdoccli);
+                                                $u=0;
                                                 foreach ($subdoccli as $subcl) {
+                                                    $u++;
                                                     //echo $subcl->sub_id;
                                                     $sub = $this->requestAction('/clients/getFirstSub/'.$subcl->sub_id);
                                                     ?>
@@ -497,6 +501,7 @@ if ($action == "Add") { $action  = "Create";}
                                                                                                   disabled="disabled"/>
                                                                 No </label>
                                                         </td>
+                                                        
                                                         <?php
                                                             $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/' . $id . '/' . $sub->id);
                                                         ?>
@@ -511,6 +516,13 @@ if ($action == "Add") { $action  = "Create";}
                                                                                                   name="clientC[<?php echo $sub->id; ?>]"
                                                                                                   value="0"  <?php if ($csubdoc['display'] == 0) { ?> checked="checked" <?php } ?> />
                                                                 No </label>
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            <input <?php if ($csubdoc['display_order'] == 1) { ?> checked="checked" <?php } ?> type="checkbox" onclick="$(this).closest('td').find('.fororder').val('1')"  /> Show<input class="fororder" type="hidden" value="<?php if ($csubdoc['display_order'] == 1) {echo '1';}else{?>0<?php } ?>" name="clientO[<?php echo $sub->id; ?>]" />
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $u;?>
                                                         </td>
 
                                                     </tr>

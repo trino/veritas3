@@ -32,10 +32,10 @@
             </div>
             <div class="portlet-body">
                 <div class="chat-form">
-                    <form action="<?php echo $this->request->webroot; ?>documents/orderslist" method="get">
+                    <form action="<?php echo $this->request->webroot; ?>orders/index" method="get">
                         <?php if(isset($_GET['draft'])){?><input type="hidden" name="draft" /><?php }?>
                         <?php
-                            $users = $this->requestAction("documents/getAllUser");
+                            $users = $doc_comp->getAllUser();
                         ?>
                         <div class="col-md-2" style="padding-left:0;">
                             <input class="form-control" name="searchdoc" type="search" placeholder="Search Order Title"
@@ -57,7 +57,7 @@
                         </div>
                         <!--
                         <?php
-                            $type = $this->requestAction("documents/getDocType");
+                            $type = $doc_comp->getDocType();
                         ?>
 						<div class="col-md-3 col-sm-12">
 							<select class="form-control" name="type">
@@ -75,7 +75,7 @@
 						</div>-->
                         <!--</form>-->
                         <?php
-                            $clients = $this->requestAction("documents/getAllClient");
+                            $clients = $doc_comp->getAllClient();
                         ?>
                         <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByClient" method="get">-->
                         <div class="col-md-3 " style="padding-left:0;">
@@ -151,9 +151,9 @@
                                     $row_color_class = "even";
                                 }
                                     if($order->user_id)
-                                    $uploaded_by = $this->requestAction("documents/getUser/" . $order->user_id);
+                                    $uploaded_by = $doc_comp->getUser($order->user_id);
                                     if($order->uploaded_for)                                    
-                                    $uploaded_for = $this->requestAction("documents/getUser/" . $order->uploaded_for);
+                                    $uploaded_for = $doc_comp->getUser($order->uploaded_for);
                                
                                 $client = $this->requestAction("clients/getClient/" . $order->client_id);
                                 ?>
@@ -169,7 +169,7 @@
                                             echo "Deleted " . $settings->client;
                                         }
                                     ?></td>
-                                    <td><?php if($order->division){$div = $this->requestAction('/documents/getDivById/'.$order->division);echo $div->title;}else{echo '';} ?></td>
+                                    <td><?php if($order->division){$div = $doc_comp->getDivById($order->division);echo $div->title;}else{echo '';} ?></td>
                                                                         
                                     <td><?= h($order->created) ?></td>
                                     <td class="actions  util-btn-margin-bottom-5">
@@ -187,16 +187,16 @@
                                             if (isset($super) || isset($_GET['draft'])) {
                                                 if ($sidebar->orders_edit == '1') {
                                                     if (!isset($_GET['table']) && $order->draft==1){
-                                                        echo $this->Html->link(__('Edit'), ['controller' => 'documents', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
+                                                        echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
                                                         }
                                                     elseif(isset($_GET['table'])){
-                                                        echo $this->Html->link(__('Edit'), ['controller' => 'documents', 'action' => 'addorder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-primary']);
+                                                        echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-primary']);
                                                         }
 
                                                 }
                                                 if ($sidebar->orders_delete == '1') {
                                                     ?><a
-                                                    href="<?php echo $this->request->webroot;?>documents/deleteorder/<?php echo $order->id;?><?php if(isset($_GET['draft']))echo "?draft";?>"
+                                                    href="<?php echo $this->request->webroot;?>orders/deleteorder/<?php echo $order->id;?><?php if(isset($_GET['draft']))echo "?draft";?>"
                                                     class="btn btn-danger"
                                                     onclick="return confirm('Are you sure you want to delete <?= h($order->title) ?>?');">
                                                         Delete</a>
@@ -206,12 +206,12 @@
                                         ?>
 
 
-                                        <?php if ($sidebar->orders_requalify == '1' && $order->draft == '0') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'documents', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-warning']);
+                                        <?php if ($sidebar->orders_requalify == '1' && $order->draft == '0') echo $this->Html->link(__('Re-Qualify'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-warning']);
 
 
 
                                         ?>
-                                        <?php if (!isset($_GET['draft'])) echo $this->Html->link(__('View Score Card'), ['controller' => 'documents', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
+                                        <?php if (!isset($_GET['draft'])) echo $this->Html->link(__('View Score Card'), ['controller' => 'orders', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
                                     </TD><td valign="middle">
                                         <?php if (!isset($_GET['draft'])) { ?>
                                             <?php if (isset($order->bright_planet_html_binary)) { ?>

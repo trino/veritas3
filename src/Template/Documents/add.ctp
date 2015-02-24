@@ -72,7 +72,7 @@ if ($action == "Add") {
 
                             if ($param != 'view') {
                                 $tab = 'tab-pane';
-                                $doc = $this->requestAction('/documents/getDocument');
+                                $doc = $doc_comp->getDocument();
                                 ?>
                             <?php
                             }

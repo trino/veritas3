@@ -113,14 +113,14 @@
 
                                                 if ($sidebar->orders_create == '1') {
                                                     ?>
-                                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>documents/productSelection?client=<?php echo $clients->id;?>" class="btn btn-info">
+                                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?client=<?php echo $clients->id;?>" class="btn btn-info">
                                                         Create Order</a>
                                                     <?php
                                                 }
 
                                                 if ($sidebar->orders_list == '1') {
 ?>
-                                                    <a href="<?php echo $this->request->webroot;?>documents/index/?client_id=<?php echo $clients->id;?>" class="btn btn-warning">
+                                                    <a href="<?php echo $this->request->webroot;?>orders/orderslisting/?client_id=<?php echo $clients->id;?>" class="btn btn-warning">
                                                     View Order</a>
 
                                                     <?php

@@ -121,7 +121,7 @@ function provinces($name){
                                         </a>
                                     </li>-->
                                     <?php
-                                        $doc = $this->requestAction('/documents/getDocument/orders');
+                                        $doc = $doc_comp->getDocument('orders');
                                         $subdoccli = $this->requestAction('/clients/getSubCli2/'.$cid);
                                         $subdoccli2 = $subdoccli;
                                         $doc2 = $doc;
@@ -436,7 +436,7 @@ function provinces($name){
             $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/' + form_type);
             // loading data from db
             // debugger;
-            var url = '<?php echo $this->request->webroot;?>documents/getOrderData/' + client_id + '/' + doc_id,
+            var url = '<?php echo $this->request->webroot;?>orders/getOrderData/' + client_id + '/' + doc_id,
                 param = {form_type: form_type};
             $.getJSON(url, param, function (res) {
                 if (form_type == "company_pre_screen_question.php") {
@@ -1322,13 +1322,13 @@ function provinces($name){
                     data: data,
                     type: 'post',
                     beforeSend: saveSignature,
-                    url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1',
+                    url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1',
                     success: function (res) {
                         $('#did').val(res);
                         var draftmode = '<h4 class="block">Your order has been saved as draft.</h4><p> You can edit the order by visiting the orders section inside draft. </p>'
                         $('#tab6 .note').html(draftmode);
                         $.ajax({
-                            url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1',
+                            url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1',
                             type: 'post',
                             data: {
                                 uploaded_for: $('#uploaded_for').val(),
@@ -1383,12 +1383,12 @@ function provinces($name){
                     data: data,
                     type: 'post',
                     beforeSend: saveSignature,
-                    url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=' + draft,
+                    url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=' + draft,
                     success: function (res) {
 
                         $('#did').val(res);
                         $.ajax({
-                            url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=' + draft,
+                            url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=' + draft,
                             type: 'post',
                             data: {
                                 uploaded_for: $('#uploaded_for').val(),
@@ -1589,7 +1589,7 @@ function provinces($name){
             type: 'POST',
             success: function (res) {
                 $.ajax({
-                    url: '<?php echo $this->request->webroot;?>documents/createPdf/' + $('#did').val()
+                    url: '<?php echo $this->request->webroot;?>orders/createPdf/' + $('#did').val()
                 });
 
 
@@ -1622,7 +1622,7 @@ function provinces($name){
             success: function (rea) {
 
                 $.ajax({
-                    url: '<?php echo $this->request->webroot;?>documents/createPdfEmployment/' + $('#did').val()
+                    url: '<?php echo $this->request->webroot;?>orders/createPdfEmployment/' + $('#did').val()
                 });
             }
         });
@@ -1635,7 +1635,7 @@ function provinces($name){
             type: 'POST',
             success: function (res) {
                 $.ajax({
-                    url: '<?php echo $this->request->webroot;?>documents/createPdfEducation/' + $('#did').val(),
+                    url: '<?php echo $this->request->webroot;?>orders/createPdfEducation/' + $('#did').val(),
                     success: function () {
                         $('#loading5').hide();
                     }

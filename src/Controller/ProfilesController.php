@@ -21,6 +21,7 @@
             parent::initialize();
             $this->loadComponent('Settings');
             $this->loadComponent('Mailer');
+            $this->loadComponent('Document');
             if(!$this->request->session()->read('Profile.id'))
             {
                 $this->redirect('/login');
@@ -288,6 +289,7 @@ public function video(){}
         
         public function viewReport($profile)
         {
+            $this->set('doc_comp',$this->Document);
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()

@@ -243,7 +243,7 @@
             </li>
             <?php if ($sidebar->orders == 1) { ?>
                 <li class="<?php echo (($this->request['action'] == 'orderslist' || $this->request['action'] == 'addorder') && !isset($_GET['draft'])) ? 'active open' : ''; ?>">
-                    <a href="<?php echo $this->request->webroot; ?>documents/orderslist">
+                    <a href="<?php echo $this->request->webroot; ?>orders/orderslist">
                         <i class="icon-docs"></i>
                         <span class="title">Orders</span>
                         <span class="selected"></span>
@@ -252,22 +252,22 @@
                     <?php if ($sidebar->orders_list == 1 || $sidebar->orders_create == 1) { ?>
                         <ul class="sub-menu">
                             <?php if ($sidebar->orders_list == 1) { ?>
-                                <li <?php echo ($this->request['controller'] == 'Documents' && $this->request['action'] == 'orderslist' && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
-                                    <a href="<?php echo $this->request->webroot; ?>documents/orderslist">
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'orderslist' && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                    <a href="<?php echo $this->request->webroot; ?>orders/orderslist">
                                         <i class="icon-list"></i>
                                         List Orders</a>
                                 </li>
                             <?php } ?>
                             <?php if ($sidebar->orders_create == 1) { ?>
-                                <li <?php echo ($this->request['controller'] == 'Documents' && $this->request['action'] == 'addorder' && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
-                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>documents/productSelection?driver=0">
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'addorder' && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                    <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?driver=0">
                                         <i class="icon-plus"></i>
                                         Create Order</a>
                                 </li>
                             <?php } ?>
 							<?php if ($sidebar->orders_list == 1) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Documents' && $this->request['action'] == 'orderslist' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
-                                    <a href="<?php echo $this->request->webroot; ?>documents/orderslist?draft">
+                                    <a href="<?php echo $this->request->webroot; ?>orders/orderslist?draft">
                                         <i class="fa fa-pencil"></i>
                                         Order Drafts</a>
                                 </li>

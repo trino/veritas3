@@ -34,7 +34,7 @@
                         <?php if(isset($_GET['draft'])){?><input type="hidden" name="draft" /><?php }?>
                        <!-- </form>-->
                         <?php
-                            $users = $this->requestAction("documents/getAllUser");
+                            $users = $doc_comp->getAllUser();
                         ?>
                         <!--<form action="<?php// echo $this->request->webroot; ?>documents/submittedBy" method="get">-->
 						
@@ -59,7 +59,7 @@
 						</div>
                        <!-- </form>-->
                         <?php
-                            $type = $this->requestAction("documents/getDocType");
+                            $type = $doc_comp->getDocType();
                         ?>
                         <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByType" method="get">-->
 						<div class="col-md-2" style="padding-left:0;">
@@ -79,7 +79,7 @@
 						</div>
                         <!--</form>-->
                         <?php
-                            $clients = $this->requestAction("documents/getAllClient");
+                            $clients = $doc_comp->getAllClient();
                         ?>
                         <!--<form action="<?php //echo $this->request->webroot; ?>documents/filterByClient" method="get">-->
 						<div class="col-md-2" style="padding-left:0;">
@@ -154,8 +154,8 @@
                             }else{
                                 $row_color_class ="even";
                             }
-                            $uploaded_by = $this->requestAction("documents/getUser/".$docs->user_id);
-                            $getClientById = $this->requestAction("documents/getClientById/".$docs->client_id);
+                            $uploaded_by = $doc_comp->getUser($docs->user_id);
+                            $getClientById = $doc_comp->getClientById($docs->client_id);
                           ?> 
                           <tr class="<?=$row_color_class;?>" role="row">
                                 <td><?= $this->Number->format($docs->id) ?></td>

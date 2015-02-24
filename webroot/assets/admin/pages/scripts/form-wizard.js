@@ -268,9 +268,9 @@ var FormWizard = function () {
                     //alert($('.cont').attr('id'));
                     //alert(draft);
                     if(draft==1)
-                    window.location = base_url+'documents/orderslist?draft&flash';
+                    window.location = base_url+'orders/orderslist?draft&flash';
                     else
-                    window.location = base_url+'documents/orderslist?flash';
+                    window.location = base_url+'orders/orderslist?flash';
                     
                 }
 

@@ -90,7 +90,7 @@
                         <table class="table table-striped table-bordered table-advance table-hover recruiters">
                             <thead>
                             <tr>
-                                <th colspan="2">Assigned to:</th>
+                                <th colspan="2">Assigned Profiles:</th>
                             </tr>
                             </thead>
                             <tbody id="">
@@ -115,7 +115,7 @@
                                                 } else {
                                                     echo "(Draft)";
                                                 }
-                                                echo "&nbsp;&nbsp;(Profile)</a>"
+                                                echo "</a>"
                                                 //<a href="<?php echo $this->request->webroot;!>profiles/view/<?php echo $p->id; !>">
                                             //<?php echo $p->username; !> (<?php echo $types[$p->profile_type]; !>)&nbsp;&nbsp;(Profile)</a>
 
@@ -163,7 +163,7 @@
                             <li class="active">
                                 <a href="#tab_1_1" data-toggle="tab">Info</a>
                             </li>
-                            <?php if ($this->request['action'] != "add") {
+                            <?php if ($this->request['action'] != "add" && !isset($_GET['view'])) {
                                 ?>
 
                                 <li>
@@ -495,6 +495,10 @@
                                 </div>
                             </div>
                         </div>
+                        <?php
+                        if ($this->request['action'] != "add" && !isset($_GET['view']) )
+                        {
+                         ?>
                         <div class="tab-pane" id="tab_1_2">
 
 
@@ -591,6 +595,7 @@
 
                             </form>
                         </div>
+                        <?php } ?>
 
                         <!-- END SAMPLE FORM PORTLET-->
 </div>

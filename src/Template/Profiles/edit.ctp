@@ -261,10 +261,17 @@
 
 
                                     <?php }
+                                    if ($p->profile_type == 5)
+                                    {
+                                        ?>
 
-
-
-
+                                    <label class="uniform-inline" style="margin-top:10px;">
+                                <input <?php if(!$this->request->session()->read('Profile.super') && ($this->request->session()->read('Profile.profile_type') != '2')) { echo $is_disabled; }?> type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
+                                       class="checkdriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
+                                Was this driver hired? </label> 
+                                    
+                                    <?php
+                                    }
                                         if ($profile->profile_type == 5) {
                                             ?>
                                             <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>"
@@ -305,13 +312,15 @@
                             <!--BEGIN TABS-->
                             <div class="tabbable tabbable-custom">
                                 <ul class="nav nav-tabs">
-                                    <li class="active">
+                                    <li <?php if(!isset($_GET['getprofilescore'])){ ?> class="active" <?php } ?> >
                                         <a href="#tab_1_1" data-toggle="tab">Profile</a>
                                     </li>
-                                            <li>
+                                    <?php if ($this->request['action'] == 'view') { ?>
+                                            <li <?php if(isset($_GET['getprofilescore'])){ ?> class="active" <?php } ?>>
                                                 <a href="#tab_1_11" data-toggle = "tab" >View Scorecard</a>
                                             </li>
                                             <?php
+                                            }
                                             $needs = false;
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<li><a href="#tab_1_10" data-toggle="tab">Orders</li></A></li>';
@@ -341,7 +350,7 @@
 
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
-                                    <div class="tab-pane active" id="tab_1_1">
+                                    <div class="tab-pane  <?php if(!isset($_GET['getprofilescore'])){ ?> active <?php } ?> " id="tab_1_1">
                                         <input type="hidden" name="user_id" value="<?php echo ""; ?>"/>
                                         <?php include('subpages/profile/info.php'); ?>
                                     </div>
@@ -386,18 +395,15 @@
                                                 <!--</div>-->
                                             </div>
                                             
-                                            <?php } ?>
-                                            <div class="tab-pane" id="tab_1_11">
-                                            
-                            <label class="uniform-inline" style="float:right;margin-top:10px;">
-                                <input <?php  echo $is_disabled ?> type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
-                                       class="checkdriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
-                                Was this driver hired? </label>                                                                                        
+                                            <?php }
+                                             if ($this->request['action'] == 'view') { 
+                                             ?>
+                                            <div class="tab-pane <?php if(isset($_GET['getprofilescore'])){ ?> active <?php } ?>" id="tab_1_11" >                                                                                       
                                                 <?php
                                                 include('subpages/documents/forview.php');
                                                  ?>
                                             </div>                                                                                                                                                                                
-                                        <?php  ?>
+                                        <?php } ?>
                                 </div>
                             </div>
                         </div>

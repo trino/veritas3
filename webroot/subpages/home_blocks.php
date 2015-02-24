@@ -71,7 +71,7 @@
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a><?php }?>
                             <?php if($d->orders==1){?>
-                            <a class="more" href="<?php echo $this->request->webroot;?>documents/orderslist<?php if($d->id <=4 ){?>?table=<?php echo $d->table_name;}?>">
+                            <a class="more" href="<?php echo $this->request->webroot;?>orders/orderslist<?php if($d->id <=4 ){?>?table=<?php echo $d->table_name;}?>">
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a>
                             <?php }

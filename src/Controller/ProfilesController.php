@@ -1062,7 +1062,7 @@ public function settings(){
 
 
         function getRecruiter()
->>>>>>> 6ea6af59029bd947919024e111f3a305881191a7
+
         {
             $rec = TableRegistry::get('Profiles');
             $query = $rec->find()->where(['profile_type'=>2]);
@@ -1073,7 +1073,7 @@ public function settings(){
 
             die();
         }
-<<<<<<< HEAD
+
         
         
         //var_dump($str);

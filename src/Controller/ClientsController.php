@@ -1080,10 +1080,19 @@ class ClientsController extends AppController {
    {
     $query = TableRegistry::get('client_divison');
         $q = $query->find()->where(['client_id'=>$cid])->all();
+        $q2 = $q;
+        $u=0;
+        foreach($q2 as $q3)
+        {
+            $u++;
+        }
         if(count($q)>0){
             echo '<div class="col-md-3 control-label">Select division </div>';
             echo '<div class="col-md-6 ">';
+            if($u!=1)
             echo "<select class='form-control select2me input-xlarge' name='division' id='divisionsel'>";
+            else
+            echo "<select class='form-control select2me input-xlarge' name='division' id='divisionsel' disabled='disabled'>";
 
             foreach($q as $d)
             {

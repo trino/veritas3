@@ -93,42 +93,33 @@
                                     if ($isISB) {
                                         ?>
 
-                                        <option
-                                            value="1" <?php if (isset($return_profile_type) && $return_profile_type == 1) { ?> selected="selected"<?php } ?> >
+                                        <option value="1" <?php if (isset($return_profile_type) && $return_profile_type == 1) { ?> selected="selected"<?php } ?> >
                                             Admin
                                         </option>
-                                        <option
-                                            value="2" <?php if (isset($return_profile_type) && $return_profile_type == 2) { ?> selected="selected"<?php } ?>>
+                                        <option value="2" <?php if (isset($return_profile_type) && $return_profile_type == 2) { ?> selected="selected"<?php } ?>>
                                             Recruiter
                                         </option>
-                                        <option
-                                            value="3" <?php if (isset($return_profile_type) && $return_profile_type == 3) { ?> selected="selected"<?php } ?>>
+                                        <option value="3" <?php if (isset($return_profile_type) && $return_profile_type == 3) { ?> selected="selected"<?php } ?>>
                                             External
                                         </option>
-                                        <option
-                                            value="4" <?php if (isset($return_profile_type) && $return_profile_type == 4) { ?> selected="selected"<?php } ?>>
+                                        <option value="4" <?php if (isset($return_profile_type) && $return_profile_type == 4) { ?> selected="selected"<?php } ?>>
                                             Safety
                                         </option>
-                                        <option
-                                            value="5" <?php if (isset($return_profile_type) && $return_profile_type == 5) { ?> selected="selected"<?php } ?>>
+                                        <option value="5" <?php if (isset($return_profile_type) && $return_profile_type == 5) { ?> selected="selected"<?php } ?>>
                                             Driver
                                         </option>
-                                        <option
-                                            value="6" <?php if (isset($return_profile_type) && $return_profile_type == 6) { ?> selected="selected"<?php } ?>>
+                                        <option value="6" <?php if (isset($return_profile_type) && $return_profile_type == 6) { ?> selected="selected"<?php } ?>>
                                             Contact
                                         </option>
 
                                     <?php } else { ?>
-                                        <option
-                                            value="9" <?php if (isset($return_profile_type) && $return_profile_type == 9) { ?> selected="selected"<?php } ?> >
+                                        <option value="9" <?php if (isset($return_profile_type) && $return_profile_type == 9) { ?> selected="selected"<?php } ?> >
                                             Employee
                                         </option>
-                                        <option
-                                            value="10" <?php if (isset($return_profile_type) && $return_profile_type == 10) { ?> selected="selected"<?php } ?> >
+                                        <option value="10" <?php if (isset($return_profile_type) && $return_profile_type == 10) { ?> selected="selected"<?php } ?> >
                                             Guest
                                         </option>
-                                        <option
-                                            value="11" <?php if (isset($return_profile_type) && $return_profile_type == 11) { ?> selected="selected"<?php } ?> >
+                                        <option value="11" <?php if (isset($return_profile_type) && $return_profile_type == 11) { ?> selected="selected"<?php } ?> >
                                             Partner
                                         </option>
                                     <?php } ?>
@@ -140,15 +131,13 @@
                                 if (isset($super)) {
                                     $getClient = $this->requestAction('profiles/getClient');
                                     ?>
-                                    <select class="form-control showprodivision input-inline" style=""
-                                            name="filter_by_client">
+                                    <select class="form-control showprodivision input-inline" style="" name="filter_by_client">
                                         <option value=""><?php echo ucfirst($settings->client); ?></option>
                                         <?php
                                             if ($getClient) {
                                                 foreach ($getClient as $g) {
                                                     ?>
-                                                    <option
-                                                        value="<?php echo $g->id; ?>" <?php if (isset($return_client) && $return_client == $g->id) { ?> selected="selected"<?php } ?> ><?php echo $g->company_name; ?></option>
+                                                    <option value="<?php echo $g->id; ?>" <?php if (isset($return_client) && $return_client == $g->id) { ?> selected="selected"<?php } ?> ><?php echo $g->company_name; ?></option>
                                                 <?php
                                                 }
                                             }
@@ -175,8 +164,7 @@
                 <div class="form-body">
                     <div class="table-scrollable">
 
-                        <table
-                            class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
+                        <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                             <thead>
                             <tr class="sorting">
                                 <th><?= $this->Paginator->sort('id') ?></th>
@@ -310,7 +298,7 @@
 
             </div>
         </div>
-    </div>
+    </div></div>
     <script>
         $(function () {
             $('.sorting').find('a').each(function () {

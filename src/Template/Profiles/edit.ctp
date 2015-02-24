@@ -396,9 +396,7 @@
                                             </div>
                                             -->
 
-                                            <div class="tab-pane <?php activetab($activetab, "permissions", false); ?>" id="tab_1_7">
-                                                <?php include('subpages/profile/block.php');//permissions ?>
-                                            </div>
+
 
                                             <?php
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
@@ -418,7 +416,7 @@
                                                 </div>
                                                 <!--</div>-->
                                             </div>
-                                            
+
                                             <?php }
                                              if ($this->request['action'] == 'view') { 
                                              ?>
@@ -426,8 +424,11 @@
                                                 <?php
                                                 include('subpages/documents/forview.php');
                                                  ?>
-                                            </div>                                                                                                                                                                                
+                                            </div>
                                         <?php } ?>
+                                    <div class="tab-pane <?php activetab($activetab, "permissions", false); ?>" id="tab_1_7">
+                                        <?php include('subpages/profile/block.php');//permissions ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

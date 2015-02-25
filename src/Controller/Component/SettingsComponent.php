@@ -165,9 +165,9 @@ class SettingsComponent extends Component
                 foreach($qs as $k=>$q)
                 {
                     if(count($qs)==$k+1)
-                        $client_ids .= $q->company_name;
+                        $client_ids .= ucfirst($q->company_name);
                     else
-                        $client_ids .= $q->company_name." ,";
+                        $client_ids .= ucfirst($q->company_name) . ", ";
                 }
             }
                 return $client_ids;

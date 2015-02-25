@@ -81,7 +81,7 @@
                                                 ?>
 
                                             </td>
-                                            <td><?= h($clients->company_name) ?></td>
+                                            <td><?= ucfirst(h($clients->company_name)) ?></td>
 
                                             <td class="actions  util-btn-margin-bottom-5">
 

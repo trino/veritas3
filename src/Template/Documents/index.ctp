@@ -86,7 +86,7 @@
                                     foreach ($users as $u) {
                                         ?>
                                         <option
-                                            value="<?php echo $u->id; ?>" <?php if (isset($return_user_id) && $return_user_id == $u->id) { ?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                            value="<?php echo $u->id; ?>" <?php if (isset($return_user_id) && $return_user_id == $u->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($u->username); ?></option>
                                     <?php
                                     }
                                 ?>
@@ -108,7 +108,7 @@
                                     foreach ($clients as $c) {
                                         ?>
                                         <option
-                                            value="<?php echo $c->id; ?>" <?php if (isset($return_client_id) && $return_client_id == $c->id) { ?> selected="selected"<?php } ?> ><?php echo $c->company_name; ?></option>
+                                            value="<?php echo $c->id; ?>" <?php if (isset($return_client_id) && $return_client_id == $c->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($c->company_name); ?></option>
                                     <?php
                                     }
                                 ?>
@@ -230,7 +230,7 @@
                                     <td><?php
 
                                             if (isset($uploaded_by->username)) {
-                                                $user = h($uploaded_by->username);
+                                                $user = ucfirst(h($uploaded_by->username));
                                             } else {
                                                 $user = "Unknown user";
                                             }
@@ -243,7 +243,7 @@
                                     <td>
                                         <?php
                                             if (is_object($getClientById)) {
-                                                echo h($getClientById->company_name);
+                                                echo ucfirst(h($getClientById->company_name));
                                             } else {
                                                 echo "Deleted " . $settings->client;
                                             }

@@ -52,7 +52,7 @@
                                     foreach ($users as $u) {
                                         ?>
                                         <option
-                                            value="<?php echo $u->id; ?>" <?php if (isset($return_user_id) && $return_user_id == $u->id) { ?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                            value="<?php echo $u->id; ?>" <?php if (isset($return_user_id) && $return_user_id == $u->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($u->username); ?></option>
                                     <?php
                                     }
                                 ?>
@@ -67,7 +67,7 @@
                                     foreach ($clients as $c) {
                                         ?>
                                         <option
-                                            value="<?php echo $c->id; ?>" <?php if (isset($return_client_id) && $return_client_id == $c->id) { ?> selected="selected"<?php } ?> ><?php echo $c->company_name; ?></option>
+                                            value="<?php echo $c->id; ?>" <?php if (isset($return_client_id) && $return_client_id == $c->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($c->company_name); ?></option>
                                     <?php
                                     }
                                 ?>
@@ -142,28 +142,29 @@
                                 } else {
                                     $row_color_class = "even";
                                 }
-                                if ($order->user_id)
+                                if ($order->user_id){
                                     $uploaded_by = $doc_comp->getUser($order->user_id);
-                                if ($order->uploaded_for)
+                                }
+                                if ($order->uploaded_for) {
                                     $uploaded_for = $doc_comp->getUser($order->uploaded_for);
-
+                                }
                                 $client = $this->requestAction("clients/getClient/" . $order->client_id);
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($order->id); //echo $order->profile->title;    ?></td>
                                     <!--td><?= h($order->title) ?></td-->
-                                    <td><?php if (isset($uploaded_by)) echo h($uploaded_by->username) ?></td>
-                                    <td><?php if (isset($uploaded_for)) echo h($uploaded_for->fname . ' ' . $uploaded_for->mname . ' ' . $uploaded_for->lname) ?></td>
+                                    <td><?php if (isset($uploaded_by)) echo ucfirst(h($uploaded_by->username)) ?></td>
+                                    <td><?php if (isset($uploaded_for)) echo h(ucfirst($uploaded_for->fname) . ' ' . ucfirst($uploaded_for->mname) . ' ' . ucfirst($uploaded_for->lname)) ?></td>
                                     <td><?php
                                             if (is_object($client)) {
-                                                echo h($client->company_name);
+                                                echo ucfirst(h($client->company_name));
                                             } else {
                                                 echo "Deleted " . $settings->client;
                                             }
                                         ?></td>
                                     <td><?php if ($order->division) {
                                             $div = $doc_comp->getDivById($order->division);
-                                            echo $div->title;
+                                            echo ucfirst($div->title);
 } else {
 echo '';
 } ?></td>

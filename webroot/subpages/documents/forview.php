@@ -131,6 +131,8 @@
 
         $k = 0;
         foreach ($orders as $order) {
+
+          if(  $order->draft ==0){
             $k++;
 
             $settings = $this->requestAction('settings/get_settings');
@@ -163,9 +165,11 @@
                                 </div>
                                 <div class="portlet-body">
                                     <div class="table-scrollable">
-                                        <div class="col-sm-12" style="padding-top:10px;">
-                        <span class="profile-desc-text">   <p>Type:
-                                <strong>Orders</strong></p>
+                                        <div class="col-sm-7" style="padding-top:10px;">
+                        <span class="profile-desc-text">   <p>Driver:
+                                <strong><?php
+
+                                        echo $order->profile->fname . ' ' . $order->profile->lname; ?></strong></p>
             			<p>Recruiter: <strong><?php echo $uploaded_by->username; ?></strong></p>
 
             			<p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
@@ -177,14 +181,16 @@
 
                                         </div>
 
-                                        <div class="col-sm-12" style="padding:10px 0 20px 0;">
-                                            <center>
-                                                <a style="" href="#" class=" btn btn-lg default yellow-stripe">
+                                        <div class="col-sm-5" style="padding:10px 0 20px 0;">
+                                                <a style="float;right;" href="#" class=" btn btn-lg default yellow-stripe">
                                                     Road Test Score </a><a href="#" class="btn btn-lg yellow">
                                                     <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
                                                 </a>
-                                            </center>
                                         </div>
+
+
+
+
                                         <div class="clearfix"></div>
                                         <table class="table ">
                                             <tbody>
@@ -402,12 +408,12 @@
 
                                                                      <div class="task-title" style="margin:0 0 12px 0;;clear:both;" >
                             															<span class="task-title-sp">
-                            														<span class="icon-notebook"></span>	Pre-screening form
+                            														<span class="icon-notebook"></span>  &nbsp; &nbsp;	Pre-screening form     &nbsp; &nbsp;
                              </span>                                    <?php $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id); ?>
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
-                                                                            &#x2713;
+
                                                                         <?php } else {
                                                                             ?>
                                                                             <span style=""
@@ -422,12 +428,13 @@
 
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
-                            											<span class="icon-notebook"></span> Driver Application	 </span>
-                                                                        <?php $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id); ?>
+                            											<span class="icon-notebook"></span>  &nbsp; &nbsp; Driver Application	 </span>
+                                                                         &nbsp; &nbsp;
+                                                                         <?php $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id); ?>
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
-                                                                            &#x2713;
+
                                                                         <?php } else {
                                                                             ?>
                                                                             <span style=""
@@ -442,13 +449,12 @@
 
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
-                                                                            <span class="icon-notebook"></span> Road Test
-                                                                        </span>
+                                                                            <span class="icon-notebook"></span>  &nbsp; &nbsp; Road Test
+                                                                        </span>     &nbsp; &nbsp;
                                                                         <?php $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id); ?>
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
-                                                                            &#x2713;
                                                                         <?php } else {
                                                                             ?>
                                                                             <span style=""
@@ -463,12 +469,12 @@
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
 
-                                                                           <span class="icon-notebook"></span>  Consent Form	 </span>
+                                                                           <span class="icon-notebook"></span>   &nbsp; &nbsp; Consent Form	 </span>     &nbsp; &nbsp;
                                                                         <?php $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id); ?>
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
-                                                                            &#x2713;
+
                                                                         <?php } else {
                                                                             ?>
                                                                             <span style=""
@@ -483,11 +489,11 @@
 
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
-                                                                      <span class="icon-notebook"></span>  Confirmation  </span>
+                                                                      <span class="icon-notebook"></span>   &nbsp; &nbsp; Confirmation  </span>     &nbsp; &nbsp;
                                                                         <?php if ($order->draft == 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
-                                                                            &#x2713;
+
                                                                         <?php } else {
                                                                             ?>
                                                                             <span style=""
@@ -520,7 +526,22 @@
                 </div>
             </div>
 
-        <?php } ?>
+        <?php }}
+
+        if($k ==0){
+            ?>
+            <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
+                <thead>
+                </thead>
+                <tbody>
+                <tr class="even" role="row"><td colspan="" align="center">No orders found</td></tr>                        </tbody>
+            </table>
+
+            <?
+        }
+
+
+        ?>
         <!-- END PROFILE CONTENT -->
     <?php
     }

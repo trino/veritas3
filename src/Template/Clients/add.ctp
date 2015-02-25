@@ -750,7 +750,7 @@
                         window.location = '<?php echo $this->request->webroot;?>clients/edit/' + res;
                     }
                     else if (res == 'email') {
-                        alert('Email Already Used.');
+                        alert('Email Already Exist.');
                     }
                     else if (res == 'Invalid Email') {
                         $('#tab_1_1 input[type="email"]').focus();

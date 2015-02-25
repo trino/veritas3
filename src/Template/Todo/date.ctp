@@ -14,7 +14,7 @@
                         <i class="fa fa-angle-right"></i>
 					</li>
                     <li>
-                        <a href="">Schedule( <?php echo $this->request['pass'][0];?> )</a>
+                        <a href="">Schedule (<?php echo $this->request['pass'][0];?>)</a>
                     </li>
 				</ul>
                 
@@ -46,6 +46,7 @@
                                                 else
                                                     echo "No tasks for today.";
                                                 ?>
+                                                    <BR><a href="../add?date=<?= $this->request['pass'][0]; ?>">Click here to add an event</a>
                                                     <!--<a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-red">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">

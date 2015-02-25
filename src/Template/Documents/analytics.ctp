@@ -364,9 +364,9 @@ function enumsubdocs($thedocs, $date, $chartid, $isdraft){
 				if ($chartid == "orders") {
 					$doctype = $adoc->is_hired;
 					if ($doctype) {
-						$doctype = " new hiree";
+						$doctype = "New Hiree";
 					} else {
-						$doctype = " candidate";
+						$doctype = "Candidate";
 					}
 				}
 				if ($chartid == "clients") {

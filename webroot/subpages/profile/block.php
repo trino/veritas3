@@ -6,8 +6,16 @@
     if(!isset($is_disabled1)){$is_disabled1 = "";}//something is wrong with this variable
 
 if ($activetab == "permissions") {
-    if (isset($Clientcount) && $Clientcount == 0) { $activetab = "assign"; } else {$activetab = "config";}
+    if ((isset($Clientcount) && $Clientcount == 0) || $this->request->session()->read('Profile.profile_type')=='2' )
+     { $activetab = "assign"; }
+     else 
+     {
+        $activetab = "config";
+        }
 } else {
+    if($this->request->session()->read('Profile.profile_type')=='2')
+        $activetab = "assign";
+    else
     $activetab ="config";
 }
 
@@ -46,6 +54,7 @@ if ($activetab == "permissions") {
     <!--</div>-->
     <div class="portlet-body form">
                                     <div class="tab-content">
+                                                
                                                 <div class="tab-pane <?php activetab($activetab, "config", false); ?>" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->

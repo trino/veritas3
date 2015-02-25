@@ -26,7 +26,10 @@
                         $class="even";
                         foreach($getOrders as $g ) { $found=true; ?>
                             <tr class="<?= $class ?>" role="row">
-                                <td><input type="checkbox" id="<?php echo $g->id . '"><label for="' . $g->id . '">' . $g->id; ?></label></input></td>
+                                <td>
+                                <!--<input type="checkbox" id="<?php echo $g->id ?>"/>-->
+                                <a href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $g->client_id.'/'.$g->id; ?>"><?php echo $g->title; ?></a>
+                                </td>
                                 <td align="center"><?php echo $g->created; ?></td>
                             </tr>
                             <?php

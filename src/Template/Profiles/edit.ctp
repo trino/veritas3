@@ -312,7 +312,7 @@
                             <!--BEGIN TABS-->
                             <div class="tabbable tabbable-custom">
                                 <ul class="nav nav-tabs">
-                                    <li <?php if($this->request['action']=='add' ||(!isset($_GET['getprofilescore'])&&($Clientcount!=0))){ ?> class="active" <?php } ?> >
+                                    <li <?php if($this->request['action']=='add' || $this->request['action']=='view' || (!isset($_GET['getprofilescore'])&&(isset($Clientcount) && $Clientcount!=0))){ ?> class="active" <?php } ?> >
                                         <a href="#tab_1_1" data-toggle="tab">Profile</a>
                                     </li>
                                     <?php if ($this->request['action'] == 'view') { ?>
@@ -350,7 +350,7 @@
 
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
-                                    <div class="tab-pane  <?php if($this->request['action']=='add' ||(!isset($_GET['getprofilescore'])&&($Clientcount!=0))){ ?> active <?php } ?> " id="tab_1_1">
+                                    <div class="tab-pane  <?php if($this->request['action']=='add' ||$this->request['action']=='view'||(!isset($_GET['getprofilescore'])&&($Clientcount!=0))){ ?> active <?php } ?> " id="tab_1_1">
                                         <input type="hidden" name="user_id" value="<?php echo ""; ?>"/>
                                         <?php include('subpages/profile/info.php'); ?>
                                     </div>

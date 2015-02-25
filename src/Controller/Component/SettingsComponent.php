@@ -134,6 +134,47 @@ class SettingsComponent extends Component
         
     }
     
+    function getAllClientsId($uid)
+    {
+        $clients = TableRegistry::get('clients');
+            $qs = $clients->find()->select('id')->where(['profile_id LIKE "'.$uid.',%" OR profile_id LIKE "%,'.$uid.',%" OR profile_id LIKE "%,'.$uid.'" OR profile_id ="'.$uid.'"'])->all();
+           
+            $client_ids ="";
+            if(count($qs)>0)
+            {
+                foreach($qs as $k=>$q)
+                {
+                    if(count($qs)==$k+1)
+                        $client_ids .= $q->id;
+                    else
+                        $client_ids .= $q->id.",";
+                }
+            }
+                return $client_ids;
+                
+    }
+    
+    function getAllClientsname($uid)
+    {
+        $clients = TableRegistry::get('clients');
+            $qs = $clients->find()->select('company_name')->where(['profile_id LIKE "'.$uid.',%" OR profile_id LIKE "%,'.$uid.',%" OR profile_id LIKE "%,'.$uid.'" OR profile_id ="'.$uid.'"'])->all();
+           
+            $client_ids ="";
+            if(count($qs)>0)
+            {
+                foreach($qs as $k=>$q)
+                {
+                    if(count($qs)==$k+1)
+                        $client_ids .= $q->company_name;
+                    else
+                        $client_ids .= $q->company_name." ,";
+                }
+            }
+                return $client_ids;
+                
+    }
+    
+    
     function check_pro_id($id)
     {
         $profile = TableRegistry::get('profiles');

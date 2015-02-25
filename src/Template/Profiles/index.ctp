@@ -175,6 +175,7 @@
 
                                 <th><?= $this->Paginator->sort('fname', 'First Name') ?></th>
                                 <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
+                                <th>Assigned to <?=$settings->clients;?></th>
 
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
@@ -220,7 +221,7 @@
 
                                         <td><?= h($profile->fname) ?></td>
                                         <td><?= h($profile->lname) ?></td>
-
+                                        <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
 
                                         <td class="actions  util-btn-margin-bottom-5">
 

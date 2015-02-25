@@ -415,7 +415,10 @@
                                 						<!--h1> Enable <?php echo ucfirst($settings->document);?>?</h1-->
                                                         <form action="#" method="post" id="displayform">
                                                             <table class="table table-bordered table-hover">
-                                                        <tr><th   width="25%"></th><th class=""  width="25%">System</th><th class=""><?php echo ucfirst($settings->profile);?></th></tr>
+                                                        <tr><th   width="25%"></th>
+                                                        <!--<th class=""  width="25%">System</th>-->
+                                                        <th class=""><?php echo ucfirst($settings->profile);?></th>
+                                                        </tr>
                                                         <?php
                                                         $subdoc = $this->requestAction('/profiles/getSub');
                                                         
@@ -427,14 +430,14 @@
                                                                 
                                                                <?php echo ucfirst($sub['title']);?>
                                                             </td>
-                                                            <td class="">
+                                                            <!--<td class="">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="1" <?php if($sub['display']==1) {?>checked="checked" <?php }?> />
                                                                     Yes </label>
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="0" <?php if($sub['display']==0) {?>checked="checked" <?php }?> />
                                                                     No </label>
-                                                            </td>
+                                                            </td>-->
                                                             <?php
                                                                  $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$id.'/'.$sub->id);
                                                             ?>

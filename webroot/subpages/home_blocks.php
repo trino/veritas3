@@ -25,7 +25,7 @@
                 //debug($doc);
                 //
                 $i=0;
-                //if($doc){
+                if($doc){
                     //echo strtolower($document->document_type);
                     $form_type = "";
                     foreach($doc as $d)
@@ -35,13 +35,14 @@
                              $form_type = $d->form;
                         //$prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$this->Session->read('Profile.id').'/'.$d->id);
                         $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.$d->id);
+                        if(isset($cid))
                         $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/'.$cid.'/'.$d->id);
                         
                         //echo $d->id.":".$csubdoc['display']."-".$prosubdoc['display']."-".$d->display.",";
                         if($i==11)
                             $i=0;
                         ?>
-                        <?php if($prosubdoc['display'] > 1 && $d->display == 1 && (isset($csubdoc) && $csubdoc['display'] == 1))
+                        <?php if($prosubdoc['display'] > 1 && $d->display == 1 && ( !isset($csubdoc)  || (isset($csubdoc) && $csubdoc['display'] == 1)))
                         {?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
@@ -56,8 +57,8 @@
                                 
                                 <?php 
                                 if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
-                                if($d->orders==0)echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
-    							<?php if($d->orders==1)echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name); }?>	
+                                echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
+    							<?php /*if($d->orders==1)echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name);*/ }?>	
     							</div>
     							<div class="desc">
     								 <?php
@@ -67,14 +68,14 @@
     							</div>
     						</div>
                             <?php if($this->request['controller']!="Documents"){?>
-    						<?php if($d->orders==0){?><a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
-    						View more <i class="m-icon-swapright m-icon-white"></i>
-    						</a><?php }?>
-                            <?php if($d->orders==1){?>
-                            <a class="more" href="<?php echo $this->request->webroot;?>orders/orderslist<?php if($d->id <=4 ){?>?table=<?php echo $d->table_name;}?>">
+    						<a class="more" href="<?php echo $this->request->webroot;?>orders/orderslist?type=<?php echo urlencode($d->title);?>">
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a>
-                            <?php }
+                            <!--
+                            <a class="more" href="<?php echo $this->request->webroot;?>orders/orderslist<?php if($d->id <=4 ){?>?table=<?php echo $d->table_name;}?>">
+    						View more <i class="m-icon-swapright m-icon-white"></i>
+    						</a>-->
+                            <?php
                             }
                             else{?>
                             <a class="more" id="sub_doc_click<?php echo $d->id;?>" href="javascript:;" onclick="showforms('<?php echo $d->form."?doc_id=".$d->id;?>')">
@@ -92,7 +93,7 @@
                     }
                    
                     
-                //}
+                }
                  ?>
 			<!--	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 

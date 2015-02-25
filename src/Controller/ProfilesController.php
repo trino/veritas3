@@ -80,6 +80,7 @@
     {
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $u = $this->request->session()->read('Profile.id');
+        $this->set('ProClients',$this->Settings);
         $super = $this->request->session()->read('Profile.super');
         $condition = $this->Settings->getprofilebyclient($u, $super);
         if ($setting->profile_list == 0) {
@@ -473,6 +474,8 @@
 
     if ($add == '0')
     {
+        $profile_type = $this->request->session()->read('Profile.profile_type');
+        
     $_POST['created'] = date('Y-m-d');
 
     if (isset($_POST['password']) && $_POST['password'] == '') {
@@ -491,7 +494,39 @@
 
         $profile = $profiles->newEntity($_POST);
         if ($profiles->save($profile)) {
+            if($profile_type== 2)
+            {
+                //save profiles to clients if recruiter
+                $clients_id = $this->Settings->getAllClientsId($this->request->session()->read('Profile.id'));
 
+                if($clients_id!= "")
+                {
+                    $client_id = explode(",", $clients_id);
+                    foreach ($client_id as $cid) 
+                    {
+                        $query = TableRegistry::get('clients');
+                        $q = $query->find()->where(['id' => $cid])->first();
+                        $profile_id = $q->profile_id;
+                        $pros = explode(",", $profile_id);
+    
+                        $p_ids = "";
+    
+                        array_push($pros, $profile->id);
+                        $pro_id = array_unique($pros);
+    
+                        foreach ($pro_id as $k => $p) {
+                            if (count($pro_id) == $k + 1)
+                                $p_ids .= $p;
+                            else
+                                $p_ids .= $p . ",";
+                        }
+    
+                        $query->query()->update()->set(['profile_id' => $p_ids])
+                            ->where(['id' => $cid])
+                            ->execute();
+                    }
+                }
+            }
             if ($_POST['client_ids'] != "") {
                 $client_id = explode(",", $_POST['client_ids']);
                 foreach ($client_id as $cid) {

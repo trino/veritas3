@@ -27,6 +27,7 @@
                 if($doc){
                     //echo strtolower($document->document_type);
                     $form_type = "";
+                    $titles = array();
                     foreach($doc as $d)
                     {
                         //echo strtolower($d->title);
@@ -53,7 +54,6 @@
     						</div>
     						<div class="details">
     							<div class="number">
-                                
                                 <?php 
                                 if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
                                 echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name); ?>
@@ -63,6 +63,7 @@
     								 <?php
 									 	$title = ucfirst($d->title);
 									 	if ($title == "Feedbacks") { $title = "Feedback"; }
+                                         $titles[strtolower(trim($title))] = 1;
 									 echo $title; ?>
     							</div>
     						</div>
@@ -93,6 +94,15 @@
                    
                     
                 }
+
+                    if ($this->request->controller == "Documents" && $this->request->action == "view") {
+                        $documenttype = $this->viewVars['mod']->document_type;
+                        if (!isset($titles[strtolower(trim($documenttype))])) {
+                            echo '<div class="col-md-12">';
+                            echo '<div class="clearfix"></div><div class="alert alert-danger"><strong>Error!</strong> You no longer have permission to view this document type (' . $documenttype . ')</div>';
+                            echo '</div>';
+                        }
+                    }
                  ?>
 
 

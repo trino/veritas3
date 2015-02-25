@@ -204,11 +204,19 @@
                     $da_at = TableRegistry::get('doc_attachments');
                     $sub['da_at'] = $da_at->find()->where(['document_id' => $did])->all();
 
-                    $de_at = TableRegistry::get('doc_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['document_id' => $did])->all();
+                    
 
                     $this->set('sub', $sub);
                 }
+                
+                $de = TableRegistry::get('road_test');
+                $de_detail = $de->find()->where(['document_id' => $did])->first();
+                if ($de_detail) {
+                   $de_at = TableRegistry::get('doc_attachments');
+                    $sub['de_at'] = $de_at->find()->where(['document_id' => $did])->all(); 
+                    $this->set('sub', $sub);
+                }
+                
                 $con = TableRegistry::get('consent_form');
                 $con_detail = $con->find()->where(['document_id' => $did])->first();
                 if ($con_detail) {

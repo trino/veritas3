@@ -186,7 +186,7 @@
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($docs->id) ?></td>
                                     <td>
-                                        <div class="dashboard-stat <?php
+                                        <div class="dashboard-stat <?php //replace this entire div with  h($docs->document_type);  to get the old style back
                                             $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedback" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
                                             if (isset($colors[strtolower($docs->document_type)])){
                                                 echo $colors[strtolower($docs->document_type)];
@@ -198,7 +198,7 @@
                                             <div class="visual" style="height: 40px;">
                                                 <i class="fa fa-copy"></i>
                                             </div>
-                                            <!--div class="details">
+                                            <!--div class="details"> //WARNING: This won't work while in a table...
                                                 <div class="number"></div>
                                                 <div class="desc"></div>
                                             </div-->

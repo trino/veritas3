@@ -9,7 +9,13 @@
         <div class="col-md-4">
             <label class="control-label">Recruiter's Name : </label>
 
-            <input type="text" class="form-control" name="recruiter_name" value="<?php if(!$did)echo $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.lname');?>" />
+            <?php
+                $value="";
+                if(!$did){
+                    $value = $this->request->session()->read('Profile.fname') . ' ' . $this->request->session()->read('Profile.lname');
+                }
+            ?>
+            <input type="text" class="form-control" name="recruiter_name" value="<?=$value ?>"  <?php if(strlen($value)>1){echo "disabled";}?> />
 
         </div>
 

@@ -51,7 +51,14 @@
 													* </span>
 													</label>
 													<div class="col-md-6">
-														<input type="text" placeholder="" class="form-control" name="name_evaluator" value="<?php if(!$did){echo $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.mname').' '.$this->request->session()->read('Profile.lname');}?>"/>
+                                                        <?php
+                                                            $value="";
+                                                            if(!$did){
+                                                                $value = $this->request->session()->read('Profile.fname').' '.$this->request->session()->read('Profile.mname').' '.$this->request->session()->read('Profile.lname');
+                                                            }
+                                                        ?>
+
+														<input type="text" placeholder="" class="form-control" name="name_evaluator" value="<?= $value; ?>" <?php if(strlen($value)>1) { echo " disabled"; }?> />
 													</div>
 												</div>
                                                 

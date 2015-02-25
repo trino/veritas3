@@ -72,10 +72,10 @@
                             <div class="form-group">
                                 <label class="control-label"><?php echo ucfirst($settings->profile); ?> Type</label>
 
-
+                                <input type="hidden" id="nProfileType" name="profile_type" value="<?php echo $p->profile_type;?>" <?php echo $is_disabled ?> />
                                 <select  <?php echo $is_disabled ?>
-                                    name="profile_type" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
-                                    class="form-control member_type" required='required'>
+                                    name="" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
+                                    class="form-control member_type" required='required' onchange="$('#nProfileType').val($(this).val());">
                                     <option value="">Select</option>
                                     <?php
 
@@ -750,6 +750,7 @@
             $(':disabled[name]').each(function () {
                 strs = strs + '&' + $(this).attr('name') + '=' + $(this).val();
             });
+            
             var adds = "<?php echo ($this->request['action']=='add')?'0':$this->request['pass'][0];?>";
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>profiles/saveprofile/' + adds,

@@ -267,7 +267,7 @@ var FormWizard = function () {
                     $('#loading5').show();
 
                     // VAN REENABLE BELOW
-
+                    alert(draft);
                     if(draft==1)
                     window.location = base_url+'orders/orderslist?draft&flash';
                     else

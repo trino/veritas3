@@ -711,7 +711,7 @@
                     <p>I understand that I may receive an offer of employment once this process has been completed by Challenger based on successful results of the above. I also understand that I will not receive and am not entitled to any payment for participating in the Training (Orientation) Program.</p>
 
                         <div class="note note-success">
-                            <h4><input type="checkbox" class="form-control" value="1" id="confirm_check" name="confirm_check" /><label for="confirm_check"></label> I confirm that I have read and understand the above conditions as part of the application process.<BR>I have been given an opportunity to ask questions.</label></h4>
+                            <input type="checkbox" class="form-control" value="1" id="confirm_check" name="confirm_check" /><label for="confirm_check"><h4>I confirm that I have read and understand the above conditions as part of the application process.<BR>I have been given an opportunity to ask questions.</h4></label>
                         </div>
                     </div>
 

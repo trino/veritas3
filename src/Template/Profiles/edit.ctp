@@ -266,8 +266,8 @@
                                         ?>
 
                                     <label class="uniform-inline" style="margin-bottom:20px;">
-                                <input <?php if(!$this->request->session()->read('Profile.super') && ($this->request->session()->read('Profile.profile_type') != '2')) { echo $is_disabled; }?> type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
-                                       class="checkdriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
+                                <input <?php if(!$this->request->session()->read('Profile.super') && ($this->request->session()->read('Profile.profile_type') != '2')) { echo $is_disabled; }?> type="checkbox" name="stat" value="1" id="<?php echo $profile->id; ?>"
+                                       class="checkhiredriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
                                 Was this driver hired? </label> 
                                     
                                     <?php
@@ -484,8 +484,14 @@
             <?php
             if(isset($id))
             {
-             ?>
+                if($this->request->params['action'] != 'view')
+                {
+                    ?>
+                    
             initiate_ajax_upload('clientimg');
+            <?php
+                }
+             ?>
             $('.addclientz').click(function () {
                 var client_id = $(this).val();
                 var addclient = "";
@@ -564,7 +570,7 @@
 <script>
         $(function () {
 
-            $('.checkdriver').click(function () {
+            $('.checkhiredriver').click(function () {
 
                 var oid = $(this).attr('id');
                 if ($(this).is(":checked")) {

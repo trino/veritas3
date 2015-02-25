@@ -267,11 +267,11 @@ var FormWizard = function () {
                     $('#loading5').show();
 
                     // VAN REENABLE BELOW
-                    alert(draft);
+                    //alert(draft);
                     if(draft==1)
-                    window.location = base_url+'orders/orderslist?draft&flash';
+                    window.location = base_url+'?orderflash';
                     else
-                    window.location = base_url+'orders/orderslist?flash';
+                    window.location = base_url+'?orderflash';
 
 
 

@@ -34,7 +34,8 @@ class PagesController extends AppController {
 	   $this->loadComponent('Document');
        $this->set('doc_comp',$this->Document);
 	   $this->loadModel('Clients');
-
+        if(isset($_GET['orderflash']))
+        $this->Flash->success('Order submitted successfully');
 		$setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         
 // debug($setting);die();

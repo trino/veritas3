@@ -563,7 +563,7 @@
                                                         No </label>
                                                 </td>
                                                 <td>
-                                                            <input <?php if ($csubdoc['display_order'] == 1) { ?> checked="checked" <?php } ?> type="checkbox" onclick="$(this).closest('td').find('.fororder').val('1')"  /> Show<input class="fororder" type="hidden" value="<?php if ($csubdoc['display_order'] == 1) {echo '1';}else{?>0<?php } ?>" name="clientO[<?php echo $sub->id; ?>]" />
+                                                            <input <?php if ($csubdoc['display_order'] == 1) { ?> checked="checked" <?php } ?> type="checkbox" onclick="if($(this).is(':checked')){$(this).closest('td').find('.fororder').val('1');}else {$(this).closest('td').find('.fororder').val('0');}"  /> Show<input class="fororder" type="hidden" value="<?php if ($csubdoc['display_order'] == 1) {echo '1';}else{?>0<?php } ?>" name="clientO[<?php echo $sub->id; ?>]" />
                                                         </td>
                                                         <td>
                                                             <?php echo $u;?>

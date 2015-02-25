@@ -185,7 +185,28 @@
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($docs->id) ?></td>
-                                    <td><?= h($docs->document_type) ?></td>
+                                    <td>
+                                        <div class="dashboard-stat <?php
+                                            $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedback" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
+                                            if (isset($colors[strtolower($docs->document_type)])){
+                                                echo $colors[strtolower($docs->document_type)];
+                                            } else {
+                                                echo "blue";
+                                            }
+                                            ?>">
+                                            <div class="whiteCorner"></div>
+                                            <div class="visual" style="height: 40px;">
+                                                <i class="fa fa-copy"></i>
+                                            </div>
+                                            <!--div class="details">
+                                                <div class="number"></div>
+                                                <div class="desc"></div>
+                                            </div-->
+                                            <a class="more" id="sub_doc_click1" href="javascript:;" onclick="showforms('company_pre_screen_question.php?doc_id=1')">
+                                                <?= h($docs->document_type); //it won't let me put it in the desc ?>
+                                            </a>
+                                        </div>
+                                    </td>
                                     <td><?php
 
                                             if (isset($uploaded_by->username)) {

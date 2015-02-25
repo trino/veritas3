@@ -71,7 +71,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label"><?php echo ucfirst($settings->profile); ?> Type</label>
-
+<!--old code:  <input type="hidden" id="nProfileType" name="profile_type" value="<!php if(!isset($p) && isset($getProfileType->profile_type) && $getProfileType->profile_type == 2)echo "5"; else echo $p->profile_type;!>" <!php echo $is_disabled !> />-->
 
                                 <input type="hidden" id="nProfileType" name="profile_type" value="<?php if (isset($p)) { echo $p->profile_type;} ?>" <?php echo $is_disabled ?> />
 

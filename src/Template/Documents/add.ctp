@@ -60,6 +60,8 @@ if ($action == "Add") {
         <?php } ?>
 
 </div>
+
+
 <div class="row">
     <div class="col-md-12">
         <?php
@@ -78,7 +80,8 @@ if ($action == "Add") {
                             }
                         ?>
                         <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();" class="btn btn-success moreback" style="display: none;">Back</a>
-                        <?php include('subpages/home_blocks.php'); ?>
+
+                    <?php include('subpages/home_blocks.php'); ?>
                     <div class="form-group mar-top-10">
 
 

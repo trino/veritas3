@@ -364,7 +364,7 @@
                                             <?php }
                                             
                                             
-                                            if ($this->request->session()->read('Profile.admin') || $this->request->session()->read('Profile.profile_type') == '2') { ?>
+                                            if ($this->request->session()->read('Profile.admin') ||( $this->request->session()->read('Profile.id') != $id &&$this->request->session()->read('Profile.profile_type') == '2')) { ?>
                                                 <li <?php activetab($activetab, "permissions"); ?>>
                                                     <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                                 </li>

@@ -32,6 +32,26 @@ public function initialize(array $config)
             'dependent' => true,
             
         ]);
+        $this->hasMany('Survey', [
+            'className' => 'Survey',
+            'dependent' => true,
+            
+        ]);
+        $this->hasMany('Feedbacks', [
+            'className' => 'Feedbacks',
+            'dependent' => true,
+            
+        ]);
+        $this->hasMany('Attachments', [
+            'className' => 'Attachments',
+            'dependent' => true,
+            
+        ]);
+        $this->hasMany('Audits', [
+            'className' => 'Audits',
+            'dependent' => true,
+            
+        ]);
         $this->belongsTo('Clients', [
             'foreignKey' => 'client_id',]);
        

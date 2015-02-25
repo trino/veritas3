@@ -56,7 +56,7 @@
                                 
                                 <?php 
                                 if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
-                                echo $cnt = $this->requestAction('/documents/get_documentcount/'.$d->id); ?>
+                                echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name); ?>
     							<?php /*if($d->orders==1)echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name);*/ }?>	
     							</div>
     							<div class="desc">

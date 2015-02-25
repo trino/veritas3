@@ -46,7 +46,8 @@
                                                 else
                                                     echo "No tasks for today.";
                                                 ?>
-                                                    <BR><a href="../add?date=<?= $this->request['pass'][0]; ?>">Click here to add an event</a>
+                                                    <BR><a href="/veritas3/todo/add?date=<?= $this->request['pass'][0]; ?>" id="event_add" type="button" class="btn red">Add Task </a>
+
                                                     <!--<a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-red">
 														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">

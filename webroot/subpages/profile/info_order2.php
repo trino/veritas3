@@ -67,10 +67,16 @@
             case 4:
                 echo '<a href="#" class="btn yellow-crusta">Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
                 break;
-            case 5: ?>
+            case 5:
+                $tempstr="";
+                for ($temp=0; $temp< 7; $temp+=1){//there are 7 checkboxes to check
+                    if (strlen($tempstr)>0){ $tempstr.= "+','"; }
+                    $tempstr.= "+Number($('#form" . $temp . "').prop('checked'))";
+                }
+                ?>
 
                 <a class="btn red button-next proceed"
-                   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division">
+                   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&forms='<?=$tempstr;?>">
                     Order Products <i class="m-icon-swapright m-icon-white"></i>
                 </a>
 
@@ -443,37 +449,37 @@
                     <ul class="pricing-content list-unstyled">
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form0" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="dri_abs" value=""></span>
+                            <input checked type="checkbox" name="dri_abs" id="form1" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Driver's Record Abstract
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="CVOR" value=""></span>
+                            <input checked type="checkbox" name="CVOR" id="form2" value="1"></span>
                             <i class="fa fa-file-text-o"></i> CVOR
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form3" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form4" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Transclick
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form5" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Certifications
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form6" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Letter of Experience
                         </li>
 

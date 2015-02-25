@@ -57,6 +57,25 @@ function provinces($name){
         </li>
     </ul>
     <?php
+        $forms=array();
+        if (isset($_GET["forms"])){
+            $forms = explode(",", $_GET["forms"]);
+            echo "Forms: ";
+            print_r($forms);
+        }
+
+        //returns: boolean, if this form should be displayed
+        //parameters:
+        //  $forms  -   pass in the $forms variable since globals don't seem to work
+        //  $id     -   the ID/index number of the form to check
+        // NOTE: This is an arbitrary rule set to be substituted for a working one later on
+        function displayform($forms, $id){
+            if(count($forms)>$id){
+                return $forms[$id] == 1;
+            }
+            return true; //returns true if $forms is empty or smaller than the ID number
+        }
+
         if (isset($disabled)) { ?>
             <a href="javascript:window.print();" class="floatright btn btn-primary">Print</a>
 
@@ -128,9 +147,10 @@ function provinces($name){
                                         $i = 2;
                                         $end = 0;
                                         $k_c=0;
+                                        $index=0;
                                         foreach ($subdoccli as $sd) {
-                                            
-                                           $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id); 
+                                            $index+=1;
+                                            $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
                                             $act = 0;
                                             if ($d->table_name == $table) {
                                                 $act = 1;
@@ -140,17 +160,15 @@ function provinces($name){
                                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
 
                                             ?>
-                                            <?php if ($prosubdoc['display'] != 0 && $d->display == 1) {
+                                            <?php if ($prosubdoc['display'] != 0 && $d->display == 1 && displayform($forms, $index)) {
                                                 $k_c++;
                                                 $j = $d->id;
                                                 $j = $j + 1;
-                                                if($k_c==1)
-                                                {
+                                                if($k_c==1) {
                                                     $k_cou = $j;
                                                 }
                                                 else
-                                                if($k_cou<$j)
-                                                {
+                                                if($k_cou<$j) {
                                                     $k_cou=$j;
                                                 }
                                                 ?>

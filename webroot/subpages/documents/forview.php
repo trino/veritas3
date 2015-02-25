@@ -125,9 +125,10 @@
         $counting = 0;
         $drcl_d = $orders;
         foreach ($drcl_d as $drcld) {
-
-            $counting++;
+            if(  $order->draft ==0){ $counting++; }
         }
+
+
 
         $k = 0;
         foreach ($orders as $order) {
@@ -160,6 +161,7 @@
                             <div class="portlet box yellow">
                                 <div class="portlet-title">
                                     <div class="caption">
+                                        <A name="<?php echo $order->created; ?>" /></a>
                                         <i class="fa fa-folder-open-o"></i>Order Score Sheet - <?php echo $order->created; ?>
                                     </div>
                                 </div>

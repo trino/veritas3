@@ -158,7 +158,12 @@
                         </ul>
                     <?php } ?>
                 </li>
-            <?php } ?>
+            <?php }
+                function GET2($name, $default = ""){
+                    if (isset($_GET[$name])){ return $_GET[$name] ;}
+                    return $default;
+                }
+            ?>
 
             </li>
             <?php if ($sidebar->orders == 1) { ?>
@@ -179,20 +184,20 @@
                                 </li>
                             <?php } ?>
                             <?php if ($sidebar->orders_create == 1) { ?>
-                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'addorder' && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'productSelection' && GET2("ordertype", "MEE") == "MEE" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                                     <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=MEE">
                                         <i class="icon-plus"></i>
                                         Place Order</a>
                                 </li>
 
-                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'addorder' && $_GET["ordertype"] == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && GET2("ordertype") == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                             <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART">
                                 <i class="icon-plus"></i>
                                 A La Carte/Re-qualify </a>
                 </li>
                             <?php } ?>
 							<?php if ($sidebar->orders_list == 1) { ?>
-                                <li <?php echo ($this->request['controller'] == 'Documents' && $this->request['action'] == 'orderslist' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'orderslist' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                                     <a href="<?php echo $this->request->webroot; ?>orders/orderslist?draft">
                                         <i class="fa fa-pencil"></i>
                                         Order Drafts</a>

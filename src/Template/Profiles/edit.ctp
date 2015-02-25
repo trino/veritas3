@@ -261,8 +261,8 @@
 
 
                                     <?php }
-                                    if ($p->profile_type == 5)
-                                    {
+                                    if (isset($p)){
+                                        if ($p->profile_type == 5){
                                         ?>
 
                                     <label class="uniform-inline" style="margin-bottom:20px;">
@@ -271,16 +271,19 @@
                                 Was this driver hired? </label> 
                                     
                                     <?php
-                                    }
-                                        if ($profile->profile_type == 5) {
-                                            ?>
-                                            <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
-                                               class="btn red-flamingo">Place MEE Order</a>
-                                            <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
-                                               class="btn btn-success" style="margin-top:10px;">A La Carte/Re-qualify</a>
-                                        <?php
-                                        }
+                                    }}
 
+                                        if (isset($p)) {
+                                            if ($profile->profile_type == 5) {
+                                                ?>
+                                                <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
+                                                   class="btn red-flamingo">Place MEE Order</a>
+                                                <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
+                                                   class="btn btn-success" style="margin-top:10px;">A La
+                                                    Carte/Re-qualify</a>
+                                            <?php
+                                            }
+                                        }
 
                                     ?>
 

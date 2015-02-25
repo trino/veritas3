@@ -43,8 +43,11 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
+
+
+
     <?php if ($sidebar->client_list ==1) { ?>
-        <a href="<?php echo $this->request->webroot; ?>clients?draft" class="tile bg-grey-salsa" style="display: block;">
+        <!--a href="<?php echo $this->request->webroot; ?>clients?draft" class="tile bg-grey-salsa" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
             </div>
@@ -52,7 +55,7 @@ function randomcolor(){
                 <div class="name"> <?=$settings->client;?> Drafts</div>
                 <div class="number"></div>
             </div>
-        </a>
+        </a-->
     <?php } ?>
 
 
@@ -80,7 +83,7 @@ function randomcolor(){
         </a>
     <?php } ?>
     <?php  if ($sidebar->profile_list ==1) { ?>
-		<a href="<?php echo $this->request->webroot; ?>profiles?draft" class="tile bg-green-haze" style="display: block;">
+		<!--a href="<?php echo $this->request->webroot; ?>profiles?draft" class="tile bg-green-haze" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
             </div>
@@ -88,7 +91,7 @@ function randomcolor(){
                 <div class="name"><?=$settings->profile;?> Drafts</div>
                 <div class="number"></div>
             </div>
-        </a>
+        </a-->
     <?php } ?>
 
 
@@ -118,7 +121,7 @@ function randomcolor(){
         </a>
     <?php } ?>
     <?php if ($sidebar->document_list ==1) { ?>
-        <a class="tile bg-yellow-casablanca" href="<?php echo $this->request->webroot; ?>documents?draft" style="display: block;">
+        <!--a class="tile bg-yellow-casablanca" href="<?php echo $this->request->webroot; ?>documents?draft" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
             </div>
@@ -126,7 +129,7 @@ function randomcolor(){
                 <div class="name"> <?=$settings->document;?> Drafts</div>
                 <div class="number"></div>
             </div>
-        </a>
+        </a-->
     <?php } ?>
 
 
@@ -143,7 +146,7 @@ function randomcolor(){
     <?php } ?>
 
     <?php if ($sidebar->orders_create ==1) { ?>
-        <a href="<?php echo $this->request->webroot.$order_url;?>" class="tile bg-yellow" style="display: block;">
+        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=MEE';?>" class="tile bg-yellow" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
             </div>
@@ -156,7 +159,7 @@ function randomcolor(){
 
 
     <?php if ($sidebar->orders_list ==1) { ?>
-        <a class="tile bg-yellow" href="<?php echo $this->request->webroot; ?>orders/orderslist?draft" style="display: block;">
+        <!--a class="tile bg-yellow" href="<?php echo $this->request->webroot; ?>orders/orderslist?draft" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
             </div>
@@ -164,7 +167,7 @@ function randomcolor(){
                 <div class="name"> Order Drafts</div>
                 <div class="number"></div>
             </div>
-        </a>
+        </a-->
     <?php } ?>
 
 

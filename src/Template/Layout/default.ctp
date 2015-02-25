@@ -48,7 +48,11 @@
 <link href="<?php echo $this->request->webroot;?>assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->request->webroot;?>assets/admin/layout/css/themes/<?php echo $settings->layout;?>.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/> -->
+
+    <link href="<?php echo $this->request->webroot;?>css/style.css" rel="stylesheet" type="text/css"/>
+
+
+    <!-- TEST REMOVAL <link href="< php echo $this->request->webroot;?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/> -->
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="<?php echo WEB_ROOT?>favicon.ico"/>
 

@@ -90,12 +90,12 @@
                         <table class="table table-striped table-bordered table-advance table-hover recruiters">
                             <thead>
                             <tr>
-                                <th colspan="2">Assigned Profiles:</th>
+                                <th colspan="2">Assigned <?= $settings->profile ?>s :</th>
                             </tr>
                             </thead>
                             <tbody id="">
                             <?php
-                                $types = array('Driver', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact');
+                                $types = array('Driver', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Employee', 'Guest', 'Partner');
                                 $counter = 0;
                                 foreach ($getprofile as $p) {
                                     ?>
@@ -110,11 +110,16 @@
                                                 } else {
                                                     echo "[NO NAME]";
                                                 }
-                                                if (strlen($p->profile_type)>0) {
-                                                    echo "(" . $types[$p->profile_type] . ")";
-                                                } else {
-                                                    echo "(Draft)";
+                                                $profiletype = " (Draft)";
+                                                if (strlen($p->profile_type)>0 ) {
+                                                    if ($p->profile_type < count($types)) {
+                                                        $profiletype = " (" . $types[$p->profile_type] . ")";
+                                                    } else {
+                                                        $profiletype = " (UNKNOWN)";
+                                                    }
                                                 }
+                                                echo $profiletype;
+
                                                 echo "</a>"
                                                 //<a href="<?php echo $this->request->webroot;!>profiles/view/<?php echo $p->id; !>">
                                             //<?php echo $p->username; !> (<?php echo $types[$p->profile_type]; !>)&nbsp;&nbsp;(Profile)</a>
@@ -487,7 +492,7 @@
                                             <div class="form-actions top chat-form" style="height:75px; margin-bottom:-1px;padding-right: 30px;margin-right: 5px;margin-left: 5px;" align="right">
                                                 <div class="row">
                                             <button type="submit" class="btn btn-primary" id="save_client_p1">Save Changes</button>
-                                            <button type="submit" class="btn btn-info" onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">Save As Draft</button>
+                                            <!--button type="submit" class="btn btn-info" onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">Save As Draft</button-->
 </div></div>
 
 
@@ -558,7 +563,7 @@
                                                         No </label>
                                                 </td>
                                                 <td>
-                                                            <input <?php if ($csubdoc['display_order'] == 1) { ?> checked="checked" <?php } ?> type="checkbox" onclick="$(this).closest('td').find('.fororder').val('1')"  /> Show<input class="fororder" type="hidden" value="<?php if ($csubdoc['display_order'] == 1) {echo '1';}else{?>0<?php } ?>" name="clientO[<?php echo $sub->id; ?>]" />
+                                                            <input <?php if ($csubdoc['display_order'] == 1) { ?> checked="checked" <?php } ?> type="checkbox" onclick="if($(this).is(':checked')){$(this).closest('td').find('.fororder').val('1');}else {$(this).closest('td').find('.fororder').val('0');}"  /> Show<input class="fororder" type="hidden" value="<?php if ($csubdoc['display_order'] == 1) {echo '1';}else{?>0<?php } ?>" name="clientO[<?php echo $sub->id; ?>]" />
                                                         </td>
                                                         <td>
                                                             <?php echo $u;?>

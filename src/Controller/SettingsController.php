@@ -206,8 +206,7 @@ class SettingsController extends AppController {
          $this->response->body(($url));
             return $this->response;
     }
-    function check_edit_permission($uid,$pid)
-    {
+    function check_edit_permission($uid,$pid){ //uid is the user requesting the permission, id is the user that will be edited
         $user_profile = TableRegistry::get('profiles');
         $query = $user_profile->find()->where(['id'=>$uid]);
         $q1 = $query->first();
@@ -263,9 +262,9 @@ class SettingsController extends AppController {
              }*/
              /*=================================================================================*/ 
              
-             if($setting->profile_edit=='1')
+             if($setting->profile_edit=='1')//can edit profiles
              {
-                if($q1->super == '1' || $uid == $pid)
+                if($q1->super == '1' || $uid == $pid)//is a super or the attempting to edit themselves
                 {
                     $this->response->body('1');
                     return $this->response;
@@ -285,11 +284,15 @@ class SettingsController extends AppController {
                         {$this->response->body('0');
                         return $this->response;
                         die();}
-                    }
-                    else
-                        {$this->response->body('0');
+                    } elseif($q1->profile_type == '1') { //is an admin
+                        $this->response->body('1');
                         return $this->response;
-                        die();}
+                        die();
+                    } else {
+                        $this->response->body('0');
+                        return $this->response;
+                        die();
+                    }
                 }
              }
              else

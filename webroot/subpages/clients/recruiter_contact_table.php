@@ -1,6 +1,5 @@
 <?php
     $profiles = $this->requestAction('Profiles/getProfile');
-    debug($profiles);
     $contact = $this->requestAction('Profiles/getContact');
     //include("subpages/profileslisting.php");
     $viewmode = isset($_GET["view"]);

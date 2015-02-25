@@ -4,6 +4,13 @@
     $sidebar = $this->requestAction("settings/all_settings/".$uid."/sidebar");
     $block = $this->requestAction("settings/all_settings/".$uid."/blocks");
     if(!isset($is_disabled1)){$is_disabled1 = "";}//something is wrong with this variable
+
+if ($activetab == "permissions") {
+    if (isset($Clientcount) && $Clientcount == 0) { $activetab = "assign"; } else {$activetab = "config";}
+} else {
+    $activetab ="config";
+}
+
 ?>
 
 <!-- BEGIN BORDERED TABLE PORTLET--><!--
@@ -17,7 +24,7 @@
         <?php if($this->request->session()->read('Profile.profile_type')!='2')
         {
             ?>
-            <li class="<?php if(isset($Clientcount)&& $Clientcount!=0)echo 'active';?>">
+            <li <?php activetab($activetab, "config"); ?>>
                 <a href="#subtab_2_1" data-toggle="tab">Configuration</a>
             </li>
             <li class="">
@@ -39,7 +46,7 @@
     <!--</div>-->
     <div class="portlet-body form">
                                     <div class="tab-content">
-                                                <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")!=2 &&(isset($Clientcount)&& $Clientcount!=0)) echo 'active'; ?>" id="subtab_2_1">
+                                                <div class="tab-pane <?php activetab($activetab, "config", false); ?>" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
 
@@ -182,11 +189,11 @@
                                                                                           name="side[document_others]"
                                                                                           value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> /> View Other's
                                                             </label>
-                                                             <label class="uniform-inline">
+                                                             <!--label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[document_requalify]"
-                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Requalify
-                                                            </label>
+                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Re-qualify
+                                                            </label-->
                                                             
                                                             
                                                         </div>
@@ -224,9 +231,9 @@
                                                              <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_others]" value="1" <?php if ($sidebar->orders_others == 1) echo "checked"; ?> /> View Other's
                                                             </label>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_requalify]" value="1" <?php if ($sidebar->orders_requalify == 1) echo "checked"; ?> /> Requalify
-                                                            </label>
+                                                            <!--label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_requalify]" value="1" <?php if ($sidebar->orders_requalify == 1) echo "checked"; ?> /> Re-qualify
+                                                            </label-->
                                                             
 
                                                         </div>

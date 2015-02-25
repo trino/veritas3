@@ -696,12 +696,12 @@ class DocumentComponent extends Component
             $doc = TableRegistry::get('Subdocuments');
             $query = $doc->find();
             if ($type == 'orders') {
-                $query->select()->where(['display' => 1, 'orders' => 1])->order('id');
+                $q= $query->select()->where(['display' => 1, 'orders' => 1])->order('id');
             } else
-                $query->select()->where(['display' => 1])->order('id');
+                $q= $query->select()->where(['display' => 1])->order('id');
             //debug($query);
             //$this->response->body($query);
-            return $query;
+            return $q;
         }
         function getDivById($id)
         {

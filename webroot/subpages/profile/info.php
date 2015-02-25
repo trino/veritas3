@@ -363,7 +363,7 @@
 
                                 <label class="control-label">Middle Name</label>
                                 <input <?php echo $is_disabled ?> name="mname" type="text"
-                                    placeholder="eg. Lee"
+                                    placeholder=""
                                     class="form-control" <?php if (isset($p->mname)) { ?>
                                     value="<?php echo $p->mname; ?>" <?php } ?>/>
                             </div>
@@ -627,10 +627,10 @@
                                                    onclick="return check_username();" id="savepro">
                                                     Save Changes
                                                 </a>
-                                                <button class="btn btn-info"
+                                                <!--button class="btn btn-info"
                                                         onclick="$('#profile_drafts').val('1'); $('#save_clientz').attr('novalidate','novalidate');$('#hiddensub').click();">
                                                     Save As Draft
-                                                </button>
+                                                </button-->
                                                 <input type="submit" style="display: none;" id="hiddensub"/>
                                         </div>
 
@@ -666,7 +666,7 @@
 <script>
     function check_username() {
         if ($('#retype_password').val() == $('#password').val()) {
-            
+
             var client_id = $('.client_profile_id').val();
             if (client_id == "") {
 
@@ -818,7 +818,7 @@
                 }
                /* else{
                     ?>
-                    
+
                 $('#password').prop('required', "required");
                 $('#retype_password').prop('required', "required");
                 <?php

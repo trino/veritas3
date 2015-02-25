@@ -119,7 +119,7 @@
                                                         echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;                                                                         ?>&ordertype=MEE" class="btn red-flamingo">Place Order</a>
 
                                                         <a href="<?php /*echo $this->request->webroot . $order_url;*/
-                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;                                                                         ?>&ordertype=CART" class="btn btn-success"> A La Carte/Requalify</a>
+                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;                                                                         ?>&ordertype=CART" class="btn btn-success"> A La Carte/Re-qualify</a>
 
                                                     <?php
                                                     }
@@ -130,9 +130,9 @@
                                                            class="btn btn-info">
                                                             View Orders</a>
 
-                                                        <a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id; ?>"
+                                                        <!--a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id; ?>"
                                                            class="btn btn-success">
-                                                            View <?= ucfirst($settings->document); ?></a>
+                                                            View <?= ucfirst($settings->document); ?>s</a-->
 
                                                     <?php
 
@@ -157,10 +157,8 @@
                     <div class="row">
                         <div class="col-md-12" align="right">
 
-
                             <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers"
                                  style="margin-top:-10px;">
-
 
                                 <ul class="pagination sorting">
 
@@ -178,7 +176,6 @@
         </div>
     </div>
 </div>
-
 
 
 <style>

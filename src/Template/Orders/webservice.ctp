@@ -1,115 +1,5 @@
+<?php
 
-
-
-
-
-
-    <!-- DONT REMOVE / USED FOR WEBSERVICE .... DO NOT CHANGE THE STRUCTURE OF DIV INSIDE NOT EVEN AN ENTER-->
-<div class="attachments_all" style="">
-    <div class="pre"><?php
-    if(isset($pre_at['attach_doc'])){
-        $c1 = 0;
-        foreach($pre_at['attach_doc'] as $pat)
-        {
-            $c1++;
-            if($c1==1)
-                echo $pat->attachment;
-            else
-                echo ','.$pat->attachment;
-        }
-
-    }
-    ?></div>
-
-<div class="da"><?php
-        if(isset($sub['da_at'])){
-            $c1 = 0;
-            foreach($sub['da_at'] as $pat)
-            {
-                $c1++;
-                if($c1==1)
-                    echo $pat->attachment;
-                else
-                    echo ','.$pat->attachment;
-            }
-
-        }
-    ?></div>
-
-<div class="de"><?php
-        if(isset($sub['de_at'])){
-            $c1 = 0;
-            foreach($sub['de_at'] as $pat)
-            {
-                $c1++;
-                if($c1==1)
-                    echo $pat->attachment;
-                else
-                    echo ','.$pat->attachment;
-            }
-
-        }
-    ?></div>
-
-
-<div class="con"><?php
-        if(isset($sub2['con_at'])){
-            $c1 = 0;
-            foreach($sub2['con_at'] as $pat)
-            {
-                $c1++;
-                if($c1==1)
-                    echo $pat->attachment;
-                else
-                    echo ','.$pat->attachment;
-            }
-
-        }
-    ?></div>
-
-
-<div class="emp"><?php
-        if(isset($sub3['att'])){
-            $c1 = 0;
-            foreach($sub3['att'] as $pat)
-            {
-                $c1++;
-                if($c1==1)
-                    echo $pat->attachment;
-                else
-                    echo ','.$pat->attachment;
-            }
-
-        }
-    ?></div>
-
-
-<div class="edu"><?php
-        if(isset($sub4['att'])){
-            $c1 = 0;
-            foreach($sub4['att'] as $pat)
-            {
-                $c1++;
-                if($c1==1)
-                    echo $pat->attachment;
-                else
-                    echo ','.$pat->attachment;
-            }
-
-        }
-    ?></div>
-
-
-</div>
-
-    <?php
-
-
-
-
-
-
-        die();
     $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
     $client = new nusoap_client($proxyhost, true, $proxyhost, $proxyport = null, $proxyusername = null, $proxypassword = null);
     $client->useHTTPPersistentConnection();
@@ -140,7 +30,7 @@
         if (isset($user_id234) && $user_id234 != "") {
             $user_id234 = $this->Session->read('Profile.isb_id');
         } else {
-            $user_id234 = '17792';
+            $user_id234 = '22552';
         }
 
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
@@ -164,7 +54,7 @@
         $this->requestAction('/documents/save_webservice_ids/' . $orderid . '/' . $ins_id . '/' . $ebs_id);
 
     }
-
+echo 999;
     //  $ins_id = 'EAE1226F-6E28-4E88-B4B5-31CD43875807';
     //  $ebs_id = 'A7101C9A-A969-40B0-848F-64B934B290FC';
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -194,7 +84,9 @@
         //    debug($pdi);
 
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($productdetails1) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -214,7 +106,9 @@
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_1');
         debug($result);
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($productdetails14) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -235,7 +129,9 @@
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_14');
         debug($result);
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($productdetails77) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -250,18 +146,18 @@
         if (isset($r[1])) {
             $r = explode(']', $r[1]);
         }
-
         $pdi = $r[0];
 
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_77');
         debug($result);
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($productdetails78) {
 
-        if(isset($driverinfo->email) && $driverinfo->email !=""){
-        }
-        else{
+        if (isset($driverinfo->email) && $driverinfo->email != "") {
+        } else {
             $driverinfo->email = "test@isbmee.com";
         }
 
@@ -281,7 +177,9 @@
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_78');
         debug($result);
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($productdetailsebs1650) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -301,7 +199,9 @@
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1650');
         debug($result);
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($productdetailsebs1627) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -321,7 +221,9 @@
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1627');
         debug($result);
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($productdetailsebs1603) {
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -341,7 +243,6 @@
         $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1603');
         debug($result);
     }
-
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -359,7 +260,9 @@
         debug($result);
 
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($uploadbinaryemployment_1627) {
 
         $pdf_content = '';
@@ -373,7 +276,9 @@
         debug($result);
 
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($uploadbinaryeducation_1650) {
 
         $pdf_content = '';
@@ -388,18 +293,21 @@
         debug($result);
 
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // debug($consent_form_attachments);
     foreach ($consent_form_attachments as $d) {
         if (isset($d->attach_doc) && $d->attach_doc != "") {
 
             if ($upload_additional) {
-                $pdf = file_get_contents('attachments/' . $d->attach_doc);
-                $body = base64_encode($pdf);
-                //echo $urlDecodedStr = rawurldecode($body);
+
+                echo $pdf = file_get_contents('attachments/' . $d->attach_doc);
+                echo $body = base64_encode($pdf);
+
                 $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
                 $result = $client->call('UploadBinaryFile', $soap_xml);
-
                 debug($result);
 
             }

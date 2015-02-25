@@ -30,6 +30,7 @@ class PagesController extends AppController {
         
     }
 	public function index() {
+	   
 	   $this->loadComponent('Document');
        $this->set('doc_comp',$this->Document);
 	   $this->loadModel('Clients');

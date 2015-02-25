@@ -75,9 +75,9 @@
 <div class="form-group">
 <label class="control-label">Profile Type</label>
 
-<select name="profile_type" disabled='disabled' class="form-control member_type required">
-<option  disabled='disabled'
-         value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
+<select name="profile_type" class="form-control member_type required">
+<option
+         value="5" <?php /*if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } */?>>
 Driver
 </option>
 
@@ -219,7 +219,7 @@ Driver
 
                                     <label class="control-label">Middle Name</label>
                                     <input <?php echo $is_disabled ?> name="mname" type="text"
-                                                                      placeholder="eg. Lee"
+                                                                      placeholder=""
                                                                       class="form-control" <?php if (isset($p->mname)) { ?> value="<?php echo $p->mname; ?>" <?php } ?>/>
                                 </div>
                             </div>

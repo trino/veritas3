@@ -449,12 +449,12 @@
                     ->execute();
                 if (isset($_POST['email']) && $_POST['email']) {
 
-                    $from = 'info@isbmee.com';
-                    $to = $_POST['email'];
-                    $sub = 'Profile created successfully';
-                    $msg = 'Hi,<br />An account has been created for you in https://isbmeereports.com<br /> Your login details are:<br /> Username: ' . $_POST['username'] . '<br /> Password: ';
-                    if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards,<br />The ISB Team';
-                    $this->sendEmail($from, $to, $sub, $msg);
+                //    $from = 'info@isbmee.com';
+                  //  $to = $_POST['email'];
+               //     $sub = 'Profile created successfully';
+                //    $msg = 'Hi,<br />An account has been created for you in https://isbmeereports.com<br /> Your login details are:<br /> Username: ' . $_POST['username'] . '<br /> Password: ';
+              //      if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards,<br />The ISB Team';
+               //     $this->sendEmail($from, $to, $sub, $msg);
                 }
                 $this->Flash->success('Profile created successfully.');
                 return $this->redirect(['action' => 'edit', $profile->id]);
@@ -565,23 +565,23 @@
                 ->execute();
             if (isset($_POST['email']) && $_POST['email']) {
 
-                $com = "ISBMEE";
-                $from = 'info@isbmee.com';
+           //     $com = "ISBMEE";
+           //     $from = 'info@isbmee.com';
 
-                $to = $_POST['email'];
+           //     $to = $_POST['email'];
 
-                $sub = 'Profile created successfully';
-                $msg = 'Hi,<br />An account has been created for you in https://isbmeereports.com<br /> Your login details are:<br /> Username: ' . $_POST['username'] . '<br /> Password: ';
-                if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not specified';
+          //      $sub = 'Profile created successfully';
+          //      $msg = 'Hi,<br />An account has been created for you in https://isbmeereports.com<br /> Your login details are:<br /> Username: ' . $_POST['username'] . '<br /> Password: ';
+           //     if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not specified';
 
-              echo '<br /> Please <a href = "'.LOGIN.'" > click here </a > to login .<br /> Regards,<br />The ISB Team';
-
-
+      //        echo '<br /> Please <a href = "'.LOGIN.'" > click here </a > to login .<br /> Regards,<br />The ISB Team';
 
 
 
 
-                            $this->sendEmail($from,$to,$sub,$msg);
+
+
+                  //          $this->sendEmail($from,$to,$sub,$msg);
                         }
                         if(isset($_POST['drafts']) && ($_POST['drafts'] == '1'))
                         {
@@ -641,14 +641,17 @@
         
         public function saveDriver() {
             //echo $client_id = $_POST['cid'];die() ; 
-            $arr_post = explode(' & ',$_POST['inputs']);
+            $arr_post = explode('&',$_POST['inputs']);
+           //var_dump($arr_post);die();
             foreach($arr_post as $ap)
             {
-                $arr_ap = explode(' = ',$ap);
+                $arr_ap = explode('=',$ap);
+                if(isset($arr_ap[1])){
                 $post[$arr_ap[0]] = urldecode($arr_ap[1]);
-                $post[$arr_ap[0]] = str_replace('Select Gender','',$post[$arr_ap[0]]);
+                $post[$arr_ap[0]] = str_replace('Select Gender','',urldecode($arr_ap[1]));
+                }
             }
-            
+            //var_dump($post);die();
             $que = $this->Profiles->find()->where(['email'=>$post['email'],'id <> '=>$post['id']])->first();
             
             if($que)
@@ -746,8 +749,9 @@
 
             $clientcount = $this->Settings->getClientCountByProfile($id);
             $this->set('Clientcount',$clientcount);
-            if(isset($_GET['clientflash']) || $clientcount== 0)
-                $this->Flash->error('Please assign profile to at least one client.');
+            if(isset($_GET['clientflash']) || $clientcount== 0) {
+                $this->Flash->success('Profile created successfully! Please assign profile to at least one client to start placing orders.');
+            }
 
             $checker = $this->Settings->check_edit_permission($this->request->session()->read('Profile.id'),$id);
             if($checker==0)

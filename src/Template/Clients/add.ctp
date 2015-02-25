@@ -588,12 +588,15 @@
                                             <button class="close" data-close="alert"></button>
                                             Data saved successfully
                                         </div>
-                                        <div class="margin-top-10">
-                                            <a href="javascript:void(0)" id="save_display1"
-                                               class="btn btn-primary"  <?php echo $is_disabled ?>> Save Changes </a>
+
+                                        <div class="form-actions top chat-form" style="height:75px; margin-bottom:-1px;padding-right: 30px;margin-right: -10px;margin-left: -10px;" align="right">
+                                            <div class="row">
+                                                <a href="javascript:void(0)" id="save_display1" class="btn btn-primary"  <?php echo $is_disabled ?>> Save Changes </a>
+
+                                            </div></div>
 
 
-                                        </div>
+
                                     <?php
                                     }
                                 ?>

@@ -263,7 +263,7 @@
 
     public function view($id = null)
     {
-
+        $this->set('uid',$id);
         $this->set('doc_comp', $this->Document);
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 

@@ -265,7 +265,7 @@
                                     {
                                         ?>
 
-                                    <label class="uniform-inline" style="margin-top:10px;">
+                                    <label class="uniform-inline" style="margin-bottom:20px;">
                                 <input <?php if(!$this->request->session()->read('Profile.super') && ($this->request->session()->read('Profile.profile_type') != '2')) { echo $is_disabled; }?> type="checkbox" name="stat" value="1" id="<?php echo $p->id; ?>"
                                        class="checkdriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
                                 Was this driver hired? </label> 
@@ -275,7 +275,7 @@
                                         if ($profile->profile_type == 5) {
                                             ?>
                                             <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
-                                               class="btn red-flamingo">MEE Order</a>
+                                               class="btn red-flamingo">Place MEE Order</a>
                                             <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
                                                class="btn btn-success" style="margin-top:10px;">A La Carte/Re-qualify</a>
                                         <?php

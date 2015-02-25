@@ -219,7 +219,7 @@ Driver
 
                                     <label class="control-label">Middle Name</label>
                                     <input <?php echo $is_disabled ?> name="mname" type="text"
-                                                                      placeholder="eg. Lee"
+                                                                      placeholder=""
                                                                       class="form-control" <?php if (isset($p->mname)) { ?> value="<?php echo $p->mname; ?>" <?php } ?>/>
                                 </div>
                             </div>

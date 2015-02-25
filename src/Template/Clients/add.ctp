@@ -492,7 +492,7 @@
                                             <div class="form-actions top chat-form" style="height:75px; margin-bottom:-1px;padding-right: 30px;margin-right: 5px;margin-left: 5px;" align="right">
                                                 <div class="row">
                                             <button type="submit" class="btn btn-primary" id="save_client_p1">Save Changes</button>
-                                            <button type="submit" class="btn btn-info" onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">Save As Draft</button>
+                                            <!--button type="submit" class="btn btn-info" onclick="$('#client_drafts').val('1',function(){$('#save_client_p1').click();});">Save As Draft</button-->
 </div></div>
 
 

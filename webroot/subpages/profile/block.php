@@ -189,11 +189,11 @@ if ($activetab == "permissions") {
                                                                                           name="side[document_others]"
                                                                                           value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> /> View Other's
                                                             </label>
-                                                             <label class="uniform-inline">
+                                                             <!--label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[document_requalify]"
                                                                                           value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Re-qualify
-                                                            </label>
+                                                            </label-->
                                                             
                                                             
                                                         </div>
@@ -231,9 +231,9 @@ if ($activetab == "permissions") {
                                                              <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_others]" value="1" <?php if ($sidebar->orders_others == 1) echo "checked"; ?> /> View Other's
                                                             </label>
-                                                            <label class="uniform-inline">
+                                                            <!--label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_requalify]" value="1" <?php if ($sidebar->orders_requalify == 1) echo "checked"; ?> /> Re-qualify
-                                                            </label>
+                                                            </label-->
                                                             
 
                                                         </div>

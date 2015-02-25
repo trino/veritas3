@@ -572,7 +572,7 @@ debug($pre_at);
 
                     debug($sub);
                 }
-
+echo 123;
                 //////////////////////////////////////////////////////////// conbsent form
 
                 $con = TableRegistry::get('consent_form');
@@ -609,7 +609,7 @@ debug($pre_at);
                 debug($sub4);
 
             }
-
+echo 456;
             $this->set('doc_comp', $this->Document);
             $this->layout = "blank";
 
@@ -626,7 +626,7 @@ debug($pre_at);
                         debug($consent_form_attachments);
                         $this->set(compact('consent_form_attachments'));
             */
-
+            echo 789;
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
         }

@@ -114,12 +114,12 @@
                         <select id="selecting_client" class="form-control input-xlarge select2me"
                                 onoldchange="reload(-1);"
                         data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
-                        if ($client) { ?>disabled="disabled"<?php } ?>>
+                        if ($client) { ?><?php } ?>>
                         <option>None Selected</option><?php
                     } else { ?>
 
                     <select id="selecting_client" class="form-control input-xlarge select2me"
-                            data-placeholder="Select <?php echo ucfirst($settings->client); ?>" disabled>
+                            data-placeholder="Select <?php echo ucfirst($settings->client); ?>">
                         <?php
                             }
                             foreach ($dr_cl['client'] as $dr) {
@@ -367,7 +367,7 @@
                         <h3>Place MEE Order <span>
 											The all in one package </span>
                         </h3>
-                        <h4><i>$</i>90<i>.00</i>
+                        <h4><i>$</i>999<i>.99</i>
 											<span>
 											One Time Payment </span>
                         </h4>
@@ -435,7 +435,7 @@
                         <h3>A La Carte / Re-qualify <span>
 											Officia deserunt mollitia </span>
                         </h3>
-                        <h4><i>$</i>45<i>.00+</i>
+                        <h4><i>$</i>999<i>.99+</i>
 											<span>
 											(Starting At) </span>
                         </h4>

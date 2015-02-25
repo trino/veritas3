@@ -1,3 +1,19 @@
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #fff ;
+    border: 1px solid #efefef;
+
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #fff;
+    opacity: 1;
+    border: 1px solid #efefef;
+
+}
+
+
 .secondary_logo{
     display: block;
     padding: 10px 20px 0 20px;

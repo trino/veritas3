@@ -262,6 +262,7 @@ function provinces($name){
                                 <input type="hidden" name="did" value="<?php echo $did; ?>" id="did"/>
                                 <input type="hidden" name="uploaded_for" id="uploaded_for"
                                        value="<?php if (isset($modal) && $modal) echo $modal->uploaded_for;else{if(isset($_GET['driver']) && is_numeric($_GET['driver']))echo $_GET['driver'];} ?>"/>
+                                       <input type="hidden" id="division" value="<?php if(isset($_GET['division']))echo $_GET['division'];?>" />
                                 <?php
                                     if (!$did) {
                                         ?>
@@ -1303,7 +1304,7 @@ function provinces($name){
                 var data = {
                     uploaded_for: $('#uploaded_for').val(),
                     type: type,
-                    division: $('#divison').val(),
+                    division: $('#division').val(),
                     conf_recruiter_name: $('#conf_recruiter_name').val(),
                     conf_driver_name: $('#conf_driver_name').val(),
                     conf_date: $('#conf_date').val(),
@@ -1325,7 +1326,7 @@ function provinces($name){
                             data: {
                                 uploaded_for: $('#uploaded_for').val(),
                                 type: type,
-                                division: $('#divison').val(),
+                                division: $('#division').val(),
                                 conf_recruiter_name: $('#conf_recruiter_name').val(),
                                 conf_driver_name: $('#conf_driver_name').val(),
                                 conf_date: $('#conf_date').val(),
@@ -1364,7 +1365,7 @@ function provinces($name){
                 var data = {
                     uploaded_for: $('#uploaded_for').val(),
                     type: type,
-                    division: $('#divison').val(),
+                    division: $('#division').val(),
                     conf_recruiter_name: $('#conf_recruiter_name').val(),
                     conf_driver_name: $('#conf_driver_name').val(),
                     conf_date: $('#conf_date').val(),
@@ -1385,7 +1386,7 @@ function provinces($name){
                             data: {
                                 uploaded_for: $('#uploaded_for').val(),
                                 type: type,
-                                division: $('#divison').val(),
+                                division: $('#division').val(),
                                 conf_recruiter_name: $('#conf_recruiter_name').val(),
                                 conf_driver_name: $('#conf_driver_name').val(),
                                 conf_date: $('#conf_date').val(),

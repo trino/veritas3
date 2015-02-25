@@ -409,7 +409,7 @@
         {
 
             $u = $this->request->session()->read('Profile.id');
-            
+
             if (!$this->request->session()->read('Profile.super')) {
                 $setting = $this->Settings->get_permission($u);
                 //var_dump($setting);

@@ -350,7 +350,7 @@
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<li';
                                                 activetab($activetab, "orders");
-                                                echo '><a href="#tab_1_10" data-toggle="tab">Orders</li></A></li>';
+                                                echo '><a href="#tab_1_10" data-toggle="tab">Orders</li></a></li>';
                                             }
 
                                         if ($this->request['action'] != 'add') {
@@ -391,21 +391,6 @@
                                     <?php
                                         if ($this->request['action'] != 'add') {
                                             ?>
-
-
-                                            <!--div class="tab-pane" id="tab_1_5">
-                                                php include('subpages/profile/logo.php'); ?>
-                                            </div>
-
-                                            <div class="tab-pane" id="tab_1_6">
-                                                <!php include('subpages/profile/page.php'); ?>
-                                            </div>
-                                            <div class="tab-pane" id="tab_1_8">
-                                                <!php include('subpages/profile/client_setting.php'); ?>
-                                            </div>
-                                            -->
-
-
 
                                             <?php
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {

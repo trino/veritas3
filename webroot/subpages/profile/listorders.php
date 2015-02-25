@@ -1,16 +1,3 @@
-<!--<div class="row">
-    <div class="col-md-12">
-        <div class="portlet box yellow">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-clipboard"></i>
-                    List Orders
-                </div>
-            </div>
-            <div class="portlet-body">
-                <div class="clearfix"></div>
-                -->
-
                 <div class="table-responsive">
                     <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
@@ -24,7 +11,10 @@
                         $getOrders = $this->requestAction('profiles/getOrders/'.$id);
                         $found=false;
                         $class="even";
-                        foreach($getOrders as $g ) { $found=true; ?>
+                        foreach($getOrders as $g ) {
+
+                            if($g->draft == 0){
+                          ?>
                             <tr class="<?= $class ?>" role="row">
                                 <td>
                                 <!--<input type="checkbox" id="<?php echo $g->id ?>"/>-->
@@ -33,7 +23,10 @@
                                 <td align="center"><?php echo $g->created; ?></td>
                             </tr>
                             <?php
+
+                            $found=true;
                             if ($class=="even"){$class = "odd";} else {$class="even";}
+                        }
                         }
                         if (!$found) {//count returns 1 even when there is 0 results :/
                             echo '<tr class="even" role="row"><td colspan="2" align="center">No orders found</td></tr></tr>';
@@ -49,9 +42,3 @@
                         <li class="prev disabled"><a href="" style="width:100px;">&lt; previous</a></li> <li class="next disabled" align="right"><a href="" style="width:100px;">next &gt;</a></li>
                     </ul>
                 </div>
-
-<!--
-            </div>
-        </div>
-    </div>
-</div>-->

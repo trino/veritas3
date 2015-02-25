@@ -606,14 +606,17 @@
         
         public function saveDriver() {
             //echo $client_id = $_POST['cid'];die() ; 
-            $arr_post = explode(' & ',$_POST['inputs']);
+            $arr_post = explode('&',$_POST['inputs']);
+           //var_dump($arr_post);die();
             foreach($arr_post as $ap)
             {
-                $arr_ap = explode(' = ',$ap);
+                $arr_ap = explode('=',$ap);
+                if(isset($arr_ap[1])){
                 $post[$arr_ap[0]] = urldecode($arr_ap[1]);
-                $post[$arr_ap[0]] = str_replace('Select Gender','',$post[$arr_ap[0]]);
+                $post[$arr_ap[0]] = str_replace('Select Gender','',urldecode($arr_ap[1]));
+                }
             }
-            
+            //var_dump($post);die();
             $que = $this->Profiles->find()->where(['email'=>$post['email'],'id <> '=>$post['id']])->first();
             
             if($que)

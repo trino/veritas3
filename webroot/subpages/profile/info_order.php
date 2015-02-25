@@ -75,9 +75,9 @@
 <div class="form-group">
 <label class="control-label">Profile Type</label>
 
-<select name="profile_type" disabled='disabled' class="form-control member_type required">
-<option  disabled='disabled'
-         value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } ?>>
+<select name="profile_type" class="form-control member_type required">
+<option
+         value="5" <?php /*if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } */?>>
 Driver
 </option>
 

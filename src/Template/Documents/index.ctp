@@ -186,26 +186,46 @@
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($docs->id) ?></td>
                                     <td>
-                                        <div class="dashboard-stat <?php //replace this entire div with  h($docs->document_type);  to get the old style back
-                                            $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedback" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
-                                            if (isset($colors[strtolower($docs->document_type)])){
-                                                echo $colors[strtolower($docs->document_type)];
-                                            } else {
-                                                echo "blue";
-                                            }
-                                            ?>">
-                                            <div class="whiteCorner"></div>
-                                            <div class="visual" style="height: 40px;">
-                                                <i class="fa fa-copy"></i>
-                                            </div>
-                                            <!--div class="details"> //WARNING: This won't work while in a table...
-                                                <div class="number"></div>
-                                                <div class="desc"></div>
-                                            </div-->
-                                            <a class="more" id="sub_doc_click1" href="javascript:;" onclick="showforms('company_pre_screen_question.php?doc_id=1')">
-                                                <?= h($docs->document_type); //it won't let me put it in the desc ?>
-                                            </a>
-                                        </div>
+                                        <?php switch(1){//change the number to pick a style
+                                            case 0://plain text
+                                                    echo h($docs->document_type);
+                                                break;
+                                            case 1://top block
+                                                echo '<div class="dashboard-stat ';
+                                                $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedback" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
+                                                if (isset($colors[strtolower($docs->document_type)])){
+                                                    echo $colors[strtolower($docs->document_type)];
+                                                } else {
+                                                    echo "blue";
+                                                }
+                                                ?>">
+                                                <div class="whiteCorner"></div>
+                                                <div class="visual" style="height: 40px;">
+                                                    <i class="fa fa-copy"></i>
+                                                </div>
+                                                <!--div class="details"> //WARNING: This won't work while in a table...
+                                                    <div class="number"></div>
+                                                    <div class="desc"></div>
+                                                </div-->
+                                                <a class="more" id="sub_doc_click1" href="javascript:;" onclick="showforms('company_pre_screen_question.php?doc_id=1')">
+                                                    <?= h($docs->document_type); //it won't let me put it in the desc ?>
+                                                </a>
+                                                </div>
+
+                                        <?php break;
+                                            case 2: //tile, doesn't work. CSS not included? ?>
+
+                                                <a href="/veritas3/orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
+                                                    <div class="tile-body">
+                                                        <i class="icon-docs"></i>
+                                                    </div>
+                                                    <div class="tile-object">
+                                                        <div class="name">Create Order</div>
+                                                        <div class="number"></div>
+                                                    </div>
+                                                </a>
+
+                                            <?php break; } ?>
                                     </td>
                                     <td><?php
 

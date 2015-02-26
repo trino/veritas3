@@ -9,7 +9,8 @@ $profileID = $this->Session->read('Profile.id');
     $order_url = $this->requestAction("settings/getclienturl/" . $profileID . "/order");
     $document_url = $this->requestAction("settings/getclienturl/" . $profileID . "/document");
 
-
+    $ordertype = "MEE";
+    if (isset($_GET["ordertype"])){ return $ordertype = strtoupper($_GET["ordertype"]) ;}
 ?>
 
 <div class="page-sidebar-wrapper">
@@ -168,12 +169,7 @@ $profileID = $this->Session->read('Profile.id');
                         </ul>
                     <?php } ?>
                 </li>
-            <?php }
-                function GET3($name, $default = ""){
-                    if (isset($_GET[$name])){ return $_GET[$name] ;}
-                    return $default;
-                }
-            ?>
+            <?php }           ?>
 
             </li>
             <?php if ($sidebar->orders == 1) { ?>
@@ -193,14 +189,15 @@ $profileID = $this->Session->read('Profile.id');
                                         List Orders</a>
                                 </li>
                             <?php } ?>
+
                             <?php if ($sidebar->orders_create == 1) { ?>
-                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'productSelection' && GET3("ordertype", "MEE") == "MEE" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'productSelection' && $ordertype == "MEE" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                                     <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=MEE">
                                         <i class="icon-plus"></i>
                                         Place Order</a>
                                 </li>
 
-                                <li <?php echo ($this->request['controller'] == 'Orders' && GET3("ordertype") == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $ordertype == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                             <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART">
                                 <i class="icon-plus"></i>
                                 A La Carte/Re-qualify </a>

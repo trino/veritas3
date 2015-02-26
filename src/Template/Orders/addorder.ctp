@@ -69,11 +69,12 @@ function provinces($name){
         //  $forms  -   pass in the $forms variable since globals don't seem to work
         //  $id     -   the ID/index number of the form to check
         // NOTE: This is an arbitrary rule set to be substituted for a working one later on
-        function displayform($forms, $id){
-            if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
-            if(count($forms)>$id){
-                if ($id == 3) {
-                        return $forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
+        function displayform($forms, $name){
+            //pre-screening, driver application, consent form, road test
+            //if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
+            if(count($forms)>0){
+                if ($name == "consent form") {
+                    return $forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
                 }
                 return false; //no other form needs to show
             }
@@ -164,7 +165,7 @@ function provinces($name){
                                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
 
                                             ?>
-                                            <?php if ($prosubdoc['display'] != 0 && $d->display == 1 && displayform($forms, $index)) {
+                                            <?php if ($prosubdoc['display'] != 0 && $d->display == 1 && displayform($forms, strtolower(trim($d->title)))) {
                                                 $k_c++;
                                                 $j = $d->id;
                                                 $j = $j + 1;

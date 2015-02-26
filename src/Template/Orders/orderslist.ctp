@@ -164,7 +164,11 @@
                                         ?></td>
                                     <td><?php if ($order->division) {
                                             $div = $doc_comp->getDivById($order->division);
-                                            if (is_object($div)) {echo ucfirst($div->title);}
+                                            if (is_object($div)) {
+                                                echo ucfirst($div->title);
+                                            } elseif($this->request->session()->read('Profile.profile_type') == 1) {
+                                                echo  "Missing division: " . $order->division; //only shows for admins
+                                            }
 } else {
 echo '';
 } ?></td>

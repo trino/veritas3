@@ -349,12 +349,13 @@
                                             </li>
                                             <?php
                                             }
-                                            $needs = false;
+
+                                            /*$needs = false;
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<li';
                                                 activetab($activetab, "orders");
                                                 echo '><a href="#tab_1_10" data-toggle="tab">Orders</li></a></li>';
-                                            }
+                                            } */
 
                                         if ($this->request['action'] != 'add') {
                                                                                         
@@ -395,7 +396,7 @@
                                         if ($this->request['action'] != 'add') {
                                             ?>
 
-                                            <?php
+                                            <!--php
                                             if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
                                                 echo '<div class="tab-pane';
                                                 activetab($activetab, "orders", false);
@@ -403,7 +404,7 @@
                                                 include('subpages/profile/listorders.php');
                                                 echo '</div>';//lists driver's orders
                                             }
-                                            ?>
+                                            -->
 
                                             <div class="tab-pane <?php activetab($activetab, "notes", false); ?>" id="tab_1_9">
                                                 <div class="cleafix">&nbsp;</div>

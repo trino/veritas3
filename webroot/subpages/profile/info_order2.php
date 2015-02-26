@@ -191,9 +191,9 @@
                     <input class="selecting_driver" type="hidden" value="<?php
                         if ($driver) {
                             echo $driver;
-                        } elseif ($counting == 1 and isset($driver_id)) {
+                        }/* elseif ($counting == 1 and isset($driver_id)) {
                             echo $driver_id;
-                        } ?>"/>
+                        } */?>"/>
 
                 </div>
             </div>

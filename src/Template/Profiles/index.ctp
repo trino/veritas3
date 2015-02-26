@@ -211,6 +211,14 @@
                                         <td><?php
                                                 if (strlen($profile->profile_type) > 0) {
                                                     echo h($profiletype[$profile->profile_type]);
+                                                    if ($profile->profile_type == 5) {//is a driver
+                                                        $expires = strtotime($profile->expiry_date);
+                                                        if ($expires){
+                                                            if ($expires < time()) {
+                                                                echo '<div class="alert alert-danger"><strong>License Expired.</strong></div>';
+                                                            }
+                                                        }
+                                                    }
                                                 } else {
                                                     echo "Draft";
                                                 }

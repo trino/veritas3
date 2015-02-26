@@ -125,7 +125,9 @@
         $counting = 0;
         $drcl_d = $orders;
         foreach ($drcl_d as $drcld) {
-            if(  $order->draft ==0){ $counting++; }
+            if(is_object( $order)) {
+                if ($order->draft == 0) { $counting++; }
+            }
         }
 
 

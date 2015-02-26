@@ -5,6 +5,8 @@
 </style>
 
 <?php
+    $intable = true;
+
     function getcheckboxes($name, $amount){
         $tempstr="";
         for ($temp = 0; $temp < $amount; $temp += 1) {//there are 7 checkboxes to check
@@ -46,9 +48,9 @@
     }
 
     $ordertype = strtoupper(GET("ordertype"));
+    if (strlen($ordertype)==0){ $intable=false; }
 
-    function printbutton($type, $webroot, $index, $tempstr="")
-    {
+    function printbutton($type, $webroot, $index, $tempstr="") {
         if (strlen($type) > 0) {
             switch ($index) {
                 case 3:
@@ -91,7 +93,111 @@
         }
     }
 
-?>
+function printform($counting, $settings, $client, $dr_cl, $driver, $intable = false){//pass the variables exactly as given, then specifiy if it's in a table or not
+    echo '<input type="hidden" name="document_type" value="add_driver"/>';
+    echo '<div class="form-group clientsel">';
+    $dodiv=false;
+    if ($intable) {
+        echo '<div class="row" style="margin-top: 15px;">' ;
+        $size="large";
+    } else {
+        $size = "xlarge";
+    }
+
+echo '<div class="col-md-3 control-label" align="right" style="margin-top: 6px;">' . ucfirst($settings->client) . '</div><div class="col-md-6">';
+
+
+$dodiv=true;?>
+
+            <script type="text/javascript">
+                function reload(value) {
+                    var container = document.getElementById("selecting_driver");
+                    var was = container.value;
+                    container.value = value;  //THIS IS NOT WORKING!!!
+                    //this should set the select dropdown to "Create a Driver"
+                }
+            </script>
+
+            <?php
+
+            if ($counting > 1) { ?>
+                <select id="selecting_client" class="form-control input-<?= $size ?> select2me"
+                onoldchange="reload(-1);"
+                data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
+                if ($client) { ?><?php } ?>>
+                        <option>None Selected</option><?php
+            } else { ?>
+
+                    <select id="selecting_client" class="form-control input-<?=$size;?> select2me"
+                            data-placeholder="Select <?php echo ucfirst($settings->client); ?>">
+                        <?php
+            }
+            foreach ($dr_cl['client'] as $dr) {
+                $client_id = $dr->id;
+                ?>
+                <option value="<?php echo $dr->id; ?>"
+                        <?php if ($dr->id == $client || $counting == 1){ ?>selected="selected"<?php } ?>><?php echo $dr->company_name; ?></option>
+            <?php
+            }
+            ?>
+            </select>
+
+            <input class="selecting_client" type="hidden" value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
+    </div></div>
+
+<?php if ($intable) { echo '</div>'; } ?>
+
+    <div class="divisionsel form-group">
+        <?php if ($counting == 1) $cl_count = 1; else {
+            $cl_count = 0;
+        } ?>
+    </div>
+
+<?php if ($intable) { echo '<div class="row" style="margin-top: 15px;margin-bottom: 15px;">'; } ?>
+
+    <div class="form-group ">
+
+    <?php
+
+            echo '<div class="col-md-3 control-label"  align="right" style="margin-top: 6px;">Driver</div><div class="col-md-6" >';
+
+    ?>
+
+            <select class="form-control input-<?= $size ?> select2me" data-placeholder="Create New Driver"
+                    id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
+                <option <? if ($driver == '0') {
+                    echo 'selected';
+                } ?>>Create New Driver
+                </option>
+                <?php
+                $counting = 0;
+                $drcl_d = $dr_cl['driver'];
+                foreach ($drcl_d as $drcld) {
+
+                    $counting++;
+                }
+
+                foreach ($dr_cl['driver'] as $dr) {
+
+                    $driver_id = $dr->id;
+                    ?>
+                    <option value="<?php echo $dr->id; ?>"
+                            <?php if ($dr->id == $driver || $counting == 1 && $driver != '0'){ ?>selected="selected"<?php } ?>><?php echo $dr->fname . ' ' . $dr->mname . ' ' . $dr->lname ?></option>
+                <?php
+                }
+                ?>
+            </select>
+
+            <input class="selecting_driver" type="hidden" value="<?php
+            if ($driver) {
+                echo $driver;
+            }/* elseif ($counting == 1 and isset($driver_id)) {
+                            echo $driver_id;
+                        } */
+
+    echo '"/></div></div>';
+    if ( $intable) { echo "</div>";}
+} ?>
 
 <div class="portlet-body">
     <div class="createDriver">
@@ -103,100 +209,8 @@
                 }
             ?>
 
+        <?php  if(!$intable){  printform($counting, $settings, $client, $dr_cl, $driver); } ?>
 
-
-            <input type="hidden" name="document_type" value="add_driver"/>
-
-            <div class="form-group clientsel">
-
-                <div class="col-md-3 control-label"><?php echo ucfirst($settings->client); ?> </div>
-                <div class="col-md-6">
-
-                    <script type="text/javascript">
-                        function reload(value) {
-                            var container = document.getElementById("selecting_driver");
-                            var was = container.value;
-                            container.value = value;  //THIS IS NOT WORKING!!!
-                            //this should set the select dropdown to "Create a Driver"
-                        }
-                    </script>
-
-                    <?php
-
-                        if ($counting > 1) { ?>
-                        <select id="selecting_client" class="form-control input-xlarge select2me"
-                                onoldchange="reload(-1);"
-                        data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
-                        if ($client) { ?><?php } ?>>
-                        <option>None Selected</option><?php
-                    } else { ?>
-
-                    <select id="selecting_client" class="form-control input-xlarge select2me"
-                            data-placeholder="Select <?php echo ucfirst($settings->client); ?>">
-                        <?php
-                            }
-                            foreach ($dr_cl['client'] as $dr) {
-                                $client_id = $dr->id;
-                                ?>
-                                <option value="<?php echo $dr->id; ?>"
-                                        <?php if ($dr->id == $client || $counting == 1){ ?>selected="selected"<?php } ?>><?php echo $dr->company_name; ?></option>
-                            <?php
-                            }
-                        ?>
-                    </select>
-
-                    <input class="selecting_client" type="hidden"
-                           value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
-                </div>
-            </div>
-            <div class="divisionsel form-group">
-                <?php if ($counting == 1) $cl_count = 1; else {
-                    $cl_count = 0;
-                } ?>
-            </div>
-
-
-            <div class="form-group ">
-
-                <div class="col-md-3 control-label">Driver</div>
-                <div class="col-md-6">
-
-
-                    <?php //echo count($dr_cl['driver']);?>
-                    <select class="form-control input-xlarge select2me" data-placeholder="Create New Driver"
-                            id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
-                        <option <? if ($driver == '0') {
-                            echo 'selected';
-                        } ?>>Create New Driver
-                        </option>
-                        <?php
-                            $counting = 0;
-                            $drcl_d = $dr_cl['driver'];
-                            foreach ($drcl_d as $drcld) {
-
-                                $counting++;
-                            }
-
-                            foreach ($dr_cl['driver'] as $dr) {
-
-                                $driver_id = $dr->id;
-                                ?>
-                                <option value="<?php echo $dr->id; ?>"
-                                        <?php if ($dr->id == $driver || $counting == 1 && $driver != '0'){ ?>selected="selected"<?php } ?>><?php echo $dr->fname . ' ' . $dr->mname . ' ' . $dr->lname ?></option>
-                            <?php
-                            }
-                        ?>
-                    </select>
-
-                    <input class="selecting_driver" type="hidden" value="<?php
-                        if ($driver) {
-                            echo $driver;
-                        }/* elseif ($counting == 1 and isset($driver_id)) {
-                            echo $driver_id;
-                        } */?>"/>
-
-                </div>
-            </div>
 
 
             <div class="row">
@@ -274,6 +288,7 @@
                 //alert(client);
                 $.ajax({
                     url: '<?php echo $this->request->webroot;?>clients/divisionDropDown/' + client,
+                    data: {istable: '<?= $intable; ?>'},
                     success: function (response) {
                         $('.divisionsel').html(response);
                     }
@@ -327,6 +342,7 @@
                 //alert(client);
                 $.ajax({
                     url: '<?php echo $this->request->webroot;?>clients/divisionDropDown/' + client,
+                    data: {istable: '<?= $intable; ?>'},
                     success: function (response) {
                         $('.divisionsel').html(response);
                     }
@@ -366,15 +382,15 @@
 </script>
 
 
-<div class="row margin-bottom-20">
+<div class="row">
     <?php
         $offset = "";
         if ($ordertype == "" || $ordertype == "MEE") {
             if ($ordertype != "") {
-                $offset = " col-md-offset-3";
+                $offset = " col-md-offset-2";
             }
             ?>
-            <div class="col-md-7<?= $offset ?>">
+            <div class="col-md-8<?= $offset ?>">
                 <div class="pricing pricing-active hover-effect">
                     <div class="pricing-head pricing-head-active">
                         <h3>Place MEE Order <span>
@@ -385,6 +401,9 @@
 											One Time Payment </span>
                         </h4>
                     </div>
+
+                    <?php if ($intable) { printform($counting, $settings, $client, $dr_cl, $driver, true); } ?>
+
                     <ul class="pricing-content list-unstyled">
 
                         <li>
@@ -438,12 +457,12 @@
         $offset = "";
         if ($ordertype == "" || $ordertype == "CART") {
             if ($ordertype != "") {
-                $offset = " col-md-offset-3";
+                $offset = " col-md-offset-2";
             }
 
             ?>
-            <div class="col-md-7<?= $offset; ?>">
-                <div class="pricing hover-effect">
+            <div class="col-md-8<?= $offset; ?>" >
+                <div class="pricing hover-effect" >
                     <div class="pricing-head">
                         <h3>A La Carte / Re-qualify <span>
 											Officia deserunt mollitia </span>
@@ -453,6 +472,9 @@
 											(Starting At) </span>
                         </h4>
                     </div>
+
+                    <?php if ($intable) { printform($counting, $settings, $client, $dr_cl, $driver, true); } ?>
+
                     <ul class="pricing-content list-unstyled">
 
                         <li>

@@ -17,7 +17,7 @@
 </div>
 
 
-<div class="portlet box green">
+<!--div class="portlet box green">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-folder-open-o"></i>MEE Order Prerequisites
@@ -25,14 +25,14 @@
     </div>
     <div class="portlet-body">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12"-->
                 <?php include('subpages/profile/info_order2.php'); ?>
-            </div>
+            <!--/div>
         </div>
 
 
     </div>
-</div>
+</div-->
 
 
 

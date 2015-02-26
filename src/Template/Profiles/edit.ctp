@@ -266,9 +266,9 @@
                                         ?>
 
                                     <label class="uniform-inline" style="margin-bottom:20px;">
-                                <input <?php if(!$this->request->session()->read('Profile.super') && ($this->request->session()->read('Profile.profile_type') != '2') || $param2 == "View") { echo $is_disabled; }?> type="checkbox" name="stat" value="1" id="<?php echo $profile->id; ?>"
+                                <input type="checkbox" name="stat" value="1" id="<?php echo $profile->id; ?>"
                                        class="checkhiredriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
-                                Was this driver hired? </label> 
+                                Was this driver hired? </label>
                                     
                                     <?php
                                     }}

@@ -70,10 +70,14 @@ function provinces($name){
         //  $id     -   the ID/index number of the form to check
         // NOTE: This is an arbitrary rule set to be substituted for a working one later on
         function displayform($forms, $id){
+            if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
             if(count($forms)>$id){
-                return $forms[$id] == 1;
+                if ($id == 3) {
+                        return $forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
+                }
+                return false; //no other form needs to show
             }
-            return true; //returns true if $forms is empty or smaller than the ID number
+            return true; //returns true if $forms is empty or smaller than the ID number (ie: MEE order)
         }
 
         if (isset($disabled)) { ?>

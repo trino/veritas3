@@ -316,9 +316,9 @@
                             $activetab="profile";
                             //if ($this->request->session()->read('Profile.profile_type') > 1) {//is not an admin, block.php suggests using =2
                                 if (isset($_GET['getprofilescore'])) { $activetab = "scorecard"; }
-                                //if (strpos($_SERVER['HTTP_REFERER'], "profiles/edit/" . $id )  > 0 or strpos($_SERVER['HTTP_REFERER'], "profiles/add")  > 0 or isset($_GET["clientflash"])){ //. $id
+                                if (strpos($_SERVER['HTTP_REFERER'], "profiles/edit/" . $id )  > 0 or strpos($_SERVER['HTTP_REFERER'], "profiles/add")  > 0 or isset($_GET["clientflash"])){ //. $id
                                     if (isset($Clientcount) && $Clientcount == 0) { $activetab = "permissions"; }
-                                //}
+                                }
                             if(isset($_GET['activetab'])){ $activetab =$_GET['activetab'];}
                             
                             function activetab($activetab, $name, $needsclass = True){

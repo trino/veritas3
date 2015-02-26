@@ -5,6 +5,18 @@
 </style>
 
 <?php
+    function getcheckboxes($name, $amount){
+        $tempstr="";
+        for ($temp = 0; $temp < $amount; $temp += 1) {//there are 7 checkboxes to check
+            if (strlen($tempstr) > 0) {
+                $tempstr .= "+','";
+            }
+            $tempstr .= "+Number($('#" . $name . $temp . "').prop('checked'))";
+        }
+        return $tempstr;
+    }
+    $tempstr=getcheckboxes("form", 7);
+
     if (isset($_GET['driver'])) {
         $driver = $_GET['driver'];
     } else {
@@ -35,7 +47,7 @@
 
     $ordertype = strtoupper(GET("ordertype"));
 
-    function printbutton($type, $webroot, $index)
+    function printbutton($type, $webroot, $index, $tempstr="")
     {
         if (strlen($type) > 0) {
             switch ($index) {
@@ -68,11 +80,6 @@
                 echo '<a href="#" class="btn yellow-crusta">Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
                 break;
             case 5:
-                $tempstr="";
-                for ($temp=0; $temp< 7; $temp+=1){//there are 7 checkboxes to check
-                    if (strlen($tempstr)>0){ $tempstr.= "+','"; }
-                    $tempstr.= "+Number($('#form" . $temp . "').prop('checked'))";
-                }
                 ?>
 
                 <a class="btn red button-next proceed"
@@ -198,9 +205,9 @@
 
                     <?php
                         if ($ordertype == "") {
-                            printbutton($ordertype, $this->request->webroot, 1);
+                            printbutton($ordertype, $this->request->webroot, 1, $tempstr);
                             echo "&nbsp;&nbsp; or &nbsp;&nbsp";
-                            printbutton($ordertype, $this->request->webroot, 2);
+                            printbutton($ordertype, $this->request->webroot, 2, $tempstr);
                         }
                     ?>
 
@@ -217,7 +224,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
 
-                        <?php printbutton($ordertype, $this->request->webroot, 5); ?>
+                        <?php printbutton($ordertype, $this->request->webroot, 5, $tempstr); ?>
 
                         <a class="btn grey button-next proceed"
                            onclick="$('.alacarte').toggle(200);$('.placenow').removeAttr('disabled');">
@@ -302,7 +309,7 @@
                     $('#selecting_client').html(res);
                     $('.selecting_driver').val($('#selecting_driver').val());
 
-                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division);
+                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' + <?= $tempstr; ?> );
 
                 }
             });
@@ -347,7 +354,7 @@
                     $('#selecting_driver').html(res);
                     $('.selecting_client').val($('#selecting_client').val());
 
-                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division);
+                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' + <?= $tempstr; ?> );
 
                 }
             });
@@ -387,7 +394,7 @@
 
                         <li>
                             <input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Driver's Record Abstract
+                            <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
                         </li>
 
                         <li>
@@ -421,7 +428,7 @@
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
                         </p>
-                        <?php printbutton($ordertype, $this->request->webroot, 3); ?>
+                        <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr); ?>
 
                     </div>
                 </div>
@@ -455,7 +462,7 @@
 
                         <li>
                             <input checked type="checkbox" name="dri_abs" id="form1" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Driver's Record Abstract
+                            <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
                         </li>
 
                         <li>
@@ -488,7 +495,7 @@
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing.
                         </p>
-                        <?php printbutton($ordertype, $this->request->webroot, 4); ?>
+                        <?php printbutton($ordertype, $this->request->webroot, 4, $tempstr); ?>
                     </div>
                 </div>
             </div>

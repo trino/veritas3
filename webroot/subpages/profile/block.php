@@ -294,7 +294,7 @@ if ($activetab == "permissions") {
                                                         No </label>
                                                 </td>
                                             </tr>-->
-                                            <tr>
+                                            <!--tr>
                                                 <td class="vtop">Messages</td>
                                                 <td>
                                                      <label class="uniform-inline">
@@ -308,7 +308,7 @@ if ($activetab == "permissions") {
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->messages == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr-->
                                             <tr>
                                                 <td class="vtop">Schedule</td>
                                                 <td>

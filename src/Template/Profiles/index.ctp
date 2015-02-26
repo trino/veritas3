@@ -215,7 +215,7 @@
                                                         $expires = strtotime($profile->expiry_date);
                                                         if ($expires){
                                                             if ($expires < time()) {
-                                                                echo '<div class="alert alert-danger"><strong>License Expired.</strong></div>';
+                                                                echo '<strong class="clearfix " style="color:#a94442">License Expired</strong>';
                                                             }
                                                         }
                                                     }

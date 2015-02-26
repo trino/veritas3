@@ -297,12 +297,12 @@ echo 999;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // debug($consent_form_attachments);
+    /*
     foreach ($consent_form_attachments as $d) {
         if (isset($d->attach_doc) && $d->attach_doc != "") {
 
             if ($upload_additional) {
 
-                echo $pdf = file_get_contents('attachments/' . $d->attach_doc);
                 echo $body = base64_encode($pdf);
 
                 $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
@@ -313,6 +313,27 @@ echo 999;
             }
 
         }
+
+*/
+
+        //////change   echo $pdf = file_get_contents('attachments/' . $d->attach_doc);
+
+// debug($consent_form_attachments);
+foreach (    $sub2['con_at'] as $d) {
+if ($d->attachment) {
+
+debug($d->attachment);
+}
+
+
+}
+
+    foreach (     $sub['da_at'] as $d) {
+        if ($d->attachment) {
+
+            debug($d->attachment);
+        }
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

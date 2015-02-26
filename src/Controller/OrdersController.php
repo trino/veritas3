@@ -555,7 +555,7 @@
                 $pre = TableRegistry::get('doc_attachments');
                 $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $orderid, 'sub_id' => 1])->all();
                 $this->set('pre_at', $pre_at);
-debug($pre_at);
+
                 //////////////////////////////////////////////////////////// driver application
 
                 $da = TableRegistry::get('driver_application');
@@ -575,9 +575,9 @@ debug($pre_at);
 
                     $this->set('sub', $sub);
 
-                    debug($sub);
+                 //   debug($sub);
                 }
-echo 123;
+
                 //////////////////////////////////////////////////////////// conbsent form
 
                 $con = TableRegistry::get('consent_form');
@@ -611,10 +611,10 @@ echo 123;
                 $edu_att = TableRegistry::get('doc_attachments');
                 $sub4['att'] = $edu_att->find()->where(['order_id' => $orderid, 'sub_id' => 42])->all();
                 $this->set('sub4', $sub4);
-                debug($sub4);
+            //    debug($sub4);
 
             }
-echo 456;
+
             $this->set('doc_comp', $this->Document);
             $this->layout = "blank";
 

@@ -270,7 +270,7 @@ foreach ($dr_cl['client'] as $dr) {
             checker++;
         });
         if (checker > 0) {
-            //alert($('.divisionsel select').val());
+
             if (!$('.divisionsel select').val()) {
                 $('.divisionsel select').attr('style', 'border:1px solid red;');
                 return false;

@@ -164,7 +164,7 @@
                                         ?></td>
                                     <td><?php if ($order->division) {
                                             $div = $doc_comp->getDivById($order->division);
-                                            echo ucfirst($div->title);
+                                            if (is_object($div)) {echo ucfirst($div->title);}
 } else {
 echo '';
 } ?></td>

@@ -190,7 +190,7 @@
                                         Place Order</a>
                                 </li>
 
-                                <li <?php echo ($this->request['controller'] == 'Orders' && GET2("ordertype") == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && GET3("ordertype") == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                             <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART">
                                 <i class="icon-plus"></i>
                                 A La Carte/Re-qualify </a>

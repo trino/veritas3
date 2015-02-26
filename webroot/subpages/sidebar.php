@@ -213,13 +213,13 @@ $profileID = $this->Session->read('Profile.id');
                 </li>
             <?php } ?>
             <?php if ($sidebar->messages == 1) { ?>
-                <li class="<?php echo ($this->request['controller'] == 'Messages') ? 'active open' : ''; ?>">
+                <!--li class="<?php echo ($this->request['controller'] == 'Messages') ? 'active open' : ''; ?>">
                     <a href="<?php echo $this->request->webroot; ?>Messages">
                         <i class="icon-envelope"></i>
                         <span class="title">Messages</span>
                         <span class="selected"></span>
                     </a>
-                </li>
+                </li-->
             <?php } ?>
              <?php if ($sidebar->analytics == 1) { ?>
                 <li class="<?php echo ($this->request['action'] == 'analytics') ? 'active open' : ''; ?>">

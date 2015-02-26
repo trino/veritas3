@@ -90,7 +90,7 @@
                         <table class="table table-striped table-bordered table-advance table-hover recruiters">
                             <thead>
                             <tr>
-                                <th colspan="2">Assigned <?= $settings->profile ?>s :</th>
+                                <th colspan="2">Assigned To:</th>
                             </tr>
                             </thead>
                             <tbody id="">

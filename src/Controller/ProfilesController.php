@@ -374,7 +374,8 @@
      */
     public function add()
     {
-        $this->set('uid', '');
+        $this->set('uid', '0');
+        $this->set('id', '0');
         $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         // Only super admin and recruiter are allowed to create profiles as discussed on feb 19
         if (!$this->request->session()->read('Profile.super')) {

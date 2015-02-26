@@ -72,11 +72,11 @@
                             <div class="form-group">
                                 <label class="control-label"><?php echo ucfirst($settings->profile); ?> Type</label>
 <!--old code:  <input type="hidden" id="nProfileType" name="profile_type" value="<!php if(!isset($p) && isset($getProfileType->profile_type) && $getProfileType->profile_type == 2)echo "5"; else echo $p->profile_type;!>" <!php echo $is_disabled !> />-->
-
+                                <?php if (isset($p)){?> 
                                 <input type="hidden" id="nProfileType" name="profile_type" value="<?php if (isset($p)) { echo $p->profile_type;} ?>" <?php echo $is_disabled ?> />
-
+                                <?php } ?>
                                 <select  <?php echo $is_disabled ?>
-                                    name="" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
+                                    name="<?php if (!isset($p)){ echo 'profile_type'; }?>" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
                                     class="form-control member_type" required='required' onchange="$('#nProfileType').val($(this).val());">
                                     <option value="">Select</option>
                                     <?php
@@ -186,7 +186,7 @@
                         <?php // if ($settings->client_option == 0) { ?>
 
                         <div class="col-md-6" id="driver_div"
-                             style="display:<?php if ((isset($p) && $p->profile_type == 5) || ($this->request->session()->read('Profile.profile_type') == 2 && ($p->id != ($this->request->session()->read('Profile.id'))))) echo 'block'; else echo "none" ?>;">
+                             style="display:<?php if ((isset($p) && $p->profile_type == 5) || ($this->request->session()->read('Profile.profile_type') == 2 && (isset($p) && $p->id != ($this->request->session()->read('Profile.id'))))) echo 'block'; else echo "none" ?>;">
                             <div class="form-group">
                                 <label class="control-label">Driver Type</label>
                                 <select  <?php echo $is_disabled ?> name="driver"

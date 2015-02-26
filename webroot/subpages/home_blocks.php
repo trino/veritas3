@@ -64,7 +64,7 @@
 									 	$title = ucfirst($d->title);
 									 	if ($title == "Feedbacks") { $title = "Feedback"; }
                                          $titles[strtolower(trim($title))] = 1;
-									 echo $title; ?>
+									  ?>
     							</div>
     						</div>
                             <?php if($this->request['controller']!="Documents"){?>

@@ -406,10 +406,10 @@
         }
 
         function get_orderscount($type, $c_id = "")
-        {
+{
 
             $u = $this->request->session()->read('Profile.id');
-
+            
             if (!$this->request->session()->read('Profile.super')) {
                 $setting = $this->Settings->get_permission($u);
                 //var_dump($setting);
@@ -422,10 +422,14 @@
                 $u_cond = "";
 
             $model = TableRegistry::get($type);
+            
             if ($c_id != "") {
+                
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'Orders.draft' => 0, $type . '.client_id' => $c_id])->contain(['Orders'])->count();
             } else {
+                
                 $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'), $type);
+                //var_dump($u_cond);die();
                 //var_dump($cond);die();
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'Orders.draft' => 0, 'OR' => $cond])->contain(['Orders'])->count();
             }

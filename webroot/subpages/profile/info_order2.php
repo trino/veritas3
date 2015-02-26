@@ -5,211 +5,215 @@
 </style>
 
 <?php
-    $intable = true;
+$intable = true;
+$cols= 8;
 
-    function getcheckboxes($name, $amount){
-        $tempstr="";
-        for ($temp = 0; $temp < $amount; $temp += 1) {//there are 7 checkboxes to check
-            if (strlen($tempstr) > 0) {
-                $tempstr .= "+','";
-            }
-            $tempstr .= "+Number($('#" . $name . $temp . "').prop('checked'))";
+function getcheckboxes($name, $amount){
+    $tempstr="";
+    for ($temp = 0; $temp < $amount; $temp += 1) {//there are 7 checkboxes to check
+        if (strlen($tempstr) > 0) {
+            $tempstr .= "+','";
         }
-        return $tempstr;
+        $tempstr .= "+Number($('#" . $name . $temp . "').prop('checked'))";
     }
-    $tempstr=getcheckboxes("form", 7);
+    return $tempstr;
+}
+$tempstr=getcheckboxes("form", 7);
 
-    if (isset($_GET['driver'])) {
-        $driver = $_GET['driver'];
-    } else {
-        $driver = 0;
+if (isset($_GET['driver'])) {
+    $driver = $_GET['driver'];
+} else {
+    $driver = 0;
+}
+
+if (isset($_GET['client'])) {
+    $client = $_GET['client'];
+} else {
+    $client = 0;
+}
+
+$dr_cl = $doc_comp->getDriverClient($driver, $client);
+
+$counting = 0;
+$drcl_c = $dr_cl['client'];
+foreach ($drcl_c as $drclc) {
+    $counting++;
+}
+
+function GET($name, $default = "")
+{
+    if (isset($_GET[$name])) {
+        return $_GET[$name];
     }
+    return $default;
+}
 
-    if (isset($_GET['client'])) {
-        $client = $_GET['client'];
-    } else {
-        $client = 0;
-    }
+$ordertype = strtoupper(GET("ordertype"));
+if (strlen($ordertype)==0){
+    $intable=false;
+    $cols=6;
+}
 
-    $dr_cl = $doc_comp->getDriverClient($driver, $client);
-
-    $counting = 0;
-    $drcl_c = $dr_cl['client'];
-    foreach ($drcl_c as $drclc) {
-        $counting++;
-    }
-
-    function GET($name, $default = "")
-    {
-        if (isset($_GET[$name])) {
-            return $_GET[$name];
-        }
-        return $default;
-    }
-
-    $ordertype = strtoupper(GET("ordertype"));
-    if (strlen($ordertype)==0){ $intable=false; }
-
-    function printbutton($type, $webroot, $index, $tempstr="") {
-        if (strlen($type) > 0) {
-            switch ($index) {
-                case 3:
-                    $index = 1;
-                    break;
-                case 4:
-                    $index = 5;
-                    break;
-            }
-        }
+function printbutton($type, $webroot, $index, $tempstr="") {
+    if (strlen($type) > 0) {
         switch ($index) {
-            case 1: ?>
-                <a href="javascript:void(0);" class="btn btn-danger placenow"
-                   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
-                    MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
-
-                <?php
-                break;
-            case 2: ?>
-                <a href="javascript:void(0);" class="btn btn-info"
-                   onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte
-                    <i class="m-icon-swapright m-icon-white"></i></a>
-                <?php
-                break;
             case 3:
-                echo '<a href="#" class="btn red-flamingo"> Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
+                $index = 1;
                 break;
             case 4:
-                echo '<a href="#" class="btn yellow-crusta">Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
+                $index = 5;
                 break;
-            case 5:
-                ?>
-
-                <a class="btn red button-next proceed"
-                   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&forms='<?=$tempstr;?>">
-                    Order Products <i class="m-icon-swapright m-icon-white"></i>
-                </a>
-
-            <?php
         }
     }
+    switch ($index) {
+        case 1: ?>
+            <a href="javascript:void(0);" class="btn btn-danger placenow"
+               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
+                MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
+
+            <?php
+            break;
+        case 2: ?>
+            <a href="javascript:void(0);" class="btn btn-info"
+               onclick="$('.alacarte').show(200);$('.placenow').attr('disabled','');">A La Carte
+                <i class="m-icon-swapright m-icon-white"></i></a>
+            <?php
+            break;
+        case 3:
+            echo '<a href="#" class="btn red-flamingo"> Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
+            break;
+        case 4:
+            echo '<a href="#" class="btn yellow-crusta">Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
+            break;
+        case 5:
+            ?>
+
+            <a class="btn red button-next proceed"
+               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&forms='<?=$tempstr;?>">
+                Order Products <i class="m-icon-swapright m-icon-white"></i>
+            </a>
+
+        <?php
+    }
+}
 
 function printform($counting, $settings, $client, $dr_cl, $driver, $intable = false){//pass the variables exactly as given, then specifiy if it's in a table or not
-    echo '<input type="hidden" name="document_type" value="add_driver"/>';
-    echo '<div class="form-group clientsel">';
-    $dodiv=false;
-    if ($intable) {
-        echo '<div class="row" style="margin-top: 15px;">' ;
-        $size="large";
-    } else {
-        $size = "xlarge";
-    }
+echo '<input type="hidden" name="document_type" value="add_driver"/>';
+echo '<div class="form-group clientsel">';
+$dodiv=false;
+if ($intable) {
+    echo '<div class="row" style="margin-top: 15px;">' ;
+    $size="large";
+} else {
+    $size = "xlarge";
+}
 
 echo '<div class="col-md-3 control-label" align="right" style="margin-top: 6px;">' . ucfirst($settings->client) . '</div><div class="col-md-6">';
 
 
 $dodiv=true;?>
 
-            <script type="text/javascript">
-                function reload(value) {
-                    var container = document.getElementById("selecting_driver");
-                    var was = container.value;
-                    container.value = value;  //THIS IS NOT WORKING!!!
-                    //this should set the select dropdown to "Create a Driver"
-                }
-            </script>
+<script type="text/javascript">
+    function reload(value) {
+        var container = document.getElementById("selecting_driver");
+        var was = container.value;
+        container.value = value;  //THIS IS NOT WORKING!!!
+        //this should set the select dropdown to "Create a Driver"
+    }
+</script>
 
-            <?php
+<?php
 
-            if ($counting > 1) { ?>
-                <select id="selecting_client" class="form-control input-<?= $size ?> select2me"
-                onoldchange="reload(-1);"
-                data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
-                if ($client) { ?><?php } ?>>
+if ($counting > 1) { ?>
+    <select id="selecting_client" class="form-control input-<?= $size ?> select2me"
+    onoldchange="reload(-1);"
+    data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
+    if ($client) { ?><?php } ?>>
                         <option>None Selected</option><?php
-            } else { ?>
+} else { ?>
 
                     <select id="selecting_client" class="form-control input-<?=$size;?> select2me"
                             data-placeholder="Select <?php echo ucfirst($settings->client); ?>">
                         <?php
-            }
-            foreach ($dr_cl['client'] as $dr) {
-                $client_id = $dr->id;
-                ?>
-                <option value="<?php echo $dr->id; ?>"
-                        <?php if ($dr->id == $client || $counting == 1){ ?>selected="selected"<?php } ?>><?php echo $dr->company_name; ?></option>
-            <?php
-            }
-            ?>
-            </select>
+}
+foreach ($dr_cl['client'] as $dr) {
+    $client_id = $dr->id;
+    ?>
+    <option value="<?php echo $dr->id; ?>"
+            <?php if ($dr->id == $client || $counting == 1){ ?>selected="selected"<?php } ?>><?php echo $dr->company_name; ?></option>
+<?php
+}
+?>
+</select>
 
-            <input class="selecting_client" type="hidden" value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
-    </div></div>
+<input class="selecting_client" type="hidden" value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
+</div></div>
 
 <?php if ($intable) { echo '</div>'; } ?>
 
-    <div class="divisionsel form-group">
-        <?php if ($counting == 1) $cl_count = 1; else {
-            $cl_count = 0;
-        } ?>
-    </div>
+<div class="divisionsel form-group">
+    <?php if ($counting == 1) $cl_count = 1; else {
+        $cl_count = 0;
+    } ?>
+</div>
 
 <?php if ($intable) { echo '<div class="row" style="margin-top: 15px;margin-bottom: 15px;">'; } ?>
 
-    <div class="form-group ">
+<div class="form-group ">
 
     <?php
 
-            echo '<div class="col-md-3 control-label"  align="right" style="margin-top: 6px;">Driver</div><div class="col-md-6" >';
+    echo '<div class="col-md-3 control-label"  align="right" style="margin-top: 6px;">Driver</div><div class="col-md-6" >';
 
     ?>
 
-            <select class="form-control input-<?= $size ?> select2me" data-placeholder="Create New Driver"
-                    id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
-                <option <? if ($driver == '0') {
-                    echo 'selected';
-                } ?>>Create New Driver
-                </option>
-                <?php
-                $counting = 0;
-                $drcl_d = $dr_cl['driver'];
-                foreach ($drcl_d as $drcld) {
+    <select class="form-control input-<?= $size ?> select2me" data-placeholder="Create New Driver"
+            id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
+        <option <? if ($driver == '0') {
+            echo 'selected';
+        } ?>>Create New Driver
+        </option>
+        <?php
+        $counting = 0;
+        $drcl_d = $dr_cl['driver'];
+        foreach ($drcl_d as $drcld) {
 
-                    $counting++;
-                }
+            $counting++;
+        }
 
-                foreach ($dr_cl['driver'] as $dr) {
+        foreach ($dr_cl['driver'] as $dr) {
 
-                    $driver_id = $dr->id;
-                    ?>
-                    <option value="<?php echo $dr->id; ?>"
-                            <?php if ($dr->id == $driver || $counting == 1 && $driver != '0'){ ?>selected="selected"<?php } ?>><?php echo $dr->fname . ' ' . $dr->mname . ' ' . $dr->lname ?></option>
-                <?php
-                }
-                ?>
-            </select>
+            $driver_id = $dr->id;
+            ?>
+            <option value="<?php echo $dr->id; ?>"
+                    <?php if ($dr->id == $driver || $counting == 1 && $driver != '0'){ ?>selected="selected"<?php } ?>><?php echo $dr->fname . ' ' . $dr->mname . ' ' . $dr->lname ?></option>
+        <?php
+        }
+        ?>
+    </select>
 
-            <input class="selecting_driver" type="hidden" value="<?php
-            if ($driver) {
-                echo $driver;
-            }/* elseif ($counting == 1 and isset($driver_id)) {
+    <input class="selecting_driver" type="hidden" value="<?php
+    if ($driver) {
+        echo $driver;
+    }/* elseif ($counting == 1 and isset($driver_id)) {
                             echo $driver_id;
                         } */
 
     echo '"/></div></div>';
     if ( $intable) { echo "</div>";}
-} ?>
+    } ?>
 
 <div class="portlet-body">
     <div class="createDriver">
         <div class="portlet box form-horizontal">
 
             <?php
-                if ($driver && !$client && $counting == 0) {
-                    echo '<div class="alert alert-danger"><strong>Error!</strong> This driver is not assigned to a client. <A href="' . $this->request->webroot . 'profiles/edit/' . $driver . '">Click here to assign them to one</A></div>';
-                }
+            if ($driver && !$client && $counting == 0) {
+                echo '<div class="alert alert-danger"><strong>Error!</strong> This driver is not assigned to a client. <A href="' . $this->request->webroot . 'profiles/edit/' . $driver . '">Click here to assign them to one</A></div>';
+            }
             ?>
 
-        <?php  if(!$intable){  printform($counting, $settings, $client, $dr_cl, $driver); } ?>
+            <?php  if(!$intable){  printform($counting, $settings, $client, $dr_cl, $driver); } ?>
 
 
 
@@ -218,11 +222,11 @@ $dodiv=true;?>
 
 
                     <?php
-                        if ($ordertype == "") {
-                            printbutton($ordertype, $this->request->webroot, 1, $tempstr);
-                            echo "&nbsp;&nbsp; or &nbsp;&nbsp";
-                            printbutton($ordertype, $this->request->webroot, 2, $tempstr);
-                        }
+                    if ($ordertype == "") {
+                        printbutton($ordertype, $this->request->webroot, 1, $tempstr);
+                        echo "&nbsp;&nbsp; or &nbsp;&nbsp";
+                        printbutton($ordertype, $this->request->webroot, 2, $tempstr);
+                    }
                     ?>
 
 
@@ -384,143 +388,143 @@ $dodiv=true;?>
 
 <div class="row">
     <?php
-        $offset = "";
-        if ($ordertype == "" || $ordertype == "MEE") {
-            if ($ordertype != "") {
-                $offset = " col-md-offset-2";
-            }
-            ?>
-            <div class="col-md-8<?= $offset ?>">
-                <div class="pricing pricing-active hover-effect">
-                    <div class="pricing-head pricing-head-active">
-                        <h3>Place MEE Order <span>
+    $offset = $cols;
+    if ($ordertype == "" || $ordertype == "MEE") {
+        if ($ordertype != "") {
+            $offset.= " col-md-offset-2";
+        }
+        ?>
+        <div class="col-md-<?= $offset ?>">
+            <div class="pricing pricing-active hover-effect">
+                <div class="pricing-head pricing-head-active">
+                    <h3>Place MEE Order <span>
 											The all in one package </span>
-                        </h3>
-                        <h4><i>$</i>999<i>.99</i>
+                    </h3>
+                    <h4><i>$</i>999<i>.99</i>
 											<span>
 											One Time Payment </span>
-                        </h4>
-                    </div>
+                    </h4>
+                </div>
 
-                    <?php if ($intable) { printform($counting, $settings, $client, $dr_cl, $driver, true); } ?>
+                <?php if ($intable) { printform($counting, $settings, $client, $dr_cl, $driver, true); } ?>
 
-                    <ul class="pricing-content list-unstyled">
+                <ul class="pricing-content list-unstyled">
 
-                        <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
-                        </li>
+                    <li>
+                        <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                        <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
+                    </li>
 
-                        <li>
-                            <input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
-                        </li>
+                    <li>
+                        <input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></span>
+                        <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
+                    </li>
 
-                        <li>
-                            <input checked disabled="disabled" type="checkbox" name="CVOR" value=""></span>
-                            <i class="fa fa-file-text-o"></i> CVOR
-                        </li>
+                    <li>
+                        <input checked disabled="disabled" type="checkbox" name="CVOR" value=""></span>
+                        <i class="fa fa-file-text-o"></i> CVOR
+                    </li>
 
-                        <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
-                        </li>
+                    <li>
+                        <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                        <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
+                    </li>
 
-                        <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Transclick
-                        </li>
+                    <li>
+                        <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                        <i class="fa fa-file-text-o"></i> Transclick
+                    </li>
 
-                        <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Certifications
-                        </li>
+                    <li>
+                        <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                        <i class="fa fa-file-text-o"></i> Certifications
+                    </li>
 
-                        <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Letter of Experience
-                        </li>
+                    <li>
+                        <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                        <i class="fa fa-file-text-o"></i> Letter of Experience
+                    </li>
 
 
-                    </ul>
-                    <div class="pricing-footer">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
-                        </p>
-                        <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr); ?>
+                </ul>
+                <div class="pricing-footer">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
+                    </p>
+                    <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr); ?>
 
-                    </div>
                 </div>
             </div>
-        <?php }
+        </div>
+    <?php }
 
-        $offset = "";
-        if ($ordertype == "" || $ordertype == "CART") {
-            if ($ordertype != "") {
-                $offset = " col-md-offset-2";
-            }
+    $offset = $cols;
+    if ($ordertype == "" || $ordertype == "CART") {
+        if ($ordertype != "") {
+            $offset.= " col-md-offset-2";
+        }
 
-            ?>
-            <div class="col-md-8<?= $offset; ?>" >
-                <div class="pricing hover-effect" >
-                    <div class="pricing-head">
-                        <h3>A La Carte / Re-qualify <span>
+        ?>
+        <div class="col-md-<?= $offset; ?>" >
+            <div class="pricing hover-effect" >
+                <div class="pricing-head">
+                    <h3>A La Carte / Re-qualify <span>
 											Officia deserunt mollitia </span>
-                        </h3>
-                        <h4><i>$</i>999<i>.99+</i>
+                    </h3>
+                    <h4><i>$</i>999<i>.99+</i>
 											<span>
 											(Starting At) </span>
-                        </h4>
-                    </div>
+                    </h4>
+                </div>
 
-                    <?php if ($intable) { printform($counting, $settings, $client, $dr_cl, $driver, true); } ?>
+                <?php if ($intable) { printform($counting, $settings, $client, $dr_cl, $driver, true); } ?>
 
-                    <ul class="pricing-content list-unstyled">
+                <ul class="pricing-content list-unstyled">
 
-                        <li>
-                            <input checked type="checkbox" name="prem_nat" id="form0" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
-                        </li>
+                    <li>
+                        <input checked type="checkbox" name="prem_nat" id="form0" value="1"></span>
+                        <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
+                    </li>
 
-                        <li>
-                            <input checked type="checkbox" name="dri_abs" id="form1" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
-                        </li>
+                    <li>
+                        <input checked type="checkbox" name="dri_abs" id="form1" value="1"></span>
+                        <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
+                    </li>
 
-                        <li>
-                            <input checked type="checkbox" name="CVOR" id="form2" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> CVOR
-                        </li>
+                    <li>
+                        <input checked type="checkbox" name="CVOR" id="form2" value="1"></span>
+                        <i class="fa fa-file-text-o"></i> CVOR
+                    </li>
 
-                        <li>
-                            <input checked type="checkbox" name="prem_nat" id="form3" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
-                        </li>
+                    <li>
+                        <input checked type="checkbox" name="prem_nat" id="form3" value="1"></span>
+                        <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
+                    </li>
 
-                        <li>
-                            <input checked type="checkbox" name="prem_nat" id="form4" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Transclick
-                        </li>
+                    <li>
+                        <input checked type="checkbox" name="prem_nat" id="form4" value="1"></span>
+                        <i class="fa fa-file-text-o"></i> Transclick
+                    </li>
 
-                        <li>
-                            <input checked type="checkbox" name="prem_nat" id="form5" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Certifications
-                        </li>
+                    <li>
+                        <input checked type="checkbox" name="prem_nat" id="form5" value="1"></span>
+                        <i class="fa fa-file-text-o"></i> Certifications
+                    </li>
 
-                        <li>
-                            <input checked type="checkbox" name="prem_nat" id="form6" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Letter of Experience
-                        </li>
+                    <li>
+                        <input checked type="checkbox" name="prem_nat" id="form6" value="1"></span>
+                        <i class="fa fa-file-text-o"></i> Letter of Experience
+                    </li>
 
-                    </ul>
-                    <div class="pricing-footer">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing.
-                        </p>
-                        <?php printbutton($ordertype, $this->request->webroot, 4, $tempstr); ?>
-                    </div>
+                </ul>
+                <div class="pricing-footer">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing.
+                    </p>
+                    <?php printbutton($ordertype, $this->request->webroot, 4, $tempstr); ?>
                 </div>
             </div>
-        <?php } ?>
+        </div>
+    <?php } ?>
     <!--//End Pricing -->
 </div>

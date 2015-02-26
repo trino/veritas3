@@ -4,13 +4,11 @@ $profileID = $this->Session->read('Profile.id');
  if(strlen($profileID)==0) {
     echo '<div class="alert alert-danger"><strong>Error!</strong> <a href="profiles/logout">Your username no longer exists, click here to logout.</a></div>';
 }
-
     $sidebar = $this->requestAction("settings/all_settings/" . $profileID . "/sidebar"); //http://localhost/veritas3/
     $order_url = $this->requestAction("settings/getclienturl/" . $profileID . "/order");
     $document_url = $this->requestAction("settings/getclienturl/" . $profileID . "/document");
-
     $ordertype = "MEE";
-    if (isset($_GET["ordertype"])){ return $ordertype = strtoupper($_GET["ordertype"]) ;}
+    if (isset($_GET["ordertype"])){ $ordertype = strtoupper($_GET["ordertype"]) ;}
 ?>
 
 <div class="page-sidebar-wrapper">

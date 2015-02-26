@@ -23,15 +23,15 @@
             <i class="fa fa-folder-open-o"></i>MEE Order Prerequisites
         </div>
     </div>
-    <div class="portlet-body">
-        <div class="row">
-            <div class="col-md-12"-->
-                <?php include('subpages/profile/info_order2.php'); ?>
-            <!--/div>
-        </div>
+    <div class="portlet-body"-->
+<div class="row">
+    <div class="col-md-12"></div>
+    <?php include('subpages/profile/info_order2.php'); ?>
+</div>
+</div>
 
 
-    </div>
+<!--/div>
 </div-->
 
 

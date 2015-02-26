@@ -49,9 +49,11 @@ function GET($name, $default = "")
 }
 
 $ordertype = strtoupper(GET("ordertype"));
-if (strlen($ordertype)==0){
-    $intable=false;
-    $cols=6;
+if (strlen($ordertype)==0) {
+    $intable = false;
+    $cols = 6;
+} else {
+    $ordertype = substr($ordertype, 0, 3);
 }
 
 function printbutton($type, $webroot, $index, $tempstr="") {
@@ -395,8 +397,8 @@ foreach ($dr_cl['client'] as $dr) {
         }
         ?>
         <div class="col-md-<?= $offset ?>">
-            <div class="pricing pricing-active hover-effect">
-                <div class="pricing-head pricing-head-active">
+            <div class="pricing-red pricing-red-active hover-effect">
+                <div class="pricing-red-head pricing-head-active">
                     <h3>Place MEE Order <span>
 											The all in one package </span>
                     </h3>
@@ -408,7 +410,7 @@ foreach ($dr_cl['client'] as $dr) {
 
                 <?php if ($intable) { printform($counting, $settings, $client, $dr_cl, $driver, true); } ?>
 
-                <ul class="pricing-content list-unstyled">
+                <ul class="pricing-red-content list-unstyled">
 
                     <li>
                         <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
@@ -525,6 +527,75 @@ foreach ($dr_cl['client'] as $dr) {
                 </div>
             </div>
         </div>
-    <?php } ?>
+    <?php }
+
+    $offset = $cols;
+    if ($ordertype == "QUA") {
+        if ($ordertype != "") { $offset.= " col-md-offset-2"; }
+    ?>
+
+    <div class="col-md-<?= $offset ?>">
+        <div class="pricing-blue pricing-blue-active hover-effect">
+            <div class="pricing-blue-head pricing-head-active">
+                <h3>Requalify<span>
+											The all in one package </span>
+                </h3>
+                <h4><i>$</i>999<i>.99</i>
+											<span>
+											One Time Payment </span>
+                </h4>
+            </div>
+
+            <?php if ($intable) { printform($counting, $settings, $client, $dr_cl, $driver, true); } ?>
+
+            <ul class="pricing-blue-content list-unstyled">
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="CVOR" value=""></span>
+                    <i class="fa fa-file-text-o"></i> CVOR
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Transclick
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Certifications
+                </li>
+
+                <li>
+                    <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                    <i class="fa fa-file-text-o"></i> Letter of Experience
+                </li>
+
+
+            </ul>
+            <div class="pricing-footer">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
+                </p>
+                <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr); ?>
+
+            </div>
+        </div>
+    </div>
+<?php } ?>
     <!--//End Pricing -->
 </div>

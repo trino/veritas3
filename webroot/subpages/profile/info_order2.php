@@ -301,7 +301,7 @@ foreach ($dr_cl['client'] as $dr) {
                 });
             }
         }
-        $('#selecting_driver').change(function () {
+        /*$('#selecting_driver').change(function () {
             var driver = $('#selecting_driver').val();
             //alert(driver);
             if (!isNaN(parseFloat(driver)) && isFinite(driver)) {
@@ -337,11 +337,12 @@ foreach ($dr_cl['client'] as $dr) {
             <?php
         }
         ?>
-        });
+        });*/
 
 
         $('#selecting_client').change(function () {
             $('.select2-choice').removeAttr('style');
+            $('#s2id_selecting_driver .select2-chosen').html('Create New Driver')
             var client = $('#selecting_client').val();
             if (!isNaN(parseFloat(client)) && isFinite(client)) {
                 $('.selecting_client').val(client);

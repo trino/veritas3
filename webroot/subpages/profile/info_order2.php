@@ -301,7 +301,7 @@ foreach ($dr_cl['client'] as $dr) {
                 });
             }
         }
-        $('#selecting_driver').change(function () {
+        /*$('#selecting_driver').change(function () {
             var driver = $('#selecting_driver').val();
             //alert(driver);
             if (!isNaN(parseFloat(driver)) && isFinite(driver)) {
@@ -337,11 +337,12 @@ foreach ($dr_cl['client'] as $dr) {
             <?php
         }
         ?>
-        });
+        });*/
 
 
         $('#selecting_client').change(function () {
             $('.select2-choice').removeAttr('style');
+            $('#s2id_selecting_driver .select2-chosen').html('Create New Driver')
             var client = $('#selecting_client').val();
             if (!isNaN(parseFloat(client)) && isFinite(client)) {
                 $('.selecting_client').val(client);
@@ -399,7 +400,7 @@ foreach ($dr_cl['client'] as $dr) {
         <div class="col-md-<?= $offset ?>">
             <div class="pricing-red pricing-red-active hover-effect">
                 <div class="pricing-red-head pricing-head-active">
-                    <h3>Place MEE Order <span>
+                    <h3>Order MEE <span>
 											The all in one package </span>
                     </h3>
                     <h4><i>$</i>999<i>.99</i>
@@ -470,7 +471,7 @@ foreach ($dr_cl['client'] as $dr) {
         <div class="col-md-<?= $offset; ?>" >
             <div class="pricing hover-effect" >
                 <div class="pricing-head">
-                    <h3>A La Carte / Re-qualify <span>
+                    <h3>Order Products <span>
 											Officia deserunt mollitia </span>
                     </h3>
                     <h4><i>$</i>999<i>.99+</i>

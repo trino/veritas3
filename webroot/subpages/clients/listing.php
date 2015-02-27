@@ -149,10 +149,13 @@
                                                            class="btn btn-info"> Create Order</a-->
 
                                                         <a href="<?php /*echo $this->request->webroot . $order_url;*/
-                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;                                                                         ?>&ordertype=MEE" class="btn red-flamingo">Place Order</a>
+                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=MEE" class="btn red-flamingo">Order MEE</a>
 
                                                         <a href="<?php /*echo $this->request->webroot . $order_url;*/
-                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;                                                                         ?>&ordertype=CART" class="btn btn-success"> A La Carte/Re-qualify</a>
+                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=CART" class="btn btn-success">Order Products</a>
+                                                        
+                                                        <a href="<?php /*echo $this->request->webroot . $order_url;*/
+                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=QUA" class="btn btn-warning">Re-Qualify</a>
 
                                                     <?php
                                                     }

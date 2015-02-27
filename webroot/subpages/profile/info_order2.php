@@ -462,7 +462,7 @@ foreach ($dr_cl['client'] as $dr) {
     <?php }
 
     $offset = $cols;
-    if ($ordertype == "" || $ordertype == "CART") {
+    if ($ordertype == "" || $ordertype == "CAR") {
         if ($ordertype != "") {
             $offset.= " col-md-offset-2";
         }

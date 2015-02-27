@@ -310,9 +310,10 @@
 
                                         if (isset($p)) {
                                             if ($profile->profile_type == 5) {
-                                                ?>
-                                                <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
-                                                   class="btn red-flamingo">Place MEE Order</a>
+                                                ?><br>
+                                                <a  href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
+                                                   class="btn red-flamingo clearfix">Place MEE Order</a>
+                                                <br>
                                                 <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
                                                    class="btn btn-success" style="margin-top:10px;">A La
                                                     Carte/Re-qualify</a>

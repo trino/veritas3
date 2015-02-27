@@ -232,7 +232,7 @@
 <div class="page-footer">
 <?php if($settings->box =='1'){?><div class="container"><?php }?>
 	<div class="page-footer-inner">
-		 &copy; <?php echo $settings->mee;?> 2015 / A Service Division of <a style="color:white;" href="https://isbc.ca">ISB Canada</a>
+		 &copy; <?php echo $settings->mee;?> 2015 <!--a style="color:white;" href="https://isbc.ca">ISB Canada</a-->
 	</div>
 
     <div class="page-footer-inner" style="float:right;">

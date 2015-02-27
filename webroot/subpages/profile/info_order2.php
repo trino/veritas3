@@ -68,12 +68,26 @@ function printbutton($type, $webroot, $index, $tempstr="") {
         }
     }
     switch ($index) {
-        case 1: ?>
+        case 1: 
+        if($type=='QUA')
+        {
+            ?>
             <a href="javascript:void(0);" class="btn btn-danger placenow"
-               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('.clientsel .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('.select2-choice').offset().top},'slow');}">Place
+               onclick="if(!check_div())return false;if($('.selecting_driver').val()==''){alert('Please select driver to requalify.');return false;}var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
+                MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
+                <?php
+        }
+        else
+        {
+            
+        
+        ?>
+            <a href="javascript:void(0);" class="btn btn-danger placenow"
+               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
                 MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
 
             <?php
+            }
             break;
         case 2: ?>
             <a href="javascript:void(0);" class="btn btn-info"
@@ -91,7 +105,7 @@ function printbutton($type, $webroot, $index, $tempstr="") {
             ?>
 
             <a class="btn red button-next proceed"
-               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&forms='<?=$tempstr;?>">
+               onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&forms='<?=$tempstr;?>;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">
                 Order Products <i class="m-icon-swapright m-icon-white"></i>
             </a>
 
@@ -263,131 +277,6 @@ foreach ($dr_cl['client'] as $dr) {
 
 
 </div>
-
-
-<script>
-    function check_div() {
-        var checker = 0;
-        $('.divisionsel select').each(function () {
-            checker++;
-        });
-        if (checker > 0) {
-
-            if (!$('.divisionsel select').val()) {
-                $('.divisionsel select').attr('style', 'border:1px solid red;');
-                return false;
-            }
-            return true;
-        }
-        else
-            return true;
-
-    }
-    $(function () {
-        $('#divisionsel').live('change', function () {
-            $(this).removeAttr('style');
-        });
-        if ($('.selecting_client').val()) {
-            var client = $('#selecting_client').val();
-            if (!isNaN(parseFloat(client)) && isFinite(client)) {
-                $('.selecting_client').val(client);
-                //alert(client);
-                $.ajax({
-                    url: '<?php echo $this->request->webroot;?>clients/divisionDropDown/' + client,
-                    data: {istable: '<?= $intable; ?>'},
-                    success: function (response) {
-                        $('.divisionsel').html(response);
-                    }
-                });
-            }
-        }
-        /*$('#selecting_driver').change(function () {
-            var driver = $('#selecting_driver').val();
-            //alert(driver);
-            if (!isNaN(parseFloat(driver)) && isFinite(driver)) {
-                $('.selecting_driver').val(driver);
-
-            }
-            else {
-                $('.selecting_driver').val('');
-                return false;
-            }
-            <?php
-        if(!$client)
-        {
-            ?>
-            $.ajax({
-                url: '<?php echo $this->request->webroot;?>orders/getClientByDriver/' + driver,
-                success: function (res) {
-                    if (res == 'Error')
-                        window.location = "<?php echo $this->request->webroot;?>profiles/edit/" + driver + "?clientflash";
-                    var div = $('#divisionsel').val();
-                    if (!isNaN(parseFloat(div)) && isFinite(div)) {
-                        var division = div;
-                    }
-                    else
-                        var division = '0';
-                    $('#selecting_client').html(res);
-                    $('.selecting_driver').val($('#selecting_driver').val());
-
-                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' + <?= $tempstr; ?> );
-
-                }
-            });
-            <?php
-        }
-        ?>
-        });*/
-
-
-        $('#selecting_client').change(function () {
-            $('.select2-choice').removeAttr('style');
-            $('#s2id_selecting_driver .select2-chosen').html('Create New Driver')
-            var client = $('#selecting_client').val();
-            if (!isNaN(parseFloat(client)) && isFinite(client)) {
-                $('.selecting_client').val(client);
-                //alert(client);
-                $.ajax({
-                    url: '<?php echo $this->request->webroot;?>clients/divisionDropDown/' + client,
-                    data: {istable: '<?= $intable; ?>'},
-                    success: function (response) {
-                        $('.divisionsel').html(response);
-                    }
-                });
-            }
-            else {
-                $('.selecting_client').val('');
-                return false;
-            }
-
-            <?php
-
-        if(!$driver)
-        {
-            ?>
-            $.ajax({
-                url: '<?php echo $this->request->webroot;?>orders/getDriverByClient/' + client,
-                success: function (res) {
-                    var div = $('#divisionsel').val();
-                    if (!isNaN(parseFloat(div)) && isFinite(div)) {
-                        var division = div;
-                    }
-                    else
-                        var division = '0';
-                    $('#selecting_driver').html(res);
-                    $('.selecting_client').val($('#selecting_client').val());
-
-                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' + <?= $tempstr; ?> );
-
-                }
-            });
-            <?php
-       }
-       ?>
-        });
-    });
-</script>
-
 
 <div class="row">
     <?php
@@ -600,3 +489,144 @@ foreach ($dr_cl['client'] as $dr) {
 <?php } ?>
     <!--//End Pricing -->
 </div>
+
+<script>
+    function check_div() {
+        var checker = 0;
+        $('.divisionsel select').each(function () {
+            checker++;
+        });
+        if (checker > 0) {
+
+            if (!$('.divisionsel select').val()) {
+                $('.divisionsel select').attr('style', 'border:1px solid red;');
+                return false;
+            }
+            return true;
+        }
+        else
+            return true;
+
+    }
+    $(function () {
+        $('#divisionsel').live('change', function () {
+            $(this).removeAttr('style');
+        });
+        if ($('.selecting_client').val()) {
+            var client = $('#selecting_client').val();
+            if (!isNaN(parseFloat(client)) && isFinite(client)) {
+                $('.selecting_client').val(client);
+                //alert(client);
+                $.ajax({
+                    url: '<?php echo $this->request->webroot;?>clients/divisionDropDown/' + client,
+                    data: {istable: '<?= $intable; ?>'},
+                    success: function (response) {
+                        $('.divisionsel').html(response);
+                    }
+                });
+            }
+        }
+        $('#selecting_driver').change(function () {
+            $('#s2id_selecting_driver .select2-chosen-2').removeAttr('style');
+            var driver = $('#selecting_driver').val();
+            //alert(driver);
+            if (!isNaN(parseFloat(driver)) && isFinite(driver)) {
+                $('.selecting_driver').val(driver);
+                
+
+            }
+            else {
+                $('.selecting_driver').val('');
+                return false;
+            }
+            });
+        /*$('#selecting_driver').change(function () {
+            var driver = $('#selecting_driver').val();
+            //alert(driver);
+            if (!isNaN(parseFloat(driver)) && isFinite(driver)) {
+                $('.selecting_driver').val(driver);
+
+            }
+            else {
+                $('.selecting_driver').val('');
+                return false;
+            }
+            <?php
+        if(!$client)
+        {
+            ?>
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>orders/getClientByDriver/' + driver,
+                success: function (res) {
+                    if (res == 'Error')
+                        window.location = "<?php echo $this->request->webroot;?>profiles/edit/" + driver + "?clientflash";
+                    var div = $('#divisionsel').val();
+                    if (!isNaN(parseFloat(div)) && isFinite(div)) {
+                        var division = div;
+                    }
+                    else
+                        var division = '0';
+                    $('#selecting_client').html(res);
+                    $('.selecting_driver').val($('#selecting_driver').val());
+
+                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' + <?= $tempstr; ?> );
+
+                }
+            });
+            <?php
+        }
+        ?>
+        });*/
+        
+
+        $('#selecting_client').change(function () {
+            $('s2id_selecting_client .select2-choice').removeAttr('style');
+            $('#s2id_selecting_driver .select2-chosen').html('Create New Driver')
+            var client = $('#selecting_client').val();
+            if (!isNaN(parseFloat(client)) && isFinite(client)) {
+                $('.selecting_client').val(client);
+                //alert(client);
+                $.ajax({
+                    url: '<?php echo $this->request->webroot;?>clients/divisionDropDown/' + client,
+                    data: {istable: '<?= $intable; ?>'},
+                    success: function (response) {
+                        $('.divisionsel').html(response);
+                    }
+                });
+            }
+            else {
+                $('.selecting_client').val('');
+                return false;
+            }
+
+            <?php
+
+        if(!$driver)
+        {
+            ?>
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>orders/getDriverByClient/' + client,
+                success: function (res) {
+                    var div = $('#divisionsel').val();
+                    if (!isNaN(parseFloat(div)) && isFinite(div)) {
+                        var division = div;
+                    }
+                    else
+                        var division = '0';
+                    $('#selecting_driver').html(res);
+                    $('.selecting_client').val($('#selecting_client').val());
+
+                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' + <?= $tempstr; ?> );
+
+                }
+            });
+            <?php
+       }
+       ?>
+       $('#s2id_selecting_driver .select2-chosen-2').removeAttr('style');
+        });
+    });
+</script>
+
+
+

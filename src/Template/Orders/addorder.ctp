@@ -57,11 +57,35 @@ function provinces($name){
         </li>
     </ul>
     <?php
+        
         $forms=array();
         if (isset($_GET["forms"])){
             $forms = explode(",", $_GET["forms"]);
-            echo "Forms: ";
-            print_r($forms);
+            $show_all='all';
+            $show_all2='all';
+            foreach($forms as $f)
+            {
+                if($f!=1)
+                {
+                    $show_all='';
+                    $show_all2='';
+                }
+                
+            }
+            if($show_all=='')
+            {
+                if($forms[1]==1 || $forms[2]==1)
+                {
+                    $show_all='consent';
+                    $show_all2='consent';
+                }
+                else
+                {
+                    $show_all='none';
+                    $show_all2='none';
+                }
+                
+            }
         }
 
         //returns: boolean, if this form should be displayed
@@ -122,7 +146,7 @@ function provinces($name){
                 <div class="form-wizard">
                     <div class="form-body" style="position: relative;">
                         <?php
-
+                            
                             if ($param != 'view') {
                                 $tab = 'tab-pane';
                                 ?>
@@ -153,7 +177,27 @@ function provinces($name){
                                         $end = 0;
                                         $k_c=0;
                                         $index=0;
+                                        if(!isset($show_all))
+                                                {
+                                                    $show_all='all';
+                                                }
+                                                
                                         foreach ($subdoccli as $sd) {
+                                            
+                                            if($show_all=='none')
+                                            continue;
+                                            elseif($show_all=='consent')
+                                            {
+                                                if($sd->sub_id !=4)
+                                                continue;
+                                            }
+                                            else
+                                            if($show_all=='all')
+                                            {
+                                                //do nothing
+                                            }
+                                            
+                                                
                                             $index+=1;
                                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
                                             $act = 0;
@@ -165,7 +209,8 @@ function provinces($name){
                                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
 
                                             ?>
-                                            <?php if ($prosubdoc['display'] != 0 && $d->display == 1 && displayform($forms, strtolower(trim($d->title)))) {
+                                            <?php if ($prosubdoc['display'] != 0 && $d->display == 1) {
+                                                
                                                 $k_c++;
                                                 $j = $d->id;
                                                 $j = $j + 1;
@@ -336,7 +381,23 @@ function provinces($name){
                         
                         <?php
                         $k_c = 0;
+                        if(!isset($show_all2))
+                                                {
+                                                    $show_all2='all';
+                                                }
                         foreach ($subdoccli2 as $sd) {
+                            if($show_all2=='none')
+                                            continue;
+                                            elseif($show_all2=='consent')
+                                            {
+                                                if($sd->sub_id !=4)
+                                                continue;
+                                            }
+                                            else
+                                            if($show_all2=='all')
+                                            {
+                                                //do nothing
+                                            }
                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
                             if ($prosubdoc['display'] != 0 && $d->display == 1) {
                             $k_c++;

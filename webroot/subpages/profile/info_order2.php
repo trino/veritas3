@@ -399,7 +399,7 @@ foreach ($dr_cl['client'] as $dr) {
         <div class="col-md-<?= $offset ?>">
             <div class="pricing-red pricing-red-active hover-effect">
                 <div class="pricing-red-head pricing-head-active">
-                    <h3>Place MEE Order <span>
+                    <h3>Order MEE <span>
 											The all in one package </span>
                     </h3>
                     <h4><i>$</i>999<i>.99</i>
@@ -470,7 +470,7 @@ foreach ($dr_cl['client'] as $dr) {
         <div class="col-md-<?= $offset; ?>" >
             <div class="pricing hover-effect" >
                 <div class="pricing-head">
-                    <h3>A La Carte / Re-qualify <span>
+                    <h3>Order Products <span>
 											Officia deserunt mollitia </span>
                     </h3>
                     <h4><i>$</i>999<i>.99+</i>

@@ -214,13 +214,18 @@
     ?>
     <?php
         $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
-        if ($sidebar->profile_edit == '1') {
+        if ($sidebar->profile_edit == '1' && $param == 'view') {
 
             if ($checker == 1) {
                 echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'floatright btn btn-primary']);
 
             }
-        } ?>
+        } 
+        else if($param == 'edit')
+        {
+            echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'floatright btn btn-info']);
+        }
+        ?>
 </div>
 
 

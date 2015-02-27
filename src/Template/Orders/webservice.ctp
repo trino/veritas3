@@ -22,7 +22,7 @@
     $uploadbinaryconsent_1603 = false;
     $uploadbinaryemployment_1627 = false;
     $uploadbinaryeducation_1650 = false;
-    $upload_additional = false;
+    $upload_additional = true;
 
     if ($startorder1) {
 
@@ -54,7 +54,7 @@
         $this->requestAction('/documents/save_webservice_ids/' . $orderid . '/' . $ins_id . '/' . $ebs_id);
 
     }
-echo 999;
+   // echo 999;
     //  $ins_id = 'EAE1226F-6E28-4E88-B4B5-31CD43875807';
     //  $ebs_id = 'A7101C9A-A969-40B0-848F-64B934B290FC';
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -296,42 +296,95 @@ echo 999;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // debug($consent_form_attachments);
+    // debug($consent_form_attachments);
     /*
     foreach ($consent_form_attachments as $d) {
-        if (isset($d->attach_doc) && $d->attach_doc != "") {
+    if (isset($d->attach_doc) && $d->attach_doc != "") {
 
-            if ($upload_additional) {
+    if ($upload_additional) {
 
-                echo $body = base64_encode($pdf);
+    echo $body = base64_encode($pdf);
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+    $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
-                $result = $client->call('UploadBinaryFile', $soap_xml);
-                debug($result);
+    $result = $client->call('UploadBinaryFile', $soap_xml);
+    debug($result);
 
+    }
+    }
+    */
+    //////change   echo $pdf = file_get_contents('attachments/' . $d->attach_doc);
+    // debug($consent_form_attachments);
+
+    if ($upload_additional) {
+
+       /*
+        foreach ($prescreening['da_at'] as $d) {
+            if ($d->attachment) {
+                echo ($d->attachment);
             }
-
         }
 
+        die();
 */
-
-        //////change   echo $pdf = file_get_contents('attachments/' . $d->attach_doc);
-
-// debug($consent_form_attachments);
-foreach (    $sub2['con_at'] as $d) {
-if ($d->attachment) {
-
-debug($d->attachment);
-}
+//need road test
+debug($prescreening['items']); //null
+debug($driverapplication['de_at']);
+debug($consent['con_at']);
+debug($employee['att']);
+debug($education);
 
 
-}
 
-    foreach (     $sub['da_at'] as $d) {
-        if ($d->attachment) {
 
-            debug($d->attachment);
+
+
+
+     //   debug($consent);
+        foreach ($prescreening['da_at'] as $d) {
+            if ($d->attachment) {
+                echo ($d->attachment);
+            }
+        }
+
+die();
+
+
+        foreach ($education['con_at'] as $d) {
+            if ($d->attachment) {
+                echo ($d->attachment);
+            }
+        }
+
+
+
+
+
+        foreach ($employee as $d) {
+            if ($d->attachment) {
+                echo ($d->attachment);
+            }
+        }
+
+
+
+
+
+
+
+        debug($driverapplication);
+
+        foreach ($driverapplication['da_at'] as $d) {
+            if ($d->attachment) {
+                debug($d->attachment);
+            }
+        }
+        debug($prescreening);
+
+        foreach ($prescreening['da_at'] as $d) {
+            if ($d->attachment) {
+                debug($d->attachment);
+            }
         }
 
     }

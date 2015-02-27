@@ -406,10 +406,10 @@
         }
 
         function get_orderscount($type, $c_id = "")
-{
+        {
 
             $u = $this->request->session()->read('Profile.id');
-            
+
             if (!$this->request->session()->read('Profile.super')) {
                 $setting = $this->Settings->get_permission($u);
                 //var_dump($setting);
@@ -422,12 +422,12 @@
                 $u_cond = "";
 
             $model = TableRegistry::get($type);
-            
+
             if ($c_id != "") {
-                
+
                 $cnt = $model->find()->where(['document_id' => 0, $u_cond, 'Orders.draft' => 0, $type . '.client_id' => $c_id])->contain(['Orders'])->count();
             } else {
-                
+
                 $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'), $type);
                 //var_dump($u_cond);die();
                 //var_dump($cond);die();
@@ -491,15 +491,15 @@
         {
             $this->set('doc_comp', $this->Document);
             $query2 = TableRegistry::get('orders');
-
-            echo $orderid;
-            echo "<br>";
-            echo $id;
-            echo "<br>";
-            echo $pdi;
-            echo "<br>";
-            echo "<br>";
-
+            /*
+                        echo $orderid;
+                        echo "<br>";
+                        echo $id;
+                        echo "<br>";
+                        echo $pdi;
+                        echo "<br>";
+                        echo "<br>";
+            */
             switch ($pdi) {
 
                 case "ins_79":
@@ -550,13 +550,13 @@
 
         public function webservice($recruiter_id = null, $body = null, $orderid = null, $driverid = null)
         {
+
+            $this->layout = "blank";
             if ($orderid) {
 
                 $pre = TableRegistry::get('doc_attachments');
                 $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $orderid, 'sub_id' => 1])->all();
-                $this->set('pre_at', $pre_at);
-
-                //////////////////////////////////////////////////////////// driver application
+                $this->set('prescreening', $pre_at);                 //////////////////////////////////////////////////////////// presceening
 
                 $da = TableRegistry::get('driver_application');
                 $da_detail = $da->find()->where(['order_id' => $orderid])->first();
@@ -573,12 +573,9 @@
                     $de_at = TableRegistry::get('doc_attachments');
                     $sub['de_at'] = $de_at->find()->where(['order_id' => $orderid, 'sub_id' => 3])->all();
 
-                    $this->set('sub', $sub);
+                    $this->set('driverapplication', $sub);                 //////////////////////////////////////////////////////////// driver application
 
-                 //   debug($sub);
                 }
-
-                //////////////////////////////////////////////////////////// conbsent form
 
                 $con = TableRegistry::get('consent_form');
                 $con_detail = $con->find()->where(['order_id' => $orderid])->first();
@@ -589,12 +586,10 @@
 
                     $con_at = TableRegistry::get('doc_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['order_id' => $orderid, 'sub_id' => 4])->all();
-                    $this->set('sub2', $sub2);
-                    $this->set('consent_detail', $con_detail);
-                    debug($con_detail);
+                    $this->set('consent', $sub2);
+                 //   debug($sub2);
+                    //    $this->set('consent_detail', $con_detail);                //////////////////////////////////////////////////////////// conbsent form
                 }
-
-                //////////////////////////////////////////////////////////// employment veritfication
 
                 $emp = TableRegistry::get('employment_verification');
                 $sub3['emp'] = $emp->find()->where(['order_id' => $orderid])->all();
@@ -602,36 +597,20 @@
                 $emp_att = TableRegistry::get('doc_attachments');
                 $sub3['att'] = $emp_att->find()->where(['order_id' => $orderid, 'sub_id' => 41])->all();
 
-                $this->set('sub3', $sub3);
-                //////////////////////////////////////////////////////////// education attach docs
+                $this->set('employee', $sub3); //////////////////////////////////////////////////////////// employment veritfication
 
                 $edu = TableRegistry::get('education_verification');
                 $sub4['edu'] = $edu->find()->where(['order_id' => $orderid])->all();
 
                 $edu_att = TableRegistry::get('doc_attachments');
-                $sub4['att'] = $edu_att->find()->where(['order_id' => $orderid, 'sub_id' => 42])->all();
-                $this->set('sub4', $sub4);
-            //    debug($sub4);
+                $sub4 = $edu_att->find()->where(['order_id' => $orderid, 'sub_id' => 42])->all();
+                $this->set('education', $sub4);                 //////////////////////////////////////////////////////////// education attach docs
 
             }
-
-            $this->set('doc_comp', $this->Document);
-            $this->layout = "blank";
-
-
-
 
             $model = TableRegistry::get('profiles');
             $driverinfo = $model->find()->where(['id' => $driverid])->first();
 
-            /*
-                        $model2 = TableRegistry::get('consent_form_attachments');
-                        $consent_form_attachments = $model2->find()->where(['order_id' => $orderid]);
-
-                        debug($consent_form_attachments);
-                        $this->set(compact('consent_form_attachments'));
-            */
-            echo 789;
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
         }

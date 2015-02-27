@@ -146,6 +146,8 @@
                             <th><?= $this->Paginator->sort('document_type', ucfirst($settings->document) . ' type'); ?></th>
                             <th><?= $this->Paginator->sort('user_id', 'Submitted by'); ?><?php if (isset($end)) echo $end;
                                     if (isset($start)) echo "//" . $start; ?></th>
+                            <th><?= $this->Paginator->sort('uploaded_for', 'Driver'); ?><?php if (isset($end)) echo $end;
+                                    if (isset($start)) echo "//" . $start; ?></th>
                             <th><?= $this->Paginator->sort('created', 'Date'); ?></th>
                             <th><?= $this->Paginator->sort('client_id', ucfirst($settings->client)); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -181,6 +183,7 @@
                                     $row_color_class = "even";
                                 }
                                 $uploaded_by = $doc_comp->getUser($docs->user_id);
+                                $uploaded_for = $doc_comp->getUser($docs->uploaded_for);
                                 $getClientById = $doc_comp->getClientById($docs->client_id);
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
@@ -207,7 +210,9 @@
                                                     <div class="number"></div>
                                                     <div class="desc"></div>
                                                 </div-->
-                                                <a class="more" id="sub_doc_click1" href="javascript:;" onclick="showforms('company_pre_screen_question.php?doc_id=1')">
+                                                <a class="more" id="sub_doc_click1" href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
+                                            echo $this->request->webroot.'documents/view/'.$docs->client_id.'/'.$docs->id;
+                                        }else{?>javascript:;<?php } ?>">
                                                     <?= h($docs->document_type); //it won't let me put it in the desc ?>
                                                 </a>
                                                 </div>
@@ -231,6 +236,18 @@
 
                                             if (isset($uploaded_by->username)) {
                                                 $user = ucfirst(h($uploaded_by->username));
+                                            } else {
+                                                $user = "Unknown user";
+                                            }
+
+                                            echo $user;
+                                            $docname = h($docs->document_type) . " uploaded by " . $user . " at " . h($docs->created);
+
+                                        ?></td>
+                                    <td><?php
+
+                                            if (isset($uploaded_for->username)) {
+                                                $user = ucfirst(h($uploaded_for->username));
                                             } else {
                                                 $user = "Unknown user";
                                             }

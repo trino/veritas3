@@ -60,10 +60,11 @@
         }
         else if($param == 'edit')
         {
-            ?>
+            ?>            
             <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $client->id; ?>?view" class = 'floatright btn btn-info'>View</a>
         <?php
-        }
+                    
+        }                
          ?>
 </div>
 

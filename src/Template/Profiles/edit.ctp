@@ -465,6 +465,7 @@
                     this.enable();
                     $("#clientpic").attr("src", '<?php echo $this->request->webroot;?>img/profile/' + response);
                     $('#client_img').val(response);
+                    alert('Saved');
                 }
             });
         }

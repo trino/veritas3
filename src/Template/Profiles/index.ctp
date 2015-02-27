@@ -168,7 +168,7 @@
                             <thead>
                             <tr class="sorting">
                                 <th><?= $this->Paginator->sort('id') ?></th>
-
+                                <th><?= $this->Paginator->sort('image', 'Image') ?></th>
                                 <th><?= $this->Paginator->sort('username', 'Username') ?></th>
                                 <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
                                 <th><?= $this->Paginator->sort('email') ?></th>
@@ -206,6 +206,32 @@
 
                                     <tr class="<?= $row_color_class; ?>" role="row">
                                         <td><?= $this->Number->format($profile->id) ?></td>
+                                        <td><?php
+                                        if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                            ?>
+                                            <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> 
+                                            <img src="<?php 
+                                            if($profile->image)
+                                         {
+                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image; 
+                                         }
+                                         else {
+                                            echo $this->request->webroot; ?>img/profile/default.png;
+                                           <?php } ?>" class="img-responsive" alt="" style="height:80px width:60px;"/>
+                                             </a>
+                                            <?php
+                                            }
+                                          ?>
+                                        <img src="<?php 
+                                        if($profile->image)
+                                         {
+                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image; 
+                                         }
+                                         else {
+                                            echo $this->request->webroot; ?>img/profile/default.png;
+                                           <?php  } ?>" class="img-responsive" alt="" style="height:80px width:60px;"/>
+                                         
+                                         </td>
                                         <td>
                                         <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                             ?>

@@ -262,7 +262,7 @@
                                         <label class="sr-only" for="exampleInputEmail22">Add/Edit Image</label>
 
                                         <div class="input-icon">
-                                            <br>
+                                            <br/>
                                             <a class="btn btn-xs  btn-success   margin-t10" href="javascript:void(0)"
                                                id="clientimg">
                                                 <i class="fa fa-image"></i>

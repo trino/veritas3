@@ -177,7 +177,7 @@
                                 <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
                                 <th>Assigned to <?=$settings->clients;?></th>
 
-                                <th class="actions"><?= __('Actions') ?></th>
+                               <!-- <th class="actions"><?/*=  __('Actions') */ ?></th> -->
                             </tr>
                             </thead>
                             <tbody>
@@ -206,8 +206,16 @@
 
                                     <tr class="<?= $row_color_class; ?>" role="row">
                                         <td><?= $this->Number->format($profile->id) ?></td>
-
-                                        <td><?= ucfirst(h($profile->username)) ?></td>
+                                        <td>
+                                        <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                            ?>
+                                            <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); ?> </a>
+                                            <?php
+                                            }
+                                            else 
+                                            echo ucfirst(h($profile->username));
+                                             ?>
+                                        </td>
                                         <td><?php
                                                 if (strlen($profile->profile_type) > 0) {
                                                     echo h($profiletype[$profile->profile_type]);
@@ -231,9 +239,9 @@
                                         <td><?= h($profile->lname) ?></td>
                                         <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
 
-                                        <td class="actions  util-btn-margin-bottom-5">
+                                       <!-- <td class="actions  util-btn-margin-bottom-5">
 
-                                        <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                        <?php /* if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);
                                             } ?>
 
@@ -281,11 +289,11 @@
                                                   <!--  <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
                                                        class="btn btn-primary">Score Card</a> -->
                                                 <?php
-                                                }
+                                                } */
                                             ?>
 
 
-                                        </td>
+                                        </td>-->
 
                                     </tr>
 

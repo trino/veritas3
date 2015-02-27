@@ -45,20 +45,9 @@
         </li>
     </ul>
     <?php
-        if (isset($disabled) || isset($_GET['view'])) { ?>
+        if (isset($disabled)) { ?>
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
-        <?php } 
-       
-        if ($sidebar->client_delete == '1') { ?>
-            <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $client->id; ?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
-               onclick="return confirm('Are you sure you want to delete <?= h($client->company_name) ?>?');"
-               class="floatright btn btn-danger">Delete</a>
-        <?php }
-         if ($sidebar->client_edit == '1') 
-        {
-            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $client->id], ['class' => 'floatright btn btn-primary']);
-        }
-         ?>
+        <?php } ?>
 </div>
 
 <div class="row ">

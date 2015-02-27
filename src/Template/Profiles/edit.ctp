@@ -41,9 +41,8 @@
         $is_disabled = '';
     if (isset($profile))
         $p = $profile;
-?>
-
-<?php $settings = $this->requestAction('settings/get_settings'); ?>
+         $settings = $this->requestAction('settings/get_settings');
+        $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar"); ?>
 
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN STYLE CUSTOMIZER -->
@@ -187,10 +186,41 @@
             <a href=""><?php echo $param2 . ' ' . ucfirst($settings->profile); ?></a>
         </li>
     </ul>
+    
     <?php
         if (isset($disabled)) { ?>
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
         <?php } ?>
+    <?php if ($sidebar->profile_delete == '1') {
+        if ($this->request->session()->read('Profile.super') == '1') {
+            if ($this->request->session()->read('Profile.id') != $profile->id) {
+                ?>
+                
+                <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
+                   onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
+                   class="floatright btn btn-danger">Delete</a>
+                </span>
+            <?php
+            }
+        } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
+            ?>
+            <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
+               onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
+               class="floatright btn btn-danger">Delete</a>
+        <?php
+        }
+
+    }
+    ?>
+    <?php
+        $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
+        if ($sidebar->profile_edit == '1') {
+
+            if ($checker == 1) {
+                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'floatright btn btn-primary']);
+
+            }
+        } ?>
 </div>
 
 

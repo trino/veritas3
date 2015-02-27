@@ -497,11 +497,13 @@
         if ($profiles->save($profile)) {
             
         if (isset($_POST['profile_type']) && $_POST['profile_type'] == 5)
+        {
             $username = 'driver_'.$profile->id;
             $queries = TableRegistry::get('Profiles');
             $queries->query()->update()->set(['username' => $username])
                             ->where(['id' => $profile->id])
-                            ->execute();
+                            ->execute();}
+                            else { /*do nth */ }
             if($profile_type== 2)
             {
                 //save profiles to clients if recruiter
@@ -626,7 +628,7 @@
                 else
                     $this->request->data['admin']=0;
                  $this->request->data['dob'] = $_POST['doby']."-".$_POST['dobm']."-".$_POST['dobd'];
-                 if(isset($this->request->data['username']))
+                 if(isset($this->request->data['username']) && $this->request->data['username'] == 5)
                  {
                     unset($this->request->data['username']);
                  }

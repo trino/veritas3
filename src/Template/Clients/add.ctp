@@ -480,12 +480,13 @@
                                                 <div class="docMore" data-count="1">
                                                     <div style="display:block;">
                                                         <a href="javascript:void(0)" id="addMore1" class="btn btn-primary" >Browse</a>
-                                                        <span> <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/></span>
+                                                         <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/>
+                                                         <span></span>
                                                     </div>
                                                 </div>
                                             </div>
 
-
+                                            
 
 
 

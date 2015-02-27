@@ -571,9 +571,10 @@
                     $sub['da_at'] = $da_at->find()->where(['order_id' => $orderid, 'sub_id' => 2])->all();
 
                     $de_at = TableRegistry::get('doc_attachments');
-                    $sub['de_at'] = $de_at->find()->where(['order_id' => $orderid, 'sub_id' => 3])->all();
+                    $sub5['de_at'] = $de_at->find()->where(['order_id' => $orderid, 'sub_id' => 3])->all();
 
                     $this->set('driverapplication', $sub);                 //////////////////////////////////////////////////////////// driver application
+                    $this->set('roadtest', $sub5);                 //////////////////////////////////////////////////////////// driver application
 
                 }
 
@@ -599,11 +600,12 @@
 
                 $this->set('employee', $sub3); //////////////////////////////////////////////////////////// employment veritfication
 
+
                 $edu = TableRegistry::get('education_verification');
                 $sub4['edu'] = $edu->find()->where(['order_id' => $orderid])->all();
 
                 $edu_att = TableRegistry::get('doc_attachments');
-                $sub4 = $edu_att->find()->where(['order_id' => $orderid, 'sub_id' => 42])->all();
+                $sub4['att'] = $edu_att->find()->where(['order_id' => $orderid, 'sub_id' => 42])->all();
                 $this->set('education', $sub4);                 //////////////////////////////////////////////////////////// education attach docs
 
             }

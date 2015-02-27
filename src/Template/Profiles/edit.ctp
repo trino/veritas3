@@ -191,7 +191,7 @@
         if (isset($disabled)) { ?>
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
         <?php } ?>
-    <?php if ($sidebar->profile_delete == '1') {
+    <?php if (isset($profile) && $sidebar->profile_delete == '1') {
         if ($this->request->session()->read('Profile.super') == '1') {
             if ($this->request->session()->read('Profile.id') != $profile->id) {
                 ?>
@@ -213,6 +213,8 @@
     }
     ?>
     <?php
+    if(isset($profile))
+    {
         $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
         if ($sidebar->profile_edit == '1' && $param == 'view') {
 
@@ -224,7 +226,7 @@
         else if($param == 'edit')
         {
             echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'floatright btn btn-info']);
-        }
+        }}
         ?>
 </div>
 

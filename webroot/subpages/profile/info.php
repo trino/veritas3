@@ -269,10 +269,10 @@
                         </div>
                         <div class="clearfix"></div>
                         <?php //}?>
-                        <div class="col-md-6 username_div">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">Username</label>
-                                <input <?php echo $is_disabled ?> name="username" type="text"
+                                <input <?php echo $is_disabled ?> id="username_field" name="username" type="text"
                                                                   class="form-control req_driver req_rec uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
                             <span class="error passerror flashUser"
                                   style="display: none;">Username already exists</span>
@@ -799,7 +799,8 @@
                 //});
                 $('#driver_div').show();
                 $('#isb_id').hide();
-                $('.username_div').hide();
+                //$('.username_div').hide();
+                $('#username_field').attr('disabled','disabled');
                 //$('.un').removeProp('required');
                 //$('#password').removeProp('required');
 //                $('#retype_password').removeProp('required');
@@ -812,9 +813,10 @@
                 });
                 $('#driver_div').hide();
                 $('#isb_id').show();
-                $('.username_div').show();
+                //$('.username_div').show();
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
+                $('#username_field').removeAttr('disabled');
                 //$('.un').prop('required', "required");
                 <?php
                 if(isset($p->password) && $p->password)
@@ -851,10 +853,11 @@
                 });
                 $('#driver_div').show();
                 $('#isb_id').hide();
-                $('.username_div').hide();
+                //$('.username_div').hide();
                 //$('.un').removeProp('required');
                 //$('#password').removeProp('required');
                 //                $('#retype_password').removeProp('required');
+                $('#username_field').attr('disabled','disabled');
                 $('.req_rec').removeProp('required');
 
             }
@@ -863,10 +866,11 @@
                     $(this).show();
                 });
                 $('#driver_div').hide();
-                $('.username_div').show();
+                //$('.username_div').show();
                 $('#isb_id').show();
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
+                $('#username_field').removeAttr('disabled');
                 //$('.un').prop('required', "required");
                 <?php
                 if(isset($p->password) && $p->password)

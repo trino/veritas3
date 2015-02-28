@@ -209,28 +209,34 @@
                                         <td><?php
                                         if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                             ?>
-                                            <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> 
-                                            <img src="<?php 
+                                            <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>">
+                                            <img style="width:40px;" src="<?php
                                             if($profile->image)
                                          {
-                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image; 
+                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image;
                                          }
                                          else {
                                             echo $this->request->webroot; ?>img/profile/default.png;
-                                           <?php } ?>" class="img-responsive" alt="" style="height:80px width:60px;"/>
+                                           <?php } ?>" class="img-responsive" alt=""/>
                                              </a>
                                             <?php
                                             }
                                           ?>
-                                        <img src="<?php 
+                                           <!--
+
+                                        <img src="<?php
                                         if($profile->image)
                                          {
-                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image; 
+                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image;
                                          }
                                          else {
                                             echo $this->request->webroot; ?>img/profile/default.png;
                                            <?php  } ?>" class="img-responsive" alt="" style="height:80px width:60px;"/>
-                                         
+
+
+                                            -->
+
+
                                          </td>
                                         <td>
                                         <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
@@ -238,7 +244,7 @@
                                             <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); ?> </a>
                                             <?php
                                             }
-                                            else 
+                                            else
                                             echo ucfirst(h($profile->username));
                                              ?>
                                         </td>
@@ -249,7 +255,7 @@
                                                         $expires = strtotime($profile->expiry_date);
                                                         if ($expires){
                                                             if ($expires < time()) {
-                                                                echo '<strong class="clearfix " style="color:#a94442">License Expired</strong>';
+                                                                echo '<span class="clearfix " style="color:#a94442">License Expired</span>';
                                                             }
                                                         }
                                                     }
@@ -285,7 +291,7 @@
                                                 if ($this->request->session()->read('Profile.super') == '1') {
                                                     if ($this->request->session()->read('Profile.id') != $profile->id) {
                                                         ?>
-                                                        
+
                                                         <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                                                            onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
                                                            class="btn btn-danger">Delete</a>

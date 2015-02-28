@@ -307,7 +307,7 @@
                                    }else{?>required="required"<?php }?>  />-->
                                 <input  <?php echo $is_disabled ?> type="password" value="" autocomplete="off"
                                                                    name="password" id="password"
-                                                                   class="form-control req_rec"/>
+                                                                   class="form-control" required="required"/>
                             </div>
                         </div>
                         <?php if (isset($p->password)){ ?>
@@ -316,7 +316,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Re-type Password</label>
-                                <input  <?php echo $is_disabled ?> type="password" class="form-control req_rec"
+                                <input  required="required"  <?php echo $is_disabled ?> type="password" class="form-control"
                                     id="retype_password" <?php //if (isset($p->password)) { ?> <?php // echo $p->password; ?>  <?php // } ?>/>
                             <span class="error passerror flashPass1"
                                   style="display: none;">Please enter same password</span>
@@ -791,7 +791,7 @@
         $('.member_type').change(function () {
             if ($(this).val() == '5') {
                 $('.req_driver').each(function () {
-                    $(this).prop('required');
+                    $(this).prop('required', "required");
                     //alert($(this).attr('name'));
                 });
                 //$('.nav-tabs li:not(.active)').each(function () {
@@ -845,7 +845,7 @@
         if (!isNaN(parseFloat(mem_type)) && isFinite(mem_type)) {
             if (mem_type == '5') {
                 $('.req_driver').each(function () {
-                    $(this).prop('required');
+                    $(this).prop('required', "required");
                     //alert($(this).attr('name'));
                     //});
                     //$('.nav-tabs li:not(.active)').each(function () {

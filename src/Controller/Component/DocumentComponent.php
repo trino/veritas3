@@ -80,6 +80,15 @@ class DocumentComponent extends Component
                     if ($orders->save($order)) {
                         //$this->Flash->success('Client saved successfully.');
                         echo $order->id;
+                        if($arr['draft']==0)
+                        {
+                            $docus = TableRegistry::get('Documents');
+                            $queri3 = $docus->query();
+                            $queri3->update()
+                                ->set(['draft'=>0])
+                                ->where(['order_id' => $order->id])
+                                ->execute();
+                        }
                     } else {
                         //$this->Flash->error('Client could not be saved. Please try again.');
                         //echo "e";
@@ -92,6 +101,16 @@ class DocumentComponent extends Component
                         ->execute();
                     //$this->Flash->success('Client saved successfully.');
                     echo $did;
+                    
+                    if($arr['draft']==0)
+                        {
+                            $docus = TableRegistry::get('Documents');
+                            $queri3 = $docus->query();
+                            $queri3->update()
+                                ->set(['draft'=>0])
+                                ->where(['order_id' => $did])
+                                ->execute();
+                        }
                 }
 
             } else {
@@ -139,26 +158,75 @@ class DocumentComponent extends Component
             }
             die();
         }
+        public function saveDocForOrder($arr)
+        {
+            
+                $docs = TableRegistry::get('Documents');
+                $orders = TableRegistry::get('Orders');
+                $ord = $orders->find()->where(['id'=>$arr['order_id']])->first();
+                $arr['draft'] = $ord->draft;
+                
+                
+                unset($arr['uploaded_for']);
+                $arr['uploaded_for'] = $ord->uploaded_for;
+                unset($arr['user_id']);
+                $arr['user_id'] = $ord->user_id;
+                //unset($arr['client_id']);
+                $arr['client_id'] = $ord->client_id;
+                    
+                
+                $arr['created'] = $ord->created;
+                
+                $doc = $docs->find()->where(['order_id'=>$arr['order_id'],'sub_doc_id'=>$arr['sub_doc_id']])->first();
+                if(!$doc)
+                {
+                    $doc = $docs->newEntity($arr);
+                    $docs->save($doc);
+                }
+                else
+                {
+                    $query2 = $docs->query();
+                    $query2->update()
+                        ->set($arr)
+                        ->where(['id' => $doc->id])
+                        ->execute();
+                }
+               return true;
+        }
         public function savePrescreening()
         {
             $controller = $this->_registry->getController();
             $prescreen = TableRegistry::get('pre_screening');
-            if (!isset($_GET['document'])) {
+            $arr['client_id'] = $_POST['cid'];
+            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                if(!isset($_GET['order_id']))
                 $arr['order_id'] = $_POST['order_id'];
+                else
+                $arr['order_id'] = $_GET['order_id'];
                 $arr['document_id'] = 0;
+                if (isset($_POST['uploaded_for']))
+                    $uploaded_for = $_POST['uploaded_for'];
+                else
+                    $uploaded_for = '';
+                $for_doc = array('document_type'=>'Pre-Screening','sub_doc_id'=>1,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);
+                $this->saveDocForOrder($for_doc);
             } else {
                 $arr['document_id'] = $_POST['order_id'];
                 $arr['order_id'] = 0;
             }
-            $arr['client_id'] = $_POST['cid'];
-            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            
 
             // checking db if order id exits in this table
             // first delete
             // $del_prescreen = $prescreen->get(['document_id'=>$_POST['document_id']]);
             $del = $prescreen->query();
-            if (!isset($_GET['document']))
+            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                if(!isset($_GET['order_id']))
                 $del->delete()->where(['order_id' => $_POST['order_id']])->execute();
+                else
+                $del->delete()->where(['order_id' => $_GET['order_id']])->execute();
+                }
             else
                 $del->delete()->where(['document_id' => $_POST['order_id']])->execute();
 
@@ -187,8 +255,11 @@ class DocumentComponent extends Component
                 $count = 0;
                 foreach ($att as $at) {
                     $count++;
-                    if (!isset($_GET['document'])) {
+                    if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                        if(!isset($_GET['order_id']))
                         $saveData['order_id'] = $_POST['order_id'];
+                        else
+                        $saveData['order_id'] = $_GET['order_id'];
                         $saveData['document_id'] = 0;
                     } else {
                         $saveData['document_id'] = $_POST['order_id'];
@@ -208,15 +279,27 @@ class DocumentComponent extends Component
         {
             // echo "<pre>";print_r($_POST);die;
             $controller = $this->_registry->getController();
-            if (!isset($_GET['document'])) {
+            $arr['client_id'] = $cid;
+            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            
+            if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                if(!isset($_GET['order_id']))
                 $arr['order_id'] = $document_id;
+                else
+                $arr['order_id'] = $_GET['order_id'];
                 $arr['document_id'] = 0;
+                
+                if (isset($_POST['uploaded_for']))
+                    $uploaded_for = $_POST['uploaded_for'];
+                else
+                    $uploaded_for = '';
+                $for_doc = array('document_type'=>'Driver Application','sub_doc_id'=>2,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);
+                $this->saveDocForOrder($for_doc);
             } else {
                 $arr['document_id'] = $document_id;
                 $arr['order_id'] = 0;
             }
-            $arr['client_id'] = $cid;
-            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            
 
             //$input_var = rtrim($_POST['inputs'],',');
             $driverApps = TableRegistry::get('driver_application');
@@ -225,8 +308,11 @@ class DocumentComponent extends Component
              $del_id = $delete_id->id;*/
 
             $del = $driverApps->query();
-            if (!isset($_GET['document']))
+            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                if(isset($_GET['order_id']))
+                $document_id = $_GET['order_id']; 
                 $del->delete()->where(['order_id' => $document_id])->execute();
+                }
             else
                 $del->delete()->where(['document_id' => $document_id])->execute();
 
@@ -278,7 +364,9 @@ class DocumentComponent extends Component
                     $count = 0;
                     foreach ($_POST['attach_doc'] as $v) {
                         $count++;
-                        if (!isset($_GET['document'])) {
+                        if (!isset($_GET['document']) || isset($_GET['order_id'])){ 
+                            if(isset($_GET['order_id']))
+                            $document_id = $_GET['order_id'];
                             $att['order_id'] = $document_id;
                             $att['document_id'] = 0;
                         } else {
@@ -315,18 +403,37 @@ class DocumentComponent extends Component
             // echo "<pre>";print_r($_POST);die;
             $controller = $this->_registry->getController();
             $roadTest = TableRegistry::get('road_test');
-            if (!isset($_GET['document'])) {
+            
+            $arr['client_id'] = $cid;
+            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            
+            if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                if(!isset($_GET['order_id']))
                 $arr['order_id'] = $document_id;
+                else
+                $arr['order_id'] = $_GET['order_id'];
                 $arr['document_id'] = 0;
+                
+                
+                if (isset($_POST['uploaded_for']))
+                    $uploaded_for = $_POST['uploaded_for'];
+                else
+                    $uploaded_for = '';
+                $for_doc = array('document_type'=>'Road test','sub_doc_id'=>3,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);
+                $this->saveDocForOrder($for_doc);
+                
+                
             } else {
                 $arr['document_id'] = $document_id;
                 $arr['order_id'] = 0;
             }
-            $arr['client_id'] = $cid;
-            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            
             $del = $roadTest->query();
-            if (!isset($_GET['document']))
+            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                if(isset($_GET['order_id']))
+                $document_id = $_GET['order_id'];
                 $del->delete()->where(['order_id' => $document_id])->execute();
+                }
             else
                 $del->delete()->where(['document_id' => $document_id])->execute();
 
@@ -334,8 +441,11 @@ class DocumentComponent extends Component
                 $count = 0;
                 foreach ($_POST['attach_doc'] as $v) {
                     $count++;
-                    if (!isset($_GET['document'])) {
+                    if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                        if(!isset($_GET['order_id']))
                         $att['order_id'] = $document_id;
+                        else
+                        $att['order_id'] = $_GET['order_id'];
                         $att['document_id'] = 0;
                     } else {
                         $att['document_id'] = $document_id;
@@ -368,22 +478,41 @@ class DocumentComponent extends Component
         public function savedMeeOrder($document_id = 0, $cid = 0)
         {
             $controller = $this->_registry->getController();
-            //consent form
-            // echo "<pre>";print_r($_POST);die;
             $consentForm = TableRegistry::get('consent_form');
-            if (!isset($_GET['document'])) {
+            
+            $arr['client_id'] = $cid;
+            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            
+            if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                if(!isset($_GET['order_id']))
                 $arr['order_id'] = $document_id;
+                else
+                $arr['order_id'] = $_GET['order_id'];
                 $arr['document_id'] = 0;
+                
+                
+                if (isset($_POST['uploaded_for']))
+                    $uploaded_for = $_POST['uploaded_for'];
+                else
+                    $uploaded_for = '';
+                $for_doc = array('document_type'=>'Place MEE Order','sub_doc_id'=>4,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);
+                $this->saveDocForOrder($for_doc);
+                
+                
+                
             } else {
                 $arr['document_id'] = $document_id;
                 $arr['order_id'] = 0;
             }
-            $arr['client_id'] = $cid;
-            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            
 
             $del = $consentForm->query();
-            if (!isset($_GET['document']))
+            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                if(!isset($_GET['order_id']))
                 $del->delete()->where(['order_id' => $document_id])->execute();
+                else
+                $del->delete()->where(['order_id' => $_GET['order_id']])->execute();
+                }
             else
                 $del->delete()->where(['document_id' => $document_id])->execute();
 
@@ -392,8 +521,11 @@ class DocumentComponent extends Component
                 $count = 0;
                 foreach ($_POST['attach_doc'] as $v) {
                     $count++;
-                    if (!isset($_GET['document'])) {
+                    if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                        if(!isset($_GET['order_id']))
                         $att['order_id'] = $document_id;
+                        else
+                        $att['order_id'] = $_GET['order_id'];
                         $att['document_id'] = 0;
                     } else {
                         $att['document_id'] = $document_id;
@@ -443,8 +575,14 @@ class DocumentComponent extends Component
             $employment = TableRegistry::get('employment_verification');
 
             $del = $employment->query();
-            if (!isset($_GET['document']))
-                $del->delete()->where(['order_id' => $document_id])->execute();
+            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                if(!isset($_GET['order_id']))
+                    $del->delete()->where(['order_id' => $_GET['order_id']])->execute();
+                    else
+                    $del->delete()->where(['order_id' => $document_id])->execute();
+                    
+                
+                }
             else
                 $del->delete()->where(['document_id' => $document_id])->execute();
 
@@ -452,8 +590,11 @@ class DocumentComponent extends Component
                 $count = 0;
                 foreach ($_POST['attach_doc'] as $v) {
                     $count++;
-                    if (!isset($_GET['document'])) {
+                    if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                        if(!isset($_GET['order_id']))
                         $att['order_id'] = $document_id;
+                        else
+                        $att['order_id'] = $_GET['order_id'];
                         $att['document_id'] = 0;
                     } else {
                         $att['document_id'] = $document_id;
@@ -465,8 +606,11 @@ class DocumentComponent extends Component
                 }
             }
             for ($i = 0; $i < $_POST['count_past_emp']; $i++) {
-                if (!isset($_GET['document'])) {
+                if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                    if(!isset($_GET['order_id']))
                     $arr2['order_id'] = $document_id;
+                    else
+                    $arr2['order_id'] = $_GET['order_id'];
                     $arr2['document_id'] = 0;
                 } else {
                     $arr2['document_id'] = $document_id;
@@ -590,16 +734,23 @@ class DocumentComponent extends Component
             $education = TableRegistry::get('education_verification');
 
             $del = $education->query();
-            if (!isset($_GET['document']))
+            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                if(!isset($_GET['order_id']))
                 $del->delete()->where(['order_id' => $document_id])->execute();
+                else
+                $del->delete()->where(['order_id' => $_GET['order_id']])->execute();
+                }
             else
                 $del->delete()->where(['document_id' => $document_id])->execute();
             if (isset($_POST['attach_doc'])) {
                 $count = 0;
                 foreach ($_POST['attach_doc'] as $v) {
                     $count++;
-                    if (!isset($_GET['document'])) {
+                    if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                        if(!isset($_GET['order_id']))
                         $att['order_id'] = $document_id;
+                        else
+                        $att['order_id'] = $_GET['order_id'];
                         $att['document_id'] = 0;
                     } else {
                         $att['document_id'] = $document_id;
@@ -611,8 +762,11 @@ class DocumentComponent extends Component
                 }
             }
             for ($i = 0; $i < $_POST['count_more_edu']; $i++) {
-                if (!isset($_GET['document'])) {
+                if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                    if(!isset($_GET['order_id']))
                     $arr2['order_id'] = $document_id;
+                    else
+                    $arr2['order_id'] = $_GET['order_id'];
                     $arr2['document_id'] = 0;
                 } else {
                     $arr2['document_id'] = $document_id;
@@ -806,8 +960,12 @@ class DocumentComponent extends Component
             $prescreen = TableRegistry::get('doc_attachments');
             $del = $prescreen->query();
             if ($count == 1) {
-                if (!isset($_GET['document']))
+                if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(!isset($_GET['order_id']))
                     $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>1])->execute();
+                    else
+                    $del->delete()->where(['order_id' => $_GET['order_id'],'sub_id'=>1])->execute();
+                    }
                 else
                     $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
@@ -821,8 +979,12 @@ class DocumentComponent extends Component
             $driverApp = TableRegistry::get('doc_attachments');
             $del = $driverApp->query();
             if ($count == 1) {
-                if (!isset($_GET['document']))
+                if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(!isset($_GET['order_id']))
                     $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>2])->execute();
+                    else
+                    $del->delete()->where(['order_id' => $_GET['order_id'],'sub_id'=>2])->execute();
+                    }
                 else
                     $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
@@ -836,8 +998,12 @@ class DocumentComponent extends Component
             $roadTest = TableRegistry::get('doc_attachments');
             $del = $roadTest->query();
             if ($count == 1) {
-                if (!isset($_GET['document']))
+                if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(!isset($_GET['order_id']))
                     $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>3])->execute();
+                    else
+                    $del->delete()->where(['order_id' => $_GET['order_id'],'sub_id'=>3])->execute();
+                    }
                 else
                     $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
@@ -851,8 +1017,12 @@ class DocumentComponent extends Component
             $consentForm = TableRegistry::get('doc_attachments');
             if ($count == 1) {
                 $del = $consentForm->query();
-                if (!isset($_GET['document']))
+                if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(!isset($_GET['order_id']))
                     $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>4])->execute();
+                    else
+                    $del->delete()->where(['order_id' => $_GET['order_id'],'sub_id'=>4])->execute();
+                    }
                 else
                     $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
@@ -866,8 +1036,12 @@ class DocumentComponent extends Component
             $employment = TableRegistry::get('doc_attachments');
             if ($count == 1) {
                 $del = $employment->query();
-                if (!isset($_GET['document']))
+                if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(!isset($_GET['order_id']))
                     $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>41])->execute();
+                    else
+                    $del->delete()->where(['order_id' => $_GET['order_id'],'sub_id'=>41])->execute();
+                    }
                 else
                     $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
@@ -881,8 +1055,12 @@ class DocumentComponent extends Component
             $education = TableRegistry::get('doc_attachments');
             if ($count == 1) {
                 $del = $education->query();
-                if (!isset($_GET['document']))
+                 if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(!isset($_GET['order_id']))
                     $del->delete()->where(['order_id' => $data['order_id'],'sub_id'=>42])->execute();
+                    else
+                    $del->delete()->where(['order_id' => $_GET['order_id'],'sub_id'=>42])->execute();
+                    }
                 else
                     $del->delete()->where(['document_id' => $data['document_id']])->execute();
             }
@@ -1045,10 +1223,17 @@ class DocumentComponent extends Component
             // print_r($_GET);die;
             if ($_GET['form_type'] == "company_pre_screen_question.php") {
                 $preScreen = TableRegistry::get('pre_screening');
-                if (!isset($_GET['document']))
+                if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(isset($_GET['order_id']))
+                    {
+                       $prescreenDetail = $preScreen->find()->where(['client_id' => $cid, 'order_id' => $_GET['order_id'], 'document_id' => 0])->first(); 
+                    }
+                    else
                     $prescreenDetail = $preScreen->find()->where(['client_id' => $cid, 'order_id' => $order_id, 'document_id' => 0])->first();
-                else
+                    }
+                else{
                     $prescreenDetail = $preScreen->find()->where(['client_id' => $cid, 'document_id' => $order_id, 'order_id' => 0])->first();
+                    }
                 // die('asd');
                 unset($prescreenDetail->id);
                 unset($prescreenDetail->document_id);
@@ -1066,8 +1251,14 @@ class DocumentComponent extends Component
 
                 // $this->getDriverAppData($cid,$order_id);
                 $driveApp = TableRegistry::get('driver_application');
-                if (!isset($_GET['document']))
+                if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(isset($_GET['order_id']))
+                    {
+                       $driveAppDetail = $driveApp->find()->where(['client_id' => $cid, 'order_id' => $_GET['order_id'], 'document_id' => 0])->first(); 
+                    }
+                    else
                     $driveAppDetail = $driveApp->find()->where(['client_id' => $cid, 'order_id' => $order_id, 'document_id' => 0])->first();
+                    }
                 else
                     $driveAppDetail = $driveApp->find()->where(['client_id' => $cid, 'document_id' => $order_id, 'order_id' => 0])->first();
 
@@ -1090,8 +1281,14 @@ class DocumentComponent extends Component
 
                 // $this->getRoadTestData($cid,$order_id);
                 $roadTest = TableRegistry::get('road_test');
-                if (!isset($_GET['document']))
+                if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(isset($_GET['order_id']))
+                    {
+                       $roadTestDetail = $roadTest->find()->where(['client_id' => $cid, 'order_id' => $_GET['order_id'], 'document_id' => 0])->first(); 
+                    }
+                    else
                     $roadTestDetail = $roadTest->find()->where(['client_id' => $cid, 'order_id' => $order_id, 'document_id' => 0])->first();
+                }
                 else
                     $roadTestDetail = $roadTest->find()->where(['client_id' => $cid, 'document_id' => $order_id, 'order_id' => 0])->first();
 
@@ -1105,18 +1302,21 @@ class DocumentComponent extends Component
             } else if ($_GET['form_type'] == "document_tab_3.php") {
 
                 $consentForm = TableRegistry::get('consent_form');
-                if (!isset($_GET['document']))
+                if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                    if(isset($_GET['order_id']))
+                    {
+                       $consentFormDetail = $consentForm->find()->where(['client_id' => $cid, 'order_id' => $_GET['order_id'], 'document_id' => 0])->first(); 
+                    }
+                    else
                     $consentFormDetail = $consentForm->find()->where(['client_id' => $cid, 'order_id' => $order_id, 'document_id' => 0])->first();
+                    }
                 else
                     $consentFormDetail = $consentForm->find()->where(['client_id' => $cid, 'document_id' => $order_id, 'order_id' => 0])->first();
                 if($consentFormDetail){
                 $consentFormID = $consentFormDetail->id;
 
                 $consentFormCriminal = TableRegistry::get('consent_form_criminal');
-                if (!isset($_GET['document']))
-                    $consentFormCrmDetail = $consentFormCriminal->find()->where(['consent_form_id' => $consentFormID])->first();
-                else
-                    $consentFormCrmDetail = $consentFormCriminal->find()->where(['consent_form_id' => $consentFormID])->first();
+                $consentFormCrmDetail = $consentFormCriminal->find()->where(['consent_form_id' => $consentFormID])->first();
 
                 echo json_encode($consentFormDetail);
                 }

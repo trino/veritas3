@@ -342,7 +342,7 @@ if ($action == "Add") {
                 //alert(ftype);
                 // loading data from db
                 // debugger;
-                var url = '<?php echo $this->request->webroot;?>documents/getOrderData/' + client_id + '/' + doc_id + '/?document=1',
+                var url = '<?php echo $this->request->webroot;?>documents/getOrderData/' + client_id + '/' + doc_id + '/?document=1<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                     param = {form_type: ftype};
                 //alert(url);
                 $.getJSON(url, param, function (res) {
@@ -1134,7 +1134,7 @@ if ($action == "Add") {
                 data: data,
                 type: 'post',
                 beforeSend:saveSignature,
-                url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + doc_id + '/?document=' + type + '&draft=' + draft,
+                url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + doc_id + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                 success: function (res) {
                     //alert(res);
                     $('#did').val(res);
@@ -1148,7 +1148,7 @@ if ($action == "Add") {
                     //alert($('#did').val());
                     if (type == "Pre-Screening") {
                         var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
-                            url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document=' + type + '&draft=' + draft,
+                            url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                             order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>';
                         savePrescreen(url, order_id, cid, forms,draft);
@@ -1156,18 +1156,18 @@ if ($action == "Add") {
                     } else if (type == "Driver Application") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
+                            url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedDriverApp(url, order_id, cid,draft);
                     } else if (type == "Road test") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
+                            url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedDriverEvaluation(url, order_id, cid,draft);
                     } else if (type == "Consent Form") {
 
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
+                            url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedMeeOrder(url, order_id, cid, type,draft);
                     }
                     else if (type == "Feedbacks") {
@@ -1323,7 +1323,7 @@ if ($action == "Add") {
             type: 'POST',
             success: function (res) {
                 //employment
-                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type,
+                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                     employment = $('#form_employment').serialize();
                     $('#form_employment :disabled[name]').each(function () {
                 employment = employment + '&' + $(this).attr('name') + '=' + $(this).val();
@@ -1331,7 +1331,7 @@ if ($action == "Add") {
                 saveEmployment(url, employment,draft);
 
                 //education
-                url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid + '/?document=' + type,
+                url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                     education = $('#form_education').serialize();
                     $('#form_education :disabled[name]').each(function () {
                 education = education + '&' + $(this).attr('name') + '=' + $(this).val();

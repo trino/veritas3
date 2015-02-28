@@ -211,7 +211,10 @@
                                                     <div class="desc"></div>
                                                 </div-->
                                                 <a class="more" id="sub_doc_click1" href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
+                                             if(!$docs->order_id)       
                                             echo $this->request->webroot.'documents/view/'.$docs->client_id.'/'.$docs->id;
+                                            else
+                                            echo $this->request->webroot.'documents/view/'.$docs->client_id.'/'.$docs->id.'?order_id='.$docs->order_id;
                                         }else{?>javascript:;<?php } ?>">
                                                     <?= h($docs->document_type); //it won't let me put it in the desc ?>
                                                 </a>
@@ -270,19 +273,30 @@
                                     <td class="actions  util-btn-margin-bottom-5 ">
 
                                         <?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
+                                            if(!$docs->order_id)
                                             echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => 'btn btn-info']);
-                                        } ?>
+                                            else{
+                                            ?>
+                                            <a class="btn btn-info" href="<?php echo $this->request->webroot;?>documents/view/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">View</a>
+                                            <?php
+                                        }} ?>
                                         <?php
                                             if ($sidebar->document_edit == '1') { 
                                                 if ($docs->document_type == 'feedbacks')
-                                                    echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);
-                                                elseif ($docs->document_type == 'order')
-                                                    echo $this->Html->link(__('Edit'), ['controller' => 'documents', 'action' => 'editorder', $docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
-                                                else
+                                                    echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);                                                
+                                                else{
+                                                if(!$docs->order_id)
                                                     echo $this->Html->link(__('Edit'), ['action' => 'add', $docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
+                                                else
+                                                    {
+                                                        ?>
+                                                        <a class="btn btn-primary" href="<?php echo $this->request->webroot;?>documents/add/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">Edit</a>
+                                                        <?php
+                                                    }
+                                                    }
                                             }
                                         ?>
-                                        <?php if ($sidebar->document_delete == '1') {
+                                        <?php if ($sidebar->document_delete == '1' && $docs->order_id == 0) {
                                             if (isset($_GET['draft'])) {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>documents/delete/<?php echo $docs->id; ?>/draft"
@@ -296,6 +310,15 @@
                                                    onclick="return confirm('Are you sure you want to delete <?= $docname; ?>?');"
                                                    class="btn btn-danger">Delete</a>
                                             <?php
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if($docs->order_id != 0)
+                                            {
+                                                ?>
+                                                <strong>(Order)</strong>
+                                                <?php
                                             }
                                         }
 

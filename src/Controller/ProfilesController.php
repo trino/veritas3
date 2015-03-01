@@ -1102,21 +1102,29 @@
         }
 
         function getProfile()
-
         {
             $rec = TableRegistry::get('Profiles');
             $query = $rec->find();
             $u = $this->request->session()->read('Profile.id');
-            $super = $this->request->session()->read('Profile.admin');
+            $super = $this->request->session()->read('Profile.super');
+            
+            if($super)
+            {
+                $query = $rec->find()->where(['super <>'=>1,'drafts'=>0])->order('fname');
+            }
+            else
+            {
+                $query = $rec->find()->where(['super <>'=>1,'drafts'=>0,'created_by'=>$u])->order('fname');
+            }
                 
-             $cond = $this->Settings->getprofilebyclient($u,$super);
+             /*$cond = $this->Settings->getprofilebyclient($u,$super);
            
             //$query = $query->select()->where(['super'=>0]);
             $query = $query->select()->where(['profile_type NOT IN (6,5)','OR'=>$cond])
                 ->andWhere(['super'=>0]);
             if(!$super)
               $query = $query->orWhere(['created_by'=>$u]);
-
+            */
             $this->response->body($query);
             return $this->response;
             die();
@@ -1141,12 +1149,23 @@
             $u = $this->request->session()->read('Profile.id');
             $super = $this->request->session()->read('Profile.admin');
             $cond = $this->Settings->getprofilebyclient($u, $super);
+            
+            
+             if($super)
+            {
+                $query = $rec->find()->where(['super <>'=>1,'drafts'=>0,'(fname LIKE "%'.$key.'%" OR lname LIKE "%'.$key.'%" OR username LIKE "%'.$key.'%")'])->order('fname');
+            }
+            else
+            {
+                $query = $rec->find()->where(['super <>'=>1,'drafts'=>0,'created_by'=>$u,'(fname LIKE "%'.$key.'%" OR lname LIKE "%'.$key.'%" OR username LIKE "%'.$key.'%")'])->order('fname');
+            }
+            
             //$query = $query->select()->where(['super'=>0]);
 
-            $query = $query->select()->where(['profile_type NOT IN'=>'(5,6)','OR'=>$cond])
+            /*$query = $query->select()->where(['profile_type NOT IN'=>'(5,6)','OR'=>$cond])
                 ->andWhere(['super'=>0,'(fname LIKE "%'.$key.'%" OR lname LIKE "%'.$key.'%" OR username LIKE "%'.$key.'%")']);
              if(!$super)
-              $query = $query->orWhere(['created_by'=>$u]);
+              $query = $query->orWhere(['created_by'=>$u]);*/
             $this->set('profiles',$query);
             $this->set('cid',$id);
 

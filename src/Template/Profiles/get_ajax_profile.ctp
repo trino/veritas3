@@ -23,6 +23,7 @@ foreach($profiles as $r)
 <td>
 <span><input class="profile_client" onchange="if($(this).is(':checked')){assignProfile($(this).val(),'<?php echo $cid;?>','yes');}else{assignProfile($(this).val(),'<?php echo $cid;?>','no');}" type="checkbox" <?php if(in_array($r->id,$profile)){?>checked="checked"<?php }?> value="<?php echo $r->id; ?>"/></span>
 <span> <?php echo $username; ?> <?php if($r->profile_type!=""){echo $profiletype;}?> </span>
+<span class="msg_<?php echo $r->id; ?>"></span>
 </td>
 <?php
 

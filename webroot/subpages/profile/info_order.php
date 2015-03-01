@@ -91,7 +91,7 @@ Driver
                                      style="">
                                     <div class="form-group">
                                         <label class="control-label">Driver Type</label>
-                                        <select name="driver" class="form-control select_driver req_driver">
+                                        <select name="driver" class="form-control select_driver required">
                                             <option value="">Select Driver Type</option>
                                             <option
                                                 value="1" <?php if (isset($p) && $p->driver == 1) echo "selected='selected'"; ?>

@@ -107,11 +107,12 @@ if ($action == "Add") {
                         }
                         ?>
                     </select>
+                    
                         <input type="hidden" name="did" value="<?php echo $did; ?>" id="did"/>
                         <input type="hidden" name="sub_doc_id" value="<?php echo $sid; ?>" id="sub_id"/>
 
                     </div>
-                    
+                    <div class="clearfix"></div>
                     <div class="subform1" style="display: none;">
                         <?php include('subpages/documents/company_pre_screen_question.php'); ?>
                     </div>

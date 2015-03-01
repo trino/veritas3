@@ -32,7 +32,7 @@ if ($activetab == "permissions") {
         <?php if($this->request->session()->read('Profile.profile_type')!='2')
         {
             ?>
-            <li <?php activetab($activetab, "config"); ?>>
+            <li <?php if((!isset($Clientcount) || (isset($Clientcount) && $Clientcount!=0)))activetab($activetab, "config"); ?>>
                 <a href="#subtab_2_1" data-toggle="tab">Configuration</a>
             </li>
             <li class="">

@@ -148,7 +148,7 @@ if (!$viewmode){
             }
             $.ajax({url: url});
         });
-        $('.profile_client').change(function () {
+        $('.profile_client').live('change',function () {
             var msg = '';
             var nameId = 'msg_'+$(this).val();
             if ($(this).is(':checked')) {

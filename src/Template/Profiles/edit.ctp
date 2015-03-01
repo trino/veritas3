@@ -305,7 +305,7 @@
                                     <label class="uniform-inline" style="margin-bottom:20px;">
                                 <input type="checkbox" name="stat" value="1" id="<?php echo $profile->id; ?>"
                                        class="checkhiredriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
-                                Was this driver hired? </label>
+                                Was this driver hired? <span class="hired_msg"></span></label>
                                     
                                     <?php
                                     }}
@@ -601,20 +601,41 @@
             $('.checkhiredriver').click(function () {
 
                 var oid = $(this).attr('id');
+                var msgs = '';                
                 if ($(this).is(":checked")) {
                     var hired = 1;
+                     msg = '<span class="msg" style="color:#45B6AF">Added</span>';                    
                 }
-                else
+                else{
                     var hired = 0;
+                    msg = '<span class="msg" style="color:red">Removed</span>';                    
+                    }                    
 
                 $.ajax({
                     url: "<?php echo $this->request->webroot;?>orders/savedriver/" + oid,
                     type: 'post',
                     data: 'is_hired=' + hired,
-                    success: function (msg) {
+                    success: function () {
+                        $('.hired_msg').html(msg);
                     }
                 })
             });
+            
+            /*$('.checkhiredriver').change(function () {
+            var msg = '';
+            var nameId = 'msg_'+$(this).val();
+            if ($(this).is(':checked')) {
+                msg = '<span class="msg" style="color:#45B6AF">Added</span>';
+                
+                var url = '<?php echo $this->request->webroot;?>clients/assignProfile/' + $(this).val() + '/<?php if(isset($id) && $id)echo $id;else echo '0'?>/yes';
+            }
+            else {
+                msg = '<span class="msg" style="color:red">Removed</span>';
+                var url = '<?php echo $this->request->webroot;?>clients/assignProfile/' + $(this).val() + '/<?php if(isset($id) && $id)echo $id;else echo '0'?>/no';
+            }
+            
+            $.ajax({url: url,success:function(){$('.'+nameId).html(msg);}});
+        }); */
         });
     </script>
     <script>

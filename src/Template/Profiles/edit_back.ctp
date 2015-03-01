@@ -249,7 +249,7 @@
                                         ?>
 
                                         <tr>
-                                            <td><input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> style="opacity: .5!important;" /> <?php echo $o->company_name; ?></td>
+                                            <td>123<input type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?> style="opacity: .5!important;" /> <?php echo $o->company_name; ?></td>
                                         </tr>
 
                                     <?php

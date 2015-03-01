@@ -113,7 +113,7 @@
                         <thead>
                         <tr class="sorting">
                             <th><?= $this->Paginator->sort('id'); ?></th>
-                            <!--th><?= $this->Paginator->sort('orders.title', "Title"); ?></th-->
+                            <th><?= $this->Paginator->sort('orders.order_type', "Order Type"); ?></th>
                             <th><?= $this->Paginator->sort('user_id', 'Recruiter'); ?></th>
                             <th><?= $this->Paginator->sort('uploaded_for', 'Driver'); ?></th>
                             <th><?= $this->Paginator->sort('client_id', ucfirst($settings->client)); ?></th>
@@ -152,7 +152,39 @@
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($order->id); //echo $order->profile->title;    ?></td>
-                                    <!--td><?= h($order->title) ?></td-->
+                                    <td>
+                                    
+                                        <?php
+                                        if($order->order_type){
+                                        echo '<div class="dashboard-stat ';
+                                                $colors = array("Order_Products" => "green-haze", "Order_MEE" => "red-intense", "ReQualify" => "blue-madison");
+                                                if (isset($colors[str_replace(' ','_',$order->order_type)])){
+                                                    echo $colors[str_replace(' ','_',$order->order_type)];
+                                                } else {
+                                                    echo "blue";
+                                                }
+                                                ?>">
+                                                <div class="whiteCorner"></div>
+                                                <div class="visual" style="height: 40px;">
+                                                    <i class="fa fa-copy"></i>
+                                                </div>
+                                                <!--div class="details"> //WARNING: This won't work while in a table...
+                                                    <div class="number"></div>
+                                                    <div class="desc"></div>
+                                                </div-->
+                                                <a class="more" id="sub_doc_click1" href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
+                                             
+                                            echo $this->request->webroot.'orders/vieworder/'.$order->client_id.'/'.$order->id;
+                                            
+                                        }else{?>javascript:;<?php } ?>">
+                                                    <?= h($order->order_type); //it won't let me put it in the desc ?>
+                                                </a>
+                                                <?php echo "</div>";
+                                                }?>
+                                    
+                                    
+                                    
+                                    </td>
                                     <td><?php if (isset($uploaded_by)) echo ucfirst(h($uploaded_by->username)) ?></td>
                                     <td><?php if (isset($uploaded_for)) echo h(ucfirst($uploaded_for->fname) . ' ' . ucfirst($uploaded_for->mname) . ' ' . ucfirst($uploaded_for->lname)) ?></td>
                                     <td><?php

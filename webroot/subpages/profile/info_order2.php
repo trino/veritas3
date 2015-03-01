@@ -75,7 +75,7 @@
                 if ($type == 'QUA') {
                     ?>
                     <a href="javascript:void(0);" class="btn btn-danger placenow"
-                       onclick="if(!check_div())return false;if($('.selecting_driver').val()==''){alert('Please select driver to requalify.');return false;}var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=Requalification';else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
+                       onclick="if(!check_div())return false;if($('.selecting_driver').val()==''){alert('Please select driver to requalify.');return false;}var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=Requalification&forms='<?= $tempstr; ?>;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
                         MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
                 <?php
                 } else {
@@ -202,12 +202,22 @@
 
     ?>
 
-    <select class="form-control input-<?= $size ?> select2me" data-placeholder="Create New Driver"
+    <select class="form-control input-<?= $size ?> select2me" <?php if(!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype'] != "QUA")){?>data-placeholder="Create New Driver"<?php }?>
             id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
-        <option <? if ($driver == '0') {
+        <?php if(!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype'] != "QUA")){?><option <? if ($driver == '0') {
             echo 'selected';
         } ?>>Create New Driver
+        </option><?php }
+        else
+        {
+            ?>
+            <option <? if ($driver == '0') {
+            echo 'selected';
+        } ?>>Select Driver
         </option>
+            <?php
+        }
+        ?>
         <?php
             $counting = 0;
             $drcl_d = $dr_cl['driver'];
@@ -479,42 +489,41 @@
                     <ul class="pricing-blue-content list-unstyled">
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form0" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></span>
+                            <input checked type="checkbox" name="dri_abs" id="form1" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="CVOR" value=""></span>
+                            <input checked type="checkbox" name="CVOR" id="form2" value="1"></span>
                             <i class="fa fa-file-text-o"></i> CVOR
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form3" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
                         </li>
-
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="check_dl" value=""></span>
+                            <input checked type="checkbox" name="check_dl" value=""></span>
                             <i class="fa fa-file-text-o"></i> Check DL
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form4" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Transclick
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form5" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Certifications
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
+                            <input checked type="checkbox" name="prem_nat" id="form6" value="1"></span>
                             <i class="fa fa-file-text-o"></i> Letter of Experience
                         </li>
 
@@ -628,7 +637,20 @@
 
         $('#selecting_client').change(function () {
             $('s2id_selecting_client .select2-choice').removeAttr('style');
-            $('#s2id_selecting_driver .select2-chosen').html('Create New Driver')
+            <?php
+            if(!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype']!='QUA'))
+            {
+                ?>
+                
+            $('#s2id_selecting_driver .select2-chosen').html('Create New Driver');
+            <?php
+            }
+            else
+            {?>
+               $('#s2id_selecting_driver .select2-chosen').html('Select Driver'); 
+            <?php
+            }
+            ?>
             var client = $('#selecting_client').val();
             if (!isNaN(parseFloat(client)) && isFinite(client)) {
                 $('.selecting_client').val(client);
@@ -652,7 +674,7 @@
         {
             ?>
             $.ajax({
-                url: '<?php echo $this->request->webroot;?>orders/getDriverByClient/' + client,
+                url: '<?php echo $this->request->webroot;?>orders/getDriverByClient/' + client+'?ordertype=<?php if(isset($_GET['ordertype']))echo $_GET['ordertype']?>',
                 success: function (res) {
                     var div = $('#divisionsel').val();
                     if (!isNaN(parseFloat(div)) && isFinite(div)) {

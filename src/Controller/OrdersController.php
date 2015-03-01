@@ -802,7 +802,10 @@
                 $model = TableRegistry::get('Profiles');
                 $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);
             }
+            if($_GET['ordertype']!='QUA')
             echo "<option value=''>Create New Driver</option>";
+            else
+            echo "<option value=''>Select Driver</option>";
             if ($profile) {
 
                 foreach ($profile as $p) {

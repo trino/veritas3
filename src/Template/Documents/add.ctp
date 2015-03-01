@@ -1152,7 +1152,7 @@ if ($action == "Add") {
                             url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                             order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>';
-                        savePrescreen(url, order_id, cid, forms,draft);
+                        savePrescreen(url, order_id, cid, draft);
 
                     } else if (type == "Driver Application") {
                         var order_id = $('#did').val(),
@@ -1261,7 +1261,8 @@ if ($action == "Add") {
             data: param,
             type: 'POST',
             success: function (res) {
-                
+                                    //alert(draft);
+                                    //return;
                                     if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     else

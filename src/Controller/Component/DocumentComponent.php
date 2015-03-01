@@ -121,11 +121,11 @@ class DocumentComponent extends Component
                 $docs = TableRegistry::get('Documents');
                 if (isset($_GET['draft']) && $_GET['draft']){
                     $arr['draft'] = 1;
-                    $controller->Flash->success('Document saved as draft');
+                    //$controller->Flash->success('Document saved as draft');
                     }
                 else{
                     $arr['draft'] = 0;
-                    $controller->Flash->success('Document submitted successfully');
+                    //$controller->Flash->success('Document submitted successfully');
                     }
                 $arr['sub_doc_id'] = $_POST['sub_doc_id'];
                 if (isset($_POST['uploaded_for']))

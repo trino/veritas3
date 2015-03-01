@@ -584,6 +584,12 @@ function provinces($name){
                             url: '<?php echo $this->request->webroot;?>profiles/getProfileById/' + prof_id + '/1',
                             success: function (res2) {
                                 var response = JSON.parse(res2);
+                                //alert(res2);
+                                
+                                var app_name = res2.replace('{"applicant_phone_number":"1234","aplicant_name":"','');
+                                app_name = app_name.replace('","applicant_email":"ttt@ttt.com"}','');
+                                $('#conf_driver_name').val(app_name);
+                                $('#conf_driver_name').attr('disabled', 'disabled');
                                 $('#form_tab1').find(':input').each(function () {
                                     var name_attr = $(this).attr('name');
 
@@ -596,8 +602,7 @@ function provinces($name){
 
                                     }
                                 });
-                                $('#conf_driver_name').val(response['applicant_name']);
-                                $('#conf_driver_name').attr('disabled', 'disabled');
+                                
 
                             }
                         });
@@ -752,6 +757,7 @@ function provinces($name){
                             url: '<?php echo $this->request->webroot;?>profiles/getProfileById/' + prof_id + '/2',
                             success: function (res2) {
                                 var response = JSON.parse(res2);
+                                
                                 $('#form_tab2').find(':input').each(function () {
                                     var name_attr = $(this).attr('name');
 
@@ -762,8 +768,7 @@ function provinces($name){
 
                                         $(this).attr('disabled', 'disabled');
                                     }
-                                    $('#conf_driver_name').val(response['first_name'] + ' ' + response['last_name']);
-                                    $('#conf_driver_name').attr('disabled', 'disabled');
+                                    
                                 });
                             }
                         });
@@ -1136,8 +1141,7 @@ function provinces($name){
 
 
                                     }
-                                    $('#conf_driver_name').val(response['driver_name']);
-                                    $('#conf_driver_name').attr('disabled', 'disabled');
+                                    
                                 });
                             }
                         });
@@ -1176,8 +1180,7 @@ function provinces($name){
                                         $(this).attr('disabled', 'disabled');
 
                                     }
-                                    $('#conf_driver_name').val(response['first_name'] + ' ' + response['last_name']);
-                                    $('#conf_driver_name').attr('disabled', 'disabled');
+                                    
                                 });
 
                             }

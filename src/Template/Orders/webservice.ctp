@@ -8,21 +8,19 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $startorder1 = false;
-
-    $productdetails79 = false;
-    $productdetails1 = false;
-    $productdetails14 = false;
-    $productdetails77 = false;
-    $productdetails78 = false;
-    $productdetailsebs1603 = false;
-    $productdetailsebs1627 = false;
-    $productdetailsebs1650 = false;
-
-    $uploadbinaryconsent_1603 = false;
-    $uploadbinaryemployment_1627 = false;
-    $uploadbinaryeducation_1650 = false;
-    $upload_additional = false;
+    $startorder1 = true;
+    $productdetails79 = true;
+    $productdetails1 = true;
+    $productdetails14 = true;
+    $productdetails77 = true;
+    $productdetails78 = true;
+    $productdetailsebs1603 = true;
+    $productdetailsebs1627 = true;
+    $productdetailsebs1650 = true;
+    $uploadbinaryconsent_1603 = true;
+    $uploadbinaryemployment_1627 = true;
+    $uploadbinaryeducation_1650 = true;
+    $upload_additional = true;
 
     if ($startorder1) {
 
@@ -32,6 +30,50 @@
         } else {
             $user_id234 = '22552';
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $user_id234 = '22552';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
@@ -51,9 +93,11 @@
         $ins_id = substr($myArray[0], 4);
         $ebs_id = substr($myArray[1], 4);
 
-        $this->requestAction('/documents/save_webservice_ids/' . $orderid . '/' . $ins_id . '/' . $ebs_id);
+       $this->requestAction('orders/save_webservice_ids/' . $orderid . '/' . $ins_id . '/' . $ebs_id);
 
     }
+
+
     // echo 999;
     //  $ins_id = 'EAE1226F-6E28-4E88-B4B5-31CD43875807';
     //  $ebs_id = 'A7101C9A-A969-40B0-848F-64B934B290FC';
@@ -79,9 +123,10 @@
 
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_79');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_79');
         debug($result);
         //    debug($pdi);
+
 
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -103,7 +148,7 @@
 
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_1');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_1');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,7 +171,7 @@
 
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_14');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_14');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,7 +193,7 @@
         }
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_77');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_77');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +219,7 @@
 
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_78');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_78');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,7 +241,7 @@
         $pdi = $r[0];
         $pdi_1650 = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1650');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1650');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -218,7 +263,7 @@
         $pdi = $r[0];
         $pdi_1627 = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1627');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1627');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -240,7 +285,7 @@
         $pdi = $r[0];
         $pdi_1603 = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1603');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1603');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

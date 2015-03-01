@@ -314,11 +314,16 @@
                                             if ($profile->profile_type == 5) {
                                                 ?><br>
                                                 <a  href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
-                                                   class="btn red-flamingo clearfix">Place MEE Order</a>
+                                                   class="btn red-flamingo clearfix"  style="margin-top:2px;width: 100%;">Order MEE <i class="m-icon-swapright m-icon-white"></i></a>
                                                 <br>
                                                 <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
-                                                   class="btn btn-success" style="margin-top:10px;">A La
-                                                    Carte/Re-qualify</a>
+                                                   class="btn btn-success" style="margin-top:2px;width: 100%;">Order Products <i class="m-icon-swapright m-icon-white"></i></a>
+
+
+                                                <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=QUA"
+                                                   class="btn btn-primary" style="margin-top:2px;width: 100%;" >Re-Qualify <i class="m-icon-swapright m-icon-white"></i></a>
+
+
                                             <?php
                                             }
                                         }

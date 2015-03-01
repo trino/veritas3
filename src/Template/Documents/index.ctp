@@ -188,7 +188,7 @@
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($docs->id) ?></td>
-                                    <td>
+                                    <td style="width: 140px;">
                                         <?php switch(1){//change the number to pick a style
                                             case 0://plain text
                                                     echo h($docs->document_type);

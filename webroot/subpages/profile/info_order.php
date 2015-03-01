@@ -40,6 +40,7 @@
     {
         printoptions($name, array("", "AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"), $selected, array("Select Province", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon Territories"), $isdisabled);
     }
+
 ?>
 
 <div>
@@ -62,7 +63,7 @@
                                                                                        class="img-responsive"
                                                                                        style="height: auto;width: 150px;margin-left:15px;"
                                                                                        alt=""
-                                                                                       src="<?php echo $this->request->webroot;?>img/uploads/default.png"/>
+                                                                                       src="<?php echo $this->request->webroot; ?>img/uploads/default.png"/>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -71,19 +72,19 @@
                             <input type="hidden" name="created_by"
                                    value="<?php echo $this->request->session()->read('Profile.id') ?>"/>
 
-<div class="col-md-4">
-<div class="form-group">
-<label class="control-label">Profile Type</label>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Profile Type</label>
 
-<select name="profile_type" class="form-control member_type required">
-<option
-         value="5" <?php /*if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } */?>>
-Driver
-</option>
+                                    <select name="profile_type" class="form-control member_type required">
+                                        <option
+                                            value="5" <?php /*if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } */ ?>>
+                                            Driver
+                                        </option>
 
-</select>
+                                    </select>
 
-                      </div>
+                                </div>
                             </div>
                             <?php if ($sidebar->client_option == 0) { ?>
 
@@ -211,7 +212,6 @@ Driver
                                                                       class="form-control req_driver required" <?php if (isset($p->fname)) { ?> value="<?php echo $p->fname; ?>" <?php } ?>/>
                                 </div>
                             </div>
-
 
 
                             <div class="col-md-4">

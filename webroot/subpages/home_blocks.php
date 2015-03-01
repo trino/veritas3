@@ -99,7 +99,7 @@
 
                     if ($this->request->controller == "Documents" && $this->request->action == "view") {
                         $documenttype = $this->viewVars['mod']->document_type;
-                        if (!isset($titles[strtolower(trim($documenttype))]) && $documenttype != 'Place MEE Order') {
+                        if (!isset($titles[strtolower(trim($documenttype))]) && $documenttype != 'Consent Form') {
                             echo '<div class="col-md-12">';
                             echo '<div class="clearfix"></div><div class="alert alert-danger"><strong>Error!</strong> You no longer have permission to view this document type (' . $documenttype . ')</div>';
                             echo '</div>';

@@ -1515,10 +1515,8 @@
                 $to = $email;
                 $sub = 'ISBMEE (Schedule) - Reminder';
                 $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
-                $this->Mailer->sendEmail($from, $to, $sub, $msg);
+             //   $this->Mailer->sendEmail($from, $to, $sub, $msg);
             }
-            //$ = TableRegistry::get('profiles');
-
             //echo $s;die();
             $send = $q->query();
             $send->update()
@@ -1527,7 +1525,6 @@
                 ->execute();
         }
         die();
-
     }
 
     function getDriverById($id)

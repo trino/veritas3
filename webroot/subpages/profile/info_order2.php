@@ -74,23 +74,19 @@
             case 1:
                 if ($type == 'QUA') {
                     ?>
-                    <a href="javascript:void(0);" class="btn btn-danger placenow"
-                       onclick="if(!check_div())return false;if($('.selecting_driver').val()==''){alert('Please select driver to requalify.');return false;}var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=Requalification&forms='<?= $tempstr; ?>;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
-                        MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
+                    <a href="javascript:void(0);" class="btn btn-danger  btn-lg placenow"
+                       onclick="if(!check_div())return false;if($('.selecting_driver').val()==''){alert('Please select driver to requalify.');return false;}var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=Requalification&forms='<?= $tempstr; ?>;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Continue <i class="m-icon-swapright m-icon-white"></i></a>
                 <?php
                 } else {
-                    if($type == 'MEE')
-                    {
+                    if ($type == 'MEE') {
                         $o_type = 'Order MEE';
-                    }
-                    else
-                    {
+                    } else {
                         $o_type = 'Order Products';
                     }
                     ?>
-                    <a href="javascript:void(0);" class="btn btn-danger placenow"
-                       onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=<?php echo urlencode($o_type);?>';else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
-                        MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
+                    <a href="javascript:void(0);" class="btn btn-danger btn-lg placenow"
+                       onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=<?php echo urlencode($o_type); ?>';else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Continue
+                        <i class="m-icon-swapright m-icon-white"></i></a>
 
                 <?php
                 }
@@ -108,19 +104,16 @@
                 echo '<a href="#" class="btn yellow-crusta">Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
                 break;
             case 5:
-            if($type == 'MEE')
-                    {
-                        $o_type = 'Order MEE';
-                    }
-                    else
-                    {
-                        $o_type = 'Order Products';
-                    }
+                if ($type == 'MEE') {
+                    $o_type = 'Order MEE';
+                } else {
+                    $o_type = 'Order Products';
+                }
                 ?>
 
-                <a class="btn red button-next proceed"
+                <a class=" btn btn-danger   btn-lg  button-next proceed"
                    onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=<?php echo urlencode($o_type);?>&forms='<?= $tempstr; ?>;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">
-                    Order Products <i class="m-icon-swapright m-icon-white"></i>
+                    Continue <i class="m-icon-swapright m-icon-white"></i>
                 </a>
 
             <?php
@@ -202,20 +195,20 @@
 
     ?>
 
-    <select class="form-control input-<?= $size ?> select2me" <?php if(!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype'] != "QUA")){?>data-placeholder="Create New Driver"<?php }?>
+    <select class="form-control input-<?= $size ?> select2me"
+            <?php if (!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype'] != "QUA")){ ?>data-placeholder="Create New Driver"<?php }?>
             id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
-        <?php if(!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype'] != "QUA")){?><option <? if ($driver == '0') {
+        <?php if (!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype'] != "QUA")) { ?>
+        <option <? if ($driver == '0') {
             echo 'selected';
         } ?>>Create New Driver
-        </option><?php }
-        else
-        {
+            </option><?php } else {
             ?>
             <option <? if ($driver == '0') {
-            echo 'selected';
-        } ?>>Select Driver
-        </option>
-            <?php
+                echo 'selected';
+            } ?>>Select Driver
+            </option>
+        <?php
         }
         ?>
         <?php
@@ -249,7 +242,7 @@
 
 
 
-<div class="portlet-body" >
+<div class=" portlet-body" >
     <div class="createDriver">
         <div class="portlet box form-horizontal">
 
@@ -324,9 +317,9 @@
                         <h3>Order MEE <span>
 											The all in one package </span>
                         </h3>
-                        <h4><i>$</i>999<i>.99</i>
+                        <h4><!--i>$</i>999<i>.99</i>
 											<span>
-											One Time Payment </span>
+											One Time Payment </span-->
                         </h4>
                     </div>
 
@@ -379,7 +372,7 @@
                     </ul>
                     <div class="pricing-footer">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
+                        <hr/>
                         </p>
                         <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr); ?>
 
@@ -399,11 +392,11 @@
                 <div class="pricing hover-effect">
                     <div class="pricing-head">
                         <h3>Order Products <span>
-											Officia deserunt mollitia </span>
+											Place an order A La Carte </span>
                         </h3>
-                        <h4><i>$</i>999<i>.99+</i>
+                        <h4><!--i>$</i>999<i>.99+</i>
 											<span>
-											(Starting At) </span>
+											(Starting At) </span-->
                         </h4>
                     </div>
 
@@ -455,7 +448,7 @@
                     </ul>
                     <div class="pricing-footer">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing.
+                        <hr/>
                         </p>
                         <?php printbutton($ordertype, $this->request->webroot, 4, $tempstr); ?>
                     </div>
@@ -474,11 +467,11 @@
                 <div class="pricing-blue hover-effect">
                     <div class="pricing-blue-head pricing-head-active">
                         <h3>Requalify<span>
-											The all in one package </span>
+											Requalify existing drivers </span>
                         </h3>
-                        <h4><i>$</i>999<i>.99</i>
+                        <h4><!--i>$</i>999<i>.99</i>
 											<span>
-											One Time Payment </span>
+											One Time Payment </span-->
                         </h4>
                     </div>
 
@@ -531,7 +524,7 @@
                     </ul>
                     <div class="pricing-footer">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
+                        <hr/>
                         </p>
                         <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr); ?>
 
@@ -641,13 +634,13 @@
             if(!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype']!='QUA'))
             {
                 ?>
-                
+
             $('#s2id_selecting_driver .select2-chosen').html('Create New Driver');
             <?php
             }
             else
             {?>
-               $('#s2id_selecting_driver .select2-chosen').html('Select Driver'); 
+            $('#s2id_selecting_driver .select2-chosen').html('Select Driver');
             <?php
             }
             ?>
@@ -674,7 +667,7 @@
         {
             ?>
             $.ajax({
-                url: '<?php echo $this->request->webroot;?>orders/getDriverByClient/' + client+'?ordertype=<?php if(isset($_GET['ordertype']))echo $_GET['ordertype']?>',
+                url: '<?php echo $this->request->webroot;?>orders/getDriverByClient/' + client + '?ordertype=<?php if(isset($_GET['ordertype']))echo $_GET['ordertype']?>',
                 success: function (res) {
                     var div = $('#divisionsel').val();
                     if (!isNaN(parseFloat(div)) && isFinite(div)) {

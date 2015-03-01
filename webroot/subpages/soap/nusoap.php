@@ -2201,7 +2201,7 @@ class soap_transport_http extends nusoap_base {
 	var $use_curl = false;		// force cURL use
 	var $proxy = null;			// proxy information (associative array)
 	var $username = 'MEE';
-	var $password = 'yhb45cf@f1';
+	var $password = 'bvY6fg#@!SB';
 	var $authtype = 'basic';
 	var $digestRequest = array();
 	var $certRequest = array();	// keys must be cainfofile (optional), sslcertfile, sslkeyfile, passphrase, certpassword (optional), verifypeer (optional), verifyhost (optional)
@@ -2868,7 +2868,7 @@ class soap_transport_http extends nusoap_base {
 		if ($this->request_method != 'GET') {
 			$this->setHeader('Content-Length', strlen($data));
 		}
-	$this->setHeader('Authorization', 'Basic '.base64_encode('MEE:yhb45cf@f1'));
+	$this->setHeader('Authorization', 'Basic '.base64_encode('MEE:bvY6fg#@!SB'));
 	$this->setHeader('Expect', '100-continue');
 		// start building outgoing payload:
 		if ($this->proxy) {
@@ -4647,14 +4647,14 @@ class wsdl extends nusoap_base {
 	var $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
     var $proxyport = '';
 	var $proxyusername = 'MEE';
-	var $proxypassword = 'yhb45cf@f1';
+	var $proxypassword = 'bvY6fg#@!SB';
 	var $timeout = 0;
 	var $response_timeout = 30;
 	var $curl_options = array();	// User-specified cURL options
 	var $use_curl = false;			// whether to always try to use cURL
 	// for HTTP authentication
 	var $username = 'MEE';				// Username for HTTP authentication
-	var $password = 'yhb45cf@f1';				// Password for HTTP authentication
+	var $password = 'bvY6fg#@!SB';				// Password for HTTP authentication
 	var $authtype = 'basic';				// Type of HTTP authentication
 	var $certRequest = array();		// Certificate for HTTP SSL authentication
 
@@ -7210,7 +7210,7 @@ class soap_parser extends nusoap_parser {
 class nusoap_client extends nusoap_base  {
 
 	var $username = 'MEE';				// Username for HTTP authentication
-	var $password = 'yhb45cf@f1';				// Password for HTTP authentication
+	var $password = 'bvY6fg#@!SB';				// Password for HTTP authentication
 	var $authtype = 'basic';				// Type of HTTP authentication
 	var $certRequest = array();		// Certificate for HTTP SSL authentication
 	var $requestHeaders = false;	// SOAP headers in request (text)
@@ -7222,7 +7222,7 @@ class nusoap_client extends nusoap_base  {
     var $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
     var $proxyport = '';
 	var $proxyusername = 'MEE';
-	var $proxypassword = 'yhb45cf@f1';
+	var $proxypassword = 'bvY6fg#@!SB';
 	var $portName = '';				// port name to use in WSDL
     var $xml_encoding = '';			// character set encoding of incoming (response) messages
 	var $http_encoding = false;

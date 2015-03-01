@@ -499,7 +499,7 @@ class DocumentComponent extends Component
                     $uploaded_for = $_POST['uploaded_for'];
                 else
                     $uploaded_for = '';
-                $for_doc = array('document_type'=>'Place MEE Order','sub_doc_id'=>4,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);
+                $for_doc = array('document_type'=>'Consent Form','sub_doc_id'=>4,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);
                 $this->saveDocForOrder($for_doc);
                 
                 

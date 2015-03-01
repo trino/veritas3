@@ -152,11 +152,11 @@
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($order->id); //echo $order->profile->title;    ?></td>
-                                    <td>
+                                    <td style="min-width: 140px;">
                                     
                                         <?php
                                         if($order->order_type){
-                                        echo '<div class="dashboard-stat ';
+                                        echo '<div style="" class="dashboard-stat ';
                                                 $colors = array("Order_Products" => "green-haze", "Order_MEE" => "red-intense", "ReQualify" => "blue-madison");
                                                 if (isset($colors[str_replace(' ','_',$order->order_type)])){
                                                     echo $colors[str_replace(' ','_',$order->order_type)];

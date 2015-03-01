@@ -586,8 +586,13 @@ function provinces($name){
                                 var response = JSON.parse(res2);
                                 //alert(res2);
                                 
-                                var app_name = res2.replace('{"applicant_phone_number":"1234","aplicant_name":"','');
-                                app_name = app_name.replace('","applicant_email":"ttt@ttt.com"}','');
+                                var app_name = res2.replace('{"applicant_phone_number":"','');
+                                var app_name = app_name.replace('","aplicant_name":"',',');
+                                var app_name = app_name.replace('","applicant_email":"',',');
+                                var app_name = app_name.replace('"}','');
+                                var app_name_arr = app_name.split(',');
+                                app_name = app_name_arr[1];
+                                //app_name = app_name.replace('","applicant_email":"ttt@ttt.com"}','');
                                 $('#conf_driver_name').val(app_name);
                                 $('#conf_driver_name').attr('disabled', 'disabled');
                                 $('#form_tab1').find(':input').each(function () {

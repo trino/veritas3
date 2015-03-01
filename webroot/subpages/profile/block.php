@@ -55,7 +55,7 @@ if ($activetab == "permissions") {
     <div class="portlet-body form">
                                     <div class="tab-content">
                                                 
-                                                <div class="tab-pane <?php activetab($activetab, "config", false); ?>" id="subtab_2_1">
+                                                <div class="tab-pane <?php if((!isset($Clientcount) || (isset($Clientcount) && $Clientcount!=0)))activetab($activetab, "config", false); ?>" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
 

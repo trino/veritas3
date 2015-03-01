@@ -240,7 +240,7 @@
                                             if (isset($uploaded_by->username)) {
                                                 $user = ucfirst(h($uploaded_by->username));
                                             } else {
-                                                $user = "Unknown user";
+                                                $user = "None";
                                             }
 
                                             echo $user;
@@ -252,7 +252,7 @@
                                             if (isset($uploaded_for->username)) {
                                                 $user = ucfirst(h($uploaded_for->username));
                                             } else {
-                                                $user = "Unknown user";
+                                                $user = "None";
                                             }
 
                                             echo $user;

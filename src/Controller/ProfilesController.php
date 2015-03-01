@@ -687,7 +687,11 @@
                     unset($post['id']);
                 $profile = $profiles->newEntity($post);
                 if ($profiles->save($profile)) {
-                    
+                    $username = 'driver_'.$profile->id;
+                    $queries = TableRegistry::get('Profiles');
+                    $queries->query()->update()->set(['username' => $username])
+                                    ->where(['id' => $profile->id])
+                                    ->execute();
                      if($post['client_ids']!= "")
                      {
                         $client_id = explode(",",$post['client_ids']);
@@ -736,7 +740,13 @@
             $pros = $this->Profiles->patchEntity($pro, $post);
 			$this->Profiles->save($pros);
             
-                echo $id;die();
+                echo $id;
+                $username = 'driver_'.$id;
+                    $queries = TableRegistry::get('Profiles');
+                    $queries->query()->update()->set(['username' => $username])
+                                    ->where(['id' => $id])
+                                    ->execute();
+                die();
                 
         }
         }

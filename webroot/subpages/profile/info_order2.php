@@ -75,14 +75,21 @@
                 if ($type == 'QUA') {
                     ?>
                     <a href="javascript:void(0);" class="btn btn-danger placenow"
-                       onclick="if(!check_div())return false;if($('.selecting_driver').val()==''){alert('Please select driver to requalify.');return false;}var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
+                       onclick="if(!check_div())return false;if($('.selecting_driver').val()==''){alert('Please select driver to requalify.');return false;}var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=Requalification';else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
                         MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
                 <?php
                 } else {
-
+                    if($type == 'MEE')
+                    {
+                        $o_type = 'Order MEE';
+                    }
+                    else
+                    {
+                        $o_type = 'Order Products';
+                    }
                     ?>
                     <a href="javascript:void(0);" class="btn btn-danger placenow"
-                       onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
+                       onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=<?php echo urlencode($o_type);?>';else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Place
                         MEE Order <i class="m-icon-swapright m-icon-white"></i></a>
 
                 <?php
@@ -101,10 +108,18 @@
                 echo '<a href="#" class="btn yellow-crusta">Place Order <i class="m-icon-swapright m-icon-white"></i></a>';
                 break;
             case 5:
+            if($type == 'MEE')
+                    {
+                        $o_type = 'Order MEE';
+                    }
+                    else
+                    {
+                        $o_type = 'Order Products';
+                    }
                 ?>
 
                 <a class="btn red button-next proceed"
-                   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&forms='<?= $tempstr; ?>;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">
+                   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=<?php echo urlencode($o_type);?>&forms='<?= $tempstr; ?>;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">
                     Order Products <i class="m-icon-swapright m-icon-white"></i>
                 </a>
 
@@ -648,7 +663,7 @@
                     $('#selecting_driver').html(res);
                     $('.selecting_client').val($('#selecting_client').val());
 
-                    $('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' + <?= $tempstr; ?>);
+                    //$('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' + <?= $tempstr; ?>);
 
                 }
             });

@@ -20,6 +20,8 @@ class DocumentComponent extends Component
                 $arr['title'] = 'order_' . $_POST['uploaded_for'] . '_' . date('Y-m-d H:i:s');
                 $arr['uploaded_for'] = $_POST['uploaded_for'];
                 $sig = explode('/',$_POST['recruiter_signature']);
+                if(isset($_GET['order_type']))
+                $arr['order_type'] = $_GET['order_type'];
                 $arr['recruiter_signature'] = end($sig);
                 if($did)
                 {

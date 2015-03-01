@@ -174,7 +174,7 @@
                                                 </div-->
                                                 <a class="more" id="sub_doc_click1" href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
                                              
-                                            echo $this->request->webroot.'orders/vieworder/'.$order->client_id.'/'.$order->id;
+                                            echo $this->request->webroot.'orders/vieworder/'.$order->client_id.'/'.$order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}
                                             
                                         }else{?>javascript:;<?php } ?>">
                                                     <?= h($order->order_type); //it won't let me put it in the desc ?>
@@ -210,10 +210,13 @@ echo '';
 
 <?php
 if ($sidebar->orders_list == '1' && !isset($_GET["draft"])) {
-if (!isset($_GET['table']))
-echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id], ['class' => 'btn btn-info']);
-else
-echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-info']);
+    ?>
+    <a class="btn btn-info" href="<?php echo $this->request->webroot;?>orders/vieworder/<?php echo $order->client_id;?>/<?php echo $order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}?>">View</a>
+    <?php
+//if (!isset($_GET['table']))
+//echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id], ['class' => 'btn btn-info']);
+/*else
+echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-info']);*/
 } ?>
 
 <?php
@@ -221,10 +224,13 @@ $super = $this->request->session()->read('Profile.super');
 if (isset($super) || isset($_GET['draft'])) {
 if ($sidebar->orders_edit == '1') {
 if (!isset($_GET['table']) && $order->draft == 1) {
-echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
-} elseif (isset($_GET['table'])) {
+    ?>
+    <a class="btn btn-primary" href="<?php echo $this->request->webroot;?>orders/addorder/<?php echo $order->client_id;?>/<?php echo $order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}?>">Edit</a>
+    <?php
+//echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
+} /*elseif (isset($_GET['table'])) {
 echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-primary']);
-}
+}*/
 
 }
 if (isset($super)) {

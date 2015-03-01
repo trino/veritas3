@@ -90,9 +90,9 @@ if ($action == "Add") {
                     <div class="col-md-6" style="margin: 10px 0;padding:0">
 
                         <?php $dr_cl = $doc_comp->getDriverClient(0, $cid);?>
-                        <select class="form-control select2me" data-placeholder="Select Driver"
+                        <select class="form-control select2me" data-placeholder="No Driver"
                             id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
-                        <option value="0">Select Driver
+                        <option value="0">No Driver
                         </option>
                         <?php
                         

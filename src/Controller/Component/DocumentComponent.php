@@ -22,6 +22,8 @@ class DocumentComponent extends Component
                 $sig = explode('/',$_POST['recruiter_signature']);
                 if(isset($_GET['order_type']))
                 $arr['order_type'] = $_GET['order_type'];
+                if(isset($_GET['forms']))
+                $arr['forms'] = $_GET['forms'];
                 $arr['recruiter_signature'] = end($sig);
                 if($did)
                 {

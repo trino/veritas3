@@ -440,10 +440,10 @@
             <p>LAST UPDATED 10/29/2012</p>
         </div>
 
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-12">
             <?php include('canvas/consent_signature_driver.php'); ?>
         </div>
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-12">
             <?php include('canvas/consent_signature_witness.php'); ?>
         </div>
 

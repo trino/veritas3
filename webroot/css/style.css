@@ -73,11 +73,11 @@ Red Pricing table
 
 
 .pricing-red:hover {
-    border: 3px solid red;
+    border: 3px solid #d84a38 ;
 }
 
 .pricing-red:hover h4 {
-    color: red;
+    color: #d84a38 ;
 }
 
 .pricing-red-head {
@@ -103,7 +103,7 @@ Red Pricing table
     color: #fafafa;
     padding: 12px 0;
     font-size: 27px;
-    background: red;
+    background: #d84a38 ;
     border-bottom: solid 1px #8A0B11;
 }
 
@@ -117,7 +117,7 @@ Red Pricing table
 }
 
 .pricing-red-head-active h4 {
-    color: red;
+    color: #d84a38 ;
 }
 
 .pricing-red-head h4 i {
@@ -144,7 +144,7 @@ Red Pricing table
 
 .pricing-red-content li i {
     top: 2px;
-    color: red;
+    color: #d84a38 ;
     font-size: 16px;
     margin-right: 5px;
     position: relative;
@@ -178,11 +178,11 @@ blue Pricing table
 
 
 .pricing-blue:hover {
-    border: 3px solid blue;
+    border: 3px solid #4B8DF8 ;
 }
 
 .pricing-blue:hover h4 {
-    color: blue;
+    color: #4B8DF8 ;
 }
 
 .pricing-blue-head {
@@ -208,8 +208,8 @@ blue Pricing table
     color: #fafafa;
     padding: 12px 0;
     font-size: 27px;
-    background: blue;
-    border-bottom: solid 1px #02063E;
+    background: #4B8DF8 ;
+    border-bottom: solid 1px #3c6385;
 }
 
 .pricing-blue-head h4 {
@@ -222,7 +222,7 @@ blue Pricing table
 }
 
 .pricing-blue-head-active h4 {
-    color: blue;
+    color: #4B8DF8 ;
 }
 
 .pricing-blue-head h4 i {
@@ -249,7 +249,7 @@ blue Pricing table
 
 .pricing-blue-content li i {
     top: 2px;
-    color: blue;
+    color: #4B8DF8 ;
     font-size: 16px;
     margin-right: 5px;
     position: relative;

@@ -156,7 +156,7 @@
 						</li>
 						<li>
 							<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-					
+
 							</ul>
 						</li>
 					</ul>
@@ -209,10 +209,12 @@
 	<?php include('subpages/sidebar.php');?>
 
 	<div class="page-content-wrapper">
+
+
 		<div class="page-content">
         <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
-        
+
 		</div>
 	</div>
 
@@ -221,7 +223,7 @@
 	<!-- END CONTENT -->
 	<!-- BEGIN QUICK SIDEBAR -->
 	<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
-	
+
 	<!-- END QUICK SIDEBAR -->
     </div>
  <?php if($settings->box =='1'){?></div><?php }?>
@@ -250,7 +252,7 @@
         }}
 
         ?>
-        
+
 
     <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product_example"><?php get_title('product_example') ?></a> /
 
@@ -431,4 +433,4 @@ function change_text(v){
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
-</html>	
+</html>

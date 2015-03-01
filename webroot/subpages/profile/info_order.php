@@ -62,7 +62,7 @@
                                                                                        class="img-responsive"
                                                                                        style="height: auto;width: 150px;margin-left:15px;"
                                                                                        alt=""
-                                                                                       src="/veritas3/img/profile/default.png"/>
+                                                                                       src="<?php echo $this->request->webroot;?>img/uploads/default.png"/>
                             </div>
                         </div>
                         <div class="col-md-9">

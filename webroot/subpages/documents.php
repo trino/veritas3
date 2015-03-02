@@ -46,7 +46,7 @@
     							<i class="fa fa-copy"></i>
     						</div>
     						<div class="details">
-    						
+
     							<div class="desc">
     								 <?php echo ucfirst($d->title); ?>
     							</div>

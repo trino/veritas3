@@ -86,7 +86,7 @@
                                     foreach ($users as $u) {
                                         ?>
                                         <option
-                                            value="<?php echo $u->id; ?>" <?php if (isset($return_user_id) && $return_user_id == $u->id) { ?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                            value="<?php echo $u->id; ?>" <?php if (isset($return_user_id) && $return_user_id == $u->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($u->username); ?></option>
                                     <?php
                                     }
                                 ?>
@@ -108,7 +108,7 @@
                                     foreach ($clients as $c) {
                                         ?>
                                         <option
-                                            value="<?php echo $c->id; ?>" <?php if (isset($return_client_id) && $return_client_id == $c->id) { ?> selected="selected"<?php } ?> ><?php echo $c->company_name; ?></option>
+                                            value="<?php echo $c->id; ?>" <?php if (isset($return_client_id) && $return_client_id == $c->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($c->company_name); ?></option>
                                     <?php
                                     }
                                 ?>
@@ -146,6 +146,8 @@
                             <th><?= $this->Paginator->sort('document_type', ucfirst($settings->document) . ' type'); ?></th>
                             <th><?= $this->Paginator->sort('user_id', 'Submitted by'); ?><?php if (isset($end)) echo $end;
                                     if (isset($start)) echo "//" . $start; ?></th>
+                            <th><?= $this->Paginator->sort('uploaded_for', 'Driver'); ?><?php if (isset($end)) echo $end;
+                                    if (isset($start)) echo "//" . $start; ?></th>
                             <th><?= $this->Paginator->sort('created', 'Date'); ?></th>
                             <th><?= $this->Paginator->sort('client_id', ucfirst($settings->client)); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -181,17 +183,76 @@
                                     $row_color_class = "even";
                                 }
                                 $uploaded_by = $doc_comp->getUser($docs->user_id);
+                                $uploaded_for = $doc_comp->getUser($docs->uploaded_for);
                                 $getClientById = $doc_comp->getClientById($docs->client_id);
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($docs->id) ?></td>
-                                    <td><?= h($docs->document_type) ?></td>
+                                    <td style="width: 140px;">
+                                        <?php switch(1){//change the number to pick a style
+                                            case 0://plain text
+                                                    echo h($docs->document_type);
+                                                break;
+                                            case 1://top block
+                                                echo '<div class="dashboard-stat ';
+                                                $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedback" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
+                                                if (isset($colors[strtolower($docs->document_type)])){
+                                                    echo $colors[strtolower($docs->document_type)];
+                                                } else {
+                                                    echo "blue";
+                                                }
+                                                ?>">
+                                                <div class="whiteCorner"></div>
+                                                <div class="visual" style="height: 40px;">
+                                                    <i class="fa fa-copy"></i>
+                                                </div>
+                                                <!--div class="details"> //WARNING: This won't work while in a table...
+                                                    <div class="number"></div>
+                                                    <div class="desc"></div>
+                                                </div-->
+                                                <a class="more" id="sub_doc_click1" href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
+                                             if(!$docs->order_id)       
+                                            echo $this->request->webroot.'documents/view/'.$docs->client_id.'/'.$docs->id;
+                                            else
+                                            echo $this->request->webroot.'documents/view/'.$docs->client_id.'/'.$docs->id.'?order_id='.$docs->order_id;
+                                        }else{?>javascript:;<?php } ?>">
+                                                    <?= h($docs->document_type); //it won't let me put it in the desc ?>
+                                                </a>
+                                                </div>
+
+                                        <?php break;
+                                            case 2: //tile, doesn't work. CSS not included? ?>
+
+                                                <a href="/veritas3/orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
+                                                    <div class="tile-body">
+                                                        <i class="icon-docs"></i>
+                                                    </div>
+                                                    <div class="tile-object">
+                                                        <div class="name">Create Order</div>
+                                                        <div class="number"></div>
+                                                    </div>
+                                                </a>
+
+                                            <?php break; } ?>
+                                    </td>
                                     <td><?php
 
                                             if (isset($uploaded_by->username)) {
-                                                $user = h($uploaded_by->username);
+                                                $user = ucfirst(h($uploaded_by->username));
                                             } else {
-                                                $user = "Unknown user";
+                                                $user = "None";
+                                            }
+
+                                            echo $user;
+                                            $docname = h($docs->document_type) . " uploaded by " . $user . " at " . h($docs->created);
+
+                                        ?></td>
+                                    <td><?php
+
+                                            if (isset($uploaded_for->username)) {
+                                                $user = ucfirst(h($uploaded_for->username));
+                                            } else {
+                                                $user = "None";
                                             }
 
                                             echo $user;
@@ -202,7 +263,7 @@
                                     <td>
                                         <?php
                                             if (is_object($getClientById)) {
-                                                echo h($getClientById->company_name);
+                                                echo ucfirst(h($getClientById->company_name));
                                             } else {
                                                 echo "Deleted " . $settings->client;
                                             }
@@ -212,19 +273,30 @@
                                     <td class="actions  util-btn-margin-bottom-5 ">
 
                                         <?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
+                                            if(!$docs->order_id)
                                             echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => 'btn btn-info']);
-                                        } ?>
+                                            else{
+                                            ?>
+                                            <a class="btn btn-info" href="<?php echo $this->request->webroot;?>documents/view/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">View</a>
+                                            <?php
+                                        }} ?>
                                         <?php
                                             if ($sidebar->document_edit == '1') { 
                                                 if ($docs->document_type == 'feedbacks')
-                                                    echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);
-                                                elseif ($docs->document_type == 'order')
-                                                    echo $this->Html->link(__('Edit'), ['controller' => 'documents', 'action' => 'editorder', $docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
-                                                else
+                                                    echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);                                                
+                                                else{
+                                                if(!$docs->order_id)
                                                     echo $this->Html->link(__('Edit'), ['action' => 'add', $docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
+                                                else
+                                                    {
+                                                        ?>
+                                                        <a class="btn btn-primary" href="<?php echo $this->request->webroot;?>documents/add/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">Edit</a>
+                                                        <?php
+                                                    }
+                                                    }
                                             }
                                         ?>
-                                        <?php if ($sidebar->document_delete == '1') {
+                                        <?php if ($sidebar->document_delete == '1' && $docs->order_id == 0) {
                                             if (isset($_GET['draft'])) {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>documents/delete/<?php echo $docs->id; ?>/draft"
@@ -238,6 +310,15 @@
                                                    onclick="return confirm('Are you sure you want to delete <?= $docname; ?>?');"
                                                    class="btn btn-danger">Delete</a>
                                             <?php
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if($docs->order_id != 0)
+                                            {
+                                                ?>
+                                                <strong>(Order)</strong>
+                                                <?php
                                             }
                                         }
 

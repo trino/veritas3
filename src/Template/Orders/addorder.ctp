@@ -57,6 +57,54 @@ function provinces($name){
         </li>
     </ul>
     <?php
+        
+        $forms=array();
+        if (isset($_GET["forms"])){
+            $forms = explode(",", $_GET["forms"]);
+            $show_all='all';
+            $show_all2='all';
+            foreach($forms as $f)
+            {
+                if($f!=1)
+                {
+                    $show_all='';
+                    $show_all2='';
+                }
+                
+            }
+            if($show_all=='')
+            {
+                if($forms[1]==1 || $forms[2]==1)
+                {
+                    $show_all='consent';
+                    $show_all2='consent';
+                }
+                else
+                {
+                    $show_all='none';
+                    $show_all2='none';
+                }
+                
+            }
+        }
+
+        //returns: boolean, if this form should be displayed
+        //parameters:
+        //  $forms  -   pass in the $forms variable since globals don't seem to work
+        //  $id     -   the ID/index number of the form to check
+        // NOTE: This is an arbitrary rule set to be substituted for a working one later on
+        function displayform($forms, $name){
+            //pre-screening, driver application, consent form, road test
+            //if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
+            if(count($forms)>0){
+                if ($name == "consent form") {
+                    return $forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
+                }
+                return false; //no other form needs to show
+            }
+            return true; //returns true if $forms is empty or smaller than the ID number (ie: MEE order)
+        }
+
         if (isset($disabled)) { ?>
             <a href="javascript:window.print();" class="floatright btn btn-primary">Print</a>
 
@@ -98,7 +146,7 @@ function provinces($name){
                 <div class="form-wizard">
                     <div class="form-body" style="position: relative;">
                         <?php
-
+                            
                             if ($param != 'view') {
                                 $tab = 'tab-pane';
                                 ?>
@@ -128,9 +176,30 @@ function provinces($name){
                                         $i = 2;
                                         $end = 0;
                                         $k_c=0;
+                                        $index=0;
+                                        if(!isset($show_all))
+                                                {
+                                                    $show_all='all';
+                                                }
+                                                
                                         foreach ($subdoccli as $sd) {
                                             
-                                           $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id); 
+                                            if($show_all=='none')
+                                            continue;
+                                            elseif($show_all=='consent')
+                                            {
+                                                if($sd->sub_id !=4)
+                                                continue;
+                                            }
+                                            else
+                                            if($show_all=='all')
+                                            {
+                                                //do nothing
+                                            }
+                                            
+                                                
+                                            $index+=1;
+                                            $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
                                             $act = 0;
                                             if ($d->table_name == $table) {
                                                 $act = 1;
@@ -141,16 +210,15 @@ function provinces($name){
 
                                             ?>
                                             <?php if ($prosubdoc['display'] != 0 && $d->display == 1) {
+                                                
                                                 $k_c++;
                                                 $j = $d->id;
                                                 $j = $j + 1;
-                                                if($k_c==1)
-                                                {
+                                                if($k_c==1) {
                                                     $k_cou = $j;
                                                 }
                                                 else
-                                                if($k_cou<$j)
-                                                {
+                                                if($k_cou<$j) {
                                                     $k_cou=$j;
                                                 }
                                                 ?>
@@ -313,7 +381,23 @@ function provinces($name){
                         
                         <?php
                         $k_c = 0;
+                        if(!isset($show_all2))
+                                                {
+                                                    $show_all2='all';
+                                                }
                         foreach ($subdoccli2 as $sd) {
+                            if($show_all2=='none')
+                                            continue;
+                                            elseif($show_all2=='consent')
+                                            {
+                                                if($sd->sub_id !=4)
+                                                continue;
+                                            }
+                                            else
+                                            if($show_all2=='all')
+                                            {
+                                                //do nothing
+                                            }
                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
                             if ($prosubdoc['display'] != 0 && $d->display == 1) {
                             $k_c++;
@@ -500,6 +584,17 @@ function provinces($name){
                             url: '<?php echo $this->request->webroot;?>profiles/getProfileById/' + prof_id + '/1',
                             success: function (res2) {
                                 var response = JSON.parse(res2);
+                                //alert(res2);
+                                
+                                var app_name = res2.replace('{"applicant_phone_number":"','');
+                                var app_name = app_name.replace('","aplicant_name":"',',');
+                                var app_name = app_name.replace('","applicant_email":"',',');
+                                var app_name = app_name.replace('"}','');
+                                var app_name_arr = app_name.split(',');
+                                app_name = app_name_arr[1];
+                                //app_name = app_name.replace('","applicant_email":"ttt@ttt.com"}','');
+                                $('#conf_driver_name').val(app_name);
+                                $('#conf_driver_name').attr('disabled', 'disabled');
                                 $('#form_tab1').find(':input').each(function () {
                                     var name_attr = $(this).attr('name');
 
@@ -512,8 +607,7 @@ function provinces($name){
 
                                     }
                                 });
-                                $('#conf_driver_name').val(response['applicant_name']);
-                                $('#conf_driver_name').attr('disabled', 'disabled');
+                                
 
                             }
                         });
@@ -668,6 +762,7 @@ function provinces($name){
                             url: '<?php echo $this->request->webroot;?>profiles/getProfileById/' + prof_id + '/2',
                             success: function (res2) {
                                 var response = JSON.parse(res2);
+                                
                                 $('#form_tab2').find(':input').each(function () {
                                     var name_attr = $(this).attr('name');
 
@@ -678,8 +773,7 @@ function provinces($name){
 
                                         $(this).attr('disabled', 'disabled');
                                     }
-                                    $('#conf_driver_name').val(response['first_name'] + ' ' + response['last_name']);
-                                    $('#conf_driver_name').attr('disabled', 'disabled');
+                                    
                                 });
                             }
                         });
@@ -1052,8 +1146,7 @@ function provinces($name){
 
 
                                     }
-                                    $('#conf_driver_name').val(response['driver_name']);
-                                    $('#conf_driver_name').attr('disabled', 'disabled');
+                                    
                                 });
                             }
                         });
@@ -1092,8 +1185,7 @@ function provinces($name){
                                         $(this).attr('disabled', 'disabled');
 
                                     }
-                                    $('#conf_driver_name').val(response['first_name'] + ' ' + response['last_name']);
-                                    $('#conf_driver_name').attr('disabled', 'disabled');
+                                    
                                 });
 
                             }
@@ -1315,13 +1407,13 @@ function provinces($name){
                     data: data,
                     type: 'post',
                     beforeSend: saveSignature,
-                    url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1',
+                    url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1&order_type=<?php if(isset($_GET['order_type']))echo $_GET['order_type'];?>&forms=<?php if(isset($_GET['forms']))echo $_GET['forms'];?>',
                     success: function (res) {
                         $('#did').val(res);
                         var draftmode = '<h4 class="block">Your order has been saved as draft.</h4><p> You can edit the order by visiting the orders section inside draft. </p>'
                         $('#tab6 .note').html(draftmode);
                         $.ajax({
-                            url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1',
+                            url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1&order_type=<?php if(isset($_GET['order_type']))echo $_GET['order_type'];?>&forms=<?php if(isset($_GET['forms']))echo $_GET['forms'];?>',
                             type: 'post',
                             data: {
                                 uploaded_for: $('#uploaded_for').val(),
@@ -1376,12 +1468,12 @@ function provinces($name){
                     data: data,
                     type: 'post',
                     beforeSend: saveSignature,
-                    url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=' + draft,
+                    url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=' + draft+'&order_type=<?php if(isset($_GET['order_type']))echo $_GET['order_type'];?>&forms=<?php if(isset($_GET['forms']))echo $_GET['forms'];?>',
                     success: function (res) {
 
                         $('#did').val(res);
                         $.ajax({
-                            url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=' + draft,
+                            url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=' + draft+'&order_type=<?php if(isset($_GET['order_type']))echo $_GET['order_type'];?>&forms=<?php if(isset($_GET['forms']))echo $_GET['forms'];?>',
                             type: 'post',
                             data: {
                                 uploaded_for: $('#uploaded_for').val(),

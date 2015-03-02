@@ -1,6 +1,15 @@
-<?php $sidebar = $this->requestAction("settings/all_settings/" . $this->Session->read('Profile.id') . "/sidebar");
-    $order_url = $this->requestAction("settings/getclienturl/" . $this->Session->read('Profile.id') . "/order");
-    $document_url = $this->requestAction("settings/getclienturl/" . $this->Session->read('Profile.id') . "/document"); ?>
+<?php
+//debug ($this->Session);
+$profileID = $this->Session->read('Profile.id');
+ if(strlen($profileID)==0) {
+    echo '<div class="alert alert-danger"><strong>Error!</strong> <a href="profiles/logout">Your username no longer exists, click here to logout.</a></div>';
+}
+    $sidebar = $this->requestAction("settings/all_settings/" . $profileID . "/sidebar"); //http://localhost/veritas3/
+    $order_url = $this->requestAction("settings/getclienturl/" . $profileID . "/order");
+    $document_url = $this->requestAction("settings/getclienturl/" . $profileID . "/document");
+    $ordertype = "MEE";
+    if (isset($_GET["ordertype"])){ $ordertype = strtoupper($_GET["ordertype"]) ;}
+?>
 
 <div class="page-sidebar-wrapper">
 
@@ -158,7 +167,7 @@
                         </ul>
                     <?php } ?>
                 </li>
-            <?php } ?>
+            <?php }           ?>
 
             </li>
             <?php if ($sidebar->orders == 1) { ?>
@@ -178,21 +187,29 @@
                                         List Orders</a>
                                 </li>
                             <?php } ?>
+
                             <?php if ($sidebar->orders_create == 1) { ?>
-                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'addorder' && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'productSelection' && $ordertype == "MEE" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                                     <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=MEE">
                                         <i class="icon-plus"></i>
-                                        Place Order</a>
+                                        Order MEE</a>
                                 </li>
 
-                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'addorder' && $_GET["ordertype"] == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $ordertype == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                             <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART">
                                 <i class="icon-plus"></i>
-                                A La Carte/Re-qualify </a>
-                </li>
+                                Order Products </a>
+                                </li>
+                                
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $ordertype == "QUA" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                            <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=QUA">
+                                <i class="icon-plus"></i>
+                                Re-Qualify </a>
+                                </li>
+                                
                             <?php } ?>
 							<?php if ($sidebar->orders_list == 1) { ?>
-                                <li <?php echo ($this->request['controller'] == 'Documents' && $this->request['action'] == 'orderslist' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'orderslist' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                                     <a href="<?php echo $this->request->webroot; ?>orders/orderslist?draft">
                                         <i class="fa fa-pencil"></i>
                                         Order Drafts</a>
@@ -203,13 +220,13 @@
                 </li>
             <?php } ?>
             <?php if ($sidebar->messages == 1) { ?>
-                <li class="<?php echo ($this->request['controller'] == 'Messages') ? 'active open' : ''; ?>">
+                <!--li class="<?php echo ($this->request['controller'] == 'Messages') ? 'active open' : ''; ?>">
                     <a href="<?php echo $this->request->webroot; ?>Messages">
                         <i class="icon-envelope"></i>
                         <span class="title">Messages</span>
                         <span class="selected"></span>
                     </a>
-                </li>
+                </li-->
             <?php } ?>
              <?php if ($sidebar->analytics == 1) { ?>
                 <li class="<?php echo ($this->request['action'] == 'analytics') ? 'active open' : ''; ?>">

@@ -22,7 +22,7 @@ function randomcolor(){
 
 
     <?php if ($sidebar->client_list ==1) { ?>
-        <a href="<?php echo $this->request->webroot; ?>clients" class="tile bg-grey-salsa" style="display: block;">
+        <!--a href="<?php echo $this->request->webroot; ?>clients" class="tile bg-grey-salsa" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-search"></i>
             </div>
@@ -30,10 +30,10 @@ function randomcolor(){
                 <div class="name">List <?=$settings->client;?>s</div>
                 <div class="number"></div>
             </div>
-        </a>
+        </a-->
     <?php } ?>
     <?php if ($sidebar->client_create ==1) { ?>
-        <a class="tile bg-grey-salsa" href="<?php echo $this->request->webroot; ?>clients/add" style="display: block;">
+        <!--a class="tile bg-grey-salsa" href="<?php echo $this->request->webroot; ?>clients/add" style="display: block;">
             <div class="tile-body">
                 <i class="icon-globe"></i>
             </div>
@@ -41,7 +41,7 @@ function randomcolor(){
                 <div class="name">Create <?=$settings->client;?></div>
                 <div class="number"></div>
             </div>
-        </a>
+        </a-->
     <?php } ?>
 
 
@@ -180,7 +180,7 @@ function randomcolor(){
 
 
      <?php if ($sidebar->messages ==1) { ?>
-        <a class="tile bg-green" href="<?php echo $this->request->webroot; ?>messages" style="display: block;">
+        <!--a class="tile bg-green" href="<?php echo $this->request->webroot; ?>messages" style="display: block;">
             <div class="tile-body">
                 <i class="fa icon-envelope"></i>
             </div>
@@ -188,7 +188,7 @@ function randomcolor(){
                 <div class="name">Messages</div>
                 <div class="number"></div>
             </div>
-        </a>
+        </a-->
     <?php } ?>
 
     <?php if ($sidebar->schedule ==1) { ?>

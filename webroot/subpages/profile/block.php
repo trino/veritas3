@@ -32,7 +32,7 @@ if ($activetab == "permissions") {
         <?php if($this->request->session()->read('Profile.profile_type')!='2')
         {
             ?>
-            <li <?php activetab($activetab, "config"); ?>>
+            <li <?php if((!isset($Clientcount) || (isset($Clientcount) && $Clientcount!=0)))activetab($activetab, "config"); ?>>
                 <a href="#subtab_2_1" data-toggle="tab">Configuration</a>
             </li>
             <li class="">
@@ -55,7 +55,7 @@ if ($activetab == "permissions") {
     <div class="portlet-body form">
                                     <div class="tab-content">
                                                 
-                                                <div class="tab-pane <?php activetab($activetab, "config", false); ?>" id="subtab_2_1">
+                                                <div class="tab-pane <?php if((!isset($Clientcount) || (isset($Clientcount) && $Clientcount!=0)))activetab($activetab, "config", false); ?>" id="subtab_2_1">
                                                     <div class="">
                                 					   <!--h1>Modules</h1-->
 
@@ -294,7 +294,7 @@ if ($activetab == "permissions") {
                                                         No </label>
                                                 </td>
                                             </tr>-->
-                                            <tr>
+                                            <!--tr>
                                                 <td class="vtop">Messages</td>
                                                 <td>
                                                      <label class="uniform-inline">
@@ -308,7 +308,7 @@ if ($activetab == "permissions") {
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->messages == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr-->
                                             <tr>
                                                 <td class="vtop">Schedule</td>
                                                 <td>
@@ -874,7 +874,9 @@ if ($activetab == "permissions") {
                             
                                                                     <tr>
                                                                         <td>
-                                                                            <?php if (strlen($o->image)>0) { echo '<img height="32" src="../../img/jobs/' . $o->image . '">'; }  else { echo '<img width="32" src="/veritas3/img/logos/MEELogo.png">'; }?>
+
+                                                                            <?php if (strlen($o->image)>0) { echo '<img height="32" src="'.$this->request->webroot.'img/jobs/' . $o->image . '">'; }  else { echo '<img width="32" src="'.$this->request->webroot.'img/logos/MEELogo.png">'; }?>
+
                                                                             <input <?php if($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){?>disabled=""<?php }?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz" <?php if(in_array($id,$pro_ids)){echo "checked";}?>  <?php echo $is_disabled ?> /> <?php echo $o->company_name; ?> <span class="msg_<?php echo $o->id; ?>"></span></td>
                                                                     </tr>
                             

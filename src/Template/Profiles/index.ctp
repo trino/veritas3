@@ -168,7 +168,7 @@
                             <thead>
                             <tr class="sorting">
                                 <th><?= $this->Paginator->sort('id') ?></th>
-
+                                <th><?= $this->Paginator->sort('image', 'Image') ?></th>
                                 <th><?= $this->Paginator->sort('username', 'Username') ?></th>
                                 <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
                                 <th><?= $this->Paginator->sort('email') ?></th>
@@ -177,7 +177,7 @@
                                 <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
                                 <th>Assigned to <?=$settings->clients;?></th>
 
-                                <th class="actions"><?= __('Actions') ?></th>
+                               <!-- <th class="actions"><?/*=  __('Actions') */ ?></th> -->
                             </tr>
                             </thead>
                             <tbody>
@@ -206,11 +206,59 @@
 
                                     <tr class="<?= $row_color_class; ?>" role="row">
                                         <td><?= $this->Number->format($profile->id) ?></td>
+                                        <td><?php
+                                        if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                            ?>
+                                            <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>">
+                                            <img style="width:40px;" src="<?php
+                                            if($profile->image)
+                                         {
+                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image;
+                                         }
+                                         else {
+                                            echo $this->request->webroot; ?>img/profile/default.png;
+                                           <?php } ?>" class="img-responsive" alt=""/>
+                                             </a>
+                                            <?php
+                                            }
+                                          ?>
+                                           <!--
 
-                                        <td><?= h($profile->username) ?></td>
+                                        <img src="<?php
+                                        if($profile->image)
+                                         {
+                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image;
+                                         }
+                                         else {
+                                            echo $this->request->webroot; ?>img/profile/default.png;
+                                           <?php  } ?>" class="img-responsive" alt="" style="height:80px width:60px;"/>
+
+
+                                            -->
+
+
+                                         </td>
+                                        <td>
+                                        <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                            ?>
+                                            <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); ?> </a>
+                                            <?php
+                                            }
+                                            else
+                                            echo ucfirst(h($profile->username));
+                                             ?>
+                                        </td>
                                         <td><?php
                                                 if (strlen($profile->profile_type) > 0) {
                                                     echo h($profiletype[$profile->profile_type]);
+                                                    if ($profile->profile_type == 5) {//is a driver
+                                                        $expires = strtotime($profile->expiry_date);
+                                                        if ($expires){
+                                                            if ($expires < time()) {
+                                                                echo '<span class="clearfix " style="color:#a94442">License Expired</span>';
+                                                            }
+                                                        }
+                                                    }
                                                 } else {
                                                     echo "Draft";
                                                 }
@@ -223,9 +271,9 @@
                                         <td><?= h($profile->lname) ?></td>
                                         <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
 
-                                        <td class="actions  util-btn-margin-bottom-5">
+                                       <!-- <td class="actions  util-btn-margin-bottom-5">
 
-                                        <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                        <?php /* if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);
                                             } ?>
 
@@ -243,9 +291,9 @@
                                                 if ($this->request->session()->read('Profile.super') == '1') {
                                                     if ($this->request->session()->read('Profile.id') != $profile->id) {
                                                         ?>
-                                                        
+
                                                         <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
-                                                           onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');"
+                                                           onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
                                                            class="btn btn-danger">Delete</a>
                                                         </span>
                                                     <?php
@@ -253,7 +301,7 @@
                                                 } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
                                                     ?>
                                                     <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
-                                                       onclick="return confirm('Are you sure you want to delete <?= h($profile->username) ?>?');"
+                                                       onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
                                                        class="btn btn-danger">Delete</a>
                                                 <?php
                                                 }
@@ -273,11 +321,11 @@
                                                   <!--  <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
                                                        class="btn btn-primary">Score Card</a> -->
                                                 <?php
-                                                }
+                                                } */
                                             ?>
 
 
-                                        </td>
+                                        </td>-->
 
                                     </tr>
 

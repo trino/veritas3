@@ -60,6 +60,8 @@ if ($action == "Add") {
         <?php } ?>
 
 </div>
+
+
 <div class="row">
     <div class="col-md-12">
         <?php
@@ -78,14 +80,39 @@ if ($action == "Add") {
                             }
                         ?>
                         <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();" class="btn btn-success moreback" style="display: none;">Back</a>
-                        <?php include('subpages/home_blocks.php'); ?>
-                    <div class="form-group mar-top-10">
 
+                    <?php include('subpages/home_blocks.php');
+                    if(isset($mod->uploaded_for))
+                    $driver = $mod->uploaded_for;
+                    else
+                    $driver=0;
+                     ?>
+                    <div class="col-md-6" style="margin: 10px 0;padding:0">
 
+                        <?php $dr_cl = $doc_comp->getDriverClient(0, $cid);?>
+                        <select class="form-control select2me" data-placeholder="No Driver"
+                            id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
+                        <option value="0">No Driver
+                        </option>
+                        <?php
+                        
+                
+                        foreach ($dr_cl['driver'] as $dr) {
+                
+                            $driver_id = $dr->id;
+                            ?>
+                            <option value="<?php echo $dr->id; ?>"
+                                    <?php if ($dr->id == $driver){ ?>selected="selected"<?php } ?>><?php echo $dr->fname . ' ' . $dr->mname . ' ' . $dr->lname ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                    
                         <input type="hidden" name="did" value="<?php echo $did; ?>" id="did"/>
                         <input type="hidden" name="sub_doc_id" value="<?php echo $sid; ?>" id="sub_id"/>
 
                     </div>
+                    <div class="clearfix"></div>
                     <div class="subform1" style="display: none;">
                         <?php include('subpages/documents/company_pre_screen_question.php'); ?>
                     </div>
@@ -150,6 +177,15 @@ if ($action == "Add") {
 
     client_id = '<?=$cid?>',
         doc_id = '<?=$did?>';
+        $(function(){
+        if (!doc_id || doc_id=='0') {
+            
+        $('#selecting_driver').change(function () {
+            
+            fillform();
+        });
+    }
+    })
     <?php
     /*
     if($did)
@@ -220,6 +256,7 @@ if ($action == "Add") {
 
         var s_arr = sub_doc_id.split('=');
         var ftype = arr_formtype[0];
+        
 
         $('#sub_id').val(s_arr[1]);
         //var form_type = $(this).val();
@@ -306,13 +343,13 @@ if ($action == "Add") {
                 //alert(ftype);
                 // loading data from db
                 // debugger;
-                var url = '<?php echo $this->request->webroot;?>documents/getOrderData/' + client_id + '/' + doc_id + '/?document=1',
+                var url = '<?php echo $this->request->webroot;?>documents/getOrderData/' + client_id + '/' + doc_id + '/?document=1<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                     param = {form_type: ftype};
                 //alert(url);
                 $.getJSON(url, param, function (res) {
                     if (res) {
                         if (ftype == "company_pre_screen_question.php") {
-
+                            
                             $('#form_tab1').form('load', res);
 
                             if (res.legal_eligible_work_cananda == 1) {
@@ -357,6 +394,8 @@ if ($action == "Add") {
                                 $('#form_tab1').find('#reefer_load_0').closest('span').addClass('checked')
 
                             }
+                            
+                            
 
                         } else if (ftype == "driver_application.php") {
                             $('#form_tab2').form('load', res);
@@ -845,13 +884,98 @@ if ($action == "Add") {
 
                         }
                     }
+                    
                 });
             });
         }
-        else
+        else{
             $('.subform').html("");
+            
+                        
+            }
     }
-
+    function fillform()
+    {
+         var prof_id = $('#selecting_driver').val();
+                            
+                            if (prof_id != 0 && prof_id != '0') {
+                                $.ajax({
+                                    url: '<?php echo $this->request->webroot;?>profiles/getProfileById/' + prof_id + '/1',
+                                    success: function (res2) {
+                                        var response = JSON.parse(res2);
+                                        $('#form_tab1').find(':input').each(function () {
+                                            var name_attr = $(this).attr('name');
+        
+                                            //alert(name_attr);
+                                            if (response[name_attr]) {
+        
+                                                $(this).val(response[name_attr]);
+        
+                                                $(this).attr('disabled', 'disabled');
+        
+                                            }
+                                        });
+                                        }
+                                        });
+                                        $.ajax({
+                                    url: '<?php echo $this->request->webroot;?>profiles/getProfileById/' + prof_id + '/2',
+                                    success: function (res2) {
+                                        var response = JSON.parse(res2);
+                                        $('#form_tab2').find(':input').each(function () {
+                                            var name_attr = $(this).attr('name');
+        
+                                            //alert(name_attr);
+                                            if (response[name_attr]) {
+        
+                                                $(this).val(response[name_attr]);
+        
+                                                $(this).attr('disabled', 'disabled');
+        
+                                            }
+                                        });
+                                        }
+                                        });
+                                        $.ajax({
+                                    url: '<?php echo $this->request->webroot;?>profiles/getProfileById/' + prof_id + '/3',
+                                    success: function (res2) {
+                                        var response = JSON.parse(res2);
+                                        $('#form_tab3').find(':input').each(function () {
+                                            var name_attr = $(this).attr('name');
+        
+                                            //alert(name_attr);
+                                            if (response[name_attr]) {
+        
+                                                $(this).val(response[name_attr]);
+        
+                                                $(this).attr('disabled', 'disabled');
+        
+                                            }
+                                        });
+                                        }
+                                        });
+                                        $.ajax({
+                                    url: '<?php echo $this->request->webroot;?>profiles/getProfileById/' + prof_id + '/4',
+                                    success: function (res2) {
+                                        var response = JSON.parse(res2);
+                                        $('#form_consent').find(':input').each(function () {
+                                            var name_attr = $(this).attr('name');
+        
+                                            //alert(name_attr);
+                                            if (response[name_attr]) {
+        
+                                                $(this).val(response[name_attr]);
+        
+                                                $(this).attr('disabled', 'disabled');
+        
+                                            }
+                                        });
+                                        $('#conf_driver_name').val(response['applicant_name']);
+                                        $('#conf_driver_name').attr('disabled', 'disabled');
+        
+                                    }
+                                });
+                            }
+    }
 
     function assignValue(formID, obj) {
         // debugger;
@@ -999,7 +1123,7 @@ if ($action == "Add") {
             //alert(type);
             //alert($('#sub_id').val());return;
             var data = {
-                uploaded_for: $('#uploaded_for').val(),
+                uploaded_for: $('#selecting_driver').val(),
                 type: type,
                 sub_doc_id: $('#sub_id').val(),
                 division: $('#division').val()
@@ -1011,7 +1135,7 @@ if ($action == "Add") {
                 data: data,
                 type: 'post',
                 beforeSend:saveSignature,
-                url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + doc_id + '/?document=' + type + '&draft=' + draft,
+                url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + doc_id + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                 success: function (res) {
                     //alert(res);
                     $('#did').val(res);
@@ -1025,26 +1149,26 @@ if ($action == "Add") {
                     //alert($('#did').val());
                     if (type == "Pre-Screening") {
                         var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
-                            url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document=' + type + '&draft=' + draft,
+                            url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                             order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>';
-                        savePrescreen(url, order_id, cid, forms,draft);
+                        savePrescreen(url, order_id, cid, draft);
 
                     } else if (type == "Driver Application") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
+                            url = '<?php echo $this->request->webroot;?>documents/savedDriverApp/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedDriverApp(url, order_id, cid,draft);
                     } else if (type == "Road test") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
+                            url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedDriverEvaluation(url, order_id, cid,draft);
                     } else if (type == "Consent Form") {
 
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
+                            url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedMeeOrder(url, order_id, cid, type,draft);
                     }
                     else if (type == "Feedbacks") {
@@ -1121,17 +1245,24 @@ if ($action == "Add") {
     });
 
     function savePrescreen(url, order_id, cid,draft) {
-        var param = {
+        
+            inputs = $('#form_tab1').serialize();
+        
+        $('#form_tab1 :disabled[name]').each(function () {
+                inputs = inputs + '&' + $(this).attr('name') + '=' + $(this).val();
+            });
+            var param = {
             order_id: order_id,
             cid: cid,
-            inputs: $('#form_tab1').serialize()
-        };
+            inputs: inputs
+        };                    
         $.ajax({
             url: url,
             data: param,
             type: 'POST',
             success: function (res) {
-                
+                                    //alert(draft);
+                                    //return;
                                     if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     else
@@ -1143,7 +1274,11 @@ if ($action == "Add") {
     }
 
     function savedDriverApp(url, order_id, cid,draft) {
-        var param = $('#form_tab2').serialize()
+        var param = $('#form_tab2').serialize();
+        $('#form_tab2 :disabled[name]').each(function () {
+                param = param + '&' + $(this).attr('name') + '=' + $(this).val();
+            });
+                   
         $.ajax({
             url: url,
             data: param,
@@ -1160,7 +1295,9 @@ if ($action == "Add") {
     }
     function savedDriverEvaluation(url, order_id, cid,draft) {
         var param = $('#form_tab3').serialize();
-
+         $('#form_tab3 :disabled[name]').each(function () {
+                param = param + '&' + $(this).attr('name') + '=' + $(this).val();
+            });
         $.ajax({
             url: url,
             data: param,
@@ -1179,19 +1316,28 @@ if ($action == "Add") {
 
     function savedMeeOrder(url, order_id, cid, type,draft) {
         var param = $('#form_consent').serialize();
+         $('#form_consent :disabled[name]').each(function () {
+                param = param + '&' + $(this).attr('name') + '=' + $(this).val();
+            });        
         $.ajax({
             url: url,
             data: param,
             type: 'POST',
             success: function (res) {
                 //employment
-                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type,
+                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                     employment = $('#form_employment').serialize();
+                    $('#form_employment :disabled[name]').each(function () {
+                employment = employment + '&' + $(this).attr('name') + '=' + $(this).val();
+            });                    
                 saveEmployment(url, employment,draft);
 
                 //education
-                url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid + '/?document=' + type,
+                url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                     education = $('#form_education').serialize();
+                    $('#form_education :disabled[name]').each(function () {
+                education = education + '&' + $(this).attr('name') + '=' + $(this).val();
+            });                    
                 saveEducation(url, education,draft);
             }
         });

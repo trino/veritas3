@@ -266,14 +266,13 @@ var FormWizard = function () {
                     $('.button-previous').hide();
                     $('#loading5').show();
 
-                    // VAN REENABLE BELOW
-                    //alert(draft);
-                    if(draft==1)
-                    window.location = base_url+'?orderflash';
-                    else
-                    window.location = base_url+'?orderflash';
+                    /*
+                     if(draft==1)
+                     window.location = base_url+'?orderflash';
+                     else
+                     window.location = base_url+'?orderflash';
 
-
+                     */
 
                 }
 

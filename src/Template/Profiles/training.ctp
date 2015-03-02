@@ -53,7 +53,7 @@ function quizheader($QuizID, $id, $name, $image){
                     <div class="portlet-body">
                         <div class="row">
                             <div class="col-md-2" align="center">
-                                <img src="/veritas3/img/<?php echo $image; ?>">
+                                <img src="img/<?php echo $image; ?>">
                             </div>
                             <div class="col-md-10">
 

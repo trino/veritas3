@@ -1077,30 +1077,33 @@ class ClientsController extends AppController {
         die();
         
    }
-   function divisionDropDown($cid)
-   {
-    $query = TableRegistry::get('client_divison');
+   function divisionDropDown($cid){
+        $size="xlarge";
+        if (isset( $_GET["istable"])){
+            if ($_GET["istable"]==1){  $size="large";}
+        }
+        $query = TableRegistry::get('client_divison');
         $q = $query->find()->where(['client_id'=>$cid])->all();
         $q2 = $q;
         $u=0;
-        foreach($q2 as $q3)
-        {
+        foreach($q2 as $q3){
             $u++;
         }
         if(count($q)>0){
-            echo '<div class="col-md-3 control-label">Division </div>';
-            echo '<div class="col-md-6 ">';
-            if($u!=1)
-            echo "<select class='form-control select2me input-xlarge' name='division' id='divisionsel'>";
-            else
-            echo "<select class='form-control select2me input-xlarge' name='division' id='divisionsel' disabled='disabled'>";
+            if ($size=="large") { echo '<div class="row">'; }
+            echo '<div class="col-md-3 control-label" align="right" style="margin-top: 6px;">Division </div><div class="col-md-6 ">';
 
-            foreach($q as $d)
-            {
+            if($u!=1) { //form-control input-xlarge select2me
+                echo "<select class='form-control select2me input-" . $size . "' name='division' id='divisionsel'>";
+            } else {
+                echo "<select class='form-control select2me input-" . $size . "' name='division' id='divisionsel' disabled='disabled'>";
+            }
+            foreach($q as $d){
                $sel = '';
                 echo "<option value='".$d->id."'".$sel." >".$d->title."</option>";
             }
             echo "</select></div>";
+            if ($size=="large") { echo "</div>"; }
         }
         die();
    }

@@ -71,10 +71,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label"><?php echo ucfirst($settings->profile); ?> Type</label>
-
-                                <input type="hidden" id="nProfileType" name="profile_type" value="<?php if(!isset($p) && isset($getProfileType->profile_type) && $getProfileType->profile_type == 2)echo "5"; else echo $p->profile_type;?>" <?php echo $is_disabled ?> />
+<!--old code:  <input type="hidden" id="nProfileType" name="profile_type" value="<!php if(!isset($p) && isset($getProfileType->profile_type) && $getProfileType->profile_type == 2)echo "5"; else echo $p->profile_type;!>" <!php echo $is_disabled !> />-->
+                                <?php if (isset($p)){?> 
+                                <input type="hidden" id="nProfileType" name="profile_type" value="<?php if (isset($p)) { echo $p->profile_type;} ?>" <?php echo $is_disabled ?> />
+                                <?php } ?>
                                 <select  <?php echo $is_disabled ?>
-                                    name="" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
+                                    name="<?php if (!isset($p)){ echo 'profile_type'; }?>" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
                                     class="form-control member_type" required='required' onchange="$('#nProfileType').val($(this).val());">
                                     <option value="">Select</option>
                                     <?php
@@ -184,7 +186,7 @@
                         <?php // if ($settings->client_option == 0) { ?>
 
                         <div class="col-md-6" id="driver_div"
-                             style="display:<?php if ((isset($p) && $p->profile_type == 5) || ($this->request->session()->read('Profile.profile_type') == 2 && ($p->id != ($this->request->session()->read('Profile.id'))))) echo 'block'; else echo "none" ?>;">
+                             style="display:<?php if ((isset($p) && $p->profile_type == 5) || ($this->request->session()->read('Profile.profile_type') == 2 && (isset($p) && $p->id != ($this->request->session()->read('Profile.id'))))) echo 'block'; else echo "none" ?>;">
                             <div class="form-group">
                                 <label class="control-label">Driver Type</label>
                                 <select  <?php echo $is_disabled ?> name="driver"
@@ -270,7 +272,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">Username</label>
-                                <input <?php echo $is_disabled ?> name="username" type="text"
+                                <input <?php echo $is_disabled ?> id="username_field" name="username" type="text"
                                                                   class="form-control req_driver req_rec uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
                             <span class="error passerror flashUser"
                                   style="display: none;">Username already exists</span>
@@ -305,7 +307,8 @@
                                    }else{?>required="required"<?php }?>  />-->
                                 <input  <?php echo $is_disabled ?> type="password" value="" autocomplete="off"
                                                                    name="password" id="password"
-                                                                   class="form-control req_rec"/>
+                                                                   class="form-control" <?php if (isset($p->password) && $p->password){//do nothing
+                                   }else{?>required="required"<?php }?>/>
                             </div>
                         </div>
                         <?php if (isset($p->password)){ ?>
@@ -314,7 +317,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Re-type Password</label>
-                                <input  <?php echo $is_disabled ?> type="password" class="form-control req_rec"
+                                <input  <?php if (isset($p->password) && $p->password){//do nothing
+                                   }else{?>required="required"<?php }?>  <?php echo $is_disabled ?> type="password" class="form-control"
                                     id="retype_password" <?php //if (isset($p->password)) { ?> <?php // echo $p->password; ?>  <?php // } ?>/>
                             <span class="error passerror flashPass1"
                                   style="display: none;">Please enter same password</span>
@@ -789,7 +793,7 @@
         $('.member_type').change(function () {
             if ($(this).val() == '5') {
                 $('.req_driver').each(function () {
-                    $(this).prop('required');
+                    $(this).prop('required', "required");
                     //alert($(this).attr('name'));
                 });
                 //$('.nav-tabs li:not(.active)').each(function () {
@@ -797,6 +801,8 @@
                 //});
                 $('#driver_div').show();
                 $('#isb_id').hide();
+                //$('.username_div').hide();
+                $('#username_field').attr('disabled','disabled');
                 //$('.un').removeProp('required');
                 //$('#password').removeProp('required');
 //                $('#retype_password').removeProp('required');
@@ -809,8 +815,10 @@
                 });
                 $('#driver_div').hide();
                 $('#isb_id').show();
+                //$('.username_div').show();
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
+                $('#username_field').removeAttr('disabled');
                 //$('.un').prop('required', "required");
                 <?php
                 if(isset($p->password) && $p->password)
@@ -839,7 +847,7 @@
         if (!isNaN(parseFloat(mem_type)) && isFinite(mem_type)) {
             if (mem_type == '5') {
                 $('.req_driver').each(function () {
-                    $(this).prop('required');
+                    $(this).prop('required', "required");
                     //alert($(this).attr('name'));
                     //});
                     //$('.nav-tabs li:not(.active)').each(function () {
@@ -847,9 +855,11 @@
                 });
                 $('#driver_div').show();
                 $('#isb_id').hide();
+                //$('.username_div').hide();
                 //$('.un').removeProp('required');
                 //$('#password').removeProp('required');
                 //                $('#retype_password').removeProp('required');
+                $('#username_field').attr('disabled','disabled');
                 $('.req_rec').removeProp('required');
 
             }
@@ -858,9 +868,11 @@
                     $(this).show();
                 });
                 $('#driver_div').hide();
+                //$('.username_div').show();
                 $('#isb_id').show();
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
+                $('#username_field').removeAttr('disabled');
                 //$('.un').prop('required', "required");
                 <?php
                 if(isset($p->password) && $p->password)

@@ -8,21 +8,19 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $startorder1 = false;
-
-    $productdetails79 = false;
-    $productdetails1 = false;
-    $productdetails14 = false;
-    $productdetails77 = false;
-    $productdetails78 = false;
-    $productdetailsebs1603 = false;
-    $productdetailsebs1627 = false;
-    $productdetailsebs1650 = false;
-
-    $uploadbinaryconsent_1603 = false;
-    $uploadbinaryemployment_1627 = false;
-    $uploadbinaryeducation_1650 = false;
-    $upload_additional = false;
+    $startorder1 = true;
+    $productdetails79 = true;
+    $productdetails1 = true;
+    $productdetails14 = true;
+    $productdetails77 = true;
+    $productdetails78 = true;
+    $productdetailsebs1603 = true;
+    $productdetailsebs1627 = true;
+    $productdetailsebs1650 = true;
+    $uploadbinaryconsent_1603 = true;
+    $uploadbinaryemployment_1627 = true;
+    $uploadbinaryeducation_1650 = true;
+    $upload_additional = true;
 
     if ($startorder1) {
 
@@ -32,6 +30,50 @@
         } else {
             $user_id234 = '22552';
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $user_id234 = '22552';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
@@ -51,10 +93,12 @@
         $ins_id = substr($myArray[0], 4);
         $ebs_id = substr($myArray[1], 4);
 
-        $this->requestAction('/documents/save_webservice_ids/' . $orderid . '/' . $ins_id . '/' . $ebs_id);
+       $this->requestAction('orders/save_webservice_ids/' . $orderid . '/' . $ins_id . '/' . $ebs_id);
 
     }
-echo 999;
+
+
+    // echo 999;
     //  $ins_id = 'EAE1226F-6E28-4E88-B4B5-31CD43875807';
     //  $ebs_id = 'A7101C9A-A969-40B0-848F-64B934B290FC';
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,9 +123,10 @@ echo 999;
 
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_79');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_79');
         debug($result);
         //    debug($pdi);
+
 
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -103,7 +148,7 @@ echo 999;
 
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_1');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_1');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,7 +171,7 @@ echo 999;
 
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_14');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_14');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,7 +193,7 @@ echo 999;
         }
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_77');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_77');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +219,7 @@ echo 999;
 
         $pdi = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ins_78');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_78');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,7 +241,7 @@ echo 999;
         $pdi = $r[0];
         $pdi_1650 = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1650');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1650');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -218,7 +263,7 @@ echo 999;
         $pdi = $r[0];
         $pdi_1627 = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1627');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1627');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -240,7 +285,7 @@ echo 999;
         $pdi = $r[0];
         $pdi_1603 = $r[0];
 
-        $this->requestAction('/documents/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1603');
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1603');
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -296,14 +341,41 @@ echo 999;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // debug($consent_form_attachments);
+    // debug($consent_form_attachments);
+    /*
     foreach ($consent_form_attachments as $d) {
-        if (isset($d->attach_doc) && $d->attach_doc != "") {
+    if (isset($d->attach_doc) && $d->attach_doc != "") {
 
-            if ($upload_additional) {
+    if ($upload_additional) {
 
-                echo $pdf = file_get_contents('attachments/' . $d->attach_doc);
-                echo $body = base64_encode($pdf);
+    echo $body = base64_encode($pdf);
+
+    $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+
+    $result = $client->call('UploadBinaryFile', $soap_xml);
+    debug($result);
+
+    }
+    }
+    */
+    //////change   echo $pdf = file_get_contents('attachments/' . $d->attach_doc);
+    // debug($consent_form_attachments);
+
+    if ($upload_additional) {
+
+        debug($prescreening['attach_doc']); //null
+        debug($driverapplication['da_at']);
+        debug($roadtest['de_at']);
+        debug($consent['con_at']);
+        debug($employee['att']);
+        debug($education['att']);
+
+        foreach ($prescreening['attach_doc'] as $d) {
+            if ($d->attachment) {
+                echo($d->attachment);
+
+                $sendit = file_get_contents('attachments/' . $d->attachment);
+                echo $body = base64_encode($sendit);
 
                 $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
@@ -311,8 +383,90 @@ echo 999;
                 debug($result);
 
             }
-
         }
+
+        echo "<br>";
+
+        foreach ($driverapplication['da_at'] as $d) {
+            if ($d->attachment) {
+                echo($d->attachment);
+
+                $sendit = file_get_contents('attachments/' . $d->attachment);
+                echo $body = base64_encode($sendit);
+
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+
+                $result = $client->call('UploadBinaryFile', $soap_xml);
+                debug($result);
+
+            }
+        }
+        echo "<br>";
+
+        foreach ($roadtest['de_at'] as $d) {
+            if ($d->attachment) {
+                echo($d->attachment);
+
+                $sendit = file_get_contents('attachments/' . $d->attachment);
+                echo $body = base64_encode($sendit);
+
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+
+                $result = $client->call('UploadBinaryFile', $soap_xml);
+                debug($result);
+
+            }
+        }
+        echo "<br>";
+
+        foreach ($consent['con_at'] as $d) {
+            if ($d->attachment) {
+                echo($d->attachment);
+
+                $sendit = file_get_contents('attachments/' . $d->attachment);
+                echo $body = base64_encode($sendit);
+
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+
+                $result = $client->call('UploadBinaryFile', $soap_xml);
+                debug($result);
+
+            }
+        }
+        echo "<br>";
+
+        foreach ($employee['att'] as $d) {
+            if ($d->attachment) {
+                echo($d->attachment);
+
+                $sendit = file_get_contents('attachments/' . $d->attachment);
+                echo $body = base64_encode($sendit);
+
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+
+                $result = $client->call('UploadBinaryFile', $soap_xml);
+                debug($result);
+
+            }
+        }
+
+        echo "<br>";
+
+        foreach ($education['att'] as $d) {
+            if ($d->attachment) {
+                echo($d->attachment);
+
+                $sendit = file_get_contents('attachments/' . $d->attachment);
+                echo $body = base64_encode($sendit);
+
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+
+                $result = $client->call('UploadBinaryFile', $soap_xml);
+                debug($result);
+
+            }
+        }
+        die();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -45,27 +45,9 @@
         </li>
     </ul>
     <?php
-        if (isset($disabled) || isset($_GET['view'])) { ?>
+        if (isset($disabled)) { ?>
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
-        <?php } 
-       
-        if (isset($client) && $sidebar->client_delete == '1') { ?>
-            <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $client->id; ?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
-               onclick="return confirm('Are you sure you want to delete <?= h($client->company_name) ?>?');"
-               class="floatright btn btn-danger">Delete</a>
-        <?php }
-         if (isset($client) && $sidebar->client_edit == '1' && isset($_GET['view'])) 
-        {
-            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $client->id], ['class' => 'floatright btn btn-primary']);
-        }
-        else if(isset($client) && $param == 'edit')
-        {
-            ?>            
-            <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $client->id; ?>?view" class = 'floatright btn btn-info'>View</a>
-        <?php
-                    
-        }                
-         ?>
+        <?php } ?>
 </div>
 
 <div class="row ">
@@ -470,7 +452,7 @@
 
                                             <?php }
                                                 if (isset($client_docs)) {
-                                                    include 'subpages/filelist.php';
+                                                    include '/../../../webroot/subpages/filelist.php';
                                                     listfiles($client_docs, "img/jobs/");
                                                 }
                                             ?>
@@ -480,13 +462,12 @@
                                                 <div class="docMore" data-count="1">
                                                     <div style="display:block;">
                                                         <a href="javascript:void(0)" id="addMore1" class="btn btn-primary" >Browse</a>
-                                                         <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/>
-                                                         <span></span>
+                                                        <span> <input type="hidden" name="client_doc[]" value="" class="addMore1_doc moredocs"/></span>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            
+
 
 
 

@@ -125,9 +125,13 @@
         $counting = 0;
         $drcl_d = $orders;
         foreach ($drcl_d as $drcld) {
-
-            $counting++;
+            if(isset($order)){
+            if(is_object( $order)) {
+                if ($order->draft == 0) { $counting++; }
+            }}
         }
+
+
 
         $k = 0;
         foreach ($orders as $order) {
@@ -160,6 +164,7 @@
                             <div class="portlet box yellow">
                                 <div class="portlet-title">
                                     <div class="caption">
+                                        <A name="<?php echo $order->created; ?>" /></a>
                                         <i class="fa fa-folder-open-o"></i>Order Score Sheet - <?php echo $order->created; ?>
                                     </div>
                                 </div>
@@ -406,10 +411,14 @@
 
 
 
+                                                                     <?php $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
+                                                                     if($cnt>0){
+                                                                        ?>
+                                                                        
                                                                      <div class="task-title" style="margin:0 0 12px 0;;clear:both;" >
                             															<span class="task-title-sp">
                             														<span class="icon-notebook"></span>  &nbsp; &nbsp;	Pre-screening form     &nbsp; &nbsp;
-                             </span>                                    <?php $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id); ?>
+                             </span>                                    
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
@@ -424,13 +433,19 @@
 
 
                                                                     </div>
-
-
+                                                                    <?php
+                                                                     } 
+                                                                     ?>                            
+                                                                    <?php $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id); 
+                                                                    if($cnt>0)
+                                                                    {
+                                                                        ?>
+                                                                        
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
                             											<span class="icon-notebook"></span>  &nbsp; &nbsp; Driver Application	 </span>
                                                                          &nbsp; &nbsp;
-                                                                         <?php $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id); ?>
+                                                                         
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
@@ -444,14 +459,20 @@
                                                                         } ?>
 
                                                                     </div>
-
-
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                    <?php $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
+                                                                    if($cnt>0)
+                                                                    {
+                                                                        ?>
+                                                                        
 
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
                                                                             <span class="icon-notebook"></span>  &nbsp; &nbsp; Road Test
                                                                         </span>     &nbsp; &nbsp;
-                                                                        <?php $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id); ?>
+                                                                        
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
@@ -463,14 +484,20 @@
                                                                         <?php
                                                                         } ?>
                                                                     </div>
+                                                                    <?php
+                                                                    }
+                                                                     ?>                   
 
-
-
+                                                                     <?php $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id); 
+                                                                     if($cnt>0)
+                                                                     {
+                                                                        ?>
+                                                                        
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
 
                                                                            <span class="icon-notebook"></span>   &nbsp; &nbsp; Consent Form	 </span>     &nbsp; &nbsp;
-                                                                        <?php $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id); ?>
+                                                                        
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
@@ -484,7 +511,9 @@
                                                                         } ?>
 
                                                                     </div>
-
+                                                                    <?php
+                                                                     }
+                                                                     ?>
 
 
                                                                      <div class="task-title" style="margin:12px 0;;">

@@ -222,8 +222,8 @@
 														</div>
 														<!-- TASK TAGS -->
 														<div class="form-actions right todo-form-actions">
-															<button class="btn btn-circle btn-sm green-haze">Save Changes</button>
-															<button class="btn btn-circle btn-sm btn-default">Cancel</button>
+															<button class="btn  btn-sm green-haze">Save Changes</button>
+															<button class="btn btn-sm btn-default">Cancel</button>
 														</div>
 													</div>
 													</div>

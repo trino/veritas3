@@ -28,7 +28,7 @@
 		</style>
 	
 		
-        <div class="col-sm-10">
+        <div class="col-sm-6">
             <input type="hidden" name="criminal_signature_applicant2" id="criminal_signature_applicant2" />
             <input type="hidden" class="touched" value="0" />
             <label class="control-label col-md-12">Signature of Applicant</label>
@@ -40,9 +40,14 @@
     			<a href="#" onclick='addImage();' style="display: none;">Add Image</a>
     			<a href="javascript:void(0)" onclick='$("#test5").data("jqScribble").clear();'>Clear</a> 			
                 <br />
-                <?php if(isset($consent_detail) && $consent_detail->criminal_signature_applicant2){?><img src="<?php echo $this->request->webroot.'canvas/'.$consent_detail->criminal_signature_applicant2;?>" style="max-width: 100%;" /><?php }?>
-                <br />
+                
                 
     		</div>
         </div>
+        
+        <div class="col-sm-6">
+                <?php if(isset($consent_detail) && $consent_detail->criminal_signature_applicant2){?><img src="<?php echo $this->request->webroot.'canvas/'.$consent_detail->criminal_signature_applicant2;?>" style="max-width: 100%;" /><?php }?>
+                                    
+        </div>
+		<div class="clearfix"></div>
 		

@@ -1,6 +1,6 @@
 <?php
-    $profiles = $this->requestAction('Profiles/getProfile');
-    $contact = $this->requestAction('Profiles/getContact');
+    $profiles = $this->requestAction('/profiles/getProfile');
+    $contact = $this->requestAction('/profiles/getContact');
     //include("subpages/profileslisting.php");
     $viewmode = isset($_GET["view"]);
     $pType = ['','Admin','Recruiter','External','Safety','Driver','Contact'];
@@ -30,7 +30,10 @@ if (!$viewmode){
                     } elseif(strlen(trim($r->fname . $r->lname))>0) {
                         $username = $r->fname . " " . $r->lname;
                     }
+                    if(isset($pType[$r->profile_type]))
                     $profiletype = "(" . $pType[$r->profile_type] . ")";
+                    else
+                    $profiletype = "";
                     if ($profiletype == "()") {$profiletype = "(Draft)"; }
                     ?>
                     <tr>
@@ -148,7 +151,7 @@ if (!$viewmode){
             }
             $.ajax({url: url});
         });
-        $('.profile_client').change(function () {
+        $('.profile_client').live('change',function () {
             var msg = '';
             var nameId = 'msg_'+$(this).val();
             if ($(this).is(':checked')) {

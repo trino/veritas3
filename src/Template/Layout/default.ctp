@@ -144,7 +144,7 @@
 		<div class="top-menu">
 			<ul class="nav navbar-nav pull-right">
 
-				<li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+				<!--li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="icon-envelope-open"></i>
 					<!--span class="badge badge-default"> 4 /span -->
@@ -156,11 +156,11 @@
 						</li>
 						<li>
 							<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-					
+
 							</ul>
 						</li>
 					</ul>
-				</li>
+				</li-->
 				<?php $c = $this->requestAction('profiles/getuser');
 
                  if($c)
@@ -179,13 +179,6 @@
 							<a href="<?php echo $this->request->webroot;?>profiles/edit/<?php echo $this->request->session()->read('Profile.id'); ?>" >
 							<i class="icon-user"></i> My Settings </a>
 						</li>
-
-						<!--li>
-							<a href="#">
-							<i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
-							3 </span>
-							</a>
-						/li-->
 
 						<li class="divider">
 						</li>
@@ -216,10 +209,12 @@
 	<?php include('subpages/sidebar.php');?>
 
 	<div class="page-content-wrapper">
+
+
 		<div class="page-content">
         <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
-        
+
 		</div>
 	</div>
 
@@ -228,7 +223,7 @@
 	<!-- END CONTENT -->
 	<!-- BEGIN QUICK SIDEBAR -->
 	<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
-	
+
 	<!-- END QUICK SIDEBAR -->
     </div>
  <?php if($settings->box =='1'){?></div><?php }?>
@@ -239,7 +234,7 @@
 <div class="page-footer">
 <?php if($settings->box =='1'){?><div class="container"><?php }?>
 	<div class="page-footer-inner">
-		 &copy; <?php echo $settings->mee;?> 2015
+		 &copy; <?php echo $settings->mee;?> 2015 <!--a style="color:white;" href="https://isbc.ca">ISB Canada</a-->
 	</div>
 
     <div class="page-footer-inner" style="float:right;">
@@ -257,7 +252,7 @@
         }}
 
         ?>
-        
+
 
     <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product_example"><?php get_title('product_example') ?></a> /
 
@@ -438,4 +433,4 @@ function change_text(v){
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
-</html>	
+</html>

@@ -52,7 +52,7 @@
                                     foreach ($users as $u) {
                                         ?>
                                         <option
-                                            value="<?php echo $u->id; ?>" <?php if (isset($return_user_id) && $return_user_id == $u->id) { ?> selected="selected"<?php } ?> ><?php echo $u->username; ?></option>
+                                            value="<?php echo $u->id; ?>" <?php if (isset($return_user_id) && $return_user_id == $u->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($u->username); ?></option>
                                     <?php
                                     }
                                 ?>
@@ -67,7 +67,7 @@
                                     foreach ($clients as $c) {
                                         ?>
                                         <option
-                                            value="<?php echo $c->id; ?>" <?php if (isset($return_client_id) && $return_client_id == $c->id) { ?> selected="selected"<?php } ?> ><?php echo $c->company_name; ?></option>
+                                            value="<?php echo $c->id; ?>" <?php if (isset($return_client_id) && $return_client_id == $c->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($c->company_name); ?></option>
                                     <?php
                                     }
                                 ?>
@@ -113,7 +113,7 @@
                         <thead>
                         <tr class="sorting">
                             <th><?= $this->Paginator->sort('id'); ?></th>
-                            <!--th><?= $this->Paginator->sort('orders.title', "Title"); ?></th-->
+                            <th><?= $this->Paginator->sort('orders.order_type', "Order Type"); ?></th>
                             <th><?= $this->Paginator->sort('user_id', 'Recruiter'); ?></th>
                             <th><?= $this->Paginator->sort('uploaded_for', 'Driver'); ?></th>
                             <th><?= $this->Paginator->sort('client_id', ucfirst($settings->client)); ?></th>
@@ -142,28 +142,65 @@
                                 } else {
                                     $row_color_class = "even";
                                 }
-                                if ($order->user_id)
+                                if ($order->user_id){
                                     $uploaded_by = $doc_comp->getUser($order->user_id);
-                                if ($order->uploaded_for)
+                                }
+                                if ($order->uploaded_for) {
                                     $uploaded_for = $doc_comp->getUser($order->uploaded_for);
-
+                                }
                                 $client = $this->requestAction("clients/getClient/" . $order->client_id);
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($order->id); //echo $order->profile->title;    ?></td>
-                                    <!--td><?= h($order->title) ?></td-->
-                                    <td><?php if (isset($uploaded_by)) echo h($uploaded_by->username) ?></td>
-                                    <td><?php if (isset($uploaded_for)) echo h($uploaded_for->fname . ' ' . $uploaded_for->mname . ' ' . $uploaded_for->lname) ?></td>
+                                    <td style="min-width: 140px;">
+                                    
+                                        <?php
+                                        if($order->order_type){
+                                        echo '<div style="" class="dashboard-stat ';
+                                                $colors = array("Order_Products" => "green-haze", "Order_MEE" => "red-intense", "ReQualify" => "blue-madison");
+                                                if (isset($colors[str_replace(' ','_',$order->order_type)])){
+                                                    echo $colors[str_replace(' ','_',$order->order_type)];
+                                                } else {
+                                                    echo "blue";
+                                                }
+                                                ?>">
+                                                <div class="whiteCorner"></div>
+                                                <div class="visual" style="height: 40px;">
+                                                    <i class="fa fa-copy"></i>
+                                                </div>
+                                                <!--div class="details"> //WARNING: This won't work while in a table...
+                                                    <div class="number"></div>
+                                                    <div class="desc"></div>
+                                                </div-->
+                                                <a class="more" id="sub_doc_click1" href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
+                                             
+                                            echo $this->request->webroot.'orders/vieworder/'.$order->client_id.'/'.$order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}
+                                            
+                                        }else{?>javascript:;<?php } ?>">
+                                                    <?= h($order->order_type); //it won't let me put it in the desc ?>
+                                                </a>
+                                                <?php echo "</div>";
+                                                }?>
+                                    
+                                    
+                                    
+                                    </td>
+                                    <td><?php if (isset($uploaded_by)) echo ucfirst(h($uploaded_by->username)) ?></td>
+                                    <td><?php if (isset($uploaded_for)) echo h(ucfirst($uploaded_for->fname) . ' ' . ucfirst($uploaded_for->mname) . ' ' . ucfirst($uploaded_for->lname)) ?></td>
                                     <td><?php
                                             if (is_object($client)) {
-                                                echo h($client->company_name);
+                                                echo ucfirst(h($client->company_name));
                                             } else {
                                                 echo "Deleted " . $settings->client;
                                             }
                                         ?></td>
                                     <td><?php if ($order->division) {
                                             $div = $doc_comp->getDivById($order->division);
-                                            echo $div->title;
+                                            if (is_object($div)) {
+                                                echo ucfirst($div->title);
+                                            } elseif($this->request->session()->read('Profile.profile_type') == 1) {
+                                                echo  "Missing division: " . $order->division; //only shows for admins
+                                            }
 } else {
 echo '';
 } ?></td>
@@ -173,10 +210,13 @@ echo '';
 
 <?php
 if ($sidebar->orders_list == '1' && !isset($_GET["draft"])) {
-if (!isset($_GET['table']))
-echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id], ['class' => 'btn btn-info']);
-else
-echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-info']);
+    ?>
+    <a class="btn btn-info" href="<?php echo $this->request->webroot;?>orders/vieworder/<?php echo $order->client_id;?>/<?php echo $order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}?>">View</a>
+    <?php
+//if (!isset($_GET['table']))
+//echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id], ['class' => 'btn btn-info']);
+/*else
+echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-info']);*/
 } ?>
 
 <?php
@@ -184,10 +224,13 @@ $super = $this->request->session()->read('Profile.super');
 if (isset($super) || isset($_GET['draft'])) {
 if ($sidebar->orders_edit == '1') {
 if (!isset($_GET['table']) && $order->draft == 1) {
-echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
-} elseif (isset($_GET['table'])) {
+    ?>
+    <a class="btn btn-primary" href="<?php echo $this->request->webroot;?>orders/addorder/<?php echo $order->client_id;?>/<?php echo $order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}?>">Edit</a>
+    <?php
+//echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
+} /*elseif (isset($_GET['table'])) {
 echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id, $_GET['table']], ['class' => 'btn btn-primary']);
-}
+}*/
 
 }
 if (isset($super)) {

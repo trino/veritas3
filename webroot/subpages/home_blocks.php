@@ -27,6 +27,7 @@
                 if($doc){
                     //echo strtolower($document->document_type);
                     $form_type = "";
+                    $titles = array();
                     foreach($doc as $d)
                     {
                         //echo strtolower($d->title);
@@ -43,7 +44,7 @@
                         ?>
                         <?php if($prosubdoc['display'] > 1 && $d->display == 1 && ( !isset($csubdoc)  || (isset($csubdoc) && $csubdoc['display'] == 1)))
                         {?>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
     					<div class="dashboard-stat <?php echo $class[$i]; ?>">
                             <div class="whiteCorner"></div>
@@ -53,7 +54,6 @@
     						</div>
     						<div class="details">
     							<div class="number">
-                                
                                 <?php 
                                 if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
                                 echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name); ?>
@@ -63,11 +63,14 @@
     								 <?php
 									 	$title = ucfirst($d->title);
 									 	if ($title == "Feedbacks") { $title = "Feedback"; }
-									 echo $title; ?>
+                                        
+                                         $titles[strtolower(trim($title))] = 1;
+                                        echo $title;
+									  ?>
     							</div>
     						</div>
                             <?php if($this->request['controller']!="Documents"){?>
-    						<a class="more" href="<?php echo $this->request->webroot;?>orders/orderslist?type=<?php echo urlencode($d->title);?>">
+    						<a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
     						View more <i class="m-icon-swapright m-icon-white"></i>
     						</a>
                             <!--
@@ -93,6 +96,15 @@
                    
                     
                 }
+
+                    if ($this->request->controller == "Documents" && $this->request->action == "view") {
+                        $documenttype = $this->viewVars['mod']->document_type;
+                        if (!isset($titles[strtolower(trim($documenttype))]) && $documenttype != 'Consent Form') {
+                            echo '<div class="col-md-12">';
+                            echo '<div class="clearfix"></div><div class="alert alert-danger"><strong>Error!</strong> You no longer have permission to view this document type (' . $documenttype . ')</div>';
+                            echo '</div>';
+                        }
+                    }
                  ?>
 
 

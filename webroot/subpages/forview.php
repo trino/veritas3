@@ -6,7 +6,7 @@
     <div class="portlet light profile-sidebar-portlet">
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
-            <center><img alt="" class="img-circle" src="http://localhost/veritas3/img/uploads/male.png"></center>
+            <center><img alt="" class="img-circle" src="<?php echo $this->request->webroot;?>img/uploads/male.png"></center>
         </div>
         <!-- END SIDEBAR USERPIC -->
         <!-- SIDEBAR USER TITLE -->

@@ -58,7 +58,7 @@ else
 			
 			<?php if(!isset($isdisabled)){?>
 			<div class="form-actions right todo-form-actions">
-				<button class="btn btn-circle btn-sm green-haze" type="submit" name="submit">Save Changes</button>
+				<button class="btn btn-sm green-haze" type="submit" name="submit">Save Changes</button>
 			
 			</div>
             <?php }?>

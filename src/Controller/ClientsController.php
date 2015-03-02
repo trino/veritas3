@@ -370,7 +370,7 @@ class ClientsController extends AppController {
         $rec='';
         $con='';
         $count=1;
-        if(isset($_POST['profile_id'])){
+        /*if(isset($_POST['profile_id'])){
 
         foreach($_POST['profile_id'] as $ri)
         {
@@ -383,7 +383,7 @@ class ClientsController extends AppController {
         }
         }
         unset($_POST['profile_id']);
-        $_POST['profile_id'] = $rec;
+        $_POST['profile_id'] = $rec;*/
         $rec = "";
         $count=1;
         if(isset($_POST['contact_id'])){

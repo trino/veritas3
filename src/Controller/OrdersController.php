@@ -425,13 +425,13 @@
 
             if ($c_id != "") {
 
-                $cnt = $model->find()->where(['((document_id <> 0 AND order_id = 0 AND document_id IN (SELECT id FROM documents WHERE draft = 0)) OR (order_id <> 0 AND document_id = 0 AND order_id IN (SELECT id FROM orders WHERE draft = 0)))', $u_cond, $type . '.client_id' => $c_id])->contain(['Orders'])->count();
+                $cnt = $model->find()->where(['((document_id IN (SELECT id FROM documents WHERE draft = 0)) OR (order_id IN (SELECT id FROM orders WHERE draft = 0)))', $u_cond, $type . '.client_id' => $c_id])->contain(['Orders'])->count();
             } else {
 
                 $cond = $this->Settings->getclientids($u, $this->request->session()->read('Profile.super'), $type);
                 //var_dump($u_cond);die();
                 //var_dump($cond);die();
-                $cnt = $model->find()->where(['((document_id <> 0 AND order_id = 0 AND document_id IN (SELECT id FROM documents WHERE draft = 0)) OR (order_id <> 0 AND document_id = 0 AND order_id IN (SELECT id FROM orders WHERE draft = 0)))', $u_cond, 'OR' => $cond])->contain(['Orders'])->count();
+                $cnt = $model->find()->where(['((document_id IN (SELECT id FROM documents WHERE draft = 0)) OR (order_id IN (SELECT id FROM orders WHERE draft = 0)))', $u_cond, 'OR' => $cond])->contain(['Orders'])->count();
             }
             //debug($cnt); die();
             $this->response->body(($cnt));

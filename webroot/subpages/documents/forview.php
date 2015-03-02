@@ -150,10 +150,10 @@
           else
           {
             $forms_arr = explode(',',$forms);
-            
-          } 
+
+          }
           $p = $forms_arr;
-         
+
           if(  $order->draft ==0){
             $k++;
 
@@ -220,7 +220,7 @@
                                             <?php
                                             if($p[0]){
                                                 ?>
-                                                
+
                                             <tr class="even" role="row">
                                                 <td>
                                                     <span class="icon-notebook"></span>
@@ -363,7 +363,7 @@
                                             </tr>
                                              <?php
                                             }
-                                            ?>       
+                                            ?>
                                             <?php
                                             if($p[5]){
                                                 ?>
@@ -391,7 +391,7 @@
                                             </tr>
                                             <?php
                                             }
-                                            ?> 
+                                            ?>
                                             <?php
                                             if($p[6]){
                                                 ?>
@@ -420,8 +420,8 @@
                                             </tr>
                                             <?php
                                             }
-                                            ?> 
-                                            
+                                            ?>
+
                                             </tbody>
                                         </table>
 
@@ -466,11 +466,11 @@
                                                                      <?php $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
                                                                      if($cnt>0){
                                                                         ?>
-                                                                        
+
                                                                      <div class="task-title" style="margin:0 0 12px 0;;clear:both;" >
                             															<span class="task-title-sp">
                             														<span class="icon-notebook"></span>  &nbsp; &nbsp;	Pre-screening form     &nbsp; &nbsp;
-                             </span>                                    
+                             </span>
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
@@ -486,18 +486,18 @@
 
                                                                     </div>
                                                                     <?php
-                                                                     } 
-                                                                     ?>                            
-                                                                    <?php $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id); 
+                                                                     }
+                                                                     ?>
+                                                                    <?php $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
                                                                     if($cnt>0)
                                                                     {
                                                                         ?>
-                                                                        
+
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
                             											<span class="icon-notebook"></span>  &nbsp; &nbsp; Driver Application	 </span>
                                                                          &nbsp; &nbsp;
-                                                                         
+
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
@@ -518,13 +518,13 @@
                                                                     if($cnt>0)
                                                                     {
                                                                         ?>
-                                                                        
+
 
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
                                                                             <span class="icon-notebook"></span>  &nbsp; &nbsp; Road Test
                                                                         </span>     &nbsp; &nbsp;
-                                                                        
+
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>
@@ -538,18 +538,18 @@
                                                                     </div>
                                                                     <?php
                                                                     }
-                                                                     ?>                   
+                                                                     ?>
 
-                                                                     <?php $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id); 
+                                                                     <?php $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
                                                                      if($cnt>0)
                                                                      {
                                                                         ?>
-                                                                        
+
                                                                      <div class="task-title" style="margin:12px 0;;">
                             											<span class="task-title-sp">
 
                                                                            <span class="icon-notebook"></span>   &nbsp; &nbsp; Consent Form	 </span>     &nbsp; &nbsp;
-                                                                        
+
                                                                         <?php if ($cnt > 0) { ?>
                                                                             <span style=""
                                                                                   class="label label-sm label-success">Submitted</span>

@@ -188,25 +188,29 @@ $profileID = $this->Session->read('Profile.id');
                                 </li>
                             <?php } ?>
 
-                            <?php if ($sidebar->orders_create == 1) { ?>
+                            <?php if ($sidebar->orders_create == 1) { 
+                                if ($sidebar->orders_mee == 1){
+                                ?>
                                 <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'productSelection' && $ordertype == "MEE" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                                     <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=MEE">
                                         <i class="icon-plus"></i>
                                         Order MEE</a>
                                 </li>
-
+                                <?php }
+                                if ($sidebar->orders_products == 1){?>
                                 <li <?php echo ($this->request['controller'] == 'Orders' && $ordertype == "CART" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                             <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART">
                                 <i class="icon-plus"></i>
                                 Order Products </a>
                                 </li>
-                                
+                                <?php }
+                                if ($sidebar->orders_create == 1){?>
                                 <li <?php echo ($this->request['controller'] == 'Orders' && $ordertype == "QUA" && !isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                             <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=QUA">
                                 <i class="icon-plus"></i>
                                 Re-Qualify </a>
                                 </li>
-                                
+                                <?php }?>
                             <?php } ?>
 							<?php if ($sidebar->orders_list == 1) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'orderslist' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>

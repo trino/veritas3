@@ -125,6 +125,7 @@
     } else {
         $size = "xlarge";
     }
+    $size="ignore";
 
     echo '<div class="col-xs-3 control-label" align="right" style="margin-top: 6px;">' . ucfirst($settings->client) . '</div><div class="col-xs-6">';
 

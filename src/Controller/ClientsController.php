@@ -1086,6 +1086,9 @@ class ClientsController extends AppController {
         if (isset( $_GET["istable"])){
             if ($_GET["istable"]==1){  $size="large";}
         }
+       $size="ignore";
+
+
         $query = TableRegistry::get('client_divison');
         $q = $query->find()->where(['client_id'=>$cid])->all();
         $q2 = $q;
@@ -1094,7 +1097,7 @@ class ClientsController extends AppController {
             $u++;
         }
         if(count($q)>0){
-            if ($size=="large") { echo '<div class="row">'; }
+            if ($size=="large" || $size=="ignore") { echo '<div class="row">'; }
             echo '<div class="col-xs-3 control-label" align="right" style="margin-top: 6px;">Division </div><div class="col-xs-6 ">';
 
             if($u!=1) { //form-control input-xlarge select2me
@@ -1107,7 +1110,7 @@ class ClientsController extends AppController {
                 echo "<option value='".$d->id."'".$sel." >".$d->title."</option>";
             }
             echo "</select></div>";
-            if ($size=="large") { echo "</div>"; }
+            if ($size=="large" || $size=="ignore") { echo "</div>"; }
         }
         die();
    }

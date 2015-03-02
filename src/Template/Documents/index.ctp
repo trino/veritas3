@@ -142,7 +142,7 @@
                     <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                         <tr class="sorting">
-                            <th title="Order ID"><?= $this->Paginator->sort('oid', "OID"); ?></th>
+                            <th title="Order ID"><?= $this->Paginator->sort('oid', "Order"); ?></th>
                             <th title="Document ID"><?= $this->Paginator->sort('id'); ?></th>
                             <th><?= $this->Paginator->sort('document_type', ucfirst($settings->document) . ' type'); ?></th>
                             <th><?= $this->Paginator->sort('user_id', 'Submitted by'); ?><?php if (isset($end)) echo $end;
@@ -316,15 +316,6 @@
                                                    onclick="return confirm('Are you sure you want to delete <?= $docname; ?>?');"
                                                    class="btn btn-danger">Delete</a>
                                             <?php
-                                            }
-                                        }
-                                        else
-                                        {
-                                            if($docs->order_id != 0)
-                                            {
-                                                ?>
-                                                <strong>(Order - <?php echo $docs->order_id;?>)</strong>
-                                                <?php
                                             }
                                         }
 

@@ -231,6 +231,7 @@ var FormWizard = function () {
                     $('.cont').html('Submit Order');
                     $('.cont').attr('onclick','return false;');
                     $('.skip').html('Save as draft');
+                    
                     $('.skip').removeClass('button-next');
                     $('.nextview').each(function(){
                         
@@ -248,6 +249,7 @@ var FormWizard = function () {
                     // $('.cont').attr('id','');
                 }
                 else{
+                    //$('.skip').removeClass('save_as_draft');
                     $('.cont').html('Save & Continue <i class="m-icon-swapright m-icon-white"></i>');
                     $('.cont').attr('id','draft');
                     $('.nextview').removeAttr('style');
@@ -259,6 +261,7 @@ var FormWizard = function () {
                 }
                 if(current==total)
                 {
+                    
                     $('.cont').attr('id','submit_ord');
                     $('.skip').hide();
 
@@ -271,8 +274,13 @@ var FormWizard = function () {
                      window.location = base_url+'?orderflash';
                      else
                      window.location = base_url+'?orderflash';
-
-                     */
+                    */
+                    setTimeout(
+                  function() 
+                  {
+                    window.location = base_url+'?orderflash';
+                  }, 2500);
+                     
 
                 }
 

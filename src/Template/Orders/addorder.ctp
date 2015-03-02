@@ -1373,6 +1373,7 @@ function provinces($name){
             });
         });
         $(document.body).on('click', '.skip', function () {
+            
             //alert($(this).text());
             
             
@@ -1418,6 +1419,7 @@ function provinces($name){
                     }
                 });
             }
+            
         });
         var draft = 0;
         $(document.body).on('click', '.cont', function () {
@@ -1524,7 +1526,7 @@ function provinces($name){
 
                 url: '<?php echo $this->request->webroot;?>orders/webservice/0/0/' + $('#did').val() + '/' + $('#uploaded_for').val(),
                 success:function(){
-                    window.location = base_url+'?orderflash';
+                    //
                 }
                 
             })

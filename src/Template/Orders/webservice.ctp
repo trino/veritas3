@@ -8,19 +8,19 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $startorder1 = true;
-    $productdetails79 = true;
-    $productdetails1 = true;
-    $productdetails14 = true;
-    $productdetails77 = true;
-    $productdetails78 = true;
-    $productdetailsebs1603 = true;
-    $productdetailsebs1627 = true;
-    $productdetailsebs1650 = true;
-    $uploadbinaryconsent_1603 = true;
-    $uploadbinaryemployment_1627 = true;
-    $uploadbinaryeducation_1650 = true;
-    $upload_additional = true;
+    $startorder1 = false;
+    $productdetails79 = false;
+    $productdetails1 = false;
+    $productdetails14 = false;
+    $productdetails77 = false;
+    $productdetails78 = false;
+    $productdetailsebs1603 = false;
+    $productdetailsebs1627 = false;
+    $productdetailsebs1650 = false;
+    $uploadbinaryconsent_1603 = false;
+    $uploadbinaryemployment_1627 = false;
+    $uploadbinaryeducation_1650 = false;
+    $upload_additional = false;
 
     if ($startorder1) {
 
@@ -35,34 +35,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         $user_id234 = '22552';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -363,12 +336,12 @@
 
     if ($upload_additional) {
 
-        debug($prescreening['attach_doc']); //null
-        debug($driverapplication['da_at']);
-        debug($roadtest['de_at']);
-        debug($consent['con_at']);
-        debug($employee['att']);
-        debug($education['att']);
+    //    debug($prescreening['attach_doc']); //null
+     //   debug($driverapplication['da_at']);
+     //   debug($roadtest['de_at']);
+      //  debug($consent['con_at']);
+      //  debug($employee['att']);
+      //  debug($education['att']);
 
         foreach ($prescreening['attach_doc'] as $d) {
             if ($d->attachment) {

@@ -145,7 +145,7 @@
             }
             if ($this->request->session()->read('Profile.profile_type') == '2') {
                 if ($cond) {
-                    $cond = $cond . ' AND (created_by = ' . $this->request->session()->read('Profile.id') . ')';
+                    //$cond = $cond . ' AND (created_by = ' . $this->request->session()->read('Profile.id') . ')';
                 } else {
                     $condition['created_by'] = $this->request->session()->read('Profile.id');
                 }

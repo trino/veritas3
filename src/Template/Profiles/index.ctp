@@ -176,7 +176,7 @@ function hasget($name){
                                 <th><?= $this->Paginator->sort('image', 'Image') ?></th>
                                 <th><?= $this->Paginator->sort('username', 'Username') ?></th>
                                 <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
-                                <th><?= $this->Paginator->sort('email') ?></th>
+                                <!--th><?= $this->Paginator->sort('email') ?></th-->
 
                                 <th><?= $this->Paginator->sort('fname', 'First Name') ?></th>
                                 <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
@@ -267,7 +267,7 @@ function hasget($name){
                                                 }
                                             ?></td>
 
-                                        <td><?= h($profile->email) ?></td>
+                                        <!--td><?= h($profile->email) ?></td-->
 
 
                                         <td><?= h($profile->fname) ?></td>
@@ -286,8 +286,12 @@ function hasget($name){
                                                 if ($sidebar->profile_edit == '1') {
 
                                                     if ($checker == 1) {
+                                                        if($this->request->session()->read('Profile.profile_type') == '2'){
+                                                        if($profile->profile_type == '5')    
                                                         echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-
+                                                        }
+                                                        else
+                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
                                                     }
                                                 } ?>
                                             <?php if ($sidebar->profile_delete == '1') {

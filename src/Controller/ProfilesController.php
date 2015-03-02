@@ -145,7 +145,7 @@
             }
             if ($this->request->session()->read('Profile.profile_type') == '2') {
                 if ($cond) {
-                    $cond = $cond . ' OR (created_by = ' . $this->request->session()->read('Profile.id') . ')';
+                    $cond = $cond . ' AND (created_by = ' . $this->request->session()->read('Profile.id') . ')';
                 } else {
                     $condition['created_by'] = $this->request->session()->read('Profile.id');
                 }
@@ -153,10 +153,11 @@
             }
             /*=================================================================================================== */
             if ($cond) {
+                //echo $cond;die();
                 $query = $querys->find();
                 $query = $query->where([$cond]);
             } else {
-                $query = $this->Profiles->find()->where(['OR' => $condition]);
+                $query = $this->Profiles->find()->where(['OR' => $condition,'AND' => 'super = 0']);
             }
             //$this->set('profiles', $this->paginate($this->Profiles));
             //$this->set('profiles',$query);

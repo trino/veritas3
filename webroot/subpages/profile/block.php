@@ -16,7 +16,7 @@ if ($activetab == "permissions") {
     if($this->request->session()->read('Profile.profile_type')=='2')
         $activetab = "assign";
     else
-    $activetab ="config";
+        $activetab ="config";
 }
 
 ?>

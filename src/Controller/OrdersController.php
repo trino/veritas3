@@ -290,6 +290,9 @@
 
             $this->loadModel('Orders');
             $this->Orders->deleteAll(array('id' => $id));
+            
+            $this->loadModel('Documents');
+            $this->Documents->deleteAll(array('order_id' => $id));
             $this->Flash->success('The order has been deleted.');
             if ($draft)
                 $this->redirect('/orders/orderslist?draft');

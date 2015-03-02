@@ -149,11 +149,17 @@ if ($action == "Add") {
 
                             <a href="javascript:void(0)" class="btn green cont">Save</a>
 
-
+                            <?php 
+                            if(!isset($_GET['order_id']))
+                            {
+                                ?>
+                                
                             <a href="javascript:;" id="draft" class="btn blue cont">
                                 Save As Draft <i class="m-icon-swapright m-icon-white"></i>
                             </a>
-
+                            <?php
+                            }
+                            ?>
                             <div class="margin-top-10 alert alert-success display-hide flashDoc" style="display: none;">
                                 <button class="close" data-close="alert"></button>
                                 <?php echo ucfirst($settings->document); ?> uploaded successfully

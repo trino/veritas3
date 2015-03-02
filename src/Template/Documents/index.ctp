@@ -317,7 +317,7 @@
                                             if($docs->order_id != 0)
                                             {
                                                 ?>
-                                                <strong>(Order)</strong>
+                                                <strong>(Order - <?php echo $docs->order_id;?>)</strong>
                                                 <?php
                                             }
                                         }

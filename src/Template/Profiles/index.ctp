@@ -37,6 +37,11 @@
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
+
+function hasget($name){
+    if (isset($_GET[$name])) {return strlen($_GET[$name])>0;}
+    return false;
+}
 ?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?>s
@@ -189,10 +194,8 @@
 
 
                                 if (count($profiles) == 0) {
-                                    echo '<TR><TD COLSPAN="7" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';
-                                    if (isset($_GET['searchprofile'])) {
-                                        echo " matching '" . $_GET['searchprofile'] . "'";
-                                    }
+                                    echo '<TR><TD COLSPAN="8" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';
+                                    if (hasget('searchprofile')) { echo " matching '" . $_GET['searchprofile'] . "'"; }
                                     echo '</TD></TR>';
                                 }
 

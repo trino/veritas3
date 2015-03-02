@@ -142,7 +142,8 @@
                     <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                         <tr class="sorting">
-                            <th><?= $this->Paginator->sort('id'); ?></th>
+                            <th title="Order ID"><?= $this->Paginator->sort('oid', "OID"); ?></th>
+                            <th title="Document ID"><?= $this->Paginator->sort('id'); ?></th>
                             <th><?= $this->Paginator->sort('document_type', ucfirst($settings->document) . ' type'); ?></th>
                             <th><?= $this->Paginator->sort('user_id', 'Submitted by'); ?><?php if (isset($end)) echo $end;
                                     if (isset($start)) echo "//" . $start; ?></th>
@@ -191,7 +192,8 @@
                                 $getClientById = $doc_comp->getClientById($docs->client_id);
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
-                                    <td><?= $this->Number->format($docs->id) ?></td>
+                                    <td><?= $this->Number->format($docs->order_id); ?></td>
+                                    <td><?= $this->Number->format($docs->id); ?></td>
                                     <td style="width: 140px;">
                                         <?php switch(1){//change the number to pick a style
                                             case 0://plain text

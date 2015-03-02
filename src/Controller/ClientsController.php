@@ -665,6 +665,10 @@ class ClientsController extends AppController {
 		$profile = $this->Clients->get($id);
 		//$this->request->allowMethod(['post', 'delete']);
 		if ($this->Clients->delete($profile)) {
+            $sub_c = TableRegistry::get('client_sub_order');
+            $del = $sub_c->query();
+            $del->delete()->where(['client_id' => $id])->execute();
+
 			$this->Flash->success('The ' .  strtolower($settings->client) . ' has been deleted.');
 		} else {
 			$this->Flash->error(ucfirst($settings->client) . ' could not be deleted. Please try again.');

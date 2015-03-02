@@ -183,7 +183,7 @@
                                                     <?= h($order->order_type); //it won't let me put it in the desc ?>
                                                 </a>
                                                 <?php echo "</div>";
-                                                }?>
+                                                } else { echo "Unknown"; }?>
                                     
                                     
                                     

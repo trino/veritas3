@@ -1183,9 +1183,12 @@ class DocumentComponent extends Component
             $profile_ids = '9999999';
             
             $profile_ids = str_replace(',',' ',$profile_ids);
-                $profile_ids = trim($profile_ids);
+            $profile_ids = trim($profile_ids);
                 $profile_ids = str_replace(' ',',',$profile_ids);
+                $profile_ids = str_replace(',,',',',$profile_ids);
+                $profile_ids = str_replace(',,',',',$profile_ids);
             //echo $profile_ids;die();
+            //echo $profile_ids.'_';die();
             if($driver==0 && $client==0)
             {
                 if($controller->request->session()->read('Profile.admin') || $controller->request->session()->read('Profile.super'))

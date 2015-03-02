@@ -176,7 +176,7 @@
                                              
                                             echo $this->request->webroot.'orders/vieworder/'.$order->client_id.'/'.$order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}
                                             
-                                        }else{?>javascript:;<?php } ?>">
+                                        }else{if($sidebar->document_list == '1'){echo $this->request->webroot.'orders/addorder/'.$order->client_id.'/'.$order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}}else{?>javascript:;<?php }} ?>">
                                                     <?= h($order->order_type); //it won't let me put it in the desc ?>
                                                 </a>
                                                 <?php echo "</div>";

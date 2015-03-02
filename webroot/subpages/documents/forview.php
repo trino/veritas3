@@ -145,6 +145,7 @@
             $forms_arr[4] = 1;
             $forms_arr[5] = 1;
             $forms_arr[6] = 1;
+            $forms_arr[7] = 1;
           }
           else
           {
@@ -420,6 +421,7 @@
                                             <?php
                                             }
                                             ?> 
+                                            
                                             </tbody>
                                         </table>
 

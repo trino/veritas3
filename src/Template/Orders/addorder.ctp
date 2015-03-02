@@ -1340,17 +1340,7 @@ function provinces($name){
     ?>
 
 
-        $('#submit_ord').live('click', function () {
-            
-
-
-//alert('test');
-            $.ajax({
-
-                url: '<?php echo $this->request->webroot;?>orders/webservice/0/0/' + $('#did').val() + '/' + $('#uploaded_for').val(),
-                
-            })
-        });
+        
 
         $(document.body).on('click', '.consents a', function () {
             //alert($(this).attr('href').replace('#',''));
@@ -1523,6 +1513,21 @@ function provinces($name){
                     }
                 });
             }
+        });
+        
+        $('#submit_ord').live('click', function () {
+            
+
+
+//alert('test');
+            $.ajax({
+
+                url: '<?php echo $this->request->webroot;?>orders/webservice/0/0/' + $('#did').val() + '/' + $('#uploaded_for').val(),
+                success:function(){
+                    window.location = base_url+'?orderflash';
+                }
+                
+            })
         });
 
     });

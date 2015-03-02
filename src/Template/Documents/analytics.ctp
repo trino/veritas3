@@ -116,6 +116,7 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
 <h3 class="page-title">
 			MEE Analytics <small>Analytics of <?php echo ucfirst($settings->document);?>s, Orders and  Drivers</small>
 			</h3>
+
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
@@ -133,7 +134,7 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
 					</li>
                     
 				</ul>
-			
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 			</div>
 
 

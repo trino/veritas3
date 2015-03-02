@@ -44,6 +44,7 @@
             <a href=""><?php echo $action . " " . ucfirst($settings->client); ?></a>
         </li>
     </ul>
+    <!--a href="javascript:window.print();" class="floatright btn btn-info">Print</a-->
     <?php
         if (isset($disabled) || isset($_GET['view'])) { ?>
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>

@@ -1,3 +1,26 @@
+<?php
+if(isset($_GET['forms']))
+$forms = $_GET['forms'];
+else
+$forms = '';
+          if(!$forms)
+          {
+            $forms_arr[0] = 1;
+            $forms_arr[1] = 1;
+            $forms_arr[2] = 1;
+            $forms_arr[3] = 1;
+            $forms_arr[4] = 1;
+            $forms_arr[5] = 1;
+            $forms_arr[6] = 1;
+            $forms_arr[7] = 1;
+          }
+          else
+          {
+            $forms_arr = explode(',',$forms);
+            
+          } 
+          $p = $forms_arr;
+?>
 <h3 class="block col-md-12">Order Confirmation</h3>
 
 
@@ -39,6 +62,73 @@
                } ?>"/>
     </div>
 </div>
+<p>&nbsp;</p>
+<div class="col-md-12"><label>Products selected</label></div>
+<div class="clearfix"></div>
+<ul class="pricing-red-content list-unstyled">
+
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
+                            <div class="col-md-2"><input <?php if($p[0]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""/></div>
+                            <div class="clearfix"></div>
+                        </li>
+
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
+                            <div class="col-md-2"><input <?php if($p[1]){?>checked<?php }?> disabled="disabled" type="checkbox" name="dri_abs" value=""></div>
+                            
+                            <div class="clearfix"></div>
+                        </li>
+
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> CVOR</div>
+                            <div class="col-md-2"><input <?php if($p[2]){?>checked<?php }?> disabled="disabled" type="checkbox" name="CVOR" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                        </li>
+
+                        <li>
+                        
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
+                            <div class="col-md-2"><input <?php if($p[3]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+                        
+
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
+                            <div class="col-md-2"><input <?php if($p[4]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Certifications</div>
+                            <div class="col-md-2"><input <?php if($p[5]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
+                            <div class="col-md-2"><input <?php if($p[6]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="clearfix"></div>                           
+                            
+                        </li>
+
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-md-2"><input <?php if($p[7]){?>checked<?php }?> disabled="disabled" type="checkbox" name="check_dl" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+                    </ul>
+
 </div>
 
 

@@ -20,7 +20,7 @@
         return $tempstr;
     }
 
-    $tempstr = getcheckboxes("form", 7);
+    $tempstr = getcheckboxes("form", 8);
 
     if (isset($_GET['driver'])) {
         $driver = $_GET['driver'];
@@ -357,13 +357,7 @@
                             
                             
                         </li>
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="check_dl" value=""></div>
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
+                        
 
                         <li>
                             <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
@@ -387,7 +381,14 @@
                             <div class="clearfix"></div>                           
                             
                         </li>
-
+                        
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="check_dl" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
 
                     </ul>
                     <div class="pricing-footer">
@@ -457,14 +458,7 @@
                             
                             
                         </li>
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="check_dl" value=""></div>
-                            
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
+                        
 
                         <li>
                             <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
@@ -487,6 +481,15 @@
                         <li>
                             <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
                             <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+                        
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-md-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
                             
                             <div class="clearfix"></div>
                             
@@ -561,14 +564,7 @@
                             
                             
                         </li>
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="check_dl" value=""></div>
-                            
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
+                        
 
                         <li>
                             <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
@@ -591,6 +587,14 @@
                         <li>
                             <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
                             <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-md-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
                             
                             <div class="clearfix"></div>
                             

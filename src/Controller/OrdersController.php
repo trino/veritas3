@@ -787,6 +787,8 @@
                 $profile_ids = str_replace(',', ' ', $profile_ids);
                 $profile_ids = trim($profile_ids);
                 $profile_ids = str_replace(' ', ',', $profile_ids);
+                $profile_ids = str_replace(',,', ',', $profile_ids);
+                $profile_ids = str_replace(',,', ',', $profile_ids);
 
                 $model = TableRegistry::get('Profiles');
                 $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);
@@ -798,6 +800,8 @@
                 $profile_ids = str_replace(',', ' ', $profile_ids);
                 $profile_ids = trim($profile_ids);
                 $profile_ids = str_replace(' ', ',', $profile_ids);
+                $profile_ids = str_replace(',,', ',', $profile_ids);
+                $profile_ids = str_replace(',,', ',', $profile_ids);
 
                 $model = TableRegistry::get('Profiles');
                 $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);

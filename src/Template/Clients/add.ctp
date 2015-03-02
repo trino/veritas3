@@ -767,7 +767,7 @@
                 success: function (res) {
 
                     if (res != 'e' && res != 'email' && res != 'Invalid Email') {
-                        //window.location = '<?php echo $this->request->webroot;?>clients/edit/' + res;
+                        window.location = '<?php echo $this->request->webroot;?>clients/edit/' + res;
                     }
                     else if (res == 'email') {
                         alert('Email Already Exist.');

@@ -875,10 +875,11 @@ if ($activetab == "permissions") {
                             
                                                             $clients = $this->requestAction('/clients/getAllClient/');
                                                             $count = 0;
-                                                            if ($clients)
+                                                            if ($clients){
                                                                 foreach ($clients as $o)
                                                                 {
                                                                     $pro_ids = explode(",",$o->profile_id);
+                                                                    
                                                                     //http://localhost/veritas3/img/jobs/115380_540579.jpg
                                                                     //http://localhost/veritas3/profiles/img/jobs/115380_540579.jpg
                                                                     ?>
@@ -892,6 +893,7 @@ if ($activetab == "permissions") {
                                                                     </tr>
                             
                                                                 <?php
+                                                                }
                                                                 }
                                                         ?>
                             
@@ -920,11 +922,11 @@ if ($activetab == "permissions") {
                                                             if ($clients)
                                                                 foreach ($clients as $o)
                                                                 {
-                                                                    //$pro_ids = explode(",",$o->profile_id);
+                                                                    $pro_ids = explode(",",$o->profile_id);
                                                                     ?>
                             
                                                                     <tr>
-                                                                        <td><input  <?php echo $is_disabled ?> type="checkbox" value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?> <span class="msg_<?php echo $o->id; ?>"></span></td>
+                                                                        <td><input  <?php echo $is_disabled ?> type="checkbox" <?php if(in_array($id,$pro_ids)){echo "checked";}?>   value="<?php echo $o->id; ?>" class="addclientz"  /> <?php echo $o->company_name; ?> <span class="msg_<?php echo $o->id; ?>"></span></td>
                                                                     </tr>
                             
                                                                 <?php

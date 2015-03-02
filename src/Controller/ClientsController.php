@@ -157,10 +157,10 @@ class ClientsController extends AppController {
         $query = $querys->find()
         ->where(['drafts'=>$draft, 'OR'=>
                     [
-                        ['LOWER(title) LIKE' => '%'.$searchs.'%'],
-                        ['LOWER(description) LIKE' => '%'.$searchs.'%'],
-                        ['LOWER(company_name) LIKE' => '%'.$searchs.'%'],
-                        ['LOWER(company_address) LIKE' => '%'.$searchs.'%']
+                        //['LOWER(title) LIKE' => '%'.$searchs.'%'],
+                        //['LOWER(description) LIKE' => '%'.$searchs.'%'],
+                        ['LOWER(company_name) LIKE' => '%'.$searchs.'%']
+                        //['LOWER(company_address) LIKE' => '%'.$searchs.'%']
                     ]
                 ]);
         /*->orWhere(['LOWER(title) LIKE' => '%'.$searchs.'%'])

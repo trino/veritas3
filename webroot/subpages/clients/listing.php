@@ -35,7 +35,7 @@
                                 <th>Logo</th>
                                 <th><?= $this->Paginator->sort('company_name', ucfirst($settings->client), ['escape' => false]) ?></th>
 
-                                <th class="actions"><?=__('Actions') ?></th> 
+                                <th class="actions"><?=__('Actions') ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -66,21 +66,21 @@
                                                     if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
                                                         ?>
                                                         <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id; ?>?view">
-                                                           <img class="img-responsive" style="max-width:180px;"
-                                                             id="clientpic"
-                                                             alt=""
-                                                             src="<?php if (isset($clients->image) && $clients->image)
-                                                              { 
-                                                                echo $this->request->webroot; ?>img/jobs/<?php echo $clients->image.'"';
-                                                              }
-                                                              else
-                                                              {
-                                                                echo $this->request->webroot; ?>img/logos/MEELogo.png"
+                                                            <img class="img-responsive" style="max-width:180px;"
+                                                                 id="clientpic"
+                                                                 alt=""
+                                                                 src="<?php if (isset($clients->image) && $clients->image)
+                                                                     {
+                                                                         echo $this->request->webroot; ?>img/jobs/<?php echo $clients->image.'"';
+                                                                     }
+                                                                     else
+                                                                     {
+                                                                     echo $this->request->webroot; ?>img/logos/MEELogo.png"
                                                                 <?php
-                                                              } 
-                                                              ?> />
-                                                           </a>
-                                                    <?php                                                           
+                                                                    }
+                                                                ?> />
+                                                        </a>
+                                                    <?php
                                                     }
                                                     else
                                                     {
@@ -89,31 +89,31 @@
                                                              id="clientpic"
                                                              alt=""
                                                              src="<?php if (isset($clients->image) && $clients->image)
-                                                              { 
-                                                                echo $this->request->webroot; ?>img/jobs/<?php echo $clients->image.'"';
-                                                              }
-                                                              else
-                                                              {
-                                                                echo $this->request->webroot; ?>img/logos/MEELogo.png"
-                                                                <?php
-                                                              } 
-                                                              ?> />
+                                                                 {
+                                                                     echo $this->request->webroot; ?>img/jobs/<?php echo $clients->image.'"';
+                                                                 }
+                                                                 else
+                                                                 {
+                                                                 echo $this->request->webroot; ?>img/logos/MEELogo.png"
+                                                            <?php
+                                                                }
+                                                            ?> />
                                                     <?php
                                                     }
                                                 ?>
 
                                             </td>
                                             <td>
-                                            <?php
-                                            if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
-                                             ?>
-                                             <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id; ?>?view">
-                                            <?= ucfirst(h($clients->company_name)).'</a>'; 
-                                            }
-                                            else
-                                                ucfirst(h($clients->company_name))
-                                             ?>
-                                            
+                                                <?php
+                                                    if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
+                                                ?>
+                                                <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id; ?>?view">
+                                                    <?= ucfirst(h($clients->company_name)).'</a>';
+                                                        }
+                                                        else
+                                                            ucfirst(h($clients->company_name))
+                                                    ?>
+
                                             </td>
 
                                             <td class="actions  util-btn-margin-bottom-5">
@@ -134,7 +134,7 @@
                                                            onclick="return confirm('Are you sure you want to delete <?= h($clients->company_name) ?>?');"
                                                            class="btn btn-danger">Delete</a>
 
-                                                    <?php } 
+                                                    <?php }
 
 
                                                     if ($sidebar->document_create == '1' && !isset($_GET["draft"])) {
@@ -144,18 +144,16 @@
 
                                                     if ($sidebar->orders_create == '1' && !isset($_GET["draft"])) {
                                                         ?>
-                                                        <!--a href="<!php /*echo $this->request->webroot . $order_url;*/
-                                                            echo $this->request->webroot; ?>orders/productSelection?client=<!php echo $clients->id; ?>"
-                                                           class="btn btn-info"> Create Order</a-->
 
-                                                        <a href="<?php /*echo $this->request->webroot . $order_url;*/
-                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=MEE" class="btn red-flamingo">Order MEE</a>
 
-                                                        <a href="<?php /*echo $this->request->webroot . $order_url;*/
-                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=CART" class="btn btn-success">Order Products</a>
+                                                        <a href="<?php
+                                                            echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=MEE" class="btn red-flamingo">Order MEE</a>
+
+                                                        <!--a href="<?php
+                                                            echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=CART" class="btn btn-success">Order Products</a>
                                                         
-                                                        <a href="<?php /*echo $this->request->webroot . $order_url;*/
-                                                        echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=QUA" class="btn btn-warning">Re-Qualify</a>
+                                                        <a href="<?php
+                                                            echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=QUA" class="btn btn-warning">Re-Qualify</a-->
 
                                                     <?php
                                                     }

@@ -228,7 +228,7 @@
                                                         <i class="icon-docs"></i>
                                                     </div>
                                                     <div class="tile-object">
-                                                        <div class="name">Create Order</div>
+                                                        <div class="name">Order MEE</div>
                                                         <div class="number"></div>
                                                     </div>
                                                 </a>

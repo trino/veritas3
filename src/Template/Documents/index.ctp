@@ -162,12 +162,16 @@
                             foreach ($subdoc as $d) {
                                 array_push($docz, $d->title);
                             }
+
+                        function hasget($name){
+                            if (isset($_GET[$name])) {return strlen($_GET[$name])>0;}
+                            return false;
+                        }
+
                             //var_dump($docz);
                             if (count($documents) == 0) {
-                                echo '<TR><TD COLSPAN="6" ALIGN="CENTER">No ' . strtolower($settings->document) . 's found';
-                                if (isset($_GET['searchdoc'])) {
-                                    echo " matching '" . $_GET['searchdoc'] . "'";
-                                }
+                                echo '<TR><TD COLSPAN="7" ALIGN="CENTER">No ' . strtolower($settings->document) . 's found';
+                                if (hasget('searchdoc')) {  echo " matching '" . $_GET['searchdoc'] . "'";   }
                                 echo '</TD></TR>';
                             }
 

@@ -8,10 +8,9 @@
     $intable = true;
     $cols = 8;
 
-    function getcheckboxes($name, $amount)
-    {
+    function getcheckboxes($name, $amount) {
         $tempstr = "";
-        for ($temp = 0; $temp < $amount; $temp += 1) {//there are 7 checkboxes to check
+        for ($temp = 0; $temp < $amount; $temp += 1) {
             if (strlen($tempstr) > 0) {
                 $tempstr .= "+','";
             }
@@ -22,16 +21,14 @@
 
     $tempstr = getcheckboxes("form", 8);
 
+    $driver = 0;
     if (isset($_GET['driver'])) {
         $driver = $_GET['driver'];
-    } else {
-        $driver = 0;
     }
 
+    $client = 0;
     if (isset($_GET['client'])) {
         $client = $_GET['client'];
-    } else {
-        $client = 0;
     }
 
     $dr_cl = $doc_comp->getDriverClient($driver, $client);
@@ -42,8 +39,7 @@
         $counting++;
     }
 
-    function GET($name, $default = "")
-    {
+    function GET($name, $default = "")    {
         if (isset($_GET[$name])) {
             return $_GET[$name];
         }
@@ -58,8 +54,7 @@
         $ordertype = substr($ordertype, 0, 3);
     }
 
-    function printbutton($type, $webroot, $index, $tempstr = "")
-    {
+    function printbutton($type, $webroot, $index, $tempstr = "")    {
         if (strlen($type) > 0) {
             switch ($index) {
                 case 3:

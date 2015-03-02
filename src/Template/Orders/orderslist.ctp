@@ -127,11 +127,14 @@
                         <?php
                             $row_color_class = "odd";
 
+                        function hasget($name){
+                            if (isset($_GET[$name])) {return strlen($_GET[$name])>0;}
+                            return false;
+                        }
+
                             if (count($orders) == 0) {
                                 echo '<TR><TD COLSPAN="9" ALIGN="CENTER">No orders found';
-                                if (isset($_GET['searchdoc'])) {
-                                    echo " matching '" . $_GET['searchdoc'] . "'";
-                                }
+                                if (hasget('searchdoc')) {echo " matching '" . $_GET['searchdoc'] . "'";}
                                 echo '</TD></TR>';
                             }
 

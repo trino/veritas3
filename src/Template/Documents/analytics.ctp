@@ -294,6 +294,11 @@ function datecheck($date, $start, $end){
 	return ( ($datestamp <= $startstamp AND $datestamp >= $endstamp)  or ($datestamp >= $startstamp AND $datestamp <= $endstamp)) ;
 }
 
+function pluralize($text, $quantity){
+    if ($quantity == 1) { return $text; }
+    return $text . "s";
+}
+
 function newchart($color, $icon, $title, $chartid, $dates, $data, $start,$end, $isdraft){
 	echo '<P><div class="row"><div class="col-md-12">';
 		echo '<div class="portlet box ' . $color . '">';
@@ -305,17 +310,18 @@ function newchart($color, $icon, $title, $chartid, $dates, $data, $start,$end, $
 			echo '<div class="portlet-body">';
 				echo '<div class="row"><div class="col-md-8">';
 				echo '<div id="' . $chartid . '" class="chart"> </div>';
-				
+
+
 				$didit=false;
 				if (count($dates) > 0) {
 					$rawdata = '<textarea disabled style="width:100%; height:300px; background-color: white; border: none; overflow-y: auto;">';
 					foreach($dates as $key => $value){
 						if (datecheck($key,$start,$end)){
 							$didit=true;
-							$rawdata.=todate($key) . ":\t" . $value . " " . left(strtolower($title), strlen($title)-1) . "(s)\r\n";
+							$rawdata.=todate($key) . ":\t" . $value . " " . pluralize(left(strtolower($title), strlen($title)-1), $value) . "\r\n";
 							$alldocs = enumsubdocs($data, $key, $chartid, $isdraft);
 							foreach($alldocs as $key => $value){
-								$rawdata.="\t" . $value . ' ' . $key . "(s)\r\n";
+								$rawdata.="\t" . $value . ' ' . pluralize($key, $value) . "\r\n";
 							}
 						}	
 					}

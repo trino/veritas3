@@ -135,7 +135,24 @@
 
         $k = 0;
         foreach ($orders as $order) {
-
+          $forms = $order->forms;
+          if(!$forms)
+          {
+            $forms_arr[0] = 1;
+            $forms_arr[1] = 1;
+            $forms_arr[2] = 1;
+            $forms_arr[3] = 1;
+            $forms_arr[4] = 1;
+            $forms_arr[5] = 1;
+            $forms_arr[6] = 1;
+          }
+          else
+          {
+            $forms_arr = explode(',',$forms);
+            
+          } 
+          $p = $forms_arr;
+         
           if(  $order->draft ==0){
             $k++;
 
@@ -199,6 +216,10 @@
                                         <div class="clearfix"></div>
                                         <table class="table ">
                                             <tbody>
+                                            <?php
+                                            if($p[0]){
+                                                ?>
+                                                
                                             <tr class="even" role="row">
                                                 <td>
                                                     <span class="icon-notebook"></span>
@@ -221,8 +242,12 @@
                                                         <? } ?>
                                                 </td>
                                             </tr>
-
-
+                                            <?php
+                                            }
+                                            ?>
+                                            <?php
+                                            if($p[1]){
+                                                ?>
                                             <tr class="even" role="row">
                                                 <td>
                                                     <span class="icon-notebook"></span>
@@ -246,7 +271,12 @@
 
                                                 </td>
                                             </tr>
-
+                                            <?php
+                                            }
+                                            ?>
+                                            <?php
+                                            if($p[2]){
+                                                ?>
                                             <tr class="even" role="row">
                                                 <td>
                                                     <span class="icon-notebook"></span>
@@ -267,8 +297,12 @@
                                                         <? } ?>
                                                 </td>
                                             </tr>
-
-
+                                            <?php
+                                            }
+                                            ?>
+                                            <?php
+                                            if($p[3]){
+                                                ?>
                                             <tr class="odd" role="row">
 
                                                 <td>
@@ -295,8 +329,12 @@
 
                                                 </td>
                                             </tr>
-
-
+                                            <?php
+                                            }
+                                            ?>
+                                            <?php
+                                            if($p[4]){
+                                                ?>
                                             <tr class="even" role="row">
 
                                                 <td>
@@ -322,8 +360,12 @@
 
                                                 </td>
                                             </tr>
-
-
+                                             <?php
+                                            }
+                                            ?>       
+                                            <?php
+                                            if($p[5]){
+                                                ?>
                                             <tr class="odd" role="row">
                                                 <td>
                                                     <span class="icon-notebook"></span>
@@ -346,7 +388,12 @@
                                                         <? } ?>
                                                 </td>
                                             </tr>
-
+                                            <?php
+                                            }
+                                            ?> 
+                                            <?php
+                                            if($p[6]){
+                                                ?>
                                             <tr class="odd" role="row">
 
                                                 <td>
@@ -370,6 +417,9 @@
                                                         <? } ?>
                                                 </td>
                                             </tr>
+                                            <?php
+                                            }
+                                            ?> 
                                             </tbody>
                                         </table>
 

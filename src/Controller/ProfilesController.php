@@ -287,7 +287,7 @@
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
-                ->where(['orders.uploaded_for' => $id])->contain(['Profiles', 'Clients', 'RoadTest']);
+                ->where(['orders.uploaded_for' => $id,'orders.draft'=>0])->order('orders.id DESC')->contain(['Profiles', 'Clients', 'RoadTest']);
 
             $this->set('orders', $order);
             $this->set('profile', $profile);

@@ -330,42 +330,62 @@
                     <ul class="pricing-red-content list-unstyled">
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
+                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""/></div>
+                            <div class="clearfix"></div>
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
+                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></div>
+                            
+                            <div class="clearfix"></div>
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="CVOR" value=""></span>
-                            <i class="fa fa-file-text-o"></i> CVOR
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> CVOR</div>
+                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="CVOR" value=""></div>
+                            <div class="clearfix"></div>
+                            
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
+                        
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
+                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="check_dl" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Check DL
-                        </li>
-
-                        <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Transclick
-                        </li>
-
-                        <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Certifications
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="check_dl" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                         <li>
-                            <input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Letter of Experience
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
+                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Certifications</div>
+                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
+                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="clearfix"></div>                           
+                            
                         </li>
 
 
@@ -405,44 +425,72 @@
                     } ?>
 
                     <ul class="pricing-content list-unstyled">
-
                         <li>
-                            <input checked type="checkbox" name="prem_nat" id="form0" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
+                            
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
+                            <div class="clearfix"></div>
+                        </li>
+                        
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="dri_abs" id="form1" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                        </li>
+
+                        
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> CVOR</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="CVOR" id="form2" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="dri_abs" id="form1" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form3" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="check_dl" value=""></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="CVOR" id="form2" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> CVOR
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form4" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" id="form3" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
-                        </li>
-                        <li>
-                            <input checked type="checkbox" name="check_dl" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Check DL
-                        </li>
-
-                        <li>
-                            <input checked type="checkbox" name="prem_nat" id="form4" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Transclick
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Certifications</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form5" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" id="form5" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Certifications
-                        </li>
-
-                        <li>
-                            <input checked type="checkbox" name="prem_nat" id="form6" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Letter of Experience
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                     </ul>
@@ -482,42 +530,71 @@
                     <ul class="pricing-blue-content list-unstyled">
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" id="form0" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Premium National Criminal Record Check
+                            
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
+                            <div class="clearfix"></div>
+                        </li>
+                        
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="dri_abs" id="form1" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                        </li>
+
+                        
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> CVOR</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="CVOR" id="form2" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="dri_abs" id="form1" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form3" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+                        <li>
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="check_dl" value=""></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="CVOR" id="form2" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> CVOR
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form4" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" id="form3" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report
-                        </li>
-                        <li>
-                            <input checked type="checkbox" name="check_dl" value=""></span>
-                            <i class="fa fa-file-text-o"></i> Check DL
-                        </li>
-
-                        <li>
-                            <input checked type="checkbox" name="prem_nat" id="form4" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Transclick
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Certifications</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form5" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
                         <li>
-                            <input checked type="checkbox" name="prem_nat" id="form5" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Certifications
-                        </li>
-
-                        <li>
-                            <input checked type="checkbox" name="prem_nat" id="form6" value="1"></span>
-                            <i class="fa fa-file-text-o"></i> Letter of Experience
+                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
+                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
                         </li>
 
 

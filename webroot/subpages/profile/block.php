@@ -247,6 +247,17 @@ if ($activetab == "permissions") {
 
                                                         </div>
                                                         <div class="clearfix"></div>
+                                                        <div class="col-md-12 nopad martop yesno" >
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_mee]" value="1" <?php if (isset($sidebar) && $sidebar->orders_mee == 1) echo "checked"; ?> /> Order MEE
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_products]" value="1" <?php if (isset($sidebar) && $sidebar->orders_products == 1) echo "checked"; ?> /> Order Products
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[order_requalify]" value="1" <?php if (isset($sidebar) && $sidebar->order_requalify == 1) echo "checked"; ?> /> Re-Qualify
+                                                            </label>
+                                                        </div>
                                                 </td>
                                             </tr>
                                             <tr>

@@ -312,19 +312,30 @@
 
                                         if (isset($p)) {
                                             if ($profile->profile_type == 5) {
-                                                ?><br>
+                                                ?>
+                                        <?php if($sidebar->orders_create == '1'){
+                                            
+                                                    if ($sidebar->orders_mee ==1) {
+                                                    ?>
+                                                
+                                                <br>
                                                 <a  href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
                                                    class="btn red-flamingo clearfix"  style="margin-top:2px;width: 100%;">Order MEE <i class="m-icon-swapright m-icon-white"></i></a>
+                                                <?php }
+                                                if ($sidebar->orders_products ==1) {
+                                                ?>
                                                 <br>
                                                 <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
                                                    class="btn btn-success" style="margin-top:2px;width: 100%;">Order Products <i class="m-icon-swapright m-icon-white"></i></a>
 
-
+                                                 <?php }
+                                                if ($sidebar->orders_products ==1) {
+                                                ?>
                                                 <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=QUA"
                                                    class="btn btn-primary" style="margin-top:2px;width: 100%;" >Re-Qualify <i class="m-icon-swapright m-icon-white"></i></a>
-
-
-                                            <?php
+                                                <?php
+                                                }
+                                                }
                                             }
                                         }
 

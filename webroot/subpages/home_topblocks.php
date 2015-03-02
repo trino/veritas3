@@ -146,7 +146,7 @@ function randomcolor(){
     <?php } ?>
 
     <?php if ($sidebar->orders_create ==1) { ?>
-        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=MEE';?>" class="tile bg-yellow" style="display: block;">
+        <!--<a href="<?php echo $this->request->webroot.$order_url.'&ordertype=MEE';?>" class="tile bg-yellow" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
             </div>
@@ -155,8 +155,41 @@ function randomcolor(){
                 <div class="number"></div>
             </div>
         </a>
+    -->
+    <?php if ($sidebar->orders_mee ==1) { ?>
+        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=MEE';?>" class="tile bg-yellow" style="display: block;">
+            <div class="tile-body">
+                <i class="icon-docs"></i>
+            </div>
+            <div class="tile-object">
+                <div class="name">Order MEE</div>
+                <div class="number"></div>
+            </div>
+        </a>
     <?php } ?>
-
+    <?php if ($sidebar->orders_products ==1) { ?>
+        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=CART';?>" class="tile bg-yellow" style="display: block;">
+            <div class="tile-body">
+                <i class="icon-docs"></i>
+            </div>
+            <div class="tile-object">
+                <div class="name">Order Products</div>
+                <div class="number"></div>
+            </div>
+        </a>
+    <?php } ?>
+    <?php if ($sidebar->order_requalify ==1) { ?>
+        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=QUA';?>" class="tile bg-yellow" style="display: block;">
+            <div class="tile-body">
+                <i class="icon-docs"></i>
+            </div>
+            <div class="tile-object">
+                <div class="name">Order Re-Qualify</div>
+                <div class="number"></div>
+            </div>
+        </a>
+    <?php } ?>
+    <?php } ?>
 
     <?php if ($sidebar->orders_list ==1) { ?>
         <!--a class="tile bg-yellow" href="<?php echo $this->request->webroot; ?>orders/orderslist?draft" style="display: block;">

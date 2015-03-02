@@ -35,34 +35,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         $user_id234 = '22552';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -363,12 +336,12 @@
 
     if ($upload_additional) {
 
-        debug($prescreening['attach_doc']); //null
-        debug($driverapplication['da_at']);
-        debug($roadtest['de_at']);
-        debug($consent['con_at']);
-        debug($employee['att']);
-        debug($education['att']);
+    //    debug($prescreening['attach_doc']); //null
+     //   debug($driverapplication['da_at']);
+     //   debug($roadtest['de_at']);
+      //  debug($consent['con_at']);
+      //  debug($employee['att']);
+      //  debug($education['att']);
 
         foreach ($prescreening['attach_doc'] as $d) {
             if ($d->attachment) {

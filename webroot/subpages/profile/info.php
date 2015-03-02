@@ -308,7 +308,7 @@
                                 <input  <?php echo $is_disabled ?> type="password" value="" autocomplete="off"
                                                                    name="password" id="password"
                                                                    class="form-control" <?php if (isset($p->password) && $p->password){//do nothing
-                                   }else{?>required="required"<?php }?>/>
+                                   }?>/>
                             </div>
                         </div>
                         <?php if (isset($p->password)){ ?>
@@ -804,8 +804,8 @@
                 //$('.username_div').hide();
                 $('#username_field').attr('disabled','disabled');
                 //$('.un').removeProp('required');
-                //$('#password').removeProp('required');
-//                $('#retype_password').removeProp('required');
+                $('#password').removeProp('required');
+               $('#retype_password').removeProp('required');
                 $('.req_rec').removeProp('required');
 
             }
@@ -825,13 +825,13 @@
                 {
                     //do nth
                 }
-               /* else{
+                else{
                     ?>
 
                 $('#password').prop('required', "required");
                 $('#retype_password').prop('required', "required");
                 <?php
-                }*/
+                }
                  ?>
             }
 
@@ -857,8 +857,8 @@
                 $('#isb_id').hide();
                 //$('.username_div').hide();
                 //$('.un').removeProp('required');
-                //$('#password').removeProp('required');
-                //                $('#retype_password').removeProp('required');
+                $('#password').removeProp('required');
+                                $('#retype_password').removeProp('required');
                 $('#username_field').attr('disabled','disabled');
                 $('.req_rec').removeProp('required');
 
@@ -879,13 +879,13 @@
                 {
                     //do nth
                 }
-               /* else{
+                else{
                     ?>
 
                 $('#password').prop('required', "required");
                 $('#retype_password').prop('required', "required");
                 <?php
-                }*/
+                }
                  ?>
             }
 

@@ -35,7 +35,7 @@
                                 <th>Logo</th>
                                 <th><?= $this->Paginator->sort('company_name', ucfirst($settings->client), ['escape' => false]) ?></th>
 
-                                <th class="actions"><? /*= __('Actions')*/ ?></th> 
+                                <th class="actions"><?=__('Actions') ?></th> 
                             </tr>
                             </thead>
                             <tbody>
@@ -120,7 +120,7 @@
 
 
                                                 <?php
-                                                   /* if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
+                                                    if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
                                                         ?>
                                                         <a class="btn btn-info"
                                                            href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id; ?>?view">View</a>
@@ -134,7 +134,7 @@
                                                            onclick="return confirm('Are you sure you want to delete <?= h($clients->company_name) ?>?');"
                                                            class="btn btn-danger">Delete</a>
 
-                                                    <?php } */
+                                                    <?php } 
 
 
                                                     if ($sidebar->document_create == '1' && !isset($_GET["draft"])) {

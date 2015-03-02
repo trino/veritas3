@@ -177,7 +177,7 @@
                                 <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
                                 <th>Assigned to <?=$settings->clients;?></th>
 
-                               <!-- <th class="actions"><?/*=  __('Actions') */ ?></th> -->
+                                <th class="actions"><?= __('Actions')  ?></th> 
                             </tr>
                             </thead>
                             <tbody>
@@ -271,9 +271,9 @@
                                         <td><?= h($profile->lname) ?></td>
                                         <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
 
-                                       <!-- <td class="actions  util-btn-margin-bottom-5">
+                                        <td class="actions  util-btn-margin-bottom-5">
 
-                                        <?php /* if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                        <?php  if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);
                                             } ?>
 
@@ -309,7 +309,7 @@
                                             }
                                             ?>
                                             <?php
-                                                if ($profile->profile_type == 5) {
+                                              /*  if ($profile->profile_type == 5) {
 
                                                    // <a href="<?php echo $this->request->webroot; !>orders/productSelection?driver=<?php echo $profile->id; !>"
                                                    //    class="btn btn-success">Create Order</a>
@@ -325,7 +325,7 @@
                                             ?>
 
 
-                                        </td>-->
+                                        </td>
 
                                     </tr>
 

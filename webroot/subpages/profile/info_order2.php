@@ -126,7 +126,7 @@
         $size = "xlarge";
     }
 
-    echo '<div class="col-md-3 control-label" align="right" style="margin-top: 6px;">' . ucfirst($settings->client) . '</div><div class="col-md-6">';
+    echo '<div class="col-xs-3 control-label" align="right" style="margin-top: 6px;">' . ucfirst($settings->client) . '</div><div class="col-xs-6">';
 
 
     $dodiv = true;?>
@@ -164,8 +164,7 @@
 ?>
 </select>
 
-<input class="selecting_client" type="hidden"
-       value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
+<input class="selecting_client" type="hidden" value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
 </div></div>
 
 <?php if ($intable) {
@@ -185,9 +184,7 @@
 <div class="form-group ">
 
     <?php
-
-        echo '<div class="col-md-3 control-label"  align="right" style="margin-top: 6px;">Driver</div><div class="col-md-6" >';
-
+        echo '<div class="col-xs-3 control-label"  align="right" style="margin-top: 6px;">Driver</div><div class="col-xs-6" >';
     ?>
 
     <select class="form-control input-<?= $size ?> select2me"
@@ -254,7 +251,7 @@
 
 
             <div class="">
-                <div class="col-md-offset-3 col-md-9">
+                <div class="col-xs-offset-3 col-xs-9">
 
 
                     <?php
@@ -276,7 +273,7 @@
 
 
                 <div class="row">
-                    <div class="col-md-offset-3 col-md-9">
+                    <div class="col-xs-offset-3 col-xs-9">
 
                         <?php printbutton($ordertype, $this->request->webroot, 5, $tempstr); ?>
 
@@ -303,10 +300,11 @@
         $offset = $cols;
         if ($ordertype == "" || $ordertype == "MEE") {
             if ($ordertype != "") {
-                $offset .= " col-md-offset-2";
+                $offset .= " col-xs-offset-2";
             }
             ?>
-            <div class="col-md-<?= $offset ?>">
+            <div class="col-xs-<?= $offset ?>">
+
                 <div class="pricing-red  hover-effect">
                     <div class="pricing-red-head pricing-head-active">
                         <h3>Order MEE <span>
@@ -325,29 +323,29 @@
                     <ul class="pricing-red-content list-unstyled">
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
-                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""/></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
+                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""/></div>
                             <div class="clearfix"></div>
                         </li>
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
-                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
+                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></div>
                             
                             <div class="clearfix"></div>
                         </li>
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> CVOR</div>
-                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="CVOR" value=""></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
+                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="CVOR" value=""></div>
                             <div class="clearfix"></div>
                             
                         </li>
 
                         <li>
                         
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
-                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
+                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
                             <div class="clearfix"></div>
                             
                             
@@ -355,31 +353,31 @@
                         
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
-                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
+                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
                             <div class="clearfix"></div>
                             
                             
                         </li>
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Certifications</div>
-                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
+                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
                             <div class="clearfix"></div>
                             
                             
                         </li>
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
-                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
+                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
                             <div class="clearfix"></div>                           
                             
                         </li>
                         
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-md-2"><input checked disabled="disabled" type="checkbox" name="check_dl" value=""></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="check_dl" value=""></div>
                             <div class="clearfix"></div>
                             
                             
@@ -400,11 +398,11 @@
         $offset = $cols;
         if ($ordertype == "" || $ordertype == "CAR") {
             if ($ordertype != "") {
-                $offset .= " col-md-offset-2";
+                $offset .= " col-xs-offset-2";
             }
 
             ?>
-            <div class="col-md-<?= $offset; ?>">
+            <div class="col-xs-<?= $offset; ?>">
                 <div class="pricing hover-effect">
                     <div class="pricing-head">
                         <h3>Order Products <span>
@@ -423,22 +421,22 @@
                     <ul class="pricing-content list-unstyled">
                         <li>
                             
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
                             <div class="clearfix"></div>
                         </li>
                         
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="dri_abs" id="form1" value="1"></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="dri_abs" id="form1" value="1"></div>
                             
                             <div class="clearfix"></div>
                         </li>
 
                         
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> CVOR</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="CVOR" id="form2" value="1"></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="CVOR" id="form2" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
@@ -446,45 +444,45 @@
                         </li>
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form3" value="1"></div>
-                            
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
-                        
-
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form4" value="1"></div>
-                            
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
-
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Certifications</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form5" value="1"></div>
-                            
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
-
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form3" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
                             
                         </li>
                         
+
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-md-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form4" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+
+                        <li>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form5" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+
+                        <li>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            
+                        </li>
+                        
+                        <li>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-xs-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
                             
                             <div class="clearfix"></div>
                             
@@ -505,11 +503,11 @@
         $offset = $cols;
         if ($ordertype == "QUA") {
             if ($ordertype != "") {
-                $offset .= " col-md-offset-2";
+                $offset .= " col-xs-offset-2";
             }
             ?>
 
-            <div class="col-md-<?= $offset ?>">
+            <div class="col-xs-<?= $offset ?>">
                 <div class="pricing-blue hover-effect">
                     <div class="pricing-blue-head pricing-head-active">
                         <h3>Requalify<span>
@@ -529,22 +527,22 @@
 
                         <li>
                             
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
                             <div class="clearfix"></div>
                         </li>
                         
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="dri_abs" id="form1" value="1"></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="dri_abs" id="form1" value="1"></div>
                             
                             <div class="clearfix"></div>
                         </li>
 
                         
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> CVOR</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="CVOR" id="form2" value="1"></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="CVOR" id="form2" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
@@ -552,8 +550,8 @@
                         </li>
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form3" value="1"></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form3" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
@@ -562,8 +560,8 @@
                         
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form4" value="1"></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form4" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
@@ -571,8 +569,8 @@
                         </li>
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Certifications</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form5" value="1"></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form5" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
@@ -580,16 +578,16 @@
                         </li>
 
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
-                            <div class="col-md-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
                             
                         </li>
                         <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-md-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
+                            <div class="col-xs-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
                             
                             <div class="clearfix"></div>
                             

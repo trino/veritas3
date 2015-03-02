@@ -1091,7 +1091,7 @@ class ClientsController extends AppController {
         }
         if(count($q)>0){
             if ($size=="large") { echo '<div class="row">'; }
-            echo '<div class="col-md-3 control-label" align="right" style="margin-top: 6px;">Division </div><div class="col-md-6 ">';
+            echo '<div class="col-xs-3 control-label" align="right" style="margin-top: 6px;">Division </div><div class="col-xs-6 ">';
 
             if($u!=1) { //form-control input-xlarge select2me
                 echo "<select class='form-control select2me input-" . $size . "' name='division' id='divisionsel'>";

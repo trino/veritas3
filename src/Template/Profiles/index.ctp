@@ -286,8 +286,12 @@ function hasget($name){
                                                 if ($sidebar->profile_edit == '1') {
 
                                                     if ($checker == 1) {
+                                                        if($this->request->session()->read('Profile.profile_type') == '2'){
+                                                        if($profile->profile_type == '5')    
                                                         echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-
+                                                        }
+                                                        else
+                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
                                                     }
                                                 } ?>
                                             <?php if ($sidebar->profile_delete == '1') {

@@ -275,12 +275,14 @@ var FormWizard = function () {
                      else
                      window.location = base_url+'?orderflash';
                     */
+                   if($('#tab6 .touched').val()=='1'){ 
                     setTimeout(
                   function() 
                   {
                     window.location = base_url+'?orderflash';
                   }, 2500);
-                     
+                  }
+                    
 
                 }
 
@@ -314,6 +316,15 @@ var FormWizard = function () {
                     
                 },
                 onNext: function (tab, navigation, index) {
+                    
+                    if($('.tabber.active').attr('class').replace('confirmation')!=$('.tabber.active').attr('class'))
+                    {
+                        if($('.tabber.active .touched').val()!='1')
+                        {
+                            alert('Please provide your signature to save');
+                            return false;
+                        }
+                    }
                     //alert(tab);
                     
                     success.hide();

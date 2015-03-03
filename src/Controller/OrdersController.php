@@ -851,17 +851,26 @@
             //$order = $order->order(['orders.id' => 'DESC']);
             $order = $order->select();
             $cond = '';
+            $sess = $this->request->session()->read('Profile.id');
+            $cls = TableRegistry::get('Clients');
+            $cl = $cls->find()->where(['(profile_id LIKE "'.$sess.',%" OR profile_id LIKE "%,'.$sess.',%" OR profile_id LIKE "%,'.$sess.'%")'])->all();
+            $cli_id = '999999999';
+            foreach($cl as $cc)
+            {
+                $cli_id = $cli_id.','.$cc->id;
+            }
+            
             if (!$this->request->session()->read('Profile.super')) {
                 $u = $this->request->session()->read('Profile.id');
 
                 $setting = $this->Settings->get_permission($u);
-                if ($setting->document_others == 0) {
+                /*if ($setting->document_others == 0) {
                     if ($cond == '')
                         $cond = $cond . ' user_id = ' . $u;
                     else
                         $cond = $cond . ' AND user_id = ' . $u;
 
-                }
+                }*/
 
             }
             if (isset($_GET['searchdoc']) && $_GET['searchdoc']) {
@@ -878,6 +887,12 @@
                     $cond = $cond . ' orders.user_id = ' . $this->request->session()->read('Profile.id');
                 else
                     $cond = $cond . ' AND orders.user_id = ' . $this->request->session()->read('Profile.id');
+            }
+            if (!$this->request->session()->read('Profile.admin') && $setting->orders_others == 1) {
+                if ($cond == '')
+                    $cond = $cond . ' orders.client_id IN ('.$cli_id.')';
+                else
+                    $cond = $cond . ' AND orders.client_id IN ('.$cli_id.')';
             }
             if (isset($_GET['submitted_by_id']) && $_GET['submitted_by_id']) {
                 if ($cond == '')

@@ -55,8 +55,15 @@
 
             }
            
-                   
+             $sess = $this->request->session()->read('Profile.id');      
             $docs = TableRegistry::get('Documents');
+            $cls = TableRegistry::get('Clients');
+            $cl = $cls->find()->where(['(profile_id LIKE "'.$sess.',%" OR profile_id LIKE "%,'.$sess.',%" OR profile_id LIKE "%,'.$sess.'%")'])->all();
+            $cli_id = '999999999';
+            foreach($cl as $cc)
+            {
+                $cli_id = $cli_id.','.$cc->id;
+            }
             $doc = $docs->find();
             if (!isset($_GET['draft']))
                 $doc = $doc->select()->where(['draft' => 0,'(order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))']);
@@ -74,6 +81,13 @@
                 else
                     $cond = $cond . ' AND user_id = ' . $this->request->session()->read('Profile.id');
             }
+            if (!$this->request->session()->read('Profile.admin') && $setting->document_others == 1) {
+                if ($cond == '')
+                    $cond = $cond . ' client_id IN ('.$cli_id.')';
+                else
+                    $cond = $cond . ' AND client_id IN ('.$cli_id.')';
+            }
+            
             if (isset($_GET['submitted_by_id']) && $_GET['submitted_by_id']) {
                 if ($cond == '')
                     $cond = $cond . ' user_id = ' . $_GET['submitted_by_id'];

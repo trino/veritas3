@@ -236,7 +236,7 @@ echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addor
 }*/
 
 }
-if (isset($super)) {
+if (isset($super) || (isset($_GET['draft']) && $this->request->session()->read('Profile.id')==$order->user_id)) {
 ?><a
 href="<?php echo $this->request->webroot; ?>orders/deleteorder/<?php echo $order->id; ?><?php if (isset($_GET['draft'])) echo "?draft"; ?>"
 class="btn btn-danger"

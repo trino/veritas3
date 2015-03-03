@@ -18,6 +18,21 @@
 <?php
     {
         //include('subpages/documents/forprofileview.php');
+        function PrintLine($lineclass, $name, $cnt, $bypass = false){
+                  if($cnt>0 || $bypass) {
+                      echo '<tr class="' . $lineclass . '" role="row"><td width="45"><span class="icon-notebook"></span></td>';
+                      echo '<td>' . $name . '</td>';
+                      echo '<td class="actions" width="121">';
+                      if ($cnt > 0) {
+                          echo '<span style="" class="label label-sm label-success">Submitted</span>';
+                      } else { //should not occur
+                          echo '<span style="" class="label label-sm label-danger">Skipped</span>';
+                      }
+                      echo "</TD></TR>";
+                      if ($lineclass == "even") { $lineclass = "odd";} else { $lineclass = "even"; }
+                  }
+                  return $lineclass;
+              }
 
         function get_string_between($string, $start, $end)
         {
@@ -170,21 +185,7 @@
             create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
             create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
 
-              function PrintLine($lineclass, $name, $cnt, $bypass = false){
-                  if($cnt>0 || $bypass) {
-                      echo '<tr class="' . $lineclass . '" role="row"><td width="45"><span class="icon-notebook"></span></td>';
-                      echo '<td>' . $name . '</td>';
-                      echo '<td class="actions" width="121">';
-                      if ($cnt > 0) {
-                          echo '<span style="" class="label label-sm label-success">Submitted</span>';
-                      } else { //should not occur
-                          echo '<span style="" class="label label-sm label-danger">Skipped</span>';
-                      }
-                      echo "</TD></TR>";
-                      if ($lineclass == "even") { $lineclass = "odd";} else { $lineclass = "even"; }
-                  }
-                  return $lineclass;
-              }
+              
             ?>
             <!-- BEGIN PROFILE CONTENT -->
             <div class="">

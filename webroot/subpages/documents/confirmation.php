@@ -77,8 +77,9 @@ $forms = '';
     }
 
     function PrintLine($lineclass, $name, $id, $cnt){
+        if($cnt){
         $check = "<input ";
-        if($cnt){ $check.= 'checked'; }
+        if($cnt){ $check.= 'checked '; }
         $check .= 'disabled="disabled" type="checkbox" name="' . $id . '" value=""/>';
 
         if ($lineclass == ""){
@@ -90,6 +91,7 @@ $forms = '';
         echo '<tr class="' . $lineclass . '" role="row"><td width="45"><i class="fa fa-file-text-o"></i></td>';
         echo '<td>' . $name . '</td><TD>' . $check . '</TD></TR>';
         if ($lineclass == "even") { return "odd";} else { return "even"; }
+        }
     }
 
     $lineclass = PrintLine($lineclass, "Driver's Record Abstract (MVR)", "dri_abs", $p[1]);

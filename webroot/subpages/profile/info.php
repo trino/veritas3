@@ -608,22 +608,31 @@
                                 <input type="hidden" name="dobd" value="00"/>
                             <?php
                                 }
-      
+                                if(isset($disabled))
+                                $delete = true;
+                                else
+                                $delete = false; 
                                 if (isset($client_docs)) {
                                     include 'subpages/filelist.php';
-                                    listfiles($client_docs, "img/jobs/");
+                                    listfiles($client_docs, "img/jobs/",'profile_doc',$delete);
                                 }
                             ?>
 
-                            <div class="form-group col-md-12"><!--<center>-->
+                           
+                        <?php
+                                if (!isset($disabled)) {
+                            ?>
+                             <div class="form-group col-md-12"><!--<center>-->
 
                                 <div class="docMore" data-count="1">
+                                <div>
                                     <div style="display:block;">
                                         <a href="javascript:void(0)" id="addMore1" class="btn btn-primary" >Browse</a>
                                          <input type="hidden" name="profile_doc[]" value="" class="addMore1_doc moredocs"/>
                                          <a href="javascript:void(0);" class ="btn btn-danger img_delete" id="delete_addMore1" title ="" style="display: none;">Delete</a>
                                          <span></span>
                                     </div>
+                                </div>
                                 </div>
                             </div>
 
@@ -638,9 +647,8 @@
                                 </a>
                             </div>
 
-                        <?php
-                                if (!isset($disabled)) {
-                            ?>
+                            
+                            
                                             <div class="col-md-12" align="right">
 
 
@@ -787,7 +795,7 @@
             $.ajax({
                 type: "post",
                 data: 'id=' + id,
-                url: "<?php echo $this->request->webroot;?>clients/removefiles/" + file,
+                url: "<?php echo $this->request->webroot;?>profiles/removefiles/" + file,
                 success: function (msg) {
 
                 }

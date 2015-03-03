@@ -152,6 +152,9 @@ $id1 = $this->request->params['pass'][1];
                     <div class="subform9" style="display: none;">
                         <?php include('subpages/documents/products.php'); ?>
                     </div>
+                    <div class="attachments" style="display: none;">
+                        <?php include('subpages/documents/attach_doc.php');?>
+                    </div>
                 </div>
                 <div class="form-actions">
                     <div class="row">
@@ -342,6 +345,12 @@ $id1 = $this->request->params['pass'][1];
             //alert(form_type);
             for (var p = 1; p <= 9; p++) {
                 $('.subform' + p).hide();
+                if(p>4)
+                {
+                    $('.attachments').show();
+                }
+                else
+                     $('.attachments').hide();                                
             }
             $('.subform' + s_arr[1]).show(200, function () {
                 /*if (s_arr[1] == '1')
@@ -1137,13 +1146,19 @@ $id1 = $this->request->params['pass'][1];
             else
                 draft = 0;
             var type = $(".document_type").val();
+            var attach_docs = "";
+            $('.moredocs').each(function(){
+                attach_docs += $(this).val()+",";  
+            })
+            attach_docs = attach_docs.substring(0,attach_docs.length-1);
             //alert(type);
             //alert($('#sub_id').val());return;
             var data = {
                 uploaded_for: $('#selecting_driver').val(),
                 type: type,
                 sub_doc_id: $('#sub_id').val(),
-                division: $('#division').val()
+                division: $('#division').val(),
+                attach_doc: attach_docs
             };
             //alert(type);return false;
             
@@ -1280,10 +1295,10 @@ $id1 = $this->request->params['pass'][1];
             success: function (res) {
                                     //alert(draft);
                                     //return;
-                                    if(draft==0)
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
-                                    else
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                if(draft==0)
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                else
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
                                     
                                     
             }

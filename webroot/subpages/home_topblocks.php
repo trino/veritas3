@@ -167,7 +167,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-    <?php /*if ($sidebar->orders_products ==1) { ?>
+    <?php if ($sidebar->orders_products ==1) { ?>
         <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=CART';?>" class="tile bg-yellow" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
@@ -188,7 +188,7 @@ function randomcolor(){
                 <div class="number"></div>
             </div>
         </a>
-    <?php }*/ ?>
+    <?php } ?>
     <?php } ?>
 
     <?php if ($sidebar->orders_list ==1) { ?>

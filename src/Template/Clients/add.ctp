@@ -102,8 +102,8 @@
                 </div>
 
                 <?php
-                    if ($this->request->params['action'] == 'edit')
-                        include('subpages/clients/recruiter_contact_table.php');
+                    /*if ($this->request->params['action'] == 'edit')
+                        include('subpages/clients/recruiter_contact_table.php');*/
                     if (isset($_GET['view'])) {
                         ?>
                         <table class="table table-striped table-bordered table-advance table-hover recruiters">
@@ -192,6 +192,9 @@
 
                                 <li>
                                     <a href="#tab_1_2" data-toggle="tab">Display</a>
+                                </li>
+                                 <li>
+                                    <a href="#tab_1_3" data-toggle="tab">Assign to Profile</a>
                                 </li>
                             <?php
 
@@ -470,9 +473,13 @@
                                                 </div>
 
                                             <?php }
+                                             if(isset($disabled))
+                                                $delete = true;
+                                                else
+                                                $delete = false; 
                                                 if (isset($client_docs)) {
                                                     include 'subpages/filelist.php';
-                                                    listfiles($client_docs, "img/jobs/");
+                                                    listfiles($client_docs, "img/jobs/",'client_doc',$delete);
                                                 }
                                             ?>
 
@@ -623,6 +630,11 @@
 
                             </form>
                         </div>
+                         <div class="tab-pane" id="tab_1_3">
+                         <?php
+                            include('subpages/clients/recruiter_contact_table.php');
+                         ?>
+                         </div>
                         <?php } ?>
 
                         <!-- END SAMPLE FORM PORTLET-->

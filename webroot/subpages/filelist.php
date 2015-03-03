@@ -1,12 +1,15 @@
  <?php 
 	$GLOBALS['webroot'] = $webroot= $this->request->webroot;
-  function listfiles($client_docs, $dir, $method=true){
+
+        
+  function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method=true){
 	$webroot=$GLOBALS['webroot'] ;
+    
    if($method) {//old layout ?>
    
    
    <div class="form-group col-md-12">
-		<label class="control-label" id="attach_label">Attach Files : </label>
+		<label class="control-label" id="attach_label">Attached Files : </label>
 
 		<div class="row">
 			<!-- <a href="#" class="btn btn-primary">Browse</a> -->
@@ -26,13 +29,13 @@
 
 								<?php
 								} else
-									echo "<a href='" .$webroot . $dir . $cd->file."' target='_blank' class='uploaded'>".$cd->file."</a>";
+									//echo "<a href='" .$webroot . $dir . $cd->file."' target='_blank' class='uploaded'>".$cd->file."</a>";
 							?><BR><?php echo $cd->file;?><BR>
 							<a href="<?php echo $webroot . $dir . $cd->file ?>" download="<?= $cd->file ?>" class="btn btn-info">Download</a>
-							<span>
+							<span <?php if(($delete))echo "style='display:none;'";?>>
 								<a href="javascript:void(0);" title="<?php echo $cd->file;?>&<?php echo $cd->id;?>" class="btn btn-danger img_delete">Delete</a>
                             </span>
-							<input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
+							<input type="hidden" name="<?php echo $field_name;?>[]" value="<?php echo $cd->file;?>" class="moredocs"/>
 						</div>
 					<?php
 					endforeach;
@@ -68,7 +71,7 @@
 									<a class="mix-preview fancybox-button" onclick="$(this).parent().parent().parent().remove()" href="javascript:void(0);" data-rel="fancybox-button">
 										<i class="fa fa-trash"></i>
 									</a>
-									<input type="hidden" name="client_doc[]" value="<?php echo $cd->file;?>" class="moredocs"/>
+									<input type="hidden" name="<?php echo $field_name;?>[]" value="<?php echo $cd->file;?>" class="moredocs"/>
 								</div>
 							</div>
 						

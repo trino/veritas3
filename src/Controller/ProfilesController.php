@@ -301,7 +301,17 @@
         }
 
         */
-
+        function removefiles($file)
+        {
+            if(isset($_POST['id']) && $_POST['id']!= 0)
+            {
+                $this->loadModel("ProfileDocs");
+                $this->ProfileDocs->deleteAll(['id'=>$_POST['id']]);
+                
+            }
+            @unlink(WWW_ROOT."img/jobs/".$file);
+            die();
+        }
         public function view($id = null)
         {
             $this->set('uid', $id);
@@ -313,6 +323,10 @@
                 return $this->redirect("/");
 
             }
+            $docs = TableRegistry::get('profile_docs');
+            $query = $docs->find();
+            $client_docs = $query->select()->where(['profile_id'=>$id])->all();
+            $this->set('client_docs',$client_docs);
             $this->loadModel('Logos');
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
@@ -671,6 +685,22 @@
                     //var_dump($this->request->data); die();//echo $_POST['admin'];die();
                     $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                     if ($this->Profiles->save($profile)) {
+                         $this->loadModel('ProfileDocs');
+                        $this->ProfileDocs->deleteAll(['profile_id'=>$profile->id]);
+                        $profile_docs = array_unique($_POST['profile_doc']);
+                        foreach($profile_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $docs = TableRegistry::get('profile_docs');
+                                $ds['profile_id']= $profile->id;
+                                $ds['file'] =$d;
+                                 $doc = $docs->newEntity($ds);
+                                 $docs->save($doc);
+                                unset($doc);
+                            }
+                        }
+                        
                         echo $profile->id;
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft . ');
@@ -819,6 +849,11 @@
             } else {
                 $this->set('myuser', '1');
             }
+            
+            $docs = TableRegistry::get('profile_docs');
+            $query = $docs->find();
+            $client_docs = $query->select()->where(['profile_id'=>$id])->all();
+            $this->set('client_docs',$client_docs);
             $this->loadModel('Logos');
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));

@@ -173,7 +173,7 @@ function hasget($name){
                             <thead>
                             <tr class="sorting">
                                 <th><?= $this->Paginator->sort('id') ?></th>
-                                <th><?= $this->Paginator->sort('image', 'Image') ?></th>
+                                <th style="width:7px;"><?= $this->Paginator->sort('image', 'Image') ?></th>
                                 <th><?= $this->Paginator->sort('username', 'Username') ?></th>
                                 <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
                                 <!--th><?= $this->Paginator->sort('email') ?></th-->
@@ -182,7 +182,7 @@ function hasget($name){
                                 <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
                                 <th>Assigned to <?=$settings->clients;?></th>
 
-                                <th class="actions"><?= __('Actions')  ?></th> 
+                                <!--<th class="actions"><?//=__('Actions')  ?></th> -->
                             </tr>
                             </thead>
                             <tbody>
@@ -250,6 +250,65 @@ function hasget($name){
                                             else
                                             echo ucfirst(h($profile->username));
                                              ?>
+                                             <!--<td class="actions  util-btn-margin-bottom-5"> -->
+                                            <br />
+                                        <?php  if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                                echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info btn-sm']);
+                                            } ?>
+
+
+                                            <?php
+                                                $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
+                                                if ($sidebar->profile_edit == '1') {
+
+                                                    if ($checker == 1) {
+                                                        if($this->request->session()->read('Profile.profile_type') == '2'){
+                                                        if($profile->profile_type == '5')    
+                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-sm']);
+                                                        }
+                                                        else
+                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-sm']);
+                                                    }
+                                                } ?>
+                                            <?php if ($sidebar->profile_delete == '1') {
+                                                if ($this->request->session()->read('Profile.super') == '1') {
+                                                    if ($this->request->session()->read('Profile.id') != $profile->id) {
+                                                        ?>
+
+                                                        <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
+                                                           onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
+                                                           class="btn btn-danger btn-sm">Delete</a>
+                                                        </span>
+                                                    <?php
+                                                    }
+                                                } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
+                                                    ?>
+                                                    <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
+                                                       onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
+                                                       class="btn btn-danger btn-sm">Delete</a>
+                                                <?php
+                                                }
+
+                                            }
+                                            ?>
+                                            <?php
+                                              /*  if ($profile->profile_type == 5) {
+
+                                                   // <a href="<?php echo $this->request->webroot; !>orders/productSelection?driver=<?php echo $profile->id; !>"
+                                                   //    class="btn btn-success">Create Order</a>
+?>
+
+                                                    <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE" class="btn red-flamingo">Place Order</a>
+                                                    <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART" class="btn btn-info">A La Carte/Re-qualify</a>
+
+                                                  <!--  <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
+                                                       class="btn btn-primary">Score Card</a> -->
+                                                <?php
+                                                } */
+                                            ?>
+
+
+                                        <!--</td> -->
                                         </td>
                                         <td><?php
                                                 if (strlen($profile->profile_type) > 0) {
@@ -274,9 +333,9 @@ function hasget($name){
                                         <td><?= h($profile->lname) ?></td>
                                         <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
 
-                                        <td class="actions  util-btn-margin-bottom-5">
+                                       <!-- <td class="actions  util-btn-margin-bottom-5">
 
-                                        <?php  if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                        <?php /* if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);
                                             } ?>
 
@@ -313,7 +372,7 @@ function hasget($name){
                                                 <?php
                                                 }
 
-                                            }
+                                            } */
                                             ?>
                                             <?php
                                               /*  if ($profile->profile_type == 5) {
@@ -332,7 +391,7 @@ function hasget($name){
                                             ?>
 
 
-                                        </td>
+                                        </td> -->
 
                                     </tr>
 

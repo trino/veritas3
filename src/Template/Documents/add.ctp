@@ -35,9 +35,12 @@ if ($action == "Add") {
     if(isset($did) && $did) { $action = "Edit";}
 }
 
-$id0 = $this->request->params['pass'][0];
-$id1 = $this->request->params['pass'][1];
-
+if (isset($this->request->params['pass'][1])) {
+    $id0 = $this->request->params['pass'][0];
+    $id1 = $this->request->params['pass'][1];
+    $id2="";
+    if (isset($_GET['order_id'])) { $id2= '?order_id=' . $_GET['order_id']; }
+}
 ?>
 <h3 class="page-title">
     <?php echo $action . " " . ucfirst($settings->document); ?>
@@ -61,7 +64,7 @@ $id1 = $this->request->params['pass'][1];
         }
         $opposite = "edit"; $url="add";
         if ($action=="Edit"){ $opposite = "view"; $url= "view";}
-        echo '<a href="../../' . $url . '/' . $id0 . "/" . $id1 . '?order_id=' . $_GET['order_id'] . '" class="floatright btn btn-info">' . ucfirst($opposite) . '</a>';
+    if (isset($this->request->params['pass'][1])) { echo '<a href="../../' . $url . '/' . $id0 . "/" . $id1 . $id2 . '" class="floatright btn btn-info">' . ucfirst($opposite) . '</a>'; }
 
 
         ?>

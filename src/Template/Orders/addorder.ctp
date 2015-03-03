@@ -243,7 +243,7 @@ function provinces($name){
                                     ?>
 
                                     <li>
-                                        <a href="#tab<?php echo ++$k_cou; ?>" data-toggle="tab" class="step">
+                                        <a href="#tab<?php echo ++$k_cou; ?>" data-toggle="tab" class="step confirmations">
 												<span class="number">
 												<?php echo $i++;?></span><br/>
 												<span class="desc">
@@ -425,7 +425,7 @@ function provinces($name){
                         <?php }}
                         if(!isset($k_co))$k_co=1; ?>
 
-                        <div class="tabber <?php echo $tab; ?>" id="tab<?php echo ++$k_co; ?>">
+                        <div class="tabber <?php echo $tab; ?> confirmations2" id="tab<?php echo ++$k_co; ?>">
                             <?php
                                 include('subpages/documents/confirmation.php');
                             ?>

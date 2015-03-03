@@ -31,7 +31,7 @@
         <div class="col-sm-6">
             <input type="hidden" name="criminal_signature_applicant2" id="criminal_signature_applicant2" />
             <input type="hidden" class="touched" value="0" />
-            <label class="control-label col-md-12">Signature of Applicant</label>
+            <label class="control-label">Signature of Applicant</label>
             <?php if($this->request->params['action']!= 'vieworder' && $this->request->params['action']!= 'view'){?>
     		<canvas id="test5" style="border: 1px solid silver;border-radius: 5px;"></canvas>
             <?php }?>
@@ -46,7 +46,17 @@
         </div>
         
         <div class="col-sm-6">
-                <?php if(isset($consent_detail) && $consent_detail->criminal_signature_applicant2){?><img src="<?php echo $this->request->webroot.'canvas/'.$consent_detail->criminal_signature_applicant2;?>" style="max-width: 100%;" /><?php }?>
+                <?php if(isset($consent_detail) && $consent_detail->criminal_signature_applicant2){?><img src="<?php echo $this->request->webroot.'canvas/'.$consent_detail->criminal_signature_applicant2;?>" style="max-width: 100%;" /><?php }
+                else
+                {
+                    if(isset($consent_detail))
+                    {
+                        ?>
+                        <p>&nbsp;</p><strong>No Signature supplied</strong>
+                        <?php
+                    }
+                }
+                ?>
                                     
         </div>
 		<div class="clearfix"></div>

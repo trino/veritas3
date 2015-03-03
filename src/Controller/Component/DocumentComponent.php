@@ -1162,6 +1162,8 @@ class DocumentComponent extends Component
                 $profile_ids2 = str_replace(',',' ',$profile_ids2);
                 $profile_ids2 = trim($profile_ids2);
                 $profile_ids2 = str_replace(' ',',',$profile_ids2);
+                $profile_ids2 = str_replace(',,',',',$profile_ids2);
+                $profile_ids2 = str_replace(',,',',',$profile_ids2);
                 
                 $q = $model->find()->where(['id IN ('.$profile_ids2.')','profile_type' => 5]);
                 

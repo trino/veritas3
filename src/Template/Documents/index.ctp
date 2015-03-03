@@ -190,10 +190,12 @@
                                 $uploaded_by = $doc_comp->getUser($docs->user_id);
                                 $uploaded_for = $doc_comp->getUser($docs->uploaded_for);
                                 $getClientById = $doc_comp->getClientById($docs->client_id);
+                                $orderID = $this->Number->format($docs->order_id);
+                                $orderURL = '<A HREF="../orders/vieworder/11/' . $orderID . '">' . $orderID . '</A>';
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($docs->id); ?></td>
-                                    <td align="center"><?= $this->Number->format($docs->order_id); ?></td>
+                                    <td align="center"><?php if($orderID>0) {echo $orderURL;} else { echo "N/A"; } ?></td>
                                     <td style="width: 140px;">
                                         <?php switch(1){//change the number to pick a style
                                             case 0://plain text
@@ -201,7 +203,7 @@
                                                 break;
                                             case 1://top block
                                                 echo '<div class="dashboard-stat ';
-                                                $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedback" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
+                                                $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedbacks" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
                                                 if (isset($colors[strtolower($docs->document_type)])){
                                                     echo $colors[strtolower($docs->document_type)];
                                                 } else {
@@ -323,6 +325,8 @@
 
                                     </td>
                                 </tr>
+
+                                <!--TR><TD colspan="8"><!php print_r($docs); !></TD></TR-->
 
                             <?php endforeach; ?>
                         </tbody>

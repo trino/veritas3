@@ -58,6 +58,8 @@
              $sess = $this->request->session()->read('Profile.id');      
             $docs = TableRegistry::get('Documents');
             $cls = TableRegistry::get('Clients');
+            //$attachments = TableRegistry::get('attachments');
+
             $cl = $cls->find()->where(['(profile_id LIKE "'.$sess.',%" OR profile_id LIKE "%,'.$sess.',%" OR profile_id LIKE "%,'.$sess.'%")'])->all();
             $cli_id = '999999999';
             foreach($cl as $cc)
@@ -65,11 +67,11 @@
                 $cli_id = $cli_id.','.$cc->id;
             }
             $doc = $docs->find();
-            if (!isset($_GET['draft']))
-                $doc = $doc->select()->where(['draft' => 0,'(order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))']);
-            else
-                $doc = $doc->select()->where(['draft' => 1,'(order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))']);
-
+            if (!isset($_GET['draft'])) {
+                $doc = $doc->select()->where(['draft' => 0, '(order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))']);
+            } else {
+                $doc = $doc->select()->where(['draft' => 1, '(order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))']);
+            }
             $cond = '';
 
             if (isset($_GET['searchdoc']) && $_GET['searchdoc']) {
@@ -118,10 +120,17 @@
                 // $this->set('start',$cond);
 
             }
-            if($cond=='')
-            $cond = $cond.' (order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))';
-            else
-            $cond = $cond.' AND (order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))';
+
+            if($cond=='') {
+                $cond = $cond . ' (order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))';
+            } else {
+                $cond = $cond . ' AND (order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))';
+            }
+            //$cond = $cond . " LEFT JOIN attachments ON attachments.document_id = Documents__id";
+            // $attachments = TableRegistry::get('attachments');
+            //$attachment = $attachments->find()->where(['document_id' => $did])->all();
+            //$this->set('attachments', $attachment);
+
             if ($cond) {
                 $doc = $doc->where([$cond]);
                 //debug($doc);die();

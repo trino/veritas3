@@ -18,6 +18,21 @@
 <?php
     {
         //include('subpages/documents/forprofileview.php');
+        function PrintLine($lineclass, $name, $cnt, $bypass = false){
+                  if($cnt>0 || $bypass) {
+                      echo '<tr class="' . $lineclass . '" role="row"><td width="45"><span class="icon-notebook"></span></td>';
+                      echo '<td>' . $name . '</td>';
+                      echo '<td class="actions" width="121">';
+                      if ($cnt > 0) {
+                          echo '<span style="" class="label label-sm label-success">Submitted</span>';
+                      } else { //should not occur
+                          echo '<span style="" class="label label-sm label-danger">Skipped</span>';
+                      }
+                      echo "</TD></TR>";
+                      if ($lineclass == "even") { $lineclass = "odd";} else { $lineclass = "even"; }
+                  }
+                  return $lineclass;
+              }
 
         function get_string_between($string, $start, $end)
         {
@@ -150,10 +165,10 @@
           else
           {
             $forms_arr = explode(',',$forms);
-            
-          } 
+
+          }
           $p = $forms_arr;
-         
+
           if(  $order->draft ==0){
             $k++;
 
@@ -169,6 +184,8 @@
             create_files_from_binary($order->id, '78', $order->ins_78_binary);
             create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
             create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
+
+              
             ?>
             <!-- BEGIN PROFILE CONTENT -->
             <div class="">
@@ -182,13 +199,14 @@
                             <div class="portlet box yellow">
                                 <div class="portlet-title">
                                     <div class="caption">
-                                        <A name="<?php echo $order->created; ?>" /></a>
+                                        <A name="<?php echo $order->created; ?>" /></A>
                                         <i class="fa fa-folder-open-o"></i>Order Score Sheet - <?php echo $order->created; ?>
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <div class="table-scrollable">
-                                        <div class="col-sm-7" style="padding-top:10px;">
+                                    <div oldclass="table-scrollable">
+
+                                        <div class="col-sm-6" style="padding-top:10px; border: 1px solid #E5E5E5;">
                         <span class="profile-desc-text">   <p>Driver:
                                 <strong><?php
 
@@ -202,25 +220,34 @@
 
             			</span>
 
-                                        </div>
+                                        </div><div class="col-sm-1"></div>
 
                                         <div class="col-sm-5" style="padding:10px 0 20px 0;">
                                                 <a style="float;right;" href="#" class=" btn btn-lg default yellow-stripe">
                                                     Road Test Score </a><a href="#" class="btn btn-lg yellow">
                                                     <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
                                                 </a>
+                                            <a style="margin:20px 15px 0px 0px;float:right;" href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>"
+                                               class="btn btn-primary">View Order</a>
                                         </div>
 
 
 
 
+                                        <div class="col-md-12">
+                                            <H4><i class="icon-doc font-blue-hoki"></i>
+								<span class="caption-subject bold font-blue-hoki uppercase">
+								Product Orders </span></H4>
+                                        </div>
+
+
                                         <div class="clearfix"></div>
-                                        <table class="table ">
+                                        <table class="table" style="margin-bottom: 0px;">
                                             <tbody>
                                             <?php
                                             if($p[0]){
                                                 ?>
-                                                
+
                                             <tr class="even" role="row">
                                                 <td>
                                                     <span class="icon-notebook"></span>
@@ -237,9 +264,7 @@
                                                         if (return_link('1603', $order->id) == false) { ?>
                                                             <span class="label label label-info">Pending </span>
                                                         <? } else { ?>
-                                                            <a target="_blank"
-                                                               href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
-                                                               class="btn btn-primary">Download</a>
+                                                            <a target="_blank" href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>" class="btn btn-primary">Download</a>
                                                         <? } ?>
                                                 </td>
                                             </tr>
@@ -265,9 +290,7 @@
                                                         if (return_link('1', $order->id) == false) { ?>
                                                             <span class="label label label-info">Pending </span>
                                                         <? } else { ?>
-                                                            <a target="_blank"
-                                                               href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
-                                                               class="btn btn-primary">Download</a>
+                                                            <a target="_blank" href="<? echo $this->request->webroot . return_link('1', $order->id); ?>" class="btn btn-primary">Download</a>
                                                         <? } ?>
 
                                                 </td>
@@ -363,7 +386,7 @@
                                             </tr>
                                              <?php
                                             }
-                                            ?>       
+                                            ?>
                                             <?php
                                             if($p[5]){
                                                 ?>
@@ -391,7 +414,7 @@
                                             </tr>
                                             <?php
                                             }
-                                            ?> 
+                                            ?>
                                             <?php
                                             if($p[6]){
                                                 ?>
@@ -420,8 +443,8 @@
                                             </tr>
                                             <?php
                                             }
-                                            ?> 
-                                            
+                                            ?>
+<TR><TD colspan="3"></TD></TR>
                                             </tbody>
                                         </table>
 
@@ -444,146 +467,42 @@
 
 
 
-                                        <div class="col-md-12" style="margin-top:20px;">
 
 
 
-                                            <div class="portlet light bordered">
-                                                <div class="portlet-title">
-                                                    <div class="caption">
-                                                        <i class="icon-doc font-blue-hoki"></i>
+
+
+                                       <div class="col-md-12">
+                                                        <H4><i class="icon-doc font-blue-hoki"></i>
 								<span class="caption-subject bold font-blue-hoki uppercase">
-								Documents Check-list </span>
-
-                                                </div>
-                                                    </div>
-                                                <div class="portlet-body" style="min-height: 150px !important;">
+								Documents Check-list </span></H4>
+                                        </div>
 
 
+                                        <div class="clearfix"></div>
+                                        <table class="table" style="margin-bottom: 0px;">
+                                            <tbody>
 
 
+                                                                     <?php
+                                                                     $line="even";
+                                                                    $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
+                                                                         $line = PrintLine($line, "Pre-Screening", $cnt);
 
-                                                                     <?php $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
-                                                                     if($cnt>0){
-                                                                        ?>
-                                                                        
-                                                                     <div class="task-title" style="margin:0 0 12px 0;;clear:both;" >
-                            															<span class="task-title-sp">
-                            														<span class="icon-notebook"></span>  &nbsp; &nbsp;	Pre-screening form     &nbsp; &nbsp;
-                             </span>                                    
-                                                                        <?php if ($cnt > 0) { ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-success">Submitted</span>
+                                                                    $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
+                                                                        $line = PrintLine($line, "Driver Application", $cnt);
 
-                                                                        <?php } else {
-                                                                            ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-danger">Skipped</span>
+                                                                    $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
+                                                                        $line = PrintLine($line, "Road Test", $cnt);
 
-                                                                        <?php
-                                                                        } ?>
+                                                                    $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
+                                                                        $line = PrintLine($line, "Consent Form", $cnt);
 
+                                                                        $line = PrintLine($line, "Confirmation", 1-$order->draft, true)
 
-                                                                    </div>
-                                                                    <?php
-                                                                     } 
-                                                                     ?>                            
-                                                                    <?php $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id); 
-                                                                    if($cnt>0)
-                                                                    {
-                                                                        ?>
-                                                                        
-                                                                     <div class="task-title" style="margin:12px 0;;">
-                            											<span class="task-title-sp">
-                            											<span class="icon-notebook"></span>  &nbsp; &nbsp; Driver Application	 </span>
-                                                                         &nbsp; &nbsp;
-                                                                         
-                                                                        <?php if ($cnt > 0) { ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-success">Submitted</span>
-
-                                                                        <?php } else {
-                                                                            ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-danger">Skipped</span>
-
-                                                                        <?php
-                                                                        } ?>
-
-                                                                    </div>
-                                                                    <?php
-                                                                    }
-                                                                    ?>
-                                                                    <?php $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
-                                                                    if($cnt>0)
-                                                                    {
-                                                                        ?>
-                                                                        
-
-                                                                     <div class="task-title" style="margin:12px 0;;">
-                            											<span class="task-title-sp">
-                                                                            <span class="icon-notebook"></span>  &nbsp; &nbsp; Road Test
-                                                                        </span>     &nbsp; &nbsp;
-                                                                        
-                                                                        <?php if ($cnt > 0) { ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-success">Submitted</span>
-                                                                        <?php } else {
-                                                                            ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-danger">Skipped</span>
-
-                                                                        <?php
-                                                                        } ?>
-                                                                    </div>
-                                                                    <?php
-                                                                    }
-                                                                     ?>                   
-
-                                                                     <?php $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id); 
-                                                                     if($cnt>0)
-                                                                     {
-                                                                        ?>
-                                                                        
-                                                                     <div class="task-title" style="margin:12px 0;;">
-                            											<span class="task-title-sp">
-
-                                                                           <span class="icon-notebook"></span>   &nbsp; &nbsp; Consent Form	 </span>     &nbsp; &nbsp;
-                                                                        
-                                                                        <?php if ($cnt > 0) { ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-success">Submitted</span>
-
-                                                                        <?php } else {
-                                                                            ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-danger">Skipped</span>
-
-                                                                        <?php
-                                                                        } ?>
-
-                                                                    </div>
-                                                                    <?php
-                                                                     }
-                                                                     ?>
-
-
-                                                                     <div class="task-title" style="margin:12px 0;;">
-                            											<span class="task-title-sp">
-                                                                      <span class="icon-notebook"></span>   &nbsp; &nbsp; Confirmation  </span>     &nbsp; &nbsp;
-                                                                        <?php if ($order->draft == 0) { ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-success">Submitted</span>
-
-                                                                        <?php } else {
-                                                                            ?>
-                                                                            <span style=""
-                                                                                  class="label label-sm label-danger">Skipped</span>
-
-                                                                        <?php
-                                                                        } ?>
-
-                                                                    </div>
+                                                                    ?><TR><TD colspan="3"> </TD></TR>
+                                                                        </tbody>
+                                                                    </table>
 
 
 
@@ -593,13 +512,11 @@
                                             </div>
 
 
-                                            <a style="margin:-10px 0 10px 0;float:right;" href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>"
-                                               class="btn btn-primary">View Order</a>
+
 
                                                 <!-- END PORTLET -->
-                                        </div>
-                                        </div>
-                                </div>
+
+
                             </div>
                         </div>
                         <!-- END PORTLET -->

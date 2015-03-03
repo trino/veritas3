@@ -44,6 +44,7 @@
             <a href=""><?php echo $action . " " . ucfirst($settings->client); ?></a>
         </li>
     </ul>
+    <!--a href="javascript:window.print();" class="floatright btn btn-info">Print</a-->
     <?php
         if (isset($disabled) || isset($_GET['view'])) { ?>
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
@@ -767,7 +768,7 @@
                 success: function (res) {
 
                     if (res != 'e' && res != 'email' && res != 'Invalid Email') {
-                        //window.location = '<?php echo $this->request->webroot;?>clients/edit/' + res;
+                        window.location = '<?php echo $this->request->webroot;?>clients/edit/' + res;
                     }
                     else if (res == 'email') {
                         alert('Email Already Exist.');

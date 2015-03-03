@@ -290,6 +290,9 @@
 
             $this->loadModel('Orders');
             $this->Orders->deleteAll(array('id' => $id));
+            
+            $this->loadModel('Documents');
+            $this->Documents->deleteAll(array('order_id' => $id));
             $this->Flash->success('The order has been deleted.');
             if ($draft)
                 $this->redirect('/orders/orderslist?draft');
@@ -787,6 +790,8 @@
                 $profile_ids = str_replace(',', ' ', $profile_ids);
                 $profile_ids = trim($profile_ids);
                 $profile_ids = str_replace(' ', ',', $profile_ids);
+                $profile_ids = str_replace(',,', ',', $profile_ids);
+                $profile_ids = str_replace(',,', ',', $profile_ids);
 
                 $model = TableRegistry::get('Profiles');
                 $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);
@@ -798,6 +803,8 @@
                 $profile_ids = str_replace(',', ' ', $profile_ids);
                 $profile_ids = trim($profile_ids);
                 $profile_ids = str_replace(' ', ',', $profile_ids);
+                $profile_ids = str_replace(',,', ',', $profile_ids);
+                $profile_ids = str_replace(',,', ',', $profile_ids);
 
                 $model = TableRegistry::get('Profiles');
                 $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);

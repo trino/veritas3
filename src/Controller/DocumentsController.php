@@ -30,6 +30,7 @@
 
         public function index()
         {
+            $cond = '';
             $this->set('doc_comp',$this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $doc = $this->Document->getDocumentcount();
@@ -43,6 +44,7 @@
                 $u = $this->request->session()->read('Profile.id');
                 $setting = $this->Settings->get_permission($u);
                 if ($setting && $setting->document_others == 0) {
+                    
                     if ($cond == '')
                         $cond = $cond . ' user_id = ' . $u;
                     else

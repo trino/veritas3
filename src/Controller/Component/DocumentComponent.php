@@ -1162,6 +1162,8 @@ class DocumentComponent extends Component
                 $profile_ids2 = str_replace(',',' ',$profile_ids2);
                 $profile_ids2 = trim($profile_ids2);
                 $profile_ids2 = str_replace(' ',',',$profile_ids2);
+                $profile_ids2 = str_replace(',,',',',$profile_ids2);
+                $profile_ids2 = str_replace(',,',',',$profile_ids2);
                 
                 $q = $model->find()->where(['id IN ('.$profile_ids2.')','profile_type' => 5]);
                 
@@ -1183,9 +1185,12 @@ class DocumentComponent extends Component
             $profile_ids = '9999999';
             
             $profile_ids = str_replace(',',' ',$profile_ids);
-                $profile_ids = trim($profile_ids);
+            $profile_ids = trim($profile_ids);
                 $profile_ids = str_replace(' ',',',$profile_ids);
+                $profile_ids = str_replace(',,',',',$profile_ids);
+                $profile_ids = str_replace(',,',',',$profile_ids);
             //echo $profile_ids;die();
+            //echo $profile_ids.'_';die();
             if($driver==0 && $client==0)
             {
                 if($controller->request->session()->read('Profile.admin') || $controller->request->session()->read('Profile.super'))

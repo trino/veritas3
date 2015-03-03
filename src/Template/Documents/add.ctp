@@ -34,6 +34,10 @@ if ($action == "Add") {
     $action = "Create";
     if(isset($did) && $did) { $action = "Edit";}
 }
+
+$id0 = $this->request->params['pass'][0];
+$id1 = $this->request->params['pass'][1];
+
 ?>
 <h3 class="page-title">
     <?php echo $action . " " . ucfirst($settings->document); ?>
@@ -52,12 +56,19 @@ if ($action == "Add") {
     </ul>
 
     <?php
-        if (isset($disabled)) { ?>
-            <a href="javascript:window.print();" class="floatright btn btn-primary">Print</a>
+        if (isset($disabled)) {
+            echo ' <a href="javascript:window.print();" class="floatright btn btn-primary">Print</a>';
+        }
+        $opposite = "edit"; $url="add";
+        if ($action=="Edit"){ $opposite = "view"; $url= "view";}
+        echo '<a href="../../' . $url . '/' . $id0 . "/" . $id1 . '?order_id=' . $_GET['order_id'] . '" class="floatright btn btn-info">' . ucfirst($opposite) . '</a>';
+
+
+        ?>
+
 
             <!--a href="" class="floatright btn btn-success">Re-Qualify</a>
             <a href="" class="floatright btn btn-info">Add to Task List</a-->
-        <?php } ?>
 
 </div>
 
@@ -149,11 +160,17 @@ if ($action == "Add") {
 
                             <a href="javascript:void(0)" class="btn green cont">Save</a>
 
-
+                            <?php 
+                            if(!isset($_GET['order_id']))
+                            {
+                                ?>
+                                
                             <a href="javascript:;" id="draft" class="btn blue cont">
                                 Save As Draft <i class="m-icon-swapright m-icon-white"></i>
                             </a>
-
+                            <?php
+                            }
+                            ?>
                             <div class="margin-top-10 alert alert-success display-hide flashDoc" style="display: none;">
                                 <button class="close" data-close="alert"></button>
                                 <?php echo ucfirst($settings->document); ?> uploaded successfully

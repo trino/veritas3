@@ -23,7 +23,10 @@ else
 						<?php if(isset($isdisabled))echo "View"; elseif(isset($event)){echo "Edit";}else{echo "Add";}?>
 					</li>
 				</ul>
-                
+                <?php
+                if (isset($event)) {
+                    echo '<a href="javascript:window.print();" class="floatright btn btn-info">Print</a>';
+                }?>
 
 			</div>
 

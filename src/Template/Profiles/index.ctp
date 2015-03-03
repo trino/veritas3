@@ -37,6 +37,11 @@
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
+
+function hasget($name){
+    if (isset($_GET[$name])) {return strlen($_GET[$name])>0;}
+    return false;
+}
 ?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?>s
@@ -171,13 +176,13 @@
                                 <th><?= $this->Paginator->sort('image', 'Image') ?></th>
                                 <th><?= $this->Paginator->sort('username', 'Username') ?></th>
                                 <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
-                                <th><?= $this->Paginator->sort('email') ?></th>
+                                <!--th><?= $this->Paginator->sort('email') ?></th-->
 
                                 <th><?= $this->Paginator->sort('fname', 'First Name') ?></th>
                                 <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
                                 <th>Assigned to <?=$settings->clients;?></th>
 
-                               <!-- <th class="actions"><?/*=  __('Actions') */ ?></th> -->
+                                <th class="actions"><?= __('Actions')  ?></th> 
                             </tr>
                             </thead>
                             <tbody>
@@ -189,10 +194,8 @@
 
 
                                 if (count($profiles) == 0) {
-                                    echo '<TR><TD COLSPAN="7" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';
-                                    if (isset($_GET['searchprofile'])) {
-                                        echo " matching '" . $_GET['searchprofile'] . "'";
-                                    }
+                                    echo '<TR><TD COLSPAN="8" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';
+                                    if (hasget('searchprofile')) { echo " matching '" . $_GET['searchprofile'] . "'"; }
                                     echo '</TD></TR>';
                                 }
 
@@ -264,16 +267,16 @@
                                                 }
                                             ?></td>
 
-                                        <td><?= h($profile->email) ?></td>
+                                        <!--td><?= h($profile->email) ?></td-->
 
 
                                         <td><?= h($profile->fname) ?></td>
                                         <td><?= h($profile->lname) ?></td>
                                         <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
 
-                                       <!-- <td class="actions  util-btn-margin-bottom-5">
+                                        <td class="actions  util-btn-margin-bottom-5">
 
-                                        <?php /* if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                        <?php  if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);
                                             } ?>
 
@@ -283,8 +286,12 @@
                                                 if ($sidebar->profile_edit == '1') {
 
                                                     if ($checker == 1) {
+                                                        if($this->request->session()->read('Profile.profile_type') == '2'){
+                                                        if($profile->profile_type == '5')    
                                                         echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-
+                                                        }
+                                                        else
+                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
                                                     }
                                                 } ?>
                                             <?php if ($sidebar->profile_delete == '1') {
@@ -309,7 +316,7 @@
                                             }
                                             ?>
                                             <?php
-                                                if ($profile->profile_type == 5) {
+                                              /*  if ($profile->profile_type == 5) {
 
                                                    // <a href="<?php echo $this->request->webroot; !>orders/productSelection?driver=<?php echo $profile->id; !>"
                                                    //    class="btn btn-success">Create Order</a>
@@ -325,7 +332,7 @@
                                             ?>
 
 
-                                        </td>-->
+                                        </td>
 
                                     </tr>
 

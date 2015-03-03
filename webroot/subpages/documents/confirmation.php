@@ -46,7 +46,7 @@ $forms = '';
 
 
 
-    <label class="control-label col-md-12">Driver Name : </label>
+    <label class="control-label col-md-12" style="margin-top: 5px;">Driver Name : </label>
     <div class="col-md-12">
         <input type="text" class="form-control" name="conf_driver_name" id="conf_driver_name"
                value="<?php if (isset($modal->conf_driver_name)) echo $modal->conf_driver_name; ?>"/>
@@ -54,7 +54,7 @@ $forms = '';
 
 
 
-    <label class="control-label col-md-12">Date : </label>
+    <label class="control-label col-md-12" style="margin-top: 5px;">Date : </label>
     <div class="col-md-12">
         <input disabled="disabled"  type="text" class="form-control date-picker" name="conf_date" id="conf_date"
                value="<?php if (isset($modal->conf_date)) echo $modal->conf_date; else {
@@ -63,74 +63,54 @@ $forms = '';
     </div>
 </div>
 <p>&nbsp;</p>
-<div class="col-md-12"><label>Products selected</label></div>
+<div class="col-md-12"><label>Products Selected :</label>
 <div class="clearfix"></div>
-<ul class="pricing-red-content list-unstyled">
 
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
-                            <div class="col-md-2"><input <?php if($p[0]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""/></div>
-                            <div class="clearfix"></div>
-                        </li>
+    <?php
+    $lineclass="even";//set to "" for old list, even or odd to table
 
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
-                            <div class="col-md-2"><input <?php if($p[1]){?>checked<?php }?> disabled="disabled" type="checkbox" name="dri_abs" value=""></div>
-                            
-                            <div class="clearfix"></div>
-                        </li>
 
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> CVOR</div>
-                            <div class="col-md-2"><input <?php if($p[2]){?>checked<?php }?> disabled="disabled" type="checkbox" name="CVOR" value=""></div>
-                            <div class="clearfix"></div>
-                            
-                        </li>
+    if ($lineclass=="") {
+        echo '<ul class="pricing-red-content list-unstyled" >';
+    } else {
+        echo '<table class="table" style="margin-bottom: 0px;"><tbody>';
+    }
 
-                        <li>
-                        
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
-                            <div class="col-md-2"><input <?php if($p[3]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
-                        
+    function PrintLine($lineclass, $name, $id, $cnt){
+        if($cnt){
+        $check = "<input ";
+        if($cnt){ $check.= 'checked '; }
+        $check .= 'disabled="disabled" type="checkbox" name="' . $id . '" value=""/>';
 
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Transclick</div>
-                            <div class="col-md-2"><input <?php if($p[4]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
+        if ($lineclass == ""){
+            echo '<li><div class="col-md-10"><i class="fa fa-file-text-o"></i> ' . $name . '</div><div class="col-md-2">';
+            echo $check . '</div><div class="clearfix"></div></li>';
+            return "";
+        }
 
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Certifications</div>
-                            <div class="col-md-2"><input <?php if($p[5]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
+        echo '<tr class="' . $lineclass . '" role="row"><td width="45"><i class="fa fa-file-text-o"></i></td>';
+        echo '<td>' . $name . '</td><TD>' . $check . '</TD></TR>';
+        if ($lineclass == "even") { return "odd";} else { return "even"; }
+        }
+    }
 
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
-                            <div class="col-md-2"><input <?php if($p[6]){?>checked<?php }?> disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
-                            <div class="clearfix"></div>                           
-                            
-                        </li>
+    $lineclass = PrintLine($lineclass, "Driver's Record Abstract (MVR)", "dri_abs", $p[1]);
+    $lineclass = PrintLine($lineclass, "CVOR", "CVOR", $p[2]);
+    $lineclass = PrintLine($lineclass, "Pre-employment Screening Program Report", "prem_nat", $p[3]);
+    $lineclass = PrintLine($lineclass, "Transclick", "prem_nat", $p[4]);
+    $lineclass = PrintLine($lineclass, "Certifications", "prem_nat", $p[5]);
+    $lineclass = PrintLine($lineclass, "Letter of Experience", "prem_nat", $p[6]);
+    $lineclass = PrintLine($lineclass, "Check DL", "check_dl", $p[7]);
 
-                        <li>
-                            <div class="col-md-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-md-2"><input <?php if($p[7]){?>checked<?php }?> disabled="disabled" type="checkbox" name="check_dl" value=""></div>
-                            <div class="clearfix"></div>
-                            
-                            
-                        </li>
-                    </ul>
+    if ($lineclass=="") {
+        echo '</ul>';
+    } else {
+        echo '<TR><TD colspan="3"></TD></TR></tbody></table>';
+    }
+    ?>
 
 </div>
-
+</div>
 
 
 <div class="row col-md-7">
@@ -138,7 +118,7 @@ $forms = '';
 
 <div class="form-group">
 
-    <label class="control-label col-md-12">Please sign here to confirm your submission.</label>
+    <label class="control-label col-md-12">Please sign here to confirm your submission :</label>
     <input type="hidden" name="recruiter_signature" id="recruiter_signature"
            value="<?php if (isset($modal->recruiter_signature) && $modal->recruiter_signature) echo $modal->recruiter_signature; ?>"/>
 

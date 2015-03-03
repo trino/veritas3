@@ -14,7 +14,7 @@
 						<a href="#">Calendar</a>
 					</li>
 				</ul>
-				
+                <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->

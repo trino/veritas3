@@ -31,7 +31,7 @@
         <div class="col-sm-6">
             <input type="hidden" name="signature_company_witness" id="signature_company_witness" />
             <input type="hidden" class="touched" value="0" />
-            <label class="control-label col-md-12">Signature of Company Witness</label>
+            <label class="control-label ">Signature of Company Witness</label>
             <?php if($this->request->params['action']!= 'vieworder' && $this->request->params['action']!= 'view'){?>
                 <canvas id="test4" style="border: 1px solid silver;border-radius: 5px;"></canvas>
             <?php }?>
@@ -45,7 +45,17 @@
     		</div>
         </div>
 		<div class="col-sm-6">
-               <?php if(isset($consent_detail) && $consent_detail->signature_company_witness){?><img src="<?php echo $this->request->webroot.'canvas/'.$consent_detail->signature_company_witness;?>" style="max-width: 100%;" /><?php }?>
+               <?php if(isset($consent_detail) && $consent_detail->signature_company_witness){?><img src="<?php echo $this->request->webroot.'canvas/'.$consent_detail->signature_company_witness;?>" style="max-width: 100%;" /><?php 
+               }else
+                {
+                    if(isset($consent_detail))
+                    {
+                        ?>
+                        <p>&nbsp;</p><strong>No Signature supplied</strong>
+                        <?php
+                    }
+                }
+               ?>
                                    
         </div>
 		<div class="clearfix"></div>

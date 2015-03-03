@@ -157,10 +157,10 @@ class ClientsController extends AppController {
         $query = $querys->find()
         ->where(['drafts'=>$draft, 'OR'=>
                     [
-                        ['LOWER(title) LIKE' => '%'.$searchs.'%'],
-                        ['LOWER(description) LIKE' => '%'.$searchs.'%'],
-                        ['LOWER(company_name) LIKE' => '%'.$searchs.'%'],
-                        ['LOWER(company_address) LIKE' => '%'.$searchs.'%']
+                        //['LOWER(title) LIKE' => '%'.$searchs.'%'],
+                        //['LOWER(description) LIKE' => '%'.$searchs.'%'],
+                        ['LOWER(company_name) LIKE' => '%'.$searchs.'%']
+                        //['LOWER(company_address) LIKE' => '%'.$searchs.'%']
                     ]
                 ]);
         /*->orWhere(['LOWER(title) LIKE' => '%'.$searchs.'%'])
@@ -665,6 +665,10 @@ class ClientsController extends AppController {
 		$profile = $this->Clients->get($id);
 		//$this->request->allowMethod(['post', 'delete']);
 		if ($this->Clients->delete($profile)) {
+            $sub_c = TableRegistry::get('client_sub_order');
+            $del = $sub_c->query();
+            $del->delete()->where(['client_id' => $id])->execute();
+
 			$this->Flash->success('The ' .  strtolower($settings->client) . ' has been deleted.');
 		} else {
 			$this->Flash->error(ucfirst($settings->client) . ' could not be deleted. Please try again.');
@@ -1082,6 +1086,9 @@ class ClientsController extends AppController {
         if (isset( $_GET["istable"])){
             if ($_GET["istable"]==1){  $size="large";}
         }
+       $size="ignore";
+
+
         $query = TableRegistry::get('client_divison');
         $q = $query->find()->where(['client_id'=>$cid])->all();
         $q2 = $q;
@@ -1090,8 +1097,8 @@ class ClientsController extends AppController {
             $u++;
         }
         if(count($q)>0){
-            if ($size=="large") { echo '<div class="row">'; }
-            echo '<div class="col-md-3 control-label" align="right" style="margin-top: 6px;">Division </div><div class="col-md-6 ">';
+            if ($size=="large" || $size=="ignore") { echo '<div class="row">'; }
+            echo '<div class="col-xs-3 control-label" align="right" style="margin-top: 6px;">Division </div><div class="col-xs-6 ">';
 
             if($u!=1) { //form-control input-xlarge select2me
                 echo "<select class='form-control select2me input-" . $size . "' name='division' id='divisionsel'>";
@@ -1103,7 +1110,7 @@ class ClientsController extends AppController {
                 echo "<option value='".$d->id."'".$sel." >".$d->title."</option>";
             }
             echo "</select></div>";
-            if ($size=="large") { echo "</div>"; }
+            if ($size=="large" || $size=="ignore") { echo "</div>"; }
         }
         die();
    }

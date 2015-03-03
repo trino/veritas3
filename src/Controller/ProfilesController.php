@@ -60,7 +60,41 @@
             }
             die();
         }
+    function upload_all($id="")
+    {
+        if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
+        {
+            $arr = explode('.',$_FILES['myfile']['name']);
+            $ext = end($arr);
+            $rand = rand(100000,999999).'_'.rand(100000,999999).'.'.$ext;
+            $allowed = array('jpg','jpeg','png','bmp','gif','pdf','doc', 'docx','csv','xlsx','xls');
+            $check = strtolower($ext);
+            if(in_array($check,$allowed)){
+                move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/jobs/'.$rand);
+                 unset($_POST);
+                 /*if(isset($id)){
+                $_POST['image'] = $rand;
+                $img = TableRegistry::get('clients');
 
+                //echo $s;die();
+                $query = $img->query();
+                        $query->update()
+                        ->set($_POST)
+                        ->where(['id' => $id])
+                        ->execute();
+                }*/
+                    
+                    echo $rand;
+
+
+            }
+            else
+            {
+                echo "error";
+            }
+        }
+        die();
+    }
         public function training()
         {
         }
@@ -499,6 +533,21 @@
 
                     $profile = $profiles->newEntity($_POST);
                     if ($profiles->save($profile)) {
+                        $this->loadModel('ProfileDocs');
+                        $this->ProfileDocs->deleteAll(['profile_id'=>$profile->id]);
+                        $profile_docs = array_unique($_POST['profile_doc']);
+                        foreach($profile_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $docs = TableRegistry::get('profile_docs');
+                                $ds['profile_id']= $profile->id;
+                                $ds['file'] =$d;
+                                 $doc = $docs->newEntity($ds);
+                                 $docs->save($doc);
+                                unset($doc);
+                            }
+                        }
 
                         if (isset($_POST['profile_type']) && $_POST['profile_type'] == 5) {
                             $username = 'driver_' . $profile->id;

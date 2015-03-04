@@ -1,15 +1,20 @@
 <div class="row">
 <?php
-if(isset($disabled))
-$delete = true;
-else
-$delete = false;
+if(isset($disabled)) {
+    $delete = true;
+} else {
+    $delete = false;
+}
+
 if (isset($attachments)) {
     include 'subpages/filelist.php';
     listfiles($attachments, "attachments/",'attach_doc',$delete);
 }?>
 <?php
     if (!isset($disabled)) {
+
+    $upload_max_size = ini_get('upload_max_filesize');
+    echo "The largest file you can upload is " . $upload_max_size;
 ?>
 <div class="form-group col-md-12"><!--<center>-->
 

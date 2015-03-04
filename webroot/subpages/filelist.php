@@ -14,10 +14,11 @@
 		<div class="row">
 			<!-- <a href="#" class="btn btn-primary">Browse</a> -->
 			<?php
+                $count=0;
 				if (isset($client_docs) && count($client_docs) > 0) {
 					$allowed = array('jpg', 'jpeg', 'png', 'bmp', 'gif');
 					foreach ($client_docs as $k => $cd):
-
+                        $count+=1;
 						?>
 						<div class="col-md-4" align="center">
 							<?php
@@ -39,7 +40,10 @@
 						</div>
 					<?php
 					endforeach;
-				} ?>
+				}
+            if ($count==0){
+                echo '<div class="col-md-4" align="center">None</div>';
+            }?>
 
 		</div>
 	</div>

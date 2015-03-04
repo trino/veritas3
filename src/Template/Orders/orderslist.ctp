@@ -18,6 +18,33 @@
 
     </div>
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+
+    <?php
+    if ($sidebar->orders_list == 1 && !isset($_GET["draft"]) ){?>
+        <a href="<?php echo $this->request->webroot; ?>orders/orderslist?draft" class="floatright btn btn-primary">
+            Order Drafts</a>
+    <?php } elseif (isset($_GET["draft"])){ ?>
+        <a href="<?php echo $this->request->webroot; ?>orders/orderslist" class="floatright btn btn-primary">
+            List Orders</a>
+    <?php }
+    if ($sidebar->orders_mee == 1){ ?>
+        <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=MEE" class="floatright btn btn-primary">
+            Order MEE</a>
+    <?php }
+    if ($sidebar->orders_create == 1) {
+        if ($sidebar->order_requalify == 1){?>
+            <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=QUA" class="floatright btn btn-primary">
+                Re-Qualify </a>
+        <?php }
+        if ($sidebar->orders_products == 1){?>
+            <a href="<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART" class="floatright btn btn-primary">
+                Order Products </a>
+        <?php }
+    }
+    ?>
+
+
+
 </div>
 
 

@@ -1,8 +1,4 @@
 <form id="form_education">
-    <div class="form-group row">
-        <h3 class="col-md-12">Past Education</h3>
-    </div>
-
 
     <?php
     $counter=0;

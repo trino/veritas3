@@ -1,4 +1,4 @@
-<?php //$block = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/blocks");
+<?php $block = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/blocks");
       $sidebar = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");
       //$order_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id')."/order");
       $order_url = 'orders/productSelection?driver=0';
@@ -21,8 +21,8 @@ function randomcolor(){
 <div class="tiles">
 
 
-    <?php if ($sidebar->client_list ==1) { ?>
-        <!--a href="<?php echo $this->request->webroot; ?>clients" class="tile bg-grey-salsa" style="display: block;">
+    <?php if ($sidebar->client_list ==1 && $block->list_client =='1') { ?>
+        <a href="<?php echo $this->request->webroot; ?>clients" class="tile bg-grey-salsa" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-search"></i>
             </div>
@@ -30,10 +30,10 @@ function randomcolor(){
                 <div class="name">List <?=$settings->client;?>s</div>
                 <div class="number"></div>
             </div>
-        </a-->
+        </a>
     <?php } ?>
-    <?php if ($sidebar->client_create ==1) { ?>
-        <!--a class="tile bg-grey-salsa" href="<?php echo $this->request->webroot; ?>clients/add" style="display: block;">
+    <?php if ($sidebar->client_create ==1 && $block->add_client =='1') { ?>
+        <a class="tile bg-grey-salsa" href="<?php echo $this->request->webroot; ?>clients/add" style="display: block;">
             <div class="tile-body">
                 <i class="icon-globe"></i>
             </div>
@@ -41,12 +41,12 @@ function randomcolor(){
                 <div class="name">Create <?=$settings->client;?></div>
                 <div class="number"></div>
             </div>
-        </a-->
+        </a>
     <?php } ?>
 
 
 
-    <?php if ($sidebar->client_list ==1) { ?>
+    <?php if ($sidebar->client_list ==1 && $block->list_client =='1') { ?>
         <!--a href="<?php echo $this->request->webroot; ?>clients?draft" class="tile bg-grey-salsa" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
@@ -60,7 +60,7 @@ function randomcolor(){
 
 
 
-    <?php if ($sidebar->profile_list ==1) { ?>
+    <?php if ($sidebar->profile_list ==1 && $block->list_profile =='1') { ?>
         <a href="<?php echo $this->request->webroot; ?>profiles" class="tile bg-green-haze" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-search"></i>
@@ -71,7 +71,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-    <?php if ($sidebar->profile_create ==1) { ?>
+    <?php if ($sidebar->profile_create ==1 && $block->addadriver =='1') { ?>
         <a class="tile bg-green-haze" href="<?php echo $this->request->webroot; ?>profiles/add" style="display: block;">
             <div class="tile-body">
                 <i class="icon-user"></i>
@@ -82,7 +82,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-    <?php  if ($sidebar->profile_list ==1) { ?>
+    <?php  if ($sidebar->profile_list ==1 && $block->list_profile =='1') { ?>
 		<!--a href="<?php echo $this->request->webroot; ?>profiles?draft" class="tile bg-green-haze" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
@@ -98,7 +98,7 @@ function randomcolor(){
 
 
 
-    <?php if ($sidebar->document_list ==1) { ?>
+    <?php if ($sidebar->document_list ==1 && $block->list_document =='1') { ?>
         <a href="<?php echo $this->request->webroot; ?>documents" class="tile bg-yellow-casablanca" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-search"></i>
@@ -109,7 +109,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-    <?php if ($sidebar->document_create ==1) { ?>
+    <?php if ($sidebar->document_create ==1 && $block->submit_document =='1') { ?>
         <a href="<?php echo $this->request->webroot.$document_url;?>" class="tile bg-yellow-casablanca" style="display: block;">
             <div class="tile-body">
                 <i class="icon-doc"></i>
@@ -120,7 +120,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-    <?php if ($sidebar->document_list ==1) { ?>
+    <?php if ($sidebar->document_list ==1 && $block->list_document =='1') { ?>
         <!--a class="tile bg-yellow-casablanca" href="<?php echo $this->request->webroot; ?>documents?draft" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
@@ -133,7 +133,7 @@ function randomcolor(){
     <?php } ?>
 
 
-    <?php if ($sidebar->orders_list ==1) { ?>
+    <?php if ($sidebar->orders_list ==1 && $block->list_order =='1') { ?>
         <a href="<?php echo $this->request->webroot; ?>orders/orderslist" style="display: block;" class="tile bg-yellow">
             <div class="tile-body">
                 <i class="fa fa-search"></i>
@@ -145,7 +145,7 @@ function randomcolor(){
         </a>
     <?php } ?>
 
-    <?php if ($sidebar->orders_create ==1) { ?>
+    <?php if ($sidebar->orders_create ==1 && $block->submitorder =='1') { ?>
         <!--<a href="<?php echo $this->request->webroot.$order_url.'&ordertype=MEE';?>" class="tile bg-yellow" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
@@ -156,7 +156,7 @@ function randomcolor(){
             </div>
         </a>
     -->
-    <?php if ($sidebar->orders_mee ==1) { ?>
+    <?php if ($sidebar->orders_mee ==1 && $block->ordersmee =='1') { ?>
         <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=MEE';?>" class="tile bg-yellow" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
@@ -167,7 +167,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-    <?php if ($sidebar->orders_products ==1) { ?>
+    <?php if ($sidebar->orders_products ==1 && $block->ordersproducts =='1') { ?>
         <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=CART';?>" class="tile bg-yellow" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
@@ -178,7 +178,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-    <?php if ($sidebar->order_requalify ==1) { ?>
+    <?php if ($sidebar->order_requalify ==1 && $block->ordersrequalify =='1') { ?>
         <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=QUA';?>" class="tile bg-yellow" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
@@ -191,7 +191,7 @@ function randomcolor(){
     <?php } ?>
     <?php } ?>
 
-    <?php if ($sidebar->orders_list ==1) { ?>
+    <?php if ($sidebar->orders_list ==1 && $block->list_order =='1') { ?>
         <!--a class="tile bg-yellow" href="<?php echo $this->request->webroot; ?>orders/orderslist?draft" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
@@ -212,7 +212,7 @@ function randomcolor(){
 
 
 
-     <?php if ($sidebar->messages ==1) { ?>
+     <?php if ($sidebar->messages ==1 && $block->message =='1') { ?>
         <!--a class="tile bg-green" href="<?php echo $this->request->webroot; ?>messages" style="display: block;">
             <div class="tile-body">
                 <i class="fa icon-envelope"></i>
@@ -224,7 +224,7 @@ function randomcolor(){
         </a-->
     <?php } ?>
 
-    <?php if ($sidebar->schedule ==1) { ?>
+    <?php if ($sidebar->schedule ==1 && $block->schedule =='1') { ?>
     <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
         <a  href="<?php echo $this->request->webroot;?>todo/calender" class="tile bg-green-meadow" style="display: block;">
             <div class="tile-body">
@@ -260,7 +260,7 @@ function randomcolor(){
 
 
 
-    <?php if ($sidebar->feedback == 1) { ?>
+    <?php if ($sidebar->feedback == 1 && $block->feedback =='1') { ?>
         <a href="<?php echo $this->request->webroot.$document_url;?>" class="tile bg-green">
             <div class="tile-body">
                 <i class="fa fa-comments"></i>
@@ -273,7 +273,7 @@ function randomcolor(){
     <?php } ?>
 
 
-    <?php if ($sidebar->analytics ==1) { ?>
+    <?php if ($sidebar->analytics ==1 && $block->analytics =='1') { ?>
         <a href="<?php echo $this->request->webroot;?>documents/analytics" class="tile bg-red-sunglo" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-bar-chart-o"></i>

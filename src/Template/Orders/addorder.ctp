@@ -61,37 +61,29 @@ function provinces($name){
         $forms=array();
         if (isset($_GET["forms"])){
             $forms = explode(",", $_GET["forms"]);
-            $show_all='all';
-            $show_all2='all';
-            foreach($forms as $f) {
-                if($f!=1){
-                    $show_all='';
-                    $show_all2='';
-                }
-                
-            }
-            if($show_all=='') {
-                if($forms[1]==1 || $forms[2]==1) {
-                    $show_all='consent';
-                    $show_all2='consent';
-                } else {
-                    $show_all='none';
-                    $show_all2='none';
-                }
-            }
         }
 
         //returns: boolean, if this form should be displayed
         //parameters:
         //  $forms  -   pass in the $forms variable since globals don't seem to work
         //  $id     -   the ID/index number of the form to check
-        // NOTE: This is an arbitrary rule set to be substituted for a working one later on
+        function isallone($forms){
+            foreach($forms as $f) {
+                if ($f != 1) {
+                    return false;
+                }
+            }
+            return true;
+        }
         function displayform($forms, $name){
             //pre-screening, driver application, consent form, road test
             //if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
+            if (isallone($forms)) {return true; }//return true if all boxes were checked
+            $name=trim(strtolower($name));
+            if ($name == "consent form") { return true; } //mandatory in all sections now
             if(count($forms)>0){
-                if ($name == "consent form") {//consent form is now mandatory
-                    return 1; //$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
+                if ($name == "consent form") {
+                    return true; //$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
                 }
                 return false; //no other form needs to show
             }
@@ -170,29 +162,10 @@ function provinces($name){
                                         $end = 0;
                                         $k_c=0;
                                         $index=0;
-                                        if(!isset($show_all))
-                                                {
-                                                    $show_all='all';
-                                                }
-                                                
                                         foreach ($subdoccli as $sd) {
-                                            
-                                            if($show_all=='none')
-                                            continue;
-                                            elseif($show_all=='consent')
-                                            {
-                                                if($sd->sub_id !=4)
-                                                continue;
-                                            }
-                                            else
-                                            if($show_all=='all')
-                                            {
-                                                //do nothing
-                                            }
-                                            
-                                                
-                                            $index+=1;
                                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
+                                            if (displayform($forms, $d->title)){
+                                                $index+=1;
                                             $act = 0;
                                             if ($d->table_name == $table) {
                                                 $act = 1;
@@ -201,8 +174,7 @@ function provinces($name){
 
                                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
 
-                                            ?>
-                                            <?php if ($prosubdoc['display'] != 0 && $d->display == 1) {
+                                             if (true){ //($prosubdoc['display'] != 0 && $d->display == 1) {
                                                 
                                                 $k_c++;
                                                 $j = $d->id;
@@ -229,7 +201,7 @@ function provinces($name){
                                                 <?php
 
                                                 $i++;
-                                            }
+                                            }}
                                         }
                                         if(!isset($k_cou))
                                         $k_cou = 1;
@@ -379,32 +351,20 @@ function provinces($name){
                                                     $show_all2='all';
                                                 }
                         foreach ($subdoccli2 as $sd) {
-                            if($show_all2=='none')
-                                            continue;
-                                            elseif($show_all2=='consent')
-                                            {
-                                                if($sd->sub_id !=4)
-                                                continue;
-                                            }
-                                            else
-                                            if($show_all2=='all')
-                                            {
-                                                //do nothing
-                                            }
-                            $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
-                            if ($prosubdoc['display'] != 0 && $d->display == 1) {
-                            $k_c++;
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
+                            if (displayform($forms, $d->title)){
+
+
+                            $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
+                            if (true){ //($prosubdoc['display'] != 0 && $d->display == 1) {
+                            $k_c++;
                             
                             $tab_count = $d->id;
                             
                             $tab_count = $tab_count + 1;
-                            if($k_c==1)
-                            {
+                            if($k_c==1) {
                                 $k_co = $tab_count;
-                            }
-                            else
-                            {
+                            } else {
                                 if($k_co<$tab_count)
                                 $k_co = $tab_count;
                             }
@@ -415,7 +375,7 @@ function provinces($name){
                                     include('subpages/documents/' . $d->form);
                                 ?>
                             </div>
-                        <?php }}
+                        <?php }}}
                         if(!isset($k_co))$k_co=1; ?>
 
                         <div class="tabber <?php echo $tab; ?> confirmations2" id="tab<?php echo ++$k_co; ?>">

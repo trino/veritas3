@@ -531,7 +531,7 @@
                 <tr class="even" role="row"><td colspan="3" align="center">
                         No orders found
                 </td></tr>
-            <?php if ($sidebar->orders_create == 1) {
+            <?php if ($sidebar->orders_create == 1 && false) {
                 echo '<TR class="odd" role="row">';
                 if ($sidebar->orders_mee == 1) {
                     ?>

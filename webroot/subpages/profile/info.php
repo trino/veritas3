@@ -331,7 +331,7 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                            
+
                         <?php }
                         if ($settings->client_option == 0) { ?>
                         <div class="col-md-4">

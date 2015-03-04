@@ -10,14 +10,14 @@
                     <input type="text" class="form-control" name="college_school_name[]" />
                     </div>
                     </div>
-                    
+
                     <div class="form-group col-md-12">
                     <label class="control-label col-md-3">Address </label>
                     <div class="col-md-9">
                     <input type="text" class="form-control" name="address[]" />
                     </div>
                     </div>
-                    
+
                     <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Supervisor's Name</label>
                                 <div class="col-md-3">
@@ -28,8 +28,8 @@
                                     <input type="text" class="form-control" name="supervisior_phone[]" />
                                 </div>
                     </div>
-                    
-                    
+
+
                     <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Supervisor's Email</label>
                                 <div class="col-md-3">
@@ -40,7 +40,7 @@
                                     <input type="text" class="form-control email1" name="supervisior_secondary_email[]" />
                                 </div>
                     </div>
-                    
+
                      <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Education Start Date</label>
                                 <div class="col-md-3">
@@ -51,7 +51,7 @@
                                     <input type="text" class="form-control date-picker" name="education_end_date[]" />
                                 </div>
                     </div>
-                    
+
                      <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Claims with this Tutor</label>
                                 <div class="col-md-3">
@@ -62,16 +62,16 @@
                                     <input type="text" class="form-control date-picker" name="date_claims_occur[]" />
                                 </div>
                     </div>
-                    
+
                     <div class="form-group col-md-12">
                                 <label class="control-label col-md-3">Education history confirmed by (Verifier Use Only):</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="education_history_confirmed_by[]" />
                                 </div>
                     </div>
-    
+
                             <div class="form-group col-md-12">
-    
+
                                 <label class="col-md-3 control-label">Highest grade completed : </label>
                                 <div class="col-md-3">
                                 <select name="highest_grade_completed[]" class="form-control">
@@ -99,9 +99,9 @@
                                 </select>
                                 </div>
                             </div>
-                            
-    
-                                                          
+
+
+
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-label">College : </label>
                                 <div class="col-md-3">
@@ -121,7 +121,7 @@
                                     <input type="text" class="form-control" name="last_school_attended[]" />
                                 </div>
                             </div>
-    
+
                         <div class="form-group col-md-12">
                                 <label class="col-md-3 control-label" style="display: none;">Signature:</label>
                                 <div class="col-md-3">
@@ -131,11 +131,10 @@
                         <div class="col-md-3">
                         <input type="text" class="form-control date-picker" name="date_time[]" />
                         </div>
-                
+
     </div>
 <div class="delete">
     <a href="javascript:void(0);" class="btn red" id="delete">Delete</a>
 </div>
-  </div>  
+  </div>
 
- 

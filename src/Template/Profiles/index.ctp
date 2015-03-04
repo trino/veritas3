@@ -59,6 +59,12 @@ function hasget($name){
         </li>
     </ul>
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+
+    <?php if ($sidebar->profile_create == 1) { ?>
+            <a href="<?php echo WEB_ROOT; ?>profiles/add" class="floatright btn btn-primary">
+                Create <?php echo ucfirst($settings->profile); ?></a>
+    <?php } ?>
+
 </div>
 
 <div class="row">

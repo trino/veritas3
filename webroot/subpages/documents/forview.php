@@ -20,9 +20,9 @@
         //include('subpages/documents/forprofileview.php');
         function PrintLine($lineclass, $name, $cnt, $bypass = false){
                   if($cnt>0 || $bypass) {
-                      echo '<tr class="' . $lineclass . '" role="row"><td width="45"><span class="icon-notebook"></span></td>';
+                      echo '<tr class="' . $lineclass . '" role="row"><td><span class="icon-notebook"></span></td>';
                       echo '<td>' . $name . '</td>';
-                      echo '<td class="actions" width="121">';
+                      echo '<td class="actions">';
                       if ($cnt > 0) {
                           echo '<span style="" class="label label-sm label-success">Submitted</span>';
                       } else { //should not occur
@@ -206,7 +206,7 @@
                                 <div class="portlet-body">
                                     <div oldclass="table-scrollable">
 
-                                        <div class="col-sm-6" style="padding-top:10px; border: 1px solid #E5E5E5;">
+                                        <div class="col-sm-6" style="padding-top:10px;" oldstyle="border: 1px solid #E5E5E5;">
                         <span class="profile-desc-text">   <p>Driver:
                                 <strong><?php
 
@@ -220,21 +220,23 @@
 
             			</span>
 
-                                        </div><div class="col-sm-1"></div>
+                                        </div>
 
-                                        <div class="col-sm-5" style="padding:10px 0 20px 0;">
-                                                <a style="float;right;" href="#" class=" btn btn-lg default yellow-stripe">
+                                        <div class="col-sm-6" style="paddng-left: 0; padding-right: 0;">
+                                                <TABLE align="right" style="float;right;"><TR><TD>
+                                               <SPAN style="white-space:nowrap"><a style="float;right;" href="#" class=" btn btn-lg default yellow-stripe">
                                                     Road Test Score </a><a href="#" class="btn btn-lg yellow">
                                                     <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
-                                                </a>
-                                            <a style="margin:20px 15px 0px 0px;float:right;" href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>"
+                                                </a></SPAN></TD></TR><TR><TD>
+                                            <a style="margin:10px 0px 0px 0px;float:right;" href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>"
                                                class="btn btn-primary">View Order</a>
+                                                        </TD></TR></TABLE>
                                         </div>
 
 
 
-
-                                        <div class="col-md-12">
+<div class="clearfix"></div>
+                                        <div class="col-md-12" style="margin-bottom: 8px;">
                                             <H4><i class="icon-doc font-blue-hoki"></i>
 								<span class="caption-subject bold font-blue-hoki uppercase">
 								Product Orders </span></H4>
@@ -444,9 +446,6 @@
                                             <?php
                                             }
                                             ?>
-<TR><TD colspan="3"></TD></TR>
-                                            </tbody>
-                                        </table>
 
 
 
@@ -471,17 +470,14 @@
 
 
 
+<TR><TD colspan="3">
 
-                                       <div class="col-md-12">
                                                         <H4><i class="icon-doc font-blue-hoki"></i>
 								<span class="caption-subject bold font-blue-hoki uppercase">
 								Documents Check-list </span></H4>
-                                        </div>
-
-
                                         <div class="clearfix"></div>
-                                        <table class="table" style="margin-bottom: 0px;">
-                                            <tbody>
+    </TD></TR>
+
 
 
                                                                      <?php
@@ -532,7 +528,30 @@
                 <thead>
                 </thead>
                 <tbody>
-                <tr class="even" role="row"><td colspan="" align="center">No orders found</td></tr>                        </tbody>
+                <tr class="even" role="row"><td colspan="3" align="center">
+                        No orders found
+                </td></tr>
+            <?php if ($sidebar->orders_create == 1) {
+                echo '<TR class="odd" role="row">';
+                if ($sidebar->orders_mee == 1) {
+                    ?>
+                    <TD align="center"><a
+                            href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?= $profile["id"]; ?>&ordertype=MEE">Order
+                            Mee</a></td>
+                <?php }
+                if ($sidebar->orders_products == 1) { ?>
+                    <TD align="center"><a
+                            href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?= $profile["id"]; ?>&ordertype=CART">Order
+                            Products </a></TD>
+                <?php }
+                if ($sidebar->order_requalify == 1) { ?>
+                    <TD align="center"><a
+                            href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?= $profile["id"]; ?>&ordertype=QUA">Re-Qualify </a>
+                    </TD>
+                <?php }
+                echo "</tr>";
+            } ?>
+                </tbody>
             </table>
 
             <?

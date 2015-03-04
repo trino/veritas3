@@ -16,6 +16,10 @@
     </ul>
 
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+    <?php if ($sidebar->document_create == 1) { ?>
+            <a href="<?php echo $this->request->webroot; ?>clients?flash" class="floatright btn btn-primary">
+                Create <?php echo ucfirst($settings->document); ?></a>
+    <?php } ?>
 </div>
 
 

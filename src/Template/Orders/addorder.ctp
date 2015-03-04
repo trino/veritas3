@@ -63,28 +63,21 @@ function provinces($name){
             $forms = explode(",", $_GET["forms"]);
             $show_all='all';
             $show_all2='all';
-            foreach($forms as $f)
-            {
-                if($f!=1)
-                {
+            foreach($forms as $f) {
+                if($f!=1){
                     $show_all='';
                     $show_all2='';
                 }
                 
             }
-            if($show_all=='')
-            {
-                if($forms[1]==1 || $forms[2]==1)
-                {
+            if($show_all=='') {
+                if($forms[1]==1 || $forms[2]==1) {
                     $show_all='consent';
                     $show_all2='consent';
-                }
-                else
-                {
+                } else {
                     $show_all='none';
                     $show_all2='none';
                 }
-                
             }
         }
 
@@ -97,8 +90,8 @@ function provinces($name){
             //pre-screening, driver application, consent form, road test
             //if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
             if(count($forms)>0){
-                if ($name == "consent form") {
-                    return $forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
+                if ($name == "consent form") {//consent form is now mandatory
+                    return 1; //$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
                 }
                 return false; //no other form needs to show
             }

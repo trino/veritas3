@@ -145,16 +145,20 @@
                                                     if ($sidebar->orders_create == '1' && !isset($_GET["draft"])) {
                                                         ?>
 
-
+                                                        <?php if($sidebar->orders_mee =='1'){?>
                                                         <a href="<?php
                                                             echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=MEE" class="btn red-flamingo">Order MEE</a>
-
-                                                        <!--a href="<?php
-                                                            echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=CART" class="btn btn-success">Order Products</a>
-                                                        
+                                                        <?php }
+                                                            if($sidebar->orders_products =='1'){
+                                                        ?>
                                                         <a href="<?php
-                                                            echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=QUA" class="btn btn-warning">Re-Qualify</a-->
-
+                                                            echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=CART" class="btn btn-success">Order Products</a>
+                                                         <?php }
+                                                            if($sidebar->order_requalify =='1'){
+                                                        ?>
+                                                        <a href="<?php
+                                                            echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=QUA" class="btn btn-warning">Re-Qualify</a>
+                                                        <?php }?>
                                                     <?php
                                                     }
 

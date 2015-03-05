@@ -162,23 +162,6 @@ function provinces($name){
                                         $k_c=0;
                                         $index=0;
                                         foreach ($subdoccli as $sd) {
-  
-                                            if($show_all=='none')
-                                            continue;
-                                            elseif($show_all=='consent')
-                                            {
-                                                if($sd->sub_id !=4)
-                                                continue;
-                                            }
-                                            else
-                                            if($show_all=='all')
-                                            {
-                                                //do nothing
-                                            }
-                                            
-                                                
-                                            $index+=1;
-
                                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
 
                                             //debug($d);
@@ -391,24 +374,16 @@ function provinces($name){
                             }
                             ?>
                             <div class="tabber <?php echo $tab; ?>" id="tab<?php echo $tab_count; ?>">
-                                <?php
-
-                                    include('subpages/documents/' . $d->form);
-                                ?>
+                                <?php include('subpages/documents/' . $d->form); ?>
                             </div>
                         <?php }}}
                         if(!isset($k_co))$k_co=1; ?>
 
                         <div class="tabber <?php echo $tab; ?> confirmations2" id="tab<?php echo ++$k_co; ?>">
-                            <?php
-                                include('subpages/documents/confirmation.php');
-                            ?>
+                            <?php include('subpages/documents/confirmation.php'); ?>
                         </div>
                         <div class="tabber <?php echo $tab; ?>" id="tab<?php echo ++$k_co; ?>">
-                            <?php
-                                //include('subpages/documents/forview.php');
-                                include('subpages/documents/success.php');
-                            ?>
+                            <?php include('subpages/documents/success.php'); //include('subpages/documents/forview.php'); ?>
                         </div>
                         <?php
                             // For view action only
@@ -419,9 +394,8 @@ function provinces($name){
                                     <?php include('subpages/documents/forview.php');?>
                                 </div>
 
-                            <?php
-                            }
-                        ?>
+                            <?php } ?>
+
                     </div>
                 </div>
                 <div class="form-actions <?php if ($tab == 'nodisplay') echo $tab; ?>" id="bottomact">

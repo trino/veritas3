@@ -3,7 +3,8 @@ var path =  document.URL; //window.location.pathname;
 function webroot(){
     var txt =  document.URL;
     var position = txt.indexOf("/", 8);
-    if( txt.indexOf("localhost")>0 ) {
+    var test = txt.indexOf("localhost");
+    if( test>0 ) {
         position = txt.indexOf("/", position + 1);
     } else {
         return "/";
@@ -12,6 +13,8 @@ function webroot(){
 }
 
 var base_url = webroot(); //'/'; //http://isbmeereports.com/';
+//alert("Base URL: " + base_url);
+
 //if(path.replace('localhost','')!=path){base_url =  webroot(); } //'http://localhost/'+ + '/';
 
 var table=0;

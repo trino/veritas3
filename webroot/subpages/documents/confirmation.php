@@ -100,7 +100,7 @@ $forms = '';
     $lineclass = PrintLine($lineclass, "Transclick", "prem_nat", $p[4]);
     $lineclass = PrintLine($lineclass, "Certifications", "prem_nat", $p[5]);
     $lineclass = PrintLine($lineclass, "Letter of Experience", "prem_nat", $p[6]);
-    //$lineclass = PrintLine($lineclass, "Check DL", "check_dl", $p[7]);
+    if (count($p)>7){ $lineclass = PrintLine($lineclass, "Check DL", "check_dl", $p[7]); }
 
     if ($lineclass=="") {
         echo '</ul>';

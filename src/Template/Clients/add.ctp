@@ -53,16 +53,14 @@
         if (isset($client) && $sidebar->client_delete == '1') { ?>
             <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $client->id; ?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                onclick="return confirm('Are you sure you want to delete <?= h($client->company_name) ?>?');"
-               class="floatright btn btn-danger">Delete</a>
+               class="floatright btn btn-danger btnspc">Delete</a>
         <?php }
          if (isset($client) && $sidebar->client_edit == '1' && isset($_GET['view'])) 
         {
-            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $client->id], ['class' => 'floatright btn btn-primary']);
-        }
-        else if(isset($client) && $param == 'edit')
-        {
+            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $client->id], ['class' => 'floatright btn btn-primary btnspc']);
+        } else if(isset($client) && $param == 'edit')  {
             ?>            
-            <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $client->id; ?>?view" class = 'floatright btn btn-info'>View</a>
+            <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $client->id; ?>?view" class = 'floatright btn btn-info btnspc'>View</a>
         <?php
                     
         }                

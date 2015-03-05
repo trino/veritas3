@@ -206,7 +206,7 @@
                 
                 <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                    onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-                   class="floatright btn btn-danger">Delete</a>
+                   class="floatright btn btn-danger btnspc">Delete</a>
                 </span>
             <?php
             }
@@ -214,7 +214,7 @@
             ?>
             <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-               class="floatright btn btn-danger">Delete</a>
+               class="floatright btn btn-danger btnspc">Delete</a>
         <?php
         }
 
@@ -227,13 +227,13 @@
         if ($sidebar->profile_edit == '1' && $param == 'view') {
 
             if ($checker == 1) {
-                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'floatright btn btn-primary']);
+                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'floatright btn btn-primary btnspc']);
 
             }
         } 
         else if($param == 'edit')
         {
-            echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'floatright btn btn-info']);
+            echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'floatright btn btn-info btnspc']);
         }}
         ?>
 </div>

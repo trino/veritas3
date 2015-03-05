@@ -82,9 +82,7 @@ function provinces($name){
             $name=trim(strtolower($name));
             if ($name == "consent form") { return true; } //mandatory in all sections now
             if(count($forms)>0){
-                if ($name == "consent form") {
-                    return true; //$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
-                }
+                if ($name == "consent form") { return true; }//$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
                 return false; //no other form needs to show
             }
             return true; //returns true if $forms is empty or smaller than the ID number (ie: MEE order)

@@ -404,9 +404,13 @@ orange Pricing table
     position: relative;
 }
 
-/*Priceing Active*/
+/*Pricing Active*/
 .pricing-orange:hover {
     z-index: 9;
+}
+
+.btnspc{
+    margin-right: 5px;
 }
 
 .dashboard-stat{

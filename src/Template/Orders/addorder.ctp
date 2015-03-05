@@ -154,6 +154,7 @@ function provinces($name){
                                     <?php
                                         $doc = $doc_comp->getDocument('orders');
                                         $subdoccli = $this->requestAction('/clients/getSubCli2/'.$cid);
+
                                         $subdoccli2 = $subdoccli;
                                         $doc2 = $doc;
                                         $i = 2;
@@ -162,6 +163,9 @@ function provinces($name){
                                         $index=0;
                                         foreach ($subdoccli as $sd) {
                                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
+
+                                            //debug($d);
+
                                             if (displayform($forms, $d->title)){
                                                 $index+=1;
                                             $act = 0;
@@ -350,6 +354,8 @@ function provinces($name){
                                                 }
                         foreach ($subdoccli2 as $sd) {
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
+
+                           // debug($d);
                             if (displayform($forms, $d->title)){
 
 

@@ -408,7 +408,7 @@
                 <div class="pricing hover-effect">
                     <div class="pricing-head">
                         <h3>Order Products <span>
-											Place an order A La Carte </span>
+											Place an Order A La Carte </span>
                         </h3>
                         <h4><!--i>$</i>999<i>.99+</i>
 											<span>

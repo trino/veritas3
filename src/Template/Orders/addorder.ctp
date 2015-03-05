@@ -183,6 +183,7 @@ function provinces($name){
                                                 }
                                                 
                                         foreach ($subdoccli as $sd) {
+                                            //echo $sd->id;continue;
                                             
                                             if($show_all=='none')
                                             continue;
@@ -1510,6 +1511,56 @@ function provinces($name){
                                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid;
                             savedMeeOrder(url, order_id, cid);
                         }
+                        else if (type == "Feedbacks") {
+                        var order_id = $('#did').val(),
+                            cid = '<?php echo $cid;?>',
+                            url = '<?php echo $this->request->webroot;?>feedbacks/add/' + order_id + '/' + cid;
+                        var param = $('#form_tab6').serialize();
+                        $.ajax({
+                            url: url,
+                            data: param,
+                            type: 'POST'
+                        });
+
+                    }
+                    else if (type == "Survey") {
+                        var order_id = $('#did').val(),
+                            cid = '<?php echo $cid;?>',
+                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/' + order_id + '/' + cid;
+                        var param = $('#form_tab5').serialize();
+                        $.ajax({
+                            url: url,
+                            data: param,
+                            type: 'POST'
+                        });
+
+                    }
+                    else if (type == "Attachment") {
+                        
+                        var order_id = $('#did').val(),
+                            cid = '<?php echo $cid;?>',
+                            url = '<?php echo $this->request->webroot;?>documents/addattachment/' + cid + '/' + order_id+ '?draft=' + draft;
+                        var param = $('#form_tab7').serialize();
+                        $.ajax({
+                            url: url,
+                            data: param,
+                            type: 'POST'
+                        });
+
+
+                    }
+                    else if (type == "Audits") {
+                         var order_id = $('#did').val(),
+                            cid = '<?php echo $cid;?>',
+                            url = '<?php echo $this->request->webroot;?>documents/audits/' + cid + '/' + order_id+ '?draft=' + draft;
+                        var param = $('#form_tab8').serialize();
+                        $.ajax({
+                            url: url,
+                            data: param,
+                            type: 'POST'
+                        });
+
+                    }
 
 
                     }

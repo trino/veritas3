@@ -64,7 +64,29 @@
             $this->set('profile', $profile);*/
             $this->set('disabled', 1);
             if ($did) {
+                
+                $feeds = TableRegistry::get('feedbacks');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                                        
+                    $feed = $feeds->find()->where(['order_id' => $did])->first();
+                    $this->set('feeds', $feed);
+                
 
+                    $survey = TableRegistry::get('Survey');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    $sur = $survey->find()->where(['order_id' => $did])->first();
+                    $this->set('survey', $sur);
+                
+                    $attachments = TableRegistry::get('attachments');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    $attachment = $attachments->find()->where(['order_id' => $did])->all();
+                    $this->set('attachments', $attachment);
+                
+                    $attachments = TableRegistry::get('audits');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    $audits = $attachments->find()->where(['order_id' => $did])->first();
+                    $this->set('audits', $audits);
+                
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
                 $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did, 'sub_id' => 1])->all();
@@ -171,6 +193,32 @@
             $this->set('cid', $cid);
             $this->set('did', $did);
             if ($did) {
+                
+                
+                    $feeds = TableRegistry::get('feedbacks');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                                        
+                    $feed = $feeds->find()->where(['order_id' => $did])->first();
+                    $this->set('feeds', $feed);
+                
+
+                    $survey = TableRegistry::get('Survey');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    $sur = $survey->find()->where(['order_id' => $did])->first();
+                    $this->set('survey', $sur);
+                
+                    $attachments = TableRegistry::get('attachments');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    $attachment = $attachments->find()->where(['order_id' => $did])->all();
+                    $this->set('attachments', $attachment);
+                
+                    $attachments = TableRegistry::get('audits');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    $audits = $attachments->find()->where(['order_id' => $did])->first();
+                    $this->set('audits', $audits);
+                
+                
+                
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
                 $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did, 'sub_id' => 1])->all();

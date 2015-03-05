@@ -717,7 +717,8 @@ class ClientsController extends AppController {
     {
         $sub = TableRegistry::get('client_sub_order');
         $query = $sub->find();
-        $q = $query->select()->where(['client_id'=>$id,'sub_id IN (SELECT id FROM subdocuments WHERE display = 1 AND orders = 1)','sub_id IN (SELECT subdoc_id FROM clientssubdocument WHERE display_order > 0 AND client_id = '.$id.')'])->order(['display_order'=>'ASC']);
+        //$q = $query->select()->where(['client_id'=>$id,'sub_id IN (SELECT id FROM subdocuments WHERE display = 1 AND orders = 1)','sub_id IN (SELECT subdoc_id FROM clientssubdocument WHERE display_order > 0 AND client_id = '.$id.')'])->order(['display_order'=>'ASC']);
+        $q = $query->select()->where(['client_id'=>$id,'sub_id IN (SELECT id FROM subdocuments WHERE display = 1 AND orders = 1)'])->order(['display_order'=>'ASC']);
 
 
             $this->response->body($q);

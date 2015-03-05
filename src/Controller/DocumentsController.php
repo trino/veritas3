@@ -183,24 +183,38 @@
                 if ($query->sub_doc_id == '6') {
                     $feeds = TableRegistry::get('feedbacks');
                     //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
                     $feed = $feeds->find()->where(['document_id' => $did])->first();
+                    else
+                    $feed = $feeds->find()->where(['order_id' => $_GET['order_id']])->first();                                        
                     $this->set('feeds', $feed);
                 } elseif ($query->sub_doc_id == '5') {
 
                     $survey = TableRegistry::get('Survey');
                     //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
                     $sur = $survey->find()->where(['document_id' => $did])->first();
+                    else
+                    $sur = $survey->find()->where(['order_id' => $_GET['order_id']])->first();                                                            
+                    
+                                                                                
                     $this->set('survey', $sur);
                 } elseif ($query->sub_doc_id == '7') {
                     $attachments = TableRegistry::get('attachments');
                     //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
                     $attachment = $attachments->find()->where(['document_id' => $did])->all();
+                    else
+                    $attachment = $attachments->find()->where(['order_id' => $_GET['order_id']])->all();                                        
                     $this->set('attachments', $attachment);
                 }
                 elseif ($query->sub_doc_id == '8') {
                     $attachments = TableRegistry::get('audits');
                     //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
                     $audits = $attachments->find()->where(['document_id' => $did])->first();
+                    else
+                    $audits = $attachments->find()->where(['order_id' => $_GET['order_id']])->first();                                        
                     $this->set('audits', $audits);
                 }                
 
@@ -478,28 +492,43 @@
 
             if ($did) {
                 $doc = TableRegistry::get('Documents');
+                
                 $query = $doc->find()->where(['id' => $did])->first();
                 if ($query->sub_doc_id == '6') {
                     $feeds = TableRegistry::get('feedbacks');
                     //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
                     $feed = $feeds->find()->where(['document_id' => $did])->first();
+                    else
+                    $feed = $feeds->find()->where(['order_id' => $_GET['order_id']])->first();                                        
                     $this->set('feeds', $feed);
                 } elseif ($query->sub_doc_id == '5') {
 
                     $survey = TableRegistry::get('Survey');
                     //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
                     $sur = $survey->find()->where(['document_id' => $did])->first();
+                    else
+                    $sur = $survey->find()->where(['order_id' => $_GET['order_id']])->first();                                                            
+                    
+                                                                                
                     $this->set('survey', $sur);
                 } elseif ($query->sub_doc_id == '7') {
                     $attachments = TableRegistry::get('attachments');
                     //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
                     $attachment = $attachments->find()->where(['document_id' => $did])->all();
+                    else
+                    $attachment = $attachments->find()->where(['order_id' => $_GET['order_id']])->all();                                        
                     $this->set('attachments', $attachment);
                 }
                 elseif ($query->sub_doc_id == '8') {
                     $attachments = TableRegistry::get('audits');
                     //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
                     $audits = $attachments->find()->where(['document_id' => $did])->first();
+                    else
+                    $audits = $attachments->find()->where(['order_id' => $_GET['order_id']])->first();                                        
                     $this->set('audits', $audits);
                 }                
 
@@ -798,10 +827,11 @@
                 $arr['document_type'] = $_POST['document_type'];
                 $arr['title'] = $_POST['title'];
                 $arr['created'] = date('Y-m-d H:i:s');
-
+                if(isset($_GET['document']) && !isset($_GET['order_id'])){
                 if (!$did || $did == '0') {
 
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
+                    if(isset($_GET['document']))
                     $docs = TableRegistry::get('Documents');
                     $doc = $docs->newEntity($arr);
 
@@ -857,6 +887,64 @@
                     $this->Flash->success('Document Updated successfully.');
                     $this->redirect(array('action' => 'index'));
                 }
+                }
+                else
+                {
+                    $doczs = TableRegistry::get('attachments');
+                    $check = $doczs->find()->where(['order_id'=>$did]);
+                    unset($doczs);
+                    if (!$check) {
+                            $client_docs = array_unique($_POST['client_doc']);
+                                foreach ($client_docs as $d) {
+                                    $doczs = TableRegistry::get('attachments');
+                                    if ($d != "") {
+                                        
+                                        $ds['order_id'] = $did;
+                                        $ds['file'] = $d;
+                                        $docz = $doczs->newEntity($ds);
+                                        $doczs->save($docz);
+                                        unset($doczs);
+                                    }
+                                }
+                        }
+                        else
+                        {
+                            $this->loadModel('Attachments');
+                            $this->Attachments->deleteAll(['order_id' => $did]);
+                            $client_docs = array_unique($_POST['client_doc']);
+        
+                            foreach ($client_docs as $d) {
+                                $doczs = TableRegistry::get('attachments');
+                                if ($d != "") {
+                                    //$doczs = TableRegistry::get('attachments');
+                                    $ds['order_id'] = $did;
+                                    $ds['document_id'] = 0;
+                                    $ds['file'] = $d;
+                                    $docz = $doczs->newEntity($ds);
+                                    $doczs->save($docz);
+                                    unset($doczs);
+                                }
+                            }
+                        }
+                   //$arr['order_id'] = $did;
+                   $arr['document_id'] = 0;
+                   
+                    if(!isset($_GET['order_id']))
+                    $arr['order_id'] = $did;
+                    else{
+                    $arr['order_id'] = $_GET['order_id'];
+                    $did = $_GET['order_id'];
+                    }
+                    $arr['document_id'] = 0;
+                    if (isset($_POST['uploaded_for']))
+                        $uploaded_for = $_POST['uploaded_for'];
+                    else
+                        $uploaded_for = '';
+                    $for_doc = array('document_type'=>'Attachment','sub_doc_id'=>7,'order_id'=>$arr['order_id'],'user_id'=>'','uploaded_for'=>$uploaded_for);
+                    $this->Document->saveDocForOrder($for_doc);
+                    die();
+                 
+                }
 
             }
 
@@ -876,7 +964,7 @@
                 $arr['document_type'] = $_POST['document_type'];
                
                 
-
+                 if(isset($_GET['document']) && !isset($_GET['order_id'])){
                 if (!$did || $did == '0') {
 
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
@@ -924,6 +1012,58 @@
                         unset($doczs);
                     $this->Flash->success('Document Updated successfully.');
                     $this->redirect(array('action' => 'index'));
+                }
+                }
+                else
+                {
+                    $arr['document_id'] = 0;                   
+                    if(!isset($_GET['order_id']))
+                    $arr['order_id'] = $did;
+                    else{
+                    $arr['order_id'] = $_GET['order_id'];
+                    $did = $_GET['order_id'];
+                    }
+                    $arr['document_id'] = 0;
+                    if (isset($_POST['uploaded_for']))
+                        $uploaded_for = $_POST['uploaded_for'];
+                    else
+                        $uploaded_for = '';
+                    $for_doc = array('document_type'=>'Audit','sub_doc_id'=>8,'order_id'=>$arr['order_id'],'user_id'=>'','uploaded_for'=>$uploaded_for);
+                    $this->Document->saveDocForOrder($for_doc);
+                    
+                    $doczs = TableRegistry::get('audits');
+                    $check = $doczs->find()->where(['order_id'=>$did])->first();
+                    unset($doczs);
+                    if (!$check) {
+                        $ds['order_id'] = $did;
+                        $ds['document_id'] = 0;
+                        $ds['date'] = $_POST['year']."-".$_POST['month'];
+                        $doczs = TableRegistry::get('audits');
+                        foreach($_POST as $k=>$v)
+                        {
+                            $ds[$k]=$v;
+                        }
+                        $docz = $doczs->newEntity($ds);
+                        $doczs->save($docz);
+                        unset($doczs);
+                        }
+                        else
+                        {
+                            $this->loadModel('Audits');
+                          $this->Audits->deleteAll(['order_id' => $did]);
+                            $doczs = TableRegistry::get('audits');
+                            $ds['order_id'] = $did;
+                            $ds['date'] = $_POST['year']."-".$_POST['month'];
+                            foreach($_POST as $k=>$v)
+                            {
+                                $ds[$k]=$v;
+                            }
+                            $docz = $doczs->newEntity($ds);
+                            $doczs->save($docz);
+                            unset($doczs);  
+                        }
+                    
+                    die();
                 }
 
             }

@@ -18,6 +18,7 @@ class FeedbacksController extends AppController{
         {
             redirect('/login');
         }
+        
     }
     
     public function index()
@@ -27,16 +28,40 @@ class FeedbacksController extends AppController{
     
     public function add($order_id,$cid)
     {
+        $this->loadComponent('Document');
         if(isset($_GET['document']))
         {
             $_POST['document_id'] = $order_id;
+            $_POST['order_id'] = 0;
+        }
+        else{
+        $_POST['order_id'] = $order_id;
+        $_POST['document_id'] = 0;
         }
         $_POST['client_id'] = $cid;
         $_POST['user_id'] = $this->request->session()->read('Profile.id');
         
         
         $docs = TableRegistry::get('Feedbacks');
-        if($docx = $docs->find()->where(['document_id'=>$order_id])->first())
+         if(isset($_GET['document']))
+        $docx = $docs->find()->where(['document_id'=>$order_id])->first();
+        else
+        $docx = $docs->find()->where(['order_id'=>$order_id])->first();
+        
+        if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                if(!isset($_GET['order_id']))
+                $arr['order_id'] = $_POST['order_id'];
+                else
+                $arr['order_id'] = $_GET['order_id'];
+                $arr['document_id'] = 0;
+                if (isset($_POST['uploaded_for']))
+                    $uploaded_for = $_POST['uploaded_for'];
+                else
+                    $uploaded_for = '';
+                $for_doc = array('document_type'=>'Feedback','sub_doc_id'=>6,'order_id'=>$arr['order_id'],'user_id'=>$_POST['user_id'],'uploaded_for'=>$uploaded_for);
+                 $this->Document->saveDocForOrder($for_doc);
+            }
+        if($docx)
         {
             
             $feedback['title']= $_POST['title'];
@@ -66,11 +91,11 @@ class FeedbacksController extends AppController{
     		  
     			if ($docs->save($doc)) {
     			     echo "OK";
-    				$this->Flash->success('The feedback has been sent.');
+    				//$this->Flash->success('The feedback has been sent.');
                     	//return $this->redirect('/documents/index');
     			} else {
     			 echo "ss";
-    				$this->Flash->error('Feedback not sent. Please try again.');
+    				//$this->Flash->error('Feedback not sent. Please try again.');
                     //return $this->redirect('/feedbacks/add');
     			}
     		}
@@ -81,16 +106,47 @@ class FeedbacksController extends AppController{
     }
     public function addsurvey($order_id,$cid)
     {
+        $this->loadComponent('Document');
         if(isset($_GET['document']))
         {
             $_POST['document_id'] = $order_id;
+            $_POST['order_id'] = 0;
         }
+        else{
+        $_POST['order_id'] = $order_id;
+        $_POST['document_id'] = 0;
+        }
+        
         $_POST['client_id'] = $cid;
+        
         $_POST['user_id'] = $this->request->session()->read('Profile.id');
+        if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                if(!isset($_GET['order_id']))
+                $arr['order_id'] = $_POST['order_id'];
+                else
+                $arr['order_id'] = $_GET['order_id'];
+                $arr['document_id'] = 0;
+                if (isset($_POST['uploaded_for']))
+                    $uploaded_for = $_POST['uploaded_for'];
+                else
+                    $uploaded_for = '';
+                $for_doc = array('document_type'=>'Survey','sub_doc_id'=>5,'order_id'=>$arr['order_id'],'user_id'=>$_POST['user_id'],'uploaded_for'=>$uploaded_for);
+                
+                $this->Document->saveDocForOrder($for_doc);
+            }
+        
         
         
         $docs = TableRegistry::get('Survey');
-        if($docx = $docs->find()->where(['document_id'=>$order_id])->first())
+        if(isset($_GET['document']) && !isset($_GET['order_id']))
+        $docx = $docs->find()->where(['document_id'=>$order_id])->first();
+        else{
+        if(isset($_GET['order_id']))
+        $docx = $docs->find()->where(['order_id'=>$_GET['order_id']])->first();
+        else
+        $docx = $docs->find()->where(['order_id'=>$order_id])->first();
+        }
+        if($docx)
         {
             $survey['ques1']= $_POST['ques1'];
             $survey['ques2a'] = $_POST['ques2a'];
@@ -115,10 +171,10 @@ class FeedbacksController extends AppController{
     		  
     			if ($docs->save($doc)) {
     			      echo "OK";
-    				$this->Flash->success('The Survey has been sent.');
+    				//$this->Flash->success('The Survey has been sent.');
                     	//return $this->redirect('/documents/index');
     			} else {
-    				$this->Flash->error('Survey not sent. Please try again.');
+    				//$this->Flash->error('Survey not sent. Please try again.');
                     //return $this->redirect('/feedbacks/add');
     			}
     		}

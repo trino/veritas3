@@ -259,7 +259,7 @@ function hasget($name){
                                              <!--<td class="actions  util-btn-margin-bottom-5"> -->
                                             <br />
                                         <?php  if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
-                                                echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info btn-sm']);
+                                                echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info btn-xs']);
                                             } ?>
 
 
@@ -270,10 +270,10 @@ function hasget($name){
                                                     if ($checker == 1) {
                                                         if($this->request->session()->read('Profile.profile_type') == '2'){
                                                         if($profile->profile_type == '5')    
-                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-sm']);
+                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-xs']);
                                                         }
                                                         else
-                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-sm']);
+                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-xs']);
                                                     }
                                                 } ?>
                                             <?php if ($sidebar->profile_delete == '1') {
@@ -283,7 +283,7 @@ function hasget($name){
 
                                                         <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                                                            onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-                                                           class="btn btn-danger btn-sm">Delete</a>
+                                                           class="btn btn-danger btn-xs">Delete</a>
                                                         </span>
                                                     <?php
                                                     }
@@ -291,7 +291,7 @@ function hasget($name){
                                                     ?>
                                                     <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                                                        onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-                                                       class="btn btn-danger btn-sm">Delete</a>
+                                                       class="btn btn-danger btn-xs">Delete</a>
                                                 <?php
                                                 }
 

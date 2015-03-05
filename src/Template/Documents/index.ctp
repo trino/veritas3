@@ -16,6 +16,18 @@
     </ul>
 
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+    <?php if ($sidebar->document_create == 1) { ?>
+            <a href="<?php echo $this->request->webroot; ?>clients?flash" class="floatright btn btn-primary btnspc">
+                Create <?php echo ucfirst($settings->document); ?></a>
+    <?php }
+    if (isset($_GET["draft"])) {?>
+        <a href="<?php echo $this->request->webroot; ?>documents/index" class="floatright btn btn-info btnspc">
+            List <?php echo ucfirst($settings->document); ?>s</a>
+    <?php } else { ?>
+        <a href="<?php echo $this->request->webroot; ?>documents/index?draft" class="floatright btn btn-info btnspc">
+            Drafts</a>
+    <?php } ?>
+
 </div>
 
 
@@ -190,10 +202,12 @@
                                 $uploaded_by = $doc_comp->getUser($docs->user_id);
                                 $uploaded_for = $doc_comp->getUser($docs->uploaded_for);
                                 $getClientById = $doc_comp->getClientById($docs->client_id);
+                                $orderID = $this->Number->format($docs->order_id);
+                                $orderURL = '<A HREF="../orders/vieworder/11/' . $orderID . '">' . $orderID . '</A>';
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($docs->id); ?></td>
-                                    <td align="center"><?= $this->Number->format($docs->order_id); ?></td>
+                                    <td align="center"><?php if($orderID>0) {echo $orderURL;} else { echo "N/A"; } ?></td>
                                     <td style="width: 140px;">
                                         <?php switch(1){//change the number to pick a style
                                             case 0://plain text
@@ -201,7 +215,7 @@
                                                 break;
                                             case 1://top block
                                                 echo '<div class="dashboard-stat ';
-                                                $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedback" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
+                                                $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedbacks" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
                                                 if (isset($colors[strtolower($docs->document_type)])){
                                                     echo $colors[strtolower($docs->document_type)];
                                                 } else {
@@ -229,7 +243,7 @@
                                         <?php break;
                                             case 2: //tile, doesn't work. CSS not included? ?>
 
-                                                <a href="/veritas3/orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
+                                                <a href=$this->request->webroot."orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
                                                     <div class="tile-body">
                                                         <i class="icon-docs"></i>
                                                     </div>
@@ -280,49 +294,62 @@
 
                                         <?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
                                             if(!$docs->order_id)
-                                            echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => 'btn btn-info']);
+                                            echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => 'btn btn-info btn-xs']);
                                             else{
                                             ?>
-                                            <a class="btn btn-info" href="<?php echo $this->request->webroot;?>documents/view/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">View</a>
+                                            <a class="btn btn-info btn-xs" href="<?php echo $this->request->webroot;?>documents/view/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">View</a>
                                             <?php
                                         }} ?>
                                         <?php
                                             if ($sidebar->document_edit == '1') { 
                                                 if ($docs->document_type == 'feedbacks')
-                                                    echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => 'btn btn-primary']);                                                
+                                                    echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => 'btn btn-primary btn-xs']);
                                                 else{
                                                 if(!$docs->order_id)
-                                                    echo $this->Html->link(__('Edit'), ['action' => 'add', $docs->client_id, $docs->id], ['class' => 'btn btn-primary']);
+                                                    echo $this->Html->link(__('Edit'), ['action' => 'add', $docs->client_id, $docs->id], ['class' => 'btn btn-primary btn-xs']);
                                                 else
                                                     {
                                                         ?>
-                                                        <a class="btn btn-primary" href="<?php echo $this->request->webroot;?>documents/add/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">Edit</a>
+                                                        <a class="btn btn-primary btn-xs" href="<?php echo $this->request->webroot;?>documents/add/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">Edit</a>
                                                         <?php
                                                     }
                                                     }
                                             }
                                         ?>
                                         <?php if ($sidebar->document_delete == '1' && $docs->order_id == 0) {
+                                            if(!$this->request->session()->read('Profile.super') && $docs->user_id == $this->request->session()->read('Profile.id'))
+                                           { 
+                                            $dl_show = 1;
+                                            }
+                                            else if($this->request->session()->read('Profile.super'))
+                                            { 
+                                            $dl_show = 1;
+                                            }
+                                            else $dl_show = 0;
+                                            if($dl_show == 1){
                                             if (isset($_GET['draft'])) {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>documents/delete/<?php echo $docs->id; ?>/draft"
                                                    onclick="return confirm('Are you sure you want to delete <?= $docname; ?>?');"
-                                                   class="btn btn-danger">Delete</a>
+                                                   class="btn btn-danger btn-xs">Delete</a>
 
                                             <?php
                                             } else {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>documents/delete/<?php echo $docs->id; ?>"
                                                    onclick="return confirm('Are you sure you want to delete <?= $docname; ?>?');"
-                                                   class="btn btn-danger">Delete</a>
+                                                   class="btn btn-danger btn-xs">Delete</a>
                                             <?php
-                                            }
+                                            }}
+                                            
                                         }
 
                                         ?>
 
                                     </td>
                                 </tr>
+
+                                <!--TR><TD colspan="8"><!php print_r($docs); !></TD></TR-->
 
                             <?php endforeach; ?>
                         </tbody>

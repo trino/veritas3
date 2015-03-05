@@ -3,18 +3,28 @@
 <input type="hidden" name="sub_doc_id" value="1" class="sub_docs_id" id="af" />
 <div class="clearfix"></div>
 <hr/>
+
         <div class="form-group row">
-            <h4 class="col-md-12">Driver Pre-Screen Questions</h4>
-
-        <div class="col-md-4">
-            <label class="control-label">Recruiter's Name : </label>
-
             <?php
-                $value="";
-                if(!$did){
-                    $value = $this->request->session()->read('Profile.fname') . ' ' . $this->request->session()->read('Profile.lname');
+            $controller = $this->request->params['controller'];
+            $controller = strtolower($controller);
+            if($controller == 'orders' )
+            {
+                echo '<h4 class="col-md-12">Driver Pre-Screen Questions</h4>';
                 }
-            ?>
+                else {
+                    
+                }
+                ?>
+            <div class="col-md-4">
+                <label class="control-label">Recruiter's Name : </label>
+    
+                <?php
+                    $value="";
+                    if(!$did){
+                        $value = $this->request->session()->read('Profile.fname') . ' ' . $this->request->session()->read('Profile.lname');
+                    }
+                ?>
             <input type="text" class="form-control" name="recruiter_name" value="<?=$value ?>"  <?php if(strlen($value)>1){echo "disabled";}?> />
 
         </div>

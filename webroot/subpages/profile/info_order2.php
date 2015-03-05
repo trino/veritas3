@@ -19,7 +19,8 @@
         return $tempstr;
     }
 
-    $tempstr = getcheckboxes("form", 8);
+    $tempstr = getcheckboxes("form", 7);
+    $tempstr2 = getcheckboxes("formb", 7);
 
     $driver = 0;
     if (isset($_GET['driver'])) {
@@ -481,14 +482,14 @@
                             
                         </li>
                         
-                        <li>
+                        <!--li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
                             <div class="col-xs-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
                             
                             <div class="clearfix"></div>
                             
                             
-                        </li>
+                        </li-->
 
                     </ul>
                     <div class="pricing-footer">
@@ -529,13 +530,13 @@
                         <li>
                             
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb0" value="1"/></div>
                             <div class="clearfix"></div>
                         </li>
                         
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="dri_abs" id="form1" value="1"></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="dri_abs" id="formb1" value="1"></div>
                             
                             <div class="clearfix"></div>
                         </li>
@@ -543,7 +544,7 @@
                         
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="CVOR" id="form2" value="1"></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="CVOR" id="formb2" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
@@ -552,7 +553,7 @@
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form3" value="1"></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb3" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
@@ -562,7 +563,7 @@
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form4" value="1"></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb4" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
@@ -571,7 +572,7 @@
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form5" value="1"></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb5" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
@@ -580,20 +581,20 @@
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb6" value="1"></div>
                             
                             <div class="clearfix"></div>
                             
                             
                         </li>
-                        <li>
+                        <!--li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-xs-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
+                            <div class="col-xs-2"><input id="formb7" value="1" checked type="checkbox" name="check_dl"></div>
                             
                             <div class="clearfix"></div>
                             
                             
-                        </li>
+                        </li-->
 
 
                     </ul>
@@ -601,7 +602,7 @@
                         <p>
                         <hr/>
                         </p>
-                        <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr); ?>
+                        <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr2); ?>
 
                     </div>
                 </div>

@@ -3,7 +3,7 @@ namespace App\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\ORM\TableRegistry;
-    use Cake\Event\Event;
+use Cake\Event\Event;
 use Cake\View\Helper\SessionHelper;
     
 
@@ -145,18 +145,48 @@ class DocumentComponent extends Component
                     if ($docs->save($doc)) {
                         //$this->Flash->success('Client saved successfully.');
                         echo $doc->id;
+                        $model = $controller->loadModel('AttachDocs');
+                        $model->deleteAll(['doc_id'=>$doc->id]);
+                        $client_docs = explode(',',$_POST['attach_doc']);
+                        foreach($client_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $attach = TableRegistry::get('attach_docs');
+                                $ds['doc_id']= $doc->id;
+                                $ds['file'] =$d;
+                                 $att = $attach->newEntity($ds);
+                                 $attach->save($att);
+                                unset($att);
+                            }
+                        }
+                        
                     } else {
                         //$this->Flash->error('Client could not be saved. Please try again.');
                         //echo "e";
                     }
 
-                } elseif ($arr['sub_doc_id'] != 7) {
+                } else{
                     $query2 = $docs->query();
                     $query2->update()
                         ->set($arr)
                         ->where(['id' => $did])
                         ->execute();
-                    //$this->Flash->success('Client saved successfully.');
+                        $model = $controller->loadModel('AttachDocs');
+                        $model->deleteAll(['doc_id'=>$did]);
+                        $client_docs = explode(',',$_POST['attach_doc']);
+                        foreach($client_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $attach = TableRegistry::get('attach_docs');
+                                $ds['doc_id']= $did;
+                                $ds['file'] =$d;
+                                 $att = $attach->newEntity($ds);
+                                 $attach->save($att);
+                                unset($att);
+                            }
+                        }
                     echo $did;
                 }
             }

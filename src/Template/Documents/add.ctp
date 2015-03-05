@@ -35,9 +35,12 @@ if ($action == "Add") {
     if(isset($did) && $did) { $action = "Edit";}
 }
 
-$id0 = $this->request->params['pass'][0];
-$id1 = $this->request->params['pass'][1];
-
+if (isset($this->request->params['pass'][1])) {
+    $id0 = $this->request->params['pass'][0];
+    $id1 = $this->request->params['pass'][1];
+    $id2="";
+    if (isset($_GET['order_id'])) { $id2= '?order_id=' . $_GET['order_id']; }
+}
 ?>
 <h3 class="page-title">
     <?php echo $action . " " . ucfirst($settings->document); ?>
@@ -61,7 +64,7 @@ $id1 = $this->request->params['pass'][1];
         }
         $opposite = "edit"; $url="add";
         if ($action=="Edit"){ $opposite = "view"; $url= "view";}
-        echo '<a href="../../' . $url . '/' . $id0 . "/" . $id1 . '?order_id=' . $_GET['order_id'] . '" class="floatright btn btn-info">' . ucfirst($opposite) . '</a>';
+    if (isset($this->request->params['pass'][1])) { echo '<a href="../../' . $url . '/' . $id0 . "/" . $id1 . $id2 . '" class="floatright btn btn-info btnspc">' . ucfirst($opposite) . '</a>'; }
 
 
         ?>
@@ -90,7 +93,7 @@ $id1 = $this->request->params['pass'][1];
                             <?php
                             }
                         ?>
-                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();" class="btn btn-success moreback" style="display: none;">Back</a>
+                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();$('.moredocxs').hide();" class="btn btn-success moreback" style="display: none;">Back</a>
 
                     <?php include('subpages/home_blocks.php');
                     if(isset($mod->uploaded_for))
@@ -124,33 +127,233 @@ $id1 = $this->request->params['pass'][1];
 
                     </div>
                     <div class="clearfix"></div>
+
+                    <div class="moredocxs">
+
+                    <?php
+                    
+                    $controller = $this->request->params['controller'];
+                    $controller = strtolower($controller);
+                    ?>
+                    
+
                     <div class="subform1" style="display: none;">
-                        <?php include('subpages/documents/company_pre_screen_question.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box blue-madison">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Driver Pre-Screen Questions
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/company_pre_screen_question.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                        ?>
+                        
                     </div>
                     <div class="subform2" style="display: none;">
-                        <?php include('subpages/documents/driver_application.php'); ?>
+                        <?php include('subpages/documents/driver_application.php'); 
+                        ?>
                     </div>
                     <div class="subform3" style="display: none;">
-                        <?php include('subpages/documents/driver_evaluation_form.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box yellow">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Road Test
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/driver_evaluation_form.php');
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                     <div class="subform4" style="display: none;">
-                        <?php include('subpages/documents/document_tab_3.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box purple">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Place MEE Order
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/document_tab_3.php');
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                     <div class="subform5" style="display: none;">
-                        <?php include('subpages/documents/survey.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box green">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Survey
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/survey.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                     <div class="subform6" style="display: none;">
-                        <?php include('subpages/documents/feedbacks.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box red-intense">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Feedbacks
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/feedbacks.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                     <div class="subform7" style="display: none;">
-                        <?php include('subpages/documents/attachments.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box yellow-saffron">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Attachments
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/attachments.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                      <div class="subform8" style="display: none;">
-                        <?php include('subpages/documents/audits.php'); ?>
+                     <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box grey-cascade">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Audits
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/audits.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
 
                     <div class="subform9" style="display: none;">
-                        <?php include('subpages/documents/products.php'); ?>
+                        <?php include('subpages/documents/products.php');
+                         ?>
+                    </div>
+                    <div class="attachments" style="display: none;">
+                        <?php include('subpages/documents/attach_doc.php');
+                         ?>
+                    </div>
                     </div>
                 </div>
                 <div class="form-actions">
@@ -267,7 +470,7 @@ $id1 = $this->request->params['pass'][1];
     }
     //showforms(doc_type);
     function showforms(form_type) {
-        //alert(form_type);
+        $('.moredocxs').show();
         var arr_formtype = form_type.split('?');
         var sub_doc_id = arr_formtype[1];
 
@@ -342,6 +545,12 @@ $id1 = $this->request->params['pass'][1];
             //alert(form_type);
             for (var p = 1; p <= 9; p++) {
                 $('.subform' + p).hide();
+                if(p>4)
+                {
+                    $('.attachments').show();
+                }
+                else
+                     $('.attachments').hide();                                
             }
             $('.subform' + s_arr[1]).show(200, function () {
                 /*if (s_arr[1] == '1')
@@ -1137,13 +1346,19 @@ $id1 = $this->request->params['pass'][1];
             else
                 draft = 0;
             var type = $(".document_type").val();
+            var attach_docs = "";
+            $('.moredocs').each(function(){
+                attach_docs += $(this).val()+",";  
+            })
+            attach_docs = attach_docs.substring(0,attach_docs.length-1);
             //alert(type);
             //alert($('#sub_id').val());return;
             var data = {
                 uploaded_for: $('#selecting_driver').val(),
                 type: type,
                 sub_doc_id: $('#sub_id').val(),
-                division: $('#division').val()
+                division: $('#division').val(),
+                attach_doc: attach_docs
             };
             //alert(type);return false;
             
@@ -1304,10 +1519,10 @@ $id1 = $this->request->params['pass'][1];
             success: function (res) {
                                     //alert(draft);
                                     //return;
-                                    if(draft==0)
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
-                                    else
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                if(draft==0)
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                else
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
                                     
                                     
             }

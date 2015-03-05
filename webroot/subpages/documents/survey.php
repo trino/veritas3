@@ -59,8 +59,10 @@ $is_disabled = '';
     					<input type="radio" <?php echo $is_disabled;?> class="form-control" name="ques4" value="1" <?php if(isset($survey) && $survey->ques4=='1')echo "checked='checked'";?>/>&nbsp;&nbsp;Yes
     					<input type="radio" <?php echo $is_disabled;?> class="form-control" name="ques4" value="0" <?php if(isset($survey) && $survey->ques4=='0')echo "checked='checked'";?>/>&nbsp;&nbsp;No
     				</div>
+                    
                 <div class="clearfix"></div>
                 </div>
+                
  </form>              
 <script>
 $(function(){

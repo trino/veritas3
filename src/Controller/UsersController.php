@@ -16,7 +16,8 @@ class UsersController extends AppController {
         parent::initialize();
         if(!$this->request->session()->read('User.id'))
         {
-            $this->redirect('/login');
+                $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                $this->redirect('/login?url='.urlencode($url));
         }
         
     }

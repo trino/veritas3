@@ -2,8 +2,8 @@
                     <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                         <thead>
                         <tr class="sorting">
-                            <th width="75%"><a href="/veritas3/documents/orderslist?sort=orders.title&amp;direction=asc">Title</a></th>
-                            <th width="25%"><a href="/veritas3/documents/orderslist?sort=created&amp;direction=asc"">Created</a></th>
+                            <th width="75%"><a href="<?=$this->request->webroot;?>documents/orderslist?sort=orders.title&amp;direction=asc">Titl2e</a></th>
+                            <th width="25%"><a href="<?=$this->request->webroot;?>documents/orderslist?sort=created&amp;direction=asc"">Created</a></th>
                         </tr>
                         </thead>
                         <tbody>

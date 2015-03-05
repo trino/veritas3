@@ -31,7 +31,4 @@ use Cake\Network\Response;
 use Cake\Routing\DispatcherFactory;
 
 $dispatcher = DispatcherFactory::create();
-$dispatcher->dispatch(
-	Request::createFromGlobals(),
-	new Response()
-);
+$dispatcher->dispatch(Request::createFromGlobals(),	new Response()); //this is the line that is screwing up debug mode

@@ -23,7 +23,8 @@ class MessagesController extends AppController {
     public function index() {
 	   if(!$this->request->session()->read('Profile.id'))
         {
-            $this->redirect('/login');
+                $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                $this->redirect('/login?url='.urlencode($url));
         }
 	}
     public function inbox()

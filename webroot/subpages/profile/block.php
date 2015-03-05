@@ -38,9 +38,9 @@ if ($activetab == "permissions") {
             <li class="">
                 <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
             </li>
-            <!--<li class="">
+            <li class="">
                 <a href="#subtab_2_3" data-toggle="tab">Top blocks</a>
-            </li>-->
+            </li>
             <?php
         }
          ?>
@@ -96,8 +96,8 @@ if ($activetab == "permissions") {
                                                             </label>
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[profile_edit]"
-                                                                                          value="1" <?php if ($sidebar->profile_edit == 1) echo "checked"; ?> /> Edit
+                                                                       name="side[profile_edit]"
+                                                                       value="1" <?php if ($sidebar->profile_edit == 1) echo "checked"; ?> /> Edit
                                                             </label>
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
@@ -251,12 +251,12 @@ if ($activetab == "permissions") {
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_mee]" value="1" <?php if (isset($sidebar) && $sidebar->orders_mee == 1) echo "checked"; ?> /> Order MEE
                                                             </label>
-                                                            <!--<label class="uniform-inline">
+                                                            <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_products]" value="1" <?php if (isset($sidebar) && $sidebar->orders_products == 1) echo "checked"; ?> /> Order Products
                                                             </label>
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[order_requalify]" value="1" <?php if (isset($sidebar) && $sidebar->order_requalify == 1) echo "checked"; ?> /> Re-Qualify
-                                                            </label>-->
+                                                            </label>
                                                         </div>
                                                 </td>
                                             </tr>
@@ -514,7 +514,7 @@ if ($activetab == "permissions") {
                                                                 
                                 						
                                     </div>
-                                    <?php /* ?><div  class="tab-pane" id="subtab_2_3">
+                                   <div  class="tab-pane" id="subtab_2_3">
 
 
 
@@ -626,7 +626,7 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr>
 
-                                            <tr>
+                                            <!--<tr>
                                                 <td>
                                                     Search <?=$settings->profile; ?>
                                                 </td>
@@ -640,21 +640,56 @@ if ($activetab == "permissions") {
                                                                                           value="0" <?php if (isset($block) && $block->searchdriver == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr>-->
+                                            
                                             <tr>
                                                 <td>
-                                                    Submit Order
+                                                    Orders MEE
                                                 </td>
                                                 <td>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="block[submitorder]"
-                                                                                          value="1" <?php if (isset($block) && $block->submitorder == 1) echo "checked"; ?>/>
+                                                                                          name="block[ordersmee]"
+                                                                                          value="1" <?php if (isset($block) && $block->ordersmee == 1) echo "checked"; ?>/>
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="block[submitorder]"
-                                                                                          value="0" <?php if (isset($block) && $block->submitorder == 0) echo "checked"; ?>/>
+                                                                                          name="block[ordersmee]"
+                                                                                          value="0" <?php if (isset($block) && $block->ordersmee == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Orders Products
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[ordersproducts]"
+                                                                                          value="1" <?php if (isset($block) && $block->ordersproducts == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[ordersproducts]"
+                                                                                          value="0" <?php if (isset($block) && $block->ordersproducts == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Orders Requalify
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[ordersrequalify]"
+                                                                                          value="1" <?php if (isset($block) && $block->ordersrequalify == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[ordersrequalify]"
+                                                                                          value="0" <?php if (isset($block) && $block->ordersrequalify == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
                                             </tr>
@@ -724,6 +759,40 @@ if ($activetab == "permissions") {
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="block[message]"
                                                                                           value="0" <?php if (isset($block) && $block->message == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <?php echo ucfirst($settings->client); ?>s Drafts
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[draft_client]"
+                                                                                          value="1" <?php if (isset($block) && $block->draft_client == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[draft_client]"
+                                                                                          value="0" <?php if (isset($block) && $block->draft_client == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <?php echo ucfirst($settings->profile); ?>s Drafts
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[draft_profile]"
+                                                                                          value="1" <?php if (isset($block) && $block->draft_profile == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[draft_profile]"
+                                                                                          value="0" <?php if (isset($block) && $block->draft_profile == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
                                             </tr>
@@ -852,7 +921,7 @@ if ($activetab == "permissions") {
                                         }
                                         ?>
                                         </form>
-                                    </div><?php */?>
+                                    </div>
                                     <div class="tab-pane <?php if($this->request->session()->read("Profile.profile_type")==2 ||(isset($Clientcount)&& $Clientcount==0)) echo 'active'; ?>" id="subtab_2_4">
                                         
                                         <?php if ($this->request->params['action'] == 'edit' &&($this->request->session()->read("Profile.super") ||($this->request->session()->read("Profile.admin")==1 || $this->request->session()->read("Profile.profile_type")==2 ))) 
@@ -879,9 +948,7 @@ if ($activetab == "permissions") {
                                                                 foreach ($clients as $o)
                                                                 {
                                                                     $pro_ids = explode(",",$o->profile_id);
-                                                                    
-                                                                    //http://localhost/veritas3/img/jobs/115380_540579.jpg
-                                                                    //http://localhost/veritas3/profiles/img/jobs/115380_540579.jpg
+
                                                                     ?>
                             
                                                                     <tr>

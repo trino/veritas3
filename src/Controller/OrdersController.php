@@ -31,7 +31,8 @@
             $this->loadComponent('Settings');
             $this->loadComponent('Document');
             if (!$this->request->session()->read('Profile.id')) {
-                $this->redirect('/login');
+                $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                $this->redirect('/login?url=' . urlencode($url));
             }
 
         }
@@ -338,7 +339,7 @@
 
             $this->loadModel('Orders');
             $this->Orders->deleteAll(array('id' => $id));
-            
+
             $this->loadModel('Documents');
             $this->Documents->deleteAll(array('order_id' => $id));
             $this->Flash->success('The order has been deleted.');
@@ -542,15 +543,7 @@
         {
             $this->set('doc_comp', $this->Document);
             $query2 = TableRegistry::get('orders');
-            /*
-                        echo $orderid;
-                        echo "<br>";
-                        echo $id;
-                        echo "<br>";
-                        echo $pdi;
-                        echo "<br>";
-                        echo "<br>";
-            */
+
             switch ($pdi) {
 
                 case "ins_79":
@@ -639,7 +632,7 @@
                     $con_at = TableRegistry::get('doc_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['order_id' => $orderid, 'sub_id' => 4])->all();
                     $this->set('consent', $sub2);
-                 //   debug($sub2);
+                    //   debug($sub2);
                     //    $this->set('consent_detail', $con_detail);                //////////////////////////////////////////////////////////// conbsent form
                 }
 
@@ -650,7 +643,6 @@
                 $sub3['att'] = $emp_att->find()->where(['order_id' => $orderid, 'sub_id' => 41])->all();
 
                 $this->set('employee', $sub3); //////////////////////////////////////////////////////////// employment veritfication
-
 
                 $edu = TableRegistry::get('education_verification');
                 $sub4['edu'] = $edu->find()->where(['order_id' => $orderid])->all();
@@ -857,10 +849,10 @@
                 $model = TableRegistry::get('Profiles');
                 $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);
             }
-            if($_GET['ordertype']!='QUA')
-            echo "<option value=''>Create New Driver</option>";
+            if ($_GET['ordertype'] != 'QUA')
+                echo "<option value=''>Create New Driver</option>";
             else
-            echo "<option value=''>Select Driver</option>";
+                echo "<option value=''>Select Driver</option>";
             if ($profile) {
 
                 foreach ($profile as $p) {
@@ -901,13 +893,12 @@
             $cond = '';
             $sess = $this->request->session()->read('Profile.id');
             $cls = TableRegistry::get('Clients');
-            $cl = $cls->find()->where(['(profile_id LIKE "'.$sess.',%" OR profile_id LIKE "%,'.$sess.',%" OR profile_id LIKE "%,'.$sess.'%")'])->all();
+            $cl = $cls->find()->where(['(profile_id LIKE "' . $sess . ',%" OR profile_id LIKE "%,' . $sess . ',%" OR profile_id LIKE "%,' . $sess . '%")'])->all();
             $cli_id = '999999999';
-            foreach($cl as $cc)
-            {
-                $cli_id = $cli_id.','.$cc->id;
+            foreach ($cl as $cc) {
+                $cli_id = $cli_id . ',' . $cc->id;
             }
-            
+
             if (!$this->request->session()->read('Profile.super')) {
                 $u = $this->request->session()->read('Profile.id');
 
@@ -938,9 +929,9 @@
             }
             if (!$this->request->session()->read('Profile.admin') && $setting->orders_others == 1) {
                 if ($cond == '')
-                    $cond = $cond . ' orders.client_id IN ('.$cli_id.')';
+                    $cond = $cond . ' orders.client_id IN (' . $cli_id . ')';
                 else
-                    $cond = $cond . ' AND orders.client_id IN ('.$cli_id.')';
+                    $cond = $cond . ' AND orders.client_id IN (' . $cli_id . ')';
             }
             if (isset($_GET['submitted_by_id']) && $_GET['submitted_by_id']) {
                 if ($cond == '')

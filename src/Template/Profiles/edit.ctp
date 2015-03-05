@@ -35,10 +35,17 @@
 
 
 <?php
-    if (isset($disabled))
-        $is_disabled = 'disabled="disabled"';
-    else
+    if (isset($disabled)) {
+        $is_disabled = 'disabled="disabled" style="border: 0px solid;"';
+        echo "<style>select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}</style>";
+    } else {
         $is_disabled = '';
+    }
     if (isset($profile))
         $p = $profile;
          $settings = $this->requestAction('settings/get_settings');
@@ -47,8 +54,9 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="theme-panel hidden-xs hidden-sm">
-    <div class="toggler">
-    </div>
+    <?php if (strlen($is_disabled)==0) {
+        echo '<div class="toggler"></div>';//doesn't work in view mode, so remove it and be done with it
+    } ?>
     <div class="toggler-close">
     </div>
 
@@ -198,7 +206,7 @@
                 
                 <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                    onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-                   class="floatright btn btn-danger">Delete</a>
+                   class="floatright btn btn-danger btnspc">Delete</a>
                 </span>
             <?php
             }
@@ -206,7 +214,7 @@
             ?>
             <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-               class="floatright btn btn-danger">Delete</a>
+               class="floatright btn btn-danger btnspc">Delete</a>
         <?php
         }
 
@@ -219,13 +227,13 @@
         if ($sidebar->profile_edit == '1' && $param == 'view') {
 
             if ($checker == 1) {
-                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'floatright btn btn-primary']);
+                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'floatright btn btn-primary btnspc']);
 
             }
         } 
         else if($param == 'edit')
         {
-            echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'floatright btn btn-info']);
+            echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'floatright btn btn-info btnspc']);
         }}
         ?>
 </div>
@@ -322,7 +330,7 @@
                                                 <a  href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
                                                    class="btn red-flamingo clearfix"  style="margin-top:2px;width: 100%;">Order MEE <i class="m-icon-swapright m-icon-white"></i></a>
                                                 <?php }
-                                                /*if ($sidebar->orders_products ==1) {
+                                                if ($sidebar->orders_products ==1) {
                                                 ?>
                                                 <br>
                                                 <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
@@ -334,7 +342,7 @@
                                                 <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=QUA"
                                                    class="btn btn-primary" style="margin-top:2px;width: 100%;" >Re-Qualify <i class="m-icon-swapright m-icon-white"></i></a>
                                                 <?php
-                                                }*/
+                                                }
                                                 }
                                             }
                                         }
@@ -369,8 +377,8 @@
                             <?php
                             $activetab="profile";
                             //if ($this->request->session()->read('Profile.profile_type') > 1) {//is not an admin, block.php suggests using =2
-                                if (isset($_GET['getprofilescore'])) { $activetab = "scorecard"; }
-                                if (strpos($_SERVER['HTTP_REFERER'], "profiles/edit/" . $id )  > 0 or strpos($_SERVER['HTTP_REFERER'], "profiles/add")  > 0 or isset($_GET["clientflash"])){ //. $id
+                                if (isset($_GET['getprofilescore'])) { $activetab = "scorecard"; } //
+                                if (strpos($_SERVER['HTTP_REFERER'], "profiles/edit/" . $id )  > 0 or strpos($_SERVER['HTTP_REFERER'], "profiles/add")  > 0 or strpos($_SERVER['HTTP_REFERER'], "productSelection")  > 0 or isset($_GET["clientflash"])){ //. $id
                                     if (isset($Clientcount) && $Clientcount == 0) { $activetab = "permissions"; }
                                 }
                             if(isset($_GET['activetab'])){ $activetab =$_GET['activetab'];}

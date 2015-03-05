@@ -20,7 +20,9 @@ $is_disabled = '';
             <!--<div class="clearfix"></div>-->
            
     </div>
-     <?php 
+     <?php
+        //include('subpages/documents/attach_doc.php');
+     /* 
     if(isset($attachments) && count($attachments)>0){
         $allowed = array('jpg','jpeg','png','bmp','gif');
         ?>
@@ -67,7 +69,7 @@ $is_disabled = '';
         <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc" >Add More</a>
     </div>
     </div>
-   <?php }?>
+   <?php } */?>
     </div>
 
  </form>
@@ -75,10 +77,11 @@ $is_disabled = '';
 $(function()
 {
     $('#form_tab7').find("a").show();
-     <?php if(!isset($disabled)){?>
-    initiate_ajax_upload('addMore1','doc');
-    <?php }?>
-    $('#addMoredoc').click(function(){
+ });
+     <?php //if(!isset($disabled)){?>
+    //initiate_ajax_upload('addMore1','doc');
+    <?php //}?>
+    /*$('#addMoredoc').click(function(){
          var total_count = $('.docMore').data('count');
         $('.docMore').data('count',parseInt(total_count)+1);
         total_count = $('.docMore').data('count');
@@ -87,37 +90,8 @@ $(function()
     initiate_ajax_upload('addMore'+total_count,'doc');
         
     })
- });
-/*()var removeLink = 0;// this variable is for showing and removing links in a add document
 
-function addMore(e,obj){
-e.preventDefault();
-    
-    var total_count = $('.docMore').data('count');
-    $('.docMore').data('count',parseInt(total_count)+1);
-    total_count = $('.docMore').data('count');
-    var input_field = '<div  class="form-group col-md-12"><label class="control-label col-md-3">&nbsp;</label><div class="col-md-6"><a href="javascript:void(0);" id="addMore'+total_count+'" class="btn btn-primary">Browse</a><input type="hidden" name="client_doc[]" value="" class="addMore'+total_count+'_doc moredocs" /></div></div>';
-    $('.docMore').append(input_field);
-    if( parseInt(total_count) > 1 && removeLink == 0 ){
-    removeLink = 1;
-     $('#addMoredoc').after('<a href="#" id="removeMore" class="btn btn-danger" onclick="removeMore(event,this)">Remove last</a>');
-        initiate_ajax_upload('addMore'+total_count,'doc');
-    }
-}
-
-function removeMore(e,obj) {
-e.preventDefault();
-var total_count = $('.docMore').data('count');
- //$('.docMore input[type="file"]:last').remove();
- $('.docMore div:last-child').remove();
- $('.docMore').data('count',parseInt(total_count)-1);
- total_count = $('.docMore').data('count');
-  if( parseInt(total_count) == 1 ){
-       $('#removeMore').remove();
-       removeLink = 0;
- }
-}
-   */                     
+                  
                 function initiate_ajax_upload(button_id, doc){
                 var button = $('#'+button_id), interval;
                 new AjaxUpload(button,{
@@ -155,7 +129,7 @@ var total_count = $('.docMore').data('count');
                             //$('.flashimg').show();
                             }                        		
                     });                
-            }
+            }*/
 </script>
 
 

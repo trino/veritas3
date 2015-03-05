@@ -26,7 +26,8 @@
             $this->loadComponent('Mailer');
             $this->loadComponent('Document');
             if (!$this->request->session()->read('Profile.id')) {
-                $this->redirect('/login');
+                $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                $this->redirect('/login?url='.urlencode($url));
             }
 
         }
@@ -60,21 +61,46 @@
             }
             die();
         }
-
-        public function training()
+    function upload_all($id="")
+    {
+        if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
         {
+            $arr = explode('.',$_FILES['myfile']['name']);
+            $ext = end($arr);
+            $rand = rand(100000,999999).'_'.rand(100000,999999).'.'.$ext;
+            $allowed = array('jpg','jpeg','png','bmp','gif','pdf','doc', 'docx','csv','xlsx','xls');
+            $check = strtolower($ext);
+            if(in_array($check,$allowed)){
+                move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/jobs/'.$rand);
+                 unset($_POST);
+                 /*if(isset($id)){
+                $_POST['image'] = $rand;
+                $img = TableRegistry::get('clients');
+
+                //echo $s;die();
+                $query = $img->query();
+                        $query->update()
+                        ->set($_POST)
+                        ->where(['id' => $id])
+                        ->execute();
+                }*/
+                    
+                    echo $rand;
+
+
+            }
+            else
+            {
+                echo "error";
+            }
         }
+        die();
+    }
+        public function training(){}
+        public function quiz(){}
+        public function video(){}
 
-        public function quiz()
-        {
-        }
-
-        public function video()
-        {
-        }
-
-        public function settings()
-        {
+        public function settings()        {
             $this->loadModel('Logos');
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
@@ -82,8 +108,7 @@
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary' => '2'])));
         }
 
-        public function index()
-        {
+        public function index()        {
 
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');
@@ -267,7 +292,17 @@
         }
 
         */
-
+        function removefiles($file)
+        {
+            if(isset($_POST['id']) && $_POST['id']!= 0)
+            {
+                $this->loadModel("ProfileDocs");
+                $this->ProfileDocs->deleteAll(['id'=>$_POST['id']]);
+                
+            }
+            @unlink(WWW_ROOT."img/jobs/".$file);
+            die();
+        }
         public function view($id = null)
         {
             $this->set('uid', $id);
@@ -279,6 +314,10 @@
                 return $this->redirect("/");
 
             }
+            $docs = TableRegistry::get('profile_docs');
+            $query = $docs->find();
+            $client_docs = $query->select()->where(['profile_id'=>$id])->all();
+            $this->set('client_docs',$client_docs);
             $this->loadModel('Logos');
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
@@ -500,6 +539,21 @@
 
                     $profile = $profiles->newEntity($_POST);
                     if ($profiles->save($profile)) {
+                        $this->loadModel('ProfileDocs');
+                        $this->ProfileDocs->deleteAll(['profile_id'=>$profile->id]);
+                        $profile_docs = array_unique($_POST['profile_doc']);
+                        foreach($profile_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $docs = TableRegistry::get('profile_docs');
+                                $ds['profile_id']= $profile->id;
+                                $ds['file'] =$d;
+                                 $doc = $docs->newEntity($ds);
+                                 $docs->save($doc);
+                                unset($doc);
+                            }
+                        }
 
                         if (isset($_POST['profile_type']) && $_POST['profile_type'] == 5) {
                             $username = 'driver_' . $profile->id;
@@ -622,6 +676,22 @@
                     //var_dump($this->request->data); die();//echo $_POST['admin'];die();
                     $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                     if ($this->Profiles->save($profile)) {
+                         $this->loadModel('ProfileDocs');
+                        $this->ProfileDocs->deleteAll(['profile_id'=>$profile->id]);
+                        $profile_docs = array_unique($_POST['profile_doc']);
+                        foreach($profile_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $docs = TableRegistry::get('profile_docs');
+                                $ds['profile_id']= $profile->id;
+                                $ds['file'] =$d;
+                                 $doc = $docs->newEntity($ds);
+                                 $docs->save($doc);
+                                unset($doc);
+                            }
+                        }
+                        
                         echo $profile->id;
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft . ');
@@ -770,6 +840,11 @@
             } else {
                 $this->set('myuser', '1');
             }
+            
+            $docs = TableRegistry::get('profile_docs');
+            $query = $docs->find();
+            $client_docs = $query->select()->where(['profile_id'=>$id])->all();
+            $this->set('client_docs',$client_docs);
             $this->loadModel('Logos');
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));

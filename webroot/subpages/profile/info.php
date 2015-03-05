@@ -70,7 +70,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label"><?php echo ucfirst($settings->profile); ?> Type</label>
+                                <label class="control-label"><?php echo ucfirst($settings->profile); ?> Type : </label>
 <!--old code:  <input type="hidden" id="nProfileType" name="profile_type" value="<!php if(!isset($p) && isset($getProfileType->profile_type) && $getProfileType->profile_type == 2)echo "5"; else echo $p->profile_type;!>" <!php echo $is_disabled !> />-->
                                 <?php if (isset($p)){?> 
                                 <input type="hidden" id="nProfileType" name="profile_type" value="<?php if (isset($p)) { echo $p->profile_type;} ?>" <?php echo $is_disabled ?> />
@@ -174,11 +174,17 @@
                         <div class="col-md-6" id="isb_id"
                              style="display:<?php if ((isset($p) && $p->profile_type != 5) && (isset($getProfileType->profile_type) && $getProfileType->profile_type == 1) || ($this->request->session()->read('Profile.profile_type') == 2 && ($p->id == ($this->request->session()->read('Profile.id')))) || ($this->request->session()->read('Profile.profile_type') == 2 && ($p->id != 5  ))) echo 'block'; else echo "none" ?>;">
                             <div class="form-group">
-                                <label class="control-label">ISB Id</label>
+                                <label class="control-label">ISB Id : </label>
                                 <input <?php echo $is_disabled ?>
                                     name="isb_id" type="text"
                                     placeholder="optional"
-                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } ?>  />
+                                    class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } 
+                                    if(isset($p->isb_id) && !$this->request->session()->read('Profile.super')) {
+                                        ?>
+                                        disabled="disabled"
+                                        <?php
+                                    }
+                                    ?>  />
                             </div>
                         </div>
 
@@ -188,7 +194,7 @@
                         <div class="col-md-6" id="driver_div"
                              style="display:<?php if ((isset($p) && $p->profile_type == 5) || ($this->request->session()->read('Profile.profile_type') == 2 && (isset($p) && $p->id != ($this->request->session()->read('Profile.id'))))) echo 'block'; else echo "none" ?>;">
                             <div class="form-group">
-                                <label class="control-label">Driver Type</label>
+                                <label class="control-label">Driver Type : </label>
                                 <select  <?php echo $is_disabled ?> name="driver"
                                                                     class="form-control select_driver req_driver">
                                     <option value="">Select Driver Type</option>
@@ -271,7 +277,7 @@
                         <?php //}?>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label">Username</label>
+                                <label class="control-label">Username : </label>
                                 <input <?php echo $is_disabled ?> id="username_field" name="username" type="text"
                                                                   class="form-control req_driver req_rec uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
                             <span class="error passerror flashUser"
@@ -286,7 +292,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label">Email</label>
+                                <label class="control-label">Email Address : </label>
                                 <input <?php echo $is_disabled ?> name="email" type="email"
                                                                   placeholder="eg. test@domain.com"
                                                                   class="form-control un email req_driver" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
@@ -297,10 +303,10 @@
                         <div class="clearfix flashEmail" style="display: none;">
                         </div>
 
-
+                        <?php if (strlen($is_disabled)==0){ ?>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">Password</label>
+                                <label class="control-label">Password : </label>
                                 <!-- <input  <?php echo $is_disabled ?> type="password" name="password" id="password" class="form-control"
                                    <?php // if (isset($p->password)){ ?><?php //echo $p->password; ?> <?php //} ?>
                                    <?php if (isset($p->password) && $p->password){//do nothing
@@ -316,22 +322,21 @@
                         <?php } ?>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">Re-type Password</label>
+                                <label class="control-label">Re-type Password : </label>
                                 <input  <?php if (isset($p->password) && $p->password){//do nothing
                                    }else{?>required="required"<?php }?>  <?php echo $is_disabled ?> type="password" class="form-control"
                                     id="retype_password" <?php //if (isset($p->password)) { ?> <?php // echo $p->password; ?>  <?php // } ?>/>
                             <span class="error passerror flashPass1"
-                                  style="display: none;">Please enter same password</span>
+                                  style="display: none;">Please enter the same password in both boxes</span>
                             </div>
                         </div>
-
-
                         <div class="clearfix"></div>
 
-                        <?php if ($settings->client_option == 0) { ?>
+                        <?php }
+                        if ($settings->client_option == 0) { ?>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">Title</label><BR>
+                                <label class="control-label">Title : </label><BR>
                                 <SELECT <?php echo $is_disabled ?> name="title" class="form-control "><?php
 
                                         if (isset($p->title)) {
@@ -353,7 +358,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
 
-                                <label class="control-label">First Name</label>
+                                <label class="control-label">First Name : </label>
                                 <input <?php echo $is_disabled ?> name="fname" type="text"
                                     placeholder="eg. John"
                                     class="form-control req_driver" <?php if (isset($p->fname)) { ?>
@@ -365,7 +370,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
 
-                                <label class="control-label">Middle Name</label>
+                                <label class="control-label">Middle Name : </label>
                                 <input <?php echo $is_disabled ?> name="mname" type="text"
                                     placeholder=""
                                     class="form-control" <?php if (isset($p->mname)) { ?>
@@ -376,7 +381,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">Last Name</label>
+                                <label class="control-label">Last Name : </label>
                                 <input <?php echo $is_disabled ?> name="lname" type="text"
                                     placeholder="eg. Doe"
                                     class="form-control req_driver" <?php if (isset($p->lname)) { ?>
@@ -388,7 +393,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
 
-                                <label class="control-label">Phone Number</label>
+                                <label class="control-label">Phone Number : </label>
                                 <input <?php echo $is_disabled ?> name="phone" type="text"
                                     placeholder="eg. +1 646 580 6284"
                                     class="form-control req_driver" <?php if (isset($p->phone)) { ?>
@@ -400,7 +405,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
 
-                                <label class="control-label">Gender</label>
+                                <label class="control-label">Gender : </label>
                                 <SELECT <?php echo $is_disabled ?> name="gender" class="form-control req_driver"><?php
                                         $gender = "";
                                         if (isset($p->gender)) {
@@ -417,7 +422,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
 
-                                <label class="control-label">Place of Birth</label>
+                                <label class="control-label">Place of Birth : </label>
                                 <input <?php echo $is_disabled ?> name="placeofbirth" type="text" placeholder=""
                                     class="form-control req_driver" <?php if (isset($p->placeofbirth)) { ?>
                                     value="<?php echo $p->placeofbirth; ?>" <?php } ?>/>
@@ -427,7 +432,7 @@
                         <div class="col-md-9">
 
                             <div class="form-group">
-                                <label class="control-label">Date of Birth (YYYY MM DD)</label><BR>
+                                <label class="control-label">Date of Birth (YYYY MM DD) : </label><BR>
 
                                 <div class="row">
 
@@ -488,7 +493,7 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <h3 class="">Address</h3>
+                                    <h3 class="">Address : </h3>
                                 </div>
                             </div>
 
@@ -561,13 +566,13 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <h3 class="block">Driver's License</h3></div>
+                                    <h3 class="block">Driver's License : </h3></div>
                             </div>
 
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">Driver License #</label>
+                                    <label class="control-label">Driver's License # : </label>
                                     <input <?php echo $is_disabled ?> name="driver_license_no" type="text"
                                         class="form-control req_driver" <?php if (isset($p->driver_license_no)) { ?>
                                         value="<?php echo $p->driver_license_no; ?>" <?php } ?> />
@@ -577,7 +582,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">Province issued</label>
+                                    <label class="control-label">Province issued : </label>
 
                                     <?php
                                         if (isset($p->driver_province))
@@ -593,7 +598,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">Expiry Date</label>
+                                    <label class="control-label">Expiry Date : </label>
                                     <input <?php echo $is_disabled ?> name="expiry_date" type="text"
                                                                       class="form-control req_driver date-picker"
                                                                       value="<?php if (isset($p->expiry_date)) echo $p->expiry_date; ?>"/>
@@ -608,22 +613,48 @@
                                 <input type="hidden" name="dobd" value="00"/>
                             <?php
                                 }
+                                if(isset($disabled))
+                                $delete = true;
+                                else
+                                $delete = false; 
+                                if (isset($client_docs)) {
+                                    include 'subpages/filelist.php';
+                                    listfiles($client_docs, "img/jobs/",'profile_doc',$delete);
+                                }
                             ?>
 
-
-
+                           
                         <?php
                                 if (!isset($disabled)) {
                             ?>
+                             <div class="form-group col-md-12"><!--<center>-->
+
+                                <div class="docMore" data-count="1">
+                                <div>
+                                    <div style="display:block;">
+                                        <a href="javascript:void(0)" id="addMore1" class="btn btn-primary" >Browse</a>
+                                         <input type="hidden" name="profile_doc[]" value="" class="addMore1_doc moredocs"/>
+                                         <a href="javascript:void(0);" class ="btn btn-danger img_delete" id="delete_addMore1" title ="" style="display: none;">Delete</a>
+                                         <span></span>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            
 
 
 
+                            <div class="form-group col-md-12"><!--<center>-->
 
+                                <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc">
+                                    Add More
+                                </a>
+                            </div>
 
-
-
-
-                                        <div class="col-md-12" align="right">
+                            
+                            
+                                            <div class="col-md-12" align="right">
 
 
 
@@ -743,7 +774,43 @@
 
     }
     $(function () {
+        initiate_ajax_upload1('addMore1', 'doc');
+         $('#addMoredoc').click(function () {
+        var total_count = $('.docMore').data('count');
+        $('.docMore').data('count', parseInt(total_count) + 1);
+        total_count = $('.docMore').data('count');
+        var input_field = '<div  class="form-group col-md-12"><div class="col-md-12"><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="profile_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a><span></span></div></div>';
+        $('.docMore').append(input_field);
+        initiate_ajax_upload1('addMore' + total_count, 'doc');
 
+    });
+    $('.img_delete').live('click', function () {
+        var file = $(this).attr('title');
+        if (file == file.replace("&", " ")) {
+            var id = 0;
+        }
+        else {
+            var f = file.split("&");
+            file = f[0];
+            var id = f[1];
+        }
+
+        var con = confirm('Are you sure you want to delete "' + file + '"?');
+        if (con == true) {
+            $.ajax({
+                type: "post",
+                data: 'id=' + id,
+                url: "<?php echo $this->request->webroot;?>profiles/removefiles/" + file,
+                success: function (msg) {
+
+                }
+            });
+            $(this).parent().parent().remove();
+
+        }
+        else
+            return false;
+    });
         $('#save_clientz').submit(function (event) {
             event.preventDefault();
             $('#savepro').text("Saving...");
@@ -896,6 +963,53 @@
             }
         }
     });
+    
+    
+    function initiate_ajax_upload1(button_id, doc) {
+        
+        var button = $('#' + button_id), interval;
+        if (doc == 'doc')
+            var act = "<?php echo $this->request->webroot;?>profiles/upload_all/<?php if(isset($id))echo $id;?>";
+        else
+            var act = "<?php echo $this->request->webroot;?>profiles/upload_img/<?php if(isset($id))echo $id;?>";
+        new AjaxUpload(button, {
+            action: act,
+            name: 'myfile',
+            onSubmit: function (file, ext) {
+                button.text('Uploading');
+                this.disable();
+                interval = window.setInterval(function () {
+                    var text = button.text();
+                    if (text.length < 13) {
+                        button.text(text + '.');
+                    } else {
+                        button.text('Uploading');
+                    }
+                }, 200);
+            },
+            onComplete: function (file, response) {
+                if (doc == "doc")
+                    button.html('Browse');
+                else
+                    button.html('<i class="fa fa-image"></i> Add/Edit Image');
+
+                window.clearInterval(interval);
+                this.enable();
+                if (doc == "doc") {
+                    $('#' + button_id).parent().find('span').text(" " + response);
+                    $('.' + button_id + "_doc").val(response);
+                    $('#delete_' + button_id).attr('title', response);
+                    if(button_id =='addMore1')
+                        $('#delete_'+button_id).show();
+                }
+                else {
+                    $("#clientpic").attr("src", '<?php echo $this->request->webroot;?>img/jobs/' + response);
+                    $('#client_img').val(response);
+                }
+//$('.flashimg').show();
+            }
+        });
+    }
 </script>
 
 </div>

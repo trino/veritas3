@@ -53,16 +53,14 @@
         if (isset($client) && $sidebar->client_delete == '1') { ?>
             <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $client->id; ?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                onclick="return confirm('Are you sure you want to delete <?= h($client->company_name) ?>?');"
-               class="floatright btn btn-danger">Delete</a>
+               class="floatright btn btn-danger btnspc">Delete</a>
         <?php }
          if (isset($client) && $sidebar->client_edit == '1' && isset($_GET['view'])) 
         {
-            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $client->id], ['class' => 'floatright btn btn-primary']);
-        }
-        else if(isset($client) && $param == 'edit')
-        {
+            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $client->id], ['class' => 'floatright btn btn-primary btnspc']);
+        } else if(isset($client) && $param == 'edit')  {
             ?>            
-            <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $client->id; ?>?view" class = 'floatright btn btn-info'>View</a>
+            <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $client->id; ?>?view" class = 'floatright btn btn-info btnspc'>View</a>
         <?php
                     
         }                
@@ -102,8 +100,8 @@
                 </div>
 
                 <?php
-                    if ($this->request->params['action'] == 'edit')
-                        include('subpages/clients/recruiter_contact_table.php');
+                    /*if ($this->request->params['action'] == 'edit')
+                        include('subpages/clients/recruiter_contact_table.php');*/
                     if (isset($_GET['view'])) {
                         ?>
                         <table class="table table-striped table-bordered table-advance table-hover recruiters">
@@ -192,6 +190,9 @@
 
                                 <li>
                                     <a href="#tab_1_2" data-toggle="tab">Display</a>
+                                </li>
+                                 <li>
+                                    <a href="#tab_1_3" data-toggle="tab">Assign to Profile</a>
                                 </li>
                             <?php
 
@@ -470,9 +471,13 @@
                                                 </div>
 
                                             <?php }
+                                             if(isset($disabled))
+                                                $delete = true;
+                                                else
+                                                $delete = false; 
                                                 if (isset($client_docs)) {
                                                     include 'subpages/filelist.php';
-                                                    listfiles($client_docs, "img/jobs/");
+                                                    listfiles($client_docs, "img/jobs/",'client_doc',$delete);
                                                 }
                                             ?>
 
@@ -623,6 +628,11 @@
 
                             </form>
                         </div>
+                         <div class="tab-pane" id="tab_1_3">
+                         <?php
+                            include('subpages/clients/recruiter_contact_table.php');
+                         ?>
+                         </div>
                         <?php } ?>
 
                         <!-- END SAMPLE FORM PORTLET-->

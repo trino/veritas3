@@ -626,7 +626,7 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr>
 
-                                            <tr>
+                                            <!--<tr>
                                                 <td>
                                                     Search <?=$settings->profile; ?>
                                                 </td>
@@ -640,7 +640,7 @@ if ($activetab == "permissions") {
                                                                                           value="0" <?php if (isset($block) && $block->searchdriver == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr>-->
                                             
                                             <tr>
                                                 <td>
@@ -759,6 +759,40 @@ if ($activetab == "permissions") {
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="block[message]"
                                                                                           value="0" <?php if (isset($block) && $block->message == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <?php echo ucfirst($settings->client); ?>s Drafts
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[draft_client]"
+                                                                                          value="1" <?php if (isset($block) && $block->draft_client == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[draft_client]"
+                                                                                          value="0" <?php if (isset($block) && $block->draft_client == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <?php echo ucfirst($settings->profile); ?>s Drafts
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[draft_profile]"
+                                                                                          value="1" <?php if (isset($block) && $block->draft_profile == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[draft_profile]"
+                                                                                          value="0" <?php if (isset($block) && $block->draft_profile == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
                                             </tr>

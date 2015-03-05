@@ -19,8 +19,8 @@
         return $tempstr;
     }
 
-    $tempstr = getcheckboxes("form", 7);
-    $tempstr2 = getcheckboxes("formb", 7);
+    $tempstr = getcheckboxes("form", 7) . ",0";
+    $tempstr2 = getcheckboxes("formb", 7) . ",0";
 
     $driver = 0;
     if (isset($_GET['driver'])) {

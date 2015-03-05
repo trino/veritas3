@@ -243,7 +243,7 @@
                                         <?php break;
                                             case 2: //tile, doesn't work. CSS not included? ?>
 
-                                                <a href="/veritas3/orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
+                                                <a href=$this->request->webroot."orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
                                                     <div class="tile-body">
                                                         <i class="icon-docs"></i>
                                                     </div>

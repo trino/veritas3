@@ -914,9 +914,7 @@ if ($activetab == "permissions") {
                                                                 foreach ($clients as $o)
                                                                 {
                                                                     $pro_ids = explode(",",$o->profile_id);
-                                                                    
-                                                                    //http://localhost/veritas3/img/jobs/115380_540579.jpg
-                                                                    //http://localhost/veritas3/profiles/img/jobs/115380_540579.jpg
+
                                                                     ?>
                             
                                                                     <tr>

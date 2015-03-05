@@ -64,7 +64,7 @@ if (isset($this->request->params['pass'][1])) {
         }
         $opposite = "edit"; $url="add";
         if ($action=="Edit"){ $opposite = "view"; $url= "view";}
-    if (isset($this->request->params['pass'][1])) { echo '<a href="../../' . $url . '/' . $id0 . "/" . $id1 . $id2 . '" class="floatright btn btn-info">' . ucfirst($opposite) . '</a>'; }
+    if (isset($this->request->params['pass'][1])) { echo '<a href="../../' . $url . '/' . $id0 . "/" . $id1 . $id2 . '" class="floatright btn btn-info btnspc">' . ucfirst($opposite) . '</a>'; }
 
 
         ?>

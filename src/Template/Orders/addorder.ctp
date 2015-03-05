@@ -82,9 +82,7 @@ function provinces($name){
             $name=trim(strtolower($name));
             if ($name == "consent form") { return true; } //mandatory in all sections now
             if(count($forms)>0){
-                if ($name == "consent form") {
-                    return true; //$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
-                }
+                if ($name == "consent form") { return true; }//$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
                 return false; //no other form needs to show
             }
             return true; //returns true if $forms is empty or smaller than the ID number (ie: MEE order)
@@ -156,6 +154,7 @@ function provinces($name){
                                     <?php
                                         $doc = $doc_comp->getDocument('orders');
                                         $subdoccli = $this->requestAction('/clients/getSubCli2/'.$cid);
+
                                         $subdoccli2 = $subdoccli;
                                         $doc2 = $doc;
                                         $i = 2;
@@ -164,6 +163,9 @@ function provinces($name){
                                         $index=0;
                                         foreach ($subdoccli as $sd) {
                                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
+
+                                            //debug($d);
+
                                             if (displayform($forms, $d->title)){
                                                 $index+=1;
                                             $act = 0;
@@ -352,6 +354,8 @@ function provinces($name){
                                                 }
                         foreach ($subdoccli2 as $sd) {
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
+
+                           // debug($d);
                             if (displayform($forms, $d->title)){
 
 

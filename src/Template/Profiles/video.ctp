@@ -7,7 +7,7 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <LI>
-            <a href="/veritas3/profiles/training">Training</a>
+            <a href="<?=$this->request->webroot;?>profiles/training">Training</a>
             <i class="fa fa-angle-right"></i>
         </li>
         <li>

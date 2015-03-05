@@ -17,9 +17,17 @@
 
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
     <?php if ($sidebar->document_create == 1) { ?>
-            <a href="<?php echo $this->request->webroot; ?>clients?flash" class="floatright btn btn-primary">
+            <a href="<?php echo $this->request->webroot; ?>clients?flash" class="floatright btn btn-primary btnspc">
                 Create <?php echo ucfirst($settings->document); ?></a>
+    <?php }
+    if (isset($_GET["draft"])) {?>
+        <a href="<?php echo $this->request->webroot; ?>documents/index" class="floatright btn btn-info btnspc">
+            List <?php echo ucfirst($settings->document); ?>s</a>
+    <?php } else { ?>
+        <a href="<?php echo $this->request->webroot; ?>documents/index?draft" class="floatright btn btn-info btnspc">
+            Drafts</a>
     <?php } ?>
+
 </div>
 
 
@@ -235,7 +243,7 @@
                                         <?php break;
                                             case 2: //tile, doesn't work. CSS not included? ?>
 
-                                                <a href="/veritas3/orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
+                                                <a href=$this->request->webroot."orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
                                                     <div class="tile-body">
                                                         <i class="icon-docs"></i>
                                                     </div>

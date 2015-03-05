@@ -38,10 +38,14 @@
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
 
-function hasget($name){
-    if (isset($_GET[$name])) {return strlen($_GET[$name])>0;}
-    return false;
-}
+    function hasget($name)
+    {
+        if (isset($_GET[$name])) {
+            return strlen($_GET[$name]) > 0;
+        }
+        return false;
+    }
+
 ?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?>s
@@ -61,8 +65,8 @@ function hasget($name){
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 
     <?php if ($sidebar->profile_create == 1) { ?>
-            <a href="<?php echo WEB_ROOT; ?>profiles/add" class="floatright btn btn-primary btnspc">
-                Create <?php echo ucfirst($settings->profile); ?></a>
+        <a href="<?php echo WEB_ROOT; ?>profiles/add" class="floatright btn btn-primary btnspc">
+            Create <?php echo ucfirst($settings->profile); ?></a>
     <?php } ?>
 
 </div>
@@ -104,33 +108,42 @@ function hasget($name){
                                     if ($isISB) {
                                         ?>
 
-                                        <option value="1" <?php if (isset($return_profile_type) && $return_profile_type == 1) { ?> selected="selected"<?php } ?> >
+                                        <option
+                                            value="1" <?php if (isset($return_profile_type) && $return_profile_type == 1) { ?> selected="selected"<?php } ?> >
                                             Admin
                                         </option>
-                                        <option value="2" <?php if (isset($return_profile_type) && $return_profile_type == 2) { ?> selected="selected"<?php } ?>>
+                                        <option
+                                            value="2" <?php if (isset($return_profile_type) && $return_profile_type == 2) { ?> selected="selected"<?php } ?>>
                                             Recruiter
                                         </option>
-                                        <option value="3" <?php if (isset($return_profile_type) && $return_profile_type == 3) { ?> selected="selected"<?php } ?>>
+                                        <option
+                                            value="3" <?php if (isset($return_profile_type) && $return_profile_type == 3) { ?> selected="selected"<?php } ?>>
                                             External
                                         </option>
-                                        <option value="4" <?php if (isset($return_profile_type) && $return_profile_type == 4) { ?> selected="selected"<?php } ?>>
+                                        <option
+                                            value="4" <?php if (isset($return_profile_type) && $return_profile_type == 4) { ?> selected="selected"<?php } ?>>
                                             Safety
                                         </option>
-                                        <option value="5" <?php if (isset($return_profile_type) && $return_profile_type == 5) { ?> selected="selected"<?php } ?>>
+                                        <option
+                                            value="5" <?php if (isset($return_profile_type) && $return_profile_type == 5) { ?> selected="selected"<?php } ?>>
                                             Driver
                                         </option>
-                                        <option value="6" <?php if (isset($return_profile_type) && $return_profile_type == 6) { ?> selected="selected"<?php } ?>>
+                                        <option
+                                            value="6" <?php if (isset($return_profile_type) && $return_profile_type == 6) { ?> selected="selected"<?php } ?>>
                                             Contact
                                         </option>
 
                                     <?php } else { ?>
-                                        <option value="9" <?php if (isset($return_profile_type) && $return_profile_type == 9) { ?> selected="selected"<?php } ?> >
+                                        <option
+                                            value="9" <?php if (isset($return_profile_type) && $return_profile_type == 9) { ?> selected="selected"<?php } ?> >
                                             Employee
                                         </option>
-                                        <option value="10" <?php if (isset($return_profile_type) && $return_profile_type == 10) { ?> selected="selected"<?php } ?> >
+                                        <option
+                                            value="10" <?php if (isset($return_profile_type) && $return_profile_type == 10) { ?> selected="selected"<?php } ?> >
                                             Guest
                                         </option>
-                                        <option value="11" <?php if (isset($return_profile_type) && $return_profile_type == 11) { ?> selected="selected"<?php } ?> >
+                                        <option
+                                            value="11" <?php if (isset($return_profile_type) && $return_profile_type == 11) { ?> selected="selected"<?php } ?> >
                                             Partner
                                         </option>
                                     <?php } ?>
@@ -142,13 +155,15 @@ function hasget($name){
                                 if (isset($super)) {
                                     $getClient = $this->requestAction('profiles/getClient');
                                     ?>
-                                    <select class="form-control showprodivision input-inline" style="" name="filter_by_client">
+                                    <select class="form-control showprodivision input-inline" style=""
+                                            name="filter_by_client">
                                         <option value=""><?php echo ucfirst($settings->client); ?></option>
                                         <?php
                                             if ($getClient) {
                                                 foreach ($getClient as $g) {
                                                     ?>
-                                                    <option value="<?php echo $g->id; ?>" <?php if (isset($return_client) && $return_client == $g->id) { ?> selected="selected"<?php } ?> ><?php echo $g->company_name; ?></option>
+                                                    <option
+                                                        value="<?php echo $g->id; ?>" <?php if (isset($return_client) && $return_client == $g->id) { ?> selected="selected"<?php } ?> ><?php echo $g->company_name; ?></option>
                                                 <?php
                                                 }
                                             }
@@ -157,7 +172,6 @@ function hasget($name){
 
 
                                     <div class="prodivisions input-inline">
-                                        <!-- Divisions section -->
                                     </div>
 
 
@@ -175,7 +189,8 @@ function hasget($name){
                 <div class="form-body">
                     <div class="table-scrollable">
 
-                        <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
+                        <table
+                            class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                             <thead>
                             <tr class="sorting">
                                 <th><?= $this->Paginator->sort('id') ?></th>
@@ -186,9 +201,8 @@ function hasget($name){
 
                                 <th><?= $this->Paginator->sort('fname', 'First Name') ?></th>
                                 <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
-                                <th>Assigned to <?=$settings->clients;?></th>
+                                <th>Assigned to <?= $settings->clients; ?></th>
 
-                                <!--<th class="actions"><?//=__('Actions')  ?></th> -->
                             </tr>
                             </thead>
                             <tbody>
@@ -201,7 +215,9 @@ function hasget($name){
 
                                 if (count($profiles) == 0) {
                                     echo '<TR><TD COLSPAN="8" ALIGN="CENTER">No ' . strtolower($settings->profile) . 's found';
-                                    if (hasget('searchprofile')) { echo " matching '" . $_GET['searchprofile'] . "'"; }
+                                    if (hasget('searchprofile')) {
+                                        echo " matching '" . $_GET['searchprofile'] . "'";
+                                    }
                                     echo '</TD></TR>';
                                 }
 
@@ -216,49 +232,32 @@ function hasget($name){
                                     <tr class="<?= $row_color_class; ?>" role="row">
                                         <td><?= $this->Number->format($profile->id) ?></td>
                                         <td><?php
-                                        if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
-                                            ?>
-                                            <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>">
-                                            <img style="width:40px;" src="<?php
-                                            if($profile->image)
-                                         {
-                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image;
-                                         }
-                                         else {
-                                            echo $this->request->webroot; ?>img/profile/default.png;
+                                                if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                                    ?>
+                                                    <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>">
+                                                        <img style="width:40px;" src="<?php
+                                                            if ($profile->image) {
+                                                                echo $this->request->webroot; ?>img/profile/<?php echo $profile->image;
+                                                            } else {
+                                                                echo $this->request->webroot; ?>img/profile/default.png;
                                            <?php } ?>" class="img-responsive" alt=""/>
-                                             </a>
-                                            <?php
-                                            }
-                                          ?>
-                                           <!--
-
-                                        <img src="<?php
-                                        if($profile->image)
-                                         {
-                                            echo $this->request->webroot; ?>img/profile/<?php echo $profile->image;
-                                         }
-                                         else {
-                                            echo $this->request->webroot; ?>img/profile/default.png;
-                                           <?php  } ?>" class="img-responsive" alt="" style="height:80px width:60px;"/>
-
-
-                                            -->
-
-
-                                         </td>
-                                        <td>
-                                        <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                                    </a>
+                                                <?php
+                                                }
                                             ?>
-                                            <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); ?> </a>
+
+
+                                        </td>
+                                        <td>
+                                            <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                                ?>
+                                                <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); ?> </a>
                                             <?php
-                                            }
-                                            else
-                                            echo ucfirst(h($profile->username));
-                                             ?>
-                                             <!--<td class="actions  util-btn-margin-bottom-5"> -->
-                                            <br />
-                                        <?php  if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                            } else
+                                                echo ucfirst(h($profile->username));
+                                            ?>
+                                            <br/>
+                                            <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info btn-xs']);
                                             } ?>
 
@@ -268,12 +267,11 @@ function hasget($name){
                                                 if ($sidebar->profile_edit == '1') {
 
                                                     if ($checker == 1) {
-                                                        if($this->request->session()->read('Profile.profile_type') == '2'){
-                                                        if($profile->profile_type == '5')    
-                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-xs']);
-                                                        }
-                                                        else
-                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-xs']);
+                                                        if ($this->request->session()->read('Profile.profile_type') == '2') {
+                                                            if ($profile->profile_type == '5')
+                                                                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-xs']);
+                                                        } else
+                                                            echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-xs']);
                                                     }
                                                 } ?>
                                             <?php if ($sidebar->profile_delete == '1') {
@@ -281,7 +279,7 @@ function hasget($name){
                                                     if ($this->request->session()->read('Profile.id') != $profile->id) {
                                                         ?>
 
-                                                        <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
+                                                        <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
                                                            onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
                                                            class="btn btn-danger btn-xs">Delete</a>
                                                         </span>
@@ -289,7 +287,7 @@ function hasget($name){
                                                     }
                                                 } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
                                                     ?>
-                                                    <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
+                                                    <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
                                                        onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
                                                        class="btn btn-danger btn-xs">Delete</a>
                                                 <?php
@@ -297,31 +295,14 @@ function hasget($name){
 
                                             }
                                             ?>
-                                            <?php
-                                              /*  if ($profile->profile_type == 5) {
 
-                                                   // <a href="<?php echo $this->request->webroot; !>orders/productSelection?driver=<?php echo $profile->id; !>"
-                                                   //    class="btn btn-success">Create Order</a>
-?>
-
-                                                    <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE" class="btn red-flamingo">Place Order</a>
-                                                    <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART" class="btn btn-info">A La Carte/Re-qualify</a>
-
-                                                  <!--  <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
-                                                       class="btn btn-primary">Score Card</a> -->
-                                                <?php
-                                                } */
-                                            ?>
-
-
-                                        <!--</td> -->
                                         </td>
                                         <td><?php
                                                 if (strlen($profile->profile_type) > 0) {
                                                     echo h($profiletype[$profile->profile_type]);
                                                     if ($profile->profile_type == 5) {//is a driver
                                                         $expires = strtotime($profile->expiry_date);
-                                                        if ($expires){
+                                                        if ($expires) {
                                                             if ($expires < time()) {
                                                                 echo '<span class="clearfix " style="color:#a94442">License Expired</span>';
                                                             }
@@ -332,72 +313,11 @@ function hasget($name){
                                                 }
                                             ?></td>
 
-                                        <!--td><?= h($profile->email) ?></td-->
-
 
                                         <td><?= h($profile->fname) ?></td>
                                         <td><?= h($profile->lname) ?></td>
                                         <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
 
-                                       <!-- <td class="actions  util-btn-margin-bottom-5">
-
-                                        <?php /* if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
-                                                echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info']);
-                                            } ?>
-
-
-                                            <?php
-                                                $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
-                                                if ($sidebar->profile_edit == '1') {
-
-                                                    if ($checker == 1) {
-                                                        if($this->request->session()->read('Profile.profile_type') == '2'){
-                                                        if($profile->profile_type == '5')    
-                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-                                                        }
-                                                        else
-                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary']);
-                                                    }
-                                                } ?>
-                                            <?php if ($sidebar->profile_delete == '1') {
-                                                if ($this->request->session()->read('Profile.super') == '1') {
-                                                    if ($this->request->session()->read('Profile.id') != $profile->id) {
-                                                        ?>
-
-                                                        <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
-                                                           onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-                                                           class="btn btn-danger">Delete</a>
-                                                        </span>
-                                                    <?php
-                                                    }
-                                                } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
-                                                    ?>
-                                                    <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
-                                                       onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-                                                       class="btn btn-danger">Delete</a>
-                                                <?php
-                                                }
-
-                                            } */
-                                            ?>
-                                            <?php
-                                              /*  if ($profile->profile_type == 5) {
-
-                                                   // <a href="<?php echo $this->request->webroot; !>orders/productSelection?driver=<?php echo $profile->id; !>"
-                                                   //    class="btn btn-success">Create Order</a>
-?>
-
-                                                    <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE" class="btn red-flamingo">Place Order</a>
-                                                    <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART" class="btn btn-info">A La Carte/Re-qualify</a>
-
-                                                  <!--  <a href="<?php echo $this->request->webroot; ?>profiles/viewReport/<?php echo $profile->id; ?>"
-                                                       class="btn btn-primary">Score Card</a> -->
-                                                <?php
-                                                } */
-                                            ?>
-
-
-                                        </td> -->
 
                                     </tr>
 
@@ -424,58 +344,47 @@ function hasget($name){
 
             </div>
         </div>
-    </div></div>
-    <script>
-        $(function () {
-            $('.sorting').find('a').each(function () {
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.sorting').find('a').each(function () {
 
-                <?php if(isset($_GET['draft'])){?>
-                var hrf = $(this).attr('href');
-                if (hrf != "")
-                    $(this).attr('href', hrf + '&draft');
-                <?php } ?>
-            });
-        })
-    </script>
-    <script>
+            <?php if(isset($_GET['draft'])){?>
+            var hrf = $(this).attr('href');
+            if (hrf != "")
+                $(this).attr('href', hrf + '&draft');
+            <?php } ?>
+        });
+    })
+</script>
+<script>
 
-        $(function () {
-            <?php if(isset($_GET['division'])&& $_GET['division']!=""){
-                     //var_dump($_GET);
-                     ?>
-            var client_id = <?php if(isset($_GET['filter_by_client'])&& $_GET['filter_by_client']!="") echo $_GET['filter_by_client'];?>;
-            var division_id = <?php echo $_GET['division'];?>;
-            //alert(client_id+'__'+division_id);
-            if (client_id != "") {
-                $.ajax({
-                    type: "post",
-                    data: "client_id=" + client_id,
-                    url: "<?php echo $this->request->webroot;?>clients/getdivisions/" + division_id,
-                    success: function (msg) {
-                        //alert(msg);
-                        $('.prodivisions').html(msg);
-                    }
-                });
-            }
-            <?php
-            }
-            //if(isset($_GET['division'])&& $_GET['division']!="")
-            ?>
-
-            $('.showprodivision').change(function () {
-                var client_id = $(this).val();
-                if (client_id != "") {
-                    $.ajax({
-                        type: "post",
-                        data: "client_id=" + client_id,
-                        url: "<?php echo $this->request->webroot;?>clients/getdivisions",
-                        success: function (msg) {
-                            $('.prodivisions').html(msg);
-                        }
-                    });
+    $(function () {
+        <?php if(isset($_GET['division'])&& $_GET['division']!=""){
+                 //var_dump($_GET);
+                 ?>
+        var client_id = <?php if(isset($_GET['filter_by_client'])&& $_GET['filter_by_client']!="") echo $_GET['filter_by_client'];?>;
+        var division_id = <?php echo $_GET['division'];?>;
+        //alert(client_id+'__'+division_id);
+        if (client_id != "") {
+            $.ajax({
+                type: "post",
+                data: "client_id=" + client_id,
+                url: "<?php echo $this->request->webroot;?>clients/getdivisions/" + division_id,
+                success: function (msg) {
+                    //alert(msg);
+                    $('.prodivisions').html(msg);
                 }
             });
-            var client_id = $('.showprodivision').val();
+        }
+        <?php
+        }
+        //if(isset($_GET['division'])&& $_GET['division']!="")
+        ?>
+
+        $('.showprodivision').change(function () {
+            var client_id = $(this).val();
             if (client_id != "") {
                 $.ajax({
                     type: "post",
@@ -486,6 +395,18 @@ function hasget($name){
                     }
                 });
             }
-
         });
-    </script>
+        var client_id = $('.showprodivision').val();
+        if (client_id != "") {
+            $.ajax({
+                type: "post",
+                data: "client_id=" + client_id,
+                url: "<?php echo $this->request->webroot;?>clients/getdivisions",
+                success: function (msg) {
+                    $('.prodivisions').html(msg);
+                }
+            });
+        }
+
+    });
+</script>

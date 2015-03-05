@@ -287,6 +287,7 @@ var FormWizard = function () {
                      else
                      window.location = base_url+'?orderflash';
                     */
+
                    if($('#tab6 .touched').val()=='1'){ 
                     setTimeout(
                   function() 

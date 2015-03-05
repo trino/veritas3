@@ -8,18 +8,22 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $startorder1 = false;
+    $startorder1 = true;
+
     $productdetails79 = false;
     $productdetails1 = false;
     $productdetails14 = false;
     $productdetails77 = false;
     $productdetails78 = false;
+
     $productdetailsebs1603 = false;
     $productdetailsebs1627 = false;
     $productdetailsebs1650 = false;
+
     $uploadbinaryconsent_1603 = false;
     $uploadbinaryemployment_1627 = false;
     $uploadbinaryeducation_1650 = false;
+
     $upload_additional = false;
 
     if ($startorder1) {
@@ -31,8 +35,10 @@
             $user_id234 = '22552';
         }
 
-        $user_id234 = '22552';
-
+if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
+    $user_id234 = '22552';
+    echo $_SERVER['SERVER_NAME'];
+}
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
             '&lt;/isb_DOL&gt;&lt;isb_Prov&gt;' . $driverinfo->driver_province . '&lt;/isb_Prov&gt;&lt;isb_UserID&gt;' . $user_id234 . '&lt;/isb_UserID&gt;&lt;/ProductData&gt;';

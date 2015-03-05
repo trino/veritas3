@@ -309,6 +309,16 @@
                                             }
                                         ?>
                                         <?php if ($sidebar->document_delete == '1' && $docs->order_id == 0) {
+                                            if(!$this->request->session()->read('Profile.super') && $docs->user_id == $this->request->session()->read('Profile.id'))
+                                           { 
+                                            $dl_show = 1;
+                                            }
+                                            else if($this->request->session()->read('Profile.super'))
+                                            { 
+                                            $dl_show = 1;
+                                            }
+                                            else $dl_show = 0;
+                                            if($dl_show == 1){
                                             if (isset($_GET['draft'])) {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>documents/delete/<?php echo $docs->id; ?>/draft"
@@ -322,7 +332,8 @@
                                                    onclick="return confirm('Are you sure you want to delete <?= $docname; ?>?');"
                                                    class="btn btn-danger">Delete</a>
                                             <?php
-                                            }
+                                            }}
+                                            
                                         }
 
                                         ?>

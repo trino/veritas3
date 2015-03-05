@@ -102,7 +102,7 @@
 <!-- BEGIN LOGIN FORM -->
 
 
-        <form class="login-form" action="" method="post">
+        <form class="login-form" action="<?php echo $this->request->webroot;?>login/index<?php if(isset($_GET['url'])){?>?url=<?php echo $_GET['url']; }?>" method="post">
         <h3 class="form-title">Log in to your account</h3>
     
     <?= $this->Flash->render() ?>

@@ -3,6 +3,30 @@
 <input type="hidden" name="sub_doc_id" value="2" class="sub_docs_id" id="af" />
 <div class="clearfix"></div>
 <hr />
+
+<?php
+    $controller = $this->request->params['controller'];
+    $controller = strtolower($controller);
+    if($controller == 'documents' )
+    {
+        
+         echo '<div class="row">
+        <div class="col-md-12">
+        <div class="portlet box red">
+        
+                <div class="portlet-title">
+                    <div class="caption">
+                        Driver Application
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                <div class="form-body" style="padding-bottom: 0px;">
+                                <div class="tab-content">';
+                                }
+                    else {
+                        
+                    }
+    ?>
     <div class="form-group row">
         <div class="col-md-12">
 <p>Welcome Prospective Drivers of Challenger. </p>
@@ -875,3 +899,10 @@
     });
  });
  </script></div></div></div>
+ <?php
+  
+if($controller == 'documents' )
+{
+echo '</div></div></div></div></div></div>' ;
+}
+ ?>

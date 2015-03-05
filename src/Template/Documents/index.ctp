@@ -17,9 +17,17 @@
 
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
     <?php if ($sidebar->document_create == 1) { ?>
-            <a href="<?php echo $this->request->webroot; ?>clients?flash" class="floatright btn btn-primary">
+            <a href="<?php echo $this->request->webroot; ?>clients?flash" class="floatright btn btn-primary btnspc">
                 Create <?php echo ucfirst($settings->document); ?></a>
+    <?php }
+    if (isset($_GET["draft"])) {?>
+        <a href="<?php echo $this->request->webroot; ?>documents/index" class="floatright btn btn-info btnspc">
+            List <?php echo ucfirst($settings->document); ?>s</a>
+    <?php } else { ?>
+        <a href="<?php echo $this->request->webroot; ?>documents/index?draft" class="floatright btn btn-info btnspc">
+            Drafts</a>
     <?php } ?>
+
 </div>
 
 
@@ -235,7 +243,7 @@
                                         <?php break;
                                             case 2: //tile, doesn't work. CSS not included? ?>
 
-                                                <a href="/veritas3/orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
+                                                <a href=$this->request->webroot."orders/productSelection?driver=0&amp;ordertype=MEE" class="tile bg-yellow" style="display: block; height: 100px; ">
                                                     <div class="tile-body">
                                                         <i class="icon-docs"></i>
                                                     </div>
@@ -309,6 +317,16 @@
                                             }
                                         ?>
                                         <?php if ($sidebar->document_delete == '1' && $docs->order_id == 0) {
+                                            if(!$this->request->session()->read('Profile.super') && $docs->user_id == $this->request->session()->read('Profile.id'))
+                                           { 
+                                            $dl_show = 1;
+                                            }
+                                            else if($this->request->session()->read('Profile.super'))
+                                            { 
+                                            $dl_show = 1;
+                                            }
+                                            else $dl_show = 0;
+                                            if($dl_show == 1){
                                             if (isset($_GET['draft'])) {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>documents/delete/<?php echo $docs->id; ?>/draft"
@@ -322,7 +340,8 @@
                                                    onclick="return confirm('Are you sure you want to delete <?= $docname; ?>?');"
                                                    class="btn btn-danger">Delete</a>
                                             <?php
-                                            }
+                                            }}
+                                            
                                         }
 
                                         ?>

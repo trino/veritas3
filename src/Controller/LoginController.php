@@ -13,6 +13,7 @@ class LoginController extends AppController{
         $this->loadComponent('Settings');
         if($this->request->session()->read('Profile.id'))
         {
+            //$this->redirect($this->referer());
             $this->redirect('/pages');
         }
         //if($this->Cookie->read('name'))
@@ -71,6 +72,11 @@ class LoginController extends AppController{
                 if($q->super == 1)
                 $this->request->session()->write('Profile.super',1);
             }
+            //$this->redirect($this->referer());
+
+            if(isset($_GET['url']))
+            $this->redirect(urldecode($_GET['url']));
+            else
             $this->redirect('/pages');
         }
         else{

@@ -64,7 +64,7 @@ if (isset($this->request->params['pass'][1])) {
         }
         $opposite = "edit"; $url="add";
         if ($action=="Edit"){ $opposite = "view"; $url= "view";}
-    if (isset($this->request->params['pass'][1])) { echo '<a href="../../' . $url . '/' . $id0 . "/" . $id1 . $id2 . '" class="floatright btn btn-info">' . ucfirst($opposite) . '</a>'; }
+    if (isset($this->request->params['pass'][1])) { echo '<a href="../../' . $url . '/' . $id0 . "/" . $id1 . $id2 . '" class="floatright btn btn-info btnspc">' . ucfirst($opposite) . '</a>'; }
 
 
         ?>
@@ -127,37 +127,232 @@ if (isset($this->request->params['pass'][1])) {
 
                     </div>
                     <div class="clearfix"></div>
+
                     <div class="moredocxs">
+
+                    <?php
+                    
+                    $controller = $this->request->params['controller'];
+                    $controller = strtolower($controller);
+                    ?>
+                    
+
                     <div class="subform1" style="display: none;">
-                        <?php include('subpages/documents/company_pre_screen_question.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box blue-madison">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Driver Pre-Screen Questions
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/company_pre_screen_question.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                        ?>
+                        
                     </div>
                     <div class="subform2" style="display: none;">
-                        <?php include('subpages/documents/driver_application.php'); ?>
+                        <?php include('subpages/documents/driver_application.php'); 
+                        ?>
                     </div>
                     <div class="subform3" style="display: none;">
-                        <?php include('subpages/documents/driver_evaluation_form.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box yellow">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Road Test
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/driver_evaluation_form.php');
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                     <div class="subform4" style="display: none;">
-                        <?php include('subpages/documents/document_tab_3.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box purple">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Place MEE Order
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/document_tab_3.php');
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                     <div class="subform5" style="display: none;">
-                        <?php include('subpages/documents/survey.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box green">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Survey
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/survey.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                     <div class="subform6" style="display: none;">
-                        <?php include('subpages/documents/feedbacks.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box red-intense">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Feedbacks
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/feedbacks.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                     <div class="subform7" style="display: none;">
-                        <?php include('subpages/documents/attachments.php'); ?>
+                    <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box yellow-saffron">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Attachments
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/attachments.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
                      <div class="subform8" style="display: none;">
-                        <?php include('subpages/documents/audits.php'); ?>
+                     <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box grey-cascade">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Audits
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/audits.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
                     </div>
 
                     <div class="subform9" style="display: none;">
-                        <?php include('subpages/documents/products.php'); ?>
+                        <?php include('subpages/documents/products.php');
+                         ?>
                     </div>
                     <div class="attachments" style="display: none;">
-                        <?php include('subpages/documents/attach_doc.php');?>
+                        <?php include('subpages/documents/attach_doc.php');
+                         ?>
                     </div>
                     </div>
                 </div>

@@ -377,7 +377,7 @@ function provinces($name){
                                 <?php include('subpages/documents/' . $d->form); ?>
                             </div>
                         <?php }}}
-                        if(!isset($k_co))$k_co=1; ?>
+                        if(!isset($k_co)) {$k_co=1;} ?>
 
                         <div class="tabber <?php echo $tab; ?> confirmations2" id="tab<?php echo ++$k_co; ?>">
                             <?php include('subpages/documents/confirmation.php'); ?>
@@ -385,16 +385,13 @@ function provinces($name){
                         <div class="tabber <?php echo $tab; ?>" id="tab<?php echo ++$k_co; ?>">
                             <?php include('subpages/documents/success.php'); //include('subpages/documents/forview.php'); ?>
                         </div>
-                        <?php
-                            // For view action only
-                            if ($tab == 'nodisplay') {
-                                ?>
+                        <?php if ($tab == 'nodisplay') { // For view action only ?>
 
-                                <div class="forview <?php if ($tab == 'tab-pane') echo 'nodisplay';?>">
-                                    <?php include('subpages/documents/forview.php');?>
-                                </div>
+                            <div class="forview <?php if ($tab == 'tab-pane') echo 'nodisplay';?>">
+                                <?php include('subpages/documents/forview.php');?>
+                            </div>
 
-                            <?php } ?>
+                        <?php } ?>
 
                     </div>
                 </div>

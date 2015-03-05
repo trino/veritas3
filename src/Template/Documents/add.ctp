@@ -93,7 +93,7 @@ if (isset($this->request->params['pass'][1])) {
                             <?php
                             }
                         ?>
-                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();" class="btn btn-success moreback" style="display: none;">Back</a>
+                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();$('.moredocxs').hide();" class="btn btn-success moreback" style="display: none;">Back</a>
 
                     <?php include('subpages/home_blocks.php');
                     if(isset($mod->uploaded_for))
@@ -127,6 +127,7 @@ if (isset($this->request->params['pass'][1])) {
 
                     </div>
                     <div class="clearfix"></div>
+                    <div class="moredocxs">
                     <div class="subform1" style="display: none;">
                         <?php include('subpages/documents/company_pre_screen_question.php'); ?>
                     </div>
@@ -157,6 +158,7 @@ if (isset($this->request->params['pass'][1])) {
                     </div>
                     <div class="attachments" style="display: none;">
                         <?php include('subpages/documents/attach_doc.php');?>
+                    </div>
                     </div>
                 </div>
                 <div class="form-actions">
@@ -273,7 +275,7 @@ if (isset($this->request->params['pass'][1])) {
     }
     //showforms(doc_type);
     function showforms(form_type) {
-        //alert(form_type);
+        $('.moredocxs').show();
         var arr_formtype = form_type.split('?');
         var sub_doc_id = arr_formtype[1];
 

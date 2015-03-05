@@ -36,7 +36,7 @@ if (isset($attachments)) {
     </a>
 </div>
 <?php }?>
-</div>
+
 <script>
 
  $(function () {
@@ -128,3 +128,4 @@ function initiate_ajax_upload1(button_id, doc) {
     }
     <?php }?>
 </script>
+</div>

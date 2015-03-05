@@ -129,7 +129,7 @@
 		<div class="page-logo">
 			<a href="<?php echo $this->request->webroot;?>">
             <?php $logo = $this->requestAction('Logos/getlogo/0',['return']);?>
-			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="" />
+			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="" style="max-width:225px;"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->

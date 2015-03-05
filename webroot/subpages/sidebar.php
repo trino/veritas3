@@ -47,7 +47,7 @@ $profileID = $this->Session->read('Profile.id');
             <?php if ($sidebar->client == 1) { ?>
 
                 <li class="<?php echo ($this->request['controller'] == 'Clients' && !isset($_GET['draft']) && $this->request['action'] != 'quickcontact') ? 'active open' : ''; ?>">
-                    <a href="javascript:;">
+                    <a href="<?php echo WEB_ROOT; ?>clients">
                         <i class="icon-globe"></i>
                         <span class="title"><?php echo ucfirst($settings->client); ?>s</span>
                         <?php echo ($this->request['controller'] == 'Clients') ? '<span class="selected"></span>' : ''; ?>
@@ -94,7 +94,7 @@ $profileID = $this->Session->read('Profile.id');
             <?php } ?>
             <?php if ($sidebar->profile == 1) { ?>
                 <li class="<?php echo ($this->request['controller'] == 'Profiles' && !isset($_GET['draft']) && $this->request['action'] != 'logo' && $this->request['action'] != 'todo') ? 'active open' : ''; ?>">
-                    <a href="javascript:;">
+                    <a href="<?php echo WEB_ROOT; ?>profiles">
                         <i class="icon-user"></i>
                         <span class="title"><?php echo ucfirst($settings->profile); ?>s</span>
                         <?php echo ($this->request['controller'] == 'Profiles') ? '<span class="selected"></span>' : ''; ?>
@@ -131,7 +131,7 @@ $profileID = $this->Session->read('Profile.id');
 
             <?php if ($sidebar->document == 1) { ?>
                 <li class="<?php echo (($this->request['controller'] == 'Documents' && ($this->request['action'] == "index" || $this->request['action'] == "add")) && !isset($_GET['draft'])) ? 'active open' : ''; ?>">
-                    <a href="javascript:;">
+                    <a href="<?php echo $this->request->webroot; ?>documents/index">
                         <i class="icon-doc"></i>
                         <span class="title"><?php echo ucfirst($settings->document); ?>s</span>
                         <?php echo ($this->request['controller'] == 'Documents') ? '<span class="selected"></span>' : ''; ?>

@@ -1,8 +1,20 @@
 var path = window.location.pathname;
-if(path.replace('veritas3','')!=path)
-    var base_url = 'http://localhost/veritas3/';
-else
-    var base_url = 'http://isbmeereports.com/';
+
+function webroot(){
+    //assumes only 1 directory deep for localhost, 0 for everything else
+    var txt =  document.URL;
+    var position = txt.indexOf("/", 8);
+    if( txt.indexOf("localhost")>0 ) {
+        position = txt.indexOf("/", position + 1);
+    }
+    return txt.substr(0,position) + "/";
+}
+
+var base_url = '/'; //http://isbmeereports.com/';
+if(path.replace('localhost','')!=path){
+    base_url = 'http://localhost/'+ webroot() + '/';
+}
+
 var table=0;
 var draft = 0;
 $(function(){
@@ -275,6 +287,7 @@ var FormWizard = function () {
                      else
                      window.location = base_url+'?orderflash';
                     */
+
                    if($('#tab6 .touched').val()=='1'){ 
                     setTimeout(
                   function() 

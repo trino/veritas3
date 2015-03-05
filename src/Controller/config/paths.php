@@ -81,16 +81,18 @@ define('CAKE_CORE_INCLUDE_PATH', ROOT . DS . 'vendor' . DS . 'cakephp' . DS . 'c
 define('CORE_PATH', CAKE_CORE_INCLUDE_PATH . DS);
 define('CAKE', CORE_PATH . 'src' . DS);
 
-if($_SERVER['SERVER_NAME']=='localhost'){
-    define('WEB_ROOT', "http://localhost/veritas3/");
+$root = $_SERVER["PHP_SELF"];
+$root = substr($root, 1, strpos($root, "/",2)-1);
 
-}
-else{
+if($_SERVER['SERVER_NAME']=='localhost'){
+    define('WEB_ROOT', "http://localhost/" . $root . "/");
+} else {
     define('WEB_ROOT', "/");
     //define('W_ROOT', "http://isbmeereports.com");
 }
 define('W_ROOT',strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://'.$_SERVER['HTTP_HOST'] );
-if($_SERVER['SERVER_NAME']=='localhost')
-define('LOGIN', W_ROOT."/veritas3/");
-else
-define('LOGIN', W_ROOT.'/');
+if($_SERVER['SERVER_NAME']=='localhost') {
+    define('LOGIN', W_ROOT . "/" . $root . "/");
+} else {
+    define('LOGIN', W_ROOT . '/');
+}

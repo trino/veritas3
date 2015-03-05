@@ -19,8 +19,8 @@
         return $tempstr;
     }
 
-    $tempstr = getcheckboxes("form", 8);
-    $tempstr2 = getcheckboxes("formb", 8);
+    $tempstr = getcheckboxes("form", 7);
+    $tempstr2 = getcheckboxes("formb", 7);
 
     $driver = 0;
     if (isset($_GET['driver'])) {
@@ -482,14 +482,14 @@
                             
                         </li>
                         
-                        <li>
+                        <!--li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
                             <div class="col-xs-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
                             
                             <div class="clearfix"></div>
                             
                             
-                        </li>
+                        </li-->
 
                     </ul>
                     <div class="pricing-footer">
@@ -587,14 +587,14 @@
                             
                             
                         </li>
-                        <li>
+                        <!--li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
                             <div class="col-xs-2"><input id="formb7" value="1" checked type="checkbox" name="check_dl"></div>
                             
                             <div class="clearfix"></div>
                             
                             
-                        </li>
+                        </li-->
 
 
                     </ul>

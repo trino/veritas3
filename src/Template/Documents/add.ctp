@@ -551,6 +551,7 @@ if (isset($this->request->params['pass'][1])) {
         if (ftype != "") {
             //alert(form_type);
             for (var p = 1; p <= 9; p++) {
+                alert(p);
                 $('.subform' + p).hide();
                                    
             }

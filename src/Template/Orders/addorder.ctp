@@ -162,6 +162,10 @@ function provinces($name){
                                         $k_c=0;
                                         $index=0;
                                         foreach ($subdoccli as $sd) {
+                                         
+                                            $index+=1;
+
+
                                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
 
                                             //debug($d);

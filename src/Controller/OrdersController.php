@@ -1029,4 +1029,15 @@
             die;
 
         }
+        
+         public function getSubDocs()
+        {
+            $docs = TableRegistry::get('subdocuments');
+            $doc = $docs->find()->all();
+            //$do = $doc->select('all');
+            $this->response->body($doc);
+            return $this->response;  
+            die; 
+        }
+        
     }

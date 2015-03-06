@@ -119,17 +119,26 @@
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/form-wizard.js"></script>
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/components-pickers.js"></script>
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/components-dropdowns.js"></script>
+
+    <style>
+        .page-logo a{max-width:100%;max-height:100%;}
+        .page-logo img{max-width:100%;max-height:70px!important;}
+    </style>
+
 </head>
 <body class="<?php echo $settings->body;?>">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
 	<div class="page-header-inner <?php if($settings->box =='1')echo "container";?>">
+
+
+
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="<?php echo $this->request->webroot;?>">
             <?php $logo = $this->requestAction('Logos/getlogo/0',['return']);?>
-			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="" />
+			<img src="<?php echo $this->request->webroot;?>img/logos/<?php echo $logo;?>" alt="logo" class="" style="max-width:225px;"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -426,10 +435,7 @@ function change_text(v){
 
 
 </script>
-<style>
-.page-logo a{max-width:100%;max-height:100%;}
-.page-logo img{max-width:100%;max-height:70px!important;}
-</style>
+
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

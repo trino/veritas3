@@ -202,7 +202,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-     <?php if ($sidebar->messages ==1 && $block->message =='1') { ?>
+     <?php if ($sidebar->messages ==1 && $block->message =='1' && false) { ?>
         <a class="tile bg-green" href="<?php echo $this->request->webroot; ?>messages" style="display: block;">
             <div class="tile-body">
                 <i class="fa icon-envelope"></i>

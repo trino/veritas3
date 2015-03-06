@@ -1406,19 +1406,19 @@ if (isset($this->request->params['pass'][1])) {
                     else if (type == "Feedbacks") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>feedbacks/add/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
+                            url = '<?php echo $this->request->webroot;?>feedbacks/add/' + order_id + '/' + cid+'?draft=' + draft + '&document=1'+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         var param = $('#form_tab6').serialize();
                         $.ajax({
                             url: url,
                             data: param,
                             type: 'POST',
-                            success: function (res) {
-                                if (res == 'OK'){
-                                    if(draft==0)
+                            success:function()
+                            {
+                                if(draft==0){
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
-                                    else
+                                    }
+                                    else{
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
-                                    
                                     }
                             }
                         });
@@ -1427,45 +1427,69 @@ if (isset($this->request->params['pass'][1])) {
                     else if (type == "Survey") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
+                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/' + order_id + '/' + cid+'?draft=' + draft + '&document=1'+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';;
                         var param = $('#form_tab5').serialize();
                         $.ajax({
                             url: url,
                             data: param,
                             type: 'POST',
-                            success: function (res) {
-                                if (res == 'OK'){
-                                    if(draft==0)
+                            success:function()
+                            {
+                                if(draft==0){
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
-                                    else
+                                    }
+                                    else{
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
-                                    
                                     }
                             }
                         });
 
                     }
                     else if (type == "Attachment") {
-                        var act = $('#form_tab7').attr('action');
-
-                        $('#form_tab7').attr('action', function (i, val) {
-                            return val + '?draft=' + draft;
+                        
+                        var order_id = $('#did').val(),
+                            cid = '<?php echo $cid;?>',
+                            url = '<?php echo $this->request->webroot;?>documents/addattachment/' + cid + '/' + order_id+'?draft=' + draft + '&document=1'+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
+                        var param = $('#form_tab7').serialize();
+                        $.ajax({
+                            url: url,
+                            data: param,
+                            type: 'POST',
+                            success:function()
+                            {
+                                if(draft==0){
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    }
+                                    else{
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    }
+                            }
                         });
-                        $('#form_tab7').submit();
 
 
                     }
                     else if (type == "Audits") {
-                        var act = $('#form_tab8').attr('action');
-
-                        $('#form_tab8').attr('action', function (i, val) {
-                            return val + '?draft=' + draft;
+                         var order_id = $('#did').val(),
+                            cid = '<?php echo $cid;?>',
+                            url = '<?php echo $this->request->webroot;?>documents/audits/' + cid + '/' + order_id+ '?draft=' + draft + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';;
+                        var param = $('#form_tab8').serialize();
+                        $.ajax({
+                            url: url,
+                            data: param,
+                            type: 'POST',
+                            success:function()
+                            {
+                                if(draft==0){
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    }
+                                    else{
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    }
+                            }
                         });
-                        
-                        $('#form_tab8').submit();
-
 
                     }
+                    
                     
                 }
             });

@@ -480,25 +480,25 @@
 
 
 
-                                                                     <?php
-                                                                     $line="even";
-                                                                    $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
-                                                                         $line = PrintLine($line, "Pre-Screening", $cnt);
+ <?php
+ $line="even";
+$cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
+     $line = PrintLine($line, "Pre-Screening", $cnt);
 
-                                                                    $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
-                                                                        $line = PrintLine($line, "Driver Application", $cnt);
+$cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
+    $line = PrintLine($line, "Driver Application", $cnt);
 
-                                                                    $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
-                                                                        $line = PrintLine($line, "Road Test", $cnt);
+$cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
+    $line = PrintLine($line, "Road Test", $cnt);
 
-                                                                    $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
-                                                                        $line = PrintLine($line, "Consent Form", $cnt);
+$cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
+    $line = PrintLine($line, "Consent Form", $cnt);
 
-                                                                        $line = PrintLine($line, "Confirmation", 1-$order->draft, true)
+    $line = PrintLine($line, "Confirmation", 1-$order->draft, true)
 
-                                                                    ?><TR><TD colspan="3"> </TD></TR>
-                                                                        </tbody>
-                                                                    </table>
+?><TR><TD colspan="3"> </TD></TR>
+    </tbody>
+</table>
 
 
 

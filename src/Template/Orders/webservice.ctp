@@ -37,8 +37,9 @@
 
 if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
     $user_id234 = '22552';
-    echo $_SERVER['SERVER_NAME'];
+   echo $_SERVER['SERVER_NAME'];
 }
+
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
             '&lt;/isb_DOL&gt;&lt;isb_Prov&gt;' . $driverinfo->driver_province . '&lt;/isb_Prov&gt;&lt;isb_UserID&gt;' . $user_id234 . '&lt;/isb_UserID&gt;&lt;/ProductData&gt;';
@@ -47,7 +48,7 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <soap:Body><StartOrder xmlns="http://tempuri.org/"><IntPackage>'
             . $body .
-            '</IntPackage><tp>MEE</tp><prod>true</prod></StartOrder></soap:Body></soap:Envelope>';
+            '</IntPackage><tp>'.$ordertype.'</tp><prod>true</prod></StartOrder></soap:Body></soap:Envelope>';
 
         $result = $client->call('StartOrder', $soap_xml);
         debug($result);

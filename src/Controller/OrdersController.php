@@ -66,6 +66,27 @@
             $this->set('disabled', 1);
             if ($did) {
 
+                $feeds = TableRegistry::get('feedbacks');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+
+                $feed = $feeds->find()->where(['order_id' => $did])->first();
+                $this->set('feeds', $feed);
+
+                $survey = TableRegistry::get('Survey');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $sur = $survey->find()->where(['order_id' => $did])->first();
+                $this->set('survey', $sur);
+
+                $attachments = TableRegistry::get('attachments');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $attachment = $attachments->find()->where(['order_id' => $did])->all();
+                $this->set('attachments', $attachment);
+
+                $attachments = TableRegistry::get('audits');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $audits = $attachments->find()->where(['order_id' => $did])->first();
+                $this->set('audits', $audits);
+
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
                 $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did, 'sub_id' => 1])->all();
@@ -172,6 +193,28 @@
             $this->set('cid', $cid);
             $this->set('did', $did);
             if ($did) {
+
+                $feeds = TableRegistry::get('feedbacks');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+
+                $feed = $feeds->find()->where(['order_id' => $did])->first();
+                $this->set('feeds', $feed);
+
+                $survey = TableRegistry::get('Survey');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $sur = $survey->find()->where(['order_id' => $did])->first();
+                $this->set('survey', $sur);
+
+                $attachments = TableRegistry::get('attachments');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $attachment = $attachments->find()->where(['order_id' => $did])->all();
+                $this->set('attachments', $attachment);
+
+                $attachments = TableRegistry::get('audits');
+                //$pre_at = TableRegistry::get('driver_application_accident');
+                $audits = $attachments->find()->where(['order_id' => $did])->first();
+                $this->set('audits', $audits);
+
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
                 $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $did, 'sub_id' => 1])->all();
@@ -544,9 +587,8 @@
             return $this->response;
         }
 
-        public function webservice($recruiter_id = null, $body = null, $orderid = null, $driverid = null)
+        public function webservice($order_type = null, $body = null, $orderid = null, $driverid = null)
         {
-
             $this->layout = "blank";
             if ($orderid) {
 
@@ -571,7 +613,6 @@
 
                     $this->set('driverapplication', $sub);                 //////////////////////////////////////////////////////////// driver application
                     $this->set('roadtest', $sub5);                 //////////////////////////////////////////////////////////// driver application
-
                 }
 
                 $con = TableRegistry::get('consent_form');
@@ -610,6 +651,19 @@
 
             $this->set('orderid', $orderid);
             $this->set('driverinfo', $driverinfo);
+
+            if ($order_type == "Requalification") {
+                $ordertype1 = "MEE-REQ";
+            } else if ($order_type == "Order Products") {
+                $ordertype1 = "MEE-IND";
+
+            } else {
+                $ordertype1 = "MEE";
+
+            }
+
+            $this->set('ordertype', $ordertype1);
+
         }
 
         public function createPdf($oid)

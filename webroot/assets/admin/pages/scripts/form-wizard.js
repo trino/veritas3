@@ -1,19 +1,21 @@
-var path = window.location.pathname;
+var path =  document.URL; //window.location.pathname;
 
 function webroot(){
-    //assumes only 1 directory deep for localhost, 0 for everything else
     var txt =  document.URL;
     var position = txt.indexOf("/", 8);
-    if( txt.indexOf("localhost")>0 ) {
+    var test = txt.indexOf("localhost");
+    if( test>0 ) {
         position = txt.indexOf("/", position + 1);
+    } else {
+        return "/";
     }
     return txt.substr(0,position) + "/";
 }
 
-var base_url = '/'; //http://isbmeereports.com/';
-if(path.replace('localhost','')!=path){
-    base_url = 'http://localhost/'+ webroot() + '/';
-}
+var base_url = webroot(); //'/'; //http://isbmeereports.com/';
+//alert("Base URL: " + base_url);
+
+//if(path.replace('localhost','')!=path){base_url =  webroot(); } //'http://localhost/'+ + '/';
 
 var table=0;
 var draft = 0;
@@ -292,7 +294,7 @@ var FormWizard = function () {
                     setTimeout(
                   function() 
                   {
-                    window.location = base_url+'?orderflash';
+                 //   window.location = base_url+'?orderflash';
                   }, 2500);
                   }
                     

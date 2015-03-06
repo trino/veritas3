@@ -1511,19 +1511,16 @@ function provinces($name){
                 });
             }
         });
-        
+
+
+
+
         $('#submit_ord').live('click', function () {
 
-
-
-//alert('test');
             $.ajax({
-
-                url: '<?php echo $this->request->webroot;?>orders/webservice/<?php echo $_GET['order_type'];?>/0/' + $('#did').val() + '/' + $('#uploaded_for').val(),
+                url: '<?php echo $this->request->webroot;?>orders/webservice/<?php echo $_GET['order_type'];?>/<?php if(isset($_GET['forms'])){ echo $_GET['forms'];}else{echo 0;} ?>/' + $('#did').val() + '/' + $('#uploaded_for').val(),
                 success:function(){
-                    //
                 }
-                
             })
         });
 

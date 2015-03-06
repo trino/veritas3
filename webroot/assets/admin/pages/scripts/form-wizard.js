@@ -294,7 +294,7 @@ var FormWizard = function () {
                     setTimeout(
                   function() 
                   {
-                 //   window.location = base_url+'?orderflash';
+                  window.location = base_url+'?orderflash';
                   }, 2500);
                   }
                     
@@ -336,7 +336,7 @@ var FormWizard = function () {
                     {
                         if($('.tabber.active .touched').val()!='1')
                         {
-                            alert('Please provide your signature to save');
+                            alert('Please provide your signature to confirm.');
                             return false;
                         }
                     }

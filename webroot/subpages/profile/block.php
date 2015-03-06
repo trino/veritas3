@@ -47,9 +47,7 @@ if ($activetab == "permissions") {
             <li <?php if($this->request->session()->read('Profile.profile_type')=='2' ||(isset($Clientcount)&& $Clientcount==0)) echo 'class = "active"'; ?>>
                 <a href="#subtab_2_4" data-toggle="tab">Assign to <?php echo ucfirst($settings->client) ?></a>
             </li>
-            <!--<li class="">
-                <a href="#subtab_2_4" data-toggle="tab">Client Settings</a>
-            </li>-->
+
         </UL>
     <!--</div>-->
     <div class="portlet-body form">
@@ -728,7 +726,7 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr>-->
 
-                                            <tr>
+                                            <!--tr>
                                                 <td>
                                                     Schedule
                                                 </td>
@@ -761,7 +759,7 @@ if ($activetab == "permissions") {
                                                                                           value="0" <?php if (isset($block) && $block->message == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr-->
                                             <tr>
                                                 <td>
                                                     <?php echo ucfirst($settings->client); ?>s Drafts

@@ -538,9 +538,10 @@
 
         public function save_pdi($orderid, $id, $pdi)
         {
+
+       //    echo  $orderid . ' ' .  $id . ' ' . $pdi;
             $this->set('doc_comp', $this->Document);
             $query2 = TableRegistry::get('orders');
-
             switch ($pdi) {
 
                 case "ins_79":
@@ -575,16 +576,28 @@
                     $arr['ebs_1650'] = $id;
                     break;
 
+                case "ins_72":
+                    $arr['ins_72'] = $id;
+                    break;
+
                 default:
                     $nothing = '111';
             }
 
-            $query2 = $query2->query();
-            $query2->update()
-                ->set($arr)
-                ->where(['id' => $orderid])
-                ->execute();
-            $this->response->body($query2);
+            /*
+                       echo $pdi;
+                       echo $orderid;
+                       echo "<br><br>";
+
+                       var_dump($arr);
+
+                        */
+                       $query2 = $query2->query();
+                       $query2->update()
+                           ->set($arr)
+                           ->where(['id' => $orderid])
+                           ->execute();
+                       $this->response->body($query2);
 
             return $this->response;
         }
@@ -627,44 +640,18 @@
                     $con_at = TableRegistry::get('doc_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['order_id' => $orderid, 'sub_id' => 4])->all();
                     $this->set('consent', $sub2);
-                    //   debug($sub2);
-                    //    $this->set('consent_detail', $con_detail);                //////////////////////////////////////////////////////////// conbsent form
-
-                    /*
-
-                                        $orders = TableRegistry::get('orders');
-                                        $order = $orders
-                                            ->find()
-                                            ->where(['orders.uploaded_for' => $driverid])->contain(['Profiles', 'Clients', 'RoadTest']);
-
-                                        $this->set('orders', $order);
-
-
-                                        foreach ($orders as $order) {
-                                            $forms = $order->forms;
-                                            if (!$forms) {
-                                                $forms_arr[0] = 1;
-                                                $forms_arr[1] = 1;
-                                                $forms_arr[2] = 1;
-                                                $forms_arr[3] = 1;
-                                                $forms_arr[4] = 1;
-                                                $forms_arr[5] = 1;
-                                                $forms_arr[6] = 1;
-                                                $forms_arr[7] = 1;
-                                            }
-                                        }
-
-                                        var_dump($forms_arr);die();
-                    */
                 }
+                echo $forms;
 
-                if (($forms !=0)) {
-                    echo $forms;
+                if (isset($forms)) {
                 $formsarray = explode(',', $forms);
                 $this->set('formsarray', $formsarray);
-
-            }
-
+                }
+                else
+                {
+                    echo 1;
+                    $this->set('fullorder', '1');
+                }
 
                 $emp = TableRegistry::get('employment_verification');
                 $sub3['emp'] = $emp->find()->where(['order_id' => $orderid])->all();

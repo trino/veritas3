@@ -710,7 +710,7 @@ if ($activetab == "permissions") {
                                                         No </label>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <!--<tr>
                                                 <td>
                                                     Order History
                                                 </td>
@@ -726,7 +726,7 @@ if ($activetab == "permissions") {
                                                                                           value="0" <?php if (isset($block) && $block->orderhistory == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>
+                                            </tr>-->
 
                                             <tr>
                                                 <td>

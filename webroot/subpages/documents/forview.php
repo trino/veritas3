@@ -18,12 +18,14 @@
 <?php
     {
         //include('subpages/documents/forprofileview.php');
-<<<<<<< HEAD
-        function PrintLine($lineclass, $name, $cnt, $bypass = false)
-        {
-            if ($cnt > 0 || $bypass) {
+        function PrintLine($lineclass, $name, $cnt, $doc_id, $c_id, $o_id, $webroot, $bypass = false){
+            if($cnt>0 || $bypass) {
                 echo '<tr class="' . $lineclass . '" role="row"><td><span class="icon-notebook"></span></td>';
-                echo '<td>' . $name . '</td>';
+                if($doc_id){
+                    echo '<td><a href="'.$webroot.'documents/view/'.$c_id.'/'.$doc_id.'/?order_id='.$o_id.'">' . $name . '</a></td>';
+                }
+                else
+                    echo '<td>' . $name . '</td>';
                 echo '<td class="actions">';
                 if ($cnt > 0) {
                     echo '<span style="" class="label label-sm label-success">Submitted</span>';
@@ -31,35 +33,10 @@
                     echo '<span style="" class="label label-sm label-danger">Skipped</span>';
                 }
                 echo "</TD></TR>";
-                if ($lineclass == "even") {
-                    $lineclass = "odd";
-                } else {
-                    $lineclass = "even";
-                }
+                if ($lineclass == "even") { $lineclass = "odd";} else { $lineclass = "even"; }
             }
             return $lineclass;
         }
-=======
-        function PrintLine($lineclass, $name, $cnt, $doc_id, $c_id, $o_id, $webroot, $bypass = false){
-                  if($cnt>0 || $bypass) {
-                      echo '<tr class="' . $lineclass . '" role="row"><td><span class="icon-notebook"></span></td>';
-                      if($doc_id){
-                      echo '<td><a href="'.$webroot.'documents/view/'.$c_id.'/'.$doc_id.'/?order_id='.$o_id.'">' . $name . '</a></td>';
-                      }
-                      else
-                      echo '<td>' . $name . '</td>';
-                      echo '<td class="actions">';
-                      if ($cnt > 0) {
-                          echo '<span style="" class="label label-sm label-success">Submitted</span>';
-                      } else { //should not occur
-                          echo '<span style="" class="label label-sm label-danger">Skipped</span>';
-                      }
-                      echo "</TD></TR>";
-                      if ($lineclass == "even") { $lineclass = "odd";} else { $lineclass = "even"; }
-                  }
-                  return $lineclass;
-              }
->>>>>>> origin/master
 
         function get_string_between($string, $start, $end)
         {
@@ -167,19 +144,19 @@
         $counting = 0;
         $drcl_d = $orders;
         foreach ($drcl_d as $drcld) {
-            if (isset($order)) {
-                if (is_object($order)) {
-                    if ($order->draft == 0) {
-                        $counting++;
-                    }
-                }
-            }
+            if(isset($order)){
+                if(is_object( $order)) {
+                    if ($order->draft == 0) { $counting++; }
+                }}
         }
+
+
 
         $k = 0;
         foreach ($orders as $order) {
             $forms = $order->forms;
-            if (!$forms) {
+            if(!$forms)
+            {
                 $forms_arr[0] = 1;
                 $forms_arr[1] = 1;
                 $forms_arr[2] = 1;
@@ -188,13 +165,15 @@
                 $forms_arr[5] = 1;
                 $forms_arr[6] = 1;
                 $forms_arr[7] = 1;
-            } else {
-                $forms_arr = explode(',', $forms);
+            }
+            else
+            {
+                $forms_arr = explode(',',$forms);
 
             }
             $p = $forms_arr;
 
-            if ($order->draft == 0) {
+            if(  $order->draft ==0){
                 $k++;
 
                 $settings = $this->requestAction('settings/get_settings');
@@ -224,16 +203,14 @@
                                 <div class="portlet box yellow">
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            <A name="<?php echo $order->created; ?>"/></A>
-                                            <i class="fa fa-folder-open-o"></i>Order Score Sheet
-                                            - <?php echo $order->created; ?>
+                                            <A name="<?php echo $order->created; ?>" /></A>
+                                            <i class="fa fa-folder-open-o"></i>Order Score Sheet - <?php echo $order->created; ?>
                                         </div>
                                     </div>
                                     <div class="portlet-body">
                                         <div oldclass="table-scrollable">
 
-                                            <div class="col-sm-6" style="padding-top:10px;"
-                                                 oldstyle="border: 1px solid #E5E5E5;">
+                                            <div class="col-sm-6" style="padding-top:10px;" oldstyle="border: 1px solid #E5E5E5;">
                         <span class="profile-desc-text">   <p>Driver:
                                 <strong><?php
 
@@ -250,31 +227,23 @@
                                             </div>
 
                                             <div class="col-sm-6" style="paddng-left: 0; padding-right: 0;">
-                                                <TABLE align="right" style="float;right;">
-                                                    <TR>
-                                                        <TD>
-                                               <SPAN style="white-space:nowrap"><a style="float;right;" href="#"
-                                                                                   class=" btn btn-lg default yellow-stripe">
+                                                <TABLE align="right" style="float;right;"><TR><TD>
+                                               <SPAN style="white-space:nowrap"><a style="float;right;" href="#" class=" btn btn-lg default yellow-stripe">
                                                        Road Test Score </a><a href="#" class="btn btn-lg yellow">
                                                        <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
-                                                   </a></SPAN></TD>
-                                                    </TR>
-                                                    <TR>
-                                                        <TD>
-                                                            <a style="margin:10px 0px 0px 0px;float:right;"
-                                                               href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>"
+                                                   </a></SPAN></TD></TR><TR><TD>
+                                                            <a style="margin:10px 0px 0px 0px;float:right;" href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>"
                                                                class="btn btn-primary">View Order</a>
-                                                        </TD>
-                                                    </TR>
-                                                </TABLE>
+                                                        </TD></TR></TABLE>
                                             </div>
+
 
 
                                             <div class="clearfix"></div>
                                             <div class="col-md-12" style="margin-bottom: 8px;">
                                                 <H4><i class="icon-doc font-blue-hoki"></i>
 								<span class="caption-subject bold font-blue-hoki uppercase">
-								Products Ordered </span></H4>
+								Product Orders </span></H4>
                                             </div>
 
 
@@ -282,7 +251,7 @@
                                             <table class="table" style="margin-bottom: 0px;">
                                                 <tbody>
                                                 <?php
-                                                    if ($p[0]) {
+                                                    if($p[0]){
                                                         ?>
 
                                                         <tr class="even" role="row">
@@ -299,12 +268,9 @@
                                                                 <?php
                                                                     $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
                                                                     if (return_link('1603', $order->id) == false) { ?>
-                                                                        <span
-                                                                            class="label label label-info">Pending </span>
+                                                                        <span class="label label label-info">Pending </span>
                                                                     <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
+                                                                        <a target="_blank" href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>" class="btn btn-primary">Download</a>
                                                                     <? } ?>
                                                             </td>
                                                         </tr>
@@ -312,7 +278,7 @@
                                                     }
                                                 ?>
                                                 <?php
-                                                    if ($p[1]) {
+                                                    if($p[1]){
                                                         ?>
                                                         <tr class="even" role="row">
                                                             <td>
@@ -328,12 +294,9 @@
                                                             <td class="actions">
                                                                 <?php
                                                                     if (return_link('1', $order->id) == false) { ?>
-                                                                        <span
-                                                                            class="label label label-info">Pending </span>
+                                                                        <span class="label label label-info">Pending </span>
                                                                     <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
+                                                                        <a target="_blank" href="<? echo $this->request->webroot . return_link('1', $order->id); ?>" class="btn btn-primary">Download</a>
                                                                     <? } ?>
 
                                                             </td>
@@ -342,7 +305,7 @@
                                                     }
                                                 ?>
                                                 <?php
-                                                    if ($p[2]) {
+                                                    if($p[2]){
                                                         ?>
                                                         <tr class="even" role="row">
                                                             <td>
@@ -356,8 +319,7 @@
                                                             <td class="actions">
                                                                 <?php
                                                                     if (return_link('14', $order->id) == false) { ?>
-                                                                        <span
-                                                                            class="label label label-info">Pending </span>
+                                                                        <span class="label label label-info">Pending </span>
                                                                     <? } else { ?>
                                                                         <a target="_blank"
                                                                            href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
@@ -369,7 +331,7 @@
                                                     }
                                                 ?>
                                                 <?php
-                                                    if ($p[3]) {
+                                                    if($p[3]){
                                                         ?>
                                                         <tr class="odd" role="row">
 
@@ -388,8 +350,7 @@
                                                             <td class="actions">
                                                                 <?php
                                                                     if (return_link('77', $order->id) == false) { ?>
-                                                                        <span
-                                                                            class="label label label-info">Pending </span>
+                                                                        <span class="label label label-info">Pending </span>
                                                                     <? } else { ?>
                                                                         <a target="_blank"
                                                                            href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
@@ -402,7 +363,7 @@
                                                     }
                                                 ?>
                                                 <?php
-                                                    if ($p[4]) {
+                                                    if($p[4]){
                                                         ?>
                                                         <tr class="even" role="row">
 
@@ -420,8 +381,7 @@
                                                             <td class="actions">
                                                                 <?php
                                                                     if (return_link('78', $order->id) == false) { ?>
-                                                                        <span
-                                                                            class="label label label-info">Pending </span>
+                                                                        <span class="label label label-info">Pending </span>
                                                                     <? } else { ?>
                                                                         <a target="_blank"
                                                                            href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
@@ -434,7 +394,7 @@
                                                     }
                                                 ?>
                                                 <?php
-                                                    if ($p[5]) {
+                                                    if($p[5]){
                                                         ?>
                                                         <tr class="odd" role="row">
                                                             <td>
@@ -450,8 +410,7 @@
                                                             <td class="actions">
                                                                 <?php
                                                                     if (return_link('1650', $order->id) == false) { ?>
-                                                                        <span
-                                                                            class="label label label-info">Pending </span>
+                                                                        <span class="label label label-info">Pending </span>
                                                                     <? } else { ?>
                                                                         <a target="_blank"
                                                                            href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
@@ -463,7 +422,7 @@
                                                     }
                                                 ?>
                                                 <?php
-                                                    if ($p[6]) {
+                                                    if($p[6]){
                                                         ?>
                                                         <tr class="odd" role="row">
 
@@ -480,8 +439,7 @@
                                                             <td class="actions">
                                                                 <?php
                                                                     if (return_link('1627', $order->id) == false) { ?>
-                                                                        <span
-                                                                            class="label label label-info">Pending </span>
+                                                                        <span class="label label label-info">Pending </span>
                                                                     <? } else { ?>
                                                                         <a target="_blank"
                                                                            href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
@@ -493,119 +451,63 @@
                                                     }
                                                 ?>
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                <TR>
-                                                    <TD colspan="3">
-
-                                                        <H4><i class="icon-doc font-blue-hoki"></i>
-								<span class="caption-subject bold font-blue-hoki uppercase">
-								Documents Submitted </span></H4>
-
-                                                        <div class="clearfix"></div>
-                                                    </TD>
-                                                </TR>
-
-
-
-                                                <?php
-                                                    $line = "even";
-                                                    $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
-                                                    $line = PrintLine($line, "Pre-Screening", $cnt);
-
-                                                    $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
-                                                    $line = PrintLine($line, "Driver Application", $cnt);
-=======
-<TR><TD colspan="3">
+                                                <TR><TD colspan="3">
 
                                                         <H4><i class="icon-doc font-blue-hoki"></i>
 								<span class="caption-subject bold font-blue-hoki uppercase">
 								Documents Check-list </span></H4>
-                                        <div class="clearfix"></div>
-    </TD></TR>
+                                                        <div class="clearfix"></div>
+                                                    </TD></TR>
 
 
 
- <?php
- $line="even";
- $doc = $this->requestAction('/orders/getSubDocs');
- 
-            //var_dump($doc); die();
- if($doc)
- {
-    foreach($doc as $d)
-    {
-        $title = ucfirst($d->title);
-        $sub_doc_id = $d->id;
-        $o_id = $order->id;
-        $c_id = $order->client_id;
-        $d_id = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $order->id);
-        $docu_id = $d_id->id; 
-        $cnt = $this->requestAction("/orders/getprocessed/".$d->table_name."/". $order->id);
-        $line = PrintLine($line,$title,$cnt,$docu_id,$c_id,$o_id,$this->request->webroot,false);
-    }
-    
- }
- /*
-$cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
-     $line = PrintLine($line, "Pre-Screening", $cnt);
+                                                <?php
+                                                    $line="even";
+                                                    $doc = $this->requestAction('/orders/getSubDocs');
 
-$cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
-    $line = PrintLine($line, "Driver Application", $cnt);
+                                                    //var_dump($doc); die();
+                                                    if($doc)
+                                                    {
+                                                        foreach($doc as $d)
+                                                        {
+                                                            $title = ucfirst($d->title);
+                                                            $sub_doc_id = $d->id;
+                                                            $o_id = $order->id;
+                                                            $c_id = $order->client_id;
+                                                            $d_id = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $order->id);
+                                                            $docu_id = $d_id->id;
+                                                            $cnt = $this->requestAction("/orders/getprocessed/".$d->table_name."/". $order->id);
+                                                            $line = PrintLine($line,$title,$cnt,$docu_id,$c_id,$o_id,$this->request->webroot,false);
+                                                        }
 
-$cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
-    $line = PrintLine($line, "Road Test", $cnt);
+                                                    }
+                                                    /*
+                                                   $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
+                                                        $line = PrintLine($line, "Pre-Screening", $cnt);
 
-$cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
-    $line = PrintLine($line, "Consent Form", $cnt);
-*/
-    $line = PrintLine($line, "Confirmation", 1-$order->draft,'','','','', true)
+                                                   $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
+                                                       $line = PrintLine($line, "Driver Application", $cnt);
 
-?><TR><TD colspan="3"> </TD></TR>
-    </tbody>
-</table>
->>>>>>> origin/master
+                                                   $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
+                                                       $line = PrintLine($line, "Road Test", $cnt);
 
-                                                    $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
-                                                    $line = PrintLine($line, "Road Test", $cnt);
+                                                   $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
+                                                       $line = PrintLine($line, "Consent Form", $cnt);
+                                                   */
+                                                    $line = PrintLine($line, "Confirmation", 1-$order->draft,'','','','', true)
 
-                                                    $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
-                                                    $line = PrintLine($line, "Consent Form", $cnt);
-
-                                                    $line = PrintLine($line, "Confirmation", 1 - $order->draft, true)
-
-                                                ?>
-                                                <TR>
-                                                    <TD colspan="3"></TD>
-                                                </TR>
+                                                ?><TR><TD colspan="3"> </TD></TR>
                                                 </tbody>
                                             </table>
 
 
+
+
+
                                         </div>
                                     </div>
+
+
 
 
                                     <!-- END PORTLET -->
@@ -618,20 +520,17 @@ $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
                     </div>
                 </div>
 
-            <?php }
-        }
+            <?php }}
 
-        if ($k == 0) {
+        if($k ==0){
             ?>
             <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                 <thead>
                 </thead>
                 <tbody>
-                <tr class="even" role="row">
-                    <td colspan="3" align="center">
+                <tr class="even" role="row"><td colspan="3" align="center">
                         No orders found
-                    </td>
-                </tr>
+                    </td></tr>
                 <?php if ($sidebar->orders_create == 1 && false) {
                     echo '<TR class="odd" role="row">';
                     if ($sidebar->orders_mee == 1) {

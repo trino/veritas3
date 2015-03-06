@@ -353,6 +353,8 @@
 
         public function index()
         {
+            $this->redirect(array('controller'=>'orders','action'=>'orderslist'));
+            
             $this->set('doc_comp', $this->Document);
             if (isset($_GET['draft']) && isset($_GET['flash'])) {
                 $this->Flash->success('Order saved as draft');

@@ -19,11 +19,11 @@
         return $tempstr;
     }
 
-    $tempstr = getcheckboxes("form", 7);
-    $tempstr2 = getcheckboxes("formb", 7);
+    $tempstr = getcheckboxes("form", 7) . "+',0'";
+    $tempstr2 = getcheckboxes("formb", 7) . "+',0'";
 
     $driver = 0;
-    if (isset($_GET['driver'])) {
+    if (isset($_GET['driver'])) { 
         $driver = $_GET['driver'];
     }
 
@@ -408,7 +408,7 @@
                 <div class="pricing hover-effect">
                     <div class="pricing-head">
                         <h3>Order Products <span>
-											Place an order A La Carte </span>
+											Place an Order A La Carte </span>
                         </h3>
                         <h4><!--i>$</i>999<i>.99+</i>
 											<span>

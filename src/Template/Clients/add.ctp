@@ -50,7 +50,7 @@
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
         <?php } 
        
-        if (isset($client) && $sidebar->client_delete == '1') { ?>
+        if (isset($client) && $sidebar->client_delete == '1' && $param != 'add') { ?>
             <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $client->id; ?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                onclick="return confirm('Are you sure you want to delete <?= h($client->company_name) ?>?');"
                class="floatright btn btn-danger btnspc">Delete</a>

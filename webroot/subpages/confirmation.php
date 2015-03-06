@@ -12,14 +12,12 @@
 $(function(){
    $("#test1").jqScribble(); 
 });
-function save(numb)
-		{
+function save(numb) {
 		  alert('rest');return;
 			$("#test"+numb).data("jqScribble").save(function(imageData)
 			{
 				$.post('image_save.php', {imagedata: imageData}, function(response)
 					{
-						
                         $.ajax({
                             url:'<?php echo $this->request->webroot;?>document/image_sess/'+numb+'/'+response
                         });
@@ -27,8 +25,7 @@ function save(numb)
 				
 			});
 		}
-		function addImage()
-		{
+		function addImage() {
 			var img = prompt("Enter the URL of the image.");
 			if(img !== '')$("#test").data("jqScribble").update({backgroundImage: img});
 		}

@@ -470,10 +470,10 @@
         $sub_doc_id = $d->id;
         $o_id = $order->id;
         $c_id = $order->client_id;
-        $did = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $order->id);
-        $doc_id = $did->id; 
+        $d_id = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $order->id);
+        $docu_id = $d_id->id; 
         $cnt = $this->requestAction("/orders/getprocessed/".$d->table_name."/". $order->id);
-        $line = PrintLine($line,$title,$cnt,$doc_id,$c_id,$o_id );
+        $line = PrintLine($line,$title,$cnt,$docu_id,$c_id,$o_id );
     }
     
  }

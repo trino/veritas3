@@ -1188,7 +1188,10 @@ class DocumentComponent extends Component
                
                $cmodel2 = TableRegistry::get('Clients');
                 $clients2 = $cmodel2->find()->where(['id'=>$client])->first();
+                if($client2)
                 $profile_ids2 = $clients2->profile_id;
+                else
+                $profile_ids2 = '';
                 
                 if(!$profile_ids2)
                 $profile_ids2 = '9999999';

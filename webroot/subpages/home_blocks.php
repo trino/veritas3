@@ -24,6 +24,7 @@
                 //debug($doc);
                 //
                 $i=0;
+                $cids = $this->requestAction('/settings/getallclients/'.$this->request->session()->read('Profile.id'));
                 if($doc){
                     //echo strtolower($document->document_type);
                     $form_type = "";
@@ -35,9 +36,13 @@
                              $form_type = $d->form;
                         //$prosubdoc = $this->requestAction('/profiles/getProSubDoc/'.$this->Session->read('Profile.id').'/'.$d->id);
                         $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/'.$this->Session->read('Profile.id').'/'.$d->id);
+                        
                         if(isset($cid))
                         $csubdoc = $this->requestAction('/settings/all_settings/0/0/client/'.$cid.'/'.$d->id);
-                        
+                        elseif(isset($cids))
+                        {
+                            $csubdoc['display'] = $this->requestAction('/settings/getCSubDocArray/'.urlencode($cids)."/".$d->id);
+                        }
                         //echo $d->id.":".$csubdoc['display']."-".$prosubdoc['display']."-".$d->display.",";
                         if($i==11)
                             $i=0;

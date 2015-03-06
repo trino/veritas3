@@ -12,10 +12,11 @@ function webroot(){
 }
 
 
+
 var path = window.location.pathname;
 var base_url = '/';
-if(path.replace('localhost','')!=path) {
-    base_url = 'http://localhost/' + webroot() + '/';
+if(path.replace('localhost','')==path) {
+    base_url = webroot();
 }
 
 var Metronic = function() {

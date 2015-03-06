@@ -9,7 +9,7 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $startorder1 = false;
-    $productdetails79 = true;
+    $productdetails79 = false; // only for complete mee roders
 
 
     ////////////////////////////////////////PRODUCTS
@@ -78,6 +78,7 @@
         }
 
     } else {
+        $productdetails79 = true;
         $productdetails_CheckDL_72 = false;
         echo 999;
     }
@@ -197,9 +198,7 @@
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<soap:Body><ProductDetails xmlns="http://tempuri.org/">' .
-
-            '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;/ProductData&gt;' . '</productdetails><productID>72</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_typeOfOrder&gt;Single Order&lt;/isb_typeOfOrder&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_CheckDLBulk&gt;a&lt;/isb_CheckDLBulk&gt;&lt;isb_uploadBulk&gt;a&lt;/isb_uploadBulk&gt;&lt;isb_CheckDLrbl&gt;a&lt;/isb_CheckDLrbl&gt;&lt;isb_rblHaveSig&gt;I confirm that I have signed consent from the drivers licence holder to verify its status&lt;/isb_rblHaveSig&gt;&lt;isb_specialInstructions&gt;&lt;/isb_specialInstructions&gt;&lt;/ProductData&gt;' . '</productdetails><productID>72</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
 
         var_dump($soap_xml);
         $result = $client->call('ProductDetails', $soap_xml);
@@ -209,10 +208,11 @@
             $r = explode(']', $r[1]);
         }
         $pdi = $r[0];
-
-        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_72');
         echo 'ins_72';
         debug($result);
+
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_72');
+
 
     }
 

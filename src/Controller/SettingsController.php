@@ -25,6 +25,7 @@ class SettingsController extends AppController {
                 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 $this->redirect('/login?url='.urlencode($url));
         }
+        
     }
 	public function index() {
         
@@ -135,6 +136,33 @@ class SettingsController extends AppController {
         $query->select()->where(['client_id'=>$c_id, 'subdoc_id'=>$doc_id]);
         $q = $query->first();
         $this->response->body($q);
+        return $this->response;
+    }
+    function getCSubDocArray($cid_array,$doc_id)
+    {
+        $cids = urldecode($cid_array);
+        $c_arr = explode(",", $cids);
+        $c_array = [];
+        foreach($c_arr as $v)
+        {
+            array_push($c_array,['client_id'=>$v]);
+        }
+        //var_dump($c_array);die();
+        $sub = TableRegistry::get('clientssubdocument');
+        $query = $sub->find();
+        $query->select()->where(['subdoc_id'=>$doc_id,'OR'=>$c_array]);
+        
+        $q = $query->all();
+        $d = 0;
+        foreach($q as $c)
+        {
+            if($c->display > $d)
+            $d = $c->display;
+            else
+            $d =$d;
+        }
+        
+        $this->response->body($d);
         return $this->response;
     }
     
@@ -311,6 +339,27 @@ class SettingsController extends AppController {
         }
        
         
+    }
+    
+    function getallclients($uid)
+    {
+        $clients = TableRegistry::get('clients');
+        $qs = $clients->find()->select('id')->where(['profile_id LIKE "'.$uid.',%" OR profile_id LIKE "%,'.$uid.',%" OR profile_id LIKE "%,'.$uid.'" OR profile_id ="'.$uid.'"'])->all();
+       
+        $client_ids ="";
+        if(count($qs)>0)
+        {
+            foreach($qs as $k=>$q)
+            {
+                if(count($qs)==$k+1)
+                    $client_ids .= $q->id;
+                else
+                    $client_ids .= $q->id.",";
+            }
+        }
+             
+        $this->response->body($client_ids);
+        return $this->response;
     }
     
     

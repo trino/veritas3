@@ -1060,4 +1060,23 @@
             die;
 
         }
+        
+         public function getSubDocs()
+        {
+            $docs = TableRegistry::get('subdocuments');
+            $doc = $docs->find()->all();
+            //$do = $doc->select('all');
+            $this->response->body($doc);
+            return $this->response;  
+            die; 
+        }
+        
+        public function getdocid($sub_doc_id, $order_id)
+        {
+            $doc = TableRegistry::get('documents');
+            $doc = $doc->find()->where(['sub_doc_id' => $sub_doc_id, 'order_id' => $order_id])->first();
+            $this->response->body($doc);
+            return $this->response;
+            die;
+        }
     }

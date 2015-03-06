@@ -18,6 +18,7 @@
 <?php
     {
         //include('subpages/documents/forprofileview.php');
+<<<<<<< HEAD
         function PrintLine($lineclass, $name, $cnt, $bypass = false)
         {
             if ($cnt > 0 || $bypass) {
@@ -38,6 +39,27 @@
             }
             return $lineclass;
         }
+=======
+        function PrintLine($lineclass, $name, $cnt, $doc_id, $c_id, $o_id, $webroot, $bypass = false){
+                  if($cnt>0 || $bypass) {
+                      echo '<tr class="' . $lineclass . '" role="row"><td><span class="icon-notebook"></span></td>';
+                      if($doc_id){
+                      echo '<td><a href="'.$webroot.'documents/view/'.$c_id.'/'.$doc_id.'/?order_id='.$o_id.'">' . $name . '</a></td>';
+                      }
+                      else
+                      echo '<td>' . $name . '</td>';
+                      echo '<td class="actions">';
+                      if ($cnt > 0) {
+                          echo '<span style="" class="label label-sm label-success">Submitted</span>';
+                      } else { //should not occur
+                          echo '<span style="" class="label label-sm label-danger">Skipped</span>';
+                      }
+                      echo "</TD></TR>";
+                      if ($lineclass == "even") { $lineclass = "odd";} else { $lineclass = "even"; }
+                  }
+                  return $lineclass;
+              }
+>>>>>>> origin/master
 
         function get_string_between($string, $start, $end)
         {
@@ -471,6 +493,7 @@
                                                     }
                                                 ?>
 
+<<<<<<< HEAD
 
 
 
@@ -514,6 +537,56 @@
 
                                                     $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
                                                     $line = PrintLine($line, "Driver Application", $cnt);
+=======
+<TR><TD colspan="3">
+
+                                                        <H4><i class="icon-doc font-blue-hoki"></i>
+								<span class="caption-subject bold font-blue-hoki uppercase">
+								Documents Check-list </span></H4>
+                                        <div class="clearfix"></div>
+    </TD></TR>
+
+
+
+ <?php
+ $line="even";
+ $doc = $this->requestAction('/orders/getSubDocs');
+ 
+            //var_dump($doc); die();
+ if($doc)
+ {
+    foreach($doc as $d)
+    {
+        $title = ucfirst($d->title);
+        $sub_doc_id = $d->id;
+        $o_id = $order->id;
+        $c_id = $order->client_id;
+        $d_id = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $order->id);
+        $docu_id = $d_id->id; 
+        $cnt = $this->requestAction("/orders/getprocessed/".$d->table_name."/". $order->id);
+        $line = PrintLine($line,$title,$cnt,$docu_id,$c_id,$o_id,$this->request->webroot,false);
+    }
+    
+ }
+ /*
+$cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
+     $line = PrintLine($line, "Pre-Screening", $cnt);
+
+$cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
+    $line = PrintLine($line, "Driver Application", $cnt);
+
+$cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
+    $line = PrintLine($line, "Road Test", $cnt);
+
+$cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
+    $line = PrintLine($line, "Consent Form", $cnt);
+*/
+    $line = PrintLine($line, "Confirmation", 1-$order->draft,'','','','', true)
+
+?><TR><TD colspan="3"> </TD></TR>
+    </tbody>
+</table>
+>>>>>>> origin/master
 
                                                     $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
                                                     $line = PrintLine($line, "Road Test", $cnt);

@@ -163,7 +163,7 @@ function provinces($name){
                                         $index=0;
                                         foreach ($subdoccli as $sd) {
   
-                                            if($show_all=='none')
+                                            /*if($show_all=='none')
                                             continue;
                                             elseif($show_all=='consent')
                                             {
@@ -174,7 +174,7 @@ function provinces($name){
                                             if($show_all=='all')
                                             {
                                                 //do nothing
-                                            }
+                                            }*/
                                             
                                                 
                                             $index+=1;

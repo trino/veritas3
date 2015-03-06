@@ -18,10 +18,10 @@
 <?php
     {
         //include('subpages/documents/forprofileview.php');
-        function PrintLine($lineclass, $name, $cnt, $bypass = false){
+        function PrintLine($lineclass, $name, $cnt,$doc_id,$c_id,$o_id, $bypass = false){
                   if($cnt>0 || $bypass) {
                       echo '<tr class="' . $lineclass . '" role="row"><td><span class="icon-notebook"></span></td>';
-                      echo '<td>' . $name . '</td>';
+                      echo '<td><a href="'.$this->request->webroot.'/documents/view/'.$c_id.'/'.$doc_id.'/?order_id='.$o_id.'">' . $name . '</a></td>';
                       echo '<td class="actions">';
                       if ($cnt > 0) {
                           echo '<span style="" class="label label-sm label-success">Submitted</span>';
@@ -467,8 +467,13 @@
     foreach($doc as $d)
     {
         $title = ucfirst($d->title);
+        $sub_doc_id = $d->id;
+        $o_id = $order->id;
+        $c_id = $order->client_id;
+        $did = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $order->id);
+        $doc_id = $did->id; 
         $cnt = $this->requestAction("/orders/getprocessed/".$d->table_name."/". $order->id);
-        $line = PrintLine($line,$title , $cnt);
+        $line = PrintLine($line,$title,$cnt,$doc_id,$c_id,$o_id );
     }
     
  }

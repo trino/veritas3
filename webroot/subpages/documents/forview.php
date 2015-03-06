@@ -447,29 +447,6 @@
                                             }
                                             ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <TR><TD colspan="3">
 
                                                         <H4><i class="icon-doc font-blue-hoki"></i>
@@ -482,6 +459,20 @@
 
  <?php
  $line="even";
+ $doc = $this->requestAction('/orders/getSubDocs');
+ 
+            //var_dump($doc); die();
+ if($doc)
+ {
+    foreach($doc as $d)
+    {
+        $title = ucfirst($d->title);
+        $cnt = $this->requestAction("/orders/getprocessed/".$d->table_name."/". $order->id);
+        $line = PrintLine($line,$title , $cnt);
+    }
+    
+ }
+ /*
 $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
      $line = PrintLine($line, "Pre-Screening", $cnt);
 
@@ -493,7 +484,7 @@ $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
 
 $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
     $line = PrintLine($line, "Consent Form", $cnt);
-
+*/
     $line = PrintLine($line, "Confirmation", 1-$order->draft, true)
 
 ?><TR><TD colspan="3"> </TD></TR>

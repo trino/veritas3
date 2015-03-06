@@ -111,15 +111,10 @@
                                                     <?= ucfirst(h($clients->company_name)).'</a>';
                                                         }
                                                         else
-                                                            ucfirst(h($clients->company_name))
-                                                    ?>
-
-                                            </td>
-
-                                            <td class="actions  util-btn-margin-bottom-5">
-
-
-                                                <?php
+                                                            ucfirst(h($clients->company_name));
+                                                            ?>
+                                                            <br />
+                                                            <?php
                                                     if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
                                                         ?>
                                                         <a class="btn btn-info btn-xs"
@@ -134,8 +129,13 @@
                                                            onclick="return confirm('Are you sure you want to delete <?= h($clients->company_name) ?>?');"
                                                            class="btn btn-danger btn-xs">Delete</a>
 
-                                                    <?php }
+                                                    <?php }                                                             
+                                                    ?>
 
+                                            </td>
+
+                                            <td class="actions  util-btn-margin-bottom-5">
+                                                    <?php
 
                                                     if ($sidebar->document_create == '1' && !isset($_GET["draft"])) {
                                                         echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => 'btn btn-success btn-xs']);

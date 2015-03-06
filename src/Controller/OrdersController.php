@@ -587,7 +587,7 @@
             return $this->response;
         }
 
-        public function webservice($order_type = null, $body = null, $orderid = null, $driverid = null)
+        public function webservice($order_type = null, $forms = null, $orderid = null, $driverid = null)
         {
             $this->layout = "blank";
             if ($orderid) {
@@ -627,7 +627,42 @@
                     $this->set('consent', $sub2);
                     //   debug($sub2);
                     //    $this->set('consent_detail', $con_detail);                //////////////////////////////////////////////////////////// conbsent form
+
+                    /*
+
+                                        $orders = TableRegistry::get('orders');
+                                        $order = $orders
+                                            ->find()
+                                            ->where(['orders.uploaded_for' => $driverid])->contain(['Profiles', 'Clients', 'RoadTest']);
+
+                                        $this->set('orders', $order);
+
+
+                                        foreach ($orders as $order) {
+                                            $forms = $order->forms;
+                                            if (!$forms) {
+                                                $forms_arr[0] = 1;
+                                                $forms_arr[1] = 1;
+                                                $forms_arr[2] = 1;
+                                                $forms_arr[3] = 1;
+                                                $forms_arr[4] = 1;
+                                                $forms_arr[5] = 1;
+                                                $forms_arr[6] = 1;
+                                                $forms_arr[7] = 1;
+                                            }
+                                        }
+
+                                        var_dump($forms_arr);die();
+                    */
                 }
+
+                if (($forms !=0)) {
+                    echo $forms;
+                $formsarray = explode(',', $forms);
+                $this->set('formsarray', $formsarray);
+
+            }
+
 
                 $emp = TableRegistry::get('employment_verification');
                 $sub3['emp'] = $emp->find()->where(['order_id' => $orderid])->all();
@@ -656,14 +691,10 @@
                 $ordertype1 = "MEE-REQ";
             } else if ($order_type == "Order Products") {
                 $ordertype1 = "MEE-IND";
-
             } else {
                 $ordertype1 = "MEE";
-
             }
-
             $this->set('ordertype', $ordertype1);
-
         }
 
         public function createPdf($oid)

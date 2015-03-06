@@ -9,20 +9,59 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $startorder1 = true;
+    $productdetails79 = true;
 
-    $productdetails79 = false;
-    $productdetails1 = false;
-    $productdetails14 = false;
-    $productdetails77 = false;
-    $productdetails78 = false;
+    $productdetailsebs1603 = true;
+    $productdetails1 = true;
+    $productdetails14 = true;
+    $productdetails77 = true;
+    $productdetails78 = true;
+    $productdetailsebs1650 = true;
+    $productdetailsebs1627 = true;
 
-    $productdetailsebs1603 = false;
-    $productdetailsebs1627 = false;
-    $productdetailsebs1650 = false;
+    var_dump($formsarray);
+    if ($formsarray) {
 
-    $uploadbinaryconsent_1603 = false;
-    $uploadbinaryemployment_1627 = false;
-    $uploadbinaryeducation_1650 = false;
+        if ($formsarray[0] == 0) {
+            $productdetailsebs1603 = false;
+            echo 1;
+        }
+        if ($formsarray[1] == 0) {
+            $productdetails1 = false;
+            echo 2;
+        }
+        if ($formsarray[2] == 0) {
+            $productdetails14 = false;
+            echo 3;
+        }
+        if ($formsarray[3] == 0) {
+            $productdetails77 = false;
+            echo 4;
+        }
+        if ($formsarray[4] == 0) {
+            $productdetails78 = false;
+            echo 5;
+        }
+        if ($formsarray[5] == 0) {
+            $productdetailsebs1650 = false;
+            echo 6;
+        }
+        if ($formsarray[6] == 0) {
+            $productdetailsebs1627 = false;
+            echo 7;
+        }
+        /*check dl
+        if ($formsarray[0] == 0)
+        {    $productdetails1 = false;
+        }
+        */
+    } else {
+        echo 999;
+    }
+
+    $uploadbinaryconsent_1603 = true;
+    $uploadbinaryemployment_1627 = true;
+    $uploadbinaryeducation_1650 = true;
 
     $upload_additional = false;
 
@@ -35,10 +74,10 @@
             $user_id234 = '22552';
         }
 
-if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
-    $user_id234 = '22552';
-   echo $_SERVER['SERVER_NAME'];
-}
+        if ($_SERVER['SERVER_NAME'] == "localhost") {
+            $user_id234 = '22552';
+            echo $_SERVER['SERVER_NAME'];
+        }
 
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
@@ -48,10 +87,9 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <soap:Body><StartOrder xmlns="http://tempuri.org/"><IntPackage>'
             . $body .
-            '</IntPackage><tp>'.$ordertype.'</tp><prod>true</prod></StartOrder></soap:Body></soap:Envelope>';
+            '</IntPackage><tp>' . $ordertype . '</tp><prod>true</prod></StartOrder></soap:Body></soap:Envelope>';
 
         $result = $client->call('StartOrder', $soap_xml);
-        debug($result);
 
         $myArray = explode(',', $result['StartOrderResult']);
 

@@ -1654,5 +1654,11 @@
         }
         return $randomString;
     }
+    
+    function cleardb()
+    {
+        $this->layout = "blank";
+    }
+    
     }
 ?>

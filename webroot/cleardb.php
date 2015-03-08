@@ -1,6 +1,6 @@
 <?php
 mysql_connect('localhost','root','');
-mysql_select_db('veritas_copy')or die(mysql_error());
+mysql_select_db('veritas3')or die(mysql_error());
 
 $result = mysql_query("show tables"); // run the query and assign the result to $result
 while($table = mysql_fetch_array($result)) { // go through each row that was returned in $result

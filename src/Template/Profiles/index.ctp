@@ -294,6 +294,15 @@
                                                 }
 
                                             }
+                                            
+                                            /*$doc = $this->requestAction('profiles/getDocumentcountz');
+                                            $cn = $this->requestAction('profiles/getuserDocumentcountz/'.$profile->id);*/
+                                            if ($sidebar->document_list == 1/* && $doc != 0 && $cn != 0*/) {
+                                            ?>
+                                                <a href="<?php echo $this->request->webroot.'documents/index?type=&submitted_by_id='.$profile->id; ?>" 
+                                                       class="btn btn-info btn-xs">View Document</a>
+                                            <?php
+                                            }
                                             ?>
 
                                         </td>

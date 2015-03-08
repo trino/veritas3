@@ -290,14 +290,14 @@ var FormWizard = function () {
                      window.location = base_url+'?orderflash';
                     */
 
-                   if($('#tab6 .touched').val()=='1' || $('#tab6 .touched_edit').val()=='1'){ 
+                //   if($('#tab6 .touched').val()=='1' || $('#tab6 .touched_edit').val()=='1'){
                     setTimeout(
-                  function() 
+                  function()
                   {
-                  window.location = base_url+'?orderflash';
+               //   window.location = base_url+'?orderflash';
                   }, 2500);
-                  }
-                    
+              //    }
+
 
                 }
 

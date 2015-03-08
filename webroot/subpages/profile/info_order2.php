@@ -19,11 +19,11 @@
         return $tempstr;
     }
 
-    $tempstr = getcheckboxes("form", 7) . "+',0'";
-    $tempstr2 = getcheckboxes("formb", 7) . "+',0'";
+    $tempstr = getcheckboxes("form", 8);
+    $tempstr2 = getcheckboxes("formb", 8);
 
     $driver = 0;
-    if (isset($_GET['driver'])) { 
+    if (isset($_GET['driver'])) {
         $driver = $_GET['driver'];
     }
 
@@ -333,7 +333,7 @@
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
                             <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></div>
-                            
+
                             <div class="clearfix"></div>
                         </li>
 
@@ -341,49 +341,49 @@
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
                             <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="CVOR" value=""></div>
                             <div class="clearfix"></div>
-                            
+
                         </li>
 
                         <li>
-                        
+
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
                             <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
-                        
+
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
                             <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
                             <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
                             <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
-                            <div class="clearfix"></div>                           
-                            
+                            <div class="clearfix"></div>
+
                         </li>
-                        
-                        <li>
+
+                        <!--li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
                             <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="check_dl" value=""></div>
                             <div class="clearfix"></div>
-                            
-                            
-                        </li>
+
+
+                        </li-->
 
                     </ul>
                     <div class="pricing-footer">
@@ -422,74 +422,68 @@
 
                     <ul class="pricing-content list-unstyled">
                         <li>
-                            
+
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
                             <div class="clearfix"></div>
                         </li>
-                        
+
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="dri_abs" id="form1" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
                         </li>
 
-                        
+
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="CVOR" id="form2" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form3" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
-                        
+
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form4" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form5" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
-                            
                             <div class="clearfix"></div>
-                            
-                            
                         </li>
-                        
-                        <!--li>
+
+                        <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-xs-2"><input id="form7" value="1" checked type="checkbox" name="check_dl" value=""></div>
-                            
+                            <div class="col-xs-2"><input checked type="checkbox" name="check_dl" id="form7" value="1"></div>
                             <div class="clearfix"></div>
-                            
-                            
-                        </li-->
+                        </li>
 
                     </ul>
                     <div class="pricing-footer">
@@ -528,73 +522,73 @@
                     <ul class="pricing-blue-content list-unstyled">
 
                         <li>
-                            
+
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb0" value="1"/></div>
                             <div class="clearfix"></div>
                         </li>
-                        
+
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="dri_abs" id="formb1" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
                         </li>
 
-                        
+
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="CVOR" id="formb2" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb3" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
-                        
+
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb4" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb5" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
 
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb6" value="1"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
+
+
                         </li>
-                        <!--li>
+                        <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
                             <div class="col-xs-2"><input id="formb7" value="1" checked type="checkbox" name="check_dl"></div>
-                            
+
                             <div class="clearfix"></div>
-                            
-                            
-                        </li-->
+
+
+                        </li>
 
 
                     </ul>
@@ -661,48 +655,6 @@
                 return false;
             }
         });
-        /*$('#selecting_driver').change(function () {
-         var driver = $('#selecting_driver').val();
-         //alert(driver);
-         if (!isNaN(parseFloat(driver)) && isFinite(driver)) {
-         $('.selecting_driver').val(driver);
-
-         }
-         else {
-         $('.selecting_driver').val('');
-         return false;
-         }
-        <?php
-    if(!$client)
-    {
-        ?>
-         $.ajax({
-         url: '
-        <?php echo $this->request->webroot;?>orders/getClientByDriver/' + driver,
-         success: function (res) {
-         if (res == 'Error')
-         window.location = "
-        <?php echo $this->request->webroot;?>profiles/edit/" + driver + "?clientflash";
-         var div = $('#divisionsel').val();
-         if (!isNaN(parseFloat(div)) && isFinite(div)) {
-         var division = div;
-         }
-         else
-         var division = '0';
-         $('#selecting_client').html(res);
-         $('.selecting_driver').val($('#selecting_driver').val());
-
-         $('.proceed').attr('href', '
-        <?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' +
-        <?= $tempstr; ?> );
-
-         }
-         });
-        <?php
-    }
-    ?>
-         });*/
-
 
         $('#selecting_client').change(function () {
             $('s2id_selecting_client .select2-choice').removeAttr('style');
@@ -753,9 +705,6 @@
                         var division = '0';
                     $('#selecting_driver').html(res);
                     $('.selecting_client').val($('#selecting_client').val());
-
-                    //$('.proceed').attr('href', '<?php echo $this->request->webroot;?>orders/addorder/' + $('.selecting_client').val() + '?driver=' + $('.selecting_driver').val() + '&division=' + division + '&forms=' + <?= $tempstr; ?>);
-
                 }
             });
             <?php

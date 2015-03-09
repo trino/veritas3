@@ -175,7 +175,7 @@ $config = [
  * for more information.
  */
 
-
+    
 	'EmailTransport' => [
 		'default' => [
 			'className' => 'Mail',
@@ -198,8 +198,8 @@ $config = [
 			//'headerCharset' => 'utf-8',
 		],
 	],
-
-
+    
+   
 
 /**
  * Connection information used by the ORM to connect
@@ -214,8 +214,8 @@ $config = [
 			'persistent' => false,
 			'host' => 'localhost',
 			/*
-			* CakePHP will use the default DB port based on the driver selected
-			* MySQL on MAMP uses port 8889, MAMP users will want to uncomment
+			* CakePHP will use the default DB port based on the driver selected 
+			* MySQL on MAMP uses port 8889, MAMP users will want to uncomment 
 			* the following line and set the port accordingly
 			*/
 			//'port' => 'nonstandard_port_number',

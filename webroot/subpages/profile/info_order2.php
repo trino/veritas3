@@ -615,7 +615,7 @@
         });
         if(checkerbox==0)
         {
-            alert('Please select atleast one product');
+            alert('Please select at least one product');
             return false;
         }
         var checker = 0;

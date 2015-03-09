@@ -112,11 +112,14 @@
                                                         else
                                                             ucfirst(h($clients->company_name));
                                                     ?>
-                                                    <br/>
+                                            </td>
+
+                                            <td class="actions  util-btn-margin-bottom-5">
+
                                                     <?php
                                                         if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
                                                             ?>
-                                                            <a class="btn btn-info btn-xs"
+                                                            <a class="<?= btnclass("VIEW") ?>"
                                                                href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id; ?>?view">View</a>
 
 
@@ -124,38 +127,14 @@
                                                         <?php
                                                         }
                                                         if ($sidebar->client_edit == '1') {
-                                                            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => 'btn btn-primary btn-xs']);
+                                                            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => btnclass("EDIT")]);
                                                         }
                                                         if ($sidebar->client_delete == '1') { ?>
                                                             <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $clients->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
                                                                onclick="return confirm('Are you sure you want to delete <?= h($clients->company_name) ?>?');"
-                                                               class="btn btn-danger btn-xs">Delete</a>
+                                                               class="<?= btnclass("DELETE") ?>">Delete</a>
 
-<<<<<<< HEAD
-                                                <?php
-                                                    if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
-                                                        ?>
-                                                        <a class="<?= btnclass("VIEW") ?>"
-                                                           href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id; ?>?view">View</a>
-                                                    <?php
-                                                    }
-                                                    if ($sidebar->client_edit == '1') {
-                                                        echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => btnclass("EDIT")]);
-                                                    }
-                                                    if ($sidebar->client_delete == '1') { ?>
-                                                        <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $clients->id; ?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
-                                                           onclick="return confirm('Are you sure you want to delete <?= h($clients->company_name) ?>?');"
-                                                           class="<?= btnclass("DELETE") ?>">Delete</a>
-=======
-                                                        <?php }
-                                                    ?>
->>>>>>> origin/master
-
-                                            </td>
-
-                                            <td class="actions  util-btn-margin-bottom-5">
-                                                <?php
-
+                                                    <?php } 
                                                     if ($sidebar->document_create == '1' && !isset($_GET["draft"])) {
 
                                                         echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => btnclass("btn-success", "green-haze")]);

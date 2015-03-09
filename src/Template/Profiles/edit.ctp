@@ -36,13 +36,8 @@
 
 <?php
     if (isset($disabled)) {
-        $is_disabled = 'disabled="disabled" style="border: 0px solid;"';
-        echo "<style>select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
-}</style>";
+        $is_disabled = 'disabled="disabled"';// style="border: 0px solid;"';
+        //echo "<style>select {    -webkit-appearance: none;    -moz-appearance: none;    text-indent: 1px;    text-overflow: '';}</style>";
     } else {
         $is_disabled = '';
     }

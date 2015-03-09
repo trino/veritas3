@@ -1,4 +1,8 @@
-<?php include_once ('subpages/api.php'); ?>
+<?php if ($_SERVER['SERVER_NAME'] == "localhost") {
+          include_once('/subpages/api.php');
+      } else {
+          include_once('subpages/api.php');
+      }?>
 <style>
     @media print {
         .page-header {

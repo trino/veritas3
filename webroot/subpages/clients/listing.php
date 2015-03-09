@@ -1,5 +1,9 @@
 <div class="row">
-    <?php include_once ('subpages/api.php'); ?>
+    <?php if ($_SERVER['SERVER_NAME'] == "localhost") {
+        include_once('/subpages/api.php');
+    } else {
+        include_once('subpages/api.php');
+    }?>
 
     <div class="col-md-12">
         <div class="portlet box grey-salsa">

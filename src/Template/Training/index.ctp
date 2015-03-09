@@ -112,7 +112,33 @@ if (($id == $QuizID) or ($QuizID == -1)){
 
 
 
+<?
+foreach($quizes as $quiz){
 
+if (quizheader($QuizID, $quiz->ID, $quiz->Name, "training.png")) {
+    echo str_replace("\r\n", "<P>", $quiz->Description);
+    if(quizmiddle($QuizID, $quiz->ID)){
+        $attachments = explode(", ", $quiz->Attachments);
+        echo '<div class="col-md-5" align="left">';
+            foreach($attachments as $attachment){
+
+            }
+            echo '<input type="checkbox" id="quiz" disabled><a class="btn btn-info" href="training/quiz?quizid=' . $quiz->ID . '" onclick="return checkboxes();">Quiz</a></input>';
+        echo '</div>';
+        echo '<div class="col-md-5" align="right">';
+            echo '<a href="#" class="btn btn-warning"">Enroll</a>';
+            echo '<a class="btn btn-info" href="quiz?quizid=' . $quiz->ID . '">View</a>';
+            echo '<a href="#" class="btn btn-primary">Edit</a>';
+            echo '<a href="#" onclick="return confirm(' . "'Are you sure you want to delete this test?'" . ');" class="btn btn-danger">Delete</a>';
+        echo '</div>';
+    }
+    quizend($QuizID, $quiz->ID);
+}
+
+
+}
+return;
+?>
 
 
 
@@ -128,7 +154,7 @@ if (($id == $QuizID) or ($QuizID == -1)){
                             <p>On October 31, 1998 WHMIS became a federal Canadian Law. The majority of information requirements of WHMIS legislation were incorporated into the Hazardous Products Act and the Hazardous Materials Information Review Act. These apply to all of Canada.</P>
 
                             <?php if(quizmiddle($QuizID, 1)){ ?>
-                                <div class="col-md-10" align="right">
+                                <div class="col-md-5" align="right">
                                     <a href="#" class="btn btn-warning"">Enroll</a>
                                     <a class="btn btn-info" href="quiz?quizid=1">View</a>
                                     <a href="#" class="btn btn-primary">Edit</a>

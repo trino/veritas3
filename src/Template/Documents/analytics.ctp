@@ -137,7 +137,7 @@ function enumdata($variable, $daysbackwards, $date = -1){ //* [10, 1], [17, -14]
                 <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 			</div>
 
-    <script src="/veritas3/assets/admin/pages/scripts/form-wizard.js"></script>
+    <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/form-wizard.js"></script>
 
 <div class="row" style="display:none;">
     <div class="col-md-12">

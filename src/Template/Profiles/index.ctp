@@ -1,4 +1,4 @@
-<?php include_once ('/subpages/api.php'); ?>
+<?php include_once ('subpages/api.php'); ?>
 <style>
     @media print {
         .page-header {

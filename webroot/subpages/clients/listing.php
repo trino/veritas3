@@ -1,5 +1,5 @@
 <div class="row">
-    <?php include_once ('/subpages/api.php'); ?>
+    <?php include_once ('subpages/api.php'); ?>
 
     <div class="col-md-12">
         <div class="portlet box grey-salsa">

@@ -1,6 +1,6 @@
 <?php
 /*
-include_once ('/subpages/api.php');
+include_once ('subpages/api.php');
 btnclass("VIEW")
 btnclass("EDIT")
 btnclass("DELETE")
@@ -84,5 +84,4 @@ function btnclass($xscolor, $stripecolor = ""){
     }
 }
 
-echo "THIS IS AN EMERGENCY";
 ?>

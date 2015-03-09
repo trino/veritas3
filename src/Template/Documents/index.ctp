@@ -1,7 +1,7 @@
 <?php
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->Session->read('Profile.id') . "/sidebar");
-    include_once ('/subpages/api.php');
+    include_once ('subpages/api.php');
 ?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->document); ?>s <?php if (isset($_GET['draft'])) { ?>(Draft)<?php } ?>

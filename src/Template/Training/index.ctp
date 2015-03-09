@@ -156,7 +156,7 @@ if (($id == $QuizID) or ($QuizID == -1)){
                                     <input type="checkbox" id="mp4" disabled></input>
                                     <a href="training/video?title=Active Shooter Response&url=http://asapsecured.com/wp-content/uploads/2014/11/ActiveShoot_x264_001.mp4" class="btn btn-warning"" target="_blank" onclick="check('mp4');">Video</a>
                                     <input type="checkbox" id="quiz" disabled></input>
-                                    <a class="btn btn-info" href="quiz?quizid=2" onclick="return checkboxes('pdf', 'mp4');">Quiz</a>
+                                    <a class="btn btn-info" href="training/quiz?quizid=2" onclick="return checkboxes('pdf', 'mp4');">Quiz</a>
                                 </div>
                                 <div class="col-md-5" align="right">
                                     <a href="#" class="btn btn-primary" onclick="return confirm('test ' + checkboxes('pdf', 'mp4'));">Edit</a>

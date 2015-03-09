@@ -8,6 +8,22 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+    $user_id234 = $this->Session->read('Profile.isb_id');
+    if (isset($user_id234) && $user_id234 != "") {
+        $user_id234 = $this->Session->read('Profile.isb_id');
+    } else {
+        $user_id234 = '22552';
+    }
+
+    if ($_SERVER['SERVER_NAME'] != "isbmeereports.com") {
+        $user_id234 = '22552';
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
     $startorder1 = false;
     $productdetails79 = false; // only for complete mee roders
 
@@ -87,17 +103,6 @@
 
     if ($startorder1 == true) {
 
-        $user_id234 = $this->Session->read('Profile.isb_id');
-        if (isset($user_id234) && $user_id234 != "") {
-            $user_id234 = $this->Session->read('Profile.isb_id');
-        } else {
-            $user_id234 = '22552';
-        }
-
-        if ($_SERVER['SERVER_NAME'] == "localhost") {
-            $user_id234 = '22552';
-            echo $_SERVER['SERVER_NAME'];
-        }
 
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
@@ -141,7 +146,7 @@
         $pdi = $r[0];
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_79');
 
-       echo 'ins_79';
+        echo 'ins_79';
         debug($result);
 
     }

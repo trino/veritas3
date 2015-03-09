@@ -1656,7 +1656,7 @@
         return $randomString;
     }
 
-    
+
     function cleardb()
     {
         
@@ -1688,7 +1688,6 @@
         $this->layout = "blank";
     }
 
-        
       /*  getDocumentcountz()
         {
             $doc = TableRegistry::get('Subdocuments');
@@ -1711,7 +1710,7 @@
                 if ($query1 = $subdoc->find()->where(['profile_id' => $id, 'subdoc_id' => $q->id, 'display <>' => 0])->first())
                     $cnt++;
             }
-            
+
             $this->response->body($cnt);
             return $this->response;
        } */

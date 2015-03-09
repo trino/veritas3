@@ -94,7 +94,7 @@ if (isset($profile))
                                 <a href="#tab_1_8" data-toggle="tab">Display</a>
                             </li>
                              <li>
-                                <a href="#tab_1_9" data-toggle="tab">Clear Datas</a>
+                                <a href="#tab_1_9" data-toggle="tab">Clear Data</a>
                             </li>
                         <?php
                         }
@@ -123,7 +123,7 @@ if (isset($profile))
                     <div class="tab-pane" id="tab_1_9">
                         <a href="javascript:void(0)" class="btn btn-danger" id="cleardata">Clear Data</a>
                         <div class="margin-top-10 alert alert-success display-hide cleardata_flash" style="display: none;">
-                           Data Successfully cleared.
+                           Data Successfully Cleared.
                                                     <button class="close" data-close="alert"></button>
                                                    
                         </div>

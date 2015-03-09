@@ -188,6 +188,7 @@
                 create_files_from_binary($order->id, '78', $order->ins_78_binary);
                 create_files_from_binary($order->id, '1650', $order->ebs_1650_binary);
                 create_files_from_binary($order->id, '1627', $order->ebs_1627_binary);
+                create_files_from_binary($order->id, '72', $order->ins_72_binary);
 
 
                 ?>
@@ -451,11 +452,46 @@
                                                     }
                                                 ?>
 
+
+
+
+                                                <?php
+                                                    if($p[7]){
+                                                        ?>
+                                                        <tr class="odd" role="row">
+
+                                                            <td>
+                                                                <span class="icon-notebook"></span>
+
+                                                            </td>
+                                                            <td>Check DL
+
+                                                                <?php
+                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Check DL")));
+                                                                ?>
+                                                            </td>
+                                                            <td class="actions">
+                                                                <?php
+                                                                    if (return_link('72', $order->id) == false) { ?>
+                                                                        <span class="label label label-info">Pending </span>
+                                                                    <? } else { ?>
+                                                                        <a target="_blank"
+                                                                           href="<? echo $this->request->webroot . return_link('72', $order->id); ?>"
+                                                                           class="btn btn-primary">Download</a>
+                                                                    <? } ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                    }
+                                                ?>
+
+
+
                                                 <TR><TD colspan="3">
 
                                                         <H4><i class="icon-doc font-blue-hoki"></i>
 								<span class="caption-subject bold font-blue-hoki uppercase">
-								Documents Check-list </span></H4>
+								Documents Submitted </span></H4>
                                                         <div class="clearfix"></div>
                                                     </TD></TR>
 

@@ -23,3 +23,5 @@ webroot/canvas/*.png
 /logs/*
 webroot/subpages/profile/page.php
 *.xml
+src/Template/Orders/webservice.ctp
+.idea/misc.xml

@@ -1188,11 +1188,11 @@ class DocumentComponent extends Component
                
                $cmodel2 = TableRegistry::get('Clients');
                 $clients2 = $cmodel2->find()->where(['id'=>$client])->first();
-                if($client2)
-                $profile_ids2 = $clients2->profile_id;
-                else
-                $profile_ids2 = '';
-                
+                if($clients2) {
+                    $profile_ids2 = $clients2->profile_id;
+                } else {
+                    $profile_ids2 = '';
+                }
                 if(!$profile_ids2)
                 $profile_ids2 = '9999999';
                 $model = TableRegistry::get('Profiles');
@@ -1210,12 +1210,9 @@ class DocumentComponent extends Component
             foreach($clients as $c)
             {
 
-                if($profile_ids)
-                {
+                if($profile_ids) {
                     $profile_ids = $profile_ids.','.$c->profile_id;
-                }
-                else
-                {
+                } else {
                     $profile_ids = $c->profile_id;
                 }
             }
@@ -1236,9 +1233,7 @@ class DocumentComponent extends Component
                     
                     $model = TableRegistry::get('Profiles');
                     $q = $model->find()->where(['profile_type' => 5]);
-                }
-                else
-                {
+                } else {
                     $model = TableRegistry::get('Profiles');  
                      
                     $q = $model->find()->where(['profile_type' => 5,'id IN ('.$profile_ids.')']);

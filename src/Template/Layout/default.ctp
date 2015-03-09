@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<?php $settings = $this->requestAction('settings/get_settings');
-	include('subpages/api.php');  ?>
+<?php $settings = $this->requestAction('settings/get_settings'); ?>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->

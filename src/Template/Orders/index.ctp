@@ -1,5 +1,6 @@
-<?php $settings = $this->requestAction('settings/get_settings'); ?>
-<?php $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id')); ?>
+<?php $settings = $this->requestAction('settings/get_settings');
+$sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id'));?>
+
 <h3 class="page-title">
     Orders <?php if(isset($_GET['draft'])){?>(Draft)<?php }?>
 </h3>

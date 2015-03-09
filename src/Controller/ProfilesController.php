@@ -7,6 +7,7 @@
     use Cake\ORM\TableRegistry;
     use Cake\Network\Email\Email;
     use Cake\Controller\Component\CookieComponent;
+    use Cake\Datasource\ConnectionManager;
 
 
     class ProfilesController extends AppController
@@ -1654,14 +1655,39 @@
         }
         return $randomString;
     }
-<<<<<<< HEAD
+
     
     function cleardb()
     {
+        
+        $conn = ConnectionManager::get('default');
+        $query = $conn->query("show tables");
+        $user_id = $conn->query("Select id from profiles where super=1");
+        foreach($user_id as $u)
+        {
+            $uid = $u['id'];
+            
+        }
+        
+        foreach($query as $table)
+        {
+           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments")
+           {
+                $conn->query("TRUNCATE TABLE ".$table[0]);
+           }
+           elseif($table[0]=='profiles')
+           {
+               $conn->query("Delete from ".$table[0]." where `super` = '0'");
+           }
+           elseif($table[0]=='blocks' || $table[0]=='sidebar')
+           {
+                $conn->query("Delete from `".$table[0]."` where user_id <> ".$uid);
+           }
+        } echo "Cleared";
+        die();
         $this->layout = "blank";
     }
-    
-=======
+
         
       /*  getDocumentcountz()
         {
@@ -1689,6 +1715,6 @@
             $this->response->body($cnt);
             return $this->response;
        } */
->>>>>>> 6d58a669884bc298cb45c1b6c77921f8f2ea544e
+
     }
 ?>

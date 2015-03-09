@@ -241,10 +241,10 @@
 
 
                                             <div class="clearfix"></div>
-                                            <div class="col-md-12" style="margin-bottom: 8px;">
+                                            <div class="col-md-12" style="margin-left:-7px;margin-bottom: 8px;">
                                                 <H4><i class="icon-doc font-blue-hoki"></i>
 								<span class="caption-subject bold font-blue-hoki uppercase">
-								Product Orders </span></H4>
+								Products Ordered </span></H4>
                                             </div>
 
 

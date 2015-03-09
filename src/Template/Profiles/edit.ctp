@@ -43,13 +43,13 @@
     }
     if (isset($profile))
         $p = $profile;
-         $settings = $this->requestAction('settings/get_settings');
-        $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar"); ?>
+    $settings = $this->requestAction('settings/get_settings');
+    $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar"); ?>
 
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="theme-panel hidden-xs hidden-sm">
-    <?php if (strlen($is_disabled)==0) {
+    <?php if (strlen($is_disabled) == 0) {
         echo '<div class="toggler"></div>';//doesn't work in view mode, so remove it and be done with it
     } ?>
     <div class="toggler-close">
@@ -189,7 +189,7 @@
             <a href=""><?php echo $param2 . ' ' . ucfirst($settings->profile); ?></a>
         </li>
     </ul>
-    
+
     <?php
         if (isset($disabled)) { ?>
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
@@ -198,8 +198,8 @@
         if ($this->request->session()->read('Profile.super') == '1') {
             if ($this->request->session()->read('Profile.id') != $profile->id) {
                 ?>
-                
-                <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
+
+                <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
                    onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
                    class="floatright btn btn-danger btnspc">Delete</a>
                 </span>
@@ -207,7 +207,7 @@
             }
         } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
             ?>
-            <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id;?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
+            <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
                onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
                class="floatright btn btn-danger btnspc">Delete</a>
         <?php
@@ -216,21 +216,47 @@
     }
     ?>
     <?php
-    if(isset($profile))
-    {
+        if (isset($profile)) {
+            $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
+            if ($sidebar->profile_edit == '1' && $param == 'view') {
+
+                if ($checker == 1) {
+                    echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'floatright btn btn-primary btnspc']);
+
+                }
+            } else if ($param == 'edit') {
+                echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'floatright btn btn-info btnspc']);
+            }
+        }
+    ?>
+
+
+    <?php
+
         $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
+
         if ($sidebar->profile_edit == '1' && $param == 'view') {
 
             if ($checker == 1) {
-                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'floatright btn btn-primary btnspc']);
 
+                ?>
+
+
+                <a href="<?php
+                    if ($profile->profile_type == '5') {
+                        echo $this->request->webroot . 'documents/index?type=&submitted_for_id=' . $profile->id;
+                    } else {
+                        echo $this->request->webroot . 'documents/index?type=&submitted_by_id=' . $profile->id;
+                    }
+                ?>"  class=" floatright btn default btnspc">View Documents</a>
+            <?php
             }
-        } 
-        else if($param == 'edit')
-        {
-            echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'floatright btn btn-info btnspc']);
-        }}
-        ?>
+        }
+
+
+    ?>
+
+
 </div>
 
 
@@ -285,70 +311,71 @@
                                 <?php if (isset($p->fname)) echo ucwords($p->fname . ' ' . $p->lname); ?>
                             </div>
 
-                                    <?php if (isset($p->isb_id) && ($p->isb_id != ""))
-                                        {
-                                        ?>
-                            <div class="profile-usertitle-job">
-                                <small>
+                            <?php if (isset($p->isb_id) && ($p->isb_id != "")) {
+                                ?>
+                                <div class="profile-usertitle-job">
+                                    <small>
                                         ISB ID:
 
 
 
                                         <?php echo $p->isb_id; ?>
 
-                                </small>
-                            </div>
+                                    </small>
+                                </div>
 
 
-                                    <?php }
-                                    if (isset($p)){
-                                        if ($p->profile_type == 5){
+                            <?php }
+                                if (isset($p)) {
+                                    if ($p->profile_type == 5) {
                                         ?>
 
-                                    <label class="uniform-inline" style="margin-bottom:20px;">
-                                <input type="checkbox" name="stat" value="1" id="<?php echo $profile->id; ?>"
-                                       class="checkhiredriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
-                                Was this driver hired? <span class="hired_msg"></span></label>
-                                    
-                                    <?php
-                                    }}
+                                        <label class="uniform-inline" style="margin-bottom:20px;">
+                                            <input type="checkbox" name="stat" value="1"
+                                                   id="<?php echo $profile->id; ?>"
+                                                   class="checkhiredriver" <?php if ($p->is_hired == '1') echo "checked"; ?> />
+                                            Was this driver hired? <span class="hired_msg"></span></label>
 
-                                        if (isset($p)) {
-                                            if ($profile->profile_type == 5) {
+                                    <?php
+                                    }
+                                }
+
+                                if (isset($p)) {
+                                    if ($profile->profile_type == 5) {
+                                        ?>
+                                        <?php if ($sidebar->orders_create == '1') {
+
+                                            if ($sidebar->orders_mee == 1) {
                                                 ?>
-                                        <?php if($sidebar->orders_create == '1'){
-                                            
-                                                    if ($sidebar->orders_mee ==1) {
-                                                    ?>
-                                                
+
                                                 <br>
-                                                <a  href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
-                                                   class="btn red-flamingo clearfix"  style="margin-top:2px;width: 100%;">Order MEE <i class="m-icon-swapright m-icon-white"></i></a>
-                                                <?php }
-                                                if ($sidebar->orders_products ==1) {
+                                                <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=MEE"
+                                                   class="btn red-flamingo clearfix"
+                                                   style="margin-top:2px;width: 100%;">Order MEE <i
+                                                        class="m-icon-swapright m-icon-white"></i></a>
+                                            <?php }
+                                            if ($sidebar->orders_products == 1) {
                                                 ?>
                                                 <br>
                                                 <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=CART"
-                                                   class="btn btn-success" style="margin-top:2px;width: 100%;">Order Products <i class="m-icon-swapright m-icon-white"></i></a>
+                                                   class="btn btn-success" style="margin-top:2px;width: 100%;">Order
+                                                    Products <i class="m-icon-swapright m-icon-white"></i></a>
 
-                                                 <?php }
-                                                if ($sidebar->order_requalify ==1) {
+                                            <?php }
+                                            if ($sidebar->order_requalify == 1) {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>orders/productSelection?driver=<?php echo $profile->id; ?>&ordertype=QUA"
-                                                   class="btn btn-primary" style="margin-top:2px;width: 100%;" >Re-Qualify <i class="m-icon-swapright m-icon-white"></i></a>
-                                                <?php
-                                                }
-                                                }
+                                                   class="btn btn-primary" style="margin-top:2px;width: 100%;">Re-Qualify
+                                                    <i class="m-icon-swapright m-icon-white"></i></a>
+                                            <?php
                                             }
                                         }
+                                    }
+                                }
 
-                                    ?>
+                            ?>
 
                         </div>
-
-
-
-
 
 
                     </div>
@@ -365,57 +392,65 @@
                                 <span
                                     class="caption-subject font-blue-madison bold"><?php echo ucfirst($settings->profile); ?>
                                     Manager</span>
-                            </div> 
+                            </div>
                         </div>
 
                         <div class="portlet-body">
                             <?php
-                            $activetab="profile";
-                            //if ($this->request->session()->read('Profile.profile_type') > 1) {//is not an admin, block.php suggests using =2
-                                if (isset($_GET['getprofilescore'])) { $activetab = "scorecard"; } //
-                                if (strpos($_SERVER['HTTP_REFERER'], "profiles/edit/" . $id )  > 0 or strpos($_SERVER['HTTP_REFERER'], "profiles/add")  > 0 or strpos($_SERVER['HTTP_REFERER'], "productSelection")  > 0 or isset($_GET["clientflash"])){ //. $id
-                                    if (isset($Clientcount) && $Clientcount == 0) { $activetab = "permissions"; }
-                                }
-                            if(isset($_GET['activetab'])){ $activetab =$_GET['activetab'];}
-                            
-                            function activetab($activetab, $name, $needsclass = True){
-                                if ($activetab == $name || $activetab == ""){
-                                    if ($needsclass) {
-                                        echo " class='active'";
-                                    } else {
-                                        echo " active";
+                                $activetab = "profile";
+                                //if ($this->request->session()->read('Profile.profile_type') > 1) {//is not an admin, block.php suggests using =2
+                                if (isset($_GET['getprofilescore'])) {
+                                    $activetab = "scorecard";
+                                } //
+                                if (strpos($_SERVER['HTTP_REFERER'], "profiles/edit/" . $id) > 0 or strpos($_SERVER['HTTP_REFERER'], "profiles/add") > 0 or strpos($_SERVER['HTTP_REFERER'], "productSelection") > 0 or isset($_GET["clientflash"])) { //. $id
+                                    if (isset($Clientcount) && $Clientcount == 0) {
+                                        $activetab = "permissions";
                                     }
-                                    return $name;
                                 }
-                                return $activetab;
-                            }
+                                if (isset($_GET['activetab'])) {
+                                    $activetab = $_GET['activetab'];
+                                }
+
+                                function activetab($activetab, $name, $needsclass = True)
+                                {
+                                    if ($activetab == $name || $activetab == "") {
+                                        if ($needsclass) {
+                                            echo " class='active'";
+                                        } else {
+                                            echo " active";
+                                        }
+                                        return $name;
+                                    }
+                                    return $activetab;
+                                }
+
                             ?>
                             <!--BEGIN TABS-->
                             <div class="tabbable tabbable-custom">
                                 <ul class="nav nav-tabs">
 
-                                    <!--<li <?php if($this->request['action']=='add' || $this->request['action']=='view' || (!isset($_GET['getprofilescore'])&&(isset($Clientcount) && $Clientcount!=0))){ ?> class="active" <?php } ?> >
+                                    <!--<li <?php if ($this->request['action'] == 'add' || $this->request['action'] == 'view' || (!isset($_GET['getprofilescore']) && (isset($Clientcount) && $Clientcount != 0))) { ?> class="active" <?php } ?> >
 -->
                                     <li  <?php activetab($activetab, "profile"); ?> >
 
                                         <a href="#tab_1_1" data-toggle="tab">Profile</a>
                                     </li>
                                     <?php if ($this->request['action'] == 'view') { ?>
-                                            <li <?php activetab($activetab, "scorecard"); ?>>
-                                                <a href="#tab_1_11" data-toggle = "tab" >View Scorecard</a>
-                                            </li>
-                                            <?php
-                                            }
+                                        <li <?php activetab($activetab, "scorecard"); ?>>
+                                            <a href="#tab_1_11" data-toggle="tab">View Scorecard</a>
+                                        </li>
+                                    <?php
+                                    }
 
-                                            /*$needs = false;
-                                            if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
-                                                echo '<li';
-                                                activetab($activetab, "orders");
-                                                echo '><a href="#tab_1_10" data-toggle="tab">Orders</li></a></li>';
-                                            } */
+                                        /*$needs = false;
+                                        if (isset($id) and (isset($p) && $p->profile_type == 5) or $needs) {
+                                            echo '<li';
+                                            activetab($activetab, "orders");
+                                            echo '><a href="#tab_1_10" data-toggle="tab">Orders</li></a></li>';
+                                        } */
 
                                         if ($this->request['action'] != 'add') {
-                                                                                        
+
                                             if ($this->request->params['action'] != 'add' && ($this->request->session()->read('Profile.profile_type') != '2')) {
                                                 ?>
                                                 <li<?php activetab($activetab, "notes"); ?>>
@@ -423,15 +458,14 @@
                                                 </li>
 
                                             <?php }
-                                            
-                                            
-                                            if ($this->request->session()->read('Profile.admin') ||( $this->request->session()->read('Profile.id') != $id &&$this->request->session()->read('Profile.profile_type') == '2')) { ?>
+
+                                            if ($this->request->session()->read('Profile.admin') || ($this->request->session()->read('Profile.id') != $id && $this->request->session()->read('Profile.profile_type') == '2')) { ?>
                                                 <li <?php activetab($activetab, "permissions"); ?>>
                                                     <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                                 </li>
 
                                             <?php }
-                                            }
+                                        }
                                     ?>
                                 </ul>
 
@@ -439,9 +473,10 @@
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
 
-                                    <!--<div class="tab-pane  <?php if($this->request['action']=='add' ||$this->request['action']=='view'||(!isset($_GET['getprofilescore'])&&($Clientcount!=0))){ ?> active <?php } ?> " id="tab_1_1">
+                                    <!--<div class="tab-pane  <?php if ($this->request['action'] == 'add' || $this->request['action'] == 'view' || (!isset($_GET['getprofilescore']) && ($Clientcount != 0))) { ?> active <?php } ?> " id="tab_1_1">
                                     -->
-                                    <div class="tab-pane  <?php activetab($activetab, "profile", false); ?> " id="tab_1_1">
+                                    <div class="tab-pane  <?php activetab($activetab, "profile", false); ?> "
+                                         id="tab_1_1">
 
                                         <input type="hidden" name="user_id" value="<?php echo ""; ?>"/>
                                         <?php include('subpages/profile/info.php'); ?>
@@ -463,7 +498,8 @@
                                             }
                                             -->
 
-                                            <div class="tab-pane <?php activetab($activetab, "notes", false); ?>" id="tab_1_9">
+                                            <div class="tab-pane <?php activetab($activetab, "notes", false); ?>"
+                                                 id="tab_1_9">
                                                 <div class="cleafix">&nbsp;</div>
 
                                                 <div class="portlet-body">
@@ -472,16 +508,18 @@
                                                 <!--</div>-->
                                             </div>
 
-                                            <?php }
-                                             if ($this->request['action'] == 'view') { 
-                                             ?>
-                                            <div class="tab-pane <?php activetab($activetab, "scorecard", false); ?>" id="tab_1_11" >
+                                        <?php }
+                                        if ($this->request['action'] == 'view') {
+                                            ?>
+                                            <div class="tab-pane <?php activetab($activetab, "scorecard", false); ?>"
+                                                 id="tab_1_11">
                                                 <?php
-                                                include('subpages/documents/forview.php');
-                                                 ?>
+                                                    include('subpages/documents/forview.php');
+                                                ?>
                                             </div>
                                         <?php } ?>
-                                    <div class="tab-pane <?php activetab($activetab, "permissions", false); ?>" id="tab_1_7">
+                                    <div class="tab-pane <?php activetab($activetab, "permissions", false); ?>"
+                                         id="tab_1_7">
                                         <?php include('subpages/profile/block.php');//permissions ?>
                                     </div>
                                 </div>
@@ -493,217 +531,221 @@
             <!-- END PROFILE CONTENT -->
         </div>
     </div>
-    </div>
+</div>
 
 
-    <script>
-
-
-        function initiate_ajax_upload(button_id) {
-            var button = $('#' + button_id), interval;
-            new AjaxUpload(button, {
-                action: "<?php echo $this->request->webroot;?>profiles/upload_img/<?php if(isset($id))echo $id;?>",
-                name: 'myfile',
-                onSubmit: function (file, ext) {
-                    button.text('Uploading');
-                    this.disable();
-                    interval = window.setInterval(function () {
-                        var text = button.text();
-                        if (text.length < 13) {
-                            button.text(text + '.');
-                        } else {
-                            button.text('Uploading');
-                        }
-                    }, 200);
-                },
-                onComplete: function (file, response) {
-                    button.html('<i class="fa fa-image"></i> Add/Edit Image');
-                    window.clearInterval(interval);
-                    this.enable();
-                    $("#clientpic").attr("src", '<?php echo $this->request->webroot;?>img/profile/' + response);
-                    $('#client_img').val(response);
-                    alert('Image saved');
-                }
-            });
-        }
-        $(function () {
-
-            <?php
-            if(isset($id))
-            {
-                if($this->request->params['action'] != 'view')
-                {
-                    ?>
-                    
-            initiate_ajax_upload('clientimg');
-            <?php
-                }
-             ?>
-            $('.addclientz').click(function () {
-                var client_id = $(this).val();
-                var addclient = "";
-                var msg = '';
-                var nameId = 'msg_' + $(this).val();
-                if ($(this).is(':checked')) {
-                    addclient = '1';
-                    msg = '<span class="msg" style="color:#45B6AF">Added</span>';
-                }
-                else {
-                    addclient = '0';
-                    msg = '<span class="msg" style="color:red">Removed</span>';
-                }
-
-                $.ajax({
-                    type: "post",
-                    data: "client_id=" + client_id + "&add=" + addclient + "&user_id=" +<?php echo $id;?>,
-                    url: "<?php echo $this->request->webroot;?>clients/addprofile",
-                    success: function () {
-                        $('.' + nameId).html(msg);
-                    }
-                })
-            });
-            <?php
-             }
-             else
-             {?>
-            $('.addclientz').click(function () {
-                var nameId = 'msg_' + $(this).val();
-                var client_id = "";
-                var msg = '';
-                $('.addclientz').each(function () {
-                    if ($(this).is(':checked')) {
-                        msg = '<span class="msg" style="color:#45B6AF">Added</span>';
-                        client_id = client_id + "," + $(this).val();
-                    }
-                    else {
-                        msg = '<span class="msg" style="color:red">Removed</span>';
-                    }
-                });
-
-                client_id = client_id.substr(1, length.client_id);
-                $('.client_profile_id').val(client_id);
-                $('.' + nameId).html(msg);
-
-            });
-            <?php
-            }
-            ?>
-            $('#save_client_p1').click(function () {
-
-                $('#save_client_p1').text('Saving..');
-
-                $("#pass_form").validate({
-                    rules: {
-                        password: {
-                            required: true
-                        },
-                        retype_password: {
-                            required: true,
-                            equalTo: "#password"
-                        }
-                    },
-                    messages: {
-                        password: "Please enter password",
-                        retype_password: "Password do not match"
-                    },
-                    submitHandler: function () {
-                        $('#pass_form').submit();
-                    },
-                });
-            });
-
-        });
-    </script>
 <script>
-        $(function () {
 
-            $('.checkhiredriver').click(function () {
 
-                var oid = $(this).attr('id');
-                var msgs = '';                
-                if ($(this).is(":checked")) {
-                    var hired = 1;
-                     msg = '<span class="msg" style="color:#45B6AF">Added</span>';                    
-                }
-                else{
-                    var hired = 0;
-                    msg = '<span class="msg" style="color:red">Removed</span>';                    
-                    }                    
-
-                $.ajax({
-                    url: "<?php echo $this->request->webroot;?>orders/savedriver/" + oid,
-                    type: 'post',
-                    data: 'is_hired=' + hired,
-                    success: function () {
-                        $('.hired_msg').html(msg);
+    function initiate_ajax_upload(button_id) {
+        var button = $('#' + button_id), interval;
+        new AjaxUpload(button, {
+            action: "<?php echo $this->request->webroot;?>profiles/upload_img/<?php if(isset($id))echo $id;?>",
+            name: 'myfile',
+            onSubmit: function (file, ext) {
+                button.text('Uploading');
+                this.disable();
+                interval = window.setInterval(function () {
+                    var text = button.text();
+                    if (text.length < 13) {
+                        button.text(text + '.');
+                    } else {
+                        button.text('Uploading');
                     }
-                })
-            });
-            
-            /*$('.checkhiredriver').change(function () {
+                }, 200);
+            },
+            onComplete: function (file, response) {
+                button.html('<i class="fa fa-image"></i> Add/Edit Image');
+                window.clearInterval(interval);
+                this.enable();
+                $("#clientpic").attr("src", '<?php echo $this->request->webroot;?>img/profile/' + response);
+                $('#client_img').val(response);
+                alert('Image saved');
+            }
+        });
+    }
+    $(function () {
+
+        <?php
+        if(isset($id))
+        {
+            if($this->request->params['action'] != 'view')
+            {
+                ?>
+
+        initiate_ajax_upload('clientimg');
+        <?php
+            }
+         ?>
+        $('.addclientz').click(function () {
+            var client_id = $(this).val();
+            var addclient = "";
             var msg = '';
-            var nameId = 'msg_'+$(this).val();
+            var nameId = 'msg_' + $(this).val();
             if ($(this).is(':checked')) {
+                addclient = '1';
                 msg = '<span class="msg" style="color:#45B6AF">Added</span>';
-                
-                var url = '<?php echo $this->request->webroot;?>clients/assignProfile/' + $(this).val() + '/<?php if(isset($id) && $id)echo $id;else echo '0'?>/yes';
             }
             else {
+                addclient = '0';
                 msg = '<span class="msg" style="color:red">Removed</span>';
-                var url = '<?php echo $this->request->webroot;?>clients/assignProfile/' + $(this).val() + '/<?php if(isset($id) && $id)echo $id;else echo '0'?>/no';
             }
-            
-            $.ajax({url: url,success:function(){$('.'+nameId).html(msg);}});
-        }); */
-        });
-    </script>
-    <script>
-        <?php
-        if($this->request->params['action']=='edit')
-        {
-            ?>
 
-        function searchClient() {
-            var key = $('#searchClient').val();
-            $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
             $.ajax({
-                url: '<?php echo $this->request->webroot;?>clients/getAjaxClient/<?php echo $id;?>',
-                data: 'key=' + key,
-                type: 'get',
-                success: function (res) {
-                    $('#clientTable').html(res);
+                type: "post",
+                data: "client_id=" + client_id + "&add=" + addclient + "&user_id=" +<?php echo $id;?>,
+                url: "<?php echo $this->request->webroot;?>clients/addprofile",
+                success: function () {
+                    $('.' + nameId).html(msg);
                 }
-            });
-        }
+            })
+        });
         <?php
-        }
-        else
-        {
-        ?>
-        function searchClient() {
-            var key = $('#searchClient').val();
-            $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
-            $.ajax({
-                url: '<?php echo $this->request->webroot;?>clients/getAjaxClient',
-                data: 'key=' + key,
-                type: 'get',
-                success: function (res) {
-                    $('#clientTable').html(res);
+         }
+         else
+         {?>
+        $('.addclientz').click(function () {
+            var nameId = 'msg_' + $(this).val();
+            var client_id = "";
+            var msg = '';
+            $('.addclientz').each(function () {
+                if ($(this).is(':checked')) {
+                    msg = '<span class="msg" style="color:#45B6AF">Added</span>';
+                    client_id = client_id + "," + $(this).val();
+                }
+                else {
+                    msg = '<span class="msg" style="color:red">Removed</span>';
                 }
             });
-        }
+
+            client_id = client_id.substr(1, length.client_id);
+            $('.client_profile_id').val(client_id);
+            $('.' + nameId).html(msg);
+
+        });
         <?php
         }
         ?>
-        $(function () {
-            $('.scrolldiv').slimScroll({
-                height: '250px'
-            });
+        $('#save_client_p1').click(function () {
 
+            $('#save_client_p1').text('Saving..');
+
+            $("#pass_form").validate({
+                rules: {
+                    password: {
+                        required: true
+                    },
+                    retype_password: {
+                        required: true,
+                        equalTo: "#password"
+                    }
+                },
+                messages: {
+                    password: "Please enter password",
+                    retype_password: "Password do not match"
+                },
+                submitHandler: function () {
+                    $('#pass_form').submit();
+                },
+            });
         });
-    </script>
-    <style>
-        .portlet-body {
-            min-height: 250px !important;
-        }
-    </style>
+
+    });
+</script>
+<script>
+    $(function () {
+
+        $('.checkhiredriver').click(function () {
+
+            var oid = $(this).attr('id');
+            var msgs = '';
+            if ($(this).is(":checked")) {
+                var hired = 1;
+                msg = '<span class="msg" style="color:#45B6AF">Added</span>';
+            }
+            else {
+                var hired = 0;
+                msg = '<span class="msg" style="color:red">Removed</span>';
+            }
+
+            $.ajax({
+                url: "<?php echo $this->request->webroot;?>orders/savedriver/" + oid,
+                type: 'post',
+                data: 'is_hired=' + hired,
+                success: function () {
+                    $('.hired_msg').html(msg);
+                }
+            })
+        });
+
+        /*$('.checkhiredriver').change(function () {
+         var msg = '';
+         var nameId = 'msg_'+$(this).val();
+         if ($(this).is(':checked')) {
+         msg = '<span class="msg" style="color:#45B6AF">Added</span>';
+
+         var url = '
+        <?php echo $this->request->webroot;?>clients/assignProfile/' + $(this).val() + '/
+        <?php if(isset($id) && $id)echo $id;else echo '0'?>/yes';
+         }
+         else {
+         msg = '<span class="msg" style="color:red">Removed</span>';
+         var url = '
+        <?php echo $this->request->webroot;?>clients/assignProfile/' + $(this).val() + '/
+        <?php if(isset($id) && $id)echo $id;else echo '0'?>/no';
+         }
+
+         $.ajax({url: url,success:function(){$('.'+nameId).html(msg);}});
+         }); */
+    });
+</script>
+<script>
+    <?php
+    if($this->request->params['action']=='edit')
+    {
+        ?>
+
+    function searchClient() {
+        var key = $('#searchClient').val();
+        $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
+        $.ajax({
+            url: '<?php echo $this->request->webroot;?>clients/getAjaxClient/<?php echo $id;?>',
+            data: 'key=' + key,
+            type: 'get',
+            success: function (res) {
+                $('#clientTable').html(res);
+            }
+        });
+    }
+    <?php
+    }
+    else
+    {
+    ?>
+    function searchClient() {
+        var key = $('#searchClient').val();
+        $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
+        $.ajax({
+            url: '<?php echo $this->request->webroot;?>clients/getAjaxClient',
+            data: 'key=' + key,
+            type: 'get',
+            success: function (res) {
+                $('#clientTable').html(res);
+            }
+        });
+    }
+    <?php
+    }
+    ?>
+    $(function () {
+        $('.scrolldiv').slimScroll({
+            height: '250px'
+        });
+
+    });
+</script>
+<style>
+    .portlet-body {
+        min-height: 250px !important;
+    }
+</style>

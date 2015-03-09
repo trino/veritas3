@@ -461,7 +461,14 @@
                         <div class="tab-pane" id="tab_1_2">
 
 
-                            <h4> Enable <?php echo ucfirst($settings->document); ?>s?</h4>
+                            <h4 class="col-md-6"> Enable <?php echo ucfirst($settings->document); ?>s?</h4>
+                            <div class="col-md-6" style="text-align: right;">
+                                <a href="#" class="btn btn-success" onclick="$('#sub_add').toggle(150);">Add New Sub Document</a>
+                                <div class="col-md-12" id="sub_add" style="display: none;margin:10px 0;padding:0">
+                                    <div class="col-md-10" style="text-align: right;padding:0;"><input type="text" placeholder="Sub-Document title" class="form-control subdocname" /></div><div class="col-md-2" style="text-align: right;padding:0;"><a class="btn btn-primary addsubdoc" href="javascript:void(0)">Add</a></div><div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
 
                             <form action="" id="displayform1" method="post">
                                 <table class="table table-light table-hover sortable">
@@ -577,6 +584,10 @@
 
 <script>
     $(function () {
+        $('.addsubdoc').click(function(){
+           var subname = $('.subdocname').val();
+           window.location = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname; 
+        });
         var tosend = '';
         $('.sortable tbody').sortable({
             items: "tr:not(.myclass)",

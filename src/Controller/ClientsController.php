@@ -366,6 +366,9 @@ class ClientsController extends AppController {
 	}
 
     public function saveClients($id=0) {
+        $sub_sup = TableRegistry::get('subdocuments');
+        $sub_sup_count = $sub_sup->find()->count();
+        $counter = $sub_sup_count+1;
         $settings = $this->Settings->get_settings();
 
         $rec='';
@@ -436,7 +439,8 @@ class ClientsController extends AppController {
         		if ($this->request->is('post')) {
         		 if ($clients->save($client)) {
                 	$arr_s['client_id'] = $client->id;
-                    for($i=1;$i<9;$i++)
+                    
+                    for($i=1;$i<=$counter;$i++)
                     {
                         $arr_s['sub_id'] = $i;
                         $sub_c = TableRegistry::get('client_sub_order');
@@ -696,6 +700,7 @@ class ClientsController extends AppController {
     }
     function getFirstSub($id)
     {
+        //echo $id;die();
         $sub = TableRegistry::get('subdocuments');
         $query = $sub->find();
         $q = $query->select()->where(['id'=>$id])->first();
@@ -706,6 +711,7 @@ class ClientsController extends AppController {
     }
     function getSubCli($id)
     {
+
         $sub = TableRegistry::get('client_sub_order');
         $query = $sub->find();
         $q = $query->select()->where(['client_id'=>$id])->order(['display_order'=>'ASC']);
@@ -1135,13 +1141,16 @@ class ClientsController extends AppController {
     }
     function forOrder()
     {
+        $sub_sup = TableRegistry::get('subdocuments');
+        $sub_sup_count = $sub_sup->find()->count();
+        $counter = $sub_sup_count+1;
         $query = TableRegistry::get('clients');
         $q = $query->find()->all();
         foreach($q as $c)
         {
             
             $arr_s['client_id'] = $c->id;
-            for($i=1;$i<9;$i++)
+            for($i=1;$i<$counter;$i++)
             {
                 $arr_s['sub_id'] = $i;
                 $sub_c = TableRegistry::get('client_sub_order');

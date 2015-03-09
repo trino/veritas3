@@ -136,6 +136,7 @@ class SettingsComponent extends Component
     
     function getAllClientsId($uid)
     {
+        
         $clients = TableRegistry::get('clients');
             $qs = $clients->find()->select('id')->where(['profile_id LIKE "'.$uid.',%" OR profile_id LIKE "%,'.$uid.',%" OR profile_id LIKE "%,'.$uid.'" OR profile_id ="'.$uid.'"'])->all();
            
@@ -156,18 +157,20 @@ class SettingsComponent extends Component
     
     function getAllClientsname($uid)
     {
+        $controller = $this->_registry->getController();
         $clients = TableRegistry::get('clients');
-            $qs = $clients->find()->select('company_name')->where(['profile_id LIKE "'.$uid.',%" OR profile_id LIKE "%,'.$uid.',%" OR profile_id LIKE "%,'.$uid.'" OR profile_id ="'.$uid.'"'])->all();
-           
+            $qs = $clients->find()->select(['company_name','id'])->where(['profile_id LIKE "'.$uid.',%" OR profile_id LIKE "%,'.$uid.',%" OR profile_id LIKE "%,'.$uid.'" OR profile_id ="'.$uid.'"'])->all();
+           //debug($qs);die();
             $client_ids ="";
             if(count($qs)>0)
             {
                 foreach($qs as $k=>$q)
                 {
+                    //var_dump($q); die();
                     if(count($qs)==$k+1)
-                        $client_ids .= ucfirst($q->company_name);
+                        $client_ids .= "<a href='".$controller->request->webroot."clients/edit/".$q->id."?view' target ='_blank'>".ucfirst($q->company_name)."</a>";
                     else
-                        $client_ids .= ucfirst($q->company_name) . ", ";
+                        $client_ids .= "<a href='".$controller->request->webroot."clients/edit/".$q->id."?view' target ='_blank'>".ucfirst($q->company_name) . "</a>, ";
                 }
             }
                 return $client_ids;

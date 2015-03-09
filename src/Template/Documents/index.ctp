@@ -258,7 +258,7 @@
                                     <td><?php
 
                                             if (isset($uploaded_by->username)) {
-                                                $user = ucfirst(h($uploaded_by->username));
+                                                $user = '<a href="'.$this->request->webroot.'profiles/view/'.$docs->user_id.'" target="_blank">'.ucfirst(h($uploaded_by->username));
                                             } else {
                                                 $user = "None";
                                             }
@@ -270,7 +270,7 @@
                                     <td><?php
 
                                             if (isset($uploaded_for->username)) {
-                                                $user = ucfirst(h($uploaded_for->username));
+                                                $user = '<a href="'.$this->request->webroot.'profiles/view/'.$docs->uploaded_for.'" target="_blank">'.ucfirst(h($uploaded_for->username));
                                             } else {
                                                 $user = "None";
                                             }
@@ -283,7 +283,7 @@
                                     <td>
                                         <?php
                                             if (is_object($getClientById)) {
-                                                echo ucfirst(h($getClientById->company_name));
+                                                echo "<a href ='".$this->request->webroot."clients/edit/".$docs->client_id."?view'>".ucfirst(h($getClientById->company_name))."</a>";
                                             } else {
                                                 echo "Deleted " . $settings->client;
                                             }

@@ -215,11 +215,11 @@
                                     
                                     
                                     </td>
-                                    <td><?php if (isset($uploaded_by)) echo ucfirst(h($uploaded_by->username)) ?></td>
-                                    <td><?php if (isset($uploaded_for)) echo h(ucfirst($uploaded_for->fname) . ' ' . ucfirst($uploaded_for->mname) . ' ' . ucfirst($uploaded_for->lname)) ?></td>
+                                    <td><?php if (isset($uploaded_by)) echo '<a href="'.$this->request->webroot.'profiles/view/'.$order->user_id.'" target="_blank">'.ucfirst(h($uploaded_by->username));?></td>
+                                    <td><?php if (isset($uploaded_for)) echo '<a href="'.$this->request->webroot.'profiles/view/'.$order->uploaded_for.'" target="_blank">'.h(ucfirst($uploaded_for->fname) . ' ' . ucfirst($uploaded_for->mname) . ' ' . ucfirst($uploaded_for->lname))."</a>" ?></td>
                                     <td><?php
                                             if (is_object($client)) {
-                                                echo ucfirst(h($client->company_name));
+                                                echo "<a href ='".$this->request->webroot."clients/edit/".$order->client_id."?view' target='_blank'>".ucfirst(h($client->company_name))."</a>";
                                             } else {
                                                 echo "Deleted " . $settings->client;
                                             }

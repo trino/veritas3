@@ -93,7 +93,7 @@ if (isset($this->request->params['pass'][1])) {
                             <?php
                             }
                         ?>
-                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();$('.moredocxs').hide();" class="btn btn-success moreback" style="display: none;">Back</a>
+                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();$('.moredocxs').hide();$('.btndocs').hide();" class="btn btn-success moreback" style="display: none;">Back</a>
 
                     <?php include('subpages/home_blocks.php');
                     if(isset($mod->uploaded_for))
@@ -358,7 +358,7 @@ if (isset($this->request->params['pass'][1])) {
                 </div>
                 <div class="form-actions">
                     <div class="row">
-                        <div class="col-md-offset-3 col-md-9">
+                        <div class="col-md-offset-3 col-md-9 btndocs" style="display: none;">
 
 
                             <a href="javascript:void(0)" class="btn green cont">Save</a>
@@ -471,6 +471,7 @@ if (isset($this->request->params['pass'][1])) {
     //showforms(doc_type);
     function showforms(form_type) {
         $('.moredocxs').show();
+        $('.btndocs').show();
         var arr_formtype = form_type.split('?');
         var sub_doc_id = arr_formtype[1];
 

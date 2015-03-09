@@ -306,6 +306,10 @@
         }
         public function view($id = null)
         {
+            if(isset($_GET['success']))
+            {
+                $this->Flash->success('Order saved as draft');
+            }
             $this->set('uid', $id);
             $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));

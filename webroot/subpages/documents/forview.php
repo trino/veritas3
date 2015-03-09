@@ -507,14 +507,18 @@
                                                         foreach($doc as $d)
                                                         {
                                                             $title = ucfirst($d->title);
-                                                            $sub_doc_id = $d->id;
-                                                            $o_id = $order->id;
+                                                             $sub_doc_id = $d->id;
+                                                            //echo "_";
+                                                             $o_id = $order->id;
+                                                            //echo "_";continue;
                                                             $c_id = $order->client_id;
-                                                            $d_id = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $order->id);
+                                                            $d_id = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $o_id);
+                                                            if($d_id){
                                                             $docu_id = $d_id->id;
                                                             $cnt = $this->requestAction("/orders/getprocessed/".$d->table_name."/". $order->id);
-                                                            $line = PrintLine($line,$title,$cnt,$docu_id,$c_id,$o_id,$this->request->webroot,false);
+                                                            $line = PrintLine($line,$title,$cnt,$docu_id,$c_id,$o_id,$this->request->webroot,false);}
                                                         }
+                                                        //die();
 
                                                     }
                                                     /*

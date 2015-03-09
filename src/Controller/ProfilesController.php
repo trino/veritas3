@@ -308,7 +308,7 @@
         {
             if(isset($_GET['success']))
             {
-                $this->Flash->success('Order saved as draft');
+                $this->Flash->success('Order saved successfully');
             }
             $this->set('uid', $id);
             $this->set('doc_comp', $this->Document);

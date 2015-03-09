@@ -282,19 +282,17 @@
                                             }
 
                                             echo $user;
-                                            $docname = h($docs->document_type) . " uploaded by " . $user . " at " . h($docs->created);
-
                                         ?></td>
                                     <td><?php
 
                                             if (isset($uploaded_for->username)) {
                                                 $user = '<a href="'.$this->request->webroot.'profiles/view/'.$docs->uploaded_for.'" target="_blank">'.ucfirst(h($uploaded_for->username));
+
                                             } else {
                                                 $user = "None";
                                             }
 
-                                            echo $user;
-                                            $docname = h($docs->document_type) . " uploaded by " . $user . " at " . h($docs->created);
+                                            $docname = h($docs->document_type) . " uploaded by " . $uploaded_for->username . " at " . h($docs->created);
 
                                         ?></td>
                                     <td><?= h($docs->created) ?></td>

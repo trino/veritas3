@@ -34,7 +34,8 @@
 
 
 <?php
-    include_once ('/subpages/api.php');
+    include_once ('subpages/api.php');
+    $dr_cl = $doc_comp->getDriverClient($driver, $client);
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");

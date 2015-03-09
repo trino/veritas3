@@ -84,7 +84,7 @@
                         ->where(['id' => $id])
                         ->execute();
                 }*/
-                    
+
                     echo $rand;
 
 
@@ -298,7 +298,7 @@
             {
                 $this->loadModel("ProfileDocs");
                 $this->ProfileDocs->deleteAll(['id'=>$_POST['id']]);
-                
+
             }
             @unlink(WWW_ROOT."img/jobs/".$file);
             die();
@@ -691,7 +691,7 @@
                                 unset($doc);
                             }
                         }
-                        
+
                         echo $profile->id;
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft . ');
@@ -709,7 +709,7 @@
 
         public function saveDriver()
         {
-            //echo $client_id = $_POST['cid'];die() ; 
+            //echo $client_id = $_POST['cid'];die() ;
             $arr_post = explode('&', $_POST['inputs']);
             //var_dump($arr_post);die();
             foreach ($arr_post as $ap) {
@@ -840,7 +840,7 @@
             } else {
                 $this->set('myuser', '1');
             }
-            
+
             $docs = TableRegistry::get('profile_docs');
             $query = $docs->find();
             $client_docs = $query->select()->where(['profile_id'=>$id])->all();
@@ -1471,7 +1471,7 @@
                     <a href="" class="item-name primary-link">' . $this->request->session()->read('Profile.fname') . ' ' . $this->request->session()->read('Profile.mname') . ' ' . $this->request->session()->read('Profile.lname') . '</a>
                     <span class="item-label">' . date('m') . '/' . date('d') . '/' . (date('Y') - 2000) . '</span>
                 </div>
-                
+
             </div>
             <div class="item-body">
                 <span id="desc' . $save->id . '">' . $_POST['description'] . '</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_' . $save->id . '">Edit</a> <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_' . $save->id . '" onclick="return confirm(\'Are you sure you want to delete &quot;' . $_POST['description'] . '&quot; ?\');">Delete</a><br/><br/>
@@ -1499,7 +1499,7 @@
                     <a href="" class="item-name primary-link">' . $que2->fname . ' ' . $que2->mname . ' ' . $que2->lname . '</a>
                     <span class="item-label">' . $arr_cr[0] . '</span>
                 </div>
-                
+
             </div>
             <div class="item-body">
                 <span id="desc' . $rid . '">' . $_POST['description'] . '</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_' . $rid . '">Edit</a> <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_' . $rid . '" onclick="return confirm(\'Are you sure you want to delete &quot;' . $_POST['description'] . '&quot; ?\');">Delete</a><br/><br/>
@@ -1654,15 +1654,12 @@
         }
         return $randomString;
     }
-<<<<<<< HEAD
-    
+
     function cleardb()
     {
         $this->layout = "blank";
     }
-    
-=======
-        
+
       /*  getDocumentcountz()
         {
             $doc = TableRegistry::get('Subdocuments');
@@ -1673,7 +1670,7 @@
             $this->response->body($q);
             return $this->response;
         }
-        
+
         getuserDocumentcountz($id)
        {
             $doc = TableRegistry::get('Subdocuments');
@@ -1685,10 +1682,8 @@
                 if ($query1 = $subdoc->find()->where(['profile_id' => $id, 'subdoc_id' => $q->id, 'display <>' => 0])->first())
                     $cnt++;
             }
-            
+
             $this->response->body($cnt);
             return $this->response;
        } */
->>>>>>> 6d58a669884bc298cb45c1b6c77921f8f2ea544e
     }
-?>

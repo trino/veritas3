@@ -110,7 +110,7 @@
         }
 
         public function index()        {
-
+            $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');
             $this->set('ProClients', $this->Settings);

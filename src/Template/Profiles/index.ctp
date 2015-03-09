@@ -35,7 +35,6 @@
 
 <?php
     include_once ('/subpages/api.php');
-
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
@@ -324,11 +323,21 @@
 
                                                 if ($sidebar->document_list == 1/* && $doc != 0 && $cn != 0*/) {
                                                     ?>
-                                                    <a href="<?php echo $this->request->webroot . 'documents/index?type=&submitted_by_id=' . $profile->id; ?>"
-                                                       class="<?= btnclass("btn-info", "blue-soft") ?>">View Documents</a>
-                                                <?php
-                                                }
-                                            ?>
+                                                    <a href="<?php
+                                                    if($profile->profile_type == '5')
+                                                    {
+                                                     echo $this->request->webroot . 'documents/index?type=&submitted_for_id=' . $profile->id;
+                                                     }
+                                                     else 
+                                                     {
+                                                        echo $this->request->webroot . 'documents/index?type=&submitted_by_id=' . $profile->id;
+                                                     }
+                                                      ?>"
+                                                    
+                                                    class="<?= btnclass("btn-info", "blue-soft") ?>">View Documents</a>
+                                                    <?php
+                                                    }
+                                                     ?>
                                         </td>
                                     </tr>
 

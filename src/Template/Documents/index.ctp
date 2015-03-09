@@ -106,6 +106,21 @@
                                     }
                                 ?>
                             </select>
+                            
+                            <select class="form-control input-inline" name="submitted_for_id" style="">
+                                <option value="">Submitted for</option>
+                                <?php
+                                $dr_cl = $doc_comp->getDriverClient(0,0);
+                                $drcl_d = $dr_cl['driver'];
+                                foreach ($drcl_d as $drcld) {
+                    
+                                    ?>
+                                    <option
+                                            value="<?php echo $drcld->id; ?>" <?php if (isset($return_submitted_for_id) && $return_submitted_for_id == $drcld->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($drcld->username); ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
 
 
 

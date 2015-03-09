@@ -34,6 +34,8 @@
 
 
 <?php
+    include_once ('/subpages/api.php');
+
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
@@ -45,8 +47,8 @@
         }
         return false;
     }
-
 ?>
+
 <h3 class="page-title">
     <?php echo ucfirst($settings->profile); ?>s
 </h3>
@@ -257,44 +259,7 @@
                                                 echo ucfirst(h($profile->username));
                                             ?>
                                             <br/>
-                                            <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
-                                                echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => 'btn btn-info btn-xs']);
-                                            } ?>
 
-                                            <?php
-                                                $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
-                                                if ($sidebar->profile_edit == '1') {
-
-                                                    if ($checker == 1) {
-                                                        if ($this->request->session()->read('Profile.profile_type') == '2') {
-                                                            if ($profile->profile_type == '5')
-                                                                echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-xs']);
-                                                        } else
-                                                            echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => 'btn btn-primary btn-xs']);
-                                                    }
-                                                } ?>
-                                            <?php if ($sidebar->profile_delete == '1') {
-                                                if ($this->request->session()->read('Profile.super') == '1') {
-                                                    if ($this->request->session()->read('Profile.id') != $profile->id) {
-                                                        ?>
-
-                                                        <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
-                                                           onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-                                                           class="btn btn-danger btn-xs">Delete</a>
-                                                        </span>
-                                                    <?php
-                                                    }
-                                                } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
-                                                    ?>
-                                                    <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
-                                                       onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
-                                                       class="btn btn-danger btn-xs">Delete</a>
-                                                <?php
-                                                }
-
-                                            }
-
-                                            ?>
 
                                         </td>
 
@@ -319,11 +284,48 @@
 
                                         <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
                                         <td class="actions  util-btn-margin-bottom-5">
-                                            <?php
+                                            <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
+                                                                                            echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => btnclass("VIEW")]);
+                                                                                        } ?>
+
+                                                                                        <?php
+                                                                                            $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
+                                                                                            if ($sidebar->profile_edit == '1') {
+
+                                                                                                if ($checker == 1) {
+                                                                                                    if ($this->request->session()->read('Profile.profile_type') == '2') {
+                                                                                                        if ($profile->profile_type == '5')
+                                                                                                            echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => btnclass("EDIT")]);
+                                                                                                    } else
+                                                                                                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => btnclass("EDIT")]);
+                                                                                                }
+                                                                                            } ?>
+                                                                                        <?php if ($sidebar->profile_delete == '1') {
+                                                                                            if ($this->request->session()->read('Profile.super') == '1') {
+                                                                                                if ($this->request->session()->read('Profile.id') != $profile->id) {
+                                                                                                    ?>
+
+                                                                                                    <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
+                                                                                                       onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
+                                                                                                       class="<?= btnclass("DELETE") ?>">Delete</a>
+                                                                                                    </span>
+                                                                                                <?php
+                                                                                                }
+                                                                                            } else if ($this->request->session()->read('Profile.profile_type') == '2' && ($profile->profile_type == '5')) {
+                                                                                                ?>
+                                                                                                <a href="<?php echo $this->request->webroot; ?>profiles/delete/<?php echo $profile->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
+                                                                                                   onclick="return confirm('Are you sure you want to delete <?= ucfirst(h($profile->username)) ?>?');"
+                                                                                                   class="<?= btnclass("DELETE") ?>">Delete</a>
+                                                                                            <?php
+                                                                                            }
+
+                                                                                        }
+
+
                                                 if ($sidebar->document_list == 1/* && $doc != 0 && $cn != 0*/) {
                                                     ?>
                                                     <a href="<?php echo $this->request->webroot . 'documents/index?type=&submitted_by_id=' . $profile->id; ?>"
-                                                       class="btn btn-info btn-sm">View Documents</a>
+                                                       class="<?= btnclass("btn-info", "blue-soft") ?>">View Documents</a>
                                                 <?php
                                                 }
                                             ?>

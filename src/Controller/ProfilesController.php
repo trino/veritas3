@@ -306,6 +306,10 @@
         }
         public function view($id = null)
         {
+            if(isset($_GET['success']))
+            {
+                $this->Flash->success('Order saved as draft');
+            }
             $this->set('uid', $id);
             $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -1659,7 +1663,7 @@
 
     function cleardb()
     {
-        
+        if($this->request->session()->read('Profile.super')==1){
         $conn = ConnectionManager::get('default');
         $query = $conn->query("show tables");
         $user_id = $conn->query("Select id from profiles where super=1");
@@ -1686,6 +1690,7 @@
         } echo "Cleared";
         die();
         $this->layout = "blank";
+        }
     }
 
       /*  getDocumentcountz()

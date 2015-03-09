@@ -294,8 +294,8 @@ var FormWizard = function () {
                     setTimeout(
                   function()
                   {
-               //   window.location = base_url+'?orderflash';
-                  }, 2500);
+                 window.location = base_url+'?orderflash';
+                  }, 5500);
               //    }
 
 
@@ -334,7 +334,8 @@ var FormWizard = function () {
                     
                     if($('.tabber.active').attr('class').replace('confirmation')!=$('.tabber.active').attr('class'))
                     {
-                        if($('.tabber.active .touched').val()!='1')
+                        //alert($('.tabber.active .touched_edit').val());
+                        if($('.tabber.active .touched').val()!='1' && $('.tabber.active .touched_edit').val()!='1')
                         {
                             alert('Please provide your signature to confirm.');
                             return false;

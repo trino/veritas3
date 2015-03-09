@@ -1,5 +1,8 @@
-<?php $settings = $this->requestAction('settings/get_settings'); ?>
-<?php $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id')); ?>
+<?php
+    include_once ('/subpages/api.php');
+    $settings = $this->requestAction('settings/get_settings');
+    $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id'));
+?>
 <h3 class="page-title">
     Orders <?php if (isset($_GET['draft'])) { ?>(Draft)<?php } ?>
 </h3>
@@ -241,7 +244,7 @@ echo '';
 <?php
 if ($sidebar->orders_list == '1' && !isset($_GET["draft"])) {
     ?>
-    <a class="btn btn-info btn-xs" href="<?php echo $this->request->webroot;?>orders/vieworder/<?php echo $order->client_id;?>/<?php echo $order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}?>">View</a>
+    <a class="<?= btnclass("VIEW") ?>" href="<?php echo $this->request->webroot;?>orders/vieworder/<?php echo $order->client_id;?>/<?php echo $order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}?>">View</a>
     <?php
 //if (!isset($_GET['table']))
 //echo $this->Html->link(__('View'), ['action' => 'vieworder', $order->client_id, $order->id], ['class' => 'btn btn-info']);
@@ -255,7 +258,7 @@ if (isset($super) || isset($_GET['draft'])) {
 if ($sidebar->orders_edit == '1') {
 if (!isset($_GET['table']) && $order->draft == 1) {
     ?>
-    <a class="btn btn-primary btn-xs" href="<?php echo $this->request->webroot;?>orders/addorder/<?php echo $order->client_id;?>/<?php echo $order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}?>">Edit</a>
+    <a class="<?= btnclass("EDIT") ?>" href="<?php echo $this->request->webroot;?>orders/addorder/<?php echo $order->client_id;?>/<?php echo $order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}?>">Edit</a>
     <?php
 //echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addorder', $order->client_id, $order->id], ['class' => 'btn btn-primary']);
 } /*elseif (isset($_GET['table'])) {
@@ -266,7 +269,7 @@ echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addor
 if (isset($super) || (isset($_GET['draft']) && $this->request->session()->read('Profile.id')==$order->user_id)) {
 ?><a
 href="<?php echo $this->request->webroot; ?>orders/deleteorder/<?php echo $order->id; ?><?php if (isset($_GET['draft'])) echo "?draft"; ?>"
-class="btn btn-danger btn-xs"
+class="<?= btnclass("DELETE") ?>"
 onclick="return confirm('Are you sure you want to delete order <?= $order->id ?>?');">
 Delete</a>
 <?php
@@ -283,7 +286,7 @@ Delete</a>
 <?php if (!isset($_GET['draft']) && is_object($order->profile))
 {
 ?>
-<a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $order->profile->id ?>?getprofilescore=1" class="btn btn-success btn-xs">Score Card</a>
+<a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $order->profile->id ?>?getprofilescore=1" class="<?= btnclass("btn-success", "green-haze") ?>">Score Card</a>
 <?php
 } ?>
 <?php //if (!isset($_GET['draft'])) echo $this->Html->link(__('Score Card'), ['controller' => 'orders', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>

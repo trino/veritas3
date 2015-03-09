@@ -250,7 +250,15 @@ $profileID = $this->Session->read('Profile.id');
                     </a>
                 </li>
             <?php } ?>
-
+            <?php if ($sidebar->training == 1) { ?>
+                <li class="<?php echo ($this->request['controller'] == 'Training') ? 'active open' : ''; ?>">
+                    <a href="<?php echo $this->request->webroot; ?>training">
+                        <i class="fa fa-graduation-cap"></i>
+                        <span class="title">Training</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+            <?php } ?>
 
             <?php if ($sidebar->logo == '1') { ?>
                 <li class="sidebar-toggler-wrapper">

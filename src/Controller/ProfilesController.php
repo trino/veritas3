@@ -1654,14 +1654,12 @@
         }
         return $randomString;
     }
-<<<<<<< HEAD
-    
+
     function cleardb()
     {
         $this->layout = "blank";
     }
-    
-=======
+
         
       /*  getDocumentcountz()
         {
@@ -1689,6 +1687,5 @@
             $this->response->body($cnt);
             return $this->response;
        } */
->>>>>>> 6d58a669884bc298cb45c1b6c77921f8f2ea544e
     }
 ?>

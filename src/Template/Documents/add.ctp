@@ -93,7 +93,7 @@ if (isset($this->request->params['pass'][1])) {
                             <?php
                             }
                         ?>
-                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();$('.moredocxs').hide();" class="btn btn-success moreback" style="display: none;">Back</a>
+                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();$('.moredocxs').hide();$('.btndocs').hide();" class="btn btn-success moreback" style="display: none;">Back</a>
 
                     <?php include('subpages/home_blocks.php');
                     if(isset($mod->uploaded_for))
@@ -358,7 +358,7 @@ if (isset($this->request->params['pass'][1])) {
                 </div>
                 <div class="form-actions">
                     <div class="row">
-                        <div class="col-md-offset-3 col-md-9">
+                        <div class="col-md-offset-3 col-md-9 btndocs" style="display: none;">
 
 
                             <a href="javascript:void(0)" class="btn green cont">Save</a>
@@ -471,6 +471,7 @@ if (isset($this->request->params['pass'][1])) {
     //showforms(doc_type);
     function showforms(form_type) {
         $('.moredocxs').show();
+        $('.btndocs').show();
         var arr_formtype = form_type.split('?');
         var sub_doc_id = arr_formtype[1];
 
@@ -541,16 +542,19 @@ if (isset($this->request->params['pass'][1])) {
             $('#form_tab8').prepend('<input class="document_type" type="hidden" name="document_type" value="Audits" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="8"  />');
         }
+        
+        if(s_arr[1]>4)
+        {
+            $('.attachments').show();
+        }
+        else
+             $('.attachments').hide();             
         if (ftype != "") {
             //alert(form_type);
             for (var p = 1; p <= 9; p++) {
+                //alert(p);
                 $('.subform' + p).hide();
-                if(p>4)
-                {
-                    $('.attachments').show();
-                }
-                else
-                     $('.attachments').hide();                                
+                                   
             }
             $('.subform' + s_arr[1]).show(200, function () {
                 /*if (s_arr[1] == '1')
@@ -1406,19 +1410,19 @@ if (isset($this->request->params['pass'][1])) {
                     else if (type == "Feedbacks") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>feedbacks/add/' + order_id + '/' + cid+'?draft=' + draft + '&document=1'+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
+                            url = '<?php echo $this->request->webroot;?>feedbacks/add/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
                         var param = $('#form_tab6').serialize();
                         $.ajax({
                             url: url,
                             data: param,
                             type: 'POST',
-                            success:function()
-                            {
-                                if(draft==0){
+                            success: function (res) {
+                                if (res == 'OK'){
+                                    if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
-                                    }
-                                    else{
+                                    else
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    
                                     }
                             }
                         });
@@ -1427,69 +1431,45 @@ if (isset($this->request->params['pass'][1])) {
                     else if (type == "Survey") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/' + order_id + '/' + cid+'?draft=' + draft + '&document=1'+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';;
+                            url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft;
                         var param = $('#form_tab5').serialize();
                         $.ajax({
                             url: url,
                             data: param,
                             type: 'POST',
-                            success:function()
-                            {
-                                if(draft==0){
+                            success: function (res) {
+                                if (res == 'OK'){
+                                    if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
-                                    }
-                                    else{
+                                    else
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    
                                     }
                             }
                         });
 
                     }
                     else if (type == "Attachment") {
-                        
-                        var order_id = $('#did').val(),
-                            cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/addattachment/' + cid + '/' + order_id+'?draft=' + draft + '&document=1'+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
-                        var param = $('#form_tab7').serialize();
-                        $.ajax({
-                            url: url,
-                            data: param,
-                            type: 'POST',
-                            success:function()
-                            {
-                                if(draft==0){
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
-                                    }
-                                    else{
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
-                                    }
-                            }
+                        var act = $('#form_tab7').attr('action');
+
+                        $('#form_tab7').attr('action', function (i, val) {
+                            return val + '?draft=' + draft;
                         });
+                        $('#form_tab7').submit();
 
 
                     }
                     else if (type == "Audits") {
-                         var order_id = $('#did').val(),
-                            cid = '<?php echo $cid;?>',
-                            url = '<?php echo $this->request->webroot;?>documents/audits/' + cid + '/' + order_id+ '?draft=' + draft + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';;
-                        var param = $('#form_tab8').serialize();
-                        $.ajax({
-                            url: url,
-                            data: param,
-                            type: 'POST',
-                            success:function()
-                            {
-                                if(draft==0){
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
-                                    }
-                                    else{
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
-                                    }
-                            }
+                        var act = $('#form_tab8').attr('action');
+
+                        $('#form_tab8').attr('action', function (i, val) {
+                            return val + '?draft=' + draft;
                         });
+                        
+                        $('#form_tab8').submit();
+
 
                     }
-                    
                     
                 }
             });

@@ -290,14 +290,14 @@ var FormWizard = function () {
                      window.location = base_url+'?orderflash';
                     */
 
-                   if($('#tab6 .touched').val()=='1'){ 
+                //   if($('#tab6 .touched').val()=='1' || $('#tab6 .touched_edit').val()=='1'){
                     setTimeout(
-                  function() 
+                  function()
                   {
-                 //   window.location = base_url+'?orderflash';
+               //   window.location = base_url+'?orderflash';
                   }, 2500);
-                  }
-                    
+              //    }
+
 
                 }
 
@@ -334,9 +334,10 @@ var FormWizard = function () {
                     
                     if($('.tabber.active').attr('class').replace('confirmation')!=$('.tabber.active').attr('class'))
                     {
-                        if($('.tabber.active .touched').val()!='1')
+                        //alert($('.tabber.active .touched_edit').val());
+                        if($('.tabber.active .touched').val()!='1' && $('.tabber.active .touched_edit').val()!='1')
                         {
-                            alert('Please provide your signature to save');
+                            alert('Please provide your signature to confirm.');
                             return false;
                         }
                     }

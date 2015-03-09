@@ -220,7 +220,7 @@
                     $attachment = $attachments->find()->where(['document_id' => $did])->all();
                     else
                     $attachment = $attachments->find()->where(['order_id' => $_GET['order_id']])->all();                                        
-                    $this->set('attachments', $attachment);
+                    $this->set('attach', $attachment);
                 }
                 elseif ($query->sub_doc_id == '8') {
                     $attachments = TableRegistry::get('audits');
@@ -554,7 +554,7 @@
                     $attachment = $attachments->find()->where(['document_id' => $did])->all();
                     else
                     $attachment = $attachments->find()->where(['order_id' => $_GET['order_id']])->all();                                        
-                    $this->set('attachments', $attachment);
+                    $this->set('attach', $attachment);
 
                     $this->set('attach', $attachment);
 
@@ -880,11 +880,11 @@
                 $arr['document_type'] = $_POST['document_type'];
                 $arr['title'] = $_POST['title'];
                 $arr['created'] = date('Y-m-d H:i:s');
-                if(isset($_GET['document']) && !isset($_GET['order_id'])){
+                if(!isset($_GET['order_id'])){
                 if (!$did || $did == '0') {
 
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
-                    if(isset($_GET['document']))
+                   
                     $docs = TableRegistry::get('Documents');
                     $doc = $docs->newEntity($arr);
 
@@ -895,6 +895,24 @@
                         $ds['title'] = $_POST['title'];
                         $docz = $doczs->newEntity($ds);
                         $doczs->save($docz);
+                        if(isset($_POST['attach_doc']))
+                        {
+                            $model = $this->loadModel('AttachDocs');
+                            $model->deleteAll(['doc_id'=> $doc->id]);
+                            $client_docs = explode(',',$_POST['attach_doc']);
+                            foreach($client_docs as $d)
+                            {
+                                if($d != "")
+                                {
+                                    $attach = TableRegistry::get('attach_docs');
+                                    $ds['doc_id']= $doc->id;
+                                    $ds['file'] =$d;
+                                     $att = $attach->newEntity($ds);
+                                     $attach->save($att);
+                                    unset($att);
+                                }
+                            }
+                        }
                         unset($doczs);
                         /*$client_docs = array_unique($_POST['client_doc']);
                         foreach ($client_docs as $d) {
@@ -929,6 +947,24 @@
                     $ds['title'] = $_POST['title'];
                     $docz = $doczs->newEntity($ds);
                     $doczs->save($docz);
+                    if(isset($_POST['attach_doc']))
+                    {
+                        $model = $this->loadModel('AttachDocs');
+                        $model->deleteAll(['doc_id'=> $did]);
+                        $client_docs = explode(',',$_POST['attach_doc']);
+                        foreach($client_docs as $d)
+                        {
+                            if($d != "")
+                            {
+                                $attach = TableRegistry::get('attach_docs');
+                                $ds['doc_id']= $did;
+                                $ds['file'] =$d;
+                                 $att = $attach->newEntity($ds);
+                                 $attach->save($att);
+                                unset($att);
+                            }
+                        }
+                    }
                     unset($doczs);
                     /*$this->loadModel('Attachments');
                     $attach = TableRegistry::get('attachments');
@@ -1020,9 +1056,9 @@
         function audits($cid, $did)
         {
             $this->set('doc_comp',$this->Document);
-
+           
             if (isset($_POST)) {
-
+                
                 if (isset($_GET['draft']) && $_GET['draft'])
                 {
                     $arr['draft'] = 1;
@@ -1038,9 +1074,9 @@
                 $arr['document_type'] = $_POST['document_type'];
                
                 
-                 if(isset($_GET['document']) && !isset($_GET['order_id'])){
+                 if(!isset($_GET['order_id'])){
                 if (!$did || $did == '0') {
-
+                    
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
                     $arr['created'] = date('Y-m-d H:i:s');
                     $docs = TableRegistry::get('Documents');
@@ -1057,6 +1093,25 @@
                         }
                         $docz = $doczs->newEntity($ds);
                         $doczs->save($docz);
+                        $did = $doc->id;
+                        if(isset($_POST['attach_doc']))
+                        {
+                            $model = $this->loadModel('AttachDocs');
+                            $model->deleteAll(['doc_id'=> $did]);
+                            $client_docs = explode(',',$_POST['attach_doc']);
+                            foreach($client_docs as $d)
+                            {
+                                if($d != "")
+                                {
+                                    $attach = TableRegistry::get('attach_docs');
+                                    $ds['doc_id']= $did;
+                                    $ds['file'] =$d;
+                                     $att = $attach->newEntity($ds);
+                                     $attach->save($att);
+                                    unset($att);
+                                }
+                            }
+                        }
                         unset($doczs);
                         $this->Flash->success('Document saved successfully.');
                         $this->redirect(array('action' => 'index'.$draft));
@@ -1065,16 +1120,18 @@
                         $this->redirect(array('action' => 'index'.$draft));
                     }
 
-                } else {
+                } 
+                else 
+                {
                     $docs = TableRegistry::get('Documents');
                     $query2 = $docs->query();
                     $query2->update()
                         ->set($arr)
                         ->where(['id' => $did])
                         ->execute();
-                    $this->loadModel('Audits');
-                    $this->Audits->deleteAll(['document_id' => $did]);
-                     $doczs = TableRegistry::get('audits');
+                        $this->loadModel('Audits');
+                        $this->Audits->deleteAll(['document_id' => $did]);
+                        $doczs = TableRegistry::get('audits');
                         $ds['document_id'] = $did;
                         $ds['date'] = $_POST['year']."-".$_POST['month'];
                         foreach($_POST as $k=>$v)
@@ -1083,6 +1140,25 @@
                         }
                         $docz = $doczs->newEntity($ds);
                         $doczs->save($docz);
+                        if(isset($_POST['attach_doc']))
+                        {
+                            $did = $doc->id;
+                            $model = $this->loadModel('AttachDocs');
+                            $model->deleteAll(['doc_id'=> $did]);
+                            $client_docs = explode(',',$_POST['attach_doc']);
+                            foreach($client_docs as $d)
+                            {
+                                if($d != "")
+                                {
+                                    $attach = TableRegistry::get('attach_docs');
+                                    $ds['doc_id']= $did;
+                                    $ds['file'] =$d;
+                                     $att = $attach->newEntity($ds);
+                                     $attach->save($att);
+                                    unset($att);
+                                }
+                            }
+                        }
                         unset($doczs);
                     $this->Flash->success('Document Updated successfully.');
                     $this->redirect(array('action' => 'index'.$draft));
@@ -1207,6 +1283,5 @@
             die;
 
         }
-        
   
     }

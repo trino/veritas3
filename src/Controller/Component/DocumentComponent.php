@@ -145,22 +145,24 @@ class DocumentComponent extends Component
                     if ($docs->save($doc)) {
                         //$this->Flash->success('Client saved successfully.');
                         echo $doc->id;
-                        $model = $controller->loadModel('AttachDocs');
-                        $model->deleteAll(['doc_id'=>$doc->id]);
-                        $client_docs = explode(',',$_POST['attach_doc']);
-                        foreach($client_docs as $d)
+                        if(isset($_POST['attach_doc']))
                         {
-                            if($d != "")
+                            $model = $controller->loadModel('AttachDocs');
+                            $model->deleteAll(['doc_id'=>$doc->id]);
+                            $client_docs = explode(',',$_POST['attach_doc']);
+                            foreach($client_docs as $d)
                             {
-                                $attach = TableRegistry::get('attach_docs');
-                                $ds['doc_id']= $doc->id;
-                                $ds['file'] =$d;
-                                 $att = $attach->newEntity($ds);
-                                 $attach->save($att);
-                                unset($att);
+                                if($d != "")
+                                {
+                                    $attach = TableRegistry::get('attach_docs');
+                                    $ds['doc_id']= $doc->id;
+                                    $ds['file'] =$d;
+                                     $att = $attach->newEntity($ds);
+                                     $attach->save($att);
+                                    unset($att);
+                                }
                             }
                         }
-                        
                     } else {
                         //$this->Flash->error('Client could not be saved. Please try again.');
                         //echo "e";
@@ -172,19 +174,22 @@ class DocumentComponent extends Component
                         ->set($arr)
                         ->where(['id' => $did])
                         ->execute();
-                        $model = $controller->loadModel('AttachDocs');
-                        $model->deleteAll(['doc_id'=>$did]);
-                        $client_docs = explode(',',$_POST['attach_doc']);
-                        foreach($client_docs as $d)
+                        if(isset($_POST['attach_doc']))
                         {
-                            if($d != "")
+                            $model = $controller->loadModel('AttachDocs');
+                            $model->deleteAll(['doc_id'=>$did]);
+                            $client_docs = explode(',',$_POST['attach_doc']);
+                            foreach($client_docs as $d)
                             {
-                                $attach = TableRegistry::get('attach_docs');
-                                $ds['doc_id']= $did;
-                                $ds['file'] =$d;
-                                 $att = $attach->newEntity($ds);
-                                 $attach->save($att);
-                                unset($att);
+                                if($d != "")
+                                {
+                                    $attach = TableRegistry::get('attach_docs');
+                                    $ds['doc_id']= $did;
+                                    $ds['file'] =$d;
+                                     $att = $attach->newEntity($ds);
+                                     $attach->save($att);
+                                    unset($att);
+                                }
                             }
                         }
                     echo $did;
@@ -1183,7 +1188,10 @@ class DocumentComponent extends Component
                
                $cmodel2 = TableRegistry::get('Clients');
                 $clients2 = $cmodel2->find()->where(['id'=>$client])->first();
+                if($client2)
                 $profile_ids2 = $clients2->profile_id;
+                else
+                $profile_ids2 = '';
                 
                 if(!$profile_ids2)
                 $profile_ids2 = '9999999';

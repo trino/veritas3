@@ -8,37 +8,101 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $startorder1 = true;
 
-    $productdetails79 = false;
-    $productdetails1 = false;
-    $productdetails14 = false;
-    $productdetails77 = false;
-    $productdetails78 = false;
-
-    $productdetailsebs1603 = false;
-    $productdetailsebs1627 = false;
-    $productdetailsebs1650 = false;
-
-    $uploadbinaryconsent_1603 = false;
-    $uploadbinaryemployment_1627 = false;
-    $uploadbinaryeducation_1650 = false;
-
-    $upload_additional = false;
-
-    if ($startorder1) {
-
+    $user_id234 = $this->Session->read('Profile.isb_id');
+    if (isset($user_id234) && $user_id234 != "") {
         $user_id234 = $this->Session->read('Profile.isb_id');
-        if (isset($user_id234) && $user_id234 != "") {
-            $user_id234 = $this->Session->read('Profile.isb_id');
-        } else {
-            $user_id234 = '22552';
+    } else {
+        $user_id234 = '22552';
+    }
+
+    if ($_SERVER['SERVER_NAME'] != "isbmeereports.com") {
+        $user_id234 = '22552';
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    $startorder1 = false;
+    $productdetails79 = false; // only for complete mee roders
+
+
+    ////////////////////////////////////////PRODUCTS
+    ////////////////////////////////////////PRODUCTS
+    ////////////////////////////////////////PRODUCTS
+
+    $productdetailsebs1603 = true; //Premium check
+    $productdetails1 = true;//MVR Driver's Record Abstract
+    $productdetails14 = true;//CVOR
+    $productdetails77 = true;//Pre-employment Screening Program Report
+    $productdetails78 = true; //Transclick
+    $productdetailsebs1650 = true;//Certification (Education)
+    $productdetailsebs1627 = true;//LOE (Employment)
+    $productdetails_CheckDL_72 = true; //checkdl
+
+    ////////////////////////////////////////PRODUCTS
+    ////////////////////////////////////////PRODUCTS
+    ////////////////////////////////////////PRODUCTS
+
+
+    $uploadbinaryconsent_1603 = true;
+    $uploadbinaryemployment_1627 = true;
+    $uploadbinaryeducation_1650 = true;
+
+    $upload_additional = false; //additional are all attachments in all forms
+
+    var_dump($formsarray);
+
+    echo $formsarray[1];
+
+    if ($formsarray[1] =='1' ||$formsarray[1] =='0') {
+
+        if ($formsarray[0] == '0') {
+            $productdetailsebs1603 = false;
+            echo 1;
+        }
+        if ($formsarray[1] == '0') {
+            $productdetails1 = false;
+            echo 2;
+        }
+        if ($formsarray[2] == '0') {
+            $productdetails14 = false;
+            echo 3;
+        }
+        if ($formsarray[3] == '0') {
+            $productdetails77 = false;
+            echo 4;
+        }
+        if ($formsarray[4] == '0') {
+            $productdetails78 = false;
+            echo 5;
+        }
+        if ($formsarray[5] == '0') {
+            $productdetailsebs1650 = false;
+            echo 6;
+        }
+        if ($formsarray[6] == '0') {
+            $productdetailsebs1627 = false;
+            echo 7;
         }
 
-if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
-    $user_id234 = '22552';
-   echo $_SERVER['SERVER_NAME'];
-}
+        if ($formsarray[7] == '0')
+        {    $productdetails_CheckDL_72 = false;
+            echo 8;
+
+        }
+
+    } else {
+        $productdetails79 = true;
+        $productdetails_CheckDL_72 = false;
+        echo 999;
+    }
+
+
+
+    if ($startorder1 == true) {
+
 
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
@@ -48,10 +112,9 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <soap:Body><StartOrder xmlns="http://tempuri.org/"><IntPackage>'
             . $body .
-            '</IntPackage><tp>'.$ordertype.'</tp><prod>true</prod></StartOrder></soap:Body></soap:Envelope>';
+            '</IntPackage><tp>' . $ordertype . '</tp><prod>true</prod></StartOrder></soap:Body></soap:Envelope>';
 
         $result = $client->call('StartOrder', $soap_xml);
-        debug($result);
 
         $myArray = explode(',', $result['StartOrderResult']);
 
@@ -66,7 +129,7 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    if ($productdetails79) {  //this product only goes with mee order, (bright planet)
+    if ($productdetails79 == true) {  //this product only goes with mee order, (bright planet)
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -82,12 +145,16 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
         }
         $pdi = $r[0];
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_79');
+
+        echo 'ins_79';
+        debug($result);
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if ($productdetails1) { // MVR
+    if ($productdetails1 == true) { // MVR
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -102,12 +169,15 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_1');
+        echo 'ins_1';
+        debug($result);
+
 
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if ($productdetails14) { //CVOR
+    if ($productdetails14 == true) { //CVOR
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -125,12 +195,38 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_14');
+        echo 'ins_14';
         debug($result);
     }
+
+    if ($productdetails_CheckDL_72 == true) { //CheckDL
+
+        $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_typeOfOrder&gt;Single Order&lt;/isb_typeOfOrder&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_CheckDLBulk&gt;a&lt;/isb_CheckDLBulk&gt;&lt;isb_uploadBulk&gt;a&lt;/isb_uploadBulk&gt;&lt;isb_CheckDLrbl&gt;a&lt;/isb_CheckDLrbl&gt;&lt;isb_rblHaveSig&gt;I confirm that I have signed consent from the drivers licence holder to verify its status&lt;/isb_rblHaveSig&gt;&lt;isb_specialInstructions&gt;&lt;/isb_specialInstructions&gt;&lt;/ProductData&gt;' . '</productdetails><productID>72</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+
+        var_dump($soap_xml);
+        $result = $client->call('ProductDetails', $soap_xml);
+        //get between
+        $r = explode('[', $result['ProductDetailsResult']);
+        if (isset($r[1])) {
+            $r = explode(']', $r[1]);
+        }
+        $pdi = $r[0];
+        echo 'ins_72';
+        debug($result);
+
+        $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_72');
+
+
+    }
+
+
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if ($productdetails77) { // Pre-employment Screening Program Report
+    if ($productdetails77 == true) { // Pre-employment Screening Program Report
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -147,12 +243,13 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_77');
+        echo 'ins_77';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if ($productdetails78) { //transclick
+    if ($productdetails78 == true) { //transclick
 
         if (isset($driverinfo->email) && $driverinfo->email != "") {
         } else {
@@ -173,12 +270,13 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_78');
+        echo 'ins_78';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if ($productdetailsebs1650) { // Certification
+    if ($productdetailsebs1650 == true) { // Certification
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -195,12 +293,13 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
         $pdi_1650 = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1650');
+        echo 'ebs_1650';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if ($productdetailsebs1627) { //LOE
+    if ($productdetailsebs1627 == true) { //LOE
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -217,12 +316,13 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
         $pdi_1627 = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1627');
+        echo 'ebs_1627';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if ($productdetailsebs1603) { //Premium check
+    if ($productdetailsebs1603 == true) { //Premium check
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -239,13 +339,14 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
         $pdi_1603 = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1603');
+        echo 'ebs_1603';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    if ($uploadbinaryconsent_1603) {
+    if ($uploadbinaryconsent_1603 == true) {
 
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);
@@ -261,7 +362,7 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if ($uploadbinaryemployment_1627) {
+    if ($uploadbinaryemployment_1627 == true) {
 
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);
@@ -277,7 +378,7 @@ if($_SERVER['SERVER_NAME'] != "www.isbmeereports.com") {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if ($uploadbinaryeducation_1650) {
+    if ($uploadbinaryeducation_1650 == true) {
 
         $pdf_content = '';
         $pdf_decoded = base64_decode($pdf_content);

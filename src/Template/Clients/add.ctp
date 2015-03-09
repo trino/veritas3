@@ -50,7 +50,7 @@
             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
         <?php } 
        
-        if (isset($client) && $sidebar->client_delete == '1') { ?>
+        if (isset($client) && $sidebar->client_delete == '1' && $param != 'add') { ?>
             <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $client->id; ?><?php echo (isset($_GET['draft']))?"?draft":""; ?>"
                onclick="return confirm('Are you sure you want to delete <?= h($client->company_name) ?>?');"
                class="floatright btn btn-danger btnspc">Delete</a>
@@ -99,77 +99,6 @@
                     </div>
                 </div>
 
-                <?php
-                    /*if ($this->request->params['action'] == 'edit')
-                        include('subpages/clients/recruiter_contact_table.php');*/
-                    if (isset($_GET['view'])) {
-                        ?>
-                        <table class="table table-striped table-bordered table-advance table-hover recruiters">
-                            <thead>
-                            <tr>
-                                <th colspan="2">Assigned To:</th>
-                            </tr>
-                            </thead>
-                            <tbody id="">
-                            <?php
-                                $types = array('Driver', 'Admin', 'Recruiter', 'External', 'Safety', 'Driver', 'Contact', 'Employee', 'Guest', 'Partner');
-                                $counter = 0;
-                                foreach ($getprofile as $p) {
-                                    ?>
-                                    <tr>
-                                        <td>
-                                            <?php
-                                                echo '<a href="' . $this->request->webroot . 'profiles/view/' . $p->id . '">';
-                                                if (strlen($p->username)>0) {
-                                                    echo $p->username;
-                                                } elseif(strlen($p->fname)>0 or strlen($p->lname)>0) {
-                                                    echo $p->fname . " " . $p->lname;
-                                                } else {
-                                                    echo "[NO NAME]";
-                                                }
-                                                $profiletype = " (Draft)";
-                                                if (strlen($p->profile_type)>0 ) {
-                                                    if ($p->profile_type < count($types)) {
-                                                        $profiletype = " (" . $types[$p->profile_type] . ")";
-                                                    } else {
-                                                        $profiletype = " (UNKNOWN)";
-                                                    }
-                                                }
-                                                echo $profiletype;
-
-                                                echo "</a>"
-                                                //<a href="<?php echo $this->request->webroot;!>profiles/view/<?php echo $p->id; !>">
-                                            //<?php echo $p->username; !> (<?php echo $types[$p->profile_type]; !>)&nbsp;&nbsp;(Profile)</a>
-
-                                            ?>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                    $counter++;
-                                }
-                                $c = $counter;
-                                if ($counter == 0) {
-                                    echo "<TR><TD>No <?php echo strtolower($settings->profile); ?>s</TD></TR>";
-                                }
-                            ?>
-                            <?php
-                                foreach ($getcontact as $cont) {
-                                    ?>
-                                             <tr><td>
-												<a href="<?php echo $this->request->webroot;?>profiles/view/<?php echo $cont->id; ?>">
-												    <?php echo $cont->username; ?> <?php //echo $types[$p->profile_type];
-                                    ?>&nbsp;&nbsp;(Contact)
-                                                </a>
-											</tr></td>
-                                                    <?php
-                                }
-                            ?>
-                            </tbody>
-                        </table>
-                    <?php
-                    }
-                ?>
-
             </div>
             <div class="col-md-9">
 
@@ -191,13 +120,13 @@
                                 <li>
                                     <a href="#tab_1_2" data-toggle="tab">Display</a>
                                 </li>
-                                 <li>
-                                    <a href="#tab_1_3" data-toggle="tab">Assign to Profile</a>
-                                </li>
+                                 
                             <?php
 
                             } ?>
-
+                                <li>
+                                    <a href="#tab_1_3" data-toggle="tab"><?php echo (!isset($_GET['view']))?"Assign to Profile":"Assigned To";?></a>
+                                </li>
 
                         </UL>
                     </div>
@@ -532,7 +461,14 @@
                         <div class="tab-pane" id="tab_1_2">
 
 
-                            <h4> Enable <?php echo ucfirst($settings->document); ?>s?</h4>
+                            <h4 class="col-md-6"> Enable <?php echo ucfirst($settings->document); ?>s?</h4>
+                            <div class="col-md-6" style="text-align: right;">
+                                <a href="#" class="btn btn-success" onclick="$('#sub_add').toggle(150);">Add New Sub Document</a>
+                                <div class="col-md-12" id="sub_add" style="display: none;margin:10px 0;padding:0">
+                                    <div class="col-md-10" style="text-align: right;padding:0;"><input type="text" placeholder="Sub-Document title" class="form-control subdocname" /></div><div class="col-md-2" style="text-align: right;padding:0;"><a class="btn btn-primary addsubdoc" href="javascript:void(0)">Add</a></div><div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
 
                             <form action="" id="displayform1" method="post">
                                 <table class="table table-light table-hover sortable">
@@ -628,12 +564,13 @@
 
                             </form>
                         </div>
+                        <?php } ?>
                          <div class="tab-pane" id="tab_1_3">
                          <?php
                             include('subpages/clients/recruiter_contact_table.php');
                          ?>
                          </div>
-                        <?php } ?>
+                        
 
                         <!-- END SAMPLE FORM PORTLET-->
 </div>
@@ -647,6 +584,10 @@
 
 <script>
     $(function () {
+        $('.addsubdoc').click(function(){
+           var subname = $('.subdocname').val();
+           window.location = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname; 
+        });
         var tosend = '';
         $('.sortable tbody').sortable({
             items: "tr:not(.myclass)",

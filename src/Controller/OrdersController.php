@@ -353,6 +353,8 @@
 
         public function index()
         {
+            $this->redirect(array('controller'=>'orders','action'=>'orderslist'));
+            
             $this->set('doc_comp', $this->Document);
             if (isset($_GET['draft']) && isset($_GET['flash'])) {
                 $this->Flash->success('Order saved as draft');
@@ -536,9 +538,10 @@
 
         public function save_pdi($orderid, $id, $pdi)
         {
+
+       //    echo  $orderid . ' ' .  $id . ' ' . $pdi;
             $this->set('doc_comp', $this->Document);
             $query2 = TableRegistry::get('orders');
-
             switch ($pdi) {
 
                 case "ins_79":
@@ -573,21 +576,33 @@
                     $arr['ebs_1650'] = $id;
                     break;
 
+                case "ins_72":
+                    $arr['ins_72'] = $id;
+                    break;
+
                 default:
                     $nothing = '111';
             }
 
-            $query2 = $query2->query();
-            $query2->update()
-                ->set($arr)
-                ->where(['id' => $orderid])
-                ->execute();
-            $this->response->body($query2);
+            /*
+                       echo $pdi;
+                       echo $orderid;
+                       echo "<br><br>";
+
+                       var_dump($arr);
+
+                        */
+                       $query2 = $query2->query();
+                       $query2->update()
+                           ->set($arr)
+                           ->where(['id' => $orderid])
+                           ->execute();
+                       $this->response->body($query2);
 
             return $this->response;
         }
 
-        public function webservice($order_type = null, $body = null, $orderid = null, $driverid = null)
+        public function webservice($order_type = null, $forms = null, $orderid = null, $driverid = null)
         {
             $this->layout = "blank";
             if ($orderid) {
@@ -625,8 +640,17 @@
                     $con_at = TableRegistry::get('doc_attachments');
                     $sub2['con_at'] = $con_at->find()->where(['order_id' => $orderid, 'sub_id' => 4])->all();
                     $this->set('consent', $sub2);
-                    //   debug($sub2);
-                    //    $this->set('consent_detail', $con_detail);                //////////////////////////////////////////////////////////// conbsent form
+                }
+                echo $forms;
+
+                if (isset($forms)) {
+                $formsarray = explode(',', $forms);
+                $this->set('formsarray', $formsarray);
+                }
+                else
+                {
+                    echo 1;
+                    $this->set('fullorder', '1');
                 }
 
                 $emp = TableRegistry::get('employment_verification');
@@ -656,14 +680,10 @@
                 $ordertype1 = "MEE-REQ";
             } else if ($order_type == "Order Products") {
                 $ordertype1 = "MEE-IND";
-
             } else {
                 $ordertype1 = "MEE";
-
             }
-
             $this->set('ordertype', $ordertype1);
-
         }
 
         public function createPdf($oid)
@@ -1028,5 +1048,24 @@
             $this->Document->getOrderData($cid, $order_id);
             die;
 
+        }
+        
+         public function getSubDocs()
+        {
+            $docs = TableRegistry::get('subdocuments');
+            $doc = $docs->find()->all();
+            //$do = $doc->select('all');
+            $this->response->body($doc);
+            return $this->response;  
+            die; 
+        }
+        
+        public function getdocid($sub_doc_id, $order_id)
+        {
+            $doc = TableRegistry::get('documents');
+            $doc = $doc->find()->where(['sub_doc_id' => $sub_doc_id, 'order_id' => $order_id])->first();
+            $this->response->body($doc);
+            return $this->response;
+            die;
         }
     }

@@ -198,12 +198,13 @@
                                 <th><?= $this->Paginator->sort('id') ?></th>
                                 <th style="width:7px;"><?= $this->Paginator->sort('image', 'Image') ?></th>
                                 <th><?= $this->Paginator->sort('username', 'Username') ?></th>
-                                <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
                                 <!--th><?= $this->Paginator->sort('email') ?></th-->
+                                <th><?= $this->Paginator->sort('fname', 'Name') ?></th>
+                                <th><?= $this->Paginator->sort('profile_type', ucfirst($settings->profile) . ' Type') ?></th>
 
-                                <th><?= $this->Paginator->sort('fname', 'First Name') ?></th>
-                                <th><?= $this->Paginator->sort('lname', 'Last Name') ?></th>
+                                <!--th><?= $this->Paginator->sort('lname', 'Last Name') ?></th-->
                                 <th>Assigned to <?= $settings->clients; ?></th>
+                                <th>Actions</th>
 
                             </tr>
                             </thead>
@@ -248,9 +249,8 @@
                                                 }
                                             ?>
 
-
                                         </td>
-                                        <td>
+                                        <td class="actions  util-btn-margin-bottom-5">
                                             <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); ?> </a>
@@ -262,7 +262,6 @@
                                             <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 echo $this->Html->link(__('View'), ['action' => 'view', $profile->id], ['class' => btnclass("VIEW")]);
                                             } ?>
-
 
                                             <?php
                                                 $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
@@ -296,9 +295,13 @@
                                                 }
 
                                             }
+
                                             ?>
 
                                         </td>
+
+                                        <td><?= h($profile->fname) ?> <?= h($profile->lname) ?></td>
+
                                         <td><?php
                                                 if (strlen($profile->profile_type) > 0) {
                                                     echo h($profiletype[$profile->profile_type]);
@@ -316,11 +319,17 @@
                                             ?></td>
 
 
-                                        <td><?= h($profile->fname) ?></td>
-                                        <td><?= h($profile->lname) ?></td>
                                         <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
-
-
+                                        <td class="actions  util-btn-margin-bottom-5">
+                                            <?php
+                                                if ($sidebar->document_list == 1/* && $doc != 0 && $cn != 0*/) {
+                                                    ?>
+                                                    <a href="<?php echo $this->request->webroot . 'documents/index?type=&submitted_by_id=' . $profile->id; ?>"
+                                                       class="btn btn-info btn-sm">View Documents</a>
+                                                <?php
+                                                }
+                                            ?>
+                                        </td>
                                     </tr>
 
                                 <?php endforeach; ?>
@@ -409,6 +418,5 @@
                 }
             });
         }
-
     });
 </script>

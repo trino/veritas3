@@ -44,6 +44,7 @@
 		</div>
         <div class="col-sm-10" style="width: 700px;">
             <input type="hidden" class="touched" value="0" />
+            <input type="hidden" class="touched_edit" value="<?php if(isset($modal) && $modal->recruiter_signature){?>1<?php }else{?>0<?php }?>" />
             <?php if($this->request->params['action']!= 'vieworder' && $this->request->params['action']!= 'view'){?>
                 <canvas id="test<?php echo $_GET['num'];?>" style="border: 1px solid silver;border-radius: 5px;"></canvas>
             <?php }?>

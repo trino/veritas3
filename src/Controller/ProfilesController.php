@@ -7,6 +7,7 @@
     use Cake\ORM\TableRegistry;
     use Cake\Network\Email\Email;
     use Cake\Controller\Component\CookieComponent;
+    use Cake\Datasource\ConnectionManager;
 
 
     class ProfilesController extends AppController
@@ -1654,5 +1655,65 @@
         }
         return $randomString;
     }
+
+
+    function cleardb()
+    {
+        
+        $conn = ConnectionManager::get('default');
+        $query = $conn->query("show tables");
+        $user_id = $conn->query("Select id from profiles where super=1");
+        foreach($user_id as $u)
+        {
+            $uid = $u['id'];
+            
+        }
+        
+        foreach($query as $table)
+        {
+           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments")
+           {
+                $conn->query("TRUNCATE TABLE ".$table[0]);
+           }
+           elseif($table[0]=='profiles')
+           {
+               $conn->query("Delete from ".$table[0]." where `super` = '0'");
+           }
+           elseif($table[0]=='blocks' || $table[0]=='sidebar')
+           {
+                $conn->query("Delete from `".$table[0]."` where user_id <> ".$uid);
+           }
+        } echo "Cleared";
+        die();
+        $this->layout = "blank";
+    }
+
+      /*  getDocumentcountz()
+        {
+            $doc = TableRegistry::get('Subdocuments');
+            $query = $doc->find();
+            $query = $query->where(['display' => 1]);
+            $q = $query->all();
+            $q = count($q);
+            $this->response->body($q);
+            return $this->response;
+        }
+        
+        getuserDocumentcountz($id)
+       {
+            $doc = TableRegistry::get('Subdocuments');
+            $query = $doc->find();
+            $query = $query->where(['display' => 1])->all();
+            $cnt = 0;
+            foreach ($query as $q) {
+                $subdoc = TableRegistry::get('profilessubdocument');
+                if ($query1 = $subdoc->find()->where(['profile_id' => $id, 'subdoc_id' => $q->id, 'display <>' => 0])->first())
+                    $cnt++;
+            }
+
+            $this->response->body($cnt);
+            return $this->response;
+       } */
+
     }
 ?>

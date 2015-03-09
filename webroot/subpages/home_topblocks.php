@@ -145,7 +145,7 @@ function randomcolor(){
         </a>
     <?php } ?>
 
-    <?php if ($sidebar->orders_create ==1 && $block->submitorder =='1') { ?>
+    <?php if ($sidebar->orders_create ==1) { ?>
         <!--<a href="<?php echo $this->request->webroot.$order_url.'&ordertype=MEE';?>" class="tile bg-yellow" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
@@ -155,9 +155,9 @@ function randomcolor(){
                 <div class="number"></div>
             </div>
         </a>-->
-    
+
     <?php if ($sidebar->orders_mee ==1 && $block->ordersmee =='1') { ?>
-        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=MEE';?>" class="tile bg-yellow" style="display: block;">
+        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=MEE';?>" class="tile bg-red-sunglo" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
             </div>
@@ -168,7 +168,7 @@ function randomcolor(){
         </a>
     <?php } ?>
     <?php if ($sidebar->orders_products ==1 && $block->ordersproducts =='1') { ?>
-        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=CART';?>" class="tile bg-yellow" style="display: block;">
+        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=CART';?>" class="tile bg-green-meadow" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
             </div>
@@ -179,12 +179,12 @@ function randomcolor(){
         </a>
     <?php } ?>
     <?php if ($sidebar->order_requalify ==1 && $block->ordersrequalify =='1') { ?>
-        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=QUA';?>" class="tile bg-yellow" style="display: block;">
+        <a href="<?php echo $this->request->webroot.$order_url.'&ordertype=QUA';?>" class="tile bg-blue-madison" style="display: block;">
             <div class="tile-body">
                 <i class="icon-docs"></i>
             </div>
             <div class="tile-object">
-                <div class="name">Order Re-Qualify</div>
+                <div class="name">Re-Qualify</div>
                 <div class="number"></div>
             </div>
         </a>

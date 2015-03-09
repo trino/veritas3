@@ -180,12 +180,12 @@
                 Reference Number <?php echo ucwords($order->profile->id); ?>
             </div>
 
-            
-        
-        
+
+
+
                     <!--<div class="inputs">
-                        <div class="profile-usertitle-job">--> 
-                        <?php if($order->profile->profile_type == 5) { ?>                        
+                        <div class="profile-usertitle-job">-->
+                        <?php if($order->profile->profile_type == 5) { ?>
                             <label class="uniform-inline" style="margin-top:10px;">
                                 <input <?php if(!$this->request->session()->read('Profile.super') && ($this->request->session()->read('Profile.profile_type') != '2')) {?> disabled="disabled" <?php }?> type="checkbox" name="stat" value="1" id="<?php echo $order->profile->id; ?>"
                                        class="checkdriver" <?php if ($order->profile->is_hired == '1') echo "checked"; ?> />
@@ -222,13 +222,13 @@
     <!-- PORTLET MAIN -->
     <div class="portlet light">
 
-        
+
 
 
         <?php $settings = $this->requestAction('settings/get_settings');
             $uploaded_by = $doc_comp->getUser($order->user_id);
         ?>
-        
+
 
         <div class="portlet box green">
             <div class="portlet-title">
@@ -267,10 +267,10 @@
                     </div>
                 </div>
 
-                
-                
-                
-                
+
+
+
+
                 <div class="portlet box yellow">
                     <div class="portlet-title">
                         <div class="caption">
@@ -279,32 +279,32 @@
                     </div>
                     <div class="portlet-body">
                         <div class="table-scrollable">
-                            
+
                             <div class="col-sm-6" style="padding-top: 10px;">
                             <span class="profile-desc-text">   <p>  <?php echo ucfirst($settings->document); ?> type:
                                 <strong>Orders</strong></p>
                 			<p>Filed by: <strong><?php echo $uploaded_by->username; ?></strong></p>
-                
+
                 			<p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
                 			<p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
-                
+
                 			<p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
-                
+
                 			</span>
-                        
+
                         </div>
                         <div class="margin-bottom-20 col-sm-6" style="padding-top: 10px;text-align:right;">
-        
+
                             <a href="#" class="btn btn-lg default yellow-stripe">
                                 Road Test Score </a><a href="#" class="btn btn-lg yellow">
                                 <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
                             </a>
-                
+
                         </div>
-                        
+
                         <div class="clearfix"></div>
-                            
-                            
+
+
                             <table class="table ">
 
                                 <tbody>
@@ -488,7 +488,7 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            
+
                             <div class="col-md-12">
                                     <!-- BEGIN PORTLET -->
                                     <div class="portlet light tasks-widget">
@@ -502,7 +502,7 @@
                                             </div>
                                             <div class="inputs">
                                                 <div class="portlet-input input-small input-inline">
-                        
+
                                                 </div>
                                             </div>
                                         </div>
@@ -518,7 +518,7 @@
                                                             <li>
                                                                 <!--<div class="task-checkbox">
                                                                     <input type="hidden" value="1" name="test">
-                        
+
                                                                     <div class="checker"><span><input type="checkbox" class="liChild" value="2"
                                                                                                       name="test"></span></div>
                                                                 </div>-->
@@ -534,13 +534,13 @@
                                                                         ?>
                                                                         <span style="float:right;padding:5px"
                                                                               class="label label-sm label-danger">Skipped</span>
-                        
+
                                                                     <?php
                                                                     } ?>
-                        
-                        
+
+
                                                                 </div>
-                        
+
                                                             </li>
                                                             <li>
                                                                 <!--<div class="task-checkbox">
@@ -559,12 +559,12 @@
                                                                         ?>
                                                                         <span style="float:right;padding:5px"
                                                                               class="label label-sm label-danger">Skipped</span>
-                        
+
                                                                     <?php
                                                                     } ?>
-                        
+
                                                                 </div>
-                        
+
                                                             </li>
                                                             <li>
                                                                 <!--<div class="task-checkbox">
@@ -584,11 +584,11 @@
                                                                         ?>
                                                                         <span style="float:right;padding:5px"
                                                                               class="label label-sm label-danger">Skipped</span>
-                        
+
                                                                     <?php
                                                                     } ?>
                                                                 </div>
-                        
+
                                                             </li>
                                                             <li>
                                                                 <!--<div class="task-checkbox">
@@ -597,7 +597,7 @@
                                                                 </div>-->
                                                                 <div class="task-title">
                         											<span class="task-title-sp">
-                        
+
                                                                        <span class="icon-notebook"></span>  Consent Form	 </span>
                                                                     <?php $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id); ?>
                                                                     <?php if ($cnt > 0) { ?>
@@ -608,12 +608,12 @@
                                                                         ?>
                                                                         <span style="float:right;padding:5px"
                                                                               class="label label-sm label-danger">Skipped</span>
-                        
+
                                                                     <?php
                                                                     } ?>
-                        
+
                                                                 </div>
-                        
+
                                                             </li>
                                                             <li>
                                                                 <!--<div class="task-checkbox">
@@ -631,14 +631,14 @@
                                                                         ?>
                                                                         <span style="float:right;padding:5px"
                                                                               class="label label-sm label-danger">Skipped</span>
-                        
+
                                                                     <?php
                                                                     } ?>
-                        
+
                                                                 </div>
-                        
+
                                                             </li>
-                        
+
                                                         </ul>
                                                         <!-- END START TASK LIST -->
                                                     </div>
@@ -648,7 +648,7 @@
                                                          style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(234, 234, 234);"></div>
                                                 </div>
                                             </div>
-                        
+
                                         </div>
                                     </div>
                                     <!-- END PORTLET -->
@@ -660,6 +660,6 @@
             <!-- END PORTLET -->
         </div>
     </div>
-    
+
 </div>
 <!-- END PROFILE CONTENT -->

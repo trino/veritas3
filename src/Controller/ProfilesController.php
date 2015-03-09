@@ -1654,5 +1654,41 @@
         }
         return $randomString;
     }
+<<<<<<< HEAD
+    
+    function cleardb()
+    {
+        $this->layout = "blank";
+    }
+    
+=======
+        
+      /*  getDocumentcountz()
+        {
+            $doc = TableRegistry::get('Subdocuments');
+            $query = $doc->find();
+            $query = $query->where(['display' => 1]);
+            $q = $query->all();
+            $q = count($q);
+            $this->response->body($q);
+            return $this->response;
+        }
+        
+        getuserDocumentcountz($id)
+       {
+            $doc = TableRegistry::get('Subdocuments');
+            $query = $doc->find();
+            $query = $query->where(['display' => 1])->all();
+            $cnt = 0;
+            foreach ($query as $q) {
+                $subdoc = TableRegistry::get('profilessubdocument');
+                if ($query1 = $subdoc->find()->where(['profile_id' => $id, 'subdoc_id' => $q->id, 'display <>' => 0])->first())
+                    $cnt++;
+            }
+            
+            $this->response->body($cnt);
+            return $this->response;
+       } */
+>>>>>>> 6d58a669884bc298cb45c1b6c77921f8f2ea544e
     }
 ?>

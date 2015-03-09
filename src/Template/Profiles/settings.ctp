@@ -93,6 +93,9 @@ if (isset($profile))
                             <li>
                                 <a href="#tab_1_8" data-toggle="tab">Display</a>
                             </li>
+                             <li>
+                                <a href="#tab_1_9" data-toggle="tab">Clear Datas</a>
+                            </li>
                         <?php
                         }
                 }
@@ -112,10 +115,18 @@ if (isset($profile))
                     </div>
 
                     <div class="tab-pane" id="tab_1_6">
-                        <?php include('subpages/profile/page.php'); ?>
+                        <?php //include('subpages/profile/page.php'); ?>
                     </div>
                     <div class="tab-pane" id="tab_1_8">
                         <?php include('subpages/profile/client_setting.php'); ?>
+                    </div>
+                    <div class="tab-pane" id="tab_1_9">
+                        <a href="javascript:void(0)" class="btn btn-danger" id="cleardata">Clear Data</a>
+                        <div class="margin-top-10 alert alert-success display-hide cleardata_flash" style="display: none;">
+                           Data Successfully cleared.
+                                                    <button class="close" data-close="alert"></button>
+                                                   
+                        </div>
                     </div>
 
                 <?php } ?>
@@ -158,7 +169,24 @@ if (isset($profile))
         });
     }
     $(function () {
-
+        
+        $('#cleardata').click(function(){
+            $(this).attr("disabled","disabled");
+            var dn = confirm("Confirm Clear Database Data.");
+            if(dn == true)
+            {
+                $.ajax({
+                    url:"<?php echo $this->request->webroot;?>profiles/cleardb",
+                    type:"post",
+                    success:function(msg){
+                            $('#cleardata').removeAttr("disabled");
+                            if(msg =='Cleared')
+                            $(".cleardata_flash").show();
+                    }
+                });
+            }
+            
+        });
         <?php
         if(isset($id))
         {

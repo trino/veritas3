@@ -1659,7 +1659,7 @@
 
     function cleardb()
     {
-        
+        if($this->request->session()->read('Profile.super')==1){
         $conn = ConnectionManager::get('default');
         $query = $conn->query("show tables");
         $user_id = $conn->query("Select id from profiles where super=1");
@@ -1686,6 +1686,7 @@
         } echo "Cleared";
         die();
         $this->layout = "blank";
+        }
     }
 
       /*  getDocumentcountz()

@@ -84,4 +84,5 @@ function btnclass($xscolor, $stripecolor = ""){
     }
 }
 
+echo "THIS IS AN EMERGENCY";
 ?>

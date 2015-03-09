@@ -1,6 +1,7 @@
 <?php
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->Session->read('Profile.id') . "/sidebar");
+    include_once ('/subpages/api.php');
 ?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->document); ?>s <?php if (isset($_GET['draft'])) { ?>(Draft)<?php } ?>
@@ -273,9 +274,10 @@
                                             <?php break; } ?>
                                     </td>
                                     <td><?php
-
+                                        $docname="";
                                             if (isset($uploaded_by->username)) {
                                                 $user = '<a href="'.$this->request->webroot.'profiles/view/'.$docs->user_id.'" target="_blank">'.ucfirst(h($uploaded_by->username));
+                                                $docname = h($docs->document_type) . " submitted by " . ucfirst($uploaded_by->username) . " at " . h($docs->created);
                                             } else {
                                                 $user = "None";
                                             }
@@ -286,13 +288,12 @@
 
                                             if (isset($uploaded_for->username)) {
                                                 $user = '<a href="'.$this->request->webroot.'profiles/view/'.$docs->uploaded_for.'" target="_blank">'.ucfirst(h($uploaded_for->username));
-
+                                                if (strlen($docname)==0) {
+                                                    $docname = h($docs->document_type) . " uploaded for " . ucfirst($uploaded_for->username) . " at " . h($docs->created);
+                                                }
                                             } else {
                                                 $user = "None";
                                             }
-
-                                            $docname = h($docs->document_type) . " uploaded by " . $uploaded_for->username . " at " . h($docs->created);
-
                                         ?></td>
                                     <td><?= h($docs->created) ?></td>
                                     <td>

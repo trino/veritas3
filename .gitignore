@@ -22,3 +22,4 @@ webroot/canvas/*.png
 /tmp/*
 /logs/*
 webroot/subpages/profile/page.php
+*.xml

@@ -1180,7 +1180,54 @@ class ClientsController extends AppController {
             } 
             die();
     }
-
+    
+    function addsubdocs()
+    {
+        $subname = $_GET['sub'];
+        $client_id = $_GET['client_id'];
+        if($this->request->session()->read('Profile.super'))
+        {
+            $query = TableRegistry::get('subdocuments');
+            $que = $query->query();
+            $q = $que->insert(['title','display', 'table_name','orders'])
+                        ->values([
+                            'title' => $subname,
+                            'display' => 0,
+                            'table_name' => $subname,
+                            'orders' => 0
+                        ])
+                        ->execute();
+                if($q)
+                {
+                   $sid = $q->id;
+                   $clientsubdocs = TableRegistry::get('clientssubdocument');
+                   $clientsubdoc = $clientsubdocs->find();
+                   $csd = $clientsubdoc->select(['client_id'])->distinct(['client_id'])->all();
+                   {
+                        foreach($csd as $c)
+                        {
+                            $clientsubdocs = $clientsubdocs->query();
+                            $q2 = $clientsubdocs->insert(['client_id','subdoc_id', 'display', 'display_order'])
+                                ->values([
+                                    'client_id' => $c->client_id,
+                                    'subdoc_id' => 56,
+                                    'display' => 0,
+                                    'display_order' => 0
+                                ])
+                                ->execute();
+                             if($q2)   
+                            return $this->redirect("/clients/edit/".$client_id);
+                            else return $this->redirect("/index");
+                        }
+                   } 
+                }
+        }
+        else
+        {
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
+           	return $this->redirect("/");
+        } 
+    }
 
 }
 ?>

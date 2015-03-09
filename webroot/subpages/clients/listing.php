@@ -1,4 +1,3 @@
-<? include_once ('/subpages/api.php'); ?>
 <div class="row">
 
     <div class="col-md-12">

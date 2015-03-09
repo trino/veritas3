@@ -97,9 +97,7 @@
         }
         die();
     }
-        public function training(){}
-        public function quiz(){}
-        public function video(){}
+
 
         public function settings()        {
             $this->loadModel('Logos');

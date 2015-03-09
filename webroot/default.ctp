@@ -479,8 +479,8 @@
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
 
-	<?php include('subpages/sidebar.php');?>
-     
+	<?php include('subpages/sidebar.php'); ?>
+	 
 	<div class="page-content-wrapper">
 		<div class="page-content">
         <?= $this->fetch('content') ?>

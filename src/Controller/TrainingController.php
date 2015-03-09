@@ -7,4 +7,7 @@ class TrainingController extends AppController {
     public function index() {
 
     }
+
+    public function quiz(){}
+    public function video(){}
 }

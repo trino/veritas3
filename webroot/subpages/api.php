@@ -83,4 +83,5 @@ function btnclass($xscolor, $stripecolor = ""){
         return "btn " . $size . " " . $xscolor;
     }
 }
+
 ?>

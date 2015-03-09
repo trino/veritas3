@@ -269,7 +269,7 @@
             </div>
 
 
-            <div class="alacarte" style="display: none;">
+           <!-- <div class="alacarte" style="display: none;">
                 <?php include('subpages/documents/products.php'); ?>
                 <div class="clearfix"></div>
 
@@ -288,7 +288,7 @@
                 <div class="clearfix"></div>
 
 
-            </div>
+            </div>-->
 
 
         </div>
@@ -607,6 +607,17 @@
 
 <script>
     function check_div() {
+        //alert('test');
+        var checkerbox = 0;
+        $('input[type="checkbox"]').each(function(){
+           if($(this).is(':checked'))
+           checkerbox = 1;
+        });
+        if(checkerbox==0)
+        {
+            alert('Please select at least one product');
+            return false;
+        }
         var checker = 0;
         $('.divisionsel select').each(function () {
             checker++;
@@ -624,6 +635,7 @@
 
     }
     $(function () {
+        
         $('#divisionsel').live('change', function () {
             $(this).removeAttr('style');
         });

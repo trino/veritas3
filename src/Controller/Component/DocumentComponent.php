@@ -1166,6 +1166,7 @@ class DocumentComponent extends Component
         
         function getDriverClient($driver,$client)
         {
+            //echo $client;die();
             $controller = $this->_registry->getController();
             $logged_id = $controller->request->session()->read('Profile.id');
             //echo "<br/>";
@@ -1188,7 +1189,7 @@ class DocumentComponent extends Component
                
                $cmodel2 = TableRegistry::get('Clients');
                 $clients2 = $cmodel2->find()->where(['id'=>$client])->first();
-                if($client2)
+                if($clients2)
                 $profile_ids2 = $clients2->profile_id;
                 else
                 $profile_ids2 = '';

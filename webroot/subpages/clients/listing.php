@@ -1,3 +1,4 @@
+<? include_once ('/subpages/api.php'); ?>
 <div class="row">
 
     <div class="col-md-12">
@@ -111,11 +112,14 @@
                                                         else
                                                             ucfirst(h($clients->company_name));
                                                     ?>
-                                                    <br/>
+                                            </td>
+
+                                            <td class="actions  util-btn-margin-bottom-5">
+
                                                     <?php
                                                         if ($sidebar->client_list == '1' && !isset($_GET["draft"])) {
                                                             ?>
-                                                            <a class="btn btn-info btn-xs"
+                                                            <a class="<?= btnclass("VIEW") ?>"
                                                                href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $clients->id; ?>?view">View</a>
 
 
@@ -123,23 +127,17 @@
                                                         <?php
                                                         }
                                                         if ($sidebar->client_edit == '1') {
-                                                            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => 'btn btn-primary btn-xs']);
+                                                            echo $this->Html->link(__('Edit'), ['controller' => 'clients', 'action' => 'edit', $clients->id], ['class' => btnclass("EDIT")]);
                                                         }
                                                         if ($sidebar->client_delete == '1') { ?>
                                                             <a href="<?php echo $this->request->webroot; ?>clients/delete/<?php echo $clients->id; ?><?php echo (isset($_GET['draft'])) ? "?draft" : ""; ?>"
                                                                onclick="return confirm('Are you sure you want to delete <?= h($clients->company_name) ?>?');"
-                                                               class="btn btn-danger btn-xs">Delete</a>
+                                                               class="<?= btnclass("DELETE") ?>">Delete</a>
 
-                                                        <?php }
-                                                    ?>
-
-                                            </td>
-
-                                            <td class="actions  util-btn-margin-bottom-5">
-                                                <?php
-
+                                                    <?php } 
                                                     if ($sidebar->document_create == '1' && !isset($_GET["draft"])) {
-                                                        echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => 'btn btn-success btn-sm']);
+
+                                                        echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => btnclass("btn-success", "green-haze")]);
                                                     }
 
                                                     if ($sidebar->orders_create == '1' && !isset($_GET["draft"])) {
@@ -148,27 +146,28 @@
                                                         <?php if ($sidebar->orders_mee == '1') { ?>
                                                             <a href="<?php
                                                                 echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id; ?>&ordertype=MEE"
-                                                               class="btn red-flamingo btn-sm">Order MEE</a>
+                                                               class="<?= btnclass("red-flamingo") ?>">Order MEE</a>
                                                         <?php }
                                                         if ($sidebar->orders_products == '1') {
                                                             ?>
                                                             <a href="<?php
                                                                 echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=CART"
-                                                               class="btn btn-success btn-sm">Order Products</a>
+                                                               class="<?= btnclass("btn-success", "green-haze") ?>">Order Products</a>
                                                         <?php }
                                                         if ($sidebar->order_requalify == '1') {
                                                             ?>
                                                             <a href="<?php
                                                                 echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id;?>&ordertype=QUA"
-                                                               class="btn btn-warning btn-sm">Re-Qualify</a>
+                                                               class="<?= btnclass("btn-warning", "yellow") ?>">Re-Qualify</a>
                                                         <?php } ?>
+
                                                     <?php
                                                     }
 
                                                     if ($sidebar->orders_list == '1' && !isset($_GET["draft"])) {
                                                         ?>
                                                         <a href="<?php echo $this->request->webroot; ?>orders/orderslist/?client_id=<?php echo $clients->id; ?>"
-                                                           class="btn btn-info btn-sm">
+                                                           class="<?= btnclass("btn-info", "blue-soft") ?>">
                                                             View Orders</a>
 
                                                         <!--a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id; ?>"

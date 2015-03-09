@@ -1,5 +1,8 @@
-<?php $settings = $this->requestAction('settings/get_settings'); ?>
-<?php $sidebar = $this->requestAction("settings/all_settings/" . $this->Session->read('Profile.id') . "/sidebar"); ?>
+<?php
+    include_once ('/subpages/api.php');
+    $settings = $this->requestAction('settings/get_settings');
+    $sidebar = $this->requestAction("settings/all_settings/" . $this->Session->read('Profile.id') . "/sidebar");
+?>
 <h3 class="page-title">
     <?php echo ucfirst($settings->document); ?>s <?php if (isset($_GET['draft'])) { ?>(Draft)<?php } ?>
 </h3>
@@ -294,23 +297,23 @@
 
                                         <?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
                                             if(!$docs->order_id)
-                                            echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => 'btn btn-info btn-xs']);
+                                            echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => btnclass("VIEW")]);
                                             else{
                                             ?>
-                                            <a class="btn btn-info btn-xs" href="<?php echo $this->request->webroot;?>documents/view/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">View</a>
+                                            <a class="<?= btnclass("VIEW") ?>" href="<?php echo $this->request->webroot;?>documents/view/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">View</a>
                                             <?php
                                         }} ?>
                                         <?php
                                             if ($sidebar->document_edit == '1') { 
                                                 if ($docs->document_type == 'feedbacks')
-                                                    echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => 'btn btn-primary btn-xs']);
+                                                    echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => btnclass("EDIT")]);
                                                 else{
                                                 if(!$docs->order_id)
-                                                    echo $this->Html->link(__('Edit'), ['action' => 'add', $docs->client_id, $docs->id], ['class' => 'btn btn-primary btn-xs']);
+                                                    echo $this->Html->link(__('Edit'), ['action' => 'add', $docs->client_id, $docs->id], ['class' => btnclass("EDIT")]);
                                                 else
                                                     {
                                                         ?>
-                                                        <a class="btn btn-primary btn-xs" href="<?php echo $this->request->webroot;?>documents/add/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">Edit</a>
+                                                        <a class="<?= btnclass("EDIT") ?>" href="<?php echo $this->request->webroot;?>documents/add/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">Edit</a>
                                                         <?php
                                                     }
                                                     }
@@ -331,14 +334,14 @@
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>documents/delete/<?php echo $docs->id; ?>/draft"
                                                    onclick="return confirm('Are you sure you want to delete <?= $docname; ?>?');"
-                                                   class="btn btn-danger btn-xs">Delete</a>
+                                                   class="<?= btnclass("DELETE") ?>">Delete</a>
 
                                             <?php
                                             } else {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>documents/delete/<?php echo $docs->id; ?>"
                                                    onclick="return confirm('Are you sure you want to delete <?= $docname; ?>?');"
-                                                   class="btn btn-danger btn-xs">Delete</a>
+                                                   class="<?= btnclass("DELETE") ?>">Delete</a>
                                             <?php
                                             }}
                                             

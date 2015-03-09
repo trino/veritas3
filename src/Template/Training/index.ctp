@@ -33,6 +33,13 @@
 </style>
 
 <?php
+$profileID = $this->Session->read('Profile.id');
+$sidebar = $this->requestAction("settings/all_settings/" . $profileID . "/sidebar");
+if ($sidebar->training==0){
+    echo '<div class="alert alert-danger"><strong>Error!</strong> You don' . "'t have permission to view training</div>";
+    return;
+}
+
 $settings = $this->requestAction('settings/get_settings');
 $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id'));
 

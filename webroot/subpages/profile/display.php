@@ -99,7 +99,7 @@ else
                                                {
                                                 $('.flash').show();
                                                 $('.flash').fadeOut(3500);
-                                                $('#save_display').text(' Save Changes ');
+                                                $('#save_displayz').text('Submit');
                                                } 
                                             })
                                        }); 

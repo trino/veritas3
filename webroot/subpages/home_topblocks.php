@@ -120,7 +120,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-    <?php if ($sidebar->document_list ==1 && $block->list_document =='1') { ?>
+    <?php if ($sidebar->document_list ==1 && $block->document_draft =='1') { ?>
         <a class="tile bg-yellow-casablanca" href="<?php echo $this->request->webroot; ?>documents?draft" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>

@@ -201,7 +201,7 @@ function randomcolor(){
     <?php } ?>
     <?php } ?>
 
-    <?php if ($sidebar->orders_list ==1 && $block->list_order =='1') { ?>
+    <?php if ($sidebar->orders_list ==1 && $block->document_draft =='1') { ?>
         <a class="tile bg-yellow" href="<?php echo $this->request->webroot; ?>orders/orderslist?draft" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>

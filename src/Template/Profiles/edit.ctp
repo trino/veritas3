@@ -233,9 +233,10 @@
 
     <?php
 
-        $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
 
         if ($sidebar->profile_edit == '1' && $param == 'view') {
+            
+        $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
 
             if ($checker == 1) {
 

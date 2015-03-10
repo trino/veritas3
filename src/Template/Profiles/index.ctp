@@ -139,6 +139,14 @@
                                             value="6" <?php if (isset($return_profile_type) && $return_profile_type == 6) { ?> selected="selected"<?php } ?>>
                                             Contact
                                         </option>
+                                        <option
+                                            value="7" <?php if (isset($return_profile_type) && $return_profile_type == 7) { ?> selected="selected"<?php } ?>>
+                                            Owner Operator
+                                        </option>
+                                        <option
+                                            value="8" <?php if (isset($return_profile_type) && $return_profile_type == 8) { ?> selected="selected"<?php } ?>>
+                                            Owner Driver
+                                        </option>
 
                                     <?php } else { ?>
                                         <option
@@ -330,7 +338,7 @@
                                                 if ($sidebar->document_list == 1/* && $doc != 0 && $cn != 0*/) {
                                                     ?>
                                                     <a href="<?php
-                                                    if($profile->profile_type == '5')
+                                                    if($profile->profile_type == '5' || $profile->profile_type == '6' || $profile->profile_type == '7' || $profile->profile_type == '8' )
                                                     {
                                                      echo $this->request->webroot . 'documents/index?type=&submitted_for_id=' . $profile->id;
                                                      }

@@ -294,7 +294,7 @@ var FormWizard = function () {
                     setTimeout(
                   function()
                   {
-                 window.location = base_url+'?orderflash';
+                 window.location = base_url+'orders/orderslist?draft&flash';
                   }, 5500);
               //    }
 

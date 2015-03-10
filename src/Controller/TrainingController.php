@@ -34,7 +34,8 @@ class TrainingController extends AppController {
 
     public function quiz(){
         $table = TableRegistry::get('training_quiz');
-        $answers =  $table->find()->where(['QuizID'=>$_GET["quizid"]]);
+        //$answers =  $table->find()->where(['QuizID'=>$_GET["quizid"]]);
+        $answers =  $table->find('all', array('QuizID' => $_GET["quizid"], 'order' => array('QuestionID ASC') ));
         $this->set('questions',$answers);
         $this->set('canedit', $this->canedit());
     }

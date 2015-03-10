@@ -303,7 +303,7 @@ class SettingsController extends AppController {
                 {
                     if($q1->profile_type == '2')
                     {
-                        if($q2->profile_type == '5' || $uid == $pid)
+                        if($q2->profile_type == '5' || $q2->profile_type == '7' || $q2->profile_type == '8' || $uid == $pid)
                         {
                             $this->response->body('1');
                             return $this->response;

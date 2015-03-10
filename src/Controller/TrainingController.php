@@ -23,6 +23,21 @@ class TrainingController extends AppController {
     }
 
     public function edit(){
+        if (isset($_GET["action"])){
+            if($this->canedit()) {
+                switch ($_GET["action"]) {
+                    case "delete":
+                        $this->deletequestion($_GET["QID"]);
+                        break;
+                    case "save":
+
+                        break;
+                }
+            } else {
+                $this->Flash->error('You can not edit quizzes.');
+            }
+        }
+
         if (isset($_GET["quizid"]) && $this->canedit()) {
             $table = TableRegistry::get('training_list');
             $quiz =  $table->find()->where(['ID'=>$_GET["quizid"]])->first();
@@ -50,5 +65,21 @@ class TrainingController extends AppController {
         $table = TableRegistry::get('training_quiz');
         $table->deleteAll(array('QuizID' => $quizID), false);
         $this->Flash->success('The quiz was deleted.');
+    }
+    public function deletequestion($QID){
+        $table = TableRegistry::get('training_quiz');
+        $table->deleteAll(array('ID' => $QID), false);
+        $this->Flash->success('The question was deleted.');
+    }
+    public function savequiz($post){//ID Name Description Attachments image
+        if (isset($post["ID"])){
+            $table = TableRegistry::get('training_list');
+            $table->query()->update()->set(['Name' => $post["Name"], 'Description' =>  $post["Description"], 'Attachments' => $post['Attachments']])
+                ->where(['ID' => $post["ID"]])
+                ->execute();
+            $this->Flash->success('The quiz was edited');
+        } else { //new
+
+        }
     }
 }

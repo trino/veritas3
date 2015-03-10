@@ -125,11 +125,12 @@ foreach($quizes as $quiz){
 if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
     echo str_replace("\r\n", "<P>", $quiz->Description);
     if(quizmiddle($QuizID, $quiz->ID)){
-        $attachments = explode(", ", $quiz->Attachments);
+        $attachments = explode(",", $quiz->Attachments);
         echo '<div class="col-md-5" align="left">';
             $attachmentJS = "";
             $id=0;
             foreach($attachments as $attachment){
+                $attachment=trim($attachment);
                 if (strlen($attachment)>0) {
                     if (strlen($attachmentJS) > 0) {
                         $attachmentJS .= " && ";

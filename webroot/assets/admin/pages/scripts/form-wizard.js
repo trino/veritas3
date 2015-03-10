@@ -294,8 +294,10 @@ var FormWizard = function () {
                     setTimeout(
                   function()
                   {
+
                  window.location = base_url+'?orderflash';
                   }, 8500);
+
               //    }
 
 

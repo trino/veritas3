@@ -302,12 +302,13 @@
                                                                                         } ?>
 
                                                                                         <?php
-                                                                                            $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
+                                                                                           $checker = $this->requestAction('/settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
                                                                                             if ($sidebar->profile_edit == '1') {
 
                                                                                                 if ($checker == 1) {
                                                                                                     if ($this->request->session()->read('Profile.profile_type') == '2') {
-                                                                                                        if ($profile->profile_type == '5')
+                                                                                                        //echo $profile->profile_type;
+                                                                                                        if ($profile->profile_type == '5' || $profile->profile_type == '7' || $profile->profile_type == '8')
                                                                                                             echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => btnclass("EDIT")]);
                                                                                                     } else
                                                                                                         echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => btnclass("EDIT")]);

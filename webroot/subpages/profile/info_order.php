@@ -94,7 +94,7 @@
 
                                 </div>
                             </div>
-                            <?php if ($sidebar->client_option == 0 && (isset($p) && $p->profile_type == 5)) { ?>
+                            <?php if ($sidebar->client_option == 0 /*&& (isset($p) && $p->profile_type == 5)*/) { ?>
 
                                 <div class="col-md-4" id="driver_div"
                                      style="">
@@ -484,7 +484,7 @@
         })
 
         $('.member_type').change(function () {
-            if ($(this).val() == '5') {
+            if ($(this).val() == '5' || $(this).val() == '7' || $(this).val() == '8') {
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).hide();
                 });

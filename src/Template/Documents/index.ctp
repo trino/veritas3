@@ -227,12 +227,14 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                                 $uploaded_for = $doc_comp->getUser($docs->uploaded_for);
                                 $getClientById = $doc_comp->getClientById($docs->client_id);
                                 $orderID = $this->Number->format($docs->order_id);
-                              //  $orderURL = '<A HREF="../orders/vieworder/11/' . $orderID . '">' . $orderID . '</A>';
+                                if($orderID)                                
+                                $orderDetail = $doc_comp->getOrderById($docs->order_id);
+                                //$orderDetail = '<A HREF="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/' . $orderID . '">' . $orderID . '</A>';
                             ?>
                             <tr class="<?= $row_color_class; ?>" role="row">
                                 <td><?= $this->Number->format($docs->id); ?></td>
                                 <td align=""><?php if ($orderID > 0) {
-                                        echo $orderID;
+                                        echo '<a href="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/'.$orderDetail->id;if($orderDetail->order_type){echo '?order_type='.urlencode($orderDetail->order_type);if($orderDetail->forms)echo '&forms='.$orderDetail->forms;}echo '">'.$orderDetail->id;echo '</a>';
                                     } else {
                                         echo "N/A";
                                     } ?></td>

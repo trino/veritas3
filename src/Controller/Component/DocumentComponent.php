@@ -1367,5 +1367,11 @@ class DocumentComponent extends Component
             die;
 
         }
+        function getOrderById($id)
+        {
+            $orders = TableRegistry::get('orders');
+            $order = $orders->find()->where(['id'=>$id])->first();
+            return $order;
+        }
         
 }

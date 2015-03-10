@@ -14,8 +14,11 @@
         public $paginate = [
             'limit' => 10,
             'order' => ['id' => 'DESC'],
-
         ];
+
+        public function intact(){
+
+        }
 
         public function productSelection()
         {

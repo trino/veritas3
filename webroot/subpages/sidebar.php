@@ -219,6 +219,16 @@ $profileID = $this->Session->read('Profile.id');
                                         Order Drafts</a>
                                 </li>
                             <?php } ?>
+
+
+                            <?php if ($sidebar->order_intact == 1){ ?>
+                                <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'intact' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
+                                    <a href="<?php echo $this->request->webroot; ?>orders/intact">
+                                        <i class="fa fa-pencil"></i>
+                                        Intact Orders</a>
+                                </li>
+                            <?php } ?>
+
                         </ul>
                     <?php } ?>
                 </li>

@@ -860,7 +860,7 @@
                 $profile_ids = str_replace(',,', ',', $profile_ids);
 
                 $model = TableRegistry::get('Profiles');
-                $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);
+                $profile = $model->find()->where(['id IN (' . $profile_ids . ')', '(profile_type = 5 OR profile_type = 7 OR profile_type = 8)']);
             } else {
                 $cmodel = TableRegistry::get('Clients');
                 $clients = $cmodel->find()->where(['id' => $client])->first();
@@ -873,7 +873,7 @@
                 $profile_ids = str_replace(',,', ',', $profile_ids);
 
                 $model = TableRegistry::get('Profiles');
-                $profile = $model->find()->where(['id IN (' . $profile_ids . ')', 'profile_type' => 5]);
+                $profile = $model->find()->where(['id IN (' . $profile_ids . ')', '(profile_type = 5 OR profile_type = 7 OR profile_type = 8)']);
             }
             if ($_GET['ordertype'] != 'QUA')
                 echo "<option value=''>Create New Driver</option>";

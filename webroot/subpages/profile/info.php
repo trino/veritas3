@@ -858,7 +858,7 @@
         })
 
         $('.member_type').change(function () {
-            if ($(this).val() == '5') {
+            if ($(this).val() == '5' || $(this).val() == '7' || $(this).val() == '8') {
                 $('.req_driver').each(function () {
                     $(this).prop('required', "required");
                     //alert($(this).attr('name'));
@@ -912,7 +912,7 @@
 
         var mem_type = $('.member_type').val();
         if (!isNaN(parseFloat(mem_type)) && isFinite(mem_type)) {
-            if (mem_type == '5') {
+            if (mem_type == '5' || mem_type == '7' || mem_type == '8') {
                 $('.req_driver').each(function () {
                     $(this).prop('required', "required");
                     //alert($(this).attr('name'));

@@ -455,35 +455,7 @@
 
 
 
-                                                <?php
-                                                    if($p[7]){
-                                                        ?>
-                                                        <tr class="odd" role="row">
-
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
-
-                                                            </td>
-                                                            <td>Check DL
-
-                                                                <?php
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Check DL")));
-                                                                ?>
-                                                            </td>
-                                                            <td class="actions">
-                                                                <?php
-                                                                    if (return_link('72', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('72', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
-                                                                    <? } ?>
-                                                            </td>
-                                                        </tr>
-                                                    <?php
-                                                    }
-                                                ?>
+                                                
 
 
 

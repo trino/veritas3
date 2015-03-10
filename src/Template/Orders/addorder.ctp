@@ -1321,55 +1321,7 @@ function provinces($name){
                 //  css = css.
             });
         });
-        $(document.body).on('click', '.skip', function () {
-            
-            //alert($(this).text());
-            
-            
-                $('.blockmsg').html('<h4 class="block">Your Order Has Been Saved As Draft!</h4>'+
-    '<p>You can edit your order anytime.</p>')
-            
-            var type = $(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
-            var tabid = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
-            if (tabid == '1') {
-                var confirmation = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
-                var data = {
-                    uploaded_for: $('#uploaded_for').val(),
-                    type: type,
-                    division: $('#division').val(),
-                    conf_recruiter_name: $('#conf_recruiter_name').val(),
-                    conf_driver_name: $('#conf_driver_name').val(),
-                    conf_date: $('#conf_date').val(),
-                    recruiter_signature: $('#recruiter_signature').val()
-                };
-                $.ajax({
-                    //data:'uploaded_for='+$('#uploaded_for').val(),
-                    data: data,
-                    type: 'post',
-                    beforeSend: saveSignature,
-                    url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1&order_type=<?php if(isset($_GET['order_type']))echo $_GET['order_type'];?>&forms=<?php if(isset($_GET['forms']))echo $_GET['forms'];?>',
-                    success: function (res) {
-                        $('#did').val(res);
-                        var draftmode = '<h4 class="block">Your order has been saved as draft.</h4><p> You can edit the order by visiting the orders section inside draft. </p>'
-                        $('#tab6 .note').html(draftmode);
-                        $.ajax({
-                            url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1&order_type=<?php if(isset($_GET['order_type']))echo $_GET['order_type'];?>&forms=<?php if(isset($_GET['forms']))echo $_GET['forms'];?>',
-                            type: 'post',
-                            data: {
-                                uploaded_for: $('#uploaded_for').val(),
-                                type: type,
-                                division: $('#division').val(),
-                                conf_recruiter_name: $('#conf_recruiter_name').val(),
-                                conf_driver_name: $('#conf_driver_name').val(),
-                                conf_date: $('#conf_date').val(),
-                                recruiter_signature: $('#recruiter_signature').val()
-                            }
-                        });
-                    }
-                });
-            }
-            
-        });
+        
         var draft = 0;
         $(document.body).on('click', '.cont', function () {
 
@@ -1530,6 +1482,62 @@ function provinces($name){
                     window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
                 }
             })
+        });
+        
+        $('#submit_dra').live('click', function () {
+            //alert($(this).text());
+            
+            
+                $('.blockmsg').html('<h4 class="block">Your Order Has Been Saved As Draft!</h4>'+
+    '<p>You can edit your order anytime.</p>')
+            
+            var type = $(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
+            var tabid = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
+            if (tabid == '1') {
+                var confirmation = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
+                var data = {
+                    uploaded_for: $('#uploaded_for').val(),
+                    type: type,
+                    division: $('#division').val(),
+                    conf_recruiter_name: $('#conf_recruiter_name').val(),
+                    conf_driver_name: $('#conf_driver_name').val(),
+                    conf_date: $('#conf_date').val(),
+                    recruiter_signature: $('#recruiter_signature').val()
+                };
+                $.ajax({
+                    //data:'uploaded_for='+$('#uploaded_for').val(),
+                    data: data,
+                    type: 'post',
+                    beforeSend: saveSignature,
+                    url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1&order_type=<?php if(isset($_GET['order_type']))echo $_GET['order_type'];?>&forms=<?php if(isset($_GET['forms']))echo $_GET['forms'];?>',
+                    success: function (res) {
+                        $('#did').val(res);
+                        var draftmode = '<h4 class="block">Your order has been saved as draft.</h4><p> You can edit the order by visiting the orders section inside draft. </p>'
+                        $('#tab6 .note').html(draftmode);
+                        $.ajax({
+                            url: '<?php echo $this->request->webroot;?>orders/savedoc/<?php echo $cid;?>/' + $('#did').val() + '?draft=1&order_type=<?php if(isset($_GET['order_type']))echo $_GET['order_type'];?>&forms=<?php if(isset($_GET['forms']))echo $_GET['forms'];?>',
+                            type: 'post',
+                            data: {
+                                uploaded_for: $('#uploaded_for').val(),
+                                type: type,
+                                division: $('#division').val(),
+                                conf_recruiter_name: $('#conf_recruiter_name').val(),
+                                conf_driver_name: $('#conf_driver_name').val(),
+                                conf_date: $('#conf_date').val(),
+                                recruiter_signature: $('#recruiter_signature').val()
+                            },
+                            success:function(){
+                                window.location = base_url+'orders/orderslist?draft&flash';
+                            },
+                            error:function(){
+                                window.location = base_url+'orders/orderslist?draft&flash';
+                            }
+                        });
+                    }
+                });
+            }
+
+            
         });
 
     });

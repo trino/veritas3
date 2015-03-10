@@ -277,6 +277,7 @@ var FormWizard = function () {
                 {
                     
                     $('.cont').attr('id','submit_ord');
+                    $('.skip').attr('id','submit_dra');
                     $('.skip').hide();
 
                     $('#select_division').hide();
@@ -288,7 +289,7 @@ var FormWizard = function () {
                      window.location = base_url+'?orderflash';
                      else
                      window.location = base_url+'?orderflash';
-                    */
+                    
 
                 //   if($('#tab6 .touched').val()=='1' || $('#tab6 .touched_edit').val()=='1'){
                     setTimeout(
@@ -296,7 +297,7 @@ var FormWizard = function () {
                   {
                  window.location = base_url+'orders/orderslist?draft&flash';
                   }, 5500);
-              //    }
+              //    }*/
 
 
                 }

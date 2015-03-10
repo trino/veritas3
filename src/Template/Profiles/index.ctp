@@ -338,7 +338,7 @@
                                                 if ($sidebar->document_list == 1/* && $doc != 0 && $cn != 0*/) {
                                                     ?>
                                                     <a href="<?php
-                                                    if($profile->profile_type == '5' || $profile->profile_type == '6' || $profile->profile_type == '7' || $profile->profile_type == '8' )
+                                                    if($profile->profile_type == '5' || $profile->profile_type == '7' || $profile->profile_type == '8' )
                                                     {
                                                      echo $this->request->webroot . 'documents/index?type=&submitted_for_id=' . $profile->id;
                                                      }

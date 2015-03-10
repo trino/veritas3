@@ -436,7 +436,10 @@
 
                                         <a href="#tab_1_1" data-toggle="tab">Profile</a>
                                     </li>
-                                    <?php if ($this->request['action'] == 'view') { ?>
+                                    <?php
+                                     if ($this->request['action'] == 'view' && ($p->profile_type == 5 || $p->profile_type == 7 || $p->profile_type == 8)) {
+                                        //if (($this->request['action'] == 'edit' || $this->request['action'] == 'view') && ($p->profile_type == 5 || $p->profile_type == 7 || $p->profile_type == 8) ) {
+                                    ?>
                                         <li <?php activetab($activetab, "scorecard"); ?>>
                                             <a href="#tab_1_11" data-toggle="tab">View Scorecard</a>
                                         </li>

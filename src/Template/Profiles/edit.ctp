@@ -342,10 +342,8 @@
                                 }
 
                                 if (isset($p)) {
-                                    if ($profile->profile_type == 5) {
-                                        ?>
-                                        <?php if ($sidebar->orders_create == '1') {
-
+                                    if ($profile->profile_type == 5 || $profile->profile_type == 7 || $profile->profile_type == 8) {//driver, owner driver, owner operator
+                                        if ($sidebar->orders_create == '1') {
                                             if ($sidebar->orders_mee == 1) {
                                                 ?>
 

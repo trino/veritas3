@@ -132,7 +132,6 @@ function randomcolor(){
         </a>
     <?php } ?>
 
-
     <?php if ($sidebar->orders_list ==1 && $block->list_order =='1') { ?>
         <a href="<?php echo $this->request->webroot; ?>orders/orderslist" style="display: block;" class="tile bg-yellow">
             <div class="tile-body">
@@ -140,6 +139,17 @@ function randomcolor(){
             </div>
             <div class="tile-object">
                 <div class="name">List Orders</div>
+                <div class="number"></div>
+            </div>
+        </a>
+    <?php } ?>
+    <?php if ($sidebar->order_intact ==1 && $block->orders_intact =='1') { ?>
+        <a class="tile bg-blue-ebonyclay" href="<?php echo $this->request->webroot; ?>orders/intact" style="display: block;">
+            <div class="tile-body">
+                <i class="fa fa-pencil"></i>
+            </div>
+            <div class="tile-object">
+                <div class="name">Intact Orders</div>
                 <div class="number"></div>
             </div>
         </a>

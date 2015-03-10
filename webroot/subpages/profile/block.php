@@ -901,7 +901,23 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr>
 
-
+                                            <tr>
+                                                <td>
+                                                    Intact Orders
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[orders_intact]"
+                                                                                          value="1" <?php if (isset($block) && $block->orders_intact == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[orders_intact]"
+                                                                                          value="0" <?php if (isset($block) && $block->orders_intact == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
                                             <!--tr>
                                                 <td>
                                                     Master <?=$settings->client; ?>

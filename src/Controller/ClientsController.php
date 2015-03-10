@@ -1284,6 +1284,26 @@ class ClientsController extends AppController {
            	return $this->redirect("/");
         } 
     }
+    
+    public function check_document($subid = '')
+    {
+        if (isset($_POST['subdocumentname']) && $_POST['subdocumentname'])
+            $subname = $_POST['subdocumentname'];
+            //$subname = strtolower($subname);
+        $q = TableRegistry::get('subdocuments');
+        $que = $q->find();
+        if ($subid != "")
+            $query = $que->select()->where(['id !=' => $subid, 'title' => $subname])->first();
+        else
+            $query = $que->select()->where(['title' => $subname])->first();
+        //var_dump($query);
+        //$query = $que->first();
+        if ($query)
+            echo '1';
+        else
+            echo '0';
+        die();
+    }
 
 }
 ?>

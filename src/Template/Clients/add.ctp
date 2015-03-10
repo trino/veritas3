@@ -632,6 +632,7 @@
            if(subname == ''  )
            {
                 $('.flashSubDoc1').show();
+                $('.flashSubDoc').hide();
                 $('.subdocname').focus();
                         $('html,body').animate({
                                 scrollTop: $('.page-title').offset().top
@@ -641,16 +642,16 @@
                         return false;
            }
            else
-           {
+           { 
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>clients/check_document',
-                data: 'subdocname=' + subname,
+                data: 'subdocumentname=' + subname,
                 type: 'post',
-                success: function (res) {
+                success: function (res) {//alert(res);
                     if (res == '1') {
                         //alert(res);
                         $('.flashSubDoc').show();
-
+                        $('.flashSubDoc1').hide();
                         $('.subdocname').focus();
                         $('html,body').animate({
                                 scrollTop: $('.page-title').offset().top

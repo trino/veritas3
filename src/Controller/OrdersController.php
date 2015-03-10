@@ -23,7 +23,9 @@
         public function productSelection()
         {
             $this->set('doc_comp', $this->Document);
+             $this->loadMOdel('OrderProducts');
             $settings = $this->Settings->get_settings();
+            $this->set('products', $this->OrderProducts->find()->where(['enable'=>'1'])->all());
             $this->set('settings', $settings);
         }
 

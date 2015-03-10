@@ -1,5 +1,11 @@
-<?php $settings = $this->requestAction('settings/get_settings'); ?>
-<?php $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id')); ?>
+<?php
+$settings = $this->requestAction('settings/get_settings');
+$sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id'));
+function trunc($text, $digits, $append = ""){
+    if (strlen($text)<$digits) { return $text; }
+    return substr($text,0,$digits) . $append;
+}
+?>
 
     <h3 class="page-title">
         Edit
@@ -50,17 +56,60 @@
     <div class="form-group">
         <label class="control-label">Attachments :</label><BR>
         <small>Separate your attachments with a comma then a space</small>
-        <textarea class="form-control" rows="9">
-        <?php if (isset($quiz)) { echo $quiz->Attachments; } ?>
-        </textarea>
+        <textarea class="form-control" rows="9"><?php if (isset($quiz)) { echo $quiz->Attachments; } ?></textarea>
     </div>
 </div>
 
 <div class="col-md-6">
     <div class="form-group">
         <label class="control-label">Description :</label>
-        <textarea class="form-control" rows="10">
-        <?php if (isset($quiz)) { echo $quiz->Description; } ?>
-        </textarea>
+        <textarea class="form-control" rows="10"><?php if (isset($quiz)) { echo $quiz->Description; } ?></textarea>
     </div>
 </div>
+
+<?php if (isset($questions)) { ?>
+<div class="col-md-12">
+    <div class="form-group">
+        <div class="table-scrollable">
+            <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
+                <thead>
+                <tr>
+                    <th>QID</th>
+                    <th>Index</th>
+                    <th>Question</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    function newQuestion($ID){
+                        echo '<TR><TD colspan="10">New: ' . $ID . '</TD></TR>';
+                    }
+
+                    $index=-1;
+                    foreach($questions as $question){
+                        if ($question->QuestionID > $index+1){ newQuestion($index+1); }
+
+                        echo '<TR><TD>' . $question->ID . '</TD>';
+                        echo '<TD>' . $question->QuestionID . '</TD>';
+                        echo '<TD>' . trunc($question->Question, 25, "...") . '</TD>';
+
+                        echo '</TR>';
+                        $index = $question->QuestionID;
+                    }
+                    newQuestion($index+1);
+                    ?>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+Answer
+Choice0
+Choice1
+Choice2
+Choice3
+Picture
+Question

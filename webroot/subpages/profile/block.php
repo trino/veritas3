@@ -255,6 +255,10 @@ if ($activetab == "permissions") {
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[order_requalify]" value="1" <?php if (isset($sidebar) && $sidebar->order_requalify == 1) echo "checked"; ?> /> Re-Qualify
                                                             </label>
+
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[order_intact]" value="1" <?php if (isset($sidebar) && $sidebar->order_intact == 1) echo "checked"; ?> /> Intact Orders
+                                                            </label>
                                                         </div>
                                                 </td>
                                             </tr>

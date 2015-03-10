@@ -31,6 +31,32 @@
 <?php
 $question = 0;
 $QuizID = $_GET["quizid"];
+function clean($data, $datatype=0){
+    if (is_object($data)){
+        switch($datatype) {
+            case 0:
+                $data->Description = clean($data->Description);
+                $data->Name = clean($data->Name);
+                $data->Attachments = clean($data->Attachments);
+                $data->image = clean($data->image);
+                return $data;
+                break;
+            case 1:
+                $data->Question = clean($data->Question);
+                $data->Picture = clean($data->Picture);
+                $data->Choice0 = clean($data->Choice0);
+                $data->Choice1 = clean($data->Choice1);
+                $data->Choice2 = clean($data->Choice2);
+                $data->Choice3 = clean($data->Choice3);
+                return $data;
+                break;
+        }
+    }
+    if (substr($data,0,1)== '"' && substr($data,-1) == '"'){$data = substr($data,1, strlen($data)-2);}
+    $data = str_replace("\\r\\n", "\r\n", trim($data)) ;
+    return $data;
+}
+
 function question($section){
     global $question;
     switch ($section){
@@ -48,50 +74,59 @@ function question($section){
     }
 }
 
-function answers($QuizID, $QuestionID, $text, $answers){
-    $QuestionID = $QuizID . ':' . $QuestionID . '_';
-    echo '<input type="hidden" name="' . $QuestionID . ':sequencecheck" value="1" />';
+function answers($QuizID, $QuestionID, $text, $answers, $Index = 0){
+    $Qold = $QuestionID;
+    $QuestionID = $QuizID . ':' . $Index;
+    echo '<input type="hidden" name="' . $QuestionID . ':sequencecheck" value="' . $Qold . '" />';
     echo '<div class="qtext"><p>' . $text . '</p></div>';
     echo '<div class="ablock"><div class="prompt">Select one:</div><div class="answer">';
     for ($temp=0; $temp<count($answers); $temp+=1){
         if (strlen(trim($answers[$temp]))>0) {
             echo '<div class="r' . $temp . '">';
-            echo '<input type="radio" name="' . $QuestionID . '_answer" value="' . $temp . '" id="' . $QuestionID . 'answer' . $temp . '" />';
-            echo '<label for="' . $QuestionID . '_answer' . $temp . '">' . chr($temp + ord("a")) . ". " . $answers[$temp] . '</label></div>';
+            echo '<input type="radio" name="' . $QuestionID . '_answer" value="' . $temp . '" id="' . $QuestionID . ":" . $temp . '" required />';
+            echo '<label for="' . $QuestionID . ":" . $temp . '">' . chr($temp + ord("a")) . ". " . $answers[$temp] . '</label></div>';
         }
     }
     echo '</DIV></DIV>';
 }
 
-function questionheader($QuizID, $QuestionID, $markedOutOf){
-    $QuestionID = $QuizID . ':' . $QuestionID . '_';
+function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0){
+    $QuestionID = $QuizID . ':' . $Index;
     echo '<div class="state">Not yet answered</div><div class="grade">Marked out of ' . $markedOutOf  . '</div>';
     echo '<div class="questionflag editable" aria-atomic="true" aria-relevant="text" aria-live="assertive">';
-    echo '<input type="hidden" name="' . $QuestionID . ':flagged" value="0" />';
-    echo '<input type="checkbox" id="' . $QuestionID . ':flaggedcheckbox" name="' . $QuestionID . ':flagged" value="1" />';
+    echo '<input type="hidden" name="' . $QuestionID . '_flagged" value="0" />';
+    echo '<input type="checkbox" id="' . $QuestionID . '_flaggedcheckbox" name="' . $QuestionID . '_flaggedcheckbox" value="1" />';
         //*<input type="hidden" value="qaid=16821&amp;qubaid=873&amp;qid=55&amp;slot=1&amp;checksum=6e752fddd87489abd0ec093720443089&amp;sesskey=JiVfZNWBDK&amp;newstate=" class="questionflagpostdata" /> I DONT KNOW WHAT THIS IS FOR
-    echo '<label id="' . $QuestionID . ':flaggedlabel" for="' . $QuestionID . ':flaggedcheckbox">';
-    echo '<img src="http://asap-training.com/theme/image.php?theme=aardvark&amp;component=core&amp;rev=1415027139&amp;image=i%2Funflagged" alt="Not flagged" id="' . $QuestionID . ':flaggedimg" /></label></div>';
+    echo '<label id="' . $QuestionID . '_flaggedlabel" for="' . $QuestionID . '_flaggedcheckbox">';
+    echo '<img alt=' . $Index . ' src="http://asap-training.com/theme/image.php?theme=aardvark&amp;component=core&amp;rev=1415027139&amp;image=i%2Funflagged" alt="Not flagged" id="' . $Index . ':flaggedimg" /></label></div>';
 }
 
-function FullQuestion($text, $answers, $markedOutOf = "1.00"){
-    global $QuizID, $question;
+function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00"){
+    global $question;
     $question+=1;
     question(0);
-    questionheader($QuizID, $question, $markedOutOf);
+    questionheader($QuizID, $question, $markedOutOf, $index);
     question(1);
-    answers($QuizID, $question, $text, $answers);
+    answers($QuizID, $question, $text, $answers, $index);
     question(2);
 }
 ?>
 
-<form action="http://asap-training.com/mod/quiz/processattempt.php" method="post" enctype="multipart/form-data" accept-charset="utf-8" id="responseform">
+
 
 
 
 <?php
-foreach($questions as $question){
-    FullQuestion($question->Question, array($question->Choice0, $question->Choice1,$question->Choice2,$question->Choice3));
+
+if (count($_POST)>0) {
+    print_r($_POST);
+} else {
+    echo '<form action="quiz?quizid=' . $_GET["quizid"] . '" method="post" enctype="multipart/form-data" accept-charset="utf-8" id="responseform">';
+    foreach ($questions as $question) {
+        $question=clean($question,1);
+        FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3), $question->QuestionID, "1.00");
+    }
+    echo '<DIV align="center"><button type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button></DIV></form>';
 }
 
 switch ( $QuizID ) {
@@ -118,6 +153,5 @@ switch ( $QuizID ) {
 }
 ?>
 
-   <DIV align="center"><a href="javascript:void(0)" class="btn btn-primary" id="save_client_p1">Save</a></DIV></form>
 
 </div></div></div></div></div>

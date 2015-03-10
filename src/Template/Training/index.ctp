@@ -46,7 +46,18 @@ $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Pro
 $QuizID = -1;
 if (isset($_GET["quizid"])) { $QuizID = $_GET["quizid"]; }
 
-
+function clean($data){
+    if (is_object($data)){
+        $data->Description = clean($data->Description);
+        $data->Name = clean($data->Name);
+        $data->Attachments = clean($data->Attachments);
+        $data->image = clean($data->image);
+        return $data;
+    }
+    if (substr($data,0,1)== '"' && substr($data,-1) == '"'){$data = substr($data,1, strlen($data)-2);}
+    $data = str_replace("\\r\\n", "<P>", htmlspecialchars(trim($data))) ;
+    return $data;
+}
 
 function quizheader($QuizID, $id, $name, $image){
 if (($id == $QuizID) or ($QuizID == -1)){
@@ -64,7 +75,7 @@ if (strlen($image)==0){ $image = "training.png";}
             <div class="portlet-body">
                 <div class="row">
                     <div class="col-md-2" align="center">
-                        <img src="img/<?php echo $image; ?>">
+                        <img src="img/<?php if(strlen(trim($image))==0){ echo "training.png"; } else {echo $image;} ?>">
                     </div>
                     <div class="col-md-10">
 
@@ -109,7 +120,7 @@ if (strlen($image)==0){ $image = "training.png";}
                             </div>
                             <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
                             <?php if ($canedit) {
-                                echo '<a href="training/edit" class="floatright btn btn-primary">Create</a>';
+                                echo '<a href="training/edit" class="floatright btn btn-primary btnspc">Create</a>';
                             }?>
                         </div>
 
@@ -121,7 +132,7 @@ if (strlen($image)==0){ $image = "training.png";}
 
 <?
 foreach($quizes as $quiz){
-
+    $quiz=clean($quiz);
 if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
     echo str_replace("\r\n", "<P>", $quiz->Description);
     if(quizmiddle($QuizID, $quiz->ID)){
@@ -159,10 +170,10 @@ if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
             echo '<input type="checkbox" id="quiz" disabled><a class="btn btn-info" href="training/quiz?quizid=' . $quiz->ID . '" onclick="return checkboxes();">Quiz</a></input>';
         echo '</div>';
         echo '<div class="col-md-5" align="right">';
-            echo '<a href="#" class="btn btn-warning"">Enroll</a>';
-            echo '<a class="btn btn-info" href="training/quiz?quizid=' . $quiz->ID . '">View</a>';
+            echo '<a href="#" class="btn btn-warning btnspc"">Enroll</a>';
+            echo '<a class="btn btn-info btnspc" href="training/quiz?quizid=' . $quiz->ID . '">View</a>';
         if ($canedit) {
-            echo '<a href="training/edit?quizid=' . $quiz->ID . '" class="btn btn-primary">Edit</a>';
+            echo '<a href="training/edit?quizid=' . $quiz->ID . '" class="btn btn-primary btnspc">Edit</a>';
             echo '<a href="training?action=delete&quizid=' . $quiz->ID . '" onclick="return confirm(' . "'Are you sure you want to delete this quiz?'" . ');" class="btn btn-danger">Delete</a>';
         }
         echo '</div>';

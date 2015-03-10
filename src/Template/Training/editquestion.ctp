@@ -6,12 +6,40 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
 } else {
     include_once('subpages/api.php');
 }
-debug($question);
-print_r($_POST);
+//debug($question);
+//print_r($_POST);
+function clean($data, $datatype=0){
+    if (is_object($data)){
+        switch($datatype) {
+            case 0:
+                $data->Description = clean($data->Description);
+                $data->Name = clean($data->Name);
+                $data->Attachments = clean($data->Attachments);
+                $data->image = clean($data->image);
+                return $data;
+                break;
+            case 1:
+                $data->Question = clean($data->Question);
+                $data->Picture = clean($data->Picture);
+                $data->Choice0 = clean($data->Choice0);
+                $data->Choice1 = clean($data->Choice1);
+                $data->Choice2 = clean($data->Choice2);
+                $data->Choice3 = clean($data->Choice3);
+                return $data;
+                break;
+        }
+    }
+    if (substr($data,0,1)== '"' && substr($data,-1) == '"'){$data = substr($data,1, strlen($data)-2);}
+    $data = str_replace("\\r\\n", "\r\n", htmlspecialchars(trim($data))) ;
+    return $data;
+}
+
+if (isset($question)) {$question = clean($question,1);}
+
 ?>
 
     <h3 class="page-title">
-        Edit Question <?= $_GET["QID"] ?>
+        Edit Question <?= $_GET["QuestionID"] ?>
     </h3>
     <div class="page-bar">
         <ul class="page-breadcrumb">
@@ -34,17 +62,17 @@ print_r($_POST);
         </ul>
         <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
         <?php if ($canedit && isset($question)) {
-            echo '<a href="' . $this->request->webroot . 'training/editquestion?action=delete&QID=' . $_GET["QID"] . '&quizid=' . $question->ID . '" onclick="return confirm(' . "'Are you sure you want to delete this question?'" . ');" class="floatright btn btn-danger btnspc">Delete</a>';
+            echo '<a href="' . $this->request->webroot . 'training/editquestion?new=true&action=delete&QuestionID=' . $_GET["QuestionID"] . '&quizid=' . $_GET["quizid"] . '" onclick="return confirm(' . "'Are you sure you want to delete this question?'" . ');" class="floatright btn btn-danger btnspc">Delete</a>';
             $QuizID="&quizid=" . isset($quiz);
         }?>
     </div>
 
-    <form action="<?= $this->request->webroot; ?>training/editquestion?action=save&quizid=<?= $_GET["quizid"] ?>&new=false&QID=<?= $_GET["QID"] ?>" method="post">
+    <form action="<?= $this->request->webroot; ?>training/editquestion?action=save&quizid=<?= $_GET["quizid"] ?>&new=false&QuestionID=<?= $_GET["QuestionID"] ?>" method="post">
 
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Question :</label>
-                <?= '<input name="QuizID" type="hidden" value="' . $_GET["quizid"] . '"><input name="QID" type="hidden" value="' . $_GET["QID"] . '">'; ?>
+                <?= '<input name="QuizID" type="hidden" value="' . $_GET["quizid"] . '"><input name="QuestionID" type="hidden" value="' . $_GET["QuestionID"] . '">'; ?>
                 <?= '<input name="new" type="hidden" value="' . $_GET["new"] . '">'; ?>
                 <input name="Question" class="form-control required" value="<?php if (isset($question)) { echo $question->Question; } ?>" />
             </div>

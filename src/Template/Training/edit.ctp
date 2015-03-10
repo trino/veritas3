@@ -11,6 +11,29 @@ function trunc($text, $digits, $append = ""){
     return substr($text,0,$digits) . $append;
 }
 $QuizID="";
+
+function clean($data, $datatype=0){
+    if (is_object($data)){
+        switch($datatype) {
+            case 0:
+                $data->Description = clean($data->Description);
+                $data->Name = clean($data->Name);
+                $data->Attachments = clean($data->Attachments);
+                $data->image = clean($data->image);
+                return $data;
+                break;
+            case 1:
+                $data->Question = clean($data->Question);
+                break;
+        }
+    }
+    if (substr($data,0,1)== '"' && substr($data,-1) == '"'){$data = substr($data,1, strlen($data)-2);}
+    $data = str_replace("\\r\\n", "\r\n", (trim($data))) ;
+    return $data;
+}
+if (isset($quiz)){
+    $quiz=clean($quiz);
+}
 ?>
 
     <h3 class="page-title">
@@ -34,7 +57,7 @@ $QuizID="";
         <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
         <?php if ($canedit && isset($quiz)) {
             echo '<a href="' . $this->request->webroot . 'training?action=delete&quizid=' . $quiz->ID . '" onclick="return confirm(' . "'Are you sure you want to delete this quiz?'" . ');" class="floatright btn btn-danger btnspc">Delete</a>';
-            $QuizID="&quizid=" . isset($quiz);
+            $QuizID="&quizid=" . $_GET['quizid'];
         }?>
     </div>
 
@@ -44,13 +67,13 @@ $QuizID="";
     <div class="form-group">
         <label class="control-label">Quiz Name :</label>
             <?php if (isset($_GET["quizid"])){ echo '<input name="ID" type="hidden" value="' . $_GET["quizid"] . '">'; } ?>
-            <input name="Name" class="form-control required" value=" <?php if (isset($quiz)) { echo $quiz->Name; } ?>" />
+            <input name="Name" class="form-control required" value="<?php if (isset($quiz)) { echo $quiz->Name; } ?>" />
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="control-label">Image :</label>
-        <input name="image" id="image" class="form-control required" value=" <?php if (isset($quiz)) { echo $quiz->image; } else {echo "training.png";} ?>" />
+        <input name="image" id="image" class="form-control required" value="<?php if (isset($quiz)) { echo $quiz->image; } else {echo "training.png";} ?>" />
     </div>
 </div>
 <div class="col-md-6">
@@ -78,6 +101,10 @@ $QuizID="";
 <div class="col-md-12">
     <div class="form-group">
         <label class="control-label">Save before editing any questions</label>
+    </DIV>
+</DIV>
+
+
         <div class="table-scrollable">
             <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                 <thead>
@@ -106,25 +133,28 @@ $QuizID="";
                     }
 
                     $index=-1;
-                    foreach($questions as $question){
-                        for ($temp=$index+1; $temp<$question->QuestionID; $temp+=1){
-                            newQuestion($temp);
+                    foreach($questions as $question) {
+                        clean($question, 1);
+                        if ($question->QuizID == $_GET["quizid"]) {
+                            for ($temp = $index + 1; $temp < $question->QuestionID; $temp += 1) {
+                                newQuestion($temp);
+                            }
+                            //if ($question->QuestionID > $index+1){ newQuestion($index+1); }
+
+                            echo '<TR><TD>' . $question->ID . '</TD>';
+                            echo '<TD>' . $question->QuestionID . '</TD>';
+                            echo '<TD>' . trunc($question->Question, 50, "...") . '</TD>';
+
+                            echo '<TD><a href="editquestion?QuestionID=' . $question->QuestionID . '&new=false&quizid=' . $_GET["quizid"] . '" class="' . btnclass("EDIT") . '">Edit</a>';
+                            echo '<a href="edit?action=delete&quizid=' . $_GET["quizid"] . '&QuestionID=' . $question->QuestionID . '" class="' . btnclass("DELETE") . '">Delete</a></TD>';
+                            //answer($question->Answer, 0, $question->Choice0);
+                            //answer($question->Answer, 1, $question->Choice1);
+                            //answer($question->Answer, 2, $question->Choice2);
+                            //answer($question->Answer, 3, $question->Choice3);
+
+                            echo '</TR>';
+                            $index = $question->QuestionID;
                         }
-                        //if ($question->QuestionID > $index+1){ newQuestion($index+1); }
-
-                        echo '<TR><TD>' . $question->ID . '</TD>';
-                        echo '<TD>' . $question->QuestionID . '</TD>';
-                        echo '<TD>' . trunc($question->Question, 25, "...") . '</TD>';
-
-                        echo '<TD><a href="editquestion?QID=' . $question->ID . '&new=false&quizid=' . $_GET["quizid"] . '" class="' . btnclass("EDIT") . '">Edit</a>';
-                        echo '<a href="edit?action=delete&quizid=' . $_GET["quizid"] . '&QID=' . $question->ID . '" class="' . btnclass("DELETE") . '">Delete</a></TD>';
-                        //answer($question->Answer, 0, $question->Choice0);
-                        //answer($question->Answer, 1, $question->Choice1);
-                        //answer($question->Answer, 2, $question->Choice2);
-                        //answer($question->Answer, 3, $question->Choice3);
-
-                        echo '</TR>';
-                        $index = $question->QuestionID;
                     }
                     newQuestion($index+1);
                     ?>
@@ -132,6 +162,5 @@ $QuizID="";
             </table>
 
         </div>
-    </div>
-</div>
+
 <?php } ?>

@@ -295,7 +295,7 @@ var FormWizard = function () {
                   function()
                   {
                  window.location = base_url+'?orderflash';
-                  }, 5500);
+                  }, 8500);
               //    }
 
 

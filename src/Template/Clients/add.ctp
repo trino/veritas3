@@ -111,13 +111,13 @@
                             <i class="fa fa-briefcase"></i><?php echo ucfirst($settings->client); ?> Manager
                         </div>
                         <ul class="nav nav-tabs">
-                            <li class="active">
+                            <li  <?php if(!isset($_GET['activedisplay'])){ ?> class="active" <?php } ?> >
                                 <a href="#tab_1_1" data-toggle="tab">Info</a>
                             </li>
                             <?php if ($this->request['action'] != "add" && !isset($_GET['view'])) {
                                 ?>
 
-                                <li>
+                                <li <?php if(isset($_GET['activedisplay'])){ ?> class="active" <?php } ?> >
                                     <a href="#tab_1_2" data-toggle="tab">Display</a>
                                 </li>
                                  
@@ -133,8 +133,23 @@
 
                     <div class="portlet-body form"><div class="form-body" style="padding-bottom: 0px;">
                         <div class="tab-content">
-                            <div class="tab-pane active" id="tab_1_1">
-                                <div id="tab_1-1" class="tab-pane active">
+                        <?php
+                        
+                          if(!isset($_GET['activedisplay']))
+                          {
+                            ?>
+                            <div class="tab-pane active"  id="tab_1_1">
+                                <div id="tab_1_1" class="tab-pane active">
+                            <?php
+                          }
+                          else
+                          {
+                            ?>
+                            <div class="tab-pane"  id="tab_1_1">
+                                <div id="tab_1_1" class="tab-pane">
+                            <?php
+                          }
+                         ?>
                                     <form role="form" action="" method="post" id="client_form" class="save_client_all">
                                         <input type="hidden" name="drafts" id="client_drafts" value="0"/>
 
@@ -457,10 +472,19 @@
                         <?php
                         if ($this->request['action'] != "add" && !isset($_GET['view']) )
                         {
+                          if(isset($_GET['activedisplay']))
+                          {
+                            ?>
+                            <div class="tab-pane active"  id="tab_1_2">
+                            <?php
+                          }
+                          else
+                          {
+                            ?>
+                            <div class="tab-pane"  id="tab_1_2">
+                            <?php
+                          }
                          ?>
-                        <div class="tab-pane" id="tab_1_2">
-
-
                             <h4 class="col-md-6"> Enable <?php echo ucfirst($settings->document); ?>s?</h4>
                             <?php
                                 if($this->request->session()->read('Profile.super'))
@@ -471,6 +495,10 @@
                                 <div class="col-md-12" id="sub_add" style="display: none;margin:10px 0;padding:0">
                                     <div class="col-md-10" style="text-align: right;padding:0;">
                                         <input type="text" placeholder="Sub-Document title" class="form-control subdocname" />
+                                        <span class="error passerror flashSubDoc"
+                                          style="display: none;">Subdocument name already exists</span>
+                                        <span class="error passerror flashSubDoc1"
+                                          style="display: none;">Please enter a subdocument name.</span>
                                     </div>
                                         <input type="hidden" class="clien_id" value="<?php echo $client->id; ?>" />
                                     <div class="col-md-2" style="text-align: right;padding:0;">
@@ -601,7 +629,44 @@
         $('.addsubdoc').click(function(){
            var subname = $('.subdocname').val();
            var client_id = $('.clien_id').val();
-           window.location = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname+'&client_id='+client_id; 
+           if(subname == ''  )
+           {
+                $('.flashSubDoc1').show();
+                $('.subdocname').focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+
+                        return false;
+           }
+           else
+           {
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>clients/check_document',
+                data: 'subdocname=' + subname,
+                type: 'post',
+                success: function (res) {
+                    if (res == '1') {
+                        //alert(res);
+                        $('.flashSubDoc').show();
+
+                        $('.subdocname').focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+
+                        return false;
+                    }
+                    else
+                    {
+                         window.location = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname+'&client_id='+client_id;
+                    
+                    }
+                } 
+            });
+            } 
         });
         var tosend = '';
         $('.sortable tbody').sortable({

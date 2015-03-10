@@ -76,7 +76,7 @@
                                 <input type="hidden" id="nProfileType" name="profile_type" value="<?php if (isset($p)) { echo $p->profile_type;} ?>" <?php echo $is_disabled ?> />
                                 <?php } ?>
                                 <select  <?php echo $is_disabled ?>
-                                    name="<?php if (!isset($p)){ echo 'profile_type'; }?>" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id) || ($this->request->session()->read('Profile.profile_type') == '2')) echo "disabled='disabled'"; ?>
+                                    name="<?php if (!isset($p)){ echo 'profile_type'; }?>" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id)/* || ($this->request->session()->read('Profile.profile_type') == '2')*/) echo "disabled='disabled'"; ?>
                                     class="form-control member_type" required='required' onchange="$('#nProfileType').val($(this).val());">
                                     <option value="">Select</option>
                                     <?php
@@ -134,17 +134,17 @@
                                                 Contact
                                             </option>
 
-                                            <!--<option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
-                                                if (!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
+                                            <option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
+                                                if (!$this->request->session()->read('Profile.super') && $this->request->session()->read('Profile.profile_type')!='2') { ?> disabled="disabled"
                                 <?php }?>>
                                     Owner Operator
                                 </option>
 
                                 <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php }
-                                                if (!$this->request->session()->read('Profile.super')) { ?> disabled="disabled"
+                                                if (!$this->request->session()->read('Profile.super') && $this->request->session()->read('Profile.profile_type')!='2') { ?> disabled="disabled"
                                 <?php } ?>>
                                     Owner Driver
-                                </option> -->
+                                </option>
 
                                         <?php } else { ?>
 
@@ -172,7 +172,7 @@
                         </div>
 
                         <div class="col-md-6" id="isb_id"
-                             style="display:<?php if ((isset($p) && $p->profile_type != 5) && (isset($getProfileType->profile_type) && $getProfileType->profile_type == 1) || ($this->request->session()->read('Profile.profile_type') == 2 && ($p->id == ($this->request->session()->read('Profile.id')))) || ($this->request->session()->read('Profile.profile_type') == 2 && ($p->id != 5  ))) echo 'block'; else echo "none" ?>;">
+                             style="display:<?php if ((isset($p) && $p->profile_type != 5) && (isset($getProfileType->profile_type) && $getProfileType->profile_type == 1) || ($this->request->session()->read('Profile.profile_type') == 2 && (isset($p) && $p->id == ($this->request->session()->read('Profile.id')))) || ($this->request->session()->read('Profile.profile_type') == 2 && (isset($p) && $p->id != 5  ))) echo 'block'; else echo "none" ?>;">
                             <div class="form-group">
                                 <label class="control-label">ISB Id : </label>
                                 <input <?php echo $is_disabled ?>
@@ -858,7 +858,7 @@
         })
 
         $('.member_type').change(function () {
-            if ($(this).val() == '5') {
+            if ($(this).val() == '5' || $(this).val() == '7' || $(this).val() == '8') {
                 $('.req_driver').each(function () {
                     $(this).prop('required', "required");
                     //alert($(this).attr('name'));
@@ -912,7 +912,7 @@
 
         var mem_type = $('.member_type').val();
         if (!isNaN(parseFloat(mem_type)) && isFinite(mem_type)) {
-            if (mem_type == '5') {
+            if (mem_type == '5' || mem_type == '7' || mem_type == '8') {
                 $('.req_driver').each(function () {
                     $(this).prop('required', "required");
                     //alert($(this).attr('name'));

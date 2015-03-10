@@ -84,27 +84,27 @@ else
 
                                     
                                     <p>&nbsp;</p>
-                                                
-                                    
-                                    <script>
-                                    $(function(){
-                                       $('#save_displayz').click(function(){
-                                        $('#save_displayz').text('Saving..');
-                                            var str = $('#displayformz').serialize();
-                                            $.ajax({
-                                               url:'<?php echo $this->request->webroot;?>settings/change_text/<?php echo $id;?>',
-                                               data:str,
-                                               type:'post',
-                                               success:function(res)
-                                               {
-                                                $('.flash').show();
-                                                $('.flash').fadeOut(3500);
-                                                $('#save_displayz').text('Submit');
-                                               } 
-                                            })
-                                       }); 
-                                    });
-                                    </script>
+
+        <script>
+            $(function(){
+                $('#save_displayz').click(function(){
+                    $('#save_displayz').text('Saving..');
+                    var str = $('#displayformz').serialize();
+                    $.ajax({
+                        url:'<?php echo $this->request->webroot;?>settings/change_text',
+                        data:str,
+                        type:'post',
+                        success:function(res)
+                        {
+                            $('.flash').show();
+                            $('.flash').fadeOut(3500);
+                            $('#save_displayz').text(' Submit ');
+                        }
+                    })
+                });
+            });
+        </script>
+
     </div>
 </div>
 <!-- END PORTLET-->

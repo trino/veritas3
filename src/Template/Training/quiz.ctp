@@ -11,6 +11,10 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
+            <a href="<?php echo $this->request->webroot; ?>training">Training</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
             <a href="">Quiz</a>
         </li>
     </ul>
@@ -50,9 +54,11 @@ function answers($QuizID, $QuestionID, $text, $answers){
     echo '<div class="qtext"><p>' . $text . '</p></div>';
     echo '<div class="ablock"><div class="prompt">Select one:</div><div class="answer">';
     for ($temp=0; $temp<count($answers); $temp+=1){
-        echo '<div class="r' . $temp . '">';
-        echo '<input type="radio" name="' . $QuestionID . '_answer" value="' . $temp . '" id="' . $QuestionID . 'answer' . $temp . '" />';
-        echo '<label for="' . $QuestionID . '_answer' . $temp . '">' . chr($temp+ ord("a")) . ". " . $answers[$temp] . '</label></div>';
+        if (strlen(trim($answers[$temp]))>0) {
+            echo '<div class="r' . $temp . '">';
+            echo '<input type="radio" name="' . $QuestionID . '_answer" value="' . $temp . '" id="' . $QuestionID . 'answer' . $temp . '" />';
+            echo '<label for="' . $QuestionID . '_answer' . $temp . '">' . chr($temp + ord("a")) . ". " . $answers[$temp] . '</label></div>';
+        }
     }
     echo '</DIV></DIV>';
 }
@@ -84,8 +90,12 @@ function FullQuestion($text, $answers, $markedOutOf = "1.00"){
 
 
 <?php
+foreach($questions as $question){
+    FullQuestion($question->Question, array($question->Choice0, $question->Choice1,$question->Choice2,$question->Choice3));
+}
+
 switch ( $QuizID ) {
-    case 1:
+    case 21:
         FullQuestion("What does WHMIS stand for?", array("Workplace Health Materials Information System", "Workplace Hazardous Materials Information System", "Workplace Hazardous Materials Information Sheet", "Workplace Hazardous MSDS Information Sheet"));
         FullQuestion("WHMIS is a law", array("True", "False"));
         FullQuestion("Under WHMIS Law who has duties in regards to hazardous materials?", array("Workers", "Employers", "Suppliers", "All of the above"));
@@ -102,12 +112,12 @@ switch ( $QuizID ) {
         FullQuestion("How often does an MSDS need to be updated?", array("Every three (3) years", "Never", "Every two (2) years", "Every years"));
         FullQuestion("An MSDS CANNOT be updated before three (3) years", array("True", "False"));
         break;
-    case 2:
+    case 22:
         FullQuestion("Test Question?", array("Answer 1", "Answer 2", "Answer 3", "Answer 4"));
         break;
 }
 ?>
 
-   <DIV align="center"><a href="javascript:void(0)" class="btn btn-primary" id="save_client_p1">Save</a></DIV>
+   <DIV align="center"><a href="javascript:void(0)" class="btn btn-primary" id="save_client_p1">Save</a></DIV></form>
 
 </div></div></div></div></div>

@@ -1,6 +1,11 @@
 <?php
 /*
-include_once ('/subpages/api.php');
+ if ($_SERVER['SERVER_NAME'] == "localhost") {
+          include_once('/subpages/api.php');
+      } else {
+          include_once('subpages/api.php');
+      }
+
 btnclass("VIEW")
 btnclass("EDIT")
 btnclass("DELETE")
@@ -83,4 +88,5 @@ function btnclass($xscolor, $stripecolor = ""){
         return "btn " . $size . " " . $xscolor;
     }
 }
+
 ?>

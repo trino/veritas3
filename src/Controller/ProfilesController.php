@@ -97,9 +97,7 @@
         }
         die();
     }
-        public function training(){}
-        public function quiz(){}
-        public function video(){}
+
 
         public function settings()        
         {
@@ -112,7 +110,7 @@
         }
 
         public function index()        {
-
+            $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');
             $this->set('ProClients', $this->Settings);
@@ -308,6 +306,10 @@
         }
         public function view($id = null)
         {
+            if(isset($_GET['success']))
+            {
+                $this->Flash->success('Order saved successfully');
+            }
             $this->set('uid', $id);
             $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -744,7 +746,14 @@
                     unset($post['id']);
                     $profile = $profiles->newEntity($post);
                     if ($profiles->save($profile)) {
+                        if($profile->profile_type == '5')
                         $username = 'driver_' . $profile->id;
+                        else
+                        if($profile->profile_type == '7')
+                        $username = 'owner_operator_' . $profile->id;
+                        else
+                        if($profile->profile_type == '8')
+                        $username = 'owner_driver_' . $profile->id;
                         $queries = TableRegistry::get('Profiles');
                         $queries->query()->update()->set(['username' => $username])
                             ->where(['id' => $profile->id])
@@ -1511,8 +1520,7 @@
         }
     }
 
-    public
-    function check_user($uid = '')
+    public function check_user($uid = '')
     {
         if (isset($_POST['username']) && $_POST['username'])
             $user = $_POST['username'];

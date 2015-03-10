@@ -1,3 +1,8 @@
+<?php if ($_SERVER['SERVER_NAME'] == "localhost") {
+          include_once('/subpages/api.php');
+      } else {
+          include_once('subpages/api.php');
+      }?>
 <style>
     @media print {
         .page-header {
@@ -34,8 +39,8 @@
 
 
 <?php
-    include_once ('/subpages/api.php');
-
+    include_once ('subpages/api.php');
+    $dr_cl = $doc_comp->getDriverClient(0, 0);
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
@@ -133,6 +138,14 @@
                                         <option
                                             value="6" <?php if (isset($return_profile_type) && $return_profile_type == 6) { ?> selected="selected"<?php } ?>>
                                             Contact
+                                        </option>
+                                        <option
+                                            value="7" <?php if (isset($return_profile_type) && $return_profile_type == 7) { ?> selected="selected"<?php } ?>>
+                                            Owner Operator
+                                        </option>
+                                        <option
+                                            value="8" <?php if (isset($return_profile_type) && $return_profile_type == 8) { ?> selected="selected"<?php } ?>>
+                                            Owner Driver
                                         </option>
 
                                     <?php } else { ?>
@@ -289,12 +302,13 @@
                                                                                         } ?>
 
                                                                                         <?php
-                                                                                            $checker = $this->requestAction('settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
+                                                                                           $checker = $this->requestAction('/settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id);
                                                                                             if ($sidebar->profile_edit == '1') {
 
                                                                                                 if ($checker == 1) {
                                                                                                     if ($this->request->session()->read('Profile.profile_type') == '2') {
-                                                                                                        if ($profile->profile_type == '5')
+                                                                                                        //echo $profile->profile_type;
+                                                                                                        if ($profile->profile_type == '5' || $profile->profile_type == '7' || $profile->profile_type == '8')
                                                                                                             echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => btnclass("EDIT")]);
                                                                                                     } else
                                                                                                         echo $this->Html->link(__('Edit'), ['action' => 'edit', $profile->id], ['class' => btnclass("EDIT")]);
@@ -324,11 +338,21 @@
 
                                                 if ($sidebar->document_list == 1/* && $doc != 0 && $cn != 0*/) {
                                                     ?>
-                                                    <a href="<?php echo $this->request->webroot . 'documents/index?type=&submitted_by_id=' . $profile->id; ?>"
-                                                       class="<?= btnclass("btn-info", "blue-soft") ?>">View Documents</a>
-                                                <?php
-                                                }
-                                            ?>
+                                                    <a href="<?php
+                                                    if($profile->profile_type == '5' || $profile->profile_type == '7' || $profile->profile_type == '8' )
+                                                    {
+                                                     echo $this->request->webroot . 'documents/index?type=&submitted_for_id=' . $profile->id;
+                                                     }
+                                                     else 
+                                                     {
+                                                        echo $this->request->webroot . 'documents/index?type=&submitted_by_id=' . $profile->id;
+                                                     }
+                                                      ?>"
+                                                    
+                                                    class="<?= btnclass("btn-info", "blue-soft") ?>">View Documents</a>
+                                                    <?php
+                                                    }
+                                                     ?>
                                         </td>
                                     </tr>
 

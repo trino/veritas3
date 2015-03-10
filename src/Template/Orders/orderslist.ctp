@@ -1,8 +1,11 @@
 <?php
-    include_once ('/subpages/api.php');
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id'));
-?>
+if ($_SERVER['SERVER_NAME'] == "localhost") {
+    include_once('/subpages/api.php');
+} else {
+    include_once('subpages/api.php');
+}?>
 <h3 class="page-title">
     Orders <?php if (isset($_GET['draft'])) { ?>(Draft)<?php } ?>
 </h3>

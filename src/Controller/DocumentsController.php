@@ -97,6 +97,14 @@
                 else
                     $cond = $cond . ' AND user_id = ' . $_GET['submitted_by_id'];
             }
+            
+            if (isset($_GET['submitted_for_id']) && $_GET['submitted_for_id']) {
+                if ($cond == '')
+                    $cond = $cond . ' uploaded_for = ' . $_GET['submitted_for_id'];
+                else
+                    $cond = $cond . ' AND uploaded_for = ' . $_GET['submitted_for_id'];
+            }
+            
             if (isset($_GET['client_id']) && $_GET['client_id']) {
                 if ($cond == '')
                     $cond = $cond . ' client_id = ' . $_GET['client_id'];
@@ -142,6 +150,9 @@
             }
             if (isset($_GET['submitted_by_id'])) {
                 $this->set('return_user_id', $_GET['submitted_by_id']);
+            }
+            if (isset($_GET['submitted_for_id'])) {
+                $this->set('return_submitted_for_id', $_GET['submitted_for_id']);
             }
             if (isset($_GET['client_id'])) {
                 $this->set('return_client_id', $_GET['client_id']);

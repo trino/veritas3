@@ -241,10 +241,10 @@
 
 
                                             <div class="clearfix"></div>
-                                            <div class="col-md-12" style="margin-bottom: 8px;">
+                                            <div class="col-md-12" style="margin-left:-7px;margin-bottom: 8px;">
                                                 <H4><i class="icon-doc font-blue-hoki"></i>
 								<span class="caption-subject bold font-blue-hoki uppercase">
-								Product Orders </span></H4>
+								Products Ordered </span></H4>
                                             </div>
 
 
@@ -455,35 +455,7 @@
 
 
 
-                                                <?php
-                                                    if($p[7]){
-                                                        ?>
-                                                        <tr class="odd" role="row">
-
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
-
-                                                            </td>
-                                                            <td>Check DL
-
-                                                                <?php
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Check DL")));
-                                                                ?>
-                                                            </td>
-                                                            <td class="actions">
-                                                                <?php
-                                                                    if (return_link('72', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('72', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
-                                                                    <? } ?>
-                                                            </td>
-                                                        </tr>
-                                                    <?php
-                                                    }
-                                                ?>
+                                                
 
 
 
@@ -507,14 +479,18 @@
                                                         foreach($doc as $d)
                                                         {
                                                             $title = ucfirst($d->title);
-                                                            $sub_doc_id = $d->id;
-                                                            $o_id = $order->id;
+                                                             $sub_doc_id = $d->id;
+                                                            //echo "_";
+                                                             $o_id = $order->id;
+                                                            //echo "_";continue;
                                                             $c_id = $order->client_id;
-                                                            $d_id = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $order->id);
+                                                            $d_id = $this->requestAction("/orders/getdocid/".$sub_doc_id."/". $o_id);
+                                                            if($d_id){
                                                             $docu_id = $d_id->id;
                                                             $cnt = $this->requestAction("/orders/getprocessed/".$d->table_name."/". $order->id);
-                                                            $line = PrintLine($line,$title,$cnt,$docu_id,$c_id,$o_id,$this->request->webroot,false);
+                                                            $line = PrintLine($line,$title,$cnt,$docu_id,$c_id,$o_id,$this->request->webroot,false);}
                                                         }
+                                                        //die();
 
                                                     }
                                                     /*

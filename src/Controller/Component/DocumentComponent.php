@@ -1166,13 +1166,12 @@ class DocumentComponent extends Component
         
         function getDriverClient($driver,$client)
         {
-            //echo $client;die();
             $controller = $this->_registry->getController();
             $logged_id = $controller->request->session()->read('Profile.id');
             //echo "<br/>";
             if(!$client){
             $cmodel = TableRegistry::get('Clients');
-            if(!$controller->request->session()->read('Profile.admin') && !$controller->request->session()->read('Profile.super'))
+            if(!$controller->request->session()->read('Profile.super'))
             $clients = $cmodel->find()->where(['(profile_id LIKE "'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.',%" OR profile_id LIKE "%,'.$logged_id.'")']);
             else{
                 if(!$driver)
@@ -1189,11 +1188,11 @@ class DocumentComponent extends Component
                
                $cmodel2 = TableRegistry::get('Clients');
                 $clients2 = $cmodel2->find()->where(['id'=>$client])->first();
-                if($clients2)
-                $profile_ids2 = $clients2->profile_id;
-                else
-                $profile_ids2 = '';
-                
+                if($clients2) {
+                    $profile_ids2 = $clients2->profile_id;
+                } else {
+                    $profile_ids2 = '';
+                }
                 if(!$profile_ids2)
                 $profile_ids2 = '9999999';
                 $model = TableRegistry::get('Profiles');
@@ -1204,19 +1203,16 @@ class DocumentComponent extends Component
                 $profile_ids2 = str_replace(',,',',',$profile_ids2);
                 $profile_ids2 = str_replace(',,',',',$profile_ids2);
                 
-                $q = $model->find()->where(['id IN ('.$profile_ids2.')','profile_type' => 5]);
+                $q = $model->find()->where(['id IN ('.$profile_ids2.')','(profile_type = 5 OR profile_type = 7 OR profile_type = 8)']);
                 
             }
             $profile_ids = '';
             foreach($clients as $c)
             {
 
-                if($profile_ids)
-                {
+                if($profile_ids) {
                     $profile_ids = $profile_ids.','.$c->profile_id;
-                }
-                else
-                {
+                } else {
                     $profile_ids = $c->profile_id;
                 }
             }
@@ -1232,17 +1228,16 @@ class DocumentComponent extends Component
             //echo $profile_ids.'_';die();
             if($driver==0 && $client==0)
             {
-                if($controller->request->session()->read('Profile.admin') || $controller->request->session()->read('Profile.super'))
+                if($controller->request->session()->read('Profile.super'))
                 {
                     
                     $model = TableRegistry::get('Profiles');
-                    $q = $model->find()->where(['profile_type' => 5]);
-                }
-                else
-                {
+                    $q = $model->find()->where(['(profile_type = 5 OR profile_type = 7 OR profile_type = 8)']);
+                    //var_dump($q);die();
+                } else {
                     $model = TableRegistry::get('Profiles');  
                      
-                    $q = $model->find()->where(['profile_type' => 5,'id IN ('.$profile_ids.')']);
+                    $q = $model->find()->where(['(profile_type = 5 OR profile_type = 7 OR profile_type = 8)','id IN ('.$profile_ids.')']);
                 }  
                 
             }
@@ -1371,6 +1366,12 @@ class DocumentComponent extends Component
             }
             die;
 
+        }
+        function getOrderById($id)
+        {
+            $orders = TableRegistry::get('orders');
+            $order = $orders->find()->where(['id'=>$id])->first();
+            return $order;
         }
         
 }

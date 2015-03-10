@@ -78,15 +78,23 @@
 
                                     <select name="profile_type" class="form-control member_type required">
                                         <option
-                                            value="5" <?php /*if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php } */ ?>>
+                                            value="5" <?php if (isset($p) && $p->profile_type == 5) { ?> selected="selected" <?php }  ?>>
                                             Driver
+                                        </option>
+                                        <option
+                                            value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }  ?>>
+                                            Owner Operator
+                                        </option>
+                                        <option
+                                            value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php }  ?>>
+                                            Owner Driver
                                         </option>
 
                                     </select>
 
                                 </div>
                             </div>
-                            <?php if ($sidebar->client_option == 0) { ?>
+                            <?php if ($sidebar->client_option == 0 /*&& (isset($p) && $p->profile_type == 5)*/) { ?>
 
                                 <div class="col-md-4" id="driver_div"
                                      style="">
@@ -476,7 +484,7 @@
         })
 
         $('.member_type').change(function () {
-            if ($(this).val() == '5') {
+            if ($(this).val() == '5' || $(this).val() == '7' || $(this).val() == '8') {
                 $('.nav-tabs li:not(.active)').each(function () {
                     $(this).hide();
                 });

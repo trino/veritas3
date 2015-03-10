@@ -26,3 +26,4 @@ webroot/subpages/profile/page.php
 src/Template/Orders/webservice.ctp
 .idea/misc.xml
 src/Template/Orders/webservice.ctp
+*.xml

@@ -255,6 +255,10 @@ if ($activetab == "permissions") {
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[order_requalify]" value="1" <?php if (isset($sidebar) && $sidebar->order_requalify == 1) echo "checked"; ?> /> Re-Qualify
                                                             </label>
+
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[order_intact]" value="1" <?php if (isset($sidebar) && $sidebar->order_intact == 1) echo "checked"; ?> /> Intact Orders
+                                                            </label>
                                                         </div>
                                                 </td>
                                             </tr>
@@ -347,22 +351,41 @@ if ($activetab == "permissions") {
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->analytics == 0) echo "checked"; ?>/>
                                                         No </label>
                                                 </td>
-                                            </tr>       
-                                                <!--<tr>
-                                                <td class="vtop">Drafts</td>
-                                                <td>
-                                                        <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[drafts]"
-                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->drafts == 1) echo "checked"; ?>/>
-                                                        Yes </label>
-                                                        <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[drafts]"
-                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->drafts == 0) echo "checked"; ?>/>
-                                                        No </label>
-                                                </td>
-                                            </tr>-->
+                                            </tr>
+
+                                                                           <tr>
+                                                                               <td class="vtop">Training</td>
+                                                                               <td>
+                                                                                   <label class="uniform-inline">
+                                                                                       <input <?php echo $is_disabled ?> type="radio"
+                                                                                                                         name="side[training]"
+                                                                                                                         value="1" <?php if (isset($sidebar) && $sidebar->training == 1) echo "checked"; ?>/>
+                                                                                       Yes </label>
+                                                                                   <label class="uniform-inline">
+                                                                                       <input <?php echo $is_disabled ?> type="radio"
+                                                                                                                         name="side[training]"
+                                                                                                                         value="0" <?php if (isset($sidebar) && $sidebar->training == 0) echo "checked"; ?>/>
+                                                                                       No </label>
+                                                                               </td>
+                                                                           </tr>
+
+
+
+                                                                           <!--<tr>
+                                                                           <td class="vtop">Drafts</td>
+                                                                           <td>
+                                                                                   <label class="uniform-inline">
+                                                                                   <input <?php echo $is_disabled ?> type="radio"
+                                                                                                                     name="side[drafts]"
+                                                                                                                     value="1" <?php if (isset($sidebar) && $sidebar->drafts == 1) echo "checked"; ?>/>
+                                                                                   Yes </label>
+                                                                                   <label class="uniform-inline">
+                                                                                   <input <?php echo $is_disabled ?> type="radio"
+                                                                                                                     name="side[drafts]"
+                                                                                                                     value="0" <?php if (isset($sidebar) && $sidebar->drafts == 0) echo "checked"; ?>/>
+                                                                                   No </label>
+                                                                           </td>
+                                                                       </tr>-->
                                               <tr>
                                                 <td class="vtop">Recent Activity</td>
                                                 <td>
@@ -878,7 +901,23 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr>
 
-
+                                            <tr>
+                                                <td>
+                                                    Intact Orders
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[orders_intact]"
+                                                                                          value="1" <?php if (isset($block) && $block->orders_intact == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="block[orders_intact]"
+                                                                                          value="0" <?php if (isset($block) && $block->orders_intact == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                </td>
+                                            </tr>
                                             <!--tr>
                                                 <td>
                                                     Master <?=$settings->client; ?>

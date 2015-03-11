@@ -91,10 +91,15 @@ if (isset($quiz)){
     </div>
 </div>
 
-    <div class="col-md-12">
+    <div class="col-md-2">
     <div class="form-group">
-<button type="submit" class="btn blue"><i class="fa fa-check"></i> Save Changes</button>
+        <button type="submit" class="btn blue"><i class="fa fa-check"></i> Save Changes</button>
     </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <A href="<?= $this->request->webroot ?>training/users?quizid=<?= $_GET["quizid"] ?>" class="btn btn-info">Users who have taken the test</A>
+        </div>
     </div>
 </form>
 <?php if (isset($questions)) { ?>

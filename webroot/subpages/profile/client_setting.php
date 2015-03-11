@@ -67,7 +67,7 @@
                                         <!--</div>-->
 
 <script>
-$(function(){
+/*$(function(){
      $('#save_client').click(function(){
                 $('#save_client').text('Saving..');
                     var str = $('#clientform input').serialize();
@@ -85,7 +85,7 @@ $(function(){
                        } 
                     })
                });
-});
+});*/
 </script>
 
 </DIV><!--</DIV> END PORTLET-->

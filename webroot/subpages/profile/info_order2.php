@@ -421,7 +421,20 @@
                     } ?>
 
                     <ul class="pricing-content list-unstyled">
+                         <?php 
+                            foreach($products as $p){
+                                
+                        ?>
                         <li>
+
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title;?></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb0" value="1"/></div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <?php
+                            }
+                        ?>
+                        <!--<li>
 
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
@@ -483,7 +496,7 @@
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="check_dl" id="form7" value="1"></div>
                             <div class="clearfix"></div>
-                        </li>
+                        </li>-->
 
                     </ul>
                     <div class="pricing-footer">
@@ -520,14 +533,15 @@
                     } ?>
 
                     <ul class="pricing-blue-content list-unstyled">
-
+                        
+                       
                         <li>
 
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb0" value="1"/></div>
                             <div class="clearfix"></div>
                         </li>
-
+                        
                         <li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
                             <div class="col-xs-2"><input checked type="checkbox" name="dri_abs" id="formb1" value="1"></div>

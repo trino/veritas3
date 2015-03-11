@@ -94,6 +94,9 @@ if (isset($profile))
                                 <a href="#tab_1_8" data-toggle="tab">Display</a>
                             </li>
                              <li>
+                                <a href="#tab_1_10" data-toggle="tab">Products</a>
+                            </li>
+                             <li>
                                 <a href="#tab_1_9" data-toggle="tab">Clear Data</a>
                             </li>
                         <?php
@@ -115,10 +118,13 @@ if (isset($profile))
                     </div>
 
                     <div class="tab-pane" id="tab_1_6">
-                        <?php include('subpages/profile/page.php'); ?>
+                        <?php //include('subpages/profile/page.php'); ?>
                     </div>
                     <div class="tab-pane" id="tab_1_8">
                         <?php include('subpages/profile/client_setting.php'); ?>
+                    </div>
+                    <div class="tab-pane" id="tab_1_10">
+                        <?php include('subpages/profile/products.php'); ?>
                     </div>
                     <div class="tab-pane" id="tab_1_9">
                         <a href="javascript:void(0)" class="btn btn-danger" id="cleardata">Clear Data</a>
@@ -191,53 +197,53 @@ if (isset($profile))
         if(isset($id))
         {
          ?>
-        initiate_ajax_upload('clientimg');
-        $('.addclientz').click(function () {
-            var client_id = $(this).val();
-            var addclient = "";
-            var msg = '';
-            var nameId = 'msg_' + $(this).val();
-            if ($(this).is(':checked')) {
-                addclient = '1';
-                msg = '<span class="msg" style="color:#45B6AF">Added</span>';
-            }
-            else {
-                addclient = '0';
-                msg = '<span class="msg" style="color:red">Removed</span>';
-            }
-
-            $.ajax({
-                type: "post",
-                data: "client_id=" + client_id + "&add=" + addclient + "&user_id=" +<?php echo $id;?>,
-                url: "<?php echo $this->request->webroot;?>clients/addprofile",
-                success: function () {
-                    $('.' + nameId).html(msg);
+            initiate_ajax_upload('clientimg');
+            $('.addclientz').click(function () {
+                var client_id = $(this).val();
+                var addclient = "";
+                var msg = '';
+                var nameId = 'msg_' + $(this).val();
+                if ($(this).is(':checked')) {
+                    addclient = '1';
+                    msg = '<span class="msg" style="color:#45B6AF">Added</span>';
                 }
-            })
-        });
+                else {
+                    addclient = '0';
+                    msg = '<span class="msg" style="color:red">Removed</span>';
+                }
+    
+                $.ajax({
+                    type: "post",
+                    data: "client_id=" + client_id + "&add=" + addclient + "&user_id=" +<?php echo $id;?>,
+                    url: "<?php echo $this->request->webroot;?>clients/addprofile",
+                    success: function () {
+                        $('.' + nameId).html(msg);
+                    }
+                })
+            });
         <?php
          }
          else
          {?>
-        $('.addclientz').click(function () {
-            var nameId = 'msg_' + $(this).val();
-            var client_id = "";
-            var msg = '';
-            $('.addclientz').each(function () {
-                if ($(this).is(':checked')) {
-                    msg = '<span class="msg" style="color:#45B6AF">Added</span>';
-                    client_id = client_id + "," + $(this).val();
-                }
-                else {
-                    msg = '<span class="msg" style="color:red">Removed</span>';
-                }
+            $('.addclientz').click(function () {
+                var nameId = 'msg_' + $(this).val();
+                var client_id = "";
+                var msg = '';
+                $('.addclientz').each(function () {
+                    if ($(this).is(':checked')) {
+                        msg = '<span class="msg" style="color:#45B6AF">Added</span>';
+                        client_id = client_id + "," + $(this).val();
+                    }
+                    else {
+                        msg = '<span class="msg" style="color:red">Removed</span>';
+                    }
+                });
+    
+                client_id = client_id.substr(1, length.client_id);
+                $('.client_profile_id').val(client_id);
+                $('.' + nameId).html(msg);
+    
             });
-
-            client_id = client_id.substr(1, length.client_id);
-            $('.client_profile_id').val(client_id);
-            $('.' + nameId).html(msg);
-
-        });
         <?php
         }
         ?>
@@ -274,35 +280,35 @@ if (isset($profile))
     {
         ?>
 
-    function searchClient() {
-        var key = $('#searchClient').val();
-        $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
-        $.ajax({
-            url: '<?php echo $this->request->webroot;?>clients/getAjaxClient/<?php echo $id;?>',
-            data: 'key=' + key,
-            type: 'get',
-            success: function (res) {
-                $('#clientTable').html(res);
-            }
-        });
-    }
+        function searchClient() {
+            var key = $('#searchClient').val();
+            $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>clients/getAjaxClient/<?php echo $id;?>',
+                data: 'key=' + key,
+                type: 'get',
+                success: function (res) {
+                    $('#clientTable').html(res);
+                }
+            });
+        }
     <?php
     }
     else
     {
     ?>
-    function searchClient() {
-        var key = $('#searchClient').val();
-        $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
-        $.ajax({
-            url: '<?php echo $this->request->webroot;?>clients/getAjaxClient',
-            data: 'key=' + key,
-            type: 'get',
-            success: function (res) {
-                $('#clientTable').html(res);
-            }
-        });
-    }
+        function searchClient() {
+            var key = $('#searchClient').val();
+            $('#clientTable').html('<tbody><tr><td><img src="<?php echo $this->request->webroot;?>assets/admin/layout/img/ajax-loading.gif"/></td></tr></tbody>');
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>clients/getAjaxClient',
+                data: 'key=' + key,
+                type: 'get',
+                success: function (res) {
+                    $('#clientTable').html(res);
+                }
+            });
+        }
     <?php
     }
     ?>

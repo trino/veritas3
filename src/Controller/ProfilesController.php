@@ -99,9 +99,11 @@
     }
 
 
-        public function settings()        {
+        public function settings()        
+        {
             $this->loadModel('Logos');
-
+            $this->loadMOdel('OrderProducts');
+            $this->set('products', $this->OrderProducts->find()->all());
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary' => '1'])));
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary' => '2'])));
@@ -1695,6 +1697,48 @@
         die();
         $this->layout = "blank";
         }
+    }
+    
+    function sproduct($id='0')
+    {
+        if(isset($_POST))
+        {
+            $p = TableRegistry::get('order_products');
+            $title = $_POST['title'];
+            if($id!=0)
+            {
+                
+                if ($p->query()->update()->set(['title' =>$title])->where(['id' => $id])->execute()) 
+                {
+                    echo $title;
+                }
+            }
+            else
+            {
+                 $profile = $p->newEntity($_POST);
+                if ($p->save($profile)) {
+                    
+                    echo '<tr>
+                            <td>'.$profile->id.'</td>
+                            <td class="title_'.$profile->id.'">'.$title.'</td>
+                            <td><input type="checkbox" id="chk_'.$profile->id.'" class="enable"/></td>
+                            <td><span  class="btn btn-info editpro" id="edit_'.$profile->id.'">Edit</span></td>
+                        </tr>';
+                    }
+            }
+        }
+        die();
+    }
+    function enableproduct($id)
+    {
+        $p = TableRegistry::get('order_products');
+        $enable = $_POST['enable'];
+        if ($p->query()->update()->set(['enable' =>$enable])->where(['id' => $id])->execute())
+        {
+            echo $enable;
+        }
+        
+        die();
     }
 
       /*  getDocumentcountz()

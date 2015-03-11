@@ -574,7 +574,7 @@
                                                         </td>
                                                 <td>
                                                    <!-- <div class="col-md-2" style="text-align: right;">-->
-                                                        <a href="#" class="btn-xs btn-success" onclick="$('#edit_sub_<?php echo $sub['id']; ?>').toggle(150);$('.msg').hide();">Edit</a>
+                                                        <a href="javascript:void(0)" class="btn-xs btn-success" onclick="$('#edit_sub_<?php echo $sub['id']; ?>').toggle(150);$('.msg').hide();">Edit</a>
                                                    </td>
                                                    <td>
                                                         <div class="col-md-12" id="edit_sub_<?php echo $sub['id']; ?>" style="display: none;margin:10px 0;padding:0">

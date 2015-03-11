@@ -158,7 +158,7 @@ if (count($_POST)>0) {
         FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3,  $question->Choice4,  $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
     }
     if (!is_object($answer)) {
-        echo '<DIV align="center"><button type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button></DIV>';
+        echo '<DIV align="center"><button type="submit" class="btn blue" onclick="return confirm(' . "'Are you sure you are done?'" . ');"><i class="fa fa-check"></i> Save</button></DIV>';
     }
     echo "</form>";
 }

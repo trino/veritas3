@@ -94,7 +94,7 @@ $p = $forms_arr;
             }
             return $lineclass;
         }
-
+        $lineclass = PrintLine($lineclass, "Premium National Criminal Record Check", "prem_nat", $p[0]);
         $lineclass = PrintLine($lineclass, "Driver's Record Abstract (MVR)", "dri_abs", $p[1]);
         $lineclass = PrintLine($lineclass, "CVOR", "CVOR", $p[2]);
         $lineclass = PrintLine($lineclass, "Pre-employment Screening Program Report", "prem_nat", $p[3]);

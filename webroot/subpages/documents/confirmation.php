@@ -95,8 +95,8 @@
                     }
                 }
                 return $lineclass;
-            }
-
+            }   
+            $lineclass = PrintLine($lineclass, "Premium National Criminal Record Check", "prem_nat", $p[0]);
             $lineclass = PrintLine($lineclass, "Driver's Record Abstract (MVR)", "dri_abs", $p[1]);
             $lineclass = PrintLine($lineclass, "CVOR", "CVOR", $p[2]);
             $lineclass = PrintLine($lineclass, "Pre-employment Screening Program Report", "prem_nat", $p[3]);
@@ -125,6 +125,7 @@
             } else {
                 echo '<TR><TD colspan="3"></TD></TR></tbody></table>';
             }
+
         ?>
 
     </div>

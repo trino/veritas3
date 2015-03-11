@@ -102,8 +102,11 @@
         public function settings()        
         {
             $this->loadModel('Logos');
-            $this->loadMOdel('OrderProducts');
+            $this->loadModel('OrderProducts');
+            $this->loadModel('ProfileTypes');
             $this->set('products', $this->OrderProducts->find()->all());
+            
+            $this->set('ptypes',$this->ProfileTypes->find()->all());
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary' => '1'])));
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary' => '2'])));
@@ -426,6 +429,8 @@
         {
             $this->set('uid', '0');
             $this->set('id', '0');
+            $this->loadModel("ProfileTypes");
+            $this->set("ptypes",$this->ProfileTypes->find()->where(['enable'=>'1'])->all());
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             // Only super admin and recruiter are allowed to create profiles as discussed on feb 19
             if (!$this->request->session()->read('Profile.super')) {
@@ -1729,6 +1734,36 @@
         }
         die();
     }
+     function ptypes($id='0')
+    {
+        if(isset($_POST))
+        {
+            $p = TableRegistry::get('profile_types');
+            $title = $_POST['title'];
+            if($id!=0)
+            {
+                
+                if ($p->query()->update()->set(['title' =>$title])->where(['id' => $id])->execute()) 
+                {
+                    echo $title;
+                }
+            }
+            else
+            {
+                 $profile = $p->newEntity($_POST);
+                if ($p->save($profile)) {
+                    
+                    echo '<tr>
+                            <td>'.$profile->id.'</td>
+                            <td class="titleptype_'.$profile->id.'">'.$title.'</td>
+                            <td><input type="checkbox" id="pchk_'.$profile->id.'" class="penable"/></td>
+                            <td><span  class="btn btn-info editptype" id="editptype_'.$profile->id.'">Edit</span></td>
+                        </tr>';
+                    }
+            }
+        }
+        die();
+    }
     function enableproduct($id)
     {
         $p = TableRegistry::get('order_products');
@@ -1740,6 +1775,21 @@
         
         die();
     }
+    function ptypesenable($id)
+    {
+        $p = TableRegistry::get('profile_types');
+        $enable = $_POST['enable'];
+        if ($p->query()->update()->set(['enable' =>$enable])->where(['id' => $id])->execute())
+        {
+            if ($enable=='1')
+                echo "Enabled";
+            else
+                echo "Disabled";
+        }
+        
+        die();
+    }
+    
 
       /*  getDocumentcountz()
         {

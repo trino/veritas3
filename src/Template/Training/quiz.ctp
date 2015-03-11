@@ -74,7 +74,13 @@ function question($section){
     }
 }
 
-function answers($QuizID, $QuestionID, $text, $answers, $Index = 0){
+function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer, $correctanswer){
+    $disabled="";
+    $selected=-1;
+    if (is_object($usersanswer)){
+        $disabled=" disabled";
+        $selected=$usersanswer->Answer;
+    }
     $Qold = $QuestionID;
     $QuestionID = $QuizID . ':' . $Index;
     echo '<input type="hidden" name="' . $QuestionID . ':sequencecheck" value="' . $Qold . '" />';
@@ -83,31 +89,45 @@ function answers($QuizID, $QuestionID, $text, $answers, $Index = 0){
     for ($temp=0; $temp<count($answers); $temp+=1){
         if (strlen(trim($answers[$temp]))>0) {
             echo '<div class="r' . $temp . '">';
-            echo '<input type="radio" name="' . $QuestionID . '_answer" value="' . $temp . '" id="' . $QuestionID . ":" . $temp . '" required />';
-            echo '<label for="' . $QuestionID . ":" . $temp . '">' . chr($temp + ord("a")) . ". " . $answers[$temp] . '</label></div>';
+            echo '<input type="radio" name="' . $QuestionID . '_answer" value="' . $temp . '" id="' . $QuestionID . ":" . $temp . '" required' . $disabled;
+            if($selected == $temp){ echo " checked"; }
+            echo '/><label for="' . $QuestionID . ":" . $temp . '">' . chr($temp + ord("a")) . ". " . $answers[$temp];
+            if (is_object($usersanswer) && $selected == $temp){
+                if ($correctanswer == $temp) {
+                    echo " <B>Correct!</B>";
+                } else {
+                    echo " <B>Incorrect</B>";
+                }
+            }
+            echo '</label></div>';
         }
     }
     echo '</DIV></DIV>';
 }
 
-function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0){
+function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0, $usersanswer){
+    $flagged="";
+    if (is_object($usersanswer)){
+        if ($usersanswer->flagged){ $flagged = " checked";}
+        $flagged.=" disabled";
+    }
     $QuestionID = $QuizID . ':' . $Index;
     echo '<div class="state">Not yet answered</div><div class="grade">Marked out of ' . $markedOutOf  . '</div>';
     echo '<div class="questionflag editable" aria-atomic="true" aria-relevant="text" aria-live="assertive">';
     echo '<input type="hidden" name="' . $QuestionID . '_flagged" value="0" />';
-    echo '<input type="checkbox" id="' . $QuestionID . '_flaggedcheckbox" name="' . $QuestionID . '_flaggedcheckbox" value="1" />';
+    echo '<input type="checkbox" id="' . $QuestionID . '_flaggedcheckbox" name="' . $QuestionID . '_flaggedcheckbox" value="1" ' . $flagged . '/>';
         //*<input type="hidden" value="qaid=16821&amp;qubaid=873&amp;qid=55&amp;slot=1&amp;checksum=6e752fddd87489abd0ec093720443089&amp;sesskey=JiVfZNWBDK&amp;newstate=" class="questionflagpostdata" /> I DONT KNOW WHAT THIS IS FOR
     echo '<label id="' . $QuestionID . '_flaggedlabel" for="' . $QuestionID . '_flaggedcheckbox">';
     echo '<img alt=' . $Index . ' src="http://asap-training.com/theme/image.php?theme=aardvark&amp;component=core&amp;rev=1415027139&amp;image=i%2Funflagged" alt="Not flagged" id="' . $Index . ':flaggedimg" /></label></div>';
 }
 
-function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00"){
+function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00", $usersanswer, $correctanswer){
     global $question;
     $question+=1;
     question(0);
-    questionheader($QuizID, $question, $markedOutOf, $index);
+    questionheader($QuizID, $question, $markedOutOf, $index, $usersanswer);
     question(1);
-    answers($QuizID, $question, $text, $answers, $index);
+    answers($QuizID, $question, $text, $answers, $index, $usersanswer,$correctanswer);
     question(2);
 }
 ?>
@@ -124,10 +144,29 @@ if (count($_POST)>0) {
     echo '<form action="quiz?quizid=' . $_GET["quizid"] . '" method="post" enctype="multipart/form-data" accept-charset="utf-8" id="responseform">';
     foreach ($questions as $question) {
         $question=clean($question,1);
-        FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3), $question->QuestionID, "1.00");
+        $answer="";
+        if (isset($useranswers)){
+            foreach($useranswers as $answers){
+                if ($answers->QuestionID == $question->QuestionID) {
+                    $answer = $answers;
+                    continue;
+                }
+            }
+        }
+        FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3), $question->QuestionID, "1.00", $answer, $question->Answer);
     }
-    echo '<DIV align="center"><button type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button></DIV></form>';
+    if (!is_object($answer)) {
+        echo '<DIV align="center"><button type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button></DIV>';
+    }
+    echo "</form>";
 }
+
+
+
+
+
+
+
 
 switch ( $QuizID ) {
     case 21:

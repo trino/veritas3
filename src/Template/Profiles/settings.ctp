@@ -96,6 +96,9 @@ if (isset($profile))
                              <li>
                                 <a href="#tab_1_10" data-toggle="tab">Products</a>
                             </li>
+                            <li>
+                                <a href="#tab_1_11" data-toggle="tab">Profile Types</a>
+                            </li>
                              <li>
                                 <a href="#tab_1_9" data-toggle="tab">Clear Data</a>
                             </li>
@@ -125,6 +128,9 @@ if (isset($profile))
                     </div>
                     <div class="tab-pane" id="tab_1_10">
                         <?php include('subpages/profile/products.php'); ?>
+                    </div>
+                     <div class="tab-pane" id="tab_1_11">
+                        <?php include('subpages/profile/profile_types.php'); ?>
                     </div>
                     <div class="tab-pane" id="tab_1_9">
                         <a href="javascript:void(0)" class="btn btn-danger" id="cleardata">Clear Data</a>

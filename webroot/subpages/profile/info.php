@@ -79,8 +79,56 @@
                                     name="<?php if (!isset($p)){ echo 'profile_type'; }?>" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id)/* || ($this->request->session()->read('Profile.profile_type') == '2')*/) echo "disabled='disabled'"; ?>
                                     class="form-control member_type" required='required' onchange="$('#nProfileType').val($(this).val());">
                                     <option value="">Select</option>
+                                    
+                                    <?php 
+                                    $isISB = (isset($sidebar) && $settings->client_option == 0);
+                                    foreach($ptypes as $k=>$pt)
+                                    {
+                                        if($pt->id =='1')
+                                        {
+                                            if($this->request->session()->read('Profile.super'))
+                                            {
+                                                ?>
+                                                <option
+                                                    value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == 1) { ?> selected="selected" <?php } ?>>
+                                                    <?php echo $pt->title;?>
+                                                </option>
+                                            <?php
+                                                
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if($isISB)
+                                            { 
+                                                if ($pt->id<='8') 
+                                                {
+                                                ?>
+                                                <option
+                                                        value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == $pt->id) { ?> selected="selected" <?php } ?>>
+                                                        <?php echo $pt->title;?>
+                                                </option>
+                                            <?php
+                                                }
+                                            }
+                                            else
+                                            {
+                                                ?>
+                                                <option
+                                                    value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == $pt->id) { ?> selected="selected" <?php } ?>>
+                                                    <?php echo $pt->title;?>
+                                                </option>
+                                        <?php
+                                            }
+                                        }
+                                        
+                                    ?>
+                                        
+                                    <?php    
+                                    }
+                                    ?>
                                     <?php
-
+                                        /*
                                         if ($this->request->session()->read('Profile.super')) {
                                             ?>
                                             <option
@@ -89,7 +137,7 @@
                                             </option>
                                         <?php }
 
-                                        $isISB = (isset($sidebar) && $settings->client_option == 0);
+                                        
                                         if ($isISB) {
                                             ?>
 
@@ -136,15 +184,15 @@
 
                                             <option value="7" <?php if (isset($p) && $p->profile_type == 7) { ?> selected="selected" <?php }
                                                 if (!$this->request->session()->read('Profile.super') && $this->request->session()->read('Profile.profile_type')!='2') { ?> disabled="disabled"
-                                <?php }?>>
-                                    Owner Operator
-                                </option>
-
-                                <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php }
-                                                if (!$this->request->session()->read('Profile.super') && $this->request->session()->read('Profile.profile_type')!='2') { ?> disabled="disabled"
-                                <?php } ?>>
-                                    Owner Driver
-                                </option>
+                                            <?php }?>>
+                                                Owner Operator
+                                            </option>
+            
+                                            <option value="8" <?php if (isset($p) && $p->profile_type == 8) { ?> selected="selected" <?php }
+                                                            if (!$this->request->session()->read('Profile.super') && $this->request->session()->read('Profile.profile_type')!='2') { ?> disabled="disabled"
+                                            <?php } ?>>
+                                                Owner Driver
+                                            </option>
 
                                         <?php } else { ?>
 
@@ -164,7 +212,7 @@
                                                 Partner
                                             </option>
 
-                                        <?php } ?>
+                                        <?php }*/ ?>
 
 
                                 </select>

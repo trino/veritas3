@@ -48,6 +48,8 @@ function clean($data, $datatype=0){
                 $data->Choice1 = clean($data->Choice1);
                 $data->Choice2 = clean($data->Choice2);
                 $data->Choice3 = clean($data->Choice3);
+                $data->Choice4 = clean($data->Choice4);
+                $data->Choice5 = clean($data->Choice5);
                 return $data;
                 break;
         }
@@ -153,7 +155,7 @@ if (count($_POST)>0) {
                 }
             }
         }
-        FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3), $question->QuestionID, "1.00", $answer, $question->Answer);
+        FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3,  $question->Choice4,  $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
     }
     if (!is_object($answer)) {
         echo '<DIV align="center"><button type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button></DIV>';
@@ -185,9 +187,6 @@ switch ( $QuizID ) {
         FullQuestion("What controlled substances need an MSDS?", array("Any that are being shipped from site", "Every controlled substance received at the site", "Those that are being used on a daily basis", "The really dangerous ones"));
         FullQuestion("How often does an MSDS need to be updated?", array("Every three (3) years", "Never", "Every two (2) years", "Every years"));
         FullQuestion("An MSDS CANNOT be updated before three (3) years", array("True", "False"));
-        break;
-    case 22:
-        FullQuestion("Test Question?", array("Answer 1", "Answer 2", "Answer 3", "Answer 4"));
         break;
 }
 ?>

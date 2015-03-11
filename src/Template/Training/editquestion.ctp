@@ -25,6 +25,8 @@ function clean($data, $datatype=0){
                 $data->Choice1 = clean($data->Choice1);
                 $data->Choice2 = clean($data->Choice2);
                 $data->Choice3 = clean($data->Choice3);
+                $data->Choice4 = clean($data->Choice4);
+                $data->Choice5 = clean($data->Choice5);
                 return $data;
                 break;
         }
@@ -65,6 +67,7 @@ if (isset($question)) {$question = clean($question,1);}
             echo '<a href="' . $this->request->webroot . 'training/editquestion?new=true&action=delete&QuestionID=' . $_GET["QuestionID"] . '&quizid=' . $_GET["quizid"] . '" onclick="return confirm(' . "'Are you sure you want to delete this question?'" . ');" class="floatright btn btn-danger btnspc">Delete</a>';
             $QuizID="&quizid=" . isset($quiz);
         }?>
+        <a href="<?php echo $this->request->webroot; ?>training/edit?quizid=<?= $_GET["quizid"]; ?>" class="floatright btn btnspc btn-primary" onclick="return areyousure();">Back</a>
     </div>
 
     <form action="<?= $this->request->webroot; ?>training/editquestion?action=save&quizid=<?= $_GET["quizid"] ?>&new=false&QuestionID=<?= $_GET["QuestionID"] ?>" method="post">
@@ -74,24 +77,24 @@ if (isset($question)) {$question = clean($question,1);}
                 <label class="control-label">Question :</label>
                 <?= '<input name="QuizID" type="hidden" value="' . $_GET["quizid"] . '"><input name="QuestionID" type="hidden" value="' . $_GET["QuestionID"] . '">'; ?>
                 <?= '<input name="new" type="hidden" value="' . $_GET["new"] . '">'; ?>
-                <input name="Question" class="form-control required" value="<?php if (isset($question)) { echo $question->Question; } ?>" />
+                <input name="Question" onchange="changed=true;" class="form-control required" value="<?php if (isset($question)) { echo $question->Question; } ?>" />
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Image :</label>
-                <input name="Picture" class="form-control required" value="<?php if (isset($question)) { echo $question->Picture; } ?>" />
+                <input name="Picture" onchange="changed=true;" class="form-control required" value="<?php if (isset($question)) { echo $question->Picture; } ?>" />
             </div>
         </div>
 
         <?php function printanswer($index, $value = "", $correctanswer=0){
             echo '<div class="col-md-6">';
             echo '<div class="form-group">';
-                echo '<label class="control-label">Answer ' . ($index+1) . ' :</label><BR>';
+                echo '<label class="control-label">Answer ' . chr(ord("a") + $index) . ' :</label><BR>';
                 echo '<label class="uniform-inline"><span>';
                     if ($correctanswer == $index){ $checked = " checked";} else {$checked= " ANSWER="  . $correctanswer ;}
-                    echo '<input type="radio" name="answer" value="' . $index . '"' . $checked . '>';
-                    echo '<input type="text" name="Choice' . $index . '" value="' . $value;
+                    echo '<input onchange="changed=true;" type="radio" name="answer" value="' . $index . '"' . $checked . '>';
+                    echo '<input onchange="changed=true;" type="text" id="Choice' . $index . '" name="Choice' . $index . '" value="' . $value;
                      //if (isset($question)) { echo $question->$answer; }
                 echo '"></span></label></div></div>';
             }
@@ -101,17 +104,36 @@ if (isset($question)) {$question = clean($question,1);}
             printanswer(1, $question->Choice1, $question->Answer);
             printanswer(2, $question->Choice2, $question->Answer);
             printanswer(3, $question->Choice3, $question->Answer);
+            printanswer(4, $question->Choice4, $question->Answer);
+            printanswer(5, $question->Choice5, $question->Answer);
         } else {
-            for ($temp=0; $temp<4; $temp+=1) {
+            for ($temp=0; $temp<6; $temp+=1) {
                 printanswer($temp);
             }
         }
 
 ?>
 
-        <div class="col-md-12">
+        <div class="col-md-2">
             <div class="form-group">
                 <button type="submit" class="btn blue"><i class="fa fa-check"></i> Save Changes</button>
             </div>
         </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <A href="#" class="btn btn-info" onclick="truefalse();">True/False</A>
+            </div>
+        </div>
     </form>
+<script>
+    var changed = false;
+    function areyousure(){
+        if (changed) { return confirm('Are you sure you want to exit without saving your changes?');}
+        return true;
+    }
+
+    function truefalse(){
+        document.getElementById("Choice0").value="True";
+        document.getElementById("Choice1").value="False";
+    }
+</script>

@@ -81,7 +81,7 @@ class TrainingController extends AppController {
                     break;
             }
             if (isset($_GET["QuestionID"])) {
-                echo "quizID= " . $_GET["quizid"] . " questionid=" . $_GET["QuestionID"];
+                //echo "quizID= " . $_GET["quizid"] . " questionid=" . $_GET["QuestionID"];
                 $table = TableRegistry::get('training_quiz');
                 $quiz =  $table->find()->where(['QuizID'=>$_GET["quizid"], 'QuestionID'=> $_GET["QuestionID"]])->first();
                 $this->set('question',$quiz );
@@ -154,13 +154,13 @@ class TrainingController extends AppController {
         //$post=$this->i2($post);
         $table = TableRegistry::get('training_quiz');
         if($post['new'] == "true") {
-            $table->query()->insert(['Question', 'QuizID', 'QuestionID', 'Answer', 'Choice0', 'Choice1', 'Choice2', 'Choice3', 'Picture'])
-                ->values(['Question' => $post["Question"], 'QuizID' => $post["QuizID"], 'QuestionID' => $post['QuestionID'], 'Answer' => $post['Answer'], 'Choice0' => $post['Choice0'], 'Choice1' => $post['Choice1'], 'Choice2' => $post['Choice2'], 'Choice3' => $post['Choice3'], 'Picture' => $post['Picture']])
+            $table->query()->insert(['Question', 'QuizID', 'QuestionID', 'Answer', 'Choice0', 'Choice1', 'Choice2', 'Choice3', 'Choice4', 'Choice5', 'Picture'])
+                ->values(['Question' => $post["Question"], 'QuizID' => $post["QuizID"], 'QuestionID' => $post['QuestionID'], 'Answer' => $post['answer'], 'Choice0' => $post['Choice0'], 'Choice1' => $post['Choice1'], 'Choice2' => $post['Choice2'], 'Choice3' => $post['Choice3'], 'Choice4' => $post['Choice4'], 'Choice5' => $post['Choice5'], 'Picture' => $post['Picture']])
                 ->execute();
             $this->Flash->success('The question was created');
         }else{
             print_r($post);
-            $table->query()->update()->set(['Question' => $post["Question"], 'Answer' => $post['answer'], 'Choice0' => $post['Choice0'], 'Choice1' => $post['Choice1'], 'Choice2' => $post['Choice2'], 'Choice3' => $post['Choice3'], 'Picture' => $post['Picture']])
+            $table->query()->update()->set(['Question' => $post["Question"], 'Answer' => $post['answer'], 'Choice0' => $post['Choice0'], 'Choice1' => $post['Choice1'], 'Choice2' => $post['Choice2'], 'Choice3' => $post['Choice3'], 'Choice4' => $post['Choice4'], 'Choice5' => $post['Choice5'], 'Picture' => $post['Picture']])
                 ->where(['QuizID' => $post['QuizID'], 'QuestionID' => $post['QuestionID']])->execute();
             $this->Flash->success('The question was saved');
         }

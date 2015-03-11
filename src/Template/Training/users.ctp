@@ -60,7 +60,9 @@ Users
                         echo  $user->correct . '/' . $user->questions  . ' (' . $user->percent . '%)</TD><TD>';
                         echo '<A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=' . $user->id . '" class="' . btnclass("primary", "blue") . '">View</A></TD></TR>';
                     }
-                    if ($usercount>0) {
+                    if ($usercount==0) {
+                        echo '<TR><TD colspan="6" align="center">No one has taken this quiz yet</TD></TR>';
+                    } else {
                         echo '<TR><TD colspan="4" align="right">Average:</TD><TD>' . $total/$usercount . "%</TD><TD></TD></TR>";
                     }
                 }

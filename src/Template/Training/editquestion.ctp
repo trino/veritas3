@@ -133,6 +133,7 @@ if (isset($question)) {$question = clean($question,1);}
     }
 
     function truefalse(){
+        changed=true;
         document.getElementById("Choice0").value="True";
         document.getElementById("Choice1").value="False";
     }

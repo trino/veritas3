@@ -17,8 +17,7 @@ class TrainingController extends AppController {
                 $this->Flash->error('You can not edit quizzes.');
             }
         }
-        $table = TableRegistry::get('training_list')->find('all');
-        $this->set('quizes',$table );
+        $this->enumquizes();
         $this->set('canedit', $this->canedit());
     }
 
@@ -51,6 +50,8 @@ class TrainingController extends AppController {
         if ($this->canedit()){
             if (isset($_GET["quizid"])) {
                 $this->enumusers($_GET["quizid"]);
+            } else {
+                $this->enumquizes(true);
             }
         } else{
             $this->Flash->error('You can not edit quizzes.');
@@ -113,6 +114,25 @@ class TrainingController extends AppController {
     public function getuserid(){
         return $this->request->session()->read('Profile.id');
     }
+    public function enumquizes($getapplicants = false){
+        $table = TableRegistry::get('training_list')->find('all');
+        if ($getapplicants){
+               foreach($table as $quiz){
+                   $quiz->applicants = $this->countapplicants($quiz->ID);
+               }
+        }
+        $this->set('quizes',$table );
+        return $table;
+    }
+    public function countapplicants($quizid){
+        $table = TableRegistry::get("training_answers");
+        $users =  $table->find('all',array('conditions' => array('QuizID' => $quizid), 'group' => 'UserID'));
+        return $this->countobject($users);
+    }
+    public function countobject($object){
+        return iterator_count($object);
+    }
+
     public function getQuiz($QuizID){
         $table = TableRegistry::get('training_quiz');
         //$answers =  $table->find()->where(['QuizID'=>$_GET["quizid"]]);

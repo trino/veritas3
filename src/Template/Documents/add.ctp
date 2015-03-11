@@ -1313,10 +1313,26 @@ if (isset($this->request->params['pass'][1])) {
     ?>
     var draft = 0;
         $(document.body).on('click', '.cont', function () {
+            var type = $(".document_type").val();
+            if(type=='Driver Application')
+                {
+                    if(!$('#confirm_check').is(':checked'))
+                            {
+                                
+                                alert('Please confirm that you have read the conditions.');
+                                $('#confirm_check').focus();
+                                $('html,body').animate({
+                                            scrollTop: $('#confirm_check').offset().top},
+                                        'slow');
+                                return false;
+                               // }
+                            }
+                }
             $(this).attr('disabled','disabled');
             if($('.subform4').attr('style')!='display: none;'){
                 //alert('tes');
             var er = 0;
+            
             $('.required').each(function(){
                 if($(this).val()=='' && $(this).attr('name')!='' && $(this).attr('name')!='undefined'  && $(this).attr('name'))
                 {
@@ -1341,6 +1357,7 @@ if (isset($this->request->params['pass'][1])) {
             }
             else
             {
+                
                 $('.cont').removeAttr('disabled');
             }
             }
@@ -1349,7 +1366,8 @@ if (isset($this->request->params['pass'][1])) {
             }
             else
                 draft = 0;
-            var type = $(".document_type").val();
+            
+            
             var attach_docs = "";
             $('.moredocs').each(function(){
                 attach_docs += $(this).val()+",";  
@@ -1375,14 +1393,7 @@ if (isset($this->request->params['pass'][1])) {
                 success: function (res) {
                     //alert(res);
                     $('#did').val(res);
-                    //$('#did').val(res);
-                    /*$.ajax({
-                        url:'<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/'+$('#did').val()+'/?document=' + type + '&draft=' + draft,
-                        type:'post',
-                        data:{uploaded_for:$('#uploaded_for').val(),type:type,division:$('#divison').val(),sub_doc_id: $('#sub_id').val(),}
-                    });*/
-                    // saving data
-                    //alert($('#did').val());
+                    
                     if (type == "Pre-Screening") {
                         var forms = $(".tab-pane.active").prev('.tab-pane').find(':input'),
                             url = '<?php echo $this->request->webroot;?>documents/savePrescreening/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',

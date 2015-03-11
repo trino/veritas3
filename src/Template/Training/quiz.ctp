@@ -162,34 +162,6 @@ if (count($_POST)>0) {
     }
     echo "</form>";
 }
-
-
-
-
-
-
-
-
-switch ( $QuizID ) {
-    case 21:
-        FullQuestion("What does WHMIS stand for?", array("Workplace Health Materials Information System", "Workplace Hazardous Materials Information System", "Workplace Hazardous Materials Information Sheet", "Workplace Hazardous MSDS Information Sheet"));
-        FullQuestion("WHMIS is a law", array("True", "False"));
-        FullQuestion("Under WHMIS Law who has duties in regards to hazardous materials?", array("Workers", "Employers", "Suppliers", "All of the above"));
-        FullQuestion("How many categories of controlled substances are identified under WHMIS?", array("Three", "Five", "Four", "Six"));
-        FullQuestion("What class of controlled substances does this symbol represent?", array("Compressed Gas", "Corrosive Material", "Oxidizing Material", "Flammable and Combustible Material"));
-        FullQuestion("What class of controlled substances does this symbol represent?", array("Biohazardous Infectious Material", "Materials Causing Other Toxic Effects", "Oxidizing Material", "Materials Causing Immediate and Severe Toxic Effects"));
-        FullQuestion("What class of controlled substances does this symbol represent?", array("Poisonous and Infectious Material", "Dangerously Reactive Material", "Flammable and Combustible Material", "Compressed Gas"));
-        FullQuestion("What two types of labels are required by WHMIS law?", array("Supplier and Employer", "Workplace and Manufacturer", "Employer and Worker", "Supplier and Workplace"));
-        FullQuestion("When is a Workplace Label required?", array("When a substance in transferred to a different container", "As soon as a substance is brought on site", "None of the above", "When the supplier label is damaged"));
-        FullQuestion("What is required on a Workplace Label?", array("Reference to MSDS", "Hazard information", "Product name", "All of the above"));
-        FullQuestion("What is required on a Supplier Label by law?", array("Product and Supplier Identifier", "Hatched Border", "First Aid Measures", "Hazard Symbols", "All of the above"));
-        FullQuestion("What does MSDS stand for?", array("Material Safety Data System", "Major Safety Direction System", "Material Safety Direction Sheet", "Material Safety Data Sheet"));
-        FullQuestion("What controlled substances need an MSDS?", array("Any that are being shipped from site", "Every controlled substance received at the site", "Those that are being used on a daily basis", "The really dangerous ones"));
-        FullQuestion("How often does an MSDS need to be updated?", array("Every three (3) years", "Never", "Every two (2) years", "Every years"));
-        FullQuestion("An MSDS CANNOT be updated before three (3) years", array("True", "False"));
-        break;
-}
 ?>
-
 
 </div></div></div></div></div>

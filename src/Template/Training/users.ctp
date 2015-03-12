@@ -26,6 +26,9 @@ function clean($data, $datatype=0){
     $data = str_replace("\\r\\n", "\r\n", (trim($data))) ;
     return $data;
 }
+
+$title = "Courses";
+if (isset($_GET["quizid"])) { $title = "Course Results";}
 ?>
 
 
@@ -56,7 +59,9 @@ Users
         <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 </div>
 
-
+<div class="row"><div class="col-md-12"><div class="portlet box blue-steel"><div class="portlet-title">
+<div class="caption"><i class="fa fa-graduation-cap"></i><?= $title?></div></div><div class="portlet-body">
+<div class="row"><div class="col-md-12">
 
 <div class="table-scrollable">
     <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
@@ -78,18 +83,33 @@ Users
             <?php
                     $total=0;
                     $usercount=0;
-                    foreach ($users as $user) {
-                        $usercount+=1;
-                        $total+=$user->percent;
-                        echo '<TR><TD>' . $user->id . '</TD><TD>' . $user->fname . '</TD><TD>' . $user->lname . '</TD><TD>' . $user->username . '</TD><TD>';
-                        echo  $user->correct . '/' . $user->questions  . ' (' . $user->percent . '%)</TD><TD>';
-                        echo '<A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=' . $user->id . '" class="' . btnclass("primary", "blue") . '">View</A></TD></TR>';
+                    foreach ($users as $user) {//http://localhost/veritas3/profiles/edit/120
+                        echo '<TR><TD>' . $user->Profiles['id'] . '</TD><TD>' . ucfirst($user->Profiles['fname']) . '</TD><TD>' . ucfirst($user->Profiles['lname']) . '</TD><TD>';
+                        echo '<A HREF="' . $this->request->webroot . 'profiles/edit/' . $user->Profiles['id'] . '">' . ucfirst($user->Profiles['username']) . '</A></TD><TD>';
+                        if (strlen($user->correct)==0) {
+                            echo "Test not taken yet";
+                            echo '</TD><TD><A HREF="' . $this->request->webroot . 'training/users?quizid=' . $_GET['quizid'] . '&userid=';
+                            echo $user->UserID . '" class="' . btnclass("danger", "yellow") . '">Unenroll</A>';
+                        } else {
+                            $usercount+=1;
+                            $total+=$user->percent;
+                            echo  $user->correct . '/' . $user->questions  . ' (' . round($user->percent,2) . '%)';
+                            echo '</TD><TD><A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=';
+                            echo $user->UserID . '" class="' . btnclass("primary", "blue") . '">View Answers</A>';
+                        }
+                        echo '</TD></TR>';
                     }
                     if ($usercount==0) {
-                        echo '<TR><TD colspan="6" align="center">No one has taken this quiz yet</TD></TR>';
+                        echo '<TR><TD colspan="6" align="center">No one has taken this course yet</TD></TR>';
                     } else {
-                        echo '<TR><TD colspan="4" align="right">Average:</TD><TD>' . $total/$usercount . "%</TD><TD></TD></TR>";
+                        echo '<TR><TD colspan="4" align="right">Average:</TD><TD>' . round($total/$usercount,2) . "%</TD><TD></TD></TR>";
                     }
+
+
+            //foreach($users as $user){
+            //    debug($user);
+            //}
+
                 } else {
             ?>
             <TR><TH width="20">ID</TH><TH width="50">Image</TH><TH>Name</TH><TH width="50">Applicants</TH></TR>
@@ -107,3 +127,4 @@ Users
         </tbody>
     </table>
 </div>
+    </div></div></div></div></div></div>

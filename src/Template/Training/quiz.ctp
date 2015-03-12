@@ -79,6 +79,7 @@ function question($section){
 function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer, $correctanswer){
     $disabled="";
     $selected=-1;
+    $iscorrect=false;
     if (is_object($usersanswer)){
         $disabled=" disabled";
         $selected=$usersanswer->Answer;
@@ -87,7 +88,9 @@ function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer
     $QuestionID = $QuizID . ':' . $Index;
     echo '<input type="hidden" name="' . $QuestionID . ':sequencecheck" value="' . $Qold . '" />';
     echo '<div class="qtext"><p>' . $text . '</p></div>';
-    echo '<div class="ablock"><div class="prompt">Select one:</div><div class="answer">';
+    echo '<div class="ablock"><div class="prompt">Select one:';
+    if ($correctanswer==-1){ echo " <font color='red'><B>Incomplete</B></font>";}
+    echo '</div><div class="answer">';
     for ($temp=0; $temp<count($answers); $temp+=1){
         if (strlen(trim($answers[$temp]))>0) {
             echo '<div class="r' . $temp . '">';
@@ -96,15 +99,17 @@ function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer
             echo '/><label for="' . $QuestionID . ":" . $temp . '">' . chr($temp + ord("a")) . ". " . $answers[$temp];
             if (is_object($usersanswer) && $selected == $temp){
                 if ($correctanswer == $temp) {
-                    echo " <B>Correct!</B>";
+                    echo " <font color='green'><B>Correct!</B></font>";
+                    $iscorrect=true;
                 } else {
-                    echo " <B>Incorrect</B>";
+                    echo " <font color='red'><B>Incorrect</B></font>";
                 }
             }
             echo '</label></div>';
         }
     }
     echo '</DIV></DIV>';
+    return $iscorrect;
 }
 
 function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0, $usersanswer){
@@ -128,23 +133,22 @@ function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0, $usersan
 function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00", $usersanswer, $correctanswer){
     global $question;
     $question+=1;
+    $correct = "incorrect";
+    if ($correctanswer==-1){$correct == "missing";}
     question(0);
     questionheader($QuizID, $question, $markedOutOf, $index, $usersanswer);
     question(1);
-    answers($QuizID, $question, $text, $answers, $index, $usersanswer,$correctanswer);
+    if (answers($QuizID, $question, $text, $answers, $index, $usersanswer,$correctanswer)){ $correct="correct";}
     question(2);
+    return $correct;
 }
-?>
 
+echo "<H4>" . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ")</H4>";
 
-
-
-
-<?php
-
-if (count($_POST)>0) {
-    print_r($_POST);
-} else {
+//if (count($_POST)>0) {
+//    print_r($_POST);
+//} else {
+    $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0);
     echo '<form action="quiz?quizid=' . $_GET["quizid"] . '" method="post" enctype="multipart/form-data" accept-charset="utf-8" id="responseform">';
     foreach ($questions as $question) {
         $question=clean($question,1);
@@ -157,13 +161,28 @@ if (count($_POST)>0) {
                 }
             }
         }
-        FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3,  $question->Choice4,  $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
+        $result = FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3,  $question->Choice4,  $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
+        $results[$result]+=1;
+        $results["total"]+=1;
     }
-    if (!is_object($answer)) {
-        echo '<DIV align="center"><button type="submit" class="btn blue" onclick="return confirm(' . "'Are you sure you are done?'" . ');"><i class="fa fa-check"></i> Save</button></DIV>';
+    if (is_object($answer)) {
+        if ($results['total']>0) {
+            echo '<div class="row"><div class="col-md-12"><div class="portlet box yellow"><div class="portlet-title">';
+            echo '<div class="caption"><i class="fa fa-graduation-cap"></i>Results</div></div><div class="portlet-body">';
+            echo '<div class="row">';
+
+            echo '<div class="col-md-3">Incorrect: ' . $results['incorrect'] . '</div>';
+            echo '<div class="col-md-3">Missing: ' . $results['missing'] . '</div>';
+            echo '<div class="col-md-3">Correct: ' . $results['correct'] . '</div>';
+            echo '<div class="col-md-3">Score: ' . round($results['correct']/$results['total']*100,2) . '%</div>';
+
+            echo '</div></div>';
+        }
+    } else {
+        echo '<DIV align="center"><button type="submit" class="btn blue" style="margin-bottom: 15px;" onclick="return confirm(' . "'Are you sure you are done?'" . ');"><i class="fa fa-check"></i> Save</button></DIV>';
     }
     echo "</form>";
-}
+//}
 ?>
 
 </div></div></div></div></div>

@@ -268,14 +268,15 @@ $profileID = $this->Session->read('Profile.id');
                                 <li <?php echo ($this->request['controller'] == 'Training' && $this->request['action'] == 'index') ? 'class="active"' : ''; ?>>
                                     <a href="<?php echo $this->request->webroot;?>training">
                                         <i class="icon-plus"></i>
-                                        Quizzes</a>
+                                        Courses</a>
                                 </li>
+                        <?php if ($this->request->session()->read('Profile.super')) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Training' && $this->request['action'] == 'users') ? 'class="active"' : ''; ?>>
                                     <a href="<?php echo $this->request->webroot;?>training/users">
                                         <i class="icon-plus"></i>
                                         Quiz Results</a>
                                 </li>
-
+                        <?php } ?>
                     </ul>
                 </li>
             <?php } ?>

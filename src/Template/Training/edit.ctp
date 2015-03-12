@@ -67,13 +67,13 @@ if (isset($quiz)){
     <div class="form-group">
         <label class="control-label">Quiz Name :</label>
             <?php if (isset($_GET["quizid"])){ echo '<input name="ID" type="hidden" value="' . $_GET["quizid"] . '">'; } ?>
-            <input name="Name" class="form-control required" value="<?php if (isset($quiz)) { echo $quiz->Name; } ?>" />
+            <input name="Name" class="form-control" required value="<?php if (isset($quiz)) { echo $quiz->Name; } ?>" />
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="control-label">Image :</label>
-        <input name="image" id="image" class="form-control required" value="<?php if (isset($quiz)) { echo $quiz->image; } else {echo "training.png";} ?>" />
+        <input name="image" id="image" class="form-control" value="<?php if (isset($quiz)) { echo $quiz->image; } else {echo "training.png";} ?>" />
     </div>
 </div>
 <div class="col-md-6">
@@ -87,7 +87,7 @@ if (isset($quiz)){
 <div class="col-md-6">
     <div class="form-group">
         <label class="control-label">Description :</label>
-        <textarea name="Description" class="form-control" rows="10"><?php if (isset($quiz)) { echo $quiz->Description; } ?></textarea>
+        <textarea name="Description" class="form-control" rows="10" required><?php if (isset($quiz)) { echo $quiz->Description; } ?></textarea>
     </div>
 </div>
 
@@ -96,11 +96,16 @@ if (isset($quiz)){
         <button type="submit" class="btn blue"><i class="fa fa-check"></i> Save Changes</button>
     </div>
     </div>
-    <div class="col-md-2">
+
+    <?php if (isset($_GET["quizid"])){ ?>
+    <div class="col-md-10" align="right">
         <div class="form-group">
-            <A href="<?= $this->request->webroot ?>training/users?quizid=<?= $_GET["quizid"] ?>" class="btn btn-info">Users who have taken the test</A>
+            <A href="<?= $this->request->webroot ?>training/users?quizid=<?= $_GET["quizid"] ?>" class="btn btn-info">Results</A>
+            <A href="<?= $this->request->webroot ?>training/enroll?quizid=<?= $_GET["quizid"] ?>" class="btn btn-warning">Enroll</A>
+            <a href="<?= $this->request->webroot ?>training/quiz?quizid=<?= $_GET["quizid"] ?>" class="btn btn-info btnspc">Preview</a>
         </div>
     </div>
+    <?php } ?>
 </form>
 <?php if (isset($questions)) { ?>
 <div class="col-md-12">
@@ -168,4 +173,6 @@ if (isset($quiz)){
 
         </div>
 
-<?php } ?>
+<?php }
+
+?>

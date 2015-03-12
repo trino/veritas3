@@ -161,6 +161,18 @@
                                                     <select class="form-control" name="customer_type"
                                                             id="customer_type">
                                                         <option value="">Select</option>
+                                                        <?php
+                                                            foreach($client_types as $ct)
+                                                            {?>
+                                                                <option value="<?php echo $ct->id;?>"
+                                                                <?php if (isset($client->customer_type) && $client->customer_type == $ct->id) { ?>selected="selected"<?php } ?>>
+                                                                    <?php echo $ct->title; ?>
+                                                                </option> 
+                                                         <?php
+                                                            }
+                                                        ?>
+                                                        
+                                                        <!--
                                                         <option value="1"
                                                                 <?php if (isset($client->customer_type) && $client->customer_type == 1) { ?>selected="selected"<?php } ?>>
                                                             Insurance
@@ -172,7 +184,7 @@
                                                         <option value="3"
                                                                 <?php if (isset($client->customer_type) && $client->customer_type == 3) { ?>selected="selected"<?php } ?>>
                                                             Non Fleet
-                                                        </option>
+                                                        </option>-->
                                                     </select>
                                                 </div>
                                             <?php } ?>

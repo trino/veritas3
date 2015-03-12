@@ -35,9 +35,9 @@ if ($activetab == "permissions") {
             <li <?php if((!isset($Clientcount) || (isset($Clientcount) && $Clientcount!=0)))activetab($activetab, "config"); ?>>
                 <a href="#subtab_2_1" data-toggle="tab">Configuration</a>
             </li>
-            <li class="">
+            <!--<li class="">
                 <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
-            </li>
+            </li>--<
             <li class="">
                 <a href="#subtab_2_3" data-toggle="tab">Top blocks</a>
             </li>
@@ -152,61 +152,7 @@ if ($activetab == "permissions") {
                                                         <div class="clearfix"></div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="vtop">
-                                                    <?php echo ucfirst($settings->document); ?>
-                                                </td>
-                                                <td>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[document]"
-                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;});"
-                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document == 1) echo "checked"; ?>/>
-                                                        Yes </label>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="side[document]"
-                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})"
-                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->document == 0) echo "checked"; ?>/>
-                                                        No </label>
-                                                        <div class="clearfix"></div>
-                                                        <div class="col-md-12 nopad martop yesno" >
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[document_list]"
-                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document_list == 1) echo "checked"; ?> /> List
-                                                            </label>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[document_create]"
-                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document_create == 1) echo "checked"; ?> /> Create
-                                                            </label>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[document_edit]"
-                                                                                          value="1" <?php if ($sidebar->document_edit == 1) echo "checked"; ?> /> Edit
-                                                            </label>
-                                                            <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[document_delete]"
-                                                                                          value="1" <?php if ($sidebar->document_delete == 1) echo "checked"; ?> /> Delete
-                                                            </label>
-                                                             <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[document_others]"
-                                                                                          value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> /> View Other's
-                                                            </label>
-                                                             <!--label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox"
-                                                                                          name="side[document_requalify]"
-                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Re-qualify
-                                                            </label-->
-                                                            
-                                                            
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                </td>
-                                            </tr>
+                                            
                                             <tr>
                                                 <td class="vtop">
                                                     Orders
@@ -416,57 +362,67 @@ if ($activetab == "permissions") {
                                                         No </label>
                                                 </td>
                                             </tr>
-                                        </table>
-                                        <!--end profile-settings-->
-
-
-
-
-
-
-
-                                                        
-                              
-
-                                        <?php
-                                        if (!isset($disabled)) {
-                                            ?>
-                                            <div class="res"></div>
-
-
-
-
-                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
-                                                            <button class="close" data-close="alert"></button>
-                                                            Data saved successfully
+                                            <tr>
+                                                <td class="vtop">
+                                                    <?php echo ucfirst($settings->document); ?>
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[document]"
+                                                                                          onclick="$('.doc_more').show();$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;});"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[document]"
+                                                                                          onclick="$('.doc_more').hide();$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->document == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-md-12 nopad martop yesno" >
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_list]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document_list == 1) echo "checked"; ?> /> List
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_create]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document_create == 1) echo "checked"; ?> /> Create
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_edit]"
+                                                                                          value="1" <?php if ($sidebar->document_edit == 1) echo "checked"; ?> /> Edit
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_delete]"
+                                                                                          value="1" <?php if ($sidebar->document_delete == 1) echo "checked"; ?> /> Delete
+                                                            </label>
+                                                             <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_others]"
+                                                                                          value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> /> View Other's
+                                                            </label>
+                                                             <!--label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[document_requalify]"
+                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Re-qualify
+                                                            </label-->
+                                                            
+                                                            
                                                         </div>
-                                                           <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
-                                                               <div class="row">
-                                                                   <div class="col-md-12" align="right">
-                                                <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
-                                                       value="Save Changes"/>
-
-                                                </div> </div> </div>
-                                        <?php
-                                        }
-                                        ?>
-
-
-                                    </form>
-                                						
-                                    </div>
-                                    </div>
-                                    <div class="tab-pane" id="subtab_2_2">
-
-
-                                                    <div class="">
+                                                        <div class="clearfix"></div>
+                                                </td>
+                                            </tr>
+                                            <tr class="doc_more" <?php if (isset($sidebar) && $sidebar->document == 0){ echo "style='display:none;'";}?>>
+                                                       <td colspan="2">
                                 						<!--h1> Enable <?php echo ucfirst($settings->document);?>?</h1-->
                                                         <form action="#" method="post" id="displayform">
                                                             <table class="table table-bordered table-hover">
-                                                        <tr><th   width="25%"></th>
-                                                        <!--<th class=""  width="25%">System</th>-->
-                                                        <th class=""><?php echo ucfirst($settings->profile);?></th>
-                                                        </tr>
+                                                        
                                                         <?php
                                                         $subdoc = $this->requestAction('/profiles/getSub');
                                                         
@@ -517,11 +473,11 @@ if ($activetab == "permissions") {
                                                     {
                                                         ?>
 
-                                                        <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                        <!--<div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
                                                             <button class="close" data-close="alert"></button>
                                                             Data saved successfully
-                                                        </div>
-                                                            <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                                                        </div>-->
+                                                            <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;display: none;">
                                                                 <div class="row">
                                                                     <div class="col-md-12" align="right">
                                                             <a href="javascript:void(0)" id="save_display" class="btn btn-primary">
@@ -531,10 +487,49 @@ if ($activetab == "permissions") {
                                                     }
                                                     ?>
                                     </form>
-                                					</div>
-                                                                
+                                					</td>
+                                            </tr>                                            
+                                        </table>
+                                        <!--end profile-settings-->
+
+
+
+
+
+
+
+                                                        
+                              
+
+                                        <?php
+                                        if (!isset($disabled)) {
+                                            ?>
+                                            <div class="res"></div>
+
+
+
+
+                                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                                            <button class="close" data-close="alert"></button>
+                                                            Data saved successfully
+                                                        </div>
+                                                           <div class="form-actions" style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                                                               <div class="row">
+                                                                   <div class="col-md-12" align="right">
+                                                <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
+                                                       value="Save Changes"/>
+
+                                                </div> </div> </div>
+                                        <?php
+                                        }
+                                        ?>
+
+
+                                    </form>
                                 						
                                     </div>
+                                    </div>
+                                    
                                    <div  class="tab-pane" id="subtab_2_3">
 
 
@@ -1069,11 +1064,12 @@ if ($activetab == "permissions") {
                                                type:'post',
                                                success:function(res)
                                                {
+                                                    $('#save_display').click();
                                                     //alert(res);
                                                     $('.res').text(res);
                                                     $('.flash').show();
                                                     $('.flash').fadeOut(7000);
-                                                    $('#save_display').text(' Save Changes ');
+                                                    $('#save_blocks').text(' Save Changes ');
                                                } 
                                             })
                                        });
@@ -1098,7 +1094,7 @@ if ($activetab == "permissions") {
                                        });
                                        $('#save_display').click(function(){
                                         $('#save_display').text('Saving..');
-                                            var str = $('#displayform input').serialize();
+                                            var str = $('.doc_more input').serialize();
                                             $.ajax({
                                                url:'<?php echo $this->request->webroot;?>profiles/displaySubdocs/<?php echo $id;?>',
                                                data:str,

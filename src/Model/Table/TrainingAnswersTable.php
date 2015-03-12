@@ -10,25 +10,12 @@ use Cake\Validation\Validator;
  */
 class TrainingAnswersTable extends Table {
 
-/**
- * Initialize method
- * 
- * 
- *
- * @param array $config The configuration for the Table.
- * @return void
- */
 public function initialize(array $config)
     {
-        /*$this->belongsTo('Profiles', [
-           'foreignKey' => 'user_id',]);
-        */
         $this->belongsTo('Profiles', [
             'foreignKey' => 'UserID',
-            'className' =>'Profiles'
+            'className' =>'Profiles',
             ]);
-        
-         
     }
 	
 /**

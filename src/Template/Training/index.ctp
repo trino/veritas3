@@ -140,6 +140,8 @@ if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
         echo '<div class="col-md-5" align="left">';
             $attachmentJS = "";
             $id=0;
+            $checked="";
+            if ($hasusertakenquiz) { $checked = " checked";}
             foreach($attachments as $attachment){
                 $attachment=trim($attachment);
                 if (strlen($attachment)>0) {
@@ -161,17 +163,17 @@ if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
                     }
 
                     echo '<input type="checkbox" id="chk' . $id . '" disabled></input>' . ($id+1) . ' <a href="' . $attachment . $download . ' class="btn btn-warning" onclick="check(';
-                    echo "'chk" . $id . "'" . ');" title="Please follow these steps in sequential order before you can take the quiz">' . $name . '</a>';
+                    echo "'chk" . $id . "'" . ');" title="Please follow these steps in sequential order before you can take the quiz"' . $checked . '>' . $name . '</a>';
                     $id += 1;
                 }
             }
-            echo '<input type="checkbox" id="quiz" disabled><a class="btn btn-info" href="training/quiz?quizid=' . $quiz->ID . '" onclick="return checkboxes();">Quiz</a></input>';
+            echo '<input type="checkbox" id="quiz" disabled' . $checked . '><a class="btn btn-info" href="training/quiz?quizid=' . $quiz->ID . '" onclick="return checkboxes();">Quiz</a></input>';
         echo '</div>';
         if ($canedit) {
             echo '<div class="col-md-5" align="right">';
             //echo '<a href="training/enroll?quizid=' . $quiz->ID . '" class="btn btn-warning btnspc"">Enroll</a>';
             //echo '<a class="btn btn-info btnspc" href="training/quiz?quizid=' . $quiz->ID . '">View</a>';
-            echo '<A href="' .  $this->request->webroot . 'training/users?quizid=' . $quiz->ID . '" class="btn btn-info">Results</A>';
+            echo '<A href="' .  $this->request->webroot . 'training/users?quizid=' . $quiz->ID . '" class="btn btnspc btn-info">Results</A>';
             if ($canedit) {
                 echo '<a href="training/edit?quizid=' . $quiz->ID . '" class="btn btn-primary btnspc">Edit</a>';
                 echo '<a href="training?action=delete&quizid=' . $quiz->ID . '" onclick="return confirm(' . "'Are you sure you want to delete this quiz?'" . ');" class="btn btn-danger">Delete</a>';

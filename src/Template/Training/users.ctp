@@ -27,8 +27,8 @@ function clean($data, $datatype=0){
     return $data;
 }
 
-$title = "Quizzes";
-if (isset($_GET["quizid"])) { $title = "Quiz Results";}
+$title = "Courses";
+if (isset($_GET["quizid"])) { $title = "Course Results";}
 ?>
 
 
@@ -86,12 +86,12 @@ Users
                     foreach ($users as $user) {
                         $usercount+=1;
                         $total+=$user->percent;
-                        echo '<TR><TD>' . $user->id . '</TD><TD>' . $user->fname . '</TD><TD>' . $user->lname . '</TD><TD>' . $user->username . '</TD><TD>';
+                        echo '<TR><TD>' . $user->Profiles['id'] . '</TD><TD>' . ucfirst($user->Profiles['fname']) . '</TD><TD>' . ucfirst($user->Profiles['lname']) . '</TD><TD>' . ucfirst($user->Profiles['username']) . '</TD><TD>';
                         echo  $user->correct . '/' . $user->questions  . ' (' . round($user->percent,2) . '%)</TD><TD>';
-                        echo '<A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=' . $user->id . '" class="' . btnclass("primary", "blue") . '">View</A></TD></TR>';
+                        echo '<A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=' . $user->UserID . '" class="' . btnclass("primary", "blue") . '">View</A></TD></TR>';
                     }
                     if ($usercount==0) {
-                        echo '<TR><TD colspan="6" align="center">No one has taken this quiz yet</TD></TR>';
+                        echo '<TR><TD colspan="6" align="center">No one has taken this course yet</TD></TR>';
                     } else {
                         echo '<TR><TD colspan="4" align="right">Average:</TD><TD>' . round($total/$usercount,2) . "%</TD><TD></TD></TR>";
                     }

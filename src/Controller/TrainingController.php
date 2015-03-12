@@ -6,9 +6,10 @@ use Cake\ORM\TableRegistry;
 
 class TrainingController extends AppController {
     //my pages\actions
-    public function index() {
-        if (isset($_GET["action"])){
-            if($this->canedit()) {
+    public function index()
+    {
+        if (isset($_GET["action"])) {
+            if ($this->canedit()) {
                 switch ($_GET["action"]) {
                     case "delete":
                         $this->deletequiz($_GET["quizid"]);
@@ -18,6 +19,8 @@ class TrainingController extends AppController {
                 $this->Flash->error('You can not edit quizzes.');
             }
         }
+        $this->set('hasusertakenquiz', false);
+        if (isset($_GET["quizid"])){$this->set('hasusertakenquiz', $this->hasusertakenquiz($_GET["quizid"], $this->getuserid() ));}
         $this->enumquizes();
         $this->set('canedit', $this->canedit());
     }
@@ -39,8 +42,8 @@ class TrainingController extends AppController {
         }
 
         if (isset($_GET["quizid"]) && $this->canedit()) {
-            $table = TableRegistry::get('training_list');
-            $quiz =  $table->find()->where(['ID'=>$_GET["quizid"]])->first();
+            //$table = TableRegistry::get('training_list');
+            $quiz = $this->getQuizHeader($_GET["quizid"]);// $table->find()->where(['ID'=>$_GET["quizid"]])->first();
             $this->set('quiz',$quiz );
             $this->quiz();
         }
@@ -115,6 +118,11 @@ class TrainingController extends AppController {
     public function clean($text){
         return '"' . mysql_real_escape_string(trim($text)) . '"';
     }
+    public function unclean($data){
+        if (substr($data,0,1)== '"' && substr($data,-1) == '"'){$data = substr($data,1, strlen($data)-2);}
+        $data = str_replace("\\r\\n", "\r\n", (trim($data))) ;
+        return $data;
+    }
     public function canedit(){
         return  $this->request->session()->read('Profile.super');
     }
@@ -140,6 +148,11 @@ class TrainingController extends AppController {
         return iterator_count($object);
     }
 
+    public function getQuizHeader($QuizID){
+        $table = TableRegistry::get('training_list');
+        $quiz =  $table->find()->where(['ID'=>$QuizID])->first();
+        return $quiz;
+    }
     public function getQuiz($QuizID){
         $table = TableRegistry::get('training_quiz');
         //$answers =  $table->find()->where(['QuizID'=>$_GET["quizid"]]);
@@ -199,21 +212,39 @@ class TrainingController extends AppController {
         // return the first element of the last array (i.e. the last query)
         return current(end($logs));
     }
-    public function enumusers($QuizID){//LEFT JOIN IS NOT WORKING!!!
+
+    public function hasusertakenquiz($QuizID, $UserID){
+        $table = TableRegistry::get("training_answers");
+        $options = array();
+        $options['conditions'] = array('training_answers.QuizID = ' . $QuizID . ' AND training_answers.UserID = ' . $UserID);
+        $options['group'] = 'training_answers.UserID';
+        $users =  $table->find('all', $options)->first();
+        return is_object($users);
+    }
+    public function enumusers($QuizID){//LEFT JOIN IS A PAIN!
         //$this->loadModel('TrainingAnswers');
         $table = TableRegistry::get("training_answers");
         $options = array();
-        $options['conditions'] = array('QuizID' => $QuizID);
-        $options['fields'] =  array('UserID');// 'profiles.fname', 'profiles.lname', 'profiles.username');
+        $options['conditions'] = array('training_answers.QuizID =' . $QuizID); //array('QuizID' => $QuizID);
+        //$options['fields'] =  array('UserID');// 'profiles.fname', 'profiles.lname', 'profiles.username');
         //$options['joins'] = array(array('table' => 'profiles', 'alias' => 'profiles', 'type' => 'LEFT', 'conditions' => array('training_answers.UserID = profiles.id')));
-        $options['group'] = 'UserID';
-        $users =  $table->find('all',$options)->contain("profiles");
+        $options['group'] = 'training_answers.UserID';
+        $users =  $table->find('all', $options)->contain("profiles");//->where(['training_answers.QuizID = ' . $QuizID . ' or 1=1'])
             //$users =  $table->find('all', array('conditions' => array('QuizID' => $QuizID), 'fields' =>  array('training_answers.UserID', 'profiles.fname', 'profiles.lname', 'profiles.username'), 'group' => 'training_answers.UserID', 'joins' => array(array('table' => 'profiles', 'alias' => 'profiles', 'type' => 'LEFT', 'conditions' => array('training_answers.UserID = profiles.id')))));
         $quiz = $this->getQuiz($QuizID);
+        foreach($users as $user){
+            $score = $this->gradetest($quiz,$QuizID, $user->UserID);
+            $user->questions = $score['questions'] ;
+            $user->correct = $score['correct'] ;
+            $user->percent = $score['percent'] ;
+        }
+        $this->set('users',$users);
+        /*
+        foreach($users as $o){
+            debug($o);//->profile->fname;
+        }
+        die();
 
-        //$profiles = $this->TrainingAnswers->find()->where(['id' => $order_id->UserID])->first();
-
-        return;
         $users2= array();
         $table = TableRegistry::get("profiles");
         $options = array();
@@ -228,6 +259,7 @@ class TrainingController extends AppController {
             $users2[$user->UserID] = $userdata;
         }
         $this->set('users',$users2);
+        */
     }
 
     public function gradetest($Quiz, $QuizID, $UserID){
@@ -288,14 +320,15 @@ class TrainingController extends AppController {
                 ->where(['UserID'=>$UserID, 'QuizID'=>$QuizID, 'QuestionID'=> $QuestionID])->execute();
         }
     }
-
-    public function getprofile($UserID){
+    public function getprofile($UserID, $set=true){
         $table = TableRegistry::get("profiles");
         $results = $table->find('all', array('conditions' => array('id'=>$UserID)))->first();
-        $this->set('user',$results);
+        if ($set) { $this->set('user',$results); }
         return $results;
     }
+    public function enrolluser($QuizID, $UserID){
 
+    }
 
 
 
@@ -314,70 +347,91 @@ class TrainingController extends AppController {
         'limit' => 20,
         'order' => ['id' => 'DESC'],
     ];
-    public function enroll(){
-        $this->set('doc_comp', $this->Document);
-        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-        $u = $this->request->session()->read('Profile.id');
-        $this->set('ProClients', $this->Settings);
-        $super = $this->request->session()->read('Profile.super');
-        $condition = $this->Settings->getprofilebyclient($u, $super);
-        if ($setting->profile_list == 0) {
-            $this->Flash->error('Sorry, you don\'t have the required permissions.');
-            return $this->redirect("/");
+    public function enroll() {
+        if (isset($_GET["userid"]) AND isset($_GET["quizid"])) {
+            $this->enrolluser($_GET["quizid"], $_GET["userid"]);
+            $this->Flash->success(ucfirst($this->getprofile($_GET["userid"], false)->username) . ' wasnt really enrolled in ' . $this->unclean($this->getQuizHeader($_GET["quizid"])->Name) );
         }
-        if (isset($_GET['draft'])) {
-            $draft = 1;
-        } else {
-            $draft = 0;
-        }
-        $cond = 'drafts = ' . $draft;
-        if (isset($_GET['searchprofile'])) {
-            $search = $_GET['searchprofile'];
-            $searchs = strtolower($search);
-        }
-
-        if (isset($_GET['filter_profile_type'])) {$profile_type = $_GET['filter_profile_type'];}
-        if (isset($_GET['filter_by_client'])) {$client = $_GET['filter_by_client'];}
-        $querys = TableRegistry::get('Profiles');
-
-        if (isset($_GET['searchprofile']) && $_GET['searchprofile']) {
-            if ($cond == '') {
-                $cond = $cond . ' (LOWER(title) LIKE "%' . $searchs . '%" OR LOWER(fname) LIKE "%' . $searchs . '%" OR LOWER(lname) LIKE "%' . $searchs . '%" OR LOWER(username) LIKE "%' . $searchs . '%" OR LOWER(address) LIKE "%' . $searchs . '%")';
-            } else {
-                $cond = $cond . ' AND (LOWER(title) LIKE "%' . $searchs . '%" OR LOWER(fname) LIKE "%' . $searchs . '%" OR LOWER(lname) LIKE "%' . $searchs . '%" OR LOWER(username) LIKE "%' . $searchs . '%" OR LOWER(address) LIKE "%' . $searchs . '%")';
+        if(true){
+        //} else {
+            $this->set('doc_comp', $this->Document);
+            $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+            $u = $this->request->session()->read('Profile.id');
+            $this->set('ProClients', $this->Settings);
+            $super = $this->request->session()->read('Profile.super');
+            $condition = $this->Settings->getprofilebyclient($u, $super);
+            if ($setting->profile_list == 0) {
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                return $this->redirect("/");
             }
-        }
+            if (isset($_GET['draft'])) {
+                $draft = 1;
+            } else {
+                $draft = 0;
+            }
+            $cond = 'drafts = ' . $draft;
+            if (isset($_GET['searchprofile'])) {
+                $search = $_GET['searchprofile'];
+                $searchs = strtolower($search);
+            }
 
-        if (isset($_GET['filter_profile_type']) && $_GET['filter_profile_type']) {
-            if ($cond == '') {
-                $cond = $cond . ' (profile_type = "' . $profile_type . '" OR admin = "' . $profile_type . '")';
-            } else {
-                $cond = $cond . ' AND (profile_type = "' . $profile_type . '" OR admin = "' . $profile_type . '")';
+            if (isset($_GET['filter_profile_type'])) {
+                $profile_type = $_GET['filter_profile_type'];
             }
-        }
-        if (isset($_GET['filter_by_client']) && $_GET['filter_by_client']) {
-            $sub = TableRegistry::get('Clients');
-            $que = $sub->find();
-            $que->select()->where(['id' => $_GET['filter_by_client']]);
-            $q = $que->first();
-            $profile_ids = $q->profile_id;
-            if (!$profile_ids) {$profile_ids = '99999999999';}
-            if ($cond == '') {
-                $cond = $cond . ' (id IN (' . $profile_ids . '))';
-            } else {
-                $cond = $cond . ' AND (id IN (' . $profile_ids . '))';
+            if (isset($_GET['filter_by_client'])) {
+                $client = $_GET['filter_by_client'];
             }
+            $querys = TableRegistry::get('Profiles');
+
+            if (isset($_GET['searchprofile']) && $_GET['searchprofile']) {
+                if ($cond == '') {
+                    $cond = $cond . ' (LOWER(title) LIKE "%' . $searchs . '%" OR LOWER(fname) LIKE "%' . $searchs . '%" OR LOWER(lname) LIKE "%' . $searchs . '%" OR LOWER(username) LIKE "%' . $searchs . '%" OR LOWER(address) LIKE "%' . $searchs . '%")';
+                } else {
+                    $cond = $cond . ' AND (LOWER(title) LIKE "%' . $searchs . '%" OR LOWER(fname) LIKE "%' . $searchs . '%" OR LOWER(lname) LIKE "%' . $searchs . '%" OR LOWER(username) LIKE "%' . $searchs . '%" OR LOWER(address) LIKE "%' . $searchs . '%")';
+                }
+            }
+
+            if (isset($_GET['filter_profile_type']) && $_GET['filter_profile_type']) {
+                if ($cond == '') {
+                    $cond = $cond . ' (profile_type = "' . $profile_type . '" OR admin = "' . $profile_type . '")';
+                } else {
+                    $cond = $cond . ' AND (profile_type = "' . $profile_type . '" OR admin = "' . $profile_type . '")';
+                }
+            }
+            if (isset($_GET['filter_by_client']) && $_GET['filter_by_client']) {
+                $sub = TableRegistry::get('Clients');
+                $que = $sub->find();
+                $que->select()->where(['id' => $_GET['filter_by_client']]);
+                $q = $que->first();
+                $profile_ids = $q->profile_id;
+                if (!$profile_ids) {
+                    $profile_ids = '99999999999';
+                }
+                if ($cond == '') {
+                    $cond = $cond . ' (id IN (' . $profile_ids . '))';
+                } else {
+                    $cond = $cond . ' AND (id IN (' . $profile_ids . '))';
+                }
+            }
+            if ($this->request->session()->read('Profile.profile_type') == '2' && !$cond) {
+                $condition['created_by'] = $this->request->session()->read('Profile.id');
+            }
+            if ($cond) {
+                $query = $querys->find();
+                $query = $query->where([$cond]);
+            } else {
+                $query = $this->Profiles->find()->where(['OR' => $condition, 'AND' => 'super = 0']);
+            }
+            if (isset($search)) {
+                $this->set('search_text', $search);
+            }
+            if (isset($profile_type)) {
+                $this->set('return_profile_type', $profile_type);
+            }
+            if (isset($client)) {
+                $this->set('return_client', $client);
+            }
+            $this->set('profiles', $this->paginate($query));
         }
-        if ($this->request->session()->read('Profile.profile_type') == '2' && !$cond) {$condition['created_by'] = $this->request->session()->read('Profile.id');}
-        if ($cond) {
-            $query = $querys->find();
-            $query = $query->where([$cond]);
-        } else {
-            $query = $this->Profiles->find()->where(['OR' => $condition,'AND' => 'super = 0']);
-        }
-        if (isset($search)) {$this->set('search_text', $search);}
-        if (isset($profile_type)) {$this->set('return_profile_type', $profile_type);}
-        if (isset($client)) {$this->set('return_client', $client);}
-        $this->set('profiles', $this->paginate($query));
     }
 }

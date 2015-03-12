@@ -1197,6 +1197,22 @@ class ClientsController extends AppController {
                     ->set(['title' => $subname])
                     ->where(['id' => $doc_id])
                     ->execute();
+                    if(isset($_GET['color']))
+                    {
+                        $color = $_GET['color'];
+                        $sel_query = $up_que->find()->where(['id' => $doc_id])->first;
+                        {
+                            $col = $sel_query->color_id;
+                            if($col != $color)
+                            {
+                            $q_update = $query->update()
+                            ->set(['color_id' => $color])
+                            ->where(['id' => $doc_id])
+                            ->execute();
+                                
+                            }
+                        }
+                    }
                 if($q_update) return $this->redirect("/clients/edit/".$client_id."/?activedisplay");
 
             }
@@ -1319,6 +1335,15 @@ class ClientsController extends AppController {
         else
             echo '0';
         die();
+    }
+    
+    public function getColorClass()
+    {
+        $query = TableRegistry::get('color_class');
+        $q = $query->find()->all();
+        $this->response->body($q);
+        return $this->response;
+        die;
     }
     
     }

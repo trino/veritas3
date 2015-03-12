@@ -578,17 +578,39 @@
                                                    </td>
                                                    <td>
                                                         <div class="col-md-12" id="edit_sub_<?php echo $sub['id']; ?>" style="display: none;margin:10px 0;padding:0">
-                                                            <div class="col-md-8" style="text-align: right;padding:0;">
+                                                            <div class="col-md-12" style="text-align: right;padding:0;">
                                                                 <input type="text" id="editsubdocname_<?php echo $sub['id']; ?>" value="<?php echo ucfirst($sub['title']); ?>" placeholder="Sub-Document title" class="form-control editsubdocname" />
-                                                                <span class="error passerror" id="flasheditSub_<?php echo $sub['id']; ?>"
+                                                                <span class="error" id="flasheditSub_<?php echo $sub['id']; ?>"
                                                                   style="display: none;">Subdocument name already exists</span>
-                                                                <span class="error passerror" id="flasheditSub1_<?php echo $sub['id']; ?>"
-                                                                  style="display: none; width: auto;">Please enter a subdocument name.</span>
+                                                                <span class="error" id="flasheditSub1_<?php echo $sub['id']; ?>"
+                                                                  style="display: none;">Please enter a subdocument name.</span>
                                                             </div>
                                                                 <input type="hidden" class="clien_id" value="<?php echo $client->id; ?>" />
-                                                                <br />
+                                                                <br /><br />
+                                                              <div class="col-md-12" style="text-align: right;padding:0;">
+                                                              <?php
+                                                              $color = $this->requestAction('clients/getColorClass'); 
+                                                              ?>
+                                                                <select class="form-control" id="select_color_<?php echo $sub['id']; ?>">
+                                                                <option value= "">Select a color class</option>
+                                                                <?php
+                                                                 if($color)
+                                                                 {
+                                                                    foreach($color as $c)
+                                                                    {
+                                                                        ?>
+                                                                        <option value="<?php echo $c->id; ?>" <?php if(isset($sub['color_id']) && $sub['color_id'] == $c->id){?> selected="selected"<?php } ?> ><?php echo $c->color; ?></option>
+                                                                        <?php
+                                                                    }
+                                                                 }
                                                                 
-                                                            <div class="col-md-2" style="text-align: right;padding:0;">
+                                                                 ?>
+                                                                    
+                                                                </select>
+                                                                <span class="error" id="flashSelectColor_<?php echo $sub['id']; ?>"
+                                                                  style="display: none; width: auto;">Please  select a color.</span>
+                                                              </div> <br /> <br />
+                                                            <div class="col-md-12" style="text-align: right;padding:0;">
                                                                 <a class="btn-xs btn-primary editsubdoc" id="subbtn<?php echo $sub['id']; ?>" href="javascript:void(0)">Save</a>
                                                             </div>
                                                             <div class="clearfix"></div>
@@ -699,13 +721,18 @@
             $(this).html('Saving..'); 
             var id = $(this).attr('id').replace('subbtn','');
            var subname = $('#editsubdocname_'+id).val();
+           var color = $('#select_color_'+id).val();
            var client_id = $('.clien_id').val();
             var msg = '';
-            var nameId = 'msg_'+id; 
-           if(subname == ''  )
+            var nameId = 'msg_'+id; //
+            $('#flasheditSub1_'+id).hide();
+                $('#flasheditSub_'+id).hide();
+                $('#flashSelectColor_'+id).hide();
+           if(!color && subname == '')
            {
                 $('#flasheditSub1_'+id).show();
-                $('.#flasheditSub_'+id).hide();
+                $('#flasheditSub_'+id).hide();
+                $('#flashSelectColor_'+id).show();
                 $('#editsubdocname_'+id).focus();
                         $('html,body').animate({
                                 scrollTop: $('.page-title').offset().top
@@ -714,7 +741,65 @@
             $('#subbtn'+id).html('Save');
                         return false;
            }
-           else
+           else if(!color && subname != '' )
+           {
+            
+            /**************************************************************************************************/
+            
+            
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>clients/check_document/'+id,
+                data: 'subdocumentname=' + subname,
+                type: 'post',
+                success: function (res) {//alert(res);
+                    if (res == '1') {
+                        //alert(res);
+                        $('#flasheditSub_'+id).show();
+                        $('#flasheditSub1_'+id).hide();
+                        $('#flashSelectColor_'+id).show();
+                        $('#editsubdocname_'+id).focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+            $('#subbtn'+id).html('Save');
+
+                        return false;
+                    }
+                    else
+                    {
+                        $('#flasheditSub1_'+id).hide();
+                        $('#flasheditSub_'+id).hide();
+                        $('#flashSelectColor_'+id).show();
+                        $('#select_color_'+id).focus();
+                                $('html,body').animate({
+                                        scrollTop: $('.page-title').offset().top
+                                    },
+                                    'slow');
+                         $('#subbtn'+id).html('Save');
+                        return false;
+                    }
+                } 
+            });
+            
+            
+            /****************************************************************************************************/
+                
+           }
+           else if(color && subname == '' )
+           {
+                $('#flasheditSub1_'+id).show();
+                $('#flasheditSub_'+id).hide();
+                $('#flashSelectColor_'+id).hide();
+                $('#editsubdocname_'+id).focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+            $('#subbtn'+id).html('Save');
+                        return false;
+           }
+           else if(color && subname != '' )
            {
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>clients/check_document/'+id,
@@ -725,6 +810,7 @@
                         //alert(res);
                         $('#flasheditSub_'+id).show();
                         $('#flasheditSub1_'+id).hide();
+                        //$('#flashSelectColor_'+id).hide();
                         $('#editsubdocname_'+id).focus();
                         $('html,body').animate({
                                 scrollTop: $('.page-title').offset().top
@@ -738,6 +824,10 @@
                     {
                          //window.location = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname+'&updatedoc_id='+id+'&client_id='+client_id;
                          msg = '<span class="msg" style="color:#45B6AF">Saved</span>';
+                         if(color){
+                            var url = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname+'&updatedoc_id='+id+'&client_id='+client_id+'&color='+color;
+                         }
+                         else
                         var url = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname+'&updatedoc_id='+id+'&client_id='+client_id;
                         
                     $.ajax({

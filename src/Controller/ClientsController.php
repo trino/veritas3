@@ -1225,11 +1225,16 @@ class ClientsController extends AppController {
                 {
                 $que = TableRegistry::get('subdocuments');
                 //$que = $queries->query();
+                $col_query = TableRegistry::get('color_class');
+                $col_q = $col_query->find('all')->order('rand()')->first();
+                $col_id = $col_q->id;
+                //$col_q = $col_q->select(['id'])->where(['order' => 'rand()', 'limit' => 1])->execute();                
                 $q = $que->newEntity([
                                 'title' => $subname,
                                 'display' => 0,
                                 'table_name' => $subname,
-                                'orders' => 0
+                                'orders' => 0,
+                                'color_id' => $col_id
                             ]);
                     $que->save($q);
                 /*$q = $que->insert(['title','display', 'table_name','orders'])

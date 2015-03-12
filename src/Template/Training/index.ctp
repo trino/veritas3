@@ -201,7 +201,7 @@ function printeditbuttons($QuizID){
     echo '<div class="col-md-6" align="right">';
     //echo '<a href="training/enroll?quizid=' . $quiz->ID . '" class="btn btn-warning btnspc"">Enroll</a>';
     //echo '<a class="btn btn-info btnspc" href="training/quiz?quizid=' . $quiz->ID . '">View</a>';
-    echo '<a class="btn btn-info btnspc" href="training?quizid=' . $QuizID . '">View</a>';
+    echo '<a class="btn btn-info btnspc" href="training/quiz?quizid=' . $QuizID . '">View</a>';
     echo '<a href="training/enroll?quizid=' . $QuizID . '" class="btn btnspc btn-warning">Enroll</a>';
     echo '<A href="training/users?quizid=' . $QuizID . '" class="btn btnspc btn-info">Results</A>';
     echo '<a href="training/edit?quizid=' . $QuizID . '" class="btn btn-primary btnspc">Edit</a>';

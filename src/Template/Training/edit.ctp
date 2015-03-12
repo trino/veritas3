@@ -96,11 +96,16 @@ if (isset($quiz)){
         <button type="submit" class="btn blue"><i class="fa fa-check"></i> Save Changes</button>
     </div>
     </div>
-    <div class="col-md-2">
+
+    <?php if (isset($_GET["quizid"])){ ?>
+    <div class="col-md-10" align="right">
         <div class="form-group">
-            <A href="<?= $this->request->webroot ?>training/users?quizid=<?= $_GET["quizid"] ?>" class="btn btn-info">Users who have taken the test</A>
+            <A href="<?= $this->request->webroot ?>training/users?quizid=<?= $_GET["quizid"] ?>" class="btn btn-info">Results</A>
+            <A href="<?= $this->request->webroot ?>training/enroll?quizid=<?= $_GET["quizid"] ?>" class="btn btn-warning">Enroll</A>
+            <a href="<?= $this->request->webroot ?>training/quiz?quizid=<?= $_GET["quizid"] ?>" class="btn btn-info btnspc">Preview</a>
         </div>
     </div>
+    <?php } ?>
 </form>
 <?php if (isset($questions)) { ?>
 <div class="col-md-12">

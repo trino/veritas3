@@ -87,7 +87,9 @@ function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer
     $QuestionID = $QuizID . ':' . $Index;
     echo '<input type="hidden" name="' . $QuestionID . ':sequencecheck" value="' . $Qold . '" />';
     echo '<div class="qtext"><p>' . $text . '</p></div>';
-    echo '<div class="ablock"><div class="prompt">Select one:</div><div class="answer">';
+    echo '<div class="ablock"><div class="prompt">Select one:';
+    if ($correctanswer==-1){ echo " <font color='red'><B>Incomplete</B></font>";}
+    echo '</div><div class="answer">';
     for ($temp=0; $temp<count($answers); $temp+=1){
         if (strlen(trim($answers[$temp]))>0) {
             echo '<div class="r' . $temp . '">';
@@ -96,9 +98,9 @@ function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer
             echo '/><label for="' . $QuestionID . ":" . $temp . '">' . chr($temp + ord("a")) . ". " . $answers[$temp];
             if (is_object($usersanswer) && $selected == $temp){
                 if ($correctanswer == $temp) {
-                    echo " <B>Correct!</B>";
+                    echo " <font color='green'><B>Correct!</B></font>";
                 } else {
-                    echo " <B>Incorrect</B>";
+                    echo " <font color='red'><B>Incorrect</B></font>";
                 }
             }
             echo '</label></div>';
@@ -134,13 +136,8 @@ function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00
     answers($QuizID, $question, $text, $answers, $index, $usersanswer,$correctanswer);
     question(2);
 }
-?>
 
-
-
-
-
-<?php
+echo "<H4>" . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ")</H4>";
 
 if (count($_POST)>0) {
     print_r($_POST);
@@ -160,7 +157,7 @@ if (count($_POST)>0) {
         FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3,  $question->Choice4,  $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
     }
     if (!is_object($answer)) {
-        echo '<DIV align="center"><button type="submit" class="btn blue" onclick="return confirm(' . "'Are you sure you are done?'" . ');"><i class="fa fa-check"></i> Save</button></DIV>';
+        echo '<DIV align="center"><button type="submit" class="btn blue" style="margin-bottom: 15px;" onclick="return confirm(' . "'Are you sure you are done?'" . ');"><i class="fa fa-check"></i> Save</button></DIV>';
     }
     echo "</form>";
 }

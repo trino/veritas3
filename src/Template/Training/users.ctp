@@ -26,6 +26,9 @@ function clean($data, $datatype=0){
     $data = str_replace("\\r\\n", "\r\n", (trim($data))) ;
     return $data;
 }
+
+$title = "Quizzes";
+if (isset($_GET["quizid"])) { $title = "Quiz Results";}
 ?>
 
 
@@ -56,7 +59,9 @@ Users
         <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 </div>
 
-
+<div class="row"><div class="col-md-12"><div class="portlet box blue-steel"><div class="portlet-title">
+<div class="caption"><i class="fa fa-graduation-cap"></i><?= $title?></div></div><div class="portlet-body">
+<div class="row"><div class="col-md-12">
 
 <div class="table-scrollable">
     <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
@@ -82,13 +87,13 @@ Users
                         $usercount+=1;
                         $total+=$user->percent;
                         echo '<TR><TD>' . $user->id . '</TD><TD>' . $user->fname . '</TD><TD>' . $user->lname . '</TD><TD>' . $user->username . '</TD><TD>';
-                        echo  $user->correct . '/' . $user->questions  . ' (' . $user->percent . '%)</TD><TD>';
+                        echo  $user->correct . '/' . $user->questions  . ' (' . round($user->percent,2) . '%)</TD><TD>';
                         echo '<A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=' . $user->id . '" class="' . btnclass("primary", "blue") . '">View</A></TD></TR>';
                     }
                     if ($usercount==0) {
                         echo '<TR><TD colspan="6" align="center">No one has taken this quiz yet</TD></TR>';
                     } else {
-                        echo '<TR><TD colspan="4" align="right">Average:</TD><TD>' . $total/$usercount . "%</TD><TD></TD></TR>";
+                        echo '<TR><TD colspan="4" align="right">Average:</TD><TD>' . round($total/$usercount,2) . "%</TD><TD></TD></TR>";
                     }
                 } else {
             ?>
@@ -107,3 +112,4 @@ Users
         </tbody>
     </table>
 </div>
+    </div></div></div></div></div></div>

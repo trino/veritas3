@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 
 class TrainingController extends AppController {
+    //my pages\actions
     public function index() {
         if (isset($_GET["action"])){
             if($this->canedit()) {
@@ -67,6 +68,8 @@ class TrainingController extends AppController {
         if ($this->canedit() && isset($_GET["userid"])){ $userid = $_GET["userid"];}
         $this->enumanswers($_GET["quizid"], $userid);
         $this->set('canedit', $this->canedit());
+
+        $this->getprofile($userid);
     }
 
     public function video(){}//just a simple video player
@@ -98,6 +101,10 @@ class TrainingController extends AppController {
 
 
 
+
+
+
+    //my API
     public function i2($post){
         foreach($post as $key => $value){//($temp=0; $temp<count($post); $temp+=1){
             //if (!is_numeric($post[$temp])) { $post2[$temp] = $this->clean($post[$temp]);  }
@@ -193,16 +200,20 @@ class TrainingController extends AppController {
         return current(end($logs));
     }
     public function enumusers($QuizID){//LEFT JOIN IS NOT WORKING!!!
+        //$this->loadModel('TrainingAnswers');
         $table = TableRegistry::get("training_answers");
         $options = array();
         $options['conditions'] = array('QuizID' => $QuizID);
         $options['fields'] =  array('UserID');// 'profiles.fname', 'profiles.lname', 'profiles.username');
         //$options['joins'] = array(array('table' => 'profiles', 'alias' => 'profiles', 'type' => 'LEFT', 'conditions' => array('training_answers.UserID = profiles.id')));
         $options['group'] = 'UserID';
-        $users =  $table->find('all',$options);
+        $users =  $table->find('all',$options)->contain("profiles");
             //$users =  $table->find('all', array('conditions' => array('QuizID' => $QuizID), 'fields' =>  array('training_answers.UserID', 'profiles.fname', 'profiles.lname', 'profiles.username'), 'group' => 'training_answers.UserID', 'joins' => array(array('table' => 'profiles', 'alias' => 'profiles', 'type' => 'LEFT', 'conditions' => array('training_answers.UserID = profiles.id')))));
         $quiz = $this->getQuiz($QuizID);
 
+        //$profiles = $this->TrainingAnswers->find()->where(['id' => $order_id->UserID])->first();
+
+        return;
         $users2= array();
         $table = TableRegistry::get("profiles");
         $options = array();
@@ -276,5 +287,97 @@ class TrainingController extends AppController {
             $table->query()->update()->set(['UserID' => $UserID, 'QuizID' => $QuizID, 'QuestionID' => $QuestionID, 'Answer' => $Answer, 'flagged' => $Flagged])
                 ->where(['UserID'=>$UserID, 'QuizID'=>$QuizID, 'QuestionID'=> $QuestionID])->execute();
         }
+    }
+
+    public function getprofile($UserID){
+        $table = TableRegistry::get("profiles");
+        $results = $table->find('all', array('conditions' => array('id'=>$UserID)))->first();
+        $this->set('user',$results);
+        return $results;
+    }
+
+
+
+
+
+
+
+
+
+
+    //API stolen from profilescontroller
+    public function initialize(){
+        parent::initialize();
+        $this->loadComponent('Settings');
+    }
+    public $paginate = [
+        'limit' => 20,
+        'order' => ['id' => 'DESC'],
+    ];
+    public function enroll(){
+        $this->set('doc_comp', $this->Document);
+        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+        $u = $this->request->session()->read('Profile.id');
+        $this->set('ProClients', $this->Settings);
+        $super = $this->request->session()->read('Profile.super');
+        $condition = $this->Settings->getprofilebyclient($u, $super);
+        if ($setting->profile_list == 0) {
+            $this->Flash->error('Sorry, you don\'t have the required permissions.');
+            return $this->redirect("/");
+        }
+        if (isset($_GET['draft'])) {
+            $draft = 1;
+        } else {
+            $draft = 0;
+        }
+        $cond = 'drafts = ' . $draft;
+        if (isset($_GET['searchprofile'])) {
+            $search = $_GET['searchprofile'];
+            $searchs = strtolower($search);
+        }
+
+        if (isset($_GET['filter_profile_type'])) {$profile_type = $_GET['filter_profile_type'];}
+        if (isset($_GET['filter_by_client'])) {$client = $_GET['filter_by_client'];}
+        $querys = TableRegistry::get('Profiles');
+
+        if (isset($_GET['searchprofile']) && $_GET['searchprofile']) {
+            if ($cond == '') {
+                $cond = $cond . ' (LOWER(title) LIKE "%' . $searchs . '%" OR LOWER(fname) LIKE "%' . $searchs . '%" OR LOWER(lname) LIKE "%' . $searchs . '%" OR LOWER(username) LIKE "%' . $searchs . '%" OR LOWER(address) LIKE "%' . $searchs . '%")';
+            } else {
+                $cond = $cond . ' AND (LOWER(title) LIKE "%' . $searchs . '%" OR LOWER(fname) LIKE "%' . $searchs . '%" OR LOWER(lname) LIKE "%' . $searchs . '%" OR LOWER(username) LIKE "%' . $searchs . '%" OR LOWER(address) LIKE "%' . $searchs . '%")';
+            }
+        }
+
+        if (isset($_GET['filter_profile_type']) && $_GET['filter_profile_type']) {
+            if ($cond == '') {
+                $cond = $cond . ' (profile_type = "' . $profile_type . '" OR admin = "' . $profile_type . '")';
+            } else {
+                $cond = $cond . ' AND (profile_type = "' . $profile_type . '" OR admin = "' . $profile_type . '")';
+            }
+        }
+        if (isset($_GET['filter_by_client']) && $_GET['filter_by_client']) {
+            $sub = TableRegistry::get('Clients');
+            $que = $sub->find();
+            $que->select()->where(['id' => $_GET['filter_by_client']]);
+            $q = $que->first();
+            $profile_ids = $q->profile_id;
+            if (!$profile_ids) {$profile_ids = '99999999999';}
+            if ($cond == '') {
+                $cond = $cond . ' (id IN (' . $profile_ids . '))';
+            } else {
+                $cond = $cond . ' AND (id IN (' . $profile_ids . '))';
+            }
+        }
+        if ($this->request->session()->read('Profile.profile_type') == '2' && !$cond) {$condition['created_by'] = $this->request->session()->read('Profile.id');}
+        if ($cond) {
+            $query = $querys->find();
+            $query = $query->where([$cond]);
+        } else {
+            $query = $this->Profiles->find()->where(['OR' => $condition,'AND' => 'super = 0']);
+        }
+        if (isset($search)) {$this->set('search_text', $search);}
+        if (isset($profile_type)) {$this->set('return_profile_type', $profile_type);}
+        if (isset($client)) {$this->set('return_client', $client);}
+        $this->set('profiles', $this->paginate($query));
     }
 }

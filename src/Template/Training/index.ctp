@@ -131,21 +131,33 @@ if (strlen($image)==0){ $image = "training.png";}
 
 
 <?
-foreach($quizes as $quiz){
-    $quiz=clean($quiz);
-if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
-    echo str_replace("\r\n", "<P>", $quiz->Description);
-    if(quizmiddle($QuizID, $quiz->ID)){
-        $attachments = explode(",", $quiz->Attachments);
-        echo '<div class="col-md-5" align="left">';
+function isenrolled($enrolledquizzes, $canedit, $QuizID){
+    if ($canedit) { return true;}
+    foreach($enrolledquizzes as $Quiz){
+        if ($Quiz->QuizID == $QuizID){ return true; }
+    }
+}
+
+foreach($quizes as $quiz) {
+    $quiz = clean($quiz);
+    if(isenrolled($enrolledquizzes, $canedit, $quiz->ID)){
+    if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
+        echo str_replace("\r\n", "<P>", $quiz->Description);
+        if (quizmiddle($QuizID, $quiz->ID)) {
+            $attachments = explode(",", $quiz->Attachments);
+            echo '<div class="col-md-5" align="left">';
             $attachmentJS = "";
-            $id=0;
-            $checked="";
-            if ($hasusertakenquiz) { $checked = " checked";}
-            foreach($attachments as $attachment){
-                $attachment=trim($attachment);
-                if (strlen($attachment)>0) {
-                    if (strlen($attachmentJS) > 0) { $attachmentJS .= " && "; }
+            $id = 0;
+            $checked = "";
+            if ($hasusertakenquiz) {
+                $checked = " checked";
+            }
+            foreach ($attachments as $attachment) {
+                $attachment = trim($attachment);
+                if (strlen($attachment) > 0) {
+                    if (strlen($attachmentJS) > 0) {
+                        $attachmentJS .= " && ";
+                    }
                     $attachmentJS .= "document.getElementById('chk" . $id . "').checked";
                     $download = '" target="_blank"';
                     $name = "";
@@ -162,30 +174,30 @@ if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
                         $download = '" download="' . basename($attachment) . '"';
                     }
 
-                    echo '<input type="checkbox" id="chk' . $id . '" disabled></input>' . ($id+1) . ' <a href="' . $attachment . $download . ' class="btn btn-warning" onclick="check(';
+                    echo '<input type="checkbox" id="chk' . $id . '" disabled></input>' . ($id + 1) . ' <a href="' . $attachment . $download . ' class="btn btn-warning" onclick="check(';
                     echo "'chk" . $id . "'" . ');" title="Please follow these steps in sequential order before you can take the quiz"' . $checked . '>' . $name . '</a>';
                     $id += 1;
                 }
             }
             echo '<input type="checkbox" id="quiz" disabled' . $checked . '><a class="btn btn-info" href="training/quiz?quizid=' . $quiz->ID . '" onclick="return checkboxes();">Quiz</a></input>';
-        echo '</div>';
-        if ($canedit) {
-            echo '<div class="col-md-5" align="right">';
-            //echo '<a href="training/enroll?quizid=' . $quiz->ID . '" class="btn btn-warning btnspc"">Enroll</a>';
-            //echo '<a class="btn btn-info btnspc" href="training/quiz?quizid=' . $quiz->ID . '">View</a>';
-            echo '<A href="' .  $this->request->webroot . 'training/users?quizid=' . $quiz->ID . '" class="btn btnspc btn-info">Results</A>';
-            if ($canedit) {
-                echo '<a href="training/edit?quizid=' . $quiz->ID . '" class="btn btn-primary btnspc">Edit</a>';
-                echo '<a href="training?action=delete&quizid=' . $quiz->ID . '" onclick="return confirm(' . "'Are you sure you want to delete this quiz?'" . ');" class="btn btn-danger">Delete</a>';
-            }
             echo '</div>';
+            if ($canedit) {
+                echo '<div class="col-md-5" align="right">';
+                //echo '<a href="training/enroll?quizid=' . $quiz->ID . '" class="btn btn-warning btnspc"">Enroll</a>';
+                //echo '<a class="btn btn-info btnspc" href="training/quiz?quizid=' . $quiz->ID . '">View</a>';
+                echo '<A href="' . $this->request->webroot . 'training/users?quizid=' . $quiz->ID . '" class="btn btnspc btn-info">Results</A>';
+                if ($canedit) {
+                    echo '<a href="training/edit?quizid=' . $quiz->ID . '" class="btn btn-primary btnspc">Edit</a>';
+                    echo '<a href="training?action=delete&quizid=' . $quiz->ID . '" onclick="return confirm(' . "'Are you sure you want to delete this quiz?'" . ');" class="btn btn-danger">Delete</a>';
+                }
+                echo '</div>';
+            }
+            //echo '<div class="col-md-2"></DIV><div class="col-md-10" align="left">Please follow these steps in sequential order before you can take the quiz</div>';
         }
-        //echo '<div class="col-md-2"></DIV><div class="col-md-10" align="left">Please follow these steps in sequential order before you can take the quiz</div>';
+        quizend($QuizID, $quiz->ID);
     }
-    quizend($QuizID, $quiz->ID);
+
 }
-
-
 }
 
 ?>

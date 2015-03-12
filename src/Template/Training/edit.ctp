@@ -173,4 +173,6 @@ if (isset($quiz)){
 
         </div>
 
-<?php } ?>
+<?php }
+
+?>

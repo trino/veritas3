@@ -240,7 +240,9 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                                     <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
                                     <td class="actions  util-btn-margin-bottom-5">
 
-                                        <A href="enroll?quizid=<?= $_GET["quizid"] ?>&userid=<?= $this->Number->format($profile->id) ?>" class="<?= btnclass("btn-info", "yellow"); ?>">Enroll</A>
+                                        <A href="enroll?quizid=<?= $_GET["quizid"] ?>&userid=<?= $this->Number->format($profile->id) ?>" class="<?= btnclass("btn-info", "yellow"); ?>">
+                                            <?php if ($profile->isenrolled) { echo "Unenroll";} else {echo "Enroll";} ?>
+                                        </A>
 
                                     </td>
                                 </tr>

@@ -21,6 +21,7 @@ class TrainingController extends AppController {
         }
         $this->set('hasusertakenquiz', false);
         if (isset($_GET["quizid"])){$this->set('hasusertakenquiz', $this->hasusertakenquiz($_GET["quizid"], $this->getuserid() ));}
+        $this->set('enrolledquizzes', $this->enumenrolledquizzes($this->getuserid()));
         $this->enumquizes();
         $this->set('canedit', $this->canedit());
     }
@@ -53,7 +54,12 @@ class TrainingController extends AppController {
     public function users(){
         if ($this->canedit()){
             if (isset($_GET["quizid"])) {
+                if (isset($_GET['userid'])){
+                    $this->unenrolluser($_GET["quizid"], $_GET['userid']);
+                    $this->Flash->success('The user was unenrolled');
+                }
                 $this->enumusers($_GET["quizid"]);
+                $this->set('users', $this->enumenrolledusers($_GET["quizid"]));
             } else {
                 $this->enumquizes(true);
             }
@@ -327,12 +333,34 @@ class TrainingController extends AppController {
         return $results;
     }
     public function enrolluser($QuizID, $UserID){
+        if(!$this->isuserenrolled($QuizID, $UserID)){
+            $table = TableRegistry::get("training_enrollments");
+            $table->query()->insert(['QuizID', 'UserID'])->values(['QuizID' => $QuizID, 'UserID' => $UserID])->execute();
 
+            $table = TableRegistry::get('sidebar');
+            $table->query()->update()->set(['training' => 1])->where(['user_id' => $UserID])->execute();
+            return true;
+        }
     }
-
-
-
-
+    public function unenrolluser($QuizID, $UserID){
+        $table = TableRegistry::get("training_enrollments");
+        $table->deleteAll(array('QuizID' => $QuizID, 'UserID' => $UserID), false);
+    }
+    public function enumenrolledusers($QuizID){
+        $table = TableRegistry::get("training_enrollments");
+        $results = $table->find('all', array('conditions' => array('QuizID'=>$QuizID)))->contain("profiles");
+        return $results;
+    }
+    public function isuserenrolled($QuizID, $UserID){
+        $table = TableRegistry::get("training_enrollments");
+        $results = $table->find('all', array('conditions' => array('QuizID'=>$QuizID, 'UserID'=>$UserID)))->first();
+        return is_object($results);
+    }
+    public function enumenrolledquizzes($UserID){
+        $table = TableRegistry::get("training_enrollments");
+        $results = $table->find('all', array('conditions' => array('UserID'=>$UserID), 'fields' => array('QuizID')));
+        return $results;
+    }
 
 
 
@@ -348,10 +376,15 @@ class TrainingController extends AppController {
         'order' => ['id' => 'DESC'],
     ];
     public function enroll() {
-        if (isset($_GET["userid"]) AND isset($_GET["quizid"])) {
-            $this->enrolluser($_GET["quizid"], $_GET["userid"]);
-            $this->Flash->success(ucfirst($this->getprofile($_GET["userid"], false)->username) . ' wasnt really enrolled in ' . $this->unclean($this->getQuizHeader($_GET["quizid"])->Name) );
+        if (isset($_GET["userid"]) AND isset($_GET["quizid"])) {//enrolluser
+            if ($this->enrolluser($_GET["quizid"], $_GET["userid"])){
+                $this->Flash->success(ucfirst($this->getprofile($_GET["userid"], false)->username) . ' was enrolled in ' . $this->unclean($this->getQuizHeader($_GET["quizid"])->Name));
+            } else {
+                $this->unenrolluser($_GET["quizid"], $_GET["userid"]);
+                $this->Flash->success(ucfirst($this->getprofile($_GET["userid"], false)->username) . ' was unenrolled from ' . $this->unclean($this->getQuizHeader($_GET["quizid"])->Name));
+            }
         }
+
         if(true){
         //} else {
             $this->set('doc_comp', $this->Document);
@@ -431,7 +464,11 @@ class TrainingController extends AppController {
             if (isset($client)) {
                 $this->set('return_client', $client);
             }
-            $this->set('profiles', $this->paginate($query));
+            $query= $this->paginate($query);
+            foreach($query as $profile){
+                $profile->isenrolled = $this->isuserenrolled($_GET["quizid"], $profile->id);
+            }
+            $this->set('profiles',$query);
         }
     }
 }

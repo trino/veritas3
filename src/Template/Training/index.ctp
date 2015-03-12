@@ -44,7 +44,7 @@ $settings = $this->requestAction('settings/get_settings');
 $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id'));
 
 $QuizID = -1;
-if (isset($_GET["quizid"])) { $QuizID = $_GET["quizid"]; }
+if (!isset($_GET["action"]) AND isset($_GET["quizid"])) { $QuizID = $_GET["quizid"]; }
 
 function clean($data){
     if (is_object($data)){
@@ -176,7 +176,7 @@ foreach($quizes as $quiz) {
                         $download = '" download="' . basename($attachment) . '"';
                     }
 
-                    echo '<input type="checkbox" id="chk' . $id . '" disabled></input>' . ($id + 1) . ' <a href="' . $attachment . $download . ' class="btn btn-warning" onclick="check(';
+                    echo '<input type="checkbox" id="chk' . $id . '" disabled' . $checked . '></input>' . ($id + 1) . ' <a href="' . $attachment . $download . ' class="btn btn-warning" onclick="check(';
                     echo "'chk" . $id . "'" . ');" title="Please follow these steps in sequential order before you can take the quiz"' . $checked . '>' . $name . '</a>';
                     $id += 1;
                 }

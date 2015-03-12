@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 
 class TrainingController extends AppController {
+    public function nopermissions(){ return "You can not edit courses."; }
     //my pages\actions
     public function index()
     {
@@ -16,7 +17,7 @@ class TrainingController extends AppController {
                         break;
                 }
             } else {
-                $this->Flash->error('You can not edit quizzes.');
+                $this->Flash->error($this->nopermissions());
             }
         }
         $this->set('hasusertakenquiz', false);
@@ -27,6 +28,7 @@ class TrainingController extends AppController {
     }
 
     public function edit(){
+        $this->set('canedit', $this->canedit());
         if (isset($_GET["action"])){
             if($this->canedit()) {
                 switch ($_GET["action"]) {
@@ -34,11 +36,12 @@ class TrainingController extends AppController {
                         $this->deletequestion($_GET["quizid"], $_GET["QuestionID"]);
                         break;
                     case "save":
-                        $this->savequiz($_POST);
+                        $lastid = $this->savequiz($_POST);
+                        if($lastid){$this->redirect('/training/edit?quizid=' . $lastid); }
                         break;
                 }
             } else {
-                $this->Flash->error('You can not edit quizzes.');
+                $this->Flash->error($this->nopermissions());
             }
         }
 
@@ -48,7 +51,6 @@ class TrainingController extends AppController {
             $this->set('quiz',$quiz );
             $this->quiz();
         }
-        $this->set('canedit', $this->canedit());
     }
 
     public function users(){
@@ -64,7 +66,7 @@ class TrainingController extends AppController {
                 $this->enumquizes(true);
             }
         } else{
-            $this->Flash->error('You can not edit quizzes.');
+            $this->Flash->error($this->nopermissions());
         }
         $this->set('canedit', $this->canedit());
     }
@@ -100,7 +102,7 @@ class TrainingController extends AppController {
                 $this->set('question',$quiz );
             }
         } else {
-            $this->Flash->error('You can not edit quizzes.');
+            $this->Flash->error($this->nopermissions());
         }
         $this->set('canedit', $this->canedit());
     }
@@ -190,12 +192,22 @@ class TrainingController extends AppController {
                 ->where(['ID' => $post["ID"]])
                 ->execute();
             $this->Flash->success('The quiz was edited');
+            return -1;
         } else { //new
             $table->query()->insert(['Name', 'Description', 'Attachments', 'image'])
              ->values(['Name' => $post["Name"], 'Description' => $post["Description"], 'Attachments' => $post['Attachments'], 'image' => $post['image']])->execute();
+            $lastID = $this->newestquiz($post["Name"],$post["Description"],$post['Attachments'],$post['image']);
             $this->Flash->success('The quiz was created');
+            return $lastID;
         }
     }
+
+    public function newestquiz($Name, $Description, $Attachments, $image){
+        $table = TableRegistry::get('training_list');
+        $quiz =  $table->find('all', array('conditions' => array(['Name' => $Name, 'Description' =>  $Description, 'Attachments' => $Attachments, 'image' => $image]),'order' => array('ID' => 'DESC')))->first();
+        if($quiz) {return $quiz->ID;}
+    }
+
     public function savequestion($post){
         //$post=$this->i2($post);
         $table = TableRegistry::get('training_quiz');

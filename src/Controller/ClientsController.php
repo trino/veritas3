@@ -1187,100 +1187,132 @@ class ClientsController extends AppController {
     
     function addsubdocs()
     {
+        
         $subname = $_GET['sub'];
         $client_id = $_GET['client_id'];
         if($this->request->session()->read('Profile.super'))
         {
-            $que = TableRegistry::get('subdocuments');
-            //$que = $queries->query();
-            $q = $que->newEntity([
-                            'title' => $subname,
-                            'display' => 0,
-                            'table_name' => $subname,
-                            'orders' => 0
-                        ]);
-                $que->save($q);
-            /*$q = $que->insert(['title','display', 'table_name','orders'])
-                        ->values([
-                            'title' => $subname,
-                            'display' => 0,
-                            'table_name' => $subname,
-                            'orders' => 0
-                        ])
-                        ->execute();*/
-                if($q)
-                {
-                   $sid = $q->id; 
-                   $clientsubdocs = TableRegistry::get('clientssubdocument');
-                   $clientsubdoc = $clientsubdocs->find();
-                   $csd = $clientsubdoc->select(['client_id'])->distinct(['client_id']);
-                   if($csd)
-                   {
-                        $checker_q2 = 0;
-                        foreach($csd as $c)
+            if(isset($_GET['updatedoc_id']))
+            {
+                $doc_id = $_GET['updatedoc_id'];
+                $up_que = TableRegistry::get('subdocuments');
+                $query = $up_que->query();
+                $q_update = $query->update()
+                    ->set(['title' => $subname])
+                    ->where(['id' => $doc_id])
+                    ->execute();
+                    if(isset($_GET['color']))
+                    {
+                        $color = $_GET['color'];
+                        $sel_query = $up_que->find()->where(['id' => $doc_id])->first;
                         {
-                            $clientsubdoc_q = $clientsubdocs->query();
-                            $q2 = $clientsubdoc_q->insert(['client_id','subdoc_id', 'display', 'display_order'])
-                                ->values([
-                                    'client_id' => $c->client_id,
-                                    'subdoc_id' => $sid,
-                                    'display' => 0,
-                                    'display_order' => 0
-                                ])
-                                ->execute();
-                                if($q2)
-                                $checker_q2 = 1;
+                            $col = $sel_query->color_id;
+                            if($col != $color)
+                            {
+                            $q_update = $query->update()
+                            ->set(['color_id' => $color])
+                            ->where(['id' => $doc_id])
+                            ->execute();
+                                
+                            }
                         }
-                   } 
-                   
-                   $profilesubdocs = TableRegistry::get('profilessubdocument');
-                   $profilesubdoc = $profilesubdocs->find();
-                   $psd = $profilesubdoc->select(['profile_id'])->distinct(['profile_id']);
-                   if($psd)
-                   {
-                        $checker_q3 = 0;
-                        foreach($psd as $p)
-                        {
-                            $profilesubdoc_q = $profilesubdocs->query();
-                            $q3 = $profilesubdoc_q->insert(['profile_id','subdoc_id', 'display'])
-                                ->values([
-                                    'profile_id' => $p->profile_id,
-                                    'subdoc_id' => $sid,
-                                    'display' => 0
-                                ])
-                                ->execute();
-                                if($q3)
-                                $checker_q3 = 1;
-                        }    
-                   }
-                   
-                   $clientsuborders = TableRegistry::get('client_sub_order');
-                   $clientsuborder = $clientsuborders->find();
-                   $cbo = $clientsuborder->select(['client_id'])->distinct(['client_id']);
-                   if($cbo)
-                   {
-                        $checker_q4 = 0;
-                        foreach($cbo as $o)
-                        {
-                            $clientsuborder_q = $clientsuborders->query();
-                            $q4 = $clientsuborder_q->insert(['client_id','sub_id', 'display_order'])
-                                ->values([
-                                    'client_id' => $o->client_id,
-                                    'sub_id' => $sid,
-                                    'display_order' => 0
-                                ])
-                                ->execute();
-                                if($q4)
-                                $checker_q4 = 1;
-                        } 
-                   } 
-                   
-                     if($checker_q2 && $checker_q3 && $checker_q4)
-                     {
-                        return $this->redirect("/clients/edit/".$client_id."/?activedisplay");
-                     }
-                        else return $this->redirect("/index");
-                }
+                    }
+                if($q_update) return $this->redirect("/clients/edit/".$client_id."/?activedisplay");
+
+            }
+            else
+                {
+                $que = TableRegistry::get('subdocuments');
+                //$que = $queries->query();
+                $q = $que->newEntity([
+                                'title' => $subname,
+                                'display' => 0,
+                                'table_name' => $subname,
+                                'orders' => 0
+                            ]);
+                    $que->save($q);
+                /*$q = $que->insert(['title','display', 'table_name','orders'])
+                            ->values([
+                                'title' => $subname,
+                                'display' => 0,
+                                'table_name' => $subname,
+                                'orders' => 0
+                            ])
+                            ->execute();*/
+                    if($q)
+                    {
+                       $sid = $q->id; 
+                       $clientsubdocs = TableRegistry::get('clientssubdocument');
+                       $clientsubdoc = $clientsubdocs->find();
+                       $csd = $clientsubdoc->select(['client_id'])->distinct(['client_id']);
+                       if($csd)
+                       {
+                            $checker_q2 = 0;
+                            foreach($csd as $c)
+                            {
+                                $clientsubdoc_q = $clientsubdocs->query();
+                                $q2 = $clientsubdoc_q->insert(['client_id','subdoc_id', 'display', 'display_order'])
+                                    ->values([
+                                        'client_id' => $c->client_id,
+                                        'subdoc_id' => $sid,
+                                        'display' => 0,
+                                        'display_order' => 0
+                                    ])
+                                    ->execute();
+                                    if($q2)
+                                    $checker_q2 = 1;
+                            }
+                       } 
+                       
+                       $profilesubdocs = TableRegistry::get('profilessubdocument');
+                       $profilesubdoc = $profilesubdocs->find();
+                       $psd = $profilesubdoc->select(['profile_id'])->distinct(['profile_id']);
+                       if($psd)
+                       {
+                            $checker_q3 = 0;
+                            foreach($psd as $p)
+                            {
+                                $profilesubdoc_q = $profilesubdocs->query();
+                                $q3 = $profilesubdoc_q->insert(['profile_id','subdoc_id', 'display'])
+                                    ->values([
+                                        'profile_id' => $p->profile_id,
+                                        'subdoc_id' => $sid,
+                                        'display' => 0
+                                    ])
+                                    ->execute();
+                                    if($q3)
+                                    $checker_q3 = 1;
+                            }    
+                       }
+                       
+                       $clientsuborders = TableRegistry::get('client_sub_order');
+                       $clientsuborder = $clientsuborders->find();
+                       $cbo = $clientsuborder->select(['client_id'])->distinct(['client_id']);
+                       if($cbo)
+                       {
+                            $checker_q4 = 0;
+                            foreach($cbo as $o)
+                            {
+                                $clientsuborder_q = $clientsuborders->query();
+                                $q4 = $clientsuborder_q->insert(['client_id','sub_id', 'display_order'])
+                                    ->values([
+                                        'client_id' => $o->client_id,
+                                        'sub_id' => $sid,
+                                        'display_order' => 0
+                                    ])
+                                    ->execute();
+                                    if($q4)
+                                    $checker_q4 = 1;
+                            } 
+                       } 
+                       
+                         if($checker_q2 && $checker_q3 && $checker_q4)
+                         {
+                            return $this->redirect("/clients/edit/".$client_id."/?activedisplay");
+                         }
+                            else return $this->redirect("/index");
+                    }
+            }
         }
         else
         {
@@ -1308,6 +1340,15 @@ class ClientsController extends AppController {
             echo '0';
         die();
     }
-
-}
+    
+    public function getColorClass()
+    {
+        $query = TableRegistry::get('color_class');
+        $q = $query->find()->all();
+        $this->response->body($q);
+        return $this->response;
+        die;
+    }
+    
+    }
 ?>

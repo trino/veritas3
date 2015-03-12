@@ -532,6 +532,7 @@
                                                 <th class=""><?php echo ucfirst($settings->document); ?> </th>
                                                 <th class="">Orders</th>
                                                 <th class="">Display Order</th>
+                                                <th class="" colspan="2">Action</th>
                                     </tr>
                                     <?php
                                         //$subdoc = $this->requestAction('/clients/getSub');
@@ -544,7 +545,7 @@
                                             <tr id="subd_<?php echo $sub->id; ?>" class="sublisting">
                                                 <td>
 
-                                                    <?php echo ucfirst($sub['title']); ?>
+                                                  <span id="sub_<?php echo $sub['id']; ?>"><?php echo ucfirst($sub['title']); ?></span>  
                                                 </td>
                                                 <!--<td class="">
                                                     <label class="uniform-inline">
@@ -583,6 +584,52 @@
                                                         <td>
                                                             <?php echo $u;?>
                                                         </td>
+                                                <td>
+                                                   <!-- <div class="col-md-2" style="text-align: right;">-->
+                                                        <a href="javascript:void(0)" class="btn-xs btn-success" onclick="$('#edit_sub_<?php echo $sub['id']; ?>').toggle(150);$('.msg').hide();">Edit</a>
+                                                   </td>
+                                                   <td>
+                                                        <div class="col-md-12" id="edit_sub_<?php echo $sub['id']; ?>" style="display: none;margin:10px 0;padding:0">
+                                                            <div class="col-md-12" style="text-align: right;padding:0;">
+                                                                <input type="text" id="editsubdocname_<?php echo $sub['id']; ?>" value="<?php echo ucfirst($sub['title']); ?>" placeholder="Sub-Document title" class="form-control editsubdocname" />
+                                                                <span class="error" id="flasheditSub_<?php echo $sub['id']; ?>"
+                                                                  style="display: none;">Subdocument name already exists</span>
+                                                                <span class="error" id="flasheditSub1_<?php echo $sub['id']; ?>"
+                                                                  style="display: none;">Please enter a subdocument name.</span>
+                                                            </div>
+                                                                <input type="hidden" class="clien_id" value="<?php echo $client->id; ?>" />
+                                                                <br /><br />
+                                                              <div class="col-md-12" style="text-align: right;padding:0;">
+                                                              <?php
+                                                              $color = $this->requestAction('clients/getColorClass'); 
+                                                              ?>
+                                                                <select class="form-control" id="select_color_<?php echo $sub['id']; ?>">
+                                                                <option value= "">Select a color class</option>
+                                                                <?php
+                                                                 if($color)
+                                                                 {
+                                                                    foreach($color as $c)
+                                                                    {
+                                                                        ?>
+                                                                        <option value="<?php echo $c->id; ?>" <?php if(isset($sub['color_id']) && $sub['color_id'] == $c->id){?> selected="selected"<?php } ?> ><?php echo $c->color; ?></option>
+                                                                        <?php
+                                                                    }
+                                                                 }
+                                                                
+                                                                 ?>
+                                                                    
+                                                                </select>
+                                                                <span class="error" id="flashSelectColor_<?php echo $sub['id']; ?>"
+                                                                  style="display: none; width: auto;">Please  select a color.</span>
+                                                              </div> <br /> <br />
+                                                            <div class="col-md-12" style="text-align: right;padding:0;">
+                                                                <a class="btn-xs btn-primary editsubdoc" id="subbtn<?php echo $sub['id']; ?>" href="javascript:void(0)">Save</a>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <span id="msg_<?php echo $sub['id']; ?>"></span>
+                                                    <!--</div>-->
+                                                </td>
 
                                             </tr>
 
@@ -681,6 +728,135 @@
             });
             } 
         });
+        
+        $('.editsubdoc').click(function(){
+            $(this).html('Saving..'); 
+            var id = $(this).attr('id').replace('subbtn','');
+           var subname = $('#editsubdocname_'+id).val();
+           var color = $('#select_color_'+id).val();
+           var client_id = $('.clien_id').val();
+            var msg = '';
+            var nameId = 'msg_'+id; //
+            $('#flasheditSub1_'+id).hide();
+                $('#flasheditSub_'+id).hide();
+                $('#flashSelectColor_'+id).hide();
+           if(!color && subname == '')
+           {
+                $('#flasheditSub1_'+id).show();
+                $('#flasheditSub_'+id).hide();
+                $('#flashSelectColor_'+id).show();
+                $('#editsubdocname_'+id).focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+            $('#subbtn'+id).html('Save');
+                        return false;
+           }
+           else if(!color && subname != '' )
+           {
+            
+            /**************************************************************************************************/
+            
+            
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>clients/check_document/'+id,
+                data: 'subdocumentname=' + subname,
+                type: 'post',
+                success: function (res) {//alert(res);
+                    if (res == '1') {
+                        //alert(res);
+                        $('#flasheditSub_'+id).show();
+                        $('#flasheditSub1_'+id).hide();
+                        $('#flashSelectColor_'+id).show();
+                        $('#editsubdocname_'+id).focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+            $('#subbtn'+id).html('Save');
+
+                        return false;
+                    }
+                    else
+                    {
+                        $('#flasheditSub1_'+id).hide();
+                        $('#flasheditSub_'+id).hide();
+                        $('#flashSelectColor_'+id).show();
+                        $('#select_color_'+id).focus();
+                                $('html,body').animate({
+                                        scrollTop: $('.page-title').offset().top
+                                    },
+                                    'slow');
+                         $('#subbtn'+id).html('Save');
+                        return false;
+                    }
+                } 
+            });
+            
+            
+            /****************************************************************************************************/
+                
+           }
+           else if(color && subname == '' )
+           {
+                $('#flasheditSub1_'+id).show();
+                $('#flasheditSub_'+id).hide();
+                $('#flashSelectColor_'+id).hide();
+                $('#editsubdocname_'+id).focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+            $('#subbtn'+id).html('Save');
+                        return false;
+           }
+           else if(color && subname != '' )
+           {
+            $.ajax({
+                url: '<?php echo $this->request->webroot;?>clients/check_document/'+id,
+                data: 'subdocumentname=' + subname,
+                type: 'post',
+                success: function (res) {//alert(res);
+                    if (res == '1') {
+                        //alert(res);
+                        $('#flasheditSub_'+id).show();
+                        $('#flasheditSub1_'+id).hide();
+                        //$('#flashSelectColor_'+id).hide();
+                        $('#editsubdocname_'+id).focus();
+                        $('html,body').animate({
+                                scrollTop: $('.page-title').offset().top
+                            },
+                            'slow');
+            $('#subbtn'+id).html('Save');
+
+                        return false;
+                    }
+                    else
+                    {
+                         //window.location = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname+'&updatedoc_id='+id+'&client_id='+client_id;
+                         msg = '<span class="msg" style="color:#45B6AF">Saved</span>';
+                         if(color){
+                            var url = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname+'&updatedoc_id='+id+'&client_id='+client_id+'&color='+color;
+                         }
+                         else
+                        var url = '<?php echo $this->request->webroot;?>clients/addsubdocs/?sub='+subname+'&updatedoc_id='+id+'&client_id='+client_id;
+                        
+                    $.ajax({
+                        url: url,success:function(){
+                            $('#edit_sub_'+id).hide();
+                            $('#'+nameId).show();
+                        $('#'+nameId).html(msg);
+                        $('#sub_'+id).html(subname);
+                        $('#subbtn'+id).html('Save');
+                        }
+                        });
+                    }
+                } 
+            });
+            } 
+        });
+        
         var tosend = '';
         $('.sortable tbody').sortable({
             items: "tr:not(.myclass)",
@@ -834,7 +1010,7 @@
             })
         });
     });
-
+    
     $('#addMoredoc').click(function () {
         var total_count = $('.docMore').data('count');
         $('.docMore').data('count', parseInt(total_count) + 1);

@@ -264,6 +264,19 @@ $profileID = $this->Session->read('Profile.id');
                         <span class="title">Training</span>
                         <span class="selected"></span>
                     </a>
+                    <ul class="sub-menu">
+                                <li <?php echo ($this->request['controller'] == 'Training' && $this->request['action'] == 'index') ? 'class="active"' : ''; ?>>
+                                    <a href="<?php echo $this->request->webroot;?>training">
+                                        <i class="icon-plus"></i>
+                                        Quizzes</a>
+                                </li>
+                                <li <?php echo ($this->request['controller'] == 'Training' && $this->request['action'] == 'users') ? 'class="active"' : ''; ?>>
+                                    <a href="<?php echo $this->request->webroot;?>training/users">
+                                        <i class="icon-plus"></i>
+                                        Quiz Results</a>
+                                </li>
+
+                    </ul>
                 </li>
             <?php } ?>
 

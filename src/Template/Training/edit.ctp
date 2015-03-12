@@ -91,10 +91,15 @@ if (isset($quiz)){
     </div>
 </div>
 
-    <div class="col-md-12">
+    <div class="col-md-2">
     <div class="form-group">
-<button type="submit" class="btn blue"><i class="fa fa-check"></i> Save Changes</button>
+        <button type="submit" class="btn blue"><i class="fa fa-check"></i> Save Changes</button>
     </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <A href="<?= $this->request->webroot ?>training/users?quizid=<?= $_GET["quizid"] ?>" class="btn btn-info">Users who have taken the test</A>
+        </div>
     </div>
 </form>
 <?php if (isset($questions)) { ?>
@@ -143,10 +148,10 @@ if (isset($quiz)){
 
                             echo '<TR><TD>' . $question->ID . '</TD>';
                             echo '<TD>' . $question->QuestionID . '</TD>';
-                            echo '<TD>' . trunc($question->Question, 50, "...") . '</TD>';
+                            echo '<TD>' . trunc($question->Question, 75, "...") . '</TD>';
 
                             echo '<TD><a href="editquestion?QuestionID=' . $question->QuestionID . '&new=false&quizid=' . $_GET["quizid"] . '" class="' . btnclass("EDIT") . '">Edit</a>';
-                            echo '<a href="edit?action=delete&quizid=' . $_GET["quizid"] . '&QuestionID=' . $question->QuestionID . '" class="' . btnclass("DELETE") . '">Delete</a></TD>';
+                            echo '<a href="edit?action=delete&quizid=' . $_GET["quizid"] . '&QuestionID=' . $question->QuestionID . '" class="' . btnclass("DELETE") . '"  onclick="return confirm(' . "'Are you sure you want to delete question" . $question->QuestionID  . " ?'" . ');">Delete</a></TD>';
                             //answer($question->Answer, 0, $question->Choice0);
                             //answer($question->Answer, 1, $question->Choice1);
                             //answer($question->Answer, 2, $question->Choice2);

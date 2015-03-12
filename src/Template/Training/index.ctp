@@ -138,10 +138,12 @@ function isenrolled($enrolledquizzes, $canedit, $QuizID){
     }
 }
 
+$totalquizzes=0;
 foreach($quizes as $quiz) {
     $quiz = clean($quiz);
     if(isenrolled($enrolledquizzes, $canedit, $quiz->ID)){
     if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
+        $totalquizzes+=1;
         echo str_replace("\r\n", "<P>", $quiz->Description);
         if (quizmiddle($QuizID, $quiz->ID)) {
             $attachments = explode(",", $quiz->Attachments);
@@ -198,6 +200,10 @@ foreach($quizes as $quiz) {
     }
 
 }
+}
+
+if ($totalquizzes==0){
+    echo "<h2>You are not enrolled in any courses</h2>";
 }
 
 ?>

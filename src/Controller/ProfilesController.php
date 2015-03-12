@@ -315,6 +315,8 @@
             {
                 $this->Flash->success('Order saved successfully');
             }
+            $this->loadModel("ProfileTypes");
+            $this->set("ptypes",$this->ProfileTypes->find()->where(['enable'=>'1'])->all());
             $this->set('uid', $id);
             $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -859,7 +861,8 @@
             } else {
                 $this->set('myuser', '1');
             }
-            
+            $this->loadModel("ProfileTypes");
+            $this->set("ptypes",$this->ProfileTypes->find()->where(['enable'=>'1'])->all());
             $docs = TableRegistry::get('profile_docs');
             $query = $docs->find();
             $client_docs = $query->select()->where(['profile_id'=>$id])->all();

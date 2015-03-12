@@ -185,7 +185,8 @@ class ClientsController extends AppController {
             	return $this->redirect("/");
 
         }
-
+        $this->loadModel("ClientTypes");
+        $this->set('client_types', $this->ClientTypes->find()->where(['enable'=>'1'])->all());
         $querys = TableRegistry::get('Clients');
         $query = $querys->find()->where(['id' => $id]);
        $this->set('client', $query->first());

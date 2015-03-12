@@ -586,6 +586,8 @@
                                                                   style="display: none; width: auto;">Please enter a subdocument name.</span>
                                                             </div>
                                                                 <input type="hidden" class="clien_id" value="<?php echo $client->id; ?>" />
+                                                                <br />
+                                                                
                                                             <div class="col-md-2" style="text-align: right;padding:0;">
                                                                 <a class="btn-xs btn-primary editsubdoc" id="subbtn<?php echo $sub['id']; ?>" href="javascript:void(0)">Save</a>
                                                             </div>

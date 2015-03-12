@@ -48,6 +48,8 @@ function clean($data, $datatype=0){
                 $data->Choice1 = clean($data->Choice1);
                 $data->Choice2 = clean($data->Choice2);
                 $data->Choice3 = clean($data->Choice3);
+                $data->Choice4 = clean($data->Choice4);
+                $data->Choice5 = clean($data->Choice5);
                 return $data;
                 break;
         }
@@ -107,18 +109,20 @@ function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer
 
 function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0, $usersanswer){
     $flagged="";
+    $answered="Not yet answered";
     if (is_object($usersanswer)){
         if ($usersanswer->flagged){ $flagged = " checked";}
         $flagged.=" disabled";
+        $answered="Answered";
     }
     $QuestionID = $QuizID . ':' . $Index;
-    echo '<div class="state">Not yet answered</div><div class="grade">Marked out of ' . $markedOutOf  . '</div>';
-    echo '<div class="questionflag editable" aria-atomic="true" aria-relevant="text" aria-live="assertive">';
-    echo '<input type="hidden" name="' . $QuestionID . '_flagged" value="0" />';
-    echo '<input type="checkbox" id="' . $QuestionID . '_flaggedcheckbox" name="' . $QuestionID . '_flaggedcheckbox" value="1" ' . $flagged . '/>';
+    echo '<div class="state">' . $answered . '</div><div class="grade">Marked out of ' . $markedOutOf  . '</div>';
+    //echo '<div class="questionflag editable" aria-atomic="true" aria-relevant="text" aria-live="assertive">';
+    //echo '<input type="hidden" name="' . $QuestionID . '_flagged" value="0" />';
+    //echo '<input type="checkbox" id="' . $QuestionID . '_flaggedcheckbox" name="' . $QuestionID . '_flaggedcheckbox" value="1" ' . $flagged . '/>';
         //*<input type="hidden" value="qaid=16821&amp;qubaid=873&amp;qid=55&amp;slot=1&amp;checksum=6e752fddd87489abd0ec093720443089&amp;sesskey=JiVfZNWBDK&amp;newstate=" class="questionflagpostdata" /> I DONT KNOW WHAT THIS IS FOR
-    echo '<label id="' . $QuestionID . '_flaggedlabel" for="' . $QuestionID . '_flaggedcheckbox">';
-    echo '<img alt=' . $Index . ' src="http://asap-training.com/theme/image.php?theme=aardvark&amp;component=core&amp;rev=1415027139&amp;image=i%2Funflagged" alt="Not flagged" id="' . $Index . ':flaggedimg" /></label></div>';
+    //echo '<label id="' . $QuestionID . '_flaggedlabel" for="' . $QuestionID . '_flaggedcheckbox">';
+    //echo '<img alt=' . $Index . ' src="http://asap-training.com/theme/image.php?theme=aardvark&amp;component=core&amp;rev=1415027139&amp;image=i%2Funflagged" alt="Not flagged" id="' . $Index . ':flaggedimg" /></label></div>';
 }
 
 function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00", $usersanswer, $correctanswer){
@@ -153,44 +157,13 @@ if (count($_POST)>0) {
                 }
             }
         }
-        FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3), $question->QuestionID, "1.00", $answer, $question->Answer);
+        FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3,  $question->Choice4,  $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
     }
     if (!is_object($answer)) {
-        echo '<DIV align="center"><button type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button></DIV>';
+        echo '<DIV align="center"><button type="submit" class="btn blue" onclick="return confirm(' . "'Are you sure you are done?'" . ');"><i class="fa fa-check"></i> Save</button></DIV>';
     }
     echo "</form>";
 }
-
-
-
-
-
-
-
-
-switch ( $QuizID ) {
-    case 21:
-        FullQuestion("What does WHMIS stand for?", array("Workplace Health Materials Information System", "Workplace Hazardous Materials Information System", "Workplace Hazardous Materials Information Sheet", "Workplace Hazardous MSDS Information Sheet"));
-        FullQuestion("WHMIS is a law", array("True", "False"));
-        FullQuestion("Under WHMIS Law who has duties in regards to hazardous materials?", array("Workers", "Employers", "Suppliers", "All of the above"));
-        FullQuestion("How many categories of controlled substances are identified under WHMIS?", array("Three", "Five", "Four", "Six"));
-        FullQuestion("What class of controlled substances does this symbol represent?", array("Compressed Gas", "Corrosive Material", "Oxidizing Material", "Flammable and Combustible Material"));
-        FullQuestion("What class of controlled substances does this symbol represent?", array("Biohazardous Infectious Material", "Materials Causing Other Toxic Effects", "Oxidizing Material", "Materials Causing Immediate and Severe Toxic Effects"));
-        FullQuestion("What class of controlled substances does this symbol represent?", array("Poisonous and Infectious Material", "Dangerously Reactive Material", "Flammable and Combustible Material", "Compressed Gas"));
-        FullQuestion("What two types of labels are required by WHMIS law?", array("Supplier and Employer", "Workplace and Manufacturer", "Employer and Worker", "Supplier and Workplace"));
-        FullQuestion("When is a Workplace Label required?", array("When a substance in transferred to a different container", "As soon as a substance is brought on site", "None of the above", "When the supplier label is damaged"));
-        FullQuestion("What is required on a Workplace Label?", array("Reference to MSDS", "Hazard information", "Product name", "All of the above"));
-        FullQuestion("What is required on a Supplier Label by law?", array("Product and Supplier Identifier", "Hatched Border", "First Aid Measures", "Hazard Symbols", "All of the above"));
-        FullQuestion("What does MSDS stand for?", array("Material Safety Data System", "Major Safety Direction System", "Material Safety Direction Sheet", "Material Safety Data Sheet"));
-        FullQuestion("What controlled substances need an MSDS?", array("Any that are being shipped from site", "Every controlled substance received at the site", "Those that are being used on a daily basis", "The really dangerous ones"));
-        FullQuestion("How often does an MSDS need to be updated?", array("Every three (3) years", "Never", "Every two (2) years", "Every years"));
-        FullQuestion("An MSDS CANNOT be updated before three (3) years", array("True", "False"));
-        break;
-    case 22:
-        FullQuestion("Test Question?", array("Answer 1", "Answer 2", "Answer 3", "Answer 4"));
-        break;
-}
 ?>
-
 
 </div></div></div></div></div>

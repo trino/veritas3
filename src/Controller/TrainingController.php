@@ -17,8 +17,7 @@ class TrainingController extends AppController {
                 $this->Flash->error('You can not edit quizzes.');
             }
         }
-        $table = TableRegistry::get('training_list')->find('all');
-        $this->set('quizes',$table );
+        $this->enumquizes();
         $this->set('canedit', $this->canedit());
     }
 
@@ -51,6 +50,8 @@ class TrainingController extends AppController {
         if ($this->canedit()){
             if (isset($_GET["quizid"])) {
                 $this->enumusers($_GET["quizid"]);
+            } else {
+                $this->enumquizes(true);
             }
         } else{
             $this->Flash->error('You can not edit quizzes.');
@@ -81,7 +82,7 @@ class TrainingController extends AppController {
                     break;
             }
             if (isset($_GET["QuestionID"])) {
-                echo "quizID= " . $_GET["quizid"] . " questionid=" . $_GET["QuestionID"];
+                //echo "quizID= " . $_GET["quizid"] . " questionid=" . $_GET["QuestionID"];
                 $table = TableRegistry::get('training_quiz');
                 $quiz =  $table->find()->where(['QuizID'=>$_GET["quizid"], 'QuestionID'=> $_GET["QuestionID"]])->first();
                 $this->set('question',$quiz );
@@ -113,6 +114,25 @@ class TrainingController extends AppController {
     public function getuserid(){
         return $this->request->session()->read('Profile.id');
     }
+    public function enumquizes($getapplicants = false){
+        $table = TableRegistry::get('training_list')->find('all');
+        if ($getapplicants){
+               foreach($table as $quiz){
+                   $quiz->applicants = $this->countapplicants($quiz->ID);
+               }
+        }
+        $this->set('quizes',$table );
+        return $table;
+    }
+    public function countapplicants($quizid){
+        $table = TableRegistry::get("training_answers");
+        $users =  $table->find('all',array('conditions' => array('QuizID' => $quizid), 'group' => 'UserID'));
+        return $this->countobject($users);
+    }
+    public function countobject($object){
+        return iterator_count($object);
+    }
+
     public function getQuiz($QuizID){
         $table = TableRegistry::get('training_quiz');
         //$answers =  $table->find()->where(['QuizID'=>$_GET["quizid"]]);
@@ -154,13 +174,13 @@ class TrainingController extends AppController {
         //$post=$this->i2($post);
         $table = TableRegistry::get('training_quiz');
         if($post['new'] == "true") {
-            $table->query()->insert(['Question', 'QuizID', 'QuestionID', 'Answer', 'Choice0', 'Choice1', 'Choice2', 'Choice3', 'Picture'])
-                ->values(['Question' => $post["Question"], 'QuizID' => $post["QuizID"], 'QuestionID' => $post['QuestionID'], 'Answer' => $post['Answer'], 'Choice0' => $post['Choice0'], 'Choice1' => $post['Choice1'], 'Choice2' => $post['Choice2'], 'Choice3' => $post['Choice3'], 'Picture' => $post['Picture']])
+            $table->query()->insert(['Question', 'QuizID', 'QuestionID', 'Answer', 'Choice0', 'Choice1', 'Choice2', 'Choice3', 'Choice4', 'Choice5', 'Picture'])
+                ->values(['Question' => $post["Question"], 'QuizID' => $post["QuizID"], 'QuestionID' => $post['QuestionID'], 'Answer' => $post['answer'], 'Choice0' => $post['Choice0'], 'Choice1' => $post['Choice1'], 'Choice2' => $post['Choice2'], 'Choice3' => $post['Choice3'], 'Choice4' => $post['Choice4'], 'Choice5' => $post['Choice5'], 'Picture' => $post['Picture']])
                 ->execute();
             $this->Flash->success('The question was created');
         }else{
             print_r($post);
-            $table->query()->update()->set(['Question' => $post["Question"], 'Answer' => $post['answer'], 'Choice0' => $post['Choice0'], 'Choice1' => $post['Choice1'], 'Choice2' => $post['Choice2'], 'Choice3' => $post['Choice3'], 'Picture' => $post['Picture']])
+            $table->query()->update()->set(['Question' => $post["Question"], 'Answer' => $post['answer'], 'Choice0' => $post['Choice0'], 'Choice1' => $post['Choice1'], 'Choice2' => $post['Choice2'], 'Choice3' => $post['Choice3'], 'Choice4' => $post['Choice4'], 'Choice5' => $post['Choice5'], 'Picture' => $post['Picture']])
                 ->where(['QuizID' => $post['QuizID'], 'QuestionID' => $post['QuestionID']])->execute();
             $this->Flash->success('The question was saved');
         }

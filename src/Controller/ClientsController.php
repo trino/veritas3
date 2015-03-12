@@ -303,7 +303,9 @@ class ClientsController extends AppController {
 	   $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
         $settings = $this->Settings->get_settings();
         $this->set('settings', $settings);
-
+        
+        $this->loadModel("ClientTypes");
+        $this->set('client_types', $this->ClientTypes->find()->where(['enable'=>'1'])->all());
         if($setting->client_create==0)
         {
             $this->Flash->error('Sorry, you don\'t have the required permissions.');
@@ -602,6 +604,8 @@ class ClientsController extends AppController {
     
             }
         }
+        $this->loadModel("ClientTypes");
+        $this->set('client_types', $this->ClientTypes->find()->where(['enable'=>'1'])->all());
         $docs = TableRegistry::get('client_docs');
         $query = $docs->find();
         $client_docs = $query->select()->where(['client_id'=>$id])->all();

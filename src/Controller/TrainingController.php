@@ -195,7 +195,7 @@ class TrainingController extends AppController {
     public function enumusers($QuizID){//LEFT JOIN IS NOT WORKING!!!
         $table = TableRegistry::get("training_answers");
         $options = array();
-        //$options['conditions'] = array('QuizID' => $QuizID);
+        $options['conditions'] = array('QuizID' => $QuizID);
         $options['fields'] =  array('UserID');// 'profiles.fname', 'profiles.lname', 'profiles.username');
         //$options['joins'] = array(array('table' => 'profiles', 'alias' => 'profiles', 'type' => 'LEFT', 'conditions' => array('training_answers.UserID = profiles.id')));
         $options['group'] = 'UserID';

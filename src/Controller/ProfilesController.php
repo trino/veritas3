@@ -104,6 +104,8 @@
             $this->loadModel('Logos');
             $this->loadModel('OrderProducts');
             $this->loadModel('ProfileTypes');
+            $this->loadModel("ClientTypes");
+            $this->set('client_types', $this->ClientTypes->find()->all());
             $this->set('products', $this->OrderProducts->find()->all());
             
             $this->set('ptypes',$this->ProfileTypes->find()->all());
@@ -1764,6 +1766,36 @@
         }
         die();
     }
+     function ctypes($id='0')
+    {
+        if(isset($_POST))
+        {
+            $p = TableRegistry::get('client_types');
+            $title = $_POST['title'];
+            if($id!=0)
+            {
+                
+                if ($p->query()->update()->set(['title' =>$title])->where(['id' => $id])->execute()) 
+                {
+                    echo $title;
+                }
+            }
+            else
+            {
+                 $profile = $p->newEntity($_POST);
+                if ($p->save($profile)) {
+                    
+                    echo '<tr>
+                            <td>'.$profile->id.'</td>
+                            <td class="titlectype_'.$profile->id.'">'.$title.'</td>
+                            <td><input type="checkbox" id="cchk_'.$profile->id.'" class="cenable"/></td>
+                            <td><span  class="btn btn-info editctype" id="editctype_'.$profile->id.'">Edit</span></td>
+                        </tr>';
+                    }
+            }
+        }
+        die();
+    }
     function enableproduct($id)
     {
         $p = TableRegistry::get('order_products');
@@ -1778,6 +1810,20 @@
     function ptypesenable($id)
     {
         $p = TableRegistry::get('profile_types');
+        $enable = $_POST['enable'];
+        if ($p->query()->update()->set(['enable' =>$enable])->where(['id' => $id])->execute())
+        {
+            if ($enable=='1')
+                echo "Enabled";
+            else
+                echo "Disabled";
+        }
+        
+        die();
+    }
+     function ctypesenable($id)
+    {
+        $p = TableRegistry::get('client_types');
         $enable = $_POST['enable'];
         if ($p->query()->update()->set(['enable' =>$enable])->where(['id' => $id])->execute())
         {

@@ -130,11 +130,17 @@ function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0, $usersan
     //echo '<img alt=' . $Index . ' src="http://asap-training.com/theme/image.php?theme=aardvark&amp;component=core&amp;rev=1415027139&amp;image=i%2Funflagged" alt="Not flagged" id="' . $Index . ':flaggedimg" /></label></div>';
 }
 
+function preprocess($usersanswer, $correctanswer){
+    $correct = "incorrect";
+    if ($usersanswer->Answer==-1){$correct == "missing";} elseif ($correctanswer ==$usersanswer->Answer) {$correct="correct";}
+    return $correct;
+}
+
 function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00", $usersanswer, $correctanswer){
     global $question;
     $question+=1;
     $correct = "incorrect";
-    if ($correctanswer==-1){$correct == "missing";}
+    if ($usersanswer->Answer==-1){$correct == "missing";}
     question(0);
     questionheader($QuizID, $question, $markedOutOf, $index, $usersanswer);
     question(1);
@@ -143,41 +149,58 @@ function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00
     return $correct;
 }
 
-echo "<H4>" . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ")</H4>";
-
-//if (count($_POST)>0) {
-//    print_r($_POST);
-//} else {
+if (is_object($useranswers)) {
     $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0);
-    echo '<form action="quiz?quizid=' . $_GET["quizid"] . '" method="post" enctype="multipart/form-data" accept-charset="utf-8" id="responseform">';
     foreach ($questions as $question) {
-        $question=clean($question,1);
+        $result = preprocess(usersanswer($useranswers, $question->QuestionID), $question->Answer);
+        $results[$result] += 1;
+        $results["total"] += 1;
+    }
+    PrintResults($results, $user);
+}
+
+
+    function usersanswer($useranswers, $questionid){
         $answer="";
         if (isset($useranswers)){
             foreach($useranswers as $answers){
-                if ($answers->QuestionID == $question->QuestionID) {
-                    $answer = $answers;
+                if ($answers->QuestionID == $questionid) {
+                    return $answers;
                     continue;
                 }
             }
         }
+    }
+
+function PrintResults($results, $user){
+    if ($results['total']>0) {//http://localhost/veritas3/img/profile/172647_974786.jpg
+        //debug($user); <label class="control-label">Profile Type : </label>
+        echo '<div class="row"><div class="col-md-12"><div class="portlet box yellow"><div class="portlet-title">';
+        echo '<div class="caption"><i class="fa fa-graduation-cap"></i>Results for: ' . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ")";
+        echo '</div></div><div class="portlet-body"><div class="row">';
+        echo '<div class="col-md-2"><img src="../img/profile/' . $user->image . '" style="max-height: 100px; max-width: 100px;"></div>';
+        PrintResult("Incorrect", $results['incorrect']);
+        PrintResult("Missing", $results['missing']);
+        PrintResult("Correct", $results['correct']);
+        PrintResult("Score", round($results['correct']/$results['total']*100,2) . "%");
+        echo '</div></div></div>';
+    }
+}
+function PrintResult($name, $number){
+    echo '<div class="col-md-2"><label class="control-label">' . $name . ' : </label><BR><DIV align="center"><H2>' . $number . '</H2></div></div>';
+}
+
+    $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0);
+    echo '<form action="quiz?quizid=' . $_GET["quizid"] . '" method="post" enctype="multipart/form-data" accept-charset="utf-8" id="responseform">';
+    foreach ($questions as $question) {
+        $question=clean($question,1);
+        $answer = usersanswer($useranswers, $question->QuestionID);
         $result = FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3,  $question->Choice4,  $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
         $results[$result]+=1;
         $results["total"]+=1;
     }
     if (is_object($answer)) {
-        if ($results['total']>0) {
-            echo '<div class="row"><div class="col-md-12"><div class="portlet box yellow"><div class="portlet-title">';
-            echo '<div class="caption"><i class="fa fa-graduation-cap"></i>Results</div></div><div class="portlet-body">';
-            echo '<div class="row">';
-
-            echo '<div class="col-md-3">Incorrect: ' . $results['incorrect'] . '</div>';
-            echo '<div class="col-md-3">Missing: ' . $results['missing'] . '</div>';
-            echo '<div class="col-md-3">Correct: ' . $results['correct'] . '</div>';
-            echo '<div class="col-md-3">Score: ' . round($results['correct']/$results['total']*100,2) . '%</div>';
-
-            echo '</div></div>';
-        }
+        PrintResults($results, $user);
     } else {
         echo '<DIV align="center"><button type="submit" class="btn blue" style="margin-bottom: 15px;" onclick="return confirm(' . "'Are you sure you are done?'" . ');"><i class="fa fa-check"></i> Save</button></DIV>';
     }

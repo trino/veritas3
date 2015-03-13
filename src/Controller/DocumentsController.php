@@ -1294,9 +1294,46 @@
             die;
 
         }
+
         function attach_doc()
         {
             $this->layout ='blank';
         }
+
+        
+        public function getColor($id = 0)
+        {
+            $query = TableRegistry::get('color_class');
+            $q = $query->find('all')->where(['id'=>$id])->first();
+            $this->response->body($q);
+            return $this->response;
+        }
+        
+        public function getColorId($id = 0)
+        {
+            $query = TableRegistry::get('subdocuments');
+            $q = $query->find('all')->where(['id'=>$id])->first();
+            if($q)
+            {
+                $query_col = TableRegistry::get('color_class');
+                $q_col = $query_col->find('all')->where(['id'=>$q->color_id])->first();
+                $this->response->body($q_col->color);
+                return $this->response;
+            }
+            /*
+            $query = TableRegistry::get('documents');
+            $que = $query->find();
+            $que = $que->select(['sub_doc_id'])->distinct(['sub_doc_id']);
+            if($q)
+            {
+                foreach($que as $q)
+                {
+                    $query = TableRegistry::get('color_class');
+                    $q = $query->find('all')->where(['id'=>$q])->first();
+                }
+            }*/
+        }
+        
+
   
     }

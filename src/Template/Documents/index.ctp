@@ -229,7 +229,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                                 $orderID = $this->Number->format($docs->order_id);
                                 if($orderID)                                
                                 $orderDetail = $doc_comp->getOrderById($docs->order_id);
-                                $getSubId = $this->requestAction('documents/getSubId/'.$docs->id);
+                                $getColorId = $this->requestAction('documents/getColorId/'.$docs->sub_doc_id);                                
                                 //$orderDetail = '<A HREF="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/' . $orderID . '">' . $orderID . '</A>';
                             ?>
                             <tr class="<?= $row_color_class; ?>" role="row">
@@ -247,9 +247,13 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                                         case 1://top block
                                         echo '<div class="dashboard-stat ';
                                         $colors = array("pre-screening" => "blue-madison", "survey" => "green", "driver application" => "red", "road test" => "yellow", "consent form" => "purple", "feedbacks" => "red-intense", "attachment" => "yellow-saffron", "audits" => "grey-cascade");
-                                        if (isset($colors[strtolower($docs->document_type)])) {
+                                       /* if (isset($colors[strtolower($docs->document_type)])) {
                                             echo $colors[strtolower($docs->document_type)];
-                                        } else {
+                                        }
+                                        */
+                                        if(isset($getColorId))
+                                        echo $getColorId;
+                                         else {
                                             echo "blue";
                                         }
                                     ?>">

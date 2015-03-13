@@ -35,7 +35,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
 </div>
 
-
+<?php if (isset($profiles)){ ?>
 <div class="row">
     <div class="col-md-12">
         <div class="portlet box green-haze">
@@ -239,7 +239,10 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
 
                                     <td><?php echo $ProClients->getAllClientsname($profile->id);?></td>
                                     <td class="actions  util-btn-margin-bottom-5">
-                                        actions
+
+                                        <A href="enroll?quizid=<?= $_GET["quizid"] ?>&userid=<?= $this->Number->format($profile->id) ?>" class="<?= btnclass("btn-info", "yellow"); ?>">
+                                            <?php if ($profile->isenrolled) { echo "Unenroll";} else {echo "Enroll";} ?>
+                                        </A>
 
                                     </td>
                                 </tr>
@@ -269,3 +272,4 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
         </div>
     </div>
 </div>
+<?php } ?>

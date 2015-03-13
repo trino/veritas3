@@ -37,7 +37,7 @@ if ($activetab == "permissions") {
             </li>
             <!--<li class="">
                 <a href="#subtab_2_2" data-toggle="tab"><?php echo ucfirst($settings->document); ?></a>
-            </li>--<
+            </li>-->
             <li class="">
                 <a href="#subtab_2_3" data-toggle="tab">Top blocks</a>
             </li>

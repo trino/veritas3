@@ -79,6 +79,7 @@ function question($section){
 function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer, $correctanswer){
     $disabled="";
     $selected=-1;
+    $iscorrect=false;
     if (is_object($usersanswer)){
         $disabled=" disabled";
         $selected=$usersanswer->Answer;
@@ -99,6 +100,7 @@ function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer
             if (is_object($usersanswer) && $selected == $temp){
                 if ($correctanswer == $temp) {
                     echo " <font color='green'><B>Correct!</B></font>";
+                    $iscorrect=true;
                 } else {
                     echo " <font color='red'><B>Incorrect</B></font>";
                 }
@@ -107,6 +109,7 @@ function answers($QuizID, $QuestionID, $text, $answers, $Index = 0, $usersanswer
         }
     }
     echo '</DIV></DIV>';
+    return $iscorrect;
 }
 
 function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0, $usersanswer){
@@ -127,40 +130,82 @@ function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0, $usersan
     //echo '<img alt=' . $Index . ' src="http://asap-training.com/theme/image.php?theme=aardvark&amp;component=core&amp;rev=1415027139&amp;image=i%2Funflagged" alt="Not flagged" id="' . $Index . ':flaggedimg" /></label></div>';
 }
 
+function preprocess($usersanswer, $correctanswer){
+    $correct = "incorrect";
+    if ($usersanswer->Answer==-1){$correct == "missing";} elseif ($correctanswer ==$usersanswer->Answer) {$correct="correct";}
+    return $correct;
+}
+
 function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00", $usersanswer, $correctanswer){
     global $question;
     $question+=1;
+    $correct = "incorrect";
+    if ($usersanswer->Answer==-1){$correct == "missing";}
     question(0);
     questionheader($QuizID, $question, $markedOutOf, $index, $usersanswer);
     question(1);
-    answers($QuizID, $question, $text, $answers, $index, $usersanswer,$correctanswer);
+    if (answers($QuizID, $question, $text, $answers, $index, $usersanswer,$correctanswer)){ $correct="correct";}
     question(2);
+    return $correct;
 }
 
-echo "<H4>" . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ")</H4>";
-
-if (count($_POST)>0) {
-    print_r($_POST);
-} else {
-    echo '<form action="quiz?quizid=' . $_GET["quizid"] . '" method="post" enctype="multipart/form-data" accept-charset="utf-8" id="responseform">';
+if (is_object($useranswers)) {
+    $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0);
     foreach ($questions as $question) {
-        $question=clean($question,1);
+        $result = preprocess(usersanswer($useranswers, $question->QuestionID), $question->Answer);
+        $results[$result] += 1;
+        $results["total"] += 1;
+    }
+    PrintResults($results, $user);
+}
+
+
+    function usersanswer($useranswers, $questionid){
         $answer="";
         if (isset($useranswers)){
             foreach($useranswers as $answers){
-                if ($answers->QuestionID == $question->QuestionID) {
-                    $answer = $answers;
+                if ($answers->QuestionID == $questionid) {
+                    return $answers;
                     continue;
                 }
             }
         }
-        FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3,  $question->Choice4,  $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
     }
-    if (!is_object($answer)) {
+
+function PrintResults($results, $user){
+    if ($results['total']>0) {//http://localhost/veritas3/img/profile/172647_974786.jpg
+        //debug($user); <label class="control-label">Profile Type : </label>
+        echo '<div class="row"><div class="col-md-12"><div class="portlet box yellow"><div class="portlet-title">';
+        echo '<div class="caption"><i class="fa fa-graduation-cap"></i>Results for: ' . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ")";
+        echo '</div></div><div class="portlet-body"><div class="row">';
+        echo '<div class="col-md-2"><img src="../img/profile/' . $user->image . '" style="max-height: 100px; max-width: 100px;"></div>';
+        PrintResult("Incorrect", $results['incorrect']);
+        PrintResult("Missing", $results['missing']);
+        PrintResult("Correct", $results['correct']);
+        PrintResult("Score", round($results['correct']/$results['total']*100,2) . "%");
+        echo '</div></div></div>';
+    }
+}
+function PrintResult($name, $number){
+    echo '<div class="col-md-2"><label class="control-label">' . $name . ' : </label><BR><DIV align="center"><H2>' . $number . '</H2></div></div>';
+}
+
+    $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0);
+    echo '<form action="quiz?quizid=' . $_GET["quizid"] . '" method="post" enctype="multipart/form-data" accept-charset="utf-8" id="responseform">';
+    foreach ($questions as $question) {
+        $question=clean($question,1);
+        $answer = usersanswer($useranswers, $question->QuestionID);
+        $result = FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3,  $question->Choice4,  $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
+        $results[$result]+=1;
+        $results["total"]+=1;
+    }
+    if (is_object($answer)) {
+        PrintResults($results, $user);
+    } else {
         echo '<DIV align="center"><button type="submit" class="btn blue" style="margin-bottom: 15px;" onclick="return confirm(' . "'Are you sure you are done?'" . ');"><i class="fa fa-check"></i> Save</button></DIV>';
     }
     echo "</form>";
-}
+//}
 ?>
 
 </div></div></div></div></div>

@@ -421,17 +421,19 @@
                     } ?>
 
                     <ul class="pricing-content list-unstyled">
-                         <?php 
+                         <?php
+                         $index=0;
                             foreach($products as $p){
                                 
                         ?>
                         <li>
 
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title;?></div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb0" value="1"/></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form<?= $index ?>" value="1"/></div>
                             <div class="clearfix"></div>
                         </li>
                         <?php
+                                $index+=1;
                             }
                         ?>
                         <!--<li>
@@ -683,7 +685,7 @@
         });
 
         $('#selecting_client').change(function () {
-            $('s2id_selecting_client .select2-choice').removeAttr('style');
+            $('s2id_selecting_client.select2-choice').removeAttr('style');
             <?php
             if(!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype']!='QUA'))
             {

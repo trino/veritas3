@@ -1294,5 +1294,9 @@
             die;
 
         }
+        function attach_doc()
+        {
+            $this->layout ='blank';
+        }
   
     }

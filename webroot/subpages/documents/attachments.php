@@ -73,6 +73,7 @@ $is_disabled = '';
     </div>
 
  </form>
+ <div class="addattachment7 form-group"></div>
 <script>
 $(function()
 {

@@ -285,7 +285,11 @@ Do you feel there was enough booth staff?
 </div>
 </div> 
  
+ <div class="addattachment8 form-group">
+
 </div>
+</div>
+
 <!--<div class="form-actions">
 <div class="row">
 <div class="col-md-offset-3 col-md-9">

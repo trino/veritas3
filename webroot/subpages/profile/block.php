@@ -418,10 +418,10 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr>
                                             <tr class="doc_more" <?php if (isset($sidebar) && $sidebar->document == 0){ echo "style='display:none;'";}?>>
-                                                       <td colspan="2">
+                                                        <td></td><td>
                                 						<!--h1> Enable <?php echo ucfirst($settings->document);?>?</h1-->
                                                         <form action="#" method="post" id="displayform">
-                                                            <table class="table table-bordered table-hover">
+                                                            <table class="">
                                                         
                                                         <?php
                                                         $subdoc = $this->requestAction('/profiles/getSub');

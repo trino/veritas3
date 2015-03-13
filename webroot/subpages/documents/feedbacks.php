@@ -64,3 +64,6 @@ $feed = $feeds;
 
 
  </form>
+ <div class="addattachment6 form-group">
+
+</div>

@@ -229,6 +229,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                                 $orderID = $this->Number->format($docs->order_id);
                                 if($orderID)                                
                                 $orderDetail = $doc_comp->getOrderById($docs->order_id);
+                                $getSubId = $this->requestAction('documents/getSubId/'.$docs->id);
                                 //$orderDetail = '<A HREF="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/' . $orderID . '">' . $orderID . '</A>';
                             ?>
                             <tr class="<?= $row_color_class; ?>" role="row">

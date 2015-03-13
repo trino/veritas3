@@ -48,10 +48,12 @@
                             $i=0;
                         ?>
                         <?php if($prosubdoc['display'] > 1 && $d->display == 1 && ( !isset($csubdoc)  || (isset($csubdoc) && $csubdoc['display'] == 1)))
-                        {?>
+                        {
+                            $getColor = $this->requestAction('documents/getColor/'.$d->color_id);
+                            ?>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
-    					<div class="dashboard-stat <?php echo $class[$i]; ?>">
+    					<div class="dashboard-stat <?php echo $getColor->color; //echo $class[$i]; ?>">
                             <div class="whiteCorner"></div>
     
                             <div class="visual">

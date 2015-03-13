@@ -1294,5 +1294,13 @@
             die;
 
         }
+        
+        public function getColor($id = 0)
+        {
+            $query = TableRegistry::get('color_class');
+            $q = $query->find('all')->where(['id'=>$id])->first();
+            $this->response->body($q);
+            return $this->response;
+        }
   
     }

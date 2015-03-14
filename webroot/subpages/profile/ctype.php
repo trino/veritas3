@@ -7,7 +7,7 @@
     <div class="portlet-body">
     
         <div class="table-scrollable">
-        
+            <form action="" class="ctypeform">
             <table
                 class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                 <thead>
@@ -20,14 +20,16 @@
                 </tr>
                 </thead>
                 <tbody class="allct">
-                <form action="" class="ctypeform">
+                
                 <?php
+                $ct = explode(",",$profile->ctypes);
                 foreach($client_types as $product)
-                {?>
+                {
+                    ?>
                     <tr>
                         <td><?php echo $product->id;?></td>
                         <td class="titlectype_<?php echo $product->id;?>"><?php echo $product->title;?></td>
-                        <td><input type="checkbox" <?php if($product->enable=='1'){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" /></td>
+                        <td><input name="ctypes[]" type="checkbox" <?php if(in_array($product->id,$ct)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" /></td>
                         
                     </tr>        
                 <?php
@@ -38,10 +40,16 @@
                     <td></td>
                     <td><a href="javascript:;" class="btn btn-primary" id="savectype" >Submit</a></td>
                 </tr>
-                </form>
+               
         </tbody>
         </table>
-        
+         </form>
+         <div class="margin-top-10 alert alert-success display-hide ctype"
+                                                     style="display: none;">
+                                                     Data Saved
+                                                    <button class="close" data-close="alert"></button>
+                                                   
+                                                </div>
     </div>
     </div>
 </div>
@@ -49,25 +57,19 @@
 
 $(function(){
     $('#savectype').live('click',function(){
-        var ids =$('.ctypeform input').serialize();
-        var id = '<?php echo $this->request->session()->read('Profile.id');?>';
+        $(this).text("Saving");
+        var cids =$('.ctypeform input[type="checkbox"]').serialize();
+        var id = <?php echo $id;?>;
         $.ajax({
-            url:"<?php echo $this->request->webroot;?>profiles/ctypesenable/"+id,
+            url:"<?php echo $this->request->webroot;?>profiles/ctypesenb/"+id,
             type:"post",
             dataType:"HTML",
-            data: "ids="+ids,
+            data: cids,
             success:function(msg)
             {
-                if(id!=0)
-                    $('.titlectype_'+id).html(msg);
-                else
-                {
-                    $('.allct').prepend(msg);
-                    $('.addctype').hide();
-                    $('.act').show();
-                    $('#titctype_0').val("");
-                    
-                }
+                $('.ctype').show();
+                $('.ctype').fadeOut(7000);
+                $('#savectype').text('Submit');
             }
         })
     });

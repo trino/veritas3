@@ -50,6 +50,143 @@
                         <?php if($prosubdoc['display'] > 1 && $d->display == 1 && ( !isset($csubdoc)  || (isset($csubdoc) && $csubdoc['display'] == 1)))
                         {
                             $getColor = $this->requestAction('documents/getColor/'.$d->color_id);
+                            if($doc->id == '4')
+                            { ?>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+            
+                					<div class="dashboard-stat <?php echo $getColor->color; //echo $class[$i]; ?>">
+                                        <div class="whiteCorner"></div>
+                
+                                        <div class="visual">
+                							<i class="fa fa-copy"></i>
+                						</div>
+                						<div class="details">
+                							<div class="number">
+                                            <?php 
+                                            if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
+                                         //   echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name);
+                                            echo "&nbsp;";
+            
+            
+                                                ?>
+                							<?php /*if($d->orders==1)echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name);*/ }?>	
+                							</div>
+                							<div class="desc">
+                								Consent Form
+                							</div>
+                						</div>
+                                        <?php if($this->request['controller']!="Documents"){?>
+                						<a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
+                						View more <i class="m-icon-swapright m-icon-white"></i>
+                						</a>
+                                        <!--
+                                        <a class="more" href="<?php echo $this->request->webroot;?>orders/orderslist<?php if($d->id <=4 ){?>?table=<?php echo $d->table_name;}?>">
+                						View more <i class="m-icon-swapright m-icon-white"></i>
+                						</a>-->
+                                        <?php
+                                        }
+                                        else{
+                                            ?>
+                                        <a class="more" href="http://localhost/veritas3/documents/add/<?php echo $cid;?>?doc=Consent+Form" >
+                						Load <?php echo ucfirst($settings->document); ?><i class="m-icon-swapright m-icon-white"></i>
+                						</a>  
+                                        <?php
+                                        }?>
+                					</div>
+                                    <div class="dusk"></div>
+                
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+            
+                					<div class="dashboard-stat <?php echo $getColor->color; //echo $class[$i]; ?>">
+                                        <div class="whiteCorner"></div>
+                
+                                        <div class="visual">
+                							<i class="fa fa-copy"></i>
+                						</div>
+                						<div class="details">
+                							<div class="number">
+                                            <?php 
+                                            if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
+                                         //   echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name);
+                                            echo "&nbsp;";
+            
+            
+                                                ?>
+                							<?php /*if($d->orders==1)echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name);*/ }?>	
+                							</div>
+                							<div class="desc">
+                								 Education Verification
+                							</div>
+                						</div>
+                                        <?php if($this->request['controller']!="Documents"){?>
+                						<a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
+                						View more <i class="m-icon-swapright m-icon-white"></i>
+                						</a>
+                                        <!--
+                                        <a class="more" href="<?php echo $this->request->webroot;?>orders/orderslist<?php if($d->id <=4 ){?>?table=<?php echo $d->table_name;}?>">
+                						View more <i class="m-icon-swapright m-icon-white"></i>
+                						</a>-->
+                                        <?php
+                                        }
+                                        else{
+                                            ?>
+                                        <a class="more"  href="http://localhost/veritas3/documents/add/<?php echo $cid;?>?doc=Education+Verification" >
+                						Load <?php echo ucfirst($settings->document); ?><i class="m-icon-swapright m-icon-white"></i>
+                						</a>  
+                                        <?php
+                                        }?>
+                					</div>
+                                    <div class="dusk"></div>
+                
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+            
+                					<div class="dashboard-stat <?php echo $getColor->color; //echo $class[$i]; ?>">
+                                        <div class="whiteCorner"></div>
+                
+                                        <div class="visual">
+                							<i class="fa fa-copy"></i>
+                						</div>
+                						<div class="details">
+                							<div class="number">
+                                            <?php 
+                                            if(($this->request->params['controller']!='documents' && $this->request->params['action']!='add') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='edit') && ($this->request->params['controller']!='documents' && $this->request->params['action']!='view')){
+                                         //   echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name);
+                                            echo "&nbsp;";
+            
+            
+                                                ?>
+                							<?php /*if($d->orders==1)echo $cnt = $this->requestAction('/orders/get_orderscount/'.$d->table_name);*/ }?>	
+                							</div>
+                							<div class="desc">
+                								 Employment Verification
+                							</div>
+                						</div>
+                                        <?php if($this->request['controller']!="Documents"){?>
+                						<a class="more" href="<?php echo $this->request->webroot;?>documents/index?type=<?php echo urlencode($d->title);?>">
+                						View more <i class="m-icon-swapright m-icon-white"></i>
+                						</a>
+                                        <!--
+                                        <a class="more" href="<?php echo $this->request->webroot;?>orders/orderslist<?php if($d->id <=4 ){?>?table=<?php echo $d->table_name;}?>">
+                						View more <i class="m-icon-swapright m-icon-white"></i>
+                						</a>-->
+                                        <?php
+                                        }
+                                        else{
+                                            ?>
+                                        <a class="more"  href="http://localhost/veritas3/documents/add/<?php echo $cid;?>?doc=Employment+Verification" >
+                						Load <?php echo ucfirst($settings->document); ?><i class="m-icon-swapright m-icon-white"></i>
+                						</a>  
+                                        <?php
+                                        }?>
+                					</div>
+                                    <div class="dusk"></div>
+                
+                                </div>
+                          <?php      
+                            }
+                            else{
                             ?>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
@@ -90,7 +227,8 @@
     						</a>-->
                             <?php
                             }
-                            else{?>
+                            else{
+                                ?>
                             <a class="more" id="sub_doc_click<?php echo $d->id;?>" href="javascript:;" onclick="showforms('<?php echo $d->form."?doc_id=".$d->id;?>')">
     						Load <?php echo ucfirst($settings->document); ?><i class="m-icon-swapright m-icon-white"></i>
     						</a>  
@@ -101,7 +239,9 @@
     
                     </div>
                         <?php
+                    }
                         }
+                        
                         $i++;
                     }
                    

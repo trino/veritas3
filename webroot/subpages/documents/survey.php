@@ -64,9 +64,8 @@ $is_disabled = '';
                 </div>
                 
  </form> 
- <div class="addattachment5 form-group">
-
-</div>            
+ <div class="addattachment5 form-group col-md-12"></div>
+ <div class="clearfix"></div>        
 <script>
 $(function(){
    $("input[type='radio']").change(function() {

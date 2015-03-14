@@ -22,7 +22,7 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Enable</th>
-                    <!--<th>Actions</th>-->
+                    <th>Actions</th>
 
                 </tr>
                 </thead>

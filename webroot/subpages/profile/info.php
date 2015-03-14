@@ -82,8 +82,10 @@
                                     
                                     <?php 
                                     $isISB = (isset($sidebar) && $settings->client_option == 0);
+                                    $pts = explode(",",$profile->ptypes);
                                     foreach($ptypes as $k=>$pt)
                                     {
+                                        if(in_array($pt->id,$pt)){
                                         if($pt->id =='1')
                                         {
                                             if($this->request->session()->read('Profile.super'))

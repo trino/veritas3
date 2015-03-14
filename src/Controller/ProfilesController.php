@@ -863,6 +863,8 @@
             }
             $this->loadModel("ProfileTypes");
             $this->set("ptypes",$this->ProfileTypes->find()->where(['enable'=>'1'])->all());
+            $this->loadModel("ClientTypes");
+            $this->set('client_types', $this->ClientTypes->find()->where(['enable'=>'1'])->all());
             $docs = TableRegistry::get('profile_docs');
             $query = $docs->find();
             $client_docs = $query->select()->where(['profile_id'=>$id])->all();
@@ -1839,6 +1841,34 @@
         die();
     }
     
+    function ctypesenb($id)
+    {
+        $ctype ="";
+        foreach($_POST['ctypes'] as $k=>$v)
+        {
+            if(count($_POST['ctypes'])==$k+1)
+            $ctype .= $v;
+            else
+            $ctype .= $v.",";
+        }
+        $p = TableRegistry::get('profiles');
+        $p->query()->update()->set(['ctypes' =>$ctype])->where(['id' => $id])->execute();
+        die();
+    }
+    function ptypesenb($id)
+    {
+        $ptype="";
+        foreach($_POST['ptypes'] as $k=>$v)
+        {
+            if(count($_POST['ptypes'])==$k+1)
+            $ptype .= $v;
+            else
+            $ptype .= $v.",";
+        }
+        $p = TableRegistry::get('profiles');
+        $p->query()->update()->set(['ptypes' =>$ptype])->where(['id' => $id])->execute();
+        die();
+    }
 
       /*  getDocumentcountz()
         {

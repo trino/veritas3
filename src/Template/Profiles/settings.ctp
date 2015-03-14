@@ -105,6 +105,9 @@ if (isset($profile))
                              <li>
                                 <a href="#tab_1_9" data-toggle="tab">Clear Data</a>
                             </li>
+                            <li>
+                                <a href="#tab_1_13" data-toggle="tab">Add / Edit Sub documents</a>
+                            </li>
                         <?php
                         }
                 }
@@ -146,8 +149,41 @@ if (isset($profile))
                                                    
                         </div>
                     </div>
-
-                <?php } ?>
+                    <?php
+                          if(isset($_GET['activedisplay']))
+                          {
+                            ?>
+                            <div class="tab-pane active"  id="tab_1_13">
+                            <?php
+                          }
+                          else
+                          {
+                            ?>
+                            <div class="tab-pane"  id="tab_1_13">
+                          <?php
+                          }
+                          ?>
+                          <div class="col-md-6" style="text-align: right;">
+                                <a href="#" class="btn btn-success" onclick="$('#sub_add').toggle(150);">Add New SubDocument</a>
+                                <div class="col-md-12" id="sub_add" style="display: none;margin:10px 0;padding:0">
+                                    <div class="col-md-10" style="text-align: right;padding:0;">
+                                        <input type="text" placeholder="Sub-Document title" class="form-control subdocname" />
+                                        <span class="error passerror flashSubDoc"
+                                          style="display: none;">Subdocument name already exists</span>
+                                        <span class="error passerror flashSubDoc1"
+                                          style="display: none;">Please enter a subdocument name.</span>
+                                    </div>
+                                        <input type="hidden" class="clien_id" value="<?php echo $client->id; ?>" />
+                                    <div class="col-md-2" style="text-align: right;padding:0;">
+                                        <a class="btn btn-primary addsubdoc" href="javascript:void(0)">Add</a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                         ?>
+                         <div class="clearfix"></div>
             </div>
         </div>
     </div>

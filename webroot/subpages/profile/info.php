@@ -82,10 +82,13 @@
                                     
                                     <?php 
                                     $isISB = (isset($sidebar) && $settings->client_option == 0);
-                                    $pts = explode(",",$profile->ptypes);
+                                    $ptyp = $this->requestAction('profiles/gettypes/ptypes/'.$this->request->session()->read('Profile.id'));
+                                    if($ptyp!="")
+                                        $pts = explode(",",$ptyp);
                                     foreach($ptypes as $k=>$pt)
                                     {
-                                        if(in_array($pt->id,$pt)){
+                                        if(isset($pts)){
+                                        if(in_array($pt->id,$pts)){
                                         if($pt->id =='1')
                                         {
                                             if($this->request->session()->read('Profile.super'))
@@ -127,7 +130,50 @@
                                     ?>
                                         
                                     <?php    
+                                     }
                                     }
+                                    else
+                                    {
+                                        if($pt->id =='1')
+                                        {
+                                            if($this->request->session()->read('Profile.super'))
+                                            {
+                                                ?>
+                                                <option
+                                                    value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == 1) { ?> selected="selected" <?php } ?>>
+                                                    <?php echo $pt->title;?>
+                                                </option>
+                                            <?php
+                                                
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if($isISB)
+                                            { 
+                                                if ($pt->id<='8') 
+                                                {
+                                                ?>
+                                                <option
+                                                        value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == $pt->id) { ?> selected="selected" <?php } ?>>
+                                                        <?php echo $pt->title;?>
+                                                </option>
+                                            <?php
+                                                }
+                                            }
+                                            else
+                                            {
+                                                ?>
+                                                <option
+                                                    value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == $pt->id) { ?> selected="selected" <?php } ?>>
+                                                    <?php echo $pt->title;?>
+                                                </option>
+                                        <?php
+                                            }
+                                        }
+                                        
+                                    }
+                                }
                                     ?>
                                     <?php
                                         /*

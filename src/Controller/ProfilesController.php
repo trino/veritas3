@@ -1869,6 +1869,19 @@
         $p->query()->update()->set(['ptypes' =>$ptype])->where(['id' => $id])->execute();
         die();
     }
+    
+    function gettypes($type, $uid)
+    {
+         $p = TableRegistry::get('profiles');
+          $profile = $p ->find()
+                ->where(['id'=>$uid])->first();
+
+           if($type == 'ptypes')
+                $this->response->body(($profile->ptypes));
+           elseif($type == "ctypes")
+                $this->response->body(($profile->ctypes));
+                return $this->response;
+    }
 
       /*  getDocumentcountz()
         {

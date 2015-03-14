@@ -1190,7 +1190,7 @@ class ClientsController extends AppController {
     {
         
         $subname = $_GET['sub'];
-        $client_id = $_GET['client_id'];
+        //$client_id = $_GET['client_id'];
         if($this->request->session()->read('Profile.super'))
         {
             if(isset($_GET['updatedoc_id']))
@@ -1218,7 +1218,7 @@ class ClientsController extends AppController {
                             }
                         }
                     }
-                if($q_update) return $this->redirect("/clients/edit/".$client_id."/?activedisplay");
+                if($q_update) return $this->redirect("/profiles/settings/?activedisplay");
 
             }
             else
@@ -1314,7 +1314,7 @@ class ClientsController extends AppController {
                        
                          if($checker_q2 && $checker_q3 && $checker_q4)
                          {
-                            return $this->redirect("/clients/edit/".$client_id."/?activedisplay");
+                            return $this->redirect("/profiles/settings/?activedisplay");
                          }
                             else return $this->redirect("/index");
                     }

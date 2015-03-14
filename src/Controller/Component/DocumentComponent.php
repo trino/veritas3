@@ -215,8 +215,10 @@ class DocumentComponent extends Component
                     
                 
                 $arr['created'] = $ord->created;
-                
+                if($arr['document_type']!='Employment Verification' && $arr['document_type']!='Employment Verification' && $arr['document_type']!='Consent Form')
                 $doc = $docs->find()->where(['order_id'=>$arr['order_id'],'sub_doc_id'=>$arr['sub_doc_id']])->first();
+                else
+                $doc = $docs->find()->where(['document_type'=>$arr['document_type'],'order_id'=>$arr['order_id'],'sub_doc_id'=>$arr['sub_doc_id']])->first();
                 if(!$doc)
                 {
                     $doc = $docs->newEntity($arr);
@@ -536,7 +538,10 @@ class DocumentComponent extends Component
                     $uploaded_for = '';
                 $for_doc = array('document_type'=>'Consent Form','sub_doc_id'=>4,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);
                 $this->saveDocForOrder($for_doc);
-                
+                $for_doc = array('document_type'=>'Education Verification','sub_doc_id'=>4,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);                
+                $this->saveDocForOrder($for_doc);
+                $for_doc = array('document_type'=>'Employment Verification','sub_doc_id'=>4,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);                
+                $this->saveDocForOrder($for_doc);
                 
                 
             } else {

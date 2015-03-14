@@ -66,6 +66,7 @@ class LoginController extends AppController{
             $this->request->session()->write('Profile.isb_id',$q->isb_id);
             $this->request->session()->write('Profile.mname',$q->mname);
             $this->request->session()->write('Profile.profile_type',$q->profile_type);
+            
             if(($q->admin ==1) || ($q->super==1))
             {
                 $this->request->session()->write('Profile.admin',1);

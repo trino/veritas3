@@ -162,13 +162,29 @@
                                                             id="customer_type">
                                                         <option value="">Select</option>
                                                         <?php
+                                                         $ctyp = $this->requestAction('profiles/gettypes/ctypes/'.$this->request->session()->read('Profile.id'));
+                                                        if($ctyp!="")
+                                                            $cts = explode(",",$ctyp);
                                                             foreach($client_types as $ct)
-                                                            {?>
-                                                                <option value="<?php echo $ct->id;?>"
+                                                            {
+                                                                if(isset($cts)){
+                                                                    if(in_array($ct->id,$cts)){
+                                                                    ?>
+                                                                    <option value="<?php echo $ct->id;?>"
+                                                                    <?php if (isset($client->customer_type) && $client->customer_type == $ct->id) { ?>selected="selected"<?php } ?>>
+                                                                        <?php echo $ct->title; ?>
+                                                                    </option> 
+                                                             <?php
+                                                                    }
+                                                                }
+                                                                else{
+                                                             ?>
+                                                             <option value="<?php echo $ct->id;?>"
                                                                 <?php if (isset($client->customer_type) && $client->customer_type == $ct->id) { ?>selected="selected"<?php } ?>>
                                                                     <?php echo $ct->title; ?>
-                                                                </option> 
-                                                         <?php
+                                                                </option>
+                                                               <?php       
+                                                                }
                                                             }
                                                         ?>
                                                         

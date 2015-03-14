@@ -466,7 +466,15 @@
                                                     <a href="#tab_1_7" data-toggle="tab">Permissions</a>
                                                 </li>
 
-                                            <?php }
+                                            <?php } ?>
+                                                <li >
+                                                    <a href="#tab_1_12" data-toggle="tab">Profile Types</a>
+                                                </li>
+                                                <li >
+                                                    <a href="#tab_1_13" data-toggle="tab">Client Types</a>
+                                                </li>
+                                            
+                                        <?php    
                                         }
                                     ?>
                                 </ul>
@@ -523,6 +531,14 @@
                                     <div class="tab-pane <?php activetab($activetab, "permissions", false); ?>"
                                          id="tab_1_7">
                                         <?php include('subpages/profile/block.php');//permissions ?>
+                                    </div>
+                                    <div class="tab-pane "
+                                         id="tab_1_12">
+                                        <?php include('subpages/profile/ptype.php');//permissions ?>
+                                    </div>
+                                    <div class="tab-pane "
+                                         id="tab_1_13">
+                                        <?php include('subpages/profile/ctype.php');//permissions ?>
                                     </div>
                                 </div>
                             </div>

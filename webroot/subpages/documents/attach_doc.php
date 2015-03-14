@@ -19,8 +19,8 @@ if (isset($attachments)) {
 <div class="form-group col-md-12"><!--<center>-->
 
     <div class="docMore" data-count="1">
-    <div>
-        <div style="display:block;">
+    <div class="col-md-12">
+        <div style="display:block; padding:15px 0;">
             <a href="javascript:void(0)" id="addMore1" class="btn btn-primary" >Browse</a>
              <input type="hidden" name="attach_doc[]" value="" class="addMore1_doc moredocs"/>
              <a href="javascript:void(0);" class ="btn btn-danger img_delete" id="delete_addMore1" title ="" style="display: none;">Delete</a>
@@ -30,10 +30,11 @@ if (isset($attachments)) {
     </div>
 </div>
 <div class="form-group col-md-12"><!--<center>-->
-
+    <div class="col-md-12">
     <a href="javascript:void(0)" class="btn btn-info" id="addMoredoc">
         Add More
     </a>
+    </div>
 </div>
 <?php }?>
 

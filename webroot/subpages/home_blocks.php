@@ -210,7 +210,7 @@
     							<div class="desc">
     								 <?php
 									 	$title = ucfirst($d->title);
-									 	if ($title == "Feedbacks") { $title = "Feedback"; }
+									 	//if ($title == "Feedbacks") { $title = "Feedback"; }
                                         
                                          $titles[strtolower(trim($title))] = 1;
                                         echo $title;

@@ -267,10 +267,12 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                                     </div-->
                                     <a class="more" id="sub_doc_click1"
                                        href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
-                                           if (!$docs->order_id)
-                                               echo $this->request->webroot . 'documents/view/' . $docs->client_id . '/' . $docs->id;
-                                           else
-                                               echo $this->request->webroot . 'documents/view/' . $docs->client_id . '/' . $docs->id . '?order_id=' . $docs->order_id;
+                                           if (!$docs->order_id){
+                                               echo $this->request->webroot . 'documents/view/' . $docs->client_id . '/' . $docs->id;if($docs->sub_doc_id==4)echo '?doc='.urlencode($docs->document_type);
+                                               }
+                                           else{
+                                               echo $this->request->webroot . 'documents/view/' . $docs->client_id . '/' . $docs->id . '?order_id=' . $docs->order_id;if($docs->sub_doc_id==4)echo '&doc='.urlencode($docs->document_type);
+                                               }
                                        } else { ?>javascript:;<?php } ?>">
                                         <?= h($docs->document_type); //it won't let me put it in the desc  ?>
                                     </a>

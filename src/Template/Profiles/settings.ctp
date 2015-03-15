@@ -384,7 +384,7 @@ if (isset($profile))
                 $('#flashSelectColor_'+id).show();
                 $('#editsubdocname_'+id).focus();
                         $('html,body').animate({
-                                scrollTop: $('.page-title').offset().top
+                                scrollTop: $('#edit_sub_'+id).offset().top
                             },
                             'slow');
             $('#subbtn'+id).html('Save');
@@ -408,7 +408,7 @@ if (isset($profile))
                         $('#flashSelectColor_'+id).show();
                         $('#editsubdocname_'+id).focus();
                         $('html,body').animate({
-                                scrollTop: $('.page-title').offset().top
+                                scrollTop: $('#edit_sub_'+id).offset().top
                             },
                             'slow');
             $('#subbtn'+id).html('Save');
@@ -422,7 +422,7 @@ if (isset($profile))
                         $('#flashSelectColor_'+id).show();
                         $('#select_color_'+id).focus();
                                 $('html,body').animate({
-                                        scrollTop: $('.page-title').offset().top
+                                        scrollTop: $('#edit_sub_'+id).offset().top
                                     },
                                     'slow');
                          $('#subbtn'+id).html('Save');
@@ -442,7 +442,7 @@ if (isset($profile))
                 $('#flashSelectColor_'+id).hide();
                 $('#editsubdocname_'+id).focus();
                         $('html,body').animate({
-                                scrollTop: $('.page-title').offset().top
+                                scrollTop: $('#edit_sub_'+id).offset().top
                             },
                             'slow');
             $('#subbtn'+id).html('Save');
@@ -462,7 +462,7 @@ if (isset($profile))
                         //$('#flashSelectColor_'+id).hide();
                         $('#editsubdocname_'+id).focus();
                         $('html,body').animate({
-                                scrollTop: $('.page-title').offset().top
+                                scrollTop: $('#edit_sub_'+id).offset().top
                             },
                             'slow');
             $('#subbtn'+id).html('Save');

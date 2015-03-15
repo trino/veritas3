@@ -111,10 +111,15 @@ if (isset($profile))
                              <li>
                                 <a href="#tab_1_9" data-toggle="tab">Clear Data</a>
                             </li>
-                            <li>
-                                <a href="#tab_1_13" data-toggle="tab">Add / Edit Sub documents</a>
-                            </li>
-                        <?php
+                            <?php
+                            if(!isset($_GET['activedisplay']))
+                          {
+                            echo '<li><a href="#tab_1_13" data-toggle="tab">Add / Edit Sub documents</a></li>';
+                          }
+                          else
+                          {
+                            echo '<li class="active"><a href="#tab_1_13" data-toggle="tab">Add / Edit Sub documents</a></li>';
+                          }
                         }
                 }
 
@@ -176,7 +181,7 @@ if (isset($profile))
                           <?php
                           }
                           ?>
-                          <div class="col-md-6" style="text-align: right;">
+                          <div class="col-md-12" style="text-align: right;">
                                 <a href="#" class="btn btn-success" onclick="$('#sub_add').toggle(150);">Add New SubDocument</a>
                                 <div class="col-md-12" id="sub_add" style="display: none;margin:10px 0;padding:0">
                                     <div class="col-md-10" style="text-align: right;padding:0;">
@@ -192,6 +197,7 @@ if (isset($profile))
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
+                                        <div class="clearfix"></div>
                     <?php $subdoc = $this->requestAction('/clients/getSub'); ?>
                         <table class="table table-light table-hover sortable">
                             <tr class="myclass">

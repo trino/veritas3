@@ -86,7 +86,7 @@ if (isset($profile))
                         
                           if(isset($_GET['activedisplay']))
                           {
-                            echo '<li><a href="#tab_1_5" data-toggle="tab">Logo</a></li>'
+                            echo '<li><a href="#tab_1_5" data-toggle="tab">Logo</a></li>';
                           }
                           else
                           {

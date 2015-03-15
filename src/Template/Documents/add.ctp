@@ -1578,20 +1578,35 @@ if (isset($this->request->params['pass'][1])) {
         var param = $('#form_consent').serialize();
          $('#form_consent :disabled[name]').each(function () {
                 param = param + '&' + $(this).attr('name') + '=' + $(this).val();
-            });        
+            });   
+           <?php
+            if(isset($_GET['doc']) && $_GET['doc']=='Consent Form'){
+                ?>
+                   
         $.ajax({
             url: url,
             data: param,
             type: 'POST',
             success: function (res) {
                 //employment
-                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
+               
+            }
+        });
+        <?php
+            } ?> 
+            <?php
+            if(isset($_GET['doc']) && $_GET['doc']=='Employment Verification'){
+                ?>
+         var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                     employment = $('#form_employment').serialize();
                     $('#form_employment :disabled[name]').each(function () {
                 employment = employment + '&' + $(this).attr('name') + '=' + $(this).val();
             });                    
                 saveEmployment(url, employment,draft);
-
+            <?php }?>
+            <?php
+            if(isset($_GET['doc']) && $_GET['doc']=='Education Verification'){
+                ?>
                 //education
                 url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                     education = $('#form_education').serialize();
@@ -1599,8 +1614,7 @@ if (isset($this->request->params['pass'][1])) {
                 education = education + '&' + $(this).attr('name') + '=' + $(this).val();
             });                    
                 saveEducation(url, education,draft);
-            }
-        });
+                <?php }?>
     }
 
     function saveEmployment(url, param,draft) {

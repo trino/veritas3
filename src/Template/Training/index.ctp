@@ -152,7 +152,7 @@ foreach($quizes as $quiz) {
         echo str_replace("\r\n", "<P>", $quiz->Description);
         if (quizmiddle($QuizID, $quiz->ID)) {
             $attachments = explode(",", $quiz->Attachments);
-            echo '<div class="col-md-4" align="left">';
+            echo '<div class="col-md-5" align="left">';
             $attachmentJS = "";
             $id = 0;
             $checked = "";

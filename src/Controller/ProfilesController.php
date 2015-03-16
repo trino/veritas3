@@ -122,6 +122,7 @@
             $super = $this->request->session()->read('Profile.super');
             $condition = $this->Settings->getprofilebyclient($u, $super);
             if ($setting->profile_list == 0) {
+                
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
                 return $this->redirect("/");
 
@@ -436,14 +437,15 @@
             $this->loadModel("ProfileTypes");
             $this->set("ptypes",$this->ProfileTypes->find()->where(['enable'=>'1'])->all());
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+            
             // Only super admin and recruiter are allowed to create profiles as discussed on feb 19
-            if (!$this->request->session()->read('Profile.super')) {
+            /*if (!$this->request->session()->read('Profile.super')) {
                 if ($this->request->session()->read('Profile.profile_type') != '2') {
                     $this->Flash->error('Sorry, you don\'t have the required permissions.');
                     return $this->redirect("/profiles");
                 }
-            }
-
+            }*/
+            
             if ($setting->profile_create == 0 && !$this->request->session()->read('Profile.super')) {
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
                 return $this->redirect("/");
@@ -845,8 +847,10 @@
             if (isset($_GET['clientflash']) || $clientcount == 0) {
                 $this->Flash->success('Profile created successfully! Please assign profile to at least one client to start placing orders.');
             }
-
-            $checker = $this->Settings->check_edit_permission($this->request->session()->read('Profile.id'), $id);
+            $pr = TableRegistry::get('profiles');
+            $query = $pr->find();
+            $aa = $query->select()->where(['id'=>$id])->first();
+            $checker = $this->Settings->check_edit_permission($this->request->session()->read('Profile.id'), $id,$aa->created_by);
             if ($checker == 0) {
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
                 return $this->redirect("/profiles/index");

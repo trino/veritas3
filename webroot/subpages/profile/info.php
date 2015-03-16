@@ -91,8 +91,8 @@
                                         if(in_array($pt->id,$pts)){
                                         if($pt->id =='1')
                                         {
-                                            if($this->request->session()->read('Profile.super'))
-                                            {
+                                            //if($this->request->session()->read('Profile.super'))
+                                            //{
                                                 ?>
                                                 <option
                                                     value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == 1) { ?> selected="selected" <?php } ?>>
@@ -100,7 +100,7 @@
                                                 </option>
                                             <?php
                                                 
-                                            }
+                                            //}
                                         }
                                         else
                                         {
@@ -136,8 +136,8 @@
                                     {
                                         if($pt->id =='1')
                                         {
-                                            if($this->request->session()->read('Profile.super'))
-                                            {
+                                            //if($this->request->session()->read('Profile.super'))
+                                            //{
                                                 ?>
                                                 <option
                                                     value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == 1) { ?> selected="selected" <?php } ?>>
@@ -145,7 +145,7 @@
                                                 </option>
                                             <?php
                                                 
-                                            }
+                                            //}
                                         }
                                         else
                                         {

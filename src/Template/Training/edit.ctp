@@ -1,6 +1,7 @@
 <?php
 $settings = $this->requestAction('settings/get_settings');
 $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Profile.id'));
+$pageit=false;
 if ($_SERVER['SERVER_NAME'] == "localhost") {
     include_once('/subpages/api.php');
 } else {
@@ -115,7 +116,23 @@ if (isset($quiz)){
 </DIV>
 
 
-        <div class="table-scrollable">
+<?php if ($pageit){ ?>
+    <div class="row">
+    <div class="col-md-12">
+    <div class="portlet box green-haze">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-graduation-cap"></i>
+            Questions
+        </div>
+    </div>
+
+
+    <div class="portlet-body form">
+        <div class="form-body">
+<div class="table-scrollable">
+    <?php } ?>
+
             <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                 <thead>
                 <tr>
@@ -171,8 +188,27 @@ if (isset($quiz)){
                 </tbody>
             </table>
 
+    <?php if ($pageit){ ?>
+    <div class="form-actions" style="height:75px;">
+                <div class="row">
+                    <div class="col-md-12" align="right">
+                        <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" align="right"
+                             style="margin-top:-10px;">
+                            <ul class="pagination sorting">
+                                <?= $this->Paginator->prev('< ' . __('previous')); ?>
+                                <?= $this->Paginator->numbers(); ?>
+                                <?= $this->Paginator->next(__('next') . ' >'); ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-<?php }
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<?php }}
 
 ?>

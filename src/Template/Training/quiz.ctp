@@ -131,8 +131,15 @@ function questionheader($QuizID, $QuestionID, $markedOutOf, $Index = 0, $usersan
 }
 
 function preprocess($usersanswer, $correctanswer){
-    $correct = "incorrect";
-    if ($usersanswer->Answer==-1){$correct == "missing";} elseif ($correctanswer ==$usersanswer->Answer) {$correct="correct";}
+    $correct = "missing";
+    if (is_object($usersanswer)) {
+        $correct = "incorrect";
+        if ($usersanswer->Answer == -1) {
+            $correct = "missing";
+        } elseif ($correctanswer == $usersanswer->Answer) {
+            $correct = "correct";
+        }
+    }
     return $correct;
 }
 
@@ -140,7 +147,7 @@ function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00
     global $question;
     $question+=1;
     $correct = "incorrect";
-    if ($usersanswer->Answer==-1){$correct == "missing";}
+    if (is_object($usersanswer)) {if ($usersanswer->Answer==-1){$correct == "missing";}}
     question(0);
     questionheader($QuizID, $question, $markedOutOf, $index, $usersanswer);
     question(1);
@@ -156,7 +163,7 @@ if (is_object($useranswers)) {
         $results[$result] += 1;
         $results["total"] += 1;
     }
-    PrintResults($results, $user);
+    if ($results["missing"] < $results["total"]) {PrintResults($results, $user);}
 }
 
 

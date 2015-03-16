@@ -1763,7 +1763,7 @@
                     echo '<tr>
                             <td>'.$profile->id.'</td>
                             <td class="titleptype_'.$profile->id.'">'.$title.'</td>
-                            <td><input type="checkbox" id="pchk_'.$profile->id.'" class="penable"/></td>
+                            <td><input type="checkbox" id="pchk_'.$profile->id.'" class="penable"/><span class="span_'.$profile->id.'"></span></td>
                             <td><span  class="btn btn-info editptype" id="editptype_'.$profile->id.'">Edit</span></td>
                         </tr>';
                     }
@@ -1793,7 +1793,7 @@
                     echo '<tr>
                             <td>'.$profile->id.'</td>
                             <td class="titlectype_'.$profile->id.'">'.$title.'</td>
-                            <td><input type="checkbox" id="cchk_'.$profile->id.'" class="cenable"/></td>
+                            <td><input type="checkbox" id="cchk_'.$profile->id.'" class="cenable"/><span class="span_'.$profile->id.'"></span></td>
                             <td><span  class="btn btn-info editctype" id="editctype_'.$profile->id.'">Edit</span></td>
                         </tr>';
                     }
@@ -1819,9 +1819,9 @@
         if ($p->query()->update()->set(['enable' =>$enable])->where(['id' => $id])->execute())
         {
             if ($enable=='1')
-                echo "Enabled";
+                echo "Added";
             else
-                echo "Disabled";
+                echo "Removed";
         }
         
         die();
@@ -1833,9 +1833,9 @@
         if ($p->query()->update()->set(['enable' =>$enable])->where(['id' => $id])->execute())
         {
             if ($enable=='1')
-                echo "Enabled";
+                echo "Added";
             else
-                echo "Disabled";
+                echo "Removed";
         }
         
         die();

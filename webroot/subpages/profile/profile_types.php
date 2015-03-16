@@ -93,9 +93,9 @@ $(function(){
         data:"enable="+enb,
         type:"post",
         success: function(msg){
-            /*$('.span_'+id).html(msg);
+            $('.span_'+id).html(msg);
             $('.span_'+id).show();
-            $('.span_'+id).fadeOut(400);*/
+            $('.span_'+id).fadeOut(2000);
         }
       })      
             

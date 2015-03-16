@@ -166,6 +166,7 @@ class TrainingController extends AppController {
         //$answers =  $table->find()->where(['QuizID'=>$_GET["quizid"]]);
         $answers =  $table->find('all', array('conditions' => array('QuizID' => $QuizID), 'order' => array('QuestionID ASC') ));
         //$this->set('quizid',$_GET["quizid"]);
+        //$answers= $this->paginate($answers);
         return $answers;
     }
     public function deletequiz($quizID){

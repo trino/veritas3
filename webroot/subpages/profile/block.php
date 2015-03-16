@@ -44,6 +44,9 @@ if ($activetab == "permissions") {
             <?php
         }
          ?>
+            <li >
+                <a href="#tab_1_12" data-toggle="tab">Profile Types</a>
+            </li>
             <li <?php if($this->request->session()->read('Profile.profile_type')=='2' ||(isset($Clientcount)&& $Clientcount==0)) echo 'class = "active"'; ?>>
                 <a href="#subtab_2_4" data-toggle="tab">Assign to <?php echo ucfirst($settings->client) ?></a>
             </li>
@@ -1046,6 +1049,10 @@ if ($activetab == "permissions") {
                                                    
                                                 </div>
                                             
+                                    </div>
+                                      <div class="tab-pane "
+                                         id="tab_1_12">
+                                        <?php include('subpages/profile/ptype.php');//permissions ?>
                                     </div>
                                     </div>
                                     </div>

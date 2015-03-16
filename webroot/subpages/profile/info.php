@@ -104,7 +104,7 @@
                                         }
                                         else
                                         {
-                                            if($isISB)
+                                            /*if($isISB)
                                             { 
                                                 if ($pt->id<='8') 
                                                 {
@@ -117,14 +117,14 @@
                                                 }
                                             }
                                             else
-                                            {
+                                            {*/
                                                 ?>
                                                 <option
                                                     value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == $pt->id) { ?> selected="selected" <?php } ?>>
                                                     <?php echo $pt->title;?>
                                                 </option>
                                         <?php
-                                            }
+                                            //}
                                         }
                                         
                                     ?>
@@ -149,7 +149,7 @@
                                         }
                                         else
                                         {
-                                            if($isISB)
+                                            /*if($isISB)
                                             { 
                                                 if ($pt->id<='8') 
                                                 {
@@ -162,14 +162,14 @@
                                                 }
                                             }
                                             else
-                                            {
+                                            {*/
                                                 ?>
                                                 <option
                                                     value="<?php echo $pt->id;?>" <?php if (isset($p) && $p->profile_type == $pt->id) { ?> selected="selected" <?php } ?>>
                                                     <?php echo $pt->title;?>
                                                 </option>
                                         <?php
-                                            }
+                                            //}
                                         }
                                         
                                     }

@@ -123,6 +123,12 @@ if (isset($this->request->params['pass'][1])) {
                     </select>
                     
                         <input type="hidden" name="did" value="<?php echo $did; ?>" id="did"/>
+                        <?php
+                        if(isset($_GET['doc']))
+                        {
+                            $sid = 4;
+                        }
+                        ?>
                         <input type="hidden" name="sub_doc_id" value="<?php echo $sid; ?>" id="sub_id"/>
 
                     </div>
@@ -200,7 +206,7 @@ if (isset($this->request->params['pass'][1])) {
                         }
                          ?>
                     </div>
-                    <div class="subform4" style="display: none;">
+                    <div class="subform4" <?php if(!isset($_GET['doc'])){?>style="display: none;"<?php }?>>
                     <?php
                         if($controller == 'documents' )
                         {
@@ -358,7 +364,7 @@ if (isset($this->request->params['pass'][1])) {
                 </div>
                 <div class="form-actions">
                     <div class="row">
-                        <div class="col-md-offset-3 col-md-9 btndocs" style="display: none;">
+                        <div class="col-md-offset-3 col-md-9 btndocs" <?php if(!isset($_GET['doc'])){?>style="display: none;"<?php }?>>
 
 
                             <a href="javascript:void(0)" class="btn green cont">Save</a>
@@ -1326,7 +1332,20 @@ if (isset($this->request->params['pass'][1])) {
     ?>
     var draft = 0;
         $(document.body).on('click', '.cont', function () {
+            <?php
+            if(!isset($_GET['doc']))
+            {
+                ?>
+                
             var type = $(".document_type").val();
+            <?php
+            }
+            else
+            {?>
+                var type = '<?php echo urldecode($_GET['doc']);?>';
+                <?php 
+            }
+            ?>
             if(type=='Driver Application')
                 {
                     if(!$('#confirm_check').is(':checked'))
@@ -1342,7 +1361,7 @@ if (isset($this->request->params['pass'][1])) {
                             }
                 }
             $(this).attr('disabled','disabled');
-            if($('.subform4').attr('style')!='display: none;'){
+            if($('.subform4 #subtab_2_1').attr('class')=='tab-pane active'){
                 //alert('tes');
             var er = 0;
             
@@ -1424,7 +1443,7 @@ if (isset($this->request->params['pass'][1])) {
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedDriverEvaluation(url, order_id, cid,draft);
-                    } else if (type == "Consent Form") {
+                    } else if (type == "Consent Form" || type == "Employment Verification" || type == "Education Verification" ) {
 
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
@@ -1580,7 +1599,7 @@ if (isset($this->request->params['pass'][1])) {
                 param = param + '&' + $(this).attr('name') + '=' + $(this).val();
             });   
            <?php
-            if(isset($_GET['doc']) && $_GET['doc']=='Consent Form'){
+            if(isset($_GET['doc']) && urldecode($_GET['doc'])=='Consent Form'){
                 ?>
                    
         $.ajax({
@@ -1595,7 +1614,7 @@ if (isset($this->request->params['pass'][1])) {
         <?php
             } ?> 
             <?php
-            if(isset($_GET['doc']) && $_GET['doc']=='Employment Verification'){
+            if(isset($_GET['doc']) && urldecode($_GET['doc'])=='Employment Verification'){
                 ?>
          var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                     employment = $('#form_employment').serialize();
@@ -1605,7 +1624,7 @@ if (isset($this->request->params['pass'][1])) {
                 saveEmployment(url, employment,draft);
             <?php }?>
             <?php
-            if(isset($_GET['doc']) && $_GET['doc']=='Education Verification'){
+            if(isset($_GET['doc']) && urldecode($_GET['doc'])=='Education Verification'){
                 ?>
                 //education
                 url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',

@@ -1231,9 +1231,9 @@ class ClientsController extends AppController {
                 //$col_q = $col_q->select(['id'])->where(['order' => 'rand()', 'limit' => 1])->execute();                
                 $q = $que->newEntity([
                                 'title' => $subname,
-                                'display' => 0,
+                                'display' => 1,
                                 'table_name' => $subname,
-                                'orders' => 0,
+                                'orders' => 1,
                                 'color_id' => $col_id
                             ]);
                     $que->save($q);

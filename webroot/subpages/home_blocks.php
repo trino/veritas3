@@ -52,7 +52,7 @@
                             $getColor = $this->requestAction('documents/getColor/'.$d->color_id);
                             if($d->id == '4')
                             { ?>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" <?php if(isset($_GET['doc']) && urldecode($_GET['doc'])!='Consent Form'){?>style="display:none;"<?php }?>>
             
                 					<div class="dashboard-stat <?php echo $getColor->color; //echo $class[$i]; ?>">
                                         <div class="whiteCorner"></div>
@@ -96,7 +96,7 @@
                                     <div class="dusk"></div>
                 
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" <?php if(isset($_GET['doc']) && urldecode($_GET['doc'])!='Education Verification'){?>style="display:none;"<?php }?>>
             
                 					<div class="dashboard-stat <?php echo $getColor->color; //echo $class[$i]; ?>">
                                         <div class="whiteCorner"></div>
@@ -140,7 +140,7 @@
                                     <div class="dusk"></div>
                 
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6"  <?php if(isset($_GET['doc']) && urldecode($_GET['doc'])!='Employment Verification'){?>style="display:none;"<?php }?>>
             
                 					<div class="dashboard-stat <?php echo $getColor->color; //echo $class[$i]; ?>">
                                         <div class="whiteCorner"></div>
@@ -188,7 +188,7 @@
                             }
                             else{
                             ?>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" <?php if(isset($_GET['doc'])){?>style="display:none;"<?php }?>>
 
     					<div class="dashboard-stat <?php echo $getColor->color; //echo $class[$i]; ?>">
                             <div class="whiteCorner"></div>
@@ -210,7 +210,7 @@
     							<div class="desc">
     								 <?php
 									 	$title = ucfirst($d->title);
-									 	if ($title == "Feedbacks") { $title = "Feedback"; }
+									 	//if ($title == "Feedbacks") { $title = "Feedback"; }
                                         
                                          $titles[strtolower(trim($title))] = 1;
                                         echo $title;

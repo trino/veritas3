@@ -267,10 +267,12 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                                     </div-->
                                     <a class="more" id="sub_doc_click1"
                                        href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
-                                           if (!$docs->order_id)
-                                               echo $this->request->webroot . 'documents/view/' . $docs->client_id . '/' . $docs->id;
-                                           else
-                                               echo $this->request->webroot . 'documents/view/' . $docs->client_id . '/' . $docs->id . '?order_id=' . $docs->order_id;
+                                           if (!$docs->order_id){
+                                               echo $this->request->webroot . 'documents/view/' . $docs->client_id . '/' . $docs->id;if($docs->sub_doc_id==4)echo '?doc='.urlencode($docs->document_type);
+                                               }
+                                           else{
+                                               echo $this->request->webroot . 'documents/view/' . $docs->client_id . '/' . $docs->id . '?order_id=' . $docs->order_id;if($docs->sub_doc_id==4)echo '&doc='.urlencode($docs->document_type);
+                                               }
                                        } else { ?>javascript:;<?php } ?>">
                                         <?= h($docs->document_type); //it won't let me put it in the desc  ?>
                                     </a>
@@ -336,12 +338,17 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                     <td class="actions  util-btn-margin-bottom-5 ">
 
                         <?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
-                            if (!$docs->order_id)
-                                echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => btnclass("VIEW")]);
+                            if (!$docs->order_id){
+                                //echo $this->Html->link(__('View'), ['action' => 'view', $docs->client_id, $docs->id], ['class' => btnclass("VIEW")]);
+                                ?>
+                                <a class="<?= btnclass("VIEW") ?>"
+                                   href="<?php echo $this->request->webroot;?>documents/view/<?php echo $docs->client_id;?>/<?php echo $docs->id?><?php if($docs->sub_doc_id==4)echo '?doc='.urlencode($docs->document_type);?>">View</a>
+                                   <?php
+                                }
                             else {
                                 ?>
                                 <a class="<?= btnclass("VIEW") ?>"
-                                   href="<?php echo $this->request->webroot;?>documents/view/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">View</a>
+                                   href="<?php echo $this->request->webroot;?>documents/view/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;if($docs->sub_doc_id==4)echo '&doc='.urlencode($docs->document_type);?>">View</a>
                             <?php
                             }
                         } ?>
@@ -350,9 +357,13 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                                 if ($docs->document_type == 'feedbacks')
                                     echo $this->Html->link(__('Edit'), ['controller' => 'feedbacks', 'action' => 'edit', $docs->id], ['class' => btnclass("EDIT")]);
                                 else {
-                                    if (!$docs->order_id)
-                                        echo $this->Html->link(__('Edit'), ['action' => 'add', $docs->client_id, $docs->id], ['class' => btnclass("EDIT")]);
-                                    else {
+                                    if (!$docs->order_id){
+                                        //echo $this->Html->link(__('Edit'), ['action' => 'add', $docs->client_id, $docs->id], ['class' => btnclass("EDIT")]);
+                                        ?>
+                                        <a class="<?= btnclass("EDIT") ?>"
+                                           href="<?php echo $this->request->webroot;?>documents/add/<?php echo $docs->client_id;?>/<?php echo $docs->id?><?php if($docs->sub_doc_id==4)echo '?doc='.urlencode($docs->document_type);?>">Edit</a>
+                                        <?php
+                                    }else {
                                         ?>
                                         <a class="<?= btnclass("EDIT") ?>"
                                            href="<?php echo $this->request->webroot;?>documents/add/<?php echo $docs->client_id;?>/<?php echo $docs->id?>?order_id=<?php echo $docs->order_id;?>">Edit</a>

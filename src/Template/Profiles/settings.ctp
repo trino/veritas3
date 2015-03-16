@@ -83,16 +83,10 @@ if (isset($profile))
                 if ($this->request['action'] != 'add') {
 
                     if ($this->request->session()->read('Profile.admin') && $this->request->session()->read('Profile.super')) {
-                        
-                          if(isset($_GET['activedisplay']))
-                          {
-                            echo '<li><a href="#tab_1_5" data-toggle="tab">Logo</a></li>';
-                          }
-                          else
-                          {
-                            echo '<li class="active"><a href="#tab_1_5" data-toggle="tab">Logo</a></li>';
-                          }
-                          ?>
+                        ?>
+                            <li <?php if(!isset($_GET['activedisplay'])){ ?> class="active" <?php } ?> >
+                                    <a href="#tab_1_5" data-toggle="tab">Logo</a>
+                            </li>
                             <li>
                                 <a href="#tab_1_6" data-toggle="tab">Pages</a>
                             </li>
@@ -112,14 +106,14 @@ if (isset($profile))
                                 <a href="#tab_1_9" data-toggle="tab">Clear Data</a>
                             </li>
                             <?php
-                            if(!isset($_GET['activedisplay']))
-                          {
-                            echo '<li><a href="#tab_1_13" data-toggle="tab">Add / Edit Sub documents</a></li>';
-                          }
-                          else
-                          {
-                            echo '<li class="active"><a href="#tab_1_13" data-toggle="tab">Add / Edit Sub documents</a></li>';
-                          }
+                                if($this->request->session()->read('Profile.super'))
+                                {
+                            ?>
+                            <li <?php if(isset($_GET['activedisplay'])){ ?> class="active" <?php } ?> >
+                                    <a href="#tab_1_13" data-toggle="tab">Add / Edit Sub documents</a>
+                            </li>
+                            <?php
+                            }
                         }
                 }
 
@@ -168,6 +162,8 @@ if (isset($profile))
                         </div>
                     </div>
                     <?php
+                    if($this->request->session()->read('Profile.super'))
+                    {
                           if(isset($_GET['activedisplay']))
                           {
                             ?>
@@ -179,6 +175,7 @@ if (isset($profile))
                             ?>
                             <div class="tab-pane"  id="tab_1_13">
                           <?php
+                          }
                           }
                           ?>
                           <div class="col-md-12" style="text-align: right;">

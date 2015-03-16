@@ -176,7 +176,6 @@ if (isset($profile))
                             <div class="tab-pane"  id="tab_1_13">
                           <?php
                           }
-                          }
                           ?>
                           <div class="col-md-12" style="text-align: right;">
                                 <a href="#" class="btn btn-success" onclick="$('#sub_add').toggle(150);">Add New SubDocument</a>
@@ -256,6 +255,7 @@ if (isset($profile))
                             </tr>
                                     <?php
                                 } 
+                                }
                                 ?>
                                 
                         </table>

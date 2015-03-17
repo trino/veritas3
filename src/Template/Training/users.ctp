@@ -83,6 +83,7 @@ Users
             <?php
                     $total=0;
                     $usercount=0;
+                    $nottakenyet="Course not taken yet";
                     foreach ($users as $user) {//http://localhost/veritas3/profiles/edit/120
                         foreach($users2 as $user2){
                             if ($user2->UserID == $user->UserID){
@@ -94,12 +95,11 @@ Users
                         echo '<A HREF="' . $this->request->webroot . 'profiles/edit/' . $user->Profiles['id'] . '">' . ucfirst($user->Profiles['username']) . '</A></TD><TD>';
 
                         if (strlen($user->profile['questions'])==0) {
-                            echo "Test not taken yet";
-                            echo '</TD><TD><A HREF="' . $this->request->webroot . 'training/users?quizid=' . $_GET['quizid'] . '&userid=';
+                            echo $nottakenyet . '</TD><TD><A HREF="' . $this->request->webroot . 'training/users?quizid=' . $_GET['quizid'] . '&userid=';
                             echo $user->UserID . '" class="' . btnclass("danger", "yellow") . '">Unenroll</A>';
                         } else {
                             $usercount+=1;
-                            $total+=$user->percent;
+                            $total+= $user->profile['percent'];
                             echo  $user->profile['correct'] . '/' . $user->profile['questions']  . ' (' . round($user->profile['percent'],2) . '%)';
                             echo '</TD><TD><A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=';
                             echo $user->UserID . '" class="' . btnclass("primary", "blue") . '">View Answers</A>';
@@ -113,8 +113,7 @@ Users
                         if (!$user->profile) {
                             echo '<TR><TD>' . $user->Profiles['id'] . '</TD><TD>' . ucfirst($user->Profiles['fname']) . '</TD><TD>' . ucfirst($user->Profiles['lname']) . '</TD><TD>';
                             echo '<A HREF="' . $this->request->webroot . 'profiles/edit/' . $user->Profiles['id'] . '">' . ucfirst($user->Profiles['username']) . '</A></TD><TD>';
-                            echo "Test not taken yet";
-                            echo '</TD><TD><A HREF="' . $this->request->webroot . 'training/users?quizid=' . $_GET['quizid'] . '&userid=';
+                            echo $nottakenyet . '</TD><TD><A HREF="' . $this->request->webroot . 'training/users?quizid=' . $_GET['quizid'] . '&userid=';
                             echo $user->UserID . '" class="' . btnclass("danger", "yellow") . '">Unenroll</A>';
                         }
                     }

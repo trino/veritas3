@@ -215,17 +215,22 @@ class DocumentComponent extends Component
                     
                 
                 $arr['created'] = $ord->created;
-                if($arr['document_type']!='Employment Verification' && $arr['document_type']!='Employment Verification' && $arr['document_type']!='Consent Form')
+                if($arr['document_type']!='Employment Verification' && $arr['document_type']!='Education Verification' && $arr['document_type']!='Consent Form'){
                 $doc = $docs->find()->where(['order_id'=>$arr['order_id'],'sub_doc_id'=>$arr['sub_doc_id']])->first();
-                else
+                }
+                else{
+                    
                 $doc = $docs->find()->where(['document_type'=>$arr['document_type'],'order_id'=>$arr['order_id'],'sub_doc_id'=>$arr['sub_doc_id']])->first();
+                }
                 if(!$doc)
                 {
+                    
                     $doc = $docs->newEntity($arr);
                     $docs->save($doc);
                 }
                 else
                 {
+                    //die('there');
                     $query2 = $docs->query();
                     $query2->update()
                         ->set($arr)

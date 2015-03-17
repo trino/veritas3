@@ -107,7 +107,7 @@ if (isset($profile))
                                 {
                             ?>
                             <li <?php if(isset($_GET['activedisplay'])){ ?> class="active" <?php } ?> >
-                                    <a href="#tab_1_13" data-toggle="tab">Add / Edit Sub documents</a>
+                                    <a href="#tab_1_13" data-toggle="tab">Add/Edit Documents</a>
                             </li>
                             <?php
                             }
@@ -136,7 +136,7 @@ if (isset($profile))
                     
 
                     <div class="tab-pane" id="tab_1_6">
-                        <?php //include('subpages/profile/page.php'); ?>
+                        <?php include('subpages/profile/page.php'); ?>
                     </div>
                     <div class="tab-pane" id="tab_1_8">
                         <?php include('subpages/profile/client_setting.php'); ?>

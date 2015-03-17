@@ -1793,7 +1793,7 @@
         
         foreach($query as $table)
         {
-           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments")
+           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types")
            {
                 $conn->query("TRUNCATE TABLE ".$table[0]);
            }

@@ -775,37 +775,35 @@
 
         }
 
-        function analytics1()
-        {
+        function analytics1(){
             $this->layout = "blank";
-
-
         }
 
-        function analytics()
-        {//Add code here Roy! //
+        function analytics(){
             $this->set('doc_comp',$this->Document);
             $orders = TableRegistry::get('orders');
-            $order = $orders->find();
-            $order = $order->order(['orders.id' => 'DESC']);
-            $order = $order->where(['draft' => 0]);
-            $order = $order->select();
-            $this->set('orders', $this->paginate($order));
+            $order = $orders->find()->order(['orders.id' => 'DESC'])->where(['draft' => 0])->select();
+            $this->set('orders', $order);
 
             $docs = TableRegistry::get('documents');
-            $doc = $docs->find();
-            $doc = $doc->select()->where(['draft' => 0]);
-            $this->set('documents', $this->paginate($doc));
+            $doc = $docs->find()->select()->where(['draft' => 0]);
+            $this->set('documents',$doc);
 
             $clients = TableRegistry::get('Clients');
-            $cli =  $clients->find();
-            $cli = $cli->select();
-            $this->set('clients', $this->paginate($cli));
+            $cli =  $clients->find()->select();
+            $this->set('clients', $cli);
 
             $profiles = TableRegistry::get('Profiles');
-            $pro =  $profiles->find();
-            $pro = $pro->select();
-            $this->set('profiles', $this->paginate($pro));
+            $pro =  $profiles->find()->select();
+            $this->set('profiles', $pro);
+
+            $quizzes = TableRegistry::get('training_list');
+            $qui = $quizzes->find()->select();
+            $this->set('courses', $qui);
+
+            $answers = TableRegistry::get('training_answers');
+            $ans =  $answers->find('all',array('group' => array('UserID', "QuizID")));
+            $this->set('answers', $ans);
     }
 
             

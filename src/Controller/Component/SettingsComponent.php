@@ -273,7 +273,7 @@ class SettingsComponent extends Component
         
     }
     
-    function check_edit_permission($uid,$pid)
+    function check_edit_permission($uid,$pid,$cby="")
     {
         if($uid == $pid)
         return 1;
@@ -328,15 +328,24 @@ class SettingsComponent extends Component
                  {
                     return 1;
                 }
-                else if($q1->profile_type == '2')
+                else
                 {
-                    if($q2->profile_type == '5' || $q2->profile_type == '7' || $q2->profile_type == '8' || $uid == $pid)
-                    {
+                     if($uid==$cby)
+                     {
                         return 1;
-                    }    
-                    else return 0;
-                }
-                else return 0;
+                     }
+                     else return 0;
+                    /*if($q1->profile_type == '2')
+                    {
+                        if($q2->profile_type == '5' || $q2->profile_type == '7' || $q2->profile_type == '8' || $uid == $pid)
+                        {
+                            return 1;
+                        }    
+                        else return 0;
+                    }*/
+                } 
+                
+                
              }
              /*=================================================================================*/   
         }

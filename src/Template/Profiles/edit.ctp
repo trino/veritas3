@@ -468,9 +468,7 @@
 
                                             <?php } ?>
                                                 
-                                                <li >
-                                                    <a href="#tab_1_13" data-toggle="tab">Client Types</a>
-                                                </li>
+                                               
                                             
                                         <?php    
                                         }
@@ -531,10 +529,7 @@
                                         <?php include('subpages/profile/block.php');//permissions ?>
                                     </div>
                                   
-                                    <div class="tab-pane "
-                                         id="tab_1_13">
-                                        <?php include('subpages/profile/ctype.php');//permissions ?>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

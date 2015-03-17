@@ -97,10 +97,7 @@ if (isset($profile))
                                 <a href="#tab_1_10" data-toggle="tab">Products</a>
                             </li>
                             <li>
-                                <a href="#tab_1_11" data-toggle="tab">Profile Types</a>
-                            </li>
-                            <li>
-                                <a href="#tab_1_12" data-toggle="tab">Client Types</a>
+                                <a href="#tab_1_14" data-toggle="tab">Configuration</a>
                             </li>
                              <li>
                                 <a href="#tab_1_9" data-toggle="tab">Clear Data</a>
@@ -147,12 +144,28 @@ if (isset($profile))
                     <div class="tab-pane" id="tab_1_10">
                         <?php include('subpages/profile/products.php'); ?>
                     </div>
-                     <div class="tab-pane" id="tab_1_11">
-                        <?php include('subpages/profile/profile_types.php'); ?>
+                    <div class="tab-pane" id="tab_1_14">
+                        <div class="tabbable tabbable-custom">
+                            <ul class="nav nav-tabs">
+                           
+                                <li class="active">
+                                    <a href="#tab_1_11" data-toggle="tab">Profile Types</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_1_12" data-toggle="tab">Client Types</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                 <div class="tab-pane active" id="tab_1_11">
+                                    <?php include('subpages/profile/profile_types.php'); ?>
+                                </div>
+                                 <div class="tab-pane" id="tab_1_12">
+                                    <?php include('subpages/profile/client_types.php'); ?>
+                                </div>
+                            </div>
+                           </div>
                     </div>
-                     <div class="tab-pane" id="tab_1_12">
-                        <?php include('subpages/profile/client_types.php'); ?>
-                    </div>
+                    
                     <div class="tab-pane" id="tab_1_9">
                         <a href="javascript:void(0)" class="btn btn-danger" id="cleardata">Clear Data</a>
                         <div class="margin-top-10 alert alert-success display-hide cleardata_flash" style="display: none;">

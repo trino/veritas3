@@ -207,7 +207,7 @@ function PrintResult($name, $number){
         $results["total"]+=1;
     }
     if (is_object($answer)) {
-        PrintResults($results, $user);
+        //PrintResults($results, $user);
     } else {
         echo '<DIV align="center"><button type="submit" class="btn blue" style="margin-bottom: 15px;" onclick="return confirm(' . "'Are you sure you are done?'" . ');"><i class="fa fa-check"></i> Save</button></DIV>';
     }

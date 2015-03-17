@@ -157,7 +157,7 @@ function FullQuestion($QuizID, $text, $answers, $index = 0, $markedOutOf = "1.00
 }
 
 if (is_object($useranswers)) {
-    $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0);
+    $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0, "datetaken" => getdatetaken($useranswers));
     foreach ($questions as $question) {
         $result = preprocess(usersanswer($useranswers, $question->QuestionID), $question->Answer);
         $results[$result] += 1;
@@ -165,7 +165,11 @@ if (is_object($useranswers)) {
     }
     if ($results["missing"] < $results["total"]) {PrintResults($results, $user);}
 }
-
+    function getdatetaken($useranswers){
+        foreach($useranswers as $answers){
+            if ($answers->created){return $answers->created;}
+        }
+    }
 
     function usersanswer($useranswers, $questionid){
         $answer="";
@@ -183,8 +187,8 @@ function PrintResults($results, $user){
     if ($results['total']>0) {//http://localhost/veritas3/img/profile/172647_974786.jpg
         //debug($user); <label class="control-label">Profile Type : </label>
         echo '<div class="row"><div class="col-md-12"><div class="portlet box yellow"><div class="portlet-title">';
-        echo '<div class="caption"><i class="fa fa-graduation-cap"></i>Results for: ' . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ")";
-        echo '</div></div><div class="portlet-body"><div class="row">';
+        echo '<div class="caption"><i class="fa fa-graduation-cap"></i>Results for: ' . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ") on ";
+        echo $results['datetaken'] . '</div></div><div class="portlet-body"><div class="row">';
         echo '<div class="col-md-2"><img src="../img/profile/' . $user->image . '" style="max-height: 100px; max-width: 100px;"></div>';
         PrintResult("Incorrect", $results['incorrect']);
         PrintResult("Missing", $results['missing']);

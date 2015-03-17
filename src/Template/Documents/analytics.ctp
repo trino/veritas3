@@ -1,5 +1,6 @@
 <?php $settings = $this->requestAction('settings/get_settings');?>
 <?php //* Date format= 2015-02-05  "Y-m-d" http://www.flotcharts.org/flot/examples/
+
 function left($text, $length){
 	return substr($text,0,$length)	;
 }
@@ -82,7 +83,20 @@ $clientdates = sortdates($clients, $isdraft);
 $clientcount=total($clientdates);
 $clientavg= round ($clientcount / $days,$decimals);
 
+foreach($answers as $answer){
+    $answer->Quizname = getquiz($courses, $answer->QuizID)->Name;
+    //debug($answer);
+}
 
+$quizdates = sortdates($answers, $isdraft);
+$quizcount = total($quizdates);
+$quizavg = round($quizcount / $days, $decimals);
+
+function getquiz($courses, $id){
+    foreach($courses as $course){
+        if ($course->ID == $id) { return $course; }
+    }
+}
 
 function getdatestamp($date){
 	$newdate = date_create($date);
@@ -188,7 +202,9 @@ jQuery(document).ready(function() {
 	var data4 = [{
 		data: [<?php echo enumdata($clientdates, $days, $startdate); ?>]
 	}];
-
+    var data5 = [{
+        data: [<?php echo enumdata($quizdates, $days, $startdate); ?>]
+    }];
 
 	var options = marking(<?php echo $docavg; ?>, 'red');
 
@@ -255,7 +271,8 @@ jQuery(document).ready(function() {
 	bind("#orders", data2, <?php echo $ordavg; ?>, "#FFB848");
 	bind("#profiles", data3, <?php echo $profileavg; ?>, "#44B6AE");
 	bind("#clients", data4, <?php echo $clientavg; ?>, "#ACB5C3");
-	
+    bind("#courses", data5, <?php echo $quizavg; ?>, "#578EBE");
+
 });
 </script>
 									<div class="chat-form"> <form action="<?php echo $this->request->webroot; ?>documents/analytics" method="get">
@@ -343,6 +360,8 @@ newchart("green-haze", "icon-user", ucfirst($settings->profile) . "s", "profiles
 newchart("yellow-casablanca", "icon-doc", ucfirst($settings->document) . "s", "documents", $docdates, $documents ,$startdate,$enddate, $isdraft);
 newchart("yellow", "icon-docs", "Orders", "orders", $orderdates, $orders,$startdate,$enddate, $isdraft);
 
+newchart("blue-steel", "fa fa-graduation-cap", "Courses", "courses", $quizdates, $answers ,$startdate,$enddate, $isdraft);
+
 function enumsubdocs($thedocs, $date, $chartid, $isdraft){
 	$alldocs = array();
 	$unknown= "Not specified";
@@ -386,7 +405,9 @@ function enumsubdocs($thedocs, $date, $chartid, $isdraft){
 						$doctype = $unknown;
 					}
 				}
-
+                if ($chartid == "courses") {
+                    $doctype = $adoc->Quizname;
+                }
 
 				//if (strlen($doctype )==0){$doctype = $adoc->customer_type; }
 				if (strlen($doctype) > 0) {

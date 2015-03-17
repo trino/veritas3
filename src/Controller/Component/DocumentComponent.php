@@ -143,8 +143,89 @@ class DocumentComponent extends Component
                     $doc = $docs->newEntity($arr);
 
                     if ($docs->save($doc)) {
+                        $get_client = TableRegistry::get('Clients');
+                        $gc = $get_client->find()->where(['id' => $cid])->first();
+                        $client_name = $gc->company_name;
+                        $assignedProfile = $this->getAssignedProfile($cid);
+                        if($assignedProfile)
+                        {
+                           // echo $assignedProfile->profile_id; die();
+                            $profile = $this->getProfilePermission($assignedProfile->profile_id, 'document');
+                            //var_dump($profile);die();
+                            if($profile)
+                            {
+                                foreach($profile as $p)
+                                {
+                                    
+                            $pro_query = TableRegistry::get('Profiles');
+                            $email_query = $pro_query->find()->where(['super' => 1])->first();
+                            $em = $email_query->email;
+                            $user_id = $controller->request->session()->read('Profile.id');
+                            $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
+                            if (isset($uq->profile_type))
+                              {
+                                $u = $uq->profile_type;
+                                if($u == 1)
+                                $ut = 'Admin';
+                                else if($u == 2)
+                                $ut = 'Recruiter';
+                                else if($u == 3)
+                                $ut = 'External';
+                                else if($u == 4)
+                                $ut = 'Safety';
+                                else if($u == 5)
+                                $ut = 'Driver';
+                                else if($u == 6)
+                                $ut = 'Contact';
+                                else if($u == 7)
+                                $ut = 'Owner Operator';
+                                else if($u == 8)
+                                $ut = 'Owner Driver';
+                              }
+                           $from = 'info@isbmee.com';
+                            $to = $p;
+                             $sub = 'Document submitted';
+                            $msg = 'Hi,<br />A document has been created in https://isbmeereports.com<br />
+                            By user with following details :<br/>
+                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br/> For user with email address :'.$p.'<br /> Regards,<br />The ISB Team';
+                             $controller->Mailer->sendEmail($from, $to, $sub, $msg);
+                                }
+                            }
+                        }
                         //$this->Flash->success('Client saved successfully.');
                         echo $doc->id;
+                        $pro_query = TableRegistry::get('Profiles');
+                            $email_query = $pro_query->find()->where(['super' => 1])->first();
+                            $em = $email_query->email;
+                            $user_id = $controller->request->session()->read('Profile.id');
+                            $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
+                            if (isset($uq->profile_type))
+                              {
+                                $u = $uq->profile_type;
+                                if($u == 1)
+                                $ut = 'Admin';
+                                else if($u == 2)
+                                $ut = 'Recruiter';
+                                else if($u == 3)
+                                $ut = 'External';
+                                else if($u == 4)
+                                $ut = 'Safety';
+                                else if($u == 5)
+                                $ut = 'Driver';
+                                else if($u == 6)
+                                $ut = 'Contact';
+                                else if($u == 7)
+                                $ut = 'Owner Operator';
+                                else if($u == 8)
+                                $ut = 'Owner Driver';
+                              }
+                           $from = 'info@isbmee.com';
+                            $to = $em;
+                             $sub = 'Document submitted';
+                            $msg = 'Hi,<br />A document has been created in https://isbmeereports.com<br />
+                            By user with following details :<br/>
+                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br/> <br /> Regards,<br />The ISB Team';
+                             $controller->Mailer->sendEmail($from, $to, $sub, $msg);
                         if(isset($_POST['attach_doc']))
                         {
                             $model = $controller->loadModel('AttachDocs');
@@ -1382,6 +1463,41 @@ class DocumentComponent extends Component
             $orders = TableRegistry::get('orders');
             $order = $orders->find()->where(['id'=>$id])->first();
             return $order;
+        }
+        
+        function getAssignedProfile($cid = 0)
+        {
+            $profile = TableRegistry::get('Clients');
+            $pro = $profile->find('all')->where(['id' => $cid])->first();
+            return $pro;
+        }
+        
+        function getProfilePermission($profile,$type)
+        {
+            $setting = TableRegistry::get('sidebar');
+            $arr_profile = explode(',',$profile);
+            $email_arr = array();
+            foreach($arr_profile as $ap)
+            {
+                
+                 $query = $setting->find()->where(['user_id'=>$ap]);
+                 $permit = $query->first();
+                //$permit = $this->Settings->get_permission($ap);
+                if($permit && ($permit->email_document == 1))
+                {
+                    $email = $this->getEmail($ap);
+                    if($email)
+                    $email_arr[] = $email;
+                }
+            }
+            return $email_arr;
+        }
+        
+        function getEmail($id)
+        {
+            $query = TableRegistry::get('Profiles');
+            $pro = $query->find()->where(['id'=>$id])->first();
+            return $pro->email;
         }
         
 }

@@ -712,7 +712,7 @@
                            $from = 'info@isbmee.com';
                             $to = $em;
                              $sub = 'Profile created';
-                            $msg = 'Hi,<br />An account has been created in https:isbmeereports.com<br />
+                            $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
                             By user with following details :<br/>
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d').'<br/>With profile details<br /> Username: ' . $_POST['username'] . '<br /> Profile Type: '.$protype.'<br /> Regards,<br />The ISB Team';
                              $this->Mailer->sendEmail($from, $to, $sub, $msg); 
@@ -813,7 +813,7 @@
                            $from = 'info@isbmee.com';
                             $to = $em;
                              $sub = 'Profile created';
-                            $msg = 'Hi,<br />An account has been created in https:isbmeereports.com<br />
+                            $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
                             By user with following details :<br/>
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut;
                             

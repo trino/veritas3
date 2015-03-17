@@ -520,7 +520,7 @@ class ClientsController extends AppController {
                            $from = 'info@isbmee.com';
                             $to = $em;
                              $sub = 'Client created';
-                            $msg = 'Hi,<br />A client has been created in https:isbmeereports.com<br />
+                            $msg = 'Hi,<br />A client has been created in https://isbmeereports.com<br />
                             By user with following details :<br/>
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.$_POST['created'].'<br/>With client details<br /> Client Name: ' . $_POST['company_name'].'<br/><br /> Regards,<br />The ISB Team';
                              $this->Mailer->sendEmail($from, $to, $sub, $msg); 

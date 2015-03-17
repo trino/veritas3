@@ -150,9 +150,12 @@ foreach($quizes as $quiz) {
     if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
         $totalquizzes+=1;
         echo str_replace("\r\n", "<P>", $quiz->Description);
+        if (strlen($quiz->Attachments)>0 && $QuizID == $quiz->ID){
+            echo "<H4>Please click each attachment in sequential order to view the quiz</H4>";
+        }
         if (quizmiddle($QuizID, $quiz->ID)) {
             $attachments = explode(",", $quiz->Attachments);
-            echo '<div class="col-md-5" align="left">';
+            echo '<div class="col-md-10" align="left">';
             $attachmentJS = "";
             $id = 0;
             $checked = "";

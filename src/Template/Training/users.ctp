@@ -104,7 +104,7 @@ Users
                             echo '</TD><TD><A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=';
                             echo $user->UserID . '" class="' . btnclass("primary", "blue") . '">View Answers</A>';
                             echo '<A HREF="' . $this->request->webroot . 'training/users?action=deleteanswers&quizid=' . $_GET['quizid'] . '&userid=';
-                            echo $user->UserID . '" class="' . btnclass("danger", "red") . '" onclick="return confirm(' . "'Are you sure you want to delete " . ucfirst($user->Profiles['username']) . "s answers?'" . ');" >Delete Answers</A>';
+                            echo $user->UserID . '" class="' . btnclass("danger", "red") . '" onclick="return confirm(' . "'Are you sure you want to delete " . ucfirst($user->Profiles['username']) . "\'s answers?'" . ');" >Delete Answers</A>';
                         }
                         echo '</TD></TR>';
                     }

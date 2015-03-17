@@ -187,7 +187,7 @@
             if ($cond) {
                 //echo $cond;die();
                 $query = $querys->find();
-                $query = $query->where([$cond]);
+                $query = $query->where([$cond,'AND' => 'super = 0']);
             } else {
                 $query = $this->Profiles->find()->where(['OR' => $condition,'AND' => 'super = 0']);
             }

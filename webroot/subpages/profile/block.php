@@ -44,12 +44,12 @@ if ($activetab == "permissions") {
             <?php
         }
          ?>
-            <li >
+            <!--<li >
                 <a href="#tab_1_12" data-toggle="tab">Profile Types</a>
             </li>
              <li >
                 <a href="#tab_1_13" data-toggle="tab">Client Types</a>
-            </li>
+            </li>-->
             <li <?php if($this->request->session()->read('Profile.profile_type')=='2' ||(isset($Clientcount)&& $Clientcount==0)) echo 'class = "active"'; ?>>
                 <a href="#subtab_2_4" data-toggle="tab">Assign to <?php echo ucfirst($settings->client) ?></a>
             </li>
@@ -78,14 +78,14 @@ if ($activetab == "permissions") {
                                                 </td>
                                                 <td>
                                                     <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                        <input <?php echo $is_disabled ?> type="radio" class="profile_enb"
                                                                                           name="side[profile]"
-                                                                                          value="1" onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})" <?php if (isset($sidebar) && $sidebar->profile == 1) echo "checked"; ?> />
+                                                                                          value="1" onclick="$('.ptypes').show();$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})" <?php if (isset($sidebar) && $sidebar->profile == 1) echo "checked"; ?> />
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[profile]"
-                                                                                          value="0" onclick=" $(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})" <?php if (isset($sidebar) && $sidebar->profile == 0) echo "checked"; ?>/>
+                                                                                          value="0" onclick="$('.ptypes').hide(); $(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})" <?php if (isset($sidebar) && $sidebar->profile == 0) echo "checked"; ?>/>
                                                         No </label>
                                                         <div class="clearfix"></div>
                                                         <div class="col-md-12 nopad martop yesno" >
@@ -113,6 +113,45 @@ if ($activetab == "permissions") {
                                                         <div class="clearfix"></div>
                                                 </td>
                                             </tr>
+                                            <tr class="ptypes" <?php if (isset($sidebar) && $sidebar->profile == 0)echo "style='display:none;'";?>>
+                                                <td></td>
+                                                <td>
+                                                
+                                                  
+                                                        <table
+                                                            class=" ptypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
+                                                            
+                                                           
+                                                            <tr>
+                                                            <?php
+                                                            $pt = explode(",",$profile->ptypes);
+                                                            $cnt =0;
+                                                            foreach($ptypes as $product)
+                                                            {
+                                                                ++$cnt;
+                                                                ?>
+                                                                <td class="titleptype_<?php echo $product->id;?>">
+                                                                    <?php echo $product->title;?> <input name="ptypes[]" type="checkbox" <?php  if(in_array($product->id,$pt)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" />
+                                                                </td>
+                                                                <?php if($cnt%5==0)
+                                                                {?>
+                                                                   </tr><tr> 
+                                                            <?php
+                                                                }
+                                                      
+                                                            }
+                                                            ?>
+                                                             </tr> 
+                                                             <tr style="display: none;">
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="javascript:;" class="btn btn-primary" id="saveptype" >Submit</a></td>
+                                                            </tr>
+                                                    
+                                                    </table>
+                                                
+                                                </td>
+                                            </tr>
 
                                             <tr>
                                                 <td class="vtop">
@@ -121,15 +160,15 @@ if ($activetab == "permissions") {
                                                 <td>
                                                 
                                                     <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                        <input <?php echo $is_disabled ?> type="radio" class="client_enb"
                                                                                           name="side[client]"
-                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})"
+                                                                                          onclick="$('.ctypes').show();$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})"
                                                                                           value="1" <?php if (isset($sidebar) && $sidebar->client == 1) echo "checked"; ?>/>
                                                         Yes </label>
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio"
                                                                                           name="side[client]"
-                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})"
+                                                                                          onclick="$('.ctypes').hide();$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})"
                                                                                           value="0" <?php if (isset($sidebar) && $sidebar->client == 0) echo "checked"; ?>/>
                                                         No </label>
                                                         <div class="clearfix"></div>
@@ -157,6 +196,42 @@ if ($activetab == "permissions") {
                                                            
                                                         </div>
                                                         <div class="clearfix"></div>
+                                                </td>
+                                            </tr>
+                                            <tr class="ctypes" <?php if (isset($sidebar) && $sidebar->client == 0)echo "style='display:none;'";?>>
+                                                <td></td>
+                                                <td>
+                                                    
+                                                        <table
+                                                            class="ctypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
+                                                                <tr>
+                                                            <?php
+                                                            $cnt =0;
+                                                            $ct = explode(",",$profile->ctypes);
+                                                            foreach($client_types as $product)
+                                                            {
+                                                                ++$cnt;
+                                                                ?>
+                                                                <td class="titlectype_<?php echo $product->id;?>">
+                                                                        <?php echo $product->title;?> <input name="ctypes[]" type="checkbox" <?php if(in_array($product->id,$ct)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" />
+                                                                  </td>
+                                                                    
+                                                             <?php if($cnt%5==0)
+                                                                {?>
+                                                                   </tr><tr> 
+                                                            <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                            </tr>
+                                                            <tr style="display: none;">
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="javascript:;" class="btn btn-primary" id="savectype" >Submit</a></td>
+                                                            </tr>
+                                                    
+                                                        </table>
+                                                   
                                                 </td>
                                             </tr>
                                             
@@ -1054,14 +1129,14 @@ if ($activetab == "permissions") {
                                                 </div>
                                             
                                     </div>
-                                      <div class="tab-pane "
+                                      <!--<div class="tab-pane "
                                          id="tab_1_12">
                                         <?php include('subpages/profile/ptype.php');//permissions ?>
                                     </div>
                                     <div class="tab-pane "
                                          id="tab_1_13">
                                         <?php include('subpages/profile/ctype.php');//permissions ?>
-                                    </div>
+                                    </div>-->
                                     </div>
                                     </div>
 
@@ -1070,7 +1145,43 @@ if ($activetab == "permissions") {
                                     
                                     <script>
                                     $(function(){
+                                          $('#saveptype').live('click',function(){
+                                            $(this).text("Saving");
+                                            var cids =$('.ptypeform input[type="checkbox"]').serialize();
+                                            var id = <?php echo $id;?>;
+                                            $.ajax({
+                                                url:"<?php echo $this->request->webroot;?>profiles/ptypesenb/"+id,
+                                                type:"post",
+                                                dataType:"HTML",
+                                                data: cids,
+                                                success:function(msg)
+                                                {
+                                                    $('.ptype').show();
+                                                    $('.ptype').fadeOut(7000);
+                                                    $('#saveptype').text('Submit');
+                                                }
+                                            })
+                                        });
+                                       
+                                        $('#savectype').live('click',function(){
+                                            $(this).text("Saving");
+                                            var cids =$('.ctypeform input[type="checkbox"]').serialize();
+                                            var id = <?php echo $id;?>;
+                                            $.ajax({
+                                                url:"<?php echo $this->request->webroot;?>profiles/ctypesenb/"+id,
+                                                type:"post",
+                                                dataType:"HTML",
+                                                data: cids,
+                                                success:function(msg)
+                                                {
+                                                    $('.ctype').show();
+                                                    $('.ctype').fadeOut(7000);
+                                                    $('#savectype').text('Submit');
+                                                }
+                                            })
+                                        });
                                        $('#save_blocks').click(function(){
+                                       
                                         $('#save_blocks').text('Saving..');
                                             var str = $('#blockform input').serialize();
                                             $.ajax({
@@ -1079,6 +1190,10 @@ if ($activetab == "permissions") {
                                                type:'post',
                                                success:function(res)
                                                {
+                                                    if($('.profile_enb').is(":checked"))
+                                                        $('#saveptype').click();
+                                                    if($('.client_enb').is(":checked"))
+                                                        $('#savectype').click();
                                                     $('#save_display').click();
                                                     //alert(res);
                                                     $('.res').text(res);

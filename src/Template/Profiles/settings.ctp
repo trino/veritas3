@@ -107,7 +107,7 @@ if (isset($profile))
                                 {
                             ?>
                             <li <?php if(isset($_GET['activedisplay'])){ ?> class="active" <?php } ?> >
-                                    <a href="#tab_1_13" data-toggle="tab">Add / Edit Sub documents</a>
+                                    <a href="#tab_1_13" data-toggle="tab">Add/Edit Documents</a>
                             </li>
                             <?php
                             }

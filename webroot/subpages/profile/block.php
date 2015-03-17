@@ -133,7 +133,7 @@ if ($activetab == "permissions") {
                                                                 <td class="titleptype_<?php echo $product->id;?>">
                                                                     <?php echo $product->title;?> <input name="ptypes[]" type="checkbox" <?php  if(in_array($product->id,$pt)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" />
                                                                 </td>
-                                                                <?php if($cnt%5==0)
+                                                                <?php if($cnt%4==0)
                                                                 {?>
                                                                    </tr><tr> 
                                                             <?php
@@ -216,7 +216,7 @@ if ($activetab == "permissions") {
                                                                         <?php echo $product->title;?> <input name="ctypes[]" type="checkbox" <?php if(in_array($product->id,$ct)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" />
                                                                   </td>
                                                                     
-                                                             <?php if($cnt%5==0)
+                                                             <?php if($cnt%4==0)
                                                                 {?>
                                                                    </tr><tr> 
                                                             <?php
@@ -292,7 +292,7 @@ if ($activetab == "permissions") {
                                             </tr>
                                             <tr>
                                                 <td class="vtop">
-                                                    Email Notifications
+                                                    Receive Email Notifications
                                                 </td>
                                                 <td>
                                                     <label class="uniform-inline">
@@ -307,7 +307,7 @@ if ($activetab == "permissions") {
                                                         <div class="clearfix"></div>
                                                         <div class="col-md-12 nopad martop yesno" >
                                                             <label class="uniform-inline">
-                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[email_todo]" value="1" <?php if (isset($sidebar) && $sidebar->email_todo == 1) echo "checked"; ?> /> Todo
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[email_todo]" value="1" <?php if (isset($sidebar) && $sidebar->email_todo == 1) echo "checked"; ?> /> Orders
                                                             </label>
                                                             <label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[email_document]" value="1" <?php if (isset($sidebar) && $sidebar->email_document == 1) echo "checked"; ?> /> <?php echo ucwords($settings->document);?>

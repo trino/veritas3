@@ -721,7 +721,7 @@
 
                            
                         <?php
-                                if (!isset($disabled)) {
+                                //if (!isset($disabled)) { 
                             ?>
                              <div class="form-group col-md-12"><!--<center>-->
 
@@ -766,7 +766,7 @@
                                         </div>
 
                         <div class="clearfix"></div>
-                            <?php } ?>
+                            <?php //} ?>
 
 
                 </form>

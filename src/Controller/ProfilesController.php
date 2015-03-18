@@ -1792,7 +1792,7 @@
         }
         
         foreach($query as $table) {
-           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types") {
+           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types" && $table[0]!="training_quiz" && $table[0]!="training_list"  ) {
                 $conn->query("TRUNCATE TABLE ".$table[0]);
            } elseif($table[0]=='profiles') {
                $conn->query("Delete from ".$table[0]." where `super` = '0'");

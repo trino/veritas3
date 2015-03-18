@@ -19,6 +19,7 @@ class ClientsController extends AppController {
      public function initialize() {
         parent::initialize();
         $this->loadComponent('Settings');
+        $this->loadComponent('Document');
         $this->loadComponent('Mailer');
         
         if(!$this->request->session()->read('Profile.id'))
@@ -491,7 +492,7 @@ class ClientsController extends AppController {
                             $this->Flash->success(ucfirst($settings->client) . ' saved successfully.');
                         }
                         	echo $client->id;
-                            
+                            $path = $this->Document->getUrl();
                             $pro_query = TableRegistry::get('Profiles');
                             $email_query = $pro_query->find()->where(['super' => 1])->first();
                             $em = $email_query->email;
@@ -517,10 +518,10 @@ class ClientsController extends AppController {
                                 else if($u == 8)
                                 $ut = 'Owner Driver';
                               }
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $em;
                              $sub = 'Client created';
-                            $msg = 'Hi,<br />A client has been created in https://isbmeereports.com<br />
+                            $msg = 'Hi,<br />A client has been created in '.$path.'<br />
                             By user with following details :<br/>
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.$_POST['created'].'<br/>With client details<br /> Client Name: ' . $_POST['company_name'].'<br/><br /> Regards,<br />The ISB Team';
                              $this->Mailer->sendEmail($from, $to, $sub, $msg); 

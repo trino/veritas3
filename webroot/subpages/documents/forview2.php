@@ -333,7 +333,7 @@
                                             <? } else { ?>
                                                 <a target="_blank"
                                                    href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
-                                                   class="btn btn-primary">Download</a>
+                                                   class="btn btn-primary dl">Download</a>
                                             <? } ?>
                                     </td>
                                 </tr>

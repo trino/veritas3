@@ -143,6 +143,7 @@ class DocumentComponent extends Component
                     $doc = $docs->newEntity($arr);
 
                     if ($docs->save($doc)) {
+                        $path = $this->getUrl();
                         $get_client = TableRegistry::get('Clients');
                         $gc = $get_client->find()->where(['id' => $cid])->first();
                         $client_name = $gc->company_name;
@@ -183,10 +184,10 @@ class DocumentComponent extends Component
                                 $ut = 'Owner Driver';
                               }
                               //$path = 'https://isbmeereports.com/documents/view/'.$cid;
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $p;
                              $sub = 'Document submitted';
-                            $msg = 'Hi,<br />A document has been created in https://isbmeereports.com<br />
+                            $msg = 'Hi,<br />A document has been created in '.$path.'<br />
                             By user with following details :<br/>
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br/> For user with email address :'.$p.'<br /> Regards,<br />The ISB Team';
                              $controller->Mailer->sendEmail($from, $to, $sub, $msg);
@@ -220,10 +221,10 @@ class DocumentComponent extends Component
                                 else if($u == 8)
                                 $ut = 'Owner Driver';
                               }
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $em;
                              $sub = 'Document submitted';
-                            $msg = 'Hi,<br />A document has been created in https://isbmeereports.com<br />
+                            $msg = 'Hi,<br />A document has been created in '.$path.'<br />
                             By user with following details :<br/>
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br/> <br /> Regards,<br />The ISB Team';
                              $controller->Mailer->sendEmail($from, $to, $sub, $msg);
@@ -1501,4 +1502,11 @@ class DocumentComponent extends Component
             return $pro->email;
         }
         
+        function getUrl()
+        {
+            $url = $_SERVER['SERVER_NAME'];
+            $url=str_replace(array('http://','/','www'),array('','',''),$url);
+            $email_from = 'info@'.$url;
+            return $email_from;
+        }
 }

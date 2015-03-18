@@ -375,15 +375,16 @@ class SettingsComponent extends Component
             else return 0;
             }
     }
-    function getClientCountByProfile($uid)
-   {
-    $query = TableRegistry::get('Clients');
-    $q = $query->find();
-    $u = $uid;
-    $q =$q->select()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id LIKE "'.$u.'" '])->count();
-
-    return $q;
-   }
+    
+        function getClientCountByProfile($uid)
+       {
+        $query = TableRegistry::get('Clients');
+        $q = $query->find();
+        $u = $uid;
+        $q =$q->select()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id LIKE "'.$u.'" '])->count();
+    
+        return $q;
+       }
     
     
 

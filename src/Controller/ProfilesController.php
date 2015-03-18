@@ -666,6 +666,7 @@
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft Successfully . ');
                         } else {
+                            $path = $this->Document->getUrl();
                              $pro_query = TableRegistry::get('Profiles');
                             $email_query = $pro_query->find()->where(['super' => 1])->first();
                             $em = $email_query->email;
@@ -711,10 +712,10 @@
                                 else if($pt == 8)
                                 $protype = 'Owner Driver';
                               } 
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $em;
                              $sub = 'Profile created';
-                            $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
+                            $msg = 'Hi,<br />An account has been created in '.$path.'<br />
                             By user with following details :<br/>
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d').'<br/>With profile details<br /> Username: ' . $_POST['username'] . '<br /> Profile Type: '.$protype.'<br /> Regards,<br />The ISB Team';
                              $this->Mailer->sendEmail($from, $to, $sub, $msg); 
@@ -812,7 +813,7 @@
                                 else if($pt == 8)
                                 $protype = 'Owner Driver';
                               } 
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $em;
                              $sub = 'Profile created';
                             $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
@@ -1701,12 +1702,14 @@
         $date2 = $date . ' ' . $time . ':' . $m2;
         $date = $date . ' ' . $time . ':' . $m;
         //echo $date2;
-        //$date = "2015-12-12";
+
+        $path = $this->Document->getUrl();
+
         $q = TableRegistry::get('events');
         $que = $q->find();
         $query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
         foreach ($query as $todo) {
-            //echo $todo->id;
+
             if($todo->email_self=='1')
             {
                 $q2 = TableRegistry::get('profiles');
@@ -1734,6 +1737,7 @@
                 
                 }
                 
+
             }
             //echo $s;die();
             $send = $q->query();
@@ -1764,6 +1768,7 @@
 
     function forgetpassword()
     {
+        $path = $this->Document->getUrl();
         $email = $_POST['email'];
         $profiles = TableRegistry::get('profiles');
         if ($profile = $profiles->find()->where(['email' => $email])->first()) {
@@ -1771,7 +1776,7 @@
             $new_pwd = $this->generateRandomString(6);
             $p = TableRegistry::get('profiles');
             if ($p->query()->update()->set(['password' => md5($new_pwd)])->where(['id' => $profile->id])->execute()) {
-                $from = 'info@isbmee.com';
+                $from = 'info@'.$path.'.com';
                 $to = $profile->email;
                 $sub = 'New Password created successfully';
                 $msg = 'Hi,<br />Your  new password has been created.<br /> Your login details are:<br /> Username: ' . $profile->username . '<br /> Password: ' . $new_pwd . '<br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards';
@@ -1804,24 +1809,16 @@
         $conn = ConnectionManager::get('default');
         $query = $conn->query("show tables");
         $user_id = $conn->query("Select id from profiles where super=1");
-        foreach($user_id as $u)
-        {
+        foreach($user_id as $u){
             $uid = $u['id'];
-            
         }
         
-        foreach($query as $table)
-        {
-           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types")
-           {
+        foreach($query as $table) {
+           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types" && $table[0]!="training_quiz" && $table[0]!="training_list"  ) {
                 $conn->query("TRUNCATE TABLE ".$table[0]);
-           }
-           elseif($table[0]=='profiles')
-           {
+           } elseif($table[0]=='profiles') {
                $conn->query("Delete from ".$table[0]." where `super` = '0'");
-           }
-           elseif($table[0]=='blocks' || $table[0]=='sidebar')
-           {
+           } elseif($table[0]=='blocks' || $table[0]=='sidebar') {
                 $conn->query("Delete from `".$table[0]."` where user_id <> ".$uid);
            }
         } echo "Cleared";

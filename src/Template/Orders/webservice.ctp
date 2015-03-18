@@ -25,7 +25,8 @@
 
 
     $startorder1 = false;
-    $productdetails79 = false; // only for complete mee roders
+
+    $productdetails79 = false; // only TRUE complete mee roders  - DONT CHANGE
 
 
     ////////////////////////////////////////PRODUCTS
@@ -50,11 +51,11 @@
     $uploadbinaryemployment_1627 = true;
     $uploadbinaryeducation_1650 = true;
 
-    $upload_additional = false; //additional are all attachments in all forms
+    $upload_additional = true; //additional are all attachments in all forms
 
-    var_dump($formsarray);
+  //  var_dump($formsarray);
 
-    echo $formsarray[1];
+//    echo $formsarray[1];
 
     if ($formsarray[1] =='1' ||$formsarray[1] =='0') {
 
@@ -96,13 +97,10 @@
     } else {
         $productdetails79 = true;
         $productdetails_CheckDL_72 = false;
-        echo 999;
+     //   echo 999;
     }
 
-
-
     if ($startorder1 == true) {
-
 
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
             '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
@@ -122,7 +120,7 @@
         $ebs_id = substr($myArray[1], 4);
 
         $this->requestAction('orders/save_webservice_ids/' . $orderid . '/' . $ins_id . '/' . $ebs_id);
-
+ECHO "999start order";
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -146,7 +144,7 @@
         $pdi = $r[0];
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_79');
 
-        echo 'ins_79';
+        echo '999ins_79';
         debug($result);
 
     }
@@ -169,10 +167,8 @@
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_1');
-        echo 'ins_1';
+        echo '999ins_1';
         debug($result);
-
-
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -195,7 +191,7 @@
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_14');
-        echo 'ins_14';
+        echo '999ins_14';
         debug($result);
     }
 
@@ -213,12 +209,10 @@
             $r = explode(']', $r[1]);
         }
         $pdi = $r[0];
-        echo 'ins_72';
+        echo '999ins_72';
         debug($result);
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_72');
-
-
     }
 
 
@@ -243,7 +237,7 @@
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_77');
-        echo 'ins_77';
+        echo '999ins_77';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -270,7 +264,7 @@
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_78');
-        echo 'ins_78';
+        echo '999ins_78';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -293,7 +287,7 @@
         $pdi_1650 = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1650');
-        echo 'ebs_1650';
+        echo '999ebs_1650';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -316,7 +310,7 @@
         $pdi_1627 = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1627');
-        echo 'ebs_1627';
+        echo '999ebs_1627';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -339,7 +333,7 @@
         $pdi_1603 = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1603');
-        echo 'ebs_1603';
+        echo '999ebs_1603';
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -355,7 +349,7 @@
         //      echo $urlDecodedStr = rawurldecode($body);
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);
-
+echo "999uploadbinaryconsent_1603";
         debug($result);
 
     }
@@ -371,7 +365,7 @@
         //     echo $urlDecodedStr = rawurldecode($body);
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1627 . '</PDI><FileData>' . $body . '</FileData><productID>1627</productID><Filename>Employment_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);
-
+echo "999uploadbinaryemployment_1627";
         debug($result);
 
     }
@@ -388,52 +382,28 @@
         //    echo $urlDecodedStr = rawurldecode($body);
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1650 . '</PDI><FileData>' . $body . '</FileData><productID>1650</productID><Filename>Education_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
         $result = $client->call('UploadBinaryFile', $soap_xml);
-
+echo "999uploadbinaryeducation_1650";
         debug($result);
 
     }
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // debug($consent_form_attachments);
-    /*
-    foreach ($consent_form_attachments as $d) {
-    if (isset($d->attach_doc) && $d->attach_doc != "") {
 
-    if ($upload_additional) {
-
-    echo $body = base64_encode($pdf);
-
-    $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>ConsentForm</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
-
-    $result = $client->call('UploadBinaryFile', $soap_xml);
-    debug($result);
-
-    }
-    }
-    */
-    //////change   echo $pdf = file_get_contents('attachments/' . $d->attach_doc);
-    // debug($consent_form_attachments);
-
-    if ($upload_additional) {
-
-        //    debug($prescreening['attach_doc']); //null
-        //   debug($driverapplication['da_at']);
-        //   debug($roadtest['de_at']);
-        //  debug($consent['con_at']);
-        //  debug($employee['att']);
-        //  debug($education['att']);
+    if ($upload_additional == true) {
 
         foreach ($prescreening['attach_doc'] as $d) {
             if ($d->attachment) {
-                echo($d->attachment);
+                echo($d->attachment). '12341234';
 
                 $sendit = file_get_contents('attachments/' . $d->attachment);
-                echo $body = base64_encode($sendit);
+                 $body = base64_encode($sendit);
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>111</productID><Filename>Consent_Form.pdf</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>'.$d->attachment.'</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
                 $result = $client->call('UploadBinaryFile', $soap_xml);
+                echo "999 prescreening attached docs";
                 debug($result);
 
             }
@@ -443,14 +413,19 @@
 
         foreach ($driverapplication['da_at'] as $d) {
             if ($d->attachment) {
-                echo($d->attachment);
+                echo($d->attachment). '12341234';
 
                 $sendit = file_get_contents('attachments/' . $d->attachment);
-                echo $body = base64_encode($sendit);
+                 $body = base64_encode($sendit);
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_'.$d->attachment.'</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
                 $result = $client->call('UploadBinaryFile', $soap_xml);
+
+                echo "999 driverapplication attached docs";
+
+
+
                 debug($result);
 
             }
@@ -459,14 +434,16 @@
 
         foreach ($roadtest['de_at'] as $d) {
             if ($d->attachment) {
-                echo($d->attachment);
+                echo($d->attachment). '12341234';
 
                 $sendit = file_get_contents('attachments/' . $d->attachment);
-                echo $body = base64_encode($sendit);
+                 $body = base64_encode($sendit);
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_'.$d->attachment.'</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
                 $result = $client->call('UploadBinaryFile', $soap_xml);
+                echo "999 road test attached docs";
+
                 debug($result);
 
             }
@@ -475,14 +452,16 @@
 
         foreach ($consent['con_at'] as $d) {
             if ($d->attachment) {
-                echo($d->attachment);
+                echo($d->attachment) . '12341234';
 
                 $sendit = file_get_contents('attachments/' . $d->attachment);
-                echo $body = base64_encode($sendit);
+                 $body = base64_encode($sendit);
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_'.$d->attachment.'</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
                 $result = $client->call('UploadBinaryFile', $soap_xml);
+                echo "999 consent attached docs";
+
                 debug($result);
 
             }
@@ -491,16 +470,17 @@
 
         foreach ($employee['att'] as $d) {
             if ($d->attachment) {
-                echo($d->attachment);
+                echo($d->attachment). '12341234';
 
                 $sendit = file_get_contents('attachments/' . $d->attachment);
-                echo $body = base64_encode($sendit);
+                 $body = base64_encode($sendit);
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_'.$d->attachment.'</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
                 $result = $client->call('UploadBinaryFile', $soap_xml);
-                debug($result);
+                echo "999 empoyee form attached docs";
 
+                debug($result);
             }
         }
 
@@ -508,18 +488,24 @@
 
         foreach ($education['att'] as $d) {
             if ($d->attachment) {
-                echo($d->attachment);
+                echo($d->attachment). '12341234';
 
                 $sendit = file_get_contents('attachments/' . $d->attachment);
-                echo $body = base64_encode($sendit);
+                 $body = base64_encode($sendit);
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_Form.pdf</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_'.$d->attachment.'</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
                 $result = $client->call('UploadBinaryFile', $soap_xml);
+                echo "999 education attached docs";
+
                 debug($result);
 
             }
         }
+
+
+
+
         die();
     }
 

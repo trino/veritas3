@@ -4,6 +4,24 @@ ob_start();
 error_reporting(1);
 require_once('tcpdf/tcpdf2.php');
 
+function left($text, $length){
+    return substr($text,0,$length)	;
+}
+function right($text, $length){
+    return substr($text, -$length);
+}
+function extractdate($text){
+    if(str_replace(' ','',$text)!=$text)
+        return trim(left($text, strpos($text, " ")));
+    else
+        return $text;
+}
+
+function getdatestamp($date){
+    $newdate = date_create($date);
+    return date_timestamp_get($newdate);
+}
+
 function clean($data, $datatype=0){
     if (is_object($data)){
         switch($datatype) {
@@ -104,9 +122,16 @@ $pdf->AddPage();
 //<p stroke="0.2" fill="true" strokecolor="yellow" color="blue" style="font-family:helvetica;font-weight:bold;font-size:26pt;">' . ucfirst($user->fname) . " " . ucfirst($user->lname) . " " . $quiz->Name . '</p>';
 //$pdf->writeHTML($html, true, false, true, false, '');
 //Text	($x, $y, $txt, $fstroke, $fclip, $ffill, $border, $ln, $align, $fill, $link, $stretch, $ignore_min_height, $calign, $valign, $rtloff)
-$pdf->Text(15,55, ucfirst($user->fname) . " " . ucfirst($user->lname), false, false, true,     0,                  0,       "C");
+
+$pdf->SetFontSize(30);
+
+$pdf->Text(15,61, ucfirst($user->fname) . " " . ucfirst($user->lname), false, false, true,     0,                  0,       "C");
 
 $pdf->Text(15,80, $quiz->Name, false, false, true, 0, 0, "C");
+
+
+$pdf->SetFontSize(15);
+$pdf->Text(15,92, "On this date: " . date("F d, Y", getdatestamp($date)) , false, false, true, 0, 0, "C");
 
 ob_end_clean();
 $name='certificate' . $user->id . '-' . $_GET["quizid"] . '.pdf';

@@ -1505,8 +1505,12 @@ class DocumentComponent extends Component
         function getUrl()
         {
             $url = $_SERVER['SERVER_NAME'];
+            if($url!='localhost'){
             $url=str_replace(array('http://','/','www'),array('','',''),$url);
             $email_from = $url;
             return $email_from;
+            }
+            else
+            return 'localhost.com';
         }
 }

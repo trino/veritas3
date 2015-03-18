@@ -2001,7 +2001,6 @@ class TCPDF {
 		// cleanup
 		$this->_destroy(true);
 	}
-
 	/**
 	 * Set the units of measure for the document.
 	 * @param $unit (string) User measure unit. Possible values are:<ul><li>pt: point</li><li>mm: millimeter (default)</li><li>cm: centimeter</li><li>in: inch</li></ul><br />A point equals 1/72 of inch, that is to say about 0.35 mm (an inch being 2.54 cm). This is a very common unit in typography; font sizes are expressed in that unit.

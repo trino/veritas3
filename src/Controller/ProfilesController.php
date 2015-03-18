@@ -1788,24 +1788,16 @@
         $conn = ConnectionManager::get('default');
         $query = $conn->query("show tables");
         $user_id = $conn->query("Select id from profiles where super=1");
-        foreach($user_id as $u)
-        {
+        foreach($user_id as $u){
             $uid = $u['id'];
-            
         }
         
-        foreach($query as $table)
-        {
-           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types")
-           {
+        foreach($query as $table) {
+           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types" && $table[0]!="training_quiz" && $table[0]!="training_list"  ) {
                 $conn->query("TRUNCATE TABLE ".$table[0]);
-           }
-           elseif($table[0]=='profiles')
-           {
+           } elseif($table[0]=='profiles') {
                $conn->query("Delete from ".$table[0]." where `super` = '0'");
-           }
-           elseif($table[0]=='blocks' || $table[0]=='sidebar')
-           {
+           } elseif($table[0]=='blocks' || $table[0]=='sidebar') {
                 $conn->query("Delete from `".$table[0]."` where user_id <> ".$uid);
            }
         } echo "Cleared";

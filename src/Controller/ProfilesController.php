@@ -666,6 +666,7 @@
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft Successfully . ');
                         } else {
+                            $path = $this->Document->getUrl();
                              $pro_query = TableRegistry::get('Profiles');
                             $email_query = $pro_query->find()->where(['super' => 1])->first();
                             $em = $email_query->email;
@@ -714,7 +715,7 @@
                            $from = 'info@isbmee.com';
                             $to = $em;
                              $sub = 'Profile created';
-                            $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
+                            $msg = 'Hi,<br />An account has been created in '.$path.'<br />
                             By user with following details :<br/>
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d').'<br/>With profile details<br /> Username: ' . $_POST['username'] . '<br /> Profile Type: '.$protype.'<br /> Regards,<br />The ISB Team';
                              $this->Mailer->sendEmail($from, $to, $sub, $msg); 

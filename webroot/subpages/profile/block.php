@@ -76,7 +76,7 @@ if ($activetab == "permissions") {
                                                 <td class="vtop">
                                                     <?php echo ucfirst($settings->profile); ?>
                                                 </td>
-                                                <td>
+                                                <td width="90%">
                                                     <label class="uniform-inline">
                                                         <input <?php echo $is_disabled ?> type="radio" class="profile_enb"
                                                                                           name="side[profile]"

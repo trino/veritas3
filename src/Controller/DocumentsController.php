@@ -1143,10 +1143,12 @@
                         $did = $doc->id;
                         if(isset($_POST['attach_doc']))
                         {
+                            //var_dump($_POST['attach_doc']);die();
                             $model = $this->loadModel('AttachDocs');
                             $model->deleteAll(['doc_id'=> $did]);
-                            $client_docs = explode(',',$_POST['attach_doc']);
-                            foreach($client_docs as $d)
+                            //$client_do = implode(',',$_POST['attach_doc']);
+                            //$client_docs=explode(',',$client_do);
+                            foreach($_POST['attach_doc'] as $d)
                             {
                                 if($d != "")
                                 {
@@ -1158,6 +1160,7 @@
                                     unset($att);
                                 }
                             }
+                            
                         }
                         unset($doczs);
                         $this->Flash->success('Document saved successfully.');

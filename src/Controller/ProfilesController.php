@@ -114,13 +114,15 @@
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary' => '2'])));
         }
 
-        public function index()        {
+        public function index()        
+        {
             $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');
             $this->set('ProClients', $this->Settings);
             $super = $this->request->session()->read('Profile.super');
             $condition = $this->Settings->getprofilebyclient($u, $super);
+            //var_dump($condition);die();
             if ($setting->profile_list == 0) {
                 
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
@@ -187,7 +189,7 @@
             if ($cond) {
                 //echo $cond;die();
                 $query = $querys->find();
-                $query = $query->where([$cond,'AND' => 'super = 0']);
+                $query = $query->where([$cond,'OR' => $condition,'AND' => 'super = 0']);
             } else {
                 $query = $this->Profiles->find()->where(['OR' => $condition,'AND' => 'super = 0']);
             }
@@ -206,7 +208,7 @@
 
             /*old code*/
 
-            //debug($query);
+            //debug($query);die();
             $this->set('profiles', $this->paginate($query));
         }
 

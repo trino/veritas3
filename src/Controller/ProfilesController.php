@@ -536,6 +536,7 @@
         {
             $settings = $this->Settings->get_settings();
             $profiles = TableRegistry::get('Profiles');
+            $path = $this->Document->getUrl();
 
             if ($add == '0') {
                 $profile_type = $this->request->session()->read('Profile.profile_type');
@@ -666,7 +667,6 @@
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft Successfully . ');
                         } else {
-                            $path = $this->Document->getUrl();
                              $pro_query = TableRegistry::get('Profiles');
                             $email_query = $pro_query->find()->where(['super' => 1])->first();
                             $em = $email_query->email;
@@ -813,15 +813,12 @@
                                 else if($pt == 8)
                                 $protype = 'Owner Driver';
                               } 
-                           $from = 'info@'.$path.'.com';
+                           $from = 'info@'. $path. '.com';
                             $to = $em;
                              $sub = 'Profile created';
-                            $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
-                            By user with following details :<br/>
-                            Username : '.$uq->username.'<br/>Profile Type : '.$ut;
-                            
-                             echo '<br/> Dated on : '.$_POST['created'].'<br/>With profile details<br /> Username: ' . $_POST['username'] . '<br /> Profile Type: '.$protype;
-                               echo '<br /> Regards,<br />The ISB Team';
+                            $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br /> By user with following details :<br/> Username : '.$uq->username.'<br/>Profile Type : '.$ut;
+                            $msg= $msg .  '<br/> Dated on : '.$_POST['created'].'<br/>With profile details<br /> Username: ' . $_POST['username'] . '<br /> Profile Type: '.$protype;
+                            $msg= $msg .  '<br /> Regards,<br />The ISB Team';
                              $this->Mailer->sendEmail($from, $to, $sub, $msg); 
                             $this->Flash->success('Profile saved Successfully . ');
                         }

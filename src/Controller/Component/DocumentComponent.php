@@ -1506,7 +1506,7 @@ class DocumentComponent extends Component
         {
             $url = $_SERVER['SERVER_NAME'];
             $url=str_replace(array('http://','/','www'),array('','',''),$url);
-            $email_from = 'info@'.$url;
+            $email_from = $url;
             return $email_from;
         }
 }

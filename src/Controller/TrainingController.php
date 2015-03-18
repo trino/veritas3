@@ -118,7 +118,16 @@ class TrainingController extends AppController {
         $this->set('canedit', $this->canedit());
     }
 
-
+    public function certificate(){
+        $userid = $this->getuserid();
+        if (isset($_GET["userid"])){ $userid = $_GET["userid"];}
+        $this->getprofile($userid);
+        if (isset($_GET["quizid"])) {
+            $quiz = $this->getQuizHeader($_GET["quizid"]);// $table->find()->where(['ID'=>$_GET["quizid"]])->first();
+            $this->set('quiz', $quiz);
+        }
+        $this->set('canedit', $this->canedit());
+    }
 
 
 

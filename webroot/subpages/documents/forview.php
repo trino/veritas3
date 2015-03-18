@@ -272,7 +272,7 @@
                                                                     if (return_link('1603', $order->id) == false) { ?>
                                                                         <span class="label label label-info">Pending </span>
                                                                     <? } else { ?>
-                                                                        <a target="_blank" href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>" class="btn btn-primary">Download</a>
+                                                                        <a target="_blank" href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>" class="btn btn-primary dl">Download</a>
                                                                     <? } ?>
                                                             </td>
                                                         </tr>

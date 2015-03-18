@@ -417,7 +417,7 @@
             $doc = $this->Document->getDocumentcount();
             $cn = $this->Document->getUserDocumentcount();
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-            //var_dump($_POST);die();
+            //var_dump($setting);die();
             if (is_null($type)) {
                 // docu
 

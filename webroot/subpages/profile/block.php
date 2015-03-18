@@ -128,7 +128,7 @@
                                 <table
                                     class=" ptypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
 
-<p>Can Create:</p>
+                                    <p>Can Create:</p>
                                     <tr>
 
                                         <?php
@@ -308,6 +308,203 @@
                                         View Other's
                                     </label>
                                     <!--label class="uniform-inline">
+
+                                                                       <table class="table table-bordered table-hover">
+                                            <tr>
+                                                <td class="vtop">
+                                                    <?php echo ucfirst($settings->profile); ?>
+                                                </td>
+                                                <td width="90%">
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio" class="profile_enb"
+                                                                                          name="side[profile]"
+                                                                                          value="1" onclick="$('.ptypes').show();$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})" <?php if (isset($sidebar) && $sidebar->profile == 1) echo "checked"; ?> />
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[profile]"
+                                                                                          value="0" onclick="$('.ptypes').hide(); $(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})" <?php if (isset($sidebar) && $sidebar->profile == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-md-12 nopad martop yesno" >
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[profile_list]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->profile_list == 1) echo "checked"; ?> /> List
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[profile_create]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->profile_create == 1) echo "checked"; ?> /> Create
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                       name="side[profile_edit]"
+                                                                       value="1" <?php if ($sidebar->profile_edit == 1) echo "checked"; ?> /> Edit
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[profile_delete]"
+                                                                                          value="1" <?php if ($sidebar->profile_delete == 1) echo "checked"; ?> /> Delete
+                                                            </label>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                </td>
+                                            </tr>
+                                            <tr class="ptypes" <?php if (isset($sidebar) && $sidebar->profile == 0)echo "style='display:none;'";?>>
+                                                <td>Profile Type</td>
+                                                <td style="padding: 1px;" >
+
+                                                    <table style="margin-bottom: 0px; margin-top: 0px;"
+                                                            class=" ptypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
+
+
+                                                            <tr>
+                                                            <?php
+                                        $pt = explode(",",$profile->ptypes);
+                                        $cnt =0;
+                                        foreach($ptypes as $product)
+                                        {
+                                            ++$cnt;
+                                            ?>
+                                                                <td class="titleptype_<?php echo $product->id;?>">
+                                                                    <input name="ptypes[]" type="checkbox" <?php  if(in_array($product->id,$pt)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" /><label for="cchk_<?php echo $product->id;?>"><?php echo $product->title;?></label>
+                                                                </td>
+                                                                <?php if($cnt%4==0)
+                                        {?>
+                                                                   </tr><tr>
+                                                            <?php
+                                        }
+
+                                        }
+                                    ?>
+                                                             </tr>
+                                                             <tr style="display: none;">
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="javascript:;" class="btn btn-primary" id="saveptype" >Submit</a></td>
+                                                            </tr>
+
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="vtop">
+                                                    <?php echo ucfirst($settings->client); ?>
+                                                </td>
+                                                <td>
+
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio" class="client_enb"
+                                                                                          name="side[client]"
+                                                                                          onclick="$('.ctypes').show();$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->client == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[client]"
+                                                                                          onclick="$('.ctypes').hide();$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = false;})"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->client == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-md-12 nopad martop yesno" >
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[client_list]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->client_list == 1) echo "checked"; ?> /> List
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[client_create]"
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->client_create == 1) echo "checked"; ?> /> Create
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[client_edit]"
+                                                                                          value="1" <?php if ($sidebar->client_edit == 1) echo "checked"; ?> /> Edit
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox"
+                                                                                          name="side[client_delete]"
+                                                                                          value="1" <?php if ($sidebar->client_delete == 1) echo "checked"; ?> /> Delete
+                                                            </label>
+
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                </td>
+                                            </tr>
+                                            <tr class="ctypes" <?php if (isset($sidebar) && $sidebar->client == 0)echo "style='display:none;'";?>>
+                                                <td>Client Type</td>
+                                                <td style="padding: 1px;" >
+
+                                                        <table style="margin-bottom: 0px; margin-top: 0px;"
+                                                            class="ctypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
+                                                                <tr>
+                                                            <?php
+                                        $cnt =0;
+                                        $ct = explode(",",$profile->ctypes);
+                                        foreach($client_types as $product)
+                                        {
+                                            ++$cnt;
+                                            ?>
+                                                                <td class="titlectype_<?php echo $product->id;?>">
+                                                                        <input name="ctypes[]" type="checkbox" <?php if(in_array($product->id,$ct)){echo "checked='checked'";}?> class="cenable" id="bbhk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" /><label for="bbhk_<?php echo $product->id;?>" ><?php echo $product->title;?></label>
+                                                                </td>
+
+                                                             <?php if($cnt%4==0)
+                                        {?>
+                                                                   </tr><tr>
+                                                            <?php
+                                        }
+                                        }
+                                    ?>
+                                                            </tr>
+                                                            <tr style="display: none;">
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="javascript:;" class="btn btn-primary" id="savectype" >Submit</a></td>
+                                                            </tr>
+
+                                                        </table>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="vtop">
+                                                    Orders
+                                                </td>
+                                                <td>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio" name="side[orders]" onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).addClass('checked')});$(this).closest('td').find('.yesno input').each(function(){ this.checked = true;})" value="1" <?php if (isset($sidebar) && $sidebar->orders == 1) echo "checked"; ?>/>
+                                                        Yes </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled ?> type="radio"
+                                                                                          name="side[orders]"
+                                                                                          onclick="$(this).closest('td').find('.yesno span').each(function(){$(this).removeClass('checked')});$(this).closest('td').find('.yesno input').each(function(){$(this).removeAttr('checked');});"
+                                                                                          value="0" <?php if (isset($sidebar) && $sidebar->orders == 0) echo "checked"; ?>/>
+                                                        No </label>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-md-12 nopad martop yesno" >
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_list]" value="1" <?php if (isset($sidebar) && $sidebar->orders_list == 1) echo "checked"; ?> /> List
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_create]" value="1" <?php if (isset($sidebar) && $sidebar->orders_create == 1) echo "checked"; ?> /> Create
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_edit]" value="1" <?php if ($sidebar->orders_edit == 1) echo "checked"; ?> /> Edit
+                                                            </label>
+                                                            <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_delete]" value="1" <?php if ($sidebar->orders_delete == 1) echo "checked"; ?> /> Delete
+                                                            </label>
+                                                             <label class="uniform-inline">
+                                                                <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_others]" value="1" <?php if ($sidebar->orders_others == 1) echo "checked"; ?> /> View Other's
+                                                            </label>
+                                                            <!--label class="uniform-inline">
+>>>>>>> origin/master
                                                                 <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_requalify]" value="1" <?php if ($sidebar->orders_requalify == 1) echo "checked"; ?> /> Re-qualify
                                                             </label-->
 

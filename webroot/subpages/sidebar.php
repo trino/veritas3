@@ -249,8 +249,8 @@ $profileID = $this->Session->read('Profile.id');
                 </li>
             <?php } ?>
              <?php if ($sidebar->schedule == 1) { ?>
-                <li class="<?php echo ($this->request['controller'] == 'Todo') ? 'active open' : ''; ?>">
-                    <a href="<?php echo $this->request->webroot; ?>todo/calender">
+                <li class="<?php echo ($this->request['controller'] == 'Schedules') ? 'active open' : ''; ?>">
+                    <a href="<?php echo $this->request->webroot; ?>schedules/calender">
                         <i class="fa fa-calendar"></i>
                         <span class="title">Schedule</span>
                         <span class="selected"></span>

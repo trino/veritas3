@@ -182,6 +182,7 @@ class DocumentComponent extends Component
                                 else if($u == 8)
                                 $ut = 'Owner Driver';
                               }
+                              //$path = 'https://isbmeereports.com/documents/view/'.$cid;
                            $from = 'info@isbmee.com';
                             $to = $p;
                              $sub = 'Document submitted';

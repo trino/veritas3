@@ -114,13 +114,15 @@
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary' => '2'])));
         }
 
-        public function index()        {
+        public function index()        
+        {
             $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');
             $this->set('ProClients', $this->Settings);
             $super = $this->request->session()->read('Profile.super');
             $condition = $this->Settings->getprofilebyclient($u, $super);
+            //var_dump($condition);die();
             if ($setting->profile_list == 0) {
                 
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
@@ -187,7 +189,7 @@
             if ($cond) {
                 //echo $cond;die();
                 $query = $querys->find();
-                $query = $query->where([$cond,'AND' => 'super = 0']);
+                $query = $query->where([$cond,'OR' => $condition,'AND' => 'super = 0']);
             } else {
                 $query = $this->Profiles->find()->where(['OR' => $condition,'AND' => 'super = 0']);
             }
@@ -206,7 +208,7 @@
 
             /*old code*/
 
-            //debug($query);
+            //debug($query);die();
             $this->set('profiles', $this->paginate($query));
         }
 
@@ -1785,24 +1787,16 @@
         $conn = ConnectionManager::get('default');
         $query = $conn->query("show tables");
         $user_id = $conn->query("Select id from profiles where super=1");
-        foreach($user_id as $u)
-        {
+        foreach($user_id as $u){
             $uid = $u['id'];
-            
         }
         
-        foreach($query as $table)
-        {
-           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types")
-           {
+        foreach($query as $table) {
+           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types") {
                 $conn->query("TRUNCATE TABLE ".$table[0]);
-           }
-           elseif($table[0]=='profiles')
-           {
+           } elseif($table[0]=='profiles') {
                $conn->query("Delete from ".$table[0]." where `super` = '0'");
-           }
-           elseif($table[0]=='blocks' || $table[0]=='sidebar')
-           {
+           } elseif($table[0]=='blocks' || $table[0]=='sidebar') {
                 $conn->query("Delete from `".$table[0]."` where user_id <> ".$uid);
            }
         } echo "Cleared";

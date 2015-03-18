@@ -712,7 +712,7 @@
                                 else if($pt == 8)
                                 $protype = 'Owner Driver';
                               } 
-                           $from = 'info@'.$path.'.com';
+                           $from = 'info@'.$path;
                             $to = $em;
                              $sub = 'Profile created';
                             $msg = 'Hi,<br />An account has been created in '.$path.'<br />

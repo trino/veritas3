@@ -1702,22 +1702,42 @@
         $date2 = $date . ' ' . $time . ':' . $m2;
         $date = $date . ' ' . $time . ':' . $m;
         //echo $date2;
+
         $path = $this->Document->getUrl();
+
         $q = TableRegistry::get('events');
         $que = $q->find();
         $query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
         foreach ($query as $todo) {
-            //echo $todo->id;
-            $q2 = TableRegistry::get('profiles');
-            $que2 = $q2->find();
-            $query2 = $que2->select()->where(['id' => $todo->user_id])->first();
-            $email = $query2->email;
-            if ($email) {
-                $from = 'info@'.$path.'.com';
-                $to = $email;
-                $sub = 'ISBMEE (Schedule) - Reminder';
-                $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
-             //   $this->Mailer->sendEmail($from, $to, $sub, $msg);
+
+            if($todo->email_self=='1')
+            {
+                $q2 = TableRegistry::get('profiles');
+                $que2 = $q2->find();
+                $query2 = $que2->select()->where(['id' => $todo->user_id])->first();
+                $email = $query2->email;
+                if ($email) {
+                    $from = 'info@isbmee.com';
+                    $to = $email;
+                    $sub = 'ISBMEE (Schedule) - Reminder';
+                    $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                    $this->Mailer->sendEmail($from, $to, $sub, $msg);
+                }
+            }
+            if($todo->others_email!="")
+            {
+                $emails = explode(",",$todo->others_email);
+                foreach($emails as $em)
+                {
+                    $from = 'info@isbmee.com';
+                    $to = trim($em);
+                    $sub = 'ISBMEE (Schedule) - Reminder';
+                    $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                    $this->Mailer->sendEmail($from, $to, $sub, $msg);
+                
+                }
+                
+
             }
             //echo $s;die();
             $send = $q->query();

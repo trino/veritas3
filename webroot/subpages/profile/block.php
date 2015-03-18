@@ -114,11 +114,10 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr>
                                             <tr class="ptypes" <?php if (isset($sidebar) && $sidebar->profile == 0)echo "style='display:none;'";?>>
-                                                <td></td>
-                                                <td>
-                                                
-                                                  
-                                                        <table
+                                                <td>Profile Type</td>
+                                                <td style="padding: 1px;" >
+
+                                                    <table style="margin-bottom: 0px; margin-top: 0px;"
                                                             class=" ptypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                                                             
                                                            
@@ -131,7 +130,7 @@ if ($activetab == "permissions") {
                                                                 ++$cnt;
                                                                 ?>
                                                                 <td class="titleptype_<?php echo $product->id;?>">
-                                                                    <?php echo $product->title;?> <input name="ptypes[]" type="checkbox" <?php  if(in_array($product->id,$pt)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" />
+                                                                    <input name="ptypes[]" type="checkbox" <?php  if(in_array($product->id,$pt)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" /><label for="cchk_<?php echo $product->id;?>"><?php echo $product->title;?></label>
                                                                 </td>
                                                                 <?php if($cnt%4==0)
                                                                 {?>
@@ -199,10 +198,10 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr>
                                             <tr class="ctypes" <?php if (isset($sidebar) && $sidebar->client == 0)echo "style='display:none;'";?>>
-                                                <td></td>
-                                                <td>
+                                                <td>Client Type</td>
+                                                <td style="padding: 1px;" >
                                                     
-                                                        <table
+                                                        <table style="margin-bottom: 0px; margin-top: 0px;"
                                                             class="ctypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                                                                 <tr>
                                                             <?php
@@ -213,8 +212,8 @@ if ($activetab == "permissions") {
                                                                 ++$cnt;
                                                                 ?>
                                                                 <td class="titlectype_<?php echo $product->id;?>">
-                                                                        <?php echo $product->title;?> <input name="ctypes[]" type="checkbox" <?php if(in_array($product->id,$ct)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" />
-                                                                  </td>
+                                                                        <input name="ctypes[]" type="checkbox" <?php if(in_array($product->id,$ct)){echo "checked='checked'";}?> class="cenable" id="bbhk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" /><label for="bbhk_<?php echo $product->id;?>" ><?php echo $product->title;?></label>
+                                                                </td>
                                                                     
                                                              <?php if($cnt%4==0)
                                                                 {?>

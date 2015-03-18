@@ -83,33 +83,46 @@ Users
             <?php
                     $total=0;
                     $usercount=0;
+                    $nottakenyet="Course not taken yet";
                     foreach ($users as $user) {//http://localhost/veritas3/profiles/edit/120
+                        foreach($users2 as $user2){
+                            if ($user2->UserID == $user->UserID){
+                                $user2->profile = true;
+                            }
+                        }
+
                         echo '<TR><TD>' . $user->Profiles['id'] . '</TD><TD>' . ucfirst($user->Profiles['fname']) . '</TD><TD>' . ucfirst($user->Profiles['lname']) . '</TD><TD>';
                         echo '<A HREF="' . $this->request->webroot . 'profiles/edit/' . $user->Profiles['id'] . '">' . ucfirst($user->Profiles['username']) . '</A></TD><TD>';
-                        if (strlen($user->correct)==0) {
-                            echo "Test not taken yet";
-                            echo '</TD><TD><A HREF="' . $this->request->webroot . 'training/users?quizid=' . $_GET['quizid'] . '&userid=';
+
+                        if (strlen($user->profile['questions'])==0) {
+                            echo $nottakenyet . '</TD><TD><A HREF="' . $this->request->webroot . 'training/users?quizid=' . $_GET['quizid'] . '&userid=';
                             echo $user->UserID . '" class="' . btnclass("danger", "yellow") . '">Unenroll</A>';
                         } else {
                             $usercount+=1;
-                            $total+=$user->percent;
-                            echo  $user->correct . '/' . $user->questions  . ' (' . round($user->percent,2) . '%)';
+                            $total+= $user->profile['percent'];
+                            echo  $user->profile['correct'] . '/' . $user->profile['questions']  . ' (' . round($user->profile['percent'],2) . '%)';
                             echo '</TD><TD><A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=';
                             echo $user->UserID . '" class="' . btnclass("primary", "blue") . '">View Answers</A>';
+                            echo '<A HREF="' . $this->request->webroot . 'training/users?action=deleteanswers&quizid=' . $_GET['quizid'] . '&userid=';
+                            echo $user->UserID . '" class="' . btnclass("danger", "red") . '" onclick="return confirm(' . "'Are you sure you want to delete " . ucfirst($user->Profiles['username']) . "\'s answers?'" . ');" >Delete Answers</A>';
                         }
                         echo '</TD></TR>';
                     }
+
+                    foreach($users2 as $user) {
+                        if (!$user->profile) {
+                            echo '<TR><TD>' . $user->Profiles['id'] . '</TD><TD>' . ucfirst($user->Profiles['fname']) . '</TD><TD>' . ucfirst($user->Profiles['lname']) . '</TD><TD>';
+                            echo '<A HREF="' . $this->request->webroot . 'profiles/edit/' . $user->Profiles['id'] . '">' . ucfirst($user->Profiles['username']) . '</A></TD><TD>';
+                            echo $nottakenyet . '</TD><TD><A HREF="' . $this->request->webroot . 'training/users?quizid=' . $_GET['quizid'] . '&userid=';
+                            echo $user->UserID . '" class="' . btnclass("danger", "yellow") . '">Unenroll</A>';
+                        }
+                    }
+
                     if ($usercount==0) {
                         echo '<TR><TD colspan="6" align="center">No one has taken this course yet</TD></TR>';
                     } else {
                         echo '<TR><TD colspan="4" align="right">Average:</TD><TD>' . round($total/$usercount,2) . "%</TD><TD></TD></TR>";
                     }
-
-
-            //foreach($users as $user){
-            //    debug($user);
-            //}
-
                 } else {
             ?>
             <TR><TH width="20">ID</TH><TH width="50">Image</TH><TH>Name</TH><TH width="50">Applicants</TH></TR>

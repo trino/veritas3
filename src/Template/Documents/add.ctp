@@ -1320,6 +1320,9 @@ if (isset($this->request->params['pass'][1])) {
             $('#form_tab' + h + ' input[type="submit"]').hide();
             $('.form-actions').hide();
         }
+        $('.dl').each(function(){
+           $(this).show();
+        });
 
         <?php
     }
@@ -1361,7 +1364,7 @@ if (isset($this->request->params['pass'][1])) {
                             }
                 }
             $(this).attr('disabled','disabled');
-            if($('.subform4 #subtab_2_1').attr('class')=='tab-pane active'){
+            if($('.subform4 #subtab_2_1').attr('class')=='tab-pane active' && $('.subform4').attr('style')!='display: none;'){
                 //alert('tes');
             var er = 0;
             

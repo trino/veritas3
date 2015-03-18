@@ -508,7 +508,7 @@
                         ->execute();
                     $side = TableRegistry::get('Sidebar');
                     $query2 = $side->query();
-                    $query2->insert(['user_id'])
+                    $create_que = $query2->insert(['user_id'])
                         ->values(['user_id' => $profile->id])
                         ->execute();
                     if (isset($_POST['email']) && $_POST['email']) {
@@ -520,6 +520,7 @@
                         //      if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards,<br />The ISB Team';
                         //     $this->sendEmail($from, $to, $sub, $msg);
                     }
+                        
                     $this->Flash->success('Profile created successfully.');
                     return $this->redirect(['action' => 'edit', $profile->id]);
                 } else {
@@ -665,6 +666,58 @@
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft Successfully . ');
                         } else {
+                             $pro_query = TableRegistry::get('Profiles');
+                            $email_query = $pro_query->find()->where(['super' => 1])->first();
+                            $em = $email_query->email;
+                            $user_id = $this->request->session()->read('Profile.id');
+                            $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
+                            if (isset($uq->profile_type))
+                              {
+                                $u = $uq->profile_type;
+                                if($u == 1)
+                                $ut = 'Admin';
+                                else if($u == 2)
+                                $ut = 'Recruiter';
+                                else if($u == 3)
+                                $ut = 'External';
+                                else if($u == 4)
+                                $ut = 'Safety';
+                                else if($u == 5)
+                                $ut = 'Driver';
+                                else if($u == 6)
+                                $ut = 'Contact';
+                                else if($u == 7)
+                                $ut = 'Owner Operator';
+                                else if($u == 8)
+                                $ut = 'Owner Driver';
+                              }
+                               if (isset($_POST['profile_type']))
+                              {
+                                $pt = $_POST['profile_type'];
+                                if($pt == 1)
+                                $protype = 'Admin';
+                                else if($pt == 2)
+                                $protype = 'Recruiter';
+                                else if($pt == 3)
+                                $protype = 'External';
+                                else if($pt == 4)
+                                $protype = 'Safety';
+                                else if($pt == 5)
+                                $protype = 'Driver';
+                                else if($pt == 6)
+                                $protype = 'Contact';
+                                else if($pt == 7)
+                                $protype = 'Owner Operator';
+                                else if($pt == 8)
+                                $protype = 'Owner Driver';
+                              } 
+                           $from = 'info@isbmee.com';
+                            $to = $em;
+                             $sub = 'Profile created';
+                            $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
+                            By user with following details :<br/>
+                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d').'<br/>With profile details<br /> Username: ' . $_POST['username'] . '<br /> Profile Type: '.$protype.'<br /> Regards,<br />The ISB Team';
+                             $this->Mailer->sendEmail($from, $to, $sub, $msg); 
                             $this->Flash->success('Profile saved Successfully . ');
                         }
                         echo $profile->id;
@@ -709,11 +762,66 @@
                                 unset($doc);
                             }
                         }
-                        
                         echo $profile->id;
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft . ');
                         } else {
+                            
+                         $pro_query = TableRegistry::get('Profiles');
+                            $email_query = $pro_query->find()->where(['super' => 1])->first();
+                            $em = $email_query->email;
+                            $user_id = $this->request->session()->read('Profile.id');
+                            $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
+                            if (isset($uq->profile_type))
+                              {
+                                $u = $uq->profile_type;
+                                if($u == 1)
+                                $ut = 'Admin';
+                                else if($u == 2)
+                                $ut = 'Recruiter';
+                                else if($u == 3)
+                                $ut = 'External';
+                                else if($u == 4)
+                                $ut = 'Safety';
+                                else if($u == 5)
+                                $ut = 'Driver';
+                                else if($u == 6)
+                                $ut = 'Contact';
+                                else if($u == 7)
+                                $ut = 'Owner Operator';
+                                else if($u == 8)
+                                $ut = 'Owner Driver';
+                              }
+                               if (isset($_POST['profile_type']))
+                              {
+                                $pt = $_POST['profile_type'];
+                                if($pt == 1)
+                                $protype = 'Admin';
+                                else if($pt == 2)
+                                $protype = 'Recruiter';
+                                else if($pt == 3)
+                                $protype = 'External';
+                                else if($pt == 4)
+                                $protype = 'Safety';
+                                else if($pt == 5)
+                                $protype = 'Driver';
+                                else if($pt == 6)
+                                $protype = 'Contact';
+                                else if($pt == 7)
+                                $protype = 'Owner Operator';
+                                else if($pt == 8)
+                                $protype = 'Owner Driver';
+                              } 
+                           $from = 'info@isbmee.com';
+                            $to = $em;
+                             $sub = 'Profile created';
+                            $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
+                            By user with following details :<br/>
+                            Username : '.$uq->username.'<br/>Profile Type : '.$ut;
+                            
+                             echo '<br/> Dated on : '.$_POST['created'].'<br/>With profile details<br /> Username: ' . $_POST['username'] . '<br /> Profile Type: '.$protype;
+                               echo '<br /> Regards,<br />The ISB Team';
+                             $this->Mailer->sendEmail($from, $to, $sub, $msg); 
                             $this->Flash->success('Profile saved Successfully . ');
                         }
                     } else {
@@ -1576,18 +1684,6 @@
         die();
     }
 
-    function sendEmail($from, $to, $subject, $message)
-    {
-        //from can be array with this structure array('email_address'=>'Sender name'));
-        $email = new Email('default');
-
-        $email->from($from)
-            ->emailFormat('html')
-            ->to($to)
-            ->subject($subject)
-            ->send($message);
-    }
-
     function cron()
     {
         //die('HERE');
@@ -1662,7 +1758,7 @@
                 $to = $profile->email;
                 $sub = 'New Password created successfully';
                 $msg = 'Hi,<br />Your  new password has been created.<br /> Your login details are:<br /> Username: ' . $profile->username . '<br /> Password: ' . $new_pwd . '<br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards';
-                $this->sendEmail($from, $to, $sub, $msg);
+                $this->Mailer->sendEmail($from, $to, $sub, $msg);
                 echo "Password has been reset succesfully. Please Check your email for the new password.";
             }
         } else {

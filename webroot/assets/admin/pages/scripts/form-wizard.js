@@ -12,10 +12,7 @@ function webroot(){
     return txt.substr(0,position) + "/";
 }
 
-var base_url = webroot(); //'/'; //http://isbmeereports.com/';
-//alert("Base URL: " + base_url);
-
-//if(path.replace('localhost','')!=path){base_url =  webroot(); } //'http://localhost/'+ + '/';
+var base_url = webroot();
 
 var table=0;
 var draft = 0;

@@ -22,6 +22,7 @@
             parent::initialize();
             $this->loadComponent('Settings');
             $this->loadComponent('Document');
+            $this->loadComponent('Mailer');
             if (!$this->request->session()->read('Profile.id')) {
                 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 $this->redirect('/login?url='.urlencode($url));
@@ -416,7 +417,7 @@
             $doc = $this->Document->getDocumentcount();
             $cn = $this->Document->getUserDocumentcount();
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-            //var_dump($_POST);die();
+            //var_dump($setting);die();
             if (is_null($type)) {
                 // docu
 
@@ -674,6 +675,43 @@
 
             }
         }
+        
+        public function forMail()
+        {
+            
+            $pro_query = TableRegistry::get('Profiles');
+            $email_query = $pro_query->find()->where(['super' => 1])->first();
+            $em = $email_query->email;
+            $user_id = $this->request->session()->read('Profile.id');
+            $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
+            if (isset($uq->profile_type))
+              {
+                $u = $uq->profile_type;
+                if($u == 1)
+                $ut = 'Admin';
+                else if($u == 2)
+                $ut = 'Recruiter';
+                else if($u == 3)
+                $ut = 'External';
+                else if($u == 4)
+                $ut = 'Safety';
+                else if($u == 5)
+                $ut = 'Driver';
+                else if($u == 6)
+                $ut = 'Contact';
+                else if($u == 7)
+                $ut = 'Owner Operator';
+                else if($u == 8)
+                $ut = 'Owner Driver';
+              }
+           $from = 'info@isbmee.com';
+            $to = $em;
+             $sub = 'Client created';
+            $msg = 'Hi,<br />A client has been created in https:isbmeereports.com<br />
+            By user with following details :<br/>
+            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.$_POST['created'].'<br/>With client details<br /> Client Name: ' . $_POST['company_name'].'<br/><br /> Regards,<br />The ISB Team';
+             $this->Mailer->sendEmail($from, $to, $sub, $msg);
+        }
 
 
         public function delete($id = null, $type = ""){
@@ -738,37 +776,35 @@
 
         }
 
-        function analytics1()
-        {
+        function analytics1(){
             $this->layout = "blank";
-
-
         }
 
-        function analytics()
-        {//Add code here Roy! //
+        function analytics(){
             $this->set('doc_comp',$this->Document);
             $orders = TableRegistry::get('orders');
-            $order = $orders->find();
-            $order = $order->order(['orders.id' => 'DESC']);
-            $order = $order->where(['draft' => 0]);
-            $order = $order->select();
-            $this->set('orders', $this->paginate($order));
+            $order = $orders->find()->order(['orders.id' => 'DESC'])->where(['draft' => 0])->select();
+            $this->set('orders', $order);
 
             $docs = TableRegistry::get('documents');
-            $doc = $docs->find();
-            $doc = $doc->select()->where(['draft' => 0]);
-            $this->set('documents', $this->paginate($doc));
+            $doc = $docs->find()->select()->where(['draft' => 0]);
+            $this->set('documents',$doc);
 
             $clients = TableRegistry::get('Clients');
-            $cli =  $clients->find();
-            $cli = $cli->select();
-            $this->set('clients', $this->paginate($cli));
+            $cli =  $clients->find()->select();
+            $this->set('clients', $cli);
 
             $profiles = TableRegistry::get('Profiles');
-            $pro =  $profiles->find();
-            $pro = $pro->select();
-            $this->set('profiles', $this->paginate($pro));
+            $pro =  $profiles->find()->select();
+            $this->set('profiles', $pro);
+
+            $quizzes = TableRegistry::get('training_list');
+            $qui = $quizzes->find()->select();
+            $this->set('courses', $qui);
+
+            $answers = TableRegistry::get('training_answers');
+            $ans =  $answers->find('all',array('group' => array('UserID', "QuizID")));
+            $this->set('answers', $ans);
     }
 
             

@@ -11,10 +11,10 @@
                                                     <li class="active">
         												<a href="#subtab_2_1" data-toggle="tab">Consent Form</a>
         											</li>
-                                                    <li class="">
+                                                    <li class="" style="display: block;">
                                                         <a href="#subtab_2_2" data-toggle="tab">Employment Verification</a>
                                                     </li>
-                                                    <li>
+                                                    <li style="display: block;">
                                                         <a href="#subtab_2_3" data-toggle="tab">Education Verification</a>
                                                     </li>
         											<?php }?> 

@@ -57,11 +57,22 @@ class TrainingController extends AppController {
         if ($this->canedit()){
             if (isset($_GET["quizid"])) {
                 if (isset($_GET['userid'])){
-                    $this->unenrolluser($_GET["quizid"], $_GET['userid']);
-                    $this->Flash->success('The user was unenrolled');
+                    $action="unenroll";
+                    if (isset($_GET["action"])){ $action = $_GET["action"];}
+                    switch($action){
+                        case "unenroll":
+                            $this->unenrolluser($_GET["quizid"], $_GET['userid']);
+                            $this->Flash->success('The user was unenrolled');
+                            break;
+                        case "deleteanswers":
+                            $this->deleteanswers($_GET['userid'],$_GET["quizid"]);
+                            $this->Flash->success("The user's answers for this quiz were deleted");
+                            break;
+                    }
+
                 }
                 $this->enumusers($_GET["quizid"]);
-                $this->set('users', $this->enumenrolledusers($_GET["quizid"]));
+                $this->set('users2', $this->enumenrolledusers($_GET["quizid"]));
             } else {
                 $this->enumquizes(true);
             }
@@ -253,9 +264,10 @@ class TrainingController extends AppController {
         $quiz = $this->getQuiz($QuizID);
         foreach($users as $user){
             $score = $this->gradetest($quiz,$QuizID, $user->UserID);
-            $user->questions = $score['questions'] ;
-            $user->correct = $score['correct'] ;
-            $user->percent = $score['percent'] ;
+            //$user->questions = $score['questions'] ;
+            //$user->correct = $score['correct'] ;
+            //$user->percent = $score['percent'] ;
+            $user->profile = $score;
         }
         $this->set('users',$users);
         /*
@@ -328,16 +340,21 @@ class TrainingController extends AppController {
         }
         $this->Flash->success($answers . ' answers were saved');
     }
+    public function deleteanswers($UserID, $QuizID){
+        $table = TableRegistry::get("training_answers");
+        $table->deleteAll(array('UserID'=>$UserID, 'QuizID'=>$QuizID), false);
+    }
     public function saveanswer($UserID, $QuizID, $QuestionID, $Answer, $Flagged){
         $table = TableRegistry::get("training_answers");
-        $results = $table->find('all', array('conditions' => array('UserID'=>$UserID, 'QuizID'=>$QuizID, 'QuestionID'=> $QuestionID)))->first();
-        if(!$results) {
-            $table->query()->insert(['UserID', 'QuizID', 'QuestionID', 'Answer', 'flagged'])
-                ->values(['UserID' => $UserID, 'QuizID' => $QuizID, 'QuestionID' => $QuestionID, 'Answer' => $Answer, 'flagged' => $Flagged])->execute();
-        }else{
-            $table->query()->update()->set(['UserID' => $UserID, 'QuizID' => $QuizID, 'QuestionID' => $QuestionID, 'Answer' => $Answer, 'flagged' => $Flagged])
-                ->where(['UserID'=>$UserID, 'QuizID'=>$QuizID, 'QuestionID'=> $QuestionID])->execute();
-        }
+        //$results = $table->find('all', array('conditions' => array('UserID'=>$UserID, 'QuizID'=>$QuizID, 'QuestionID'=> $QuestionID)))->first();
+        $table->deleteAll(array('UserID'=>$UserID, 'QuizID'=>$QuizID, 'QuestionID'=> $QuestionID), false);
+        //if(!$results) {
+            $table->query()->insert(['UserID', 'QuizID', 'QuestionID', 'Answer', 'flagged', 'created'])
+                ->values(['UserID' => $UserID, 'QuizID' => $QuizID, 'QuestionID' => $QuestionID, 'Answer' => $Answer, 'flagged' => $Flagged, 'created' => date("Y-m-d H:i:s")])->execute();
+        //}else{
+        //    $table->query()->update()->set(['UserID' => $UserID, 'QuizID' => $QuizID, 'QuestionID' => $QuestionID, 'Answer' => $Answer, 'flagged' => $Flagged])
+        //        ->where(['UserID'=>$UserID, 'QuizID'=>$QuizID, 'QuestionID'=> $QuestionID])->execute();
+        //}
     }
     public function getprofile($UserID, $set=true){
         $table = TableRegistry::get("profiles");

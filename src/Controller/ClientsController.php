@@ -487,8 +487,43 @@ class ClientsController extends AppController {
                         if(isset($_POST['drafts']) && $_POST['drafts'] == '1')
                         $this->Flash->success(ucfirst($settings->client) . ' saved as draft.');
         				else
-                        $this->Flash->success(ucfirst($settings->client) . ' saved successfully.');
+                        {   
+                            $this->Flash->success(ucfirst($settings->client) . ' saved successfully.');
+                        }
                         	echo $client->id;
+                            
+                            $pro_query = TableRegistry::get('Profiles');
+                            $email_query = $pro_query->find()->where(['super' => 1])->first();
+                            $em = $email_query->email;
+                            $user_id = $this->request->session()->read('Profile.id');
+                            $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
+                            if (isset($uq->profile_type))
+                              {
+                                $u = $uq->profile_type;
+                                if($u == 1)
+                                $ut = 'Admin';
+                                else if($u == 2)
+                                $ut = 'Recruiter';
+                                else if($u == 3)
+                                $ut = 'External';
+                                else if($u == 4)
+                                $ut = 'Safety';
+                                else if($u == 5)
+                                $ut = 'Driver';
+                                else if($u == 6)
+                                $ut = 'Contact';
+                                else if($u == 7)
+                                $ut = 'Owner Operator';
+                                else if($u == 8)
+                                $ut = 'Owner Driver';
+                              }
+                           $from = 'info@isbmee.com';
+                            $to = $em;
+                             $sub = 'Client created';
+                            $msg = 'Hi,<br />A client has been created in https://isbmeereports.com<br />
+                            By user with following details :<br/>
+                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.$_POST['created'].'<br/>With client details<br /> Client Name: ' . $_POST['company_name'].'<br/><br /> Regards,<br />The ISB Team';
+                             $this->Mailer->sendEmail($from, $to, $sub, $msg); 
         			} else {
         			     $this->Flash->error(ucfirst($settings->client) . ' could not be saved. Please try again.');
         				echo "e";

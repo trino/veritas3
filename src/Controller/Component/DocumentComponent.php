@@ -184,7 +184,7 @@ class DocumentComponent extends Component
                                 $ut = 'Owner Driver';
                               }
                               //$path = 'https://isbmeereports.com/documents/view/'.$cid;
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $p;
                              $sub = 'Document submitted';
                             $msg = 'Hi,<br />A document has been created in '.$path.'<br />
@@ -221,7 +221,7 @@ class DocumentComponent extends Component
                                 else if($u == 8)
                                 $ut = 'Owner Driver';
                               }
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $em;
                              $sub = 'Document submitted';
                             $msg = 'Hi,<br />A document has been created in '.$path.'<br />

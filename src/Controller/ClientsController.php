@@ -518,7 +518,7 @@ class ClientsController extends AppController {
                                 else if($u == 8)
                                 $ut = 'Owner Driver';
                               }
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $em;
                              $sub = 'Client created';
                             $msg = 'Hi,<br />A client has been created in '.$path.'<br />

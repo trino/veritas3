@@ -712,7 +712,7 @@
                                 else if($pt == 8)
                                 $protype = 'Owner Driver';
                               } 
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $em;
                              $sub = 'Profile created';
                             $msg = 'Hi,<br />An account has been created in '.$path.'<br />
@@ -813,7 +813,7 @@
                                 else if($pt == 8)
                                 $protype = 'Owner Driver';
                               } 
-                           $from = 'info@isbmee.com';
+                           $from = 'info@'.$path.'.com';
                             $to = $em;
                              $sub = 'Profile created';
                             $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
@@ -1702,7 +1702,7 @@
         $date2 = $date . ' ' . $time . ':' . $m2;
         $date = $date . ' ' . $time . ':' . $m;
         //echo $date2;
-
+        $path = $this->Document->getUrl();
         $q = TableRegistry::get('events');
         $que = $q->find();
         $query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
@@ -1713,7 +1713,7 @@
             $query2 = $que2->select()->where(['id' => $todo->user_id])->first();
             $email = $query2->email;
             if ($email) {
-                $from = 'info@isbmee.com';
+                $from = 'info@'.$path.'.com';
                 $to = $email;
                 $sub = 'ISBMEE (Schedule) - Reminder';
                 $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
@@ -1748,6 +1748,7 @@
 
     function forgetpassword()
     {
+        $path = $this->Document->getUrl();
         $email = $_POST['email'];
         $profiles = TableRegistry::get('profiles');
         if ($profile = $profiles->find()->where(['email' => $email])->first()) {
@@ -1755,7 +1756,7 @@
             $new_pwd = $this->generateRandomString(6);
             $p = TableRegistry::get('profiles');
             if ($p->query()->update()->set(['password' => md5($new_pwd)])->where(['id' => $profile->id])->execute()) {
-                $from = 'info@isbmee.com';
+                $from = 'info@'.$path.'.com';
                 $to = $profile->email;
                 $sub = 'New Password created successfully';
                 $msg = 'Hi,<br />Your  new password has been created.<br /> Your login details are:<br /> Username: ' . $profile->username . '<br /> Password: ' . $new_pwd . '<br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards';

@@ -144,7 +144,7 @@
                                                         echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => btnclass("btn-success", "green-haze")]);
                                                     }
 
-                                                    if ($sidebar->orders_create == '1' && !isset($_GET["draft"])) {
+                                                    if ($sidebar->orders_create == '1' && !isset($_GET["draft"]) && false) {
                                                         ?>
 
                                                         <?php if ($sidebar->orders_mee == '1') { ?>
@@ -173,10 +173,6 @@
                                                         <a href="<?php echo $this->request->webroot; ?>orders/orderslist/?client_id=<?php echo $clients->id; ?>"
                                                            class="<?= btnclass("btn-info", "blue-soft") ?>">
                                                             View Orders</a>
-
-                                                        <!--a href="<?php echo $this->request->webroot; ?>documents/index/?client_id=<?php echo $clients->id; ?>"
-                                                           class="btn btn-success">
-                                                            View <?= ucfirst($settings->document); ?>s</a-->
 
                                                     <?php
 

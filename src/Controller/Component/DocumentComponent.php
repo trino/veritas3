@@ -1511,6 +1511,6 @@ class DocumentComponent extends Component
             return $email_from;
             }
             else
-            return 'localhost.com';
+            return 'localhost';
         }
 }

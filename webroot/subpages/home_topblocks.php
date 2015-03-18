@@ -226,7 +226,7 @@ function randomcolor(){
 
     <?php if ($sidebar->schedule ==1 && $block->schedule =='1') { ?>
     <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
-        <a  href="<?php echo $this->request->webroot;?>todo/calender" class="tile bg-green-meadow" style="display: block;">
+        <a  href="<?php echo $this->request->webroot;?>schedules/calender" class="tile bg-green-meadow" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-calendar"></i>
             </div>

@@ -173,7 +173,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                             class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                             <thead>
                             <tr class="sorting">
-                                <!--th title="Document ID"><?= $this->Paginator->sort('id'); ?></th-->
+                                <th title="Document ID"><?= $this->Paginator->sort('id'); ?></th>
                                 <th title="Order ID"><?= $this->Paginator->sort('oid', "Order ID"); ?></th>
                                 <th><?= $this->Paginator->sort('document_type', ucfirst($settings->document) . ' type'); ?></th>
                                 <th><?= $this->Paginator->sort('user_id', 'Submitted by'); ?><?php if (isset($end)) echo $end;
@@ -233,7 +233,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                                 //$orderDetail = '<A HREF="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/' . $orderID . '">' . $orderID . '</A>';
                             ?>
                             <tr class="<?= $row_color_class; ?>" role="row">
-                                <!--td><?= $this->Number->format($docs->id); ?></td-->
+                                <td><?= $this->Number->format($docs->id); ?></td>
                                 <td align=""><?php if ($orderID > 0) {
                                         echo '<a href="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/'.$orderDetail->id;if($orderDetail->order_type){echo '?order_type='.urlencode($orderDetail->order_type);if($orderDetail->forms)echo '&forms='.$orderDetail->forms;}echo '">'.$orderDetail->id;echo '</a>';
                                     } else {

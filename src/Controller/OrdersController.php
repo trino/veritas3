@@ -690,7 +690,10 @@
             }
             $this->set('ordertype', $ordertype1);
         }
-
+        public function createPdfBg()
+        {            
+            //die();
+        }
         public function createPdf($oid)
         {
             $this->set('doc_comp', $this->Document);

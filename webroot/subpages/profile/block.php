@@ -1,24 +1,24 @@
 <?php
 
-    $uid = ($this->request['action'] == 'add') ? "0" : $this->request['pass'][0];
-    $sidebar = $this->requestAction("settings/all_settings/" . $uid . "/sidebar");
-    $block = $this->requestAction("settings/all_settings/" . $uid . "/blocks");
-    if (!isset($is_disabled1)) {
-        $is_disabled1 = "";
-    }//something is wrong with this variable
+$uid = ($this->request['action'] == 'add') ? "0" : $this->request['pass'][0];
+$sidebar = $this->requestAction("settings/all_settings/" . $uid . "/sidebar");
+$block = $this->requestAction("settings/all_settings/" . $uid . "/blocks");
+if (!isset($is_disabled1)) {
+    $is_disabled1 = "";
+}//something is wrong with this variable
 
-    if ($activetab == "permissions") {
-        if ((isset($Clientcount) && $Clientcount == 0) || $this->request->session()->read('Profile.profile_type') == '2') {
-            $activetab = "assign";
-        } else {
-            $activetab = "config";
-        }
+if ($activetab == "permissions") {
+    if ((isset($Clientcount) && $Clientcount == 0) || $this->request->session()->read('Profile.profile_type') == '2') {
+        $activetab = "assign";
     } else {
-        if ($this->request->session()->read('Profile.profile_type') == '2')
-            $activetab = "assign";
-        else
-            $activetab = "config";
+        $activetab = "config";
     }
+} else {
+    if ($this->request->session()->read('Profile.profile_type') == '2')
+        $activetab = "assign";
+    else
+        $activetab = "config";
+}
 
 ?>
 
@@ -76,7 +76,7 @@
                             <td class="vtop">
                                 <?php echo ucfirst($settings->profile); ?>
                             </td>
-                            <td>
+                            <td width="90%">
                                 <label class="uniform-inline">
                                     <input <?php echo $is_disabled ?> type="radio" class="profile_enb"
                                                                       name="side[profile]"
@@ -121,39 +121,31 @@
                             </td>
                         </tr>
                         <tr class="ptypes" <?php if (isset($sidebar) && $sidebar->profile == 0) echo "style='display:none;'"; ?>>
-                            <td></td>
-                            <td>
-
-
-                                <table
+                            <td><p>Can Create:</p></td>
+                            <td style="padding: 1px;" >
+                                <table style="margin-bottom: 0px; margin-top: 0px;"
                                     class=" ptypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
-
-                                    <p>Can Create:</p>
                                     <tr>
 
                                         <?php
-                                            $pt = explode(",", $profile->ptypes);
-                                            $cnt = 0;
-                                            foreach ($ptypes as $product)
-                                            {
-                                            ++$cnt;
+                                        $pt = explode(",", $profile->ptypes);
+                                        $cnt = 0;
+                                        foreach ($ptypes as $product)
+                                        {
+                                        ++$cnt;
                                         ?>
                                         <td class="titleptype_<?php echo $product->id;?>">
-                                            <?php echo $product->title;?> <input name="ptypes[]"
-                                                                                 type="checkbox" <?php if (in_array($product->id, $pt)) {
-                                                echo "checked='checked'";
-                                            }?> class="cenable" id="cchk_<?php echo $product->id;?>"
-                                                                                 value="<?php echo $product->id;?>"/>
+                                            <input name="ptypes[]" type="checkbox" <?php  if(in_array($product->id,$pt)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" /><label for="cchk_<?php echo $product->id;?>"><?php echo $product->title;?></label>
                                         </td>
                                         <?php if ($cnt % 4 == 0)
-                                            {
+                                        {
                                         ?>
                                     </tr>
                                     <tr>
                                         <?php
-                                            }
+                                        }
 
-                                            }
+                                        }
                                         ?>
                                     </tr>
                                     <tr style="display: none;">
@@ -219,36 +211,34 @@
                             </td>
                         </tr>
                         <tr class="ctypes" <?php if (isset($sidebar) && $sidebar->client == 0) echo "style='display:none;'"; ?>>
-                            <td></td>
-                            <td>
-                                <p>Can Create:</p>
-
-                                <table
+                            <td>Can Create:</td>
+                            <td style="padding: 1px;" >
+                                <table style="margin-bottom: 0px; margin-top: 0px;"
                                     class="ctypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                                     <tr>
                                         <?php
-                                            $cnt = 0;
-                                            $ct = explode(",", $profile->ctypes);
-                                            foreach ($client_types as $product)
-                                            {
-                                            ++$cnt;
+                                        $cnt = 0;
+                                        $ct = explode(",", $profile->ctypes);
+                                        foreach ($client_types as $product)
+                                        {
+                                        ++$cnt;
                                         ?>
                                         <td class="titlectype_<?php echo $product->id;?>">
-                                            <?php echo $product->title;?> <input name="ctypes[]"
+                                           <input name="ctypes[]"
                                                                                  type="checkbox" <?php if (in_array($product->id, $ct)) {
                                                 echo "checked='checked'";
-                                            }?> class="cenable" id="cchk_<?php echo $product->id;?>"
-                                                                                 value="<?php echo $product->id;?>"/>
+                                            }?> class="cenable" id="cchk_b<?php echo $product->id;?>"
+                                                                                 value="<?php echo $product->id;?>"/><label for="cchk_b<?php echo $product->id;?>"><?php echo $product->title;?></label>
                                         </td>
 
                                         <?php if ($cnt % 4 == 0)
-                                            {
+                                        {
                                         ?>
                                     </tr>
                                     <tr>
                                         <?php
-                                            }
-                                            }
+                                        }
+                                        }
                                         ?>
                                     </tr>
                                     <tr style="display: none;">
@@ -361,22 +351,22 @@
 
                                                             <tr>
                                                             <?php
-                                        $pt = explode(",",$profile->ptypes);
-                                        $cnt =0;
-                                        foreach($ptypes as $product)
-                                        {
-                                            ++$cnt;
-                                            ?>
+                                    $pt = explode(",",$profile->ptypes);
+                                    $cnt =0;
+                                    foreach($ptypes as $product)
+                                    {
+                                        ++$cnt;
+                                        ?>
                                                                 <td class="titleptype_<?php echo $product->id;?>">
                                                                     <input name="ptypes[]" type="checkbox" <?php  if(in_array($product->id,$pt)){echo "checked='checked'";}?> class="cenable" id="cchk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" /><label for="cchk_<?php echo $product->id;?>"><?php echo $product->title;?></label>
                                                                 </td>
                                                                 <?php if($cnt%4==0)
-                                        {?>
+                                    {?>
                                                                    </tr><tr>
                                                             <?php
-                                        }
+                                    }
 
-                                        }
+                                    }
                                     ?>
                                                              </tr>
                                                              <tr style="display: none;">
@@ -443,22 +433,22 @@
                                                             class="ctypeform table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                                                                 <tr>
                                                             <?php
-                                        $cnt =0;
-                                        $ct = explode(",",$profile->ctypes);
-                                        foreach($client_types as $product)
-                                        {
-                                            ++$cnt;
-                                            ?>
+                                    $cnt =0;
+                                    $ct = explode(",",$profile->ctypes);
+                                    foreach($client_types as $product)
+                                    {
+                                        ++$cnt;
+                                        ?>
                                                                 <td class="titlectype_<?php echo $product->id;?>">
                                                                         <input name="ctypes[]" type="checkbox" <?php if(in_array($product->id,$ct)){echo "checked='checked'";}?> class="cenable" id="bbhk_<?php echo $product->id;?>" value="<?php echo $product->id;?>" /><label for="bbhk_<?php echo $product->id;?>" ><?php echo $product->title;?></label>
                                                                 </td>
 
                                                              <?php if($cnt%4==0)
-                                        {?>
+                                    {?>
                                                                    </tr><tr>
                                                             <?php
-                                        }
-                                        }
+                                    }
+                                    }
                                     ?>
                                                             </tr>
                                                             <tr style="display: none;">
@@ -768,16 +758,16 @@
                                     <table class="">
 
                                         <?php
-                                            $subdoc = $this->requestAction('/profiles/getSub');
+                                        $subdoc = $this->requestAction('/profiles/getSub');
 
-                                            foreach ($subdoc as $sub) {
-                                                ?>
-                                                <tr>
-                                                    <td>
+                                        foreach ($subdoc as $sub) {
+                                            ?>
+                                            <tr>
+                                                <td>
 
-                                                        <?php echo ucfirst($sub['title']);?>
-                                                    </td>
-                                                    <!--<td class="">
+                                                    <?php echo ucfirst($sub['title']);?>
+                                                </td>
+                                                <!--<td class="">
                                                                 <label class="uniform-inline">
                                                                     <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="1" <?php if ($sub['display'] == 1) { ?>checked="checked" <?php }?> />
                                                                     Yes </label>
@@ -785,60 +775,60 @@
                                                                     <input <?php echo $is_disabled1?> type="radio" name="<?php echo $sub->id;?>" value="0" <?php if ($sub['display'] == 0) { ?>checked="checked" <?php }?> />
                                                                     No </label>
                                                             </td>-->
-                                                    <?php
-                                                        $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $id . '/' . $sub->id);
-                                                    ?>
-                                                    <td class="">
-                                                        <!--<label class="uniform-inline">
+                                                <?php
+                                                $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $id . '/' . $sub->id);
+                                                ?>
+                                                <td class="">
+                                                    <!--<label class="uniform-inline">
                                                                     <input <?php echo $is_disabled?> type="radio" name="profileP[<?php echo $sub->id;?>]" value="" onclick="$(this).closest('tr').next('tr').show();" <?php if ($prosubdoc['display'] != 0) { ?> checked="checked" <?php } ?> />
                                                                     Yes </label>-->
-                                                        <label class="uniform-inline">
-                                                            <input <?php echo $is_disabled?> type="radio"
-                                                                                             name="profile[<?php echo $sub->id;?>]"
-                                                                                             value="0"  <?php if ($prosubdoc['display'] == 0) { ?> checked="checked" <?php } ?> />
-                                                            None </label>
-                                                        <label class="uniform-inline">
-                                                            <input <?php echo $is_disabled?> type="radio"
-                                                                                             name="profile[<?php echo $sub->id;?>]"
-                                                                                             value="1" <?php if ($prosubdoc['display'] == 1) { ?> checked="checked" <?php } ?> />
-                                                            View Only </label>
-                                                        <label class="uniform-inline">
-                                                            <input <?php echo $is_disabled?> type="radio"
-                                                                                             name="profile[<?php echo $sub->id;?>]"
-                                                                                             value="2" <?php if ($prosubdoc['display'] == 2) { ?> checked="checked" <?php } ?> />
-                                                            Upload Only </label>
-                                                        <label class="uniform-inline">
-                                                            <input <?php echo $is_disabled?> type="radio"
-                                                                                             name="profile[<?php echo $sub->id;?>]"
-                                                                                             value="3" <?php if ($prosubdoc['display'] == 3) { ?> checked="checked" <?php } ?>/>
-                                                            Both </label>
-                                                    </td>
-                                                </tr>
-                                            <?php
-                                            }
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled?> type="radio"
+                                                                                         name="profile[<?php echo $sub->id;?>]"
+                                                                                         value="0"  <?php if ($prosubdoc['display'] == 0) { ?> checked="checked" <?php } ?> />
+                                                        None </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled?> type="radio"
+                                                                                         name="profile[<?php echo $sub->id;?>]"
+                                                                                         value="1" <?php if ($prosubdoc['display'] == 1) { ?> checked="checked" <?php } ?> />
+                                                        View Only </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled?> type="radio"
+                                                                                         name="profile[<?php echo $sub->id;?>]"
+                                                                                         value="2" <?php if ($prosubdoc['display'] == 2) { ?> checked="checked" <?php } ?> />
+                                                        Upload Only </label>
+                                                    <label class="uniform-inline">
+                                                        <input <?php echo $is_disabled?> type="radio"
+                                                                                         name="profile[<?php echo $sub->id;?>]"
+                                                                                         value="3" <?php if ($prosubdoc['display'] == 3) { ?> checked="checked" <?php } ?>/>
+                                                        Both </label>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
                                         ?>
                                     </table>
 
                                     <?php
-                                        if (!isset($disabled)) {
-                                            ?>
+                                    if (!isset($disabled)) {
+                                        ?>
 
-                                            <!--<div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
-                                                <button class="close" data-close="alert"></button>
-                                                Data saved successfully
-                                            </div>-->
-                                            <div class="form-actions"
-                                                 style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;display: none;">
-                                                <div class="row">
-                                                    <div class="col-md-12" align="right">
-                                                        <a href="javascript:void(0)" id="save_display"
-                                                           class="btn btn-primary">
-                                                            Save Changes </a>
-                                                    </div>
+                                        <!--<div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                                            <button class="close" data-close="alert"></button>
+                                            Data saved successfully
+                                        </div>-->
+                                        <div class="form-actions"
+                                             style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;display: none;">
+                                            <div class="row">
+                                                <div class="col-md-12" align="right">
+                                                    <a href="javascript:void(0)" id="save_display"
+                                                       class="btn btn-primary">
+                                                        Save Changes </a>
                                                 </div>
                                             </div>
-                                        <?php
-                                        }
+                                        </div>
+                                    <?php
+                                    }
                                     ?>
                                 </form>
                             </td>
@@ -856,29 +846,29 @@
 
 
                     <?php
-                        if (!isset($disabled)) {
-                            ?>
-                            <div class="res"></div>
+                    if (!isset($disabled)) {
+                        ?>
+                        <div class="res"></div>
 
 
 
 
-                            <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
-                                <button class="close" data-close="alert"></button>
-                                Data saved successfully
-                            </div>
-                            <div class="form-actions"
-                                 style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
-                                <div class="row">
-                                    <div class="col-md-12" align="right">
-                                        <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
-                                               value="Save Changes"/>
+                        <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                            <button class="close" data-close="alert"></button>
+                            Data saved successfully
+                        </div>
+                        <div class="form-actions"
+                             style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                            <div class="row">
+                                <div class="col-md-12" align="right">
+                                    <input type="button" name="submit" class="btn btn-primary" id="save_blocks"
+                                           value="Save Changes"/>
 
-                                    </div>
                                 </div>
                             </div>
-                        <?php
-                        }
+                        </div>
+                    <?php
+                    }
                     ?>
 
 
@@ -1288,27 +1278,27 @@
 
                 </table>
                 <?php
-                    if (!isset($disabled)) {
-                        ?>
-                        <div class="res"></div>
-                        <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
-                            <button class="close" data-close="alert"></button>
-                            Data saved successfully
-                        </div>
+                if (!isset($disabled)) {
+                    ?>
+                    <div class="res"></div>
+                    <div class="margin-top-10 alert alert-success display-hide flash" style="display: none;">
+                        <button class="close" data-close="alert"></button>
+                        Data saved successfully
+                    </div>
 
-                        <div class="form-actions"
-                             style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
-                            <div class="row">
-                                <div class="col-md-12" align="right">
+                    <div class="form-actions"
+                         style="height:75px;margin-left:-10px;margin-right:-10px;margin-bottom:-10px;">
+                        <div class="row">
+                            <div class="col-md-12" align="right">
 
-                                    <input type="button" name="submit" class="btn btn-primary" id="save_home"
-                                           value="Save Changes"/>
+                                <input type="button" name="submit" class="btn btn-primary" id="save_home"
+                                       value="Save Changes"/>
 
-                                </div>
                             </div>
                         </div>
-                    <?php
-                    }
+                    </div>
+                <?php
+                }
                 ?>
             </form>
         </div>
@@ -1334,35 +1324,35 @@
                     <table class="table" id="clientTable">
                         <?php
 
-                            $clients = $this->requestAction('/clients/getAllClient/');
-                            $count = 0;
-                            if ($clients) {
-                                foreach ($clients as $o) {
-                                    $pro_ids = explode(",", $o->profile_id);
+                        $clients = $this->requestAction('/clients/getAllClient/');
+                        $count = 0;
+                        if ($clients) {
+                            foreach ($clients as $o) {
+                                $pro_ids = explode(",", $o->profile_id);
 
-                                    ?>
+                                ?>
 
-                                    <tr>
-                                        <td>
+                                <tr>
+                                    <td>
 
-                                            <?php if (strlen($o->image) > 0) {
-                                                echo '<img height="32" src="' . $this->request->webroot . 'img/jobs/' . $o->image . '">';
-                                            } else {
-                                                echo '<img width="32" src="' . $this->request->webroot . 'img/logos/MEELogo.png">';
-                                            }?>
+                                        <?php if (strlen($o->image) > 0) {
+                                            echo '<img height="32" src="' . $this->request->webroot . 'img/jobs/' . $o->image . '">';
+                                        } else {
+                                            echo '<img width="32" src="' . $this->request->webroot . 'img/logos/MEELogo.png">';
+                                        }?>
 
-                                            <input
-                                                <?php if ($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){ ?>disabled=""<?php }?>
-                                                type="checkbox" value="<?php echo $o->id; ?>"
-                                                class="addclientz" <?php if (in_array($id, $pro_ids)) {
-                                                echo "checked";
-                                            }?>  <?php echo $is_disabled ?> /> <?php echo $o->company_name; ?> <span
-                                                class="msg_<?php echo $o->id; ?>"></span></td>
-                                    </tr>
+                                        <input
+                                            <?php if ($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){ ?>disabled=""<?php }?>
+                                            type="checkbox" value="<?php echo $o->id; ?>"
+                                            class="addclientz" <?php if (in_array($id, $pro_ids)) {
+                                            echo "checked";
+                                        }?>  <?php echo $is_disabled ?> /> <?php echo $o->company_name; ?> <span
+                                            class="msg_<?php echo $o->id; ?>"></span></td>
+                                </tr>
 
-                                <?php
-                                }
+                            <?php
                             }
+                        }
                         ?>
 
                     </table>
@@ -1384,24 +1374,24 @@
                     <table class="table scrolldiv" id="clientTable">
                         <?php
 
-                            $clients = $this->requestAction('/clients/getAllClient/');
-                            $count = 0;
-                            if ($clients)
-                                foreach ($clients as $o) {
-                                    $pro_ids = explode(",", $o->profile_id);
-                                    ?>
+                        $clients = $this->requestAction('/clients/getAllClient/');
+                        $count = 0;
+                        if ($clients)
+                            foreach ($clients as $o) {
+                                $pro_ids = explode(",", $o->profile_id);
+                                ?>
 
-                                    <tr>
-                                        <td><input  <?php echo $is_disabled ?>
-                                                type="checkbox" <?php if (in_array($id, $pro_ids)) {
-                                                echo "checked";
-                                            }?>   value="<?php echo $o->id; ?>"
-                                                class="addclientz"/> <?php echo $o->company_name; ?> <span
-                                                class="msg_<?php echo $o->id; ?>"></span></td>
-                                    </tr>
+                                <tr>
+                                    <td><input  <?php echo $is_disabled ?>
+                                            type="checkbox" <?php if (in_array($id, $pro_ids)) {
+                                            echo "checked";
+                                        }?>   value="<?php echo $o->id; ?>"
+                                            class="addclientz"/> <?php echo $o->company_name; ?> <span
+                                            class="msg_<?php echo $o->id; ?>"></span></td>
+                                </tr>
 
-                                <?php
-                                }
+                            <?php
+                            }
                         ?>
 
                     </table>

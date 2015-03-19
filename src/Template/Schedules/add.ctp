@@ -40,7 +40,7 @@ else
 				<div class="col-md-12">
 					<div class="input-icon">
 						<i class="fa fa-calendar"></i>
-						<input type="text" name="date" <?php echo $disabled;?> class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date..." value="<?php if(isset($event))echo date('d F Y - H:m',strtotime($event->date));?>"/>
+						<input type="text" name="date" <?php echo $disabled;?> class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date..." value="<?php if(isset($event))echo date('d F Y - H:i',strtotime($event->date));?>"/>
 					</div>
 				</div>
 			</div>

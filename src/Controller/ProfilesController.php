@@ -1766,7 +1766,7 @@
                 if ($p->save($profile)) {
                     
                     echo '<tr>
-                            <td>'.$profile->id.'</td>
+                            <!--td>'.$profile->id.'</td-->
                             <td class="title_'.$profile->id.'">'.$title.'</td>
                             <td><input type="checkbox" id="chk_'.$profile->id.'" class="enable"/></td>
                             <td><span  class="btn btn-info editpro" id="edit_'.$profile->id.'">Edit</span></td>

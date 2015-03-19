@@ -26,7 +26,7 @@
 
     $startorder1 = false;
 
-    $productdetails79 = false; // only TRUE complete mee roders  - DONT CHANGE
+    $productdetails79 = false; // only TRUE if complete mee roders  - DONT CHANGE
 
 
     ////////////////////////////////////////PRODUCTS

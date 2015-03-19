@@ -19,7 +19,7 @@
 
     </ul>
 
-    <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
+    <!--a href="javascript:window.print();" class="floatright btn btn-info">Print</a-->
 </div>
 
 

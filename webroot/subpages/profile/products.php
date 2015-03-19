@@ -19,7 +19,7 @@
                 class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                 <thead>
                 <tr >
-                    <th>Id</th>
+                    <!--th>Id</th-->
                     <th>Title</th>
                     <th>Enable</th>
                     <th>Actions</th>
@@ -31,7 +31,7 @@
                 foreach($products as $product)
                 {?>
                     <tr>
-                        <td><?php echo $product->id;?></td>
+                        <!--td><?php echo $product->id;?></td-->
                         <td class="title_<?php echo $product->id;?>"><?php echo $product->title;?></td>
                         <td><input type="checkbox" <?php if($product->enable=='1'){echo "checked='checked'";}?> class="enable" id="chk_<?php echo $product->id;?>" /></td>
                         <td><a href="javascript:;" class="btn btn-info editpro" id="edit_<?php echo $product->id;?>">Edit</a></td>

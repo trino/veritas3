@@ -386,8 +386,10 @@ class TrainingController extends AppController {
                 $profile=$this->getprofile($to);
                 $to=$profile->email;
             }
-            $from = 'info@' . getHost("isbmee.com");
-            $this->Mailer->sendEmail($from, $to, $subject, $message);
+            if ($to) {
+                $from = 'info@' . getHost("isbmee.com");
+                $this->Mailer->sendEmail($from, $to, $subject, $message);
+            }
         }
     }
 

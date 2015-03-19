@@ -1,6 +1,6 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
-<body onLoad="ajaxpage();">
+<body onLoad="ajaxpage('timezone');">
 
 <h3 class="page-title">
 			Calendar

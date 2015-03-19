@@ -378,6 +378,30 @@ class TrainingController extends AppController {
         if ($set) { $this->set('user',$results); }
         return $results;
     }
+
+    public function assignContact($contact,$id,$status){
+        file_put_contents("log.txt", "Contact: " . $contact .  " " . $id . " " . $status . "\r\n", FILE_APPEND);
+    }
+    public function assignProfile($profile,$id,$status){
+        if ($status=="yes"){
+            $this->enrolluser($id, $profile);
+        } else {
+            $this->unenrolluser($id, $profile);
+        }
+        die();
+    }
+    public function returnJSON($success){
+        header('Content-type: application/json');
+        $response_array=array();
+        if($success){
+            $response_array['status'] = 'success';
+        }else {
+            $response_array['status'] = 'error';
+        }
+        echo json_encode($response_array);
+    }
+
+
     public function enrolluser($QuizID, $UserID){
         if(!$this->isuserenrolled($QuizID, $UserID)){
             $table = TableRegistry::get("training_enrollments");
@@ -431,8 +455,14 @@ class TrainingController extends AppController {
             }
         }
 
-        if(true){
-        //} else {
+        if(isset($_GET["new"])) {
+            $users=$this->enumenrolledusers($_GET["quizid"]);
+            $contacts=array();
+            foreach($users as $user){
+                $contacts[] = $user->UserID;
+            }
+            $this->set('profile', $contacts);
+        }else {
             $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             $u = $this->request->session()->read('Profile.id');

@@ -33,22 +33,34 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
         </li>
     </ul>
     <a href="javascript:window.print();" class="floatright btn btn-info">Print</a>
-</div>
+<?php
 
-<?php if (isset($profiles)){ ?>
-<div class="row">
+if (isset($_GET["new"])){
+    echo '<a href="' . $this->request->webroot . 'training/enroll?quizid=' . $_GET["quizid"] . '" class="floatright btn btn-primary btnspc">Old</a>';
+} else {
+    echo '<a href="' . $this->request->webroot . 'training/enroll?quizid=' . $_GET["quizid"] . '&new" class="floatright btn btn-primary btnspc">New</a>';
+}
+
+echo "</div>";
+if (isset($profiles) or isset($profile)) { ?>
+    <div class="row">
     <div class="col-md-12">
-        <div class="portlet box green-haze">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-user"></i>
-                    Enroll <?php echo ucfirst($settings->profile); ?>s
-                </div>
-            </div>
+    <div class="portlet box green-haze">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-user"></i>
+            Enroll <?php echo ucfirst($settings->profile); ?>s
+        </div>
+    </div>
 
 
-            <div class="portlet-body form">
+    <div class="portlet-body form">
 
+    <?php
+if (isset($_GET["new"])){
+    include('userenrollment.php');
+} else {
+    ?>
 
                 <div class="form-actions top chat-form" style="margin-top:0;margin-bottom:0;">
                     <div class="btn-set pull-left">
@@ -268,6 +280,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
                     </div>
                 </div>
 
+    <?php } ?>
             </div>
         </div>
     </div>

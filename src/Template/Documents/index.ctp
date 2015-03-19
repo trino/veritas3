@@ -2,7 +2,7 @@
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->Session->read('Profile.id') . "/sidebar");
 
-if ($_SERVER['SERVER_NAME'] == "localhost") {
+if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") {
     include_once('/subpages/api.php');
 } else {
     include_once('subpages/api.php');

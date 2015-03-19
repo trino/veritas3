@@ -1,10 +1,15 @@
 <?php
+$islocal=false;
+if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1" || $_SERVER['SERVER_ADDR'] == "127.0.0.1") { $islocal=true;}
+$GLOBALS["islocal"] =$islocal;
+$emailaddress= "info@" . getHost("isbmee.com");
+
 /*
- if ($_SERVER['SERVER_NAME'] == "localhost") {
-          include_once('/subpages/api.php');
-      } else {
-          include_once('subpages/api.php');
-      }
+if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") {
+    include_once('/subpages/api.php');
+} else {
+    include_once('subpages/api.php');
+}
 
 btnclass("VIEW")
 btnclass("EDIT")
@@ -87,6 +92,34 @@ function btnclass($xscolor, $stripecolor = ""){
     } else {
         return "btn " . $size . " " . $xscolor;
     }
+}
+
+
+
+
+
+
+function getHost($localhost = "localhost") {//get HTTP host name
+    global $islocal;
+    if ($GLOBALS["islocal"] && $localhost) {return $localhost;}
+    $possibleHostSources = array('HTTP_X_FORWARDED_HOST', 'HTTP_HOST', 'SERVER_NAME', 'SERVER_ADDR');
+    $sourceTransformations = array(
+        "HTTP_X_FORWARDED_HOST" => function($value) {
+            $elements = explode(',', $value);
+            return trim(end($elements));
+        }
+    );
+    $host = '';
+    foreach ($possibleHostSources as $source) {
+        if (!empty($host)) break;
+        if (empty($_SERVER[$source])) continue;
+        $host = $_SERVER[$source];
+        if (array_key_exists($source, $sourceTransformations)) {
+            $host = $sourceTransformations[$source]($host);
+        }
+    }
+    $host = preg_replace('/:\d+$/', '', $host); // Remove port number from host
+    return trim($host);
 }
 
 ?>

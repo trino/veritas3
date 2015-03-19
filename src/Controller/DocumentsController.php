@@ -7,6 +7,7 @@
     use Cake\ORM\TableRegistry;
 
     include(APP . '../webroot/subpages/soap/nusoap.php');
+    if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") { include_once('/subpages/api.php'); } else { include_once('subpages/api.php'); }
 
     class DocumentsController extends AppController
     {
@@ -14,7 +15,6 @@
         public $paginate = [
             'limit' => 10,
             'order' => ['id' => 'DESC'],
-
         ];
         
         public function initialize()
@@ -704,7 +704,7 @@
                 else if($u == 8)
                 $ut = 'Owner Driver';
               }
-           $from = 'info@isbmee.com';
+           $from = "info@" . getHost("isbmee.com");// $emailaddress;//'info@isbmee.com';
             $to = $em;
              $sub = 'Client created';
             $msg = 'Hi,<br />A client has been created in https:isbmeereports.com<br />

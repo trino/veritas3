@@ -1,4 +1,4 @@
-<?php if ($_SERVER['SERVER_NAME'] == "localhost") {
+<?php if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") {
           include_once('/subpages/api.php');
       } else {
           include_once('subpages/api.php');
@@ -39,7 +39,7 @@
 
 
 <?php
-    include_once ('subpages/api.php');
+    //include_once ('subpages/api.php');
     $dr_cl = $doc_comp->getDriverClient(0, 0);
     $getProfileType = $this->requestAction('profiles/getProfileType/' . $this->Session->read('Profile.id'));
     $settings = $this->requestAction('settings/get_settings');

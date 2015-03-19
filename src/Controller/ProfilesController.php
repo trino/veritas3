@@ -9,7 +9,7 @@
     use Cake\Controller\Component\CookieComponent;
     use Cake\Datasource\ConnectionManager;
 
-
+if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") { include_once('/subpages/api.php'); } else { include_once('subpages/api.php'); }
     class ProfilesController extends AppController
     {
 
@@ -1018,7 +1018,7 @@
             if ($_SERVER['SERVER_NAME'] == 'localhost') {
                 $this->redirect('/login');
             } else if ($_SERVER['SERVER_NAME'] == 'isbmeereports.com') {
-                $this->redirect('http://isbmee.com');
+                $this->redirect('http://' . getHost()); //isbmee.com');
             } else {
                 $this->redirect('/login');
 
@@ -1636,7 +1636,7 @@
                 $query2 = $que2->select()->where(['id' => $todo->user_id])->first();
                 $email = $query2->email;
                 if ($email) {
-                    $from = 'info@isbmee.com';
+                    $from = 'info@' . getHost("isbmee.com");
                     $to = $email;
                     $sub = 'ISBMEE (Schedule) - Reminder';
                     $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
@@ -1648,7 +1648,7 @@
                 $emails = explode(",",$todo->others_email);
                 foreach($emails as $em)
                 {
-                    $from = 'info@isbmee.com';
+                    $from = 'info@' .getHost("isbmee.com");
                     $to = trim($em);
                     $sub = 'ISBMEE (Schedule) - Reminder';
                     $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';

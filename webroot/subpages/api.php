@@ -100,7 +100,6 @@ function btnclass($xscolor, $stripecolor = ""){
 
 
 function getHost($localhost = "localhost") {//get HTTP host name
-    global $islocal;
     if ($GLOBALS["islocal"] && $localhost) {return $localhost;}
     $possibleHostSources = array('HTTP_X_FORWARDED_HOST', 'HTTP_HOST', 'SERVER_NAME', 'SERVER_ADDR');
     $sourceTransformations = array(

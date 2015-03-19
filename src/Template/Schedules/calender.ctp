@@ -86,7 +86,7 @@
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/calendar.js"></script>
 
 <?php
-echo "User time: " . $_SESSION['time']  . " Server time: " . time();
+echo "User time: " . $_SESSION['time']  . " Server timezone offset " . date("Z")/3600;
 ?>
 <script>
 jQuery(document).ready(function() {       

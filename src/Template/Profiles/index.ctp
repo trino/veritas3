@@ -264,6 +264,7 @@
 
                                         </td>
                                         <td class="actions  util-btn-margin-bottom-5">
+                                        <input type="checkbox" class="form-control" value="<?php echo $profile->id; ?>" id="check_id_<?php echo $profile->id; ?>" />
                                             <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); ?> </a>
@@ -365,7 +366,11 @@
 
                 <div class="form-actions" style="height:75px;">
                     <div class="row">
-                        <div class="col-md-12" align="right">
+                    <div class="col-md-12">
+                        <div class="col-md-6" align="left">
+                        <a href="<?php echo $this->request->webroot ?>/orders/productSelection?driver=0&ordertype=CART" class="btn btn-primary">Bulk Orders</a>
+                        </div>
+                        <div class="col-md-6" align="right">
                             <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" align="right"
                                  style="margin-top:-10px;">
                                 <ul class="pagination sorting">
@@ -374,6 +379,7 @@
                                     <?= $this->Paginator->next(__('next') . ' >'); ?>
                                 </ul>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>

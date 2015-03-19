@@ -268,7 +268,14 @@
                         </div>
 
                         <div class="col-md-6" id="isb_id"
-                             style="display:<?php if ((isset($p) && $p->profile_type != 5) && (isset($getProfileType->profile_type) && $getProfileType->profile_type == 1) || ($this->request->session()->read('Profile.profile_type') == 2 && (isset($p) && $p->id == ($this->request->session()->read('Profile.id')))) || ($this->request->session()->read('Profile.profile_type') == 2 && (isset($p) && $p->id != 5  ))) echo 'block'; else echo "none" ?>;">
+                             style="display:
+                             <?php 
+                             /* as discussed on march 18, isb id only for recruiter and driver type for driver , owners etc
+                              if ((isset($p) && $p->profile_type != 5) && (isset($getProfileType->profile_type) && $getProfileType->profile_type == 1) || ($this->request->session()->read('Profile.profile_type') == 2 && (isset($p) && $p->id == ($this->request->session()->read('Profile.id')))) || ($this->request->session()->read('Profile.profile_type') == 2 && (isset($p) && $p->id != 5  ))) echo 'block'; else echo "none" */?>
+                              <?php
+                              if ((isset($p) && $p->profile_type == 2)) 
+                              echo 'block'; else echo "none" ?>
+                              ;">
                             <div class="form-group">
                                 <label class="control-label">ISB Id : </label>
                                 <input <?php echo $is_disabled ?>
@@ -977,7 +984,7 @@
                     $(this).show();
                 });
                 $('#driver_div').hide();
-                $('#isb_id').show();
+                $('#isb_id').hide();
                 //$('.username_div').show();
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
@@ -999,6 +1006,7 @@
             }
 
             if ($(this).val() == '2') {
+                $('#isb_id').show();
                 $('.req_driver').removeProp('required');
                 //$('.un').removeProp('required');
                 $('.req_rec').prop('required', "required");
@@ -1032,7 +1040,7 @@
                 });
                 $('#driver_div').hide();
                 //$('.username_div').show();
-                $('#isb_id').show();
+                $('#isb_id').hide();
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
                 $('#username_field').removeAttr('disabled');
@@ -1053,6 +1061,7 @@
             }
 
             if (mem_type == '2') {
+                $('#isb_id').show();
                 $('.req_driver').removeProp('required');
                 //$('.un').removeProp('required');
                 $('.req_rec').prop('required', "required");

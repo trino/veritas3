@@ -193,8 +193,12 @@ function PrintResults($results, $user){
         PrintResult("Incorrect", $results['incorrect']);
         PrintResult("Missing", $results['missing']);
         PrintResult("Correct", $results['correct']);
-        PrintResult("Score", round($results['correct']/$results['total']*100,2) . "%");
-        echo '</div></div></div>';
+        $score = $results['correct']/$results['total']*100;
+        PrintResult("Score", round($score,2) . "%");
+        if ($score>=80) {PrintResult("Grade", "<font color='green'>Pass</A>");} else {PrintResult("Grade", "<font color='red'>Fail</A>");}
+        echo '</font></div>';
+        if ($score>=80) {echo '<CENTER><a href="/training/certificate?quizid=' .  $_GET['quizid'] . '&userid=' .  $user->id . '" ">Click here to view the certificate</A></CENTER>';}
+        echo '</div></div>';
     }
 }
 function PrintResult($name, $number){

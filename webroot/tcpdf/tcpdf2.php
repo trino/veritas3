@@ -1835,8 +1835,9 @@ class TCPDF {
 	 * @public
 	 * @see getPageSizeFromFormat(), setPageFormat()
 	 */
-	public function __construct($orientation='P', $unit='mm', $format='A4', $unicode=true, $encoding='UTF-8', $diskcache=false, $pdfa=false) {
+	public function __construct($orientation='L', $unit='mm', $format='A4', $unicode=true, $encoding='UTF-8', $diskcache=false, $pdfa=false) {
 		/* Set internal character encoding to ASCII */
+        //$orientation="L";
 		if (function_exists('mb_internal_encoding') AND mb_internal_encoding()) {
 			$this->internal_encoding = mb_internal_encoding();
 			mb_internal_encoding('ASCII');
@@ -7545,7 +7546,7 @@ class TCPDF {
 	 * @since 1.0
 	 * @see Close()
 	 */
-	public function Output($name='doc.pdf', $dest='I',$oid = '') {
+	public function Output($name='doc.pdf', $dest='I',$dir='') {
 		//Output PDF to some destination
 		//Finish document if necessary
 		if ($this->state < 3) {
@@ -7671,10 +7672,10 @@ class TCPDF {
 			case 'FD': {
 			     //echo $oid;die();
 				// save PDF to a local file
-                if (!is_dir(APP.'../webroot/pdfs'))
-                mkdir(APP.'../webroot/pdfs', 0777);
+                if (!is_dir(APP.$dir))
+                mkdir(APP.$dir, 0777);
                 
-                $name =  APP.'../webroot/pdfs/'.$name;
+                $name =  APP.$dir.'/'.$name;
                 if(file_exists($name))
                 @unlink($name);
 				$f = TCPDF_STATIC::fopenLocal($name, 'wb');
@@ -7720,6 +7721,7 @@ class TCPDF {
 					header('Content-Transfer-Encoding: binary');
 					TCPDF_STATIC::sendOutputData(file_get_contents($name), filesize($name));
 				}
+                return $name;
 				break;
 			}
 			case 'E': {

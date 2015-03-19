@@ -536,6 +536,7 @@
         {
             $settings = $this->Settings->get_settings();
             $profiles = TableRegistry::get('Profiles');
+            $path = $this->Document->getUrl();
 
             if ($add == '0') {
                 $profile_type = $this->request->session()->read('Profile.profile_type');
@@ -666,7 +667,6 @@
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft Successfully . ');
                         } else {
-                            $path = $this->Document->getUrl();
                              $pro_query = TableRegistry::get('Profiles');
                             $email_query = $pro_query->find()->where(['super' => 1])->first();
                             $em = $email_query->email;
@@ -675,44 +675,19 @@
                             if (isset($uq->profile_type))
                               {
                                 $u = $uq->profile_type;
-                                if($u == 1)
-                                $ut = 'Admin';
-                                else if($u == 2)
-                                $ut = 'Recruiter';
-                                else if($u == 3)
-                                $ut = 'External';
-                                else if($u == 4)
-                                $ut = 'Safety';
-                                else if($u == 5)
-                                $ut = 'Driver';
-                                else if($u == 6)
-                                $ut = 'Contact';
-                                else if($u == 7)
-                                $ut = 'Owner Operator';
-                                else if($u == 8)
-                                $ut = 'Owner Driver';
+                                $type_query = TableRegistry::get('profile_types');
+                                $type_q = $type_query->find()->where(['id'=>$u])->first(); 
+                                $ut = $type_q->title;
                               }
                                if (isset($_POST['profile_type']))
                               {
                                 $pt = $_POST['profile_type'];
-                                if($pt == 1)
-                                $protype = 'Admin';
-                                else if($pt == 2)
-                                $protype = 'Recruiter';
-                                else if($pt == 3)
-                                $protype = 'External';
-                                else if($pt == 4)
-                                $protype = 'Safety';
-                                else if($pt == 5)
-                                $protype = 'Driver';
-                                else if($pt == 6)
-                                $protype = 'Contact';
-                                else if($pt == 7)
-                                $protype = 'Owner Operator';
-                                else if($pt == 8)
-                                $protype = 'Owner Driver';
+                                $u = $pt;
+                                $type_query = TableRegistry::get('profile_types');
+                                $type_q = $type_query->find()->where(['id'=>$u])->first(); 
+                                $protype = $type_q->title;
                               } 
-                           $from = 'info@'.$path.'.com';
+                           $from = 'info@'.$path;
                             $to = $em;
                              $sub = 'Profile created';
                             $msg = 'Hi,<br />An account has been created in '.$path.'<br />
@@ -767,62 +742,6 @@
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft . ');
                         } else {
-                            
-                         $pro_query = TableRegistry::get('Profiles');
-                            $email_query = $pro_query->find()->where(['super' => 1])->first();
-                            $em = $email_query->email;
-                            $user_id = $this->request->session()->read('Profile.id');
-                            $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
-                            if (isset($uq->profile_type))
-                              {
-                                $u = $uq->profile_type;
-                                if($u == 1)
-                                $ut = 'Admin';
-                                else if($u == 2)
-                                $ut = 'Recruiter';
-                                else if($u == 3)
-                                $ut = 'External';
-                                else if($u == 4)
-                                $ut = 'Safety';
-                                else if($u == 5)
-                                $ut = 'Driver';
-                                else if($u == 6)
-                                $ut = 'Contact';
-                                else if($u == 7)
-                                $ut = 'Owner Operator';
-                                else if($u == 8)
-                                $ut = 'Owner Driver';
-                              }
-                               if (isset($_POST['profile_type']))
-                              {
-                                $pt = $_POST['profile_type'];
-                                if($pt == 1)
-                                $protype = 'Admin';
-                                else if($pt == 2)
-                                $protype = 'Recruiter';
-                                else if($pt == 3)
-                                $protype = 'External';
-                                else if($pt == 4)
-                                $protype = 'Safety';
-                                else if($pt == 5)
-                                $protype = 'Driver';
-                                else if($pt == 6)
-                                $protype = 'Contact';
-                                else if($pt == 7)
-                                $protype = 'Owner Operator';
-                                else if($pt == 8)
-                                $protype = 'Owner Driver';
-                              } 
-                           $from = 'info@'.$path.'.com';
-                            $to = $em;
-                             $sub = 'Profile created';
-                            $msg = 'Hi,<br />An account has been created in https://isbmeereports.com<br />
-                            By user with following details :<br/>
-                            Username : '.$uq->username.'<br/>Profile Type : '.$ut;
-                            
-                             echo '<br/> Dated on : '.$_POST['created'].'<br/>With profile details<br /> Username: ' . $_POST['username'] . '<br /> Profile Type: '.$protype;
-                               echo '<br /> Regards,<br />The ISB Team';
-                             $this->Mailer->sendEmail($from, $to, $sub, $msg); 
                             $this->Flash->success('Profile saved Successfully . ');
                         }
                     } else {
@@ -1847,7 +1766,7 @@
                 if ($p->save($profile)) {
                     
                     echo '<tr>
-                            <td>'.$profile->id.'</td>
+                            <!--td>'.$profile->id.'</td-->
                             <td class="title_'.$profile->id.'">'.$title.'</td>
                             <td><input type="checkbox" id="chk_'.$profile->id.'" class="enable"/></td>
                             <td><span  class="btn btn-info editpro" id="edit_'.$profile->id.'">Edit</span></td>

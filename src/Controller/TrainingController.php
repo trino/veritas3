@@ -125,6 +125,7 @@ class TrainingController extends AppController {
         if (isset($_GET["quizid"])) {
             $quiz = $this->getQuizHeader($_GET["quizid"]);// $table->find()->where(['ID'=>$_GET["quizid"]])->first();
             $this->set('quiz', $quiz);
+            $this->set("date", $this->getanswereddate($_GET["quizid"], $userid));
         }
         $this->set('canedit', $this->canedit());
     }
@@ -320,6 +321,12 @@ class TrainingController extends AppController {
         }
         if ($questions >0) { $percent = $correct/$questions*100;}
         return array('questions' => $questions, 'correct' => $correct, 'percent' => $percent);
+    }
+
+    public function getanswereddate($QuizID, $UserID){
+        $table = TableRegistry::get("training_answers");
+        $quiz =  $table->find('all', array('conditions' => array(['QuizID'=>$QuizID, 'UserID'=>$UserID]), 'order' => array('QuestionID ASC') ))->first();
+        return $quiz->created;
     }
 
     public function enumanswers($QuizID, $UserID){

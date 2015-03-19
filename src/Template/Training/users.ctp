@@ -100,9 +100,12 @@ Users
                         } else {
                             $usercount+=1;
                             $total+= $user->profile['percent'];
-                            echo  $user->profile['correct'] . '/' . $user->profile['questions']  . ' (' . round($user->profile['percent'],2) . '%)';
-                            echo '</TD><TD><A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=';
+                            $score=round($user->profile['percent'],2);
+                            echo  $user->profile['correct'] . '/' . $user->profile['questions']  . ' (' ;
+                            if ($score<80) {echo "<font color='red'>";} else {echo '<font color="green">';}
+                            echo $score . '%</font>)' . '</TD><TD><A HREF="' . $this->request->webroot . 'training/quiz?quizid=' . $_GET['quizid'] . '&userid=';
                             echo $user->UserID . '" class="' . btnclass("primary", "blue") . '">View Answers</A>';
+                            if ($score>=80) {echo '<a href="' . $this->request->webroot . 'training/certificate?quizid=' .  $_GET['quizid'] . '&userid=' .  $user->UserID . '" class="' . btnclass("danger", "yellow") . '">Certificate</A> ';}
                             echo '<A HREF="' . $this->request->webroot . 'training/users?action=deleteanswers&quizid=' . $_GET['quizid'] . '&userid=';
                             echo $user->UserID . '" class="' . btnclass("danger", "red") . '" onclick="return confirm(' . "'Are you sure you want to delete " . ucfirst($user->Profiles['username']) . "\'s answers?'" . ');" >Delete Answers</A>';
                         }

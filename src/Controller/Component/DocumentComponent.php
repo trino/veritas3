@@ -119,7 +119,7 @@ class DocumentComponent extends Component
 
             } else {
                 $docs = TableRegistry::get('Documents');
-                if (isset($_GET['draft']) && $_GET['draft']){
+                if (isset($_GET['draft']) || $_GET['draft']){
                     $arr['draft'] = 1;
                     //$controller->Flash->success('Document saved as draft');
                     }
@@ -150,9 +150,9 @@ class DocumentComponent extends Component
                         $assignedProfile = $this->getAssignedProfile($cid);
                         if($assignedProfile)
                         {
-                           // echo $assignedProfile->profile_id; die();
+                            if(!isset($_GET['draft']) && !($_GET['draft']))
+                            {
                             $profile = $this->getProfilePermission($assignedProfile->profile_id, 'document');
-                            //var_dump($profile);die();
                             if($profile)
                             {
                                 foreach($profile as $p)
@@ -179,10 +179,11 @@ class DocumentComponent extends Component
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br/> For user with email address :'.$p.'<br /> Regards,<br />The ISB Team';
                              $controller->Mailer->sendEmail($from, $to, $sub, $msg);
                                 }
-                            }
+                            }}else {}
                         }
                         //$this->Flash->success('Client saved successfully.');
                         echo $doc->id;
+                        if(!isset($_GET['draft']) || !($_GET['draft'])){
                         $pro_query = TableRegistry::get('Profiles');
                             $email_query = $pro_query->find()->where(['super' => 1])->first();
                             $em = $email_query->email;
@@ -203,6 +204,7 @@ class DocumentComponent extends Component
                             By user with following details :<br/>
                             Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br/> <br /> Regards,<br />The ISB Team';
                              $controller->Mailer->sendEmail($from, $to, $sub, $msg);
+                             }
                         if(isset($_POST['attach_doc']))
                         {
                             $model = $controller->loadModel('AttachDocs');

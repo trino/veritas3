@@ -476,7 +476,7 @@
 <script>
     function check_driver_abstract(driver)
     {
-        $.ajax({
+        /*$.ajax({
             url:'<?php echo $this->request->webroot;?>orders/check_driver_abstract/'+driver,
             success:function(res)
             {
@@ -497,11 +497,11 @@
                     $('#product_2').show();
                 }
             }
-        });
+        });*/
     }
     function check_cvor(driver)
     {
-        $.ajax({
+        /*$.ajax({
             url:'<?php echo $this->request->webroot;?>orders/check_cvor/'+driver,
             success:function(res)
             {
@@ -522,7 +522,7 @@
                     $('#product_3').show();
                 }
             }
-        });
+        });*/
     }
     function check_div() {
         //alert('test');

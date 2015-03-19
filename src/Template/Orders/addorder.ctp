@@ -62,12 +62,15 @@ function provinces($name){
         if (isset($_GET["forms"])){
             $forms = explode(",", $_GET["forms"]);
         }
+        else
+        $forms = array(1,2,3,4,5,6,7);
 
         //returns: boolean, if this form should be displayed
         //parameters:
         //  $forms  -   pass in the $forms variable since globals don't seem to work
         //  $id     -   the ID/index number of the form to check
         function isallone($forms){
+            
             if(count($forms)<7)
             {
                 return false;
@@ -83,17 +86,19 @@ function provinces($name){
             //pre-screening, driver application, consent form, road test
             //if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
             $name=trim(strtolower($name));
+            
+            
+            
+            
+            
             if(in_array('2',$forms) && isset($_GET['driver']) && $name=='consent form')
             {
+                
                 $c2 = $_this->requestAction('/orders/check_driver_abstract2/'.$_GET['driver']);
+                //die($c2->driver_province);
                 if(in_array($c2->driver_province,array('BC','MB','NU','NT','QC','SK','YT')))
                 return true;
                 else
-                return false;
-            }
-            else{
-            if(!in_array('2',$forms))
-            {
                 if(in_array('3',$forms) && isset($_GET['driver']) && $name=='consent form')
                 {
                     $c3 = $_this->requestAction('/orders/check_cvor2/'.$_GET['driver']);
@@ -101,15 +106,27 @@ function provinces($name){
                     return true;
                     else
                     return false;
+                    
                 }
-                else{
-                if(!in_array('3',$forms))
-                return false;}
+                else
+                return false;
+                
             }
-            }
+            else
+            if(in_array('3',$forms) && isset($_GET['driver']) && $name=='consent form')
+                {
+                    $c3 = $_this->requestAction('/orders/check_cvor2/'.$_GET['driver']);
+                    if(in_array($c3->driver_province,array('BC','SK','MB')))
+                    return true;
+                    else
+                    return false;
+                    
+                }
+                
+                
             
-            if (isallone($forms)) {return true; }//return true if all boxes were checked
-            
+            //return true if all boxes were checked
+            if (isallone($forms)) {return true; }
             if ($name == "consent form") { return true; } //mandatory in all sections now
             if(count($forms)>0){
                 if ($name == "consent form") { return true; }//$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form

@@ -65,7 +65,10 @@
 
 
                                             <tr>
-                                                <td><?= $this->Number->format($clients->id) ?></td>
+                                                <td><?php
+                                                    echo $this->Number->format($clients->id);
+                                                    if($clients->hasattachments) { echo '<BR><i class="fa fa-paperclip"></i>';}
+                                                    ?></td>
                                                 <td>
 
 

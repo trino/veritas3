@@ -209,7 +209,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             /*old code*/
 
             //debug($query);die();
-            $this->set('profiles', $this->paginate($query));
+            $this->set('profiles', $this->appendattachments($this->paginate($query)));
         }
 
         /*
@@ -1950,6 +1950,17 @@ echo date("Y-m-d H:i:s");
             $this->response->body($cnt);
             return $this->response;
        } */
-
+        public function appendattachments($query){
+            foreach($query as $client){
+                $client->hasattachments = $this->hasattachments($client->id);
+            }
+            return $query;
+        }
+        public function hasattachments($id){
+            $docs = TableRegistry::get('profile_docs');
+            $query = $docs->find();
+            $client_docs = $query->select()->where(['profile_id'=>$id])->first();
+            if($client_docs) {return true;}
+        }
     }
 ?>

@@ -132,7 +132,7 @@ class ClientsController extends AppController {
             $draft =0;
         $querys = TableRegistry::get('Clients');
         $query = $querys->find()->where(['drafts'=>$draft]);
-		$this->set('client', $this->paginate($query));
+		$this->set('client', $this->appendattachments($this->paginate($query)));
 	}
 
     function search()
@@ -1378,6 +1378,18 @@ class ClientsController extends AppController {
         return $this->response;
         die;
     }
-    
+
+    public function appendattachments($query){
+        foreach($query as $client){
+            $client->hasattachments = $this->hasattachments($client->id);
+        }
+        return $query;
+    }
+    public function hasattachments($id){
+        $docs = TableRegistry::get('client_docs');
+        $query = $docs->find();
+        $client_docs = $query->select()->where(['client_id'=>$id])->first();
+        if($client_docs) {return true;}
+    }
     }
 ?>

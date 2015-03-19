@@ -1,7 +1,9 @@
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 <?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
+<body onLoad="ajaxpage();">
 
 <h3 class="page-title">
     <?php echo $settings->mee;?> Dashboard <?php if($settings->mee == 'MEE'){ ?><small>Driver Qualification System</small><?php } ?>

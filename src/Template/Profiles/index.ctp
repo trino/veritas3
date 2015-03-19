@@ -264,7 +264,14 @@
 
                                         </td>
                                         <td class="actions  util-btn-margin-bottom-5">
-                                        <input type="checkbox" class="form-control" value="<?php echo $profile->id; ?>" id="check_id_<?php echo $profile->id; ?>" />
+                                        <?php
+                                        if($profile->profile_type == 5 || $profile->profile_type == 7 || $profile->profile_type == 8)
+                                        {
+                                        ?>
+                                        <input type="checkbox" class="form-control" value="<?php echo $profile->id; ?>" id="checkbox_id_<?php echo $profile->id; ?>" />
+                                        <?php
+                                        }
+                                        ?>
                                             <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 ?>
                                                 <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); ?> </a>
@@ -368,7 +375,7 @@
                     <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-6" align="left">
-                        <a href="<?php echo $this->request->webroot ?>/orders/productSelection?driver=0&ordertype=CART" class="btn btn-primary">Bulk Orders</a>
+                        <a href="javascript:void(0);" class="bulk_order btn btn-primary">Bulk Orders</a>
                         </div>
                         <div class="col-md-6" align="right">
                             <div id="sample_2_paginate" class="dataTables_paginate paging_simple_numbers" align="right"
@@ -403,6 +410,22 @@
 <script>
 
     $(function () {
+        $('.bulk_order').click(function(){
+            var tempstr = '';
+           $('.table-scrollable input[type="checkbox"]').each(function(){
+            
+            if($(this).is(':checked'))
+            {
+                if(tempstr == '')
+                tempstr = $(this).val();
+                else
+                tempstr = tempstr+','+$(this).val();
+            }
+            
+            
+           });
+           window.location = '<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART&profiles='+tempstr; 
+        });
         <?php if(isset($_GET['division'])&& $_GET['division']!=""){
                  //var_dump($_GET);
                  ?>

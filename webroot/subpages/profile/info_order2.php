@@ -5,6 +5,15 @@
 </style>
 
 <?php
+    if ($_GET['ordertype'] == 'MEE') {
+                        $o_type = 'Order MEE';
+                    } else
+                    if($_GET['ordertype']=='CART')
+                     {
+                        $o_type = 'Order Products';
+                    }
+                    else
+                    $o_type = 'QUA';
     $intable = true;
     $cols = 8;
 
@@ -70,8 +79,7 @@
             case 1:
                 if ($type == 'QUA') {
                     ?>
-                    <a href="javascript:void(0);" class="btn btn-danger  btn-lg placenow"
-                       onclick="if(!check_div())return false;if($('.selecting_driver').val()==''){alert('Please select driver to requalify.');return false;}var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=Requalification&forms='<?= $tempstr; ?>;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Continue <i class="m-icon-swapright m-icon-white"></i></a>
+                    <a href="javascript:void(0);" id="qua_btn" class="btn btn-danger  btn-lg placenow">Continue <i class="m-icon-swapright m-icon-white"></i></a>
                 <?php
                 } else {
                     if ($type == 'MEE') {
@@ -107,8 +115,8 @@
                 }
                 ?>
 
-                <a class=" btn btn-danger   btn-lg  button-next proceed"
-                   onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val())window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=<?php echo urlencode($o_type);?>&forms='<?= $tempstr; ?>;else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">
+                <a class=" btn btn-danger   btn-lg  button-next proceed" id="cart_btn"
+                   href="javascript:void(0)">
                     Continue <i class="m-icon-swapright m-icon-white"></i>
                 </a>
 
@@ -323,59 +331,22 @@
                     } ?>
 
                     <ul class="pricing-red-content list-unstyled">
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
-                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""/></div>
+                        <?php
+                        foreach($products as $p)
+                        {
+                            if($p->id!=8){
+                            ?>
+                            
+                        <li id="product_<?php echo $p->id;?>">
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title;?></div>
+                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" value=""/></div>
                             <div class="clearfix"></div>
                         </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
-                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="dri_abs" value=""></div>
-
-                            <div class="clearfix"></div>
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
-                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="CVOR" value=""></div>
-                            <div class="clearfix"></div>
-
-                        </li>
-
-                        <li>
-
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
-                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
-                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
-                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
-                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="prem_nat" value=""></div>
-                            <div class="clearfix"></div>
-
-                        </li>
+                        <?php
+                        }
+                        }
+                        ?>
+                        
 
                         <!--li>
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
@@ -420,85 +391,23 @@
                         printform($counting, $settings, $client, $dr_cl, $driver, true);
                     } ?>
 
-                    <ul class="pricing-content list-unstyled">
+                    <ul class="pricing-content list-unstyled" id="cartlist">
                          <?php
                          $index=0;
                             foreach($products as $p){
                                 
                         ?>
-                        <li>
+                        <li id="product_<?php echo $p->id;?>">
 
                             <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title;?></div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form<?= $index ?>" value="1"/></div>
+                            <div class="col-xs-2"><input checked type="checkbox" id="form<?= $index ?>" value="<?php echo $p->id;?>"/></div>
                             <div class="clearfix"></div>
                         </li>
                         <?php
                                 $index+=1;
                             }
                         ?>
-                        <!--<li>
-
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form0" value="1"/></div>
-                            <div class="clearfix"></div>
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="dri_abs" id="form1" value="1"></div>
-
-                            <div class="clearfix"></div>
-                        </li>
-
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="CVOR" id="form2" value="1"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form3" value="1"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form4" value="1"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form5" value="1"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="form6" value="1"></div>
-                            <div class="clearfix"></div>
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="check_dl" id="form7" value="1"></div>
-                            <div class="clearfix"></div>
-                        </li>-->
+                        
 
                     </ul>
                     <div class="pricing-footer">
@@ -534,79 +443,22 @@
                         printform($counting, $settings, $client, $dr_cl, $driver, true);
                     } ?>
 
-                    <ul class="pricing-blue-content list-unstyled">
-                        
-                       
-                        <li>
+                    <ul class="pricing-blue-content list-unstyled" id="qualist">
+                        <?php
+                        $b=0;
+                        foreach($products as $p)
+                        {
+                            ?>
+                            <li id="product_<?php echo $p->id;?>">
 
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Premium National Criminal Record Check</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb0" value="1"/></div>
+                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title;?></div>
+                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb<?php echo $b;?>" value="<?php echo $p->id;?>"/></div>
                             <div class="clearfix"></div>
                         </li>
-                        
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Driver's Record Abstract (MVR)</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="dri_abs" id="formb1" value="1"></div>
-
-                            <div class="clearfix"></div>
-                        </li>
-
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> CVOR</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="CVOR" id="formb2" value="1"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Pre-employment Screening Program Report</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb3" value="1"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Transclick</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb4" value="1"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Certifications</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb5" value="1"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Letter of Experience</div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb6" value="1"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-                        <li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-xs-2"><input id="formb7" value="1" checked type="checkbox" name="check_dl"></div>
-
-                            <div class="clearfix"></div>
-
-
-                        </li>
-
-
+                            <?php
+                            $b++;
+                        }
+                        ?>
                     </ul>
                     <div class="pricing-footer">
                         <p>
@@ -622,6 +474,56 @@
 </div>
 
 <script>
+    function check_driver_abstract(driver)
+    {
+        $.ajax({
+            url:'<?php echo $this->request->webroot;?>orders/check_driver_abstract/'+driver,
+            success:function(res)
+            {
+                if(res=='0')
+                {
+                    if($('#product_2 input[type="checkbox"]').is(':checked'))
+                    {
+                        $('#product_2 input[type="checkbox"]').click();
+                    }
+                    $('#product_2').hide();
+                }
+                else
+                {
+                    if(!$('#product_2 input[type="checkbox"]').is(':checked'))
+                    {
+                        $('#product_2 input[type="checkbox"]').click();
+                    }
+                    $('#product_2').show();
+                }
+            }
+        });
+    }
+    function check_cvor(driver)
+    {
+        $.ajax({
+            url:'<?php echo $this->request->webroot;?>orders/check_cvor/'+driver,
+            success:function(res)
+            {
+                if(res=='0')
+                {
+                    if($('#product_3 input[type="checkbox"]').is(':checked'))
+                    {
+                        $('#product_3 input[type="checkbox"]').click();
+                    }
+                    $('#product_3').hide();
+                }
+                else
+                {
+                    if(!$('#product_3 input[type="checkbox"]').is(':checked'))
+                    {
+                        $('#product_3 input[type="checkbox"]').click();
+                    }
+                    $('#product_3').show();
+                }
+            }
+        });
+    }
     function check_div() {
         //alert('test');
         var checkerbox = 0;
@@ -651,6 +553,84 @@
 
     }
     $(function () {
+        <?php
+        if($driver)
+        {
+            ?>
+            check_driver_abstract(<?php echo $driver;?>);
+                check_cvor(<?php echo $driver;?>);
+            <?php
+        }
+        ?>
+        $('#cart_btn').click(function(){
+            if(!check_div())
+            return false;
+            var div = $('#divisionsel').val();
+            if(!isNaN(parseFloat(div)) && isFinite(div)){
+                var division = div;
+                }
+                else 
+                var division = '0';
+            if($('.selecting_client').val()){
+                var tempstr = '';
+                $('#cartlist input[type="checkbox"]').each(function(){
+                    
+                    if($(this).is(':checked'))
+                    {
+                        if(tempstr=='')
+                        {
+                            tempstr=$(this).val();
+                        }
+                        else
+                        tempstr = tempstr+','+$(this).val();
+                    }
+                });
+            window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=<?php echo urlencode($o_type);?>&forms='+tempstr;
+            }
+            else{
+                $('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');
+                $('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');
+                }
+            
+        });
+        
+        $('#qua_btn').click(function(){
+            if(!check_div())
+            return false;
+            if($('.selecting_driver').val()=='')
+            {
+                alert('Please select driver to requalify.');return false;
+            }
+            var div = $('#divisionsel').val();
+            if(!isNaN(parseFloat(div)) && isFinite(div)){
+                var division = div;
+            }
+            else 
+            var division = '0';
+            if($('.selecting_client').val()){
+            var tempstr = '';
+                $('#qualist input[type="checkbox"]').each(function(){
+                    
+                    if($(this).is(':checked'))
+                    {
+                        if(tempstr=='')
+                        {
+                            tempstr=$(this).val();
+                        }
+                        else
+                        tempstr = tempstr+','+$(this).val();
+                    }
+                });
+            window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=Requalification&forms='+tempstr;
+            }
+            else{
+            $('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');
+            $('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');
+            }
+                
+            
+            
+        });
         
         $('#divisionsel').live('change', function () {
             $(this).removeAttr('style');
@@ -675,8 +655,8 @@
             //alert(driver);
             if (!isNaN(parseFloat(driver)) && isFinite(driver)) {
                 $('.selecting_driver').val(driver);
-
-
+                check_driver_abstract(driver);
+                check_cvor(driver);
             }
             else {
                 $('.selecting_driver').val('');

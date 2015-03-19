@@ -68,18 +68,48 @@ function provinces($name){
         //  $forms  -   pass in the $forms variable since globals don't seem to work
         //  $id     -   the ID/index number of the form to check
         function isallone($forms){
-            foreach($forms as $f) {
-                if ($f != 1) {
-                    return false;
-                }
+            if(count($forms)<7)
+            {
+                return false;
             }
+            else
+            if(count($forms)=='7' && urldecode($_GET['order_type'])!='Order MEE')
+            return false;
+            else
             return true;
         }
-        function displayform($forms, $name){
+        $_this = $this;        
+        function displayform($forms, $name,$_this){
             //pre-screening, driver application, consent form, road test
             //if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
-            if (isallone($forms)) {return true; }//return true if all boxes were checked
             $name=trim(strtolower($name));
+            if(in_array('2',$forms) && isset($_GET['driver']) && $name=='consent form')
+            {
+                $c2 = $_this->requestAction('/orders/check_driver_abstract2/'.$_GET['driver']);
+                if(in_array($c2->driver_province,array('BC','MB','NU','NT','QC','SK','YT')))
+                return true;
+                else
+                return false;
+            }
+            else{
+            if(!in_array('2',$forms))
+            {
+                if(in_array('3',$forms) && isset($_GET['driver']) && $name=='consent form')
+                {
+                    $c3 = $_this->requestAction('/orders/check_cvor2/'.$_GET['driver']);
+                    if(in_array($c3->driver_province,array('BC','SK','MB')))
+                    return true;
+                    else
+                    return false;
+                }
+                else{
+                if(!in_array('3',$forms))
+                return false;}
+            }
+            }
+            
+            if (isallone($forms)) {return true; }//return true if all boxes were checked
+            
             if ($name == "consent form") { return true; } //mandatory in all sections now
             if(count($forms)>0){
                 if ($name == "consent form") { return true; }//$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
@@ -170,7 +200,7 @@ function provinces($name){
 
                                             //debug($d);
 
-                                            if (displayform($forms, $d->title)){
+                                            if (displayform($forms, $d->title,$_this)){
                                                 $index+=1;
                                             $act = 0;
                                             if ($d->table_name == $table) {
@@ -360,7 +390,7 @@ function provinces($name){
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
 
                            // debug($d);
-                            if (displayform($forms, $d->title)){
+                            if (displayform($forms, $d->title,$_this)){
 
 
                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);

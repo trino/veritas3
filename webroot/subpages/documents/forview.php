@@ -159,13 +159,13 @@
             if(!$forms)
             {
                 $forms_arr[0] = 1;
-                $forms_arr[1] = 1;
-                $forms_arr[2] = 1;
-                $forms_arr[3] = 1;
-                $forms_arr[4] = 1;
-                $forms_arr[5] = 1;
-                $forms_arr[6] = 1;
-                $forms_arr[7] = 1;
+                $forms_arr[1] = 2;
+                $forms_arr[2] = 3;
+                $forms_arr[3] = 4;
+                $forms_arr[4] = 5;
+                $forms_arr[5] = 6;
+                $forms_arr[6] = 7;
+                //$forms_arr[7] = 8;
             }
             else
             {
@@ -234,7 +234,7 @@
                                                        Road Test Score </a><a href="#" class="btn btn-lg yellow">
                                                        <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
                                                    </a></SPAN></TD></TR><TR><TD>
-                                                            <a style="margin:10px 0px 0px 0px;float:right;" href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>"
+                                                            <a style="margin:10px 0px 0px 0px;float:right;" href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>?ordertype=<?php echo $order->order_type;if($order->forms){echo '?forms='.$order->forms;}?>"
                                                                class="btn btn-primary">View Order</a>
                                                         </TD></TR></TABLE>
                                             </div>
@@ -253,7 +253,33 @@
                                             <table class="table" style="margin-bottom: 0px;">
                                                 <tbody>
                                                 <?php
-                                                    if($p[0]){
+                                                foreach($p as $pp)
+                                                {
+                                                    $title_pr = $this->requestAction('/orders/getProductTitle/'.$pp);
+                                                   ?>
+                                                   <tr class="even" role="row">
+                                                            <td>
+                                                                <span class="icon-notebook"></span>
+                                                            </td>
+                                                            <td><?php echo $title_pr->title;?>
+                                                                <?php
+                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, $title_pr->title)));
+                                                                ?>
+                                                            </td>
+
+                                                            <td class="actions">
+                                                                <?php
+                                                                    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
+                                                                    if (return_link('1603', $order->id) == false) { ?>
+                                                                        <span class="label label label-info">Pending </span>
+                                                                    <? } else { ?>
+                                                                        <a target="_blank" href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>" class="btn btn-primary dl">Download</a>
+                                                                    <? } ?>
+                                                            </td>
+                                                        </tr>
+                                                   <?php 
+                                                }
+                                                    /*if($p[0]){
                                                         ?>
 
                                                         <tr class="even" role="row">
@@ -483,7 +509,7 @@
                                                             </td>
                                                         </tr>
                                                     <?php
-                                                    }
+                                                    }*/
                                                 ?>
 
                                                 

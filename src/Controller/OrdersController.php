@@ -1076,4 +1076,58 @@
             return $this->response;
             die;
         }
+        public function getProductTitle($id)
+        {
+           $doc = TableRegistry::get('order_products'); 
+           $doc = $doc->find()->where(['id' => $id])->first();
+           $this->response->body($doc);
+            return $this->response;
+            die;
+        }
+        function check_driver_abstract2($id)
+        {
+           $doc = TableRegistry::get('profiles'); 
+           $doc = $doc->find()->where(['id' => $id])->first();
+           $this->response->body($doc);
+            return $this->response;
+            die;
+          
+        }
+        function check_cvor2($id)
+        {
+           $doc = TableRegistry::get('profiles'); 
+           $doc = $doc->find()->where(['id' => $id])->first();
+           $this->response->body($doc);
+            return $this->response;
+            die;
+          
+        }
+        function check_driver_abstract($id)
+        {
+           $doc = TableRegistry::get('profiles'); 
+           $doc = $doc->find()->where(['id' => $id])->first();
+           $province = $doc->driver_province;
+           $arr = array('BC','MB','NU','NT','QC','SK','YT');
+           //$arr = array('BC','SK','MB');
+           if(in_array($province,$arr))
+           echo '1';
+           else
+           echo '0';
+           die();
+          
+        }
+        function check_cvor($id)
+        {
+           $doc = TableRegistry::get('profiles'); 
+           $doc = $doc->find()->where(['id' => $id])->first();
+           $province = $doc->driver_province;
+           //$arr = array('BC','MB','NU','NT','QC','SK','YT');
+           $arr = array('BC','SK','MB');
+           if(in_array($province,$arr))
+           echo '1';
+           else
+           echo '0';
+           die();
+          
+        }
     }

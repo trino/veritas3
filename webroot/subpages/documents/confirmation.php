@@ -5,13 +5,13 @@
         $forms = '';
     if (!$forms) {
         $forms_arr[0] = 1;
-        $forms_arr[1] = 1;
-        $forms_arr[2] = 1;
-        $forms_arr[3] = 1;
-        $forms_arr[4] = 1;
-        $forms_arr[5] = 1;
-        $forms_arr[6] = 1;
-        $forms_arr[7] = 1;
+        $forms_arr[1] = 2;
+        $forms_arr[2] = 3;
+        $forms_arr[3] = 4;
+        $forms_arr[4] = 5;
+        $forms_arr[5] = 6;
+        $forms_arr[6] = 7;
+        //$forms_arr[7] = 8;
     } else {
         $forms_arr = explode(',', $forms);
 
@@ -95,17 +95,25 @@
                     }
                 }
                 return $lineclass;
+            }
+            if($p)
+            {
+                foreach($p as $pp)
+                {
+                    $title = $this->requestAction('/orders/getProductTitle/'.$pp);
+                    $lineclass = PrintLine($lineclass, $title->title, "prem_nat", $pp);
+                }
             }   
-            $lineclass = PrintLine($lineclass, "Premium National Criminal Record Check", "prem_nat", $p[0]);
+            /*$lineclass = PrintLine($lineclass, "Premium National Criminal Record Check", "prem_nat", $p[0]);
             $lineclass = PrintLine($lineclass, "Driver's Record Abstract (MVR)", "dri_abs", $p[1]);
             $lineclass = PrintLine($lineclass, "CVOR", "CVOR", $p[2]);
             $lineclass = PrintLine($lineclass, "Pre-employment Screening Program Report", "prem_nat", $p[3]);
             $lineclass = PrintLine($lineclass, "Transclick", "prem_nat", $p[4]);
             $lineclass = PrintLine($lineclass, "Certifications", "prem_nat", $p[5]);
-            $lineclass = PrintLine($lineclass, "Letter of Experience", "prem_nat", $p[6]);
+            $lineclass = PrintLine($lineclass, "Letter of Experience", "prem_nat", $p[6]);*/
 
 
-            if (isset($_GET['order_type'])){
+            /*if (isset($_GET['order_type'])){
              //  echo $_GET['order_type'];
                if($_GET['order_type']!="Order MEE") {
                    if (count($p) > 7) {
@@ -116,7 +124,7 @@
                 {
                     //echo 123123123;
                 }
-            }
+            }*/
 
 
 

@@ -1607,8 +1607,15 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
     function cron()
     {
         //die('HERE');
-        $date = date('Y-m-d');
-        $time = date('H');
+
+
+
+        echo  $date = date('Y-m-d');
+     echo   $time = date('H');
+echo date("Y-m-d H:i:s");
+
+
+
 
         $m = date('i');
         $remainder = $m % 5;
@@ -1620,13 +1627,13 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             $m2 = '0' . $m2;
         $date2 = $date . ' ' . $time . ':' . $m2;
         $date = $date . ' ' . $time . ':' . $m;
-        //echo $date2;
 
         $path = $this->Document->getUrl();
 
         $q = TableRegistry::get('events');
         $que = $q->find();
         $query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
+        //VAR_Dump($query);die();
         foreach ($query as $todo) {
 
             if($todo->email_self=='1')
@@ -1655,8 +1662,6 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                     $this->Mailer->sendEmail($from, $to, $sub, $msg);
                 
                 }
-                
-
             }
             //echo $s;die();
             $send = $q->query();
@@ -1665,6 +1670,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                 ->where(['id' => $todo->id])
                 ->execute();
         }
+
         die();
     }
 

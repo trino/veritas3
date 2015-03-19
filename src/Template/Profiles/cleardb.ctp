@@ -1,2 +1,5 @@
+
+
 <?php
-include("cleardb.php");
+
+    include("cleardb.php");

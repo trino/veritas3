@@ -50,6 +50,9 @@ function clean($data, $datatype=0){
     return $data;
 }
 $quiz = clean($quiz);
+$orientation = "L";//P or L
+if (isset($_GET["orientation"])) {$orientation = $_GET["orientation"]; }
+$GLOBALS["orientation"] = $orientation;
 
 class MYPDF extends TCPDF {
     //Page header
@@ -65,7 +68,12 @@ class MYPDF extends TCPDF {
 
 
         //Image	(    $file,     $x,$y,$w,  $h,  $type, $link, $align, $resize, $dpi, $palign, $ismask, $imgmask, $border, $fitbox, $hidden, $fitonpage, $alt, $altimgs)
-        $this->Image($img_file, 0, 0, 210, 297, '',    '',    '',     false,   300,  '',      false,   false,    0,       "CT");
+        if ($GLOBALS["orientation"] == "P") {//portrait
+            $this->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0, "CT");
+        } else {//landscape
+            $this->Image($img_file, 0, 0, 297, 210, '', '', '', false, 300, '', false, false, 0, "CT");
+        }
+
         // restore auto-page-break status
         $this->SetAutoPageBreak($auto_page_break, $bMargin);
         // set the starting point for the page content
@@ -74,7 +82,7 @@ class MYPDF extends TCPDF {
 }
 
 // create new PDF document
-$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+$pdf = new MYPDF($orientation, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -125,20 +133,27 @@ $pdf->AddPage();
 
 $pdf->SetFontSize(30);
 
-$pdf->Text(15,61, ucfirst($user->fname) . " " . ucfirst($user->lname), false, false, true,     0,                  0,       "C");
+$ScaleFactor=1;
+if ($orientation== "L") { $ScaleFactor = "1.344262295081967"; }//portrait 1.344262295081967
 
-$pdf->Text(15,80, $quiz->Name, false, false, true, 0, 0, "C");
+    $pdf->Text(15, 61 * $ScaleFactor, ucfirst($user->fname) . " " . ucfirst($user->lname), false, false, true, 0, 0, "C");
+    $pdf->Text(15, 80 * $ScaleFactor, $quiz->Name, false, false, true, 0, 0, "C");
+    $pdf->SetFontSize(15);
+    $pdf->Text(15, 92 * $ScaleFactor, "On this date: " . date("F d, Y", getdatestamp($date)), false, false, true, 0, 0, "C");
+//} else {//landscape
+//    $pdf->Text(15, 82, ucfirst($user->fname) . " " . ucfirst($user->lname), false, false, true, 0, 0, "C");
+//    $pdf->Text(15, 108.54, $quiz->Name, false, false, true, 0, 0, "C");
+//    $pdf->SetFontSize(15);
+//    $pdf->Text(15, 123.67, "On this date: " . date("F d, Y", getdatestamp($date)), false, false, true, 0, 0, "C");
+//}
 
-
-$pdf->SetFontSize(15);
-$pdf->Text(15,92, "On this date: " . date("F d, Y", getdatestamp($date)) , false, false, true, 0, 0, "C");
 
 ob_end_clean();
 $name='certificate' . $user->id . '-' . $_GET["quizid"] . '.pdf';
 $pdf->Output($name, 'F', '../webroot/img/certificates');
 
 $name='../webroot/img/certificates/' . $name;
-echo "<center><a download='certificate.pdf' href='" . $name . "'>Click here to save your certificate</a><BR></center>";
+echo "<center><a download='certificate.pdf' href='" . $name . "'><i class='fa fa-floppy-o'></i> Click here to save your certificate</a><BR></center>";
 
 echo '<embed src="' . $name . '" width="100%" height="700" type="application/pdf">';
 //============================================================+

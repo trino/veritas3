@@ -223,7 +223,7 @@ if ($activetab == "permissions") {
                                         {
                                         ++$cnt;
                                         ?>
-                                        <td class="titlectype_<?php echo $product->id;?>">
+                                        <td width="33%" class="titlectype_<?php echo $product->id;?>">
                                            <input name="ctypes[]"
                                                                                  type="checkbox" <?php if (in_array($product->id, $ct)) {
                                                 echo "checked='checked'";

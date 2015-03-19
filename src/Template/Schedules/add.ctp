@@ -57,11 +57,11 @@ else
 				</div>
 			</div>
             <div class="form-group">
-                <div class="col-md-2">
-                    <input type="checkbox" name="email_self" value="1" <?php if(isset($event) && $event->email_self=='1')echo "checked='checked'";?> <?php echo $disabled;?> /> Email Self
+                <div class="col-md-12">
+                    <input type="checkbox" id="email_self" name="email_self" value="1" <?php if(isset($event) && $event->email_self=='1')echo "checked='checked'";?> <?php echo $disabled;?> /><label for="email_self">Send an email notification to yourself</label>
                 </div>
-				<div class="col-md-10">
-					<textarea class="form-control todo-taskbody-taskdesc" <?php echo $disabled;?> name="others_email" rows="8" placeholder="Others Email (Comma seperated values)"><?php if(isset($event))echo $event->others_email;?></textarea>
+				<div class="col-md-12">
+					<textarea class="form-control todo-taskbody-taskdesc" <?php echo $disabled;?> name="others_email" rows="8" placeholder="Other people's email addresses (Separated with commas)"><?php if(isset($event))echo $event->others_email;?></textarea>
 				</div>
 			</div>
 			<!-- END TASK DESC -->

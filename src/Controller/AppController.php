@@ -34,7 +34,11 @@ class AppController extends Controller {
  * @return void
  */
 	public function initialize() {
-		$this->loadComponent('Flash');
+
+
+        date_default_timezone_set('America/Toronto');
+
+        $this->loadComponent('Flash');
 	}
 
 

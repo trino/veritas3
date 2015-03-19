@@ -1607,8 +1607,15 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
     function cron()
     {
         //die('HERE');
-        $date = date('Y-m-d');
-        $time = date('H');
+
+
+
+        echo  $date = date('Y-m-d');
+     echo   $time = date('H');
+echo date("Y-m-d H:i:s");
+
+
+
 
         $m = date('i');
         $remainder = $m % 5;

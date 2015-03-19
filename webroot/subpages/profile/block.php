@@ -688,6 +688,21 @@ if ($activetab == "permissions") {
                             </td>
                         </tr>
                         <tr>
+                            <td class="vtop">Bulk Order</td>
+                            <td>
+                                <label class="uniform-inline">
+                                    <input <?php echo $is_disabled ?> type="radio"
+                                                                      name="side[bulk]"
+                                                                      value="1" <?php if (isset($sidebar) && $sidebar->bulk == 1) echo "checked"; ?>/>
+                                    Yes </label>
+                                <label class="uniform-inline">
+                                    <input <?php echo $is_disabled ?> type="radio"
+                                                                      name="side[bulk]"
+                                                                      value="0" <?php if (isset($sidebar) && $sidebar->bulk == 0) echo "checked"; ?>/>
+                                    No </label>
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="vtop">
                                 <?php echo ucfirst($settings->document); ?>
                             </td>
@@ -1255,6 +1270,23 @@ if ($activetab == "permissions") {
                                 <input <?php echo $is_disabled ?> type="radio"
                                                                   name="block[orders_intact]"
                                                                   value="0" <?php if (isset($block) && $block->orders_intact == 0) echo "checked"; ?>/>
+                                No </label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            Bulk Order
+                        </td>
+                        <td>
+                            <label class="uniform-inline">
+                                <input <?php echo $is_disabled ?> type="radio"
+                                                                  name="block[bulk]"
+                                                                  value="1" <?php if (isset($block) && $block->bulk == 1) echo "checked"; ?>/>
+                                Yes </label>
+                            <label class="uniform-inline">
+                                <input <?php echo $is_disabled ?> type="radio"
+                                                                  name="block[bulk]"
+                                                                  value="0" <?php if (isset($block) && $block->bulk == 0) echo "checked"; ?>/>
                                 No </label>
                         </td>
                     </tr>

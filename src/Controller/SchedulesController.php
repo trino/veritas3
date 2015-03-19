@@ -47,11 +47,12 @@ class SchedulesController extends AppController {
 	public function add() {
 	   if(isset($_POST['submit']))
        {
+        date_default_timezone_set('Canada/Central');
        
             foreach($_POST as $k=>$v)
             {
                 if($k == 'date')
-                    $arr[$k] = date('Y-m-d H:i:s',strtotime(trim(str_replace("-","",$v)).":00"));
+                    $arr[$k] = date('Y-m-d H:i:s',strtotime(trim(str_replace("-"," ",$v)).":00"));
                 else
                     $arr[$k]= $v;
             }

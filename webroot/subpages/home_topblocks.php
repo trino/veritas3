@@ -294,6 +294,17 @@ function randomcolor(){
         </a>-->
     <?php } ?>
 
+ <?php if ($sidebar->bulk == 1 && $block->bulk =='1') { ?>
+        <a href="<?php echo $this->request->webroot;?>profiles" class="tile bg-green">
+            <div class="tile-body">
+                <i class="fa fa-comments"></i>
+            </div>
+            <div class="tile-object">
+                <div class="name">Bulk Order</div>
+                <div class="number"></div>
+            </div>
+    </a>
+    <?php } ?>
 
 
 

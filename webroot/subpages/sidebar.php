@@ -280,6 +280,15 @@ $profileID = $this->Session->read('Profile.id');
                     </ul>
                 </li>
             <?php } ?>
+             <?php if ($sidebar->bulk == 1) { ?>
+                <li class="<?php echo ($this->request['controller'] == 'Profiles') ? 'active open' : ''; ?>">
+                    <a href="<?php echo $this->request->webroot; ?>profiles">
+                        <i class="fa fa-calendar"></i>
+                        <span class="title">Bulk Order</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+            <?php } ?>
 
             <?php if ($sidebar->logo == '1') { ?>
                 <li class="sidebar-toggler-wrapper">

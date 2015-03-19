@@ -53,44 +53,78 @@
 
     $upload_additional = true; //additional are all attachments in all forms
 
-  //  var_dump($formsarray);
 
-//    echo $formsarray[1];
 
-    if ($formsarray[1] =='1' ||$formsarray[1] =='0') {
+
+
+
+    if ($formsarray[0] =='1' ||$formsarray[0] =='0') {
 
         if ($formsarray[0] == '0') {
             $productdetailsebs1603 = false;
+
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, '1-1');
+            fclose($myfile);
+
+
             echo 1;
         }
         if ($formsarray[1] == '0') {
             $productdetails1 = false;
             echo 2;
+
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, '1-2');
+            fclose($myfile);
+
+
+
         }
         if ($formsarray[2] == '0') {
             $productdetails14 = false;
             echo 3;
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, '1-3');
+            fclose($myfile);
+
+
         }
         if ($formsarray[3] == '0') {
             $productdetails77 = false;
-            echo 4;
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, '1-4');
+            fclose($myfile);
+
         }
         if ($formsarray[4] == '0') {
             $productdetails78 = false;
-            echo 5;
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, '1-5');
+            fclose($myfile);
+
         }
         if ($formsarray[5] == '0') {
             $productdetailsebs1650 = false;
-            echo 6;
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, '1-6');
+            fclose($myfile);
+
         }
         if ($formsarray[6] == '0') {
             $productdetailsebs1627 = false;
-            echo 7;
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, '1-7');
+            fclose($myfile);
+
         }
 
         if ($formsarray[7] == '0')
         {    $productdetails_CheckDL_72 = false;
-            echo 8;
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, '1-8');
+            fclose($myfile);
+
 
         }
 

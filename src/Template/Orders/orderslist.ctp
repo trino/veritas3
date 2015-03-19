@@ -190,7 +190,8 @@
                                 $client = $this->requestAction("clients/getClient/" . $order->client_id);
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
-                                    <td><?= $this->Number->format($order->id); //echo $order->profile->title;    ?></td>
+                                    <td><?= $this->Number->format($order->id);
+                                        if($order->hasattachments) { echo '<BR><i class="fa fa-paperclip"></i>';}  //echo $order->profile->title;    ?></td>
                                     <td style="min-width: 140px;">
                                     
                                         <?php

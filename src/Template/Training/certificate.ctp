@@ -153,7 +153,7 @@ $name='certificate' . $user->id . '-' . $_GET["quizid"] . '.pdf';
 $pdf->Output($name, 'F', '../webroot/img/certificates');
 
 $name='../webroot/img/certificates/' . $name;
-echo "<center><a download='certificate.pdf' href='" . $name . "'>Click here to save your certificate</a><BR></center>";
+echo "<center><a download='certificate.pdf' href='" . $name . "'><i class='fa fa-floppy-o'></i> Click here to save your certificate</a><BR></center>";
 
 echo '<embed src="' . $name . '" width="100%" height="700" type="application/pdf">';
 //============================================================+

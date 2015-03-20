@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
 <body onLoad="ajaxpage('timezone');">
 
@@ -65,7 +65,7 @@
 
 
                                                 </div>
-                                                 <a href="" class="btn btn-danger delUrl" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
+                                                 <div style="background: #fff; padding:10px;"><a href="" class="btn btn-danger delUrl" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a></div>
                                                 </div>
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>

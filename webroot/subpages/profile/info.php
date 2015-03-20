@@ -973,7 +973,7 @@
                 $('#driver_div').show();
                 $('#isb_id').hide();
                 //$('.username_div').hide();
-                $('#username_field').attr('disabled','disabled');
+                //$('#username_field').attr('disabled','disabled');
                 //$('.un').removeProp('required');
                 $('#password').removeProp('required');
                $('#retype_password').removeProp('required');
@@ -989,7 +989,7 @@
                 //$('.username_div').show();
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
-                $('#username_field').removeAttr('disabled');
+                //$('#username_field').removeAttr('disabled');
                 //$('.un').prop('required', "required");
                 <?php
                 if(isset($p->password) && $p->password)

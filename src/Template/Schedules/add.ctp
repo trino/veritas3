@@ -65,7 +65,7 @@ else
                     <input type="checkbox" id="email_self" name="email_self" value="1" <?php if(isset($event) && $event->email_self=='1')echo "checked='checked'";?> <?php echo $disabled;?> /><label for="email_self">Send an email notification to yourself</label>
                 </div>
 				<div class="col-md-12">
-					<textarea class="form-control todo-taskbody-taskdesc" <?php echo $disabled;?> name="others_email" rows="8" placeholder="Other people's email addresses (Separated with commas)"><?php if(isset($event))echo $event->others_email;?></textarea>
+					<textarea class="form-control todo-taskbody-taskdesc" <?php echo $disabled;?> name="others_email" rows="2" placeholder="Send notification to other email addresses (separated with commas)"><?php if(isset($event))echo $event->others_email;?></textarea>
                     <input type="hidden" name="timezoneoffset" value="<?= $_SESSION['time']; ?>">
 				</div>
 			</div>

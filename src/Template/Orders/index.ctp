@@ -160,7 +160,7 @@ $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Pro
                                 ?>
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?php $this->Number->format($order->id); //echo $order->profile->title;
-                                        if($order->hasattachments) { echo '<BR><i class="fa fa-paperclip"></i>';}  ?></td>
+                                        if($order->hasattachments) { echo '<BR><i  title="Has Attachment" class="fa fa-paperclip"></i>';}  ?></td>
                                     <td><?= h($order->title) ?></td>
                                     <td><?php if(isset($uploaded_by))echo h($uploaded_by->username) ?></td>
                                     <td><?php if(isset($uploaded_for))echo h($uploaded_for->fname.' '.$uploaded_for->mname.' '.$uploaded_for->lname) ?></td>

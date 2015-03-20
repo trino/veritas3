@@ -67,7 +67,7 @@
                                             <tr>
                                                 <td><?php
                                                     echo $this->Number->format($clients->id);
-                                                    if($clients->hasattachments) { echo '<BR><i class="fa fa-paperclip"></i>';}
+                                                    if($clients->hasattachments) { echo '<BR><i  title="Has Attachment" class="fa fa-paperclip"></i>';}
                                                     ?></td>
                                                 <td>
 

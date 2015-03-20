@@ -247,7 +247,7 @@
 
                                     <tr class="<?= $row_color_class; ?>" role="row">
                                         <td><?php echo $this->Number->format($profile->id);
-                                         if($profile->hasattachments) { echo '<BR><i class="fa fa-paperclip"></i>';}
+                                         if($profile->hasattachments) { echo '<BR><i title="Has Attachment" class="fa fa-paperclip"></i>';}
                                          ?></td>
                                         <td><?php
                                                 if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {

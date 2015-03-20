@@ -234,7 +234,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                             ?>
                             <tr class="<?= $row_color_class; ?>" role="row">
                                 <td><?echo $this->Number->format($docs->id);
-                                    if($docs->hasattachments) { echo '<BR><i class="fa fa-paperclip"></i>';} ?></td>
+                                    if($docs->hasattachments) { echo '<BR><i  title="Has Attachment" class="fa fa-paperclip"></i>';} ?></td>
                                 <td align=""><?php if ($orderID > 0) {
                                         echo '<a href="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/'.$orderDetail->id;if($orderDetail->order_type){echo '?order_type='.urlencode($orderDetail->order_type);if($orderDetail->forms)echo '&forms='.$orderDetail->forms;}echo '">'.$orderDetail->id;echo '</a>';
                                     } else {

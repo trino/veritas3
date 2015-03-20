@@ -62,11 +62,11 @@
                         						</div>
                                                 
                         						<div class="portlet-body descprition">
-                                                           
-                                                                
+
+
                                                 </div>
                                                  <a href="" class="btn btn-danger delUrl" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
-                                                </div>                  
+                                                </div>
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>
 								<div class="col-md-9 col-sm-12">

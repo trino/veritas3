@@ -2,8 +2,11 @@
 //debug ($this->Session);
 $profileID = $this->Session->read('Profile.id');
  if(strlen($profileID)==0) {
-    echo '<div class="alert alert-danger"><strong>Error!</strong> <a href="profiles/logout">Your session has timed out, click here to log back in.</a></div>';
-}
+  //  echo '<div class="alert alert-danger"><strong>Error!</strong> <a href="profiles/login">Your session has timed out, click here to log back in.</a></div>';
+
+     header("Location: " . $this->request->webroot . "");
+
+ }
     $sidebar = $this->requestAction("settings/all_settings/" . $profileID . "/sidebar");
     $order_url = $this->requestAction("settings/getclienturl/" . $profileID . "/order");
     $document_url = $this->requestAction("settings/getclienturl/" . $profileID . "/document");
@@ -238,7 +241,9 @@ $profileID = $this->Session->read('Profile.id');
                         <span class="selected"></span>
                     </a>
                 </li-->
-            <?php } ?>
+            <?php }
+
+            ?>
              <?php if ($sidebar->analytics == 1) { ?>
                 <li class="<?php echo ($this->request['action'] == 'analytics') ? 'active open' : ''; ?>">
                     <a href="<?php echo $this->request->webroot; ?>documents/analytics">

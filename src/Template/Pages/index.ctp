@@ -1,6 +1,14 @@
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 <?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 
+
+<?php
+if ($sidebar->training == 1 && $sidebar->client_list == 0) {
+header("Location: " . $this->request->webroot . "training");
+die();
+}?>
+
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
 <body onLoad="ajaxpage('schedules/timezone');">

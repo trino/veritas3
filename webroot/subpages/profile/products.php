@@ -34,7 +34,16 @@
                         <!--td><?php echo $product->id;?></td-->
                         <td class="title_<?php echo $product->id;?>"><?php echo $product->title;?></td>
                         <td><input type="checkbox" <?php if($product->enable=='1'){echo "checked='checked'";}?> class="enable" id="chk_<?php echo $product->id;?>" /></td>
-                        <td><a href="javascript:;" class="btn btn-info editpro" id="edit_<?php echo $product->id;?>">Edit</a></td>
+                        <td>
+                        <?php
+                        if($product->id >= 9)
+                        {
+                        ?>
+                            <a href="javascript:;" class="btn btn-info editpro" id="edit_<?php echo $product->id;?>">Edit</a>
+                        <?php
+                        }
+                         ?>
+                        </td>
                     </tr>        
                 <?php
                 }

@@ -575,14 +575,14 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                             }
                         }
 
-                        if (isset($_POST['profile_type']) && $_POST['profile_type'] == 5) {
+                       /* if (isset($_POST['profile_type']) && $_POST['profile_type'] == 5) {
                             $username = 'driver_' . $profile->id;
                             $queries = TableRegistry::get('Profiles');
                             $queries->query()->update()->set(['username' => $username])
                                 ->where(['id' => $profile->id])
                                 ->execute();
-                        } else { /*do nth */
-                        }
+                        } else { /*do nth 
+                        }*/
                         if ($profile_type == 2) {
                             //save profiles to clients if recruiter
                             $clients_id = $this->Settings->getAllClientsId($this->request->session()->read('Profile.id'));

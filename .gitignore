@@ -28,3 +28,4 @@ src/Template/Orders/webservice.ctp
 src/Template/Orders/webservice.ctp
 *.xml
 webroot/img/certificates/certificate58-3.pdf
+*.pdf

@@ -130,4 +130,6 @@ Tasks Widget
 
 #recruiter_notes{}
 
-
+.datepicker td{
+    cursor: pointer;
+}

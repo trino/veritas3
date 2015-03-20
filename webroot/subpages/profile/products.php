@@ -36,7 +36,7 @@
                         <td><input type="checkbox" <?php if($product->enable=='1'){echo "checked='checked'";}?> class="enable" id="chk_<?php echo $product->id;?>" /></td>
                         <td>
                         <?php
-                        if($product->id >= 10)
+                        if($product->id >= 9)
                         {
                         ?>
                             <a href="javascript:;" class="btn btn-info editpro" id="edit_<?php echo $product->id;?>">Edit</a>

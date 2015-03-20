@@ -1606,16 +1606,9 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
 
     function cron()
     {
-        //die('HERE');
-
-
-
-        echo  $date = date('Y-m-d');
-     echo   $time = date('H');
-echo date("Y-m-d H:i:s");
-
-
-
+        
+        $date = date('Y-m-d');
+        $time = date('H');
 
         $m = date('i');
         $remainder = $m % 5;
@@ -1625,9 +1618,9 @@ echo date("Y-m-d H:i:s");
         $m2 = $m + 5;
         if ($m2 < 10)
             $m2 = '0' . $m2;
-        $date2 = $date . ' ' . $time . ':' . $m2;
-        $date = $date . ' ' . $time . ':' . $m;
-
+         $date2 = $date . ' ' . $time . ':' . $m2;
+         $date = $date . ' ' . $time . ':' . $m;
+        //die();
         $path = $this->Document->getUrl();
 
         $q = TableRegistry::get('events');

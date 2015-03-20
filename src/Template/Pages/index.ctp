@@ -2,6 +2,16 @@
 <?php $sidebar =$this->requestAction("settings/get_side/".$this->Session->read('Profile.id'));?>
 
 
+<?php
+if ($sidebar->training == 1 && $sidebar->client_list == 0) {
+header("Location: " . $this->request->webroot . "training");
+die();
+}?>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
+<body onLoad="ajaxpage('schedules/timezone');">
 
 <h3 class="page-title">
     <?php echo $settings->mee;?> Dashboard <?php if($settings->mee == 'MEE'){ ?><small>Driver Qualification System</small><?php } ?>

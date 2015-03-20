@@ -161,7 +161,7 @@
             if (isset($_GET['type'])) {
                 $this->set('return_type', $_GET['type']);
             }
-            $this->set('documents', $this->paginate($doc));
+            $this->set('documents', $this->appendattachments($this->paginate($doc)));
             if (isset($_GET['flash'])) {
                 $this->Flash->success('Document saved successfully.');
             }
@@ -1372,7 +1372,18 @@
                 }
             }*/
         }
-        
 
-  
+        public function appendattachments($query){
+            foreach($query as $client){
+                $client->hasattachments = $this->hasattachments($client->order_id, $client->id);
+            }
+            return $query;
+        }
+        public function hasattachments($orderid, $documentid){
+            $docs = TableRegistry::get('doc_attachments');
+            $query = $docs->find();
+            $client_docs = $query->select()->where(['order_id' => $orderid,'document_id'=>$documentid, 'attachment LIKE' => "%.%"])->first();
+            if($client_docs) {return true;}
+        }
+
     }

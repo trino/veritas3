@@ -270,18 +270,18 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
         ?>
 
 
-    <a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/product_example"><?php get_title('product_example') ?></a> /
+    <a  style="" href="<?php echo $this->request->webroot;?>pages/view/product_example"><?php get_title('product_example') ?></a> /
 
-		<a style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/help"><?php get_title('help') ?></a> /
+		<a style="" href="<?php echo $this->request->webroot;?>pages/view/help"><?php get_title('help') ?></a> /
 
-		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/faq"><?php get_title('faq') ?></a> /
-		<a style="color:white;"  href="<?php echo $this->request->webroot;?>pages/view/privacy_code"><?php get_title('privacy_code') ?></a> /
+		<a  style="" href="<?php echo $this->request->webroot;?>pages/view/faq"><?php get_title('faq') ?></a> /
+		<a style=""  href="<?php echo $this->request->webroot;?>pages/view/privacy_code"><?php get_title('privacy_code') ?></a> /
 
-		<a  style="color:white;" href="<?php echo $this->request->webroot;?>pages/view/terms"><?php get_title('terms') ?></a>
+		<a  style="" href="<?php echo $this->request->webroot;?>pages/view/terms"><?php get_title('terms') ?></a>
 
         <?php if($this->request->session()->read('Profile.super')){?>
-            /  <a style = "color:white;" href = "<?php echo $this->request->webroot;?>pages/view/version_log" ><?php get_title('version_log') ?></a>
-            / <a style = "color:white;" href = "<?php echo $this->request->webroot;?>profiles/settings" >Settings</a >
+            /  <a style = "" href = "<?php echo $this->request->webroot;?>pages/view/version_log" ><?php get_title('version_log') ?></a>
+            / <a style = "" href = "<?php echo $this->request->webroot;?>profiles/settings" >Settings</a >
 
         <?php } ?>
     </div>

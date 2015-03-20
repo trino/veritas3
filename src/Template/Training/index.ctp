@@ -151,7 +151,7 @@ foreach($quizes as $quiz) {
         $totalquizzes+=1;
         echo str_replace("\r\n", "<P>", $quiz->Description);
         if (strlen($quiz->Attachments)>0 && $QuizID == $quiz->ID){
-            echo "<H4>Please click each attachment in sequential order to view the quiz</H4>";
+            echo "<br><br><strong>Please go through each attachment in sequential order to view the quiz:</strong>";
         }
         if (quizmiddle($QuizID, $quiz->ID)) {
             $attachments = explode(",", $quiz->Attachments);

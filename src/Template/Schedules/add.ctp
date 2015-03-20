@@ -1,3 +1,7 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
+<body onLoad="ajaxpage('timezone');">
+
 <?php if(isset($isdisabled))
 {
    $disabled = "disabled='disabled'"; 
@@ -61,7 +65,8 @@ else
                     <input type="checkbox" id="email_self" name="email_self" value="1" <?php if(isset($event) && $event->email_self=='1')echo "checked='checked'";?> <?php echo $disabled;?> /><label for="email_self">Send an email notification to yourself</label>
                 </div>
 				<div class="col-md-12">
-					<textarea class="form-control todo-taskbody-taskdesc" <?php echo $disabled;?> name="others_email" rows="8" placeholder="Other people's email addresses (Separated with commas)"><?php if(isset($event))echo $event->others_email;?></textarea>
+					<textarea class="form-control todo-taskbody-taskdesc" <?php echo $disabled;?> name="others_email" rows="2" placeholder="Send notification to other email addresses (separated with commas)"><?php if(isset($event))echo $event->others_email;?></textarea>
+                    <input type="hidden" name="timezoneoffset" value="<?= $_SESSION['time']; ?>">
 				</div>
 			</div>
 			<!-- END TASK DESC -->
@@ -70,7 +75,6 @@ else
 			<?php if(!isset($isdisabled)){?>
 			<div class="form-actions right todo-form-actions">
 				<button class="btn btn-sm green-haze" type="submit" name="submit">Save Changes</button>
-			
 			</div>
             <?php }?>
 		</div>

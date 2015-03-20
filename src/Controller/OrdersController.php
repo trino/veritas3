@@ -1016,7 +1016,7 @@
 
             //debug($order);
 
-            $this->set('orders', $this->paginate($order));
+            $this->set('orders', $this->appendattachments($this->paginate($order)));
 
         }
 
@@ -1130,4 +1130,20 @@
            die();
           
         }
+
+
+        public function appendattachments($query){
+            foreach($query as $client){
+                $client->hasattachments = $this->hasattachments($client->id);
+            }
+            return $query;
+        }
+        public function hasattachments($orderid){
+            $docs = TableRegistry::get('doc_attachments');
+            $query = $docs->find();
+            $client_docs = $query->select()->where(['order_id' => $orderid, 'attachment LIKE' => "%.%"])->first();
+            if($client_docs) {return true;}
+            return false;
+        }
+
     }

@@ -1,3 +1,6 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
+<body onLoad="ajaxpage('timezone');">
 
 <h3 class="page-title">
 			Calendar
@@ -59,11 +62,11 @@
                         						</div>
                                                 
                         						<div class="portlet-body descprition">
-                                                           
-                                                                
+
+
                                                 </div>
                                                  <a href="" class="btn btn-danger delUrl" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
-                                                </div>                  
+                                                </div>
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>
 								<div class="col-md-9 col-sm-12">
@@ -81,6 +84,10 @@
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="<?php echo $this->request->webroot;?>assets/admin/pages/scripts/calendar.js"></script>
+
+<?php
+echo "User time: " . $_SESSION['time']  . " Server timezone offset " . date("Z")/3600;
+?>
 <script>
 jQuery(document).ready(function() {       
   $('#calendar').fullCalendar({
@@ -97,7 +104,8 @@ jQuery(document).ready(function() {
             desc: '<?php echo $event->description;?>',
             delUrl: '<?php echo $this->request->webroot."schedules/delete/".$event->id;?>',
             start: '<?php echo str_replace(" ","T",$event->date);?>',
-            url: '<?php echo $this->request->webroot;?>schedules/edit/<?php echo $event->id;?>'
+            url: '<?php echo $this->request->webroot;?>schedules/edit/<?php echo $event->id;?>',
+            time: <?= $_SESSION['Config']['time'] ?>
         },
     <?php }?>
    
@@ -140,4 +148,4 @@ jQuery(document).ready(function() {
    //Calendar.init();
    
 });
-</script>
+</script></body>

@@ -1606,6 +1606,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
 
     function cron()
     {
+
         
         $date = date('Y-m-d');
         $time = date('H');
@@ -1618,17 +1619,20 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
         $m2 = $m + 5;
         if ($m2 < 10)
             $m2 = '0' . $m2;
+
          $date2 = $date . ' ' . $time . ':' . $m2;
          $date = $date . ' ' . $time . ':' . $m;
-        //die();
+
         $path = $this->Document->getUrl();
 
         $q = TableRegistry::get('events');
         $que = $q->find();
-        $query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
+        //$query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
+
+        $query = $que->select()->where(['(date <= "' . $datetime . '")', 'sent' => 0])->limit(200);
+        echo "<BR>" . iterator_count($query) . " emails to send";
         //VAR_Dump($query);die();
         foreach ($query as $todo) {
-
             if($todo->email_self=='1')
             {
                 $q2 = TableRegistry::get('profiles');
@@ -1640,6 +1644,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                     $to = $email;
                     $sub = 'ISBMEE (Schedule) - Reminder';
                     $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                    echo "<hR>From: " . $from . "<BR>To: " . $to . " (Account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
                     $this->Mailer->sendEmail($from, $to, $sub, $msg);
                 }
             }
@@ -1652,16 +1657,13 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                     $to = trim($em);
                     $sub = 'ISBMEE (Schedule) - Reminder';
                     $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                    echo "<hR>From: " . $from . "<BR>To: " . $to . " (Added by account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
                     $this->Mailer->sendEmail($from, $to, $sub, $msg);
-                
                 }
             }
             //echo $s;die();
             $send = $q->query();
-            $send->update()
-                ->set(['sent' => 1])
-                ->where(['id' => $todo->id])
-                ->execute();
+            $send->update()->set(['sent' => 1])->where(['id' => $todo->id])->execute();
         }
 
         die();

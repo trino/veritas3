@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") { include_once('/subpages/api.php'); } else { include_once('subpages/api.php'); }
 
 class TrainingController extends AppController {
     public function nopermissions(){ return "You can not edit courses."; }
@@ -339,7 +340,9 @@ class TrainingController extends AppController {
     public function saveanswers($UserID, $Quiz, $Post){
         //debug($Quiz);
         $answers=0;
+        $correct=0;
         foreach($Quiz as $question){//QuizID QuestionID
+            $QuizID=$question->QuizID;
             $QuestionName = $question->QuizID . ":" . $question->QuestionID;
             $Answer = $Post[$QuestionName . "_answer"];
             $Flagged = false;
@@ -350,12 +353,46 @@ class TrainingController extends AppController {
             //echo "<BR>Question ID: " . $question->QuestionID;
             //echo "<BR>Answer: " . $Answer;
             //echo "<BR>Flagged: " . $Flagged ;
-
+            if($question->Answer == $Answer){ $correct++;}
             $this->saveanswer($UserID, $question->QuizID, $question->QuestionID, $Answer, $Flagged);
             $answers+=1;
         }
-        $this->Flash->success($answers . ' answers were saved');
+        if($answers>0) {
+            $score = round($correct / $answers * 100, 2);
+            $message = "You did not pass the course";
+            if ($score>=50) { $message = "You passed! <A href='Http://" . getHost() ;
+                if (getHost("localhost") == "localhost") {
+                    $appname =  $_SERVER['PHP_SELF'];
+                    $slash = strpos($appname, "/", 2);
+                    $appname = substr($appname, 0, $slash );
+                    $message.=$appname;
+                }
+                $message.= "/training/certificate?quizid=" . $QuizID . "&userid=" . $UserID . "'>Click here to view your certificate</A>";
+            }
+            $message.= "<BR>You had a score of " . $score . "%";
+            $this->email($UserID, "IBMEE Course completion", $message);
+            //http://localhost/veritas3/training/certificate?quizid=1
+            $this->Flash->success($answers . ' answers were saved');
+        }
     }
+
+    public function email($to, $subject, $message){
+        if(is_array($to)){
+            foreach($to as $address){
+                $this->email($address, $subject, $message);
+            }
+        } else {
+            if(is_numeric($to)){
+                $profile=$this->getprofile($to);
+                $to=$profile->email;
+            }
+            if ($to) {
+                $from = 'info@' . getHost("isbmee.com");
+                $this->Mailer->sendEmail($from, $to, $subject, $message);
+            }
+        }
+    }
+
     public function deleteanswers($UserID, $QuizID){
         $table = TableRegistry::get("training_answers");
         $table->deleteAll(array('UserID'=>$UserID, 'QuizID'=>$QuizID), false);
@@ -440,6 +477,7 @@ class TrainingController extends AppController {
     public function initialize(){
         parent::initialize();
         $this->loadComponent('Settings');
+        $this->loadComponent('Mailer');
     }
     public $paginate = [
         'limit' => 20,

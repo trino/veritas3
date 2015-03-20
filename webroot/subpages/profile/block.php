@@ -116,6 +116,12 @@ if ($activetab == "permissions") {
                                                                           value="1" <?php if ($sidebar->profile_delete == 1) echo "checked"; ?> />
                                         Delete
                                     </label>
+                                    <label class="uniform-inline">
+                                        <input <?php echo $is_disabled ?> type="checkbox" name="side[email_profile]"
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->email_profile == 1) echo "checked"; ?> />
+                                        Recieve Email
+                                    </label>
+                                    
                                 </div>
                                 <div class="clearfix"></div>
                             </td>
@@ -296,6 +302,12 @@ if ($activetab == "permissions") {
                                         <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_others]"
                                                                           value="1" <?php if ($sidebar->orders_others == 1) echo "checked"; ?> />
                                         View Other's
+                                    </label>
+                                   
+                                    <label class="uniform-inline">
+                                        <input <?php echo $is_disabled ?> type="checkbox" name="side[email_orders]"
+                                                                          value="1" <?php if ($sidebar->email_orders == 1) echo "checked"; ?> />
+                                        Recieve Email
                                     </label>
                                     <!--label class="uniform-inline">
 
@@ -526,7 +538,7 @@ if ($activetab == "permissions") {
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <!--<tr>
                             <td class="vtop">
                                 Receive Email Notifications
                             </td>
@@ -563,7 +575,7 @@ if ($activetab == "permissions") {
                                 </div>
                                 <div class="clearfix"></div>
                             </td>
-                        </tr>
+                        </tr>-->
                         <!--<tr>
                                                 <td class="vtop">Feedbacks</td>
                                                 <td>
@@ -751,6 +763,11 @@ if ($activetab == "permissions") {
                                                                           name="side[document_others]"
                                                                           value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> />
                                         View Other's
+                                    </label>
+                                    <label class="uniform-inline">
+                                        <input <?php echo $is_disabled ?> type="checkbox" name="side[email_document]"
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->email_document == 1) echo "checked"; ?> />
+                                        Recieve Email
                                     </label>
                                     <!--label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"

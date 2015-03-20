@@ -1711,8 +1711,7 @@ if (isset($this->request->params['pass'][1])) {
         }
          
     function saveEmployment(url, order_id, cid, type,draft) {
-        alert('test');
-        //$('#loading5').show();
+        
         var fields = $('#form_employment').serialize();
                 $(':disabled[name]', '#form_employment').each(function () {
                     fields = fields + '&' + $(this).attr('name') + '=' + $(this).val();
@@ -1749,11 +1748,11 @@ if (isset($this->request->params['pass'][1])) {
             type: 'POST',
             success: function (res) {
                 if(draft==0){
-                                  //  window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
                                     else
                                     {
-                                  //     window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                       window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
                                     }
             }
         });

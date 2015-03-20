@@ -119,7 +119,7 @@ class DocumentComponent extends Component
 
             } else {
                 $docs = TableRegistry::get('Documents');
-                if (isset($_GET['draft']) || $_GET['draft']){
+                if (isset($_GET['draft']) && $_GET['draft']){
                     $arr['draft'] = 1;
                     //$controller->Flash->success('Document saved as draft');
                     }
@@ -189,14 +189,19 @@ class DocumentComponent extends Component
                             $em = $email_query->email;
                             $user_id = $controller->request->session()->read('Profile.id');
                             $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
-                            if (isset($uq->profile_type))
+                            if ($uq->profile_type)
                               {
                                 $u = $uq->profile_type;
                                 $type_query = TableRegistry::get('profile_types');
                                 $type_q = $type_query->find()->where(['id'=>$u])->first(); 
+                                if($type_q)
                                 $ut = $type_q->title;
+                                else
+                                $ut = '';
                                 
                               }
+                              else
+                              $ut = '';
                            $from = 'info@'.$path;
                             $to = $em;
                              $sub = 'Document submitted';
@@ -603,10 +608,7 @@ class DocumentComponent extends Component
                     $uploaded_for = '';
                 $for_doc = array('document_type'=>'Consent Form','sub_doc_id'=>4,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);
                 $this->saveDocForOrder($for_doc);
-                $for_doc = array('document_type'=>'Education Verification','sub_doc_id'=>4,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);                
-                $this->saveDocForOrder($for_doc);
-                $for_doc = array('document_type'=>'Employment Verification','sub_doc_id'=>4,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);                
-                $this->saveDocForOrder($for_doc);
+                
                 
                 
             } else {
@@ -682,15 +684,52 @@ class DocumentComponent extends Component
             //employement
             $controller = $this->_registry->getController();
             $employment = TableRegistry::get('employment_verification');
+            
+            $arr['client_id'] = $cid;
+            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            
+            
+            if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                if(!isset($_GET['order_id']))
+                $arr['order_id'] = $document_id;
+                else
+                $arr['order_id'] = $_GET['order_id'];
+                $arr['document_id'] = 0;
+                
+                
+                if (isset($_POST['uploaded_for']))
+                    $uploaded_for = $_POST['uploaded_for'];
+                else
+                    $uploaded_for = '';
+                
+                $for_doc = array('document_type'=>'Employment Verification','sub_doc_id'=>9,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);                
+                $this->saveDocForOrder($for_doc);
+                
+                
+            } else {
+                $arr['document_id'] = $document_id;
+                $arr['order_id'] = 0;
+            }
+            
+            
+            
+            
 
             $del = $employment->query();
-            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+            /*if (!isset($_GET['document']) || isset($_GET['order_id'])){
                 if(!isset($_GET['order_id']))
                     $del->delete()->where(['order_id' => $_GET['order_id']])->execute();
                     else
                     $del->delete()->where(['order_id' => $document_id])->execute();
                     
                 
+                }
+            else
+                $del->delete()->where(['document_id' => $document_id])->execute();*/
+            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                if(isset($_GET['order_id']))
+                $document_id = $_GET['order_id'];
+                $del->delete()->where(['order_id' => $document_id])->execute();
                 }
             else
                 $del->delete()->where(['document_id' => $document_id])->execute();
@@ -841,16 +880,59 @@ class DocumentComponent extends Component
             //education
             $controller = $this->_registry->getController();
             $education = TableRegistry::get('education_verification');
+            
+            
+            
+            $arr['client_id'] = $cid;
+            $arr['user_id'] = $controller->request->session()->read('Profile.id');
+            
+            
+            if (!isset($_GET['document']) || isset($_GET['order_id'])) {
+                if(!isset($_GET['order_id']))
+                $arr['order_id'] = $document_id;
+                else
+                $arr['order_id'] = $_GET['order_id'];
+                $arr['document_id'] = 0;
+                
+                
+                if (isset($_POST['uploaded_for']))
+                    $uploaded_for = $_POST['uploaded_for'];
+                else
+                    $uploaded_for = '';
+                
+                $for_doc = array('document_type'=>'Education Verification','sub_doc_id'=>10,'order_id'=>$arr['order_id'],'user_id'=>$arr['user_id'],'uploaded_for'=>$uploaded_for);                
+                $this->saveDocForOrder($for_doc);
+                
+                
+                
+            } else {
+                $arr['document_id'] = $document_id;
+                $arr['order_id'] = 0;
+            }
+            
+            
+            
+            
+            
 
             $del = $education->query();
-            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+            /*if (!isset($_GET['document']) || isset($_GET['order_id'])){
                 if(!isset($_GET['order_id']))
                 $del->delete()->where(['order_id' => $document_id])->execute();
                 else
                 $del->delete()->where(['order_id' => $_GET['order_id']])->execute();
                 }
             else
+                $del->delete()->where(['document_id' => $document_id])->execute();*/
+            if (!isset($_GET['document']) || isset($_GET['order_id'])){
+                if(isset($_GET['order_id']))
+                $document_id = $_GET['order_id'];
+                $del->delete()->where(['order_id' => $document_id])->execute();
+                }
+            else
                 $del->delete()->where(['document_id' => $document_id])->execute();
+                
+                
             if (isset($_POST['attach_doc'])) {
                 $count = 0;
                 foreach ($_POST['attach_doc'] as $v) {

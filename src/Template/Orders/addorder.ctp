@@ -1462,6 +1462,22 @@ function provinces($name){
                                 url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid;
                             savedMeeOrder(url, order_id, cid);
                         }
+                        else if (type == "Employment Verification") {
+                            
+                            //alert(type);
+                            var order_id = $('#did').val(),
+                                cid = '<?php echo $cid;?>',
+                                url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid;
+                            saveEmployment(url, order_id, cid);
+                        }
+                        else if (type == "Education Verification") {
+                            
+                            //alert(type);
+                            var order_id = $('#did').val(),
+                                cid = '<?php echo $cid;?>',
+                                url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid;
+                            saveEducation(url, order_id, cid);
+                        }
                         else if (type == "Feedbacks") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
@@ -1737,12 +1753,16 @@ function provinces($name){
             type: 'POST',
             success: function (res) {
                 $.ajax({
-                    url: '<?php echo $this->request->webroot;?>orders/createPdf/' + $('#did').val()
+                    url: '<?php echo $this->request->webroot;?>orders/createPdf/' + $('#did').val(),
+                    success:function()
+                    {
+                        $('#loading5').hide();
+                    }
                 });
 
 
                 //employment
-                var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid;
+                /*var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid;
                 var fields = $('#form_employment').serialize();
                 $(':disabled[name]', '#form_employment').each(function () {
                     fields = fields + '&' + $(this).attr('name') + '=' + $(this).val();
@@ -1757,12 +1777,18 @@ function provinces($name){
                     fields = fields + '&' + $(this).attr('name') + '=' + $(this).val();
                 });
                 var education = fields
-                saveEducation(url, education);
+                saveEducation(url, education);*/
             }
         });
     }
 
-    function saveEmployment(url, param) {
+    function saveEmployment(url, order_id, cid) {
+        $('#loading5').show();
+        var fields = $('#form_employment').serialize();
+                $(':disabled[name]', '#form_employment').each(function () {
+                    fields = fields + '&' + $(this).attr('name') + '=' + $(this).val();
+                });
+                var param = fields
         $.ajax({
             url: url,
             data: param,
@@ -1770,13 +1796,22 @@ function provinces($name){
             success: function (rea) {
 
                 $.ajax({
-                    url: '<?php echo $this->request->webroot;?>orders/createPdfEmployment/' + $('#did').val()
+                    url: '<?php echo $this->request->webroot;?>orders/createPdfEmployment/' + $('#did').val(),
+                    success: function () {
+                        $('#loading5').hide();
+                    }
                 });
             }
         });
     }
 
-    function saveEducation(url, param) {
+    function saveEducation(url, order_id, cid) {
+        $('#loading5').show();
+        var fields = $('#form_education').serialize();
+                $(':disabled[name]', '#form_education').each(function () {
+                    fields = fields + '&' + $(this).attr('name') + '=' + $(this).val();
+                });
+                var param = fields
         $.ajax({
             url: url,
             data: param,

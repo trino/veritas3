@@ -1,3 +1,8 @@
+<div id="form_tab10">
+<input class="document_type" type="hidden" name="document_type" value="Education Verification" />
+<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="10"  />
+<div class="tab-content">
+<div class="tab-pane active" id="subtab_2_3">
 <form id="form_education">
 
     <?php
@@ -436,3 +441,6 @@ $(function(){
   
  }); 
 </script>
+</div>
+</div>
+</div>

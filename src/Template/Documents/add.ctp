@@ -353,13 +353,68 @@ if (isset($this->request->params['pass'][1])) {
                     </div>
 
                     <div class="subform9" style="display: none;">
-                        <?php include('subpages/documents/products.php');
+                     <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box grey-cascade">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Employment Verification
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/employment_verification_form.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
                          ?>
                     </div>
-                    <!--<div class="attachments" style="display: none;">
-                        <?php //include('subpages/documents/attach_doc.php');
+                    
+                    
+                    <div class="subform10" style="display: none;">
+                     <?php
+                        if($controller == 'documents' )
+                        {
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box grey-cascade">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            Employment Verification
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/education_verification_form.php'); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
                          ?>
-                    </div>-->
+                    </div>
+                    
+                    
+                    
                     </div>
                 </div>
                 <div class="form-actions">
@@ -514,6 +569,13 @@ if (isset($this->request->params['pass'][1])) {
         
         $('.subform8 .document_type').remove();
         $('.subform8 .sub_docs_id').remove();
+        
+        $('.subform9 .document_type').remove();
+        $('.subform9 .sub_docs_id').remove();
+        
+        $('.subform10 .document_type').remove();
+        $('.subform10 .sub_docs_id').remove();
+        //alert(s_arr[1]);
         //alert(s_arr[1]);
         if (s_arr[1] == 1) {
             $('#form_tab1').prepend('<input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>' +
@@ -559,6 +621,17 @@ if (isset($this->request->params['pass'][1])) {
              $('.addattachment8').load('<?php echo $this->request->webroot;?>documents/attach_doc', function(){
                 initiate_ajax_upload1('addMore1', 'doc');
              });
+             
+        }
+        if (s_arr[1] == 9) {
+            $('#form_tab9').prepend('<input class="document_type" type="hidden" name="document_type" value="Employment Verification" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="9"  />');
+             
+             
+        }
+        if (s_arr[1] == 10) {
+            $('#form_tab10').prepend('<input class="document_type" type="hidden" name="document_type" value="Education Verification" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="10"  />');
              
         }
         
@@ -1349,6 +1422,7 @@ if (isset($this->request->params['pass'][1])) {
                 <?php 
             }
             ?>
+            //alert(type);return false;
             if(type=='Driver Application')
                 {
                     if(!$('#confirm_check').is(':checked'))
@@ -1446,13 +1520,29 @@ if (isset($this->request->params['pass'][1])) {
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedDriverEvaluation(url, order_id, cid,draft);
-                    } else if (type == "Consent Form" || type == "Employment Verification" || type == "Education Verification" ) {
+                    } else if (type == "Consent Form") {
 
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedMeeOrder(url, order_id, cid, type,draft);
                     }
+                    else if (type == "Employment Verification") {
+                            
+                            //alert(type);
+                            var order_id = $('#did').val(),
+                                cid = '<?php echo $cid;?>',
+                                url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
+                            saveEmployment(url, order_id, cid, type,draft);
+                        }
+                        else if (type == "Education Verification") {
+                            
+                            //alert(type);
+                            var order_id = $('#did').val(),
+                                cid = '<?php echo $cid;?>',
+                                url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
+                            saveEducation(url, order_id, cid, type,draft);
+                        }
                     else if (type == "Feedbacks") {
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
@@ -1601,45 +1691,75 @@ if (isset($this->request->params['pass'][1])) {
          $('#form_consent :disabled[name]').each(function () {
                 param = param + '&' + $(this).attr('name') + '=' + $(this).val();
             });   
-           <?php
-            if(isset($_GET['doc']) && urldecode($_GET['doc'])=='Consent Form'){
-                ?>
+           
                    
         $.ajax({
             url: url,
             data: param,
             type: 'POST',
             success: function (res) {
-                //employment
+                 if(draft==0){
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    }
+                                    else
+                                    {
+                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    }
                
             }
         });
-        <?php
-            } ?> 
-            <?php
-            if(isset($_GET['doc']) && urldecode($_GET['doc'])=='Employment Verification'){
-                ?>
-         var url = '<?php echo $this->request->webroot;?>documents/saveEmployment/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
-                    employment = $('#form_employment').serialize();
-                    $('#form_employment :disabled[name]').each(function () {
-                employment = employment + '&' + $(this).attr('name') + '=' + $(this).val();
-            });                    
-                saveEmployment(url, employment,draft);
-            <?php }?>
-            <?php
-            if(isset($_GET['doc']) && urldecode($_GET['doc'])=='Education Verification'){
-                ?>
-                //education
-                url = '<?php echo $this->request->webroot;?>documents/saveEducation/' + order_id + '/' + cid + '/?document=' + type+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
-                    education = $('#form_education').serialize();
-                    $('#form_education :disabled[name]').each(function () {
-                education = education + '&' + $(this).attr('name') + '=' + $(this).val();
-            });                    
-                saveEducation(url, education,draft);
-                <?php }?>
+        }
+         
+    function saveEmployment(url, order_id, cid, type,draft) {
+        alert('test');
+        //$('#loading5').show();
+        var fields = $('#form_employment').serialize();
+                $(':disabled[name]', '#form_employment').each(function () {
+                    fields = fields + '&' + $(this).attr('name') + '=' + $(this).val();
+                });
+                var param = fields
+        $.ajax({
+            url: url,
+            data: param,
+            type: 'POST',
+            success: function (rea) {
+
+                if(draft==0){
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    }
+                                    else
+                                    {
+                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    }
+            }
+        });
+    }       
+
+    function saveEducation(url, order_id, cid, type,draft) {
+        //alert('test2');
+        //$('#loading5').show();
+        var fields = $('#form_education').serialize();
+                $(':disabled[name]', '#form_education').each(function () {
+                    fields = fields + '&' + $(this).attr('name') + '=' + $(this).val();
+                });
+                var param = fields
+        $.ajax({
+            url: url,
+            data: param,
+            type: 'POST',
+            success: function (res) {
+                if(draft==0){
+                                  //  window.location = '<?php echo $this->request->webroot?>documents/index?flash';
+                                    }
+                                    else
+                                    {
+                                  //     window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    }
+            }
+        });
     }
 
-    function saveEmployment(url, param,draft) {
+    /*function saveEmployment(url, param,draft) {
         $.ajax({
             url: url,
             data: param,
@@ -1663,7 +1783,7 @@ if (isset($this->request->params['pass'][1])) {
                 window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
             }}
         });
-    }
+    }*/
 
 
     function fileUpload(ID) {

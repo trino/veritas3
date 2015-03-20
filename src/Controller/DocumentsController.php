@@ -69,11 +69,12 @@
                 $cli_id = $cli_id.','.$cc->id;
             }
             $doc = $docs->find();
-            if (!isset($_GET['draft'])) {
+            $doc = $doc->select()->where(['(order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))']);
+            /*if (!isset($_GET['draft'])) {
                 $doc = $doc->select()->where(['draft' => 0, '(order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))']);
             } else {
                 $doc = $doc->select()->where(['draft' => 1, '(order_id = 0 OR (order_id <> 0 AND order_id IN (SELECT id FROM orders)))']);
-            }
+            }*/
             $cond = '';
 
             if (isset($_GET['searchdoc']) && $_GET['searchdoc']) {

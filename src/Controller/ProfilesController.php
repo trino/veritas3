@@ -133,7 +133,8 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                 $draft = 1;
             else
                 $draft = 0;
-            $cond = 'drafts = ' . $draft;
+                $cond = '';
+            //$cond = 'drafts = ' . $draft;
             if (isset($_GET['searchprofile'])) {
                 $search = $_GET['searchprofile'];
                 $searchs = strtolower($search);

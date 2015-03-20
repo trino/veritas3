@@ -239,7 +239,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                                         echo '<a href="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/'.$orderDetail->id;if($orderDetail->order_type){echo '?order_type='.urlencode($orderDetail->order_type);if($orderDetail->forms)echo '&forms='.$orderDetail->forms;}echo '">'.$orderDetail->id;echo '</a>';
                                     } else {
                                         echo "N/A";
-                                    } ?></td>
+                                    }  if($docs->draft == 1) echo '( Draft )'; ?></td>
                                 <td style="width: 140px;">
                                     <?php switch (1){//change the number to pick a style
                                         case 0://plain text

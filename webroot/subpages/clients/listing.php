@@ -120,6 +120,7 @@
                                                         }
                                                         else
                                                             ucfirst(h($clients->company_name));
+                                                            if($clients->drafts == 1) echo ' ( Draft ) ';
                                                         ?>
                                                 </td>
 

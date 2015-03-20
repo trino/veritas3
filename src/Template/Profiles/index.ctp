@@ -276,7 +276,7 @@
                                         ?>
                                             <?php if ($sidebar->profile_list == '1' && !isset($_GET["draft"])) {
                                                 ?>
-                                                <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); ?> </a>
+                                                <a href="<?php echo $this->request->webroot; ?>profiles/view/<?php echo $profile->id; ?>"> <?php echo ucfirst(h($profile->username)); if($profile->drafts == 1) echo ' ( Draft )'; ?> </a>
                                             <?php
                                             } else
                                                 echo ucfirst(h($profile->username));

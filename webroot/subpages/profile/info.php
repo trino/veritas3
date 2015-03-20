@@ -381,8 +381,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">Username : </label>
-                                <input <?php echo $is_disabled ?> id="username_field" name="username" type="text"
-                                                                  class="form-control req_driver req_rec uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> />
+                                <input <?php //echo $is_disabled ?> id="username_field" name="username" type="text"
+                                                                  class="form-control req_driver req_rec uname" <?php if (isset($p->username)) { ?> value="<?php echo $p->username; ?>" <?php } ?> 
+                                                                  <?php if(($this->request->session()->read('Profile.super') != '1' && ($this->request->params['action'] == 'edit'))){echo 'disabled="disabled"';} ?>/>
                             <span class="error passerror flashUser"
                                   style="display: none;">Username already exists</span>
                             <span class="error passerror flashUser1"
@@ -1030,7 +1031,7 @@
                 //$('.un').removeProp('required');
                 $('#password').removeProp('required');
                                 $('#retype_password').removeProp('required');
-                $('#username_field').attr('disabled','disabled');
+                //$('#username_field').attr('disabled','disabled');
                 $('.req_rec').removeProp('required');
 
             }
@@ -1043,7 +1044,7 @@
                 $('#isb_id').hide();
                 $('.req_driver').removeProp('required');
                 $('.req_rec').removeProp('required');
-                $('#username_field').removeAttr('disabled');
+                //$('#username_field').removeAttr('disabled');
                 //$('.un').prop('required', "required");
                 <?php
                 if(isset($p->password) && $p->password)

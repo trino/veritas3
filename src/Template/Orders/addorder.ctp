@@ -83,6 +83,8 @@ function provinces($name){
         }
         $_this = $this;        
         function displayform($forms, $name,$_this){
+            if(isset($_GET['order_type']) && urldecode($_GET['order_type'])=='Order MEE')
+            return true;
             //pre-screening, driver application, consent form, road test
             //if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
             $name=trim(strtolower($name));

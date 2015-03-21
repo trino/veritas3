@@ -1497,7 +1497,7 @@ if (isset($this->request->params['pass'][1])) {
                 //data:'uploaded_for='+$('#uploaded_for').val(),
                 data: data,
                 type: 'post',
-                beforeSend:saveSignature,
+                //beforeSend:saveSignature,
                 url: '<?php echo $this->request->webroot;?>documents/savedoc/<?php echo $cid;?>/' + doc_id + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>',
                 success: function (res) {
                     //alert(res);
@@ -1521,11 +1521,17 @@ if (isset($this->request->params['pass'][1])) {
                             url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
                         savedDriverEvaluation(url, order_id, cid,draft);
                     } else if (type == "Consent Form") {
-
+                        save_signature('3');
+                        save_signature('4');
+                        save_signature('5');
+                        save_signature('6');
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/savedMeeOrder/' + order_id + '/' + cid + '/?document=' + type + '&draft=' + draft+'<?php if(isset($_GET['order_id'])){?>&order_id=<?php echo $_GET['order_id'];}?>';
-                        savedMeeOrder(url, order_id, cid, type,draft);
+                        setTimeout(function(){
+                         savedMeeOrder(url, order_id, cid, type,draft);   
+                        },1000);
+                        
                     }
                     else if (type == "Employment Verification") {
                             
@@ -1690,8 +1696,7 @@ if (isset($this->request->params['pass'][1])) {
         var param = $('#form_consent').serialize();
          $('#form_consent :disabled[name]').each(function () {
                 param = param + '&' + $(this).attr('name') + '=' + $(this).val();
-            });   
-           
+            }); 
                    
         $.ajax({
             url: url,

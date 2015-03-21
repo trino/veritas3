@@ -234,7 +234,7 @@
                                                        Road Test Score </a><a href="#" class="btn btn-lg yellow">
                                                        <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?>
                                                    </a></SPAN></TD></TR><TR><TD>
-                                                            <a style="margin:10px 0px 0px 0px;float:right;" href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>?ordertype=<?php echo $order->order_type;if($order->forms){echo '?forms='.$order->forms;}?>"
+                                                            <a style="margin:10px 0px 0px 0px;float:right;" href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>?order_type=<?php echo $order->order_type;if($order->forms){echo '?forms='.$order->forms;}?>"
                                                                class="btn btn-primary">View Order</a>
                                                         </TD></TR></TABLE>
                                             </div>

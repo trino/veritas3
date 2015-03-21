@@ -11,6 +11,10 @@ if ($action == "Addorder") {
 
     $doc_ext = array('pdf', 'doc', 'docx', 'txt', 'csv', 'xls', 'xlsx');
     $img_ext = array('jpg', 'jpeg', 'png', 'bmp', 'gif');
+    if($did)
+    {
+       $_GET['driver'] = $ooo->uploaded_for; 
+    }
 
 function provinces($name){
     echo '<SELECT class="form-control" name="' . $name . '">';

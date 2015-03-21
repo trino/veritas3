@@ -9,7 +9,12 @@
     use Cake\Controller\Component\CookieComponent;
     use Cake\Datasource\ConnectionManager;
 
-if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") { include_once('/subpages/api.php'); } else { include_once('subpages/api.php'); }
+    if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") {
+        include_once('/subpages/api.php');
+    } else {
+        include_once('subpages/api.php');
+    }
+
     class ProfilesController extends AppController
     {
 
@@ -28,7 +33,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             $this->loadComponent('Document');
             if (!$this->request->session()->read('Profile.id')) {
                 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                $this->redirect('/login?url='.urlencode($url));
+                $this->redirect('/login?url=' . urlencode($url));
             }
 
         }
@@ -62,44 +67,40 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             }
             die();
         }
-    function upload_all($id="")
-    {
-        if(isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'])
-        {
-            $arr = explode('.',$_FILES['myfile']['name']);
-            $ext = end($arr);
-            $rand = rand(100000,999999).'_'.rand(100000,999999).'.'.$ext;
-            $allowed = array('jpg','jpeg','png','bmp','gif','pdf','doc', 'docx','csv','xlsx','xls');
-            $check = strtolower($ext);
-            if(in_array($check,$allowed)){
-                move_uploaded_file($_FILES['myfile']['tmp_name'],APP.'../webroot/img/jobs/'.$rand);
-                 unset($_POST);
-                 /*if(isset($id)){
-                $_POST['image'] = $rand;
-                $img = TableRegistry::get('clients');
 
-                //echo $s;die();
-                $query = $img->query();
-                        $query->update()
-                        ->set($_POST)
-                        ->where(['id' => $id])
-                        ->execute();
-                }*/
-                    
+        function upload_all($id = "")
+        {
+            if (isset($_FILES['myfile']['name']) && $_FILES['myfile']['name']) {
+                $arr = explode('.', $_FILES['myfile']['name']);
+                $ext = end($arr);
+                $rand = rand(100000, 999999) . '_' . rand(100000, 999999) . '.' . $ext;
+                $allowed = array('jpg', 'jpeg', 'png', 'bmp', 'gif', 'pdf', 'doc', 'docx', 'csv', 'xlsx', 'xls');
+                $check = strtolower($ext);
+                if (in_array($check, $allowed)) {
+                    move_uploaded_file($_FILES['myfile']['tmp_name'], APP . '../webroot/img/jobs/' . $rand);
+                    unset($_POST);
+                    /*if(isset($id)){
+                   $_POST['image'] = $rand;
+                   $img = TableRegistry::get('clients');
+
+                   //echo $s;die();
+                   $query = $img->query();
+                           $query->update()
+                           ->set($_POST)
+                           ->where(['id' => $id])
+                           ->execute();
+                   }*/
+
                     echo $rand;
 
-
+                } else {
+                    echo "error";
+                }
             }
-            else
-            {
-                echo "error";
-            }
+            die();
         }
-        die();
-    }
 
-
-        public function settings()        
+        public function settings()
         {
             $this->loadModel('Logos');
             $this->loadModel('OrderProducts');
@@ -107,14 +108,14 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             $this->loadModel("ClientTypes");
             $this->set('client_types', $this->ClientTypes->find()->all());
             $this->set('products', $this->OrderProducts->find()->all());
-            
-            $this->set('ptypes',$this->ProfileTypes->find()->all());
+
+            $this->set('ptypes', $this->ProfileTypes->find()->all());
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary' => '1'])));
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary' => '2'])));
         }
 
-        public function index()        
+        public function index()
         {
             $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -124,8 +125,8 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             $condition = $this->Settings->getprofilebyclient($u, $super);
             //var_dump($condition);die();
             if ($setting->profile_list == 0) {
-                
-                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+
+                $this->Flash->error('Sorry, you don\'t have the required permissions1.');
                 return $this->redirect("/");
 
             }
@@ -133,7 +134,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                 $draft = 1;
             else
                 $draft = 0;
-                $cond = '';
+            $cond = '';
             //$cond = 'drafts = ' . $draft;
             if (isset($_GET['searchprofile'])) {
                 $search = $_GET['searchprofile'];
@@ -190,9 +191,9 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             if ($cond) {
                 //echo $cond;die();
                 $query = $querys->find();
-                $query = $query->where([$cond,'OR' => $condition,'AND' => 'super = 0']);
+                $query = $query->where([$cond, 'OR' => $condition, 'AND' => 'super = 0']);
             } else {
-                $query = $this->Profiles->find()->where(['OR' => $condition,'AND' => 'super = 0']);
+                $query = $this->Profiles->find()->where(['OR' => $condition, 'AND' => 'super = 0']);
             }
             //$this->set('profiles', $this->paginate($this->Profiles));
             //$this->set('profiles',$query);
@@ -304,23 +305,22 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
         */
         function removefiles($file)
         {
-            if(isset($_POST['id']) && $_POST['id']!= 0)
-            {
+            if (isset($_POST['id']) && $_POST['id'] != 0) {
                 $this->loadModel("ProfileDocs");
-                $this->ProfileDocs->deleteAll(['id'=>$_POST['id']]);
-                
+                $this->ProfileDocs->deleteAll(['id' => $_POST['id']]);
+
             }
-            @unlink(WWW_ROOT."img/jobs/".$file);
+            @unlink(WWW_ROOT . "img/jobs/" . $file);
             die();
         }
+
         public function view($id = null)
         {
-            if(isset($_GET['success']))
-            {
+            if (isset($_GET['success'])) {
                 $this->Flash->success('Order saved successfully');
             }
             $this->loadModel("ProfileTypes");
-            $this->set("ptypes",$this->ProfileTypes->find()->where(['enable'=>'1'])->all());
+            $this->set("ptypes", $this->ProfileTypes->find()->where(['enable' => '1'])->all());
             $this->set('uid', $id);
             $this->set('doc_comp', $this->Document);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -332,8 +332,8 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             }
             $docs = TableRegistry::get('profile_docs');
             $query = $docs->find();
-            $client_docs = $query->select()->where(['profile_id'=>$id])->all();
-            $this->set('client_docs',$client_docs);
+            $client_docs = $query->select()->where(['profile_id' => $id])->all();
+            $this->set('client_docs', $client_docs);
             $this->loadModel('Logos');
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
@@ -343,7 +343,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
-                ->where(['orders.uploaded_for' => $id,'orders.draft'=>0])->order('orders.id DESC')->contain(['Profiles', 'Clients', 'RoadTest']);
+                ->where(['orders.uploaded_for' => $id, 'orders.draft' => 0])->order('orders.id DESC')->contain(['Profiles', 'Clients', 'RoadTest']);
 
             $this->set('orders', $order);
             $this->set('profile', $profile);
@@ -438,9 +438,9 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             $this->set('uid', '0');
             $this->set('id', '0');
             $this->loadModel("ProfileTypes");
-            $this->set("ptypes",$this->ProfileTypes->find()->where(['enable'=>'1'])->all());
+            $this->set("ptypes", $this->ProfileTypes->find()->where(['enable' => '1'])->all());
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-            
+
             // Only super admin and recruiter are allowed to create profiles as discussed on feb 19
             /*if (!$this->request->session()->read('Profile.super')) {
                 if ($this->request->session()->read('Profile.profile_type') != '2') {
@@ -448,7 +448,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                     return $this->redirect("/profiles");
                 }
             }*/
-            
+
             if ($setting->profile_create == 0 && !$this->request->session()->read('Profile.super')) {
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
                 return $this->redirect("/");
@@ -521,7 +521,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                         //      if (isset($_POST['password'])) echo $_POST['password']; else echo 'Password not entered <br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards,<br />The ISB Team';
                         //     $this->sendEmail($from, $to, $sub, $msg);
                     }
-                        
+
                     $this->Flash->success('Profile created successfully.');
                     return $this->redirect(['action' => 'edit', $profile->id]);
                 } else {
@@ -561,29 +561,27 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                     $profile = $profiles->newEntity($_POST);
                     if ($profiles->save($profile)) {
                         $this->loadModel('ProfileDocs');
-                        $this->ProfileDocs->deleteAll(['profile_id'=>$profile->id]);
+                        $this->ProfileDocs->deleteAll(['profile_id' => $profile->id]);
                         $profile_docs = array_unique($_POST['profile_doc']);
-                        foreach($profile_docs as $d)
-                        {
-                            if($d != "")
-                            {
+                        foreach ($profile_docs as $d) {
+                            if ($d != "") {
                                 $docs = TableRegistry::get('profile_docs');
-                                $ds['profile_id']= $profile->id;
-                                $ds['file'] =$d;
-                                 $doc = $docs->newEntity($ds);
-                                 $docs->save($doc);
+                                $ds['profile_id'] = $profile->id;
+                                $ds['file'] = $d;
+                                $doc = $docs->newEntity($ds);
+                                $docs->save($doc);
                                 unset($doc);
                             }
                         }
 
-                       /* if (isset($_POST['profile_type']) && $_POST['profile_type'] == 5) {
-                            $username = 'driver_' . $profile->id;
-                            $queries = TableRegistry::get('Profiles');
-                            $queries->query()->update()->set(['username' => $username])
-                                ->where(['id' => $profile->id])
-                                ->execute();
-                        } else { /*do nth 
-                        }*/
+                        /* if (isset($_POST['profile_type']) && $_POST['profile_type'] == 5) {
+                             $username = 'driver_' . $profile->id;
+                             $queries = TableRegistry::get('Profiles');
+                             $queries->query()->update()->set(['username' => $username])
+                                 ->where(['id' => $profile->id])
+                                 ->execute();
+                         } else { /*do nth
+                         }*/
                         if ($profile_type == 2) {
                             //save profiles to clients if recruiter
                             $clients_id = $this->Settings->getAllClientsId($this->request->session()->read('Profile.id'));
@@ -668,34 +666,37 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                         if (isset($_POST['drafts']) && ($_POST['drafts'] == '1')) {
                             $this->Flash->success('Profile Saved as draft Successfully . ');
                         } else {
-                             $pro_query = TableRegistry::get('Profiles');
+                            $pro_query = TableRegistry::get('Profiles');
                             $email_query = $pro_query->find()->where(['super' => 1])->first();
                             $em = $email_query->email;
                             $user_id = $this->request->session()->read('Profile.id');
                             $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
-                            if (isset($uq->profile_type))
-                              {
+                            if (isset($uq->profile_type)) {
                                 $u = $uq->profile_type;
                                 $type_query = TableRegistry::get('profile_types');
-                                $type_q = $type_query->find()->where(['id'=>$u])->first(); 
+                                $type_q = $type_query->find()->where(['id' => $u])->first();
                                 $ut = $type_q->title;
-                              }
-                               if (isset($_POST['profile_type']))
-                              {
+                            }
+                            if (isset($_POST['profile_type'])) {
                                 $pt = $_POST['profile_type'];
                                 $u = $pt;
                                 $type_query = TableRegistry::get('profile_types');
-                                $type_q = $type_query->find()->where(['id'=>$u])->first(); 
+                                $type_q = $type_query->find()->where(['id' => $u])->first();
                                 $protype = $type_q->title;
-                              } 
-                           $from = 'info@'.$path;
+                            }
+                            $from = 'info@' . $path;
                             $to = $em;
-                             $sub = 'Profile created';
-                            $msg = 'Hi,<br />An account has been created in '.$path.'<br />
-                            By user with following details :<br/>
-                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.date('Y-m-d').'<br/>With profile details<br /> Username: ' . $_POST['username'] . '<br /> Profile Type: '.$protype.'<br /> Regards,<br />The ISB Team';
-                             $this->Mailer->sendEmail($from, $to, $sub, $msg); 
+
+                            $sub = 'Profile Created: ' . $_POST['username'];
+                            $msg = 'Domain:' . $path . '<br />
+                            <br/>Profile Created: ' . $_POST['username'] . ' (Profile Type: ' . $protype . ')
+                            <br/>By: ' . $uq->username . '
+                            <br/>On: ' . date('Y-m-d')
+                           ;
+
+                            $this->Mailer->sendEmail($from, $to, $sub, $msg);
                             $this->Flash->success('Profile saved Successfully . ');
+
                         }
                         echo $profile->id;
 
@@ -724,18 +725,16 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                     //var_dump($this->request->data); die();//echo $_POST['admin'];die();
                     $profile = $this->Profiles->patchEntity($profile, $this->request->data);
                     if ($this->Profiles->save($profile)) {
-                         $this->loadModel('ProfileDocs');
-                        $this->ProfileDocs->deleteAll(['profile_id'=>$profile->id]);
+                        $this->loadModel('ProfileDocs');
+                        $this->ProfileDocs->deleteAll(['profile_id' => $profile->id]);
                         $profile_docs = array_unique($_POST['profile_doc']);
-                        foreach($profile_docs as $d)
-                        {
-                            if($d != "")
-                            {
+                        foreach ($profile_docs as $d) {
+                            if ($d != "") {
                                 $docs = TableRegistry::get('profile_docs');
-                                $ds['profile_id']= $profile->id;
-                                $ds['file'] =$d;
-                                 $doc = $docs->newEntity($ds);
-                                 $docs->save($doc);
+                                $ds['profile_id'] = $profile->id;
+                                $ds['file'] = $d;
+                                $doc = $docs->newEntity($ds);
+                                $docs->save($doc);
                                 unset($doc);
                             }
                         }
@@ -757,10 +756,10 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
         public function saveDriver()
         {
             //echo $client_id = $_POST['cid'];die() ; 
-            $arr_post = explode('&', $_POST['inputs']);
+            $arr_post = explode(' & ', $_POST['inputs']);
             //var_dump($arr_post);die();
             foreach ($arr_post as $ap) {
-                $arr_ap = explode('=', $ap);
+                $arr_ap = explode(' = ', $ap);
                 if (isset($arr_ap[1])) {
                     $post[$arr_ap[0]] = urldecode($arr_ap[1]);
                     $post[$arr_ap[0]] = str_replace('Select Gender', '', urldecode($arr_ap[1]));
@@ -788,14 +787,14 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                     unset($post['id']);
                     $profile = $profiles->newEntity($post);
                     if ($profiles->save($profile)) {
-                        if($profile->profile_type == '5')
-                        $username = 'driver_' . $profile->id;
+                        if ($profile->profile_type == '5')
+                            $username = 'driver_' . $profile->id;
                         else
-                        if($profile->profile_type == '7')
-                        $username = 'owner_operator_' . $profile->id;
-                        else
-                        if($profile->profile_type == '8')
-                        $username = 'owner_driver_' . $profile->id;
+                            if ($profile->profile_type == '7')
+                                $username = 'owner_operator_' . $profile->id;
+                            else
+                                if ($profile->profile_type == '8')
+                                    $username = 'owner_driver_' . $profile->id;
                         $queries = TableRegistry::get('Profiles');
                         $queries->query()->update()->set(['username' => $username])
                             ->where(['id' => $profile->id])
@@ -876,34 +875,34 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             $clientcount = $this->Settings->getClientCountByProfile($id);
             $this->set('Clientcount', $clientcount);
             if (isset($_GET['clientflash']) || $clientcount == 0) {
-                $this->Flash->success('Profile created successfully! Please assign profile to at least one client to start placing orders.');
+                $this->Flash->success('Profile created successfully!Please assign profile to at least one client to start placing orders . ');
             }
             $pr = TableRegistry::get('profiles');
             $query = $pr->find();
-            $aa = $query->select()->where(['id'=>$id])->first();
-            $checker = $this->Settings->check_edit_permission($this->request->session()->read('Profile.id'), $id,$aa->created_by);
+            $aa = $query->select()->where(['id' => $id])->first();
+            $checker = $this->Settings->check_edit_permission($this->request->session()->read('Profile . id'), $id, $aa->created_by);
             if ($checker == 0) {
-                $this->Flash->error('Sorry, you don\'t have the required permissions.');
-                return $this->redirect("/profiles/index");
+              //  $this->Flash->error('Sorry, you don\'t have the required permissions6.');
+              //  return $this->redirect("/profiles/index");
 
             }
 
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             if ($setting->profile_edit == 0 && $id != $this->request->session()->read('Profile.id')) {
-                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                $this->Flash->error('Sorry, you don\'t have the required permissions5.');
                 return $this->redirect("/");
 
             } else {
                 $this->set('myuser', '1');
             }
             $this->loadModel("ProfileTypes");
-            $this->set("ptypes",$this->ProfileTypes->find()->where(['enable'=>'1'])->all());
+            $this->set("ptypes", $this->ProfileTypes->find()->where(['enable' => '1'])->all());
             $this->loadModel("ClientTypes");
-            $this->set('client_types', $this->ClientTypes->find()->where(['enable'=>'1'])->all());
+            $this->set('client_types', $this->ClientTypes->find()->where(['enable' => '1'])->all());
             $docs = TableRegistry::get('profile_docs');
             $query = $docs->find();
-            $client_docs = $query->select()->where(['profile_id'=>$id])->all();
-            $this->set('client_docs',$client_docs);
+            $client_docs = $query->select()->where(['profile_id' => $id])->all();
+            $this->set('client_docs', $client_docs);
             $this->loadModel('Logos');
 
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
@@ -982,7 +981,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
 
             $checker = $this->Settings->check_permission($this->request->session()->read('Profile.id'), $id);
             if ($checker == 0) {
-                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                $this->Flash->error('Sorry, you don\'t have the required permissions4.');
                 return $this->redirect("/profiles/index");
                 die();
             }
@@ -990,7 +989,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
 
             if ($setting->profile_delete == 0) {
-                $this->Flash->error('Sorry, you don\'t have the required permissions.');
+                $this->Flash->error('Sorry, you don\'t have the required permissions3.');
                 return $this->redirect("/");
 
             }
@@ -1026,505 +1025,504 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
             }
         }
 
+        function todo()
+        {
 
-    function todo()
-    {
-
-    }
-
-    function todos()
-    {
-        $this->layout = 'blank';
-    }
-
-    function blocks($client = "")
-    {
-
-        $user_id = $_POST['form'];
-        if ($user_id != 0) {
-            //$block['user_id'] = $_POST['block']['user_id'];
-            $side['user_id'] = $_POST['side']['user_id'];
         }
 
-        foreach ($_POST['side'] as $k => $v) {
-            //echo $k."=>".$v."<br/>";
-            $side[$k] = $v;
+        function todos()
+        {
+            $this->layout = 'blank';
         }
-        //die();
-        if ($client == "") {
-            $sides = array('profile_list', 'profile_create', 'client_list', 'client_create', 'document_list', 'document_create', 'profile_edit', 'profile_delete', 'client_edit', 'client_delete', 'document_edit', 'document_delete', 'document_others', 'document_requalify', 'orders_list', 'orders_create', 'orders_delete', 'orders_requalify', 'orders_edit', 'orders_others','order_requalify','orders_mee','orders_products');
-            foreach ($sides as $s) {
-                if (!isset($_POST['side'][$s]))
-                    $side[$s] = 0;
+
+        function blocks($client = "")
+        {
+
+            $user_id = $_POST['form'];
+            if ($user_id != 0) {
+                //$block['user_id'] = $_POST['block']['user_id'];
+                $side['user_id'] = $_POST['side']['user_id'];
             }
-        }
 
-        $sidebar = TableRegistry::get('sidebar');
-        $s1 = $sidebar->find()->where(['user_id' => $user_id])->count();
-        if ($user_id != 0 && $s1 != 0) {
-            $query1 = $sidebar->query();
-            $query1->update()
-                ->set($side)
-                ->where(['user_id' => $user_id])
-                ->execute();
-        } else {
-            $article = $sidebar->newEntity($_POST['side']);
-            $sidebar->save($article);
-        }
-        die();
-        //$this->redirect(['controller'=>'profiles','action'=>'add']);
+            foreach ($_POST['side'] as $k => $v) {
+                //echo $k."=>".$v."<br/>";
+                $side[$k] = $v;
+            }
+            //die();
+            if ($client == "") {
+                $sides = array('profile_list', 'profile_create', 'client_list', 'client_create', 'document_list', 'document_create', 'profile_edit', 'profile_delete', 'client_edit', 'client_delete', 'document_edit', 'document_delete', 'document_others', 'document_requalify', 'orders_list', 'orders_create', 'orders_delete', 'orders_requalify', 'orders_edit', 'orders_others', 'order_requalify', 'orders_mee', 'orders_products');
+                foreach ($sides as $s) {
+                    if (!isset($_POST['side'][$s]))
+                        $side[$s] = 0;
+                }
+            }
 
-    }
-
-    function homeblocks()
-    {
-        $user_id = $_POST['form'];
-        if ($user_id != 0) {
-            $block['user_id'] = $_POST['block']['user_id'];
-            //$side['user_id'] = $_POST['side']['user_id'];
-        }
-        foreach ($_POST['block'] as $k => $v) {
-
-            $block[$k] = $v;
-        }
-        $blocks = TableRegistry::get('blocks');
-        $s = $blocks->find()->where(['user_id' => $user_id])->count();
-        //echo $s;die();
-        if ($user_id != 0 && $s != 0) {
-
-            $query = $blocks->query();
-            $query->update()
-                ->set($block)
-                ->where(['user_id' => $user_id])
-                ->execute();
-        } else {
-            $article = $blocks->newEntity($_POST['block']);
-            $blocks->save($article);
-        }
-        die();
-    }
-
-    function getSub()
-    {
-        $sub = TableRegistry::get('Subdocuments');
-        $query = $sub->find();
-        $q = $query->select();
-
-        $this->response->body($q);
-        return $this->response;
-
-    }
-
-    function getProSubDoc($pro_id, $doc_id)
-    {
-        $sub = TableRegistry::get('Profilessubdocument');
-        $query = $sub->find();
-        $query->select()->where(['profile_id' => $pro_id, 'subdoc_id' => $doc_id]);
-        $q = $query->first();
-        $this->response->body($q);
-        return $this->response;
-    }
-
-    function displaySubdocs($id)
-    {
-        //var_dump($_POST);die();
-        $user['profile_id'] = $id;
-        $display = $_POST; //defining new variable for system base below upcoming foreach
-
-        //for user base
-        $this->loadModel('Profilessubdocument');
-        $this->Profilessubdocument->deleteAll(['profile_id' => $id]);
-        foreach ($_POST['profile'] as $k2 => $v) {
-            $subp = TableRegistry::get('Profilessubdocument');
-            $query2 = $subp->query();
-            $query2->insert(['profile_id', 'subdoc_id', 'display'])
-                ->values(['profile_id' => $id, 'subdoc_id' => $k2, 'display' => $_POST['profile'][$k2]])
-                ->execute();
-            unset($subp);
-        }
-        foreach ($_POST as $k => $v) {
-            if ($k != 'profile') {
-
-                $subd = TableRegistry::get('Subdocuments');
-                $query3 = $subd->query();
-                $query3->update()
-                    ->set(['display' => $v])
-                    ->where(['id' => $k])
+            $sidebar = TableRegistry::get('sidebar');
+            $s1 = $sidebar->find()->where(['user_id' => $user_id])->count();
+            if ($user_id != 0 && $s1 != 0) {
+                $query1 = $sidebar->query();
+                $query1->update()
+                    ->set($side)
+                    ->where(['user_id' => $user_id])
                     ->execute();
+            } else {
+                $article = $sidebar->newEntity($_POST['side']);
+                $sidebar->save($article);
             }
+            die();
+            //$this->redirect(['controller'=>'profiles','action'=>'add']);
 
         }
-        die();
-    }
 
-    /*}
-    unset($display['profileP']);
-    unset($display['profile']);
+        function homeblocks()
+        {
+            $user_id = $_POST['form'];
+            if ($user_id != 0) {
+                $block['user_id'] = $_POST['block']['user_id'];
+                //$side['user_id'] = $_POST['side']['user_id'];
+            }
+            foreach ($_POST['block'] as $k => $v) {
 
-    //For System base
-    foreach($display as $k=>$v)
-=======
+                $block[$k] = $v;
+            }
+            $blocks = TableRegistry::get('blocks');
+            $s = $blocks->find()->where(['user_id' => $user_id])->count();
+            //echo $s;die();
+            if ($user_id != 0 && $s != 0) {
+
+                $query = $blocks->query();
+                $query->update()
+                    ->set($block)
+                    ->where(['user_id' => $user_id])
+                    ->execute();
+            } else {
+                $article = $blocks->newEntity($_POST['block']);
+                $blocks->save($article);
+            }
+            die();
+        }
+
+        function getSub()
+        {
+            $sub = TableRegistry::get('Subdocuments');
+            $query = $sub->find();
+            $q = $query->select();
+
+            $this->response->body($q);
+            return $this->response;
+
+        }
+
+        function getProSubDoc($pro_id, $doc_id)
+        {
+            $sub = TableRegistry::get('Profilessubdocument');
+            $query = $sub->find();
+            $query->select()->where(['profile_id' => $pro_id, 'subdoc_id' => $doc_id]);
+            $q = $query->first();
+            $this->response->body($q);
+            return $this->response;
+        }
+
+        function displaySubdocs($id)
+        {
+            //var_dump($_POST);die();
+            $user['profile_id'] = $id;
+            $display = $_POST; //defining new variable for system base below upcoming foreach
+
+            //for user base
+            $this->loadModel('Profilessubdocument');
+            $this->Profilessubdocument->deleteAll(['profile_id' => $id]);
+            foreach ($_POST['profile'] as $k2 => $v) {
+                $subp = TableRegistry::get('Profilessubdocument');
+                $query2 = $subp->query();
+                $query2->insert(['profile_id', 'subdoc_id', 'display'])
+                    ->values(['profile_id' => $id, 'subdoc_id' => $k2, 'display' => $_POST['profile'][$k2]])
+                    ->execute();
+                unset($subp);
+            }
+            foreach ($_POST as $k => $v) {
+                if ($k != 'profile') {
+
+                    $subd = TableRegistry::get('Subdocuments');
+                    $query3 = $subd->query();
+                    $query3->update()
+                        ->set(['display' => $v])
+                        ->where(['id' => $k])
+                        ->execute();
+                }
+
+            }
+            die();
+        }
+
+        /*}
         unset($display['profileP']);
         unset($display['profile']);
 
         //For System base
         foreach($display as $k=>$v)
-        {
-            $subd = TableRegistry::get('Subdocuments');
-            $query3 = $subd->query();
-            $query3->update()
-                ->set(['display'=>$v])
-                ->where(['id' => $k])
-                ->execute();
+    =======
+            unset($display['profileP']);
+            unset($display['profile']);
+
+            //For System base
+            foreach($display as $k=>$v)
+            {
+                $subd = TableRegistry::get('Subdocuments');
+                $query3 = $subd->query();
+                $query3->update()
+                    ->set(['display'=>$v])
+                    ->where(['id' => $k])
+                    ->execute();
+            }
+
+
+            //var_dump($str);
+            die('here');
         }
+
+
+
+        function getRecruiter()
+
+        {
+            $rec = TableRegistry::get('Profiles');
+            $query = $rec->find()->where(['profile_type'=>2]);
+            //$q = $query->select();
+
+            $this->response->body($query);
+            return $this->response;
+
+            die();
+        }
+
 
 
         //var_dump($str);
         die('here');
-    }
+    }*/
 
+        function getRecruiter()
+        {
+            $rec = TableRegistry::get('Profiles');
+            $query = $rec->find()->where(['profile_type' => 2]);
+            //$q = $query->select();
 
-
-    function getRecruiter()
-
-    {
-        $rec = TableRegistry::get('Profiles');
-        $query = $rec->find()->where(['profile_type'=>2]);
-        //$q = $query->select();
-
-        $this->response->body($query);
-        return $this->response;
-
-        die();
-    }
-
-
-
-    //var_dump($str);
-    die('here');
-}*/
-
-    function getRecruiter()
-    {
-        $rec = TableRegistry::get('Profiles');
-        $query = $rec->find()->where(['profile_type' => 2]);
-        //$q = $query->select();
-
-        $this->response->body($query);
-        return $this->response;
-
-        die();
-    }
-
-    function getProfile()
-    {
-        $rec = TableRegistry::get('Profiles');
-        $query = $rec->find();
-        $u = $this->request->session()->read('Profile.id');
-        $super = $this->request->session()->read('Profile.super');
-
-        if ($super) {
-            $query = $rec->find()->where(['super <>' => 1, 'drafts' => 0])->order('fname');
-        } else {
-            $query = $rec->find()->where(['super <>' => 1, 'drafts' => 0, 'created_by' => $u])->order('fname');
-        }
-
-        /*$cond = $this->Settings->getprofilebyclient($u,$super);
-
-       //$query = $query->select()->where(['super'=>0]);
-       $query = $query->select()->where(['profile_type NOT IN (6,5)','OR'=>$cond])
-           ->andWhere(['super'=>0]);
-       if(!$super)
-         $query = $query->orWhere(['created_by'=>$u]);
-       */
-        $this->response->body($query);
-        return $this->response;
-        die();
-    }
-
-    function getAjaxProfile($id = 0)
-    {
-        $this->layout = 'blank';
-        if ($id) {
-            $this->loadModel('Clients');
-            $profile = $this->Clients->get($id, [
-                'contain' => []
-            ]);
-            $arr = explode(',', $profile->profile_id);
-            $this->set('profile', $arr);
-        } else {
-            $this->set('profile', array());
-        }
-        $key = $_GET['key'];
-        $rec = TableRegistry::get('Profiles');
-        $query = $rec->find();
-        $u = $this->request->session()->read('Profile.id');
-        $super = $this->request->session()->read('Profile.admin');
-        $cond = $this->Settings->getprofilebyclient($u, $super);
-
-        if ($super) {
-            $query = $rec->find()->where(['super <>' => 1, 'drafts' => 0, '(fname LIKE "%' . $key . '%" OR lname LIKE "%' . $key . '%" OR username LIKE "%' . $key . '%")'])->order('fname');
-        } else {
-            $query = $rec->find()->where(['super <>' => 1, 'drafts' => 0, 'created_by' => $u, '(fname LIKE "%' . $key . '%" OR lname LIKE "%' . $key . '%" OR username LIKE "%' . $key . '%")'])->order('fname');
-        }
-
-        //$query = $query->select()->where(['super'=>0]);
-
-        /*$query = $query->select()->where(['profile_type NOT IN'=>'(5,6)','OR'=>$cond])
-            ->andWhere(['super'=>0,'(fname LIKE "%'.$key.'%" OR lname LIKE "%'.$key.'%" OR username LIKE "%'.$key.'%")']);
-         if(!$super)
-          $query = $query->orWhere(['created_by'=>$u]);*/
-        $this->set('profiles', $query);
-        $this->set('cid', $id);
-
-    }
-
-    function getAjaxContact($id = 0)
-    {
-        $this->layout = 'blank';
-        if ($id) {
-            $this->loadModel('Clients');
-            $profile = $this->Clients->get($id, [
-                'contain' => []
-            ]);
-            $arr = explode(',', $profile->contact_id);
-            $this->set('contact', $arr);
-        } else {
-            $this->set('contact', array());
-        }
-        $key = $_GET['key'];
-        $rec = TableRegistry::get('Profiles');
-        $query = $rec->find();
-        $u = $this->request->session()->read('Profile.id');
-        $super = $this->request->session()->read('Profile.super');
-        $cond = $this->Settings->getprofilebyclient($u, $super);
-        //$query = $query->select()->where(['super'=>0]);
-        $query = $query->select()->where(['profile_type NOT IN' => '(6)', 'OR' => $cond])
-            ->andWhere(['super' => 0, 'profile_type' => 6, '(fname LIKE "%' . $key . '%" OR lname LIKE "%' . $key . '%" OR username LIKE "%' . $key . '%")']);
-        $this->set('contacts', $query);
-        $this->set('cid', $id);
-    }
-
-    function getContact()
-    {
-        $con = TableRegistry::get('Profiles');
-        $query = $con->find()->where(['profile_type' => 6]);
-        $this->response->body($query);
-        return $this->response;
-        die();
-    }
-
-    function filterBy()
-    {
-        $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
-
-        if ($setting->profile_list == 0) {
-            $this->Flash->error('Sorry, you don\'t have the required permissions.');
-            return $this->redirect("/");
-
-        }
-
-        $profile_type = $_GET['filter_profile_type'];
-        $querys = TableRegistry::get('Profiles');
-        $query = $querys->find()->where(['profile_type' => $profile_type]);
-        $this->set('profiles', $this->paginate($this->Profiles));
-        $this->set('profiles', $query);
-        $this->set('return_profile_type', $profile_type);
-        $this->render('index');
-    }
-
-    function getuser()
-    {
-        if ($id = $this->request->session()->read('Profile.id')) {
-            $profile = TableRegistry::get('profiles');
-            $query = $profile->find()->where(['id' => $id]);
-
-            $l = $query->first();
-            $this->response->body($l);
+            $this->response->body($query);
             return $this->response;
-            //return $l;
 
-        } else return $this->response->body(null);
-        die();
+            die();
+        }
 
-    }
+        function getProfile()
+        {
+            $rec = TableRegistry::get('Profiles');
+            $query = $rec->find();
+            $u = $this->request->session()->read('Profile.id');
+            $super = $this->request->session()->read('Profile.super');
 
-    function getallusers($profile_type = "", $client_id = "")
-    {
-        $u = $this->request->session()->read('Profile.id');
-        $super = $this->request->session()->read('Profile.super');
-        $cond = $this->Settings->getprofilebyclient($u, $super, $client_id);
-        $profile = TableRegistry::get('profiles');
-        if ($profile_type != "")
-            $query = $profile->find()->where(['super' => 0, 'profile_type' => $profile_type, 'OR' => $cond]);
-        else
-            $query = $profile->find()->where(['super' => 0, 'OR' => $cond]);
-        //debug($query);
-        $l = $query->all();
-        $this->response->body($l);
-        return $this->response;
+            if ($super) {
+                $query = $rec->find()->where(['super <>' => 1, 'drafts' => 0])->order('fname');
+            } else {
+                $query = $rec->find()->where(['super <>' => 1, 'drafts' => 0, 'created_by' => $u])->order('fname');
+            }
 
-    }
+            /*$cond = $this->Settings->getprofilebyclient($u,$super);
 
-    function getusers()
-    {
-        $title = $_POST['v'];
+           //$query = $query->select()->where(['super'=>0]);
+           $query = $query->select()->where(['profile_type NOT IN (6,5)','OR'=>$cond])
+               ->andWhere(['super'=>0]);
+           if(!$super)
+             $query = $query->orWhere(['created_by'=>$u]);
+           */
+            $this->response->body($query);
+            return $this->response;
+            die();
+        }
 
-        if ($title != "") {
+        function getAjaxProfile($id = 0)
+        {
+            $this->layout = 'blank';
+            if ($id) {
+                $this->loadModel('Clients');
+                $profile = $this->Clients->get($id, [
+                    'contain' => []
+                ]);
+                $arr = explode(',', $profile->profile_id);
+                $this->set('profile', $arr);
+            } else {
+                $this->set('profile', array());
+            }
+            $key = $_GET['key'];
+            $rec = TableRegistry::get('Profiles');
+            $query = $rec->find();
+            $u = $this->request->session()->read('Profile.id');
+            $super = $this->request->session()->read('Profile.admin');
+            $cond = $this->Settings->getprofilebyclient($u, $super);
+
+            if ($super) {
+                $query = $rec->find()->where(['super <>' => 1, 'drafts' => 0, '(fname LIKE "%' . $key . '%" OR lname LIKE "%' . $key . '%" OR username LIKE "%' . $key . '%")'])->order('fname');
+            } else {
+                $query = $rec->find()->where(['super <>' => 1, 'drafts' => 0, 'created_by' => $u, '(fname LIKE "%' . $key . '%" OR lname LIKE "%' . $key . '%" OR username LIKE "%' . $key . '%")'])->order('fname');
+            }
+
+            //$query = $query->select()->where(['super'=>0]);
+
+            /*$query = $query->select()->where(['profile_type NOT IN'=>'(5,6)','OR'=>$cond])
+                ->andWhere(['super'=>0,'(fname LIKE "%'.$key.'%" OR lname LIKE "%'.$key.'%" OR username LIKE "%'.$key.'%")']);
+             if(!$super)
+              $query = $query->orWhere(['created_by'=>$u]);*/
+            $this->set('profiles', $query);
+            $this->set('cid', $id);
+
+        }
+
+        function getAjaxContact($id = 0)
+        {
+            $this->layout = 'blank';
+            if ($id) {
+                $this->loadModel('Clients');
+                $profile = $this->Clients->get($id, [
+                    'contain' => []
+                ]);
+                $arr = explode(',', $profile->contact_id);
+                $this->set('contact', $arr);
+            } else {
+                $this->set('contact', array());
+            }
+            $key = $_GET['key'];
+            $rec = TableRegistry::get('Profiles');
+            $query = $rec->find();
             $u = $this->request->session()->read('Profile.id');
             $super = $this->request->session()->read('Profile.super');
             $cond = $this->Settings->getprofilebyclient($u, $super);
+            //$query = $query->select()->where(['super'=>0]);
+            $query = $query->select()->where(['profile_type NOT IN' => '(6)', 'OR' => $cond])
+                ->andWhere(['super' => 0, 'profile_type' => 6, '(fname LIKE "%' . $key . '%" OR lname LIKE "%' . $key . '%" OR username LIKE "%' . $key . '%")']);
+            $this->set('contacts', $query);
+            $this->set('cid', $id);
+        }
 
-            //var_dump($cond);
-            $profile = TableRegistry::get('profiles');
-            $query = $profile->find()->where(['username LIKE' => '%' . $title . "%", 'OR' => $cond]);
+        function getContact()
+        {
+            $con = TableRegistry::get('Profiles');
+            $query = $con->find()->where(['profile_type' => 6]);
+            $this->response->body($query);
+            return $this->response;
+            die();
+        }
 
-            $l = $query->all();
-            //debug($l);
-            if (count($l) > 0) {
-                /*echo "<select onchange='$(\".madmin\").val(this.value); $(\".loadusers\").hide()' class='form-control'>";
-                echo "<option> Select User</option>";*/
-                //echo "<ul>";
-                foreach ($l as $user) {
-                    //echo "<option value='".$user->username."'>".$user->username."</option>";
-                    echo "<a style='display:block; padding:5px 0; text-decoration:none;' onclick='$(\".madmin\").val(\"$user->username\"); $(\".loadusers\").hide()'>" . $user->username . "</a>";
-                }
-                //"</ul>";
-                //echo "<select/>";
-            } else {
-                echo "1";
+        function filterBy()
+        {
+            $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
+
+            if ($setting->profile_list == 0) {
+                $this->Flash->error('Sorry, you don\'t have the required permissions2.');
+                return $this->redirect("/");
+
             }
-        } else
-            echo "0";
-        //return $l;
 
-        die();
-
-    }
-
-    function getOrder($id)
-    {
-        $con = TableRegistry::get('Documents');
-        $query = $con->find()->where(['uploaded_for' => $id, 'document_type' => 'order']);
-        $this->response->body($query);
-        return $this->response;
-        die();
-    }
-
-    function getClient()
-    {
-        $query = TableRegistry::get('Clients');
-        $q = $query->find();
-        $que = $q->select();
-        $this->response->body($que);
-        return $this->response;
-        die();
-    }
-
-    function getProfileType($id = null)
-    {
-        $q = TableRegistry::get('Profiles');
-        $que = $q->find();
-        $que->select(['profile_type'])->where(['id' => $id]);
-        $query = $que->first();
-        $this->response->body($query);
-        return $this->response;
-        die();
-    }
-
-    function getProfileById($id, $sub)
-    {
-        $q = TableRegistry::get('Profiles');
-        $query = $q->find();
-        $que = $query->select()->where(['id' => $id])->first();
-
-        if ($sub == 1) {
-            $arr['applicant_phone_number'] = $que->phone;
-            $arr['aplicant_name'] = $que->fname . ' ' . $que->lname;
-            $arr['applicant_email'] = $que->email;
-        }
-        if ($sub == 2) {
-            $arr['street_address'] = $que->street;
-            $arr['city'] = $que->city;
-            $arr['state_province'] = $que->province;
-            $arr['postal_code'] = $que->postal;
-            $arr['last_name'] = $que->lname;
-            $arr['first_name'] = $que->fname;
-            $arr['phone'] = $que->phone;
-            $arr['email'] = $que->email;
-        }
-        if ($sub == 3) {
-            $arr['driver_name'] = $que->fname . ' ' . $que->lname;
-            $arr['d_l'] = $que->driver_license_no;
-        }
-        if ($sub == 4) {
-            $arr['last_name'] = $que->lname;
-            $arr['first_name'] = $que->fname;
-            $arr['mid_name'] = $que->mname;
-            $arr['sex'] = $que->gender;
-            $arr['birth_date'] = $que->dob;
-            $arr['phone'] = $que->phone;
-            $arr['current_city'] = $que->city;
-            $arr['current_province'] = $que->province;
-            $arr['current_postal_code'] = $que->postal;
-            $arr['driver_license_number'] = $que->driver_license_no;
-            $arr['driver_license_issued'] = $que->driver_province;
-            $arr['current_street_address'] = $que->street;
-            $arr['applicants_email'] = $que->email;
+            $profile_type = $_GET['filter_profile_type'];
+            $querys = TableRegistry::get('Profiles');
+            $query = $querys->find()->where(['profile_type' => $profile_type]);
+            $this->set('profiles', $this->paginate($this->Profiles));
+            $this->set('profiles', $query);
+            $this->set('return_profile_type', $profile_type);
+            $this->render('index');
         }
 
-        echo json_encode($arr);
-        die;
-    }
+        function getuser()
+        {
+            if ($id = $this->request->session()->read('Profile.id')) {
+                $profile = TableRegistry::get('profiles');
+                $query = $profile->find()->where(['id' => $id]);
 
-    public
-    function getNotes($driver_id)
-    {
-        $q = TableRegistry::get('recruiter_notes');
-        $que = $q->find();
-        $query = $que->select()->where(['driver_id' => $driver_id])->order(['id' => 'desc']);
-        //$query = $que->first();
-        $this->response->body($query);
-        return $this->response;
-        die();
-    }
+                $l = $query->first();
+                $this->response->body($l);
+                return $this->response;
+                //return $l;
 
-    public
-    function getRecruiterById($id)
-    {
-        $q = TableRegistry::get('Profiles');
-        $que = $q->find();
-        $query = $que->select()->where(['id' => $id])->first();
-        //$query = $que->first();
-        $this->response->body($query);
-        return $this->response;
-        die();
-    }
+            } else return $this->response->body(null);
+            die();
 
-    public
-    function deleteNote($id)
-    {
-        $this->loadModel('recruiter_notes');
-        $note = $this->recruiter_notes->get($id);
-        $this->recruiter_notes->delete($note);
-        die();
-    }
-
-    public
-    function saveNote($id, $rid)
-    {
-        $note = TableRegistry::get('recruiter_notes');
-        $_POST['driver_id'] = $id;
-        if (!$rid) {
-            $_POST['recruiter_id'] = $this->request->session()->read('Profile.id');
-
-            $_POST['created'] = date('Y-m-d');
         }
-        if (!$rid) {
-            $save = $note->newEntity($_POST);
 
-            if ($note->save($save))
-                echo '<div class="item">
+        function getallusers($profile_type = "", $client_id = "")
+        {
+            $u = $this->request->session()->read('Profile.id');
+            $super = $this->request->session()->read('Profile.super');
+            $cond = $this->Settings->getprofilebyclient($u, $super, $client_id);
+            $profile = TableRegistry::get('profiles');
+            if ($profile_type != "")
+                $query = $profile->find()->where(['super' => 0, 'profile_type' => $profile_type, 'OR' => $cond]);
+            else
+                $query = $profile->find()->where(['super' => 0, 'OR' => $cond]);
+            //debug($query);
+            $l = $query->all();
+            $this->response->body($l);
+            return $this->response;
+
+        }
+
+        function getusers()
+        {
+            $title = $_POST['v'];
+
+            if ($title != "") {
+                $u = $this->request->session()->read('Profile.id');
+                $super = $this->request->session()->read('Profile.super');
+                $cond = $this->Settings->getprofilebyclient($u, $super);
+
+                //var_dump($cond);
+                $profile = TableRegistry::get('profiles');
+                $query = $profile->find()->where(['username LIKE' => '%' . $title . "%", 'OR' => $cond]);
+
+                $l = $query->all();
+                //debug($l);
+                if (count($l) > 0) {
+                    /*echo "<select onchange='$(\".madmin\").val(this.value); $(\".loadusers\").hide()' class='form-control'>";
+                    echo "<option> Select User</option>";*/
+                    //echo "<ul>";
+                    foreach ($l as $user) {
+                        //echo "<option value='".$user->username."'>".$user->username."</option>";
+                        echo "<a style='display:block; padding:5px 0; text-decoration:none;' onclick='$(\".madmin\").val(\"$user->username\"); $(\".loadusers\").hide()'>" . $user->username . "</a>";
+                    }
+                    //"</ul>";
+                    //echo "<select/>";
+                } else {
+                    echo "1";
+                }
+            } else
+                echo "0";
+            //return $l;
+
+            die();
+
+        }
+
+        function getOrder($id)
+        {
+            $con = TableRegistry::get('Documents');
+            $query = $con->find()->where(['uploaded_for' => $id, 'document_type' => 'order']);
+            $this->response->body($query);
+            return $this->response;
+            die();
+        }
+
+        function getClient()
+        {
+            $query = TableRegistry::get('Clients');
+            $q = $query->find();
+            $que = $q->select();
+            $this->response->body($que);
+            return $this->response;
+            die();
+        }
+
+        function getProfileType($id = null)
+        {
+            $q = TableRegistry::get('Profiles');
+            $que = $q->find();
+            $que->select(['profile_type'])->where(['id' => $id]);
+            $query = $que->first();
+            $this->response->body($query);
+            return $this->response;
+            die();
+        }
+
+        function getProfileById($id, $sub)
+        {
+            $q = TableRegistry::get('Profiles');
+            $query = $q->find();
+            $que = $query->select()->where(['id' => $id])->first();
+
+            if ($sub == 1) {
+                $arr['applicant_phone_number'] = $que->phone;
+                $arr['aplicant_name'] = $que->fname . ' ' . $que->lname;
+                $arr['applicant_email'] = $que->email;
+            }
+            if ($sub == 2) {
+                $arr['street_address'] = $que->street;
+                $arr['city'] = $que->city;
+                $arr['state_province'] = $que->province;
+                $arr['postal_code'] = $que->postal;
+                $arr['last_name'] = $que->lname;
+                $arr['first_name'] = $que->fname;
+                $arr['phone'] = $que->phone;
+                $arr['email'] = $que->email;
+            }
+            if ($sub == 3) {
+                $arr['driver_name'] = $que->fname . ' ' . $que->lname;
+                $arr['d_l'] = $que->driver_license_no;
+            }
+            if ($sub == 4) {
+                $arr['last_name'] = $que->lname;
+                $arr['first_name'] = $que->fname;
+                $arr['mid_name'] = $que->mname;
+                $arr['sex'] = $que->gender;
+                $arr['birth_date'] = $que->dob;
+                $arr['phone'] = $que->phone;
+                $arr['current_city'] = $que->city;
+                $arr['current_province'] = $que->province;
+                $arr['current_postal_code'] = $que->postal;
+                $arr['driver_license_number'] = $que->driver_license_no;
+                $arr['driver_license_issued'] = $que->driver_province;
+                $arr['current_street_address'] = $que->street;
+                $arr['applicants_email'] = $que->email;
+            }
+
+            echo json_encode($arr);
+            die;
+        }
+
+        public
+        function getNotes($driver_id)
+        {
+            $q = TableRegistry::get('recruiter_notes');
+            $que = $q->find();
+            $query = $que->select()->where(['driver_id' => $driver_id])->order(['id' => 'desc']);
+            //$query = $que->first();
+            $this->response->body($query);
+            return $this->response;
+            die();
+        }
+
+        public
+        function getRecruiterById($id)
+        {
+            $q = TableRegistry::get('Profiles');
+            $que = $q->find();
+            $query = $que->select()->where(['id' => $id])->first();
+            //$query = $que->first();
+            $this->response->body($query);
+            return $this->response;
+            die();
+        }
+
+        public
+        function deleteNote($id)
+        {
+            $this->loadModel('recruiter_notes');
+            $note = $this->recruiter_notes->get($id);
+            $this->recruiter_notes->delete($note);
+            die();
+        }
+
+        public
+        function saveNote($id, $rid)
+        {
+            $note = TableRegistry::get('recruiter_notes');
+            $_POST['driver_id'] = $id;
+            if (!$rid) {
+                $_POST['recruiter_id'] = $this->request->session()->read('Profile.id');
+
+                $_POST['created'] = date('Y-m-d');
+            }
+            if (!$rid) {
+                $save = $note->newEntity($_POST);
+
+                if ($note->save($save))
+                    echo '<div class="item">
             <div class="item-head">
                 <div class="item-details">
                     <a href="" class="item-name primary-link">' . $this->request->session()->read('Profile.fname') . ' ' . $this->request->session()->read('Profile.mname') . ' ' . $this->request->session()->read('Profile.lname') . '</a>
@@ -1536,23 +1534,23 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                 <span id="desc' . $save->id . '">' . $_POST['description'] . '</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_' . $save->id . '">Edit</a> <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_' . $save->id . '" onclick="return confirm(\'Are you sure you want to delete &quot;' . $_POST['description'] . '&quot; ?\');">Delete</a><br/><br/>
             </div>
         </div>';
-            else
-                echo 'error';
-            die();
-        } else {
-            $note->query()->update()
-                ->set($_POST)
-                ->where(['id' => $rid])
-                ->execute();
-            //$q = TableRegistry::get('Profiles');
-            $que = $note->find();
-            $query = $que->select()->where(['id' => $id])->first();
-            $arr_cr = explode(',', $query->created);
+                else
+                    echo 'error';
+                die();
+            } else {
+                $note->query()->update()
+                    ->set($_POST)
+                    ->where(['id' => $rid])
+                    ->execute();
+                //$q = TableRegistry::get('Profiles');
+                $que = $note->find();
+                $query = $que->select()->where(['id' => $id])->first();
+                $arr_cr = explode(',', $query->created);
 
-            $q = TableRegistry::get('Profiles');
-            $query2 = $q->find();
-            $que2 = $query->select()->where(['id' => $query->recruiter_id])->first();
-            echo '<div class="item">
+                $q = TableRegistry::get('Profiles');
+                $query2 = $q->find();
+                $que2 = $query->select()->where(['id' => $query->recruiter_id])->first();
+                echo '<div class="item">
             <div class="item-head">
                 <div class="item-details">
                     <a href="" class="item-name primary-link">' . $que2->fname . ' ' . $que2->mname . ' ' . $que2->lname . '</a>
@@ -1564,399 +1562,390 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                 <span id="desc' . $rid . '">' . $_POST['description'] . '</span><br/><a href="javascript:void(0);" class="btn btn-small btn-primary editnote" style="padding: 0 8px;" id="note_' . $rid . '">Edit</a> <a href="javascript:void(0);" class="btn btn-small btn-danger deletenote" style="padding: 0 8px;" id="dnote_' . $rid . '" onclick="return confirm(\'Are you sure you want to delete &quot;' . $_POST['description'] . '&quot; ?\');">Delete</a><br/><br/>
             </div>
         </div>';
+            }
         }
-    }
 
-    public function check_user($uid = '')
-    {
-        if (isset($_POST['username']) && $_POST['username'])
-            $user = $_POST['username'];
-        $q = TableRegistry::get('profiles');
-        $que = $q->find();
-        if ($uid != "")
-            $query = $que->select()->where(['id !=' => $uid, 'username' => $user])->first();
-        else
-            $query = $que->select()->where(['username' => $user])->first();
-        //var_dump($query);
-        //$query = $que->first();
-        if ($query)
-            echo '1';
-        else
-            echo '0';
-        die();
-    }
+        public
+        function check_user($uid = '')
+        {
+            if (isset($_POST['username']) && $_POST['username'])
+                $user = $_POST['username'];
+            $q = TableRegistry::get('profiles');
+            $que = $q->find();
+            if ($uid != "")
+                $query = $que->select()->where(['id !=' => $uid, 'username' => $user])->first();
+            else
+                $query = $que->select()->where(['username' => $user])->first();
+            //var_dump($query);
+            //$query = $que->first();
+            if ($query)
+                echo '1';
+            else
+                echo '0';
+            die();
+        }
 
-    public
-    function check_email($uid = '')
-    {
+        public
+        function check_email($uid = '')
+        {
 
-        $email = $_POST['email'];
-        $q = TableRegistry::get('profiles');
-        $que = $q->find();
-        if ($uid != "")
-            $query = $que->select()->where(['id !=' => $uid, 'email' => $email])->first();
-        else $query = $que->select()->where(['email' => $email])->first();
-        //var_dump($query);
-        //$query = $que->first();
-        if ($query)
-            echo '1';
-        else
-            echo '0';
-        die();
-    }
+            $email = $_POST['email'];
+            $q = TableRegistry::get('profiles');
+            $que = $q->find();
+            if ($uid != "")
+                $query = $que->select()->where(['id !=' => $uid, 'email' => $email])->first();
+            else $query = $que->select()->where(['email' => $email])->first();
+            //var_dump($query);
+            //$query = $que->first();
+            if ($query)
+                echo '1';
+            else
+                echo '0';
+            die();
+        }
 
-    function cron()
-    {
+        function cron()
+        {
 
-        
-        $date = date('Y-m-d');
-        $time = date('H');
+            $date = date('Y-m-d');
+            $time = date('H');
 
-        $m = date('i');
-        $remainder = $m % 5;
-        $m = $m - $remainder;
-        if ($m < 10)
-            $m = '0' . $m;
-        $m2 = $m + 5;
-        if ($m2 < 10)
-            $m2 = '0' . $m2;
+            $m = date('i');
+            $remainder = $m % 5;
+            $m = $m - $remainder;
+            if ($m < 10)
+                $m = '0' . $m;
+            $m2 = $m + 5;
+            if ($m2 < 10)
+                $m2 = '0' . $m2;
 
-         $date2 = $date . ' ' . $time . ':' . $m2;
-         $date = $date . ' ' . $time . ':' . $m;
+            $date2 = $date . ' ' . $time . ':' . $m2;
+            $date = $date . ' ' . $time . ':' . $m;
 
-        $path = $this->Document->getUrl();
+            $path = $this->Document->getUrl();
 
-        $q = TableRegistry::get('events');
-        $que = $q->find();
-        //$query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
+            $q = TableRegistry::get('events');
+            $que = $q->find();
+            //$query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
 
-        $query = $que->select()->where(['(date <= "' . $datetime . '")', 'sent' => 0])->limit(200);
-        echo "<BR>" . iterator_count($query) . " emails to send";
-        //VAR_Dump($query);die();
-        foreach ($query as $todo) {
-            if($todo->email_self=='1')
-            {
-                $q2 = TableRegistry::get('profiles');
-                $que2 = $q2->find();
-                $query2 = $que2->select()->where(['id' => $todo->user_id])->first();
-                $email = $query2->email;
-                if ($email) {
-                    $from = 'info@' . getHost("isbmee.com");
-                    $to = $email;
-                    $sub = 'ISBMEE (Schedule) - Reminder';
-                    $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
-                    echo "<hR>From: " . $from . "<BR>To: " . $to . " (Account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
+            $query = $que->select()->where(['(date <= "' . $datetime . '")', 'sent' => 0])->limit(200);
+            echo "<BR>" . iterator_count($query) . " emails to send";
+            //VAR_Dump($query);die();
+            foreach ($query as $todo) {
+                if ($todo->email_self == '1') {
+                    $q2 = TableRegistry::get('profiles');
+                    $que2 = $q2->find();
+                    $query2 = $que2->select()->where(['id' => $todo->user_id])->first();
+                    $email = $query2->email;
+                    if ($email) {
+                        $from = 'info@' . getHost("isbmee.com");
+                        $to = $email;
+                        $sub = 'ISBMEE (Schedule) - Reminder';
+                        $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                        echo "<hR>From: " . $from . "<BR>To: " . $to . " (Account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
+                        $this->Mailer->sendEmail($from, $to, $sub, $msg);
+                    }
+                }
+                if ($todo->others_email != "") {
+                    $emails = explode(",", $todo->others_email);
+                    foreach ($emails as $em) {
+                        $from = 'info@' . getHost("isbmee.com");
+                        $to = trim($em);
+                        $sub = 'ISBMEE (Schedule) - Reminder';
+                        $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                        echo "<hR>From: " . $from . "<BR>To: " . $to . " (Added by account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
+                        $this->Mailer->sendEmail($from, $to, $sub, $msg);
+                    }
+                }
+                //echo $s;die();
+                $send = $q->query();
+                $send->update()->set(['sent' => 1])->where(['id' => $todo->id])->execute();
+            }
+
+            die();
+        }
+
+        function getDriverById($id)
+        {
+            $q2 = TableRegistry::get('profiles');
+            $que2 = $q2->find();
+            $query2 = $que2->select()->where(['id' => $id])->first();
+            $this->response->body($query2);
+            return $this->response;
+        }
+
+        function getOrders($id)
+        {
+            $order = TableRegistry::get('orders');
+            $order = $order->find()->where(['uploaded_for' => $id]);
+            $this->response->body($order);
+            return $this->response;
+        }
+
+        function forgetpassword()
+        {
+            $path = $this->Document->getUrl();
+            $email = $_POST['email'];
+            $profiles = TableRegistry::get('profiles');
+            if ($profile = $profiles->find()->where(['email' => $email])->first()) {
+                //debug($profile);
+                $new_pwd = $this->generateRandomString(6);
+                $p = TableRegistry::get('profiles');
+                if ($p->query()->update()->set(['password' => md5($new_pwd)])->where(['id' => $profile->id])->execute()) {
+                    $from = 'info@' . $path . '.com';
+                    $to = $profile->email;
+                    $sub = 'New Password created successfully';
+                    $msg = 'Hi,<br />Your  new password has been created.<br /> Your login details are:<br /> Username: ' . $profile->username . '<br /> Password: ' . $new_pwd . '<br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards';
                     $this->Mailer->sendEmail($from, $to, $sub, $msg);
+                    echo "Password has been reset succesfully. Please Check your email for the new password.";
+                }
+            } else {
+                echo "Sorry the email dosenot exists.";
+            }
+
+            die();
+
+        }
+
+        function generateRandomString($length = 10)
+        {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+            return $randomString;
+        }
+
+        function cleardb()
+        {
+            if ($this->request->session()->read('Profile.super') == 1) {
+                $conn = ConnectionManager::get('default');
+                $query = $conn->query("show tables");
+                $user_id = $conn->query("Select id from profiles where super=1");
+                foreach ($user_id as $u) {
+                    $uid = $u['id'];
+                }
+
+                foreach ($query as $table) {
+                    if ($table[0] != "settings" && $table[0] != "profiles" && $table[0] != "contents" && $table[0] != "blocks" && $table[0] != "logos" && $table[0] != "sidebar" && $table[0] != "subdocuments" && $table[0] != "order_products" && $table[0] != "color_class" && $table[0] != "client_types" && $table[0] != "profile_types" && $table[0] != "training_quiz" && $table[0] != "training_list") {
+                        $conn->query("TRUNCATE TABLE " . $table[0]);
+                    } elseif ($table[0] == 'profiles') {
+                        $conn->query("Delete from " . $table[0] . " where `super` = '0'");
+                    } elseif ($table[0] == 'blocks' || $table[0] == 'sidebar') {
+                        $conn->query("Delete from `" . $table[0] . "` where user_id <> " . $uid);
+                    }
+                }
+                echo "Cleared";
+                die();
+                $this->layout = "blank";
+            }
+        }
+
+        function sproduct($id = '0')
+        {
+            if (isset($_POST)) {
+                $p = TableRegistry::get('order_products');
+                $title = $_POST['title'];
+                if ($id != 0) {
+
+                    if ($p->query()->update()->set(['title' => $title])->where(['id' => $id])->execute()) {
+                        echo $title;
+                    }
+                } else {
+                    $profile = $p->newEntity($_POST);
+                    if ($p->save($profile)) {
+
+                        echo '<tr>
+                            <!--td>' . $profile->id . '</td-->
+                            <td class="title_' . $profile->id . '">' . $title . '</td>
+                            <td><input type="checkbox" id="chk_' . $profile->id . '" class="enable"/></td>
+                            <td><span  class="btn btn-info editpro" id="edit_' . $profile->id . '">Edit</span></td>
+                        </tr>';
+                    }
                 }
             }
-            if($todo->others_email!="")
-            {
-                $emails = explode(",",$todo->others_email);
-                foreach($emails as $em)
-                {
-                    $from = 'info@' .getHost("isbmee.com");
-                    $to = trim($em);
-                    $sub = 'ISBMEE (Schedule) - Reminder';
-                    $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
-                    echo "<hR>From: " . $from . "<BR>To: " . $to . " (Added by account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
-                    $this->Mailer->sendEmail($from, $to, $sub, $msg);
+            die();
+        }
+
+        function ptypes($id = '0')
+        {
+            if (isset($_POST)) {
+                $p = TableRegistry::get('profile_types');
+                $title = $_POST['title'];
+                if ($id != 0) {
+
+                    if ($p->query()->update()->set(['title' => $title])->where(['id' => $id])->execute()) {
+                        echo $title;
+                    }
+                } else {
+                    $profile = $p->newEntity($_POST);
+                    if ($p->save($profile)) {
+
+                        echo '<tr>
+                            <td>' . $profile->id . '</td>
+                            <td class="titleptype_' . $profile->id . '">' . $title . '</td>
+                            <td><input type="checkbox" id="pchk_' . $profile->id . '" class="penable"/><span class="span_' . $profile->id . '"></span></td>
+                            <td><span  class="btn btn-info editptype" id="editptype_' . $profile->id . '">Edit</span></td>
+                        </tr>';
+                    }
                 }
             }
-            //echo $s;die();
-            $send = $q->query();
-            $send->update()->set(['sent' => 1])->where(['id' => $todo->id])->execute();
+            die();
         }
 
-        die();
-    }
+        function ctypes($id = '0')
+        {
+            if (isset($_POST)) {
+                $p = TableRegistry::get('client_types');
+                $title = $_POST['title'];
+                if ($id != 0) {
 
-    function getDriverById($id)
-    {
-        $q2 = TableRegistry::get('profiles');
-        $que2 = $q2->find();
-        $query2 = $que2->select()->where(['id' => $id])->first();
-        $this->response->body($query2);
-        return $this->response;
-    }
+                    if ($p->query()->update()->set(['title' => $title])->where(['id' => $id])->execute()) {
+                        echo $title;
+                    }
+                } else {
+                    $profile = $p->newEntity($_POST);
+                    if ($p->save($profile)) {
 
-    function getOrders($id)
-    {
-        $order = TableRegistry::get('orders');
-        $order = $order->find()->where(['uploaded_for' => $id]);
-        $this->response->body($order);
-        return $this->response;
-    }
-
-    function forgetpassword()
-    {
-        $path = $this->Document->getUrl();
-        $email = $_POST['email'];
-        $profiles = TableRegistry::get('profiles');
-        if ($profile = $profiles->find()->where(['email' => $email])->first()) {
-            //debug($profile);
-            $new_pwd = $this->generateRandomString(6);
-            $p = TableRegistry::get('profiles');
-            if ($p->query()->update()->set(['password' => md5($new_pwd)])->where(['id' => $profile->id])->execute()) {
-                $from = 'info@'.$path.'.com';
-                $to = $profile->email;
-                $sub = 'New Password created successfully';
-                $msg = 'Hi,<br />Your  new password has been created.<br /> Your login details are:<br /> Username: ' . $profile->username . '<br /> Password: ' . $new_pwd . '<br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards';
-                $this->Mailer->sendEmail($from, $to, $sub, $msg);
-                echo "Password has been reset succesfully. Please Check your email for the new password.";
+                        echo '<tr>
+                            <td>' . $profile->id . '</td>
+                            <td class="titlectype_' . $profile->id . '">' . $title . '</td>
+                            <td><input type="checkbox" id="cchk_' . $profile->id . '" class="cenable"/><span class="span_' . $profile->id . '"></span></td>
+                            <td><span  class="btn btn-info editctype" id="editctype_' . $profile->id . '">Edit</span></td>
+                        </tr>';
+                    }
+                }
             }
-        } else {
-            echo "Sorry the email dosenot exists.";
+            die();
         }
 
-        die();
-
-    }
-
-    function generateRandomString($length = 10)
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    }
-
-
-    function cleardb()
-    {
-        if($this->request->session()->read('Profile.super')==1){
-        $conn = ConnectionManager::get('default');
-        $query = $conn->query("show tables");
-        $user_id = $conn->query("Select id from profiles where super=1");
-        foreach($user_id as $u){
-            $uid = $u['id'];
-        }
-        
-        foreach($query as $table) {
-           if($table[0]!= "settings" && $table[0]!="profiles" && $table[0]!="contents" && $table[0]!="blocks" && $table[0]!= "logos" && $table[0]!="sidebar" && $table[0]!="subdocuments" && $table[0]!= "order_products" && $table[0]!="color_class" && $table[0]!="client_types" && $table[0]!="profile_types" && $table[0]!="training_quiz" && $table[0]!="training_list"  ) {
-                $conn->query("TRUNCATE TABLE ".$table[0]);
-           } elseif($table[0]=='profiles') {
-               $conn->query("Delete from ".$table[0]." where `super` = '0'");
-           } elseif($table[0]=='blocks' || $table[0]=='sidebar') {
-                $conn->query("Delete from `".$table[0]."` where user_id <> ".$uid);
-           }
-        } echo "Cleared";
-        die();
-        $this->layout = "blank";
-        }
-    }
-    
-    function sproduct($id='0')
-    {
-        if(isset($_POST))
+        function enableproduct($id)
         {
             $p = TableRegistry::get('order_products');
-            $title = $_POST['title'];
-            if($id!=0)
-            {
-                
-                if ($p->query()->update()->set(['title' =>$title])->where(['id' => $id])->execute()) 
-                {
-                    echo $title;
-                }
+            $enable = $_POST['enable'];
+            if ($p->query()->update()->set(['enable' => $enable])->where(['id' => $id])->execute()) {
+                echo $enable;
             }
-            else
-            {
-                 $profile = $p->newEntity($_POST);
-                if ($p->save($profile)) {
-                    
-                    echo '<tr>
-                            <!--td>'.$profile->id.'</td-->
-                            <td class="title_'.$profile->id.'">'.$title.'</td>
-                            <td><input type="checkbox" id="chk_'.$profile->id.'" class="enable"/></td>
-                            <td><span  class="btn btn-info editpro" id="edit_'.$profile->id.'">Edit</span></td>
-                        </tr>';
-                    }
-            }
+
+            die();
         }
-        die();
-    }
-     function ptypes($id='0')
-    {
-        if(isset($_POST))
+
+        function ptypesenable($id)
         {
             $p = TableRegistry::get('profile_types');
-            $title = $_POST['title'];
-            if($id!=0)
-            {
-                
-                if ($p->query()->update()->set(['title' =>$title])->where(['id' => $id])->execute()) 
-                {
-                    echo $title;
-                }
+            $enable = $_POST['enable'];
+            if ($p->query()->update()->set(['enable' => $enable])->where(['id' => $id])->execute()) {
+                if ($enable == '1')
+                    echo "Added";
+                else
+                    echo "Removed";
             }
-            else
-            {
-                 $profile = $p->newEntity($_POST);
-                if ($p->save($profile)) {
-                    
-                    echo '<tr>
-                            <td>'.$profile->id.'</td>
-                            <td class="titleptype_'.$profile->id.'">'.$title.'</td>
-                            <td><input type="checkbox" id="pchk_'.$profile->id.'" class="penable"/><span class="span_'.$profile->id.'"></span></td>
-                            <td><span  class="btn btn-info editptype" id="editptype_'.$profile->id.'">Edit</span></td>
-                        </tr>';
-                    }
-            }
+
+            die();
         }
-        die();
-    }
-     function ctypes($id='0')
-    {
-        if(isset($_POST))
+
+        function ctypesenable($id)
         {
             $p = TableRegistry::get('client_types');
-            $title = $_POST['title'];
-            if($id!=0)
-            {
-                
-                if ($p->query()->update()->set(['title' =>$title])->where(['id' => $id])->execute()) 
-                {
-                    echo $title;
-                }
+            $enable = $_POST['enable'];
+            if ($p->query()->update()->set(['enable' => $enable])->where(['id' => $id])->execute()) {
+                if ($enable == '1')
+                    echo "Added";
+                else
+                    echo "Removed";
             }
-            else
-            {
-                 $profile = $p->newEntity($_POST);
-                if ($p->save($profile)) {
-                    
-                    echo '<tr>
-                            <td>'.$profile->id.'</td>
-                            <td class="titlectype_'.$profile->id.'">'.$title.'</td>
-                            <td><input type="checkbox" id="cchk_'.$profile->id.'" class="cenable"/><span class="span_'.$profile->id.'"></span></td>
-                            <td><span  class="btn btn-info editctype" id="editctype_'.$profile->id.'">Edit</span></td>
-                        </tr>';
-                    }
-            }
-        }
-        die();
-    }
-    function enableproduct($id)
-    {
-        $p = TableRegistry::get('order_products');
-        $enable = $_POST['enable'];
-        if ($p->query()->update()->set(['enable' =>$enable])->where(['id' => $id])->execute())
-        {
-            echo $enable;
-        }
-        
-        die();
-    }
-    function ptypesenable($id)
-    {
-        $p = TableRegistry::get('profile_types');
-        $enable = $_POST['enable'];
-        if ($p->query()->update()->set(['enable' =>$enable])->where(['id' => $id])->execute())
-        {
-            if ($enable=='1')
-                echo "Added";
-            else
-                echo "Removed";
-        }
-        
-        die();
-    }
-     function ctypesenable($id)
-    {
-        $p = TableRegistry::get('client_types');
-        $enable = $_POST['enable'];
-        if ($p->query()->update()->set(['enable' =>$enable])->where(['id' => $id])->execute())
-        {
-            if ($enable=='1')
-                echo "Added";
-            else
-                echo "Removed";
-        }
-        
-        die();
-    }
-    
-    function ctypesenb($id)
-    {
-        $ctype ="";
-        foreach($_POST['ctypes'] as $k=>$v)
-        {
-            if(count($_POST['ctypes'])==$k+1)
-            $ctype .= $v;
-            else
-            $ctype .= $v.",";
-        }
-        $p = TableRegistry::get('profiles');
-        $p->query()->update()->set(['ctypes' =>$ctype])->where(['id' => $id])->execute();
-        die();
-    }
-    function ptypesenb($id)
-    {
-        $ptype="";
-        foreach($_POST['ptypes'] as $k=>$v)
-        {
-            if(count($_POST['ptypes'])==$k+1)
-            $ptype .= $v;
-            else
-            $ptype .= $v.",";
-        }
-        $p = TableRegistry::get('profiles');
-        $p->query()->update()->set(['ptypes' =>$ptype])->where(['id' => $id])->execute();
-        die();
-    }
-    
-    function gettypes($type, $uid)
-    {
-         $p = TableRegistry::get('profiles');
-          $profile = $p ->find()
-                ->where(['id'=>$uid])->first();
 
-           if($type == 'ptypes')
+            die();
+        }
+
+        function ctypesenb($id)
+        {
+            $ctype = "";
+            foreach ($_POST['ctypes'] as $k => $v) {
+                if (count($_POST['ctypes']) == $k + 1)
+                    $ctype .= $v;
+                else
+                    $ctype .= $v . ",";
+            }
+            $p = TableRegistry::get('profiles');
+            $p->query()->update()->set(['ctypes' => $ctype])->where(['id' => $id])->execute();
+            die();
+        }
+
+        function ptypesenb($id)
+        {
+            $ptype = "";
+            foreach ($_POST['ptypes'] as $k => $v) {
+                if (count($_POST['ptypes']) == $k + 1)
+                    $ptype .= $v;
+                else
+                    $ptype .= $v . ",";
+            }
+            $p = TableRegistry::get('profiles');
+            $p->query()->update()->set(['ptypes' => $ptype])->where(['id' => $id])->execute();
+            die();
+        }
+
+        function gettypes($type, $uid)
+        {
+            $p = TableRegistry::get('profiles');
+            $profile = $p->find()
+                ->where(['id' => $uid])->first();
+
+            if ($type == 'ptypes')
                 $this->response->body(($profile->ptypes));
-           elseif($type == "ctypes")
+            elseif ($type == "ctypes")
                 $this->response->body(($profile->ctypes));
-                return $this->response;
-    }
-
-      /*  getDocumentcountz()
-        {
-            $doc = TableRegistry::get('Subdocuments');
-            $query = $doc->find();
-            $query = $query->where(['display' => 1]);
-            $q = $query->all();
-            $q = count($q);
-            $this->response->body($q);
             return $this->response;
         }
-        
-        getuserDocumentcountz($id)
-       {
-            $doc = TableRegistry::get('Subdocuments');
-            $query = $doc->find();
-            $query = $query->where(['display' => 1])->all();
-            $cnt = 0;
-            foreach ($query as $q) {
-                $subdoc = TableRegistry::get('profilessubdocument');
-                if ($query1 = $subdoc->find()->where(['profile_id' => $id, 'subdoc_id' => $q->id, 'display <>' => 0])->first())
-                    $cnt++;
-            }
 
-            $this->response->body($cnt);
-            return $this->response;
-       } */
-        public function appendattachments($query){
-            foreach($query as $client){
+        /*  getDocumentcountz()
+          {
+              $doc = TableRegistry::get('Subdocuments');
+              $query = $doc->find();
+              $query = $query->where(['display' => 1]);
+              $q = $query->all();
+              $q = count($q);
+              $this->response->body($q);
+              return $this->response;
+          }
+
+          getuserDocumentcountz($id)
+         {
+              $doc = TableRegistry::get('Subdocuments');
+              $query = $doc->find();
+              $query = $query->where(['display' => 1])->all();
+              $cnt = 0;
+              foreach ($query as $q) {
+                  $subdoc = TableRegistry::get('profilessubdocument');
+                  if ($query1 = $subdoc->find()->where(['profile_id' => $id, 'subdoc_id' => $q->id, 'display <>' => 0])->first())
+                      $cnt++;
+              }
+
+              $this->response->body($cnt);
+              return $this->response;
+         } */
+        public
+        function appendattachments($query)
+        {
+            foreach ($query as $client) {
                 $client->hasattachments = $this->hasattachments($client->id);
             }
             return $query;
         }
-        public function hasattachments($id){
+
+        public
+        function hasattachments($id)
+        {
             $docs = TableRegistry::get('profile_docs');
             $query = $docs->find();
-            $client_docs = $query->select()->where(['profile_id'=>$id])->first();
-            if($client_docs) {return true;}
+            $client_docs = $query->select()->where(['profile_id' => $id])->first();
+            if ($client_docs) {
+                return true;
+            }
         }
     }
+
 ?>

@@ -145,12 +145,12 @@
                                                            class="<?= btnclass("DELETE") ?>">Delete</a>
 
                                                     <?php }
-                                                    if ($sidebar->document_create == '1' && !isset($_GET["draft"])) {
+                                                    if ($sidebar->document_create == '1' && !isset($_GET["draft"])  && false) {
 
                                                         echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => btnclass("btn-success", "green-haze")]);
                                                     }
 
-                                                    if ($sidebar->orders_create == '1' && !isset($_GET["draft"])) {
+                                                    if ($sidebar->orders_create == '1' && !isset($_GET["draft"]) && false) {
                                                         ?>
 
                                                         <?php if ($sidebar->orders_mee == '1') { ?>
@@ -170,12 +170,10 @@
                                                             <a href="<?php
                                                             echo $this->request->webroot; ?>orders/productSelection?client=<?php echo $clients->id; ?>&ordertype=QUA"
                                                                class="<?= btnclass("btn-warning", "yellow") ?>">Re-Qualify</a>
-                                                        <?php } ?>
-
-                                                    <?php
+                                                        <?php }
                                                     }
 
-                                                    if ($sidebar->orders_list == '1' && !isset($_GET["draft"])) {
+                                                    if ($sidebar->orders_list == '1' && !isset($_GET["draft"]) && false) {
                                                         ?>
                                                         <a href="<?php echo $this->request->webroot; ?>orders/orderslist/?client_id=<?php echo $clients->id; ?>"
                                                            class="<?= btnclass("btn-info", "blue-soft") ?>">
@@ -189,6 +187,11 @@
 
                                                     }
                                                     ?>
+
+
+
+
+
                                                 </td>
                                             </tr>
 

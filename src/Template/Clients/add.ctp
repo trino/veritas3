@@ -610,7 +610,7 @@
                             </form>
                         </div>
                         <?php } ?>
-                         <div class="tab-pane" id="tab_1_3">
+                         <div class="tab-pane" id="tab_1_3"  style="min-height: 300px;;">
                          <?php
                             include('subpages/clients/recruiter_contact_table.php');
                          ?>

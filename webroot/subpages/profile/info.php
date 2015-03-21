@@ -280,7 +280,7 @@
                                 <label class="control-label">ISB Id : </label>
                                 <input <?php echo $is_disabled ?>
                                     name="isb_id" type="text"
-                                    placeholder="optional"
+                                    placeholder=""
                                     class="form-control req_rec" <?php if (isset($p->isb_id)) { ?> value="<?php echo $p->isb_id; ?>" <?php } 
                                     if(isset($p->isb_id) && !$this->request->session()->read('Profile.super')) {
                                         ?>
@@ -398,7 +398,7 @@
                             <div class="form-group">
                                 <label class="control-label">Email Address : </label>
                                 <input <?php echo $is_disabled ?> name="email" type="email"
-                                                                  placeholder="eg. test@domain.com"
+                                                                  placeholder=""
                                                                   class="form-control un email req_driver" <?php if (isset($p->email)) { ?> value="<?php echo $p->email; ?>" <?php } ?>/>
                             <span class="error passerror flashEmail"
                                   style="display: none;">Email already exists</span>
@@ -464,7 +464,7 @@
 
                                 <label class="control-label">First Name : </label>
                                 <input <?php echo $is_disabled ?> name="fname" type="text"
-                                    placeholder="eg. John"
+                                    placeholder=""
                                     class="form-control req_driver" <?php if (isset($p->fname)) { ?>
                                     value="<?php echo $p->fname; ?>" <?php } ?>/>
                             </div>
@@ -487,7 +487,7 @@
                             <div class="form-group">
                                 <label class="control-label">Last Name : </label>
                                 <input <?php echo $is_disabled ?> name="lname" type="text"
-                                    placeholder="eg. Doe"
+                                    placeholder=""
                                     class="form-control req_driver" <?php if (isset($p->lname)) { ?>
                                     value="<?php echo $p->lname; ?>" <?php } ?>/>
                             </div>
@@ -499,7 +499,7 @@
 
                                 <label class="control-label">Phone Number : </label>
                                 <input <?php echo $is_disabled ?> name="phone" type="text"
-                                    placeholder="eg. +1 646 580 6284"
+                                    placeholder=""
                                     class="form-control req_driver" <?php if (isset($p->phone)) { ?>
                                     value="<?php echo $p->phone; ?>" <?php } ?>/>
                             </div>
@@ -605,7 +605,7 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <input <?php echo $is_disabled ?> name="street" type="text"
-                                        placeholder="Street"
+                                        placeholder="Address"
                                         class="form-control req_driver" <?php if (isset($p->street)) { ?>
                                         value="<?php echo $p->street; ?>" <?php } ?>/>
                                 </div>

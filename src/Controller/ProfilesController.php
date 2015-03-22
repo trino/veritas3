@@ -1640,8 +1640,8 @@
                     if ($email) {
                         $from = 'info@' . getHost("isbmee.com");
                         $to = $email;
-                        $sub = 'ISBMEE (Schedule) - Reminder';
-                        $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                        $sub = 'ISBMEE Tasks - Reminder';
+                        $msg = getHost("isbmee.com") . ' Reminder<br />You have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
                         echo "<hR>From: " . $from . "<BR>To: " . $to . " (Account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
                         $this->Mailer->sendEmail($from, $to, $sub, $msg);
                     }
@@ -1651,8 +1651,8 @@
                     foreach ($emails as $em) {
                         $from = 'info@' . getHost("isbmee.com");
                         $to = trim($em);
-                        $sub = 'ISBMEE (Schedule) - Reminder';
-                        $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                        $sub = 'ISBMEE Tasks - Reminder';
+                        $msg =  getHost("isbmee.com") . ' Reminder<br />You have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
                         echo "<hR>From: " . $from . "<BR>To: " . $to . " (Added by account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
                         $this->Mailer->sendEmail($from, $to, $sub, $msg);
                     }

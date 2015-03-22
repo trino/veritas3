@@ -46,7 +46,7 @@ function randomcolor(){
 
 
 
-    <?php if ($sidebar->client_list ==1 && $block->draft_client =='1') { ?>
+    <?php if ($sidebar->client_list ==1 && $block->draft_client =='1' && false) { ?>
         <a href="<?php echo $this->request->webroot; ?>clients?draft" class="tile bg-grey-salsa" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>
@@ -82,7 +82,7 @@ function randomcolor(){
             </div>
         </a>
     <?php } ?>
-    <?php  if ($sidebar->profile_list ==1 && $block->draft_profile =='1') { ?>
+    <?php  if ($sidebar->profile_list ==1 && $block->draft_profile =='1' && false) { ?>
 		<a href="<?php echo $this->request->webroot; ?>profiles?draft" class="tile bg-green-haze" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-pencil"></i>

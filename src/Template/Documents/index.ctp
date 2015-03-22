@@ -183,6 +183,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                                 <th><?= $this->Paginator->sort('created', 'Date'); ?></th>
                                 <th><?= $this->Paginator->sort('client_id', ucfirst($settings->client)); ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
+                                <th><?= $this->Paginator->sort('draft', "Status"); ?></th>
 
                             </tr>
                             </thead>
@@ -239,7 +240,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                                         echo '<a href="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/'.$orderDetail->id;if($orderDetail->order_type){echo '?order_type='.urlencode($orderDetail->order_type);if($orderDetail->forms)echo '&forms='.$orderDetail->forms;}echo '">'.$orderDetail->id;echo '</a>';
                                     } else {
                                         echo "N/A";
-                                    }  if($docs->draft == 1) echo '( Draft )'; ?></td>
+                                    }  ?></td>
                                 <td style="width: 140px;">
                                     <?php switch (1){//change the number to pick a style
                                         case 0://plain text
@@ -401,6 +402,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                         ?>
 
                     </td>
+                    <td><?php  if($docs->draft == 1) echo '<span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>';else echo '<span class="label label-sm label-success" style="float:right;padding:4px;">confirmed</span>';?></td>
                     </tr>
 
                     <!--TR><TD colspan="8"><!php print_r($docs); !></TD></TR-->

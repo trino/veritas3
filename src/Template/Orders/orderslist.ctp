@@ -157,6 +157,7 @@
                             <th><?= $this->Paginator->sort('created', 'Created'); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                             <th><?= $this->Paginator->sort('bright_planet_html_binary', 'Status'); ?></th>
+                            <th><?= $this->Paginator->sort('draft', 'Saved'); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -221,7 +222,7 @@
                                                 </a>
                                                 <?php echo "</div>";
                                                 } else { echo "Unknown"; }
-                                                if($order->draft == 1) echo ' (Draft)';
+                                                //if($order->draft == 1) echo ' (Draft)';
                                                 ?>
                                     
                                     
@@ -299,7 +300,7 @@ Delete</a>
 <?php
 } ?>
 <?php //if (!isset($_GET['draft'])) echo $this->Html->link(__('Score Card'), ['controller' => 'orders', 'action' => 'viewReport', $order->client_id, $order->id], ['class' => 'btn btn-success']);?>
-</TD>
+</td>
 <td valign="middle">
 <?php if (!isset($_GET['draft'])) { ?>
 <?php if (isset($order->bright_planet_html_binary)) { ?>
@@ -313,6 +314,7 @@ style="float:right;padding:4px;">pending</span>
 <span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>
 <?php } ?>
 </td>
+<td><?php  if($order->draft == 1) echo '<span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>';else echo '<span class="label label-sm label-success" style="float:right;padding:4px;">confirmed</span>';?></td>
 </tr>
 <?php endforeach; ?>
 </tbody>

@@ -1628,7 +1628,7 @@
             $que = $q->find();
             //$query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
 
-            $query = $que->select()->where(['(date <= "' . $datetime . '")', 'sent' => 0])->limit(200);
+            $query = $que->select()->where(['(date >= "' . $datetime . '")', 'sent' => 0])->limit(200);
             echo "<BR>" . iterator_count($query) . " emails to send";
             //VAR_Dump($query);die();
             foreach ($query as $todo) {

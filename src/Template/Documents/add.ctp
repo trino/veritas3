@@ -1563,7 +1563,7 @@ if (isset($this->request->params['pass'][1])) {
                                     if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     else
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     
                                     }
                             }
@@ -1584,7 +1584,7 @@ if (isset($this->request->params['pass'][1])) {
                                     if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     else
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     
                                     }
                             }
@@ -1644,7 +1644,7 @@ if (isset($this->request->params['pass'][1])) {
                 if(draft==0)
                 window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                 else
-                window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     
                                     
             }
@@ -1666,7 +1666,7 @@ if (isset($this->request->params['pass'][1])) {
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
                                     else{
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
             }
         });
@@ -1686,7 +1686,7 @@ if (isset($this->request->params['pass'][1])) {
                                     }
                                     else
                                     {
-                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
             }
         });
@@ -1708,7 +1708,7 @@ if (isset($this->request->params['pass'][1])) {
                                     }
                                     else
                                     {
-                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
                
             }
@@ -1733,7 +1733,7 @@ if (isset($this->request->params['pass'][1])) {
                                     }
                                     else
                                     {
-                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
             }
         });
@@ -1757,7 +1757,7 @@ if (isset($this->request->params['pass'][1])) {
                                     }
                                     else
                                     {
-                                       window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                       window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
             }
         });

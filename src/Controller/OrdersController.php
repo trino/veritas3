@@ -986,7 +986,7 @@
                 else
                     $cond = $cond . ' AND division = "' . $_GET['division'] . '"';
             }
-            /*if (isset($_GET['draft'])) {
+            if (isset($_GET['draft'])) {
                 if ($cond == '')
                     $cond = $cond . ' orders.draft = 1';
                 else
@@ -996,7 +996,7 @@
                     $cond = $cond . ' orders.draft = 0';
                 else
                     $cond = $cond . ' AND orders.draft = 0';
-            }*/
+            }
             if ($cond) {
                 $order = $order->where([$cond])->contain(['Profiles']);
             } else {

@@ -135,7 +135,7 @@
             else
                 $draft = 0;
             $cond = '';
-            //$cond = 'drafts = ' . $draft;
+            $cond = 'drafts = ' . $draft;
             if (isset($_GET['searchprofile'])) {
                 $search = $_GET['searchprofile'];
                 $searchs = strtolower($search);

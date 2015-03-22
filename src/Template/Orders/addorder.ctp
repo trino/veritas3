@@ -1549,10 +1549,10 @@ function provinces($name){
             $.ajax({
                 url: '<?php echo $this->request->webroot;?>orders/webservice/<?php echo $_GET['order_type'];?>/<?php if(isset($_GET['forms'])){ echo $_GET['forms'];}else{echo 0;} ?>/' + $('#did').val() + '/' + $('#uploaded_for').val(),
                 success:function(){
-             //       window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
+                   window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
                 },
                 error:function(){
-             //       window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
+                   window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
                 }
             })
         });
@@ -1600,10 +1600,10 @@ function provinces($name){
                                 recruiter_signature: $('#recruiter_signature').val()
                             },
                             success:function(){
-                                window.location = base_url+'orders/orderslist?draft&flash';
+                                window.location = base_url+'orders/orderslist?flash';
                             },
                             error:function(){
-                                window.location = base_url+'orders/orderslist?draft&flash';
+                                window.location = base_url+'orders/orderslist?flash';
                             }
                         });
                     }

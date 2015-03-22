@@ -991,12 +991,12 @@
                     $cond = $cond . ' orders.draft = 1';
                 else
                     $cond = $cond . ' AND orders.draft = 1';
-            } else {
+            }/* else {
                 if ($cond == '')
                     $cond = $cond . ' orders.draft = 0';
                 else
                     $cond = $cond . ' AND orders.draft = 0';
-            }
+            }*/
             if ($cond) {
                 $order = $order->where([$cond])->contain(['Profiles']);
             } else {

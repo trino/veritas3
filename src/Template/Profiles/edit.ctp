@@ -453,11 +453,12 @@
 
                                         if ($this->request['action'] != 'add') {
 
-                                            if ($this->request->params['action'] != 'add' && ($profile->profile_type == '2')) {
+                                            if ($this->request->params['action'] != 'add' && ($profile->profile_type == '5')) {
                                                 ?>
                                                 <li<?php activetab($activetab, "notes"); ?>>
                                                     <a href="#tab_1_9" data-toggle="tab">Notes</a>
                                                 </li>
+                                                
 
                                             <?php }
                                             $checker = $this->requestAction('/settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id."/".$profile->created_by);

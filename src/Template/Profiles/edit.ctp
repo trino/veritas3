@@ -453,7 +453,7 @@
 
                                         if ($this->request['action'] != 'add') {
 
-                                            if ($this->request->params['action'] != 'add' && ($this->request->session()->read('Profile.profile_type') != '2')) {
+                                            if ($this->request->params['action'] != 'add' && ($profile->profile_type == '2')) {
                                                 ?>
                                                 <li<?php activetab($activetab, "notes"); ?>>
                                                     <a href="#tab_1_9" data-toggle="tab">Notes</a>

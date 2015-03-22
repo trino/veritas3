@@ -363,7 +363,7 @@ class SettingsComponent extends Component
             $profile = $user_profile->find()->where(['id'=>$uid]);
             $q2 = $profile->first();
             $usertype = $q1->profile_type;
-        
+            //$createdby = ($q1->created_by == $uid)?"1":"0";
             $client = $client_profile->find()->select('profile_id')->where(['id'=>$cid]);
             $q2 = $client->first();
             //var_dump($q2); echo $uid; die();

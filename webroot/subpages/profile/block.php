@@ -607,7 +607,7 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr-->
                         <tr>
-                            <td class="vtop">Schedule</td>
+                            <td class="vtop">Tasks</td>
                             <td>
                                 <label class="uniform-inline">
                                     <input <?php echo $is_disabled ?> type="radio"
@@ -618,6 +618,21 @@ if ($activetab == "permissions") {
                                     <input <?php echo $is_disabled ?> type="radio"
                                                                       name="side[schedule]"
                                                                       value="0" <?php if (isset($sidebar) && $sidebar->schedule == 0) echo "checked"; ?>/>
+                                    No </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vtop">Add Tasks</td>
+                            <td>
+                                <label class="uniform-inline">
+                                    <input <?php echo $is_disabled ?> type="radio"
+                                                                      name="side[schedule_add]"
+                                                                      value="1" <?php if (isset($sidebar) && $sidebar->schedule_add == 1) echo "checked"; ?>/>
+                                    Yes </label>
+                                <label class="uniform-inline">
+                                    <input <?php echo $is_disabled ?> type="radio"
+                                                                      name="side[schedule_add]"
+                                                                      value="0" <?php if (isset($sidebar) && $sidebar->schedule_add == 0) echo "checked"; ?>/>
                                     No </label>
                             </td>
                         </tr>
@@ -699,7 +714,7 @@ if ($activetab == "permissions") {
                                     No </label>
                             </td>
                         </tr>
-                        <tr>
+                        <!--<tr>
                             <td class="vtop">Bulk Order</td>
                             <td>
                                 <label class="uniform-inline">
@@ -713,7 +728,7 @@ if ($activetab == "permissions") {
                                                                       value="0" <?php if (isset($sidebar) && $sidebar->bulk == 0) echo "checked"; ?>/>
                                     No </label>
                             </td>
-                        </tr>
+                        </tr>-->
                         <tr>
                             <td class="vtop">
                                 <?php echo ucfirst($settings->document); ?>
@@ -1121,24 +1136,41 @@ if ($activetab == "permissions") {
                                                 </td>
                                             </tr>-->
 
-                    <!--tr>
-                                                <td>
-                                                    Schedule
-                                                </td>
-                                                <td>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="block[schedule]"
-                                                                                          value="1" <?php if (isset($block) && $block->schedule == 1) echo "checked"; ?>/>
-                                                        Yes </label>
-                                                    <label class="uniform-inline">
-                                                        <input <?php echo $is_disabled ?> type="radio"
-                                                                                          name="block[schedule]"
-                                                                                          value="0" <?php if (isset($block) && $block->schedule == 0) echo "checked"; ?>/>
-                                                        No </label>
-                                                </td>
-                                            </tr>
-                                             <tr>
+                    <tr>
+                        <td>
+                            Tasks
+                        </td>
+                        <td>
+                            <label class="uniform-inline">
+                                <input <?php echo $is_disabled ?> type="radio"
+                                                                  name="block[schedule]"
+                                                                  value="1" <?php if (isset($block) && $block->schedule == 1) echo "checked"; ?>/>
+                                Yes </label>
+                            <label class="uniform-inline">
+                                <input <?php echo $is_disabled ?> type="radio"
+                                                                  name="block[schedule]"
+                                                                  value="0" <?php if (isset($block) && $block->schedule == 0) echo "checked"; ?>/>
+                                No </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Add Tasks
+                        </td>
+                        <td>
+                            <label class="uniform-inline">
+                                <input <?php echo $is_disabled ?> type="radio"
+                                                                  name="block[schedule_add]"
+                                                                  value="1" <?php if (isset($block) && $block->schedule_add == 1) echo "checked"; ?>/>
+                                Yes </label>
+                            <label class="uniform-inline">
+                                <input <?php echo $is_disabled ?> type="radio"
+                                                                  name="block[schedule_add]"
+                                                                  value="0" <?php if (isset($block) && $block->schedule_add == 0) echo "checked"; ?>/>
+                                No </label>
+                        </td>
+                    </tr>
+                                            <!-- <tr>
                                                 <td>
                                                     Messages
                                                 </td>
@@ -1290,7 +1322,7 @@ if ($activetab == "permissions") {
                                 No </label>
                         </td>
                     </tr>
-                     <tr>
+                     <!--<tr>
                         <td>
                             Bulk Order
                         </td>
@@ -1306,7 +1338,7 @@ if ($activetab == "permissions") {
                                                                   value="0" <?php if (isset($block) && $block->bulk == 0) echo "checked"; ?>/>
                                 No </label>
                         </td>
-                    </tr>
+                    </tr>-->
                     <!--tr>
                                                 <td>
                                                     Master <?= $settings->client; ?>

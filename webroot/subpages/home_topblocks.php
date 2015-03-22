@@ -226,12 +226,24 @@ function randomcolor(){
 
     <?php if ($sidebar->schedule ==1 && $block->schedule =='1') { ?>
     <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
-        <a  href="<?php echo $this->request->webroot;?>schedules/calender" class="tile bg-green-meadow" style="display: block;">
+        <a  href="<?php echo $this->request->webroot;?>tasks/calender" class="tile bg-green-meadow" style="display: block;">
             <div class="tile-body">
                 <i class="fa fa-calendar"></i>
             </div>
             <div class="tile-object">
-                <div class="name">Schedule</div>
+                <div class="name">Tasks</div>
+                <div class="number"></div>
+            </div>
+         </a>
+    <?php } ?>
+     <?php if ($sidebar->schedule_add ==1 && $block->schedule_add =='1') { ?>
+    <!--<div class="input-group input-medium date date-picker" data-date-start-date="+0d" data-date-format="dd-mm-yyyy">-->
+        <a  href="<?php echo $this->request->webroot;?>tasks/add" class="tile bg-green-meadow" style="display: block;">
+            <div class="tile-body">
+                <i class="fa fa-calendar"></i>
+            </div>
+            <div class="tile-object">
+                <div class="name">Add Tasks</div>
                 <div class="number"></div>
             </div>
          </a>
@@ -294,7 +306,7 @@ function randomcolor(){
         </a>-->
     <?php } ?>
 
- <?php if ($sidebar->bulk == 1 && $block->bulk =='1') { ?>
+ <?php /* if ($sidebar->bulk == 1 && $block->bulk =='1') { ?>
         <a href="<?php echo $this->request->webroot;?>profiles" class="tile bg-green">
             <div class="tile-body">
                 <i class="fa fa-comments"></i>
@@ -304,7 +316,7 @@ function randomcolor(){
                 <div class="number"></div>
             </div>
     </a>
-    <?php } ?>
+    <?php }*/ ?>
 
 
 

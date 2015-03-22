@@ -11,7 +11,7 @@ use Cake\I18n\Time;
 
 
 
-class SchedulesController extends AppController {
+class TasksController extends AppController {
 
     
      public function initialize() {
@@ -29,6 +29,12 @@ class SchedulesController extends AppController {
 		
 	}
 
+    function timezone(){
+        session_start();
+        $_SESSION['time'] = $_GET['time'];
+        //$result = array("serverzone" =>  date('Z'));
+        //echo json_encode($result);
+    }
 
 
 	public function view($id = null) {
@@ -159,13 +165,6 @@ class SchedulesController extends AppController {
         $event = $events->find()->where(['user_id'=>$this->request->session()->read('Profile.id')])->order(['date'=>'DESC'])->all();
         //debug($event);
         $this->set('events', $event);
-    }
-    
-    function timezone(){
-        session_start();
-        $_SESSION['time'] = $_GET['time'];
-        //$result = array("serverzone" =>  date('Z'));
-        //echo json_encode($result);
     }
    
    

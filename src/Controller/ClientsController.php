@@ -561,7 +561,7 @@
                 return $this->redirect("/clients");
             } else {
                 $this->Flash->success('Client created successfully.');
-                return $this->redirect("/clients");
+                //return $this->redirect("/clients");
             }
             $this->loadModel("ClientTypes");
             $this->set('client_types', $this->ClientTypes->find()->where(['enable' => '1'])->all());

@@ -462,7 +462,7 @@
 
                                             <?php }
                                             $checker = $this->requestAction('/settings/check_edit_permission/' . $this->request->session()->read('Profile.id') . '/' . $profile->id."/".$profile->created_by);
-                                            if($this->request->session()->read('Profile.super') == '1'){
+                                            if($this->request->session()->read('Profile.super') == '1' || ($sidebar->profile_create == '1' && $sidebar->profile_edit=='1')){
                                             //if ($this->request->session()->read('Profile.admin') || ($this->request->session()->read('Profile.id') != $id && $this->request->session()->read('Profile.profile_type') == '2')) { 
                                                 ?>
                                                 <li <?php activetab($activetab, "permissions"); ?>>

@@ -1187,7 +1187,7 @@ if ($activetab == "permissions") {
                                                         No </label>
                                                 </td>
                                             </tr-->
-                    <tr>
+                    <!--<tr>
                         <td>
                             <?php echo ucfirst($settings->client); ?>s Drafts
                         </td>
@@ -1254,7 +1254,7 @@ if ($activetab == "permissions") {
                                                                   value="0" <?php if (isset($block) && $block->orders_draft == 0) echo "checked"; ?>/>
                                 No </label>
                         </td>
-                    </tr>
+                    </tr>-->
                     <!-- <tr>
                                                 <td>
                                                     Tasks

@@ -1345,7 +1345,7 @@
         public function getColor($id = 0)
         {
             $query = TableRegistry::get('color_class');
-            $q = $query->find('all')->where(['id'=>$id])->first();
+            $q = $query->find()->where(['id'=>$id])->first();
             $this->response->body($q);
             return $this->response;
         }
@@ -1361,6 +1361,7 @@
                 $this->response->body($q_col->color);
                 return $this->response;
             }
+            
             /*
             $query = TableRegistry::get('documents');
             $que = $query->find();

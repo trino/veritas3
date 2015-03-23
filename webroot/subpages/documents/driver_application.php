@@ -10,9 +10,13 @@
     if($controller == 'documents' )
     {
         
-         echo '<div class="row">
-        <div class="col-md-12">
-        <div class="portlet box red">
+        $colr = $this->requestAction('/documents/getColorId/2');
+                            if(!$colr)
+                            $colr = $class[1];
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box '.$colr.'">
         
                 <div class="portlet-title">
                     <div class="caption">

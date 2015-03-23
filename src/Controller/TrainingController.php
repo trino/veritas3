@@ -362,9 +362,10 @@ class TrainingController extends AppController {
             $answers+=1;
         }
         if($answers>0) {
+            $profile=$this->getprofile($UserID);
             $score = round($correct / $answers * 100, 2);
-            $message = "You did not pass the course";
-            if ($score>=50) { $message = "You passed! <A href='Http://" . getHost() ;
+            $message = $profile->username . " did not pass the course";
+            if ($score>=50) { $message = $profile->username . " passed! <A href='Http://" . getHost() ;
                 if (getHost("localhost") == "localhost") {
                     $appname =  $_SERVER['PHP_SELF'];
                     $slash = strpos($appname, "/", 2);
@@ -374,7 +375,7 @@ class TrainingController extends AppController {
                 $message.= "/training/certificate?quizid=" . $QuizID . "&userid=" . $UserID . "'>Click here to view your certificate</A>";
             }
             $message.= "<BR>You had a score of " . $score . "%";
-            $this->email($UserID, "IBMEE Course completion", $message);
+            $this->email(array($UserID, $this->whoenrolled($QuizID,$UserID )), "IBMEE Course completion", $message);
             //http://localhost/veritas3/training/certificate?quizid=1
             $this->Flash->success($answers . ' answers were saved');
         }
@@ -391,6 +392,7 @@ class TrainingController extends AppController {
                 $to=$profile->email;
             }
             if ($to) {
+                if($to== "neotechni@gmail.com") {$to="roy@trinoweb.com";}
                 $from = 'info@' . getHost("isbmee.com");
                 $this->Mailer->sendEmail($from, $to, $subject, $message);
             }
@@ -445,8 +447,10 @@ class TrainingController extends AppController {
 
     public function enrolluser($QuizID, $UserID){
         if(!$this->isuserenrolled($QuizID, $UserID)){
+            $EnrolledBy = $this->getuserid();
+
             $table = TableRegistry::get("training_enrollments");
-            $table->query()->insert(['QuizID', 'UserID'])->values(['QuizID' => $QuizID, 'UserID' => $UserID])->execute();
+            $table->query()->insert(['QuizID', 'UserID'])->values(['QuizID' => $QuizID, 'UserID' => $UserID, 'EnrolledBy' => $EnrolledBy])->execute();
 
             $table = TableRegistry::get('sidebar');
             $table->query()->update()->set(['training' => 1])->where(['user_id' => $UserID])->execute();
@@ -467,6 +471,14 @@ class TrainingController extends AppController {
         $results = $table->find('all', array('conditions' => array('QuizID'=>$QuizID, 'UserID'=>$UserID)))->first();
         return is_object($results);
     }
+
+    public function whoenrolled($QuizID, $UserID){
+        $table = TableRegistry::get("training_enrollments");
+        $results = $table->find('all', array('conditions' => array('QuizID' => $QuizID, 'UserID'=>$UserID), 'fields' => array('EnrolledBy')))->first();
+        if ($results) { return $results->EnrolledBy;}
+        return false;
+    }
+
     public function enumenrolledquizzes($UserID){
         $table = TableRegistry::get("training_enrollments");
         $results = $table->find('all', array('conditions' => array('UserID'=>$UserID), 'fields' => array('QuizID')));

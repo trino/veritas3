@@ -2,7 +2,12 @@
 <body onLoad="ajaxpage('timezone');">
 
 <?php
-
+function offsettime2($date, $minutes){
+    if ($minutes == 0){ return $date;}
+    $newdate= date_create($date);
+    if ($minutes > 0) {$newdate->modify("+" . $minutes . " minutes"); }
+    return $newdate->format('d F Y - H:i');
+}
 
 function offsettime($date, $offset){
     if ($offset == 0){ return $date;}
@@ -20,7 +25,7 @@ function offsettime($date, $offset){
 }
 
 $offset=0;
-if (isset($_SESSION['timediff'])) {
+if (isset($_SESSION['timediff']) && isset($event)) {
     $offset=$_SESSION['timediff'];
     $event->date = offsettime($event->date, $offset);
 }
@@ -68,7 +73,15 @@ else
 					<div class="input-icon">
 						<i class="fa fa-calendar"></i>
                         <input type="hidden" name="offset" value="<?= $offset ?>">
-						<input type="text" name="date" <?php echo $disabled;?> class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date..." value="<?php if(isset($event))echo date('d F Y - H:i',strtotime($event->date));?>"/>
+						<input type="text" name="date" <?php echo $disabled;?> class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date..." value="<?php
+                        if(isset($event)) {
+                            echo date('d F Y - H:i',strtotime($event->date));
+                        } else if (isset($_GET["date"])) {
+                            $minutes = ceil(date("i") / 5) * 5 - date("i");
+                            if ($minutes==0){$minutes=5;}
+                            echo offsettime2(date('Y-m-d ', strtotime($_GET["date"])) . date("H:i"), $minutes);
+                            //echo date('d F Y - ', strtotime($_GET["date"])) . date("H:i", time() + $minutes * 60000) . " " . $minutes;
+                        }?>"/>
 					</div>
 				</div>
 			</div>

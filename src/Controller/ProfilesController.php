@@ -135,7 +135,7 @@
             else
                 $draft = 0;
             $cond = '';
-            //$cond = 'drafts = ' . $draft;
+            $cond = 'drafts = ' . $draft;
             if (isset($_GET['searchprofile'])) {
                 $search = $_GET['searchprofile'];
                 $searchs = strtolower($search);
@@ -671,19 +671,29 @@
                             $em = $email_query->email;
                             $user_id = $this->request->session()->read('Profile.id');
                             $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
-                            if (isset($uq->profile_type)) {
+                            if ($uq->profile_type) {
                                 $u = $uq->profile_type;
                                 $type_query = TableRegistry::get('profile_types');
                                 $type_q = $type_query->find()->where(['id' => $u])->first();
+                                if($type_q)
                                 $ut = $type_q->title;
+                                else
+                                $ut = '';
                             }
-                            if (isset($_POST['profile_type'])) {
+                            else
+                            $ut = '';
+                            if ($_POST['profile_type']) {
                                 $pt = $_POST['profile_type'];
                                 $u = $pt;
                                 $type_query = TableRegistry::get('profile_types');
                                 $type_q = $type_query->find()->where(['id' => $u])->first();
+                                if($type_q)
                                 $protype = $type_q->title;
+                                else
+                                $protype = '';
                             }
+                            else
+                            $protype = '';
                             $from = 'info@' . $path;
                             $to = $em;
 
@@ -756,16 +766,16 @@
         public function saveDriver()
         {
             //echo $client_id = $_POST['cid'];die() ; 
-            $arr_post = explode(' & ', $_POST['inputs']);
+            $arr_post = explode('&', $_POST['inputs']);
             //var_dump($arr_post);die();
             foreach ($arr_post as $ap) {
-                $arr_ap = explode(' = ', $ap);
+                $arr_ap = explode('=', $ap);
                 if (isset($arr_ap[1])) {
                     $post[$arr_ap[0]] = urldecode($arr_ap[1]);
                     $post[$arr_ap[0]] = str_replace('Select Gender', '', urldecode($arr_ap[1]));
                 }
             }
-            //var_dump($post);die();
+           //var_dump($post);die();
             $que = $this->Profiles->find()->where(['email' => $post['email'], 'id <> ' => $post['id']])->first();
 
             if ($que) {
@@ -1628,7 +1638,7 @@
             $que = $q->find();
             //$query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
 
-            $query = $que->select()->where(['(date <= "' . $datetime . '")', 'sent' => 0])->limit(200);
+            $query = $que->select()->where(['(date >= "' . $datetime . '")', 'sent' => 0])->limit(200);
             echo "<BR>" . iterator_count($query) . " emails to send";
             //VAR_Dump($query);die();
             foreach ($query as $todo) {
@@ -1640,8 +1650,8 @@
                     if ($email) {
                         $from = 'info@' . getHost("isbmee.com");
                         $to = $email;
-                        $sub = 'ISBMEE (Schedule) - Reminder';
-                        $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                        $sub = 'ISBMEE Tasks - Reminder';
+                        $msg = 'Domain: ' . getHost("isbmee.com") . ' <br /><br />Reminder, you have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
                         echo "<hR>From: " . $from . "<BR>To: " . $to . " (Account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
                         $this->Mailer->sendEmail($from, $to, $sub, $msg);
                     }
@@ -1651,8 +1661,8 @@
                     foreach ($emails as $em) {
                         $from = 'info@' . getHost("isbmee.com");
                         $to = trim($em);
-                        $sub = 'ISBMEE (Schedule) - Reminder';
-                        $msg = 'Hi,<br />You have following task due by today:<br/><br/><strong>Title : </strong>' . $todo->title . '<br /><strong>Description : </strong>' . $todo->description . '<br /><strong>Due By : </strong>' . $todo->date . '<br /><br /> Regards';
+                        $sub = 'ISBMEE Tasks - Reminder';
+                        $msg =  'Domain: ' . getHost("isbmee.com") . ' <br /><br />Reminder, you have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
                         echo "<hR>From: " . $from . "<BR>To: " . $to . " (Added by account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
                         $this->Mailer->sendEmail($from, $to, $sub, $msg);
                     }

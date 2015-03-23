@@ -42,7 +42,16 @@
 					endforeach;
 				}
             if ($count==0){
-                echo '<div class="col-md-4" align="center">None</div>';
+
+?>
+                <div class="form-group col-md-12">
+
+			None
+            </div>
+
+               <?
+
+
             }?>
 
 		</div>

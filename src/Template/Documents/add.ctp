@@ -148,9 +148,13 @@ if (isset($this->request->params['pass'][1])) {
                         if($controller == 'documents' )
                         {
                             
+                             $colr = $this->requestAction('/documents/getColorId/1');
+                            if(!$colr)
+                            $colr = $class[0];
+                            
                              echo '<div class="row">
                             <div class="col-md-12">
-                            <div class="portlet box blue-madison">
+                            <div class="portlet box '.$colr.'">
                             
                                     <div class="portlet-title">
                                         <div class="caption">
@@ -182,9 +186,13 @@ if (isset($this->request->params['pass'][1])) {
                         if($controller == 'documents' )
                         {
                             
+                             $colr = $this->requestAction('/documents/getColorId/3');
+                            if(!$colr)
+                            $colr = $class[2];
+                            
                              echo '<div class="row">
                             <div class="col-md-12">
-                            <div class="portlet box yellow">
+                            <div class="portlet box '.$colr.'">
                             
                                     <div class="portlet-title">
                                         <div class="caption">
@@ -211,13 +219,17 @@ if (isset($this->request->params['pass'][1])) {
                         if($controller == 'documents' )
                         {
                             
+                             $colr = $this->requestAction('/documents/getColorId/4');
+                            if(!$colr)
+                            $colr = $class[3];
+                            
                              echo '<div class="row">
                             <div class="col-md-12">
-                            <div class="portlet box purple">
+                            <div class="portlet box '.$colr.'">
                             
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            Place MEE Order
+                                            Consent Form
                                         </div>
                                     </div>
                                     <div class="portlet-body form">
@@ -240,9 +252,13 @@ if (isset($this->request->params['pass'][1])) {
                         if($controller == 'documents' )
                         {
                             
+                            $colr = $this->requestAction('/documents/getColorId/5');
+                            if(!$colr)
+                            $colr = $class[4];
+                            
                              echo '<div class="row">
                             <div class="col-md-12">
-                            <div class="portlet box green">
+                            <div class="portlet box '.$colr.'">
                             
                                     <div class="portlet-title">
                                         <div class="caption">
@@ -269,9 +285,13 @@ if (isset($this->request->params['pass'][1])) {
                         if($controller == 'documents' )
                         {
                             
+                             $colr = $this->requestAction('/documents/getColorId/6');
+                            if(!$colr)
+                            $colr = $class[5];
+                            
                              echo '<div class="row">
                             <div class="col-md-12">
-                            <div class="portlet box red-intense">
+                            <div class="portlet box '.$colr.'">
                             
                                     <div class="portlet-title">
                                         <div class="caption">
@@ -298,9 +318,13 @@ if (isset($this->request->params['pass'][1])) {
                         if($controller == 'documents' )
                         {
                             
+                             $colr = $this->requestAction('/documents/getColorId/7');
+                            if(!$colr)
+                            $colr = $class[6];
+                            
                              echo '<div class="row">
                             <div class="col-md-12">
-                            <div class="portlet box yellow-saffron">
+                            <div class="portlet box '.$colr.'">
                             
                                     <div class="portlet-title">
                                         <div class="caption">
@@ -327,9 +351,13 @@ if (isset($this->request->params['pass'][1])) {
                         if($controller == 'documents' )
                         {
                             
+                             $colr = $this->requestAction('/documents/getColorId/8');
+                            if(!$colr)
+                            $colr = $class[7];
+                            
                              echo '<div class="row">
                             <div class="col-md-12">
-                            <div class="portlet box grey-cascade">
+                            <div class="portlet box '.$colr.'">
                             
                                     <div class="portlet-title">
                                         <div class="caption">
@@ -357,9 +385,13 @@ if (isset($this->request->params['pass'][1])) {
                         if($controller == 'documents' )
                         {
                             
+                             $colr = $this->requestAction('/documents/getColorId/9');
+                            if(!$colr)
+                            $colr = $class[8];
+                            
                              echo '<div class="row">
                             <div class="col-md-12">
-                            <div class="portlet box grey-cascade">
+                            <div class="portlet box '.$colr.'">
                             
                                     <div class="portlet-title">
                                         <div class="caption">
@@ -387,14 +419,17 @@ if (isset($this->request->params['pass'][1])) {
                      <?php
                         if($controller == 'documents' )
                         {
+                            $colr = $this->requestAction('/documents/getColorId/10');
+                            if(!$colr)
+                            $colr = $class[9];
                             
                              echo '<div class="row">
                             <div class="col-md-12">
-                            <div class="portlet box grey-cascade">
+                            <div class="portlet box '.$colr.'">
                             
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            Employment Verification
+                                            Education Verification
                                         </div>
                                     </div>
                                     <div class="portlet-body form">
@@ -429,9 +464,9 @@ if (isset($this->request->params['pass'][1])) {
                             {
                                 ?>
                                 
-                            <a href="javascript:;" id="draft" class="btn blue cont">
+                            <!--a href="javascript:;" id="draft" class="btn blue cont">
                                 Save As Draft <i class="m-icon-swapright m-icon-white"></i>
-                            </a>
+                            </a-->
                             <?php
                             }
                             ?>
@@ -1563,7 +1598,7 @@ if (isset($this->request->params['pass'][1])) {
                                     if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     else
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     
                                     }
                             }
@@ -1584,7 +1619,7 @@ if (isset($this->request->params['pass'][1])) {
                                     if(draft==0)
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     else
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     
                                     }
                             }
@@ -1644,7 +1679,7 @@ if (isset($this->request->params['pass'][1])) {
                 if(draft==0)
                 window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                 else
-                window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     
                                     
             }
@@ -1666,7 +1701,7 @@ if (isset($this->request->params['pass'][1])) {
                                     window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
                                     else{
-                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                    window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
             }
         });
@@ -1686,7 +1721,7 @@ if (isset($this->request->params['pass'][1])) {
                                     }
                                     else
                                     {
-                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
             }
         });
@@ -1708,7 +1743,7 @@ if (isset($this->request->params['pass'][1])) {
                                     }
                                     else
                                     {
-                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
                
             }
@@ -1733,7 +1768,7 @@ if (isset($this->request->params['pass'][1])) {
                                     }
                                     else
                                     {
-                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                        window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
             }
         });
@@ -1757,7 +1792,7 @@ if (isset($this->request->params['pass'][1])) {
                                     }
                                     else
                                     {
-                                       window.location = '<?php echo $this->request->webroot?>documents/index?flash&draft';
+                                       window.location = '<?php echo $this->request->webroot?>documents/index?flash';
                                     }
             }
         });
@@ -1831,6 +1866,8 @@ if (isset($this->request->params['pass'][1])) {
                     $('#' + ID).parent().find('.uploaded').text(response);
                     $('.' + ID).val(response);
                 }
+                else
+                alert('Invalid file type.');
 
                 /* $("#picture").text("Select");
                  this.enable();*/
@@ -1841,11 +1878,11 @@ if (isset($this->request->params['pass'][1])) {
     }
 </script>
 <script>
-
- $(function () {
-    <?php
+<?php
     if (!isset($disabled)) {
 ?>
+ $(function () {
+    
         
         $('#addMoredoc').live('click',function () {
         var total_count = $('.docMore').data('count');

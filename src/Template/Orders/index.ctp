@@ -139,7 +139,7 @@ $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Pro
                             $row_color_class = "odd";
 
                         if (count($orders) == 0){
-                            echo '<TR><TD COLSPAN="9" ALIGN="CENTER">No orders found';
+                            echo '<TR><TD COLSPAN="10" ALIGN="CENTER">No orders found';
                             if(isset($_GET['searchdoc'])) { echo " matching '" . $_GET['searchdoc'] . "'";}
                             echo '</TD></TR>';
                         }

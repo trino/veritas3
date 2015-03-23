@@ -145,7 +145,7 @@
                                                            class="<?= btnclass("DELETE") ?>">Delete</a>
 
                                                     <?php }
-                                                    if ($sidebar->document_create == '1' && !isset($_GET["draft"])  && false) {
+                                                    if ($sidebar->document_create == '1' && !isset($_GET["draft"])/*  && false*/) {
 
                                                         echo $this->Html->link(__('Create ' . ucfirst($settings->document)), ['controller' => 'documents', 'action' => 'add', $clients->id], ['class' => btnclass("btn-success", "green-haze")]);
                                                     }

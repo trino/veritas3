@@ -354,15 +354,16 @@
                                                     {
                                                         echo $this->request->webroot . 'documents/index?type=&submitted_for_id=' . $profile->id;
                                                      }
-                                                     else 
+                                                     else
                                                      {
                                                         echo $this->request->webroot . 'documents/index?type=&submitted_by_id=' . $profile->id;
                                                      }
                                                       ?>"
-                                                    
+
                                                     class="<?= btnclass("btn-info", "blue-soft") ?>">View Documents</a>
                                                     <?php
                                                     }
+
                                                     if ($sidebar->orders_list == '1' ) {
                                                         ?>
                                                         <a href="<?php echo $this->request->webroot; ?>orders/orderslist/?submitted_by_id=<?php echo $profile->id; ?>"
@@ -373,7 +374,7 @@
                                                     <?php
 
                                                     }
-                                                    
+            
                                                      ?>
                                         </td>
                                     </tr>
@@ -426,7 +427,7 @@
         $('.bulk_order').click(function(){
             var tempstr = '';
            $('.table-scrollable input[type="checkbox"]').each(function(){
-            
+
             if($(this).is(':checked'))
             {
                 if(tempstr == '')
@@ -434,10 +435,10 @@
                 else
                 tempstr = tempstr+','+$(this).val();
             }
-            
-            
+
+
            });
-           window.location = '<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART&profiles='+tempstr; 
+           window.location = '<?php echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=CART&profiles='+tempstr;
         });
         <?php if(isset($_GET['division'])&& $_GET['division']!=""){
                  //var_dump($_GET);

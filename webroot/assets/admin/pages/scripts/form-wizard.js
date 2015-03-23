@@ -368,10 +368,14 @@ var FormWizard = function () {
                     else
                     if($('#tab5').attr('class') == 'tabber tab-pane active' || $('#tab1').attr('class') == 'tabber tab-pane active')
                     {
-                        if($('#tab5').attr('class') == 'tabber tab-pane active')
+                        if($('#tab5').attr('class') == 'tabber tab-pane active'){
                         var curr = $('#tab5');
-                        else
+                        var form_name = 'consent';
+                        }
+                        else{
                         var curr = $('#tab1');
+                        form_name = 'other';
+                        }
                         
                         var er = 0;
                         
@@ -391,6 +395,7 @@ var FormWizard = function () {
                                 
                             }
                         });
+                        
                         if($('#check_div').val()=='1' && $('#divison').val()=='')
                         {
                             er = 1;
@@ -412,8 +417,53 @@ var FormWizard = function () {
 
                         }
                         else{
-                        //alert('test');
+                            if(form_name == 'consent')
+                            {
+                                
+                                if($('#sig2 .touched').val()!='1' && $('#sig2 .touched_edit2').val()!='1')
+                                {
+                                    alert('Please provide your signature to confirm.');
+                                    $('html,body').animate({
+                                        scrollTop: $('#sig2').offset().top},
+                                    'slow');
+                                    return false;
+                                }
+                                else
+                                if($('#sig4 .touched').val()!='1' && $('#sig4 .touched_edit4').val()!='1')
+                                {
+                                    alert('Please provide your signature to confirm.');
+                                    $('html,body').animate({
+                                        scrollTop: $('#sig4').offset().top},
+                                    'slow');
+                                    return false;
+                                }
+                                else
+                                if($('#sig1 .touched').val()!='1' && $('#sig1 .touched_edit1').val()!='1')
+                                {
+                                    alert('Please provide your signature to confirm.');
+                                    $('html,body').animate({
+                                        scrollTop: $('#sig1').offset().top},
+                                    'slow');
+                                    return false;
+                                }
+                                
+                                else
+                                if($('#sig3 .touched').val()!='1' && $('#sig3 .touched_edit3').val()!='1')
+                                {
+                                    alert('Please provide your signature to confirm.');
+                                    $('html,body').animate({
+                                        scrollTop: $('#sig3').offset().top},
+                                    'slow');
+                                    return false;
+                                }
+                                
+                                
+                                
+                            }
+                            else{
+                        
                         handleTitle(tab, navigation, index);
+                        }
                     }
 
                     }

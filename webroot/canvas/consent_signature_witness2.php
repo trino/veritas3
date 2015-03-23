@@ -28,9 +28,10 @@
 		</style>
 	
 		
-        <div class="col-sm-6">
+        <div class="col-sm-6" id="sig4">
             <input type="hidden" name="signature_company_witness2" id="signature_company_witness2" />
             <input type="hidden" class="touched" value="0" />
+            <input type="hidden" class="touched_edit4" value="<?php if(isset($consent_detail) && $consent_detail->signature_company_witness2){?>1<?php }else{?>0<?php }?>" />
             <label class="control-label">Signature of Company Witness</label>
             <?php if($this->request->params['action']!= 'vieworder' && $this->request->params['action']!= 'view'){?>
                 <canvas id="test6" style="border: 1px solid silver;border-radius: 5px;"></canvas>

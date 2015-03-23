@@ -1165,6 +1165,7 @@ function provinces($name){
 
                     if (res) {
                         $('#form_consent').find(':input').each(function () {
+                            if($(this).attr('class')!='touched' && $(this).attr('class')!='touched_edit3' && $(this).attr('class')!='touched_edit1' && $(this).attr('class')!='touched_edit2' && $(this).attr('class')!='touched_edit4'){
                             var $name = $(this).attr('name');
 
                             if ($name != 'offence[]' && $name != 'date_of_sentence[]' && $name != 'location[]' && $name != 'attach_doc[]') {
@@ -1172,6 +1173,7 @@ function provinces($name){
                                     $(this).val(res[$name]);
 
 
+                            }
                             }
                         });
                     }

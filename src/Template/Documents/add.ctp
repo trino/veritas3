@@ -1230,11 +1230,13 @@ if (isset($this->request->params['pass'][1])) {
                         } else if (ftype == "document_tab_3.php") {
 
                             $('#form_consent').find(':input').each(function () {
+                                if($(this).attr('class')!='touched' && $(this).attr('class')!='touched_edit3' && $(this).attr('class')!='touched_edit1' && $(this).attr('class')!='touched_edit2' && $(this).attr('class')!='touched_edit4'){
                                 var $name = $(this).attr('name');
 
                                 if ($name != 'offence[]' && $name != 'date_of_sentence[]' && $name != 'location[]') {
                                     $(this).val(res[$name]);
 
+                                }
                                 }
                             });
 
@@ -1315,6 +1317,7 @@ if (isset($this->request->params['pass'][1])) {
                                     success: function (res2) {
                                         var response = JSON.parse(res2);
                                         $('#form_consent').find(':input').each(function () {
+                                            
                                             var name_attr = $(this).attr('name');
         
                                             //alert(name_attr);
@@ -1484,19 +1487,61 @@ if (isset($this->request->params['pass'][1])) {
                     $(this).attr('style','border-color:red');
                     er = 1;
                 }
-                else
-                {
+                
+            });
+                                if($('#sig2 .touched').val()!='1' && $('#sig2 .touched_edit2').val()!='1')
+                                {
+                                    alert('Please provide your signature to confirm.');
+                                    $('html,body').animate({
+                                        scrollTop: $('#sig2').offset().top},
+                                    'slow');
+                                    er = 2;
+                                }
+                                else
+                                if($('#sig4 .touched').val()!='1' && $('#sig4 .touched_edit4').val()!='1')
+                                {
+                                    alert('Please provide your signature to confirm.');
+                                    $('html,body').animate({
+                                        scrollTop: $('#sig4').offset().top},
+                                    'slow');
+                                    er = 2;
+                                }
+                                else
+                                if($('#sig1 .touched').val()!='1' && $('#sig1 .touched_edit1').val()!='1')
+                                {
+                                    alert('Please provide your signature to confirm.');
+                                    $('html,body').animate({
+                                        scrollTop: $('#sig1').offset().top},
+                                    'slow');
+                                    er = 2;
+                                }
+                                
+                                else
+                                if($('#sig3 .touched').val()!='1' && $('#sig3 .touched_edit3').val()!='1')
+                                {
+                                    alert('Please provide your signature to confirm.');
+                                    $('html,body').animate({
+                                        scrollTop: $('#sig3').offset().top},
+                                    'slow');
+                                    er = 2;
+                                }
                     $(this).removeClass('myerror');
                     //$(this).removeAttr('style');
-                }
-            });
+                
             if(er){
+                $('.cont').removeAttr('disabled');
+                if(er==1){
                 alert('Please fill out all required fields in the consent form.');
                 $('html,body').animate({
                             scrollTop: $('.myerror').offset().top},
                         'slow');
-                        $('.cont').removeAttr('disabled');
+                        
                 return false;
+                }
+                else
+                if(er==2){
+                return false;
+                }
 
             }
             else

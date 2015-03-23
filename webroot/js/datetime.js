@@ -7,10 +7,10 @@ function ajaxpage(baseurl){
         data: 'time=' + key,
         type: 'get',
         success: function (res) {
-            //alert("success: " + baseurl);
+            //alert("success: " + baseurl + " " + key);
         },
         fail: function (res) {
-            //alert("fail: " + baseurl);
+            //alert("fail: " + baseurl + " " + key);
         }
     });
 }

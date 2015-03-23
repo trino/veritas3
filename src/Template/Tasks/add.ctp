@@ -2,6 +2,8 @@
 <body onLoad="ajaxpage('timezone');">
 
 <?php
+
+
 function offsettime($date, $offset){
     if ($offset == 0){ return $date;}
     $newdate= date_create($date);
@@ -17,8 +19,10 @@ function offsettime($date, $offset){
     return $newdate->format('Y-m-d H:i:s');
 }
 
+$offset=0;
 if (isset($_SESSION['timediff'])) {
-    $event->date = offsettime($event->date, $_SESSION['timediff']);
+    $offset=$_SESSION['timediff'];
+    $event->date = offsettime($event->date, $offset);
 }
 
 if(isset($isdisabled))
@@ -63,6 +67,7 @@ else
 				<div class="col-md-12">
 					<div class="input-icon">
 						<i class="fa fa-calendar"></i>
+                        <input type="hidden" name="offset" value="<?= $offset ?>">
 						<input type="text" name="date" <?php echo $disabled;?> class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date..." value="<?php if(isset($event))echo date('d F Y - H:i',strtotime($event->date));?>"/>
 					</div>
 				</div>

@@ -548,9 +548,9 @@
                     $password = '';
                     unset($_POST['password']);
                 } else {
-                    if(isset($_POST['password']) && $_POST['password'] != '')
+                    if(isset($_POST['password']) && $_POST['password'] != ''){
                     $password = $_POST['password'];
-                    $_POST['password'] = md5($_POST['password']);
+                    $_POST['password'] = md5($_POST['password']);}
                 }
                 if ($this->request->is('post')) {
 

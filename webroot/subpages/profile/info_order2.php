@@ -1,23 +1,16 @@
-<style>
-    div {
-        border: 0px solid green;
-    }
-</style>
-
 <?php
     if ($_GET['ordertype'] == 'MEE') {
-                        $o_type = 'Order MEE';
-                    } else
-                    if($_GET['ordertype']=='CART')
-                     {
-                        $o_type = 'Order Products';
-                    }
-                    else
-                    $o_type = 'QUA';
+        $o_type = 'Order MEE';
+    } else
+        if ($_GET['ordertype'] == 'CART') {
+            $o_type = 'Order Products';
+        } else
+            $o_type = 'QUA';
     $intable = true;
     $cols = 8;
 
-    function getcheckboxes($name, $amount) {
+    function getcheckboxes($name, $amount)
+    {
         $tempstr = "";
         for ($temp = 0; $temp < $amount; $temp += 1) {
             if (strlen($tempstr) > 0) {
@@ -49,7 +42,8 @@
         $counting++;
     }
 
-    function GET($name, $default = "")    {
+    function GET($name, $default = "")
+    {
         if (isset($_GET[$name])) {
             return $_GET[$name];
         }
@@ -64,7 +58,8 @@
         $ordertype = substr($ordertype, 0, 3);
     }
 
-    function printbutton($type, $webroot, $index, $tempstr = "")    {
+    function printbutton($type, $webroot, $index, $tempstr = "")
+    {
         if (strlen($type) > 0) {
             switch ($index) {
                 case 3:
@@ -79,7 +74,8 @@
             case 1:
                 if ($type == 'QUA') {
                     ?>
-                    <a href="javascript:void(0);" id="qua_btn" class="btn btn-danger  btn-lg placenow">Continue <i class="m-icon-swapright m-icon-white"></i></a>
+                    <a href="javascript:void(0);" id="qua_btn" class="btn btn-danger  btn-lg placenow">Continue <i
+                            class="m-icon-swapright m-icon-white"></i></a>
                 <?php
                 } else {
                     if ($type == 'MEE') {
@@ -134,7 +130,7 @@
     } else {
         $size = "xlarge";
     }
-    $size="ignore";
+    $size = "ignore";
 
     echo '<div class="col-xs-3 control-label" align="right" style="margin-top: 6px;">' . ucfirst($settings->client) . '</div><div class="col-xs-6">';
 
@@ -174,7 +170,8 @@
 ?>
 </select>
 
-<input class="selecting_client" type="hidden" value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
+<input class="selecting_client" type="hidden"
+       value="<?php if ($client) echo $client; else if ($counting == 1) echo $client_id; ?>"/>
 </div></div>
 
 <?php if ($intable) {
@@ -244,7 +241,10 @@
 
 
 
-<div class=" portlet-body" >
+
+
+
+<div class="portlet-body" >
     <div class="createDriver">
         <div class="portlet box form-horizontal">
 
@@ -258,12 +258,8 @@
                 printform($counting, $settings, $client, $dr_cl, $driver);
             } ?>
 
-
-
             <div class="">
                 <div class="col-xs-offset-3 col-xs-9">
-
-
                     <?php
                         if ($ordertype == "") {
                             printbutton($ordertype, $this->request->webroot, 1, $tempstr);
@@ -271,39 +267,17 @@
                             printbutton($ordertype, $this->request->webroot, 2, $tempstr);
                         }
                     ?>
-
-
                 </div>
             </div>
-
-
-           <!-- <div class="alacarte" style="display: none;">
-                <?php include('subpages/documents/products.php'); ?>
-                <div class="clearfix"></div>
-
-
-                <div class="row">
-                    <div class="col-xs-offset-3 col-xs-9">
-
-                        <?php printbutton($ordertype, $this->request->webroot, 5, $tempstr); ?>
-
-                        <a class="btn grey button-next proceed"
-                           onclick="$('.alacarte').toggle(200);$('.placenow').removeAttr('disabled');">
-                            Cancel</i>
-                        </a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-
-
-            </div>-->
-
-
         </div>
     </div>
-
-
 </div>
+
+
+
+
+
+
 
 <div class="row">
     <?php
@@ -320,9 +294,7 @@
                         <h3>Order MEE <span>
 											The all in one package </span>
                         </h3>
-                        <h4><!--i>$</i>999<i>.99</i>
-											<span>
-											One Time Payment </span-->
+                        <h4><!--i>$</i>999<i>.99</i> <span> One Time Payment </span-->
                         </h4>
                     </div>
 
@@ -332,29 +304,23 @@
 
                     <ul class="pricing-red-content list-unstyled">
                         <?php
-                        foreach($products as $p)
-                        {
-                            if($p->id!=8){
-                            ?>
-                            
-                        <li id="product_<?php echo $p->id;?>">
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title;?></div>
-                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" value=""/></div>
-                            <div class="clearfix"></div>
-                        </li>
-                        <?php
-                        }
-                        }
+                            foreach ($products as $p) {
+                                if ($p->id != 8) {
+                                    ?>
+
+                                    <li id="product_<?php echo $p->id; ?>">
+                                        <div class="col-xs-10"><i
+                                                class="fa fa-file-text-o"></i> <?php echo $p->title; ?>
+                                        </div>
+                                        <div class="col-xs-2"><input checked disabled="disabled" type="checkbox"
+                                                                     value=""/></div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                <?php
+                                }
+                            }
                         ?>
-                        
 
-                        <!--li>
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> Check DL</div>
-                            <div class="col-xs-2"><input checked disabled="disabled" type="checkbox" name="check_dl" value=""></div>
-                            <div class="clearfix"></div>
-
-
-                        </li-->
 
                     </ul>
                     <div class="pricing-footer">
@@ -381,9 +347,7 @@
                         <h3>Order Products <span>
 											Place an Order A La Carte </span>
                         </h3>
-                        <h4><!--i>$</i>999<i>.99+</i>
-											<span>
-											(Starting At) </span-->
+                        <h4><!--i>$</i>999<i>.99+</i><span>	(Starting At) </span-->
                         </h4>
                     </div>
 
@@ -392,22 +356,23 @@
                     } ?>
 
                     <ul class="pricing-content list-unstyled" id="cartlist">
-                         <?php
-                         $index=0;
-                            foreach($products as $p){
-                                
-                        ?>
-                        <li id="product_<?php echo $p->id;?>">
-
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title;?></div>
-                            <div class="col-xs-2"><input checked type="checkbox" id="form<?= $index ?>" value="<?php echo $p->id;?>"/></div>
-                            <div class="clearfix"></div>
-                        </li>
                         <?php
-                                $index+=1;
+                            $index = 0;
+                            foreach ($products as $p) {
+
+                                ?>
+                                <li id="product_<?php echo $p->id; ?>">
+
+                                    <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title; ?>
+                                    </div>
+                                    <div class="col-xs-2"><input checked type="checkbox" id="form<?= $index ?>"
+                                                                 value="<?php echo $p->id; ?>"/></div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <?php
+                                $index += 1;
                             }
                         ?>
-                        
 
                     </ul>
                     <div class="pricing-footer">
@@ -420,6 +385,7 @@
             </div>
         <?php }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $offset = $cols;
         if ($ordertype == "QUA") {
             if ($ordertype != "") {
@@ -430,8 +396,7 @@
             <div class="col-xs-<?= $offset ?>">
                 <div class="pricing-blue hover-effect">
                     <div class="pricing-blue-head pricing-head-active">
-                        <h3>Requalify<span>
-											Requalify existing drivers </span>
+                        <h3>Requalify <span>Requalify existing drivers </span>
                         </h3>
                         <h4><!--i>$</i>999<i>.99</i>
 											<span>
@@ -445,19 +410,21 @@
 
                     <ul class="pricing-blue-content list-unstyled" id="qualist">
                         <?php
-                        $b=0;
-                        foreach($products as $p)
-                        {
-                            ?>
-                            <li id="product_<?php echo $p->id;?>">
+                            $b = 0;
+                            foreach ($products as $p) {
+                                ?>
+                                <li id="product_<?php echo $p->id; ?>">
 
-                            <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title;?></div>
-                            <div class="col-xs-2"><input checked type="checkbox" name="prem_nat" id="formb<?php echo $b;?>" value="<?php echo $p->id;?>"/></div>
-                            <div class="clearfix"></div>
-                        </li>
-                            <?php
-                            $b++;
-                        }
+                                    <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title; ?>
+                                    </div>
+                                    <div class="col-xs-2"><input checked type="checkbox" name="prem_nat"
+                                                                 id="formb<?php echo $b; ?>"
+                                                                 value="<?php echo $p->id; ?>"/></div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <?php
+                                $b++;
+                            }
                         ?>
                     </ul>
                     <div class="pricing-footer">
@@ -469,70 +436,74 @@
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php }
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ?>
     <!--//End Pricing -->
 </div>
 
 <script>
-    function check_driver_abstract(driver)
-    {
+    function check_driver_abstract(driver) {
         /*$.ajax({
-            url:'<?php echo $this->request->webroot;?>orders/check_driver_abstract/'+driver,
-            success:function(res)
-            {
-                if(res=='0')
-                {
-                    if($('#product_2 input[type="checkbox"]').is(':checked'))
-                    {
-                        $('#product_2 input[type="checkbox"]').click();
-                    }
-                    $('#product_2').hide();
-                }
-                else
-                {
-                    if(!$('#product_2 input[type="checkbox"]').is(':checked'))
-                    {
-                        $('#product_2 input[type="checkbox"]').click();
-                    }
-                    $('#product_2').show();
-                }
-            }
-        });*/
+         url:'
+        <?php echo $this->request->webroot;?>orders/check_driver_abstract/'+driver,
+         success:function(res)
+         {
+         if(res=='0')
+         {
+         if($('#product_2 input[type="checkbox"]').is(':checked'))
+         {
+         $('#product_2 input[type="checkbox"]').click();
+         }
+         $('#product_2').hide();
+         }
+         else
+         {
+         if(!$('#product_2 input[type="checkbox"]').is(':checked'))
+         {
+         $('#product_2 input[type="checkbox"]').click();
+         }
+         $('#product_2').show();
+         }
+         }
+         });*/
     }
-    function check_cvor(driver)
-    {
+    function check_cvor(driver) {
         /*$.ajax({
-            url:'<?php echo $this->request->webroot;?>orders/check_cvor/'+driver,
-            success:function(res)
-            {
-                if(res=='0')
-                {
-                    if($('#product_3 input[type="checkbox"]').is(':checked'))
-                    {
-                        $('#product_3 input[type="checkbox"]').click();
-                    }
-                    $('#product_3').hide();
-                }
-                else
-                {
-                    if(!$('#product_3 input[type="checkbox"]').is(':checked'))
-                    {
-                        $('#product_3 input[type="checkbox"]').click();
-                    }
-                    $('#product_3').show();
-                }
-            }
-        });*/
+         url:'
+        <?php echo $this->request->webroot;?>orders/check_cvor/'+driver,
+         success:function(res)
+         {
+         if(res=='0')
+         {
+         if($('#product_3 input[type="checkbox"]').is(':checked'))
+         {
+         $('#product_3 input[type="checkbox"]').click();
+         }
+         $('#product_3').hide();
+         }
+         else
+         {
+         if(!$('#product_3 input[type="checkbox"]').is(':checked'))
+         {
+         $('#product_3 input[type="checkbox"]').click();
+         }
+         $('#product_3').show();
+         }
+         }
+         });*/
     }
     function check_div() {
         //alert('test');
         var checkerbox = 0;
-        $('input[type="checkbox"]').each(function(){
-           if($(this).is(':checked'))
-           checkerbox = 1;
+        $('input[type="checkbox"]').each(function () {
+            if ($(this).is(':checked'))
+                checkerbox = 1;
         });
-        if(checkerbox==0)
-        {
+        if (checkerbox == 0) {
             alert('Please select at least one product');
             return false;
         }
@@ -557,91 +528,84 @@
         if($driver)
         {
             ?>
-            check_driver_abstract(<?php echo $driver;?>);
-                check_cvor(<?php echo $driver;?>);
-            <?php
-        }
-        ?>
-        $('#cart_btn').click(function(){
-            if(!check_div())
-            return false;
-            if($('.selecting_driver').val()=='')
-            {
+        check_driver_abstract(<?php echo $driver;?>);
+        check_cvor(<?php echo $driver;?>);
+        <?php
+    }
+    ?>
+        $('#cart_btn').click(function () {
+            if (!check_div())
+                return false;
+            if ($('.selecting_driver').val() == '') {
                 alert('Please select driver');
-                $('#s2id_selecting_driver .select2-choice').attr('style','border:1px solid red;');
-                $('html,body').animate({scrollTop: $('#s2id_selecting_driver .select2-choice').offset().top},'slow');
+                $('#s2id_selecting_driver .select2-choice').attr('style', 'border:1px solid red;');
+                $('html,body').animate({scrollTop: $('#s2id_selecting_driver .select2-choice').offset().top}, 'slow');
                 return false;
             }
             var div = $('#divisionsel').val();
-            if(!isNaN(parseFloat(div)) && isFinite(div)){
+            if (!isNaN(parseFloat(div)) && isFinite(div)) {
                 var division = div;
-                }
-                else 
+            }
+            else
                 var division = '0';
-            if($('.selecting_client').val()){
+            if ($('.selecting_client').val()) {
                 var tempstr = '';
-                $('#cartlist input[type="checkbox"]').each(function(){
-                    
-                    if($(this).is(':checked'))
-                    {
-                        if(tempstr=='')
-                        {
-                            tempstr=$(this).val();
+                $('#cartlist input[type="checkbox"]').each(function () {
+
+                    if ($(this).is(':checked')) {
+                        if (tempstr == '') {
+                            tempstr = $(this).val();
                         }
                         else
-                        tempstr = tempstr+','+$(this).val();
+                            tempstr = tempstr + ',' + $(this).val();
                     }
                 });
-            window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=<?php echo urlencode($o_type);?>&forms='+tempstr;
+                window.location = '<?php echo $this->request->webroot; ?>orders/addorder/' + $('.selecting_client').val() + '/?driver=' + $('.selecting_driver').val() + '&division=' + division + '&order_type=<?php echo urlencode($o_type);?>&forms=' + tempstr;
             }
-            else{
-                $('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');
-                $('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');
-                }
-            
+            else {
+                $('#s2id_selecting_client .select2-choice').attr('style', 'border:1px solid red;');
+                $('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top}, 'slow');
+            }
+
         });
-        
-        $('#qua_btn').click(function(){
-            if(!check_div())
-            return false;
-            if($('.selecting_driver').val()=='')
-            {
+
+        $('#qua_btn').click(function () {
+            if (!check_div())
+                return false;
+            if ($('.selecting_driver').val() == '') {
                 alert('Please select driver.');
-                $('#s2id_selecting_driver .select2-choice').attr('style','border:1px solid red;');
-                $('html,body').animate({scrollTop: $('#s2id_selecting_driver .select2-choice').offset().top},'slow');
+                $('#s2id_selecting_driver .select2-choice').attr('style', 'border:1px solid red;');
+                $('html,body').animate({scrollTop: $('#s2id_selecting_driver .select2-choice').offset().top}, 'slow');
                 return false;
             }
             var div = $('#divisionsel').val();
-            if(!isNaN(parseFloat(div)) && isFinite(div)){
+            if (!isNaN(parseFloat(div)) && isFinite(div)) {
                 var division = div;
             }
-            else 
-            var division = '0';
-            if($('.selecting_client').val()){
-            var tempstr = '';
-                $('#qualist input[type="checkbox"]').each(function(){
-                    
-                    if($(this).is(':checked'))
-                    {
-                        if(tempstr=='')
-                        {
-                            tempstr=$(this).val();
+            else
+                var division = '0';
+            if ($('.selecting_client').val()) {
+                var tempstr = '';
+                $('#qualist input[type="checkbox"]').each(function () {
+
+                    if ($(this).is(':checked')) {
+                        if (tempstr == '') {
+                            tempstr = $(this).val();
                         }
                         else
-                        tempstr = tempstr+','+$(this).val();
+                            tempstr = tempstr + ',' + $(this).val();
                     }
                 });
-            window.location='<?php echo $this->request->webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&order_type=Requalification&forms='+tempstr;
+                window.location = '<?php echo $this->request->webroot; ?>orders/addorder/' + $('.selecting_client').val() + '/?driver=' + $('.selecting_driver').val() + '&division=' + division + '&order_type=Requalification&forms=' + tempstr;
             }
-            else{
-            $('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');
-            $('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');
+            else {
+                $('#s2id_selecting_client .select2-choice').attr('style', 'border:1px solid red;');
+                $('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top}, 'slow');
             }
-                
-            
-            
+
+
         });
-        
+
         $('#divisionsel').live('change', function () {
             $(this).removeAttr('style');
         });
@@ -732,6 +696,3 @@
         });
     });
 </script>
-
-
-

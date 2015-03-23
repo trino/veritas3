@@ -155,7 +155,7 @@ $pdf->Output($name, 'F', '../webroot/img/certificates');
 $name='../webroot/img/certificates/' . $name;
 echo "<center><a download='certificate.pdf' href='" . $name . "'><i class='fa fa-floppy-o'></i> Click here to save your certificate</a><BR></center>";
 
-echo '<embed src="' . $name . '" width="100%" height="700" type="application/pdf">';
+echo '<iframe src="' . $name . '#view=FitW" width="100%" height="603" type="application/pdf"></iframe>';
 //============================================================+
 // END OF FILE
 //============================================================+

@@ -1,3 +1,7 @@
+<?
+//if local host
+    echo "home_topblocks.php f456"
+?>
 <?php $block = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/blocks");
       $sidebar = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");
       //$order_url = $this->requestAction("settings/getclienturl/".$this->Session->read('Profile.id')."/order");

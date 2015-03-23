@@ -101,7 +101,7 @@
                 foreach($p as $pp)
                 {
                     $title = $this->requestAction('/orders/getProductTitle/'.$pp);
-                    $lineclass = PrintLine($lineclass, $title->title, "prem_nat", $pp);
+                    if (is_object($title)){ $lineclass = PrintLine($lineclass, $title->title, "prem_nat", $pp);}
                 }
             }   
             /*$lineclass = PrintLine($lineclass, "Premium National Criminal Record Check", "prem_nat", $p[0]);

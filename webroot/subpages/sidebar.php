@@ -157,7 +157,7 @@ $profileID = $this->Session->read('Profile.id');
                                 </li>
 
                             <?php } ?>
-							<?php if ($sidebar->document_list == 1) { ?>
+							<?php if ($sidebar->document_list == 1 && false) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Documents' && $this->request['action'] == 'index' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                                     <a href="<?php echo $this->request->webroot; ?>documents/index?draft">
                                         <i class="fa fa-pencil"></i>
@@ -222,7 +222,7 @@ $profileID = $this->Session->read('Profile.id');
                                         Intact Orders</a>
                                 </li>
                             <?php } ?>
-							<?php if ($sidebar->orders_list == 1){ ?>
+							<?php if ($sidebar->orders_list == 1 && false){ ?>
                                 <li <?php echo ($this->request['controller'] == 'Orders' && $this->request['action'] == 'orderslist' && isset($_GET['draft'])) ? 'class="active"' : ''; ?>>
                                     <a href="<?php echo $this->request->webroot; ?>orders/orderslist?draft">
                                         <i class="fa fa-pencil"></i>

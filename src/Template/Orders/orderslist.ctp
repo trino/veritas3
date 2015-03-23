@@ -31,10 +31,10 @@
     <?php
     if ($sidebar->orders_list == 1 && !isset($_GET["draft"]) ){?>
         <a href="<?php echo $this->request->webroot; ?>orders/orderslist?draft" class="floatright btn btn-warning btnspc">
-            Order Drafts</a>
+           List Order Drafts</a>
     <?php } elseif (isset($_GET["draft"])){ ?>
         <a href="<?php echo $this->request->webroot; ?>orders/orderslist" class="floatright btn btn-warning btnspc">
-            List Orders</a>
+            List All Orders</a>
     <?php }
     if ($sidebar->orders_mee == 1){ ?>
         <a href="<?php /*echo $this->request->webroot . $order_url;*/ echo $this->request->webroot;?>orders/productSelection?driver=0&ordertype=MEE" class="floatright btn red btnspc">
@@ -170,7 +170,7 @@
                         }
 
                             if (count($orders) == 0) {
-                                echo '<TR><TD COLSPAN="9" ALIGN="CENTER">No orders found';
+                                echo '<TR><TD COLSPAN="10" ALIGN="CENTER">No orders found';
                                 if (hasget('searchdoc')) {echo " matching '" . $_GET['searchdoc'] . "'";}
                                 echo '</TD></TR>';
                             }
@@ -193,7 +193,7 @@
                                 <tr class="<?= $row_color_class; ?>" role="row">
                                     <td><?= $this->Number->format($order->id);
                                         if($order->hasattachments) { echo '<BR><i  title="Has Attachment" class="fa fa-paperclip"></i>';}  //echo $order->profile->title;    ?></td>
-                                    <td style="min-width: 140px;">
+                                    <td style="min-width: 145px;">
                                     
                                         <?php
                                         if($order->order_type){
@@ -205,19 +205,24 @@
                                                     echo "blue";
                                                 }
                                                 ?>">
-                                                <div class="whiteCorner"></div>
-                                                <div class="visual" style="height: 40px;">
+                                                <!--div class="whiteCorner"></div-->
+                                                <!--div class="visual" style="height: 40px;">
                                                     <i class="fa fa-copy"></i>
-                                                </div>
+                                                </div-->
                                                 <!--div class="details"> //WARNING: This won't work while in a table...
                                                     <div class="number"></div>
                                                     <div class="desc"></div>
                                                 </div-->
                                                 <a class="more" id="sub_doc_click1" href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
-                                             
+
                                             echo $this->request->webroot.'orders/vieworder/'.$order->client_id.'/'.$order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}
                                             
                                         }else{if($sidebar->document_list == '1'){echo $this->request->webroot.'orders/addorder/'.$order->client_id.'/'.$order->id;if($order->order_type){echo '?order_type='.urlencode($order->order_type);if($order->forms)echo '&forms='.$order->forms;}}else{?>javascript:;<?php }} ?>">
+
+                                                    <i class="fa fa-copy"></i>
+
+
+
                                                     <?= h($order->order_type); //it won't let me put it in the desc ?>
                                                 </a>
                                                 <?php echo "</div>";
@@ -314,7 +319,7 @@ style="float:right;padding:4px;">pending</span>
 <span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>
 <?php } ?>
 </td>
-<td><?php  if($order->draft == 1) echo '<span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>';else echo '<span class="label label-sm label-success" style="float:right;padding:4px;">confirmed</span>';?></td>
+<td><?php  if($order->draft == 1) echo '<span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>';else echo '<span class="label label-sm label-success" style="float:right;padding:4px;">saved</span>';?></td>
 </tr>
 <?php endforeach; ?>
 </tbody>

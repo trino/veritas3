@@ -1641,7 +1641,7 @@
                         $from = 'info@' . getHost("isbmee.com");
                         $to = $email;
                         $sub = 'ISBMEE Tasks - Reminder';
-                        $msg = getHost("isbmee.com") . ' Reminder<br />You have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
+                        $msg = 'Domain: ' . getHost("isbmee.com") . ' <br /><br />Reminder, you have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
                         echo "<hR>From: " . $from . "<BR>To: " . $to . " (Account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
                         $this->Mailer->sendEmail($from, $to, $sub, $msg);
                     }
@@ -1652,7 +1652,7 @@
                         $from = 'info@' . getHost("isbmee.com");
                         $to = trim($em);
                         $sub = 'ISBMEE Tasks - Reminder';
-                        $msg =  getHost("isbmee.com") . ' Reminder<br />You have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
+                        $msg =  'Domain: ' . getHost("isbmee.com") . ' <br /><br />Reminder, you have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
                         echo "<hR>From: " . $from . "<BR>To: " . $to . " (Added by account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
                         $this->Mailer->sendEmail($from, $to, $sub, $msg);
                     }

@@ -429,9 +429,9 @@ if (isset($this->request->params['pass'][1])) {
                             {
                                 ?>
                                 
-                            <a href="javascript:;" id="draft" class="btn blue cont">
+                            <!--a href="javascript:;" id="draft" class="btn blue cont">
                                 Save As Draft <i class="m-icon-swapright m-icon-white"></i>
-                            </a>
+                            </a-->
                             <?php
                             }
                             ?>

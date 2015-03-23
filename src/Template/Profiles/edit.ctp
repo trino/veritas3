@@ -249,7 +249,7 @@
                     } else {
                         echo $this->request->webroot . 'documents/index?type=&submitted_by_id=' . $profile->id;
                     }
-                ?>"  class=" floatright btn default btnspc">View Documents</a>
+                ?>"  class=" floatright btn default btnspc">View My Documents</a>
             <?php
             }
         }

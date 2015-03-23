@@ -228,9 +228,9 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                                 $uploaded_for = $doc_comp->getUser($docs->uploaded_for);
                                 $getClientById = $doc_comp->getClientById($docs->client_id);
                                 $orderID = $this->Number->format($docs->order_id);
-                                if($orderID)                                
+                                if($orderID)
                                 $orderDetail = $doc_comp->getOrderById($docs->order_id);
-                                $getColorId = $this->requestAction('documents/getColorId/'.$docs->sub_doc_id);                                
+                                $getColorId = $this->requestAction('documents/getColorId/'.$docs->sub_doc_id);
                                 //$orderDetail = '<A HREF="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/' . $orderID . '">' . $orderID . '</A>';
                             ?>
                             <tr class="<?= $row_color_class; ?>" role="row">
@@ -241,7 +241,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                                     } else {
                                         echo "N/A";
                                     }  ?></td>
-                                <td style="width: 140px;">
+                                <td style="width: 160px;">
                                     <?php switch (1){//change the number to pick a style
                                         case 0://plain text
                                             echo h($docs->document_type);
@@ -259,15 +259,12 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                                             echo "blue";
                                         }
                                     ?>">
-                                    <div class="whiteCorner"></div>
-                                    <div class="visual" style="height: 40px;">
-                                        <i class="fa fa-copy"></i>
-                                    </div>
+
                                     <!--div class="details"> //WARNING: This won't work while in a table...
                                         <div class="number"></div>
                                         <div class="desc"></div>
                                     </div-->
-                                    <a class="more" id="sub_doc_click1"
+                                    <a class="more"  id="sub_doc_click1"
                                        href="<?php if ($sidebar->document_list == '1' && !isset($_GET["draft"])) {
                                            if (!$docs->order_id){
                                                echo $this->request->webroot . 'documents/view/' . $docs->client_id . '/' . $docs->id;if($docs->sub_doc_id==4)echo '?doc='.urlencode($docs->document_type);
@@ -277,6 +274,11 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                                                }
                                        } else { ?>javascript:;<?php } ?>">
                                         <?= h($docs->document_type); //it won't let me put it in the desc  ?>
+
+                                        <i class="fa fa-copy"></i>
+
+
+
                                     </a>
                     </div>
 
@@ -402,7 +404,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                         ?>
 
                     </td>
-                    <td><?php  if($docs->draft == 1) echo '<span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>';else echo '<span class="label label-sm label-success" style="float:right;padding:4px;">confirmed</span>';?></td>
+                    <td><?php  if($docs->draft == 1) echo '<span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>';else echo '<span class="label label-sm label-success" style="float:right;padding:4px;">saved</span>';?></td>
                     </tr>
 
                     <!--TR><TD colspan="8"><!php print_r($docs); !></TD></TR-->

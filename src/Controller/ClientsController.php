@@ -461,7 +461,7 @@
                                 $type_q = $type_query->find()->where(['id' => $u])->first();
                                 $ut = $type_q->title;
                             }
-                            $from = 'info@' . $path;
+                            $from = array('info@'.$path => "ISB MEE");
                             $to = $em;
                             $sub = 'Client Created: ' . $_POST['company_name'];
                             $msg = 'Domain: ' . $path . '<br />' . 'Client Name: ' . $_POST['company_name'] . '<br>Created by: ' . $uq->username . ' (Profile Type : ' . $ut . ')<br/> On: ' . $_POST['created'];

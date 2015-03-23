@@ -706,7 +706,7 @@
                 else if($u == 8)
                 $ut = 'Owner Driver';
               }
-           $from = "info@" . getHost("isbmee.com");// $emailaddress;//'info@isbmee.com';
+            $from = array('info@' . getHost("isbmee.com") => "ISB MEE");;// $emailaddress;//'info@isbmee.com';
             $to = $em;
              $sub = 'Client created';
             $msg = 'Hi,<br />A client has been created in https:isbmeereports.com<br />

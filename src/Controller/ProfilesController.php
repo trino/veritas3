@@ -695,7 +695,7 @@
                             }
                             else
                             $protype = '';
-                            $from = 'info@' . $path;
+                            $from = array('info@'.$path => "ISB MEE");
                             $to = $em;
 
                             $sub = 'Profile Created: ' . $_POST['username'];
@@ -1635,7 +1635,7 @@
                     $query2 = $que2->select()->where(['id' => $todo->user_id])->first();
                     $email = $query2->email;
                     if ($email) {
-                        $from = 'info@' . getHost("isbmee.com");
+                        $from = array('info@'.$path => "ISB MEE");
                         $to = $email;
                         $sub = 'ISBMEE Tasks - Reminder';
                         $msg = 'Domain: ' . getHost("isbmee.com") . ' <br /><br />Reminder, you have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
@@ -1646,7 +1646,7 @@
                 if ($todo->others_email != "") {
                     $emails = explode(",", $todo->others_email);
                     foreach ($emails as $em) {
-                        $from = 'info@' . getHost("isbmee.com");
+                        $from = array('info@'.$path => "ISB MEE");
                         $to = trim($em);
                         $sub = 'ISBMEE Tasks - Reminder';
                         $msg =  'Domain: ' . getHost("isbmee.com") . ' <br /><br />Reminder, you have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
@@ -1689,7 +1689,7 @@
                 $new_pwd = $this->generateRandomString(6);
                 $p = TableRegistry::get('profiles');
                 if ($p->query()->update()->set(['password' => md5($new_pwd)])->where(['id' => $profile->id])->execute()) {
-                    $from = 'info@' . $path . '.com';
+                    $from = array('info@'.$path => "ISB MEE");
                     $to = $profile->email;
                     $sub = 'New Password created successfully';
                     $msg = 'Hi,<br />Your new password has been created.<br /> Your login details are:<br /> Username: ' . $profile->username . '<br /> Password: ' . $new_pwd . '<br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards';

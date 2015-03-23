@@ -171,7 +171,7 @@ class DocumentComponent extends Component
                                 $ut = $type_q->title;
                               }
                               //$path = 'https://isbmeereports.com/documents/view/'.$cid;
-                           $from = 'info@'.$path;
+                            $from = array('info@'.$path => "ISB MEE");
                             $to = $p;
                              $sub = 'Document submitted';
                             $msg = 'Hi,<br />A document has been created in '.$path.'<br />
@@ -202,7 +202,7 @@ class DocumentComponent extends Component
                               }
                               else
                               $ut = '';
-                           $from = 'info@'.$path;
+                            $from = array('info@'.$path => "ISB MEE");
                             $to = $em;
                              $sub = 'Document submitted';
                             $msg = 'Hi,<br />A document has been created in '.$path.'<br />

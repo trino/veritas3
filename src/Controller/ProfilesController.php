@@ -671,19 +671,29 @@
                             $em = $email_query->email;
                             $user_id = $this->request->session()->read('Profile.id');
                             $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
-                            if (isset($uq->profile_type)) {
+                            if ($uq->profile_type) {
                                 $u = $uq->profile_type;
                                 $type_query = TableRegistry::get('profile_types');
                                 $type_q = $type_query->find()->where(['id' => $u])->first();
+                                if($type_q)
                                 $ut = $type_q->title;
+                                else
+                                $ut = '';
                             }
-                            if (isset($_POST['profile_type'])) {
+                            else
+                            $ut = '';
+                            if ($_POST['profile_type']) {
                                 $pt = $_POST['profile_type'];
                                 $u = $pt;
                                 $type_query = TableRegistry::get('profile_types');
                                 $type_q = $type_query->find()->where(['id' => $u])->first();
+                                if($type_q)
                                 $protype = $type_q->title;
+                                else
+                                $protype = '';
                             }
+                            else
+                            $protype = '';
                             $from = 'info@' . $path;
                             $to = $em;
 

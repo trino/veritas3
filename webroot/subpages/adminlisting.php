@@ -1,4 +1,7 @@
-<?php if(isset($cid))$jid = $cid; else $jid = "";?>
+<?php
+if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>adminlisting.php #INC114</span>";
+ if(isset($cid))$jid = $cid; else $jid = "";?>
 <?php $users = $this->requestAction('/profiles/getallusers/5/'.$jid);?>
 <div class="form-group">
 

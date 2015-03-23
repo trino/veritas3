@@ -1,4 +1,8 @@
 <!-- BEGIN PORTLET-->
+<?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>display.php #INC120</span>";
+ ?>
 <div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">

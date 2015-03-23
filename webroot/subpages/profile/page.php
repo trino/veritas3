@@ -5,6 +5,10 @@
             <i class="fa fa-briefcase"></i>Pages
         </div>
         -->
+<?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>page.php #INC123</span>";
+ ?>        
                                         <ul class="nav nav-tabs nav-justified">
 
 

@@ -1,5 +1,9 @@
 <div>
 <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>attach_doc.php #INC132</span>";
+ ?>
+<?php
 if(isset($disabled)) {
     $delete = true;
 } else {

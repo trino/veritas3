@@ -1,4 +1,8 @@
 <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>logo.php #INC121</span>";
+ ?>
+<?php
 function printlogos($logos1, $webroot, $index,$uid){ //* replaces the logo enumerators *//
     echo '<div class="form-group col-md-12"><div class="row">';
     foreach ($logos1 as $logo) {

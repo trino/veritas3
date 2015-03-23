@@ -1,3 +1,7 @@
+<?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>recruiter_notes.php #INC129</span>";
+ ?>
 <div class=" light recruiter_notes">
     <?php
     $desirednote = -1;

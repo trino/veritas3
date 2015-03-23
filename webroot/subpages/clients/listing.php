@@ -1,5 +1,8 @@
 <div class="row">
-    <?php if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") {
+    <?php 
+    if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>listing.php #INC113</span>";
+    if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1") {
         include_once('/subpages/api.php');
     } else {
         include_once('subpages/api.php');

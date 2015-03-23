@@ -1,4 +1,8 @@
 <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>audits.php #INC128</span>";
+ ?>
+<?php
 if(isset($disabled))
 {
 $is_disabled = 'disabled="disabled"';

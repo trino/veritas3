@@ -1,4 +1,7 @@
-<?php //echo die('here');?>
+<?php //echo die('here');
+     if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>home_blocks.php #INC111</span>";
+?>
 <div class="row home_blocks">
 
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

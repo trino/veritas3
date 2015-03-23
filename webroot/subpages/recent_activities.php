@@ -1,3 +1,6 @@
+<?php if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>recent_activites.php #INC115</span>";
+?>
 <div class="row ">
 				<div class="col-md-12 col-sm-12">
 					<div class="portlet box blue-steel">

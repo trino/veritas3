@@ -1,6 +1,7 @@
 <?
 //if local host
-    echo "home_topblocks.php f456"
+if($_SERVER['SERVER_NAME'] =='localhost')
+    echo "<span style ='color:red;'>home_topblocks.php #INC112</span>";
 ?>
 <?php $block = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/blocks");
       $sidebar = $this->requestAction("settings/all_settings/".$this->Session->read('Profile.id')."/sidebar");

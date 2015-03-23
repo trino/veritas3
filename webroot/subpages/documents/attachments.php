@@ -1,4 +1,8 @@
 <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>attachments.php #INC131</span>";
+ ?>
+<?php
 if(isset($disabled))
 {
 $is_disabled = 'disabled="disabled"';

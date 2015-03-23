@@ -1,3 +1,7 @@
+<?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>ctypes.php #INC119</span>";
+ ?>
 <div class="portlet box green-haze">
     <div class="portlet-title">
         <div class="caption">

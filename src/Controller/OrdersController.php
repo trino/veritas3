@@ -690,6 +690,18 @@
                 $ordertype1 = "MEE";
             }
             $this->set('ordertype', $ordertype1);
+
+
+            $orders = TableRegistry::get('orders');
+echo $orderid;
+            $order_info = $orders->find()->where(['id' => $orderid])->first();
+            $this->set('order_info', $order_info);
+
+
+
+var_dump(  $order_info); echo 999999999;die();
+
+
         }
         public function createPdfBg()
         {            

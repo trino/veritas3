@@ -1547,14 +1547,15 @@ function provinces($name){
 
 
         $('#submit_ord').live('click', function () {
+            var order_id = $('#did').val(),
 
             $.ajax({
-                url: '<?php echo $this->request->webroot;?>orders/webservice/<?php echo $_GET['order_type'];?>/<?php if(isset($_GET['forms'])){ echo $_GET['forms'];}else{echo 0;} ?>/' + $('#did').val() + '/' + $('#uploaded_for').val(),
+                url: '<?php echo $this->request->webroot;?>orders/webservice/<?php echo $_GET['order_type'];?>/<?php if(isset($_GET['forms'])){ echo $_GET['forms'];}else{echo 0;} ?>/' + order_id + '111/' + $('#uploaded_for').val(),
                 success:function(){
-                   window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
+                //   window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
                 },
                 error:function(){
-                   window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
+                //   window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
                 }
             })
         });

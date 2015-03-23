@@ -272,6 +272,7 @@
                                                 <tbody>
                                                 <?php
                                                     foreach ($p as $pp) {
+
                                                         $title_pr = $this->requestAction('/orders/getProductTitle/' . $pp);
                                                         ?>
                                                         <tr class="even" role="row">
@@ -280,13 +281,15 @@
                                                             </td>
                                                             <td><?php echo $title_pr->title;?>
                                                                 <?php
+
+                                                                    //echo $order->bright_planet_html_binary;
                                                                     get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, $title_pr->title)));
                                                                 ?>
                                                             </td>
 
                                                             <td class="actions">
                                                                 <?php
-                                                                    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
+                                                                //    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
                                                                     if (return_link('1603', $order->id) == false) { ?>
                                                                         <span
                                                                             class="label label label-info">Pending </span>

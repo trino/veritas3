@@ -29,3 +29,5 @@ src/Template/Orders/webservice.ctp
 *.xml
 webroot/img/certificates/certificate58-3.pdf
 *.pdf
+*.pdf
+webroot/img/certificates/certificate58-1.pdf

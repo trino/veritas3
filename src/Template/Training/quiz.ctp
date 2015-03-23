@@ -177,35 +177,8 @@
     }
 
     if (is_object($useranswers)) {
-        $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0, "datetaken" => getdatetaken($useranswers));
-        foreach ($questions as $question) {
-            $result = preprocess(usersanswer($useranswers, $question->QuestionID), $question->Answer);
-            $results[$result] += 1;
-            $results["total"] += 1;
-        }
         if ($results["missing"] < $results["total"]) {
             PrintResults($results, $user);
-        }
-    }
-    function getdatetaken($useranswers)
-    {
-        foreach ($useranswers as $answers) {
-            if ($answers->created) {
-                return $answers->created;
-            }
-        }
-    }
-
-    function usersanswer($useranswers, $questionid)
-    {
-        $answer = "";
-        if (isset($useranswers)) {
-            foreach ($useranswers as $answers) {
-                if ($answers->QuestionID == $questionid) {
-                    return $answers;
-                    continue;
-                }
-            }
         }
     }
 
@@ -244,19 +217,28 @@
         }
     }
 
-    function PrintResult($name, $number)
-    {
+    function usersanswer($useranswers, $questionid){
+        if (isset($useranswers)) {
+            foreach ($useranswers as $answers) {
+                if ($answers->QuestionID == $questionid) {return $answers;}
+            }
+        }
+    }
+
+    function PrintResult($name, $number){
         echo '<div class="col-md-2"><label class="control-label">' . $name . ' : </label><BR><DIV align="center"><H2>' . $number . '</H2></div></div>';
     }
 
     $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0);
     echo '<form action="quiz?quizid=' . $_GET["quizid"] . '" method="post" enctype="multipart/form-data" accept-charset="utf-8" id="responseform">';
+
+
     foreach ($questions as $question) {
         $question = clean($question, 1);
         $answer = usersanswer($useranswers, $question->QuestionID);
         $result = FullQuestion($QuizID, $question->Question, array($question->Choice0, $question->Choice1, $question->Choice2, $question->Choice3, $question->Choice4, $question->Choice5), $question->QuestionID, "1.00", $answer, $question->Answer);
-        $results[$result] += 1;
-        $results["total"] += 1;
+        //$results[$result] += 1;
+        //$results["total"] += 1;
     }
     if (is_object($answer)) {
         //PrintResults($results, $user);

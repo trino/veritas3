@@ -22,7 +22,11 @@ class TrainingController extends AppController {
             }
         }
         $this->set('hasusertakenquiz', false);
-        if (isset($_GET["quizid"])){$this->set('hasusertakenquiz', $this->hasusertakenquiz($_GET["quizid"], $this->getuserid() ));}
+        if (isset($_GET["quizid"])){
+            $this->set('hasusertakenquiz', $this->hasusertakenquiz($_GET["quizid"], $this->getuserid() ));
+            $this->set('results', $this->evaluateuser($_GET["quizid"],$this->getuserid() ));
+            $this->getprofile($this->getuserid());
+        }
         $this->set('enrolledquizzes', $this->enumenrolledquizzes($this->getuserid()));
         $this->enumquizes();
         $this->set('canedit', $this->canedit());
@@ -91,7 +95,7 @@ class TrainingController extends AppController {
         if ($this->canedit() && isset($_GET["userid"])){ $userid = $_GET["userid"];}
         $this->enumanswers($_GET["quizid"], $userid);
         $this->set('canedit', $this->canedit());
-
+        $this->set('results', $this->evaluateuser($_GET["quizid"],$userid));
         $this->getprofile($userid);
     }
 
@@ -154,7 +158,7 @@ class TrainingController extends AppController {
         return $data;
     }
     public function canedit(){
-        return  $this->request->session()->read('Profile.super');
+        return  $this->request->session()->read('Profile.super') or $this->request->session()->read('Profile.admin');
     }
     public function getuserid(){
         return $this->request->session()->read('Profile.id');
@@ -469,11 +473,51 @@ class TrainingController extends AppController {
         return $results;
     }
 
+    function evaluateuser($QuizID, $UserID){
+        $useranswers = $this->enumanswers($QuizID, $UserID);
+        if (!is_object($useranswers)){ return ""; }
+        $questions = $this->getQuiz($QuizID);
+        $results = array("incorrect" => 0, "missing" => 0, "correct" => 0, "total" => 0, "datetaken" => $this->getdatetaken($useranswers));
+        foreach ($questions as $question) {
+            $result = $this->preprocess($this->usersanswer($useranswers, $question->QuestionID), $question->Answer);
+            $results[$result] += 1;
+            $results["total"] += 1;
+        }
+        return $results;
+    }
+
+    function preprocess($usersanswer, $correctanswer){
+        $correct = "missing";
+        if (is_object($usersanswer)) {
+            $correct = "incorrect";
+            if ($usersanswer->Answer == -1) {
+                $correct = "missing";
+            } elseif ($correctanswer == $usersanswer->Answer) {
+                $correct = "correct";
+            }
+        }
+        return $correct;
+    }
+    function getdatetaken($useranswers){
+        foreach ($useranswers as $answers) {
+            if ($answers->created) { return $answers->created; }
+        }
+    }
+
+    function usersanswer($useranswers, $questionid){
+        if (isset($useranswers)) {
+            foreach ($useranswers as $answers) {
+                if ($answers->QuestionID == $questionid) {return $answers;}
+            }
+        }
+    }
 
 
 
 
-    //API stolen from profilescontroller
+
+
+//API stolen from profilescontroller
     public function initialize(){
         parent::initialize();
         $this->loadComponent('Settings');

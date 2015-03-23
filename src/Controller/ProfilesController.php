@@ -1617,29 +1617,15 @@
 
         function cron()
         {
-
-            $date = date('Y-m-d');
-            $time = date('H');
-
-            $m = date('i');
-            $remainder = $m % 5;
-            $m = $m - $remainder;
-            if ($m < 10)
-                $m = '0' . $m;
-            $m2 = $m + 5;
-            if ($m2 < 10)
-                $m2 = '0' . $m2;
-
-            $date2 = $date . ' ' . $time . ':' . $m2;
-            $date = $date . ' ' . $time . ':' . $m;
-
             $path = $this->Document->getUrl();
 
             $q = TableRegistry::get('events');
             $que = $q->find();
             //$query = $que->select()->where(['(date LIKE "%' . $date . '%" OR date LIKE "%' . $date2 . '%")', 'sent' => 0])->limit(200);
 
-            $query = $que->select()->where(['(date >= "' . $datetime . '")', 'sent' => 0])->limit(200);
+            $datetime = date('Y-m-d H:i:s');
+            echo "Checking for events before " . $datetime;
+            $query = $que->select()->where(['(date <= "' . $datetime . '")', 'sent' => 0])->limit(200);
             echo "<BR>" . iterator_count($query) . " emails to send";
             //VAR_Dump($query);die();
             foreach ($query as $todo) {

@@ -54,7 +54,11 @@ if (isset($_SESSION['timediff'] )) {
                                     <a href="<?php echo $this->request->webroot;?>tasks/add" id="event_add" type="button" class="btn red">
 											Add Task </a>
 
-
+<?php
+if ($this->request->session()->read('Profile.super') or $this->request->session()->read('Profile.admin')) {
+   echo '<a style="margin-top: 10px;" class="btn btn-warning" href="' . $this->request->webroot . 'profiles/cron">Run the CRON</A>';
+}
+?>
 
 
 

@@ -289,7 +289,7 @@ $profileID = $this->Session->read('Profile.id');
                                         <i class="icon-plus"></i>
                                         Courses</a>
                                 </li>
-                        <?php if ($this->request->session()->read('Profile.super')) { ?>
+                        <?php if ($this->request->session()->read('Profile.super') or $this->request->session()->read('Profile.admin')) { ?>
                                 <li <?php echo ($this->request['controller'] == 'Training' && $this->request['action'] == 'users') ? 'class="active"' : ''; ?>>
                                     <a href="<?php echo $this->request->webroot;?>training/users">
                                         <i class="icon-plus"></i>

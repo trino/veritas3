@@ -885,7 +885,7 @@
             $clientcount = $this->Settings->getClientCountByProfile($id);
             $this->set('Clientcount', $clientcount);
             if (isset($_GET['clientflash']) || $clientcount == 0) {
-                $this->Flash->success('Profile created successfully!Please assign profile to at least one client to start placing orders . ');
+                $this->Flash->success('Profile created successfully! Please assign profile to at least one client to start placing orders.');
             }
             $pr = TableRegistry::get('profiles');
             $query = $pr->find();
@@ -899,7 +899,7 @@
 
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
             if ($setting->profile_edit == 0 && $id != $this->request->session()->read('Profile.id')) {
-                $this->Flash->error('Sorry, you don\'t have the required permissions5.');
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
                 return $this->redirect("/");
 
             } else {

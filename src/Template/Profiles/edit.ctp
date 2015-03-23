@@ -401,11 +401,14 @@
                                 if (isset($_GET['getprofilescore'])) {
                                     $activetab = "scorecard";
                                 } //
-                                if (strpos($_SERVER['HTTP_REFERER'], "profiles/edit/" . $id) > 0 or strpos($_SERVER['HTTP_REFERER'], "profiles/add") > 0 or strpos($_SERVER['HTTP_REFERER'], "productSelection") > 0 or isset($_GET["clientflash"])) { //. $id
-                                    if (isset($Clientcount) && $Clientcount == 0) {
-                                        $activetab = "permissions";
+                                if (isset($_SERVER['HTTP_REFERER'])){
+                                    if (strpos($_SERVER['HTTP_REFERER'], "profiles/edit/" . $id) > 0 or strpos($_SERVER['HTTP_REFERER'], "profiles/add") > 0 or strpos($_SERVER['HTTP_REFERER'], "productSelection") > 0 or isset($_GET["clientflash"])) { //. $id
+                                        if (isset($Clientcount) && $Clientcount == 0) {
+                                            $activetab = "permissions";
+                                        }
                                     }
                                 }
+
                                 if (isset($_GET['activetab'])) {
                                     $activetab = $_GET['activetab'];
                                 }

@@ -248,7 +248,7 @@
                                                                href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>?order_type=<?php echo $order->order_type;
                                                                    if ($order->forms) {
                                                                        echo '?forms=' . $order->forms;
-                                                                   }?>"
+                                                                   } ?>"
                                                                class="btn btn-primary">View Order</a>
                                                         </TD>
                                                     </TR>
@@ -268,337 +268,352 @@
 
                                             <div class="col-md-12" style="">
 
-                                            <table class="table" style="margin-bottom: 0px;">
-                                                <tbody>
-                                                <?php
-                                                    foreach ($p as $pp) {
+                                                <table class="table" style="margin-bottom: 0px;">
+                                                    <tbody>
+                                                    <?php
+                                                        if (false) {
+                                                            foreach ($p as $pp) {
 
-                                                        $title_pr = $this->requestAction('/orders/getProductTitle/' . $pp);
-                                                        ?>
-                                                        <tr class="even" role="row">
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
-                                                            </td>
-                                                            <td><?php echo $title_pr->title;?>
-                                                                <?php
-
-                                                                    //echo $order->bright_planet_html_binary;
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, $title_pr->title)));
+                                                                $title_pr = $this->requestAction('/orders/getProductTitle/' . $pp);
                                                                 ?>
-                                                            </td>
+                                                                <tr class="even" role="row">
+                                                                    <td>
+                                                                        <span class="icon-notebook"></span>
+                                                                    </td>
+                                                                    <td><?php echo $title_pr->title; ?>
+                                                                        <?php
 
-                                                            <td class="actions">
-                                                                <?php
-                                                                //    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
-                                                                    if (return_link('1603', $order->id) == false) { ?>
-                                                                        <span
-                                                                            class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
-                                                                           class="btn btn-primary dl">Download</a>
-                                                                    <? } ?>
-                                                            </td>
-                                                        </tr>
+                                                                            //echo $order->bright_planet_html_binary;
+                                                                            get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, $title_pr->title)));
+                                                                        ?>
+                                                                    </td>
+
+                                                                    <td class="actions">
+                                                                        <?php
+                                                                            //    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
+                                                                            if (return_link('1603', $order->id) == false) { ?>
+                                                                                <span
+                                                                                    class="label label label-info">Pending </span>
+                                                                            <? } else { ?>
+                                                                                <a target="_blank"
+                                                                                   href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
+                                                                                   class="btn btn-primary dl">Download</a>
+                                                                            <? } ?>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php
+                                                            }
+                                                        }
+                                                        if ($p[0]) {
+                                                            ?>
+
+                                                            <tr class="even" role="row">
+                                                                <td>
+                                                                    <span class="icon-notebook"></span>
+                                                                </td>
+                                                                <td>Premium National Criminal Record Check
+                                                                    <?php
+                                                                        get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Premium National Criminal Record Check")));
+                                                                    ?>
+                                                                </td>
+
+                                                                <td class="actions">
+                                                                    <?php
+                                                                        $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
+                                                                        if (return_link('1603', $order->id) == false) { ?>
+                                                                            <span
+                                                                                class="label label label-info">Pending </span>
+                                                                        <? } else { ?>
+                                                                            <a target="_blank"
+                                                                               href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>"
+                                                                               class="btn btn-primary dl">Download</a>
+                                                                        <? } ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                        }
+                                                    ?>
                                                     <?php
-                                                    }
-                                                    /*if($p[0]){
-                                                        ?>
+                                                        if ($p[1]) {
+                                                            ?>
+                                                            <tr class="even" role="row">
+                                                                <td>
+                                                                    <span class="icon-notebook"></span>
 
-                                                        <tr class="even" role="row">
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
-                                                            </td>
-                                                            <td>Premium National Criminal Record Check
-                                                                <?php
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Premium National Criminal Record Check")));
-                                                                ?>
-                                                            </td>
+                                                                </td>
+                                                                <td>Driver's Record Abstract
+                                                                    <?php
+                                                                        get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Driver's Record Abstract")));
+                                                                    ?>
+                                                                </td>
 
-                                                            <td class="actions">
-                                                                <?php
-                                                                    $createfile = APP . "../webroot/orders/order_" . $order->id . '/1603.pdf';
-                                                                    if (return_link('1603', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank" href="<? echo $this->request->webroot . return_link('1603', $order->id); ?>" class="btn btn-primary dl">Download</a>
-                                                                    <? } ?>
-                                                            </td>
-                                                        </tr>
+                                                                <td class="actions">
+                                                                    <?php
+                                                                        if (return_link('1', $order->id) == false) { ?>
+                                                                            <span
+                                                                                class="label label label-info">Pending </span>
+                                                                        <? } else { ?>
+                                                                            <a target="_blank"
+                                                                               href="<? echo $this->request->webroot . return_link('1', $order->id); ?>"
+                                                                               class="btn btn-primary">Download</a>
+                                                                        <? } ?>
+
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                        }
+                                                    ?>
                                                     <?php
-                                                    }
-                                                ?>
-                                                <?php
-                                                    if($p[1]){
-                                                        ?>
-                                                        <tr class="even" role="row">
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
+                                                        if ($p[2]) {
+                                                            ?>
+                                                            <tr class="even" role="row">
+                                                                <td>
+                                                                    <span class="icon-notebook"></span>
 
-                                                            </td>
-                                                            <td>Driver's Record Abstract
-                                                                <?php
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Driver's Record Abstract")));
-                                                                ?>
-                                                            </td>
+                                                                </td>
+                                                                <td>CVOR
+                                                                    <?php get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "CVOR"))); ?>
+                                                                </td>
 
-                                                            <td class="actions">
-                                                                <?php
-                                                                    if (return_link('1', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank" href="<? echo $this->request->webroot . return_link('1', $order->id); ?>" class="btn btn-primary">Download</a>
-                                                                    <? } ?>
-
-                                                            </td>
-                                                        </tr>
+                                                                <td class="actions">
+                                                                    <?php
+                                                                        if (return_link('14', $order->id) == false) { ?>
+                                                                            <span
+                                                                                class="label label label-info">Pending </span>
+                                                                        <? } else { ?>
+                                                                            <a target="_blank"
+                                                                               href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
+                                                                               class="btn btn-primary">Download</a>
+                                                                        <? } ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                        }
+                                                    ?>
                                                     <?php
-                                                    }
-                                                ?>
-                                                <?php
-                                                    if($p[2]){
-                                                        ?>
-                                                        <tr class="even" role="row">
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
+                                                        if ($p[3]) {
+                                                            ?>
+                                                            <tr class="odd" role="row">
 
-                                                            </td>
-                                                            <td>CVOR
-                                                                <?php get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "CVOR"))); ?>
-                                                            </td>
+                                                                <td>
+                                                                    <span class="icon-notebook"></span>
 
-                                                            <td class="actions">
-                                                                <?php
-                                                                    if (return_link('14', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('14', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
-                                                                    <? } ?>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                                <td>Pre-employment Screening Program Report
+
+                                                                    <?php
+                                                                        get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Pre-employment Screening Program Report")));
+                                                                    ?>
+
+                                                                </td>
+
+                                                                <td class="actions">
+                                                                    <?php
+                                                                        if (return_link('77', $order->id) == false) { ?>
+                                                                            <span
+                                                                                class="label label label-info">Pending </span>
+                                                                        <? } else { ?>
+                                                                            <a target="_blank"
+                                                                               href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
+                                                                               class="btn btn-primary">Download</a>
+                                                                        <? } ?>
+
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                        }
+                                                    ?>
                                                     <?php
-                                                    }
-                                                ?>
-                                                <?php
-                                                    if($p[3]){
-                                                        ?>
-                                                        <tr class="odd" role="row">
+                                                        if ($p[4]) {
+                                                            ?>
+                                                            <tr class="even" role="row">
 
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
+                                                                <td>
+                                                                    <span class="icon-notebook"></span>
 
-                                                            </td>
-                                                            <td>Pre-employment Screening Program Report
+                                                                </td>
+                                                                <td>Transclick
 
-                                                                <?php
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Pre-employment Screening Program Report")));
-                                                                ?>
+                                                                    <?php
+                                                                        get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "TransClick")));
+                                                                    ?>
+                                                                </td>
 
-                                                            </td>
+                                                                <td class="actions">
+                                                                    <?php
+                                                                        if (return_link('78', $order->id) == false) { ?>
+                                                                            <span
+                                                                                class="label label label-info">Pending </span>
+                                                                        <? } else { ?>
+                                                                            <a target="_blank"
+                                                                               href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
+                                                                               class="btn btn-primary">Download</a>
+                                                                        <? } ?>
 
-                                                            <td class="actions">
-                                                                <?php
-                                                                    if (return_link('77', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('77', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
-                                                                    <? } ?>
-
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                        }
+                                                    ?>
                                                     <?php
-                                                    }
-                                                ?>
-                                                <?php
-                                                    if($p[4]){
-                                                        ?>
-                                                        <tr class="even" role="row">
+                                                        if ($p[5]) {
+                                                            ?>
+                                                            <tr class="odd" role="row">
+                                                                <td>
+                                                                    <span class="icon-notebook"></span>
 
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
+                                                                </td>
+                                                                <td>Certifications
+                                                                    <?php
+                                                                        get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Certifications")));
+                                                                    ?>
+                                                                </td>
 
-                                                            </td>
-                                                            <td>Transclick
-
-                                                                <?php
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "TransClick")));
-                                                                ?>
-                                                            </td>
-
-                                                            <td class="actions">
-                                                                <?php
-                                                                    if (return_link('78', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('78', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
-                                                                    <? } ?>
-
-                                                            </td>
-                                                        </tr>
+                                                                <td class="actions">
+                                                                    <?php
+                                                                        if (return_link('1650', $order->id) == false) { ?>
+                                                                            <span
+                                                                                class="label label label-info">Pending </span>
+                                                                        <? } else { ?>
+                                                                            <a target="_blank"
+                                                                               href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
+                                                                               class="btn btn-primary">Download</a>
+                                                                        <? } ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                        }
+                                                    ?>
                                                     <?php
-                                                    }
-                                                ?>
-                                                <?php
-                                                    if($p[5]){
-                                                        ?>
-                                                        <tr class="odd" role="row">
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
+                                                        if ($p[6]) {
+                                                            ?>
+                                                            <tr class="odd" role="row">
 
-                                                            </td>
-                                                            <td>Certifications
-                                                                <?php
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Certifications")));
-                                                                ?>
-                                                            </td>
+                                                                <td>
+                                                                    <span class="icon-notebook"></span>
 
-                                                            <td class="actions">
-                                                                <?php
-                                                                    if (return_link('1650', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('1650', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
-                                                                    <? } ?>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                                <td>Letter of Experience
+
+                                                                    <?php
+                                                                        get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Letter Of Experience")));
+                                                                    ?>
+                                                                </td>
+                                                                <td class="actions">
+                                                                    <?php
+                                                                        if (return_link('1627', $order->id) == false) { ?>
+                                                                            <span
+                                                                                class="label label label-info">Pending </span>
+                                                                        <? } else { ?>
+                                                                            <a target="_blank"
+                                                                               href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
+                                                                               class="btn btn-primary">Download</a>
+                                                                        <? } ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                        }
+                                                    ?>
+
+
+
                                                     <?php
-                                                    }
-                                                ?>
-                                                <?php
-                                                    if($p[6]){
-                                                        ?>
-                                                        <tr class="odd" role="row">
+                                                        if ($p[7] && $order->order_type != "Order MEE"
+                                                        ) {
+                                                            ?>
+                                                            <tr class="odd" role="row">
 
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
+                                                                <td>
+                                                                    <span class="icon-notebook"></span>
 
-                                                            </td>
-                                                            <td>Letter of Experience
+                                                                </td>
+                                                                <td>Check DL
 
-                                                                <?php
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Letter Of Experience")));
-                                                                ?>
-                                                            </td>
-                                                            <td class="actions">
-                                                                <?php
-                                                                    if (return_link('1627', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('1627', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
-                                                                    <? } ?>
-                                                            </td>
-                                                        </tr>
-                                                    <?php
-                                                    }
-                                                ?>
-
-
-
-                                                <?php
-                                                    if($p[7] &&             $order->order_type !="Order MEE"
-                                                    ){
-                                                        ?>
-                                                        <tr class="odd" role="row">
-
-                                                            <td>
-                                                                <span class="icon-notebook"></span>
-
-                                                            </td>
-                                                            <td>Check DL
-
-                                                                <?php
-                                                                    get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Check DL")));
-                                                                ?>
-                                                            </td>
-                                                            <td class="actions">
-                                                                <?php
-                                                                    if (return_link('72', $order->id) == false) { ?>
-                                                                        <span class="label label label-info">Pending </span>
-                                                                    <? } else { ?>
-                                                                        <a target="_blank"
-                                                                           href="<? echo $this->request->webroot . return_link('72', $order->id); ?>"
-                                                                           class="btn btn-primary">Download</a>
-                                                                    <? } ?>
-                                                            </td>
-                                                        </tr>
-                                                    <?php
-                                                    }*/
-                                                ?>
+                                                                    <?php
+                                                                        get_color(strip_tags(get_mee_results_binary($order->bright_planet_html_binary, "Check DL")));
+                                                                    ?>
+                                                                </td>
+                                                                <td class="actions">
+                                                                    <?php
+                                                                        if (return_link('72', $order->id) == false) { ?>
+                                                                            <span
+                                                                                class="label label label-info">Pending </span>
+                                                                        <? } else { ?>
+                                                                            <a target="_blank"
+                                                                               href="<? echo $this->request->webroot . return_link('72', $order->id); ?>"
+                                                                               class="btn btn-primary">Download</a>
+                                                                        <? } ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                        }
+                                                    ?>
 
 
 
 
 
-                                                <TR>
-                                                    <TD colspan="3">
+                                                    <TR>
+                                                        <TD colspan="3">
 
-                                                        <H4 style="margin-left: -7px;"><i class="icon-doc font-blue-hoki"></i>
+                                                            <H4 style="margin-left: -7px;"><i
+                                                                    class="icon-doc font-blue-hoki"></i>
 								<span class="caption-subject bold font-blue-hoki uppercase">
 								Documents Submitted </span></H4>
 
-                                                        <div class="clearfix"></div>
-                                                    </TD>
-                                                </TR>
+                                                            <div class="clearfix"></div>
+                                                        </TD>
+                                                    </TR>
 
 
 
-                                                <?php
-                                                    $line = "even";
-                                                    $doc = $this->requestAction('/orders/getSubDocs');
+                                                    <?php
+                                                        $line = "even";
+                                                        $doc = $this->requestAction('/orders/getSubDocs');
 
-                                                    //var_dump($doc); die();
-                                                    if ($doc) {
-                                                        foreach ($doc as $d) {
-                                                            $title = ucfirst($d->title);
-                                                            $sub_doc_id = $d->id;
-                                                            //echo "_";
-                                                            $o_id = $order->id;
-                                                            //echo "_";continue;
-                                                            $c_id = $order->client_id;
-                                                            $d_id = $this->requestAction("/orders/getdocid/" . $sub_doc_id . "/" . $o_id);
-                                                            if ($d_id) {
-                                                                $docu_id = $d_id->id;
-                                                                $cnt = $this->requestAction("/orders/getprocessed/" . $d->table_name . "/" . $order->id);
-                                                                $line = PrintLine($line, $title, $cnt, $docu_id, $c_id, $o_id, $this->request->webroot, false);
+                                                        //var_dump($doc); die();
+                                                        if ($doc) {
+                                                            foreach ($doc as $d) {
+                                                                $title = ucfirst($d->title);
+                                                                $sub_doc_id = $d->id;
+                                                                //echo "_";
+                                                                $o_id = $order->id;
+                                                                //echo "_";continue;
+                                                                $c_id = $order->client_id;
+                                                                $d_id = $this->requestAction("/orders/getdocid/" . $sub_doc_id . "/" . $o_id);
+                                                                if ($d_id) {
+                                                                    $docu_id = $d_id->id;
+                                                                    $cnt = $this->requestAction("/orders/getprocessed/" . $d->table_name . "/" . $order->id);
+                                                                    $line = PrintLine($line, $title, $cnt, $docu_id, $c_id, $o_id, $this->request->webroot, false);
+                                                                }
                                                             }
+                                                            //die();
+
                                                         }
-                                                        //die();
+                                                        /*
+                                                       $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
+                                                            $line = PrintLine($line, "Pre-Screening", $cnt);
 
-                                                    }
-                                                    /*
-                                                   $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
-                                                        $line = PrintLine($line, "Pre-Screening", $cnt);
+                                                       $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
+                                                           $line = PrintLine($line, "Driver Application", $cnt);
 
-                                                   $cnt = $this->requestAction("/orders/getprocessed/driver_application/" . $order->id);
-                                                       $line = PrintLine($line, "Driver Application", $cnt);
+                                                       $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
+                                                           $line = PrintLine($line, "Road Test", $cnt);
 
-                                                   $cnt = $this->requestAction("/orders/getprocessed/road_test/" . $order->id);
-                                                       $line = PrintLine($line, "Road Test", $cnt);
+                                                       $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
+                                                           $line = PrintLine($line, "Consent Form", $cnt);
+                                                       */
+                                                        $line = PrintLine($line, "Confirmation", 1 - $order->draft, '', '', '', '', true)
 
-                                                   $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
-                                                       $line = PrintLine($line, "Consent Form", $cnt);
-                                                   */
-                                                    $line = PrintLine($line, "Confirmation", 1 - $order->draft, '', '', '', '', true)
-
-                                                ?>
-                                                <TR>
-                                                    <TD colspan="3"></TD>
-                                                </TR>
-                                                </tbody>
-                                            </table>
+                                                    ?>
+                                                    <TR>
+                                                        <TD colspan="3"></TD>
+                                                    </TR>
+                                                    </tbody>
+                                                </table>
 
 
-                                        </div>
+                                            </div>
 
                                             <div class="clearfix"></div>
 

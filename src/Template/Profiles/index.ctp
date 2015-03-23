@@ -366,7 +366,7 @@
 
                                                     if ($sidebar->orders_list == '1' ) {
                                                         ?>
-                                                        <a href="<?php echo $this->request->webroot; ?>orders/orderslist/?submitted_by_id=<?php echo $profile->id; ?>"
+                                                        <a href="<?php echo $this->request->webroot; ?>orders/orderslist/?uploaded_for=<?php echo $profile->id; ?>"
                                                            class="<?= btnclass("btn-info", "blue-soft") ?>">
                                                             View Orders</a>
 

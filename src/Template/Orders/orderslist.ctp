@@ -81,8 +81,7 @@
                             <?php
                                 $users = $doc_comp->getAllUser();
                             ?>
-
-                            <select class="form-control input-inline" name="submitted_by_id" style="">
+                             <select class="form-control input-inline" name="submitted_by_id" style="">
                                 <option value="">Submitted by</option>
                                 <?php
                                     foreach ($users as $u) {
@@ -90,6 +89,19 @@
                                         <option
                                             value="<?php echo $u->id; ?>" <?php if (isset($return_user_id) && $return_user_id == $u->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($u->username); ?></option>
                                     <?php
+                                    }
+                                ?>
+                            </select>
+                            <select class="form-control input-inline" name="uploaded_for" style="">
+                                <option value="">Uploaded For</option>
+                                <?php
+                                    foreach ($users as $u) {
+                                        //if($u->profile_type == '5' || $u->profile_type == '7' || $u->profile_type == '8'){
+                                        ?>
+                                        <option
+                                            value="<?php echo $u->id; ?>" <?php if (isset($_GET['uploaded_for']) && $_GET['uploaded_for'] == $u->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($u->fname)." ".ucfirst($u->lname); ?></option>
+                                    <?php
+                                        //}
                                     }
                                 ?>
                             </select>

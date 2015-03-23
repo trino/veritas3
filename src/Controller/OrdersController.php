@@ -974,6 +974,12 @@
                 else
                     $cond = $cond . ' AND orders.user_id = ' . $_GET['submitted_by_id'];
             }
+            if (isset($_GET['uploaded_for']) && $_GET['uploaded_for']) {
+                if ($cond == '')
+                    $cond = $cond . ' orders.uploaded_for = ' . $_GET['uploaded_for'];
+                else
+                    $cond = $cond . ' AND orders.uploaded_for = ' . $_GET['uploaded_for'];
+            }
             if (isset($_GET['client_id']) && $_GET['client_id']) {
                 if ($cond == '')
                     $cond = $cond . ' orders.client_id = ' . $_GET['client_id'];

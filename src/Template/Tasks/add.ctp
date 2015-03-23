@@ -1,8 +1,31 @@
-
 <script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
 <body onLoad="ajaxpage('timezone');">
 
-<?php if(isset($isdisabled))
+<?php
+
+
+function offsettime($date, $offset){
+    if ($offset == 0){ return $date;}
+    $newdate= date_create($date);
+    $hours = floor($offset);
+    $minutes = ($offset-$hours)*60;
+    $interval = 'PT' . abs($hours) . "H";
+    if ($minutes > 0) {$interval .= $minutes . "M";}
+    if ($hours>0) {
+        $newdate->add(new DateInterval($interval));
+    } else {
+        $newdate->sub(new DateInterval($interval));
+    }
+    return $newdate->format('Y-m-d H:i:s');
+}
+
+$offset=0;
+if (isset($_SESSION['timediff'])) {
+    $offset=$_SESSION['timediff'];
+    $event->date = offsettime($event->date, $offset);
+}
+
+if(isset($isdisabled))
 {
    $disabled = "disabled='disabled'"; 
 }
@@ -44,6 +67,7 @@ else
 				<div class="col-md-12">
 					<div class="input-icon">
 						<i class="fa fa-calendar"></i>
+                        <input type="hidden" name="offset" value="<?= $offset ?>">
 						<input type="text" name="date" <?php echo $disabled;?> class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date..." value="<?php if(isset($event))echo date('d F Y - H:i',strtotime($event->date));?>"/>
 					</div>
 				</div>

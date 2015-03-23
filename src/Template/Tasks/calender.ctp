@@ -1,6 +1,10 @@
-
 <script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
 <body onLoad="ajaxpage('timezone');">
+<?php
+if (isset($_SESSION['timediff'] )) {
+    handletimezone($events,$_SESSION['timediff']);
+}
+?>
 
 <h3 class="page-title">
 			Calendar
@@ -95,10 +99,10 @@ jQuery(document).ready(function() {
     events: [
             <?php 
             foreach($events as $event){
-                                              
+
             $dat = explode(" ",$event->date);
             $date = $dat[0];
-        ?>
+            ?>
         {
             title: '<?php echo $event->title;?>',
             desc: '<?php echo $event->description;?>',
@@ -149,3 +153,29 @@ jQuery(document).ready(function() {
    
 });
 </script></body>
+<?php
+//$_SESSION['timediff'] ; // this is the timezone offset
+
+function offsettime($date, $offset){
+    if ($offset == 0){ return $date;}
+    $newdate= date_create($date);
+    $hours = floor($offset);
+    $minutes = ($offset-$hours)*60;
+    $interval = 'PT' . abs($hours) . "H";
+    if ($minutes > 0) {$interval .= $minutes . "M";}
+    if ($hours>0) {
+        $newdate->add(new DateInterval($interval));
+    } else {
+        $newdate->sub(new DateInterval($interval));
+    }
+    return $newdate->format('Y-m-d H:i:s');
+}
+
+function handletimezone($events, $offset){
+    if ($offset <> 0) {
+        foreach ($events as $event) {
+            $event->date = offsettime($event->date, $offset);
+        }
+    }
+}
+?>

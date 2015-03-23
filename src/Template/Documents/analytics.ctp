@@ -8,9 +8,7 @@ function right($text, $length){
 	return substr($text, -$length);
 }
 function extractdate($text){
-    if(str_replace(' ','',$text)!=$text)
-	return trim(left($text, strpos($text, " ")));
-    else
+    if(strpos ($text, " ")) { return trim(left($text, strpos($text, " ")));}
     return $text;
 }
 

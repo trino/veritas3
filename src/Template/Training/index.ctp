@@ -138,12 +138,12 @@ if (strlen($image)==0){ $image = "training.png";}
 <?
 
 function PrintResults($results, $user){
-    if ($results['total'] > 0) {//http://localhost/veritas3/img/profile/172647_974786.jpg
+    if ($results['total'] > 0 && $results['missing'] < $results['total']) {//http://localhost/veritas3/img/profile/172647_974786.jpg
         //debug($user); <label class="control-label">Profile Type : </label>
-        echo '<div class="row"><div class="col-md-12"><div class="portlet box yellow"><div class="portlet-title">';
-        echo '<div class="caption"><i class="fa fa-graduation-cap"></i>Results for: ' . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ") on ";
-        echo $results['datetaken'] . '</div></div><div class="portlet-body"><div class="row">';
-        echo '<div class="col-md-2"><img src="img/profile/' . $user->image . '" style="max-height: 100px; max-width: 100px;"></div>';
+        //echo '<div class="row"><div class="col-md-12"><div class="portlet box yellow"><div class="portlet-title">';
+       // echo '<div class="caption"><i class="fa fa-graduation-cap"></i>Results for: ' . ucfirst($user->fname) . " " . ucfirst($user->lname) . " (" . ucfirst($user->username) . ") on ";
+       // echo $results['datetaken'] . '</div></div><div class="portlet-body"><div class="row">';
+        //echo '<div class="col-md-2"><img src="img/profile/' . $user->image . '" style="max-height: 100px; max-width: 100px;"></div>';
         PrintResult("Incorrect", $results['incorrect']);
         PrintResult("Missing", $results['missing']);
         PrintResult("Correct", $results['correct']);
@@ -154,12 +154,12 @@ function PrintResults($results, $user){
         } else {
             PrintResult("Grade", "<font color='red'>Fail</A>");
         }
-        echo '</font></div>';
+        echo '</font>';
         if ($score >= 80) {
             $link232 = 'training/certificate?quizid=' . $_GET['quizid'] . '&userid=' . $user->id;
             echo '<CENTER><a class=" btn btn-danger" href="' . $link232 . '">Click here to view the certificate</A></CENTER>';
         }
-        echo '</div></div>';
+        //echo '</div></div>';
     }
 }
 function PrintResult($name, $number){
@@ -181,7 +181,7 @@ foreach($quizes as $quiz) {
     if (quizheader($QuizID, $quiz->ID, $quiz->Name, $quiz->image)) {
         $totalquizzes+=1;
         echo str_replace("\r\n", "<P>", $quiz->Description);
-        if (strlen($quiz->Attachments)>0 && $QuizID == $quiz->ID){
+        if (isset($results)) {  PrintResults($results, $user); } else  if (strlen($quiz->Attachments)>0 && $QuizID == $quiz->ID){
             echo "<br><br><strong>Please go through each attachment in sequential order to view the quiz:</strong>";
         }
         if (quizmiddle($QuizID, $quiz->ID)) {
@@ -231,10 +231,8 @@ foreach($quizes as $quiz) {
 }
 }
 
-PrintResults($results, $user);
-
 function printeditbuttons($QuizID){
-    echo '<div class="col-md-6" align="right">';
+    echo '<div class="col-md-12" align="right">';
     //echo '<a href="training/enroll?quizid=' . $quiz->ID . '" class="btn btn-warning btnspc"">Enroll</a>';
     //echo '<a class="btn btn-info btnspc" href="training/quiz?quizid=' . $quiz->ID . '">View</a>';
     echo '<a class="btn btn-info btnspc" href="training/quiz?quizid=' . $QuizID . '">View</a>';

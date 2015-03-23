@@ -164,8 +164,8 @@ class SchedulesController extends AppController {
     function timezone(){
         session_start();
         $_SESSION['time'] = $_GET['time'];
-        //$result = array("serverzone" =>  date('Z'));
-        //echo json_encode($result);
+        $offset = date("Z")/3600 ;
+        $_SESSION['timediff'] = $_GET['time'] - $offset;
     }
    
    

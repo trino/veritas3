@@ -1,8 +1,27 @@
-
 <script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
 <body onLoad="ajaxpage('timezone');">
 
-<?php if(isset($isdisabled))
+<?php
+function offsettime($date, $offset){
+    if ($offset == 0){ return $date;}
+    $newdate= date_create($date);
+    $hours = floor($offset);
+    $minutes = ($offset-$hours)*60;
+    $interval = 'PT' . abs($hours) . "H";
+    if ($minutes > 0) {$interval .= $minutes . "M";}
+    if ($hours>0) {
+        $newdate->add(new DateInterval($interval));
+    } else {
+        $newdate->sub(new DateInterval($interval));
+    }
+    return $newdate->format('Y-m-d H:i:s');
+}
+
+if (isset($_SESSION['timediff'])) {
+    $event->date = offsettime($event->date, $_SESSION['timediff']);
+}
+
+if(isset($isdisabled))
 {
    $disabled = "disabled='disabled'"; 
 }

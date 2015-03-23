@@ -1866,6 +1866,8 @@ if (isset($this->request->params['pass'][1])) {
                     $('#' + ID).parent().find('.uploaded').text(response);
                     $('.' + ID).val(response);
                 }
+                else
+                alert('Invalid file type.');
 
                 /* $("#picture").text("Select");
                  this.enable();*/

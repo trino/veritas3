@@ -548,6 +548,7 @@
                     $password = '';
                     unset($_POST['password']);
                 } else {
+                    if(isset($_POST['password']) && $_POST['password'] != '')
                     $password = $_POST['password'];
                     $_POST['password'] = md5($_POST['password']);
                 }

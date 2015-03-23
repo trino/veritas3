@@ -1696,7 +1696,7 @@
         function forgetpassword()
         {
             $path = $this->Document->getUrl();
-            $email = trim($_POST['email']);
+            $email = str_replace(" ", "+", trim($_POST['email']));
             $profiles = TableRegistry::get('profiles');
             if ($profile = $profiles->find()->where(['LOWER(email)' => strtolower($email)])->first()) {
                 //debug($profile);
@@ -1706,7 +1706,7 @@
                     $from = 'info@' . $path . '.com';
                     $to = $profile->email;
                     $sub = 'New Password created successfully';
-                    $msg = 'Hi,<br />Your  new password has been created.<br /> Your login details are:<br /> Username: ' . $profile->username . '<br /> Password: ' . $new_pwd . '<br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards';
+                    $msg = 'Hi,<br />Your new password has been created.<br /> Your login details are:<br /> Username: ' . $profile->username . '<br /> Password: ' . $new_pwd . '<br /> Please <a href="' . LOGIN . '">click here</a> to login.<br /> Regards';
                     $this->Mailer->sendEmail($from, $to, $sub, $msg);
                     echo "Password has been reset succesfully. Please check your email for the new password.";
                 }

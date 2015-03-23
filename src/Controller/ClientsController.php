@@ -559,10 +559,14 @@
             if (isset($_GET['view']) && $setting->client_list == 0) {
                 $this->Flash->error('Sorry, you don\'t have the required permissions.');
                 return $this->redirect("/clients");
-            } else {
-                $this->Flash->success('Client created successfully.');
-                //return $this->redirect("/clients");
             }
+            if(isset($_GET['flash']))
+            {
+                $this->Flash->success('Client created successfully.');
+            }
+                
+                //return $this->redirect("/clients");
+            
             $this->loadModel("ClientTypes");
             $this->set('client_types', $this->ClientTypes->find()->where(['enable' => '1'])->all());
             $docs = TableRegistry::get('client_docs');

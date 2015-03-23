@@ -255,11 +255,25 @@ $profileID = $this->Session->read('Profile.id');
             <?php } ?>
              <?php if ($sidebar->schedule == 1) { ?>
                 <li class="<?php echo ($this->request['controller'] == 'Tasks') ? 'active open' : ''; ?>">
-                    <a href="<?php echo $this->request->webroot; ?>tasks/calender">
+                    <a href="javascript:void(0);">
                         <i class="fa fa-calendar"></i>
                         <span class="title">Tasks</span>
                         <span class="selected"></span>
                     </a>
+                    <ul class="sub-menu">
+                            <li <?php echo ($this->request['controller'] == 'Tasks' && $this->request['action'] == 'calender') ? 'class="active"' : ''; ?>>
+                                <a href="<?php echo $this->request->webroot;?>tasks/calender">
+                                    <i class="icon-plus"></i>
+                                    Calender</a>
+                            </li>
+                    <?php if ($sidebar->schedule_add =='1') { ?>
+                            <li <?php echo ($this->request['controller'] == 'Tasks' && $this->request['action'] == 'add') ? 'class="active"' : ''; ?>>
+                                <a href="<?php echo $this->request->webroot;?>tasks/add">
+                                    <i class="icon-plus"></i>
+                                    Add Tasks</a>
+                            </li>
+                    <?php } ?>
+                    </ul>
                 </li>
             <?php } ?>
             <?php if ($sidebar->training == 1) { ?>

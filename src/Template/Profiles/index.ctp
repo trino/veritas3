@@ -73,7 +73,7 @@
 
     <?php if ($sidebar->profile_create == 1) { ?>
         <a href="<?php echo WEB_ROOT; ?>profiles/add" class="floatright btn btn-primary btnspc">
-            Create <?php echo ucfirst($settings->profile); ?></a>
+            Add <?php echo ucfirst($settings->profile); ?></a>
     <?php } ?>
 
 </div>
@@ -352,7 +352,7 @@
                                                     <a href="<?php
                                                     if($profile->profile_type == '5' || $profile->profile_type == '7' || $profile->profile_type == '8' )
                                                     {
-                                                     echo $this->request->webroot . 'documents/index?type=&submitted_for_id=' . $profile->id;
+                                                        echo $this->request->webroot . 'documents/index?type=&submitted_for_id=' . $profile->id;
                                                      }
                                                      else 
                                                      {
@@ -363,6 +363,17 @@
                                                     class="<?= btnclass("btn-info", "blue-soft") ?>">View Documents</a>
                                                     <?php
                                                     }
+                                                    if ($sidebar->orders_list == '1' ) {
+                                                        ?>
+                                                        <a href="<?php echo $this->request->webroot; ?>orders/orderslist/?submitted_by_id=<?php echo $profile->id; ?>"
+                                                           class="<?= btnclass("btn-info", "blue-soft") ?>">
+                                                            View Orders</a>
+
+                                                        
+                                                    <?php
+
+                                                    }
+                                                    
                                                      ?>
                                         </td>
                                     </tr>

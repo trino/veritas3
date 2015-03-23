@@ -733,8 +733,8 @@
                             ?>
                              <div class="form-group col-md-12"><!--<center>-->
 
-                                <div class="docMore" data-count="1">
-                                <div>
+                                <div class="docMore col-md-12" data-count="1">
+                                <div class="">
                                     <div style="display:block;">
                                         <a href="javascript:void(0)" id="addMore1" class="btn btn-primary" >Browse</a>
                                          <input type="hidden" name="profile_doc[]" value="" class="addMore1_doc moredocs"/>
@@ -883,7 +883,7 @@
         var total_count = $('.docMore').data('count');
         $('.docMore').data('count', parseInt(total_count) + 1);
         total_count = $('.docMore').data('count');
-        var input_field = '<div  class="form-group col-md-12"><div class="col-md-12"><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="profile_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a><span></span></div></div>';
+        var input_field = '<div  class="form-group" ><div class="" style="margin-top:10px;"><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="profile_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /><a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a><span></span></div></div>';
         $('.docMore').append(input_field);
         initiate_ajax_upload1('addMore' + total_count, 'doc');
 

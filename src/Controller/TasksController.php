@@ -93,7 +93,7 @@ class TasksController extends AppController {
         $this->set('event',$event);
         if(isset($_POST['submit']))
        {
-       
+            //var_dump($_POST); die();
             foreach($_POST as $k=>$v)
             {
                 if($k!='submit')

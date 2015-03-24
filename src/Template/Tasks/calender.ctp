@@ -1,10 +1,11 @@
 <script type="text/javascript" src="<?= $this->request->webroot;?>js/datetime.js"></script>
 <body onLoad="ajaxpage('timezone');">
 <?php
-if (isset($_SESSION['timediff'] )) {
-    handletimezone($events,$_SESSION['timediff']);
+if ($this->request->session()->read('timediff')) {
+    handletimezone($events,$this->request->session()->read('timediff'));
 }
 ?>
+
 
 <h3 class="page-title">
 			Calendar

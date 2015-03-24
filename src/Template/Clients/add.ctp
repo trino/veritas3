@@ -76,7 +76,7 @@
         <!-- BEGIN SAMPLE FORM PORTLET-->
 
         <div class="row profile-account">
-            <div class="col-md-3">
+            <div class="col-md-3" align="center">
                 <?php
                     if (isset($client->image) && $client->image) {
                         ?>

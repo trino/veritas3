@@ -372,8 +372,11 @@
                                     }
                                 }
 
+                            if (isset($client_docs)) {
+                                include_once 'subpages/filelist.php';
+                                listfiles($client_docs, "img/jobs/", 'profile_doc', false, 2);
+                            }
                             ?>
-
                         </div>
 
 

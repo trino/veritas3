@@ -44,14 +44,14 @@
     $uploadbinaryemployment_1627 = true;
     $uploadbinaryeducation_1650 = true;
 
-    $productdetailsebs1603 = false;         // 1603 Premium check
-    $productdetails1 = false;               // 1    MVR Driver's Record Abstract
-    $productdetails14 = false;              // 14   CVOR
-    $productdetails77 = false;              // 77   Pre-employment Screening Program Report
-    $productdetails78 = false;              // 78   Transclick
-    $productdetailsebs1650 = false;         // 1650 Certification (Education)
-    $productdetailsebs1627 = false;         // 1627 LOE (Employment)
-    $productdetails_CheckDL_72 = false;     // 72   checkdl
+    $productdetailsebs1603 = false;         //1  1603 Premium check
+    $productdetails1 = false;               //2  1    MVR Driver's Record Abstract
+    $productdetails14 = false;              //3  14   CVOR
+    $productdetails77 = false;              //4  77   Pre-employment Screening Program Report
+    $productdetails78 = false;              //5  78   Transclick
+    $productdetailsebs1650 = false;         //6  1650 Certification (Education)
+    $productdetailsebs1627 = false;         //7  1627 LOE (Employment)
+    $productdetails_CheckDL_72 = false;     //8  72   checkdl
 
 
     echo $order_info->order_type;

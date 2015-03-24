@@ -16,12 +16,20 @@
          $results = $table->find('all', array('conditions' => array('id'=>$ClientID)))->first();
          return $results;
      }
+
+ function listdocumentfiles($list){
+
+ }
         
   function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method=1){
 	$webroot=$GLOBALS['webroot'] ;
       if($method==2) {
-          echo  '<div class="portlet box grey-salsa"><div class="portlet-title"><div class="caption"><i class="fa fa-paperclip"></i>Attachments</div>';
-          echo '</div><div class="portlet-body form" align="left"><table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
+          echo '<div class="portlet box grey-salsa"><div class="portlet-title"><div class="caption"><i class="fa fa-paperclip"></i>Attachments</div>';
+          echo '</div><div class="portlet-body form" align="left">';
+          listfiles($client_docs, $dir, $field_name, $delete, 3);
+          echo '</div></div>';
+      } else if($method==3) {
+          echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
           $count = 0;
           foreach ($client_docs as $k => $cd){//    id, client_id
               $count += 1;
@@ -79,7 +87,7 @@
               echo "'><A HREF='" . $webroot . $dir . $cd->file . "'>" . $filename . "</A></TD></TR>";
 //debug($cd);
           }
-          echo '</table></div></div>';
+          echo '</table>';
       } else {//old layout ?>
    
    

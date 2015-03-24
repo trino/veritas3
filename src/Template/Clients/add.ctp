@@ -103,7 +103,7 @@
                     </div>
                 </div>
 
-                <?php  if (isset($client_docs)) { listfiles($client_docs, "img/jobs/",'client_doc',$delete,  2); } ?>
+                <!--php  if (isset($client_docs)) { listfiles($client_docs, "img/jobs/",'client_doc',$delete,  2); } ?-->
 
             </div>
 

@@ -86,7 +86,7 @@ if (strlen($image)==0){ $image = "training.png";}
                         }
 
                         function quizmiddle($QuizID, $id){
-                            echo '</div></div><div class="row"><div class="col-md-2" align="right"></div>';
+                            echo '</div></div><div class="row"><div class="col-md-2"></div>';
                             return $id == $QuizID;
                         }
 
@@ -180,9 +180,10 @@ foreach($quizes as $quiz) {
         if (!$hasusertakenquiz && strlen($quiz->Attachments)>0 && $QuizID == $quiz->ID){
             echo '<div class="col-md-10" align="left"><strong>Please go through each attachment in sequential order to view the quiz:</strong></div>';
         }
+        $attachments="";
         if (quizmiddle($QuizID, $quiz->ID)) {
-            $attachments = explode(",", $quiz->Attachments);
             echo '<div class="col-md-5" align="left">';
+            $attachments = explode(",", $quiz->Attachments);
             $attachmentJS = "";
             $id = 0;
             $checked = "";
@@ -220,11 +221,10 @@ foreach($quizes as $quiz) {
             echo '</div>';
             if ($canedit) {printeditbuttons($quiz->ID, $canedit);}
             //echo '<div class="col-md-2"></DIV><div class="col-md-10" align="left">Please follow these steps in sequential order before you can take the quiz</div>';
-        }
+        } else { echo '<div class="col-md-5"></div>'; }
         quizend($QuizID, $quiz->ID, $canedit);
     }
-
-}
+    }
 }
 
 function printeditbuttons($QuizID, $canedit){

@@ -1631,28 +1631,15 @@
             //VAR_Dump($query);die();
             foreach ($query as $todo) {
                 if ($todo->email_self == '1') {
-                    $q2 = TableRegistry::get('profiles');
-                    $que2 = $q2->find();
-                    $query2 = $que2->select()->where(['id' => $todo->user_id])->first();
+                    //$q2 = TableRegistry::get('profiles');                     $que2 = $q2->find();
+                    $query2 = $this->loadprofile($todo->user_id);// $que2->select()->where(['id' => $todo->user_id])->first();
                     $email = $query2->email;
-                    if ($email) {
-                        $from = array('info@'.$path => "ISB MEE");
-                        $to = $email;
-                        $sub = 'ISBMEE Tasks - Reminder';
-                        $msg = 'Domain: ' . getHost("isbmee.com") . ' <br /><br />Reminder, you have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
-                        echo "<hR>From: " . $from . "<BR>To: " . $to . " (Account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
-                        $this->Mailer->sendEmail($from, $to, $sub, $msg);
-                    }
+                    if ($email) {  $this->sendtaskreminder($email, $todo, $path, "(Account holder)"); }
                 }
-                if ($todo->others_email != "") {
+                if (strlen($todo->others_email) >0) {
                     $emails = explode(",", $todo->others_email);
                     foreach ($emails as $em) {
-                        $from = array('info@'.$path => "ISB MEE");
-                        $to = trim($em);
-                        $sub = 'ISBMEE Tasks - Reminder';
-                        $msg =  'Domain: ' . getHost("isbmee.com") . ' <br /><br />Reminder, you have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
-                        echo "<hR>From: " . $from . "<BR>To: " . $to . " (Added by account holder)<BR>Subject: " . $sub . "<BR>Message: " . $msg;
-                        $this->Mailer->sendEmail($from, $to, $sub, $msg);
+                        $this->sendtaskreminder($em, $todo, $path, "(Added by account holder)");
                     }
                 }
                 //echo $s;die();
@@ -1663,8 +1650,21 @@
             die();
         }
 
-        function getDriverById($id)
-        {
+        public function loadprofile($UserID){
+            $table = TableRegistry::get("profiles");
+            $results = $table->find('all', array('conditions' => array('id'=>$UserID)))->first();
+            return $results;
+        }
+        function sendtaskreminder($email, $todo, $path, $name){
+            $from = array('info@'.$path => "ISB MEE");
+            $to = trim($email);
+            $sub = 'ISBMEE Tasks - Reminder';
+            $msg = 'Domain: ' . getHost("isbmee.com") . ' <br /><br />Reminder, you have following task due:<br/><br/>Title : ' . $todo->title . '<br />Description : ' . $todo->description . '<br />Due By : ' . $todo->date . '<br /><br /> Regards,<br />the ISB MEE team';
+            echo "<hR>From: " . $from . "<BR>To: " . $to . " " . $name . "<BR>Subject: " . $sub . "<BR>Message: " . $msg;
+            $this->Mailer->sendEmail($from, $to, $sub, $msg);
+        }
+
+        function getDriverById($id){
             $q2 = TableRegistry::get('profiles');
             $que2 = $q2->find();
             $query2 = $que2->select()->where(['id' => $id])->first();
@@ -1672,16 +1672,14 @@
             return $this->response;
         }
 
-        function getOrders($id)
-        {
+        function getOrders($id){
             $order = TableRegistry::get('orders');
             $order = $order->find()->where(['uploaded_for' => $id]);
             $this->response->body($order);
             return $this->response;
         }
 
-        function forgetpassword()
-        {
+        function forgetpassword(){
             $path = $this->Document->getUrl();
             $email = str_replace(" ", "+", trim($_POST['email']));
             $profiles = TableRegistry::get('profiles');
@@ -1700,13 +1698,10 @@
             } else {
                 echo "Sorry, the email address does not exist.";
             }
-
             die();
-
         }
 
-        function generateRandomString($length = 10)
-        {
+        function generateRandomString($length = 10){
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $charactersLength = strlen($characters);
             $randomString = '';
@@ -1716,8 +1711,7 @@
             return $randomString;
         }
 
-        function cleardb()
-        {
+        function cleardb(){
             if ($this->request->session()->read('Profile.super') == 1) {
                 $conn = ConnectionManager::get('default');
                 $query = $conn->query("show tables");

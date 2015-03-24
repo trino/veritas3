@@ -56,7 +56,9 @@ if (isset($_SESSION['timediff'] )) {
 
 <?php
 if ($this->request->session()->read('Profile.super') or $this->request->session()->read('Profile.admin')) {
-   echo '<a style="margin-top: 10px;" class="btn btn-warning" href="' . $this->request->webroot . 'profiles/cron">Run the CRON</A>';
+   if ($_SERVER['SERVER_NAME'] == "localhost") {
+       echo '<a style="margin-top: 10px;" class="btn btn-warning" href="' . $this->request->webroot . 'profiles/cron">Run the CRON</A>';
+   }
 }
 ?>
 

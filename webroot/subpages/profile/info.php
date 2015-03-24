@@ -85,6 +85,15 @@
                                                    echo $p->profile_type;
                                                } ?>" <?php echo $is_disabled ?> />
                                     <?php } ?>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <?php if($this->request->params['action']=='add' || ($this->request->params['action']=='edit' && $this->request->session()->read('Profile.id') != $id)){
+                                        
+                                        ?>
                                     <select  <?php echo $is_disabled ?>
                                         name="<?php if (!isset($p)) {
                                             echo 'profile_type';
@@ -99,6 +108,7 @@
                                             if ($ptyp != "")
                                                 $pts = explode(",", $ptyp);
                                             foreach ($ptypes as $k => $pt) {
+                                                //var_dump($pt);
                                                 if (isset($pts)) {
                                                     if (in_array($pt->id, $pts)) {
                                                         if ($pt->id == '1') {
@@ -268,6 +278,22 @@
 
 
                                     </select>
+                                    <?php }
+                                    else{
+                                        ?>
+                                        <select  <?php echo $is_disabled ?>
+                                        name="<?php if (!isset($p)) {
+                                            echo 'profile_type';
+                                        } ?>" <?php if ((isset($id) && $this->request->session()->read('Profile.id') == $id)/* || ($this->request->session()->read('Profile.profile_type') == '2')*/) echo "disabled='disabled'"; ?>
+                                        class="form-control member_type" required='required'
+                                        onchange="$('#nProfileType').val($(this).val());">
+                                        
+                                        <option selected="" value="$p->profile_type"><?php echo $this->requestAction('/profiles/getTypeTitle/'.$p->profile_type)?></option>
+                                        
+                                        </select>
+                                        <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
 

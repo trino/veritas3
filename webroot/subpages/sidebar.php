@@ -1,10 +1,9 @@
 <?php
-//debug ($this->Session);
 $profileID = $this->Session->read('Profile.id');
  if(strlen($profileID)==0) {
   //  echo '<div class="alert alert-danger"><strong>Error!</strong> <a href="profiles/login">Your session has timed out, click here to log back in.</a></div>';
 
-     header("Location: " . $this->request->webroot . "");
+     header("Location: " . $this->request->webroot);
 
  }
     $sidebar = $this->requestAction("settings/all_settings/" . $profileID . "/sidebar");

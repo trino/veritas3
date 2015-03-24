@@ -166,7 +166,7 @@ if ($activetab == "permissions") {
 
                             </td>
                         </tr>
-
+                        <tr><td colspan="2">&nbsp;</td></tr>
                         <tr>
                             <td class="vtop">
                                 <?php echo ucfirst($settings->client); ?>
@@ -259,7 +259,7 @@ if ($activetab == "permissions") {
 
                             </td>
                         </tr>
-
+                        <tr><td colspan="2">&nbsp;</td></tr>
                         <tr>
                             <td class="vtop">
                                 Orders
@@ -539,6 +539,7 @@ if ($activetab == "permissions") {
                                 </div>
                             </td>
                         </tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
                         <!--<tr>
                             <td class="vtop">
                                 Receive Email Notifications

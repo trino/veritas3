@@ -63,7 +63,7 @@
                             <tr>
                                 <td class="view-message hidden-xs"> <a href="<?php echo $this->request->webroot;?>tasks/view/<?php echo $event->id;?>"><?php echo $event->title;?></a></td>
                                 <td class="view-message "><a href="<?php echo $this->request->webroot;?>tasks/view/<?php echo $event->id;?>"><?php echo $event->description;?></a></td>
-                                <td class="view-message "><a href="<?php echo $this->request->webroot;?>tasks/view/<?php echo $event->id;?>"><span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y',strtotime($this->request['pass'][0]));?> </span></a></td>
+                                <td class="view-message "><a href="<?php echo $this->request->webroot;?>tasks/view/<?php echo $event->id;?>"><span class="todo-tasklist-date"><i class="fa fa-calendar"></i> <?php echo date('d M Y H:i',strtotime($event->date));?> </span></a></td>
                             </tr>
 							
                         <?php }

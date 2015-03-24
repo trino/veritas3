@@ -1597,8 +1597,7 @@
             die();
         }
 
-        public
-        function check_email($uid = '')
+        public function check_email($uid = '')
         {
 
             $email = $_POST['email'];

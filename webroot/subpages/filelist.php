@@ -8,7 +8,7 @@
     function getextension($path){
         return strtolower(pathinfo($path, PATHINFO_EXTENSION));
     }
-        
+
   function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method=1){
 	$webroot=$GLOBALS['webroot'] ;
       if($method==2) {

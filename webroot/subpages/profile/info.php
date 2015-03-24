@@ -766,12 +766,9 @@
                                 <input type="hidden" name="dobd" value="00"/>
                             <?php
                                 }
-                                if(isset($disabled))
-                                $delete = true;
-                                else
-                                $delete = false; 
+                                $delete = isset($disabled);
                                 if (isset($client_docs)) {
-                                    include 'subpages/filelist.php';
+                                    include_once 'subpages/filelist.php';
                                     listfiles($client_docs, "img/jobs/",'profile_doc',$delete);
                                 }
                             ?>

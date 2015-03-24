@@ -104,7 +104,7 @@ else
                 </div>
 				<div class="col-md-12">
 					<textarea class="form-control todo-taskbody-taskdesc" <?php echo $disabled;?> name="others_email" rows="2" placeholder="Send notification to other email addresses (separated with commas)"><?php if(isset($event))echo $event->others_email;?></textarea>
-                    <input type="hidden" name="timezoneoffset" value="<?= $_SESSION['time']; ?>">
+                    <input type="hidden" name="timezoneoffset" value="<?= $this->request->session()->read('time') ?>">
 				</div>
 			</div>
 			<!-- END TASK DESC -->

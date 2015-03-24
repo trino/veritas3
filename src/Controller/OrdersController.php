@@ -637,6 +637,7 @@
 
                 $da = TableRegistry::get('driver_application');
                 $da_detail = $da->find()->where(['order_id' => $orderid])->first();
+
                 if ($da_detail) {
                     $da_ac = TableRegistry::get('driver_application_accident');
                     $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id' => $da_detail->id])->all();
@@ -665,7 +666,6 @@
                     $sub2['con_at'] = $con_at->find()->where(['order_id' => $orderid, 'sub_id' => 4])->all();
                     $this->set('consent', $sub2);
                 }
-                echo $forms;
 
                 if (isset($forms)) {
                 $formsarray = explode(',', $forms);
@@ -673,7 +673,6 @@
                 }
                 else
                 {
-                    echo 1;
                     $this->set('fullorder', '1');
                 }
 
@@ -708,7 +707,6 @@
                 $ordertype1 = "MEE";
             }
             $this->set('ordertype', $ordertype1);
-
 
 
             $orders = TableRegistry::get('orders');

@@ -13,7 +13,7 @@ if ($action == "Addorder") {
     $img_ext = array('jpg', 'jpeg', 'png', 'bmp', 'gif');
     if($did)
     {
-       $_GET['driver'] = $ooo->uploaded_for; 
+       $_GET['driver'] = $ooo->uploaded_for;
     }
 
 function provinces($name){
@@ -61,7 +61,7 @@ function provinces($name){
         </li>
     </ul>
     <?php
-        
+
         $forms=array();
         if (isset($_GET["forms"])){
             $forms = explode(",", $_GET["forms"]);
@@ -74,7 +74,7 @@ function provinces($name){
         //  $forms  -   pass in the $forms variable since globals don't seem to work
         //  $id     -   the ID/index number of the form to check
         function isallone($forms){
-            
+
             if(count($forms)<7)
             {
                 return false;
@@ -85,21 +85,21 @@ function provinces($name){
             else
             return true;
         }
-        $_this = $this;        
+        $_this = $this;
         function displayform($forms, $name,$_this){
             if(isset($_GET['order_type']) && urldecode($_GET['order_type'])=='Order MEE')
             return true;
             //pre-screening, driver application, consent form, road test
             //if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
             $name=trim(strtolower($name));
-            
-            
-            
-            
-            
+
+
+
+
+
             if(in_array('2',$forms) && isset($_GET['driver']) && $name=='consent form')
             {
-                
+
                 $c2 = $_this->requestAction('/orders/check_driver_abstract2/'.$_GET['driver']);
                 //die($c2->driver_province);
                 if(in_array($c2->driver_province,array('BC','MB','NU','NT','QC','SK','YT')))
@@ -112,11 +112,11 @@ function provinces($name){
                     return true;
                     else
                     return false;
-                    
+
                 }
                 else
                 return false;
-                
+
             }
             else
             if(in_array('3',$forms) && isset($_GET['driver']) && $name=='consent form')
@@ -126,15 +126,15 @@ function provinces($name){
                     return true;
                     else
                     return false;
-                    
+
                 }
                 else
                 if($name=='consent form')
                 return false;
-                
-                
-                
-            
+
+
+
+
             //return true if all boxes were checked
             if (isallone($forms)) {return true; }
             if ($name == "consent form") { return true; } //mandatory in all sections now
@@ -186,7 +186,7 @@ function provinces($name){
                 <div class="form-wizard">
                     <div class="form-body" style="position: relative;">
                         <?php
-                            
+
                             if ($param != 'view') {
                                 $tab = 'tab-pane';
                                 ?>
@@ -219,7 +219,7 @@ function provinces($name){
                                         $k_c=0;
                                         $index=0;
                                         foreach ($subdoccli as $sd) {
-                                         
+
                                             $index+=1;
 
 
@@ -238,7 +238,7 @@ function provinces($name){
                                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
 
                                              if (true){ //($prosubdoc['display'] != 0 && $d->display == 1) {
-                                                
+
                                                 $k_c++;
                                                 $j = $d->id;
                                                 $j = $j + 1;
@@ -402,11 +402,11 @@ function provinces($name){
                                 include('subpages/profile/info_order.php');
                             ?>
                         </div>
-                        
+
                         <!--<div class="tabber <?php echo $tab; ?>"  id="tab2">
                             <?php //include('subpages/documents/products.php'); ?>
                         </div>-->
-                        
+
                         <?php
                         $k_c = 0;
                         if(!isset($show_all2))
@@ -423,9 +423,9 @@ function provinces($name){
                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
                             if (true){ //($prosubdoc['display'] != 0 && $d->display == 1) {
                             $k_c++;
-                            
+
                             $tab_count = $d->id;
-                            
+
                             $tab_count = $tab_count + 1;
                             if($k_c==1) {
                                 $k_co = $tab_count;
@@ -591,7 +591,7 @@ function provinces($name){
                             success: function (res2) {
                                 var response = JSON.parse(res2);
                                 //alert(res2);
-                                
+
                                 var app_name = res2.replace('{"applicant_phone_number":"','');
                                 var app_name = app_name.replace('","aplicant_name":"',',');
                                 var app_name = app_name.replace('","applicant_email":"',',');
@@ -613,7 +613,7 @@ function provinces($name){
 
                                     }
                                 });
-                                
+
 
                             }
                         });
@@ -768,7 +768,7 @@ function provinces($name){
                             url: '<?php echo $this->request->webroot;?>profiles/getProfileById/' + prof_id + '/2',
                             success: function (res2) {
                                 var response = JSON.parse(res2);
-                                
+
                                 $('#form_tab2').find(':input').each(function () {
                                     var name_attr = $(this).attr('name');
 
@@ -779,7 +779,7 @@ function provinces($name){
 
                                         $(this).attr('disabled', 'disabled');
                                     }
-                                    
+
                                 });
                             }
                         });
@@ -1152,7 +1152,7 @@ function provinces($name){
 
 
                                     }
-                                    
+
                                 });
                             }
                         });
@@ -1193,7 +1193,7 @@ function provinces($name){
                                         $(this).attr('disabled', 'disabled');
 
                                     }
-                                    
+
                                 });
 
                             }
@@ -1241,9 +1241,9 @@ function provinces($name){
         {
             $('.skip').hide();
         }
-        
+
         <?php if(isset($_GET['driver']) && is_numeric($_GET['driver'])){?>
-            
+
             showforms('company_pre_screen_question.php');
             showforms('driver_application.php');
             showforms('driver_evaluation_form.php');
@@ -1348,7 +1348,7 @@ function provinces($name){
     ?>
 
 
-        
+
 
         $(document.body).on('click', '.consents a', function () {
             //alert($(this).attr('href').replace('#',''));
@@ -1380,7 +1380,7 @@ function provinces($name){
                 //  css = css.
             });
         });
-        
+
         var draft = 0;
         $(document.body).on('click', '.cont', function () {
 
@@ -1463,7 +1463,7 @@ function provinces($name){
                                 url = '<?php echo $this->request->webroot;?>documents/savedDriverEvaluation/' + order_id + '/' + cid;
                             savedDriverEvaluation(url, order_id, cid);
                         } else if (type == "Consent Form") {
-                            
+
                             //alert(type);
                             var order_id = $('#did').val(),
                                 cid = '<?php echo $cid;?>',
@@ -1471,7 +1471,7 @@ function provinces($name){
                             savedMeeOrder(url, order_id, cid);
                         }
                         else if (type == "Employment Verification") {
-                            
+
                             //alert(type);
                             var order_id = $('#did').val(),
                                 cid = '<?php echo $cid;?>',
@@ -1479,7 +1479,7 @@ function provinces($name){
                             saveEmployment(url, order_id, cid);
                         }
                         else if (type == "Education Verification") {
-                            
+
                             //alert(type);
                             var order_id = $('#did').val(),
                                 cid = '<?php echo $cid;?>',
@@ -1511,7 +1511,7 @@ function provinces($name){
 
                     }
                     else if (type == "Attachment") {
-                        
+
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/addattachment/' + cid + '/' + order_id+ '?draft=' + draft;
@@ -1543,30 +1543,26 @@ function provinces($name){
             }
         });
 
-
-
-
         $('#submit_ord').live('click', function () {
-            var order_id = $('#did').val(),
 
             $.ajax({
-                url: '<?php echo $this->request->webroot;?>orders/webservice/<?php echo $_GET['order_type'];?>/<?php if(isset($_GET['forms'])){ echo $_GET['forms'];}else{echo 0;} ?>/' + order_id + '111/' + $('#uploaded_for').val(),
+                url: '<?php echo $this->request->webroot;?>orders/webservice/<?php echo $_GET['order_type'];?>/<?php echo $_GET['forms']; ?>/' + $('#did').val() +'/' + $('#uploaded_for').val(),
                 success:function(){
-                //   window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
+                 //  window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
                 },
                 error:function(){
-                //   window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
+                 //  window.location = '<?php echo $this->request->webroot;?>profiles/view/'+$('#uploaded_for').val()+'?getprofilescore=1&success';
                 }
             })
         });
-        
+
         $('#submit_dra').live('click', function () {
             //alert($(this).text());
-            
-            
+
+
                 $('.blockmsg').html('<h4 class="block">Your Order Has Been Saved As Draft!</h4>'+
     '<p>You can edit your order anytime.</p>')
-            
+
             var type = $(".tab-pane.active").prev('.tab-pane').find("input[name='document_type']").val();
             var tabid = $(".tab-pane.active").prev('.tab-pane').find("#confirmation").val();
             if (tabid == '1') {
@@ -1613,7 +1609,7 @@ function provinces($name){
                 });
             }
 
-            
+
         });
 
     });
@@ -1664,7 +1660,7 @@ function provinces($name){
     function saveDriver(cid) {
         var fields = $('#createDriver').serialize();
         fields = fields + '&profile_type=' + $('.member_type').val();
-        
+
 
         var param = {
             cid: cid,

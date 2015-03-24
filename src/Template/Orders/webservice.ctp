@@ -5,7 +5,6 @@
         include_once('subpages/api.php');
     }
 
-
     $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
     $client = new nusoap_client($proxyhost, true, $proxyhost, $proxyport = null, $proxyusername = null, $proxypassword = null);
     $client->useHTTPPersistentConnection();
@@ -23,111 +22,105 @@
 
     if ($_SERVER['SERVER_NAME'] != "isbmeereports.com") {
         $user_id234 = '22552';
+        echo "NOT isbmeereports.com";
     }
+
+    echo $_SERVER['SERVER_NAME'];
+    echo $_SERVER['SERVER_NAME'];
+    echo $_SERVER['SERVER_NAME'];
+    echo $_SERVER['SERVER_NAME'];
+    echo $_SERVER['SERVER_NAME'];
+    echo $_SERVER['SERVER_NAME'];
+    echo $_SERVER['SERVER_NAME'];
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $startorder1 = false;
-    $productdetails79 = false; // only TRUE if complete mee roders  - DONT CHANGE
-
-    ////////////////////////////////////////PRODUCTS
-    ////////////////////////////////////////PRODUCTS
-    ////////////////////////////////////////PRODUCTS
-
-    $productdetailsebs1603 = true; //Premium check
-    $productdetails1 = true;//MVR Driver's Record Abstract
-    $productdetails14 = true;//CVOR
-    $productdetails77 = true;//Pre-employment Screening Program Report
-    $productdetails78 = true; //Transclick
-    $productdetailsebs1650 = true;//Certification (Education)
-    $productdetailsebs1627 = true;//LOE (Employment)
-    $productdetails_CheckDL_72 = true; //checkdl
-
-    ////////////////////////////////////////PRODUCTS
-    ////////////////////////////////////////PRODUCTS
-    ////////////////////////////////////////PRODUCTS
+    $upload_additional = true; //additional are all attachments in all forms
 
     $uploadbinaryconsent_1603 = true;
     $uploadbinaryemployment_1627 = true;
     $uploadbinaryeducation_1650 = true;
 
-    $upload_additional = true; //additional are all attachments in all forms
+    $productdetailsebs1603 = false;         // 1603 Premium check
+    $productdetails1 = false;               // 1    MVR Driver's Record Abstract
+    $productdetails14 = false;              // 14   CVOR
+    $productdetails77 = false;              // 77   Pre-employment Screening Program Report
+    $productdetails78 = false;              // 78   Transclick
+    $productdetailsebs1650 = false;         // 1650 Certification (Education)
+    $productdetailsebs1627 = false;         // 1627 LOE (Employment)
+    $productdetails_CheckDL_72 = false;     // 72   checkdl
 
-    var_dump($order_info);
-    var_dump($order_info->order_type);
-    var_dump($order_info['order_type']);
-echo 123;
-    die();
-    if ($formsarray[0] == '1' || $formsarray[0] == '0') {
 
-        if ($formsarray[0] == '0') {
-            $productdetailsebs1603 = false;
+    echo $order_info->order_type;
+    echo $order_info->order_type;
+    echo $order_info->order_type;
+    echo $order_info->order_type;
+    echo $order_info->order_type;
+    echo $order_info->order_type;
+    echo $order_info->order_type;
+    echo $order_info->order_type;
+    echo $order_info->order_type;
 
-            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-            fwrite($myfile, '1-1');
-            fclose($myfile);
-            //    echo 1;
-        }
-        if ($formsarray[1] == '0') {
-            $productdetails1 = false;
-            //  echo 2;
 
-            //   $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-            //      fwrite($myfile, '1-2');
-            //     fclose($myfile);
+    if ($order_info->order_type == "Order MEE") {
+        $productdetails79 = true; // only TRUE if complete mee roders  - DONT CHANGE
 
-        }
-        if ($formsarray[2] == '0') {
-            $productdetails14 = false;
-            //         echo 3;
-            //        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-            //         fwrite($myfile, '1-3');
-            //      fclose($myfile);
-
-        }
-        if ($formsarray[3] == '0') {
-            $productdetails77 = false;
-//            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-            //         fwrite($myfile, '1-4');
-            //       fclose($myfile);
-
-        }
-        if ($formsarray[4] == '0') {
-            $productdetails78 = false;
-            //        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-            //      fwrite($myfile, '1-5');
-            //      fclose($myfile);
-
-        }
-        if ($formsarray[5] == '0') {
-            $productdetailsebs1650 = false;
-            //         $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-            //        fwrite($myfile, '1-6');
-            //       fclose($myfile);
-
-        }
-        if ($formsarray[6] == '0') {
-            $productdetailsebs1627 = false;
-            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-            fwrite($myfile, '1-7');
-            fclose($myfile);
-
-        }
-
-        if ($formsarray[7] == '0') {
-            $productdetails_CheckDL_72 = false;
-            //         $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-            //       fwrite($myfile, '1-8');
-            //      fclose($myfile);
-
-        }
+        $productdetailsebs1603 = true;         // 1603 Premium check
+        $productdetails1 = true;               // 1    MVR Driver's Record Abstract
+        $productdetails14 = true;              // 14   CVOR
+        $productdetails77 = true;              // 77   Pre-employment Screening Program Report
+        $productdetails78 = true;              // 78   Transclick
+        $productdetailsebs1650 = true;         // 1650 Certification (Education)
+        $productdetailsebs1627 = true;         // 1627 LOE (Employment)
+        //$productdetails_CheckDL_72 = true;   // 72   checkdl
 
     } else {
-        $productdetails79 = true;
-        $productdetails_CheckDL_72 = false;
-        //   echo 999;
+
+        $productdetails79 = false; // only TRUE if complete mee roders  - DONT CHANGE
+
+        $myArray = explode(',', $order_info->forms);
+        foreach ($myArray as $splitArray)
+        {
+            switch ($splitArray) {
+                case 1:
+                    $productdetailsebs1603 = true;
+                    break;
+                case 2:
+                    $productdetails1 = true;
+                    break;
+                case 3:
+                    $productdetails14 = true;
+                    break;
+                case 4:
+                    $productdetails77 = true;
+                    break;
+                case 5:
+                    $productdetails78 = true;
+                    break;
+                case 6:
+                    $productdetailsebs1650 = true;
+                    break;
+                case 7:
+                    $productdetailsebs1627 = true;
+                    break;
+                case 8:
+                    $productdetails_CheckDL_72 = true;
+                    break;
+            }
+        }
     }
+
+    echo '<br>1' . $productdetailsebs1603;         // 1603 Premium check
+    echo '<br>2' . $productdetails1;               // 1    MVR Driver's Record Abstract
+    echo '<br>3' . $productdetails14;              // 14   CVOR
+    echo '<br>4' . $productdetails77;              // 77   Pre-employment Screening Program Report
+    echo '<br>5' . $productdetails78;              // 78   Transclick
+    echo '<br>6' . $productdetailsebs1650;         // 1650 Certification (Education)
+    echo '<br>7' . $productdetailsebs1627;         // 1627 LOE (Employment)
+    echo '<br>8' . $productdetails_CheckDL_72;     // 72   checkdl
 
     if ($startorder1 == true) {
 
@@ -149,7 +142,12 @@ echo 123;
         $ebs_id = substr($myArray[1], 4);
 
         $this->requestAction('orders/save_webservice_ids/' . $orderid . '/' . $ins_id . '/' . $ebs_id);
-        ECHO "999start order";
+        //     ECHO "999start order";
+    }else
+    {
+
+        die('ORDER NOT STARTED');
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -248,7 +246,6 @@ echo 123;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
     if ($productdetails77 == true) { // Pre-employment Screening Program Report
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -272,7 +269,6 @@ echo 123;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     if ($productdetails78 == true) { //transclick
 
@@ -302,7 +298,6 @@ echo 123;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
     if ($productdetailsebs1650 == true) { // Certification
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -326,7 +321,6 @@ echo 123;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     if ($productdetailsebs1627 == true) { //LOE
 
@@ -352,7 +346,6 @@ echo 123;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
     if ($productdetailsebs1603 == true) { //Premium check
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
@@ -377,8 +370,6 @@ echo 123;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
     if ($uploadbinaryconsent_1603 == true) {
 
         $pdf_content = '';
@@ -396,7 +387,6 @@ echo 123;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
     if ($uploadbinaryemployment_1627 == true) {
 
         $pdf_content = '';
@@ -413,8 +403,6 @@ echo 123;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
     if ($uploadbinaryeducation_1650 == true) {
 
@@ -435,9 +423,26 @@ echo 123;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
     if ($upload_additional == true) {
+
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+        //GET ALL ATTACHMENTS?
+
+
+        if(isset($prescreening['attach_doc'])) {
 
         foreach ($prescreening['attach_doc'] as $d) {
             if ($d->attachment) {
@@ -453,28 +458,30 @@ echo 123;
                 debug($result);
 
             }
-        }
+        }}
 
-        echo "<br>";
 
-        foreach ($driverapplication['da_at'] as $d) {
-            if ($d->attachment) {
-                echo ($d->attachment) . '12341234';
+        if(isset($driverapplication['da_at'])) {
+            foreach ($driverapplication['da_at'] as $d) {
+                if ($d->attachment) {
+                    echo ($d->attachment) . '12341234';
 
-                $sendit = file_get_contents('attachments/' . $d->attachment);
-                $body = base64_encode($sendit);
+                    $sendit = file_get_contents('attachments/' . $d->attachment);
+                    $body = base64_encode($sendit);
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                    $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
-                $result = $client->call('UploadBinaryFile', $soap_xml);
+                    $result = $client->call('UploadBinaryFile', $soap_xml);
 
-                echo "999 driverapplication attached docs";
+                    echo "999 driverapplication attached docs";
 
-                debug($result);
+                    debug($result);
 
+                }
             }
         }
-        echo "<br>";
+
+        if(isset($roadtest['de_at'])) {
 
         foreach ($roadtest['de_at'] as $d) {
             if ($d->attachment) {
@@ -491,28 +498,33 @@ echo 123;
                 debug($result);
 
             }
-        }
-        echo "<br>";
+        }}
 
-        foreach ($consent['con_at'] as $d) {
-            if ($d->attachment) {
-                echo ($d->attachment) . '12341234';
+        if(isset($consent['con_at'])) {
 
-                $sendit = file_get_contents('attachments/' . $d->attachment);
-                $body = base64_encode($sendit);
+            foreach ($consent['con_at'] as $d) {
+                if ($d->attachment) {
+                    echo ($d->attachment) . '12341234';
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                    $sendit = file_get_contents('attachments/' . $d->attachment);
+                    $body = base64_encode($sendit);
 
-                $result = $client->call('UploadBinaryFile', $soap_xml);
-                echo "999 consent attached docs";
+                    $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
-                debug($result);
+                    $result = $client->call('UploadBinaryFile', $soap_xml);
+                    echo "999 consent attached docs";
 
+                    debug($result);
+
+                }
             }
         }
         echo "<br>";
 
-        foreach ($employee['att'] as $d) {
+        if(isset($employee['att'])) {
+
+
+            foreach ($employee['att'] as $d) {
             if ($d->attachment) {
                 echo ($d->attachment) . '12341234';
 
@@ -527,23 +539,27 @@ echo 123;
                 debug($result);
             }
         }
+            }
 
         echo "<br>";
 
-        foreach ($education['att'] as $d) {
-            if ($d->attachment) {
-                echo ($d->attachment) . '12341234';
+        if(isset($education['att'])) {
 
-                $sendit = file_get_contents('attachments/' . $d->attachment);
-                $body = base64_encode($sendit);
+            foreach ($education['att'] as $d) {
+                if ($d->attachment) {
+                    echo ($d->attachment) . '12341234';
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                    $sendit = file_get_contents('attachments/' . $d->attachment);
+                    $body = base64_encode($sendit);
 
-                $result = $client->call('UploadBinaryFile', $soap_xml);
-                echo "999 education attached docs";
+                    $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
-                debug($result);
+                    $result = $client->call('UploadBinaryFile', $soap_xml);
+                    echo "999 education attached docs";
 
+                    debug($result);
+
+                }
             }
         }
 

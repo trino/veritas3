@@ -611,6 +611,9 @@
         public function webservice($order_type = null, $forms = null, $orderid = null, $driverid = null)
         {
             $this->layout = "blank";
+            echo '<br><br>'.$orderid . '<br><br>';
+
+
             if ($orderid) {
 
                 $pre = TableRegistry::get('doc_attachments');
@@ -692,14 +695,11 @@
             $this->set('ordertype', $ordertype1);
 
 
+
             $orders = TableRegistry::get('orders');
-echo $orderid;
             $order_info = $orders->find()->where(['id' => $orderid])->first();
             $this->set('order_info', $order_info);
 
-
-
-var_dump(  $order_info); echo 999999999;die();
 
 
         }

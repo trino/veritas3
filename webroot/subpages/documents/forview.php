@@ -603,7 +603,7 @@
                                                        $cnt = $this->requestAction("/orders/getprocessed/consent_form/" . $order->id);
                                                            $line = PrintLine($line, "Consent Form", $cnt);
                                                        */
-                                                        $line = PrintLine($line, "Confirmation", 1 - $order->draft, '', '', '', '', true)
+                                                    //    $line = PrintLine($line, "Confirmation", 1 - $order->draft, '', '', '', '', true)
 
                                                     ?>
                                                     <TR>

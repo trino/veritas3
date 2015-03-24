@@ -213,7 +213,7 @@
                                         <div class="caption">
                                             <A name="<?php echo $order->created; ?>"/></A>
                                             <i class="fa fa-folder-open-o"></i>Order Score Sheet
-                                            - <?php echo $order->created; ?>
+                                            - <?php echo $order->created; ?> [Order id: <strong><?php echo $order->id; ?></strong>]
                                         </div>
                                     </div>
                                     <div class="portlet-body">

@@ -225,7 +225,7 @@ var FormWizard = function () {
                 for (var i = 0; i < index; i++) {
                     jQuery(li_list[i]).addClass("done");
                 }
-
+                
                 if (current == 1) {
                     $('#divison').removeAttr('disabled');
                     $('#form_wizard_1').find('.button-previous').hide();

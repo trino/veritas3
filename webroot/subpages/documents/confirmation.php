@@ -3,13 +3,23 @@
     $forms = '';
     if (isset($_GET['forms'])) { $forms = $_GET['forms']; }
 
-    $allattachments = array();
-    if (isset($pre_at['attach_doc'])) { $allattachments = $pre_at['attach_doc']; }
-    if (isset($sub['da_at'])) { $allattachments = array_merge($allattachments, $sub['da_at']); }
-    if (isset($sub['de_at'])) {$allattachments = array_merge($allattachments, $sub['de_at']); }
-    if (isset($sub2['con_at'])) {$allattachments = array_merge($allattachments, $sub2['con_at']); }
-    if (isset($sub3['att'])) {$allattachments = array_merge($allattachments, $sub3['att']); }
-    if (isset($sub4['att'])) {$allattachments = array_merge($allattachments, $sub4['att']); }
+    $allattachments = array();// new AppendIterator;
+    if (isset($pre_at['attach_doc'])) { $allattachments = merge($allattachments, $pre_at['attach_doc']); }
+    if (isset($sub['da_at'])) { $allattachments = merge($allattachments, $sub['da_at']); }
+    if (isset($sub['de_at'])) {$allattachments = merge($allattachments, $sub['de_at']); }
+    if (isset($sub2['con_at'])) {$allattachments = merge($allattachments, $sub2['con_at']); }
+    if (isset($sub3['att'])) {$allattachments = merge($allattachments, $sub3['att']); }
+    if (isset($sub4['att'])) {$allattachments = merge($allattachments, $sub4['att']); }
+
+    function merge($dest, $src){
+        foreach($src as $item){
+            $dest[] = $item;
+        }
+        return $dest;
+        //if (is_object($src)) { $dest->append($src); }
+        //if (is_array($src)) { $dest = array_merge($dest, $src); }
+        //return dest;
+    }
 
     if (!$forms) {
         $forms_arr[0] = 1;
@@ -34,13 +44,6 @@
 <div class="row col-md-5">
 
     <div class="form-group">
-
-        <div class="col-md-12"><?php
-            include_once 'subpages/filelist.php';
-            listfiles($allattachments, "attachments/", "", false,3);
-        ?></div>
-
-
         <label class="control-label col-md-12">Recruiter Name : </label>
 
         <div class="col-md-12">
@@ -153,6 +156,12 @@
 
 
 <div class="row col-md-7">
+
+
+    <div class="form-group"><?php
+        include_once 'subpages/filelist.php';
+        listfiles($allattachments, "attachments/", "", false,3);
+        ?></div>
 
 
     <div class="form-group">

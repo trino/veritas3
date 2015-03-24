@@ -4,11 +4,13 @@
 <!-- END PAGE LEVEL STYLES -->
 
 <?php
-    if (isset($disabled))
+    include 'subpages/filelist.php';
+    $delete = isset($disabled);
+    if (isset($disabled)) {
         $is_disabled = 'disabled="disabled"';
-    else
+    } else {
         $is_disabled = '';
-
+    }
     if (isset($client)) {
         $c = $client;
     }
@@ -27,6 +29,7 @@
     if ($action == "Add") {
         $action = "Create";
     }
+
 ?>
 
 <h3 class="page-title">
@@ -63,9 +66,10 @@
             <a href="<?php echo $this->request->webroot; ?>clients/edit/<?php echo $client->id; ?>?view" class = 'floatright btn btn-info btnspc'>View</a>
         <?php
                     
-        }                
+        }
+
+    echo "</div>";
          ?>
-</div>
 
 <div class="row ">
     <div class="col-md-12">
@@ -99,7 +103,10 @@
                     </div>
                 </div>
 
+                <?php  if (isset($client_docs)) { listfiles($client_docs, "img/jobs/",'client_doc',$delete,  2); } ?>
+
             </div>
+
             <div class="col-md-9">
 
 
@@ -443,12 +450,8 @@
                                                 </div>
 
                                             <?php }
-                                             if(isset($disabled))
-                                                $delete = true;
-                                                else
-                                                $delete = false; 
+                                                $delete = isset($disabled);
                                                 if (isset($client_docs)) {
-                                                    include 'subpages/filelist.php';
                                                     listfiles($client_docs, "img/jobs/",'client_doc',$delete);
                                                 }
                                             ?>

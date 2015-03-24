@@ -1631,8 +1631,7 @@
             //VAR_Dump($query);die();
             foreach ($query as $todo) {
                 if ($todo->email_self == '1') {
-                    //$q2 = TableRegistry::get('profiles');                     $que2 = $q2->find();
-                    $query2 = $this->loadprofile($todo->user_id);// $que2->select()->where(['id' => $todo->user_id])->first();
+                    $query2 = $this->loadprofile($todo->user_id);
                     $email = $query2->email;
                     if ($email) {  $this->sendtaskreminder($email, $todo, $path, "(Account holder)"); }
                 }
@@ -1642,9 +1641,7 @@
                         $this->sendtaskreminder($em, $todo, $path, "(Added by account holder)");
                     }
                 }
-                //echo $s;die();
-                $send = $q->query();
-                $send->update()->set(['sent' => 1])->where(['id' => $todo->id])->execute();
+                $q->query()->update()->set(['sent' => 1, 'email_self' => 0])->where(['id' => $todo->id])->execute();
             }
 
             die();

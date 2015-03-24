@@ -570,7 +570,7 @@
                                                     <?php
                                                         $line = "even";
                                                         $doc = $this->requestAction('/orders/getSubDocs');
-
+                                                        $docfind = 0;
                                                         //var_dump($doc); die();
                                                         if ($doc) {
                                                             foreach ($doc as $d) {
@@ -582,6 +582,7 @@
                                                                 $c_id = $order->client_id;
                                                                 $d_id = $this->requestAction("/orders/getdocid/" . $sub_doc_id . "/" . $o_id);
                                                                 if ($d_id) {
+                                                                    $docfind++;
                                                                     $docu_id = $d_id->id;
                                                                     $cnt = $this->requestAction("/orders/getprocessed/" . $d->table_name . "/" . $order->id);
                                                                     $line = PrintLine($line, $title, $cnt, $docu_id, $c_id, $o_id, $this->request->webroot, false);
@@ -589,6 +590,12 @@
                                                             }
                                                             //die();
 
+                                                        }
+                                                        if(!$docfind)
+                                                        {
+                                                          ?>
+                                                          <tr><td colspan="3">None</td></tr>
+                                                          <?php  
                                                         }
                                                         /*
                                                        $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);

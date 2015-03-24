@@ -57,6 +57,7 @@
             $orders = TableRegistry::get('orders');
             if ($did) {
                 $order_id = $orders->find()->where(['id' => $did])->first();
+                $this->set('ooo',$order_id);
                 $this->loadModel('Profiles');
                 $profiles = $this->Profiles->find()->where(['id' => $order_id->uploaded_for])->first();
                 $this->set('p', $profiles);

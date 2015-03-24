@@ -723,6 +723,7 @@
                         //die('here');
                         $this->request->data['password'] = $profile->password;
                     } else {
+                        if(isset($_POST['password']))
                         $this->request->data['password'] = md5($_POST['password']);
                     }
                     if (isset($_POST['profile_type']) && $_POST['profile_type'] == 1)
@@ -1942,6 +1943,19 @@
             if ($client_docs) {
                 return true;
             }
+        }
+        
+        public function getTypeTitle($id)
+        {
+            $docs = TableRegistry::get('profile_types');
+            $query = $docs->find()->where(['id'=>$id])->first();
+            if($query)
+            $q = $query->title;
+            else
+            $q = '';
+            $this->response->body($q);
+              return $this->response;
+            
         }
     }
 

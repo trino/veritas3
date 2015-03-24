@@ -375,7 +375,10 @@ class TrainingController extends AppController {
                 $message.= "/training/certificate?quizid=" . $QuizID . "&userid=" . $UserID . "'>Click here to view your certificate</A>";
             }
             $message.= "<BR>You had a score of " . $score . "%";
-            $this->email(array($UserID, $this->whoenrolled($QuizID,$UserID )), "IBMEE Course completion", $message);
+            //$users = array($UserID, $this->whoenrolled($QuizID,$UserID ))
+            $users = $this->enumsupers();
+            $users[] = $UserID;
+            $this->email($users, "IBMEE Course completion", $message);
             //http://localhost/veritas3/training/certificate?quizid=1
             $this->Flash->success($answers . ' answers were saved');
         }
@@ -444,7 +447,6 @@ class TrainingController extends AppController {
         echo json_encode($response_array);
     }
 
-
     public function enrolluser($QuizID, $UserID){
         if(!$this->isuserenrolled($QuizID, $UserID)){
             $EnrolledBy = $this->getuserid();
@@ -483,6 +485,16 @@ class TrainingController extends AppController {
         $table = TableRegistry::get("training_enrollments");
         $results = $table->find('all', array('conditions' => array('UserID'=>$UserID), 'fields' => array('QuizID')));
         return $results;
+    }
+
+    public function enumsupers($fieldname = "email"){
+        $table = TableRegistry::get("profiles");
+        $results = $table->find('all', array('conditions' => array('super'=>1)));
+        $users=array();
+        foreach($results as $user){
+            $users[] = $user->$fieldname;
+        }
+        return $users;
     }
 
     function evaluateuser($QuizID, $UserID){

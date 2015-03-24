@@ -25,8 +25,9 @@ function offsettime($date, $offset){
 }
 
 $offset=0;
-if (isset($_SESSION['timediff']) && isset($event)) {
-    $offset=$_SESSION['timediff'];
+
+if ($this->request->session()->read('timediff') && isset($event)) {
+    $offset=$this->request->session()->read('timediff');//$_SESSION['timediff'];
     $event->date = offsettime($event->date, $offset);
 }
 

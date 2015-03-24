@@ -30,10 +30,22 @@ class TasksController extends AppController {
 	}
 
     function timezone(){
+        /*
         session_start();
         $_SESSION['time'] = $_GET['time'];
         $offset = date("Z")/3600 ;
         $_SESSION['timediff'] = $_GET['time'] - $offset;
+*/
+
+        $offset = date("Z")/3600 ;
+        $this->request->session()->write('time',$_GET['time']);
+        // $_SESSION['time'] = $_GET['time'];
+
+        $this->request->session()->write('timediff',$_GET['time'] - $offset);
+
+
+
+
     }
 
 

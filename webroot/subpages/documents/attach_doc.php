@@ -1,6 +1,6 @@
 <?php
     echo '<div>';
-    if ($_SERVER['SERVER_NAME'] == 'localhost'){ echo "<span style ='color:red;'>attach_doc.php #INC132</span>"; }
+    if ($_SERVER['SERVER_NAME'] == 'localhost'){ echo "<span style ='color:red;'>subpages/documents/attach_doc.php #INC132</span>"; }
 
     $delete = isset($disabled);
         //if (isset($attachments)) {

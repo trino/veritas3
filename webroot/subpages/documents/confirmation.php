@@ -1,5 +1,5 @@
 <?php
-    if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>confiramtion.php #INC138</span>"; }
+    if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/confiramtion.php #INC138</span>"; }
     $forms = '';
     if (isset($_GET['forms'])) { $forms = $_GET['forms']; }
 

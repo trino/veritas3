@@ -1,5 +1,5 @@
 <?php
- if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>survey.php #INC127</span>";}
+ if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/survey.php #INC127</span>";}
  ?>
 <?php
 if(isset($disabled))

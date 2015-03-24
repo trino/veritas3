@@ -1,6 +1,6 @@
 <?php
  if($_SERVER['SERVER_NAME'] =='localhost')
-        echo "<span style ='color:red;'>education_verification_form.php #INC142</span>";
+        echo "<span style ='color:red;'>subpages/documents/education_verification_form.php #INC142</span>";
  ?>
 <div id="form_tab10">
 <input class="document_type" type="hidden" name="document_type" value="Education Verification" />

@@ -1,6 +1,6 @@
 <?php
  if($_SERVER['SERVER_NAME'] =='localhost')
-        echo "<span style ='color:red;'>document_tab3.php #INC139</span>";
+        echo "<span style ='color:red;'>subpages/documents/document_tab3.php #INC139</span>";
  ?>
 <div id="form_tab4">
 <input class="document_type" type="hidden" name="document_type" value="Consent Form" />

@@ -1,20 +1,12 @@
-<div>
-    <?php
-        if ($_SERVER['SERVER_NAME'] == 'localhost')
-            echo "<span style ='color:red;'>attach_doc.php #INC132</span>";
-    ?>
-    <?php
-        if (isset($disabled)) {
-            $delete = true;
-        } else {
-            $delete = false;
-        }
+<?php
+    echo '<div>';
+    if ($_SERVER['SERVER_NAME'] == 'localhost'){ echo "<span style ='color:red;'>attach_doc.php #INC132</span>"; }
 
-        if (isset($attachments)) {
-            include 'subpages/filelist.php';
-            listfiles($attachments, "attachments/", 'attach_doc', $delete);
-        } ?>
-    <?php
+    $delete = isset($disabled);
+        //if (isset($attachments)) {
+        //    include 'subpages/filelist.php';
+        //    listfiles($attachments, "attachments/", 'attach_doc', $delete);
+        //}
         if (!isset($disabled)) {
 
             $upload_max_size = ini_get('upload_max_filesize');
@@ -41,6 +33,6 @@
                     </a>
                 </div>
             </div>
-        <?php } ?>
-
-</div>
+        <?php }
+    echo '</div>';
+?>

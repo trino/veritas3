@@ -125,10 +125,8 @@
             $condition = $this->Settings->getprofilebyclient($u, $super);
             //var_dump($condition);die();
             if ($setting->profile_list == 0) {
-
-                $this->Flash->error('Sorry, you don\'t have the required permissions1.');
+                $this->Flash->error('Sorry, you don\'t have the required permissions.');
                 return $this->redirect("/");
-
             }
             if (isset($_GET['draft']))
                 $draft = 1;

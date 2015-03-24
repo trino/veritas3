@@ -10,6 +10,11 @@
 <form id="form_education">
 
     <?php
+
+    include_once 'subpages/filelist.php';
+    if (isset($sub4['att'])) { listfiles($sub4['att'], "attachments/", "", false,3);}
+
+
     $counter=0;
     if(isset($sub4['edu']) && count($sub4['edu']))
     {
@@ -349,7 +354,7 @@
         <div class="form-group row">
         <div class="more_edu_doc" data-edu="<?php if(count($sub4['att']))echo count($sub4['att']);else echo '1';?>">
              <?php
-                                                        if(count($sub4['att']))
+                                                        if(count($sub4['att']))//THIS SHOULD BE USING FILELIST.PHP!!!!!
                                                         {
                                                             $at=0;
                                                             foreach($sub4['att'] as $pa)

@@ -1,6 +1,7 @@
 <?php
- if($_SERVER['SERVER_NAME'] =='localhost')
-        echo "<span style ='color:red;'>driver_evaluation.php #INC141</span>";
+ if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>driver_evaluation_form.php #INC141</span>"; }
+include_once 'subpages/filelist.php';
+if( isset($sub)){  listfiles($sub['de_at'], "attachments/", "", false,3); }
  ?>
 <form id="form_tab3">
 <input class="document_type" type="hidden" name="document_type" value="Road test" />
@@ -719,7 +720,7 @@
 												</div>
                                                 <div class="clearfix"></div>
                                                 <?php
-                                                        if(!isset($sub['de_at']))
+                                                        if(!isset($sub['de_at']))//THIS SHOULD BE USING FILELIST.PHP!!!!!
                                                         {
                                                             $sub['de_at'] = array();
                                                         }
@@ -736,7 +737,7 @@
                                                   <div class="form-group row">
                                                     <div id="more_driver_doc" data-road="<?php if(count($sub['de_at']))echo count($sub['de_at']);else echo '1';?>">
                                                        <?php
-                                                        if(count($sub['de_at']))
+                                                        if(count($sub['de_at']))//THIS SHOULD BE USING FILELIST.PHP!!!!!!!!!!!!
                                                         {
                                                             $at=0;
                                                             foreach($sub['de_at'] as $pa)

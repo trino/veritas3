@@ -1,12 +1,16 @@
 <?php
- if($_SERVER['SERVER_NAME'] =='localhost')
-        echo "<span style ='color:red;'>confiramtion.php #INC138</span>";
- ?>
-<?php
-    if (isset($_GET['forms']))
-        $forms = $_GET['forms'];
-    else
-        $forms = '';
+    if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>confiramtion.php #INC138</span>"; }
+    $forms = '';
+    if (isset($_GET['forms'])) { $forms = $_GET['forms']; }
+
+    $allattachments = array();
+    if (isset($pre_at['attach_doc'])) { $allattachments = $pre_at['attach_doc']; }
+    if (isset($sub['da_at'])) { $allattachments = array_merge($allattachments, $sub['da_at']); }
+    if (isset($sub['de_at'])) {$allattachments = array_merge($allattachments, $sub['de_at']); }
+    if (isset($sub2['con_at'])) {$allattachments = array_merge($allattachments, $sub2['con_at']); }
+    if (isset($sub3['att'])) {$allattachments = array_merge($allattachments, $sub3['att']); }
+    if (isset($sub4['att'])) {$allattachments = array_merge($allattachments, $sub4['att']); }
+
     if (!$forms) {
         $forms_arr[0] = 1;
         $forms_arr[1] = 2;
@@ -18,7 +22,6 @@
         //$forms_arr[7] = 8;
     } else {
         $forms_arr = explode(',', $forms);
-
     }
     $p = $forms_arr;
 ?>
@@ -31,6 +34,11 @@
 <div class="row col-md-5">
 
     <div class="form-group">
+
+        <div class="col-md-12"><?php
+            include_once 'subpages/filelist.php';
+            listfiles($allattachments, "attachments/", "", false,3);
+        ?></div>
 
 
         <label class="control-label col-md-12">Recruiter Name : </label>
@@ -168,94 +176,29 @@
 
 <!-- DONT REMOVE / USED FOR WEBSERVICE .... DO NOT CHANGE THE STRUCTURE OF DIV INSIDE NOT EVEN AN ENTER-->
 <div class="attachments_all" style="display: none;">
-    <div class="pre"><?php
-            if (isset($pre_at['attach_doc'])) {
-                $c1 = 0;
-                foreach ($pre_at['attach_doc'] as $pat) {
-                    $c1++;
-                    if ($c1 == 1)
-                        echo $pat->attachment;
-                    else
-                        echo ',' . $pat->attachment;
+    <?php //THIS SHOULD BE USING FILELIST.PHP!!!!!
+
+        function listattachments($name, $array){
+            echo '<div class="' . $name . '">';
+            $c1 = 0;
+            foreach ($array as $pat) {
+                $c1++;
+                if ($c1 == 1) {
+                    echo $pat->attachment;
+                } else {
+                    echo ',' . $pat->attachment;
                 }
-
             }
-        ?></div>
+            echo '</div>';
+        }
 
-    <div class="da"><?php
-            if (isset($sub['da_at'])) {
-                $c1 = 0;
-                foreach ($sub['da_at'] as $pat) {
-                    $c1++;
-                    if ($c1 == 1)
-                        echo $pat->attachment;
-                    else
-                        echo ',' . $pat->attachment;
-                }
-
-            }
-        ?></div>
-
-    <div class="de"><?php
-            if (isset($sub['de_at'])) {
-                $c1 = 0;
-                foreach ($sub['de_at'] as $pat) {
-                    $c1++;
-                    if ($c1 == 1)
-                        echo $pat->attachment;
-                    else
-                        echo ',' . $pat->attachment;
-                }
-
-            }
-        ?></div>
-
-
-    <div class="con"><?php
-            if (isset($sub2['con_at'])) {
-                $c1 = 0;
-                foreach ($sub2['con_at'] as $pat) {
-                    $c1++;
-                    if ($c1 == 1)
-                        echo $pat->attachment;
-                    else
-                        echo ',' . $pat->attachment;
-                }
-
-            }
-        ?></div>
-
-
-    <div class="emp"><?php
-            if (isset($sub3['att'])) {
-                $c1 = 0;
-                foreach ($sub3['att'] as $pat) {
-                    $c1++;
-                    if ($c1 == 1)
-                        echo $pat->attachment;
-                    else
-                        echo ',' . $pat->attachment;
-                }
-
-            }
-        ?></div>
-
-
-    <div class="edu"><?php
-            if (isset($sub4['att'])) {
-                $c1 = 0;
-                foreach ($sub4['att'] as $pat) {
-                    $c1++;
-                    if ($c1 == 1)
-                        echo $pat->attachment;
-                    else
-                        echo ',' . $pat->attachment;
-                }
-
-            }
-        ?></div>
-
-
+        if (isset($pre_at['attach_doc'])) { listattachments("pre", $pre_at['attach_doc']);}
+        if (isset($sub['da_at'])) {         listattachments("da", $sub['da_at'] ); }
+        if (isset($sub['de_at'])) {         listattachments("de", $sub['de_at'] ); }
+        if (isset($sub2['con_at'])) {       listattachments("con", $sub2['con_at'] ); }
+        if (isset($sub3['att'])) {          listattachments("emp", $sub3['att'] ); }
+        if (isset($sub4['att'])) {          listattachments("edu", $sub4['att'] ); }
+    ?>
 </div>
 
 

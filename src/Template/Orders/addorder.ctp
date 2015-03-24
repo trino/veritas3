@@ -75,15 +75,13 @@ function provinces($name){
         //  $id     -   the ID/index number of the form to check
         function isallone($forms){
 
-            if(count($forms)<7)
-            {
+            if(count($forms)<7) {
                 return false;
+            } else if(count($forms)=='7' && urldecode($_GET['order_type'])!='Order MEE') {
+                return false;
+            } else {
+                return true;
             }
-            else
-            if(count($forms)=='7' && urldecode($_GET['order_type'])!='Order MEE')
-            return false;
-            else
-            return true;
         }
         $_this = $this;
         function displayform($forms, $name,$_this){

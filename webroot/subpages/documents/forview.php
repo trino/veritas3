@@ -1,6 +1,5 @@
 <?php
- if($_SERVER['SERVER_NAME'] =='localhost')
-        echo "<span style ='color:red;'>for_view.php #INC144</span>";
+ if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>for_view.php #INC144</span>"; }
  ?>
 <style>
     @media print {

@@ -1,6 +1,5 @@
 <?php
- if($_SERVER['SERVER_NAME'] =='localhost')
-        echo "<span style ='color:red;'>company_pre_screen_question.php #INC137</span>";
+ if($_SERVER['SERVER_NAME'] =='localhost'){  echo "<span style ='color:red;'>subpages/documents/company_pre_screen_question.php #INC137</span>";}
  ?>
 <form id="form_tab1">
 <input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>
@@ -8,10 +7,14 @@
 <div class="clearfix"></div>
 <hr/>
 
-        <div class="form-group row">
+        <div class="form-group row"> <div class="col-md-12">
             <?php
             $controller = $this->request->params['controller'];
             $controller = strtolower($controller);
+
+            include_once 'subpages/filelist.php';
+            if( isset($pre_at)){  listfiles($pre_at['attach_doc'], "attachments/", "", false,3); }
+            echo "</div>";
             if($controller == 'orders' )
             {
                 echo '<h4 class="col-md-12">Driver Pre-Screen Questions</h4>';
@@ -635,7 +638,7 @@
         <div class="form-group row">
             <div class="attach_more" data-count='<?php if(count($pre_at['attach_doc']))echo count($pre_at['attach_doc']);else echo '1';?>'>
                 <?php
-                if(count($pre_at['attach_doc']))
+                if(count($pre_at['attach_doc']))//THIS SHOULD BE USING FILELIST.PHP!!!!!
                 {
                     $at=0;
                     foreach($pre_at['attach_doc'] as $pa)
@@ -711,34 +714,34 @@
             <?php
         }
         ?>
-         
+
         $('.add_attach').click(function(){
             var count = $('.attach_more').data('count');
             $('.attach_more').data('count',parseInt(count)+1);
            $('.attach_more').append('<div class="pad_bot" id="del_pre"> <label class="control-label col-md-3"></label> <div class="col-md-6 pad_bot"><input type="hidden" class="fileUpload'+$('.attach_more').data('count')+'" name="attach_doc[]" /><a href="#" id="fileUpload'+$('.attach_more').data('count')+'"  class="btn btn-primary">Browse</a> <a  href="javascript:void(0);" class="btn btn-danger delete_attach">Delete</a> <span class="uploaded"></span></div></div><div class="clearfix"></div>');
             fileUpload('fileUpload'+$('.attach_more').data('count'));
-           
+
         });
-        
+
         $('.delete_attach').live('click',function(){
             var count = $('.attach_more').data('count');
             $('.attach_more').data('count',parseInt(count)-1);
             $(this).closest('#del_pre').remove();
-            
+
         });
         //$("#test1").jqScribble();
         //$("#test2").jqScribble();
-        
+
         $('.select_media').change(function(){
            if ($(this).attr("value") == 'other')
             {
                  $('.other_div').show();
             }
-            else $('.other_div').hide(); 
+            else $('.other_div').hide();
         });
     });
 
-       
+
 		function save(numb)
 		{
 		  //alert('rest');return;
@@ -746,12 +749,12 @@
 			{
 				$.post('image_save.php', {imagedata: imageData}, function(response)
 					{
-						
+
                         $.ajax({
                             url:'<?php echo $this->request->webroot;?>document/image_sess/'+numb+'/'+response
                         });
-					});	
-				
+					});
+
 			});
 		}
 		function addImage()
@@ -759,5 +762,5 @@
 			var img = prompt("Enter the URL of the image.");
 			if(img !== '')$("#test").data("jqScribble").update({backgroundImage: img});
 		}
-		
+
 		</script>

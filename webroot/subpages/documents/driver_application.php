@@ -1,6 +1,7 @@
 <?php
  if($_SERVER['SERVER_NAME'] =='localhost')
         echo "<span style ='color:red;'>driver_application.php #INC140</span>";
+include_once 'subpages/filelist.php';
  ?>
 <form id="form_tab2">
 <input type="hidden" class="document_type" name="document_type" value="Driver Application" id="af" />
@@ -9,6 +10,7 @@
 <hr />
 
 <?php
+    //include_once 'subpages/filelist.php';
     $controller = $this->request->params['controller'];
     $controller = strtolower($controller);
     if($controller == 'documents' )
@@ -34,6 +36,7 @@
                     else {
                         
                     }
+if( isset($sub)){ listfiles($sub['da_at'], "attachments/", "", false,3); }
     ?>
     <div class="form-group row">
         <div class="col-md-12">
@@ -778,7 +781,7 @@
                                         </div>
                        </div-->
                        <?php
-                                        if(!isset($sub['da_at']))
+                                        if(!isset($sub['da_at']))//THIS SHOULD BE USING FILELIST.PHP!!!!!!!!!!!!
                                         {
                                             $sub['da_at'] = array();
                                             }
@@ -795,7 +798,7 @@
                       <div class="form-group row">
                         <div id="more_doc" data-driverapp="<?php if(count($sub['da_at']))echo count($sub['da_at']);else echo '1';?>">
                         <?php
-                                        if(count($sub['da_at']))
+                                        if(count($sub['da_at']))//THIS SHOULD BE USING FILELIST.PHP!!!!!
                                         {
                                             $at=0;
                                             foreach($sub['da_at'] as $pa)

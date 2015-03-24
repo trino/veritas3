@@ -8,6 +8,12 @@
 <div class="tab-content">
 <div class="tab-pane active" id="subtab_2_2">
     <form id="form_employment">
+
+        <?php
+        include_once 'subpages/filelist.php';
+        if (isset($sub3['att'])) { listfiles($sub3['att'], "attachments/", "", false,3);}
+        ?>
+
         <div class="form-group row">
             <h3 class="col-md-12">Past Employer</h3>
         </div>
@@ -341,7 +347,7 @@
           <div class="form-group row">
             <div id="more_employ_doc" data-emp="<?php if(count($sub3['att']))echo count($sub3['att']);else echo '1';?>">
             <?php
-                                                        if(count($sub3['att']))
+                                                        if(count($sub3['att']))//THIS SHOULD BE USING FILELIST.PHP!!!!!
                                                         {
                                                             $at=0;
                                                             foreach($sub3['att'] as $pa)

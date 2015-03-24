@@ -1,20 +1,17 @@
 <?php
- if($_SERVER['SERVER_NAME'] =='localhost')
-        echo "<span style ='color:red;'>audits.php #INC128</span>";
- ?>
-<?php
-if(isset($disabled))
-{
-$is_disabled = 'disabled="disabled"';
-}
-else
-{
+ if($_SERVER['SERVER_NAME'] =='localhost'){  echo "<span style ='color:red;'>audits.php #INC128</span>";}
 $is_disabled = '';
-}
+if(isset($disabled)){$is_disabled = 'disabled="disabled"';}
+
+//this document type can't have attachments, reason unknown
+//include_once 'subpages/filelist.php';
+//listfiles($sub['de_at'], "attachments/", "", false,3);
 ?>
 <div class="portlet-body form">
 <!-- BEGIN FORM-->
 <form  id="form_tab8" method="post" action="<?php echo $this->request->webroot;?>documents/audits/<?php echo $cid;?>/<?php echo $did;?>" class="form-horizontal">
+
+
 <input type="hidden" class="document_type" name="document_type" value="Audits"/>
     <input type="hidden" name="sub_doc_id" value="8" class="sub_docs_id" id="af" />
 <div class="form-body">
@@ -295,7 +292,10 @@ Do you feel there was enough booth staff?
 <div class="clearfix"></div>
 </div>
 
-<!--<div class="form-actions">
+<!--
+Shouldn't there be a place to add attachements?
+
+<div class="form-actions">
 <div class="row">
 <div class="col-md-offset-3 col-md-9">
 <button type="submit" class="btn btn-circle blue">Submit</button>

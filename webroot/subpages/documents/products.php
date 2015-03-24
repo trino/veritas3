@@ -1,6 +1,5 @@
 <?php
- if($_SERVER['SERVER_NAME'] =='localhost')
-        echo "<span style ='color:red;'>products.php #INC148</span>";
+ if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>products.php #INC148</span>";}
  ?>
 <?php
 function pending($name, $value, $checked = true){

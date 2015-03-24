@@ -3,14 +3,8 @@
         echo "<span style ='color:red;'>attachments.php #INC131</span>";
  ?>
 <?php
-if(isset($disabled))
-{
-$is_disabled = 'disabled="disabled"';
-}
-else
-{
-$is_disabled = '';
-}
+$is_disabled = '';//there is no place for attachments
+if(isset($disabled)) { $is_disabled = 'disabled="disabled"'; }
 ?>
 <form role="form" enctype="multipart/form-data" action="<?php echo $this->request->webroot;?>documents/addattachment/<?php echo $cid;?>/<?php echo $did;?>" method="post" id="form_tab7">
     <div class="row">

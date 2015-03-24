@@ -77,10 +77,14 @@ else
 						<input type="text" name="date" <?php echo $disabled;?> class="form-control todo-taskbody-due date form_datetime" placeholder="Due Date..." value="<?php
                         if(isset($event)) {
                             echo date('d F Y - H:i',strtotime($event->date));
-                        } else if (isset($_GET["date"])) {
+                        } else {
                             $minutes = ceil(date("i") / 5) * 5 - date("i");
                             if ($minutes==0){$minutes=5;}
-                            echo offsettime2(date('Y-m-d ', strtotime($_GET["date"])) . date("H:i"), $minutes);
+                            if (isset($_GET["date"])) {
+                                echo offsettime2(date('Y-m-d ', strtotime($_GET["date"])) . date("H:i"), $minutes);
+                            } else {
+                                echo offsettime2(date('Y-m-d H:i'), $minutes);
+                            }
                             //echo date('d F Y - ', strtotime($_GET["date"])) . date("H:i", time() + $minutes * 60000) . " " . $minutes;
                         }?>"/>
 					</div>
@@ -89,13 +93,13 @@ else
 			<!-- TASK TITLE -->
 			<div class="form-group">
 				<div class="col-md-12">
-					<input type="text" <?php echo $disabled;?> name="title" class="form-control todo-taskbody-tasktitle" placeholder="Task Title..." value="<?php if(isset($event))echo $event->title;?>" />
+					<input type="text" required <?php echo $disabled;?> name="title" class="form-control todo-taskbody-tasktitle" placeholder="Task Title..." value="<?php if(isset($event))echo $event->title;?>" />
 				</div>
 			</div>
 			<!-- TASK DESC -->
 			<div class="form-group">
 				<div class="col-md-12">
-					<textarea class="form-control todo-taskbody-taskdesc" <?php echo $disabled;?> name="description" rows="8" placeholder="Task Description..."><?php if(isset($event))echo $event->description;?></textarea>
+					<textarea class="form-control todo-taskbody-taskdesc" required <?php echo $disabled;?> name="description" rows="8" placeholder="Task Description..."><?php if(isset($event))echo $event->description;?></textarea>
 				</div>
 			</div>
             <div class="form-group">

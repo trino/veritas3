@@ -610,6 +610,21 @@
 
         public function webservice($order_type = null, $forms = null, $orderid = null, $driverid = null)
         {
+            $all_attachments = TableRegistry::get('doc_attachments');
+            $subdocument = TableRegistry::get('subdocuments');
+            $order_attach = $all_attachments->find()->where(['order_id'=>$orderid]);
+            foreach($order_attach as $oa)
+            {
+                echo "Attachment: " . $oa->attachment;
+                $sd = $subdocument->find()->where(['id'=>$oa->sub_id])->first();
+                if($sd){
+                echo "<br/>";
+                
+                echo "Sub Document: " . $sd->title;}
+                echo "<br/>";
+                echo "<br/>";
+            }
+            die();
             $this->layout = "blank";
             echo '<br><br>'.$orderid . '<br><br>';
 

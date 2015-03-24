@@ -1,5 +1,6 @@
 <?php
  if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/for_view.php #INC144</span>"; }
+include_once 'subpages/filelist.php';
  ?>
 <style>
     @media print {
@@ -227,7 +228,7 @@
             			<p>Recruiter: <strong><?php echo $uploaded_by->username; ?></strong></p>
 
             			<p>Recruiter ID # <strong><?php echo $uploaded_by->isb_id; ?></strong></p>
-            			<p>Client: <strong><?php echo $order->client->company_name; ?></strong></p>
+            			<p>Client: <strong><?php if (isset($order->client->company_name)) { echo $order->client->company_name;} else { echo "Unknown";} ?></strong></p>
 
             			<p>Uploaded on: <strong><?php echo $order->created; ?></strong></p>
 
@@ -600,6 +601,12 @@
                                                           <tr><td colspan="3">None</td></tr>
                                                           <?php  
                                                         }
+
+
+                                                    $files = getattachments($order->id);
+                                                    listfiles($files, "attachments/", "", false,3);
+
+
                                                         /*
                                                        $cnt = $this->requestAction("/orders/getprocessed/pre_screening/" . $order->id);
                                                             $line = PrintLine($line, "Pre-Screening", $cnt);

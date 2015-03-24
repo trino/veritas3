@@ -9,6 +9,11 @@
 
     use Cake\ORM\TableRegistry;
 
+    function getattachments($OrderID){
+        $all_attachments = TableRegistry::get('doc_attachments');
+        return $all_attachments->find()->where(['order_id'=>$OrderID]);
+    }
+
      function loadclient($ClientID, $table="clients"){
          $table = TableRegistry::get($table);
          $results = $table->find('all', array('conditions' => array('id'=>$ClientID)))->first();

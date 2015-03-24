@@ -1,3 +1,7 @@
+<?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>employment_verification_form.php #INC143</span>";
+ ?>
 <div id="form_tab9">
 <input class="document_type" type="hidden" name="document_type" value="Employment Verification" />
 <input type="hidden" class="sub_docs_id" name="sub_doc_id" value="9"  />
@@ -25,15 +29,17 @@
                             {
                                 ?>
                                 <div id="more_div">
+                               
                                 <?php
                             }
                             ?>
                                     <div id="toremove">
+                                    
                             <?php
                         }
                         ?>
 
-                
+                        
                        <div class="form-group row">
                             <label class="control-label col-md-3">Company Name : </label>
                             <div class=" col-md-9">
@@ -151,9 +157,12 @@
                                             <input type="checkbox" <?php if($emp->driving_experince_canada_rocky_mountains == 1){?>checked="checked"<?php }?> name="driving_experince_canada_rocky_mountains[]" value="1"/>&nbsp;Canada : Rocky Mountains&nbsp;
                                             <input type="checkbox" <?php if($emp->driving_experince_usa == 1){?>checked="checked"<?php }?> name="driving_experince_usa[]" value="1"/>&nbsp;USA&nbsp;
                         </div>
-                
-                </div>
-                
+                    
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr /> 
+                        
+               
                         
                         <?php
                         if($counter!=1)
@@ -172,6 +181,7 @@
                                 <?php
                             }
                         }
+                      
                     }
                     if($counter==1)
                     {
@@ -179,6 +189,7 @@
                         <div id="more_div"></div>
                         <?php
                     }
+                     
                 }
                 else
                 {

@@ -1,4 +1,8 @@
 <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>products.php #INC148</span>";
+ ?>
+<?php
 function pending($name, $value, $checked = true){
     $value = '<input type="checkbox" name="' . $name . '" value="' . $value . '"'; // checked>';
     if ($checked) {

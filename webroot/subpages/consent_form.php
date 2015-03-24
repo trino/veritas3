@@ -1,3 +1,7 @@
+ <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>consent_form.php #INC156</span>";
+ ?>
 <div class="portlet box blue ">
 	<div class="portlet-title">
 		<div class="caption">

@@ -1,3 +1,7 @@
+<?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>past_employment.php #INC146</span>";
+ ?>
 <div id="toremove">
 <div class="clearfix"></div>
 <hr />

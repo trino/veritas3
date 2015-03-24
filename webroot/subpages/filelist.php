@@ -1,3 +1,8 @@
+  <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>filelist.php #INC158</span>";
+ ?>
+
  <?php 
 	$GLOBALS['webroot'] = $webroot= $this->request->webroot;
 

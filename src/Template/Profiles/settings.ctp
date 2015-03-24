@@ -99,10 +99,15 @@ if (isset($profile))
                             <li>
                                 <a href="#tab_1_14" data-toggle="tab">Configuration</a>
                             </li>
+                             <?php
+                             if($_SERVER['SERVER_NAME'] =='localhost')
+                                   {
+                             ?>
                              <li>
                                 <a href="#tab_1_9" data-toggle="tab">Clear Data</a>
                             </li>
                             <?php
+                            }
                                 if($this->request->session()->read('Profile.super'))
                                 {
                             ?>
@@ -165,7 +170,10 @@ if (isset($profile))
                             </div>
                            </div>
                     </div>
-                    
+                     <?php
+                     if($_SERVER['SERVER_NAME'] =='localhost')
+                           {
+                     ?>
                     <div class="tab-pane" id="tab_1_9">
                         <a href="javascript:void(0)" class="btn btn-danger" id="cleardata">Clear Data</a>
                         <div class="margin-top-10 alert alert-success display-hide cleardata_flash" style="display: none;">
@@ -175,6 +183,7 @@ if (isset($profile))
                         </div>
                     </div>
                     <?php
+                    }
                     if($this->request->session()->read('Profile.super'))
                     {
                           if(isset($_GET['activedisplay']))

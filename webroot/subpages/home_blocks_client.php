@@ -1,3 +1,7 @@
+  <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>home_blocks_clients.php #INC159</span>";
+ ?>
 <div class="row">
 
 

@@ -1,3 +1,7 @@
+ <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>avatar.php #INC150</span>";
+ ?>
                                 <form role="form" action="" method="post">
                                     <div class="form-group">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">

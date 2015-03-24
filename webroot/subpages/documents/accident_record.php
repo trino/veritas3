@@ -1,3 +1,7 @@
+<?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>accident_record.php #INC136</span>";
+ ?>
 <div>
 <div class="form-group col-md-12">
                 <label class="control-label col-md-6">Date : </label>

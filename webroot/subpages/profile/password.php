@@ -1,3 +1,7 @@
+ <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>password.php #INC154</span>";
+ ?>
 <form method="post" action="" role="form" id="pass_form" >
         <div class="form-group">
             <label class="control-label">Current Password</label>

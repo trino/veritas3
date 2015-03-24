@@ -1,4 +1,8 @@
 <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>recruiter_contact_table.php #INC149</span>";
+ ?>
+<?php
     $profiles = $this->requestAction('/profiles/getProfile');
     $contact = $this->requestAction('/profiles/getContact');
     //include("subpages/profileslisting.php");

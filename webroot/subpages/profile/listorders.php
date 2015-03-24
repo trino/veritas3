@@ -1,3 +1,7 @@
+ <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>listorders.php #INC153</span>";
+ ?>
                 <div class="table-responsive">
                     <table class="table table-condensed table-striped table-bordered table-hover dataTable no-footer">
                         <thead>

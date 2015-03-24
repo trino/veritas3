@@ -1,3 +1,7 @@
+<?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>consent_form.php #INC139</span>";
+ ?>
 <form id="form_consent">
     <div class="form-group row">
         <h3 class="col-md-12">Consent for the release of police information and disclosure of personal information</h3>

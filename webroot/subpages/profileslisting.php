@@ -1,3 +1,7 @@
+  <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>profileslisting.php #INC160</span>";
+ ?>
 <?php $users = $this->requestAction('/profiles/getallusers');?>
 <div class="form-group">
 

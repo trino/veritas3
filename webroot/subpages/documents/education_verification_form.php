@@ -1,3 +1,7 @@
+<?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>education_verification_form.php #INC142</span>";
+ ?>
 <div id="form_tab10">
 <input class="document_type" type="hidden" name="document_type" value="Education Verification" />
 <input type="hidden" class="sub_docs_id" name="sub_doc_id" value="10"  />
@@ -157,7 +161,9 @@
 
 
                 
-    </div>
+                        </div>
+                         <div class="clearfix"></div>
+                        <hr /> 
             
             <?php
             if($counter!=1)

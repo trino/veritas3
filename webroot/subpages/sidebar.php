@@ -15,8 +15,12 @@ $profileID = $this->Session->read('Profile.id');
 ?>
 
 <div class="page-sidebar-wrapper">
-
+ 
     <div class="page-sidebar navbar-collapse collapse">
+     <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>sidebar.php #INC162</span>";
+ ?>
         <ul id="mainbar" class="<?php echo $settings->sidebar; ?>" data-keep-expanded="false" data-auto-scroll="true"
             data-slide-speed="200">
 
@@ -255,7 +259,7 @@ $profileID = $this->Session->read('Profile.id');
             <?php } ?>
              <?php if ($sidebar->schedule == 1) { ?>
                 <li class="<?php echo ($this->request['controller'] == 'Tasks') ? 'active open' : ''; ?>">
-                    <a href="javascript:void(0);">
+                    <a href="<?php echo $this->request->webroot;?>tasks/calender">
                         <i class="fa fa-calendar"></i>
                         <span class="title">Tasks</span>
                         <span class="selected"></span>

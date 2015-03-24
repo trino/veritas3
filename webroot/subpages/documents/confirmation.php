@@ -1,4 +1,8 @@
 <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>confiramtion.php #INC138</span>";
+ ?>
+<?php
     if (isset($_GET['forms']))
         $forms = $_GET['forms'];
     else

@@ -1,3 +1,7 @@
+ <?php
+ if($_SERVER['SERVER_NAME'] =='localhost')
+        echo "<span style ='color:red;'>info_order.php #INC152</span>";
+ ?>
 <style>div {
         border: 0px solid green;
     }</style>

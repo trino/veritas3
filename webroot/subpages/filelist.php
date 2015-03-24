@@ -18,7 +18,7 @@
           foreach ($client_docs as $k => $cd){//$webroot . $dir . $cd->file;    id, client_id
               $count += 1;
               //switch (getextension())
-              echo "<TR><TD>" . $cd .
+              echo "<TR><TD>" . $cd ;
 
               echo "</TD></TR>";
 

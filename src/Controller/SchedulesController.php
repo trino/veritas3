@@ -145,6 +145,7 @@ class SchedulesController extends AppController {
     function calender1(){
         $this->layout= 'blank';
     }
+
     
     function date($date)
     {

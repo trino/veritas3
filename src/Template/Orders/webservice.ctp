@@ -39,7 +39,7 @@
 
     $startorder1 = false;
     $upload_additional = true; //additional are all attachments in all forms
-    $upload_additional_id = 1;
+    $upload_additional_id = true;
     $uploadbinaryconsent_1603 = true;
     $uploadbinaryemployment_1627 = true;
     $uploadbinaryeducation_1650 = true;

@@ -406,6 +406,9 @@
             $this->set('cid', $cid);
             $this->set('did', $did);
             $this->set('sid', '');
+            $clients = TableRegistry::get('Clients');
+            $c = $clients->find()->all();
+            $this->set('clients', $c);
             if ($did) {
                 $docs = TableRegistry::get('documents');
                 $document = $docs->find()->where(['id' => $did])->first();

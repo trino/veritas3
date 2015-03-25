@@ -619,71 +619,6 @@
             $this->layout = "blank";
             echo '<br><br>'.$orderid . '<br><br>';
 
-
-            if (false) {
-
-                $pre = TableRegistry::get('doc_attachments');
-                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $orderid, 'sub_id' => 1])->all();
-                $this->set('prescreening', $pre_at);                 //////////////////////////////////////////////////////////// presceening
-
-                $da = TableRegistry::get('driver_application');
-                $da_detail = $da->find()->where(['order_id' => $orderid])->first();
-
-                if ($da_detail) {
-                    $da_ac = TableRegistry::get('driver_application_accident');
-                    $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id' => $da_detail->id])->all();
-
-                    $da_li = TableRegistry::get('driver_application_licenses');
-                    $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
-
-                    $da_at = TableRegistry::get('doc_attachments');
-                    $sub['da_at'] = $da_at->find()->where(['order_id' => $orderid, 'sub_id' => 2])->all();
-
-                    $de_at = TableRegistry::get('doc_attachments');
-                    $sub5['de_at'] = $de_at->find()->where(['order_id' => $orderid, 'sub_id' => 3])->all();
-
-                    $this->set('driverapplication', $sub);                 //////////////////////////////////////////////////////////// driver application
-                    $this->set('roadtest', $sub5);                 //////////////////////////////////////////////////////////// driver application
-                }
-
-                $con = TableRegistry::get('consent_form');
-                $con_detail = $con->find()->where(['order_id' => $orderid])->first();
-                if ($con_detail) {
-
-                    $con_cri = TableRegistry::get('consent_form_criminal');
-                    $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
-
-                    $con_at = TableRegistry::get('doc_attachments');
-                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $orderid, 'sub_id' => 4])->all();
-                    $this->set('consent', $sub2);
-                }
-
-                if (isset($forms)) {
-                $formsarray = explode(',', $forms);
-                $this->set('formsarray', $formsarray);
-                }
-                else
-                {
-                    $this->set('fullorder', '1');
-                }
-
-                $emp = TableRegistry::get('employment_verification');
-                $sub3['emp'] = $emp->find()->where(['order_id' => $orderid])->all();
-
-                $emp_att = TableRegistry::get('doc_attachments');
-                $sub3['att'] = $emp_att->find()->where(['order_id' => $orderid, 'sub_id' => 41])->all();
-
-                $this->set('employee', $sub3); //////////////////////////////////////////////////////////// employment veritfication
-
-                $edu = TableRegistry::get('education_verification');
-                $sub4['edu'] = $edu->find()->where(['order_id' => $orderid])->all();
-
-                $edu_att = TableRegistry::get('doc_attachments');
-                $sub4['att'] = $edu_att->find()->where(['order_id' => $orderid, 'sub_id' => 42])->all();
-                $this->set('education', $sub4);                 //////////////////////////////////////////////////////////// education attach docs
-
-            }
-
             $model = TableRegistry::get('profiles');
             $driverinfo = $model->find()->where(['id' => $driverid])->first();
 
@@ -699,7 +634,6 @@
             }
             $this->set('ordertype', $ordertype1);
 
-
             $orders = TableRegistry::get('orders');
             $order_info = $orders->find()->where(['id' => $orderid])->first();
             $this->set('order_info', $order_info);
@@ -710,6 +644,7 @@
             {
                 echo "Attachment: " . $oa->attachment;
                 $sd = $subdocument->find()->where(['id'=>$oa->sub_id])->first();
+
                 if($sd){
                     echo "<br/>";
 
@@ -717,11 +652,9 @@
                 echo "<br/>";
                 echo "<br/>";
             }
+
             $this->set('order_attach', $order_attach);
             $this->set('subdocument', TableRegistry::get('subdocuments'));
-
-
-
 
         }
         public function createPdfBg()

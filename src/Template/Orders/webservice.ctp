@@ -5,6 +5,7 @@
         include_once('subpages/api.php');
     }
 
+
     $proxyhost = 'https://infosearchsite.com/MEEWS/ISBService.svc?wsdl';
     $client = new nusoap_client($proxyhost, true, $proxyhost, $proxyport = null, $proxyusername = null, $proxypassword = null);
     $client->useHTTPPersistentConnection();
@@ -22,15 +23,9 @@
 
     if ($_SERVER['SERVER_NAME'] != "isbmeereports.com") {
         $user_id234 = '22552';
-        echo "NOT isbmeereports.com";
+        echo "NOT www.isbmeereports.com";
     }
 
-    echo $_SERVER['SERVER_NAME'];
-    echo $_SERVER['SERVER_NAME'];
-    echo $_SERVER['SERVER_NAME'];
-    echo $_SERVER['SERVER_NAME'];
-    echo $_SERVER['SERVER_NAME'];
-    echo $_SERVER['SERVER_NAME'];
     echo $_SERVER['SERVER_NAME'];
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,7 +34,7 @@
 
     $startorder1 = true;
     $upload_additional = true; //additional are all attachments in all forms
-    $upload_additional_id = true;
+    $upload_additional_id = '1603';
     $uploadbinaryconsent_1603 = true;
     $uploadbinaryemployment_1627 = true;
     $uploadbinaryeducation_1650 = true;
@@ -53,7 +48,6 @@
     $productdetailsebs1627 = false;         //7  1627 LOE (Employment)
     $productdetails_CheckDL_72 = false;     //8  72   checkdl
 
-
     echo $order_info->order_type;
     echo $order_info->order_type;
     echo $order_info->order_type;
@@ -63,7 +57,6 @@
     echo $order_info->order_type;
     echo $order_info->order_type;
     echo $order_info->order_type;
-
 
     if ($order_info->order_type == "Order MEE") {
         $productdetails79 = true; // only TRUE if complete mee roders  - DONT CHANGE
@@ -82,8 +75,7 @@
         $productdetails79 = false; // only TRUE if complete mee roders  - DONT CHANGE
 
         $myArray = explode(',', $order_info->forms);
-        foreach ($myArray as $splitArray)
-        {
+        foreach ($myArray as $splitArray) {
             switch ($splitArray) {
                 case 1:
                     $productdetailsebs1603 = true;
@@ -112,7 +104,7 @@
             }
         }
     }
-
+/*
     echo '<br>1' . $productdetailsebs1603;         // 1603 Premium check
     echo '<br>2' . $productdetails1;               // 1    MVR Driver's Record Abstract
     echo '<br>3' . $productdetails14;              // 14   CVOR
@@ -121,12 +113,11 @@
     echo '<br>6' . $productdetailsebs1650;         // 1650 Certification (Education)
     echo '<br>7' . $productdetailsebs1627;         // 1627 LOE (Employment)
     echo '<br>8' . $productdetails_CheckDL_72;     // 72   checkdl
-
+*/
     if ($startorder1 == true) {
 
         $body = '&lt;ProductData&gt;&lt;isb_FN&gt;' . $driverinfo->fname . '&lt;/isb_FN&gt;&lt;isb_LN&gt;' . $driverinfo->lname .
-            '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .
-            '&lt;/isb_DOL&gt;&lt;isb_Prov&gt;' . $driverinfo->driver_province . '&lt;/isb_Prov&gt;&lt;isb_UserID&gt;' . $user_id234 . '&lt;/isb_UserID&gt;&lt;/ProductData&gt;';
+            '&lt;/isb_LN&gt;&lt;isb_Ref&gt;MEETEST-777&lt;/isb_Ref&gt;&lt;isb_DOL&gt;' . date("Y-m-d") .  '&lt;/isb_DOL&gt;&lt;isb_Prov&gt;' . $driverinfo->driver_province . '&lt;/isb_Prov&gt;&lt;isb_UserID&gt;' . $user_id234 . '&lt;/isb_UserID&gt;&lt;/ProductData&gt;';
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -135,7 +126,6 @@
             '</IntPackage><tp>' . $ordertype . '</tp><prod>true</prod></StartOrder></soap:Body></soap:Envelope>';
 
         $result = $client->call('StartOrder', $soap_xml);
-
         $myArray = explode(',', $result['StartOrderResult']);
 
         $ins_id = substr($myArray[0], 4);
@@ -143,10 +133,9 @@
 
         $this->requestAction('orders/save_webservice_ids/' . $orderid . '/' . $ins_id . '/' . $ebs_id);
         //     ECHO "999start order";
-    }else
-    {
+    } else {
 
-    //    die('ORDER NOT STARTED');
+        //    die('ORDER NOT STARTED');
 
     }
 
@@ -154,13 +143,16 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
     if ($productdetails79 == true) {  //this product only goes with mee order, (bright planet)
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <soap:Body><ProductDetails xmlns="http://tempuri.org/">' .
 
-            '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_USDOT_MC&gt;11&lt;/isb_USDOT_MC&gt;&lt;/ProductData&gt;'
+            '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;dupe_date&gt;' . date("Y-m-d") . '&lt;/dupe_date&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_USDOT_MC&gt;11&lt;/isb_USDOT_MC&gt;&lt;/ProductData&gt;'
             . '</productdetails><productID>79</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
         $result = $client->call('ProductDetails', $soap_xml);
 
@@ -170,7 +162,7 @@
         }
         $pdi = $r[0];
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_79');
-
+        $upload_additional_id = '79';
         echo '999ins_79';
         debug($result);
 
@@ -183,7 +175,7 @@
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_aucodes&gt;AU03&lt;/isb_aucodes&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;/ProductData&gt;' . '</productdetails><productID>1</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;dupe_date&gt;' . date("Y-m-d") . '&lt;/dupe_date&gt;&lt;isb_aucodes&gt;AU03&lt;/isb_aucodes&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;/ProductData&gt;' . '</productdetails><productID>1</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
 
         $result = $client->call('ProductDetails', $soap_xml);
         $r = explode('[', $result['ProductDetailsResult']);
@@ -194,6 +186,8 @@
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_1');
+        $upload_additional_id = '1';
+
         echo '999ins_1';
         debug($result);
     }
@@ -206,7 +200,7 @@
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <soap:Body><ProductDetails xmlns="http://tempuri.org/">' .
 
-            '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_aucodes14&gt;AU03&lt;/isb_aucodes14&gt;&lt;isb_CVORType&gt;Commercial Vehicle Operator Record Driver Abstract (on drivers)&lt;/isb_CVORType&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;/ProductData&gt;' . '</productdetails><productID>14</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+            '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;dupe_date&gt;' . date("Y-m-d") . '&lt;/dupe_date&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_aucodes14&gt;AU03&lt;/isb_aucodes14&gt;&lt;isb_CVORType&gt;Commercial Vehicle Operator Record Driver Abstract (on drivers)&lt;/isb_CVORType&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;/ProductData&gt;' . '</productdetails><productID>14</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
 
         $result = $client->call('ProductDetails', $soap_xml);
         //get between
@@ -218,6 +212,8 @@
         $pdi = $r[0];
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_14');
+        $upload_additional_id = '14';
+
         echo '999ins_14';
         debug($result);
     }
@@ -226,7 +222,7 @@
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_typeOfOrder&gt;Single Order&lt;/isb_typeOfOrder&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_CheckDLBulk&gt;a&lt;/isb_CheckDLBulk&gt;&lt;isb_uploadBulk&gt;a&lt;/isb_uploadBulk&gt;&lt;isb_CheckDLrbl&gt;a&lt;/isb_CheckDLrbl&gt;&lt;isb_rblHaveSig&gt;I confirm that I have signed consent from the drivers licence holder to verify its status&lt;/isb_rblHaveSig&gt;&lt;isb_specialInstructions&gt;&lt;/isb_specialInstructions&gt;&lt;/ProductData&gt;' . '</productdetails><productID>72</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;dupe_date&gt;' . date("Y-m-d") . '&lt;/dupe_date&gt;&lt;isb_typeOfOrder&gt;Single Order&lt;/isb_typeOfOrder&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_CheckDLBulk&gt;a&lt;/isb_CheckDLBulk&gt;&lt;isb_uploadBulk&gt;a&lt;/isb_uploadBulk&gt;&lt;isb_CheckDLrbl&gt;a&lt;/isb_CheckDLrbl&gt;&lt;isb_rblHaveSig&gt;I confirm that I have signed consent from the drivers licence holder to verify its status&lt;/isb_rblHaveSig&gt;&lt;isb_specialInstructions&gt;&lt;/isb_specialInstructions&gt;&lt;/ProductData&gt;' . '</productdetails><productID>72</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
 
         var_dump($soap_xml);
         $result = $client->call('ProductDetails', $soap_xml);
@@ -237,6 +233,8 @@
         }
         $pdi = $r[0];
         echo '999ins_72';
+        $upload_additional_id = '72';
+
         debug($result);
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_72');
@@ -252,7 +250,7 @@
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <soap:Body><ProductDetails xmlns="http://tempuri.org/">' .
 
-            '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;/ProductData&gt;' . '</productdetails><productID>77</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+            '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;dupe_date&gt;' . date("Y-m-d") . '&lt;/dupe_date&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_DriverLicence&gt;' . $driverinfo->driver_license_no . '&lt;/isb_DriverLicence&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;/ProductData&gt;' . '</productdetails><productID>77</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
 
         $result = $client->call('ProductDetails', $soap_xml);
         //get between
@@ -264,6 +262,8 @@
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_77');
         echo '999ins_77';
+        $upload_additional_id = '77';
+
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -279,7 +279,7 @@
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_Email&gt;' . $driverinfo->email . '&lt;/isb_Email&gt;&lt;/ProductData&gt;' . '</productdetails><productID>78</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ins_id . '</UID><productdetails>&lt;ProductData&gt;&lt;dupe_date&gt;' . date("Y-m-d") . '&lt;/dupe_date&gt;&lt;isb_FirstName&gt;' . $driverinfo->fname . '&lt;/isb_FirstName&gt;&lt;isb_LastName&gt;' . $driverinfo->lname . '&lt;/isb_LastName&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_Email&gt;' . $driverinfo->email . '&lt;/isb_Email&gt;&lt;/ProductData&gt;' . '</productdetails><productID>78</productID><tp>INS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
 
         $result = $client->call('ProductDetails', $soap_xml);
         //get between
@@ -292,6 +292,8 @@
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ins_78');
         echo '999ins_78';
+        $upload_additional_id = '78';
+
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -302,7 +304,7 @@
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_appfirstname&gt;a1aaq2bernard&lt;/isb_appfirstname&gt;&lt;isb_appsurname&gt;1q2naaormington&lt;/isb_appsurname&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;/ProductData&gt;' . '</productdetails><productID>1650</productID><tp>EBS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><productdetails>&lt;ProductData&gt;&lt;dupe_date&gt;' . date("Y-m-d") . '&lt;/dupe_date&gt;&lt;isb_appfirstname&gt;a1aaq2bernard&lt;/isb_appfirstname&gt;&lt;isb_appsurname&gt;1q2naaormington&lt;/isb_appsurname&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;/ProductData&gt;' . '</productdetails><productID>1650</productID><tp>EBS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
 
         $result = $client->call('ProductDetails', $soap_xml);
         //get between
@@ -316,6 +318,8 @@
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1650');
         echo '999ebs_1650';
+        $upload_additional_id = '1650';
+
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -326,7 +330,7 @@
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_appfirstname&gt;a1qaa2bernard&lt;/isb_appfirstname&gt;&lt;isb_appsurname&gt;12noaarmington&lt;/isb_appsurname&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;/ProductData&gt;' . '</productdetails><productID>1627</productID><tp>EBS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><productdetails>&lt;ProductData&gt;&lt;dupe_date&gt;' . date("Y-m-d") . '&lt;/dupe_date&gt;&lt;isb_appfirstname&gt;a1qaa2bernard&lt;/isb_appfirstname&gt;&lt;isb_appsurname&gt;12noaarmington&lt;/isb_appsurname&gt;&lt;isb_provToSearch&gt;' . $driverinfo->driver_province . '&lt;/isb_provToSearch&gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;/ProductData&gt;' . '</productdetails><productID>1627</productID><tp>EBS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
 
         $result = $client->call('ProductDetails', $soap_xml);
         //get between
@@ -340,6 +344,8 @@
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1627');
         echo '999ebs_1627';
+        $upload_additional_id = '1627';
+
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -350,7 +356,7 @@
 
         $soap_xml = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><productdetails>&lt;ProductData&gt;&lt;isb_appothername&gt;a1aaaaq2normington&lt;/isb_appothername &gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_Sex&gt;Male&lt;/isb_Sex&gt;&lt;/ProductData&gt;' . '</productdetails><productID>1603</productID><tp>EBS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
+<soap:Body><ProductDetails xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><productdetails>&lt;ProductData&gt;&lt;dupe_date&gt;' . date("Y-m-d") . '&lt;/dupe_date&gt;&lt;isb_appothername&gt;a1aaaaq2normington&lt;/isb_appothername &gt;&lt;isb_DOB&gt;' . $driverinfo->dob . '&lt;/isb_DOB&gt;&lt;isb_Sex&gt;Male&lt;/isb_Sex&gt;&lt;/ProductData&gt;' . '</productdetails><productID>1603</productID><tp>EBS</tp><prod>true</prod></ProductDetails></soap:Body></soap:Envelope>';
 
         $result = $client->call('ProductDetails', $soap_xml);
         //get between
@@ -364,6 +370,8 @@
 
         $this->requestAction('orders/save_pdi/' . $orderid . '/' . $pdi . '/ebs_1603');
         echo '999ebs_1603';
+        $upload_additional_id = '1603';
+
         debug($result);
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -424,151 +432,155 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if ($upload_additional == true) {
-        echo 12312312312123;
-        foreach($order_attach as $oa)
-        {
-            echo "Attachment: " . $oa->attachment;
-            $sd = $subdocument->find()->where(['id'=>$oa->sub_id])->first();
-            if($sd){
-                echo "<br/>";
-
-                echo "Sub Document: " . $sd->title;}
-            echo "<br/>";
-            echo "<br/>";
-        }
-
-/*
-        if(isset($prescreening['attach_doc'])) {
-
-        foreach ($prescreening['attach_doc'] as $d) {
-            if ($d->attachment) {
-                echo ($d->attachment) . '12341234';
-
-                $sendit = file_get_contents('attachments/' . $d->attachment);
-                $body = base64_encode($sendit);
-
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
-
-                $result = $client->call('UploadBinaryFile', $soap_xml);
-                echo "999 prescreening attached docs";
-                debug($result);
-
-            }
-        }}
+      //  var_dump($order_attach);
+        foreach ($order_attach as $d) {
+            echo "Attachment: " . $d->attachment;
 
 
-        if(isset($driverapplication['da_at'])) {
-            foreach ($driverapplication['da_at'] as $d) {
-                if ($d->attachment) {
-                    echo ($d->attachment) . '12341234';
+            $sendit = file_get_contents('attachments/' . $d->attachment);
+            $body = base64_encode($sendit);
 
-                    $sendit = file_get_contents('attachments/' . $d->attachment);
-                    $body = base64_encode($sendit);
+            $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $upload_additional_id . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
-                    $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+            $result = $client->call('UploadBinaryFile', $soap_xml);
 
-                    $result = $client->call('UploadBinaryFile', $soap_xml);
 
-                    echo "999 driverapplication attached docs";
-
-                    debug($result);
-
+            if(false) {
+                $sd = $subdocument->find()->where(['id' => $oa->sub_id])->first();
+                if ($sd) {
+                    echo "<br/>";
+                    echo "Sub Document: " . $sd->title;
                 }
             }
+            echo "<br/>666666";
         }
 
-        if(isset($roadtest['de_at'])) {
+        /*
+                if(isset($prescreening['attach_doc'])) {
 
-        foreach ($roadtest['de_at'] as $d) {
-            if ($d->attachment) {
-                echo ($d->attachment) . '12341234';
+                foreach ($prescreening['attach_doc'] as $d) {
+                    if ($d->attachment) {
+                        echo ($d->attachment) . '12341234';
 
-                $sendit = file_get_contents('attachments/' . $d->attachment);
-                $body = base64_encode($sendit);
+                        $sendit = file_get_contents('attachments/' . $d->attachment);
+                        $body = base64_encode($sendit);
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
-                $result = $client->call('UploadBinaryFile', $soap_xml);
-                echo "999 road test attached docs";
+                        $result = $client->call('UploadBinaryFile', $soap_xml);
+                        echo "999 prescreening attached docs";
+                        debug($result);
 
-                debug($result);
+                    }
+                }}
 
-            }
-        }}
 
-        if(isset($consent['con_at'])) {
+                if(isset($driverapplication['da_at'])) {
+                    foreach ($driverapplication['da_at'] as $d) {
+                        if ($d->attachment) {
+                            echo ($d->attachment) . '12341234';
 
-            foreach ($consent['con_at'] as $d) {
-                if ($d->attachment) {
-                    echo ($d->attachment) . '12341234';
+                            $sendit = file_get_contents('attachments/' . $d->attachment);
+                            $body = base64_encode($sendit);
 
-                    $sendit = file_get_contents('attachments/' . $d->attachment);
-                    $body = base64_encode($sendit);
+                            $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
-                    $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                            $result = $client->call('UploadBinaryFile', $soap_xml);
 
-                    $result = $client->call('UploadBinaryFile', $soap_xml);
-                    echo "999 consent attached docs";
+                            echo "999 driverapplication attached docs";
 
-                    debug($result);
+                            debug($result);
 
+                        }
+                    }
                 }
-            }
-        }
-        echo "<br>";
 
-        if(isset($employee['att'])) {
+                if(isset($roadtest['de_at'])) {
 
+                foreach ($roadtest['de_at'] as $d) {
+                    if ($d->attachment) {
+                        echo ($d->attachment) . '12341234';
 
-            foreach ($employee['att'] as $d) {
-            if ($d->attachment) {
-                echo ($d->attachment) . '12341234';
+                        $sendit = file_get_contents('attachments/' . $d->attachment);
+                        $body = base64_encode($sendit);
 
-                $sendit = file_get_contents('attachments/' . $d->attachment);
-                $body = base64_encode($sendit);
+                        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
-                $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                        $result = $client->call('UploadBinaryFile', $soap_xml);
+                        echo "999 road test attached docs";
 
-                $result = $client->call('UploadBinaryFile', $soap_xml);
-                echo "999 empoyee form attached docs";
+                        debug($result);
 
-                debug($result);
-            }
-        }
-            }
+                    }
+                }}
 
-        echo "<br>";
+                if(isset($consent['con_at'])) {
 
-        if(isset($education['att'])) {
+                    foreach ($consent['con_at'] as $d) {
+                        if ($d->attachment) {
+                            echo ($d->attachment) . '12341234';
 
-            foreach ($education['att'] as $d) {
-                if ($d->attachment) {
-                    echo ($d->attachment) . '12341234';
+                            $sendit = file_get_contents('attachments/' . $d->attachment);
+                            $body = base64_encode($sendit);
 
-                    $sendit = file_get_contents('attachments/' . $d->attachment);
-                    $body = base64_encode($sendit);
+                            $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
 
-                    $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+                            $result = $client->call('UploadBinaryFile', $soap_xml);
+                            echo "999 consent attached docs";
 
-                    $result = $client->call('UploadBinaryFile', $soap_xml);
-                    echo "999 education attached docs";
+                            debug($result);
 
-                    debug($result);
-
+                        }
+                    }
                 }
-            }
-        }
-*/
+                echo "<br>";
+
+                if(isset($employee['att'])) {
+
+
+                    foreach ($employee['att'] as $d) {
+                    if ($d->attachment) {
+                        echo ($d->attachment) . '12341234';
+
+                        $sendit = file_get_contents('attachments/' . $d->attachment);
+                        $body = base64_encode($sendit);
+
+                        $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+
+                        $result = $client->call('UploadBinaryFile', $soap_xml);
+                        echo "999 empoyee form attached docs";
+
+                        debug($result);
+                    }
+                }
+                    }
+
+                echo "<br>";
+
+                if(isset($education['att'])) {
+
+                    foreach ($education['att'] as $d) {
+                        if ($d->attachment) {
+                            echo ($d->attachment) . '12341234';
+
+                            $sendit = file_get_contents('attachments/' . $d->attachment);
+                            $body = base64_encode($sendit);
+
+                            $soap_xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><UploadBinaryFile xmlns="http://tempuri.org/">' . '<UID>' . $ebs_id . '</UID><PDI>' . $pdi_1603 . '</PDI><FileData>' . $body . '</FileData><productID>1603</productID><Filename>Consent_' . $d->attachment . '</Filename><FileType>Attachment</FileType><tp>EBS</tp><prod>true</prod></UploadBinaryFile></soap:Body></soap:Envelope>';
+
+                            $result = $client->call('UploadBinaryFile', $soap_xml);
+                            echo "999 education attached docs";
+
+                            debug($result);
+
+                        }
+                    }
+                }
+        */
 
     }
 
-
-
-
     die();
-
-
-
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

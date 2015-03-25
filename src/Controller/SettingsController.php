@@ -203,7 +203,8 @@ class SettingsController extends AppController {
             
             if($query>1)
              {
-                $l = "clients?flash";
+                //$l = "clients?flash";
+                $l = "documents/add";
              }
              else
              {
@@ -216,7 +217,8 @@ class SettingsController extends AppController {
              $q = $setting->find()->all();
              if(count($q)>1)
              {
-                $l = "clients?flash";
+                //$l = "clients?flash";
+                 $l = "documents/add";
              }
              else
              {
@@ -372,6 +374,12 @@ class SettingsController extends AppController {
         }
              
         $this->response->body($client_ids);
+        return $this->response;
+    }
+    
+    function get_webroot()
+    {
+         $this->response->body($this->request->webroot);
         return $this->response;
     }
     

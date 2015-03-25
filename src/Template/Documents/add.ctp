@@ -93,14 +93,36 @@ if (isset($this->request->params['pass'][1])) {
                             <?php
                             }
                         ?>
-                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();$('.moredocxs').hide();$('.btndocs').hide();" class="btn btn-success moreback" style="display: none;">Back</a>
+                        <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();$('.moredocxs').hide();$('.btndocs').hide();$('.clients_select').show();" class="btn btn-success moreback" style="display: none;">Back</a>
 
-                    <?php include('subpages/home_blocks.php');
+                    <?php 
+                    if($cid)
+                        include('subpages/home_blocks.php');
                     if(isset($mod->uploaded_for))
                     $driver = $mod->uploaded_for;
                     else
                     $driver=0;
                      ?>
+                     <div class="col-md-6 clients_select" style="margin: 10px 0;padding:0">
+                     
+                        <select name="clients" class="form-control select2me" data-placeholder="Select Client" id="changeclient">
+                            <option value="0">Select Client</option>
+                            <?php
+                            $profile_id = $this->request->session()->read('Profile.id');
+                                foreach ($clients as $c){
+                                    $profiles = explode(",", $c->profile_id);
+
+                                    if(in_array($profile_id, $profiles)|| $this->request->session()->read('Profile.super'))
+                                    { ?>
+                                      <option value="<?php echo $c->id;?>" <?php if($cid ==$c->id)echo "selected='selected'";?>><?php echo $c->company_name;?></option>  
+                                    <?php
+                                    }
+                            }
+                            ?>
+                        </select>
+                        
+                    </div>
+                    <div class="clearfix"></div>
                     <div class="col-md-6" style="margin: 10px 0;padding:0">
 
                         <?php $dr_cl = $doc_comp->getDriverClient(0, $cid);?>
@@ -133,7 +155,7 @@ if (isset($this->request->params['pass'][1])) {
 
                     </div>
                     <div class="clearfix"></div>
-
+                    
                     <div class="moredocxs">
 
                     <?php
@@ -568,6 +590,7 @@ if (isset($this->request->params['pass'][1])) {
     function showforms(form_type) {
         $('.moredocxs').show();
         $('.btndocs').show();
+        $('.clients_select').hide();
         var arr_formtype = form_type.split('?');
         var sub_doc_id = arr_formtype[1];
 
@@ -1309,6 +1332,10 @@ if (isset($this->request->params['pass'][1])) {
         $('.subform').load('<?php echo $this->request->webroot;?>documents/subpages/' + filename);
     }
     jQuery(document).ready(function () {
+        $('#changeclient').change(function(){
+            var id = $(this).val();
+           window.location ="<?php echo $this->request->webroot;?>documents/add/"+id; 
+        });
         $('.dashboard-stat .more').click(function(){
             var moreid = $(this).attr('id');
             $('.dashboard-stat .more').each(function(){

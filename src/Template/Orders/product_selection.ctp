@@ -18,6 +18,9 @@
 
 <div class="row">
     <div class="col-md-12"></div>
-    <?php include('subpages/profile/info_order2.php'); ?>
+    <?php
+        
+        $settings = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
+    include('subpages/profile/info_order2.php'); ?>
 </div>
 </div>

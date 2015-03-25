@@ -29,7 +29,7 @@
 
     function printdocumentinfo($ID, $isOrder = false){
         $data = getdocumentinfo($ID, $isOrder);
-        if (is($data)) {
+        if (is_object($data)) {
             echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
             if ($isOrder) {
                 echo '<TR><TH colspan="2">Order Information</TH></TR>';

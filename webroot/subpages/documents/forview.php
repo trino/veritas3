@@ -604,6 +604,7 @@ include_once 'subpages/filelist.php';
 
 
                                                     $files = getattachments($order->id);
+                                                    printdocumentinfo($order->id, true);
                                                     listfiles($files, "attachments/", "", false,3);
 
 

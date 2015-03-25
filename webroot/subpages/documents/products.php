@@ -1,14 +1,10 @@
 <?php
  if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/products.php #INC148</span>";}
- ?>
-<?php
+
 function pending($name, $value, $checked = true){
     $value = '<input type="checkbox" name="' . $name . '" value="' . $value . '"'; // checked>';
-    if ($checked) {
-        return $value . " checked>";
-    } else {
-        return $value . ">";
-    }
+    if ($checked) { return $value . " checked>";}
+    return $value . ">";
 }
 ?>
 <form id="form_products">

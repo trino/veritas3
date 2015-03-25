@@ -3,21 +3,32 @@
     $provincelist = array("AB" => "Alberta", "BC" => "British Columbia", "MB" => "Manitoba", "NB" => "New Brunswick", "NFL" => "Newfoundland and Labrador", "NWT" => "Northwest Territories", "NS" => "Nova Scotia", "NUN" => "Nunavut", "ONT" => "Ontario", "PEI" => "Prince Edward Island", "QC" => "Quebec", "SK" => "Saskatchewan", "YT" => "Yukon Territories");
 
     //just pass $provincelist and $provinces into them
-    function PrintProvinces($DocID, $provincelist, $provinces=""){
+    function PrintProvinces($DocID, $provincelist, $provinces="", $subdocuments = ""){
+        if ($DocID==-1) {
+            echo "<TH>Provinces</TH><TH>Documents</TH>";
+            return;
+        }
+
+        echo "<TD>";
         foreach($provincelist as $acronym => $fullname){
-            if ($DocID==-1){
-                echo "<TH TITLE='" . $fullname . "'>" . $acronym . "</TH>";
-            } else {
+            if ($DocID>-1){
                 $data = FindIterator($provinces, "ID", $DocID);
                 $checked = "";
                 if (is_object($data)){
                     if ($data->$acronym == 1) { $checked = " checked"; }
                 }
-                echo "<TD><INPUT TYPE='CHECKBOX' NAME='" . $DocID . "." .  $acronym . "' ID='" . $DocID . "." .  $acronym . "' VALUE='1'". $checked . ' ONCLICK="';
-                    echo "saveprovince(" . $DocID . ", '" . $acronym . "');";
-                echo '"></TD>';
+                $name= $DocID . "." .  $acronym;
+                echo "<INPUT TITLE='" . $fullname . "' TYPE='CHECKBOX' NAME='" . $name . "' ID='" . $name . "' VALUE='1'". $checked . ' ONCLICK="' .  "saveprovince(" . $DocID . ", '" . $acronym . "');" . '">';
             }
         }
+        echo "</TD><TD>";
+        foreach($subdocuments as $doctype){
+            $checked = "";
+            $name = $DocID . "." . $doctype->id;
+            if (isset($data->subdocuments[$doctype->id])) { $checked = " checked"; }
+            echo "<INPUT ID='" . $name . "' NAME='" . $name . "' TYPE='CHECKBOX' TITLE='" . $doctype->title . "'" . $checked . " ONCLICK='savedocument(" . $DocID . ", " . $doctype->id  .");'>";
+        }
+        echo "</TD>";
     }
 
     function FindIterator($ObjectArray, $FieldName, $FieldValue){
@@ -26,6 +37,7 @@
         }
         return false;
     }
+
 ?>
 
 
@@ -73,12 +85,10 @@
                                     echo "checked='checked'";
                                 }?> class="enable" id="chk_<?php echo $product->id;?>"/></td>
                                 <?php
-                                    PrintProvinces($product->id, $provincelist, $provinces);
+                                    PrintProvinces($product->id, $provincelist, $provinces, $subdocuments);
                                     echo "<td>";
-                                    if ($product->id >= 9) {
-                                        ?>
-                                        <a href="javascript:;" class="btn btn-info editpro"
-                                           id="edit_<?php echo $product->id;?>">Edit</a>
+                                    if ($product->id >= 9) { ?>
+                                        <a href="javascript:;" class="btn btn-xs btn-info editpro" id="edit_<?php echo $product->id;?>">Edit</a>
                                     <?php } ?>
                             </td>
                         </tr>
@@ -100,7 +110,21 @@
             url: "<?php echo $this->request->webroot;?>profiles/province",
             type: "post",
             dataType: "HTML",
-            data: "DocID=" + DocID + "&Province=" + Province + "&Value=" + element.checked,
+            data: "Type=Province&DocID=" + DocID + "&Province=" + Province + "&Value=" + element.checked,
+            success: function (msg) {
+                //alert(msg);
+            }
+        })
+    }
+
+    function savedocument(DocID, SubDoc){
+        element = document.getElementById(DocID + "." + SubDoc);
+        //alert("Document " + DocID + " Province " + Province + " Checked: " + element.checked);
+        $.ajax({
+            url: "<?php echo $this->request->webroot;?>profiles/province",
+            type: "post",
+            dataType: "HTML",
+            data: "Type=Document&DocID=" + DocID + "&SubDoc=" + SubDoc + "&Value=" + element.checked,
             success: function (msg) {
                 //alert(msg);
             }

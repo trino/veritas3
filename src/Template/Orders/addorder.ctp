@@ -95,40 +95,19 @@ function provinces($name){
 
 
 
-            if(in_array('2',$forms) && isset($_GET['driver']) && $name=='consent form')
-            {
-
+            if(in_array('2',$forms) && isset($_GET['driver']) && $name=='consent form') {
                 $c2 = $_this->requestAction('/orders/check_driver_abstract2/'.$_GET['driver']);
-                //die($c2->driver_province);
-                if(in_array($c2->driver_province,array('BC','MB','NU','NT','QC','SK','YT')))
-                return true;
-                else
-                if(in_array('3',$forms) && isset($_GET['driver']) && $name=='consent form')
-                {
+                if(in_array($c2->driver_province,array('BC','MB','NU','NT','QC','SK','YT'))){ return true;}
+                if(in_array('3',$forms) && isset($_GET['driver']) && $name=='consent form'){
                     $c3 = $_this->requestAction('/orders/check_cvor2/'.$_GET['driver']);
-                    if(in_array($c3->driver_province,array('BC','SK','MB')))
-                    return true;
-                    else
-                    return false;
-
+                    return in_array($c3->driver_province,array('BC','SK','MB'));
                 }
-                else
                 return false;
-
+            } else if(in_array('3',$forms) && isset($_GET['driver']) && $name=='consent form'){
+                    $c3 = $_this->requestAction('/orders/check_cvor2/'.$_GET['driver']);
+                    return in_array($c3->driver_province,array('BC','SK','MB'));
             }
-            else
-            if(in_array('3',$forms) && isset($_GET['driver']) && $name=='consent form')
-                {
-                    $c3 = $_this->requestAction('/orders/check_cvor2/'.$_GET['driver']);
-                    if(in_array($c3->driver_province,array('BC','SK','MB')))
-                    return true;
-                    else
-                    return false;
-
-                }
-                else
-                if($name=='consent form')
-                return false;
+            if($name=='consent form'){ return false;}
 
 
 

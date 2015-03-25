@@ -35,13 +35,15 @@
     }
     $p = $forms_arr;
 ?>
-<h3 class="block col-md-12">Order Confirmation</h3>
-
+<div class="note note-success">
+    <h3 class="block col-md-12">MEE Order Confirmation</h3>
+    <div class="clearfix"></div>
+</div>
 
 <input type="hidden" id="confirmation" value="1"/>
 
 
-<div class="row col-md-5">
+<div class="row col-md-6">
 
     <div class="form-group">
         <label class="control-label col-md-12">Recruiter Name : </label>
@@ -155,13 +157,8 @@
 </div>
 
 
-<div class="row col-md-7">
+<div class="row col-md-6">
 
-
-    <div class="form-group"><?php
-        include_once 'subpages/filelist.php';
-        listfiles($allattachments, "attachments/", "", false,3);
-        ?></div>
 
 
     <div class="form-group">

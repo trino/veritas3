@@ -1,6 +1,7 @@
 <?php
  if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/for_view.php #INC144</span>"; }
 include_once 'subpages/filelist.php';
+$includeabove=true;
  ?>
 <style>
     @media print {
@@ -219,6 +220,17 @@ include_once 'subpages/filelist.php';
                                     <div class="portlet-body">
                                         <div oldclass="table-scrollable">
 
+                                            <?php
+                                            if ($includeabove) {
+                                                echo '<div class="col-sm-12">';
+                                                printdocumentinfo($order->id, true, true);
+                                                ?>
+                                                <div style="float:right; margin-top: 10px;">
+                                                    <a href="#" class="btn btn-lg default yellow-stripe">
+                                                        Road Test Score </a><a href="#" class="btn btn-lg yellow">
+                                                        <i class="fa fa-bar-chart-o"></i> <?php if (isset($order->road_test[0]->total_score)) echo $order->road_test[0]->total_score; ?></a>         </div></div>
+
+                                            <?php } else { ?>
                                             <div class="col-sm-6" style="padding-top:10px;"
                                                  oldstyle="border: 1px solid #E5E5E5;">
                         <span class="profile-desc-text">   <p>Driver:
@@ -235,7 +247,6 @@ include_once 'subpages/filelist.php';
             			</span>
 
                                             </div>
-
                                             <div class="col-sm-6" style="paddng-left: 0; padding-right: 0;">
                                                 <TABLE align="right" style="float;right;">
                                                     <TR>
@@ -258,7 +269,7 @@ include_once 'subpages/filelist.php';
                                                     </TR>
                                                 </TABLE>
                                             </div>
-
+                                            <?php } ?>
 
                                             <div class="clearfix"></div>
                                             <div class="col-md-12" style="margin-bottom: 8px;">
@@ -604,7 +615,7 @@ include_once 'subpages/filelist.php';
 
 
                                                     $files = getattachments($order->id);
-                                                    printdocumentinfo($order->id, true);
+                                                    if (!$includeabove) { printdocumentinfo($order->id, true); }
                                                     listfiles($files, "attachments/", "", false,3);
 
 

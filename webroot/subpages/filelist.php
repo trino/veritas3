@@ -27,19 +27,27 @@
          return $data;
      }
 
-    function printdocumentinfo($ID, $isOrder = false){
+    function printdocumentinfo($ID, $isOrder = false, $linktoOrder = false){
         $data = getdocumentinfo($ID, $isOrder);
+        $webroot=$GLOBALS['webroot'];//   profile: http://localhost/veritas3/profiles/view/[ID]   client:  http://localhost/veritas3/clients/edit/[ID]?view
         if (is_object($data)) {
-            echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
+            echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer"><TR><TH colspan="3">';
             if ($isOrder) {
-                echo '<TR><TH colspan="2">Order Information (ID: ' . $ID . ')</TH></TR>';
+                echo 'Order Information (ID: ' . $ID . ')';
+                if ($linktoOrder) {
+                    echo '<a style="float:right;" href="' . $webroot . 'orders/vieworder/' . $data->client_id . '/' . $data->id ;
+                    echo '?order_type=' . $data->order_type;
+                    if ($data->forms) { echo '?forms=' . $data->forms; }
+                    echo '" class="btn btn-xs btn-primary">View Order</a>';
+                }
             } else {
-                echo '<TR><TH colspan="2">Document Information (ID: ' . $ID . ')</TH></TR>';
+                echo 'Document Information (ID: ' . $ID . ')';
             }
-            echo '<TR><Th width="25%">Created on</Th><TD>' . $data->created . '</TD></TR>';
-            echo '<TR><Th>Submitted by</Th><TD>' . ucfirst($data->submitter->fname) . ' ' . ucfirst($data->submitter->lname) . ' (' . ucfirst($data->submitter->fname) . ')</TD></TR>';
-            echo '<TR><Th>Submitted for</Th><TD>' . ucfirst($data->reciever->fname) . ' ' . ucfirst($data->reciever->lname) . ' (' . ucfirst($data->reciever->fname) . ')</TD></TR>';
-            echo '<TR><Th>Client</Th><TD>' . ucfirst($data->client->company_name) . '</TD></TR>';
+
+            echo '</TH></TR><TR><Th width="25%">Created on</Th><TD colspan="2">' . $data->created . '</TD></TR>';
+            echo '<TR><Th>Submitted by</Th><TD width="1%">' . $data->submitter->id . '</TD><TD>' . ucfirst($data->submitter->fname) . ' ' . ucfirst($data->submitter->lname) . ' (' . ucfirst($data->submitter->fname) . ')</TD></TR>';
+            echo '<TR><Th>Submitted for</Th><TD>' . $data->reciever->id . '</TD><TD>' . ucfirst($data->reciever->fname) . ' ' . ucfirst($data->reciever->lname) . ' (' . ucfirst($data->reciever->fname) . ')</TD></TR>';
+            echo '<TR><Th>Client</Th><TD>' . $data->client->id . '</TD><TD>' . ucfirst($data->client->company_name) . '</TD></TR>';
             echo '</table>';
             return $data;
         }

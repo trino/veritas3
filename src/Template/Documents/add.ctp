@@ -469,6 +469,46 @@ if (isset($this->request->params['pass'][1])) {
                         }
                          ?>
                     </div>
+                                     <?php foreach($doc as $dx)
+                    {
+                        if($dx->id>10){
+                        ?>
+                        <div class="subform<?php echo $dx->id;?>" style="display: none;">
+                            <?php
+                        if($controller == 'documents' )
+                        {
+                            $colr = $this->requestAction('/documents/getColorId/'.$dx->id);
+                            if(!$colr)
+                            $colr = $class[9];
+                            
+                             echo '<div class="row">
+                            <div class="col-md-12">
+                            <div class="portlet box '.$colr.'">
+                            
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                           '.$dx->title.'
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                    <div class="form-body" style="padding-bottom: 0px;">
+                                                    <div class="tab-content">';
+                                                    }
+                                        else {
+                                            
+                                        }
+                        ?>
+                        <?php include('subpages/documents/'.$dx->form); 
+                        if($controller == 'documents' )
+                        {
+                        echo '</div></div></div></div></div></div>' ;
+                        }
+                         ?>
+                        </div>
+                    <?php    
+                        }
+                    }
+                    ?>                    
                     
                     
                     

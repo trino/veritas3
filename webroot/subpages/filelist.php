@@ -29,14 +29,20 @@
 
     function printdocumentinfo($ID, $isOrder = false){
         $data = getdocumentinfo($ID, $isOrder);
-        echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
-        if ($isOrder) { echo '<TR><TH colspan="2">Order Information</TH></TR>'; } else { echo '<TR><TH colspan="2">Document Information</TH></TR>'; }
-        echo '<TR><Th width="25%">Created on</Th><TD>' . $data->created . '</TD></TR>';
-        echo '<TR><Th>Submitted by</Th><TD>' . ucfirst($data->submitter->fname) . ' ' . ucfirst($data->submitter->lname) . ' (' . ucfirst($data->submitter->fname) . ')</TD></TR>';
-        echo '<TR><Th>Submitted for</Th><TD>' . ucfirst($data->reciever->fname) . ' ' . ucfirst($data->reciever->lname) . ' (' . ucfirst($data->reciever->fname) . ')</TD></TR>';
-        echo '<TR><Th>Client</Th><TD>' . ucfirst($data->client->company_name) . '</TD></TR>';
-        echo '</table>';
-        return $data;
+        if (is($data)) {
+            echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
+            if ($isOrder) {
+                echo '<TR><TH colspan="2">Order Information</TH></TR>';
+            } else {
+                echo '<TR><TH colspan="2">Document Information</TH></TR>';
+            }
+            echo '<TR><Th width="25%">Created on</Th><TD>' . $data->created . '</TD></TR>';
+            echo '<TR><Th>Submitted by</Th><TD>' . ucfirst($data->submitter->fname) . ' ' . ucfirst($data->submitter->lname) . ' (' . ucfirst($data->submitter->fname) . ')</TD></TR>';
+            echo '<TR><Th>Submitted for</Th><TD>' . ucfirst($data->reciever->fname) . ' ' . ucfirst($data->reciever->lname) . ' (' . ucfirst($data->reciever->fname) . ')</TD></TR>';
+            echo '<TR><Th>Client</Th><TD>' . ucfirst($data->client->company_name) . '</TD></TR>';
+            echo '</table>';
+            return $data;
+        }
     }
 
   function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method=1){

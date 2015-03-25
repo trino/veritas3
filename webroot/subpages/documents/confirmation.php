@@ -160,7 +160,6 @@
 
     <div class="form-group"><?php
         include_once 'subpages/filelist.php';
-        printdocumentinfo($modal->id, true);
         listfiles($allattachments, "attachments/", "", false,3);
         ?></div>
 

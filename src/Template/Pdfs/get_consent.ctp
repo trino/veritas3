@@ -38,6 +38,8 @@
         <li>Insurance History - Please specify Province or State (Region where Driver's License Issued)</li>
         <li>Employment Verifications</li>
         <li>TransClick (Aptitude Test)</li>
+        <li>Check DL</li>
+        <li>Employment Verification (Drug test information and Claims History)</li>
     </ul>
     <p>I hereby consent to a criminal record search (Adult) through both the: </p>
     <ul>

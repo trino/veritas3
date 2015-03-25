@@ -1,5 +1,5 @@
 <?php
-    if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/confiramtion.php #INC138</span>"; }
+    if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/confirmation.php #INC138</span>"; }
     $forms = '';
     if (isset($_GET['forms'])) { $forms = $_GET['forms']; }
 
@@ -160,6 +160,7 @@
 
     <div class="form-group"><?php
         include_once 'subpages/filelist.php';
+        printdocumentinfo($modal->id, true);
         listfiles($allattachments, "attachments/", "", false,3);
         ?></div>
 

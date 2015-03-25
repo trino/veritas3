@@ -6,16 +6,10 @@
 <?php
     include 'subpages/filelist.php';
     $delete = isset($disabled);
-    if (isset($disabled)) {
-        $is_disabled = 'disabled="disabled"';
-    } else {
-        $is_disabled = '';
-    }
-    if (isset($client)) {
-        $c = $client;
-    }
-?>
-<?php
+    $is_disabled = '';
+    if (isset($disabled)) {$is_disabled = 'disabled="disabled"'; }
+    if (isset($client)) {$c = $client; }
+
     $settings = $this->requestAction('settings/get_settings');
     $sidebar = $this->requestAction("settings/all_settings/" . $this->request->session()->read('Profile.id') . "/sidebar");
     $getprofile = $this->requestAction('clients/getProfile/' . $id);
@@ -23,12 +17,8 @@
     $param = $this->request->params['action'];
 
     $action = ucfirst($param);
-    if (isset($_GET["view"])) {
-        $action = "View";
-    }
-    if ($action == "Add") {
-        $action = "Create";
-    }
+    if (isset($_GET["view"])) {$action = "View";}
+    if ($action == "Add") {$action = "Create";}
 
 ?>
 

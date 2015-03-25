@@ -1,13 +1,12 @@
 <?php
+    use Cake\ORM\TableRegistry;
     if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<BR><span style ='color:red;'>filelist.php #INC158</span>";}
-
     $GLOBALS['webroot'] = $webroot= $this->request->webroot;
+
     //other values PATHINFO_DIRNAME (/mnt/files) | PATHINFO_BASENAME (飛兒樂團光茫.mp3) | PATHINFO_FILENAME (飛兒樂團光茫)
     function getextension($path, $value=PATHINFO_EXTENSION){
         return strtolower(pathinfo($path, $value));
     }
-
-    use Cake\ORM\TableRegistry;
 
     function getattachments($OrderID){
         $all_attachments = TableRegistry::get('doc_attachments');
@@ -20,6 +19,26 @@
          return $results;
      }
 
+     function getdocumentinfo($ID, $isOrder = false){
+         if ($isOrder) { $data = loadclient($ID, "orders" ); } else { $data = loadclient($ID, "documents" ); }
+         $data->submitter = loadclient($data->user_id, "profiles");
+         $data->reciever = loadclient($data->uploaded_for, "profiles");
+         $data->client = loadclient($data->client_id);
+         return $data;
+     }
+
+    function printdocumentinfo($ID, $isOrder = false){
+        $data = getdocumentinfo($ID, $isOrder);
+        echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
+        if ($isOrder) { echo '<TR><TH colspan="2">Order Information</TH></TR>'; } else { echo '<TR><TH colspan="2">Document Information</TH></TR>'; }
+        echo '<TR><Th width="25%">Created on</Th><TD>' . $data->created . '</TD></TR>';
+        echo '<TR><Th>Submitted by</Th><TD>' . ucfirst($data->submitter->fname) . ' ' . ucfirst($data->submitter->lname) . ' (' . ucfirst($data->submitter->fname) . ')</TD></TR>';
+        echo '<TR><Th>Submitted for</Th><TD>' . ucfirst($data->reciever->fname) . ' ' . ucfirst($data->reciever->lname) . ' (' . ucfirst($data->reciever->fname) . ')</TD></TR>';
+        echo '<TR><Th>Client</Th><TD>' . ucfirst($data->client->company_name) . '</TD></TR>';
+        echo '</table>';
+        return $data;
+    }
+
   function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method=1){
 	$webroot=$GLOBALS['webroot'] ;
       if($method==2) {
@@ -29,6 +48,7 @@
           echo '</div></div>';
       } else if($method==3) {
           echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
+          echo '<TR><TH colspan="5">Attachments</TH></TR>';
           $count = 0;
           foreach ($client_docs as $k => $cd) {
               //debug($cd);
@@ -78,8 +98,9 @@
                           $type = "Unknown";
                           echo 'paperclip';
                   }
-                  echo "' title='" . $type . "'></i></TD><TD>";
-                  echo "<A HREF='" . $webroot . $dir . $file . "'>" . $filename . "</A></TD><TD>" . date('Y-m-d H:i:s', filemtime(getcwd() . $path));
+                  echo "' title='" . $type . "'></i></TD>";
+                  echo "<TD><A HREF='" . $webroot . $dir . $file . "'>" . $filename . "</A></TD>";
+                  echo "<TD>" . date('Y-m-d H:i:s', filemtime(getcwd() . $path)) . "</TD>";
                   switch (TRUE) {
                       case isset($cd->client_id):
                           echo "<TD>" . loadclient($cd->client_id)->company_name . "</TD>";
@@ -88,7 +109,7 @@
                           echo "<TD>" . loadclient($cd->profile_id, "profiles")->username . "</TD>";
                           break;
                   }
-                  echo "</TD><TD>" . $extension . "</TD></TR>";
+                  echo "<TD width='1%'>" . $extension . "</TD></TR>";
               }
           }
               echo '</table>';

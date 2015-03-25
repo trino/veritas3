@@ -32,9 +32,9 @@
         if (is_object($data)) {
             echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
             if ($isOrder) {
-                echo '<TR><TH colspan="2">Order Information</TH></TR>';
+                echo '<TR><TH colspan="2">Order Information (ID: ' . $ID . ')</TH></TR>';
             } else {
-                echo '<TR><TH colspan="2">Document Information</TH></TR>';
+                echo '<TR><TH colspan="2">Document Information (ID: ' . $ID . ')</TH></TR>';
             }
             echo '<TR><Th width="25%">Created on</Th><TD>' . $data->created . '</TD></TR>';
             echo '<TR><Th>Submitted by</Th><TD>' . ucfirst($data->submitter->fname) . ' ' . ucfirst($data->submitter->lname) . ' (' . ucfirst($data->submitter->fname) . ')</TD></TR>';
@@ -54,15 +54,19 @@
           echo '</div></div>';
       } else if($method==3) {
           echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
-          echo '<TR><TH colspan="5">Attachments</TH></TR>';
           $count = 0;
           foreach ($client_docs as $k => $cd) {
               //debug($cd);
               $count += 1;
-              if (isset($cd->attachment)) { $file = $cd->attachment;}//id, order_id, document_id, sub_id, attach_doc (null)
-              if (isset($cd->file)) {$file = $cd->file; }
+              if (isset($cd->attachment)) {
+                  $file = $cd->attachment;
+              }//id, order_id, document_id, sub_id, attach_doc (null)
+              if (isset($cd->file)) {
+                  $file = $cd->file;
+              }
 
-              if ($file){//id, client_id
+              if ($file) {//id, client_id
+                  if ($count==1){ echo '<TR><TH colspan="5">Attachments</TH></TR>'; }
                   $path = "/" . $dir . $file;
                   $extension = getextension($file);
                   $filename = getextension($file, PATHINFO_FILENAME);
@@ -118,8 +122,8 @@
                   echo "<TD width='1%'>" . $extension . "</TD></TR>";
               }
           }
-              echo '</table>';
-          } else {//old layout ?>
+            echo '</table>';
+      } else {//old layout ?>
 
 
    <div class="form-group col-md-12">

@@ -96,6 +96,7 @@ if (isset($this->request->params['pass'][1])) {
                     <a href="javascript:void(0);" onclick="$('.dashboard-stat').parent().each(function(){$(this).show(300);});$(this).hide();$('.moredocxs').hide();$('.btndocs').hide();$('.clients_select').show();" class="btn btn-success moreback" style="display: none;">Back</a>
 
                     <?php
+                    $doc_count = 0;
                     if($cid)
                         include('subpages/home_blocks.php');
                     if(isset($mod->uploaded_for))
@@ -475,6 +476,8 @@ if (isset($this->request->params['pass'][1])) {
                         if($dx->id>10){
                         ?>
                         <div class="subform<?php echo $dx->id;?>" style="display: none;">
+                             <input type="hidden" class="document_type" name="document_type" value="<?php echo $dx->title;?>"/>
+                                <input type="hidden" name="sub_doc_id" value="<?php echo $dx->id;?>" class="sub_docs_id"  />
                             <?php
                         if($controller == 'documents' )
                         {
@@ -704,6 +707,11 @@ if (isset($this->request->params['pass'][1])) {
         if (s_arr[1] == 10) {
             $('#form_tab10').prepend('<input class="document_type" type="hidden" name="document_type" value="Education Verification" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="10"  />');
+             
+        }
+        if (s_arr[1] == 11) {
+            $('#form_tab11').prepend('<input class="document_type" type="hidden" name="document_type" value="Basic Pre-Screen" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="11"  />');
              
         }
         
@@ -1737,6 +1745,17 @@ if (isset($this->request->params['pass'][1])) {
 
                         $('#form_tab8').submit();
 
+
+                    }
+                    else if(type == 'Basic Pre-Screen')
+                    {
+                         var act = $('#form_tab11').attr('action');
+
+                        $('#form_tab11').attr('action', function (i, val) {
+                            return val + '?draft=' + draft;
+                        });
+
+                        $('#form_tab11').submit();
 
                     }
 

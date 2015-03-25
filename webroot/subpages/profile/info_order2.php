@@ -228,12 +228,15 @@
             }
         ?>
     </select>
+    
+    <input class="selecting_driver" type="hidden" value="<?php if ($driver) { echo $driver; }?>"/>
+    </div>
+    <?php
+        
+     if($settings->profile_create=='1') echo "<div class='col-xs-3' > or  <a href='http://localhost/veritas3/profiles/add' class='btn btn-primary'>Add Driver</a></div>";?>
 
-    <input class="selecting_driver" type="hidden" value="<?php
-        if ($driver) {
-            echo $driver;
-        }
-        echo '"/></div></div>';
+    </div>
+    <?php
         if ($intable) {
             echo "</div>";
         }
@@ -243,8 +246,8 @@
 
 
 
-
 <div class=" portlet-body" >
+
     <div class="createDriver">
         <div class="portlet box form-horizontal">
 

@@ -85,7 +85,7 @@ function provinces($name){
         }
         $_this = $this;
 
-    $DriverProvince = mapprovince($p->province);
+    $DriverProvince = mapprovince($p->driver_province);
     function mapprovince($province){
         $provincelist = array("NL" => "NFL", "NT" => "NWT","NU" => "NUN","ON" => "ONT", "PE" => "PEI");
         if (isset($provincelist[$province])){ return $provincelist[$province]; }
@@ -108,7 +108,11 @@ function provinces($name){
             foreach($forms as $form){
                 $data = FindIterator($Provinces, "ID", $form);
                 if ($data) {
+                    //echo $DriverProvince . " " . $data->$DriverProvince;
                     if($data->$DriverProvince ==1) {
+                        //echo ("Checking for: " . $name);
+                        //print_r($data->subdocuments);
+
                         if (in_array($name, $data->subdocuments)) { return true; }
                     }
                 }

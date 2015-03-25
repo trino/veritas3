@@ -5,11 +5,16 @@
     //just pass $provincelist and $provinces into them
     function PrintProvinces($DocID, $provincelist, $provinces="", $subdocuments = ""){
         if ($DocID==-1) {
-            echo "<TH>Provinces</TH><TH>Documents</TH>";
+            foreach($provincelist as $acronym => $fullname){
+                echo '<th style="border:none;" class="rotate"><div><span>' . $fullname . '</span></div></th>';
+            }
+            foreach($subdocuments as $doctype){
+                echo '<th style="border:none;" class="rotate"><div><span>' . $doctype->title . '</span></div></th>';
+            }
+            //echo "<TH>Provinces</TH><TH>Documents</TH>";
             return;
         }
 
-        echo "<TD>";
         foreach($provincelist as $acronym => $fullname){
             if ($DocID>-1){
                 $data = FindIterator($provinces, "ID", $DocID);
@@ -18,17 +23,17 @@
                     if ($data->$acronym == 1) { $checked = " checked"; }
                 }
                 $name= $DocID . "." .  $acronym;
-                echo "<INPUT TITLE='" . $fullname . "' TYPE='CHECKBOX' NAME='" . $name . "' ID='" . $name . "' VALUE='1'". $checked . ' ONCLICK="' .  "saveprovince(" . $DocID . ", '" . $acronym . "');" . '">';
+                echo "<TD><INPUT TITLE='" . $fullname . "' TYPE='CHECKBOX' NAME='" . $name . "' ID='" . $name . "' VALUE='1'". $checked . ' ONCLICK="' .  "saveprovince(" . $DocID . ", '" . $acronym . "');" . '"></TD>';
             }
         }
-        echo "</TD><TD>";
+        
         foreach($subdocuments as $doctype){
             $checked = "";
             $name = $DocID . "." . $doctype->id;
             if (isset($data->subdocuments[$doctype->id])) { $checked = " checked"; }
-            echo "<INPUT ID='" . $name . "' NAME='" . $name . "' TYPE='CHECKBOX' TITLE='" . $doctype->title . "'" . $checked . " ONCLICK='savedocument(" . $DocID . ", " . $doctype->id  .");'>";
+            echo "<TD><INPUT ID='" . $name . "' NAME='" . $name . "' TYPE='CHECKBOX' TITLE='" . $doctype->title . "'" . $checked . " ONCLICK='savedocument(" . $DocID . ", " . $doctype->id  .");'></TD>";
         }
-        echo "</TD>";
+
     }
 
     function FindIterator($ObjectArray, $FieldName, $FieldValue){
@@ -39,7 +44,26 @@
     }
 
 ?>
+<style>
+th.rotate {
+  /* Something you can count on */
+  height: 140px;
+  white-space: nowrap;
+}
 
+th.rotate > div {
+    transform:
+        /* Magic Numbers */
+    translate(20px, -5px)
+        /* 45 is really 360 - 45 */
+    rotate(315deg);
+    width: 30px;
+}
+th.rotate > div > span {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 10px;
+}
+</style>
 
 <div class="portlet box green-haze">
     <div class="portlet-title">
@@ -68,7 +92,7 @@
                     <th>Title</th>
                     <th>Enable</th>
 
-                    <?php PrintProvinces(-1, $provincelist); ?>
+                    <?php PrintProvinces(-1, $provincelist, $provinces, $subdocuments); ?>
 
                     <th>Actions</th>
 

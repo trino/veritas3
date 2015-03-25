@@ -704,7 +704,6 @@
 
             $order_attach = $all_attachments->find()->where(['order_id'=>$orderid]);
 
-$attachments1
             foreach($order_attach as $oa)
             {
                 echo "Attachment: " . $oa->attachment;
@@ -717,6 +716,8 @@ $attachments1
                 echo "<br/>";
             }
             $this->set('order_attach', $order_attach);
+            $this->set('subdocument', TableRegistry::get('subdocuments'));
+
 
 
 

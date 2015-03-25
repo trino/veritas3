@@ -613,24 +613,12 @@
         {
             $all_attachments = TableRegistry::get('doc_attachments');
             $subdocument = TableRegistry::get('subdocuments');
-            $order_attach = $all_attachments->find()->where(['order_id'=>$orderid]);
-            foreach($order_attach as $oa)
-            {
-                echo "Attachment: " . $oa->attachment;
-                $sd = $subdocument->find()->where(['id'=>$oa->sub_id])->first();
-                if($sd){
-                echo "<br/>";
-                
-                echo "Sub Document: " . $sd->title;}
-                echo "<br/>";
-                echo "<br/>";
-            }
-            die();
+
             $this->layout = "blank";
             echo '<br><br>'.$orderid . '<br><br>';
 
 
-            if ($orderid) {
+            if (false) {
 
                 $pre = TableRegistry::get('doc_attachments');
                 $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $orderid, 'sub_id' => 1])->all();
@@ -714,7 +702,23 @@
             $order_info = $orders->find()->where(['id' => $orderid])->first();
             $this->set('order_info', $order_info);
 
+            $order_attach = $all_attachments->find()->where(['order_id'=>$orderid]);
+            $this->set('order_attach', $order_attach);
 
+            /*
+            foreach($order_attach as $oa)
+            {
+                echo "Attachment: " . $oa->attachment;
+                $sd = $subdocument->find()->where(['id'=>$oa->sub_id])->first();
+                if($sd){
+                    echo "<br/>";
+
+                    echo "Sub Document: " . $sd->title;}
+                echo "<br/>";
+                echo "<br/>";
+            }
+            */
+            die();
 
         }
         public function createPdfBg()

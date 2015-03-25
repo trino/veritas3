@@ -424,24 +424,19 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if ($upload_additional == true) {
+        foreach($order_attach as $oa)
+        {
+            echo "Attachment: " . $oa->attachment;
+            $sd = $subdocument->find()->where(['id'=>$oa->sub_id])->first();
+            if($sd){
+                echo "<br/>";
 
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
+                echo "Sub Document: " . $sd->title;}
+            echo "<br/>";
+            echo "<br/>";
+        }
 
-
+/*
         if(isset($prescreening['attach_doc'])) {
 
         foreach ($prescreening['attach_doc'] as $d) {
@@ -562,9 +557,17 @@
                 }
             }
         }
+*/
 
-        die();
     }
+
+
+
+
+    die();
+
+
+
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

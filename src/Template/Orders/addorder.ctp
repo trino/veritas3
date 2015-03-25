@@ -84,17 +84,37 @@ function provinces($name){
             }
         }
         $_this = $this;
-        function displayform($forms, $name,$_this){
-            if(isset($_GET['order_type']) && urldecode($_GET['order_type'])=='Order MEE')
-            return true;
-            //pre-screening, driver application, consent form, road test
-            //if ($id == 0 || $id == 5) {return true;} //create driver and confirmation must always show
+
+    $DriverProvince = mapprovince($p->province);
+    function mapprovince($province){
+        $provincelist = array("NL" => "NFL", "NT" => "NWT","NU" => "NUN","ON" => "ONT", "PE" => "PEI");
+        if (isset($provincelist[$province])){ return $provincelist[$province]; }
+        return $province;
+    }
+
+    function FindIterator($ObjectArray, $FieldName, $FieldValue){
+        foreach($ObjectArray as $Object){
+            if ($Object->$FieldName == $FieldValue){return $Object;}
+        }
+        return false;
+    }
+
+
+        function displayform($DriverProvince, $Provinces, $forms, $name,$_this){
+            if(isset($_GET['order_type']) && urldecode($_GET['order_type'])=='Order MEE'){ return true;}//uncomment
             $name=trim(strtolower($name));
+            if ($name == "consent form") { return true; } //mandatory in all sections now
 
-
-
-
-
+            foreach($forms as $form){
+                $data = FindIterator($Provinces, "ID", $form);
+                if ($data) {
+                    if($data->$DriverProvince ==1) {
+                        if (in_array($name, $data->subdocuments)) { return true; }
+                    }
+                }
+            }
+            return false;
+            /*
             if(in_array('2',$forms) && isset($_GET['driver']) && $name=='consent form') {
                 $c2 = $_this->requestAction('/orders/check_driver_abstract2/'.$_GET['driver']);
                 if(in_array($c2->driver_province,array('BC','MB','NU','NT','QC','SK','YT'))){ return true;}
@@ -107,18 +127,13 @@ function provinces($name){
                     $c3 = $_this->requestAction('/orders/check_cvor2/'.$_GET['driver']);
                     return in_array($c3->driver_province,array('BC','SK','MB'));
             }
-            if($name=='consent form'){ return false;}
+            */
 
 
 
 
             //return true if all boxes were checked
-            if (isallone($forms)) {return true; }
-            if ($name == "consent form") { return true; } //mandatory in all sections now
-            if(count($forms)>0){
-                if ($name == "consent form") { return true; }//$forms[1] == 1 || $forms[2] == 1 ; // if CVOR or MVR are checked, then show consent form
-                return false; //no other form needs to show
-            }
+            //if (isallone($forms)) {return true; }
             return true; //returns true if $forms is empty or smaller than the ID number (ie: MEE order)
         }
 
@@ -202,49 +217,46 @@ function provinces($name){
 
                                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
 
-                                            //debug($d);
-
-                                            if (displayform($forms, $d->title,$_this)){
+                                            if (displayform($DriverProvince, $provinces, $forms, $d->title,$_this)){
                                                 $index+=1;
-                                            $act = 0;
-                                            if ($d->table_name == $table) {
-                                                $act = 1;
-                                                $end = 1;
-                                            }
-
-                                            $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
-
-                                             if (true){ //($prosubdoc['display'] != 0 && $d->display == 1) {
-
-                                                $k_c++;
-                                                $j = $d->id;
-                                                $j = $j + 1;
-                                                if($k_c==1) {
-                                                    $k_cou = $j;
+                                                $act = 0;
+                                                if ($d->table_name == $table) {
+                                                    $act = 1;
+                                                    $end = 1;
                                                 }
-                                                else
-                                                if($k_cou<$j) {
-                                                    $k_cou=$j;
-                                                }
-                                                ?>
-                                                <li <?php if ($table && $end == 0) echo "class = 'done'";
-                                                    if ($act == 1) {
-                                                        echo 'class="active"';
-                                                    } ?>>
-                                                    <a href="#tab<?php echo $j; ?>" data-toggle="tab" class="step">
-    												<span class="number">
-    												<?php echo $i; ?> </span><br/>
-    												<span class="desc">
-    												<i class="fa fa-check"></i> <?php echo ucfirst($d->title); ?> </span>
-                                                    </a>
-                                                </li>
-                                                <?php
 
-                                                $i++;
-                                            }}
+                                                $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);
+
+                                                 if (true){ //($prosubdoc['display'] != 0 && $d->display == 1) {
+
+                                                    $k_c++;
+                                                    $j = $d->id;
+                                                    $j = $j + 1;
+                                                    if($k_c==1) {
+                                                        $k_cou = $j;
+                                                    }
+                                                    else
+                                                    if($k_cou<$j) {
+                                                        $k_cou=$j;
+                                                    }
+                                                    ?>
+                                                    <li <?php if ($table && $end == 0) echo "class = 'done'";
+                                                        if ($act == 1) {
+                                                            echo 'class="active"';
+                                                        } ?>>
+                                                        <a href="#tab<?php echo $j; ?>" data-toggle="tab" class="step">
+                                                        <span class="number">
+                                                        <?php echo $i; ?> </span><br/>
+                                                        <span class="desc">
+                                                        <i class="fa fa-check"></i> <?php echo ucfirst($d->title); ?> </span>
+                                                        </a>
+                                                    </li>
+                                                    <?php
+
+                                                    $i++;
+                                                }}
                                         }
-                                        if(!isset($k_cou))
-                                        $k_cou = 1;
+                                        if(!isset($k_cou)){ $k_cou = 1; }
                                     ?>
 
                                     <li>
@@ -394,7 +406,7 @@ function provinces($name){
                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
 
                            // debug($d);
-                            if (displayform($forms, $d->title,$_this)){
+                            if (displayform($DriverProvince, $provinces, $forms, $d->title,$_this)){
 
 
                             $prosubdoc = $this->requestAction('/settings/all_settings/0/0/profile/' . $this->Session->read('Profile.id') . '/' . $d->id);

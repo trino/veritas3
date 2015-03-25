@@ -273,6 +273,8 @@
                 $sub4['att'] = $edu_att->find()->where(['order_id' => $did, 'sub_id' => 42])->all();
                 $this->set('sub4', $sub4);
             }
+
+            $this->set('provinces',  $this->LoadSubDocs());
         }
 
         public function savedoc($cid = 0, $did = 0)
@@ -1147,10 +1149,11 @@
            $province = $doc->driver_province;
            $arr = array('BC','MB','NU','NT','QC','SK','YT');
            //$arr = array('BC','SK','MB');
-           if(in_array($province,$arr))
-           echo '1';
-           else
-           echo '0';
+           if(in_array($province,$arr)) {
+               echo '1';
+           } else {
+               echo '0';
+           }
            die();
           
         }
@@ -1161,10 +1164,11 @@
            $province = $doc->driver_province;
            //$arr = array('BC','MB','NU','NT','QC','SK','YT');
            $arr = array('BC','SK','MB');
-           if(in_array($province,$arr))
-           echo '1';
-           else
-           echo '0';
+           if(in_array($province,$arr)) {
+               echo '1';
+           } else {
+               echo '0';
+           }
            die();
           
         }
@@ -1183,5 +1187,22 @@
             if($client_docs) {return true;}
             return false;
         }
+        public function LoadSubDocs(){
+            $provinces =  TableRegistry::get('doc_provinces')->find('all');//gets me ID#s and which provinces are enabled
+            //$provincelist = array("AB","BC","MB","NB","NFL","NWT","NS","NUN","ONT","PEI","QC","SK","YT");
+            $subdocuments = TableRegistry::get('subdocuments')->find('all');//subdocument type list (id, title, display, form, table_name, orders, color_id)
+            $table2 = TableRegistry::get('doc_provincedocs');//subdocument type and province (if found, it is enabled)
 
+            $provinces2 = array();//needs to make a copy...
+            foreach($provinces as $province){
+                $province->subdocuments = array();
+                foreach($subdocuments as $document){
+                    $quiz = $table2->find()->where(['ID' => $province->ID, "DocID" => $document->id])->first();
+                    if ($quiz) { $province->subdocuments[$document->id] = strtolower(trim($document->title)); }
+                }
+                $provinces2[] = $province;
+            }
+            $this->set('subdocuments',  $subdocuments);
+            return $provinces2;
+        }
     }

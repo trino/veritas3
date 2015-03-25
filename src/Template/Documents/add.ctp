@@ -499,7 +499,7 @@ if (isset($this->request->params['pass'][1])) {
                                             
                                         }
                         ?>
-                        <?php include('subpages/documents/'.$dx->form); 
+                        <?php if($dx->form && file_exists('subpages/documents/'.$dx->form))include('subpages/documents/'.$dx->form); 
                         if($controller == 'documents' )
                         {
                         echo '</div></div></div></div></div></div>' ;
@@ -643,35 +643,72 @@ if (isset($this->request->params['pass'][1])) {
         //var filename = form_type.replace(/\W/g, '_');
         //var filename = filename.toLowerCase();
         //$('.subform').show();   1
-        $('.subform1 .document_type').remove();
-        $('.subform1 .sub_docs_id').remove();
+        for(var k=1;k<=parseFloat('<?php echo $doc_count;?>');k++)
+        {
+            $('.subform'+k+' .document_type').remove();
+            $('.subform'+k+' .sub_docs_id').remove();
+        }
+        
+        if (s_arr[1] == 1) {
+            $('#form_tab1').prepend('<input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>' +
+            '<input type="hidden" name="sub_doc_id" value="1" class="sub_docs_id" id="af" />');
+        }
+        if (s_arr[1] == 2) {
+            $('#form_tab2').prepend('<input type="hidden" class="document_type" name="document_type" value="Driver Application"/>' +
+            '<input type="hidden" name="sub_doc_id" value="2" class="sub_docs_id" id="af" />');
+        }
+        if (s_arr[1] == 3) {
+            $('#form_tab3').prepend('<input class="document_type" type="hidden" name="document_type" value="Road test" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="3" id="af" />');
+        }
+        if (s_arr[1] == 4) {
+            $('#form_tab4').prepend('<input class="document_type" type="hidden" name="document_type" value="Consent Form" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="4"  />');
+        }
 
-        $('.subform2 .document_type').remove();
-        $('.subform2 .sub_docs_id').remove();
+        if (s_arr[1] == 5) {
+            $('#form_tab5').prepend('<input class="document_type" type="hidden" name="document_type" value="Survey" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="5"  />');
+            $('.addattachment5').load('<?php echo $this->request->webroot;?>documents/attach_doc', function(){
+                initiate_ajax_upload1('addMore1', 'doc');
+             });
+        }
+        if (s_arr[1] == 6) {
+            $('#form_tab6').prepend('<input class="document_type" type="hidden" name="document_type" value="Feedbacks" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="6"  />');
+            $('.addattachment6').load('<?php echo $this->request->webroot;?>documents/attach_doc', function(){
+                initiate_ajax_upload1('addMore1', 'doc');
+             });
+        }
+        if (s_arr[1] == 7) {
+            $('#form_tab7').prepend('<input class="document_type" type="hidden" name="document_type" value="Attachment" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="7"  />');
+            $('.addattachment7').load('<?php echo $this->request->webroot;?>documents/attach_doc', function(){
+                initiate_ajax_upload1('addMore1', 'doc');
+             });
+        }
+        if (s_arr[1] == 8) {
+            $('#form_tab8').prepend('<input class="document_type" type="hidden" name="document_type" value="Audits" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="8"  />');
+             $('.addattachment8').load('<?php echo $this->request->webroot;?>documents/attach_doc', function(){
+                initiate_ajax_upload1('addMore1', 'doc');
+             });
+             
+        }
+        if (s_arr[1] == 9) {
+            $('#form_tab9').prepend('<input class="document_type" type="hidden" name="document_type" value="Employment Verification" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="9"  />');
+             
+             
+        }
+        if (s_arr[1] == 10) {
+            $('#form_tab10').prepend('<input class="document_type" type="hidden" name="document_type" value="Education Verification" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="10"  />');
+             
+        }
+        
 
-        $('.subform3 .document_type').remove();
-        $('.subform3 .sub_docs_id').remove();
-
-        $('.subform4 .document_type').remove();
-        $('.subform4 .sub_docs_id').remove();
-
-        $('.subform5 .document_type').remove();
-        $('.subform5 .sub_docs_id').remove();
-
-        $('.subform6 .document_type').remove();
-        $('.subform6 .sub_docs_id').remove();
-
-        $('.subform7 .document_type').remove();
-        $('.subform7 .sub_docs_id').remove();
-
-        $('.subform8 .document_type').remove();
-        $('.subform8 .sub_docs_id').remove();
-
-        $('.subform9 .document_type').remove();
-        $('.subform9 .sub_docs_id').remove();
-
-        $('.subform10 .document_type').remove();
-        $('.subform10 .sub_docs_id').remove();
+        
         //alert(s_arr[1]);
         //alert(s_arr[1]);
 
@@ -684,7 +721,7 @@ if (isset($this->request->params['pass'][1])) {
             $('.attachments').hide();
         if (ftype != "") {
             //alert(form_type);
-            for (var p = 1; p <= 9; p++) {
+            for (var p = 1; p <= parseFloat('<?php echo $doc_count;?>'); p++) {
                 //alert(p);
                 $('.subform' + p).hide();
 
@@ -1431,7 +1468,7 @@ if (isset($this->request->params['pass'][1])) {
         if($this->request->params['action']=='view')
         {
             ?>
-        for (var h = 1; h < 8; h++) {
+        for (var h = 1; h < parseFloat('<?php echo $doc_count;?>'); h++) {
             $('#form_tab' + h + ' input').attr('disabled', 'disabled');
             $('#form_tab' + h + ' textarea').attr('disabled', 'disabled');
             $('#form_tab' + h + ' select').attr('disabled', 'disabled');

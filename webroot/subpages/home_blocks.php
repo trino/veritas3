@@ -19,7 +19,7 @@
 
 
                 <?php 
-
+                $doc_count = 0;
                 $class = array('blue-madison','red','yellow','purple','green', 'red-intense','yellow-saffron','grey-cascade','blue-steel','blue');
 
                 
@@ -32,7 +32,11 @@
                     //echo strtolower($document->document_type);
                     $form_type = "";
                     $titles = array();
-                    foreach($doc as $d)                    {
+                    foreach($doc as $d){
+                        if($d->id > $doc_count)
+                        {
+                            $doc_count = $d->id;
+                        }
                         //echo strtolower($d->title);
                         if(isset($document) && strtolower($d->title) == strtolower($document->document_type)) {
                             $form_type = $d->form;

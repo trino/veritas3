@@ -37,7 +37,7 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $startorder1 = false;
+    $startorder1 = true;
     $upload_additional = true; //additional are all attachments in all forms
     $upload_additional_id = true;
     $uploadbinaryconsent_1603 = true;
@@ -146,7 +146,7 @@
     }else
     {
 
-        die('ORDER NOT STARTED');
+    //    die('ORDER NOT STARTED');
 
     }
 
@@ -424,24 +424,20 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if ($upload_additional == true) {
+        echo 12312312312123;
+        foreach($order_attach as $oa)
+        {
+            echo "Attachment: " . $oa->attachment;
+            $sd = $subdocument->find()->where(['id'=>$oa->sub_id])->first();
+            if($sd){
+                echo "<br/>";
 
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
-        //GET ALL ATTACHMENTS?
+                echo "Sub Document: " . $sd->title;}
+            echo "<br/>";
+            echo "<br/>";
+        }
 
-
+/*
         if(isset($prescreening['attach_doc'])) {
 
         foreach ($prescreening['attach_doc'] as $d) {
@@ -562,9 +558,17 @@
                 }
             }
         }
+*/
 
-        die();
     }
+
+
+
+
+    die();
+
+
+
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

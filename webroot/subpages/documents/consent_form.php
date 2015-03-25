@@ -2,9 +2,8 @@
     if ($_SERVER['SERVER_NAME'] == 'localhost')
         echo "<span style ='color:red;'>subpages/documents/consent_form.php #INC139</span>";
     include_once 'subpages/filelist.php';
-    if (isset($sub2)) {
-        listfiles($sub2['con_at'], "attachments/", "", false, 3);
-    }
+    printdocumentinfo($did);
+    if (isset($sub2)) { listfiles($sub2['con_at'], "attachments/", "", false, 3);     }
 ?>
 <form id="form_consent">
     <div class="form-group row">
@@ -478,9 +477,9 @@
                 </div>-->
                 <input type="hidden" class="form-control" name="authorize_signature"/>
 
-                <label class="control-label col-md-2"> Name (Please Print): </label>
+                <label class="control-label col-md-3"> Name (Please Print): </label>
 
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <input type="text" class="form-control" name="authorize_name"/>
                 </div>
             </div>

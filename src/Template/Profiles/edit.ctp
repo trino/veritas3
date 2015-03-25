@@ -50,8 +50,11 @@
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="theme-panel hidden-xs hidden-sm">
     <?php if (strlen($is_disabled) == 0) {
+        if($_SERVER['SERVER_NAME'] =='localhost')
+        {
+
         echo '<div class="toggler"></div>';//doesn't work in view mode, so remove it and be done with it
-    } ?>
+    }} ?>
     <div class="toggler-close">
     </div>
 

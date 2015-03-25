@@ -210,12 +210,13 @@ var FormWizard = function () {
             var handleTitle = function(tab, navigation, index) {
                 
                 //return false;
+                
                 var total = navigation.find('li').length;
                 if(table)
                 index = table;
                 var current = index + 1;
                 //else
-
+                
 
                 // set wizard title
                 $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
@@ -456,6 +457,8 @@ var FormWizard = function () {
                                     'slow');
                                     return false;
                                 }
+                                else
+                                 handleTitle(tab, navigation, index);
                                 
                                 
                                 

@@ -120,22 +120,22 @@
         }
     }
 
-    function printform($counting, $settings, $client, $dr_cl, $driver, $intable = false){//pass the variables exactly as given, then specifiy if it's in a table or not
-    echo '<input type="hidden" name="document_type" value="add_driver"/>';
-    echo '<div class="form-group clientsel">';
-    $dodiv = false;
-    if ($intable) {
-        echo '<div class="row" style="margin-top: 15px;">';
-        $size = "large";
-    } else {
-        $size = "xlarge";
-    }
-    $size = "ignore";
+    function printform($counting, $settings, $client, $dr_cl, $driver, $intable = false)
+    {//pass the variables exactly as given, then specifiy if it's in a table or not
+        echo '<input type="hidden" name="document_type" value="add_driver"/>';
+        echo '<div class="form-group clientsel">';
+        $dodiv = false;
+        if ($intable) {
+            echo '<div class="row" style="margin-top: 15px;">';
+            $size = "large";
+        } else {
+            $size = "xlarge";
+        }
+        $size = "ignore";
 
-    echo '<div class="col-xs-3 control-label" align="right" style="margin-top: 6px;">' . ucfirst($settings->client) . '</div><div class="col-xs-6">';
+        echo '<div class="col-xs-3 control-label" align="right" style="margin-top: 6px;">Client</div><div class="col-xs-6">';
 
-
-    $dodiv = true;?>
+        $dodiv = true;?>
 
 <script type="text/javascript">
     function reload(value) {
@@ -148,26 +148,26 @@
 
 <?php
 
-    if ($counting > 1) { ?>
-        <select id="selecting_client" class="form-control input-<?= $size ?> select2me"
-        onoldchange="reload(-1);"
-        data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
-        if ($client) { ?><?php } ?>>
+        if ($counting > 1) { ?>
+            <select id="selecting_client" class="form-control input-<?= $size ?> select2me"
+            onoldchange="reload(-1);"
+            data-placeholder="Select <?php echo ucfirst($settings->client) . '" ';
+            if ($client) { ?><?php } ?>>
                         <option>None Selected</option><?php
-    } else { ?>
+        } else { ?>
 
                     <select id="selecting_client" class="form-control input-<?= $size; ?> select2me"
                             data-placeholder="Select <?php echo ucfirst($settings->client); ?>">
                         <?php
-    }
-    foreach ($dr_cl['client'] as $dr) {
-        $client_id = $dr->id;
+        }
+        foreach ($dr_cl['client'] as $dr) {
+            $client_id = $dr->id;
+            ?>
+            <option value="<?php echo $dr->id; ?>"
+                    <?php if ($dr->id == $client || $counting == 1){ ?>selected="selected"<?php } ?>><?php echo $dr->company_name; ?></option>
+        <?php
+        }
         ?>
-        <option value="<?php echo $dr->id; ?>"
-                <?php if ($dr->id == $client || $counting == 1){ ?>selected="selected"<?php } ?>><?php echo $dr->company_name; ?></option>
-    <?php
-    }
-?>
 </select>
 
 <input class="selecting_client" type="hidden"
@@ -175,8 +175,8 @@
 </div></div>
 
 <?php if ($intable) {
-    echo '</div>';
-} ?>
+        echo '</div>';
+    } ?>
 
 <div class="divisionsel form-group">
     <?php if ($counting == 1) $cl_count = 1; else {
@@ -185,68 +185,66 @@
 </div>
 
 <?php if ($intable) {
-    echo '<div class="row" style="margin-top: 15px;margin-bottom: 15px;">';
-} ?>
+        echo '<div class="row" style="margin-top: 15px;margin-bottom: 15px;">';
+    } ?>
 
 <div class="form-group ">
 
     <?php
         echo '<div class="col-xs-3 control-label"  align="right" style="margin-top: 6px;">Driver</div><div class="col-xs-6" >';
-    ?>
+        ?>
 
     <select class="form-control input-<?= $size ?> select2me"
-            <?php if (!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype'] != "QUA")){ ?>data-placeholder="Create New Driver"<?php }?>
-            id="selecting_driver" <?php if ($driver){ ?>disabled="disabled"<?php } ?>>
+            <?php if (!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype'] != "QUA")) { ?>data-placeholder="Create New Driver"<?php }?>
+            id="selecting_driver" <?php if ($driver) { ?>disabled="disabled"<?php } ?>>
         <?php if (!isset($_GET['ordertype']) || (isset($_GET['ordertype']) && $_GET['ordertype'] != "QUA")) { ?>
+    <option <? if ($driver == '0') {
+        echo 'selected';
+    } ?>>Select Driver
+        </option><?php } else {
+        ?>
         <option <? if ($driver == '0') {
             echo 'selected';
         } ?>>Select Driver
-            </option><?php } else {
+        </option>
+    <?php
+    }
+        ?>
+        <?php
+        $counting = 0;
+        $drcl_d = $dr_cl['driver'];
+        foreach ($drcl_d as $drcld) {
+
+            $counting++;
+        }
+
+        foreach ($dr_cl['driver'] as $dr) {
+
+            $driver_id = $dr->id;
             ?>
-            <option <? if ($driver == '0') {
-                echo 'selected';
-            } ?>>Select Driver
-            </option>
+            <option value="<?php echo $dr->id; ?>"
+                    <?php if ($dr->id == $driver || $counting == 1 && $driver != '0'){ ?>selected="selected"<?php } ?>><?php echo $dr->fname . ' ' . $dr->mname . ' ' . $dr->lname ?></option>
         <?php
         }
         ?>
-        <?php
-            $counting = 0;
-            $drcl_d = $dr_cl['driver'];
-            foreach ($drcl_d as $drcld) {
-
-                $counting++;
-            }
-
-            foreach ($dr_cl['driver'] as $dr) {
-
-                $driver_id = $dr->id;
-                ?>
-                <option value="<?php echo $dr->id; ?>"
-                        <?php if ($dr->id == $driver || $counting == 1 && $driver != '0'){ ?>selected="selected"<?php } ?>><?php echo $dr->fname . ' ' . $dr->mname . ' ' . $dr->lname ?></option>
-            <?php
-            }
-        ?>
     </select>
     
-    <input class="selecting_driver" type="hidden" value="<?php if ($driver) { echo $driver; }?>"/>
+    <input class="selecting_driver" type="hidden" value="<?php if ($driver) {
+        echo $driver;
+    }?>"/>
     </div>
     <?php
-        
-     if($settings->profile_create=='1') echo "<div class='col-xs-3' > or  <a href='http://localhost/veritas3/profiles/add' class='btn btn-primary'>Add Driver</a></div>";?>
+
+        if ($settings->profile_create == '1') echo "<div class='col-xs-3' > <a href='http://localhost/veritas3/profiles/add' class='btn btn-primary  '>Add Driver</a></div>";?>
 
     </div>
     <?php
         if ($intable) {
             echo "</div>";
         }
-        } ?>
+    } ?>
 
-
-
-
-
-<div class=" portlet-body" >
+<div class=" portlet-body">
 
     <div class="createDriver">
         <div class="portlet box form-horizontal">
@@ -534,7 +532,7 @@
         $('#cart_btn').click(function () {
             if (!check_div())
                 return false;
-            
+
             var div = $('#divisionsel').val();
             if (!isNaN(parseFloat(div)) && isFinite(div)) {
                 var division = div;
@@ -543,14 +541,14 @@
                 var division = '0';
             if ($('.selecting_client').val()) {
                 if ($('.selecting_driver').val() == '') {
-                alert('Please select driver');
-                $('#s2id_selecting_driver .select2-choice').attr('style', 'border:1px solid red;');
-                $('html,body').animate({scrollTop: $('#s2id_selecting_driver .select2-choice').offset().top}, 'slow');
-                return false;
-                }else{
+                    alert('Please select driver');
+                    $('#s2id_selecting_driver .select2-choice').attr('style', 'border:1px solid red;');
+                    $('html,body').animate({scrollTop: $('#s2id_selecting_driver .select2-choice').offset().top}, 'slow');
+                    return false;
+                } else {
                     var tempstr = '';
                     $('#cartlist input[type="checkbox"]').each(function () {
-    
+
                         if ($(this).is(':checked')) {
                             if (tempstr == '') {
                                 tempstr = $(this).val();
@@ -560,7 +558,7 @@
                         }
                     });
                     window.location = '<?php echo $this->request->webroot; ?>orders/addorder/' + $('.selecting_client').val() + '/?driver=' + $('.selecting_driver').val() + '&division=' + division + '&order_type=<?php echo urlencode($o_type);?>&forms=' + tempstr;
-                    }
+                }
             }
             else {
                 $('#s2id_selecting_client .select2-choice').attr('style', 'border:1px solid red;');
@@ -572,33 +570,33 @@
         $('#qua_btn').click(function () {
             if (!check_div())
                 return false;
-            
+
             var div = $('#divisionsel').val();
             if (!isNaN(parseFloat(div)) && isFinite(div)) {
                 var division = div;
             }
             else
                 var division = '0';
-                if ($('.selecting_client').val()) {
-                    if ($('.selecting_driver').val() == '') {
+            if ($('.selecting_client').val()) {
+                if ($('.selecting_driver').val() == '') {
                     alert('Please select driver.');
                     $('#s2id_selecting_driver .select2-choice').attr('style', 'border:1px solid red;');
                     $('html,body').animate({scrollTop: $('#s2id_selecting_driver .select2-choice').offset().top}, 'slow');
                     return false;
                 }
-                else{
-                var tempstr = '';
-                $('#qualist input[type="checkbox"]').each(function () {
+                else {
+                    var tempstr = '';
+                    $('#qualist input[type="checkbox"]').each(function () {
 
-                    if ($(this).is(':checked')) {
-                        if (tempstr == '') {
-                            tempstr = $(this).val();
+                        if ($(this).is(':checked')) {
+                            if (tempstr == '') {
+                                tempstr = $(this).val();
+                            }
+                            else
+                                tempstr = tempstr + ',' + $(this).val();
                         }
-                        else
-                            tempstr = tempstr + ',' + $(this).val();
-                    }
-                });
-                window.location = '<?php echo $this->request->webroot; ?>orders/addorder/' + $('.selecting_client').val() + '/?driver=' + $('.selecting_driver').val() + '&division=' + division + '&order_type=Requalification&forms=' + tempstr;
+                    });
+                    window.location = '<?php echo $this->request->webroot; ?>orders/addorder/' + $('.selecting_client').val() + '/?driver=' + $('.selecting_driver').val() + '&division=' + division + '&order_type=Requalification&forms=' + tempstr;
                 }
             }
             else {

@@ -13,6 +13,7 @@
             $controller = strtolower($controller);
 
             include_once 'subpages/filelist.php';
+            printdocumentinfo($did);
             if( isset($pre_at)){  listfiles($pre_at['attach_doc'], "attachments/", "", false,3); }
             echo "</div>";
             if($controller == 'orders' )

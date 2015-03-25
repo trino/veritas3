@@ -4,12 +4,16 @@ $is_disabled = '';
 if(isset($disabled)){$is_disabled = 'disabled="disabled"';}
 
 //this document type can't have attachments, reason unknown
-//include_once 'subpages/filelist.php';
-//listfiles($sub['de_at'], "attachments/", "", false,3);
 ?>
 <div class="portlet-body form">
 <!-- BEGIN FORM-->
 <form  id="form_tab8" method="post" action="<?php echo $this->request->webroot;?>documents/audits/<?php echo $cid;?>/<?php echo $did;?>" class="form-horizontal">
+
+    <?php
+    include_once 'subpages/filelist.php';
+    printdocumentinfo($did);
+    //listfiles($sub['de_at'], "attachments/", "", false,3);
+    ?>
 
 
 <input type="hidden" class="document_type" name="document_type" value="Audits"/>

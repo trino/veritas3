@@ -4,8 +4,13 @@
 <?php
 $is_disabled = '';//there is no place for attachments
 if(isset($disabled)) { $is_disabled = 'disabled="disabled"'; }
+
+echo '<form role="form" enctype="multipart/form-data" action="' . $this->request->webroot . 'documents/addattachment/' . $cid . '/' . $did . '" method="post" id="form_tab7">';
+
+include_once 'subpages/filelist.php';
+printdocumentinfo($did);
 ?>
-<form role="form" enctype="multipart/form-data" action="<?php echo $this->request->webroot;?>documents/addattachment/<?php echo $cid;?>/<?php echo $did;?>" method="post" id="form_tab7">
+
     <div class="row">
     <input type="hidden" class="document_type" name="document_type" value="Attachment"/>
     <input type="hidden" name="sub_doc_id" value="7" class="sub_docs_id" id="af" />

@@ -1,7 +1,6 @@
 <?php
  if($_SERVER['SERVER_NAME'] =='localhost')
         echo "<span style ='color:red;'>subpages/documents/driver_application.php #INC140</span>";
-include_once 'subpages/filelist.php';
  ?>
 <form id="form_tab2">
 <input type="hidden" class="document_type" name="document_type" value="Driver Application" id="af" />
@@ -10,7 +9,6 @@ include_once 'subpages/filelist.php';
 <hr />
 
 <?php
-    //include_once 'subpages/filelist.php';
     $controller = $this->request->params['controller'];
     $controller = strtolower($controller);
     if($controller == 'documents' )
@@ -36,8 +34,12 @@ include_once 'subpages/filelist.php';
                     else {
                         
                     }
+
+
+include_once 'subpages/filelist.php';
+printdocumentinfo($did);
 if( isset($sub)){ listfiles($sub['da_at'], "attachments/", "", false,3); }
-    ?>
+    ?><P>
     <div class="form-group row">
         <div class="col-md-12">
 <p>Welcome Prospective Drivers of Challenger. </p>

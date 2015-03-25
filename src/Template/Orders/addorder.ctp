@@ -103,7 +103,7 @@ function provinces($name){
         function displayform($DriverProvince, $Provinces, $forms, $name,$_this){
             if(isset($_GET['order_type']) && urldecode($_GET['order_type'])=='Order MEE'){ return true;}//uncomment
             $name=trim(strtolower($name));
-            if ($name == "consent form") { return true; } //mandatory in all sections now
+            //if ($name == "consent form") { return true; } //mandatory in all sections now
 
             foreach($forms as $form){
                 $data = FindIterator($Provinces, "ID", $form);

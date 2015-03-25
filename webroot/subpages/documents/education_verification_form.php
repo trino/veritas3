@@ -12,6 +12,7 @@
     <?php
 
     include_once 'subpages/filelist.php';
+    printdocumentinfo($did);
     if (isset($sub4['att'])) { listfiles($sub4['att'], "attachments/", "", false,3);}
 
 

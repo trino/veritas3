@@ -1,17 +1,14 @@
 <?php
  if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/survey.php #INC127</span>";}
- ?>
-<?php
-if(isset($disabled))
-{
-$is_disabled = 'disabled="disabled"';
-}
-else
-{
+
 $is_disabled = '';
-}
+if(isset($disabled)){$is_disabled = 'disabled="disabled"';}
+
+echo '<form role="form" action="" method="post" id="form_tab5">';
+include_once 'subpages/filelist.php';
+printdocumentinfo($did);
 ?>
-<form role="form" action="" method="post" id="form_tab5">
+
 <h4 class="col-md-12">Understanding Your Businesses Security Risks and Focus</h4>
 			
     

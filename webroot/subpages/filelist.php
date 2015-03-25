@@ -37,7 +37,7 @@ function PrintProfile($Description, $Profile, $webroot){
         echo ucfirst($Profile->fname) . ' ' . ucfirst($Profile->lname) . ' (' . ucfirst($Profile->fname) . ')';
         echo '</A></TD></TR>';
     } else {
-        echo '<TD colspan="2">Deleted Profile</TD></TR>';
+        echo '<TD colspan="2">Deleted or Missing Data</TD></TR>';
     }
 }
 
@@ -67,7 +67,7 @@ function printdocumentinfo($ID, $isOrder = false, $linktoOrder = false){
         if (is_object($data->client)) {
             echo '<TD align="center">' . $data->client->id . '</TD><TD>' . ucfirst($data->client->company_name);
         } else {
-            echo '<TD colspan="2">Deleted Client';
+            echo '<TD colspan="2">Deleted or Missing Data';
         }
         echo '</TD></TR></table>';
         return $data;

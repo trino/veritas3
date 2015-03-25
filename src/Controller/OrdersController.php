@@ -703,9 +703,8 @@
             $this->set('order_info', $order_info);
 
             $order_attach = $all_attachments->find()->where(['order_id'=>$orderid]);
-            $this->set('order_attach', $order_attach);
 
-            /*
+$attachments1
             foreach($order_attach as $oa)
             {
                 echo "Attachment: " . $oa->attachment;
@@ -717,8 +716,9 @@
                 echo "<br/>";
                 echo "<br/>";
             }
-            */
-            die();
+            $this->set('order_attach', $order_attach);
+
+
 
         }
         public function createPdfBg()

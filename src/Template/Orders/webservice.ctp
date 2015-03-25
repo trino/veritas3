@@ -37,7 +37,7 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $startorder1 = false;
+    $startorder1 = true;
     $upload_additional = true; //additional are all attachments in all forms
     $upload_additional_id = true;
     $uploadbinaryconsent_1603 = true;
@@ -146,7 +146,7 @@
     }else
     {
 
-        die('ORDER NOT STARTED');
+    //    die('ORDER NOT STARTED');
 
     }
 
@@ -424,6 +424,7 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if ($upload_additional == true) {
+        echo 12312312312123;
         foreach($order_attach as $oa)
         {
             echo "Attachment: " . $oa->attachment;

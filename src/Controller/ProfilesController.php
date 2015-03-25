@@ -113,6 +113,27 @@
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary' => '1'])));
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary' => '2'])));
+
+            $this->set('provinces', TableRegistry::get('doc_provinces')->find('all'));
+        }
+
+        public function province(){
+            $table = TableRegistry::get("doc_provinces");
+            $DocID = $_POST['DocID'];
+            $Province = $_POST['Province'];
+            $Value = strtolower($_POST['Value']);
+            if ($Value == "true") { $Value =1;} else { $Value =0;}
+
+            $quiz =  $table->find()->where(['ID'=>$DocID])->first();
+            if ($quiz) {//item exists, update it
+                $table->query()->update()->set([$Province =>$Value])->where(['ID' => $DocID])->execute();
+            } else {//item doesn't exist, insert it
+                $table->query()->insert(['ID', $Province])->values(['ID' => $DocID, $Province =>$Value])->execute();
+            }
+
+            echo "Success! " . $DocID . "." . $Province . " = " . $Value;
+
+            die();
         }
 
         public function index()

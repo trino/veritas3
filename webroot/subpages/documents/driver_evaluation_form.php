@@ -1,6 +1,7 @@
 <?php
  if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/driver_evaluation_form.php #INC141</span>"; }
 include_once 'subpages/filelist.php';
+printdocumentinfo($did);
 if( isset($sub['de_at'])){  listfiles($sub['de_at'], "attachments/", "", false,3); }
  ?>
 <form id="form_tab3">

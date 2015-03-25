@@ -4,7 +4,7 @@
 <!-- END PAGE LEVEL STYLES -->
 
 <?php
-    include 'subpages/filelist.php';
+    include_once 'subpages/filelist.php';
     $delete = isset($disabled);
     $is_disabled = '';
     if (isset($disabled)) {$is_disabled = 'disabled="disabled"'; }

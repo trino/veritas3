@@ -337,12 +337,74 @@
             $this->set('logos', $this->paginate($this->Logos->find()->where(['secondary' => '0'])));
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary' => '1'])));
             $profile = $this->Profiles->get($id, ['contain' => []]);
+            
             $this->set('doc_comp', $this->Document);
             $orders = TableRegistry::get('orders');
             $order = $orders
                 ->find()
                 ->where(['orders.uploaded_for' => $id, 'orders.draft' => 0])->order('orders.id DESC')->contain(['Profiles', 'Clients', 'RoadTest']);
-
+            if($profile->profile_type==5)
+            {
+                $ord = $order;
+                foreach($ord as $o)
+                {
+                    if($o->ins_1 || $o->ins_14 || $o->ins_77 || $o->ins_78 || $o->ins_78 || $o->ebs_1627 || $o->ebs_1650)
+                    {
+                        $complete = 1;
+                        if($o->ins_1)
+                        {
+                            if(!$o->ins_1_binary)
+                            {
+                               $complete = 0; 
+                            }
+                        }
+                        if($o->ins_14)
+                        {
+                            if(!$o->ins_14_binary)
+                            {
+                               $complete = 0; 
+                            }
+                        }
+                        if($o->ins_77)
+                        {
+                            if(!$o->ins_77_binary)
+                            {
+                               $complete = 0; 
+                            }
+                        }
+                        if($o->ins_78)
+                        {
+                            if(!$o->ins_78_binary)
+                            {
+                               $complete = 0; 
+                            }
+                        }
+                        if($o->ebs_1627)
+                        {
+                            if(!$o->ebs_1627_binary)
+                            {
+                               $complete = 0; 
+                            }
+                        }
+                        if($o->ebs_1650)
+                        {
+                            if(!$o->ebs_1650_binary)
+                            {
+                               $complete = 0; 
+                            }
+                        }
+                        if($complete == 1 && $o->complete == 0)
+                        {
+                            $or = TableRegistry::get('orders');
+                            $quer = $or->query();
+                            $quer->update()
+                            ->set(['complete'=>1])
+                            ->where(['id' => $o->id])
+                            ->execute();
+                        }
+                    }
+                }
+            }
             $this->set('orders', $order);
             $this->set('profile', $profile);
             $this->set('disabled', 1);

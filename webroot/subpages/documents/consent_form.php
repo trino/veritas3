@@ -478,9 +478,9 @@
                 </div>-->
                 <input type="hidden" class="form-control" name="authorize_signature"/>
 
-                <label class="control-label col-md-2"> Name (Please Print): </label>
+                <label class="control-label col-md-3"> Name (Please Print): </label>
 
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <input type="text" class="form-control" name="authorize_name"/>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <?php
-    if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/confiramtion.php #INC138</span>"; }
+    if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/confirmation.php #INC138</span>"; }
     $forms = '';
     if (isset($_GET['forms'])) { $forms = $_GET['forms']; }
 
@@ -118,7 +118,7 @@
                     $title = $this->requestAction('/orders/getProductTitle/'.$pp);
                     if (is_object($title)){ $lineclass = PrintLine($lineclass, $title->title, "prem_nat", $pp);}
                 }
-            }   
+            }
             /*$lineclass = PrintLine($lineclass, "Premium National Criminal Record Check", "prem_nat", $p[0]);
             $lineclass = PrintLine($lineclass, "Driver's Record Abstract (MVR)", "dri_abs", $p[1]);
             $lineclass = PrintLine($lineclass, "CVOR", "CVOR", $p[2]);

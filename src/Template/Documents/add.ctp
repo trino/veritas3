@@ -470,7 +470,7 @@ if (isset($this->request->params['pass'][1])) {
                         }
                          ?>
                     </div>
-                                     <?php foreach($doc as $dx)
+                    <?php foreach($doc as $dx)
                     {
                         if($dx->id>10){
                         ?>

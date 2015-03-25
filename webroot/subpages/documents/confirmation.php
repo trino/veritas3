@@ -1,18 +1,35 @@
 <?php
-    if($_SERVER['SERVER_NAME'] =='localhost'){ echo "<span style ='color:red;'>subpages/documents/confirmation.php #INC138</span>"; }
+    if ($_SERVER['SERVER_NAME'] == 'localhost') {
+        echo "<span style ='color:red;'>subpages/documents/confirmation.php #INC138</span>";
+    }
     $forms = '';
-    if (isset($_GET['forms'])) { $forms = $_GET['forms']; }
+    if (isset($_GET['forms'])) {
+        $forms = $_GET['forms'];
+    }
 
     $allattachments = array();// new AppendIterator;
-    if (isset($pre_at['attach_doc'])) { $allattachments = merge($allattachments, $pre_at['attach_doc']); }
-    if (isset($sub['da_at'])) { $allattachments = merge($allattachments, $sub['da_at']); }
-    if (isset($sub['de_at'])) {$allattachments = merge($allattachments, $sub['de_at']); }
-    if (isset($sub2['con_at'])) {$allattachments = merge($allattachments, $sub2['con_at']); }
-    if (isset($sub3['att'])) {$allattachments = merge($allattachments, $sub3['att']); }
-    if (isset($sub4['att'])) {$allattachments = merge($allattachments, $sub4['att']); }
+    if (isset($pre_at['attach_doc'])) {
+        $allattachments = merge($allattachments, $pre_at['attach_doc']);
+    }
+    if (isset($sub['da_at'])) {
+        $allattachments = merge($allattachments, $sub['da_at']);
+    }
+    if (isset($sub['de_at'])) {
+        $allattachments = merge($allattachments, $sub['de_at']);
+    }
+    if (isset($sub2['con_at'])) {
+        $allattachments = merge($allattachments, $sub2['con_at']);
+    }
+    if (isset($sub3['att'])) {
+        $allattachments = merge($allattachments, $sub3['att']);
+    }
+    if (isset($sub4['att'])) {
+        $allattachments = merge($allattachments, $sub4['att']);
+    }
 
-    function merge($dest, $src){
-        foreach($src as $item){
+    function merge($dest, $src)
+    {
+        foreach ($src as $item) {
             $dest[] = $item;
         }
         return $dest;
@@ -37,6 +54,7 @@
 ?>
 <div class="note note-success">
     <h3 class="block col-md-12">MEE Order Confirmation</h3>
+
     <div class="clearfix"></div>
 </div>
 
@@ -83,7 +101,6 @@
 
 
             if ($lineclass == "") {
-                // echo '<ul class="pricing-red-content list-unstyled" >';
             } else {
                 echo '<table class="table" style="margin-bottom: 0px;"><tbody>';
             }
@@ -113,38 +130,15 @@
                 }
                 return $lineclass;
             }
-            if($p)
-            {
-                foreach($p as $pp)
-                {
-                    $title = $this->requestAction('/orders/getProductTitle/'.$pp);
-                    if (is_object($title)){ $lineclass = PrintLine($lineclass, $title->title, "prem_nat", $pp);}
+
+            if ($p) {
+                foreach ($p as $pp) {
+                    $title = $this->requestAction('/orders/getProductTitle/' . $pp);
+                    if (is_object($title)) {
+                        $lineclass = PrintLine($lineclass, $title->title, "prem_nat", $pp);
+                    }
                 }
             }
-            /*$lineclass = PrintLine($lineclass, "Premium National Criminal Record Check", "prem_nat", $p[0]);
-            $lineclass = PrintLine($lineclass, "Driver's Record Abstract (MVR)", "dri_abs", $p[1]);
-            $lineclass = PrintLine($lineclass, "CVOR", "CVOR", $p[2]);
-            $lineclass = PrintLine($lineclass, "Pre-employment Screening Program Report", "prem_nat", $p[3]);
-            $lineclass = PrintLine($lineclass, "Transclick", "prem_nat", $p[4]);
-            $lineclass = PrintLine($lineclass, "Certifications", "prem_nat", $p[5]);
-            $lineclass = PrintLine($lineclass, "Letter of Experience", "prem_nat", $p[6]);*/
-
-
-            /*if (isset($_GET['order_type'])){
-             //  echo $_GET['order_type'];
-               if($_GET['order_type']!="Order MEE") {
-                   if (count($p) > 7) {
-                       $lineclass = PrintLine($lineclass, "Check DL", "check_dl", $p[7]);
-                   }
-               }
-                else
-                {
-                    //echo 123123123;
-                }
-            }*/
-
-
-
             if ($lineclass == "") {
                 // echo '</ul>';
             } else {
@@ -156,22 +150,16 @@
     </div>
 </div>
 
-
 <div class="row col-md-6">
-
-
-
     <div class="form-group">
 
         <label class="control-label col-md-12">Please sign here to confirm your submission :</label>
         <input type="hidden" name="recruiter_signature" id="recruiter_signature"
                value="<?php if (isset($modal->recruiter_signature) && $modal->recruiter_signature) echo $modal->recruiter_signature; ?>"/>
 
-
         <?php
             include('canvas/confirmation_signature.php');
         ?>
-
 
     </div>
 </div>
@@ -184,7 +172,8 @@
 <div class="attachments_all" style="display: none;">
     <?php //THIS SHOULD BE USING FILELIST.PHP!!!!!
 
-        function listattachments($name, $array){
+        function listattachments($name, $array)
+        {
             echo '<div class="' . $name . '">';
             $c1 = 0;
             foreach ($array as $pat) {
@@ -198,12 +187,24 @@
             echo '</div>';
         }
 
-        if (isset($pre_at['attach_doc'])) { listattachments("pre", $pre_at['attach_doc']);}
-        if (isset($sub['da_at'])) {         listattachments("da", $sub['da_at'] ); }
-        if (isset($sub['de_at'])) {         listattachments("de", $sub['de_at'] ); }
-        if (isset($sub2['con_at'])) {       listattachments("con", $sub2['con_at'] ); }
-        if (isset($sub3['att'])) {          listattachments("emp", $sub3['att'] ); }
-        if (isset($sub4['att'])) {          listattachments("edu", $sub4['att'] ); }
+        if (isset($pre_at['attach_doc'])) {
+            listattachments("pre", $pre_at['attach_doc']);
+        }
+        if (isset($sub['da_at'])) {
+            listattachments("da", $sub['da_at']);
+        }
+        if (isset($sub['de_at'])) {
+            listattachments("de", $sub['de_at']);
+        }
+        if (isset($sub2['con_at'])) {
+            listattachments("con", $sub2['con_at']);
+        }
+        if (isset($sub3['att'])) {
+            listattachments("emp", $sub3['att']);
+        }
+        if (isset($sub4['att'])) {
+            listattachments("edu", $sub4['att']);
+        }
     ?>
 </div>
 

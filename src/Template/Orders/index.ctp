@@ -220,10 +220,10 @@ $sidebar = $this->requestAction("settings/get_side/" . $this->Session->read('Pro
                                                 <span class="label label-sm label-success"
                                                       style="float:right;padding:4px;">order completed</span>
                                             <?php } else { ?>
-                                                <span class="label label-sm label-warning" style="float:right;padding:4px;">order pending</span>
+                                                <span class="label label-sm label-primary" style="float:right;padding:4px;">order pending</span>
                                             <?php }
                                         }else{?>
-                                            <span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>
+                                            <span class="label label-sm label-primary" style="float:right;padding:4px;">draft</span>
 
                                         <?php } ?>
 

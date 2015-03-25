@@ -324,11 +324,11 @@ Delete</a>
 <span class="label label-sm label-success"
 style="float:right;padding:4px;">completed</span>
 <?php } else { ?>
-<span class="label label-sm label-warning"
+<span class="label label-sm label-primary"
 style="float:right;padding:4px;">pending</span>
 <?php }
 } else { ?>
-<span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>
+<span class="label label-sm label-primary" style="float:right;padding:4px;">draft</span>
 <?php } ?>
 </td>
 <td><?php  if($order->draft == 1) echo '<span class="label label-sm label-warning" style="float:right;padding:4px;">draft</span>';else echo '<span class="label label-sm label-success" style="float:right;padding:4px;">saved</span>';?></td>

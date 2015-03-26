@@ -414,10 +414,9 @@
                 $document = $docs->find()->where(['id' => $did])->first();
                 $this->set('mod', $document);
                 
-                $att = TableRegistry::get('doc_attachments');
+                $att = TableRegistry::get('attach_docs');
                 $query = $att->find();
-                $attachments = $query->select()->where(['document_id'=>$did])->all();
-               
+                $attachments = $query->select()->where(['doc_id'=>$did])->all();
                 $this->set('attachments',$attachments);
             }
             $doc = $this->Document->getDocumentcount();
@@ -715,7 +714,7 @@
              $sub = 'Client created';
             $msg = 'A client has been created<br />
             By a user with following details :<br/>
-            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.$_POST['created'].'<br/>With client details<br /> Client Name: ' . $_POST['company_name'].'<br/><br /> Regards,<br />the ISB MEE team';
+            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Dated on : '.$_POST['created'].'<br/>With client details<br /> Client Name: ' . $_POST['company_name'].'<br/><br /> Regards,<br />The ISB Team';
              $this->Mailer->sendEmail($from, $to, $sub, $msg);
         }
 
@@ -952,8 +951,8 @@
                         {
                             $model = $this->loadModel('DocAttachments');
                             $model->deleteAll(['document_id'=> $doc->id]);
-                            
-                            $client_docs = $_POST['attach_doc'];
+                            var_dump($_POST['attach_doc'])
+                            $client_docs = explode(',',$_POST['attach_doc']);
                             foreach($client_docs as $d)
                             {
                                 if($d != "")
@@ -1002,19 +1001,17 @@
                     $ds['title'] = $_POST['title'];
                     $docz = $doczs->newEntity($ds);
                     $doczs->save($docz);
-                    //var_dump($_POST); die();
                     if(isset($_POST['attach_doc']))
                     {
-                        
                         $model = $this->loadModel('DocAttachments');
                         $model->deleteAll(['document_id'=> $did]);
-                        $client_docs = $_POST['attach_doc'];
+                        $client_docs = explode(',',$_POST['attach_doc']);
                         foreach($client_docs as $d)
                         {
                             if($d != "")
                             {
                                 $attach = TableRegistry::get('doc_attachments');
-                                $ds['document_id']= $did;
+                                $ds['document_id']= $doc->id;
                                 $ds['attachment'] =$d;
                                 $ds['sub_id'] = $arr['sub_doc_id'];
                                  $att = $attach->newEntity($ds);
@@ -1056,7 +1053,7 @@
                     $check = $doczs->find()->where(['order_id'=>$did]);
                     unset($doczs);
                     if (!$check) {
-                            $client_docs = $_POST['attach_doc'];
+                            $client_docs = array_unique($_POST['client_doc']);
                                 foreach ($client_docs as $d) {
                                     $doczs = TableRegistry::get('attachments');
                                     if ($d != "") {
@@ -1516,15 +1513,8 @@
 
         }
 
-        function attach_doc($did="")
+        function attach_doc()
         {
-            if($did)
-            {
-                $att = TableRegistry::get('doc_attachments');
-                $query = $att->find();
-                $attachments = $query->select()->where(['document_id'=>$did])->all();
-                $this->set('attachments',$attachments);
-            }
             $this->layout ='blank';
         }
 

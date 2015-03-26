@@ -85,7 +85,7 @@ function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method
         echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
         $count = 0;
         foreach ($client_docs as $k => $cd) {
-            //debug($cd);
+           
             $count += 1;
             if (isset($cd->attachment)) {
                 $file = $cd->attachment;
@@ -93,7 +93,7 @@ function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method
             if (isset($cd->file)) {
                 $file = $cd->file;
             }
-
+                
             if ($file) {//id, client_id
                 if ($count==1){ echo '<TR><TH colspan="5">Attachments</TH></TR>'; }
                 $path = "/" . $dir . $file;
@@ -169,21 +169,27 @@ function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method
                         ?>
                         <div class="col-md-4" align="center">
                             <?php
-                            $e = explode(".", $cd->file);
+                            if (isset($cd->attachment)) {
+                                $file = $cd->attachment;
+                            }//id, order_id, document_id, sub_id, attach_doc (null)
+                            if (isset($cd->file)) {
+                                $file = $cd->file;
+                            }
+                            $e = explode(".", $file);
                             $ext = end($e);
                             if (in_array($ext, $allowed)) {
                                 ?>
-                                <img src="<?php echo $webroot . $dir . $cd->file; ?>" style="max-width: 200px;max-height: 200px;" title="<?php echo $cd->file;?>"/>
+                                <img src="<?php echo $webroot . $dir . $file; ?>" style="max-width: 200px;max-height: 200px;" title="<?php echo $cd->file;?>"/>
 
                             <?php
                             } else
-                                echo "<a href='" .$webroot . $dir . $cd->file."' target='_blank' class='uploaded'>".$cd->file."</a>";
-                                ?><BR><?php echo $cd->file;?><BR>
-                            <a href="<?php echo $webroot . $dir . $cd->file ?>" download="<?= $cd->file ?>" class="btn btn-info">Download</a>
+                                echo "<a href='" .$webroot . $dir . $file."' target='_blank' class='uploaded'>".$file."</a>";
+                                ?><BR><?php echo $file;?><BR>
+                            <a href="<?php echo $webroot . $dir . $file ?>" download="<?= $file ?>" class="btn btn-info">Download</a>
 							<span <?php if(($delete))echo "style='display:none;'";?>>
-								<a href="javascript:void(0);" title="<?php echo $cd->file;?>&<?php echo $cd->id;?>" class="btn btn-danger img_delete">Delete</a>
+								<a href="javascript:void(0);" title="<?php echo $file?>&<?php echo $cd->id;?>" class="btn btn-danger img_delete">Delete</a>
                             </span>
-                            <input type="hidden" name="<?php echo $field_name;?>[]" value="<?php echo $cd->file;?>" class="moredocs"/>
+                            <input type="hidden" name="<?php echo $field_name;?>[]" value="<?php echo $file;?>" class="moredocs"/>
                         </div>
                     <?php
                     endforeach;

@@ -2,16 +2,26 @@
     if ($_SERVER['SERVER_NAME'] == 'localhost') { echo "<span style ='color:red;'>products.php #INC124</span>";}
     $provincelist = array("AB" => "Alberta", "BC" => "British Columbia", "MB" => "Manitoba", "NB" => "New Brunswick", "NFL" => "Newfoundland and Labrador", "NWT" => "Northwest Territories", "NS" => "Nova Scotia", "NUN" => "Nunavut", "ONT" => "Ontario", "PEI" => "Prince Edward Island", "QC" => "Quebec", "SK" => "Saskatchewan", "YT" => "Yukon Territories");
 
+    function ucfirst2($Text){
+        $Words = explode(" ", $Text);
+        $Words2=array();//php forces me to make a copy
+        foreach($Words as $Word){
+            $Words2[] = ucfirst($Word);
+        }
+        return implode(" ", $Words2);
+    }
+
     //just pass $provincelist and $provinces into them
     function PrintProvinces($DocID, $provincelist, $provinces="", $subdocuments = ""){
         if ($DocID==-1) {
             foreach($provincelist as $acronym => $fullname){
-                echo '<th style="border:none;" class="rotate"><div><span>' . $fullname . '</span></div></th>';
+                //echo '<th style="border:none;" class="rotate"><div><span>' . $fullname . '</span></div></th>';
+                echo "<TH>" . substr($acronym,0,2) . "</TH>";
             }
+            echo '<TH style="border:none;"> </TH>';
             foreach($subdocuments as $doctype){
-                echo '<th style="border:none;" class="rotate"><div><span>' . $doctype->title . '</span></div></th>';
+                echo '<th style="border:none;" class="rotate"><div><span>' . ucfirst2($doctype->title) . '</span></div></th>';
             }
-            //echo "<TH>Provinces</TH><TH>Documents</TH>";
             return;
         }
 
@@ -26,12 +36,12 @@
                 echo "<TD><INPUT TITLE='" . $fullname . "' TYPE='CHECKBOX' NAME='" . $name . "' ID='" . $name . "' VALUE='1'". $checked . ' ONCLICK="' .  "saveprovince(" . $DocID . ", '" . $acronym . "');" . '"></TD>';
             }
         }
-        
+        echo "<TD bgcolor='black'></TD>";
         foreach($subdocuments as $doctype){
             $checked = "";
             $name = $DocID . "." . $doctype->id;
             if (isset($data->subdocuments[$doctype->id])) { $checked = " checked"; }
-            echo "<TD><INPUT ID='" . $name . "' NAME='" . $name . "' TYPE='CHECKBOX' TITLE='" . $doctype->title . "'" . $checked . " ONCLICK='savedocument(" . $DocID . ", " . $doctype->id  .");'></TD>";
+            echo "<TD><INPUT ID='" . $name . "' NAME='" . $name . "' TYPE='CHECKBOX' TITLE='" . ucfirst2($doctype->title) . "'" . $checked . " ONCLICK='savedocument(" . $DocID . ", " . $doctype->id  .");'></TD>";
         }
 
     }
@@ -72,8 +82,10 @@ th.rotate > div > span {
         </div>
     </div>
     <div class="portlet-body">
+        <div class="col-md-6">
+            <div class="form-group forget_error" style="display: none;">test</div>
+        </div>
         <div style="float: right; margin-bottom: 5px;" class="col-md-6">
-
             <a href="javascript:;" class="btn btn-primary ap" style="float: right;"
                onclick="$(this).hide();$('.addproduct').show();">Add Product</a>
 
@@ -84,39 +96,42 @@ th.rotate > div > span {
         </div>
         <div class="table-scrollable">
 
-            <table
-                class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
+            <table class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer" ID="myTable">
                 <thead>
                 <tr>
-                    <!--th>Id</th-->
+                    <!--th>Id</th style="border:none;" class="rotate"-->
                     <th>Title</th>
-                    <th>Enable</th>
+                    <th><div><span>Enable</span></div></th>
 
                     <?php PrintProvinces(-1, $provincelist, $provinces, $subdocuments); ?>
 
-                    <th>Actions</th>
+                    <th style="border:none;" class="rotate"><div><span>Actions</span></div></th>
 
                 </tr>
                 </thead>
                 <tbody class="allp">
                 <?php
+                    $row=1;
                     foreach ($products as $product) {
                         ?>
                         <tr>
                             <!--td><?php echo $product->id;?></td-->
+
                             <td class="title_<?php echo $product->id;?>"><?php echo $product->title;?> [<?php echo $product->number;?>]</td>
-                            <td><input type="checkbox" <?php if ($product->enable == '1') {
+                              <td><input type="checkbox" <?php if ($product->enable == '1') {
                                     echo "checked='checked'";
                                 }?> class="enable" id="chk_<?php echo $product->id;?>"/></td>
                                 <?php
                                     PrintProvinces($product->id, $provincelist, $provinces, $subdocuments);
-                                    echo "<td>";
+                                    echo '<td style="white-space: nowrap;">';
                                     if ($product->id >= 9) { ?>
                                         <a href="javascript:;" class="btn btn-xs btn-info editpro" id="edit_<?php echo $product->id;?>">Edit</a>
+                                        <a class="btn btn-xs btn-danger" id="delete_<?php echo $product->id;?>" onclick="deleteproduct(<?= $row . ", " . $product->id . ", '" . $product->title ?>');">Delete</a>
                                     <?php } ?>
                             </td>
                         </tr>
                     <?php
+                        $row+=1;
                     }
                 ?>
                 </tbody>
@@ -127,6 +142,12 @@ th.rotate > div > span {
 </div>
 
 <script>
+    function Toast(Text){
+        $('.forget_error').text(Text);
+        $('.forget_error').show();
+        $('.forget_error').fadeOut(2000);
+    }
+
     function saveprovince(DocID, Province){
         element = document.getElementById(DocID + "." + Province);
         //alert("Document " + DocID + " Province " + Province + " Checked: " + element.checked);
@@ -136,7 +157,7 @@ th.rotate > div > span {
             dataType: "HTML",
             data: "Type=Province&DocID=" + DocID + "&Province=" + Province + "&Value=" + element.checked,
             success: function (msg) {
-                //alert(msg);
+                Toast(msg);
             }
         })
     }
@@ -150,9 +171,24 @@ th.rotate > div > span {
             dataType: "HTML",
             data: "Type=Document&DocID=" + DocID + "&SubDoc=" + SubDoc + "&Value=" + element.checked,
             success: function (msg) {
-                //alert(msg);
+                Toast(msg);
             }
         })
+    }
+
+    function deleteproduct(Row, DocID, Name){
+        if (confirm("Are you sure you want to delete '" + Name + "'?")) {
+            $.ajax({
+                url: "<?php echo $this->request->webroot;?>profiles/province",
+                type: "post",
+                dataType: "HTML",
+                data: "Type=Delete&DocID=" + DocID,
+                success: function (msg) {
+                    document.getElementById("myTable").deleteRow(Row);
+                    Toast("'" + Name + "' was deleted");
+                }
+            })
+        }
     }
 </script>
 <script>

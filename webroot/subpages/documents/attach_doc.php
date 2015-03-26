@@ -3,10 +3,11 @@
     if ($_SERVER['SERVER_NAME'] == 'localhost'){ echo "<span style ='color:red;'>subpages/documents/attach_doc.php #INC132</span>"; }
 
     $delete = isset($disabled);
-        //if (isset($attachments)) {
-        //    include 'subpages/filelist.php';
-        //    listfiles($attachments, "attachments/", 'attach_doc', $delete);
-        //}
+    //var_dump($attachments);
+        if (isset($attachments)) {
+            include 'subpages/filelist.php';
+           listfiles($attachments, "attachments/", 'attach_doc', $delete);
+        }
         if (!isset($disabled)) {
 
             $upload_max_size = ini_get('upload_max_filesize');

@@ -74,8 +74,9 @@ printdocumentinfo($did);
    <?php } */?>
     </div>
 
- </form>
+
  <div class="addattachment7 form-group col-md-12"></div>
+  </form>
  <div class="clearfix"></div>
 <script>
 $(function()

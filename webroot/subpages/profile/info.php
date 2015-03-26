@@ -856,6 +856,7 @@
                 data: 'username=' + $('.uname').val(),
                 type: 'post',
                 success: function (res) {
+                    res = res.trim();
                     if (res == '1') {
                         //alert(res);
                         $('.flashUser').show();
@@ -877,6 +878,7 @@
                                 data: 'email=' + $('.email').val(),
                                 type: 'post',
                                 success: function (res) {
+                                    res = res.trim();
                                     if (res == '1') {
                                         $('.email').focus();
                                         $('.flashEmail').show();

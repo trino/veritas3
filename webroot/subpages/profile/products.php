@@ -194,7 +194,7 @@ th.rotate > div > span {
 <script>
     $(function () {
         $('.editpro').live('click', function () {
-
+            $(this).attr('disabled','disabled');
             var id = $(this).attr('id').replace("edit_", "");
             var va = $('.title_' + id).text();
             $('.title_' + id).html('<input type="text" value="' + va + '" class="form-control" id="tit_' + id + '" /><a class="btn btn-primary saveproducts" id ="' + id + '" >save</a> ');
@@ -215,6 +215,7 @@ th.rotate > div > span {
                         $('.addproduct').hide();
                         $('.ap').show();
                         $('#tit_0').val("");
+                        $('.edit_'+id).removeAttr('disabled');
 
                     }
                 }

@@ -218,10 +218,10 @@ class DocumentComponent extends Component
                               //$path = 'https://isbmeereports.com/documents/view/'.$cid;
                             $from = array('info@'.$path => "ISB MEE");
                             $to = $p;
-                             $sub = 'Document submitted';
-                            $msg = 'A document has been created in '.$path.'<br />
-                            By a user with following details :<br/>
-                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Date : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br/> For user with email address :'.$p.'<br /> Regards,<br />The ISB Team';
+                             $sub = 'Document Submitted';
+                            $msg = 'A new document has been created in '.$path.'<br /><br />
+
+                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Date : '.date('Y-m-d H:i:s').'<br/>Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br /><br />Regards,<br />the ISB MEE team';
                              $controller->Mailer->sendEmail($from, $to, $sub, $msg);
                                 }
                             }}else {}
@@ -249,10 +249,10 @@ class DocumentComponent extends Component
                               $ut = '';
                             $from = array('info@'.$path => "ISB MEE");
                             $to = $em;
-                             $sub = 'Document submitted';
-                            $msg = 'A document has been created in '.$path.'<br />
-                            By a user with following details :<br/>
-                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Date : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br/> <br /> Regards,<br />The ISB Team';
+                             $sub = 'Document Submitted';
+                            $msg = 'A new document has been created in '.$path.'<br /><br />
+
+                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Date : '.date('Y-m-d H:i:s').'<br/>Client Name: ' . $client_name.'<br/> Document type : '.$arr['document_type'].'<br/> <br /> Regards,<br />the ISB MEE team';
                              $controller->Mailer->sendEmail($from, $to, $sub, $msg);
                              }
                         if(isset($_POST['attach_doc']))

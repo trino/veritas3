@@ -141,10 +141,10 @@ class DocumentComponent extends Component
                                               //$path = 'https://isbmeereports.com/documents/view/'.$cid;
                                             $from = array('info@'.$path => "ISB MEE");
                                             $to = $p;
-                                             $sub = 'Order submitted';
-                                            $msg = 'A Order has been created in '.$path.'<br />
-                                            By a user with following details :<br/>
-                                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Date : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> For user with email address :'.$p.'<br /> Regards,<br />The ISB Team';
+                                             $sub = 'Order Submitted';
+                                            $msg = 'A new order has been created in '.$path.'<br />
+                                            <br/>
+                                            By: '.$uq->username.' (Profile Type : '.$ut.')<br/> Date : '.date('Y-m-d H:i:s').'<br/><br /> Client Name: ' . $client_name.'<br/> For:'.$p.'<br /><br /> Regards,<br />the ISB MEE Team';
                                              $controller->Mailer->sendEmail($from, $to, $sub, $msg);
                                             
                                         }

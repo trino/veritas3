@@ -399,7 +399,7 @@
             $order = $orders
                 ->find()
                 ->where(['orders.uploaded_for' => $id, 'orders.draft' => 0])->order('orders.id DESC')->contain(['Profiles', 'Clients', 'RoadTest']);
-            if($profile->profile_type==5)
+            if($profile->profile_type==5 || $profile->profile_type==7 || $profile->profile_type==8)
             {
                 $ord = $order;
                 foreach($ord as $o)

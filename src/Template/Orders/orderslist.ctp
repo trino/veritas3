@@ -177,7 +177,7 @@
                                 <th><?= $this->Paginator->sort('created', 'Created'); ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                                 <!--th><?= $this->Paginator->sort('bright_planet_html_binary', 'Status'); ?></th-->
-                                <th><?= $this->Paginator->sort('draft', 'Status'); ?></th>
+                                <th><?= $this->Paginator->sort('complete', 'Status'); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -363,18 +363,15 @@ echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addor
                                         <td valign="middle">
                                             <?php
                                             //   var_dump($order);
-                                                if ($order->draft == 0) { ?>
-                                                <?php if (isset($order->bright_planet_html_binary)) { ?>
-                                                    <span class="label label-sm label-success"
-                                                          style="float:right;padding:4px;">completed</span>
-                                                <?php } else { ?>
+                                                if ($order->complete == 0) { ?>
+                                                
                                                     <span class="label label-sm label-primary"
                                                           style="float:right;padding:4px;">pending</span>
-                                                <?php }
+                                                <?php 
 
                                             } else { ?>
-                                                <span class="label label-sm label-warning"
-                                                      style="float:right;padding:4px;">draft</span>
+                                                <span class="label label-sm label-success"
+                                                      style="float:right;padding:4px;">complete</span>
                                             <?php } ?>
                                         </td>
 

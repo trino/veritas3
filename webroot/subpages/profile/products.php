@@ -104,7 +104,7 @@ th.rotate > div > span {
                         ?>
                         <tr>
                             <!--td><?php echo $product->id;?></td-->
-                            <td class="title_<?php echo $product->id;?>"><?php echo $product->title;?></td>
+                            <td class="title_<?php echo $product->id;?>"><?php echo $product->title;?> [<?php echo $product->number;?>]</td>
                             <td><input type="checkbox" <?php if ($product->enable == '1') {
                                     echo "checked='checked'";
                                 }?> class="enable" id="chk_<?php echo $product->id;?>"/></td>

@@ -856,6 +856,7 @@
                 data: 'username=' + $('.uname').val(),
                 type: 'post',
                 success: function (res) {
+                    res = res.trim();
                     if (res == '1') {
                         //alert(res);
                         $('.flashUser').show();
@@ -877,6 +878,7 @@
                                 data: 'email=' + $('.email').val(),
                                 type: 'post',
                                 success: function (res) {
+                                    res = res.trim();
                                     if (res == '1') {
                                         $('.email').focus();
                                         $('.flashEmail').show();
@@ -971,6 +973,7 @@
                 data: strs,
                 type: 'post',
                 success: function (res) {
+                    res = res.replace(' ','');
                     if (res != 0) {
                         $('#savepro').text("Save Changes");
                         $('.flash').show();

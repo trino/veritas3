@@ -108,13 +108,13 @@ if ($activetab == "permissions") {
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox"
                                                                           name="side[profile_edit]"
-                                                                          value="1" <?php if ($sidebar->profile_edit == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->profile_edit == 1) echo "checked"; ?> />
                                         Edit
                                     </label>
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox"
                                                                           name="side[profile_delete]"
-                                                                          value="1" <?php if ($sidebar->profile_delete == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->profile_delete == 1) echo "checked"; ?> />
                                         Delete
                                     </label>
                                     <label class="uniform-inline">
@@ -203,13 +203,13 @@ if ($activetab == "permissions") {
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox"
                                                                           name="side[client_edit]"
-                                                                          value="1" <?php if ($sidebar->client_edit == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->client_edit == 1) echo "checked"; ?> />
                                         Edit
                                     </label>
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox"
                                                                           name="side[client_delete]"
-                                                                          value="1" <?php if ($sidebar->client_delete == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->client_delete == 1) echo "checked"; ?> />
                                         Delete
                                     </label>
 
@@ -225,25 +225,22 @@ if ($activetab == "permissions") {
                                     <tr>
                                         <?php
                                         $cnt = 0;
+                                        if (isset($client_types)){
                                         $ct = explode(",", $profile->ctypes);
-                                        foreach ($client_types as $product)
-                                        {
-                                        ++$cnt;
-                                        ?>
-                                        <td width="33%" class="titlectype_<?php echo $product->id;?>">
-                                           <input name="ctypes[]"
-                                                                                 type="checkbox" <?php if (in_array($product->id, $ct)) {
-                                                echo "checked='checked'";
-                                            }?> class="cenable" id="cchk_b<?php echo $product->id;?>"
-                                                                                 value="<?php echo $product->id;?>"/><label for="cchk_b<?php echo $product->id;?>"><?php echo $product->title;?></label>
-                                        </td>
-
-                                        <?php if ($cnt % 4 == 0)
-                                        {
-                                        ?>
-                                    </tr>
-                                    <tr>
-                                        <?php
+                                            foreach ($client_types as $product) {
+                                                ++$cnt;
+                                                ?>
+                                                <td width="33%" class="titlectype_<?php echo $product->id;?>">
+                                                <input name="ctypes[]"
+                                                   type="checkbox" <?php if (in_array($product->id, $ct)) {
+                                                        echo "checked='checked'";
+                                                    }?> class="cenable" id="cchk_b<?php echo $product->id;?>"
+                                                   value="<?php echo $product->id;?>"/><label
+                                                for="cchk_b<?php echo $product->id;?>"><?php echo $product->title;?></label>
+                                                </td>
+                                            <?php if ($cnt % 4 == 0){
+                                                echo "</tr><tr>";
+                                            }
                                         }
                                         }
                                         ?>
@@ -291,23 +288,23 @@ if ($activetab == "permissions") {
                                     </label>
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_edit]"
-                                                                          value="1" <?php if ($sidebar->orders_edit == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->orders_edit == 1) echo "checked"; ?> />
                                         Edit
                                     </label>
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_delete]"
-                                                                          value="1" <?php if ($sidebar->orders_delete == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->orders_delete == 1) echo "checked"; ?> />
                                         Delete
                                     </label>
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox" name="side[orders_others]"
-                                                                          value="1" <?php if ($sidebar->orders_others == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->orders_others == 1) echo "checked"; ?> />
                                         View Other's
                                     </label>
                                    
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox" name="side[email_orders]"
-                                                                          value="1" <?php if ($sidebar->email_orders == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->email_orders == 1) echo "checked"; ?> />
                                         Recieve Email
                                     </label>
                                     <!--label class="uniform-inline">
@@ -766,19 +763,19 @@ if ($activetab == "permissions") {
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox"
                                                                           name="side[document_edit]"
-                                                                          value="1" <?php if ($sidebar->document_edit == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document_edit == 1) echo "checked"; ?> />
                                         Edit
                                     </label>
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox"
                                                                           name="side[document_delete]"
-                                                                          value="1" <?php if ($sidebar->document_delete == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document_delete == 1) echo "checked"; ?> />
                                         Delete
                                     </label>
                                     <label class="uniform-inline">
                                         <input <?php echo $is_disabled ?> type="checkbox"
                                                                           name="side[document_others]"
-                                                                          value="1" <?php if ($sidebar->document_others == 1) echo "checked"; ?> />
+                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document_others == 1) echo "checked"; ?> />
                                         View Other's
                                     </label>
                                     <label class="uniform-inline">
@@ -789,7 +786,7 @@ if ($activetab == "permissions") {
                                     <!--label class="uniform-inline">
                                                                 <input <?php echo $is_disabled ?> type="checkbox"
                                                                                           name="side[document_requalify]"
-                                                                                          value="1" <?php if ($sidebar->document_requalify == 1) echo "checked"; ?> /> Re-qualify
+                                                                                          value="1" <?php if (isset($sidebar) && $sidebar->document_requalify == 1) echo "checked"; ?> /> Re-qualify
                                                             </label-->
 
 

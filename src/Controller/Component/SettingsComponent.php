@@ -378,7 +378,7 @@ class SettingsComponent extends Component
        {
         $query = TableRegistry::get('Clients');
         $q = $query->find();
-        $u = $uid;
+        $u = trim($uid);
         $q =$q->select()->where(['profile_id LIKE "'.$u.',%" OR profile_id LIKE "%,'.$u.',%" OR profile_id LIKE "%,'.$u.'" OR profile_id LIKE "'.$u.'" '])->count();
     
         return $q;

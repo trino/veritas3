@@ -1481,15 +1481,11 @@ if (isset($this->request->params['pass'][1])) {
             $('#form_tab' + h + ' textarea').attr('disabled', 'disabled');
             $('#form_tab' + h + ' select').attr('disabled', 'disabled');
             $('#form_tab' + h + ' button').hide();
-            $('#form_tab' + h + ' a').hide();
+            $('#form_tab' + h + ' a').not('.dl').hide();
             $('.nav a').show();
             $('#form_tab' + h + ' input[type="submit"]').hide();
             $('.form-actions').hide();
         }
-        $('.dl').each(function(){
-            $(this).show();
-        });
-
         <?php
     }
     if(isset($did) && $did)
@@ -1766,6 +1762,7 @@ if (isset($this->request->params['pass'][1])) {
             //alert("ssss");
             $('#doc').append('<div style="padding-top:10px;"><a href="#" class="btn btn-success">Browse</a> <a href="javascript:void(0);" class="btn btn-danger" onclick="$(this).parent().remove();">Delete</a><br/></div>');
         });
+        $('.nohide').show();
     });
 
     function savePrescreen(url, order_id, cid,draft) {

@@ -33,7 +33,7 @@ function PrintProfile($Description, $Profile, $webroot){
     echo '<TR><Th>' . $Description . '</Th>';
     if (is_object($Profile)) {
         echo '<TD width="1%" align="center">' . $Profile->id . '</TD><TD>';
-        echo '<A class="dl" HREF="' . $webroot . 'profiles/view/' . $Profile->id . '">';
+        echo '<A class="nohide" HREF="' . $webroot . 'profiles/view/' . $Profile->id . '">';
         echo ucfirst($Profile->fname) . ' ' . ucfirst($Profile->lname) . ' (' . ucfirst($Profile->fname) . ')';
         echo '</A></TD></TR>';
     } else {
@@ -52,7 +52,7 @@ function printdocumentinfo($ID, $isOrder = false, $linktoOrder = false){
                 echo '<a style="float:right;" href="' . $webroot . 'orders/vieworder/' . $data->client_id . '/' . $data->id ;
                 echo '?order_type=' . $data->order_type;
                 if ($data->forms) { echo '?forms=' . $data->forms; }
-                echo '" class="dl btn btn-xs btn-primary">View Order</a>';
+                echo '" class="nohide btn btn-xs btn-primary">View Order</a>';
             }
         } else {
             echo 'Document Information (ID: ' . $ID . ')';
@@ -138,7 +138,7 @@ function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method
                         echo 'paperclip';
                 }
                 echo "' title='" . $type . "'></i></TD>";
-                echo "<TD><A class='dl' HREF='" . $webroot . $dir . $file . "'>" . $filename . "</A></TD>";
+                echo "<TD><A class='nohide' HREF='" . $webroot . $dir . $file . "'>" . $filename . "</A></TD>";
                 echo "<TD>" . date('Y-m-d H:i:s', filemtime(getcwd() . $path)) . "</TD>";
                 switch (TRUE) {
                     case isset($cd->client_id):

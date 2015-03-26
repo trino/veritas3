@@ -1607,7 +1607,7 @@ function provinces($name){
 
 
         });
-
+        $('.nohide').show();
     });
     function saveSignature() {
         if ($(".tabber.active").prev('.tabber').find("input[name='document_type']").val() == 'Consent Form') {
@@ -1676,7 +1676,7 @@ function provinces($name){
                     showforms('document_tab_3.php');
                 }
                 else {
-                    alert('Email Already Exist.');
+                    alert('Email Already Exists.');
                     $('#driverEm').focus();
                     $('#driverEm').attr('style', 'border-color:red');
                     $('.button-previous').click();

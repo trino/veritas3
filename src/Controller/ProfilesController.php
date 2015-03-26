@@ -137,26 +137,36 @@
         }
 
         public function province(){
-            if (strtolower($_POST['Value']) == "true") { $Value = 1; } else { $Value = 0;}
+            if (isset($_POST['Value'])) { if (strtolower($_POST['Value']) == "true") { $Value = 1; } else { $Value = 0;}}
             $DocID = $_POST['DocID'];
 
-            if ($_POST["Type"] == "Province") {
-                $table = TableRegistry::get("doc_provinces");
-                $Province = $_POST['Province'];
-                $quiz = $table->find()->where(['ID' => $DocID])->first();
-                if ($quiz) {//item exists, update it
-                    $table->query()->update()->set([$Province => $Value])->where(['ID' => $DocID])->execute();
-                } else {//item doesn't exist, insert it
-                    $table->query()->insert(['ID', $Province])->values(['ID' => $DocID, $Province => $Value])->execute();
-                }
-                echo "Success! " . $DocID . "." . $Province . " = " . $Value;
-            } else  if ($_POST["Type"] == "Document") {
-                $table = TableRegistry::get("doc_provincedocs");
-                if ($Value ==1) {
-                    $table->query()->insert(['ID', "DocID"])->values(['ID' => $DocID, "DocID" => $_POST["SubDoc"]])->execute();
-                }else{
-                    $table->deleteAll(array('ID'=>$DocID, 'DocID'=>$_POST["SubDoc"]), false);
-                }
+            switch ($_POST["Type"]) {
+                case "Province":
+                    $table = TableRegistry::get("doc_provinces");
+                    $Province = $_POST['Province'];
+                    $quiz = $table->find()->where(['ID' => $DocID])->first();
+                    if ($quiz) {//item exists, update it
+                        $table->query()->update()->set([$Province => $Value])->where(['ID' => $DocID])->execute();
+                    } else {//item doesn't exist, insert it
+                        $table->query()->insert(['ID', $Province])->values(['ID' => $DocID, $Province => $Value])->execute();
+                    }
+                    echo "Success! " . $DocID . "." . $Province . " was set to " . $Value;
+                    break;
+
+                case "Document":
+                    $table = TableRegistry::get("doc_provincedocs");
+                    if ($Value == 1) {
+                        $table->query()->insert(['ID', "DocID"])->values(['ID' => $DocID, "DocID" => $_POST["SubDoc"]])->execute();
+                        echo $_POST["SubDoc"] . " was enabled for " . $DocID;
+                    } else {
+                        $table->deleteAll(array('ID' => $DocID, 'DocID' => $_POST["SubDoc"]), false);
+                        echo $_POST["SubDoc"] . " was disabled for" . $DocID;
+                    }
+                    break;
+
+                case "Delete":
+                    echo "Deleted document type: '" . $DocID . "'";
+                    break;
             }
             die();
         }

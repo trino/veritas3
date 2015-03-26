@@ -49,12 +49,9 @@
 </style>
 
 <?php
-if (isset($disabled))
-    $is_disabled = 'disabled="disabled"';
-else
     $is_disabled = '';
-if (isset($profile))
-    $p = $profile;
+    if (isset($disabled)) {$is_disabled = 'disabled="disabled"';}
+    if (isset($profile)) {$p = $profile;}
 ?>
 <?php $settings = $this->requestAction('settings/get_settings'); ?>
 

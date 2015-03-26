@@ -274,6 +274,8 @@
                 $sub4['att'] = $edu_att->find()->where(['order_id' => $did, 'sub_id' => 42])->all();
                 $this->set('sub4', $sub4);
             }
+
+            $this->set('provinces',  $this->LoadSubDocs());
         }
 
         public function savedoc($cid = 0, $did = 0)
@@ -616,72 +618,7 @@
             $subdocument = TableRegistry::get('subdocuments');
 
             $this->layout = "blank";
-            echo '<br><br>'.$orderid . '<br><br>';
-
-
-            if (false) {
-
-                $pre = TableRegistry::get('doc_attachments');
-                $pre_at['attach_doc'] = $pre->find()->where(['order_id' => $orderid, 'sub_id' => 1])->all();
-                $this->set('prescreening', $pre_at);                 //////////////////////////////////////////////////////////// presceening
-
-                $da = TableRegistry::get('driver_application');
-                $da_detail = $da->find()->where(['order_id' => $orderid])->first();
-
-                if ($da_detail) {
-                    $da_ac = TableRegistry::get('driver_application_accident');
-                    $sub['da_ac_detail'] = $da_ac->find()->where(['driver_application_id' => $da_detail->id])->all();
-
-                    $da_li = TableRegistry::get('driver_application_licenses');
-                    $sub['da_li_detail'] = $da_li->find()->where(['driver_application_id' => $da_detail->id])->all();
-
-                    $da_at = TableRegistry::get('doc_attachments');
-                    $sub['da_at'] = $da_at->find()->where(['order_id' => $orderid, 'sub_id' => 2])->all();
-
-                    $de_at = TableRegistry::get('doc_attachments');
-                    $sub5['de_at'] = $de_at->find()->where(['order_id' => $orderid, 'sub_id' => 3])->all();
-
-                    $this->set('driverapplication', $sub);                 //////////////////////////////////////////////////////////// driver application
-                    $this->set('roadtest', $sub5);                 //////////////////////////////////////////////////////////// driver application
-                }
-
-                $con = TableRegistry::get('consent_form');
-                $con_detail = $con->find()->where(['order_id' => $orderid])->first();
-                if ($con_detail) {
-
-                    $con_cri = TableRegistry::get('consent_form_criminal');
-                    $sub2['con_cri'] = $con_cri->find()->where(['consent_form_id' => $con_detail->id])->all();
-
-                    $con_at = TableRegistry::get('doc_attachments');
-                    $sub2['con_at'] = $con_at->find()->where(['order_id' => $orderid, 'sub_id' => 4])->all();
-                    $this->set('consent', $sub2);
-                }
-
-                if (isset($forms)) {
-                $formsarray = explode(',', $forms);
-                $this->set('formsarray', $formsarray);
-                }
-                else
-                {
-                    $this->set('fullorder', '1');
-                }
-
-                $emp = TableRegistry::get('employment_verification');
-                $sub3['emp'] = $emp->find()->where(['order_id' => $orderid])->all();
-
-                $emp_att = TableRegistry::get('doc_attachments');
-                $sub3['att'] = $emp_att->find()->where(['order_id' => $orderid, 'sub_id' => 41])->all();
-
-                $this->set('employee', $sub3); //////////////////////////////////////////////////////////// employment veritfication
-
-                $edu = TableRegistry::get('education_verification');
-                $sub4['edu'] = $edu->find()->where(['order_id' => $orderid])->all();
-
-                $edu_att = TableRegistry::get('doc_attachments');
-                $sub4['att'] = $edu_att->find()->where(['order_id' => $orderid, 'sub_id' => 42])->all();
-                $this->set('education', $sub4);                 //////////////////////////////////////////////////////////// education attach docs
-
-            }
+            echo '<br><br>order id '.$orderid . '<br><br>';
 
             $model = TableRegistry::get('profiles');
             $driverinfo = $model->find()->where(['id' => $driverid])->first();
@@ -698,7 +635,6 @@
             }
             $this->set('ordertype', $ordertype1);
 
-
             $orders = TableRegistry::get('orders');
             $order_info = $orders->find()->where(['id' => $orderid])->first();
             $this->set('order_info', $order_info);
@@ -709,6 +645,7 @@
             {
                 echo "Attachment: " . $oa->attachment;
                 $sd = $subdocument->find()->where(['id'=>$oa->sub_id])->first();
+
                 if($sd){
                     echo "<br/>";
 
@@ -716,11 +653,9 @@
                 echo "<br/>";
                 echo "<br/>";
             }
+
             $this->set('order_attach', $order_attach);
             $this->set('subdocument', TableRegistry::get('subdocuments'));
-
-
-
 
         }
         public function createPdfBg()
@@ -1148,10 +1083,11 @@
            $province = $doc->driver_province;
            $arr = array('BC','MB','NU','NT','QC','SK','YT');
            //$arr = array('BC','SK','MB');
-           if(in_array($province,$arr))
-           echo '1';
-           else
-           echo '0';
+           if(in_array($province,$arr)) {
+               echo '1';
+           } else {
+               echo '0';
+           }
            die();
           
         }
@@ -1162,10 +1098,11 @@
            $province = $doc->driver_province;
            //$arr = array('BC','MB','NU','NT','QC','SK','YT');
            $arr = array('BC','SK','MB');
-           if(in_array($province,$arr))
-           echo '1';
-           else
-           echo '0';
+           if(in_array($province,$arr)) {
+               echo '1';
+           } else {
+               echo '0';
+           }
            die();
           
         }
@@ -1184,5 +1121,22 @@
             if($client_docs) {return true;}
             return false;
         }
+        public function LoadSubDocs(){
+            $provinces =  TableRegistry::get('doc_provinces')->find('all');//gets me ID#s and which provinces are enabled
+            //$provincelist = array("AB","BC","MB","NB","NFL","NWT","NS","NUN","ONT","PEI","QC","SK","YT");
+            $subdocuments = TableRegistry::get('subdocuments')->find('all');//subdocument type list (id, title, display, form, table_name, orders, color_id)
+            $table2 = TableRegistry::get('doc_provincedocs');//subdocument type and province (if found, it is enabled)
 
+            $provinces2 = array();//needs to make a copy...
+            foreach($provinces as $province){
+                $province->subdocuments = array();
+                foreach($subdocuments as $document){
+                    $quiz = $table2->find()->where(['ID' => $province->ID, "DocID" => $document->id])->first();
+                    if ($quiz) { $province->subdocuments[$document->id] = strtolower(trim($document->title)); }
+                }
+                $provinces2[] = $province;
+            }
+            $this->set('subdocuments',  $subdocuments);
+            return $provinces2;
+        }
     }

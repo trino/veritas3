@@ -114,25 +114,50 @@
             $this->set('logos1', $this->paginate($this->Logos->find()->where(['secondary' => '1'])));
             $this->set('logos2', $this->paginate($this->Logos->find()->where(['secondary' => '2'])));
 
-            $this->set('provinces', TableRegistry::get('doc_provinces')->find('all'));
+            $this->set('provinces',  $this->LoadSubDocs());
+        }
+
+        public function LoadSubDocs(){
+            $provinces =  TableRegistry::get('doc_provinces')->find('all');//gets me ID#s and which provinces are enabled
+            //$provincelist = array("AB","BC","MB","NB","NFL","NWT","NS","NUN","ONT","PEI","QC","SK","YT");
+            $subdocuments = TableRegistry::get('subdocuments')->find('all');//subdocument type list (id, title, display, form, table_name, orders, color_id)
+            $table2 = TableRegistry::get('doc_provincedocs');//subdocument type and province (if found, it is enabled)
+
+            $provinces2 = array();//needs to make a copy...
+            foreach($provinces as $province){
+                $province->subdocuments = array();
+                foreach($subdocuments as $document){
+                    $quiz = $table2->find()->where(['ID' => $province->ID, "DocID" => $document->id])->first();
+                    if ($quiz) { $province->subdocuments[$document->id] = $document->title; }
+                }
+                $provinces2[] = $province;
+            }
+            $this->set('subdocuments',  $subdocuments);
+            return $provinces2;
         }
 
         public function province(){
-            $table = TableRegistry::get("doc_provinces");
+            if (strtolower($_POST['Value']) == "true") { $Value = 1; } else { $Value = 0;}
             $DocID = $_POST['DocID'];
-            $Province = $_POST['Province'];
-            $Value = strtolower($_POST['Value']);
-            if ($Value == "true") { $Value =1;} else { $Value =0;}
 
-            $quiz =  $table->find()->where(['ID'=>$DocID])->first();
-            if ($quiz) {//item exists, update it
-                $table->query()->update()->set([$Province =>$Value])->where(['ID' => $DocID])->execute();
-            } else {//item doesn't exist, insert it
-                $table->query()->insert(['ID', $Province])->values(['ID' => $DocID, $Province =>$Value])->execute();
+            if ($_POST["Type"] == "Province") {
+                $table = TableRegistry::get("doc_provinces");
+                $Province = $_POST['Province'];
+                $quiz = $table->find()->where(['ID' => $DocID])->first();
+                if ($quiz) {//item exists, update it
+                    $table->query()->update()->set([$Province => $Value])->where(['ID' => $DocID])->execute();
+                } else {//item doesn't exist, insert it
+                    $table->query()->insert(['ID', $Province])->values(['ID' => $DocID, $Province => $Value])->execute();
+                }
+                echo "Success! " . $DocID . "." . $Province . " = " . $Value;
+            } else  if ($_POST["Type"] == "Document") {
+                $table = TableRegistry::get("doc_provincedocs");
+                if ($Value ==1) {
+                    $table->query()->insert(['ID', "DocID"])->values(['ID' => $DocID, "DocID" => $_POST["SubDoc"]])->execute();
+                }else{
+                    $table->deleteAll(array('ID'=>$DocID, 'DocID'=>$_POST["SubDoc"]), false);
+                }
             }
-
-            echo "Success! " . $DocID . "." . $Province . " = " . $Value;
-
             die();
         }
 

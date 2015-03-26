@@ -57,12 +57,12 @@
     </div>
  </div>
  <h2>Tell me about the work you have been doing?</h2>
-  <div class="form-group col-md-12">
+  <!--div class="form-group col-md-12">
     <label class="control-label col-md-6"></label>
     <div class="col-md-6">
     <input type="text" class="form-control" name="no9" />
     </div>
- </div>
+ </div-->
   <div class="form-group col-md-12">
     <label class="control-label col-md-6">Miles</label>
     <div class="col-md-6">

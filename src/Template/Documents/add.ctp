@@ -4,10 +4,15 @@ $param = $this->request->params['action'];
 $doc_ext = array('pdf','doc','docx','txt','csv','xls','xlsx');
 $img_ext = array('jpg','jpeg','png','bmp','gif');
 if (isset($disabled))
+{
     $is_disabled = 'disabled="disabled"';
+    $view = "view";
+}
 else
+{
     $is_disabled = '';
-
+    $view ="";
+}
 function provinces($name){
     echo '<SELECT class="form-control" name="' . $name . '">';
     echo '<OPTION>Province</OPTION>';
@@ -672,28 +677,28 @@ if (isset($this->request->params['pass'][1])) {
         if (s_arr[1] == 5) {
             $('#form_tab5').prepend('<input class="document_type" type="hidden" name="document_type" value="Survey" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="5"  />');
-            $('.addattachment5').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did;?>', function(){
+            $('.addattachment5').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did."/".$view;?>', function(){
                 initiate_ajax_upload1('addMore1', 'doc');
              });
         }
         if (s_arr[1] == 6) {
             $('#form_tab6').prepend('<input class="document_type" type="hidden" name="document_type" value="Feedbacks" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="6"  />');
-            $('.addattachment6').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did;?>', function(){
+            $('.addattachment6').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did."/".$view;?>', function(){
                 initiate_ajax_upload1('addMore1', 'doc');
              });
         }
         if (s_arr[1] == 7) {
             $('#form_tab7').prepend('<input class="document_type" type="hidden" name="document_type" value="Attachment" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="7"  />');
-            $('.addattachment7').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did;?>', function(){
+            $('.addattachment7').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did."/".$view;?>', function(){
                 initiate_ajax_upload1('addMore1', 'doc');
              });
         }
         if (s_arr[1] == 8) {
             $('#form_tab8').prepend('<input class="document_type" type="hidden" name="document_type" value="Audits" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="8"  />');
-             $('.addattachment8').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did;?>', function(){
+             $('.addattachment8').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did."/".$view;?>', function(){
                 initiate_ajax_upload1('addMore1', 'doc');
              });
              
@@ -712,6 +717,9 @@ if (isset($this->request->params['pass'][1])) {
         if (s_arr[1] == 11) {
             $('#form_tab11').prepend('<input class="document_type" type="hidden" name="document_type" value="Basic Pre-Screen Questions" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="11"  />');
+            $('.addattachment11').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did."/".$view;?>', function(){
+                initiate_ajax_upload1('addMore1', 'doc');
+             });
              
         }
         

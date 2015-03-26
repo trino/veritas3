@@ -114,11 +114,17 @@
                 else
                     $cond = $cond . ' AND client_id = ' . $_GET['client_id'];
             }
-            if (isset($_GET['type']) && $_GET['type']) {
+            /*if (isset($_GET['type']) && $_GET['type']) {
                 if ($cond == '')
                     $cond = $cond . ' document_type = "' . $_GET['type'] . '"';
                 else
                     $cond = $cond . ' AND document_type = "' . $_GET['type'] . '"';
+            }*/
+            if (isset($_GET['type']) && $_GET['type']) {
+                if ($cond == '')
+                    $cond = $cond . ' sub_doc_id = "' . $_GET['type'] . '"';
+                else
+                    $cond = $cond . ' AND sub_doc_id = "' . $_GET['type'] . '"';
             }
 
             if (isset($_GET['from']) && isset($_GET['to'])) {
@@ -244,7 +250,16 @@
                     else
                     $audits = $attachments->find()->where(['order_id' => $_GET['order_id']])->first();                                        
                     $this->set('audits', $audits);
-                }                
+                }
+                elseif ($query->sub_doc_id == '11') {
+                    $attachments = TableRegistry::get('generic_forms');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
+                    $audits = $attachments->find()->where(['document_id' => $did])->first();
+                    else
+                    $audits = $attachments->find()->where(['order_id' => $_GET['order_id']])->first();                                        
+                    $this->set('generic', $audits);
+                }                   
 
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
@@ -585,7 +600,16 @@
                     else
                     $audits = $attachments->find()->where(['order_id' => $_GET['order_id']])->first();                                        
                     $this->set('audits', $audits);
-                }                
+                }
+                 elseif ($query->sub_doc_id == '11') {
+                    $attachments = TableRegistry::get('generic_forms');
+                    //$pre_at = TableRegistry::get('driver_application_accident');
+                    if(!isset($_GET['order_id']))                    
+                    $audits = $attachments->find()->where(['document_id' => $did])->first();
+                    else
+                    $audits = $attachments->find()->where(['order_id' => $_GET['order_id']])->first();                                        
+                    $this->set('generic', $audits);
+                }                     
 
                 $pre = TableRegistry::get('doc_attachments');
                 //$pre_at = TableRegistry::get('driver_application_accident');
@@ -1374,19 +1398,20 @@
                         $doczs->save($docz);
                         if(isset($_POST['attach_doc']))
                         {
-                            $did = $doc->id;
-                            $model = $this->loadModel('AttachDocs');
-                            $model->deleteAll(['doc_id'=> $did]);
-                            $client_docs = explode(',',$_POST['attach_doc']);
+                            
+                            $model = $this->loadModel('DocAttachments');
+                            $model->deleteAll(['document_id'=> $did]);
+                            $client_docs = $_POST['attach_doc'];
                             foreach($client_docs as $d)
                             {
                                 if($d != "")
                                 {
-                                    $attach = TableRegistry::get('attach_docs');
-                                    $ds['doc_id']= $did;
-                                    $ds['file'] =$d;
-                                     $att = $attach->newEntity($ds);
-                                     $attach->save($att);
+                                    $attach = TableRegistry::get('doc_attachments');
+                                    $ds['document_id']= $did;
+                                    $ds['attachment'] =$d;
+                                    $ds['sub_id'] = $arr['sub_doc_id'];
+                                    $att = $attach->newEntity($ds);
+                                    $attach->save($att);
                                     unset($att);
                                 }
                             }
@@ -1413,14 +1438,13 @@
                     $for_doc = array('document_type'=>'Audit','sub_doc_id'=>8,'order_id'=>$arr['order_id'],'user_id'=>'','uploaded_for'=>$uploaded_for);
                     $this->Document->saveDocForOrder($for_doc);
                     
-                    $doczs = TableRegistry::get('audits');
+                    $doczs = TableRegistry::get('generic_forms');
                     $check = $doczs->find()->where(['order_id'=>$did])->first();
                     unset($doczs);
                     if (!$check) {
                         $ds['order_id'] = $did;
                         $ds['document_id'] = 0;
-                        $ds['date'] = $_POST['year']."-".$_POST['month'];
-                        $doczs = TableRegistry::get('audits');
+                        $doczs = TableRegistry::get('generic_forms');
                         foreach($_POST as $k=>$v)
                         {
                             $ds[$k]=$v;
@@ -1431,11 +1455,11 @@
                         }
                         else
                         {
-                            $this->loadModel('Audits');
-                          $this->Audits->deleteAll(['order_id' => $did]);
-                            $doczs = TableRegistry::get('audits');
+                            $this->loadModel('GenericForms');
+                            $this->Audits->deleteAll(['order_id' => $did]);
+                            $doczs = TableRegistry::get('generic_forms');
                             $ds['order_id'] = $did;
-                            $ds['date'] = $_POST['year']."-".$_POST['month'];
+                            
                             foreach($_POST as $k=>$v)
                             {
                                 $ds[$k]=$v;
@@ -1516,8 +1540,10 @@
 
         }
 
-        function attach_doc($did="")
+        function attach_doc($did="",$view="")
         {
+            if($view=='view')
+                $this->set('disabled','1');
             if($did)
             {
                 $att = TableRegistry::get('doc_attachments');

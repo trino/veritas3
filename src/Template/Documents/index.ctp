@@ -77,18 +77,18 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                                     foreach ($type as $t) {
                                         ?>
                                         <option
-                                            value="<?php echo $t->title; ?>" <?php if (isset($return_type) && $return_type == $t->title) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($t->title); ?></option>
+                                            value="<?php echo $t->id; ?>" <?php if (isset($return_type) && $return_type == $t->id) { ?> selected="selected"<?php } ?> ><?php echo ucfirst($t->title); ?></option>
                                     <?php
                                     }
                                 ?>
-                                <option
+                                <!--<option
                                     value="orders" <?php if (isset($return_type) && $return_type == 'orders') { ?> selected="selected"<?php } ?>>
                                     Orders
                                 </option>
                                 <option
                                     value="feedbacks" <?php if (isset($return_type) && $return_type == 'feedbacks') { ?> selected="selected"<?php } ?>>
                                     Feedback
-                                </option>
+                                </option>-->
                             </select>
 
 

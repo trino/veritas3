@@ -1838,6 +1838,21 @@
             return $randomString;
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         function cleardb(){
             if ($this->request->session()->read('Profile.super') == 1) {
 
@@ -1861,7 +1876,6 @@
                 $this->DeleteDir(getcwd() . "/orders", "", "", "", true);//deletes the pdfs and their sub-directories
                 $this->DeleteDir(getcwd() . "/pdfs");//deletes the pdfs
 
-                
                 //die();
                 $this->layout = "blank";
             }
@@ -1879,6 +1893,10 @@
                         foreach($table as $client){
                             unlink(getcwd() . "/img/jobs/" . $client->image); //delete image
                         }
+                        break;
+                    case "settings":
+                        echo "<BR> Cannot delete settings";
+                        return false;
                         break;
                 }
                 $conn = ConnectionManager::get('default');
@@ -1943,49 +1961,62 @@
         }
 
         function DeleteDir($path, $like = "", $notlike = "", $fieldname = "", $recursive = false){
-            $files = scandir($path);
-            echo "<BR>Deleting Directory: " . $path;
-            foreach($files as $file){ // iterate files
-                $doit=true;
-                if($file != "." && $file != "..") {
-                    if($fieldname){//blocks the delete of any file that can be found in profiles.$fieldname
-                        if ($this->loadprofile($file, $fieldname)) { $doit=false;}
-                    }
-                    if ($like) {//only allows the delete of any file containing $like
-                        if (is_array($like)) {
-                            $doit=false;
-                            foreach($like as $pattern){
-                                if ($file==$pattern || stripos($file, $pattern)) {$doit=true;}
+            if (is_dir($path)) {
+                $files = scandir($path);
+                echo "<BR>Deleting Directory: " . $path;
+                foreach ($files as $file) { // iterate files
+                    $doit = true;
+                    if ($file != "." && $file != "..") {
+                        if ($fieldname) {//blocks the delete of any file that can be found in profiles.$fieldname
+                            if ($this->loadprofile($file, $fieldname)) {
+                                $doit = false;
                             }
-                        } else {
-                            $doit = $file==$like || stripos($file, $like);
                         }
-                    }
-                    if ($notlike) {//blocks the delete of any file containing $notlike
-                        if (is_array($notlike)){
-                            foreach($notlike as $pattern){
-                                if ($file==$pattern || stripos($file, $pattern)) { $doit = false; }
+                        if ($like) {//only allows the delete of any file containing $like
+                            if (is_array($like)) {
+                                $doit = false;
+                                foreach ($like as $pattern) {
+                                    if ($file == $pattern || stripos($file, $pattern)) {
+                                        $doit = true;
+                                    }
+                                }
+                            } else {
+                                $doit = $file == $like || stripos($file, $like);
                             }
-                        } else {
-                            if ($file==$notlike || stripos($file, $notlike)) { $doit = false; }
                         }
-                    }
-                    if ($doit) {//if approved, delete the file
-                        $file = $path . "/" . $file;
-                        if (is_file($file)) {// delete file}
-                            unlink($file);
-                            echo "<BR>Deleting file: " . $file;
-                        } else if ($recursive && is_dir($file)) {//deletes sub directories
-                            $this->DeleteDir($file, $like, $notlike, $fieldname, $recursive);
-                            rmdir($file);
+                        if ($notlike) {//blocks the delete of any file containing $notlike
+                            if (is_array($notlike)) {
+                                foreach ($notlike as $pattern) {
+                                    if ($file == $pattern || stripos($file, $pattern)) {
+                                        $doit = false;
+                                    }
+                                }
+                            } else {
+                                if ($file == $notlike || stripos($file, $notlike)) {
+                                    $doit = false;
+                                }
+                            }
+                        }
+                        if ($doit) {//if approved, delete the file
+                            $file = $path . "/" . $file;
+                            if (is_file($file)) {// delete file}
+                                unlink($file);
+                                echo "<BR>Deleting file: " . $file;
+                            } else if ($recursive && is_dir($file)) {//deletes sub directories
+                                $this->DeleteDir($file, $like, $notlike, $fieldname, $recursive);
+                                rmdir($file);
+                            }
                         }
                     }
                 }
+            } else {
+                echo "<BR>"  . $path . " Was not a directory";
             }
         }
         function DeleteAttachment($ID, $TableName = 'attachments', $Path = "/attachments/"){//$ID=-1 deletes all attachments
             $table = TableRegistry::get($TableName);
             if($ID==-1){
+                echo "<BR>Deleting all attachments from " . $TableName;
                 $table = $table->find('all');
                 foreach($table as $attachment){
                     $this->DeleteAttachment($attachment->id, $TableName, $Path);
@@ -1997,7 +2028,7 @@
                 if ( isset($attachment->file)) { $filename = $attachment->file; }
                 if ( isset($attachment->attachment)) { $filename = $attachment->attachment; }
                 if ($filename) {
-                    if (file_exists(getcwd() . $Path . $filename)) {
+                    if (file_exists(getcwd() . $Path . $filename) && is_file(getcwd() . $Path . $filename)) {
                         echo "<BR>Deleted file " . $Path . $filename;
                         unlink(getcwd() . $Path . $filename);
                     }
@@ -2007,6 +2038,17 @@
                 if($TableName != "profiles") $table->deleteAll(array('id' => $ID), false);
             }
         }
+
+
+
+
+
+
+
+
+
+
+
 
         function sproduct($id = '0')
         {

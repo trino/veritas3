@@ -156,7 +156,7 @@ $is_disabled = '';
 						<div class="portlet light profile-sidebar-portlet">
 							<!-- SIDEBAR USERPIC -->
 							<div class="profile-userpic">
-								<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" class="img-responsive" alt="">
+								<img src="<?php echo $this->request->webroot;?>img/profile/male.png" class="img-responsive" alt="">
 							</div>
 							<!-- END SIDEBAR USERPIC -->
 							<!-- SIDEBAR USER TITLE -->

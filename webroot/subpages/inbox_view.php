@@ -9,7 +9,7 @@
 <div class="inbox-view-info">
 	<div class="row">
 		<div class="col-md-7">
-			<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="35px">
+			<img src="<?php echo $this->request->webroot;?>img/profile/male.png" width="35px">
 			<span class="bold">
 			Petronas IT </span>
 			<span>
@@ -80,7 +80,7 @@
 				View all images </a>
 			</div>
 			<div class="margin-bottom-25">
-				<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="35px">
+				<img src="<?php echo $this->request->webroot;?>img/profile/male.png" width="35px">
 				<div>
 					<strong>image4.jpg</strong>
 					<span>
@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<div class="margin-bottom-25">
-				<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="35px">
+				<img src="<?php echo $this->request->webroot;?>img/profile/male.png" width="35px">
 				<div>
 					<strong>IMAG0705.jpg</strong>
 					<span>
@@ -104,7 +104,7 @@
 				</div>
 			</div>
 			<div class="margin-bottom-25">
-				<img src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="35px">
+				<img src="<?php echo $this->request->webroot;?>img/profile/male.png" width="35px">
 				<div>
 					<strong>test.jpg</strong>
 					<span>

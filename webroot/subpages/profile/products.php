@@ -15,7 +15,8 @@
     function PrintProvinces($DocID, $provincelist, $provinces="", $subdocuments = ""){
         if ($DocID==-1) {
             foreach($provincelist as $acronym => $fullname){
-                echo '<th style="border:none;" class="rotate"><div><span>' . $fullname . '</span></div></th>';
+                //echo '<th style="border:none;" class="rotate"><div><span>' . $fullname . '</span></div></th>';
+                echo "<TH>" . substr($acronym,0,2) . "</TH>";
             }
             echo '<TH style="border:none;"> </TH>';
             foreach($subdocuments as $doctype){
@@ -97,9 +98,9 @@ th.rotate > div > span {
                 class="table table-condensed  table-striped table-bordered table-hover dataTable no-footer">
                 <thead>
                 <tr>
-                    <!--th>Id</th-->
+                    <!--th>Id</th style="border:none;" class="rotate"-->
                     <th>Title</th>
-                    <th style="border:none;" class="rotate"><div><span>Enable</span></div></th>
+                    <th><div><span>Enable</span></div></th>
 
                     <?php PrintProvinces(-1, $provincelist, $provinces, $subdocuments); ?>
 
@@ -113,7 +114,7 @@ th.rotate > div > span {
                         ?>
                         <tr>
                             <!--td><?php echo $product->id;?></td-->
-                            <td class="title_<?php echo $product->id;?>"><?php echo $product->title;?></td>
+                            <td class="title_<?php echo $product->id;?>" style="white-space: nowrap;"><?php echo $product->title;?></td>
                             <td><input type="checkbox" <?php if ($product->enable == '1') {
                                     echo "checked='checked'";
                                 }?> class="enable" id="chk_<?php echo $product->id;?>"/></td>

@@ -2,16 +2,25 @@
     if ($_SERVER['SERVER_NAME'] == 'localhost') { echo "<span style ='color:red;'>products.php #INC124</span>";}
     $provincelist = array("AB" => "Alberta", "BC" => "British Columbia", "MB" => "Manitoba", "NB" => "New Brunswick", "NFL" => "Newfoundland and Labrador", "NWT" => "Northwest Territories", "NS" => "Nova Scotia", "NUN" => "Nunavut", "ONT" => "Ontario", "PEI" => "Prince Edward Island", "QC" => "Quebec", "SK" => "Saskatchewan", "YT" => "Yukon Territories");
 
+    function ucfirst2($Text){
+        $Words = explode(" ", $Text);
+        $Words2=array();//php forces me to make a copy
+        foreach($Words as $Word){
+            $Words2[] = ucfirst($Word);
+        }
+        return implode(" ", $Words2);
+    }
+
     //just pass $provincelist and $provinces into them
     function PrintProvinces($DocID, $provincelist, $provinces="", $subdocuments = ""){
         if ($DocID==-1) {
             foreach($provincelist as $acronym => $fullname){
                 echo '<th style="border:none;" class="rotate"><div><span>' . $fullname . '</span></div></th>';
             }
+            echo '<TH style="border:none;"> </TH>';
             foreach($subdocuments as $doctype){
-                echo '<th style="border:none;" class="rotate"><div><span>' . $doctype->title . '</span></div></th>';
+                echo '<th style="border:none;" class="rotate"><div><span>' . ucfirst2($doctype->title) . '</span></div></th>';
             }
-            //echo "<TH>Provinces</TH><TH>Documents</TH>";
             return;
         }
 
@@ -26,12 +35,12 @@
                 echo "<TD><INPUT TITLE='" . $fullname . "' TYPE='CHECKBOX' NAME='" . $name . "' ID='" . $name . "' VALUE='1'". $checked . ' ONCLICK="' .  "saveprovince(" . $DocID . ", '" . $acronym . "');" . '"></TD>';
             }
         }
-        
+        echo "<TD bgcolor='black'></TD>";
         foreach($subdocuments as $doctype){
             $checked = "";
             $name = $DocID . "." . $doctype->id;
             if (isset($data->subdocuments[$doctype->id])) { $checked = " checked"; }
-            echo "<TD><INPUT ID='" . $name . "' NAME='" . $name . "' TYPE='CHECKBOX' TITLE='" . $doctype->title . "'" . $checked . " ONCLICK='savedocument(" . $DocID . ", " . $doctype->id  .");'></TD>";
+            echo "<TD><INPUT ID='" . $name . "' NAME='" . $name . "' TYPE='CHECKBOX' TITLE='" . ucfirst2($doctype->title) . "'" . $checked . " ONCLICK='savedocument(" . $DocID . ", " . $doctype->id  .");'></TD>";
         }
 
     }
@@ -90,11 +99,11 @@ th.rotate > div > span {
                 <tr>
                     <!--th>Id</th-->
                     <th>Title</th>
-                    <th>Enable</th>
+                    <th style="border:none;" class="rotate"><div><span>Enable</span></div></th>
 
                     <?php PrintProvinces(-1, $provincelist, $provinces, $subdocuments); ?>
 
-                    <th>Actions</th>
+                    <th style="border:none;" class="rotate"><div><span>Actions</span></div></th>
 
                 </tr>
                 </thead>

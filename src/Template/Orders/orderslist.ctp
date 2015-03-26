@@ -363,7 +363,18 @@ echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addor
                                         <td valign="middle">
                                             <?php
                                             //   var_dump($order);
-                                                if ($order->complete == 0) { ?>
+                                            if($order->draft == 1)
+                                            {
+                                                ?>
+                                                 <span class="label label-sm label-info"
+                                                          style="float:right;padding:4px;">draft</span>
+                                                <?php
+                                                
+                                            }else
+                                                if ($order->complete == 0) { 
+                                                    ?>
+                                                
+                                                
                                                 
                                                     <span class="label label-sm label-primary"
                                                           style="float:right;padding:4px;">pending</span>

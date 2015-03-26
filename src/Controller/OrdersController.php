@@ -45,6 +45,8 @@
 
         public function vieworder($cid = null, $did = null, $table = null)
         {
+            $this->set('provinces',  $this->LoadSubDocs());
+            
             $this->set('doc_comp', $this->Document);
             $this->set('table', $table);
             $setting = $this->Settings->get_permission($this->request->session()->read('Profile.id'));
@@ -146,7 +148,6 @@
                 $this->set('sub4', $sub4);
             }
             $this->render('addorder');
-
         }
 
         public function addorder($cid = 0, $did = 0, $table = null)

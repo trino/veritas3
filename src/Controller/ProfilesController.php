@@ -165,10 +165,23 @@
                     break;
 
                 case "Delete":
-                    echo "Deleted document type: '" . $DocID . "'";
+                    if (Delete_order_products($DocID)) {
+                        echo "Deleted document type: '" . $DocID . "'";
+                    } else {
+                        echo "Unable to delete DocIDs below 9";
+                    }
                     break;
             }
             die();
+        }
+
+        public function Delete_order_products($DocID){
+            if ($DocID >= 9){
+                TableRegistry::get("order_products")->deleteAll(array('id' => $DocID), false);
+                TableRegistry::get("doc_provinces")->deleteAll(array('ID' => $DocID), false);
+                TableRegistry::get("doc_provincedocs")->deleteAll(array('DocID' => $DocID), false);
+                return true;
+            }
         }
 
         public function index()

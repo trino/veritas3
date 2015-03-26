@@ -165,7 +165,7 @@
                     break;
 
                 case "Delete":
-                    if (Delete_order_products($DocID)) {
+                    if ($this->Delete_order_products($DocID)) {
                         echo "Deleted document type: '" . $DocID . "'";
                     } else {
                         echo "Unable to delete DocIDs below 9";

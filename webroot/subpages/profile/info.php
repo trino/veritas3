@@ -971,6 +971,7 @@
                 data: strs,
                 type: 'post',
                 success: function (res) {
+                    res = res.replace(' ','');
                     if (res != 0) {
                         $('#savepro').text("Save Changes");
                         $('.flash').show();

@@ -1018,6 +1018,8 @@
             if (isset($_GET['clientflash']) || $clientcount == 0) {
                 $this->Flash->success('Profile created successfully! Please assign profile to at least one client to start placing orders.');
             }
+            else
+            $this->Flash->success('Profile updated successfully.');
             $pr = TableRegistry::get('profiles');
             $query = $pr->find();
             $aa = $query->select()->where(['id' => $id])->first();

@@ -1776,10 +1776,11 @@
             die();
         }
 
-        public function loadprofile($UserID){
+        public function loadprofile($UserID, $fieldname = "id"){
             $table = TableRegistry::get("profiles");
-            $results = $table->find('all', array('conditions' => array('id'=>$UserID)))->first();
-            return $results;
+            $results = $table->find('all', array('conditions' => array($fieldname => $UserID)))->first();
+            if(is_object($results)){ return $results;}
+            return false;
         }
         function sendtaskreminder($email, $todo, $path, $name){
             $from = array('info@'.$path => "ISB MEE");
@@ -1839,25 +1840,171 @@
 
         function cleardb(){
             if ($this->request->session()->read('Profile.super') == 1) {
+
+                //$query = $conn->query("show tables");
+
+                //WHITELIST//
+                $this->DeleteAttachment(-1, "attachments", "/attachments/");
+                $this->DeleteAttachment(-1, "client_docs", "/img/jobs/");
+                $this->DeleteAttachment(-1, "profiles", "/img/profile/");
+                $this->DeleteAttachment(-1, "doc_attachments", "/attachments/");
+                $this->DeleteUser(-1);//deletes all users
+                $this->DeleteTables(array("audits", "consent_form", "consent_form_criminal", "documents", "driver_application", "road_test", "survey", "driver_application_accident", "driver_application_licenses", "education_verification", "employment_verification", "feedbacks", "orders", "pre_screening"));//deletes documents
+                $this->DeleteTables(array("clients", "clientssubdocument", "client_divison", "client_sub_order"));//deletes clients
+                //do not delete settings, contents, logos, subdocuments, order_products, color_class, client_types, profile_types, training_quiz, training_list,
+
+                $this->DeleteDir(getcwd() . "/canvas", ".png");//deletes all signatures
+                $this->DeleteDir(getcwd() . "/attachments");//deletes all document attachments
+                $this->DeleteDir(getcwd() . "/img/jobs");//deletes all client pictures
+                $this->DeleteDir(getcwd() . "/img/certificates", ".pdf", "certificate.jpg");//deletes pdf certificates, leaves the jpg
+                $this->DeleteDir(getcwd() . "/img/profile", "", array("female.png", "male.png", "default.png"), "image" );//deletes profile pics
+                $this->DeleteDir(getcwd() . "/orders", "", "", "", true);//deletes the pdfs and their sub-directories
+                $this->DeleteDir(getcwd() . "/pdfs");//deletes the pdfs
+
+                
+                //die();
+                $this->layout = "blank";
+            }
+        }
+
+        function DeleteTables($Table){
+            if (is_array($Table)){
+                foreach($Table as $table){
+                    $this->DeleteTables($table);
+                }
+            } else {
+                switch ($Table){
+                    case "clients":
+                        $table = TableRegistry::get("clients")->find('all');
+                        foreach($table as $client){
+                            unlink(getcwd() . "/img/jobs/" . $client->image); //delete image
+                        }
+                        break;
+                }
                 $conn = ConnectionManager::get('default');
-                $query = $conn->query("show tables");
-                $user_id = $conn->query("Select id from profiles where super=1");
-                foreach ($user_id as $u) {
-                    $uid = $u['id'];
+                $conn->query("TRUNCATE TABLE " . $Table);
+                echo "<BR>Deleted table: " . $Table;
+            }
+        }
+
+        function DeleteUser($ID){
+            $table = TableRegistry::get("profiles");
+            if($ID==-1) {
+                $users = $table->find('all', array('conditions' => array(['super' => 0])));
+                foreach ($users as $user) {
+                    $this->DeleteUser($user->id);
+                }
+                //clean up any nonexistent users still in the database
+                $this->CleanUsers("blocks");
+                $this->CleanUsers("sidebar");
+                $this->CleanUsers("events");
+                $this->CleanUsers("profilessubdocument", "profile_id");
+                $this->CleanUsers("profile_docs", "profile_id");
+                $this->CleanUsers("recruiter_notes", "driver_id");
+                $this->CleanUsers("recruiter_notes", "recruiter_id");
+                $this->CleanUsers("training_answers", "UserID");
+                $this->CleanUsers("training_enrollments", "UserID");
+                $this->CleanUsers("training_enrollments", "EnrolledBy");
+
+                if(!$this->loadprofile(0)){ $this->DeleteUser(0);}
+            } else if(is_numeric($ID)>0) {
+                $user = $this->loadprofile($ID);
+                if($user){
+                    if ($user->super == 1){return false; }//cannot delete supers
+                    unlink(getcwd() . "/img/profile/" . $user-image);
+                }//delete image
+                $attachments = TableRegistry::get("profile_docs")->find('all', array('conditions' => array(['profile_id' => $ID])));
+                foreach($attachments as $attachment){
+                    $this->DeleteAttachment($attachment->id, "profile_docs", "/img/jobs/");
                 }
 
-                foreach ($query as $table) {
-                    if ($table[0] != "settings" && $table[0] != "profiles" && $table[0] != "contents" && $table[0] != "blocks" && $table[0] != "logos" && $table[0] != "sidebar" && $table[0] != "subdocuments" && $table[0] != "order_products" && $table[0] != "color_class" && $table[0] != "client_types" && $table[0] != "profile_types" && $table[0] != "training_quiz" && $table[0] != "training_list") {
-                        $conn->query("TRUNCATE TABLE " . $table[0]);
-                    } elseif ($table[0] == 'profiles') {
-                        $conn->query("Delete from " . $table[0] . " where `super` = '0'");
-                    } elseif ($table[0] == 'blocks' || $table[0] == 'sidebar') {
-                        $conn->query("Delete from `" . $table[0] . "` where user_id <> " . $uid);
+                TableRegistry::get("blocks")->deleteAll(array('user_id' => $ID), false);
+                TableRegistry::get("sidebar")->deleteAll(array('user_id' => $ID), false);
+                TableRegistry::get("events")->deleteAll(array('user_id' => $ID), false);
+                TableRegistry::get("profilessubdocument")->deleteAll(array('profile_id' => $ID), false);
+                TableRegistry::get("recruiter_notes")->deleteAll(array('driver_id' => $ID), false);
+                TableRegistry::get("recruiter_notes")->deleteAll(array('recruiter_id' => $ID), false);
+                TableRegistry::get("training_answers")->deleteAll(array('UserID' => $ID), false);
+                TableRegistry::get("training_enrollments")->deleteAll(array('UserID' => $ID), false);
+
+                $table->deleteAll(array('id' => $ID), false);
+                echo "<BR>Deleted User: " . $ID;
+            }
+        }
+        function CleanUsers($tablename, $fieldname = "user_id"){
+            $table = TableRegistry::get($tablename);
+            $users = $table->find('all');
+            foreach ($users as $user) {
+                $user2 = $this->loadprofile($user->$fieldname);
+                if (!is_object($user2)){//delete any non-existent profile
+                    $this->DeleteUser($user->$fieldname);
+                }
+            }
+        }
+
+        function DeleteDir($path, $like = "", $notlike = "", $fieldname = "", $recursive = false){
+            $files = scandir($path);
+            echo "<BR>Deleting Directory: " . $path;
+            foreach($files as $file){ // iterate files
+                $doit=true;
+                if($file != "." && $file != "..") {
+                    if($fieldname){//blocks the delete of any file that can be found in profiles.$fieldname
+                        if ($this->loadprofile($file, $fieldname)) { $doit=false;}
+                    }
+                    if ($like) {//only allows the delete of any file containing $like
+                        if (is_array($like)) {
+                            $doit=false;
+                            foreach($like as $pattern){
+                                if ($file==$pattern || stripos($file, $pattern)) {$doit=true;}
+                            }
+                        } else {
+                            $doit = $file==$like || stripos($file, $like);
+                        }
+                    }
+                    if ($notlike) {//blocks the delete of any file containing $notlike
+                        if (is_array($notlike)){
+                            foreach($notlike as $pattern){
+                                if ($file==$pattern || stripos($file, $pattern)) { $doit = false; }
+                            }
+                        } else {
+                            if ($file==$notlike || stripos($file, $notlike)) { $doit = false; }
+                        }
+                    }
+                    if ($doit) {//if approved, delete the file
+                        $file = $path . "/" . $file;
+                        if (is_file($file)) {// delete file}
+                            unlink($file);
+                            echo "<BR>Deleting file: " . $file;
+                        } else if ($recursive && is_dir($file)) {//deletes sub directories
+                            $this->DeleteDir($file, $like, $notlike, $fieldname, $recursive);
+                            rmdir($file);
+                        }
                     }
                 }
-                echo "Cleared";
-                die();
-                $this->layout = "blank";
+            }
+        }
+        function DeleteAttachment($ID, $TableName = 'attachments', $Path = "/attachments/"){//$ID=-1 deletes all attachments
+            $table = TableRegistry::get($TableName);
+            if($ID==-1){
+                $table = $table->find('all');
+                foreach($table as $attachment){
+                    $this->DeleteAttachment($attachment->id, $TableName, $Path);
+                }
+            } else {
+                $attachment =  $table->find()->where(['id'=> $ID])->first();
+                $filename="";
+                if ( isset($attachment->title)) { $filename = $attachment->title; }
+                if ( isset($attachment->file)) { $filename = $attachment->file; }
+                if ( isset($attachment->attachment)) { $filename = $attachment->attachment; }
+                if ($filename) {
+                    if (file_exists(getcwd() . $Path . $filename)) {
+                        echo "<BR>Deleted file " . $Path . $filename;
+                        unlink(getcwd() . $Path . $filename);
+                    }
+                } else {
+                    echo "<BR>No file to delete " .$ID . " in " . $TableName;
+                }
+                if($TableName != "profiles") $table->deleteAll(array('id' => $ID), false);
             }
         }
 
@@ -2045,9 +2192,7 @@
               $this->response->body($cnt);
               return $this->response;
          } */
-        public
-        function appendattachments($query)
-        {
+        public function appendattachments($query){
             foreach ($query as $client) {
                 $client->hasattachments = $this->hasattachments($client->id);
             }

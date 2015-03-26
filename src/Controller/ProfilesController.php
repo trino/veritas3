@@ -1864,7 +1864,7 @@
                 $this->DeleteAttachment(-1, "profiles", "/img/profile/");
                 $this->DeleteAttachment(-1, "doc_attachments", "/attachments/");
                 $this->DeleteUser(-1);//deletes all users
-                $this->DeleteTables(array("audits", "consent_form", "consent_form_criminal", "documents", "driver_application", "road_test", "survey", "driver_application_accident", "driver_application_licenses", "education_verification", "employment_verification", "feedbacks", "orders", "pre_screening"));//deletes documents
+                $this->DeleteTables(array("audits", "consent_form", "consent_form_criminal", "documents", "driver_application", "road_test", "survey", "driver_application_accident", "driver_application_licenses", "education_verification", "employment_verification", "feedbacks", "orders", "pre_screening", "generic_forms"));//deletes documents
                 $this->DeleteTables(array("clients", "clientssubdocument", "client_divison", "client_sub_order"));//deletes clients
                 //do not delete settings, contents, logos, subdocuments, order_products, color_class, client_types, profile_types, training_quiz, training_list,
 

@@ -68,6 +68,7 @@ class DocumentComponent extends Component
                     $arr['draft'] = 0;
                     //$this->Flash->success('Order submitted successfully');
                     }
+                    
                 $arr['client_id'] = $cid;
                 if (isset($_POST['division']))
                     $arr['division'] = urldecode($_POST['division']);
@@ -83,7 +84,7 @@ class DocumentComponent extends Component
 
                     if ($orders->save($order)) {
                         //$this->Flash->success('Client saved successfully.');
-                        echo $order->id;
+                        
                         if($arr['draft']==0)
                         {
                             $docus = TableRegistry::get('Documents');
@@ -93,6 +94,8 @@ class DocumentComponent extends Component
                                 ->where(['order_id' => $order->id])
                                 ->execute();
                         }
+                        
+                        echo $order->id;
                     } else {
                         //$this->Flash->error('Client could not be saved. Please try again.');
                         //echo "e";
@@ -104,10 +107,49 @@ class DocumentComponent extends Component
                         ->where(['id' => $did])
                         ->execute();
                     //$this->Flash->success('Client saved successfully.');
-                    echo $did;
+                 
                     
                     if($arr['draft']==0)
                         {
+                                $path = $this->getUrl();
+                                $get_client = TableRegistry::get('Clients');
+                                $gc = $get_client->find()->where(['id' => $cid])->first();
+                                $client_name = $gc->company_name;
+                                $assignedProfile = $this->getAssignedProfile($cid);
+                                //var_dump($assignedProfile);die();
+                                if($assignedProfile)
+                                {
+                                    $profile = $this->getProfilePermission($assignedProfile->profile_id, 'orders');
+                                    // var_dump($profile);die();
+                                    if($profile)
+                                    {
+                                        foreach($profile as $p)
+                                        {
+                                            
+                                            $pro_query = TableRegistry::get('Profiles');
+                                            $email_query = $pro_query->find()->where(['super' => 1])->first();
+                                            $em = $email_query->email;
+                                            $user_id = $controller->request->session()->read('Profile.id');
+                                            $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
+                                            if (isset($uq->profile_type))
+                                              {
+                                                $u = $uq->profile_type;
+                                                $type_query = TableRegistry::get('profile_types');
+                                                $type_q = $type_query->find()->where(['id'=>$u])->first(); 
+                                                $ut = $type_q->title;
+                                              }
+                                              //$path = 'https://isbmeereports.com/documents/view/'.$cid;
+                                            $from = array('info@'.$path => "ISB MEE");
+                                            $to = $p;
+                                             $sub = 'Order submitted';
+                                            $msg = 'A Order has been created in '.$path.'<br />
+                                            By a user with following details :<br/>
+                                            Username : '.$uq->username.'<br/>Profile Type : '.$ut.'<br/> Date : '.date('Y-m-d H:i:s').'<br/>With document details<br /> Client Name: ' . $client_name.'<br/> For user with email address :'.$p.'<br /> Regards,<br />The ISB Team';
+                                             $controller->Mailer->sendEmail($from, $to, $sub, $msg);
+                                            
+                                        }
+                                    }
+                                }
                             $docus = TableRegistry::get('Documents');
                             $queri3 = $docus->query();
                             $queri3->update()
@@ -115,6 +157,8 @@ class DocumentComponent extends Component
                                 ->where(['order_id' => $did])
                                 ->execute();
                         }
+                        
+                           echo $did;
                 }
 
             } else {
@@ -143,6 +187,7 @@ class DocumentComponent extends Component
                     $doc = $docs->newEntity($arr);
 
                     if ($docs->save($doc)) {
+                       
                         $path = $this->getUrl();
                         $get_client = TableRegistry::get('Clients');
                         $gc = $get_client->find()->where(['id' => $cid])->first();
@@ -1543,8 +1588,11 @@ class DocumentComponent extends Component
                 
                  $query = $setting->find()->where(['user_id'=>$ap]);
                  $permit = $query->first();
-                //$permit = $this->Settings->get_permission($ap);
-                if($permit && ($permit->email_document == 1))
+                if($type =='documents')
+                    $v = $permit->email_documents;
+                elseif($type =='orders')
+                    $v = $permit->email_orders; 
+                if($permit && ($v == 1))
                 {
                     $email = $this->getEmail($ap);
                     if($email)
@@ -1572,4 +1620,5 @@ class DocumentComponent extends Component
             else
             return 'localhost.com';
         }
+        
 }

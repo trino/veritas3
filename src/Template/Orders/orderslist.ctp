@@ -315,7 +315,7 @@
 
                                             <?php
                                                 $super = $this->request->session()->read('Profile.super');
-                                                if (isset($super) || isset($_GET['draft'])) {
+                                                //if (isset($super) || isset($_GET['draft'])) {
                                                     if ($sidebar->orders_edit == '1') {
                                                         if (!isset($_GET['table']) && $order->draft == 1) {
                                                             ?>
@@ -340,7 +340,7 @@ echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addor
                                                             Delete</a>
                                                     <?php
                                                     }
-                                                }
+                                                //}
                                             ?>
 
                                             <?php if ($sidebar->orders_requalify == '1' && $order->draft == '0') {

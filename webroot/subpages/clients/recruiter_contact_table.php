@@ -43,10 +43,10 @@ if (!$viewmode){
                     <tr>
 
                 <td>
-                    <span><input class="profile_client" type="checkbox"
+                    <span><input class="profile_client" type="checkbox" id="p_<?= $i ?>"
                                  <?php if (in_array($r->id, $profile)){ ?>checked="checked"<?php }?>
                                  value="<?php echo $r->id; ?>"/></span>
-                    <span> <?php echo $username; ?> <?php if($r->profile_type!=""){ echo $profiletype;}?> </span>&nbsp;
+                    <span><label for="p_<?= $i ?>"><?php echo $username; ?></label><?php if($r->profile_type!=""){ echo $profiletype;}?> </span>&nbsp;
                     <span class="msg_<?php echo $r->id; ?>"></span>
                 </td>
                 <?php

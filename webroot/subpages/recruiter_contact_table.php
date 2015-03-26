@@ -27,7 +27,7 @@ $contact =  $this->requestAction('Profiles/getContact');
 
                                                     <td>
                                                         <span><input type="checkbox" name="profile_id[]" <?php if(in_array($r->id,$profile)){?>checked="checked"<?php }?> value="<?php echo $r->id; ?>"/></span>
-                                                        <span> <?php echo $r->username; ?> </span>
+                                                        <span><?php echo $r->username; ?> </span>
                                                     </td>
                                                 <?php
 

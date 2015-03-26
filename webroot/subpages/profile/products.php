@@ -1,5 +1,5 @@
 <?php
-    if ($_SERVER['SERVER_NAME'] == 'localhost') { echo "<span style ='color:red;'>products.php #INC124</span>";}
+    if ($_SERVER['SERVER_NAME'] == 'localhost') { echo "<span style ='color:red;'>subpages/profile/products.php #INC124</span>";}
     $provincelist = array("AB" => "Alberta", "BC" => "British Columbia", "MB" => "Manitoba", "NB" => "New Brunswick", "NFL" => "Newfoundland and Labrador", "NWT" => "Northwest Territories", "NS" => "Nova Scotia", "NUN" => "Nunavut", "ONT" => "Ontario", "PEI" => "Prince Edward Island", "QC" => "Quebec", "SK" => "Saskatchewan", "YT" => "Yukon Territories");
 
     function ucfirst2($Text){
@@ -83,7 +83,7 @@ th.rotate > div > span {
     </div>
     <div class="portlet-body">
         <div class="col-md-6">
-            <div class="form-group forget_error" style="display: none;">test</div>
+            <div class="form-group forget_error" style="display: none; color: rgb(255,0,0);">test</div>
         </div>
         <div style="float: right; margin-bottom: 5px;" class="col-md-6">
             <a href="javascript:;" class="btn btn-primary ap" style="float: right;"
@@ -100,6 +100,7 @@ th.rotate > div > span {
                 <thead>
                 <tr>
                     <!--th>Id</th style="border:none;" class="rotate"-->
+                    <TH>ID</TH>
                     <th>Title</th>
                     <th><div><span>Enable</span></div></th>
 
@@ -116,8 +117,8 @@ th.rotate > div > span {
                         ?>
                         <tr>
                             <!--td><?php echo $product->id;?></td-->
-
-                            <td class="title_<?php echo $product->id;?>"><?php echo $product->title;?> [<?php echo $product->number;?>]</td>
+                            <TD><?=  $product->id ?></TD>
+                            <td style="white-space: nowrap;" class="title_<?php echo $product->id . '">' . $product->title;?> </td>
                               <td><input type="checkbox" <?php if ($product->enable == '1') {
                                     echo "checked='checked'";
                                 }?> class="enable" id="chk_<?php echo $product->id;?>"/></td>

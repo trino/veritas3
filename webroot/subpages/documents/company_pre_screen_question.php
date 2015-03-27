@@ -623,7 +623,8 @@
         {
             $pre_at['attach_doc'] = array();
         }
-        if(!count($pre_at['attach_doc'])){
+        if(!count($pre_at['attach_doc']) && $this->request->params['action']!='view' && $this->request->params['action']!='vieworder'){
+            echo 'test';
             ?>
 
             <div class="form-group row" style="display:block;margin-top:5px; margin-bottom: 5px;">
@@ -644,7 +645,9 @@
                     $at=0;
                     foreach($pre_at['attach_doc'] as $pa)
                     {
+                        if($pa->attachment){
                         $at++;
+                        
                         ?>
                         <div class="pad_bot" id="del_pre">
                             <label class="control-label col-md-3">Attach File : </label>
@@ -681,7 +684,7 @@
                             });
                         </script>
                     <?php
-                    }
+                    }}
                 }
                 ?>
             </div>

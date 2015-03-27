@@ -1051,10 +1051,10 @@
             return $this->response;
             die;
         }
-        public function getProductTitle($id)
+        public function getProductTitle($id='')
         {
            $doc = TableRegistry::get('order_products'); 
-           $doc = $doc->find()->where(['id' => $id])->first();
+           $doc = $doc->find()->where(['number' => $id])->first();
            $this->response->body($doc);
             return $this->response;
             die;
@@ -1140,4 +1140,25 @@
             $this->set('subdocuments',  $subdocuments);
             return $provinces2;
         }
+        function getProNum()
+        {
+            $products =  TableRegistry::get('order_products');
+            $pro = $products->find()->where(['enable'=>1,'id <>'=>8]);
+            $prod = '';
+            foreach($pro as $p)
+            {
+                if($prod == '')
+                {
+                    $prod = $p->number;
+                }
+                else
+                $prod = $prod.','.$p->number;
+                
+            }
+            $this->response->body($prod);
+            return $this->response;
+            die;
+            
+        }
     }
+

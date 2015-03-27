@@ -67,7 +67,7 @@ function provinces($name){
             $forms = explode(",", $_GET["forms"]);
         }
         else
-        $forms = array(1,2,3,4,5,6,7);
+        $forms = $this->requestAction('/orders/getProNum');
 
         //returns: boolean, if this form should be displayed
         //parameters:

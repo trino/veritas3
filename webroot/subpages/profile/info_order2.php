@@ -8,7 +8,7 @@
             $o_type = 'QUA';
     $intable = true;
     $cols = 8;
-
+    $_this = $this;
     function getcheckboxes($name, $amount)
     {
         $tempstr = "";
@@ -58,7 +58,7 @@
         $ordertype = substr($ordertype, 0, 3);
     }
 
-    function printbutton($type, $webroot, $index, $tempstr = "")
+    function printbutton($type, $webroot, $index, $tempstr = "",$_this)
     {
         if (strlen($type) > 0) {
             switch ($index) {
@@ -85,7 +85,7 @@
                     }
                     ?>
                     <a href="javascript:void(0);" class="btn btn-danger btn-lg placenow"
-                       onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val()){if($('.selecting_driver').val()==''){alert('Please select driver');$('#s2id_selecting_driver .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_driver .select2-choice').offset().top},'slow');return false;}else window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&forms=1,2,3,4,5,6,7&order_type=<?php echo urlencode($o_type); ?>';}else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Continue
+                       onclick="if(!check_div())return false;var div = $('#divisionsel').val();if(!isNaN(parseFloat(div)) && isFinite(div)){var division = div;}else var division = '0';if($('.selecting_client').val()){if($('.selecting_driver').val()==''){alert('Please select driver');$('#s2id_selecting_driver .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_driver .select2-choice').offset().top},'slow');return false;}else window.location='<?php echo $webroot; ?>orders/addorder/'+$('.selecting_client').val()+'/?driver='+$('.selecting_driver').val()+'&division='+division+'&forms=<?php echo $_this->requestAction('orders/getProNum');?>&order_type=<?php echo urlencode($o_type); ?>';}else{$('#s2id_selecting_client .select2-choice').attr('style','border:1px solid red;');$('html,body').animate({scrollTop: $('#s2id_selecting_client .select2-choice').offset().top},'slow');}">Continue
                         <i class="m-icon-swapright m-icon-white"></i></a>
 
                 <?php
@@ -263,9 +263,9 @@
                 <div class="col-xs-offset-3 col-xs-9">
                     <?php
                         if ($ordertype == "") {
-                            printbutton($ordertype, $this->request->webroot, 1, $tempstr);
+                            printbutton($ordertype, $this->request->webroot, 1, $tempstr,$_this);
                             echo "&nbsp;&nbsp; or &nbsp;&nbsp";
-                            printbutton($ordertype, $this->request->webroot, 2, $tempstr);
+                            printbutton($ordertype, $this->request->webroot, 2, $tempstr,$_this);
                         }
                     ?>
                 </div>
@@ -304,12 +304,12 @@
                                 if ($p->id != 8) {
                                     ?>
 
-                                    <li id="product_<?php echo $p->id; ?>">
+                                    <li id="product_<?php echo $p->number; ?>">
                                         <div class="col-xs-10"><i
                                                 class="fa fa-file-text-o"></i> <?php echo $p->title; ?>
                                         </div>
                                         <div class="col-xs-2"><input checked disabled="disabled" type="checkbox"
-                                                                     value=""/></div>
+                                                                     value="<?php echo $p->number; ?>"/></div>
                                         <div class="clearfix"></div>
                                     </li>
                                 <?php
@@ -323,7 +323,7 @@
                         <p>
                         <hr/>
                         </p>
-                        <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr); ?>
+                        <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr,$_this); ?>
 
                     </div>
                 </div>
@@ -357,12 +357,12 @@
                             foreach ($products as $p) {
 
                                 ?>
-                                <li id="product_<?php echo $p->id; ?>">
+                                <li id="product_<?php echo $p->number; ?>">
 
                                     <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title; ?>
                                     </div>
                                     <div class="col-xs-2"><input checked type="checkbox" id="form<?= $index ?>"
-                                                                 value="<?php echo $p->id; ?>"/></div>
+                                                                 value="<?php echo $p->number; ?>"/></div>
                                     <div class="clearfix"></div>
                                 </li>
                                 <?php
@@ -375,7 +375,7 @@
                         <p>
                         <hr/>
                         </p>
-                        <?php printbutton($ordertype, $this->request->webroot, 4, $tempstr); ?>
+                        <?php printbutton($ordertype, $this->request->webroot, 4, $tempstr,$_this); ?>
                     </div>
                 </div>
             </div>
@@ -409,13 +409,13 @@
                             $b = 0;
                             foreach ($products as $p) {
                                 ?>
-                                <li id="product_<?php echo $p->id; ?>">
+                                <li id="product_<?php echo $p->number; ?>">
 
                                     <div class="col-xs-10"><i class="fa fa-file-text-o"></i> <?php echo $p->title; ?>
                                     </div>
                                     <div class="col-xs-2"><input checked type="checkbox" name="prem_nat"
                                                                  id="formb<?php echo $b; ?>"
-                                                                 value="<?php echo $p->id; ?>"/></div>
+                                                                 value="<?php echo $p->number; ?>"/></div>
                                     <div class="clearfix"></div>
                                 </li>
                                 <?php
@@ -427,7 +427,7 @@
                         <p>
                         <hr/>
                         </p>
-                        <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr2); ?>
+                        <?php printbutton($ordertype, $this->request->webroot, 3, $tempstr2,$_this); ?>
 
                     </div>
                 </div>

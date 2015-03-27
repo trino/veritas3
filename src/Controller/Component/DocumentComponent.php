@@ -144,7 +144,7 @@ class DocumentComponent extends Component
                                              $sub = 'Order Submitted';
                                             $msg = 'A new order has been created in '.$path.'<br />
                                             <br/>
-                                            By: '.$uq->username.' (Profile Type : '.$ut.')<br/> Date : '.date('Y-m-d H:i:s').'<br/><br /> Client Name: ' . $client_name.'<br/> For:'.$p.'<br /><br /> Regards,<br />the ISB MEE Team';
+                                            By: '.$uq->username.' (Profile Type : '.$ut.')<br/> Date : '.date('Y-m-d H:i:s').'<br/><br /> Client Name: ' . $client_name.'<br/> For: '.$p.'<br /><br /> Regards,<br />the ISB MEE Team';
                                              $controller->Mailer->sendEmail($from, $to, $sub, $msg);
                                             
                                         }

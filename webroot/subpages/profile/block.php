@@ -1423,14 +1423,16 @@ if ($activetab == "permissions") {
 
                                         <input
                                             <?php if ($this->request->session()->read('Profile.profile_type') == 2 && $this->request->session()->read('Profile.id') == $id){ ?>disabled=""<?php }?>
+                                            id="c_<?= $count ?>"
                                             type="checkbox" value="<?php echo $o->id; ?>"
                                             class="addclientz" <?php if (in_array($id, $pro_ids)) {
                                             echo "checked";
-                                        }?>  <?php echo $is_disabled ?> /> <?php echo $o->company_name; ?> <span
+                                        }?>  <?php echo $is_disabled ?> /><label for="c_<?= $count ?>"><?php echo $o->company_name; ?></label><span
                                             class="msg_<?php echo $o->id; ?>"></span></td>
                                 </tr>
 
                             <?php
+                                $count+=1;
                             }
                         }
                         ?>
@@ -1463,14 +1465,16 @@ if ($activetab == "permissions") {
 
                                 <tr>
                                     <td><input  <?php echo $is_disabled ?>
+                                            id="c_<?= $count ?>"
                                             type="checkbox" <?php if (in_array($id, $pro_ids)) {
                                             echo "checked";
                                         }?>   value="<?php echo $o->id; ?>"
-                                            class="addclientz"/> <?php echo $o->company_name; ?> <span
+                                            class="addclientz"/><label for="c_<?= $count ?>"><?php echo $o->company_name; ?></label><span
                                             class="msg_<?php echo $o->id; ?>"></span></td>
                                 </tr>
 
                             <?php
+                                $count+=1;
                             }
                         ?>
 

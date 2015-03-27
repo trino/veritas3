@@ -1,4 +1,6 @@
 <?php
+
+/*
 mysql_connect('localhost','root','');
 mysql_select_db('veritas3')or die(mysql_error());
 
@@ -10,4 +12,6 @@ while($table = mysql_fetch_array($result)) { // go through each row that was ret
         //echo $table[0]."<br/>";
     } 
 }
-echo "Cleared";
+
+*/
+echo "<BR>Cleared";

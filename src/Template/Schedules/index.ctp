@@ -23,7 +23,7 @@
 												<div class="todo-tasklist">
 													<a href="<?php echo $this->request->webroot;?>todo/view/1">
                                                     <div class="todo-tasklist-item todo-tasklist-item-border-green">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/profile/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 Slider Redesign
 														</div>
@@ -37,7 +37,7 @@
 													</div></a>
                                                     <a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-red">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/profile/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 Homepage Alignments to adjust
 														</div>
@@ -51,7 +51,7 @@
 													</div></a>
                                                     <a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-green">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/profile/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 Slider Redesign
 														</div>
@@ -62,7 +62,7 @@
 													</div></a>
                                                     <a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-blue">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/profile/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 Contact Us Map Location changes
 														</div>
@@ -76,7 +76,7 @@
 													</div></a>
                                                     <a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-purple">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/profile/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 Projects list new Forms
 														</div>
@@ -89,7 +89,7 @@
 													</div></a>
                                                     <a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-yellow">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/profile/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 New Search Keywords
 														</div>
@@ -103,7 +103,7 @@
 													</div></a>
                                                     <a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-green">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/profile/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 Slider Redesign
 														</div>
@@ -114,7 +114,7 @@
 													</div></a>
                                                     <a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-red">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/profile/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 Homepage Alignments to adjust
 														</div>
@@ -128,7 +128,7 @@
 													</div></a>
                                                     <a href="<?php echo $this->request->webroot;?>todo/view/1">
 													<div class="todo-tasklist-item todo-tasklist-item-border-blue">
-														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/uploads/male.png" width="27px" height="27px">
+														<img class="todo-userpic pull-left" src="<?php echo $this->request->webroot;?>img/profile/male.png" width="27px" height="27px">
 														<div class="todo-tasklist-item-title">
 															 Contact Us Improvement
 														</div>

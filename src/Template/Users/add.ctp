@@ -84,11 +84,11 @@
                             <h4>Add Image</h4>
                             
                             <div class="form-group">
-                                <img style="width: 60px; height:60px;" src="<?php echo $this->request->webroot;?>img/uploads/male.png">
+                                <img style="width: 60px; height:60px;" src="<?php echo $this->request->webroot;?>img/profile/male.png">
                                 <input type="radio" value="male.png" name="img_gender">
                             </div>
                             <div class="form-group">
-                                <img style="width: 60px; height:60px;" src="<?php echo $this->request->webroot;?>img/uploads/female.png">
+                                <img style="width: 60px; height:60px;" src="<?php echo $this->request->webroot;?>img/profile/female.png">
                                 <input type="radio" value="female.png" name="img_gender"> &nbsp; &nbsp;
                             </div>
                             

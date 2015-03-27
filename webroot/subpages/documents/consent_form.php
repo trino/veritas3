@@ -581,6 +581,7 @@
                         if (count($sub2['con_at'])) {
                             $at = 0;
                             foreach ($sub2['con_at'] as $pa) {
+                                if($pa->attachment){
                                 $at++;
                                 ?>
                                 <div class="del_append_consent">
@@ -622,7 +623,7 @@
                                     });
                                 </script>
                             <?php
-                            }
+                            }}
                         }
                     ?>
                 </div>

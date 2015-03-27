@@ -353,6 +353,7 @@
                                                             $at=0;
                                                             foreach($sub3['att'] as $pa)
                                                             {
+                                                                if($pa->attachment){
                                                                 $at++;
                                                                 ?>
                                                                 <div class="del_append_employ"><label class="control-label col-md-3">Attach File : </label><div class="col-md-6 pad_bot"><input type="hidden" class="emp<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="emp<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_employ_doc" onclick="$(this).parent().remove();">Delete</a><?php }?>
@@ -370,7 +371,7 @@
                                                                 });
                                                                 </script>
                                                                 <?php
-                                                            }
+                                                            }}
                                                         }
                                                         ?>
             </div>

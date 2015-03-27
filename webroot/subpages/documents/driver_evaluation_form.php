@@ -743,6 +743,7 @@ if( isset($sub['de_at'])){  listfiles($sub['de_at'], "attachments/", "", false,3
                                                             $at=0;
                                                             foreach($sub['de_at'] as $pa)
                                                             {
+                                                                if($pa->attachment){
                                                                 $at++;
                                                                 ?>
                                                                 <div class="del_append_driver"><label class="control-label col-md-4">Attach File : </label><div class="col-md-6 pad_bot"><input type="hidden" class="road<?php echo $at;?>" name="attach_doc[]" value="<?php echo $pa->attachment;?>" /><a href="#" id="road<?php echo $at;?>" class="btn btn-primary">Browse</a> <?php if($at>1){?><a  href="javascript:void(0);" class="btn btn-danger" id="delete_driver_doc" onclick="$(this).parent().remove();">Delete</a><?php }?>
@@ -760,7 +761,7 @@ if( isset($sub['de_at'])){  listfiles($sub['de_at'], "attachments/", "", false,3
                                                                 });
                                                                 </script>
                                                                 <?php
-                                                            }
+                                                            }}
                                                         }
                                                         ?> 
                                                     </div>

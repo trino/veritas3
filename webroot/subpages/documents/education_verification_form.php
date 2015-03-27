@@ -411,6 +411,7 @@
                             {
                                 $at = 0;
                                 foreach ($sub4['att'] as $pa) {
+                                    if($pa->attachment){
                                     $at++;
                                     ?>
 
@@ -458,7 +459,7 @@
                                         });
                                     </script>
                                 <?php
-                                }
+                                }}
                             }
                         ?>
                     </div>

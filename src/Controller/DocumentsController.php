@@ -1540,8 +1540,9 @@
 
         }
 
-        function attach_doc($did="",$view="")
+        function attach_doc($did="",$view="",$id='addMore1')
         {
+            $this->set('addmoreid',$id);
             if($view=='view')
                 $this->set('disabled','1');
             if($did)

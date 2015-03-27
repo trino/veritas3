@@ -478,7 +478,7 @@ if (isset($this->request->params['pass'][1])) {
                     </div>
                     <?php foreach($doc as $dx)
                     {
-                        if($dx->id>10){
+                        if($dx->id >10){
                         ?>
                         <div class="subform<?php echo $dx->id;?>" style="display: none;">
                              <input type="hidden" class="document_type" name="document_type" value="<?php echo $dx->title;?>"/>
@@ -718,6 +718,14 @@ if (isset($this->request->params['pass'][1])) {
             $('#form_tab11').prepend('<input class="document_type" type="hidden" name="document_type" value="Basic Pre-Screen Questions" />' +
             '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="11"  />');
             $('.addattachment11').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did."/".$view;?>', function(){
+                initiate_ajax_upload1('addMore1', 'doc');
+             });
+             
+        }
+        if (s_arr[1] == 12) {
+            $('#form_tab12').prepend('<input class="document_type" type="hidden" name="document_type" value="Basic Pre-Screen Questions" />' +
+            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="12"  />');
+            $('.addattachment12').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did."/".$view;?>', function(){
                 initiate_ajax_upload1('addMore1', 'doc');
              });
              

@@ -18,9 +18,9 @@
                 <div class="docMore" data-count="1">
                     <div class="col-md-12">
                         <div style="display:block; padding:15px 0;">
-                            <a href="javascript:void(0)" id="addMore1" class="btn btn-primary">Browse</a>
-                            <input type="hidden" name="attach_doc[]" value="" class="addMore1_doc moredocs"/>
-                            <a href="javascript:void(0);" class="btn btn-danger img_delete" id="delete_addMore1"
+                            <a href="javascript:void(0)" id="<?php echo $addmoreid;?>" class="btn btn-primary">Browse</a>
+                            <input type="hidden" name="attach_doc[]" value="" class="<?php echo $addmoreid;?>_doc moredocs"/>
+                            <a href="javascript:void(0);" class="btn btn-danger img_delete" id="delete_<?php echo $addmoreid;?>"
                                title="" style="display: none;">Delete</a>
                             <span></span>
                         </div>

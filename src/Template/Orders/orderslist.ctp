@@ -366,7 +366,7 @@ echo $this->Html->link(__('Edit'), ['controller' => 'orders', 'action' => 'addor
                                             if($order->draft == 1)
                                             {
                                                 ?>
-                                                 <span class="label label-sm label-info"
+                                                 <span class="label label-sm label-warning"
                                                           style="float:right;padding:4px;">draft</span>
                                                 <?php
                                                 

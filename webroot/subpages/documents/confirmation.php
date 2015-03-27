@@ -6,6 +6,8 @@
     if (isset($_GET['forms'])) {
         $forms = $_GET['forms'];
     }
+    else
+        $forms = $this->requestAction('/orders/getProNum');
 
     $allattachments = array();// new AppendIterator;
     if (isset($pre_at['attach_doc'])) {
@@ -38,18 +40,9 @@
         //return dest;
     }
 
-    if (!$forms) {
-        $forms_arr[0] = 1;
-        $forms_arr[1] = 2;
-        $forms_arr[2] = 3;
-        $forms_arr[3] = 4;
-        $forms_arr[4] = 5;
-        $forms_arr[5] = 6;
-        $forms_arr[6] = 7;
-        //$forms_arr[7] = 8;
-    } else {
+    
         $forms_arr = explode(',', $forms);
-    }
+    
     $p = $forms_arr;
 ?>
 <div class="note note-success">

@@ -50,7 +50,7 @@
                     if(isset($consent_detail))
                     {
                         ?>
-                        <p>&nbsp;</p><strong>No Signature supplied</strong>
+                        <p>&nbsp;</p><strong>No signature supplied</strong>
                         <?php
                     }
                 }

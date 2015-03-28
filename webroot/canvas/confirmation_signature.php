@@ -59,7 +59,7 @@
                     if(isset($modal))
                     {
                         ?>
-                        <strong>No Signature supplied</strong>
+                        <strong>No signature supplied</strong>
                         <?php
                     }
                 }

@@ -174,15 +174,15 @@
         </div>
 
         <div class="form-group row">
-            <label class="control-label col-md-11">Applicant's Signature- by signing this form you agree and consent to
+            <label style="  text-align: left;" class="control-label col-md-11">Applicant's Signature- by signing this form you agree and consent to
                 the terms and release of information listed on this form : </label>
 
 
         </div>
-        <div class="form-group row">
+        <div class="form-group col-md-6">
             <?php include('canvas/consent_signature_driver2.php'); ?>
         </div>
-        <div class="form-group row">
+        <div class="form-group col-md-6">
             <?php include('canvas/consent_signature_witness2.php'); ?>
         </div>
 
@@ -213,9 +213,9 @@
     <hr/>
 
     <div class="form-group row">
-        <h3 class="col-md-12">
+        <strong class="col-md-12">
             Declaration of Criminal Record
-        </h3>
+        </strong>
     </div>
 
     <div class="form-group row">
@@ -500,10 +500,10 @@
                 <p>LAST UPDATED 10/29/2012</p>
             </div>
 
-            <div class="">
+            <div class="form-group col-md-6">
                 <?php include('canvas/consent_signature_driver.php'); ?>
             </div>
-            <div class="">
+            <div class="form-group col-md-6">
                 <?php include('canvas/consent_signature_witness.php'); ?>
             </div>
 

@@ -419,8 +419,7 @@
                                   style="display: none;">Username is required.</span>
                                 </div>
                             </div>
-                            <div class="clearfix flashUser" style="display: none;">
-                            </div>
+                            
 
 
                             <div class="col-md-6">
@@ -433,8 +432,7 @@
                                   style="display: none;">Email already exists</span>
                                 </div>
                             </div>
-                            <div class="clearfix flashEmail" style="display: none;">
-                            </div>
+                            
 
 
                             <?php

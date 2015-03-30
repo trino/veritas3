@@ -82,6 +82,7 @@ function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method
         listfiles($client_docs, $dir, $field_name, $delete, 3);
         echo '</div></div>';
     } else if($method==3) {
+        
         echo '<table class="table-condensed table-striped table-bordered table-hover dataTable no-footer">';
         $count = 0;
         foreach ($client_docs as $k => $cd) {
@@ -162,9 +163,11 @@ function listfiles($client_docs, $dir, $field_name='client_doc',$delete, $method
                 <!-- <a href="#" class="btn btn-primary">Browse</a> -->
                 <?php
                 $count=0;
+                //var_dump($client_docs);
                 if (isset($client_docs) && count($client_docs) > 0) {
                     $allowed = array('jpg', 'jpeg', 'png', 'bmp', 'gif');
                     foreach ($client_docs as $k => $cd):
+                        
                         $count+=1;
                         ?>
                         <div class="col-md-4" align="center">

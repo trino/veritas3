@@ -63,8 +63,9 @@ printdocumentinfo($did);
                 <div class="clearfix"></div>
                 </div>
                 
- </form> 
+
  <div class="addattachment5 form-group col-md-12"></div>
+  </form> 
  <div class="clearfix"></div>        
 <script>
 $(function(){

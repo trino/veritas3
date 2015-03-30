@@ -342,7 +342,7 @@
         {
             $sub_sup = TableRegistry::get('subdocuments');
             $sub_sup_count = $sub_sup->find()->count();
-            $counter = $sub_sup_count + 1;
+            $counter = $sub_sup_count;
             $settings = $this->Settings->get_settings();
 
             $rec = '';
@@ -455,16 +455,21 @@
                             $em = $email_query->email;
                             $user_id = $this->request->session()->read('Profile.id');
                             $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
-                            if (isset($uq->profile_type)) {
+                            if ($uq->profile_type) {
                                 $u = $uq->profile_type;
                                 $type_query = TableRegistry::get('profile_types');
                                 $type_q = $type_query->find()->where(['id' => $u])->first();
                                 $ut = $type_q->title;
+                                $username = $uq->username;
+                            }
+                            else{
+                            $username = '';
+                            $ut = '';
                             }
                             $from = array('info@'.$path => "ISB MEE");
                             $to = $em;
                             $sub = 'Client Created: ' . $_POST['company_name'];
-                            $msg = 'Domain: ' . $path . '<br />' . 'Client Name: ' . $_POST['company_name'] . '<br>Created by: ' . $uq->username . ' (Profile Type : ' . $ut . ')<br/> On: ' . $_POST['created'];
+                            $msg = 'Domain: ' . $path . '<br />' . 'Client Name: ' . $_POST['company_name'] . '<br>Created by: ' . $username . ' (Profile Type : ' . $ut . ')<br/> On: ' . $_POST['created'];
                             $this->Mailer->sendEmail($from, $to, $sub, $msg);
                         } else {
                             $this->Flash->error(ucfirst($settings->client) . ' could not be saved. Please try again.');

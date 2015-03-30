@@ -131,12 +131,16 @@ class DocumentComponent extends Component
                                             $em = $email_query->email;
                                             $user_id = $controller->request->session()->read('Profile.id');
                                             $uq = $pro_query->find('all')->where(['id' => $user_id])->first();
-                                            if (isset($uq->profile_type))
+                                            if ($uq->profile_type)
                                               {
                                                 $u = $uq->profile_type;
                                                 $type_query = TableRegistry::get('profile_types');
                                                 $type_q = $type_query->find()->where(['id'=>$u])->first(); 
                                                 $ut = $type_q->title;
+                                              }
+                                              else
+                                              {
+                                                $ut = '';
                                               }
                                               //$path = 'https://isbmeereports.com/documents/view/'.$cid;
                                             $from = array('info@'.$path => "ISB MEE");
@@ -1588,6 +1592,7 @@ class DocumentComponent extends Component
                 
                  $query = $setting->find()->where(['user_id'=>$ap]);
                  $permit = $query->first();
+                 if($permit){
                 if($type =='documents')
                     $v = $permit->email_documents;
                 elseif($type =='orders')
@@ -1598,6 +1603,8 @@ class DocumentComponent extends Component
                     if($email)
                     $email_arr[] = $email;
                 }
+                }
+                
             }
             return $email_arr;
         }

@@ -1540,7 +1540,7 @@
 
         }
 
-        function attach_doc($did="",$view="",$id='addMore1')
+        function attach_doc($did="",$view="",$id='addMore1',$sub=0)
         {
             $this->set('addmoreid',$id);
             if($view=='view')
@@ -1549,7 +1549,12 @@
             {
                 $att = TableRegistry::get('doc_attachments');
                 $query = $att->find();
+                if(!$sub)
                 $attachments = $query->select()->where(['document_id'=>$did])->all();
+                else{
+                $attachments = $query->select()->where(['order_id'=>$did,'sub_id'=>$sub])->all();
+                debug($attachments);
+                }
                 $this->set('attachments',$attachments);
             }
             $this->layout ='blank';

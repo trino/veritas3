@@ -2008,15 +2008,7 @@ if (isset($this->request->params['pass'][1])) {
     $(function () {
 
 
-        $('#addMoredoc').live('click',function () {
-            var total_count = $('.docMore').data('count');
-            $('.docMore').data('count', parseInt(total_count) + 1);
-            total_count = $('.docMore').data('count');
-            var input_field = '<div  class="form-group col-md-12"><div class="col-md-12"><a href="javascript:void(0);" id="addMore' + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="attach_doc[]" value="" class="addMore' + total_count + '_doc moredocs" /> <a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_addMore' + total_count + '" title ="">Delete</a><span></span></div></div>';
-            $('.docMore').append(input_field);
-            initiate_ajax_upload1('addMore' + total_count, 'doc');
-
-        });
+        
         $('.img_delete').live('click', function () {
             var file = $(this).attr('title');
             if (file == file.replace("&", " ")) {

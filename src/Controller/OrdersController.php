@@ -146,6 +146,10 @@
                 $edu_att = TableRegistry::get('doc_attachments');
                 $sub4['att'] = $edu_att->find()->where(['order_id' => $did, 'sub_id' => 42])->all();
                 $this->set('sub4', $sub4);
+                
+                $sur_att = TableRegistry::get('doc_attachments');
+                $sub6['att'] = $sur_att->find()->where(['order_id' => $did, 'sub_id' => 6])->all();
+                $this->set('sub6', $sub6);
             }
             $this->render('addorder');
         }

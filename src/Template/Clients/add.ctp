@@ -603,9 +603,11 @@
                                                                     </td>
                                                                     <td>
                                                                         <input <?php if ($csubdoc['display_order'] == 1) { ?> checked="checked" <?php } ?>
-                                                                            type="checkbox"
+                                                                            type="checkbox" id="check<?= $u ?>"
                                                                             onclick="if($(this).is(':checked')){$(this).closest('td').find('.fororder').val('1');}else {$(this).closest('td').find('.fororder').val('0');}"/>
-                                                                        Show<input class="fororder" type="hidden"
+                                                                        <label for="check<?= $u ?>">Show</label>
+
+                                                                        <input class="fororder" type="hidden"
                                                                                    value="<?php if ($csubdoc['display_order'] == 1) {
                                                                                        echo '1';
                                                                                    } else { ?>0<?php } ?>"

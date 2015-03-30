@@ -220,7 +220,7 @@
                                                 if ($order->hasattachments) {
                                                     echo '<BR><i  title="Has Attachment" class="fa fa-paperclip"></i>';
                                                 }  //echo $order->profile->title;      ?></td>
-                                        <td style="min-width: 145px;">
+                                        <td style="min-width: 125px;">
 
                                             <?php
                                                 if ($order->order_type) {

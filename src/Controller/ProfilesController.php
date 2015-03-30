@@ -117,6 +117,11 @@
             $this->set('provinces',  $this->LoadSubDocs());
         }
 
+
+        function getdocID($ID){
+            return TableRegistry::get('order_products')->find()->where(['id' => $ID])->first()->number;
+        }
+
         public function LoadSubDocs(){
             $provinces =  TableRegistry::get('doc_provinces')->find('all');//gets me ID#s and which provinces are enabled
             //$provincelist = array("AB","BC","MB","NB","NFL","NWT","NS","NUN","ONT","PEI","QC","SK","YT");
@@ -127,8 +132,10 @@
             foreach($provinces as $province){
                 $province->subdocuments = array();
                 foreach($subdocuments as $document){
-                    $quiz = $table2->find()->where(['ID' => $province->ID, "DocID" => $document->id])->first();
-                    if ($quiz) { $province->subdocuments[$document->id] = $document->title; }
+                    $newdocid = $document->id;
+                    //$province->Number = $this->getdocID($newdocid);
+                    $quiz = $table2->find()->where(['ID' => $province->ID, "DocID" =>$newdocid])->first();
+                    if ($quiz) { $province->subdocuments[$newdocid] = $document->title; }
                 }
                 $provinces2[] = $province;
             }
@@ -154,13 +161,16 @@
                     break;
 
                 case "Document":
+                    $table = TableRegistry::get("doc_provinces");
+                    $quiz = $table->find()->where(['ID' => $DocID])->first();
+                    if (!$quiz) {$table->query()->insert(['ID'])->values(['ID' => $DocID])->execute();}
                     $table = TableRegistry::get("doc_provincedocs");
                     if ($Value == 1) {
                         $table->query()->insert(['ID', "DocID"])->values(['ID' => $DocID, "DocID" => $_POST["SubDoc"]])->execute();
                         echo $_POST["SubDoc"] . " was enabled for " . $DocID;
                     } else {
                         $table->deleteAll(array('ID' => $DocID, 'DocID' => $_POST["SubDoc"]), false);
-                        echo $_POST["SubDoc"] . " was disabled for" . $DocID;
+                        echo $_POST["SubDoc"] . " was disabled for " . $DocID;
                     }
                     break;
 

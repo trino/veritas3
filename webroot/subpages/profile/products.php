@@ -11,6 +11,10 @@
         return implode(" ", $Words2);
     }
 
+    function getdocID($ID){
+        return TableRegistry::get('order_products')->find()->where(['id' => $ID])->first()->number;
+    }
+
     //just pass $provincelist and $provinces into them
     function PrintProvinces($DocID, $provincelist, $provinces="", $subdocuments = ""){
         if ($DocID==-1) {

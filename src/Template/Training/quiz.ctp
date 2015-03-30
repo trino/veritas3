@@ -97,15 +97,15 @@
         if ($correctanswer == -1) {
             echo " <font color='red'><B>Incomplete</B></font>";
         }
-        echo '</div><div class="answer">';
+        echo '</div><div class="answer"><TABLE>';
         for ($temp = 0; $temp < count($answers); $temp += 1) {
             if (strlen(trim($answers[$temp])) > 0) {
-                echo '<div class="r' . $temp . '">';
+                echo '<TR><TD valign="top"><div class="r' . $temp . '" nowrapstyle="white-space: nowrap;">';
                 echo '<input type="radio" name="' . $QuestionID . '_answer" value="' . $temp . '" id="' . $QuestionID . ":" . $temp . '" required' . $disabled;
                 if ($selected == $temp) {
                     echo " checked";
                 }
-                echo '/><label for="' . $QuestionID . ":" . $temp . '">' . chr($temp + ord("a")) . ". " . $answers[$temp];
+                echo '/></TD><TD><label for="' . $QuestionID . ":" . $temp . '">' . chr($temp + ord("a")) . ". " . $answers[$temp];
                 if (is_object($usersanswer) && $selected == $temp) {
                     if ($correctanswer == $temp) {
                         echo " <font color='green'><B>Correct!</B></font>";
@@ -114,10 +114,10 @@
                         echo " <font color='red'><B>Incorrect</B></font>";
                     }
                 }
-                echo '</label></div>';
+                echo '</label></div></TD></TR>';
             }
         }
-        echo '</DIV></DIV>';
+        echo '</TABLE></DIV></DIV>';
         return $iscorrect;
     }
 

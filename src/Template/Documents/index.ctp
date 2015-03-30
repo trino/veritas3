@@ -174,8 +174,9 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                             <thead>
                             <tr class="sorting">
                                 <th title="Document ID"><?= $this->Paginator->sort('id'); ?></th>
-                                <th title="Order ID"><?= $this->Paginator->sort('oid', "Order ID"); ?></th>
                                 <th><?= $this->Paginator->sort('document_type', ucfirst($settings->document) . ' type'); ?></th>
+                                <th title="Order ID" style="max-width: 58px;"><?= $this->Paginator->sort('oid', "Order ID"); ?></th>
+
                                 <th><?= $this->Paginator->sort('user_id', 'Submitted by'); ?><?php if (isset($end)) echo $end;
                                         if (isset($start)) echo "//" . $start; ?></th>
                                 <th><?= $this->Paginator->sort('uploaded_for', 'Driver'); ?><?php if (isset($end)) echo $end;
@@ -236,12 +237,8 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                             <tr class="<?= $row_color_class; ?>" role="row">
                                 <td><?echo $this->Number->format($docs->id);
                                     if($docs->hasattachments) { echo '<BR><i  title="Has Attachment" class="fa fa-paperclip"></i>';} ?></td>
-                                <td align=""><?php if ($orderID > 0) {
-                                        echo '<a href="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/'.$orderDetail->id;if($orderDetail->order_type){echo '?order_type='.urlencode($orderDetail->order_type);if($orderDetail->forms)echo '&forms='.$orderDetail->forms;}echo '">'.$orderDetail->id;echo '</a>';
-                                    } else {
-                                        echo "N/A";
-                                    }  ?></td>
-                                <td style="width: 160px;">
+
+                                <td style="min-width: 160px;">
                                     <?php switch (1){//change the number to pick a style
                                         case 0://plain text
                                             echo h($docs->document_type);
@@ -300,6 +297,19 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
                             <?php break;
                         } ?>
                     </td>
+
+
+
+                    <td align=""><?php if ($orderID > 0) {
+                            echo '<a href="'.$this->request->webroot.'orders/vieworder/'.$orderDetail->client_id.'/'.$orderDetail->id;if($orderDetail->order_type){echo '?order_type='.urlencode($orderDetail->order_type);if($orderDetail->forms)echo '&forms='.$orderDetail->forms;}echo '">'.$orderDetail->id;echo '</a>';
+                        } else {
+                            echo "N/A";
+                        }  ?></td>
+
+
+
+
+
                     <td><?php
                             $docname = "";
                             if (isset($uploaded_by->username)) {

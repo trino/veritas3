@@ -219,6 +219,17 @@
                                             <i class="fa fa-folder-open-o"></i>Order Score Sheet
                                             - <?php echo $order->created; ?>
                                         </div>
+
+                                            <a style="float:right;"
+                                       href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>?order_type=<?php echo $order->order_type;
+                if ($order->forms) {
+                    echo '?forms=' . $order->forms;
+                } ?>"
+                                       class="btn btn-primary small">View Ord2er</a>
+
+
+
+
                                     </div>
                                     <div class="portlet-body">
                                         <div oldclass="table-scrollable">
@@ -267,12 +278,7 @@
                             </TR>
                             <TR>
                                 <TD>
-                                    <a style="margin:10px 0px 0px 0px;float:right;"
-                                       href="<?php echo $this->request->webroot; ?>orders/vieworder/<?php echo $order->client_id; ?>/<?php echo $order->id; ?>?order_type=<?php echo $order->order_type;
-                                           if ($order->forms) {
-                                               echo '?forms=' . $order->forms;
-                                           } ?>"
-                                       class="btn btn-primary">View Order</a>
+
                                 </TD>
                             </TR>
                         </TABLE>

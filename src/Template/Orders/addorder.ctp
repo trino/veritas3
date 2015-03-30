@@ -103,8 +103,8 @@ function provinces($name){
         function displayform($DriverProvince, $Provinces, $forms, $name,$_this){
             if(isset($_GET['order_type']) && urldecode($_GET['order_type'])=='Order MEE'){ return true;}//uncomment
             $name=trim(strtolower($name));
+           // print_r($Provinces);
             //if ($name == "consent form") { return true; } //mandatory in all sections now
-
             foreach($forms as $form){
                 $data = FindIterator($Provinces, "ID", $form);
                 if ($data) {
@@ -138,7 +138,7 @@ function provinces($name){
 
             //return true if all boxes were checked
             //if (isallone($forms)) {return true; }
-            return true; //returns true if $forms is empty or smaller than the ID number (ie: MEE order)
+            //return true; //returns true if $forms is empty or smaller than the ID number (ie: MEE order)
         }
 
         if (isset($disabled)) { ?>
@@ -217,9 +217,9 @@ function provinces($name){
                                         foreach ($subdoccli as $sd) {
 
                                             $index+=1;
-
-
                                             $d = $this->requestAction('/clients/getFirstSub/'.$sd->sub_id);
+
+                                            //debug($sd);
 
                                             if (displayform($DriverProvince, $provinces, $forms, $d->title,$_this)){
                                                 $index+=1;

@@ -114,16 +114,17 @@ th.rotate > div > span {
                 <?php
                     $row=1;
                     foreach ($products as $product) {
+                        $ID = $product->number;
                         ?>
                         <tr>
-                            <!--td><?php echo $product->id;?></td-->
-                            <TD><?=  $product->id ?></TD>
-                            <td style="white-space: nowrap;" class="title_<?php echo $product->id . '">' . $product->title;?> </td>
+                            <!--td><?php echo $ID;?></td-->
+                            <TD><?=  $ID ?></TD>
+                            <td style="white-space: nowrap;" class="title_<?php echo $ID . '">' . $product->title;?> </td>
                               <td><input type="checkbox" <?php if ($product->enable == '1') {
                                     echo "checked='checked'";
-                                }?> class="enable" id="chk_<?php echo $product->id;?>"/></td>
+                                }?> class="enable" id="chk_<?php echo $ID;?>"/></td>
                                 <?php
-                                    PrintProvinces($product->id, $provincelist, $provinces, $subdocuments);
+                                    PrintProvinces($ID, $provincelist, $provinces, $subdocuments);
                                     echo '<td style="white-space: nowrap;">';
                                     if ($product->id >= 9) { ?>
                                         <a href="javascript:;" class="btn btn-xs btn-info editpro" id="edit_<?php echo $product->id;?>">Edit</a>

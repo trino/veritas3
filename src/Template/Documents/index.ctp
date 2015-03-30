@@ -207,7 +207,7 @@ if ($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.
 
                                 //var_dump($docz);
                                 if (count($documents) == 0) {
-                                    echo '<TR><TD COLSPAN="8" ALIGN="CENTER">No ' . strtolower($settings->document) . 's found';
+                                    echo '<TR><TD COLSPAN="9" ALIGN="CENTER">No ' . strtolower($settings->document) . 's found';
                                     if (hasget('searchdoc')) {
                                         echo " matching '" . $_GET['searchdoc'] . "'";
                                     }

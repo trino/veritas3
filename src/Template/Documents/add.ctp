@@ -655,7 +655,23 @@ if (isset($this->request->params['pass'][1])) {
         {
             $('.subform'+k+' .document_type').remove();
             $('.subform'+k+' .sub_docs_id').remove();
+            
         }
+         <?php foreach($doc as $dx)
+                {
+                    if($dx->id >11)
+                    {
+                    ?>
+                    if(s_arr[1] == <?php echo $dx->id;?>){
+                        $('#form_tab<?php echo $dx->id;?>').prepend('<input class="document_type" type="hidden" name="document_type" value="<?php echo addslashes($dx->title);?>" />' +
+                        '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="<?php echo $dx->id;?>"  />');
+                        $('.addattachment<?php echo $dx->id;?>').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did."/".$view;?>', function(){
+                            initiate_ajax_upload1('addMore1', 'doc');
+                         });
+                    }
+        <?php       }
+                }
+        ?>
         
         if (s_arr[1] == 1) {
             $('#form_tab1').prepend('<input type="hidden" class="document_type" name="document_type" value="Pre-Screening"/>' +
@@ -722,14 +738,7 @@ if (isset($this->request->params['pass'][1])) {
              });
              
         }
-        if (s_arr[1] == 12) {
-            $('#form_tab12').prepend('<input class="document_type" type="hidden" name="document_type" value="Basic Pre-Screen Questions" />' +
-            '<input type="hidden" class="sub_docs_id" name="sub_doc_id" value="12"  />');
-            $('.addattachment12').load('<?php echo $this->request->webroot;?>documents/attach_doc/<?php echo $did."/".$view;?>', function(){
-                initiate_ajax_upload1('addMore1', 'doc');
-             });
-             
-        }
+        
         
 
         
@@ -1770,6 +1779,25 @@ if (isset($this->request->params['pass'][1])) {
                         $('#form_tab11').submit();
 
                     }
+        <?php foreach($doc as $dx)
+                {
+                    if($dx->id >11)
+                    {
+                    ?>
+                        if(type == "<?php echo addslashes($dx->title);?>")
+                        {
+                            var act = $('#form_tab<?php echo $dx->id;?>').attr('action');
+    
+                            $('#form_tab<?php echo $dx->id;?>').attr('action', function (i, val) {
+                                return val + '?draft=' + draft;
+                            });
+    
+                            $('#form_tab<?php echo $dx->id;?>').submit();
+                        }
+
+        <?php       }
+                }
+        ?>
 
                 }
             });

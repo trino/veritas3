@@ -248,7 +248,9 @@
 
                             function printeditbuttons($QuizID, $canedit)
                             {
-                                echo '<div class="col-md-5" align="right">';
+                                $cols=12;
+                                if (isset($_GET["quizid"])) { $cols = 5; }
+                                echo '<div class="col-md-' . $cols . '" align="right">';
                                 //echo '<a href="training/enroll?quizid=' . $quiz->ID . '" class="btn btn-warning btnspc"">Enroll</a>';
                                 //echo '<a class="btn btn-info btnspc" href="training/quiz?quizid=' . $quiz->ID . '">View</a>';
                                 echo '<a class="btn btn-info btn-xs btnspc" href="training?quizid=' . $QuizID . '">View</a>';

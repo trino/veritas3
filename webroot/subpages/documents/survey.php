@@ -4,7 +4,9 @@
 $is_disabled = '';
 if(isset($disabled)){$is_disabled = 'disabled="disabled"';}
 
-echo '<form role="form" action="" method="post" id="form_tab5">';
+?>
+<form role="form" action="" method="post" id="form_tab5">
+<?php
 include_once 'subpages/filelist.php';
 printdocumentinfo($did);
 ?>

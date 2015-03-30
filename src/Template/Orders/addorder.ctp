@@ -1491,7 +1491,7 @@ function provinces($name){
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>feedbacks/add/' + order_id + '/' + cid;
-                        var param = $('#form_tab6').serialize();
+                        var param = $('#form_tab6').serialize()+'&order_id='+order_id;
                         $.ajax({
                             url: url,
                             data: param,
@@ -1503,7 +1503,7 @@ function provinces($name){
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>feedbacks/addsurvey/' + order_id + '/' + cid;
-                        var param = $('#form_tab5').serialize();
+                        var param = $('#form_tab5').serialize()+'&order_id='+order_id;
                         $.ajax({
                             url: url,
                             data: param,
@@ -1516,7 +1516,7 @@ function provinces($name){
                         var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/addattachment/' + cid + '/' + order_id+ '?draft=' + draft;
-                        var param = $('#form_tab7').serialize();
+                        var param = $('#form_tab7').serialize()+'&order_id='+order_id;
                         $.ajax({
                             url: url,
                             data: param,
@@ -1529,7 +1529,7 @@ function provinces($name){
                          var order_id = $('#did').val(),
                             cid = '<?php echo $cid;?>',
                             url = '<?php echo $this->request->webroot;?>documents/audits/' + cid + '/' + order_id+ '?draft=' + draft;
-                        var param = $('#form_tab8').serialize();
+                        var param = $('#form_tab8').serialize()+'&order_id='+order_id;
                         $.ajax({
                             url: url,
                             data: param,

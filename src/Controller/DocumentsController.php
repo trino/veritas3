@@ -1015,7 +1015,7 @@
                 $arr['document_type'] = $_POST['document_type'];
                 $arr['title'] = $_POST['title'];
                 $arr['created'] = date('Y-m-d H:i:s');
-                if(!isset($_GET['order_id'])){
+                if(!isset($_REQUEST['order_id'])){
                 if (!$did || $did == '0') {
 
                     $arr['user_id'] = $this->request->session()->read('Profile.id');
@@ -1134,32 +1134,20 @@
                 }
                 else
                 {
+                    $did = $_REQUEST['order_id'];
                     $doczs = TableRegistry::get('attachments');
                     $check = $doczs->find()->where(['order_id'=>$did]);
                     unset($doczs);
                     if (!$check) {
-                            $client_docs = $_POST['attach_doc'];
-                                foreach ($client_docs as $d) {
-                                    $doczs = TableRegistry::get('attachments');
-                                    if ($d != "") {
-                                        
-                                        $attach = TableRegistry::get('doc_attachments');
-                                        $ds['document_id']= $doc->id;
-                                        $ds['attachment'] =$d;
-                                        $ds['sub_id'] = $arr['sub_doc_id'];
-                                         $att = $attach->newEntity($ds);
-                                         $attach->save($att);
-                                        unset($att);
-                                    }
-                                }
+                            
                         }
                         else
                         {
                             $this->loadModel('Attachments');
                             $this->Attachments->deleteAll(['order_id' => $did]);
-                            $client_docs = array_unique($_POST['client_doc']);
+                            /*$client_docs = array_unique($_POST['client_doc']);*/
         
-                            foreach ($client_docs as $d) {
+                           /* foreach ($client_docs as $d) {
                                 $doczs = TableRegistry::get('attachments');
                                 if ($d != "") {
                                     //$doczs = TableRegistry::get('attachments');
@@ -1170,7 +1158,17 @@
                                     $doczs->save($docz);
                                     unset($doczs);
                                 }
-                            }
+                            }*/
+                            $doczs = TableRegistry::get('attachments');
+                                
+                                    //$doczs = TableRegistry::get('attachments');
+                                    $ds['order_id'] = $did;
+                                    $ds['document_id'] = 0;
+                                    $ds['title'] = $_POST['title'];
+                                    $docz = $doczs->newEntity($ds);
+                                    $doczs->save($docz);
+                                    unset($doczs);
+                                
                         }
                    //$arr['order_id'] = $did;
                    $arr['document_id'] = 0;
@@ -1188,6 +1186,28 @@
                         $uploaded_for = '';
                     $for_doc = array('document_type'=>'Attachment','sub_doc_id'=>7,'order_id'=>$arr['order_id'],'user_id'=>'','uploaded_for'=>$uploaded_for);
                     $this->Document->saveDocForOrder($for_doc);
+                    
+                    if(isset($_POST['attach_doc']))
+                            {
+                                
+                                $model = $this->loadModel('DocAttachments');
+                                $model->deleteAll(['order_id'=> $arr['order_id'],'sub_id'=>7]);
+                                $client_docs = $_POST['attach_doc'];
+                                foreach($client_docs as $d)
+                                {
+                                    if($d != "")
+                                    {
+                                        $attach = TableRegistry::get('doc_attachments');
+                                        $ds['order_id']= $arr['order_id'];
+                                        $ds['attachment'] =$d;
+                                        $ds['sub_id'] = 7;
+                                        $att = $attach->newEntity($ds);
+                                        $attach->save($att);
+                                        unset($att);
+                                    }
+                                }
+                            }
+                    
                     die();
                  
                 }

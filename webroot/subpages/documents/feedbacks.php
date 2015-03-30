@@ -3,7 +3,9 @@
 $is_disabled = '';
 if(isset($disabled)){ $is_disabled = 'disabled="disabled"'; }
 if(isset($feeds)) {$feed = $feeds; }
-echo '<form role="form" action="" method="post" id="form_tab6">';
+?>
+<form role="form" action="" method="post" id="form_tab6">
+<?php
 include_once 'subpages/filelist.php';
 printdocumentinfo($did);
 ?>
@@ -59,6 +61,7 @@ printdocumentinfo($did);
 <div class="clearfix"></div>
 
 
- </form>
+
  <div class="addattachment6 form-group col-md-12"></div>
+ </form> 
 <div class="clearfix"></div>

@@ -4059,6 +4059,7 @@ Dashboard stats
   position: absolute;
   right: 15px;
   padding-right: 15px;
+  padding-left: 30px;
 }
 .dashboard-stat .details .number {
   padding-top: 25px;

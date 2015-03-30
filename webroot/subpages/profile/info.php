@@ -857,7 +857,7 @@
                     res = res.trim();
                     if (res == '1') {
                         //alert(res);
-                        $('.flashUser').show();
+                        alert('Username already exists');
 
                         $('.uname').focus();
                         $('html,body').animate({
@@ -879,7 +879,7 @@
                                     res = res.trim();
                                     if (res == '1') {
                                         $('.email').focus();
-                                        $('.flashEmail').show();
+                                        alert('Email already exists');
                                         $('html,body').animate({
                                                 scrollTop: $('.page-title').offset().top
                                             },

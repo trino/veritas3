@@ -1866,7 +1866,7 @@ function provinces($name){
         var total_count = $('.'+idname).data('count');
             $('.'+idname).data('count', parseInt(total_count) + 1);
             total_count = $('.'+idname).data('count');
-            var input_field = '<div  class="form-group col-md-12"><div class="col-md-12"><a href="javascript:void(0);" id="'+idname + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="attach_doc[]" value="" class="'+idname + total_count + '_doc moredocs" /> <a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_'+idname + total_count + '" title ="">Delete</a><span></span></div></div>';
+            var input_field = '<div  class="form-group col-md-12" style="padding-left:0;"><div class="col-md-12"><a href="javascript:void(0);" id="'+idname + total_count + '" class="btn btn-primary">Browse</a><input type="hidden" name="attach_doc[]" value="" class="'+idname + total_count + '_doc moredocs" /> <a href="javascript:void(0);" class = "btn btn-danger img_delete" id="delete_'+idname + total_count + '" title ="">Delete</a><span></span></div></div>';
             $('.'+idname).append(input_field);
             initiate_ajax_upload1(idname + total_count, 'doc');
     }

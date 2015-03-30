@@ -17,16 +17,17 @@
     } else {
         $user_id234 = '22552';
     }
-
+/*
     if ($_SERVER['SERVER_NAME'] != "isbmeereports.com") {
         $user_id234 = '22552';
     }
-    echo $_SERVER['SERVER_NAME'];
+*/  
+  echo $_SERVER['SERVER_NAME'];
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $upload_additional_id = '';
 
-    $startorder1 = true;
+    $startorder1 = false;
     $upload_additional = true; //additional are all attachments in all forms
 
     $uploadbinaryconsent_1603 = true;

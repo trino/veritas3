@@ -118,6 +118,12 @@
         }
 
 
+        public function products(){
+            $this->set('products', TableRegistry::get('order_products')->find()->all());
+            
+        }
+
+
         function getdocID($ID){
             return TableRegistry::get('order_products')->find()->where(['id' => $ID])->first()->number;
         }
